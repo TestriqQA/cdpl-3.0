@@ -136,8 +136,9 @@ export async function submitIstqbStep2(data: {
     examDate?: string;
     certificationLevel?: string;
     amount?: string;
+    paymentId?: string;
 }) {
-    const { action, name, email, phone, meetingDate, examDate, certificationLevel, amount } = data;
+    const { action, name, email, phone, meetingDate, examDate, certificationLevel, amount, paymentId } = data;
     const currentYear = new Date().getFullYear();
     const source = 'ISTQB Registration Page - Step 2';
 
@@ -153,6 +154,10 @@ export async function submitIstqbStep2(data: {
         subject = `[ISTQB STEP 2] Exam Selection from ${name}`;
         type = 'ISTQB Exam Selection';
         message = `User selected "Skip & Select Exam Date".\nRequested Exam Date: ${examDate}\nCertification Level: ${certificationLevel}\nAmount: ${amount}`;
+
+        if (paymentId) {
+            message += `\n\nTransaction ID: ${paymentId}`;
+        }
     }
 
     // Admin Notification
