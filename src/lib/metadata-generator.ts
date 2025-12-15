@@ -33,22 +33,36 @@ function abbreviateTitle(title: string): string {
 
   // 2. Try removing " | CDPL - Cinute Digital" suffix if present and replacing with " | CDPL"
   newTitle = newTitle.replace(/ \| CDPL - Cinute Digital$/, ' | CDPL');
+  // Also handle " | CDPL Blog" -> " | CDPL" if that helps, or just allow it to be truncated properly.
+  // Ideally, we want to KEEP " | CDPL" or " | CDPL Blog" but shorten the rest.
+
+  // Normalization: If it ends with " | CDPL Blog", treat that as the suffix to preserve (or shorten to | CDPL)
+  let suffix = ' | CDPL';
+  if (newTitle.endsWith(' | CDPL Blog')) {
+    suffix = ' | CDPL Blog';
+  } else if (newTitle.endsWith(' - CDPL')) {
+    suffix = ' - CDPL';
+  }
+
   if (newTitle.length <= MAX_LENGTH) return newTitle;
 
-  // 3. Try removing " | CDPL" suffix, shortening content, then re-adding
-  const suffix = ' | CDPL';
+  // 3. Try removing suffix, shortening content, then re-adding
   const targetLength = MAX_LENGTH - suffix.length;
 
   // Split into words and reconstruct
   const words = newTitle.replace(suffix, '').split(' ');
   let reduced = '';
   for (const word of words) {
-    if ((reduced + word).length < targetLength) {
+    if ((reduced + (reduced ? ' ' : '') + word).length <= targetLength) {
       reduced += (reduced ? ' ' : '') + word;
     } else {
       break;
     }
   }
+
+  // If we couldn't even fit one word + suffix (rare), just return truncated title
+  if (reduced.length === 0) return newTitle.substring(0, MAX_LENGTH - 3) + '...';
+
   return reduced + suffix;
 }
 
@@ -131,7 +145,7 @@ export function generateMetadata(input: MetadataGeneratorInput): Metadata {
 
   return {
     // Basic Metadata
-    title,
+    title: finalTitle,
     description,
     keywords: allKeywords,
 
@@ -148,12 +162,9 @@ export function generateMetadata(input: MetadataGeneratorInput): Metadata {
     category: 'education',
 
     // Canonical URL & Hreflang
+    // Removed explicit hreflang to avoid conflicts. Canonical is sufficient for single-language site.
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        'x-default': fullUrl,
-        'en': fullUrl,
-      },
     },
 
     // Open Graph

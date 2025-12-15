@@ -12,7 +12,7 @@ import JsonLd from "@/components/JsonLd";
 
 // ---------- SEO ----------
 export const metadata: Metadata = generateStaticPageMetadata({
-  title: "CDPL Affiliate Program - Earn Commission Promoting Training & Services",
+  title: "CDPL Affiliate Program: Earn 25% Commission | CDPL",
   description:
     "Join the CDPL Affiliate Program and earn recurring commissions by promoting world-class IT training, certification courses, events, and services. Get transparent tracking, fast payouts, and dedicated support. Start earning 15-25% commission today!",
   keywords: [

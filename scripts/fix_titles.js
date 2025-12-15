@@ -123,6 +123,35 @@ content = content.replace(
 // I will try to use a string replace for safety or verify the exact string from failures.txt.
 // "BI Course in Chhatrapati Shivaji Maharaj Terminus (CSMT) | CDPL"
 
+// Pattern 11: Artificial Intelligence & Data Science City Pages
+// "Artificial Intelligence Course in [City] | ..." -> "AI Course in [City] | CDPL"
+console.log('Applying Pattern 11 (AI/DS City Pages)...');
+// Artificial Intelligence
+content = content.replace(
+    /title:\s*"Artificial Intelligence Course in (.*?) \| .*?"/g,
+    'title: "AI Course in $1 | CDPL"'
+);
+content = content.replace(
+    /title:\s*"Artificial Intelligence Course in (.*?)"/g, // Case without pipe if any
+    (match, city) => {
+        if (match.includes('|')) return match; // Skip if handled above
+        return `title: "AI Course in ${city} | CDPL"`;
+    }
+);
+
+// Data Science (keep Data Science, it's a strong keyword, but ensure | CDPL and no "Best")
+content = content.replace(
+    /title:\s*"Data Science Course in (.*?) \| .*?"/g,
+    'title: "Data Science Course in $1 | CDPL"'
+);
+
+// Fix "Course in [City] Station" for ALL types (general sweep)
+// Currently I have specific ones. Let's add a generic one for any "Course in ... Station" just in case.
+content = content.replace(
+    /Course in (.*?) (Station|Junction|Terminus)\s?,?\s?Mumbai \|/g,
+    'Course in $1 |'
+);
+
 console.log('Writing file...');
 fs.writeFileSync(filePath, content, 'utf8');
 

@@ -139,7 +139,7 @@ export async function generateMetadata(
 
   // Generate enhanced metadata using SEO utility
   return generateSEOMetadata({
-    title: `${service.title} Training & Corporate Programs | CDPL`,
+    title: `${service.title} | CDPL`,
     description: `${service.tagline} — ${service.shortDescription} Learn ${service.title} with industry projects, mentor-led classes, and job-ready skills at CDPL.`,
     keywords,
     url: `/services/${slug}`,

@@ -18,7 +18,7 @@ import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } fro
 import { AI_FAQS, AI_REVIEW_DATA } from "@/data/aiData";
 
 export const metadata = generateMetadata({
-  title: "Comprehensive Data Science & AI Master Program in Mumbai | 255-Hour Training | CDPL",
+  title: "Data Science & AI Master Program Mumbai | CDPL",
   description: "255-Hour Master Program in Comprehensive Data Science and AI. Hands-on projects, 100% job assistance, global certificates.",
   keywords: [
     "comprehensive data science course mumbai",

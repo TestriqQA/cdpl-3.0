@@ -18,7 +18,7 @@ import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } fro
 import { GENERATIVE_AI_FAQS, GENERATIVE_AI_REVIEW_DATA } from "@/data/generativeAiData";
 
 export const metadata = generateMetadata({
-  title: "Deep Learning, NLP & Generative AI Course in Mumbai | 55-Hour Hero Program | CDPL",
+  title: "Deep Learning, NLP & Gen AI Course Mumbai | CDPL",
   description: "55-Hour Hero Program in Deep Learning, NLP, and Generative AI with Python. Hands-on projects, 100% job assistance, global certificates from AAA.",
   keywords: [
     "deep learning course mumbai",
