@@ -11,6 +11,7 @@ import { submitIstqbStep2 } from '@/app/istqb-registration/actions';
 interface ExamSelectionProps {
     userData: { name: string; email: string; phone: string; certificationLevel: string; city: string; jobTitle: string };
     onSuccess: () => void;
+    onBack: () => void;
 }
 // Note: userData props might need update in parent if city/jobTitle are missing, but based on previous files they are in 'userData' state in page.tsx. 
 // Checking page.tsx: `const [userData, setUserData] = useState({ name: '', email: '', phone: '', city: '', jobTitle: '', certificationLevel: '' });`
@@ -43,7 +44,7 @@ declare global {
     }
 }
 
-export default function ExamSelection({ userData, onSuccess }: ExamSelectionProps) {
+export default function ExamSelection({ userData, onSuccess, onBack }: ExamSelectionProps) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [examDate, setExamDate] = useState('');
 
@@ -132,12 +133,20 @@ export default function ExamSelection({ userData, onSuccess }: ExamSelectionProp
                 transition={{ delay: 0.1 }}
                 className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden flex flex-col h-full"
             >
-                <div className="p-8 md:p-10 flex flex-col h-full">
-                    <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                <div className="p-8 md:p-10 flex flex-col h-full relative">
+                    <button
+                        onClick={onBack}
+                        className="absolute top-6 left-6 p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
+                        title="Go Back"
+                    >
+                        <ArrowRight className="w-5 h-5 rotate-180" />
+                    </button>
+
+                    <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 mt-6">
                         <CalendarCheck className="w-7 h-7" />
                     </div>
 
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3">Skip & Book Exam</h3>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-3">Book Exam</h3>
                     <p className="text-slate-600 mb-6">
                         Already decided? Select your preferred exam date and proceed.
                     </p>

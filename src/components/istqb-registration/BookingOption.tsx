@@ -8,9 +8,10 @@ import { submitIstqbStep2 } from '@/app/istqb-registration/actions';
 interface BookingOptionProps {
     userData: { name: string; email: string; phone: string };
     onSuccess: () => void;
+    onBack: () => void;
 }
 
-export default function BookingOption({ userData, onSuccess }: BookingOptionProps) {
+export default function BookingOption({ userData, onSuccess, onBack }: BookingOptionProps) {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     // Logic: Before 3:30 PM (15:30) -> Today, else Tomorrow
@@ -53,8 +54,16 @@ export default function BookingOption({ userData, onSuccess }: BookingOptionProp
             animate={{ opacity: 1, scale: 1 }}
             className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden flex flex-col h-full"
         >
-            <div className="p-8 md:p-10 flex flex-col h-full">
-                <div className="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6">
+            <div className="p-8 md:p-10 flex flex-col h-full relative">
+                <button
+                    onClick={onBack}
+                    className="absolute top-6 left-6 p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
+                    title="Go Back"
+                >
+                    <ArrowRight className="w-5 h-5 rotate-180" />
+                </button>
+
+                <div className="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 mt-6">
                     <Video className="w-7 h-7" />
                 </div>
 

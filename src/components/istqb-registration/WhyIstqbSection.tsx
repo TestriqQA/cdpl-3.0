@@ -1,144 +1,148 @@
-'use client';
-
 import { motion } from 'framer-motion';
-import { Globe, Layers, TrendingUp, Infinity, Wallet, Zap } from 'lucide-react';
-
-const FEATURES = [
-    {
-        title: "Globally Recognized & Industry Standard",
-        icon: Globe,
-        color: "text-blue-600",
-        bg: "bg-blue-50",
-        points: [
-            "Accepted in 130+ countries with over 1 million certified professionals",
-            "Recognized by top companies as the gold standard for software testing",
-            "Aligns with international best practices"
-        ]
-    },
-    {
-        title: "Structured Learning Path",
-        icon: Layers,
-        color: "text-purple-600",
-        bg: "bg-purple-50",
-        points: [
-            "Multiple levels for career growth: Foundation, Advanced, and Expert",
-            "Covers Manual Testing, Automation, Agile, and Test Management"
-        ]
-    },
-    {
-        title: "Enhances Career & Salary Prospects",
-        icon: TrendingUp,
-        color: "text-green-600",
-        bg: "bg-green-50",
-        points: [
-            "Certified professionals earn higher salaries",
-            "Boosts job opportunities in top companies and global enterprises",
-            "Essential for roles like QA Engineer, Test Manager, and Automation Engineer"
-        ]
-    },
-    {
-        title: "No Expiry – Lifetime Validity",
-        icon: Infinity,
-        color: "text-rose-600",
-        bg: "bg-rose-50",
-        points: [
-            "Unlike other certifications, ISTQB never expires, so no renewals are needed."
-        ]
-    },
-    {
-        title: "Cost-Effective & Flexible",
-        icon: Wallet,
-        color: "text-amber-600",
-        bg: "bg-amber-50",
-        points: [
-            "More affordable than many other certifications",
-            "No mandatory training required – self-study is an option",
-            "Available in multiple languages and global locations"
-        ]
-    },
-    {
-        title: "Industry-Aligned & Future-Proof",
-        icon: Zap,
-        color: "text-cyan-600",
-        bg: "bg-cyan-50",
-        points: [
-            "Regularly updated to reflect trends (Agile, DevOps, AI in Testing)",
-            "Keeps professionals ahead in the evolving testing landscape"
-        ]
-    }
-];
+import { BookOpen, CheckCircle2, Globe2, Info, TrendingUp, Clock, Wallet, ShieldCheck, Check } from 'lucide-react';
 
 export default function WhyIstqbSection() {
     return (
-        <section className="relative">
-            {/* Soft Pattern Background */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:20px_20px] rounded-3xl" />
+        <section className="relative py-12">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-sm"
+            >
+                <div>
+                    <h2 className="text-3xl font-bold text-slate-900 mb-6">
+                        Why ISTQB is the Best Testing Certification?
+                    </h2>
+                    <p className="text-slate-600 mb-10 text-lg leading-relaxed">
+                        The ISTQB (International Software Testing Qualifications Board) certification is widely recognized as the best in software testing due to its global recognition, structured learning path, and career-boosting benefits. Here&rsquo;s why it stands out:
+                    </p>
 
-            <div className="relative z-10 py-8 md:py-12">
-                <div className="text-center max-w-3xl mx-auto mb-12">
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="inline-block px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 font-semibold text-sm mb-4"
-                    >
-                        Why Choose ISTQB?
-                    </motion.div>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight"
-                    >
-                        Why ISTQB is the <span className="text-orange-600">Best Testing Certification?</span>
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="mt-4 text-lg text-slate-600"
-                    >
-                        Widely recognized as the best in software testing due to its global recognition, structured learning path, and career-boosting benefits.
-                    </motion.p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    {FEATURES.map((feature, idx) => (
-                        <motion.div
-                            key={feature.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
-                            className="bg-white relative px-8 py-10 rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(249,115,22,0.1)] hover:border-orange-100 hover:-translate-y-2 transition-all duration-500 group overflow-hidden"
-                        >
-                            {/* Decorative soft glow on hover */}
-                            <div className="absolute -right-10 -top-10 w-32 h-32 bg-orange-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                            <div className={`relative w-16 h-16 ${feature.bg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-sm border border-slate-100`}>
-                                <feature.icon className={`w-8 h-8 ${feature.color}`} strokeWidth={1.5} />
+                    <div className="space-y-10">
+                        {/* 1. Globally Recognized */}
+                        <div>
+                            <div className="flex items-center gap-3 mb-4">
+                                <Globe2 className="w-6 h-6 text-orange-500" />
+                                <h3 className="font-bold text-slate-800 text-lg">Globally Recognized & Industry Standard</h3>
                             </div>
-
-                            <h3 className="relative text-xl font-bold text-slate-900 mb-4 pr-4 leading-tight group-hover:text-orange-600 transition-colors duration-300">
-                                {feature.title}
-                            </h3>
-
-                            <ul className="relative space-y-3">
-                                {feature.points.map((point, i) => (
-                                    <li key={i} className="flex items-start gap-3">
-                                        <div className="mt-2 w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-orange-500 transition-colors duration-300 flex-shrink-0" />
-                                        <span className="text-slate-600 text-sm leading-relaxed group-hover:text-slate-700 transition-colors duration-300">
-                                            {point}
+                            <ul className="space-y-3 pl-1">
+                                {[
+                                    "Accepted in 130+ countries with over 1 million certified professionals",
+                                    "Recognized by top companies as the gold standard for software testing",
+                                    "Aligns with international best practices"
+                                ].map((text, i) => (
+                                    <li key={i} className="flex gap-3 items-start">
+                                        <span className="bg-emerald-500 rounded flex items-center justify-center w-5 h-5 mt-0.5 flex-shrink-0">
+                                            <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
                                         </span>
+                                        <span className="text-slate-600 leading-snug">{text}</span>
                                     </li>
                                 ))}
                             </ul>
-                        </motion.div>
-                    ))}
+                        </div>
+
+                        {/* 2. Structured Learning Path */}
+                        <div>
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-6 h-6 rounded-full border-2 border-orange-500 flex items-center justify-center">
+                                    <span className="text-orange-500 font-bold text-xs">i</span>
+                                </div>
+                                <h3 className="font-bold text-slate-800 text-lg">Structured Learning Path</h3>
+                            </div>
+                            <ul className="space-y-3 pl-1">
+                                {[
+                                    "Multiple levels for career growth: Foundation, Advanced, and Expert",
+                                    "Covers Manual Testing, Automation, Agile, and Test Management"
+                                ].map((text, i) => (
+                                    <li key={i} className="flex gap-3 items-start">
+                                        <span className="bg-emerald-500 rounded flex items-center justify-center w-5 h-5 mt-0.5 flex-shrink-0">
+                                            <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+                                        </span>
+                                        <span className="text-slate-600 leading-snug">{text}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* 3. Enhances Career */}
+                        <div>
+                            <div className="flex items-center gap-3 mb-4">
+                                <TrendingUp className="w-6 h-6 text-orange-500" />
+                                <h3 className="font-bold text-slate-800 text-lg">Enhances Career & Salary Prospects</h3>
+                            </div>
+                            <ul className="space-y-3 pl-1">
+                                {[
+                                    "Certified professionals earn higher salaries",
+                                    "Boosts job opportunities in top companies and global enterprises",
+                                    "Essential for roles like QA Engineer, Test Manager, and Automation Engineer"
+                                ].map((text, i) => (
+                                    <li key={i} className="flex gap-3 items-start">
+                                        <span className="bg-emerald-500 rounded flex items-center justify-center w-5 h-5 mt-0.5 flex-shrink-0">
+                                            <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+                                        </span>
+                                        <span className="text-slate-600 leading-snug">{text}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* 4. No Expiry */}
+                        <div>
+                            <div className="flex items-center gap-3 mb-4">
+                                <Clock className="w-6 h-6 text-orange-500" />
+                                <h3 className="font-bold text-slate-800 text-lg">No Expiry – Lifetime Validity</h3>
+                            </div>
+                            <p className="text-slate-600 pl-1">
+                                Unlike other certifications, ISTQB never expires, so no renewals are needed.
+                            </p>
+                        </div>
+
+                        {/* 5. Cost-Effective */}
+                        <div>
+                            <div className="flex items-center gap-3 mb-4">
+                                <Wallet className="w-6 h-6 text-orange-500" />
+                                <h3 className="font-bold text-slate-800 text-lg">Cost-Effective & Flexible</h3>
+                            </div>
+                            <ul className="space-y-3 pl-1">
+                                {[
+                                    "More affordable than many other certifications",
+                                    "No mandatory training required – self-study is an option",
+                                    "Available in multiple languages and global locations"
+                                ].map((text, i) => (
+                                    <li key={i} className="flex gap-3 items-start">
+                                        <span className="bg-emerald-500 rounded flex items-center justify-center w-5 h-5 mt-0.5 flex-shrink-0">
+                                            <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+                                        </span>
+                                        <span className="text-slate-600 leading-snug">{text}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* 6. Industry-Aligned */}
+                        <div>
+                            <div className="flex items-center gap-3 mb-4">
+                                <ShieldCheck className="w-6 h-6 text-orange-500" />
+                                <h3 className="font-bold text-slate-800 text-lg">Industry-Aligned & Future-Proof</h3>
+                            </div>
+                            <ul className="space-y-3 pl-1">
+                                {[
+                                    "Regularly updated to reflect trends (Agile, DevOps, AI in Testing)",
+                                    "Keeps professionals ahead in the evolving testing landscape"
+                                ].map((text, i) => (
+                                    <li key={i} className="flex gap-3 items-start">
+                                        <span className="bg-emerald-500 rounded flex items-center justify-center w-5 h-5 mt-0.5 flex-shrink-0">
+                                            <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
+                                        </span>
+                                        <span className="text-slate-600 leading-snug">{text}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }
