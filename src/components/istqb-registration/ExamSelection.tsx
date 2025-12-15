@@ -67,7 +67,7 @@ export default function ExamSelection({ userData, onSuccess }: ExamSelectionProp
 
         // 3. Razorpay Options
         const options = {
-            key: "rzp_live_1hUQcnIwRVsOTT", // User provided key
+            key: "rzp_test_RrnjBKEFQjC4WQ", // User provided key
             amount: amountInPaise.toString(),
             currency: "INR",
             name: "ISTQB Registration",
