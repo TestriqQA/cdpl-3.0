@@ -7,6 +7,8 @@ import { MockCourse } from "@/data/mockTestData";
 import TestInterface from "@/components/mock-test/TestInterface";
 import ResultView from "@/components/mock-test/ResultView";
 import { RegistrationData } from "@/components/mock-test/RegistrationModal";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 interface PageProps {
     params: Promise<{ courseSlug: string }>;
@@ -14,13 +16,7 @@ interface PageProps {
 
 export default function MockTestPage({ params }: PageProps) {
     const router = useRouter();
-    // Unwrap params using React.use - wait no, params is a Promise in Next.js 15
-    // Actually in client components for Next.js 15, we need to await params if it's passed as prop, 
-    // but standard usage in client component often unwraps automatically or we use the `use` hook.
-    // Let's use `use` to be safe as per latest Next.js patterns or just await in useEffect if standard props.
-    // However, simpler to standard `use` if it's available or just standard props.
     // In Next.js 15 app router, params are async.
-
     const { courseSlug } = use(params);
 
     const [course, setCourse] = useState<MockCourse | null>(null);
@@ -30,6 +26,8 @@ export default function MockTestPage({ params }: PageProps) {
     const [score, setScore] = useState(0);
     const [relatedCourses, setRelatedCourses] = useState<MockCourse[]>([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const [showExitConfirm, setShowExitConfirm] = useState(false);
 
     useEffect(() => {
         // Check registration
@@ -83,6 +81,10 @@ export default function MockTestPage({ params }: PageProps) {
         }
     };
 
+    const handleExitConfirm = () => {
+        router.push("/mock-test");
+    };
+
     if (loading || !course) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -92,18 +94,50 @@ export default function MockTestPage({ params }: PageProps) {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-gray-50 py-4 px-4 sm:px-6 lg:px-8 relative">
+
+            {/* Exit Confirmation Modal */}
+            {showExitConfirm && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
+                    <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-sm w-full mx-4 border border-gray-100 transform transition-all scale-100">
+                        <h3 className="text-lg font-bold text-gray-900 mb-2">Leave Mock Test?</h3>
+                        <p className="text-gray-600 mb-6 font-medium">
+                            Are you sure you want to go back? Your progress will be lost.
+                        </p>
+                        <div className="flex gap-3 justify-end">
+                            <button
+                                onClick={() => setShowExitConfirm(false)}
+                                className="px-4 py-2 rounded-lg font-semibold text-gray-600 hover:bg-gray-100 transition-colors"
+                            >
+                                No, Stay
+                            </button>
+                            <button
+                                onClick={handleExitConfirm}
+                                className="px-4 py-2 rounded-lg font-semibold bg-red-500 text-white hover:bg-red-600 transition-colors shadow-lg shadow-red-500/20"
+                            >
+                                Yes, Leave
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             <div className="max-w-5xl mx-auto">
                 {!testCompleted ? (
-                    <div>
-                        <div className="mb-8">
-                            <h1 className="text-3xl font-bold text-gray-900">{course.name} Mock Test</h1>
-                            <p className="text-gray-600 mt-2">
-                                Questions: {course.questions.length} | Duration: 30 Minutes
-                            </p>
-                        </div>
+                    <div className="md:flex">
+                        {/* Heading removed here, now handled inside TestInterface */}
+                        <aside className="w-fit h-fit mb-2 md:mb-0 top-0 text-gray-700 mt-2 hover:text-brand transition-all duration-200 cursor-pointer">
+                            <button
+                                onClick={() => setShowExitConfirm(true)}
+                                className="flex items-center gap-1 group"
+                            >
+                                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                                <span className="text-md font-medium">Back</span>
+                            </button>
+                        </aside>
                         <TestInterface
                             questions={course.questions}
+                            courseName={course.name}
                             onSubmit={handleSubmit}
                             isSubmitting={isSubmitting}
                         />

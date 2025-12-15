@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { X, User, Mail, Phone, Briefcase } from "lucide-react";
+import { X, User, Mail, Briefcase } from "lucide-react";
+import dynamic from "next/dynamic";
+import 'react-phone-number-input/style.css';
+
+const PhoneInput = dynamic(() => import("react-phone-number-input"), { ssr: false });
 
 interface RegistrationModalProps {
     isOpen: boolean;
@@ -98,14 +102,19 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
                             </div>
 
                             <div className="relative group">
-                                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-brand transition-colors w-5 h-5" />
-                                <input
-                                    type="tel"
-                                    value={formData.number}
-                                    onChange={(e) => setFormData({ ...formData, number: e.target.value })}
-                                    className="w-full pl-12 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand/20 focus:border-brand outline-none transition-all font-medium text-gray-800 placeholder-gray-400 hover:bg-white"
-                                    placeholder="Phone Number"
-                                />
+                                <label className="block text-sm font-medium text-gray-700 mb-1 ml-1">Phone Number</label>
+                                <div className="phone-input-wrapper w-full px-3 py-3.5 bg-gray-50 border border-gray-200 rounded-xl focus-within:ring-2 focus-within:ring-brand/20 focus-within:border-brand hover:bg-white transition-all">
+                                    <PhoneInput
+                                        defaultCountry="IN"
+                                        international
+                                        countryCallingCodeEditable={false}
+                                        value={formData.number}
+                                        onChange={(v) => setFormData({ ...formData, number: v || '' })}
+                                        className="w-full [&>input]:w-full [&>input]:border-none [&>input]:outline-none [&>input]:bg-transparent"
+                                        inputClass="!w-full !pl-14 !text-base !border-none !outline-none !ring-0 !bg-transparent"
+                                        placeholder="Phone Number"
+                                    />
+                                </div>
                             </div>
                         </div>
 
@@ -118,8 +127,8 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
                                     type="button"
                                     onClick={() => setFormData({ ...formData, occupation: "student" })}
                                     className={`py-2.5 rounded-lg text-sm font-semibold transition-all shadow-sm ${formData.occupation === "student"
-                                            ? "bg-white text-brand shadow-md transform scale-100"
-                                            : "text-gray-500 hover:text-gray-700 bg-transparent"
+                                        ? "bg-white text-brand shadow-md transform scale-100"
+                                        : "text-gray-500 hover:text-gray-700 bg-transparent"
                                         }`}
                                 >
                                     Student
@@ -128,8 +137,8 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
                                     type="button"
                                     onClick={() => setFormData({ ...formData, occupation: "professional" })}
                                     className={`py-2.5 rounded-lg text-sm font-semibold transition-all shadow-sm ${formData.occupation === "professional"
-                                            ? "bg-white text-brand shadow-md transform scale-100"
-                                            : "text-gray-500 hover:text-gray-700 bg-transparent"
+                                        ? "bg-white text-brand shadow-md transform scale-100"
+                                        : "text-gray-500 hover:text-gray-700 bg-transparent"
                                         }`}
                                 >
                                     Professional

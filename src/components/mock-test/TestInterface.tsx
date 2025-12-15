@@ -1,18 +1,29 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Question } from "@/data/mockTestData";
-import { Timer, CheckCircle, AlertCircle } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight, Clock, LayoutGrid, TriangleAlert } from "lucide-react";
 
 interface TestInterfaceProps {
     questions: Question[];
+    courseName: string;
     onSubmit: (answers: Record<string, number>) => void;
     isSubmitting: boolean;
 }
 
-const TestInterface = ({ questions, onSubmit, isSubmitting }: TestInterfaceProps) => {
+const TestInterface = ({ questions, courseName, onSubmit, isSubmitting }: TestInterfaceProps) => {
     const [answers, setAnswers] = useState<Record<string, number>>({});
+    const [attemptCounts, setAttemptCounts] = useState<Record<string, number>>({});
     const [timeLeft, setTimeLeft] = useState(30 * 60); // 30 minutes in seconds
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [showWarning, setShowWarning] = useState(false);
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    const currentQuestion = questions[currentQuestionIndex];
+    const isFirstQuestion = currentQuestionIndex === 0;
+    const isLastQuestion = currentQuestionIndex === questions.length - 1;
+
+    void attemptCounts
 
     useEffect(() => {
         if (timeLeft <= 0) {
@@ -32,131 +43,254 @@ const TestInterface = ({ questions, onSubmit, isSubmitting }: TestInterfaceProps
     };
 
     const handleOptionSelect = (questionId: string, optionIndex: number) => {
+        // Update answers
         setAnswers((prev) => ({ ...prev, [questionId]: optionIndex }));
+
+        // Increment attempt count for this question
+        setAttemptCounts((prev) => ({
+            ...prev,
+            [questionId]: (prev[questionId] || 0) + 1
+        }));
+    };
+
+    const handleNext = () => {
+        if (!isLastQuestion) {
+            setCurrentQuestionIndex((prev) => prev + 1);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    };
+
+    const handlePrevious = () => {
+        if (!isFirstQuestion) {
+            setCurrentQuestionIndex((prev) => prev - 1);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    };
+
+    const handleComplete = () => {
+        const answeredCount = Object.keys(answers).length;
+        if (answeredCount < questions.length) {
+            setShowWarning(true);
+            return;
+        }
+        onSubmit(answers);
+    };
+
+    const handleScroll = (direction: 'left' | 'right') => {
+        if (scrollRef.current) {
+            const scrollAmount = 450; // Approx 10 items
+            scrollRef.current.scrollBy({
+                left: direction === 'left' ? -scrollAmount : scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    // Jump to specific question
+    const handleJumpToQuestion = (index: number) => {
+        setCurrentQuestionIndex(index);
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     const answeredCount = Object.keys(answers).length;
     const progress = (answeredCount / questions.length) * 100;
-    const isUrgent = timeLeft < 300; // Less than 5 mins
+    const isUrgent = timeLeft < 300;
+    const currentAnswer = answers[currentQuestion.id];
+    const isCurrentAnswered = currentAnswer !== undefined;
 
     return (
-        <div className="max-w-4xl mx-auto pb-24">
-            {/* Sticky Header */}
-            <div className="sticky top-0 z-40 pt-6 pb-6 bg-[#fafafa]/80 backdrop-blur-lg">
-                <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex flex-col gap-6 w-full max-w-[1440px] mx-auto px-4 md:px-6 select-none">
 
-                    <div className="flex items-center gap-4 w-full sm:w-auto">
-                        <div className={`p-3 rounded-xl transition-colors ${isUrgent ? 'bg-red-50 text-red-500 animate-pulse' : 'bg-brand/10 text-brand'}`}>
-                            <Timer className="w-6 h-6" />
+            {/* ----------------------------------------------------
+                TOP NAVIGATOR: Horizontal Scrollable List
+                ---------------------------------------------------- */}
+            <div className="bg-white/80 backdrop-blur-md rounded-2xl p-2 border-2 border-brand/30 shadow-lg shadow-orange-300 sticky top-[90px] z-[20] overflow-hidden">
+                <div className="flex items-center gap-2">
+                    {/* Left Scroll Button */}
+                    <button
+                        onClick={() => handleScroll('left')}
+                        className="p-2 rounded-lg bg-white border border-gray-200 shadow-sm text-gray-400 hover:text-brand hover:border-brand transition-all flex-shrink-0"
+                    >
+                        <ChevronLeft className="w-5 h-5" />
+                    </button>
+
+                    <div
+                        ref={scrollRef}
+                        className="flex items-center gap-3 pb-1 custom-scrollbar scroll-smooth overflow-x-auto flex-1"
+                    >
+                        <div className="flex items-center gap-2 mr-4 text-xs font-bold uppercase tracking-widest text-brand whitespace-nowrap bg-white/80 backdrop-blur-sm z-10 pr-4">
+                            <LayoutGrid className="w-4 h-4" />
+                            <span>Question Navigator</span>
                         </div>
-                        <div>
-                            <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Time Remaining</p>
-                            <p className={`text-2xl font-mono font-bold ${isUrgent ? 'text-red-600' : 'text-gray-900'}`}>
-                                {formatTime(timeLeft)}
-                            </p>
-                        </div>
+
+                        {questions.map((q, idx) => {
+                            const isAnswered = answers[q.id] !== undefined;
+                            const isCurrent = currentQuestionIndex === idx;
+
+                            return (
+                                <button
+                                    key={q.id}
+                                    onClick={() => handleJumpToQuestion(idx)}
+                                    className={`flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${isCurrent
+                                        ? 'bg-brand text-white shadow-lg scale-105 ring-2 ring-gray-100'
+                                        : isAnswered
+                                            ? 'bg-emerald-500 text-white shadow-md shadow-emerald-500/20'
+                                            : 'bg-gray-200 text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                                        }`}
+                                >
+                                    {isAnswered && !isCurrent ? <CheckCircle2 className="w-5 h-5" /> : idx + 1}
+                                </button>
+                            );
+                        })}
                     </div>
 
-                    <div className="w-full sm:w-1/2 flex flex-col justify-center">
-                        <div className="flex justify-between text-xs font-semibold uppercase tracking-wider mb-2">
-                            <span className="text-gray-400">Progress</span>
-                            <span className="text-brand">{Math.round(progress)}% Completed</span>
-                        </div>
-                        <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
-                            <div
-                                className="bg-gradient-to-r from-brand to-orange-400 h-full rounded-full transition-all duration-700 ease-out"
-                                style={{ width: `${progress}%` }}
-                            />
-                        </div>
-                    </div>
+                    {/* Right Scroll Button */}
+                    <button
+                        onClick={() => handleScroll('right')}
+                        className="p-2 rounded-lg bg-white border border-gray-200 shadow-sm text-gray-400 hover:text-brand hover:border-brand transition-all flex-shrink-0"
+                    >
+                        <ChevronRight className="w-5 h-5" />
+                    </button>
                 </div>
             </div>
 
-            {/* Questions List */}
-            <div className="space-y-8 mt-2">
-                {questions.map((q, index) => {
-                    const isAnswered = answers[q.id] !== undefined;
-                    return (
-                        <div
-                            key={q.id}
-                            className={`bg-white rounded-3xl p-6 md:p-10 border transition-all duration-300 ${isAnswered ? 'border-brand/30 shadow-brand/5 shadow-lg' : 'border-gray-100 shadow-sm hover:shadow-md'}`}
-                        >
-                            <div className="flex gap-4 md:gap-6">
-                                <div className={`hidden md:flex flex-shrink-0 w-12 h-12 rounded-2xl items-center justify-center text-lg font-bold transition-colors ${isAnswered ? 'bg-brand text-white' : 'bg-gray-100 text-gray-500'
-                                    }`}>
-                                    {index + 1}
-                                </div>
+            {/* ----------------------------------------------------
+                MAIN SPLIT CARD
+                ---------------------------------------------------- */}
+            <div className="min-h-[60vh] md:mt-5 lg:mt-0 flex flex-col lg:flex-row bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-100">
 
-                                <div className="flex-1">
-                                    <div className="flex items-start justify-between mb-6">
-                                        <h3 className="text-xl md:text-2xl font-bold text-gray-900 leading-snug">
-                                            <span className="md:hidden inline-block mr-2 text-brand">#{index + 1}.</span>
-                                            {q.text}
-                                        </h3>
-                                        {isAnswered && (
-                                            <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-50 text-green-600 text-xs font-bold uppercase tracking-wide">
-                                                <CheckCircle className="w-3.5 h-3.5" /> Answered
-                                            </span>
-                                        )}
-                                    </div>
+                {/* LEFT PANEL: Immersive Context (Dark/Brand Theme) */}
+                <div className="lg:w-5/12 bg-[#1a1a1a] text-white p-6 lg:p-12 flex flex-col relative overflow-hidden">
+                    {/* Abstract decorative shapes */}
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-brand/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-600/20 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2" />
 
-                                    <div className="grid gap-3">
-                                        {q.options.map((option, idx) => {
-                                            const isSelected = answers[q.id] === idx;
-                                            return (
-                                                <button
-                                                    key={idx}
-                                                    onClick={() => handleOptionSelect(q.id, idx)}
-                                                    className={`group w-full text-left p-4 md:p-5 rounded-2xl border-2 transition-all duration-200 flex items-center justify-between relative overflow-hidden ${isSelected
-                                                        ? "border-brand bg-orange-50/50"
-                                                        : "border-gray-100 bg-gray-50/30 hover:border-brand/30 hover:bg-white"
-                                                        }`}
-                                                >
-                                                    {isSelected && <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-brand"></div>}
+                    {/* Header Info */}
+                    <div className="relative z-10 flex items-center justify-between mb-8 lg:mb-0">
+                        <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-2 py-2 rounded-full border border-white/10">
+                            <Clock className={`w-4 h-4 ${isUrgent ? 'text-red-400 animate-pulse' : 'text-orange-400'}`} />
+                            <span className="font-mono font-bold tracking-wider">{formatTime(timeLeft)}</span>
+                        </div>
+                        <div className="text-xs font-bold uppercase tracking-widest text-gray-400">
+                            Question {currentQuestionIndex + 1} / {questions.length}
+                        </div>
+                    </div>
 
-                                                    <div className="flex items-center gap-4 relative z-10 w-full">
-                                                        <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-bold transition-all flex-shrink-0 ${isSelected ? "border-brand bg-brand text-white scale-110" : "border-gray-300 text-gray-400 group-hover:border-brand/50 group-hover:text-brand"
-                                                            }`}>
-                                                            {String.fromCharCode(65 + idx)}
-                                                        </div>
-                                                        <span className={`text-base md:text-lg font-medium transition-colors ${isSelected ? 'text-gray-900' : 'text-gray-600 group-hover:text-gray-900'}`}>{option}</span>
-                                                    </div>
+                    {/* Main Question Display */}
+                    <div className="relative lg:mt-16 z-10 animate-in slide-in-from-left-8 duration-700 fade-in">
+                        <div className="mb-6">
+                            <span className="inline-block px-3 py-1 bg-brand text-white text-xs font-bold uppercase tracking-wider rounded-md mb-4 shadow-lg shadow-brand/20">
+                                {courseName}
+                            </span>
+                            <h2 className="text-lg lg:text-3xl font-bold leading-tight lg:leading-snug text-white/95">
+                                {currentQuestion.text}
+                            </h2>
+                        </div>
 
-                                                    {isSelected && <CheckCircle className="w-6 h-6 text-brand animate-in zoom-in spin-in-12 duration-300" />}
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
+                        {/* Progress Indicator */}
+                        <div className="mt-8">
+                            <div className="flex justify-between text-xs text-gray-400 mb-2 font-medium">
+                                <span>Assessment Progress</span>
+                                <span>{Math.round(progress)}%</span>
+                            </div>
+                            <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                                <div
+                                    className="h-full bg-gradient-to-r from-brand to-orange-400 transition-all duration-500 ease-out"
+                                    style={{ width: `${progress}%` }}
+                                />
                             </div>
                         </div>
-                    )
-                })}
-            </div>
-
-            {/* Action Bar */}
-            <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/80 backdrop-blur-xl border-t border-gray-200 z-50">
-                <div className="max-w-4xl mx-auto flex items-center justify-between">
-                    <div className="hidden sm:block text-sm text-gray-500">
-                        <span className="font-bold text-gray-900">{answeredCount}</span> of {questions.length} attempted
                     </div>
-                    <button
-                        onClick={() => onSubmit(answers)}
-                        disabled={isSubmitting}
-                        className="w-full sm:w-auto bg-gray-900 hover:bg-black text-white text-lg font-bold py-3.5 px-10 rounded-xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                    >
-                        {isSubmitting ? (
-                            <>
-                                <span className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></span>
-                                Submitting...
-                            </>
+                </div>
+
+                {/* RIGHT PANEL: Interaction Area (Light Theme) */}
+                <div className="lg:w-7/12 bg-gray-50/50 p-4 sm:p-6 lg:p-6 flex flex-col overflow-y-auto">
+                    <div className="flex-1 flex flex-col justify-center max-w-2xl mx-auto w-full">
+
+                        {/* Header with 'Attempted' Status */}
+                        <div className="flex justify-between items-center mb-6 pl-1">
+                            <h3 className="text-gray-400 font-bold uppercase tracking-wider text-xs">
+                                Select your answer
+                            </h3>
+                            {isCurrentAnswered && (
+                                <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-100 text-emerald-700 rounded-full animate-in fade-in slide-in-from-top-2 duration-300 shadow-sm border border-emerald-200">
+                                    <CheckCircle2 className="w-3.5 h-3.5" />
+                                    <span className="text-[10px] font-bold uppercase tracking-wider">Attempted</span>
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-4">
+                            {currentQuestion.options.map((option, idx) => {
+                                const isSelected = currentAnswer === idx;
+                                return (
+                                    <button
+                                        key={idx}
+                                        onClick={() => handleOptionSelect(currentQuestion.id, idx)}
+                                        className={`group relative text-left p-3 rounded-2xl transition-all duration-300 border-2 ${isSelected
+                                            ? 'bg-white border-brand shadow-xl shadow-brand/10 translate-x-2'
+                                            : 'bg-white border-transparent shadow-sm hover:border-gray-200 hover:shadow-md hover:translate-x-1'
+                                            }`}
+                                    >
+                                        <div className="flex items-center gap-5">
+                                            <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold transition-all ${isSelected
+                                                ? 'bg-brand text-white'
+                                                : 'bg-gray-100 text-brand group-hover:bg-gray-200'
+                                                }`}>
+                                                {String.fromCharCode(65 + idx)}
+                                            </div>
+                                            <span className={`text-md font-medium transition-colors ${isSelected ? 'text-gray-900' : 'text-gray-600 group-hover:text-gray-900'
+                                                }`}>
+                                                {option}
+                                            </span>
+                                        </div>
+
+                                        {isSelected && (
+                                            <div className="absolute right-6 top-1/2 -translate-y-1/2 text-brand animate-in zoom-in duration-300">
+                                                <CheckCircle2 className="w-6 h-6" />
+                                            </div>
+                                        )}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
+
+                    {/* Navigation Controls */}
+                    <div className="mt-8 pt-8 border-t border-gray-200 flex items-center justify-between gap-4 max-w-2xl mx-auto w-full">
+                        <button
+                            onClick={handlePrevious}
+                            disabled={isFirstQuestion}
+                            className={`px-4 sm:px-6 py-3 rounded-xl font-bold text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-all flex items-center gap-2 ${isFirstQuestion ? 'opacity-0 pointer-events-none' : ''
+                                }`}
+                        >
+                            <ChevronLeft className="w-5 h-5" /> <span className="hidden sm:inline">Previous</span><span className="sm:hidden">Prev</span>
+                        </button>
+
+                        {!isLastQuestion ? (
+                            <button
+                                onClick={handleNext}
+                                className="bg-gray-900 text-white px-5 sm:px-8 py-3 rounded-xl font-bold shadow-lg shadow-gray-900/20 hover:bg-black hover:transform hover:-translate-y-0.5 transition-all flex items-center gap-2"
+                            >
+                                <span className="hidden sm:inline">Next</span><span className="sm:hidden">Next</span> <ChevronRight className="w-5 h-5" />
+                            </button>
                         ) : (
-                            <>
-                                Submit Assessment
-                                {answeredCount < questions.length && <AlertCircle className="w-5 h-5 text-gray-400" />}
-                            </>
+                            <button
+                                onClick={handleComplete}
+                                disabled={isSubmitting}
+                                className="relative bg-brand text-white px-6 sm:px-10 py-3 rounded-xl font-bold shadow-lg shadow-brand/30 hover:bg-orange-600 hover:transform hover:-translate-y-0.5 transition-all flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed group/btn"
+                            >
+                                {isSubmitting ? 'Finishing...' : 'Complete Test'}
+                                {showWarning && (
+                                    <div className="absolute bottom-full mb-3 right-0 w-max bg-red-50 text-red-600 text-xs font-bold px-3 py-2 rounded-lg border border-red-200 shadow-xl flex items-center gap-2 animate-in slide-in-from-bottom-2 fade-in">
+                                        <TriangleAlert className="w-4 h-4" />
+                                        Please attempt all questions first
+                                        <div className="absolute bottom-[-5px] right-8 w-2 h-2 bg-red-50 border-r border-b border-red-200 rotate-45 transform" />
+                                    </div>
+                                )}
+                            </button>
                         )}
-                    </button>
+                    </div>
                 </div>
             </div>
         </div>
