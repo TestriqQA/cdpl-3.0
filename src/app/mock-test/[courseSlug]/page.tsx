@@ -47,12 +47,14 @@ export default function MockTestPage({ params }: PageProps) {
             // Shuffle and select 20 questions
             // We create a new object to avoid mutating the original data source
             const shuffledQuestions = shuffleArray([...c.questions]);
-            const selectedQuestions = shuffledQuestions.slice(0, 20);
+            const selectedQuestions = shuffledQuestions.slice(0, 30);
 
             setCourse({ ...c, questions: selectedQuestions });
 
             // Fetch related
-            getRelatedCourses(c.categoryId, c.id).then(setRelatedCourses);
+            getRelatedCourses(c.categoryId, c.id).then(related => {
+                setRelatedCourses([c, ...related]);
+            });
 
             setLoading(false);
         });
