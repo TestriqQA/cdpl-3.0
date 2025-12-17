@@ -7,7 +7,7 @@ import RegistrationForm from '@/components/istqb-registration/RegistrationForm';
 import BookingOption from '@/components/istqb-registration/BookingOption';
 import ExamSelection from '@/components/istqb-registration/ExamSelection';
 import SuccessState from '@/components/istqb-registration/SuccessState';
-import { CheckCircle2, Home, ChevronRight, ArrowLeft } from 'lucide-react';
+import { CheckCircle2, Home, ChevronRight, ArrowLeft, Calendar } from 'lucide-react';
 import Link from 'next/link';
 import WhyIstqbSection from '@/components/istqb-registration/WhyIstqbSection';
 import IstqbOverview from '@/components/istqb-registration/IstqbOverview';
@@ -125,7 +125,7 @@ export default function IstqbRegistrationPage() {
                                         </button>
 
                                         <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-full mb-6 mx-auto md:mx-0 mt-8">
-                                            <CheckCircle2 className="w-8 h-8" />
+                                            <Calendar className="w-8 h-8" />
                                         </div>
 
                                         <h2 className="text-3xl font-bold text-slate-900 mb-4">
