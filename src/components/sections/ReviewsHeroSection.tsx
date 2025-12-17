@@ -121,7 +121,20 @@ export default function ReviewsHeroSection() {
             {/* CTA & Trust */}
             <div className="flex flex-col sm:flex-row gap-5 pt-4">
               <Link
-                href="#reviews-grid"
+                href="#all-reviews"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById("all-reviews");
+                  if (el) {
+                    const headerOffset = 80; // Adjust for sticky header
+                    const elementPosition = el.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: "smooth"
+                    });
+                  }
+                }}
                 className="inline-flex items-center justify-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-full font-semibold text-sm hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-slate-900/20"
               >
                 Read All Reviews
