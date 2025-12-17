@@ -107,9 +107,9 @@ export default function CTAJoinSection() {
                 >
                   <Link
                     href="/contact-us"
-                    className="group inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold text-base shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all duration-300"
+                    className="group inline-flex items-center justify-center gap-2 rounded-full px-4 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold text-base shadow-lg shadow-orange-500/25 hover:shadow-xl hover:shadow-orange-500/35 hover:-translate-y-0.5 transition-all duration-300"
                   >
-                    <span>Join 1000+ Successful Students</span>
+                    <span>Start Succeeding</span>
                     <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
 

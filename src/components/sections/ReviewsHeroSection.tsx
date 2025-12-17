@@ -48,7 +48,7 @@ export default function ReviewsHeroSection() {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative w-full overflow-hidden bg-slate-50 min-h-[90vh] flex items-center py-20 lg:py-0"
+      className="relative w-full overflow-hidden bg-slate-50 min-h-[90vh] flex items-center py-10 lg:py-0"
     >
       {/* ... (Background elements kept the same) ... */}
       {/* --- Background Elements --- */}
@@ -88,7 +88,7 @@ export default function ReviewsHeroSection() {
 
             {/* Typography */}
             <div className="space-y-4">
-              <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 leading-[1.1]">
+              <h1 className="text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 leading-[1.1]">
                 Stories that <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-violet-600 to-blue-500">
                   Inspire Action.
@@ -188,7 +188,7 @@ export default function ReviewsHeroSection() {
             <motion.div
               animate={{ y: [10, -10, 10] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-32 left-0 lg:-left-12 z-10 bg-white/90 backdrop-blur border border-slate-100 p-3 rounded-2xl shadow-lg flex items-center gap-2"
+              className="absolute hidden md:block bottom-32 left-0 lg:-left-12 z-10 bg-white/90 backdrop-blur border border-slate-100 p-3 rounded-2xl shadow-lg flex items-center gap-2"
             >
               <div className="bg-blue-100 p-1.5 rounded-full text-blue-600">
                 <Activity className="w-4 h-4" />
@@ -220,8 +220,6 @@ export default function ReviewsHeroSection() {
                       }}
                       className="relative bg-white rounded-3xl p-6 md:p-8 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100"
                     >
-                      {/* Decorative Top Line */}
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-t-3xl opacity-80"></div>
 
                       {/* Scanning Light Effect */}
                       <motion.div
@@ -230,6 +228,9 @@ export default function ReviewsHeroSection() {
                         transition={{ duration: 2, repeat: Infinity, delay: 1 }}
                         className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent z-30 pointer-events-none blur-[2px]"
                       />
+
+                      {/* Decorative Top Line */}
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-t-3xl opacity-80"></div>
 
                       <div className="relative z-10 space-y-6">
                         {/* User Header */}
