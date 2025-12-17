@@ -170,7 +170,7 @@ const CareerSection: React.FC = () => {
                 {/* Placeholder for Company Logo (using name for now) */}
                 <div>
                   <p className="font-bold text-slate-900">{company.name}</p>
-                  <p className="text-xs text-slate-500 mt-1">Active Hiring</p>
+                  {/* <p className="text-xs text-slate-500 mt-1">Active Hiring</p> */}
                 </div>
               </div>
             ))}
