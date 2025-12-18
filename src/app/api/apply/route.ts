@@ -46,6 +46,7 @@ export async function POST(request: Request) {
         const currentCtc = formData.get('currentCtc') as string;
         const expectedCtc = formData.get('expectedCtc') as string;
         const noticePeriod = formData.get('noticePeriod') as string;
+        const source = formData.get('source') as string || 'Jobs - Careers - Open role';
         const resumeFile = formData.get('resume') as File;
 
         // 1. Basic Validation
@@ -82,8 +83,10 @@ export async function POST(request: Request) {
             }
         }
 
-        // 3. Prepare HR Notification Email
+        // 3. Prepare Emails
         const currentYear = new Date().getFullYear().toString();
+
+        // HR Email Data
         const hrHtml = await getTemplatedEmail('hr-notification.html', {
             position,
             fullName,
@@ -95,11 +98,19 @@ export async function POST(request: Request) {
             currentCtc,
             expectedCtc,
             noticePeriod,
+            source,
             resumeLink,
             currentYear,
         });
 
-        const mailOptions: nodemailer.SendMailOptions = {
+        // Candidate Email Data
+        const userHtml = await getTemplatedEmail('user-confirmation-job.html', {
+            fullName,
+            position,
+            currentYear
+        });
+
+        const hrMailOptions: nodemailer.SendMailOptions = {
             from: SMTP_FROM_EMAIL,
             to: HR_EMAIL,
             subject: `[NEW APPLICATION] ${position} - ${fullName}`,
@@ -107,36 +118,53 @@ export async function POST(request: Request) {
             attachments: fileBuffer ? [
                 {
                     filename: resumeFile.name,
-                    content: fileBuffer, // Use buffer directly
+                    content: fileBuffer,
                 }
             ] : [],
         };
 
-        // 4. Send Email
-        console.log('Sending HR email to:', HR_EMAIL);
-        const emailSuccess = await sendEmail(mailOptions);
-        console.log('HR email result:', emailSuccess);
+        const userMailOptions: nodemailer.SendMailOptions = {
+            from: SMTP_FROM_EMAIL,
+            to: email, // Send to candidate
+            subject: `Application Received: ${position} at CDPL`,
+            html: userHtml,
+        };
+
+        // 4. Send Emails
+        console.log('Sending emails...');
+        const hrEmailResult = await sendEmail(hrMailOptions);
+        const userEmailResult = await sendEmail(userMailOptions);
+        console.log('HR email result:', hrEmailResult);
+        console.log('User email result:', userEmailResult);
 
         // 5. Append to Google Sheet (Async)
-        appendJobApplicationToSheet({
-            date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-            position,
-            fullName,
-            email,
-            phone,
-            location,
-            skills,
-            experienceLevel,
-            currentCtc,
-            expectedCtc,
-            noticePeriod,
-            resumeLink,
-        }).catch(err => console.error('Google Sheet background update error:', err));
+        // 5. Append to Google Sheet (Sync to ensure completion)
+        try {
+            await appendJobApplicationToSheet({
+                date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+                position,
+                fullName,
+                email,
+                phone,
+                location,
+                skills,
+                experienceLevel,
+                currentCtc,
+                expectedCtc,
+                noticePeriod,
+                resumeLink,
+                source
+            });
+            console.log('Google Sheet updated successfully');
+        } catch (sheetError) {
+            console.error('Google Sheet update error:', sheetError);
+            // We don't block the response if sheet fails, but we log it.
+        }
 
-        if (emailSuccess) {
+        if (hrEmailResult) {
             return NextResponse.json({ message: 'Application submitted successfully' }, { status: 200 });
         } else {
-            return NextResponse.json({ message: 'Application submitted, but email failed.' }, { status: 200 });
+            return NextResponse.json({ message: 'Application submitted, but notification failed.' }, { status: 200 });
         }
 
     } catch (error) {

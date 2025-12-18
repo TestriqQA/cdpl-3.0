@@ -183,6 +183,7 @@ export default function EventsPastEventsHeroSection() {
         source="Events Past Events Hero Section"
         title="Corporate Training Enquiry"
         subtitle="Enquire about our corporate training programs and workshops."
+        interest="Corporate Training"
         variant="workshop"
       />
     </section>

@@ -76,7 +76,7 @@ export async function POST(request: Request) {
   console.log('API Contact Route Hit');
   try {
     const body = await request.json();
-    const { fullName, email, phone, type, source, interest, message, courseName, syllabusLink, company, jobTitle, workshopType, participants, preferredDate, title, interestedTrack, location } = body;
+    const { fullName, email, phone, type, source, interest, message, courseName, syllabusLink, company, workshopType, participants, title, interestedTrack, location } = body;
     console.log('Received payload:', { fullName, email, phone, type, source, workshopType, interestedTrack });
 
     const currentYear = new Date().getFullYear();
@@ -87,6 +87,7 @@ export async function POST(request: Request) {
       phone,
       source: source || 'Unknown',
       year: currentYear,
+      formTitle: title || 'New Lead Submission',
     };
 
 
@@ -195,24 +196,8 @@ export async function POST(request: Request) {
 
     // Admin Template Logic
     let adminTemplate = 'admin-notification-basic.html';
-    // Use detailed template if interest or message is provided
-    const hasDetailedFields = interest || message;
 
-    if (hasDetailedFields) {
-      adminTemplate = 'admin-notification.html';
-    } else if (isHomeHeroForm) {
-      adminTemplate = 'admin-notification-home-hero.html';
-    } else if (isFreeDemoRequest) {
-      adminTemplate = 'admin-notification-free-demo.html';
-    } else if (isMentorRequest) {
-      adminTemplate = 'admin-notification-mentor.html';
-    } else if (isLiveJobsRequest) {
-      adminTemplate = 'admin-notification-live-jobs.html';
-    } else if (isPlacementRequest) {
-      adminTemplate = 'admin-notification-placement.html';
-    } else if (isMentorsPageRequest) {
-      adminTemplate = 'admin-notification-mentors.html';
-    } else if (isWorkshopRequest) {
+    if (isWorkshopRequest) {
       const subjectTag = title ? `[${title.toUpperCase()}]` : '[WORKSHOP REQUEST]';
       subjectPrefix = `${subjectTag} from ${company || 'Unknown Company'} (${fullName})`;
       adminTemplate = 'admin-notification-workshop.html';
@@ -234,6 +219,20 @@ export async function POST(request: Request) {
     } else if (type === 'affiliate') {
       subjectPrefix = `[AFFILIATE APPLICATION] from ${company || fullName}`;
       adminTemplate = 'admin-notification-affiliate.html';
+    } else if (interest || message) { // Previously hasDetailedFields
+      adminTemplate = 'admin-notification.html';
+    } else if (isHomeHeroForm) {
+      adminTemplate = 'admin-notification-home-hero.html';
+    } else if (isFreeDemoRequest) {
+      adminTemplate = 'admin-notification-free-demo.html';
+    } else if (isMentorRequest) {
+      adminTemplate = 'admin-notification-mentor.html';
+    } else if (isLiveJobsRequest) {
+      adminTemplate = 'admin-notification-live-jobs.html';
+    } else if (isPlacementRequest) {
+      adminTemplate = 'admin-notification-placement.html';
+    } else if (isMentorsPageRequest) {
+      adminTemplate = 'admin-notification-mentors.html';
     } else if (source === 'City Course Page - Hero Section' || isCityCourseCareerExplore || isCityCourseCareerEnroll || isCityCourseCTAEnroll || isCityCourseCTADemo) { // Detect by source if type isn't set
       subjectPrefix = `[CITY COURSE ENQUIRY] from ${location || 'Unknown City'}`;
       adminTemplate = 'admin-notification-city-course.html';
@@ -244,16 +243,15 @@ export async function POST(request: Request) {
 
     if (isWorkshopRequest) {
       adminData.company = company || 'N/A';
-      adminData.jobTitle = jobTitle || 'N/A';
       adminData.workshopType = workshopType || 'N/A';
       adminData.participants = participants || 'N/A';
-      adminData.preferredDate = preferredDate || 'N/A';
+      adminData.formTitle = title || 'New Workshop Request';
     }
 
     if (courseName) adminData.courseName = courseName;
 
     // Only include interest and message if they exist (for detailed template)
-    if (hasDetailedFields) {
+    if (interest || message) {
       if (interest) adminData.interest = interest;
       if (message) adminData.message = message;
     }

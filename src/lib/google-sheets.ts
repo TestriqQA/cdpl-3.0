@@ -96,6 +96,7 @@ export async function appendJobApplicationToSheet(data: {
     expectedCtc: string;
     noticePeriod: string;
     resumeLink: string;
+    source?: string;
 }) {
     try {
         // Use a specific sheet ID for jobs if available, otherwise fall back to the main one (or fail if strict)
@@ -134,13 +135,14 @@ export async function appendJobApplicationToSheet(data: {
                 data.currentCtc,
                 data.expectedCtc,
                 data.noticePeriod,
-                data.resumeLink,
+                data.resumeLink.startsWith('http') ? `=HYPERLINK("${data.resumeLink}", "View Resume")` : data.resumeLink,
+                data.source || ''
             ],
         ];
 
         await sheets.spreadsheets.values.append({
             spreadsheetId: sheetId,
-            range: 'Sheet1!A:L', // Columns A-L (Removed one column)
+            range: 'Sheet1!A:M', // columns A-M
             valueInputOption: 'USER_ENTERED',
             requestBody: {
                 values,
