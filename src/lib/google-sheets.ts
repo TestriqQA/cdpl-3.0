@@ -1,6 +1,10 @@
 import { google } from 'googleapis';
+import { Readable } from 'stream';
 
-const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
+const SCOPES = [
+    'https://www.googleapis.com/auth/spreadsheets',
+    'https://www.googleapis.com/auth/drive.file'
+];
 
 const formatPrivateKey = (key: string) => {
     // 1. Remove any surrounding quotes if they somehow got included
@@ -21,6 +25,64 @@ const formatPrivateKey = (key: string) => {
 
     return cleanKey;
 };
+
+export async function uploadResumeToDrive(fileBuffer: Buffer, fileName: string, mimeType: string) {
+    try {
+        const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+        const rawPrivateKey = process.env.GOOGLE_PRIVATE_KEY;
+
+        if (!clientEmail || !rawPrivateKey) {
+            console.warn('Google Credentials missing for Drive upload.');
+            return null;
+        }
+
+        const privateKey = formatPrivateKey(rawPrivateKey);
+        const auth = new google.auth.GoogleAuth({
+            credentials: {
+                client_email: clientEmail,
+                private_key: privateKey,
+            },
+            scopes: SCOPES,
+        });
+
+        const drive = google.drive({ version: 'v3', auth });
+
+        const fileMetadata = {
+            name: fileName,
+        };
+
+        const media = {
+            mimeType: mimeType,
+            body: Readable.from(fileBuffer),
+        };
+
+        const file = await drive.files.create({
+            requestBody: fileMetadata,
+            media: media,
+            fields: 'id, webViewLink, webContentLink',
+        });
+
+        const fileId = file.data.id;
+
+        // Make the file publicly readable
+        if (fileId) {
+            await drive.permissions.create({
+                fileId: fileId,
+                requestBody: {
+                    role: 'reader',
+                    type: 'anyone',
+                },
+            });
+        }
+
+        console.log('File uploaded to Drive:', file.data.webViewLink);
+        return file.data.webViewLink;
+
+    } catch (error) {
+        console.error('Drive upload error:', error);
+        return null;
+    }
+}
 
 export async function appendRowToSheet(data: {
     date: string;

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { getTemplatedEmail } from '@/lib/email-utils';
-import { appendJobApplicationToSheet } from '@/lib/google-sheets';
+import { appendJobApplicationToSheet, uploadResumeToDrive } from '@/lib/google-sheets';
 import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 import fs from 'fs';
@@ -62,24 +62,17 @@ export async function POST(request: Request) {
             fileBuffer = Buffer.from(await resumeFile.arrayBuffer());
             const filename = `${Date.now()}-${resumeFile.name.replace(/\s+/g, '_')}`;
 
-            // Try to save locally (works in dev, might fail on Vercel)
+            // Upload to Google Drive
             try {
-                const uploadDir = path.join(process.cwd(), 'public', 'resume');
-                if (!fs.existsSync(uploadDir)) {
-                    await mkdir(uploadDir, { recursive: true });
+                const driveLink = await uploadResumeToDrive(fileBuffer, filename, resumeFile.type);
+                if (driveLink) {
+                    resumeLink = driveLink;
+                } else {
+                    console.warn('Drive upload returned no link, falling back to attachment.');
                 }
-
-                const filePath = path.join(uploadDir, filename);
-                await writeFile(filePath, fileBuffer);
-
-                // Construct public URL if save successful
-                const protocol = request.headers.get('x-forwarded-proto') || 'http';
-                const host = request.headers.get('host');
-                const baseUrl = `${protocol}://${host}`;
-                resumeLink = `${baseUrl}/resume/${filename}`;
-            } catch (fsError) {
-                console.warn('Could not save resume to disk (likely read-only FS on Vercel). Proceeding with email attachment only.', fsError);
-                resumeLink = 'Attached in Email (Serverless Storage)';
+            } catch (driveError) {
+                console.error('Failed to upload to Drive:', driveError);
+                // Fallback to attachment message is already set as default
             }
         }
 
