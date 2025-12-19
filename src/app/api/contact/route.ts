@@ -163,6 +163,69 @@ export async function POST(request: Request) {
     const isMentorsPageRequest = formSource.includes('Mentors Page');
     const isSessionEnquiry = formSource.includes('Session Enquiry') || formSource.includes('Other Courses Section') || formSource.includes('Book Free Demo') || formSource.includes('Start Your QA Journey') || formSource.includes('Get Placement Support') || formSource.includes('Become SDET') || formSource.includes('Start Your QA Career') || formSource.includes('Talk to Advisor') || formSource.includes('Browse Open Roles');
 
+    // --- Standardize Request Type ---
+    let requestType = type || 'General Enquiry';
+
+    // Preserve specific functional types (if they clearly indicate a specific action)
+    if (isBrochureRequest) {
+      requestType = 'Brochure Download';
+    } else if (isSyllabusRequest) {
+      requestType = 'Syllabus Download';
+    } else if (isWorkshopRequest) {
+      requestType = 'Workshop Request';
+    } else if (type === 'service_request') {
+      requestType = 'Service Request';
+    } else if (type === 'consultation') {
+      requestType = 'Consultation Request';
+    } else if (type === 'event_contact') {
+      requestType = 'Event Inquiry';
+    } else if (type === 'affiliate') {
+      requestType = 'Affiliate Application';
+    } else {
+      // Apply page-based standardization for generic 'contact'/'enrollment'/'lead' forms
+      const lowerSource = (formSource || '').toLowerCase();
+
+      // 1. City Course Enquiry
+      if (lowerSource.includes('city course')) {
+        requestType = 'City Course Enquiry';
+      }
+      // 2. Course Category Enquiry
+      else if (
+        lowerSource.includes('course category') ||
+        // Heuristic: If source indicates a category page explicitly. 
+        // Note: Specific mappings can be added here if category page forms start sending unique sources.
+        (lowerSource.includes('business intelligence') && !lowerSource.includes('power bi') && !lowerSource.includes('tableau')) ||
+        (lowerSource.includes('digital marketing') && !lowerSource.includes('bootcamp') && !lowerSource.includes('ai in digital'))
+      ) {
+        requestType = 'Course Category Enquiry';
+      }
+      // 3. Course Enquiry
+      else if (
+        lowerSource.includes('course') ||
+        lowerSource.includes('program') ||
+        lowerSource.includes('bootcamp') ||
+        lowerSource.includes('class') ||
+        courseName
+      ) {
+        requestType = 'Course Enquiry';
+      }
+      // 4. General Enquiry (Contact Page)
+      else if (lowerSource.includes('contact') || lowerSource.includes('general')) {
+        requestType = 'General Enquiry';
+      }
+      else {
+        // Fallback: If type was explicit (e.g. 'enrollment'), keep it? 
+        // Or standardize 'enrollment' to 'Course Enquiry'?
+        // User wants to standardize. 'enrollment' usually happens on course pages.
+        if (type === 'enrollment') {
+          requestType = 'Course Enquiry';
+        } else if (type === 'contact') {
+          requestType = 'General Enquiry';
+        }
+        // else keep original type or default
+      }
+    }
+
     // Subject Prefix Logic
     let subjectPrefix = '[ENQUIRY]';
     if (isBrochureRequest) {
@@ -255,6 +318,10 @@ export async function POST(request: Request) {
       if (interest) adminData.interest = interest;
       if (message) adminData.message = message;
     }
+
+    // Set standardized type for templates that use {{type}}
+    adminData.type = requestType;
+
     const adminHtml = await getTemplatedEmail(adminTemplate, adminData);
 
     // Admin Subject Logic
