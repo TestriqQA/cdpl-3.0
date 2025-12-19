@@ -2,9 +2,6 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { getTemplatedEmail } from '@/lib/email-utils';
 import { appendJobApplicationToSheet, uploadResumeToDrive } from '@/lib/google-sheets';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
-import fs from 'fs';
 
 // --- Configuration ---
 const HR_EMAIL = process.env.HR_EMAIL || 'hr@cinutedigital.com'; // Default or Env
