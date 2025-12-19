@@ -90,7 +90,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                     fullName: form.name,
                     email: form.email,
                     phone: form.phone,
-                    type: 'consultation',
+                    type: 'Course Category Enquiry',
                     source: 'Digital Marketing - Final Cta - Right Section form',
                 }),
             });

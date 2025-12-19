@@ -90,8 +90,8 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                     fullName: form.name,
                     email: form.email,
                     phone: form.phone,
-                    type: 'consultation',
-                    source: 'AI Courses - Final Cta - Right Section form',
+                    type: 'Course Category Enquiry',
+                    source: 'Artificial Intelligence - Final Cta - Right Section form',
                 }),
             });
 

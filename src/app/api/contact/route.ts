@@ -118,43 +118,7 @@ export async function POST(request: Request) {
       else formSource = 'Contact Form';
     }
 
-    // --- Standardize Request Type ---
-    let requestType = 'General Enquiry';
-    if (type) {
-      if (type === 'brochure') requestType = 'Brochure Download';
-      else if (type === 'syllabus') requestType = 'Syllabus Download';
-      else if (type === 'workshop') requestType = 'Workshop Request';
-      else if (type === 'service_request') requestType = 'Service Request';
-      else if (type === 'consultation') requestType = 'Consultation Request';
-      else if (type === 'event_contact') requestType = 'Event Inquiry';
-      else if (type === 'affiliate') requestType = 'Affiliate Application';
-      else if (type === 'enrollment') requestType = 'Course Enquiry';
-      else if (type === 'contact') requestType = 'General Enquiry';
-      else requestType = type; // Use provided type if not standardized pattern
-    } else {
-      // Infer from source
-      const lowerSource = (formSource || '').toLowerCase();
-      if (lowerSource.includes('city course')) {
-        requestType = 'City Course Enquiry';
-      } else if (
-        lowerSource.includes('course category') ||
-        lowerSource.includes('business intelligence - hero section') ||
-        lowerSource.includes('data science - hero section') ||
-        lowerSource.includes('digital marketing - hero section') ||
-        lowerSource.includes('software testing - hero section') ||
-        lowerSource.includes('artificial intelligence - hero section')
-      ) {
-        requestType = 'Course Category Enquiry';
-      } else if (
-        lowerSource.includes('course page') ||
-        lowerSource.includes('comprehensive data science')
-      ) {
-        requestType = 'Course Enquiry';
-      }
-    }
 
-    // Inject type into adminData
-    adminData.type = requestType;
 
     if (source === 'City Course Page - Hero Section') {
       // Force type for city course
@@ -205,10 +169,12 @@ export async function POST(request: Request) {
     let requestType = type || 'General Enquiry';
 
     // Preserve specific functional types (if they clearly indicate a specific action)
-    if (isBrochureRequest) {
-      requestType = 'Brochure Download';
-    } else if (isSyllabusRequest) {
-      requestType = 'Syllabus Download';
+    if (isBrochureRequest || isSyllabusRequest) {
+      requestType = 'Download Enquiry';
+    } else if (isEnrollmentRequest) {
+      requestType = 'Enroll Enquiry';
+    } else if (isSessionEnquiry) {
+      requestType = 'Session Enquiry';
     } else if (isWorkshopRequest) {
       requestType = 'Workshop Request';
     } else if (type === 'service_request') {
@@ -230,6 +196,11 @@ export async function POST(request: Request) {
       // 2. Course Category Enquiry
       else if (
         lowerSource.includes('course category') ||
+        lowerSource.includes('business intelligence - hero section') ||
+        lowerSource.includes('data science - hero section') ||
+        lowerSource.includes('digital marketing - hero section') ||
+        lowerSource.includes('software testing - hero section') ||
+        lowerSource.includes('artificial intelligence - hero section') ||
         // Heuristic: If source indicates a category page explicitly. 
         // Note: Specific mappings can be added here if category page forms start sending unique sources.
         (lowerSource.includes('business intelligence') && !lowerSource.includes('power bi') && !lowerSource.includes('tableau')) ||
@@ -256,7 +227,8 @@ export async function POST(request: Request) {
         // Or standardize 'enrollment' to 'Course Enquiry'?
         // User wants to standardize. 'enrollment' usually happens on course pages.
         if (type === 'enrollment') {
-          requestType = 'Course Enquiry';
+          // handled above
+          requestType = 'Enroll Enquiry';
         } else if (type === 'contact') {
           requestType = 'General Enquiry';
         }

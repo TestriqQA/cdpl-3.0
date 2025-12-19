@@ -122,7 +122,7 @@ export async function GET() {
         if (!accessToken) throw new Error('Failed to generate access token');
 
         const reviewsResponse = await axios.get(
-            `https://mybusiness.googleapis.com/v4/${location.name}/reviews`,
+            `https://mybusiness.googleapis.com/v1/${location.name}/reviews`,
             {
                 params: { pageSize: 20 },
                 headers: {
