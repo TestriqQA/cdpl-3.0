@@ -1,4 +1,5 @@
 import HeroSection from '@/components/automation-testing-course/HeroSection';
+import { software_testing } from '@/components/StickyNavData';
 import StatsSection from '@/components/automation-testing-course/StatsSection';
 import WhyAutomation from '@/components/automation-testing-course/WhyAutomation';
 import CurriculumSection from '@/components/automation-testing-course/CurriculumSection';
@@ -66,7 +67,7 @@ export default function Home() {
 
       {/* Sticky nav must appear right after hero */}
       <div className="hidden md:block sticky top-0 z-20">
-        <StickyNav />
+        <StickyNav navItems={software_testing} />
       </div>
 
       <section id='program-stats'><StatsSection /></section>

@@ -1,4 +1,6 @@
 import HeroSection from "@/components/data-analytics-and-visualization/HeroSection";
+import StickyNav from '@/components/StickyNav2/StickyNav2';
+import { with_roadmap } from '@/components/StickyNavData';
 import StatsSection from "@/components/data-analytics-and-visualization/StatsSection";
 import WhyVisualizationProgram from "@/components/data-analytics-and-visualization/WhyVisualizationProgram";
 import CurriculumSection from "@/components/data-analytics-and-visualization/CurriculumSection";
@@ -63,17 +65,20 @@ export default function Home() {
             {/* Main content */}
             <main className="w-full">
                 <HeroSection />
-                <StatsSection />
-                <WhyVisualizationProgram />
-                <CurriculumSection />
-                <ToolsSection />
-                <CareerRoadmapSection />
-                <ProjectsSection />
-                <CareerSection />
-                <WhoShouldEnroll />
-                <TestimonialsSection />
-                <FaqSection />
-                <CtaSection />
+                <div className="hidden md:block sticky top-0 z-20">
+                    <StickyNav navItems={with_roadmap} />
+                </div>
+                <section id="program-stats"><StatsSection /></section>
+                <section id="why-master-program"><WhyVisualizationProgram /></section>
+                <section id="curriculum"><CurriculumSection /></section>
+                <section id="tools"><ToolsSection /></section>
+                <section id="roadmap"><CareerRoadmapSection /></section>
+                <section id="projects"><ProjectsSection /></section>
+                <section id="career"><CareerSection /></section>
+                <section id="who-should-enroll"><WhoShouldEnroll /></section>
+                <section id="testimonials"><TestimonialsSection /></section>
+                <section id="faqs"><FaqSection /></section>
+                <section id="contact"><CtaSection /></section>
             </main>
         </div>
     );

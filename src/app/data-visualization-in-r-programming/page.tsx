@@ -1,4 +1,6 @@
 import { HeroSection } from '@/components/data-visualization-in-r-programming/HeroSection';
+import StickyNav from '@/components/StickyNav2/StickyNav2';
+import { with_roadmap } from '@/components/StickyNavData';
 import { StatsSection } from '@/components/data-visualization-in-r-programming/StatsSection';
 import { WhyRSection } from '@/components/data-visualization-in-r-programming/WhyRSection';
 import { CurriculumSection } from '@/components/data-visualization-in-r-programming/CurriculumSection';
@@ -67,38 +69,42 @@ export default function Home() {
                 {/* Section 1: Hero and Form (Layout replication) */}
                 <HeroSection />
 
+                <div className="hidden md:block sticky top-0 z-20">
+                    <StickyNav navItems={with_roadmap} />
+                </div>
+
                 {/* Section 2: Stats/Achievements */}
-                <StatsSection />
+                <section id="program-stats"><StatsSection /></section>
 
                 {/* Section 3: Why Enroll/Program Highlights */}
-                <WhyRSection />
+                <section id="why-master-program"><WhyRSection /></section>
 
                 {/* Section 4: Detailed Curriculum */}
-                <CurriculumSection />
+                <section id="curriculum"><CurriculumSection /></section>
 
                 {/* Section 6: Tools & Technologies */}
-                <ToolsSection />
+                <section id="tools"><ToolsSection /></section>
 
                 {/* Section 7: Career Roadmap (New SEO Boost Section) */}
-                <CareerRoadmapSection />
+                <section id="roadmap"><CareerRoadmapSection /></section>
 
                 {/* Section 5: Real-Time Projects */}
-                <ProjectsSection />
+                <section id="projects"><ProjectsSection /></section>
 
                 {/* Section 8: Career Opportunities & Placement Support */}
-                <CareerSection />
+                <section id="career"><CareerSection /></section>
 
                 {/* Section 9: Who Should Enroll */}
-                <WhoShouldEnroll />
+                <section id="who-should-enroll"><WhoShouldEnroll /></section>
 
                 {/* Section 10: Testimonials/Social Proof */}
-                <TestimonialsSection />
+                <section id="testimonials"><TestimonialsSection /></section>
 
                 {/* Section 11: FAQ */}
-                <FaqSection />
+                <section id="faqs"><FaqSection /></section>
 
                 {/* Section 12: Final Call to Action */}
-                <CtaSection />
+                <section id="contact"><CtaSection /></section>
             </main>
 
         </div>

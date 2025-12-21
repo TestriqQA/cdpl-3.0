@@ -1,4 +1,6 @@
 import HeroSection from "@/components/data-analytics-python/HeroSection";
+import StickyNav from '@/components/StickyNav2/StickyNav2';
+import { with_roadmap } from '@/components/StickyNavData';
 import StatsSection from "@/components/data-analytics-python/StatsSection";
 import CurriculumSection from "@/components/data-analytics-python/CurriculumSection";
 import ProjectsSection from "@/components/data-analytics-python/ProjectsSection";
@@ -61,38 +63,42 @@ export default function Home() {
             {/* Hero Section */}
             <HeroSection />
 
+            <div className="hidden md:block sticky top-0 z-20">
+                <StickyNav navItems={with_roadmap} />
+            </div>
+
             {/* Stats Section */}
-            <StatsSection />
+            <section id="program-stats"><StatsSection /></section>
 
             {/* Why This Program Section */}
-            <WhyAnalyticsPythonProgram />
+            <section id="why-master-program"><WhyAnalyticsPythonProgram /></section>
 
             {/* Curriculum Section */}
-            <CurriculumSection />
+            <section id="curriculum"><CurriculumSection /></section>
 
             {/* Tools & Technologies Section */}
-            <ToolsSection />
+            <section id="tools"><ToolsSection /></section>
 
             {/* Career Roadmap Section */}
-            <CareerRoadmapSection />
+            <section id="roadmap"><CareerRoadmapSection /></section>
 
             {/* Projects Section */}
-            <ProjectsSection />
+            <section id="projects"><ProjectsSection /></section>
 
             {/* Who Should Enroll Section */}
-            <WhoShouldEnroll />
+            <section id="who-should-enroll"><WhoShouldEnroll /></section>
 
             {/* Career Section */}
-            <CareerSection />
+            <section id="career"><CareerSection /></section>
 
             {/* Testimonials Section */}
-            <TestimonialsSection />
+            <section id="testimonials"><TestimonialsSection /></section>
 
             {/* FAQ Section */}
-            <FaqSection />
+            <section id="faqs"><FaqSection /></section>
 
             {/* CTA Section */}
-            <CtaSection />
+            <section id="contact"><CtaSection /></section>
         </div>
     );
 }

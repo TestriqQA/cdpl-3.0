@@ -1,4 +1,6 @@
 import HeroSection from '@/components/ai-bootcamp/HeroSection';
+import StickyNav from '@/components/StickyNav2/StickyNav2';
+import { with_roadmap } from '@/components/StickyNavData';
 import StatsSection from '@/components/ai-bootcamp/StatsSection';
 import WhyEngineerProgram from '@/components/ai-bootcamp/WhyEngineerProgram';
 import CurriculumSection from '@/components/ai-bootcamp/CurriculumSection';
@@ -61,17 +63,20 @@ export default function AiBootcampPage() {
 
             <main>
                 <HeroSection />
-                <StatsSection />
-                <WhyEngineerProgram />
-                <CurriculumSection />
-                <ToolsSection />
-                <CareerRoadmapSection />
-                <ProjectsSection />
-                <TestimonialsSection />
-                <CareerSection />
-                <WhoShouldEnroll />
-                <FaqSection />
-                <CtaSection />
+                <div className="hidden md:block sticky top-0 z-20">
+                    <StickyNav navItems={with_roadmap} />
+                </div>
+                <section id="program-stats"><StatsSection /></section>
+                <section id="why-master-program"><WhyEngineerProgram /></section>
+                <section id="curriculum"><CurriculumSection /></section>
+                <section id="tools"><ToolsSection /></section>
+                <section id="roadmap"><CareerRoadmapSection /></section>
+                <section id="projects"><ProjectsSection /></section>
+                <section id="testimonials"><TestimonialsSection /></section>
+                <section id="career"><CareerSection /></section>
+                <section id="who-should-enroll"><WhoShouldEnroll /></section>
+                <section id="faqs"><FaqSection /></section>
+                <section id="contact"><CtaSection /></section>
             </main>
         </div>
     );

@@ -1,4 +1,6 @@
 import HeroSection from "@/components/data-analytics-with-tableau/HeroSection";
+import StickyNav from '@/components/StickyNav2/StickyNav2';
+import { with_roadmap } from '@/components/StickyNavData';
 import StatsSection from "@/components/data-analytics-with-tableau/StatsSection";
 import WhyTableauProgram from "@/components/data-analytics-with-tableau/WhyTableauProgram";
 import CurriculumSection from "@/components/data-analytics-with-tableau/CurriculumSection";
@@ -62,38 +64,42 @@ export default function Home() {
                 {/* Hero Section */}
                 <HeroSection />
 
+                <div className="hidden md:block sticky top-0 z-20">
+                    <StickyNav navItems={with_roadmap} />
+                </div>
+
                 {/* Stats Section */}
-                <StatsSection />
+                <section id="program-stats"><StatsSection /></section>
 
                 {/* Why Program Section */}
-                <WhyTableauProgram />
+                <section id="why-master-program"><WhyTableauProgram /></section>
 
                 {/* Curriculum Section */}
-                <CurriculumSection />
+                <section id="curriculum"><CurriculumSection /></section>
 
                 {/* Projects Section */}
-                <ProjectsSection />
+                <section id="projects"><ProjectsSection /></section>
 
                 {/* Testimonials Section */}
-                <TestimonialsSection />
+                <section id="testimonials"><TestimonialsSection /></section>
 
                 {/* Career Section */}
-                <CareerSection />
+                <section id="career"><CareerSection /></section>
 
                 {/* Who Should Enroll Section */}
-                <WhoShouldEnroll />
+                <section id="who-should-enroll"><WhoShouldEnroll /></section>
 
                 {/* Tools Section */}
-                <ToolsSection />
+                <section id="tools"><ToolsSection /></section>
 
                 {/* Career Roadmap Section (SEO Boost) */}
-                <CareerRoadmapSection />
+                <section id="roadmap"><CareerRoadmapSection /></section>
 
                 {/* FAQ Section */}
-                <FaqSection />
+                <section id="faqs"><FaqSection /></section>
 
                 {/* Final CTA Section */}
-                <CtaSection />
+                <section id="contact"><CtaSection /></section>
             </main>
         </div>
     );

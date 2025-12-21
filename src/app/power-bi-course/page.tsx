@@ -1,4 +1,6 @@
 import HeroSection from '@/components/power-bi-course/HeroSection';
+import StickyNav from '@/components/StickyNav2/StickyNav2';
+import { with_roadmap } from '@/components/StickyNavData';
 import StatsSection from '@/components/power-bi-course/StatsSection';
 import WhyBIProgram from '@/components/power-bi-course/WhyBIProgram';
 import CurriculumSection from '@/components/power-bi-course/CurriculumSection';
@@ -64,17 +66,20 @@ const PowerBIPage: React.FC = () => {
                 {/* Note: You would typically include a Header/Navbar component here */}
 
                 <HeroSection />
-                <StatsSection />
-                <WhyBIProgram />
-                <CurriculumSection />
-                <ToolsSection />
-                <CareerRoadmapSection /> {/* NEW SEO BOOST SECTION */}
-                <ProjectsSection />
-                <CareerSection />
-                <WhoShouldEnroll />
-                <TestimonialsSection />
-                <FaqSection />
-                <CtaSection />
+                <div className="hidden md:block sticky top-0 z-20">
+                    <StickyNav navItems={with_roadmap} />
+                </div>
+                <section id="program-stats"><StatsSection /></section>
+                <section id="why-master-program"><WhyBIProgram /></section>
+                <section id="curriculum"><CurriculumSection /></section>
+                <section id="tools"><ToolsSection /></section>
+                <section id="roadmap"><CareerRoadmapSection /></section>
+                <section id="projects"><ProjectsSection /></section>
+                <section id="career"><CareerSection /></section>
+                <section id="who-should-enroll"><WhoShouldEnroll /></section>
+                <section id="testimonials"><TestimonialsSection /></section>
+                <section id="faqs"><FaqSection /></section>
+                <section id="contact"><CtaSection /></section>
 
                 {/* Note: You would typically include a Footer component here */}
             </main>
