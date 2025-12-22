@@ -233,7 +233,7 @@ const CorporateRegistrationModal = () => {
                     <input
                       type="text"
                       name="contactPerson"
-                      maxLength={20}
+                      maxLength={35}
                       value={formData.contactPerson}
                       onChange={handleChange}
                       required

@@ -1,7 +1,7 @@
 import { isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js';
 
 // Configuration constants
-const MAX_NAME_LENGTH = 20;
+const MAX_NAME_LENGTH = 35;
 const MIN_NAME_LENGTH = 2;
 const MAX_COMPANY_LENGTH = 100;
 const MAX_MESSAGE_LENGTH = 1000;

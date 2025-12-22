@@ -267,7 +267,7 @@ const WorkshopRequestModal = ({
                                                     <label className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Full Name <span className="text-red-500">*</span></label>
                                                     <div className="relative">
                                                         <User className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
-                                                        <input type="text" maxLength={20} name="fullName" value={formData.fullName} onChange={handleInputChange} placeholder="Kedar Jadhav" className="w-full pl-9 pr-3 py-2 border rounded-lg text-sm bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 border-gray-200 transition-all font-medium text-gray-900 placeholder:text-gray-400" disabled={isSubmitting} />
+                                                        <input type="text" maxLength={35} name="fullName" value={formData.fullName} onChange={handleInputChange} placeholder="Kedar Jadhav" className="w-full pl-9 pr-3 py-2 border rounded-lg text-sm bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 border-gray-200 transition-all font-medium text-gray-900 placeholder:text-gray-400" disabled={isSubmitting} />
                                                     </div>
                                                     {errors.fullName && <p className="text-xs text-red-600 mt-1">{errors.fullName}</p>}
                                                 </div>

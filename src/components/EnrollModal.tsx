@@ -255,7 +255,7 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
                                                 <input
                                                     type="text"
                                                     id="enroll-fullName"
-                                                    maxLength={20}
+                                                    maxLength={35}
                                                     name="fullName"
                                                     value={formData.fullName}
                                                     onChange={handleInputChange}

@@ -257,7 +257,7 @@ export default function JobApplicationModal({
                                             <label className={labelClass}>Full Name *</label>
                                             <input
                                                 required
-                                                maxLength={20}
+                                                maxLength={35}
                                                 name="fullName"
                                                 value={formData.fullName}
                                                 onChange={handleInputChange}

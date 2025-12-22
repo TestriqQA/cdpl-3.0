@@ -64,7 +64,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ variants, onSubmit, classNam
                     <input
                         id="name"
                         type="text"
-                        maxLength={20}
+                        maxLength={35}
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         className={`block w-full rounded-lg border ${fieldErrors.name ? 'border-red-500' : 'border-slate-300'} text-slate-900 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm`}

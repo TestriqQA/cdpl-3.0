@@ -281,7 +281,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                                 id="cta-name"
                                                 name="name"
                                                 type="text"
-                                                maxLength={20}
+                                                maxLength={35}
                                                 required
                                                 value={form.name}
                                                 onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}

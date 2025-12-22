@@ -168,7 +168,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
                         <input
                             type="text"
                             name="name"
-                            maxLength={20}
+                            maxLength={35}
                             required
                             value={formData.name}
                             onChange={handleInputChange}

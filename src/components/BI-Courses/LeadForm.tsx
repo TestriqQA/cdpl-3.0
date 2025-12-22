@@ -123,7 +123,7 @@ export default function LeadForm({
                     </label>
                     <input
                         {...form.register('name')}
-                        maxLength={20}
+                        maxLength={35}
                         placeholder="Full Name"
                         className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 overflow-hidden"
                     />

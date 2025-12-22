@@ -151,7 +151,7 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
                                     <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-brand transition-colors w-5 h-5" />
                                     <input
                                         type="text"
-                                        maxLength={20}
+                                        maxLength={35}
                                         value={formData.name}
                                         onChange={(e) => {
                                             const val = e.target.value;

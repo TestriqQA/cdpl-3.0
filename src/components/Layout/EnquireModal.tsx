@@ -199,7 +199,7 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
                                             <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                                             <input
                                                 type="text"
-                                                maxLength={20}
+                                                maxLength={35}
                                                 name="fullName"
                                                 value={formData.fullName}
                                                 onChange={handleInputChange}

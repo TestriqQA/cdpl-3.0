@@ -121,23 +121,76 @@ export async function GET() {
         const accessToken = (await auth.getAccessToken()).token;
         if (!accessToken) throw new Error('Failed to generate access token');
 
-        const reviewsResponse = await axios.get(
-            `https://mybusiness.googleapis.com/v1/${location.name}/reviews`,
-            {
-                params: { pageSize: 20 },
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            }
-        );
+        // v4 API requires 'accounts/{accountId}/locations/{locationId}'
+        // account.name is 'accounts/{accountId}'
+        // location.name is 'locations/{locationId}' (from Business Information API)
+        const parent = `${account.name}/${location.name}`;
+        console.log('Fetching reviews for parent:', parent);
 
-        const reviewsData = reviewsResponse.data;
-        const reviews = reviewsData.reviews || [];
+        const allReviews = [];
+        let nextPageToken = '';
+        let pageCount = 0;
+        const MAX_PAGES = 5; // Safety limit to prevent infinite loops
+
+        do {
+            console.log(`Fetching reviews page ${pageCount + 1}...`);
+            const params: any = { pageSize: 100 };
+            if (nextPageToken) {
+                params.pageToken = nextPageToken;
+            }
+
+            const reviewsResponse = await axios.get(
+                `https://mybusiness.googleapis.com/v4/${parent}/reviews`,
+                {
+                    params,
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                }
+            );
+
+            const data = reviewsResponse.data;
+            const fetched = data.reviews || [];
+            allReviews.push(...fetched);
+
+            nextPageToken = data.nextPageToken;
+            pageCount++;
+
+        } while (nextPageToken && pageCount < MAX_PAGES);
+
+        const rawReviews = allReviews;
+        console.log(`Total reviews fetched: ${rawReviews.length}`);
+
+        // Debug: Log the first review to check field names
+        if (rawReviews.length > 0) {
+            console.log('Sample Raw Review:', JSON.stringify(rawReviews[0], null, 2));
+        }
+
+        // Map Google API format to our frontend format
+        const reviews = rawReviews.map((r: any) => {
+            return {
+                name: r.reviewer?.displayName || 'Anonymous',
+                reviewerInfo: {
+                    photoUrl: r.reviewer?.profilePhotoUrl || '',
+                    displayName: r.reviewer?.displayName || 'Anonymous'
+                },
+                comment: r.comment || '(No comment)',
+                starRating: mapStarRating(r.starRating),
+                createTime: r.createTime,
+                source: 'Google'
+            };
+        });
+
+        // Calculate stats
+        const realTotalReviews = reviews.length;
+        const realAverageRating = realTotalReviews > 0
+            ? reviews.reduce((acc: number, r: any) => acc + Number(r.starRating), 0) / realTotalReviews
+            : 0;
 
         const responseData = {
             reviews: reviews.length > 0 ? reviews : FALLBACK_REVIEWS, // Use fallback if empty list returned
-            totalReviewCount: reviewsData.totalReviewCount || 289,
-            averageRating: reviewsData.averageRating || 4.8
+            totalReviewCount: realTotalReviews > 0 ? realTotalReviews : 289,
+            averageRating: realTotalReviews > 0 ? realAverageRating : 4.8
         };
 
         // Update cache
@@ -146,8 +199,16 @@ export async function GET() {
 
         return NextResponse.json(responseData);
 
-    } catch (error) {
-        console.error('Error fetching Google Reviews:', error);
+    } catch (error: any) {
+        console.error('Error fetching Google Reviews:', error.message);
+        if (axios.isAxiosError(error)) {
+            console.error('API Status:', error.response?.status);
+            console.error('API Response:', JSON.stringify(error.response?.data, null, 2));
+            console.error('API URL:', error.config?.url);
+        } else {
+            console.error('Unexpected Error:', error);
+        }
+
         // Graceful degradation
         return NextResponse.json({
             reviews: FALLBACK_REVIEWS,
@@ -155,5 +216,17 @@ export async function GET() {
             averageRating: 4.8,
             error: 'Failed to fetch live reviews, showing cached data.'
         });
+    }
+}
+
+// Helper to map Google ENUM stars to numbers
+function mapStarRating(rating: string): string {
+    switch (rating) {
+        case 'FIVE': return '5';
+        case 'FOUR': return '4';
+        case 'THREE': return '3';
+        case 'TWO': return '2';
+        case 'ONE': return '1';
+        default: return '5'; // Valid number as fallback
     }
 }
