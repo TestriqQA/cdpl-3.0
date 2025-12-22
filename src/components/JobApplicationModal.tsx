@@ -108,6 +108,26 @@ export default function JobApplicationModal({
             return;
         }
 
+        // Strict Validation
+        const { validateFullName, validateEmail, validatePhone } = await import('@/lib/formValidation');
+
+        const nameError = validateFullName(formData.fullName);
+        if (nameError) { setError(nameError); setIsSubmitting(false); return; }
+
+        const emailError = validateEmail(formData.email);
+        if (emailError) { setError(emailError); setIsSubmitting(false); return; }
+
+        const phoneError = validatePhone(formData.phone);
+        if (phoneError) { setError(phoneError); setIsSubmitting(false); return; }
+
+        // CTC Validation - basic check to ensure not empty or too long
+        if (!formData.currentCtc || formData.currentCtc.length > 20) {
+            setError("Current CTC is invalid."); setIsSubmitting(false); return;
+        }
+        if (!formData.expectedCtc || formData.expectedCtc.length > 20) {
+            setError("Expected CTC is invalid."); setIsSubmitting(false); return;
+        }
+
         try {
             const data = new FormData();
             data.append("position", jobTitle);
@@ -237,6 +257,7 @@ export default function JobApplicationModal({
                                             <label className={labelClass}>Full Name *</label>
                                             <input
                                                 required
+                                                maxLength={20}
                                                 name="fullName"
                                                 value={formData.fullName}
                                                 onChange={handleInputChange}
@@ -261,6 +282,7 @@ export default function JobApplicationModal({
                                             <input
                                                 required
                                                 type="tel"
+                                                maxLength={15}
                                                 name="phone"
                                                 value={formData.phone}
                                                 onChange={handleInputChange}

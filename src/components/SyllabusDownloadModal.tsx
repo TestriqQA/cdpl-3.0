@@ -5,7 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, CheckCircle2, Loader2, FileDown } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+import {
+  validateFullName as validateFullNameLib,
+  validateEmail as validateEmailLib,
+  validatePhone as validatePhoneLib
+} from '@/lib/formValidation';
 
 interface SyllabusDownloadModalProps {
   isOpen: boolean;
@@ -38,79 +42,21 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
 
   // Validation functions
   const validateFullName = (name: string) => {
-    if (!name) {
-      setFullNameError('Full Name is required.');
-      return false;
-    }
-    if (name.trim().length < 3) {
-      setFullNameError('Full Name must be at least 3 characters.');
-      return false;
-    }
-    setFullNameError(null);
-    return true;
+    const error = validateFullNameLib(name);
+    setFullNameError(error);
+    return error === null;
   };
 
   const validateEmail = (email: string) => {
-    if (!email) {
-      setEmailError('Email Address is required.');
-      return false;
-    }
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setEmailError('Invalid email format.');
-      return false;
-    }
-    setEmailError(null);
-    return true;
+    const error = validateEmailLib(email);
+    setEmailError(error);
+    return error === null;
   };
 
   const validatePhoneNumber = (phone: string | undefined) => {
-    // Phone is now mandatory for syllabus download
-    if (!phone || phone.trim() === '') {
-      setPhoneError('Mobile Number is required.');
-      return false;
-    }
-
-    if (!isValidPhoneNumber(phone)) {
-      setPhoneError('Invalid phone number format.');
-      return false;
-    }
-
-    const digits = phone.replace(/\D/g, '');
-
-    // Check for repeating digits
-    if (/^(\d)\1+$/.test(digits)) {
-      setPhoneError('Phone number cannot consist of repeating digits.');
-      return false;
-    }
-
-    // Check for sequential digits
-    const isSequential = (num: string) => {
-      for (let i = 0; i < num.length - 2; i++) {
-        const n1 = parseInt(num[i]);
-        const n2 = parseInt(num[i + 1]);
-        const n3 = parseInt(num[i + 2]);
-        if (
-          (n2 === n1 + 1 && n3 === n2 + 1) ||
-          (n2 === n1 - 1 && n3 === n2 - 1)
-        ) {
-          return true;
-        }
-      }
-      return false;
-    };
-    if (isSequential(digits)) {
-      setPhoneError('Phone number cannot consist of sequential digits.');
-      return false;
-    }
-
-    // Check for all zeros
-    if (/^0+$/.test(digits)) {
-      setPhoneError('Phone number cannot be all zeros.');
-      return false;
-    }
-
-    setPhoneError(null);
-    return true;
+    const error = validatePhoneLib(phone);
+    setPhoneError(error);
+    return error === null;
   };
 
   // Handle input changes
@@ -305,6 +251,7 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
                         <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
                         <input
                           type="text"
+                          maxLength={20}
                           id="syllabus-fullName"
                           name="fullName"
                           value={formData.fullName}
@@ -357,6 +304,7 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
                         <PhoneInput
                           id="syllabus-phone"
                           international
+                          limitMaxLength={true}
                           defaultCountry="IN"
                           value={formData.phone}
                           onChange={handlePhoneChange}

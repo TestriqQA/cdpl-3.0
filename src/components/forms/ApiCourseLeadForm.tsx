@@ -6,7 +6,7 @@ import { User, Mail, CheckCircle2, TrendingUp } from "lucide-react";
 // Import react-phone-number-input for professional phone input
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+import { validateFullName as validateFullNameLib, validatePhone } from '@/lib/formValidation';
 
 export default function LeadForm({
   className = '',
@@ -37,20 +37,9 @@ export default function LeadForm({
 
   // Validation functions (same as home page)
   const validateFullName = (name: string): boolean => {
-    if (!name.trim()) {
-      setFullNameError('Full name is required.');
-      return false;
-    }
-    if (name.trim().length < 3) {
-      setFullNameError('Full name must be at least 3 characters.');
-      return false;
-    }
-    if (!/^[a-zA-Z\s]+$/.test(name)) {
-      setFullNameError('Full name can only contain letters and spaces.');
-      return false;
-    }
-    setFullNameError(null);
-    return true;
+    const error = validateFullNameLib(name);
+    setFullNameError(error);
+    return error === null;
   };
 
   const validateEmail = (email: string): boolean => {
@@ -68,24 +57,9 @@ export default function LeadForm({
   };
 
   const validatePhoneNumber = (phone: string): boolean => {
-    if (!phone || phone.trim() === '') {
-      setPhoneError('Phone number is required.');
-      return false;
-    }
-
-    if (!isValidPhoneNumber(phone)) {
-      setPhoneError('Please enter a valid phone number.');
-      return false;
-    }
-
-    // Check for all zeros
-    if (/^[+\s0()-]+$/.test(phone)) {
-      setPhoneError('Phone number cannot be all zeros.');
-      return false;
-    }
-
-    setPhoneError(null);
-    return true;
+    const error = validatePhone(phone);
+    setPhoneError(error);
+    return error === null;
   };
 
   // Handle input changes
@@ -247,6 +221,7 @@ export default function LeadForm({
               <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <input
                 type="text"
+                maxLength={20}
                 name="fullName"
                 value={formData.fullName}
                 onChange={handleInputChange}
@@ -296,6 +271,7 @@ export default function LeadForm({
             <div className="relative">
               <PhoneInput
                 international
+                limitMaxLength={true}
                 defaultCountry="IN"
                 value={formData.phone}
                 onChange={handlePhoneChange}

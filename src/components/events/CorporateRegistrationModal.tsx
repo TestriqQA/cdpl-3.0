@@ -71,19 +71,65 @@ const CorporateRegistrationModal = () => {
     }, 300);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  // State for errors
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+
+  // Dynamic import or direct usage if we turn this into a client component with imports
+  // Validation function wrapper
+  const validateForm = async () => {
+    const { validateFullName, validateEmail, validatePhone, validateCompany, validateMessage } = await import('@/lib/formValidation');
+
+    const newErrors: Partial<Record<keyof FormData, string>> = {};
+
+    const orgNameError = validateCompany(formData.organizationName);
+    if (orgNameError) newErrors.organizationName = orgNameError;
+
+    const contactNameError = validateFullName(formData.contactPerson);
+    if (contactNameError) newErrors.contactPerson = contactNameError;
+
+    const emailError = validateEmail(formData.email);
+    if (emailError) newErrors.email = emailError;
+
+    const phoneError = validatePhone(formData.phone);
+    if (phoneError) newErrors.phone = phoneError;
+
+    const messageError = validateMessage(formData.message);
+    if (messageError) newErrors.message = messageError;
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+
+    // Real-time validation
+    if (errors[name as keyof FormData]) {
+      // If there was an error, clear it or re-validate
+      // preventing complex async logic here for simplicity, just clearing error
+      setErrors(prev => ({ ...prev, [name]: '' }));
+      // For strict real-time:
+      // const { validate... } = await import...
+      // but dynamic import in sync event handler is tricky, relying on submit or pre-load is better.
+      // Since we used dynamic import in other files without top-level import, we'll stick to submit validation mainly 
+      // or import at top if possible. *Check imports*: The file header has "use client".
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const isValid = await validateForm();
+    if (!isValid) return;
+
     // Here you would typically send the data to your backend
     console.log("Form submitted:", formData);
     setIsSubmitted(true);
-    
+
     // Auto-close after 3 seconds
     setTimeout(() => {
       handleClose();
@@ -148,6 +194,7 @@ const CorporateRegistrationModal = () => {
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all duration-200"
                       placeholder="Enter your organization name"
                     />
+                    {errors.organizationName && <p className="mt-1 text-xs text-red-500">{errors.organizationName}</p>}
                   </div>
 
                   <div>
@@ -186,12 +233,14 @@ const CorporateRegistrationModal = () => {
                     <input
                       type="text"
                       name="contactPerson"
+                      maxLength={20}
                       value={formData.contactPerson}
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all duration-200"
                       placeholder="Enter your full name"
                     />
+                    {errors.contactPerson && <p className="mt-1 text-xs text-red-500">{errors.contactPerson}</p>}
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
@@ -208,6 +257,7 @@ const CorporateRegistrationModal = () => {
                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all duration-200"
                         placeholder="your@email.com"
                       />
+                      {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
                     </div>
 
                     <div>
@@ -216,6 +266,7 @@ const CorporateRegistrationModal = () => {
                       </label>
                       <input
                         type="tel"
+                        maxLength={15}
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
@@ -223,6 +274,7 @@ const CorporateRegistrationModal = () => {
                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all duration-200"
                         placeholder="+91 XXXXX XXXXX"
                       />
+                      {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
                     </div>
                   </div>
                 </div>
@@ -303,6 +355,7 @@ const CorporateRegistrationModal = () => {
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all duration-200 resize-none"
                       placeholder="Tell us more about your training needs, specific topics, or any special requirements..."
                     ></textarea>
+                    {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
                   </div>
                 </div>
 

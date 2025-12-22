@@ -3,7 +3,11 @@
 import React, { useState, useCallback } from 'react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+import {
+  validateFullName as validateFullNameLib,
+  validateEmail as validateEmailLib,
+  validatePhone as validatePhoneLib
+} from '@/lib/formValidation';
 import { motion } from 'framer-motion';
 import { CheckCircle2, User, Mail, Download } from 'lucide-react';
 
@@ -33,8 +37,9 @@ const BrochureDownloadForm: React.FC<BrochureDownloadFormProps> = ({ onClose }) 
 
   // --- Validation Functions ---
   const validateFullName = useCallback((fullName: string) => {
-    if (!fullName.trim()) {
-      setErrors(prev => ({ ...prev, fullName: 'Full Name is required' }));
+    const error = validateFullNameLib(fullName);
+    if (error) {
+      setErrors(prev => ({ ...prev, fullName: error }));
       return false;
     }
     setErrors(prev => ({ ...prev, fullName: '' }));
@@ -42,11 +47,9 @@ const BrochureDownloadForm: React.FC<BrochureDownloadFormProps> = ({ onClose }) 
   }, []);
 
   const validateEmail = useCallback((email: string) => {
-    if (!email.trim()) {
-      setErrors(prev => ({ ...prev, email: 'Email is required' }));
-      return false;
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      setErrors(prev => ({ ...prev, email: 'Email address is invalid' }));
+    const error = validateEmailLib(email);
+    if (error) {
+      setErrors(prev => ({ ...prev, email: error }));
       return false;
     }
     setErrors(prev => ({ ...prev, email: '' }));
@@ -54,36 +57,9 @@ const BrochureDownloadForm: React.FC<BrochureDownloadFormProps> = ({ onClose }) 
   }, []);
 
   const validatePhoneNumber = useCallback((phone: string | undefined) => {
-    if (!phone) {
-      setErrors(prev => ({ ...prev, phone: 'Mobile Number is required.' }));
-      return false;
-    }
-    if (!isValidPhoneNumber(phone)) {
-      setErrors(prev => ({ ...prev, phone: 'Invalid phone number format.' }));
-      return false;
-    }
-    const digits = phone.replace(/\D/g, '');
-    if (/^(\d)\1+$/.test(digits)) {
-      setErrors(prev => ({ ...prev, phone: 'Phone number cannot consist of repeating digits.' }));
-      return false;
-    }
-    const isSequential = (num: string) => {
-      for (let i = 0; i < num.length - 2; i++) {
-        const n1 = parseInt(num[i]);
-        const n2 = parseInt(num[i + 1]);
-        const n3 = parseInt(num[i + 2]);
-        if ((n2 === n1 + 1 && n3 === n2 + 1) || (n2 === n1 - 1 && n3 === n2 - 1)) {
-          return true;
-        }
-      }
-      return false;
-    };
-    if (isSequential(digits)) {
-      setErrors(prev => ({ ...prev, phone: 'Phone number cannot consist of sequential digits.' }));
-      return false;
-    }
-    if (/^0+$/.test(digits)) {
-      setErrors(prev => ({ ...prev, phone: 'Phone number cannot be all zeros.' }));
+    const error = validatePhoneLib(phone);
+    if (error) {
+      setErrors(prev => ({ ...prev, phone: error }));
       return false;
     }
     setErrors(prev => ({ ...prev, phone: '' }));
@@ -188,6 +164,7 @@ const BrochureDownloadForm: React.FC<BrochureDownloadFormProps> = ({ onClose }) 
           <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <input
             type="text"
+            maxLength={20}
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
@@ -231,6 +208,7 @@ const BrochureDownloadForm: React.FC<BrochureDownloadFormProps> = ({ onClose }) 
         <div className="relative">
           <PhoneInput
             international
+            limitMaxLength={true}
             defaultCountry="IN"
             value={formData.phone}
             onChange={handlePhoneChange}

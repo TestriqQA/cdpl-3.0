@@ -9,7 +9,11 @@ import dynamic from 'next/dynamic';
 // Use dynamic import to ensure it's only loaded on the client side
 const PhoneInput = dynamic(() => import('react-phone-number-input'), { ssr: false });
 import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+import {
+  validateFullName as validateFullNameLib,
+  validateEmail as validateEmailLib,
+  validatePhone as validatePhoneLib
+} from '@/lib/formValidation';
 
 // Define the props for the ContactForm component
 interface ContactFormProps {
@@ -55,79 +59,23 @@ const ContactForm: React.FC<ContactFormProps> = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Validation functions
+  // Imported from formValidation.ts - simplified local usage
   const validateFullName = useCallback((name: string) => {
-    if (!name) {
-      setFullNameError('Full Name is required.');
-      return false;
-    }
-    if (name.trim().length < 3) {
-      setFullNameError('Full Name must be at least 3 characters.');
-      return false;
-    }
-    setFullNameError(null);
-    return true;
+    const error = validateFullNameLib(name);
+    setFullNameError(error);
+    return error === null;
   }, []);
 
   const validateEmail = useCallback((email: string) => {
-    if (!email) {
-      setEmailError('Email Address is required.');
-      return false;
-    }
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setEmailError('Invalid email format.');
-      return false;
-    }
-    setEmailError(null);
-    return true;
+    const error = validateEmailLib(email);
+    setEmailError(error);
+    return error === null;
   }, []);
 
   const validatePhoneNumber = useCallback((phone: string | undefined) => {
-    if (!phone) {
-      setPhoneError('Mobile Number is required.');
-      return false;
-    }
-    // Use libphonenumber-js for robust validation
-    if (!isValidPhoneNumber(phone)) {
-      setPhoneError('Invalid phone number format.');
-      return false;
-    }
-
-    const digits = phone.replace(/\D/g, '');
-
-    // Check for repeating digits
-    if (/^(\d)\1+$/.test(digits)) {
-      setPhoneError('Phone number cannot consist of repeating digits.');
-      return false;
-    }
-
-    // Check for sequential digits
-    const isSequential = (num: string) => {
-      for (let i = 0; i < num.length - 2; i++) {
-        const n1 = parseInt(num[i]);
-        const n2 = parseInt(num[i + 1]);
-        const n3 = parseInt(num[i + 2]);
-        if (
-          (n2 === n1 + 1 && n3 === n2 + 1) ||
-          (n2 === n1 - 1 && n3 === n2 - 1)
-        ) {
-          return true;
-        }
-      }
-      return false;
-    };
-    if (isSequential(digits)) {
-      setPhoneError('Phone number cannot consist of sequential digits.');
-      return false;
-    }
-
-    // Check for all zeros
-    if (/^0+$/.test(digits)) {
-      setPhoneError('Phone number cannot be all zeros.');
-      return false;
-    }
-
-    setPhoneError(null);
-    return true;
+    const error = validatePhoneLib(phone);
+    setPhoneError(error);
+    return error === null;
   }, []);
 
   // Handle input changes for text fields
@@ -138,7 +86,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       [name]: value
     }));
 
-    // Real-time validation (kept as per original Hero section logic)
+    // Real-time validation
     if (name === 'fullName') validateFullName(value);
     if (name === 'email') validateEmail(value);
   };
@@ -233,6 +181,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
           <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <input
             type="text"
+            maxLength={20}
             name="fullName"
             value={formData.fullName}
             onChange={handleInputChange}
@@ -282,6 +231,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
         <div className="relative">
           <PhoneInput
             international
+            limitMaxLength={true}
             defaultCountry="IN"
             value={formData.phone}
             onChange={handlePhoneChange}

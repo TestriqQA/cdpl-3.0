@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, TrendingUp, CheckCircle2, Download } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
 // --- Types ---
 export interface DownloadFormValues {
@@ -32,9 +32,7 @@ export interface DownloadFormButtonProps {
 // --- Validation Logic Extracted from HomeHeroSection.tsx ---
 
 const validateFullName = (name: string): string | null => {
-  if (!name) return 'Full Name is required.';
-  if (name.trim().length < 3) return 'Full Name must be at least 3 characters.';
-  return null;
+  return validateFullNameLib(name);
 };
 
 const validateEmail = (email: string): string | null => {
@@ -44,35 +42,7 @@ const validateEmail = (email: string): string | null => {
 };
 
 const validatePhoneNumber = (phone: string | undefined): string | null => {
-  if (!phone) return 'Mobile Number is required.';
-  if (!isValidPhoneNumber(phone)) return 'Invalid phone number format.';
-
-  const digits = phone.replace(/\D/g, '');
-
-  // Check for repeating digits
-  if (/^(\d)\1+$/.test(digits)) return 'Phone number cannot consist of repeating digits.';
-
-  // Check for sequential digits
-  const isSequential = (num: string) => {
-    for (let i = 0; i < num.length - 2; i++) {
-      const n1 = parseInt(num[i]);
-      const n2 = parseInt(num[i + 1]);
-      const n3 = parseInt(num[i + 2]);
-      if (
-        (n2 === n1 + 1 && n3 === n2 + 1) ||
-        (n2 === n1 - 1 && n3 === n2 - 1)
-      ) {
-        return true;
-      }
-    }
-    return false;
-  };
-  if (isSequential(digits)) return 'Phone number cannot consist of sequential digits.';
-
-  // Check for all zeros
-  if (/^0+$/.test(digits)) return 'Phone number cannot be all zeros.';
-
-  return null;
+  return validatePhone(phone);
 };
 
 // --- Reusable Form Component (Modal Content) ---
@@ -214,6 +184,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
               <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <input
                 type="text"
+                maxLength={20}
                 name="fullName"
                 value={formData.fullName}
                 onChange={handleInputChange}
@@ -263,6 +234,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
             <div className="relative">
               <PhoneInput
                 international
+                limitMaxLength={true}
                 defaultCountry="IN"
                 value={formData.phone}
                 onChange={handlePhoneChange}

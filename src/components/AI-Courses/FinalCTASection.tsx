@@ -9,6 +9,7 @@ import { EnrollFormData, EnrollPopup } from "../EnrollForms";
 import BrochureDownloadModal from '@/components/home/BrochureDownloadModal';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import { validatePhone } from '@/lib/formValidation';
 
 /**
  * Integrated CTA content (from your data)
@@ -81,6 +82,13 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
 
     const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        const phoneError = validatePhone(form.phone);
+        if (phoneError) {
+            alert(phoneError);
+            return;
+        }
+
         setIsSubmitting(true);
         try {
             const response = await fetch('/api/contact', {
@@ -288,6 +296,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                                 id="cta-name"
                                                 name="name"
                                                 type="text"
+                                                maxLength={20}
                                                 required
                                                 value={form.name}
                                                 onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
@@ -319,6 +328,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                             <PhoneInput
                                                 defaultCountry="IN"
                                                 international
+                                                limitMaxLength={true}
                                                 countryCallingCodeEditable={false}
                                                 value={form.phone}
                                                 onChange={(e) => setForm((f) => ({ ...f, phone: e || '' }))}

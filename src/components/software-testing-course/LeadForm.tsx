@@ -7,10 +7,40 @@ import * as z from 'zod';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 
+import {
+    validateFullName as validateFullNameLib,
+    validateEmail as validateEmailLib,
+    validatePhone as validatePhoneLib
+} from '@/lib/formValidation';
+
 const schema = z.object({
-    name: z.string().min(2, 'Name must be at least 2 characters'),
-    email: z.string().email('Invalid email'),
-    phone: z.string().min(10, 'Valid phone required'),
+    name: z.string().superRefine((val, ctx) => {
+        const error = validateFullNameLib(val);
+        if (error) {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: error,
+            });
+        }
+    }),
+    email: z.string().superRefine((val, ctx) => {
+        const error = validateEmailLib(val);
+        if (error) {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: error,
+            });
+        }
+    }),
+    phone: z.string().superRefine((val, ctx) => {
+        const error = validatePhoneLib(val);
+        if (error) {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: error,
+            });
+        }
+    }),
     course: z.string().optional(),
 });
 
@@ -93,6 +123,7 @@ export default function LeadForm({
                     </label>
                     <input
                         {...form.register('name')}
+                        maxLength={20}
                         placeholder="Full Name"
                         className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 overflow-hidden"
                     />
@@ -126,6 +157,7 @@ export default function LeadForm({
                 <div className="phone-input-wrapper w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-orange-500 bg-white overflow-hidden">
 
                     <PhoneInput
+                        limitMaxLength={true}
                         defaultCountry="IN"
                         international
                         countryCallingCodeEditable={false}

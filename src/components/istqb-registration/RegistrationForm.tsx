@@ -36,6 +36,7 @@ const CustomInput = React.forwardRef(({ className, ...props }: any, ref) => (
 CustomInput.displayName = 'CustomInput';
 
 import { isValidPhoneNumber } from 'libphonenumber-js';
+import { validatePhone } from '@/lib/formValidation';
 
 // ... other imports
 
@@ -73,29 +74,8 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
     };
 
     const validatePhoneNumber = (phone: string | undefined) => {
-        if (!phone) return 'Mobile Number is required.';
-        if (!isValidPhoneNumber(phone)) return 'Invalid phone number format.';
-
-        const digits = phone.replace(/\D/g, '');
-        // Check for repeating digits
-        if (/^(\d)\1+$/.test(digits)) return 'Phone number cannot consist of repeating digits.';
-
-        // Check for sequential digits
-        const isSequential = (num: string) => {
-            for (let i = 0; i < num.length - 2; i++) {
-                const n1 = parseInt(num[i]);
-                const n2 = parseInt(num[i + 1]);
-                const n3 = parseInt(num[i + 2]);
-                if ((n2 === n1 + 1 && n3 === n2 + 1) || (n2 === n1 - 1 && n3 === n2 - 1)) return true;
-            }
-            return false;
-        };
-        if (isSequential(digits)) return 'Phone number cannot consist of sequential digits.';
-
-        // Check for all zeros
-        if (/^0+$/.test(digits)) return 'Phone number cannot be all zeros.';
-
-        return undefined;
+        const error = validatePhone(phone);
+        return error || undefined; // Original expected undefined for success
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -188,6 +168,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
                         <input
                             type="text"
                             name="name"
+                            maxLength={20}
                             required
                             value={formData.name}
                             onChange={handleInputChange}
@@ -224,6 +205,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
                     <div className="relative phone-input-container">
                         <PhoneInput
                             international
+                            limitMaxLength={true}
                             defaultCountry="IN"
                             value={formData.phone}
                             onChange={handlePhoneChange}

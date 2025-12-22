@@ -4,7 +4,11 @@ import React, { useState } from "react";
 import { TrendingUp, User, Mail, CheckCircle2 } from "lucide-react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { isValidPhoneNumber } from "libphonenumber-js";
+import {
+    validateFullName as validateFullNameLib,
+    validateEmail as validateEmailLib,
+    validatePhone as validatePhoneLib
+} from '@/lib/formValidation';
 import { motion, type Variants } from "framer-motion";
 
 export interface CityCourseLeadFormProps {
@@ -36,49 +40,27 @@ export default function CityCourseLeadForm({
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     // Validation functions
+    // Validation functions - strict version using library
+    // Import dynamically or assume imports at top. 
+    // We'll use the top-level import strategy as done in other files.
+    // For now, replacing logic with wrappers around lib functions.
+
     const validateFullName = (name: string) => {
-        if (!name) {
-            setFullNameError("Full Name is required.");
-            return false;
-        }
-        if (name.trim().length < 3) {
-            setFullNameError("Full Name must be at least 3 characters.");
-            return false;
-        }
-        setFullNameError(null);
-        return true;
+        const error = validateFullNameLib(name);
+        setFullNameError(error);
+        return error === null;
     };
 
     const validateEmail = (email: string) => {
-        if (!email) {
-            setEmailError("Email Address is required.");
-            return false;
-        }
-        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-            setEmailError("Invalid email format.");
-            return false;
-        }
-        setEmailError(null);
-        return true;
+        const error = validateEmailLib(email);
+        setEmailError(error);
+        return error === null;
     };
 
     const validatePhoneNumber = (phone: string | undefined) => {
-        if (!phone) {
-            setPhoneError("Mobile Number is required.");
-            return false;
-        }
-        if (!isValidPhoneNumber(phone)) {
-            setPhoneError("Invalid phone number format.");
-            return false;
-        }
-        // Basic checks for repeating patterns, similar to Home Hero
-        const digits = phone.replace(/\D/g, "");
-        if (/^(\d)\1+$/.test(digits)) {
-            setPhoneError("Phone number cannot consist of repeating digits.");
-            return false;
-        }
-        setPhoneError(null);
-        return true;
+        const error = validatePhoneLib(phone);
+        setPhoneError(error);
+        return error === null;
     };
 
     const handleInputChange = (
@@ -265,6 +247,7 @@ export default function CityCourseLeadForm({
                             <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                             <input
                                 type="text"
+                                maxLength={20}
                                 name="fullName"
                                 value={formData.fullName}
                                 onChange={handleInputChange}
@@ -314,6 +297,7 @@ export default function CityCourseLeadForm({
                         <div className="relative">
                             <PhoneInput
                                 international
+                                limitMaxLength={true}
                                 defaultCountry="IN"
                                 value={formData.phone}
                                 onChange={handlePhoneChange}
