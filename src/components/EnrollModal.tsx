@@ -6,6 +6,8 @@ import { X, User, Mail, CheckCircle2, Loader2, GraduationCap } from 'lucide-reac
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
+import { useRef } from 'react';
 
 interface EnrollModalProps {
     isOpen: boolean;
@@ -35,6 +37,14 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
     const [fullNameError, setFullNameError] = useState<string | null>(null);
     const [emailError, setEmailError] = useState<string | null>(null);
     const [phoneError, setPhoneError] = useState<string | null>(null);
+
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        setFullNameError,
+        setEmailError,
+        setPhoneError
+    ]);
 
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -202,6 +212,7 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
                             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] as const }}
                             className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
                             onClick={(e) => e.stopPropagation()}
+                            ref={formRef}
                         >
                             {/* Modal Header */}
                             <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-5 relative">

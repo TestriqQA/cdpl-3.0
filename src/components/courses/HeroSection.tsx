@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import { Award, Users, Star, Home, ChevronRight, TrendingUp, CheckCircle2, User, Mail } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import EnrollModal from "@/components/EnrollModal";
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
@@ -21,6 +22,14 @@ export default function HeroSection() {
     const [fullNameError, setFullNameError] = useState<string | null>(null);
     const [emailError, setEmailError] = useState<string | null>(null);
     const [phoneError, setPhoneError] = useState<string | null>(null);
+
+    const formRef = useRef<HTMLFormElement>(null);
+
+    useFormErrorReset(formRef, [
+        setFullNameError,
+        setEmailError,
+        setPhoneError
+    ]);
 
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -473,7 +482,7 @@ export default function HeroSection() {
                                 )}
 
                                 {/* Form */}
-                                <form onSubmit={handleSubmit} className="space-y-4">
+                                <form onSubmit={handleSubmit} className="space-y-4" ref={formRef}>
 
                                     {/* Full Name Input */}
                                     <div>

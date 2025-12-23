@@ -1,6 +1,7 @@
 "use client";
 import { ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 
 export default function LeadForm({
   className = '',
@@ -13,6 +14,12 @@ export default function LeadForm({
 }) {
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<{ name?: string | null; email?: string | null; phone?: string | null }>({});
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useFormErrorReset(formRef, [
+    () => setErrors({})
+  ]);
 
   // Validation imports
   // Note: Assuming these are available as we created the file
@@ -61,6 +68,7 @@ export default function LeadForm({
 
   return (
     <form
+      ref={formRef}
       onSubmit={handleSubmit}
       aria-label="Quick enrollment form"
       className={[

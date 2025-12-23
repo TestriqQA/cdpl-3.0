@@ -152,8 +152,18 @@ export default function CareerRoadmapSection() {
                     s.accent.ring,
                     // Zig-zag layout on desktop
                     i % 2 === 0 ? "sm:col-start-3" : "sm:col-start-1 sm:row-start-1",
+                    "relative overflow-hidden" // Ensure relative positioning for absolute child
                   ].join(" ")}
                 >
+                  {/* Subtle Watermark Number */}
+                  <div
+                    className={[
+                      "absolute -top-1 right-3 text-6xl font-extrabold opacity-[0.07] select-none pointer-events-none",
+                      s.accent.text
+                    ].join(" ")}
+                  >
+                    {s.n.toString().padStart(2, '0')}
+                  </div>
                   <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold">
                     <span
                       className={[

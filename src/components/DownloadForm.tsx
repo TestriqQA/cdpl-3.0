@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, TrendingUp, CheckCircle2, Download } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
@@ -57,6 +58,12 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useFormErrorReset(formRef, [
+    () => setErrors({})
+  ]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -119,7 +126,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
   };
 
   return (
-    <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8 w-full max-w-md mx-auto">
+    <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8 w-full max-w-md mx-auto" ref={formRef}>
       {/* Close Button */}
       <button
         onClick={onClose}

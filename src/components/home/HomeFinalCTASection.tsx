@@ -1,4 +1,6 @@
 'use client';
+import { useRef } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 
 import React, { useState, useCallback } from 'react';
 import PhoneInput from 'react-phone-number-input';
@@ -31,6 +33,14 @@ export default function HomeFinalCTASection() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useFormErrorReset(formRef, [
+    (val) => setErrors(prev => ({ ...prev, fullName: val || '' })),
+    (val) => setErrors(prev => ({ ...prev, email: val || '' })),
+    (val) => setErrors(prev => ({ ...prev, phone: val || '' })),
+  ]);
 
   // Validation functions from HomeHeroSection
   const validateFullName = useCallback((fullName: string) => {
@@ -189,7 +199,7 @@ export default function HomeFinalCTASection() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="relative"
           >
-            <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-10 transform hover:shadow-3xl transition-shadow duration-300">
+            <div ref={formRef} className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-10 transform hover:shadow-3xl transition-shadow duration-300">
               {/* Form Header */}
               <div className="text-center mb-8">
                 <h3 className="text-3xl font-bold text-gray-900 mb-2">

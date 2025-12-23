@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion } from 'framer-motion';
 import { User, Mail, MapPin, Briefcase, Award, ArrowRight, Loader2, Phone } from 'lucide-react';
 import { submitIstqbStep1 } from '@/app/istqb-registration/actions';
@@ -59,6 +60,12 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
         email?: string;
         phone?: string;
     }>({});
+
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        () => setErrors({})
+    ]);
 
     // Validation Functions (Matched with HomeHeroSection)
     const validateFullName = (name: string) => {
@@ -150,6 +157,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="bg-white rounded-3xl shadow-xl border border-slate-100 py-8 px-6 md:p-10 relative h-full flex flex-col"
+            ref={formRef}
         >
             {/* ... Decor & Header unchanged ... */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-100/40 to-transparent rounded-bl-full rounded-tr-3xl -z-10" />

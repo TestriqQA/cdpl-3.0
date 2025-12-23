@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, Download, CheckCircle2, Loader2 } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
@@ -24,6 +25,14 @@ const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ isOpen, o
   const [fullNameError, setFullNameError] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
+
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useFormErrorReset(formRef, [
+    setFullNameError,
+    setEmailError,
+    setPhoneError
+  ]);
 
   // Loading and submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -193,6 +202,7 @@ const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ isOpen, o
               transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] as const }}
               className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
               onClick={(e) => e.stopPropagation()}
+              ref={formRef}
             >
               {/* Modal Header */}
               <div className="bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] px-6 py-5 relative">

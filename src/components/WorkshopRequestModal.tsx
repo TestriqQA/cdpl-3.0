@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, CheckCircle2, Loader2, Building2, Briefcase, Calendar, Users, MessageSquare, BookOpen, ChevronDown } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
@@ -64,6 +65,12 @@ const WorkshopRequestModal = ({
         phone: null,
         company: null,
     });
+
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        () => setErrors({})
+    ]);
 
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -231,6 +238,7 @@ const WorkshopRequestModal = ({
                                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                                 className="relative w-full max-w-lg overflow-hidden rounded-2xl bg-white text-left shadow-2xl ring-1 ring-gray-900/5"
                                 onClick={(e) => e.stopPropagation()}
+                                ref={formRef}
                             >
                                 {/* Header */}
                                 <div className="bg-gradient-to-r from-blue-700 to-indigo-800 px-6 py-5 relative">

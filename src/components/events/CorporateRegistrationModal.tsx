@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { X, Building2, User, MessageSquare, Send, CheckCircle } from "lucide-react";
 
 interface FormData {
@@ -73,6 +74,12 @@ const CorporateRegistrationModal = () => {
 
   // State for errors
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useFormErrorReset(formRef, [
+    () => setErrors({})
+  ]);
 
   // Dynamic import or direct usage if we turn this into a client component with imports
   // Validation function wrapper
@@ -148,7 +155,7 @@ const CorporateRegistrationModal = () => {
 
       {/* Modal */}
       <div className="flex min-h-full items-center justify-center p-4">
-        <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" ref={formRef}>
           {/* Close Button */}
           <button
             onClick={handleClose}

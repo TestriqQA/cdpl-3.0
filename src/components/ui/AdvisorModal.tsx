@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, TrendingUp, CheckCircle2, Loader2 } from 'lucide-react';
@@ -30,6 +31,14 @@ const AdvisorModal: React.FC<AdvisorModalProps> = ({
     const [fullNameError, setFullNameError] = useState<string | null>(null);
     const [emailError, setEmailError] = useState<string | null>(null);
     const [phoneError, setPhoneError] = useState<string | null>(null);
+
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        setFullNameError,
+        setEmailError,
+        setPhoneError
+    ]);
 
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -192,6 +201,7 @@ const AdvisorModal: React.FC<AdvisorModalProps> = ({
                             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] as const }}
                             className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden max-h-[90vh] overflow-y-auto"
                             onClick={(e) => e.stopPropagation()}
+                            ref={formRef}
                         >
                             {/* Modal Header */}
                             <div className="bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] px-6 py-5 relative">

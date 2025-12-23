@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { createPortal } from "react-dom";
 import { X, Upload, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 
@@ -43,7 +44,13 @@ export default function JobApplicationModal({
 
     const [resumeFile, setResumeFile] = useState<File | null>(null);
 
+
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        setError
+    ]);
 
     useEffect(() => {
         if (isOpen) {
@@ -202,7 +209,7 @@ export default function JobApplicationModal({
                 />
 
                 {/* Modal Content */}
-                <div className="relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-slate-900/5">
+                <div className="relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-slate-900/5" ref={formRef}>
 
                     {/* Header */}
                     <div className="flex items-center justify-between border-b border-slate-100 bg-white px-6 py-4">

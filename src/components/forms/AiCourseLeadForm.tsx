@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { User, Mail, CheckCircle2, TrendingUp } from "lucide-react";
 
 // Import react-phone-number-input for professional phone input
@@ -36,6 +37,14 @@ export default function AiCourseLeadForm({
     const [fullNameError, setFullNameError] = useState<string | null>(null);
     const [emailError, setEmailError] = useState<string | null>(null);
     const [phoneError, setPhoneError] = useState<string | null>(null);
+
+    const formRef = useRef<HTMLFormElement>(null);
+
+    useFormErrorReset(formRef, [
+        setFullNameError,
+        setEmailError,
+        setPhoneError
+    ]);
 
     // Submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -179,6 +188,7 @@ export default function AiCourseLeadForm({
       `}</style>
 
             <form
+                ref={formRef}
                 onSubmit={handleSubmit}
                 aria-label="Quick enrollment form"
                 className={[

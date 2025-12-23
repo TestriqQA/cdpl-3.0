@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, TrendingUp, CheckCircle2 } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
@@ -25,6 +26,14 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
     const [fullNameError, setFullNameError] = useState<string | null>(null);
     const [emailError, setEmailError] = useState<string | null>(null);
     const [phoneError, setPhoneError] = useState<string | null>(null);
+
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        setFullNameError,
+        setEmailError,
+        setPhoneError
+    ]);
 
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -147,6 +156,7 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         className="fixed z-[70] w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                        ref={formRef}
                     >
                         {/* Close Button */}
                         <button

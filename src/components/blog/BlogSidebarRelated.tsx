@@ -2,8 +2,9 @@
 
 import { TrendingUp, FolderOpen, Mail, ArrowRight, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { getAllCategories, getPostsByCategory, getAllPosts } from "@/data/BlogPostData";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 
 interface BlogSidebarRelatedProps {
   currentPostId: string;
@@ -29,6 +30,12 @@ const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedPro
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useFormErrorReset(formRef, [
+    () => setError("")
+  ]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -151,7 +158,7 @@ const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedPro
             <p className="text-sm text-gray-700 mb-4 leading-relaxed">
               Get the latest articles and insights delivered directly to your inbox.
             </p>
-            <form onSubmit={handleSubmit} className="space-y-3">
+            <form onSubmit={handleSubmit} className="space-y-3" ref={formRef}>
               <div>
                 <input
                   type="email"
@@ -162,8 +169,8 @@ const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedPro
                   }}
                   placeholder="Enter your email"
                   className={`w-full px-4 py-2.5 bg-white border-2 rounded-lg text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${error
-                      ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
-                      : 'border-orange-200 focus:border-orange-500 focus:ring-orange-200'
+                    ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
+                    : 'border-orange-200 focus:border-orange-500 focus:ring-orange-200'
                     }`}
                 />
                 {error && <p className="text-xs text-red-500 mt-1 ml-1">{error}</p>}

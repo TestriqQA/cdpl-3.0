@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { TrendingUp, User, Mail, CheckCircle2 } from "lucide-react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -39,6 +40,14 @@ export default function CityCourseLeadForm({
     const [fullNameError, setFullNameError] = useState<string | null>(null);
     const [emailError, setEmailError] = useState<string | null>(null);
     const [phoneError, setPhoneError] = useState<string | null>(null);
+
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        setFullNameError,
+        setEmailError,
+        setPhoneError
+    ]);
 
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -192,6 +201,7 @@ export default function CityCourseLeadForm({
       `}</style>
 
             <motion.div
+                ref={formRef}
                 variants={variants}
                 className={`bg-white/92 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8 ${className}`}
             >
