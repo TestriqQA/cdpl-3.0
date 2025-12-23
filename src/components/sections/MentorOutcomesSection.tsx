@@ -141,7 +141,7 @@ export default function MentorOutcomesSection() {
         </div>
 
         {/* KPIs */}
-        <div className="mb-8 grid gap-3 sm:grid-cols-4">
+        <div className="mb-8 grid grid-cols-1 min-[286px]:grid-cols-2 gap-3 sm:grid-cols-4">
           {[
             {
               num: "92%",

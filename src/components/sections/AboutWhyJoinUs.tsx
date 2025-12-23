@@ -142,9 +142,9 @@ export default function AboutWhyJoinUs() {
         <h2 id="why-join-heading" className="mt-3 text-4xl font-bold tracking-tight">
           Why join{" "}
           <span className="bg-clip-text text-transparent bg-brand">
-            Cinute Digital{" "}
+            Cinute Digital
           </span>
-          ?
+          {'\u00A0'}?
         </h2>
         <p className="mx-auto mt-6 max-w-5xl leading-6 text-slate-600 md:text-lg sm:text-base">
           Industry-aligned curriculum, <strong>mentor-led learning</strong>,{" "}

@@ -145,6 +145,12 @@ export default function LeadForm({
           transition: all 0.3s;
         }
 
+        .phone-input-container {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
         .phone-input-container .PhoneInputInput:focus {
           border-color: #ff8c00;
           ring: 2px;
@@ -156,7 +162,7 @@ export default function LeadForm({
         }
 
         .phone-input-container .PhoneInputCountrySelect {
-          margin-right: 0.5rem;
+          margin-right: 0;
           padding: 0.5rem;
           border: 1px solid #d1d5db;
           border-radius: 0.5rem;

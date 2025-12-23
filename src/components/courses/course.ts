@@ -35,6 +35,7 @@ export interface Category {
     bgColor: string; // e.g., 'bg-blue-50'
     iconBgColor: string; // e.g., 'bg-blue-100'
     courses: Course[];
+    href?: string;
     comingSoon?: boolean;
 }
 

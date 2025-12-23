@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, Mail, Phone as Download, CheckCircle2, Loader2 } from 'lucide-react';
+import { X, User, Mail, Download, CheckCircle2, Loader2 } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';

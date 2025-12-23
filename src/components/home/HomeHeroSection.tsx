@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
@@ -107,7 +107,7 @@ const MobileFeatureList: React.FC<MobileFeatureListProps> = ({ onOpenBrochure, o
 
 // Animation variants
 const fadeUp = {
-  initial: { opacity: 1, y: 0 },
+  initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const }
 };
@@ -249,6 +249,9 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
 );
 
 const HomeHeroSection: React.FC = () => {
+  // Ref for the form container to handle click-outside
+  const formRef = useRef<HTMLDivElement>(null);
+
   // Form state
   const [formData, setFormData] = useState({
     fullName: '',
@@ -260,6 +263,27 @@ const HomeHeroSection: React.FC = () => {
   const [fullNameError, setFullNameError] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
+
+  // Handle click outside to blur inputs and clear errors
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (formRef.current && !formRef.current.contains(event.target as Node)) {
+        // If clicking outside the form, blur any active input inside the form
+        if (document.activeElement instanceof HTMLElement && formRef.current.contains(document.activeElement)) {
+          document.activeElement.blur();
+        }
+        // Clear all validation errors
+        setFullNameError(null);
+        setEmailError(null);
+        setPhoneError(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   // Loading and submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -387,13 +411,13 @@ const HomeHeroSection: React.FC = () => {
   // The original Lead Form block (Right side of the grid)
   const LeadForm = (
     <motion.div
-      initial={{ opacity: 1, scale: 0.985 }}
+      initial={{ opacity: 0, scale: 0.985 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1.0] as const }}
-      className="order-2 lg:order-2 lg:col-span-5 will-change-transform"
+      className="order-2 lg:order-2 lg:col-span-5"
     >
       <div className="sticky top-4 max-w-sm mx-auto lg:ml-auto lg:mr-0">
-        <div className="bg-white/95 rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8">
+        <div ref={formRef} className="bg-white/92 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8">
           {/* Form Header - Catchy and Actionable */}
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
@@ -632,7 +656,7 @@ const HomeHeroSection: React.FC = () => {
         </div>
 
         {/* Main Container */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* --- Mobile Layout (lg:hidden) --- */}
           <div className="lg:hidden">
