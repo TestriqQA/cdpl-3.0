@@ -175,7 +175,7 @@ export const AUTHORS: Record<string, Author> = {
     id: "adnan-khan",
     name: "Adnan Khan",
     bio: "Full Stack JavaScript Developer who designs and ships end-to-end web apps. I use React/Next.js + Node.js/NestJS with TypeScript, building secure, scalable, high-performance systems with modern DevOps, testing, and cloud-native tooling.",
-    avatar: "/blog/authors/adnan-khan.png",
+    avatar: "/blog/authors/adnan--khan.jpg",
     role: "Full Stack JavaScript Developer",
     social: {
       linkedin: "https://www.linkedin.com/in/adnan--khan/"

@@ -1,6 +1,7 @@
 import type { Category as BaseCategory } from "@/components/courses/course";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
 
 /** Optional UI fields the card reads in addition to your base Category type */
 type CategoryExtras = {
@@ -19,16 +20,18 @@ type CategoryExtras = {
 type UICategory = BaseCategory & Partial<CategoryExtras>;
 
 export default function CategoryCard({ category }: { category: UICategory }) {
-    const hasLink = typeof category.href === "string" && category.href.length > 0;
+    // We no longer wrap the whole card in a link if href is present.
+    // Instead we show a button at the bottom.
     const href = category.href;
+    const hasLink = typeof href === "string" && href.length > 0;
 
     const courseCount = Array.isArray(category.courses) ? category.courses.length : 0;
     const displayName = category.name ?? (category as unknown as { title?: string })?.title ?? "Category";
 
     const seoSubline = `${displayName} courses, certification & training – beginner to advanced`;
 
-    const CardInner = (
-        <div
+    return (
+        <article
             className={[
                 "relative isolate h-full w-full rounded-2xl",
                 "border-2", category.borderColor ?? "border-slate-200",
@@ -37,9 +40,8 @@ export default function CategoryCard({ category }: { category: UICategory }) {
                 "hover:shadow-[0_8px_30px_#0000001a] hover:-translate-y-0.5",
                 "focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300",
                 category.bgColor ?? "bg-white",
-                "p-6 group",
+                "p-6 flex flex-col group",
             ].join(" ")}
-            role="article"
             aria-label={`${displayName} category`}
         >
             {/* sheen */}
@@ -91,30 +93,34 @@ export default function CategoryCard({ category }: { category: UICategory }) {
                 {category.description}
             </p>
 
-            {!category.comingSoon && (
-                <div className="mt-auto flex items-center justify-between">
+            <div className="mt-auto pt-4 flex flex-wrap gap-2 items-center justify-between border-t border-slate-200/60">
+                {!category.comingSoon && (
                     <span className="text-[13px] font-semibold text-slate-700">
                         {courseCount} {courseCount === 1 ? "Course" : "Courses"}
                     </span>
-                </div>
-            )}
+                )}
+
+                {/* The new button */}
+                {hasLink && !category.comingSoon && (
+                    <Link
+                        href={href!}
+                        className={[
+                            "inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors",
+                            "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900",
+                            "shadow-sm hover:shadow",
+                        ].join(" ")}
+                    >
+                        View Courses
+                        <ArrowRight className="w-4 h-4" />
+                    </Link>
+                )}
+            </div>
 
             <span className="sr-only">
                 {displayName} category. {courseCount} {courseCount === 1 ? "course" : "courses"} available.
                 Training, certification, syllabus, placement assistance, hands-on projects.
             </span>
-        </div>
-    );
-
-    return hasLink ? (
-        <Link
-            href={href!}
-            className="block h-full outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-300 rounded-2xl"
-            aria-label={`${displayName} category – view courses`}
-        >
-            {CardInner}
-        </Link>
-    ) : (
-        <article className="h-full">{CardInner}</article>
+        </article>
     );
 }
+

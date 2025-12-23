@@ -1,9 +1,26 @@
 "use client";
 
 import React from "react";
-import { MapPin, Mail, Phone } from "lucide-react";
+import { MapPin, Mail, Phone, Facebook, Linkedin, Instagram, Youtube } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+
+/** Minimal X (formerly Twitter) logo */
+function XLogo(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      role="img"
+      aria-label="X"
+      width="24"
+      height="24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M18.146 2.25H21.5l-7.49 8.55 8.79 10.95H16.52l-5.36-6.68-6.13 6.68H2.67l8.02-8.74L2.25 2.25h6.18l4.86 6.03 4.856-6.03Zm-1.054 18.9h1.786L7.988 3.95H6.093l10.999 17.2Z" />
+    </svg>
+  );
+}
 
 const Footer: React.FC = () => {
   return (
@@ -72,7 +89,7 @@ const Footer: React.FC = () => {
                       href="tel:+917888383788"
                       className="hover:text-orange-600 transition-colors whitespace-nowrap"
                     >
-                      +91 78883 83788
+                      +91 78-883-837-88
                     </Link>
                     <span className="text-slate-300 whitespace-nowrap">|</span>
                     <Link
@@ -82,6 +99,29 @@ const Footer: React.FC = () => {
                       +91 84-889-889-84
                     </Link>
                   </div>
+                </div>
+
+                {/* Social Media Icons */}
+                <div className="flex items-center gap-5 mt-4">
+                  <Link href="https://www.facebook.com/cinutedigital" className="text-slate-400 hover:text-brand transition-all duration-300 ease-in-out" aria-label="Facebook">
+                    <Facebook className="h-5 w-5" />
+                  </Link>
+
+                  <Link href="https://x.com/cinutedigital" className="text-slate-400 hover:text-brand transition-all duration-300 ease-in-out" aria-label="X">
+                    <XLogo className="h-5 w-5" />
+                  </Link>
+
+                  <Link href="https://www.youtube.com/@cinutedigital" className="text-slate-400 hover:text-brand transition-all duration-300 ease-in-out" aria-label="YouTube">
+                    <Youtube className="h-5 w-5" />
+                  </Link>
+
+                  <Link href="https://www.linkedin.com/company/cinute-digital/" className="text-slate-400 hover:text-brand transition-all duration-300 ease-in-out" aria-label="LinkedIn">
+                    <Linkedin className="h-5 w-5" />
+                  </Link>
+
+                  <Link href="https://www.instagram.com/cinutedigital/" className="text-slate-400 hover:text-brand transition-all duration-300 ease-in-out" aria-label="Instagram">
+                    <Instagram className="h-5 w-5" />
+                  </Link>
                 </div>
               </div>
             </div>

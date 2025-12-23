@@ -57,7 +57,7 @@ const ProjectCard = ({ project, onEnroll }: ProjectCardProps) => {
         <article
 
             aria-label={`${project.title} QA project`}
-            className={`group relative rounded-2xl border-2 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg ${colorClass}`}
+            className={`group relative flex flex-col h-full rounded-2xl border-2 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg ${colorClass}`}
         >
             {/* Slim top bar accent */}
             <div className="absolute left-0 right-0 top-0 h-1 rounded-t-2xl bg-gradient-to-r from-black/0 via-black/5 to-black/0" />
