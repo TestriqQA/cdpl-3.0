@@ -4,6 +4,7 @@ import React from "react";
 import { MapPin, Mail, Phone, Facebook, Linkedin, Instagram, Youtube } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 /** Minimal X (formerly Twitter) logo */
 function XLogo(props: React.SVGProps<SVGSVGElement>) {
@@ -23,6 +24,7 @@ function XLogo(props: React.SVGProps<SVGSVGElement>) {
 }
 
 const Footer: React.FC = () => {
+  const pathname = usePathname();
   return (
     <footer className="bg-slate-100 text-slate-700">
       <div className="mx-auto max-w-7xl px-4 md:px-8 py-12">
@@ -187,25 +189,25 @@ const Footer: React.FC = () => {
               <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
                 <Link
                   href="/privacy-policy"
-                  className="rounded-full border border-slate-200 px-3 py-1.5 hover:border-orange-300 hover:text-orange-600 transition-colors"
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/privacy-policy" ? "border-orange-300 text-orange-600" : "border-slate-200 hover:border-orange-300 hover:text-orange-600"}`}
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/cookies-policy"
-                  className="rounded-full border border-slate-200 px-3 py-1.5 hover:border-orange-300 hover:text-orange-600 transition-colors"
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/cookies-policy" ? "border-orange-300 text-orange-600" : "border-slate-200 hover:border-orange-300 hover:text-orange-600"}`}
                 >
                   Cookies Policy
                 </Link>
                 <Link
                   href="/terms-of-service"
-                  className="rounded-full border border-slate-200 px-3 py-1.5 hover:border-orange-300 hover:text-orange-600 transition-colors"
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/terms-of-service" ? "border-orange-300 text-orange-600" : "border-slate-200 hover:border-orange-300 hover:text-orange-600"}`}
                 >
                   Terms and Conditions
                 </Link>
                 <Link
                   href="/cancellation-refund-policy"
-                  className="rounded-full border border-slate-200 px-3 py-1.5 hover:border-orange-300 hover:text-orange-600 transition-colors"
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/cancellation-refund-policy" ? "border-orange-300 text-orange-600" : "border-slate-200 hover:border-orange-300 hover:text-orange-600"}`}
                 >
                   Cancellation/Refund Policy
                 </Link>

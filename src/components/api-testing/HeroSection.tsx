@@ -194,16 +194,7 @@ export default function HeroSection() {
                             </li>
                         </ul>
 
-                        {/* Feature cards can stay below the form on desktop if desired */}
-                        <div className="mt-6 grid md:hidden lg:grid-cols-4 gap-3">
-                            {features.slice(0, 4).map((f, i) => (
-                                <IconCard
-                                    key={i}
-                                    {...f}
-                                    className="hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
-                                />
-                            ))}
-                        </div>
+
 
                         {/* Optional: feature cards can remain below on mobile/tablet */}
                         <div className="mt-8 md:hidden grid grid-cols-1 gap-3 sm:grid-cols-2 lg:hidden">
