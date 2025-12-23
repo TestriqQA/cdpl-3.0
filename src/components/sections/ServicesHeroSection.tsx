@@ -10,7 +10,7 @@ import WorkshopRequestModal from "../WorkshopRequestModal";
 
 const easeBezier: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const fadeUp = {
-  initial: { opacity: 0, y: 16 },
+  initial: { opacity: 1, y: 0 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.55, ease: easeBezier } as Transition,
 };
@@ -37,12 +37,6 @@ export default function ServicesHeroSection() {
       <section
         aria-labelledby="services-heading"
         className="relative mx-auto max-w-7xl px-4 pt-8 pb-10 sm:px-6 lg:px-8 isolate overflow-hidden"
-        style={{
-          WebkitMaskImage:
-            "linear-gradient(90deg, transparent 0, black 24px, black calc(100% - 24px), transparent 100%)",
-          maskImage:
-            "linear-gradient(90deg, transparent 0, black 24px, black calc(100% - 24px), transparent 100%)",
-        }}
       >
         {/* Background aura across container */}
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
@@ -143,7 +137,7 @@ export default function ServicesHeroSection() {
               id="services-heading"
               {...fadeUp}
               transition={{ ...(fadeUp.transition as Transition), delay: 0.06 }}
-              className={`mt-3 py-1 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl ${gradientText}`}
+              className={`mt-3 py-1 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl ${gradientText} will-change-transform`}
             >
               Upskill Teams with <span className="text-brand">Industry-Ready Programs</span>
             </motion.h1>

@@ -107,7 +107,7 @@ const MobileFeatureList: React.FC<MobileFeatureListProps> = ({ onOpenBrochure, o
 
 // Animation variants
 const fadeUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 1, y: 0 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const }
 };
@@ -387,13 +387,13 @@ const HomeHeroSection: React.FC = () => {
   // The original Lead Form block (Right side of the grid)
   const LeadForm = (
     <motion.div
-      initial={{ opacity: 0, scale: 0.985 }}
+      initial={{ opacity: 1, scale: 0.985 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1.0] as const }}
-      className="order-2 lg:order-2 lg:col-span-5"
+      className="order-2 lg:order-2 lg:col-span-5 will-change-transform"
     >
       <div className="sticky top-4 max-w-sm mx-auto lg:ml-auto lg:mr-0">
-        <div className="bg-white/92 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8">
+        <div className="bg-white/95 rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8">
           {/* Form Header - Catchy and Actionable */}
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
@@ -632,7 +632,7 @@ const HomeHeroSection: React.FC = () => {
         </div>
 
         {/* Main Container */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
 
           {/* --- Mobile Layout (lg:hidden) --- */}
           <div className="lg:hidden">

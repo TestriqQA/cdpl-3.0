@@ -201,7 +201,7 @@ export default function HeroSection() {
                 <div className="pointer-events-none absolute -top-40 -right-40 h-96 w-96 animate-pulse rounded-full bg-gradient-to-br from-blue-400/20 to-indigo-400/20 blur-3xl" />
                 <div className="pointer-events-none absolute -bottom-40 -left-40 h-96 w-96 animate-pulse rounded-full bg-gradient-to-tr from-violet-400/20 to-purple-400/20 blur-3xl" style={{ animationDelay: '2s' }} />
 
-                <div className="mx-auto max-w-7xl px-4 md:px-8 py-10">
+                <div className="mx-auto max-w-7xl px-4 md:px-8 py-10 relative z-10">
 
                     {/* Enhanced Breadcrumbs */}
                     <nav aria-label="Breadcrumb" className="mb-6">
@@ -436,7 +436,7 @@ export default function HeroSection() {
 
                         {/* RIGHT: Enhanced callback form with premium design (Replaced) */}
                         <div className="hidden md:block md:col-span-5 lg:col-span-4 mt-8 md:mt-0">
-                            <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8 sticky top-6">
+                            <div className="bg-white/95 rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8 sticky top-6">
                                 {/* Form Header - Catchy and Actionable */}
                                 <div className="mb-6">
                                     <div className="flex items-center justify-between mb-2">

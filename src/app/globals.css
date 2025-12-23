@@ -33,7 +33,19 @@ body {
   background: #f8fafc;
   /* Equivalent to bg-gray-50 from reference page */
   font-family: Arial, Helvetica, sans-serif;
+  color: #1e293b;
+  /* Enforce dark text (slate-800) for visibility in all modes */
+  -webkit-font-smoothing: antialiased;
 }
+
+input,
+button,
+select,
+textarea {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 
 /* vertical marquee desktop/tablet */
 @keyframes homeTestimonialScrollUp {
