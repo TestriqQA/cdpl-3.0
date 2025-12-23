@@ -24,7 +24,8 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  /* Offset for fixed navbar (~72px) + sticky nav (~56px) + padding (22px) */
+  scroll-padding-top: 150px;
 }
 
 body {

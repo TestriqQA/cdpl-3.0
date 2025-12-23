@@ -11,17 +11,22 @@ import {
 } from '@/lib/formValidation';
 import { motion, type Variants } from "framer-motion";
 
+// Update interface
 export interface CityCourseLeadFormProps {
     className?: string;
     tracks?: string[];
     onSubmit?: (data: any) => void;
     variants?: Variants;
+    courseName?: string;
+    cityName?: string;
 }
 
 export default function CityCourseLeadForm({
     className = "",
     onSubmit,
-    variants
+    variants,
+    courseName,
+    cityName,
 }: CityCourseLeadFormProps) {
     // Form state
     const [formData, setFormData] = useState({
@@ -40,11 +45,6 @@ export default function CityCourseLeadForm({
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     // Validation functions
-    // Validation functions - strict version using library
-    // Import dynamically or assume imports at top. 
-    // We'll use the top-level import strategy as done in other files.
-    // For now, replacing logic with wrappers around lib functions.
-
     const validateFullName = (name: string) => {
         const error = validateFullNameLib(name);
         setFullNameError(error);
@@ -96,7 +96,7 @@ export default function CityCourseLeadForm({
             try {
                 if (onSubmit) {
                     // If a custom handler is provided
-                    onSubmit(formData);
+                    onSubmit({ ...formData, interestedTrack: courseName, location: cityName });
                     setIsSubmitted(true);
                     setTimeout(() => setIsSubmitted(false), 5000);
                     setFormData({ fullName: "", email: "", phone: "" });
@@ -109,14 +109,9 @@ export default function CityCourseLeadForm({
                         },
                         body: JSON.stringify({
                             ...formData,
-                            // Source will be handled by the parent or use a default here?
-                            // Best to let the parent handle the API call or stick to the Home Hero pattern.
-                            // Since Home Hero handles it inside the component, we'll do the same but verify the source.
                             source: 'City Course Page - Hero Section',
-                            // Location needs to be passed in ideally or extracted from URL in backend?
-                            // For now, we just send form data. The API route can extract location from referer if needed,
-                            // BUT the requested requirements didn't specify passing location prop to form, just input fields.
-                            // We'll send the raw data.
+                            interestedTrack: courseName || 'Not Specified',
+                            location: cityName || 'Not Specified',
                         }),
                     });
 

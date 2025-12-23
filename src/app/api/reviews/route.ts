@@ -85,7 +85,7 @@ export async function GET() {
         // If we don't have a refresh token, return fallback immediately
         if (!REFRESH_TOKEN) {
             console.warn('Review API: No REFRESH_TOKEN found. Serving fallback data.');
-            return NextResponse.json({ reviews: FALLBACK_REVIEWS, totalReviewCount: 289, averageRating: 4.8 });
+            return NextResponse.json({ reviews: FALLBACK_REVIEWS, totalReviewCount: 300, averageRating: 4.8 });
         }
 
         // Debug: Log environment variables
@@ -199,7 +199,7 @@ export async function GET() {
 
         const responseData = {
             reviews: reviews.length > 0 ? reviews : FALLBACK_REVIEWS, // Use fallback if empty list returned
-            totalReviewCount: realTotalReviews > 0 ? realTotalReviews : 289,
+            totalReviewCount: realTotalReviews > 300 ? realTotalReviews : 300,
             averageRating: realTotalReviews > 0 ? realAverageRating : 4.8
         };
 
@@ -222,7 +222,7 @@ export async function GET() {
         // Graceful degradation
         return NextResponse.json({
             reviews: FALLBACK_REVIEWS,
-            totalReviewCount: 289,
+            totalReviewCount: 300,
             averageRating: 4.8,
             error: 'Failed to fetch live reviews, showing cached data.'
         });
