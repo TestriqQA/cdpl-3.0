@@ -152,7 +152,10 @@ export default function HeroSection() {
                             <button
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' });
+                                    const el = document.getElementById('curriculum');
+                                    if (el) {
+                                        window.scrollTo({ top: el.offsetTop - 150, behavior: 'smooth' });
+                                    }
                                 }}
                                 className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
                                 aria-label="View full API testing curriculum"

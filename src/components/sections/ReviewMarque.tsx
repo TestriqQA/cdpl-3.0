@@ -145,7 +145,7 @@ export default function ReviewsMarquee() {
   const safeRow2 = row2.length > 5 ? row2 : reviews;
 
   return (
-    <section className="relative w-full overflow-hidden bg-slate-50 py-10">
+    <section className="relative w-full overflow-hidden bg-slate-50 py-5">
 
       {/* Background Decor */}
       <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
@@ -156,7 +156,7 @@ export default function ReviewsMarquee() {
       <div className="relative z-10 space-y-12">
 
         {/* Animated Header Visual */}
-        <div className="flex flex-col items-center justify-center space-y-6 pt-5 pb-5">
+        <div className="flex flex-col items-center justify-center space-y-6 pt-2">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -168,7 +168,7 @@ export default function ReviewsMarquee() {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
             </span>
             <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">
-              Live Student Voices • {stats.total}+ Verified Reviews
+              {stats.total}+ Verified Reviews
             </span>
           </motion.div>
         </div>
@@ -183,10 +183,10 @@ export default function ReviewsMarquee() {
         <style jsx>{`
             @keyframes marquee-left {
                 0% { transform: translateX(0); }
-                100% { transform: translateX(calc(-100% / 8)); }
+                100% { transform: translateX(calc(-100% / 10)); }
             }
             @keyframes marquee-right {
-                0% { transform: translateX(calc(-100% / 8)); }
+                0% { transform: translateX(calc(-100% / 10)); }
                 100% { transform: translateX(0); }
             }
             .mask-linear-gradient {
