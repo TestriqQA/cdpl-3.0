@@ -32,6 +32,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 const Header = dynamic(() => import("@/components/Layout/Header"), { ssr: true });
 const Footer = dynamic(() => import("@/components/Layout/Footer"), { ssr: true });
+const SpecialOfferBanner = dynamic(() => import("@/components/SpecialOfferBanner"), { ssr: true });
 
 // ============================================================================
 // GLOBAL METADATA (using the new generator)
@@ -93,6 +94,7 @@ export default function RootLayout({
       </head>
 
       <body className={`${inter.className} antialiased`}>
+        <SpecialOfferBanner />
         <Header />
         {children}
         <Footer />

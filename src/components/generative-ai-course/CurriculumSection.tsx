@@ -150,13 +150,7 @@ export default function CurriculumSection() {
             {subtitle}
           </p>
           <p className="sr-only">{keywords}</p>
-          {/* Micro badges (distinct accents, no repeats) */}
-          <div className="mt-5 grid grid-cols-2 gap-2 text-[11px] font-semibold text-slate-700 sm:grid-cols-4">
-            <span className="rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-orange-900">SQL & Schema Design</span>
-            <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-900">Excel + Power Query</span>
-            <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sky-900">Power BI (DAX)</span>
-            <span className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-rose-900">Tableau Stories</span>
-          </div>
+
         </div>
 
         {/* Modules List */}

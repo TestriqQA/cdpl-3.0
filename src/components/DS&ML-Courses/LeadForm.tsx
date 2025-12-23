@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -68,6 +69,12 @@ export default function LeadForm({
         defaultValues: { name: '', email: '', phone: '', course: '' },
     });
 
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        () => form.clearErrors()
+    ]);
+
     const onSubmit = async (data: FormData) => {
         try {
             const response = await fetch('/api/contact', {
@@ -108,7 +115,7 @@ export default function LeadForm({
     }
 
     return (
-        <div className="w-full overflow-hidden">
+        <div className="w-full overflow-hidden" ref={formRef}>
             <h3 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 break-words">
                 {title}
             </h3>

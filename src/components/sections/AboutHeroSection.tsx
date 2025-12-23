@@ -185,7 +185,7 @@ export default function AboutHeroSection() {
                     Trusted by learners & teams from
                 </p>
 
-                <div className="mt-3 grid grid-cols-2 items-center gap-3 opacity-80 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6">
+                <div className="mt-3 grid grid-cols-2 items-center gap-3 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6">
                     {[
                         "/images/Testriq-Logo-1.webp",
                         "/company_images/axiom.webp",
@@ -194,7 +194,7 @@ export default function AboutHeroSection() {
                         "/company_images/raw_engineering.webp",
                         "/company_images/vistaar.webp",
                     ].map((src, i) => (
-                        <div key={i} className="relative mt-1 h-7 w-full grayscale sm:h-8 md:h-9 lg:h-10">
+                        <div key={i} className="relative mt-1 h-7 w-full grayscale hover:grayscale-0 transition-all duration-300 sm:h-8 md:h-9 lg:h-10">
                             <Image src={src} alt="Brand logo" title="Brand logo" fill sizes="(max-width: 768px) 33vw, 16vw" className="object-contain" />
                         </div>
                     ))}

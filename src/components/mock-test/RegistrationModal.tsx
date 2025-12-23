@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { X, User, Mail, Briefcase } from "lucide-react";
 import dynamic from "next/dynamic";
 import 'react-phone-number-input/style.css';
@@ -36,6 +37,12 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
         email: "",
         number: ""
     });
+
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        () => setErrors({ name: "", email: "", number: "" })
+    ]);
 
     // Reset form when modal opens
     useEffect(() => {
@@ -122,7 +129,7 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
             `}</style>
 
             {/* Modal Content */}
-            <div className="relative w-full h-[650px] max-w-lg bg-white/90 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl overflow-hidden transform transition-all animate-in fade-in zoom-in-95 duration-300">
+            <div className="relative w-full h-[650px] max-w-lg bg-white/90 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl overflow-hidden transform transition-all animate-in fade-in zoom-in-95 duration-300" ref={formRef}>
                 <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-brand to-purple-600"></div>
 
                 <div className="absolute top-4 right-4 z-10">

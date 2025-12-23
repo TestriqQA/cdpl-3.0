@@ -94,7 +94,7 @@ const CurriculumSection: React.FC<CurriculumSectionProps> = ({ data }) => {
           <motion.h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-slate-900" variants={itemVariants}>
             {curriculumContent.title}
           </motion.h2>
-          {curriculumContent.subtitle && (
+          {curriculumContent.subtitle && tracks.length > 1 && (
             <motion.p className="mx-auto mt-6 max-w-3xl text-lg text-slate-600" variants={itemVariants}>
               {curriculumContent.subtitle}
             </motion.p>

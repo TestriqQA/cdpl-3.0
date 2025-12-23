@@ -170,7 +170,7 @@ export default function JobsCareersProcessSection() {
                 {/* Measure + draw flow curve */}
                 <div ref={flowContainerRef} className="relative">
                     {pathD && (
-                        <svg aria-hidden className="pointer-events-none absolute inset-0" style={{ zIndex: 0 }}>
+                        <svg aria-hidden className="hidden md:block pointer-events-none absolute inset-0" style={{ zIndex: 0 }}>
                             <path
                                 d={pathD}
                                 fill="none"

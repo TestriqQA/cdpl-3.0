@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import {
@@ -34,6 +35,17 @@ const BrochureDownloadForm: React.FC<BrochureDownloadFormProps> = ({ onClose }) 
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useFormErrorReset(formRef, [
+    () => setErrors({
+      fullName: '',
+      email: '',
+      phone: '',
+      countryCode: 'IN',
+    })
+  ]);
 
   // --- Validation Functions ---
   const validateFullName = useCallback((fullName: string) => {
@@ -245,9 +257,9 @@ const BrochureDownloadForm: React.FC<BrochureDownloadFormProps> = ({ onClose }) 
   );
 
   return (
-    <>
+    <div ref={formRef}>
       {isSubmitted ? <SuccessMessage /> : <FormFields />}
-    </>
+    </div>
   );
 };
 

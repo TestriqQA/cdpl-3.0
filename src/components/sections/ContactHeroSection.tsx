@@ -1,7 +1,8 @@
 // hero section
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { Phone, Mail, CalendarDays, Home, ChevronRight, User, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
@@ -35,6 +36,16 @@ export function ContactHeroSection() {
   const [emailError, setEmailError] = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
   const [messageError, setMessageError] = useState<string | null>(null);
+
+  const mobileFormRef = useRef<HTMLDivElement>(null);
+  const desktopFormRef = useRef<HTMLDivElement>(null);
+
+  useFormErrorReset([mobileFormRef, desktopFormRef], [
+    setFullNameError,
+    setEmailError,
+    setPhoneError,
+    setMessageError
+  ]);
 
   // Loading and submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -312,7 +323,7 @@ export function ContactHeroSection() {
                 {/* gradient outer skin + 1px border */}
                 <div className="rounded-3xl p-[1px] bg-gradient-to-br from-sky-100/70 via-indigo-100/60 to-orange-100/70 shadow-2xl">
                   {/* inner glass panel */}
-                  <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8">
+                  <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8" ref={mobileFormRef}>
                     <h2 className="text-2xl font-bold text-slate-900">Get in Touch</h2>
                     <p className="mt-1.5 text-slate-600">
                       Have questions about our courses or placements? Our expert counselors are here to help you.
@@ -421,13 +432,13 @@ export function ContactHeroSection() {
                           className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-all"
                         >
                           <option value="">Select…</option>
-                          <option value="Software Testing">Software Testing</option>
-                          <option value="Data Science">Data Science</option>
-                          <option value="Business Intelligence (BI)">Business Intelligence (BI)</option>
                           <option value="Artificial Intelligence (AI)">Artificial Intelligence (AI)</option>
+                          <option value="Business Intelligence (BI)">Business Intelligence (BI)</option>
+                          <option value="Corporate Training">Corporate Training</option>
+                          <option value="Data Science">Data Science</option>
                           <option value="Digital Marketing">Digital Marketing</option>
                           <option value="Full Stack Development">Full Stack Development</option>
-                          <option value="Corporate Training">Corporate Training</option>
+                          <option value="Software Testing">Software Testing</option>
                           <option value="Training & Event Services">Training & Event Services</option>
                           <option value="Others">Others</option>
                         </select>
@@ -585,7 +596,7 @@ export function ContactHeroSection() {
               {/* gradient outer skin + 1px border */}
               <div className="rounded-3xl p-[1px] bg-gradient-to-br from-sky-100/70 via-indigo-100/60 to-orange-100/70 shadow-2xl">
                 {/* inner glass panel — constrained width */}
-                <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8 w-full md:max-w-md lg:max-w-sm xl:max-w-md">
+                <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8 w-full md:max-w-md lg:max-w-sm xl:max-w-md" ref={desktopFormRef}>
                   <h2 className="text-2xl font-bold text-slate-900">Get in Touch</h2>
                   <p className="mt-1.5 text-slate-600">
                     Share your goals — we&apos;ll help you find the perfect course or training plan.
@@ -692,13 +703,13 @@ export function ContactHeroSection() {
                         className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-all"
                       >
                         <option value="">Select…</option>
-                        <option value="Software Testing">Software Testing</option>
-                        <option value="Data Science">Data Science</option>
-                        <option value="Business Intelligence (BI)">Business Intelligence (BI)</option>
                         <option value="Artificial Intelligence (AI)">Artificial Intelligence (AI)</option>
+                        <option value="Business Intelligence (BI)">Business Intelligence (BI)</option>
+                        <option value="Corporate Training">Corporate Training</option>
+                        <option value="Data Science">Data Science</option>
                         <option value="Digital Marketing">Digital Marketing</option>
                         <option value="Full Stack Development">Full Stack Development</option>
-                        <option value="Corporate Training">Corporate Training</option>
+                        <option value="Software Testing">Software Testing</option>
                         <option value="Training & Event Services">Training & Event Services</option>
                         <option value="Others">Others</option>
                       </select>

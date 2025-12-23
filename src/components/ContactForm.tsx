@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion } from 'framer-motion';
 import { CheckCircle2, User, Mail } from 'lucide-react';
 import dynamic from 'next/dynamic';
@@ -53,6 +54,14 @@ const ContactForm: React.FC<ContactFormProps> = ({
   const [fullNameError, setFullNameError] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
+
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useFormErrorReset(formRef, [
+    setFullNameError,
+    setEmailError,
+    setPhoneError
+  ]);
 
   // Loading and submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -265,7 +274,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
   );
 
   return (
-    <>
+    <div ref={formRef}>
       {/* Form Header - Catchy and Actionable */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">
@@ -285,7 +294,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       </div>
 
       {isSubmitted ? <SuccessMessage /> : <FormFields />}
-    </>
+    </div>
   );
 };
 

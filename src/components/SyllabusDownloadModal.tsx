@@ -10,6 +10,8 @@ import {
   validateEmail as validateEmailLib,
   validatePhone as validatePhoneLib
 } from '@/lib/formValidation';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
+import { useRef } from 'react';
 
 interface SyllabusDownloadModalProps {
   isOpen: boolean;
@@ -35,6 +37,14 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
   const [fullNameError, setFullNameError] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
+
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useFormErrorReset(formRef, [
+    setFullNameError,
+    setEmailError,
+    setPhoneError
+  ]);
 
   // Loading and submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -199,6 +209,7 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
               transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] as const }}
               className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
               onClick={(e) => e.stopPropagation()}
+              ref={formRef}
             >
               {/* Modal Header */}
               <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 px-6 py-5 relative">

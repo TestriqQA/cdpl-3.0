@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import EnrollModal from "@/components/EnrollModal";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useFormErrorReset } from "@/hooks/useFormErrorReset";
+import { useRef } from "react";
 
 export type LeadFormData = {
     name: string;
@@ -32,6 +34,9 @@ export const LeadForm: React.FC<LeadFormProps> = ({ variants, onSubmit, classNam
 
     // Simple error state for immediate feedback
     const [fieldErrors, setFieldErrors] = useState<{ name?: string | null, email?: string | null, phone?: string | null }>({});
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [() => setFieldErrors({})]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -51,7 +56,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ variants, onSubmit, classNam
     };
 
     return (
-        <motion.div variants={variants} className={`rounded-2xl border border-slate-200 bg-white p-6 shadow-lg ${className}`}>
+        <motion.div ref={formRef} variants={variants} className={`rounded-2xl border border-slate-200 bg-white p-6 shadow-lg ${className}`}>
             <h3 className="text-xl font-bold text-slate-900">Request a Callback</h3>
             <p className="mt-2 text-sm text-slate-600">
                 Enter your details to get the full curriculum, fees, and upcoming batch dates.

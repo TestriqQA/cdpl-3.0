@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Search, X } from "lucide-react";
+import { Search, X, ChevronRight, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { getAllPosts } from "@/data/BlogPostData";
 
@@ -24,6 +24,52 @@ const BlogCategoryMenu = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const searchResultsRef = useRef<HTMLDivElement>(null);
+  const searchContainerRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLElement>(null);
+  const [showLeftButton, setShowLeftButton] = useState(false);
+  const [showRightButton, setShowRightButton] = useState(false);
+
+  const checkScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      setShowLeftButton(scrollLeft > 0);
+      setShowRightButton(scrollLeft < scrollWidth - clientWidth - 5); // 5px buffer
+    }
+  };
+
+  useEffect(() => {
+    checkScroll();
+    window.addEventListener('resize', checkScroll);
+    return () => window.removeEventListener('resize', checkScroll);
+  }, []);
+
+  // Listen for custom event to open search
+  useEffect(() => {
+    const handleOpenSearch = () => {
+      setIsSearchOpen(true);
+      // Small delay to ensure render before focus (though the focus useEffect should handle it)
+      setTimeout(() => {
+        if (searchInputRef.current) {
+          searchInputRef.current.focus();
+        }
+      }, 100);
+    };
+
+    window.addEventListener('open-blog-search', handleOpenSearch);
+    return () => window.removeEventListener('open-blog-search', handleOpenSearch);
+  }, []);
+
+  const handleScrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 200, behavior: 'smooth' });
+    }
+  };
+
+  const handleScrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -200, behavior: 'smooth' });
+    }
+  };
 
   // Define main menu categories (specific order as requested)
   const mainMenuCategories = [
@@ -58,7 +104,7 @@ const BlogCategoryMenu = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       if (currentScrollY < 100) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY && currentScrollY > 150) {
@@ -66,7 +112,7 @@ const BlogCategoryMenu = () => {
       } else {
         setIsVisible(true);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
@@ -84,10 +130,10 @@ const BlogCategoryMenu = () => {
   // Close search results when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (searchResultsRef.current && !searchResultsRef.current.contains(event.target as Node)) {
-        if (!(event.target as HTMLElement).closest('.search-container')) {
-          setSearchResults([]);
-        }
+      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
+        setIsSearchOpen(false);
+        setSearchQuery("");
+        setSearchResults([]);
       }
     };
 
@@ -116,18 +162,32 @@ const BlogCategoryMenu = () => {
 
   return (
     <div
-      className={`sticky top-[72px] lg:top-[80px] z-40 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 shadow-md transition-transform duration-300 ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
-      }`}
+      className={`sticky top-[72px] lg:top-[80px] z-40 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 shadow-md transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-3">
+          {/* Scroll Button Left */}
+          {showLeftButton && (
+            <button
+              onClick={handleScrollLeft}
+              className="flex items-center justify-center p-2 text-white hover:bg-white/20 rounded-lg transition-all duration-200 mr-1"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+          )}
+
           {/* Categories Navigation */}
-          <nav className="flex items-center space-x-1 overflow-x-auto scrollbar-hide flex-1">
+          <nav
+            ref={scrollContainerRef}
+            onScroll={checkScroll}
+            className="flex items-center space-x-1 overflow-x-auto scrollbar-hide flex-1 snap-x snap-mandatory"
+          >
             {/* All Blogs Link */}
             <Link
               href="/blog"
-              className="whitespace-nowrap px-4 py-2 text-sm font-medium text-white hover:bg-white/20 rounded-lg transition-all duration-200 flex-shrink-0"
+              className="whitespace-nowrap px-4 py-2 text-sm font-medium text-white hover:bg-white/20 rounded-lg transition-all duration-200 flex-shrink-0 snap-center"
             >
               All Blogs
             </Link>
@@ -137,7 +197,7 @@ const BlogCategoryMenu = () => {
               <Link
                 key={category.id}
                 href={`/blog/category/${category.slug}`}
-                className="whitespace-nowrap px-4 py-2 text-sm font-medium text-white hover:bg-white/20 rounded-lg transition-all duration-200 flex-shrink-0"
+                className="whitespace-nowrap px-4 py-2 text-sm font-medium text-white hover:bg-white/20 rounded-lg transition-all duration-200 flex-shrink-0 snap-center"
               >
                 {category.name}
               </Link>
@@ -146,14 +206,25 @@ const BlogCategoryMenu = () => {
             {/* All Categories Link (Replaced "Others" dropdown) */}
             <Link
               href="/blog/categories"
-              className="whitespace-nowrap px-4 py-2 text-sm font-medium text-white hover:bg-white/20 rounded-lg transition-all duration-200 flex-shrink-0"
+              className="whitespace-nowrap px-4 py-2 text-sm font-medium text-white hover:bg-white/20 rounded-lg transition-all duration-200 flex-shrink-0 snap-center"
             >
               All Categories
             </Link>
           </nav>
 
+          {/* Scroll Button */}
+          {showRightButton && (
+            <button
+              onClick={handleScrollRight}
+              className="flex items-center justify-center p-2 text-white hover:bg-white/20 rounded-lg transition-all duration-200 ml-1"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          )}
+
           {/* Search Section */}
-          <div className="flex items-center ml-4 flex-shrink-0 relative search-container">
+          <div ref={searchContainerRef} className="flex items-center ml-4 flex-shrink-0 relative search-container">
             {!isSearchOpen ? (
               <button
                 onClick={() => setIsSearchOpen(true)}
