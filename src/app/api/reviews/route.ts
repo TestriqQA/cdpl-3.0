@@ -6,6 +6,8 @@ import axios from 'axios';
 const CLIENT_ID = '1078247115476-cujpa333jod5j1a9441po9r39snkce25.apps.googleusercontent.com';
 const CLIENT_SECRET = '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';
 const REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN || ''; // User mentioned providing it, but it wasn't in the JSON. Checking env or fallback.
+// Base URL for Google My Business API v4 - the account/location path will be appended
+const GOOGLE_MY_BUSINESS_API_BASE = 'https://mybusiness.googleapis.com/v4';
 const REDIRECT_URI = 'https://www.cinutedigital.com/';
 
 // Fallback data in case API fails or no token
@@ -86,6 +88,10 @@ export async function GET() {
             return NextResponse.json({ reviews: FALLBACK_REVIEWS, totalReviewCount: 289, averageRating: 4.8 });
         }
 
+        // Debug: Log environment variables
+        console.log('GOOGLE_REFRESH_TOKEN from env:', REFRESH_TOKEN ? 'Set (length: ' + REFRESH_TOKEN.length + ')' : 'NOT SET');
+        console.log('Using API Base URL:', GOOGLE_MY_BUSINESS_API_BASE);
+
         const auth = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
         auth.setCredentials({ refresh_token: REFRESH_TOKEN });
 
@@ -139,8 +145,12 @@ export async function GET() {
                 params.pageToken = nextPageToken;
             }
 
+            // Construct the full API URL: base/accounts/{id}/locations/{id}/reviews
+            const fullReviewsUrl = `${GOOGLE_MY_BUSINESS_API_BASE}/${parent}/reviews`;
+            console.log('Full Reviews URL:', fullReviewsUrl);
+
             const reviewsResponse = await axios.get(
-                `https://mybusiness.googleapis.com/v4/${parent}/reviews`,
+                fullReviewsUrl,
                 {
                     params,
                     headers: {
