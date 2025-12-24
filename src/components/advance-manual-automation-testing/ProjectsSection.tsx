@@ -71,7 +71,7 @@ export default function ProjectsSection() {
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="relative py-8 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle frame lines for a sleek/futuristic feel */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

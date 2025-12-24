@@ -186,7 +186,7 @@ export default function StatsSection() {
     <section
       id="java-enterprise-stats"
       aria-labelledby="java-stats-heading"
-      className="relative py-8 md:py-14"
+      className="relative py-10"
       ref={sectionRef}
     >
       {/* subtle futuristic accent (sleek, no heavy gradients) */}

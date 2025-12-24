@@ -230,7 +230,7 @@ export default function CurriculumSection() {
   ];
 
   return (
-    <section id="curriculum" className="py-16 md:py-20 bg-gradient-to-b from-slate-50 to-white">
+    <section id="curriculum" className="py-10 bg-gradient-to-b from-slate-50 to-white">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">

@@ -10,7 +10,7 @@ export default function CtaSection() {
     <section
       id="contact"
       aria-labelledby="cta-heading"
-      className="relative overflow-hidden py-16 sm:py-20"
+      className="relative overflow-hidden py-10"
     >
       {/* Clean, light background with subtle accents */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

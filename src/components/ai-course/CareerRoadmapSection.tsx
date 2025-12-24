@@ -84,7 +84,7 @@ export default function CareerRoadmapSection() {
     <section
       id="career-roadmap"
       aria-labelledby="career-roadmap-heading"
-      className="relative overflow-hidden py-8 md:p-4 xl:py-10 bg-white"
+      className="relative overflow-hidden py-10 bg-white"
     >
       {/* Subtle futuristic backdrop (thin grid + soft radial glow; minimal, non-distracting) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

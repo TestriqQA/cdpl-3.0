@@ -45,7 +45,7 @@ export default function CareerSection() {
     <section
       id="careers"
       aria-labelledby="career-heading"
-      className="relative py-4 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop (fine grid + soft glow; no loud gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

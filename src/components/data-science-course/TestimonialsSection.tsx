@@ -11,7 +11,7 @@ export default function TestimonialsSection() {
 
   return (
     <section
-      className="relative py-14 md:py-24 bg-white"
+      className="relative py-10 bg-white"
       aria-labelledby="testimonials-heading"
     >
       {/* ... (keep background) */}

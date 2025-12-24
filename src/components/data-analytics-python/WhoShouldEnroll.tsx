@@ -88,7 +88,7 @@ export default function WhoShouldEnroll() {
     ];
 
     return (
-        <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
+        <section className="py-10 bg-gradient-to-b from-white to-slate-50">
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">

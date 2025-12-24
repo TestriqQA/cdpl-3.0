@@ -98,7 +98,7 @@ export default function StatsSection() {
     <section
       id="dm-stats"
       aria-labelledby="dm-stats-heading"
-      className="relative py-4 md:py-10 bg-gradient-to-b from-white to-blue-50"
+      className="relative py-10 bg-gradient-to-b from-white to-blue-50"
     >
       {/* Subtle futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

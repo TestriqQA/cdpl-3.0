@@ -14,7 +14,7 @@ export default function CtaSection() {
     <section
       id="enroll-now"
       aria-labelledby="cta-heading"
-      className="relative py-8 md:py-14 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop: fine grid + soft glow */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

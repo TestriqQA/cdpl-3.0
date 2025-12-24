@@ -39,7 +39,7 @@ export default function WhyMLPythonProgram() {
   ];
 
   return (
-    <section id="why-ml" aria-labelledby="why-ml-heading" className="relative overflow-hidden py-8 md:py-14 bg-white">
+    <section id="why-ml" aria-labelledby="why-ml-heading" className="relative overflow-hidden py-10 bg-white">
       {/* Subtle futuristic frame (thin grid + soft mask; not a heavy gradient) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.035)_1px,transparent_1px)] bg-[size:28px_28px]" />

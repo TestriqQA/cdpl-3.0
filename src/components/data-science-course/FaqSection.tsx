@@ -14,7 +14,7 @@ export default function FaqSection() {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="relative py-14 md:py-24 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* ... (keep background elements) */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-indigo-500 via-cyan-500 to-emerald-500 opacity-80" />

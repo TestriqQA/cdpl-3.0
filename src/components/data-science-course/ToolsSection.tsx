@@ -8,7 +8,7 @@ export default function ToolsSection() {
   const courseName = "Advanced Data Science and Machine Learning Masterclass";
 
   return (
-    <section id="tools" aria-labelledby="tools-heading" className="relative py-6 md:py-10 bg-white">
+    <section id="tools" aria-labelledby="tools-heading" className="relative py-10 bg-white">
       {/* ... (keep background) */}
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

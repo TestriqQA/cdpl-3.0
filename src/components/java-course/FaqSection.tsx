@@ -45,7 +45,7 @@ export default function FaqSection() {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="relative py-8 md:py-14 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic accent (thin grid line) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">

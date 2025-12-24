@@ -49,7 +49,7 @@ export const CurriculumSection: React.FC = () => {
   return (
     <section
       id="curriculum"
-      className="py-16 md:py-20 bg-gradient-to-b from-slate-50 to-white"
+      className="py-10 bg-gradient-to-b from-slate-50 to-white"
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}

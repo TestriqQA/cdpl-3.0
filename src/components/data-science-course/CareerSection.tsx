@@ -37,7 +37,7 @@ export default function CareerSection() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white overflow-hidden">
+    <section className="py-10 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           {/* Left Column: Content */}

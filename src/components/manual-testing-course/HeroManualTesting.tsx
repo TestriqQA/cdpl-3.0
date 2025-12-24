@@ -188,7 +188,7 @@ export default function HeroManualTesting() {
     const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
 
     return (
-        <section className="relative py-10 md:py-12 bg-white" aria-labelledby="manual-testing-hero">
+        <section className="relative py-10 bg-white" aria-labelledby="manual-testing-hero">
             {/* Background (no color gradients) */}
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,#e5e7eb_1px,transparent_1px)] [background-size:26px_26px]" />

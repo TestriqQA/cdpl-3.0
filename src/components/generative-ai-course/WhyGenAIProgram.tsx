@@ -108,7 +108,7 @@ export default function WhyGenAIProgram() {
 
   return (
     <section
-      className="relative py-8 md:py-20 bg-white"
+      className="relative py-10 bg-white"
       aria-labelledby="why-genai-heading"
     >
       {/* subtle futuristic accent line (sleek gradient allowed) */}

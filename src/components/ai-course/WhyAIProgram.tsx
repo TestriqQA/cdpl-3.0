@@ -126,7 +126,7 @@ export default function WhyAIProgram() {
 
   return (
     <section
-      className="relative py-14 md:py-22 xl:py-24 bg-white"
+      className="relative py-10 bg-white"
       aria-labelledby="why-ai-heading"
     >
       {/* Subtle futuristic accent (thin gradient line only) */}

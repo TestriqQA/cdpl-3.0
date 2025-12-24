@@ -103,7 +103,7 @@ export const WhyRSection: React.FC = () => {
   const courseName = "Machine Learning and Data Visualization using R Programming";
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-10 bg-white">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">

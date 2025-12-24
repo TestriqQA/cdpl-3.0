@@ -69,7 +69,7 @@ export default function WhoShouldEnroll() {
   const courseName = "Machine Learning Algorithms using python Programming";
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white">
+    <section className="py-10 bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -132,8 +132,8 @@ export default function WhoShouldEnroll() {
                       {prereq.description}
                     </p>
                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${prereq.level === "Essential"
-                        ? "bg-red-100 text-red-700"
-                        : "bg-yellow-100 text-yellow-700"
+                      ? "bg-red-100 text-red-700"
+                      : "bg-yellow-100 text-yellow-700"
                       }`}>
                       {prereq.level}
                     </span>

@@ -94,7 +94,7 @@ export default function WhoShouldEnroll() {
     <section
       id="who-should-enroll"
       aria-labelledby="who-should-enroll-heading"
-      className="relative py-8 md:py-14 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic gridline accent (no loud gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0">

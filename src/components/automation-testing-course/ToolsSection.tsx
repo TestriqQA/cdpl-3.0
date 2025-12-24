@@ -5,33 +5,33 @@ import type { JSX } from 'react';
 
 type Tool = { name: string; icon: JSX.Element };
 const tools: Tool[] = [
-  { name: 'Selenium 4',  icon: <Globe className="w-7 h-7" /> },
-  { name: 'Cypress',     icon: <Zap className="w-7 h-7" /> },
-  { name: 'Playwright',  icon: <Terminal className="w-7 h-7" /> },
-  { name: 'Applitools',  icon: <Eye className="w-7 h-7" /> },
-  { name: 'k6',          icon: <Shield className="w-7 h-7" /> },
-  { name: 'Jenkins',     icon: <GitBranch className="w-7 h-7" /> },
-  { name: 'Docker',      icon: <Cpu className="w-7 h-7" /> },
-  { name: 'AI Testing',  icon: <Bot className="w-7 h-7" /> },
+  { name: 'Selenium 4', icon: <Globe className="w-7 h-7" /> },
+  { name: 'Cypress', icon: <Zap className="w-7 h-7" /> },
+  { name: 'Playwright', icon: <Terminal className="w-7 h-7" /> },
+  { name: 'Applitools', icon: <Eye className="w-7 h-7" /> },
+  { name: 'k6', icon: <Shield className="w-7 h-7" /> },
+  { name: 'Jenkins', icon: <GitBranch className="w-7 h-7" /> },
+  { name: 'Docker', icon: <Cpu className="w-7 h-7" /> },
+  { name: 'AI Testing', icon: <Bot className="w-7 h-7" /> },
 ];
 
 /** Distinct light accents + explicit icon text colors (fixes invisible icons) */
 const accents = [
-  { wrap: 'bg-sky-50 border-sky-200',        iconBg: 'bg-sky-100 ring-sky-300',        iconText: 'text-sky-700',    title: 'text-sky-900' },
-  { wrap: 'bg-emerald-50 border-emerald-200',iconBg: 'bg-emerald-100 ring-emerald-300',iconText: 'text-emerald-700',title: 'text-emerald-900' },
-  { wrap: 'bg-violet-50 border-violet-200',  iconBg: 'bg-violet-100 ring-violet-300',  iconText: 'text-violet-700', title: 'text-violet-900' },
-  { wrap: 'bg-amber-50 border-amber-200',    iconBg: 'bg-amber-100 ring-amber-300',    iconText: 'text-amber-700',  title: 'text-amber-900' },
-  { wrap: 'bg-indigo-50 border-indigo-200',  iconBg: 'bg-indigo-100 ring-indigo-300',  iconText: 'text-indigo-700', title: 'text-indigo-900' },
-  { wrap: 'bg-rose-50 border-rose-200',      iconBg: 'bg-rose-100 ring-rose-300',      iconText: 'text-rose-700',   title: 'text-rose-900' },
-  { wrap: 'bg-cyan-50 border-cyan-200',      iconBg: 'bg-cyan-100 ring-cyan-300',      iconText: 'text-cyan-700',   title: 'text-cyan-900' },
-  { wrap: 'bg-lime-50 border-lime-200',      iconBg: 'bg-lime-100 ring-lime-300',      iconText: 'text-lime-700',   title: 'text-lime-900' },
+  { wrap: 'bg-sky-50 border-sky-200', iconBg: 'bg-sky-100 ring-sky-300', iconText: 'text-sky-700', title: 'text-sky-900' },
+  { wrap: 'bg-emerald-50 border-emerald-200', iconBg: 'bg-emerald-100 ring-emerald-300', iconText: 'text-emerald-700', title: 'text-emerald-900' },
+  { wrap: 'bg-violet-50 border-violet-200', iconBg: 'bg-violet-100 ring-violet-300', iconText: 'text-violet-700', title: 'text-violet-900' },
+  { wrap: 'bg-amber-50 border-amber-200', iconBg: 'bg-amber-100 ring-amber-300', iconText: 'text-amber-700', title: 'text-amber-900' },
+  { wrap: 'bg-indigo-50 border-indigo-200', iconBg: 'bg-indigo-100 ring-indigo-300', iconText: 'text-indigo-700', title: 'text-indigo-900' },
+  { wrap: 'bg-rose-50 border-rose-200', iconBg: 'bg-rose-100 ring-rose-300', iconText: 'text-rose-700', title: 'text-rose-900' },
+  { wrap: 'bg-cyan-50 border-cyan-200', iconBg: 'bg-cyan-100 ring-cyan-300', iconText: 'text-cyan-700', title: 'text-cyan-900' },
+  { wrap: 'bg-lime-50 border-lime-200', iconBg: 'bg-lime-100 ring-lime-300', iconText: 'text-lime-700', title: 'text-lime-900' },
 ];
 
 export default function ToolsSection() {
 
 
   return (
-    <section id="tools" aria-labelledby="tools-heading" className="relative py-8 md:py-10 bg-white">
+    <section id="tools" aria-labelledby="tools-heading" className="relative py-10 bg-white">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
         <div className="absolute inset-x-0 bottom-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -46,7 +46,7 @@ export default function ToolsSection() {
           className="text-center"
         >
           <h2 id="tools-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-             <span className="text-ST">Tools </span> You&apos;ll Master
+            <span className="text-ST">Tools </span> You&apos;ll Master
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
             Master a <strong>production-ready automation stack</strong> across UI, API, performance and CI/CD.

@@ -13,7 +13,7 @@ export default function CtaSection() {
     <section
       id="cta"
       aria-labelledby="cta-heading"
-      className="relative py-16 md:py-20 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* sleek, subtle accent (thin gradient line only) */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-orange-500 via-amber-500 to-emerald-500 opacity-80" />

@@ -64,10 +64,10 @@ export default function StatsSection() {
 
     return (
         <section
-            className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50"
+            className="py-10 bg-gradient-to-b from-white to-slate-50"
             aria-labelledby="stats-heading"
         >
- 
+
 
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}

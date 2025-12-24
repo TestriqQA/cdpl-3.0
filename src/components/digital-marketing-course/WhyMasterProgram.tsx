@@ -61,7 +61,7 @@ export default function WhyMasterProgram() {
     <section
       id="why-master-program"
       aria-labelledby="why-master-heading"
-      className="relative overflow-hidden py-10 md:py-14 bg-white"
+      className="relative overflow-hidden py-10 bg-white"
     >
       {/* Subtle, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

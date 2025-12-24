@@ -82,7 +82,7 @@ export default function CareerSection() {
     "data analytics jobs India, business intelligence hiring companies, data analyst roles, SQL Python Power BI recruitment, analytics careers Mumbai";
 
   return (
-    <section id="careers" aria-labelledby="careers-heading" className="relative overflow-hidden py-8 md:py-12 bg-white">
+    <section id="careers" aria-labelledby="careers-heading" className="relative overflow-hidden py-10 bg-white">
       {/* Subtle futuristic grid */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.035)_1px,transparent_1px)] bg-[size:28px_28px]" />

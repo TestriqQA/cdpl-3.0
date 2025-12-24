@@ -20,7 +20,7 @@ export default function FaqSection() {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="relative py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white"
+      className="relative py-10 bg-gradient-to-b from-gray-50 to-white"
     >
       {/* Subtle futuristic grid + glow */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

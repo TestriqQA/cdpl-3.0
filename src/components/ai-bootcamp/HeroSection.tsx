@@ -43,7 +43,7 @@ export default function HeroSection() {
     };
 
     return (
-        <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-orange-50 pt-10 md:pt-6">
+        <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-orange-50 py-10">
             {/* Decorative background */}
             <div className="absolute overflow-hidden inset-0 pointer-events-none">
                 <div className="animate-blob animation-delay-0 absolute right-10 top-20 h-72 w-72 rounded-full bg-orange-200 opacity-20 mix-blend-multiply blur-3xl" />
@@ -51,7 +51,7 @@ export default function HeroSection() {
                 <div className="animate-blob animation-delay-4000 absolute -bottom-8 left-20 h-72 w-72 rounded-full bg-pink-200 opacity-20 mix-blend-multiply blur-3xl" />
             </div>
 
-            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12 md:pb-16">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Breadcrumbs */}
                 <nav aria-label="Breadcrumb" className="mb-4">
                     <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">

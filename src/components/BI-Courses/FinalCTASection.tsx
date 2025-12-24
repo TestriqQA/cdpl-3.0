@@ -129,7 +129,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                 <div className="absolute top-1/2 left-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-pink-200/30 blur-3xl" />
             </div>
 
-            <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-18">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
                 <motion.div
                     className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12"
                     variants={containerVariants}

@@ -196,7 +196,7 @@ export default function ToolsSection() {
     const courseName = "AI Bootcamp Course";
 
     return (
-        <section className="py-5 md:py-8 bg-white">
+        <section className="py-10 bg-white">
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">

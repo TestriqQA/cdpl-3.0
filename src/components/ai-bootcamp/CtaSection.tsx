@@ -12,7 +12,7 @@ export default function CtaSection() {
     const courseName = "AI Bootcamp Course";
 
     return (
-        <section className="py-16 md:py-20 bg-gradient-to-r from-slate-900 via-orange-900 to-slate-900 relative overflow-hidden">
+        <section className="py-10 bg-gradient-to-r from-slate-900 via-orange-900 to-slate-900 relative overflow-hidden">
             {/* Background decoration (same style as reference) */}
             <div className="absolute inset-0 opacity-10">
                 <div className="absolute top-20 right-10 w-72 h-72 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl"></div>

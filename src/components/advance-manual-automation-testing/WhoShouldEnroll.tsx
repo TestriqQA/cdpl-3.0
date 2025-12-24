@@ -57,7 +57,7 @@ export default function WhoShouldEnroll() {
     <section
       id="who-should-enroll"
       aria-labelledby="who-heading"
-      className="relative py-12 md:py-12 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic frame + dots */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

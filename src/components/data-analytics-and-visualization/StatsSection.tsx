@@ -62,7 +62,7 @@ export default function StatsSection() {
     return (
         <section
             aria-labelledby="why-course-heading"
-            className="relative py-20 bg-white overflow-hidden"
+            className="relative py-10 bg-white overflow-hidden"
         >
             {/* Subtle background accents */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">

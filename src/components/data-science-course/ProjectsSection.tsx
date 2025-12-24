@@ -80,7 +80,7 @@ export default function ProjectsSection() {
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="relative py-12 md:py-20 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* ... (keep background) */}
 

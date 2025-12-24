@@ -33,7 +33,7 @@ export default function ProjectsSection() {
     const courseName = "Advanced Excel for Data Analytics & Visualization";
 
     return (
-        <section className="relative py-20 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+        <section className="relative py-10 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
             {/* Decorative background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-1/3 right-0 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>

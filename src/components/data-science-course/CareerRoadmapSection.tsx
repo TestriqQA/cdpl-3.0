@@ -10,7 +10,7 @@ export default function CareerRoadmapSection() {
     <section
       id="career-roadmap"
       aria-labelledby="career-roadmap-heading"
-      className="relative overflow-hidden py-8 md:py-14 bg-white"
+      className="relative overflow-hidden py-10 bg-white"
     >
       {/* ... (keep background) */}
 

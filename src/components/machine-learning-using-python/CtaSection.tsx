@@ -12,7 +12,7 @@ export default function CtaSection() {
   const courseName = "Machine Learning Algorithms using python Programming";
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-r from-blue-600 to-indigo-600 relative overflow-hidden">
+    <section className="py-10 bg-gradient-to-r from-blue-600 to-indigo-600 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>

@@ -85,7 +85,7 @@ export default function CtaSection() {
     <section
       id="cta"
       aria-labelledby="cta-heading"
-      className="relative py-6 md:py-8 lg:py-2 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* ... (keep background) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

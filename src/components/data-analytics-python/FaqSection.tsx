@@ -11,8 +11,8 @@ export default function FaqSection() {
     const categories = Array.from(new Set(DATA_ANALYTICS_PYTHON_FAQS.map((faq) => faq.category || "General")));
 
     return (
-        <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-10 bg-gradient-to-b from-white to-slate-50">
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-48">
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">

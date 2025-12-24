@@ -125,7 +125,7 @@ export default function ToolsSection() {
 
   return (
     <section
-      className="relative py-14 md:py-20 bg-white"
+      className="relative py-10 bg-white"
       aria-labelledby="tools-heading"
     >
       {/* Sleek futuristic accent (thin gradient line only) */}

@@ -185,7 +185,7 @@ export default function StatsSection() {
       ref={sectionRef}
       id="ada-stats"
       aria-labelledby="ada-stats-heading"
-      className="relative py-4 md:py-6 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

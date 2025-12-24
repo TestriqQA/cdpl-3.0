@@ -90,7 +90,7 @@ export default function WhyJavaProgram() {
     <section
       id="why-java-program"
       aria-labelledby="why-java-heading"
-      className="relative py-8 md:py-14 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* subtle futuristic grid accent */}
       <div

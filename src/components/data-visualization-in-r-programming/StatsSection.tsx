@@ -97,7 +97,7 @@ export const StatsSection: React.FC = () => {
 
   return (
     <section
-      className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50"
+      className="py-10 bg-gradient-to-b from-white to-slate-50"
       aria-labelledby="stats-heading"
     >
 

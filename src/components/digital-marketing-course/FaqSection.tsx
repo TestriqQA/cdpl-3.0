@@ -12,7 +12,7 @@ export default function FaqSection() {
 
 
   return (
-    <section id="faq" aria-labelledby="faq-heading" className="relative py-12 sm:py-16 md:py-20 bg-gradient-to-b from-slate-50 to-white">
+    <section id="faq" aria-labelledby="faq-heading" className="relative py-10 bg-gradient-to-b from-slate-50 to-white">
       {/* Subtle futuristic backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.04)_1px,transparent_1px)] bg-[size:26px_26px]" />

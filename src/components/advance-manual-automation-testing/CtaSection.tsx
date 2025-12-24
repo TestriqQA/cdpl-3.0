@@ -10,7 +10,7 @@ export default function CtaSection() {
     <section
       id="contact"
       aria-labelledby="cta-heading"
-      className="relative overflow-hidden py-16 sm:py-20 text-white"
+      className="relative overflow-hidden py-10 text-white"
     >
       {/* Soft angular sheen for a subtle futuristic vibe (no heavy gradients) */}
       <div aria-hidden className="absolute inset-0 -z-10">

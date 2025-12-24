@@ -22,12 +22,12 @@ type Benefit = {
 };
 
 const benefits: Benefit[] = [
-  { icon: <Zap />,         title: '90% Faster Testing',    description: 'Automate UI, API, and mobile flows with reliable assertions', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
-  { icon: <Shield />,      title: 'Zero Critical Bugs',    description: 'Shift-left with CI/CD gates, flaky test control, & quality bars', bg: 'bg-amber-50',  iconColor: 'text-amber-700',  border: 'border-amber-200' },
-  { icon: <Globe />,       title: 'Test on Real Devices',  description: 'Cloud device farms + local emulators for true user coverage',   bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
-  { icon: <TrendingUp />,  title: 'Higher QA Salaries',    description: 'SDETs command 30–40% more with automation & DevOps skills',     bg: 'bg-blue-50',   iconColor: 'text-blue-700',   border: 'border-blue-200' },
-  { icon: <Cpu />,         title: 'AI-Powered Testing',    description: 'Self-healing locators, smart retries, & insights from reports', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
-  { icon: <Bug />,         title: 'Full-Stack QA',         description: 'UI + API + DB + Mobile, performance & security touchpoints',    bg: 'bg-rose-50',   iconColor: 'text-rose-700',   border: 'border-rose-200' },
+  { icon: <Zap />, title: '90% Faster Testing', description: 'Automate UI, API, and mobile flows with reliable assertions', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
+  { icon: <Shield />, title: 'Zero Critical Bugs', description: 'Shift-left with CI/CD gates, flaky test control, & quality bars', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
+  { icon: <Globe />, title: 'Test on Real Devices', description: 'Cloud device farms + local emulators for true user coverage', bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
+  { icon: <TrendingUp />, title: 'Higher QA Salaries', description: 'SDETs command 30–40% more with automation & DevOps skills', bg: 'bg-blue-50', iconColor: 'text-blue-700', border: 'border-blue-200' },
+  { icon: <Cpu />, title: 'AI-Powered Testing', description: 'Self-healing locators, smart retries, & insights from reports', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
+  { icon: <Bug />, title: 'Full-Stack QA', description: 'UI + API + DB + Mobile, performance & security touchpoints', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
 ];
 
 export default function WhyAdvancedTesting() {
@@ -37,7 +37,7 @@ export default function WhyAdvancedTesting() {
     <section
       id="why-advanced-testing"
       aria-labelledby="why-advanced-heading"
-      className="relative py-10 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle separators for a sleek, light, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

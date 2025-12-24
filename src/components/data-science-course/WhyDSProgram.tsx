@@ -54,7 +54,7 @@ export default function WhyDSProgram() {
 
     return (
         <section
-            className="relative py-14 md:py-24 bg-white"
+            className="relative py-10 bg-white"
             aria-labelledby="why-ds-heading"
         >
             {/* ... (keep background) */}

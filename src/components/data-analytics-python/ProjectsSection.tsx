@@ -35,7 +35,7 @@ export default function ProjectsSection() {
     const domains = [
         { name: "Aviation", icon: "✈️" },
         { name: "Healthcare", icon: "🏥" },
-        { name: <>Telecomm<br className="lg:hidden"/>unication</>, icon: "📱" },
+        { name: <>Telecomm<br className="lg:hidden" />unication</>, icon: "📱" },
         { name: "BFSI", icon: "🏦" },
         { name: "Social Media", icon: "📱" },
         { name: "Automobile", icon: "🚗" },
@@ -45,7 +45,7 @@ export default function ProjectsSection() {
     ];
 
     return (
-        <section className="py-16 md:py-20 bg-white">
+        <section className="py-10 bg-white">
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">

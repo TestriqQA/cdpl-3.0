@@ -113,7 +113,7 @@ export default function WhyAnalyticsProgram() {
 
     return (
         <section
-            className="relative py-14 md:py-16 bg-white"
+            className="relative py-10 bg-white"
             aria-labelledby="why-analytics-heading"
         >
             {/* subtle futuristic accent (sleek gradient line only) */}

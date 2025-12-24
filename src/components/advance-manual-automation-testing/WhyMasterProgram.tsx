@@ -15,11 +15,11 @@ type Benefit = {
 
 const benefits: Benefit[] = [
   { icon: <CheckSquare className="w-6 h-6" />, title: 'Perfect Manual Foundation', description: 'ISTQB-grade test design & defect lifecycle', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
-  { icon: <Bot className="w-6 h-6" />,         title: 'Automation Mastery',       description: 'Selenium • Cypress • Playwright • REST',  bg: 'bg-indigo-50',  iconColor: 'text-indigo-700',  border: 'border-indigo-200' },
-  { icon: <Shield className="w-6 h-6" />,      title: 'Real-World QA Process',    description: 'Agile ceremonies, DevOps & CI/CD gates',   bg: 'bg-amber-50',   iconColor: 'text-amber-700',   border: 'border-amber-200' },
-  { icon: <Globe className="w-6 h-6" />,       title: 'Full-Stack Testing',       description: 'UI • API • DB • Mobile coverage',           bg: 'bg-sky-50',     iconColor: 'text-sky-700',     border: 'border-sky-200' },
-  { icon: <Cpu className="w-6 h-6" />,         title: 'AI & Future Skills',       description: 'Self-healing, visual AI & analytics',       bg: 'bg-violet-50',  iconColor: 'text-violet-700',  border: 'border-violet-200' },
-  { icon: <TrendingUp className="w-6 h-6" />,  title: 'Highest ROI',              description: 'Dual skillset → faster hiring & pay',       bg: 'bg-rose-50',    iconColor: 'text-rose-700',    border: 'border-rose-200' },
+  { icon: <Bot className="w-6 h-6" />, title: 'Automation Mastery', description: 'Selenium • Cypress • Playwright • REST', bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
+  { icon: <Shield className="w-6 h-6" />, title: 'Real-World QA Process', description: 'Agile ceremonies, DevOps & CI/CD gates', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
+  { icon: <Globe className="w-6 h-6" />, title: 'Full-Stack Testing', description: 'UI • API • DB • Mobile coverage', bg: 'bg-sky-50', iconColor: 'text-sky-700', border: 'border-sky-200' },
+  { icon: <Cpu className="w-6 h-6" />, title: 'AI & Future Skills', description: 'Self-healing, visual AI & analytics', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
+  { icon: <TrendingUp className="w-6 h-6" />, title: 'Highest ROI', description: 'Dual skillset → faster hiring & pay', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
 ];
 
 export default function WhyMasterProgram() {
@@ -28,7 +28,7 @@ export default function WhyMasterProgram() {
     <section
       id="why-master-program"
       aria-labelledby="why-master-heading"
-      className="relative py-8 md:py-14"
+      className="relative py-10"
     >
       {/* Clean light backdrop + subtle separators for a sleek, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

@@ -43,7 +43,7 @@ export default function ToolsSection() {
 
   return (
     <section
-      className="relative py-14 md:py-16 bg-white"
+      className="relative py-10 bg-white"
       aria-labelledby="tools-heading"
     >
       {/* subtle futuristic accent (sleek line only) */}
