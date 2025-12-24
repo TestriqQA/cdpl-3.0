@@ -152,7 +152,7 @@ export default function IstqbRegistrationPage() {
                                                 ))}
                                             </ul>
 
-                                            <div className="flex items-center gap-2 text-indigo-700 bg-indigo-50 px-4 py-2 rounded-lg inline-block font-medium">
+                                            <div className="inline-flex items-center gap-2 text-indigo-700 bg-indigo-50 px-4 py-2 rounded-lg font-medium">
                                                 <span>🕒 Meeting Time:</span>
                                                 <span>{meetingTimeLabel}</span>
                                             </div>
