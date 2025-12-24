@@ -939,7 +939,7 @@ const Header = () => {
           <div className="px-4 pt-2 pb-6 space-y-1">
             <Link
               href="/"
-              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base ${pathname === "/" ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/" ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
               onClick={toggleMenu}
             >
               Home
@@ -949,7 +949,7 @@ const Header = () => {
             <div className="space-y-2">
               <button
                 onClick={() => toggleMobileSection("courses")}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base ${isCoursesMenuOpen ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${isCoursesMenuOpen ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 aria-expanded={mobileSections.courses}
                 aria-controls="mobile-courses"
               >
@@ -967,7 +967,7 @@ const Header = () => {
                       <div key={category.id} className="space-y-2">
                         <button
                           onClick={() => toggleMobileCategory(category.id)}
-                          className="w-full flex items-center justify-between px-4 py-2 text-sm text-gray-600 hover:text-brand hover:bg-white rounded-lg transition-colors"
+                          className="w-full flex items-center justify-between px-4 py-2 text-sm text-gray-600 hover:text-brand hover:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none rounded-lg transition-colors outline-none"
                           aria-expanded={isOpen}
                           aria-controls={`mobile-category-${category.id}`}
                         >
@@ -985,7 +985,7 @@ const Header = () => {
                                 <Link
                                   key={idx}
                                   href={href}
-                                  className={`block px-4 py-2 text-sm rounded-lg transition-colors ${pathname === href ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                                  className={`block px-4 py-2 text-sm rounded-lg transition-colors active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === href ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                                   onClick={toggleMenu}
                                 >
                                   • {course.name}
@@ -1006,7 +1006,7 @@ const Header = () => {
                   })}
                   <Link
                     href="/courses"
-                    className={`block px-4 py-2 text-sm font-medium ${pathname === "/courses" ? "text-brand" : "text-brand hover:text-brand"}`}
+                    className={`block px-4 py-2 text-sm font-medium active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/courses" ? "text-brand" : "text-brand hover:text-brand"}`}
                     onClick={toggleMenu}
                   >
                     View All Courses →
@@ -1018,7 +1018,7 @@ const Header = () => {
             {/* Mobile Services Link */}
             <Link
               href="/services"
-              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-brand ${pathname.startsWith("/services") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/services") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
               onClick={toggleMenu}
             >
               Services
@@ -1028,7 +1028,7 @@ const Header = () => {
             <div className="space-y-2">
               <button
                 onClick={() => toggleMobileSection("jobs")}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-brand ${pathname.startsWith("/jobs") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/jobs") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 aria-expanded={mobileSections.jobs}
                 aria-controls="mobile-jobs"
               >
@@ -1041,28 +1041,28 @@ const Header = () => {
                 <div id="mobile-jobs" className="pl-4 space-y-1">
                   <Link
                     href="/jobs/live-jobs"
-                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-brand ${pathname === "/jobs/live-jobs" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/live-jobs" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                     onClick={toggleMenu}
                   >
                     • Live Jobs
                   </Link>
                   <Link
                     href="/jobs/placements"
-                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-brand ${pathname === "/jobs/placements" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/placements" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                     onClick={toggleMenu}
                   >
                     • Placements
                   </Link>
                   <Link
                     href="/jobs/careers"
-                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-brand ${pathname === "/jobs/careers" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/careers" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                     onClick={toggleMenu}
                   >
                     • Careers
                   </Link>
                   <Link
                     href="/jobs/job-openings"
-                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-brand ${pathname === "/jobs/job-openings" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/job-openings" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                     onClick={toggleMenu}
                   >
                     • Job Openings
@@ -1075,7 +1075,7 @@ const Header = () => {
             <div className="space-y-2">
               <button
                 onClick={() => toggleMobileSection("about")}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-brand ${pathname.startsWith("/about") || pathname.startsWith("/our-team") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/about") || pathname.startsWith("/our-team") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 aria-expanded={mobileSections.about}
                 aria-controls="mobile-about"
               >
@@ -1088,14 +1088,14 @@ const Header = () => {
                 <div id="mobile-about" className="pl-4 space-y-1">
                   <Link
                     href="/about-us"
-                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-brand ${pathname === "/about-us" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/about-us" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                     onClick={toggleMenu}
                   >
                     • About CDPL
                   </Link>
                   <Link
                     href="/our-team"
-                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-brand ${pathname === "/our-team" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/our-team" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                     onClick={toggleMenu}
                   >
                     • Our Team
@@ -1106,28 +1106,28 @@ const Header = () => {
 
             <Link
               href="/events/past-events"
-              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-brand ${pathname.startsWith("/events") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/events") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
               onClick={toggleMenu}
             >
               Event
             </Link>
             <Link
               href="/mentors"
-              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-brand ${pathname.startsWith("/mentors") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/mentors") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
               onClick={toggleMenu}
             >
               Mentors
             </Link>
             <Link
               href="/blog"
-              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-brand ${pathname.startsWith("/blog") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/blog") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
               onClick={toggleMenu}
             >
               Blog
             </Link>
             <Link
               href="/contact-us"
-              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-brand ${pathname.startsWith("/contact-us") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/contact-us") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
               onClick={toggleMenu}
             >
               Contact

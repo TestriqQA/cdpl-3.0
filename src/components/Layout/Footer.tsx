@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { Facebook, Linkedin, Instagram, Youtube } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import React from 'react';
@@ -48,12 +47,10 @@ function XLogo(props: React.SVGProps<SVGSVGElement>) {
 }
 
 const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
-  const pathname = usePathname();
-  const isActive = pathname === href;
   return (
     <Link
       href={href}
-      className={`hover:text-brand hover:translate-x-2 active:text-brand active:translate-x-2 transition-all duration-300 ease-in-out text-sm ${isActive ? "text-brand translate-x-2" : "text-gray-300"}`}
+      className="hover:text-brand hover:translate-x-2 active:textColor-orange-500 active:text-orange-500 focus-visible:text-orange-500 active:translate-x-2 active:transition-none focus-visible:transition-none transition-all duration-300 ease-in-out text-sm outline-none text-gray-300"
     >
       {children}
     </Link>
@@ -61,7 +58,6 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
 };
 
 const Footer = () => {
-  const pathname = usePathname();
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

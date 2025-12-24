@@ -27,7 +27,7 @@ const SYLLABUS_LINKS: Record<string, string> = {
   'Advanced Manual and Automation Testing Master Program': 'https://www.cinutedigital.com/downloads/advanced-manual-and-automation-testing-master-program.pdf',
   'Advanced Software Testing': 'https://www.cinutedigital.com/downloads/advanced-software-testing.pdf',
   'AI Driven Digital Marketing': 'https://www.cinutedigital.com/downloads/ai-driven-digital-marketing-&-analytics.pdf',
-  'AI in Digital Marketing Course': 'https://www.cinutedigital.com/downloads/ai-driven-digital-marketing-&-analytics.pdf',
+  'AI in Digital Marketing Course': 'https://www.cinutedigital.com/downloads/digital-marketing-and-ai-for-business-owners-digital-marketing-and-ai-for-business-owners.pdf',
   'Comprehensive Data Science and AI': 'https://www.cinutedigital.com/downloads/comprehensive-data-science-and-ai-master-program.pdf',
   'Power BI Data Analytics': 'https://www.cinutedigital.com/downloads/data-analytics-&-visualization-with-power-bi.pdf',
   'Tableau Data Analytics': 'https://www.cinutedigital.com/downloads/data-analytics-&-visualization-with-tableau.pdf',
@@ -47,6 +47,13 @@ const SYLLABUS_LINKS: Record<string, string> = {
   'Comprehensive Data Science and AI - Master Program': 'https://www.cinutedigital.com/downloads/comprehensive-data-science-and-ai-master-program.pdf',
   'Machine Learning Algorithms using python Programming': 'https://www.cinutedigital.com/downloads/machine-learning-algorithms-using-python-programming.pdf',
   'Machine Learning and Data Visualization using R Programming': 'https://www.cinutedigital.com/downloads/machine-learning-and-data-visualization-using-r-programming.pdf',
+  // --- New Entries from User Request ---
+  'Data Analytics & Visualization with Tableau': 'https://www.cinutedigital.com/downloads/data-analytics-&-visualization-with-tableau.pdf',
+  'Data Analytics & Visualization with Power BI': 'https://www.cinutedigital.com/downloads/data-analytics-&-visualization-with-power-bi.pdf',
+  'Data Analytics with BI & Big Data Engineering Master Program': 'https://www.cinutedigital.com/downloads/data-analytics-with-bi-and-big-data-engineering-master-program.pdf',
+  'Prompt Engineering Course': 'https://www.cinutedigital.com/downloads/prompt-engineering-with-gen-ai.pdf',
+  'Digital Marketing & Analytics Master Program': 'https://www.cinutedigital.com/downloads/ai-driven-digital-marketing-&-analytics.pdf',
+  'AI Bootcamp Course': 'https://www.cinutedigital.com/downloads/digital-marketing-with-ai-bootcamp.pdf',
 };
 
 // --- Nodemailer Transporter ---

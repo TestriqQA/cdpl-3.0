@@ -37,7 +37,7 @@ export default function StickyNav({ navItems = software_testing }: StickyNavProp
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navItems]);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);

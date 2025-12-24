@@ -18,7 +18,7 @@ export default function PrivacyPolicyPage() {
 
   return (
     <div className="[color-scheme:light] bg-white">
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900">
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900 break-words">
         <h1 className={H1}>Privacy Policy</h1>
 
         <div className="mt-6 space-y-8">

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import RegistrationForm from '@/components/istqb-registration/RegistrationForm';
 import BookingOption from '@/components/istqb-registration/BookingOption';
