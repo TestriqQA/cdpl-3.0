@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { BookOpen, CheckCircle2, Globe2, Info, TrendingUp, Clock, Wallet, ShieldCheck, Check } from 'lucide-react';
+import { Globe2, TrendingUp, Clock, Wallet, ShieldCheck, Check } from 'lucide-react';
 
 export default function WhyIstqbSection() {
     return (

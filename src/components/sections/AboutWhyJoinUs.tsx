@@ -13,6 +13,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import AdvisorModal from "@/components/ui/AdvisorModal";
 
 /** Palette keys supported by your data */
 type Tone =
@@ -53,6 +55,7 @@ function toneFrom(token?: string): Tone {
 }
 
 export default function AboutWhyJoinUs() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const features = [
     {
       title: "Training",
@@ -231,12 +234,12 @@ export default function AboutWhyJoinUs() {
             Explore Courses
             <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
           </Link>
-          <Link
-            href="contact-us"
-            className="inline-flex items-center justify-center rounded-2xl bg-white/90 px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-brand transition hover:bg-brand hover:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2"
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="inline-flex items-center justify-center rounded-2xl bg-white/90 px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-brand transition hover:bg-brand hover:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2 cursor-pointer"
           >
             Talk to an Advisor
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -244,6 +247,8 @@ export default function AboutWhyJoinUs() {
         Why join Cinute Digital: mentor-led training, live projects, certifications, and placement
         assistance for career-ready skills in software testing, automation, data science, and AI/ML.
       </span>
+
+      <AdvisorModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }

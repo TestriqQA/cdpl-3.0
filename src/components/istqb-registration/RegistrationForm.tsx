@@ -3,7 +3,7 @@
 import React, { useState, useRef } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion } from 'framer-motion';
-import { User, Mail, MapPin, Briefcase, Award, ArrowRight, Loader2, Phone } from 'lucide-react';
+import { User, Mail, MapPin, Briefcase, Award, ArrowRight, Loader2 } from 'lucide-react';
 import { submitIstqbStep1 } from '@/app/istqb-registration/actions';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
@@ -31,12 +31,11 @@ const ISTQB_LEVELS = [
     "ISTQB Certified Tester Advanced Level Technical Test Analyst (CTAL-TTA)"
 ];
 
-const CustomInput = React.forwardRef(({ className, ...props }: any, ref) => (
+const CustomInput = React.forwardRef(({ ...props }: any, ref) => (
     <input {...props} ref={ref} className="w-full py-3 px-3 outline-none bg-transparent" required />
 ));
 CustomInput.displayName = 'CustomInput';
 
-import { isValidPhoneNumber } from 'libphonenumber-js';
 import { validatePhone } from '@/lib/formValidation';
 
 // ... other imports

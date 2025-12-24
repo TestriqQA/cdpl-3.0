@@ -162,7 +162,7 @@ export default function MentorOutcomesSection() {
                 "absolute -left-6 -bottom-6 h-24 w-24 rounded-full bg-indigo-200/40",
             },
             {
-              num: "30–90d",
+              num: "30–90 days",
               label: "Typical time-to-offer",
               cls: "text-emerald-600",
               card:
