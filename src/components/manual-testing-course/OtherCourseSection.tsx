@@ -286,7 +286,7 @@ export default function OtherCoursesSection() {
   const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
 
   return (
-    <section className="py-10 md:py-10 bg-white" id="other-courses" aria-label="Other professional software testing courses">
+    <section className="py-10 bg-white" id="other-courses" aria-label="Other professional software testing courses">
       {/* Invisible SEO keywords */}
       <p className="sr-only">
         Best software testing courses, automation testing with Selenium Java, full-stack QA training, API testing with

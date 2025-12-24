@@ -132,7 +132,7 @@ export default function CurriculumSection() {
   const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
 
   return (
-    <section id="curriculum" aria-labelledby="curriculum-heading" className="relative py-6 md:py-10 bg-white">
+    <section id="curriculum" aria-labelledby="curriculum-heading" className="relative py-10 bg-white">
       {/* subtle top/bottom separators for a sleek frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />

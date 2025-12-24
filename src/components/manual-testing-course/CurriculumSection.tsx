@@ -309,7 +309,7 @@ export default function CurriculumSection() {
 
 
     return (
-        <section className="py-15 md:py-20 bg-white" id="curriculum" aria-label="Manual Software Testing Curriculum">
+        <section className="py-10 bg-white" aria-label="Manual Software Testing Curriculum">
 
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

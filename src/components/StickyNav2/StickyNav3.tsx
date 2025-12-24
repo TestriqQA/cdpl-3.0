@@ -16,7 +16,7 @@ export default function StickyNav3() {
       let current = '';
       with_roadmap.forEach(sec => {
         const el = document.getElementById(sec.id);
-        if (el && el.getBoundingClientRect().top <= 150) {
+        if (el && el.getBoundingClientRect().top <= 200) {
           current = sec.id;
         }
       });
@@ -32,7 +32,7 @@ export default function StickyNav3() {
     const el = document.getElementById(id);
     if (el) {
       // Calculate offset: navbar height (~72px) + sticky nav height (~56px) + small padding (12px)
-      const offset = isScrolled ? 140 : 120;
+      const offset = isScrolled ? 100 : 100;
       window.scrollTo({
         top: el.offsetTop - offset,
         behavior: 'smooth'

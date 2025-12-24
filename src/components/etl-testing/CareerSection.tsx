@@ -48,7 +48,7 @@ export default function CareerSection() {
     <section
       id="career"
       aria-labelledby="career-heading"
-      className="relative py-8 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* subtle top/bottom separators for a clean, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

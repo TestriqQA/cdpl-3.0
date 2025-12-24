@@ -59,7 +59,7 @@ export default function ProjectsSection() {
 
 
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="relative py-8 sm:py-10 bg-white">
+    <section id="projects" aria-labelledby="projects-heading" className="relative py-10 bg-white">
       {/* subtle frame lines for a futuristic feel */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />

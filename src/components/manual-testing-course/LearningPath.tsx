@@ -101,7 +101,7 @@ export default function LearningPath() {
   ];
 
   return (
-    <section className="relative py-12 md:py-20 bg-white overflow-hidden" id="learning-path" aria-labelledby="learning-path-title">
+    <section className="relative py-10 bg-white overflow-hidden" id="learning-path" aria-labelledby="learning-path-title">
       {/* Subtle futuristic accents */}
       <div className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(50%_50%_at_50%_50%,black,transparent)]">
         <div className="absolute -top-10 -left-10 h-56 w-56 rounded-full border border-cyan-200/60"></div>

@@ -240,7 +240,7 @@ export default function ProjectsSection(): JSX.Element {
 
 
     return (
-        <section className="py-16 md:py-5 bg-white" id="projects" aria-labelledby="projects-heading">
+        <section className="py-10 bg-white" aria-labelledby="projects-heading">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="mb-14 text-center">

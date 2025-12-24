@@ -3,10 +3,10 @@ import ReviewsMarquee from '../sections/ReviewMarque';
 
 
 export default function TestimonialsSection() {
- 
+
 
     return (
-        <section id="testimonials" aria-labelledby="testimonials-heading" className="relative py-8 sm:py-10 bg-slate-50">
+        <section id="testimonials" aria-labelledby="testimonials-heading" className="relative py-10 bg-slate-50">
             {/* subtle top/bottom separators for a clean, futuristic frame */}
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />

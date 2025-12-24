@@ -24,7 +24,7 @@ export default function FaqSection() {
         <section
             id="faq"
             aria-labelledby={`${sectionId}-heading`}
-            className="relative py-5 sm:py-10 bg-white"
+            className="relative py-10 bg-white"
         >
             {/* subtle frame lines for a clean, slightly futuristic feel */}
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">

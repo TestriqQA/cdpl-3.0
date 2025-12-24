@@ -46,7 +46,7 @@ export default function WhyApiTesting() {
 
 
   return (
-    <section id="why" aria-labelledby="why-heading" className="relative py-10 sm:py-20">
+    <section id="why" aria-labelledby="why-heading" className="relative py-10">
       {/* Subtle, light backdrop (no heavy gradients) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-white" />

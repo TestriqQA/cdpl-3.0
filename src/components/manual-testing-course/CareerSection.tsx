@@ -143,7 +143,7 @@ export default function CareerSection() {
 
   return (
     <section
-      className="relative py-5 md:py-15 bg-white"
+      className="relative py-10 bg-white"
       id="career"
       aria-label="Career outcomes and salary insights for Software Testing"
     >

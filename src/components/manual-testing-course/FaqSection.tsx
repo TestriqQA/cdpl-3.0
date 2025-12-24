@@ -181,7 +181,7 @@ export default function FaqSection() {
   }, [query, activeCat]);
 
   return (
-    <section className="py-10 md:py-10 bg-white" id="faq">
+    <section className="py-10 bg-white" id="faq">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center flex flex-col justify-center items-center mb-12 sm:mb-16">

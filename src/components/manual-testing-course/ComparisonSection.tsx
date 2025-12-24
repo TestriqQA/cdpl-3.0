@@ -125,7 +125,7 @@ export default function ComparisonSection({
   const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
 
   return (
-    <section className={`py-10 md:py-20 bg-white ${className}`} id="comparison" aria-labelledby="comparison-heading">
+    <section className={`py-10 bg-white ${className}`} id="comparison" aria-labelledby="comparison-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-12">

@@ -10,21 +10,21 @@ type Tool = {
 };
 
 const tools: Tool[] = [
-  { name: 'SQL Developer', icon: <Database />,  color: 'from-blue-400 to-cyan-500' },
-  { name: 'Informatica',   icon: <Shuffle />,   color: 'from-purple-400 to-pink-500' },
-  { name: 'Talend',        icon: <Terminal />,  color: 'from-green-400 to-emerald-500' },
-  { name: 'Datastage',     icon: <FileText />,  color: 'from-indigo-400 to-blue-500' },
-  { name: 'SSIS',          icon: <Zap />,       color: 'from-yellow-400 to-amber-500' },
-  { name: 'Control-M',     icon: <Shield />,    color: 'from-red-500 to-rose-600' },
+  { name: 'SQL Developer', icon: <Database />, color: 'from-blue-400 to-cyan-500' },
+  { name: 'Informatica', icon: <Shuffle />, color: 'from-purple-400 to-pink-500' },
+  { name: 'Talend', icon: <Terminal />, color: 'from-green-400 to-emerald-500' },
+  { name: 'Datastage', icon: <FileText />, color: 'from-indigo-400 to-blue-500' },
+  { name: 'SSIS', icon: <Zap />, color: 'from-yellow-400 to-amber-500' },
+  { name: 'Control-M', icon: <Shield />, color: 'from-red-500 to-rose-600' },
 ];
 
 // Distinct, non-repeating, light accents per card (no heavy gradients)
 const accents = [
-  { card: 'bg-sky-50 border-sky-200',       text: 'text-slate-900', chipRing: 'ring-sky-200' },
+  { card: 'bg-sky-50 border-sky-200', text: 'text-slate-900', chipRing: 'ring-sky-200' },
   { card: 'bg-emerald-50 border-emerald-200', text: 'text-slate-900', chipRing: 'ring-emerald-200' },
-  { card: 'bg-amber-50 border-amber-200',   text: 'text-slate-900', chipRing: 'ring-amber-200' },
+  { card: 'bg-amber-50 border-amber-200', text: 'text-slate-900', chipRing: 'ring-amber-200' },
   { card: 'bg-violet-50 border-violet-200', text: 'text-slate-900', chipRing: 'ring-violet-200' },
-  { card: 'bg-rose-50 border-rose-200',     text: 'text-slate-900', chipRing: 'ring-rose-200' },
+  { card: 'bg-rose-50 border-rose-200', text: 'text-slate-900', chipRing: 'ring-rose-200' },
   { card: 'bg-indigo-50 border-indigo-200', text: 'text-slate-900', chipRing: 'ring-indigo-200' },
 ];
 
@@ -32,7 +32,7 @@ export default function ToolsSection() {
 
 
   return (
-    <section id="tools" aria-labelledby="tools-heading" className="relative py-8 md:py-10 bg-white">
+    <section id="tools" aria-labelledby="tools-heading" className="relative py-10 bg-white">
       {/* subtle separators for a sleek, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
