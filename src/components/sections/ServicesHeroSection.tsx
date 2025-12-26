@@ -214,11 +214,13 @@ export default function ServicesHeroSection() {
           </motion.div>
         </div>
       </section>
-      <WorkshopRequestModal
-        isOpen={isWorkshopModalOpen}
-        onClose={() => setIsWorkshopModalOpen(false)}
-        source="Services Page - Hero Section"
-      />
+      {isWorkshopModalOpen && (
+        <WorkshopRequestModal
+          isOpen={isWorkshopModalOpen}
+          onClose={() => setIsWorkshopModalOpen(false)}
+          source="Services Page - Hero Section"
+        />
+      )}
     </>
   );
 }

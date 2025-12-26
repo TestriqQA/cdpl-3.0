@@ -65,10 +65,8 @@
     "typescript": "^5"
   },
   "browserslist": [
-    "chrome >= 90",
-    "safari >= 15",
-    "ios >= 15",
-    "firefox >= 90",
-    "edge >= 90"
+    "defaults",
+    "not ie 11",
+    "> 1%"
   ]
 }
