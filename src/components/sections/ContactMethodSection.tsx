@@ -118,6 +118,7 @@ export function ContactMethodsSection() {
         style={{
           background:
             "radial-gradient(60% 40% at 10% 10%, rgba(56,189,248,0.10), transparent 60%), radial-gradient(50% 40% at 90% 0%, rgba(167,139,250,0.10), transparent 60%)",
+          willChange: "transform",
         }}
       />
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-12">

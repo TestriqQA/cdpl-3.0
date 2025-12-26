@@ -34,7 +34,8 @@ function MarqueeRow({
       <div
         className="flex gap-6 py-4 w-max group-hover:[animation-play-state:paused_!important]"
         style={{
-          animation: `marquee-${direction} ${speed}s linear infinite`
+          animation: `marquee-${direction} ${speed}s linear infinite`,
+          willChange: 'transform'
         }}
       >
         {[...items, ...items, ...items].map((review, idx) => (
@@ -63,7 +64,7 @@ function ReviewCard({ review }: { review: Review }) {
             <div className="relative">
               <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 group-hover:ring-blue-400 transition-all">
                 {review.reviewerInfo?.photoUrl ? (
-                  <img src={review.reviewerInfo.photoUrl} alt={review.name} referrerPolicy="no-referrer" className="w-full h-full object-cover" />
+                  <img src={review.reviewerInfo.photoUrl} alt={review.name} referrerPolicy="no-referrer" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 ) : (
                   <div className="w-full h-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold">
                     {review.name.charAt(0)}

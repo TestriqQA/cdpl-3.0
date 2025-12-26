@@ -181,7 +181,7 @@ export function ContactHeroSection() {
           font-size: 0.875rem;
           color: #1e293b;
           outline: none;
-          transition: all 0.3s;
+          transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .phone-input-container .PhoneInputInput::placeholder {
@@ -229,7 +229,7 @@ export function ContactHeroSection() {
           padding: 0.30rem 1rem;
           padding-left: 0.875rem;
           padding-right: 1rem;
-          transition: all 0.3s;
+          transition: border-color 0.3s, box-shadow 0.3s;
           background-color: transparent;
         }
 
@@ -271,6 +271,7 @@ export function ContactHeroSection() {
           style={{
             background:
               "radial-gradient(60% 50% at 10% 10%, rgba(56,189,248,0.18), transparent 60%), radial-gradient(50% 40% at 90% 10%, rgba(167,139,250,0.18), transparent 60%)",
+            willChange: "transform",
           }}
         />
         {/* subtle grid overlay ABOVE white, BELOW content */}
@@ -349,7 +350,7 @@ export function ContactHeroSection() {
                     <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                       {/* Full Name Input - TestRiq Style */}
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label htmlFor="fullName" className="block text-sm font-semibold text-gray-700 mb-2">
                           Full Name *
                         </label>
                         <div className="relative">
@@ -361,7 +362,8 @@ export function ContactHeroSection() {
                             value={formData.fullName}
                             onChange={handleInputChange}
                             placeholder="Enter your full name"
-                            className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${fullNameError
+                            id="fullName"
+                            className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 ${fullNameError
                               ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                               : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                               }`}
@@ -374,7 +376,7 @@ export function ContactHeroSection() {
 
                       {/* Email Input - TestRiq Style */}
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
                           Email Address *
                         </label>
                         <div className="relative">
@@ -385,7 +387,8 @@ export function ContactHeroSection() {
                             value={formData.email}
                             onChange={handleInputChange}
                             placeholder="Enter your email address"
-                            className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${emailError
+                            id="email"
+                            className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 ${emailError
                               ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                               : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                               }`}
@@ -398,7 +401,7 @@ export function ContactHeroSection() {
 
                       {/* Phone Input - TestRiq Style with react-phone-number-input */}
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
                           Mobile Number *
                         </label>
                         <div className="bg-white relative">
@@ -406,6 +409,7 @@ export function ContactHeroSection() {
                             }`}>
                             <Phone className="phone-icon h-5 w-5" />
                             <PhoneInput
+                              id="phone"
                               international
                               limitMaxLength={true}
                               defaultCountry="IN"
@@ -422,14 +426,15 @@ export function ContactHeroSection() {
 
                       {/* Area of Interest */}
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label htmlFor="interest" className="block text-sm font-semibold text-gray-700 mb-2">
                           Area of Interest
                         </label>
                         <select
+                          id="interest"
                           name="interest"
                           value={formData.interest}
                           onChange={handleInputChange}
-                          className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-all"
+                          className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-colors duration-300"
                         >
                           <option value="">Select…</option>
                           <option value="Artificial Intelligence (AI)">Artificial Intelligence (AI)</option>
@@ -446,7 +451,7 @@ export function ContactHeroSection() {
 
                       {/* Message */}
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
                           Message *
                         </label>
                         <textarea
@@ -455,7 +460,8 @@ export function ContactHeroSection() {
                           onChange={handleInputChange}
                           rows={3}
                           placeholder="Tell us how we can help..."
-                          className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${messageError
+                          id="message"
+                          className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 ${messageError
                             ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                             : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                             }`}
@@ -622,7 +628,7 @@ export function ContactHeroSection() {
                   <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                     {/* Full Name Input - TestRiq Style */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="fullNameDesktop" className="block text-sm font-semibold text-gray-700 mb-2">
                         Full Name *
                       </label>
                       <div className="relative">
@@ -633,7 +639,8 @@ export function ContactHeroSection() {
                           value={formData.fullName}
                           onChange={handleInputChange}
                           placeholder="Enter your full name"
-                          className={`w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all bg-white ${fullNameError
+                          id="fullNameDesktop"
+                          className={`w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 bg-white ${fullNameError
                             ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                             : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                             }`}
@@ -646,7 +653,7 @@ export function ContactHeroSection() {
 
                     {/* Email Input - TestRiq Style */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="emailDesktop" className="block text-sm font-semibold text-gray-700 mb-2">
                         Email Address *
                       </label>
                       <div className="relative">
@@ -657,7 +664,8 @@ export function ContactHeroSection() {
                           value={formData.email}
                           onChange={handleInputChange}
                           placeholder="Enter your email address"
-                          className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${emailError
+                          id="emailDesktop"
+                          className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 ${emailError
                             ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                             : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                             }`}
@@ -670,7 +678,7 @@ export function ContactHeroSection() {
 
                     {/* Phone Input - TestRiq Style with react-phone-number-input */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="phoneDesktop" className="block text-sm font-semibold text-gray-700 mb-2">
                         Mobile Number *
                       </label>
                       <div className="relative bg-white">
@@ -678,6 +686,7 @@ export function ContactHeroSection() {
                           }`}>
                           <Phone className="bg-white phone-icon h-5 w-5" />
                           <PhoneInput
+                            id="phoneDesktop"
                             international
                             defaultCountry="IN"
                             value={formData.phone}
@@ -693,14 +702,15 @@ export function ContactHeroSection() {
 
                     {/* Area of Interest */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="interestDesktop" className="block text-sm font-semibold text-gray-700 mb-2">
                         Area of Interest
                       </label>
                       <select
+                        id="interestDesktop"
                         name="interest"
                         value={formData.interest}
                         onChange={handleInputChange}
-                        className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-all"
+                        className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-colors duration-300"
                       >
                         <option value="">Select…</option>
                         <option value="Artificial Intelligence (AI)">Artificial Intelligence (AI)</option>
@@ -717,16 +727,17 @@ export function ContactHeroSection() {
 
                     {/* Message */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="messageDesktop" className="block text-sm font-semibold text-gray-700 mb-2">
                         Message *
                       </label>
                       <textarea
+                        id="messageDesktop"
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
                         rows={3}
                         placeholder="Tell us how we can help..."
-                        className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${messageError
+                        className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 ${messageError
                           ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                           : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                           }`}

@@ -49,6 +49,7 @@ export function ContactOfficeMapSection() {
         style={{
           background:
             "radial-gradient(60% 40% at 10% 0%, rgba(56,189,248,0.10), transparent 60%), radial-gradient(50% 40% at 90% 0%, rgba(167,139,250,0.10), transparent 60%)",
+          willChange: "transform",
         }}
       />
 
