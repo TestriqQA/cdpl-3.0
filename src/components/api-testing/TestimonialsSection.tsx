@@ -14,7 +14,7 @@ export default function TestimonialsSection() {
             </div>
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <h2 className="text-4xl text-slate-900 text-center font-bold mb-4">
+                <h2 id="testimonials-heading" className="text-4xl text-slate-900 text-center font-bold mb-4">
                     Success <span className='text-ST'>Stories</span>
                 </h2>
 

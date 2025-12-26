@@ -76,7 +76,7 @@ function ReviewCard({ review }: { review: Review }) {
               </div>
             </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{review.name}</h4>
+              <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{review.name}</h3>
               <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">{dateStr}</div>
             </div>
           </div>

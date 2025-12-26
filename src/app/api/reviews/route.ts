@@ -140,6 +140,9 @@ export async function GET() {
         const reviewsData = reviewsResponse.data;
         const apiReviews = reviewsData.reviews || [];
 
+        const realTotalReviews = reviewsData.totalReviewCount || 0;
+        const realAverageRating = reviewsData.averageRating || 0;
+
         // Map API response to expected internal structure
         const reviews = apiReviews.map((r: any) => ({
             name: r.reviewer?.displayName || 'Anonymous',
@@ -185,14 +188,3 @@ export async function GET() {
     }
 }
 
-// Helper to map Google ENUM stars to numbers
-function mapStarRating(rating: string): string {
-    switch (rating) {
-        case 'FIVE': return '5';
-        case 'FOUR': return '4';
-        case 'THREE': return '3';
-        case 'TWO': return '2';
-        case 'ONE': return '1';
-        default: return '5'; // Valid number as fallback
-    }
-}

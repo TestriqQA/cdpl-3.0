@@ -94,7 +94,7 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         <SpecialOfferBanner />
         <Header />
-        {children}
+        <main>{children}</main>
         <Footer />
         <GoogleAnalytics />
       </body>
