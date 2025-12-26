@@ -74,7 +74,6 @@ export default function CareerSection() {
                                                 `hover:bg-${hue}-50`,
                                                 `text-${hue}-800`,
                                             ].join(' ')}
-                                            role="listitem"
                                         >
                                             {role}
                                         </div>

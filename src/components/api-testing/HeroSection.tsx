@@ -86,13 +86,9 @@ export default function HeroSection() {
                 </nav>
                 <div className="grid items-start gap-10 md:grid-cols-12">
                     {/* Left: copy */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: 'easeOut' }}
-                        className="md:col-span-7 lg:col-span-8"
-                    >
-                        {/* badges */}
+                    {/* Left: copy */}
+                    <div className="md:col-span-7 lg:col-span-8">
+                        {/* badges - STATIC LCP */}
                         <div className="hidden mb-5 lg:inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1.5 text-xs font-medium text-slate-700 backdrop-blur">
                             <span className="inline-flex items-center gap-1">
                                 <Star className="h-4 w-4 fill-current text-yellow-500" />
@@ -110,7 +106,7 @@ export default function HeroSection() {
                             </span>
                         </div>
 
-                        {/* H1 */}
+                        {/* H1 - STATIC LCP */}
                         <h1
                             id="api-testing-hero"
                             className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
@@ -125,94 +121,102 @@ export default function HeroSection() {
                             <LeadForm variant="elevated" source="API Testing Course Page - Hero Section" />
                         </div>
 
-                        {/* Supporting copy */}
-                        <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Build job-ready skills in <strong>API testing, automation frameworks</strong>, <strong>CI/CD</strong>, and <strong>API security</strong>. Practice with real-world
-                            projects, learn best practices for <em>contract testing, schema validation, mocking, and performance checks</em>, and earn a verified certificate.
-                        </p>
-                        <p className="mt-3 max-w-3xl text-sm text-slate-600">
-                            Topics include Postman Collections & Newman, REST principles, GraphQL queries & mutations, Swagger/OpenAPI, OAuth2 & JWT, data-driven tests, Jenkins/GitHub Actions,
-                            and reporting with evidence for enterprise-grade QA.
-                        </p>
+                        {/* Supporting copy - ANIMATED */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 18 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+                        >
+                            <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
+                                Build job-ready skills in <strong>API testing, automation frameworks</strong>, <strong>CI/CD</strong>, and <strong>API security</strong>. Practice with real-world
+                                projects, learn best practices for <em>contract testing, schema validation, mocking, and performance checks</em>, and earn a verified certificate.
+                            </p>
+                            <p className="mt-3 max-w-3xl text-sm text-slate-600">
+                                Topics include Postman Collections & Newman, REST principles, GraphQL queries & mutations, Swagger/OpenAPI, OAuth2 & JWT, data-driven tests, Jenkins/GitHub Actions,
+                                and reporting with evidence for enterprise-grade QA.
+                            </p>
 
-                        {/* CTAs */}
+                            {/* CTAs */}
 
-                        <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-                            <button
-                                onClick={() => setIsEnrollModalOpen(true)}
-                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
-                                aria-label="Enroll now in API Testing program"
-                            >
-                                Enroll Now
-                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                            </button>
+                            <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+                                <button
+                                    onClick={() => setIsEnrollModalOpen(true)}
+                                    className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                                    aria-label="Enroll now in API Testing program"
+                                >
+                                    Enroll Now
+                                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                </button>
 
-                            <button
-                                onClick={() => setIsSyllabusModalOpen(true)}
-                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
-                                aria-label="Download API Testing Syllabus"
-                            >
-                                Download Syllabus
-                                <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
-                            </button>
+                                <button
+                                    onClick={() => setIsSyllabusModalOpen(true)}
+                                    className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                                    aria-label="Download API Testing Syllabus"
+                                >
+                                    Download Syllabus
+                                    <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                </button>
 
-                            <button
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' });
-                                }}
-                                className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
-                                aria-label="View full API testing curriculum"
-                            >
-                                View Curriculum
-                                <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
-                            </button>
+                                <button
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' });
+                                    }}
+                                    className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
+                                    aria-label="View full API testing curriculum"
+                                >
+                                    View Curriculum
+                                    <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                </button>
 
-                        </div>
+                            </div>
 
 
-                        {/* Quick highlights */}
-                        <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
-                            <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-600" />
-                                80% practical labs with project reviews
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-indigo-600" />
-                                CI/CD integration (Jenkins, GitHub Actions)
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-rose-600" />
-                                Interview prep & portfolio guidance
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-amber-600" />
-                                QR-verified global certification
-                            </li>
-                        </ul>
+                            {/* Quick highlights */}
+                            <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
+                                <li className="flex items-start gap-2">
+                                    <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-600" />
+                                    80% practical labs with project reviews
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <CheckCircle2 className="mt-0.5 h-5 w-5 text-indigo-600" />
+                                    CI/CD integration (Jenkins, GitHub Actions)
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <CheckCircle2 className="mt-0.5 h-5 w-5 text-rose-600" />
+                                    Interview prep & portfolio guidance
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <CheckCircle2 className="mt-0.5 h-5 w-5 text-amber-600" />
+                                    QR-verified global certification
+                                </li>
+                            </ul>
 
-                        {/* Feature cards can stay below the form on desktop if desired */}
-                        <div className="mt-6 grid md:hidden lg:grid-cols-4 gap-3">
-                            {features.slice(0, 4).map((f, i) => (
-                                <IconCard
-                                    key={i}
-                                    {...f}
-                                    className="hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
-                                />
-                            ))}
-                        </div>
+                            <h2 className="sr-only">Course Highlights</h2>
 
-                        {/* Optional: feature cards can remain below on mobile/tablet */}
-                        <div className="mt-8 md:hidden grid grid-cols-1 gap-3 sm:grid-cols-2 lg:hidden">
-                            {features.map((f, i) => (
-                                <IconCard
-                                    key={i}
-                                    {...f}
-                                    className="hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
-                                />
-                            ))}
-                        </div>
-                    </motion.div>
+                            {/* Feature cards can stay below the form on desktop if desired */}
+                            <div className="mt-6 grid md:hidden lg:grid-cols-4 gap-3">
+                                {features.slice(0, 4).map((f, i) => (
+                                    <IconCard
+                                        key={i}
+                                        {...f}
+                                        className="hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
+                                    />
+                                ))}
+                            </div>
+
+                            {/* Optional: feature cards can remain below on mobile/tablet */}
+                            <div className="mt-8 md:hidden grid grid-cols-1 gap-3 sm:grid-cols-2 lg:hidden">
+                                {features.map((f, i) => (
+                                    <IconCard
+                                        key={i}
+                                        {...f}
+                                        className="hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
+                                    />
+                                ))}
+                            </div>
+                        </motion.div>
+                    </div>
 
                     {/* Right: Desktop Form */}
                     <motion.aside

@@ -155,8 +155,8 @@ function StatCard({ stat, index }: { stat: Stat; index: number }) {
       <div className={`text-xl font-extrabold sm:text-4xl ${stat.text}`}>
         {(stat.prefix ?? '')}{value}{stat.suffix ?? ''}
       </div>
-      <div className="mt-1 text-xs font-medium text-slate-500 sm:text-sm">{stat.label}</div>
-      <div className="mt-3 text-[11px] leading-5 text-slate-500">
+      <div className="mt-1 text-xs font-medium text-slate-600 sm:text-sm">{stat.label}</div>
+      <div className="mt-3 text-[11px] leading-5 text-slate-600">
         Verified metrics from the program brochure.
       </div>
     </motion.div>

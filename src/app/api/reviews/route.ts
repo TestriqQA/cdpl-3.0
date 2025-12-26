@@ -122,7 +122,7 @@ export async function GET() {
         if (!accessToken) throw new Error('Failed to generate access token');
 
         const reviewsResponse = await axios.get(
-            `https://mybusiness.googleapis.com/v1/${location.name}/reviews`,
+            `https://mybusiness.googleapis.com/v4/${account.name}/${location.name}/reviews`,
             {
                 params: { pageSize: 20 },
                 headers: {
@@ -132,7 +132,20 @@ export async function GET() {
         );
 
         const reviewsData = reviewsResponse.data;
-        const reviews = reviewsData.reviews || [];
+        const apiReviews = reviewsData.reviews || [];
+
+        // Map API response to expected internal structure
+        const reviews = apiReviews.map((r: any) => ({
+            name: r.reviewer?.displayName || 'Anonymous',
+            reviewerInfo: {
+                photoUrl: r.reviewer?.profilePhotoUrl || '',
+                displayName: r.reviewer?.displayName || 'Anonymous'
+            },
+            comment: r.comment || '',
+            starRating: r.starRating || 'FIVE',
+            createTime: r.createTime || new Date().toISOString(),
+            source: 'Google'
+        }));
 
         const responseData = {
             reviews: reviews.length > 0 ? reviews : FALLBACK_REVIEWS, // Use fallback if empty list returned

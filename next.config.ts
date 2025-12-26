@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
 
   serverExternalPackages: ['@prisma/client'], // Remove this line if not using Prisma or similar
+  productionBrowserSourceMaps: true,
 };
 
 export default nextConfig;
