@@ -24,7 +24,7 @@ import { SITE_CONFIG, SEO_DEFAULTS } from "@/lib/seo-config";
 import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], display: 'swap' });
 
 // ============================================================================
 // DYNAMIC IMPORTS (for performance)
@@ -88,7 +88,7 @@ export default function RootLayout({
         <link rel="icon" href={SITE_CONFIG.favicon} />
 
 
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
       </head>
 
       <body className={`${inter.className} antialiased`}>

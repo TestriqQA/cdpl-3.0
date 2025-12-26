@@ -571,7 +571,7 @@ const Header = () => {
               <div className="rounded-lg">
                 <Image src="/cdpl-logo.png" alt="CDPL Logo" title="CDPL Logo" width={40} height={40} className="w-10 h-10 sm:w-12 sm:h-12 lg:w-20 lg:h-12 xl:w-14 xl:h-14" />
               </div>
-              <span className="text-base sm:text-xl lg:text-2xl font-bold text-brand">Cinute Digital</span>
+              <span className="text-base sm:text-xl lg:text-2xl font-bold text-blue-700">Cinute Digital</span>
             </Link>
           </div>
 

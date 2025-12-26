@@ -55,20 +55,20 @@ const Footer: React.FC = () => {
               <div className="space-y-4 text-[15px] leading-relaxed">
 
                 <div>
-                  <p className="font-bold">Head Office (<span className="text-brand">CDPL</span>)</p>
+                  <p className="font-bold">Head Office (<span className="text-blue-700">CDPL</span>)</p>
                   <div className="flex items-start mt-1 gap-3">
                     <MapPin className="h-5 w-5 text-orange-500 mt-0.5" aria-hidden="true" />
-                    <Link className="hover:text-brand transition" href="https://www.google.com/maps/place/Cinute+Digital+Pvt.+Ltd.+A+Premier+Software+Training+Institute+(CDPL)/@19.29342,72.8685471,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b1af2b2c5fed:0x7104f80b9fec8b9d!8m2!3d19.293415!4d72.871122!16s%2Fg%2F11t5q_mt87?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D">
+                    <Link className="hover:text-blue-700 transition" href="https://www.google.com/maps/place/Cinute+Digital+Pvt.+Ltd.+A+Premier+Software+Training+Institute+(CDPL)/@19.29342,72.8685471,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b1af2b2c5fed:0x7104f80b9fec8b9d!8m2!3d19.293415!4d72.871122!16s%2Fg%2F11t5q_mt87?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D">
                       Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road, Mira Bhayandar, Mumbai, Maharashtra 401107
                     </Link>
                   </div>
                 </div>
 
                 <div>
-                  <p className="font-bold">Study Center <span className="text-red-800">MeghMehul Classes</span> (<span className="text-brand">Vasai</span>)</p>
+                  <p className="font-bold">Study Center <span className="text-red-800">MeghMehul Classes</span> (<span className="text-blue-700">Vasai</span>)</p>
                   <div className="flex items-start mt-1 gap-3">
                     <MapPin className="h-5 w-5 text-orange-500 mt-0.5" aria-hidden="true" />
-                    <Link className="hover:text-brand transition" href="https://maps.app.goo.gl/SACPou6JCdRZh5j98">
+                    <Link className="hover:text-blue-700 transition" href="https://maps.app.goo.gl/SACPou6JCdRZh5j98">
                       Shop No 7, Laxmi Palace, Opposite Vidhyavardhini Degree Engineering College, Gurunanak Nagar, Vasai West, Mumbai, Maharashtra - 401202
                     </Link>
                   </div>
@@ -105,23 +105,23 @@ const Footer: React.FC = () => {
 
                 {/* Social Media Icons */}
                 <div className="flex items-center gap-5 mt-4">
-                  <Link href="https://www.facebook.com/cinutedigital" className="text-slate-400 hover:text-brand transition-all duration-300 ease-in-out" aria-label="Facebook">
+                  <Link href="https://www.facebook.com/cinutedigital" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="Facebook">
                     <Facebook className="h-5 w-5" />
                   </Link>
 
-                  <Link href="https://x.com/cinutedigital" className="text-slate-400 hover:text-brand transition-all duration-300 ease-in-out" aria-label="X">
+                  <Link href="https://x.com/cinutedigital" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="X">
                     <XLogo className="h-5 w-5" />
                   </Link>
 
-                  <Link href="https://www.youtube.com/@cinutedigital" className="text-slate-400 hover:text-brand transition-all duration-300 ease-in-out" aria-label="YouTube">
+                  <Link href="https://www.youtube.com/@cinutedigital" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="YouTube">
                     <Youtube className="h-5 w-5" />
                   </Link>
 
-                  <Link href="https://www.linkedin.com/company/cinute-digital/" className="text-slate-400 hover:text-brand transition-all duration-300 ease-in-out" aria-label="LinkedIn">
+                  <Link href="https://www.linkedin.com/company/cinute-digital/" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="LinkedIn">
                     <Linkedin className="h-5 w-5" />
                   </Link>
 
-                  <Link href="https://www.instagram.com/cinutedigital/" className="text-slate-400 hover:text-brand transition-all duration-300 ease-in-out" aria-label="Instagram">
+                  <Link href="https://www.instagram.com/cinutedigital/" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="Instagram">
                     <Instagram className="h-5 w-5" />
                   </Link>
                 </div>
@@ -230,7 +230,7 @@ const Footer: React.FC = () => {
               </p>
               {/* Powered By */}
               <div className="flex gap-4 space-y-4">
-                <h3 className="text-xl font-semibold text-orange-400">Powered By</h3>
+                <h3 className="text-xl font-semibold text-orange-700">Powered By</h3>
                 <Link href="https://www.testriq.com/" className="text-gray-300 hover:text-blue-400 hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
                   <Image src={'/images/Testriq-Logo-1.webp'} alt='Testriq_logo' title="Testriq-Logo" width={100} height={100} />
                 </Link>

@@ -64,7 +64,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Data Science, AI - ML & BI Courses */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-orange-400">Data Science</h3>
+            <h3 className="text-lg font-semibold text-orange-300">Data Science</h3>
             <ul>
               <li className='flex flex-col space-y-2'>
                 <FooterLink href="/ai-course">
@@ -96,7 +96,7 @@ const Footer = () => {
 
             {/* Artificial Intelligence */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-orange-400">Artificial Intelligence(AI)</h3>
+              <h3 className="text-lg font-semibold text-orange-300">Artificial Intelligence(AI)</h3>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/prompt-engineering-course">
@@ -108,7 +108,7 @@ const Footer = () => {
 
             {/* Follow Us (desktop) */}
             <div className="space-y-4 hidden lg:block">
-              <h3 className="text-lg font-semibold text-orange-400">Follow Us On</h3>
+              <h3 className="text-lg font-semibold text-orange-300">Follow Us On</h3>
               <ul className="space-y-2">
                 <li className='flex items-center gap-5'>
                   <Link href="https://www.facebook.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
@@ -137,7 +137,7 @@ const Footer = () => {
 
           {/* Software Testing Courses */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-orange-400">Software Testing Courses</h3>
+            <h3 className="text-lg font-semibold text-orange-300">Software Testing Courses</h3>
             <ul>
               <li className='flex flex-col space-y-2'>
                 <FooterLink href="/manual-testing-course">
@@ -184,7 +184,7 @@ const Footer = () => {
 
             {/* Digital Marketing */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-orange-400">Digital Marketing</h3>
+              <h3 className="text-lg font-semibold text-orange-300">Digital Marketing</h3>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/digital-marketing-course">
@@ -204,7 +204,7 @@ const Footer = () => {
 
             {/* Programming Languages */}
             {/* <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-orange-400">Programming Languages</h3>
+              <h3 className="text-lg font-semibold text-orange-300">Programming Languages</h3>
               <ul>
                 <li className='flex flex-col space-y-2'>
 
@@ -215,7 +215,7 @@ const Footer = () => {
 
           {/* Digital Marketing */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-orange-400">Business Development(BI)</h3>
+            <h3 className="text-lg font-semibold text-orange-300">Business Development(BI)</h3>
             <ul>
               <li className='flex flex-col space-y-2'>
                 <FooterLink href="/data-analytics">
@@ -248,7 +248,7 @@ const Footer = () => {
 
           {/* City Pages */}
           {/* <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-orange-400">Cities</h3>
+            <h3 className="text-lg font-semibold text-orange-300">Cities</h3>
             <ul>
               <li className='flex flex-col space-y-2'>
                 <Link href="/software-testing-course-in-mumbai" className={`hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm ${pathname === href ? "text-brand" : "text-gray-300"}`}>
@@ -328,7 +328,7 @@ const Footer = () => {
 
           {/* Blogs and Categories */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-orange-400">Blogs</h3>
+            <h3 className="text-lg font-semibold text-orange-300">Blogs</h3>
             <ul>
               <li className='flex flex-col space-y-2'>
                 <FooterLink href="/blog">
@@ -360,7 +360,7 @@ const Footer = () => {
 
           {/* Institute */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-orange-400">Institute</h3>
+            <h3 className="text-lg font-semibold text-orange-300">Institute</h3>
             <ul>
               <li className='flex flex-col space-y-2'>
                 <FooterLink href="/services">
@@ -415,7 +415,7 @@ const Footer = () => {
 
             {/* Certifications and Accreditation */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-orange-400">Certifications and Accreditation</h3>
+              <h3 className="text-lg font-semibold text-orange-300">Certifications and Accreditation</h3>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/aaa-certification">
@@ -435,7 +435,7 @@ const Footer = () => {
 
             {/* Follow Us (mobile) */}
             <div className="space-y-4 lg:hidden">
-              <h3 className="text-lg font-semibold text-orange-400">Follow Us On</h3>
+              <h3 className="text-lg font-semibold text-orange-300">Follow Us On</h3>
               <ul className="space-y-2">
                 <li className='flex items-center gap-5'>
                   <Link href="https://www.facebook.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
