@@ -223,7 +223,7 @@ export default function StatsSection() {
     <section
       id="pe-stats"
       aria-labelledby="pe-stats-heading"
-      className="relative py-4 md:py-10 bg-white"
+      className="relative py-10 bg-white"
       ref={sectionRef}
     >
       {/* Subtle futuristic backdrop (fine grid + soft top glow; no heavy gradients) */}

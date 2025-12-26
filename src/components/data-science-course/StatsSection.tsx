@@ -187,7 +187,7 @@ export default function StatsSection() {
       ref={sectionRef}
       id="dsml-stats"
       aria-labelledby="dsml-stats-heading"
-      className="relative py-4 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* ... (keep background) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

@@ -430,6 +430,11 @@ const Header = () => {
   // Refs to detect boundaries
   const panelRef = useRef<HTMLDivElement | null>(null);
   const megaMenuRef = useRef<HTMLDivElement | null>(null);
+  const coursesButtonRef = useRef<HTMLButtonElement | null>(null);
+
+  // Mobile refs
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null);
+  const mobileToggleRef = useRef<HTMLButtonElement | null>(null);
 
   // ---- Hover stability: delayed close, cancel on enter ----
   const closeTimerRef = useRef<number | null>(null);
@@ -459,6 +464,14 @@ const Header = () => {
     setHoveredCategory(null);
   };
 
+  const toggleMega = () => {
+    if (isMegaMenuOpen) {
+      closeMega();
+    } else {
+      openMega();
+    }
+  };
+
   // Close Jobs/About and mega on outside click / ESC
   useEffect(() => {
     const onClickOutside = (e: MouseEvent) => {
@@ -481,8 +494,23 @@ const Header = () => {
       ) {
         setIsAboutOpen(false);
       }
-      if (isMegaMenuOpen && megaMenuRef.current && !megaMenuRef.current.contains(t)) {
+      if (
+        isMegaMenuOpen &&
+        megaMenuRef.current &&
+        !megaMenuRef.current.contains(t) &&
+        coursesButtonRef.current &&
+        !coursesButtonRef.current.contains(t)
+      ) {
         closeMega();
+      }
+      if (
+        isMenuOpen &&
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(t) &&
+        mobileToggleRef.current &&
+        !mobileToggleRef.current.contains(t)
+      ) {
+        setIsMenuOpen(false);
       }
     };
     const onKey = (e: KeyboardEvent) => {
@@ -499,7 +527,7 @@ const Header = () => {
       document.removeEventListener("keydown", onKey);
       cancelClose();
     };
-  }, [isJobsOpen, isAboutOpen, isMegaMenuOpen]);
+  }, [isJobsOpen, isAboutOpen, isMegaMenuOpen, isMenuOpen]);
 
   // Mobile toggles
   const toggleMenu = () => {
@@ -543,22 +571,25 @@ const Header = () => {
               <div className="rounded-lg">
                 <Image src="/cdpl-logo.png" alt="CDPL Logo" title="CDPL Logo" width={40} height={40} className="w-10 h-10 sm:w-12 sm:h-12 lg:w-20 lg:h-12 xl:w-14 xl:h-14" />
               </div>
-              <span className="text-base sm:text-xl lg:text-2xl font-bold text-brand">Cinute Digital</span>
+              <span className="text-base sm:text-xl lg:text-2xl font-bold text-blue-700">Cinute Digital</span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center justify-start">
-            <Link href="/" className={`transition-colors text-sm xl:text-base px-4 py-6 ${pathname === "/" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>Home</Link>
+            <Link href="/" className={`transition-colors text-sm xl:text-base px-4 py-6 active:text-brand ${pathname === "/" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>Home</Link>
 
             {/* Mega Menu Trigger */}
             <div className="relative">
               <button
-                className={`transition-colors flex items-center text-sm xl:text-base px-4 py-6 ${isCoursesMenuOpen ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
+                ref={coursesButtonRef}
+                type="button"
+                className={`transition-colors flex items-center text-sm xl:text-base px-4 py-6 active:text-brand ${isCoursesMenuOpen ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
                 aria-expanded={isMegaMenuOpen}
                 aria-controls="mega-menu"
                 onMouseEnter={openMega}
                 onMouseLeave={() => scheduleClose()}
+                onClick={toggleMega}
               >
                 Courses
                 <ChevronDown className="ml-1 h-4 w-4" />
@@ -742,12 +773,12 @@ const Header = () => {
               )}
             </div>
 
-            <Link href="/services" className={`transition-colors text-sm xl:text-base px-4 py-6 ${pathname.startsWith("/services") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>Services</Link>
+            <Link href="/services" className={`transition-colors text-sm xl:text-base px-4 py-6 active:text-brand ${pathname.startsWith("/services") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>Services</Link>
 
-            <Link href="/events/past-events" className={`transition-colors text-sm xl:text-base px-4 py-6 ${pathname.startsWith("/events") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/events/past-events" className={`transition-colors text-sm xl:text-base px-4 py-6 active:text-brand ${pathname.startsWith("/events") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               Event
             </Link>
-            <Link href="/mentors" className={`transition-colors text-sm xl:text-base px-4 py-6 ${pathname.startsWith("/mentors") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/mentors" className={`transition-colors text-sm xl:text-base px-4 py-6 active:text-brand ${pathname.startsWith("/mentors") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               Mentors
             </Link>
 
@@ -766,7 +797,7 @@ const Header = () => {
                     });
                   }
                 }}
-                className={`transition-colors flex items-center text-sm xl:text-base px-4 py-6 ${pathname.startsWith("/jobs") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
+                className={`transition-colors flex items-center text-sm xl:text-base px-4 py-6 active:text-brand ${pathname.startsWith("/jobs") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
                 aria-haspopup="menu"
                 aria-expanded={isJobsOpen}
                 aria-controls="jobs-menu"
@@ -888,232 +919,234 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Mobile/Tablet Menu Button */}
-          <div className="lg:hidden">
+          {/* Mobile Menu Button - Visible on lg and below */}
+          <div className="lg:hidden flex items-center">
             <button
+              ref={mobileToggleRef}
               onClick={toggleMenu}
-              className="text-gray-700 hover:text-brand transition-colors p-2"
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              className="text-gray-700 hover:text-brand p-2"
+              aria-label="Toggle menu"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
-
-        {/* Mobile/Tablet Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden px-2 pt-2 pb-4 sm:px-3 bg-gray-50 rounded-lg mb-4 max-h-[80vh] overflow-y-auto">
-            <div className="space-y-2">
-              <Link
-                href="/"
-                className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base ${pathname === "/" ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-                onClick={toggleMenu}
-              >
-                Home
-              </Link>
-
-              {/* Mobile Courses Accordion */}
-              <div className="space-y-2">
-                <button
-                  onClick={() => toggleMobileSection("courses")}
-                  className="w-full flex items-center justify-between px-4 py-3 text-gray-700 hover:text-brand hover:bg-white rounded-lg transition-colors text-sm sm:text-base"
-                  aria-expanded={mobileSections.courses}
-                  aria-controls="mobile-courses"
-                >
-                  <span>Courses</span>
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform duration-200 ${mobileSections.courses ? "rotate-180" : ""}`}
-                  />
-                </button>
-
-                {mobileSections.courses && (
-                  <div id="mobile-courses" className="pl-4 space-y-2">
-                    {courseCategories.map((category) => {
-                      const isOpen = mobileSections.openCategoryId === category.id;
-                      return (
-                        <div key={category.id} className="space-y-2">
-                          <button
-                            onClick={() => toggleMobileCategory(category.id)}
-                            className="w-full flex items-center justify-between px-4 py-2 text-sm text-gray-600 hover:text-brand hover:bg-white rounded-lg transition-colors"
-                            aria-expanded={isOpen}
-                            aria-controls={`mobile-category-${category.id}`}
-                          >
-                            <span>{category.name}</span>
-                            <ChevronRight
-                              className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-90" : ""}`}
-                            />
-                          </button>
-
-                          {isOpen && (
-                            <div id={`mobile-category-${category.id}`} className="pl-4 space-y-1">
-                              {category.courses.map((course, idx) => {
-                                const href = course.slug ? `/${course.slug}` : undefined;
-                                return href ? (
-                                  <Link
-                                    key={idx}
-                                    href={href}
-                                    className="block px-4 py-2 text-sm text-gray-600 hover:text-brand hover:bg-white rounded-lg transition-colors"
-                                    onClick={toggleMenu}
-                                  >
-                                    • {course.name}
-                                  </Link>
-                                ) : (
-                                  <div
-                                    key={idx}
-                                    className="block px-4 py-2 text-sm text-gray-600 rounded-lg"
-                                  >
-                                    • {course.name}
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
-                    <Link
-                      href="/courses"
-                      className="block px-4 py-2 text-sm text-brand hover:text-brand font-medium"
-                      onClick={toggleMenu}
-                    >
-                      View All Courses →
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Mobile Services Link */}
-              <Link
-                href="/services"
-                className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base ${pathname.startsWith("/services") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-                onClick={toggleMenu}
-              >
-                Services
-              </Link>
-
-              {/* Mobile Jobs Accordion */}
-              <div className="space-y-2">
-                <button
-                  onClick={() => toggleMobileSection("jobs")}
-                  className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base ${pathname.startsWith("/jobs") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-                  aria-expanded={mobileSections.jobs}
-                  aria-controls="mobile-jobs"
-                >
-                  <span>Jobs</span>
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform duration-200 ${mobileSections.jobs ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {mobileSections.jobs && (
-                  <div id="mobile-jobs" className="pl-4 space-y-1">
-                    <Link
-                      href="/jobs/live-jobs"
-                      className="block px-4 py-2 text-sm text-gray-600 hover:text-brand hover:bg-white rounded-lg transition-colors"
-                      onClick={toggleMenu}
-                    >
-                      • Live Jobs
-                    </Link>
-                    <Link
-                      href="/jobs/placements"
-                      className="block px-4 py-2 text-sm text-gray-600 hover:text-brand hover:bg-white rounded-lg transition-colors"
-                      onClick={toggleMenu}
-                    >
-                      • Placements
-                    </Link>
-                    <Link
-                      href="/jobs/careers"
-                      className="block px-4 py-2 text-sm text-gray-600 hover:text-brand hover:bg-white rounded-lg transition-colors"
-                      onClick={toggleMenu}
-                    >
-                      • Careers
-                    </Link>
-                    <Link
-                      href="/jobs/job-openings"
-                      className="block px-4 py-2 text-sm text-gray-600 hover:text-brand hover:bg-white rounded-lg transition-colors"
-                      onClick={toggleMenu}
-                    >
-                      • Job Openings
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Mobile About Accordion */}
-              <div className="space-y-2">
-                <button
-                  onClick={() => toggleMobileSection("about")}
-                  className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base ${pathname.startsWith("/about") || pathname.startsWith("/our-team") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-                  aria-expanded={mobileSections.about}
-                  aria-controls="mobile-about"
-                >
-                  <span>About</span>
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform duration-200 ${mobileSections.about ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {mobileSections.about && (
-                  <div id="mobile-about" className="pl-4 space-y-1">
-                    <Link
-                      href="/about-us"
-                      className="block px-4 py-2 text-sm text-gray-600 hover:text-brand hover:bg-white rounded-lg transition-colors"
-                      onClick={toggleMenu}
-                    >
-                      • About CDPL
-                    </Link>
-                    <Link
-                      href="/our-team"
-                      className="block px-4 py-2 text-sm text-gray-600 hover:text-brand hover:bg-white rounded-lg transition-colors"
-                      onClick={toggleMenu}
-                    >
-                      • Our Team
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              <Link
-                href="/events/past-events"
-                className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base ${pathname.startsWith("/events") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-                onClick={toggleMenu}
-              >
-                Event
-              </Link>
-              <Link
-                href="/mentors"
-                className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base ${pathname.startsWith("/mentors") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-                onClick={toggleMenu}
-              >
-                Mentors
-              </Link>
-              <Link
-                href="/blog"
-                className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base ${pathname.startsWith("/blog") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-                onClick={toggleMenu}
-              >
-                Blog
-              </Link>
-              <Link
-                href="/contact-us"
-                className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base ${pathname.startsWith("/contact-us") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-                onClick={toggleMenu}
-              >
-                Contact
-              </Link>
-              <button
-                onClick={() => {
-                  toggleMenu();
-                  setIsEnquireModalOpen(true);
-                }}
-                className="w-full block px-4 py-3 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg text-center text-sm sm:text-base font-semibold"
-              >
-                Free Demo
-              </button>
-            </div>
-          </div>
-        )}
       </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div ref={mobileMenuRef} className="lg:hidden bg-white border-t border-gray-100 max-h-[calc(100vh-73px)] overflow-y-auto shadow-xl">
+          <div className="px-4 pt-2 pb-6 space-y-1">
+            <Link
+              href="/"
+              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/" ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+              onClick={toggleMenu}
+            >
+              Home
+            </Link>
+
+            {/* Mobile Courses Accordion */}
+            <div className="space-y-2">
+              <button
+                onClick={() => toggleMobileSection("courses")}
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${isCoursesMenuOpen ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+                aria-expanded={mobileSections.courses}
+                aria-controls="mobile-courses"
+              >
+                <span>Courses</span>
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 ${mobileSections.courses ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              {mobileSections.courses && (
+                <div id="mobile-courses" className="pl-4 space-y-2">
+                  {courseCategories.map((category) => {
+                    const isOpen = mobileSections.openCategoryId === category.id;
+                    return (
+                      <div key={category.id} className="space-y-2">
+                        <button
+                          onClick={() => toggleMobileCategory(category.id)}
+                          className="w-full flex items-center justify-between px-4 py-2 text-sm text-gray-600 hover:text-brand hover:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none rounded-lg transition-colors outline-none"
+                          aria-expanded={isOpen}
+                          aria-controls={`mobile-category-${category.id}`}
+                        >
+                          <span>{category.name}</span>
+                          <ChevronRight
+                            className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-90" : ""}`}
+                          />
+                        </button>
+
+                        {isOpen && (
+                          <div id={`mobile-category-${category.id}`} className="pl-4 space-y-1">
+                            {category.courses.map((course, idx) => {
+                              const href = course.slug ? `/${course.slug}` : undefined;
+                              return href ? (
+                                <Link
+                                  key={idx}
+                                  href={href}
+                                  className={`block px-4 py-2 text-sm rounded-lg transition-colors active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === href ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                                  onClick={toggleMenu}
+                                >
+                                  • {course.name}
+                                </Link>
+                              ) : (
+                                <div
+                                  key={idx}
+                                  className="block px-4 py-2 text-sm text-gray-600 rounded-lg"
+                                >
+                                  • {course.name}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                  <Link
+                    href="/courses"
+                    className={`block px-4 py-2 text-sm font-medium active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/courses" ? "text-brand" : "text-brand hover:text-brand"}`}
+                    onClick={toggleMenu}
+                  >
+                    View All Courses →
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Services Link */}
+            <Link
+              href="/services"
+              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/services") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+              onClick={toggleMenu}
+            >
+              Services
+            </Link>
+
+            {/* Mobile Jobs Accordion */}
+            <div className="space-y-2">
+              <button
+                onClick={() => toggleMobileSection("jobs")}
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/jobs") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+                aria-expanded={mobileSections.jobs}
+                aria-controls="mobile-jobs"
+              >
+                <span>Jobs</span>
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 ${mobileSections.jobs ? "rotate-180" : ""}`}
+                />
+              </button>
+              {mobileSections.jobs && (
+                <div id="mobile-jobs" className="pl-4 space-y-1">
+                  <Link
+                    href="/jobs/live-jobs"
+                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/live-jobs" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                    onClick={toggleMenu}
+                  >
+                    • Live Jobs
+                  </Link>
+                  <Link
+                    href="/jobs/placements"
+                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/placements" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                    onClick={toggleMenu}
+                  >
+                    • Placements
+                  </Link>
+                  <Link
+                    href="/jobs/careers"
+                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/careers" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                    onClick={toggleMenu}
+                  >
+                    • Careers
+                  </Link>
+                  <Link
+                    href="/jobs/job-openings"
+                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/job-openings" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                    onClick={toggleMenu}
+                  >
+                    • Job Openings
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Mobile About Accordion */}
+            <div className="space-y-2">
+              <button
+                onClick={() => toggleMobileSection("about")}
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/about") || pathname.startsWith("/our-team") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+                aria-expanded={mobileSections.about}
+                aria-controls="mobile-about"
+              >
+                <span>About</span>
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 ${mobileSections.about ? "rotate-180" : ""}`}
+                />
+              </button>
+              {mobileSections.about && (
+                <div id="mobile-about" className="pl-4 space-y-1">
+                  <Link
+                    href="/about-us"
+                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/about-us" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                    onClick={toggleMenu}
+                  >
+                    • About CDPL
+                  </Link>
+                  <Link
+                    href="/our-team"
+                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/our-team" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                    onClick={toggleMenu}
+                  >
+                    • Our Team
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <Link
+              href="/events/past-events"
+              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/events") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+              onClick={toggleMenu}
+            >
+              Event
+            </Link>
+            <Link
+              href="/mentors"
+              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/mentors") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+              onClick={toggleMenu}
+            >
+              Mentors
+            </Link>
+            <Link
+              href="/blog"
+              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/blog") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+              onClick={toggleMenu}
+            >
+              Blog
+            </Link>
+            <Link
+              href="/contact-us"
+              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/contact-us") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+              onClick={toggleMenu}
+            >
+              Contact
+            </Link>
+            <button
+              onClick={() => {
+                toggleMenu();
+                setIsEnquireModalOpen(true);
+              }}
+              className="w-full block px-4 py-3 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg text-center text-sm sm:text-base font-semibold"
+            >
+              Free Demo
+            </button>
+          </div>
+        </div>
+      )}
+
       <EnquireModal isOpen={isEnquireModalOpen} onClose={() => setIsEnquireModalOpen(false)} />
-    </header>
+    </header >
   );
 };
 

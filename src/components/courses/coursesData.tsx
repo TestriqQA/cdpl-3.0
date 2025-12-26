@@ -12,6 +12,7 @@ export const coursesData: Category[] = [
         borderColor: 'border-blue-200',
         bgColor: 'bg-blue-50',
         iconBgColor: 'bg-blue-100',
+        href: '/software-testing-course',
         courses: [
             {
                 id: 'st-1',
@@ -196,6 +197,7 @@ export const coursesData: Category[] = [
         borderColor: 'border-purple-200',
         bgColor: 'bg-purple-50',
         iconBgColor: 'bg-purple-100',
+        href: '/ds-ml-courses',
         courses: [
             {
                 id: 'ds-1',
@@ -334,6 +336,7 @@ export const coursesData: Category[] = [
         borderColor: 'border-cyan-200',
         bgColor: 'bg-cyan-50',
         iconBgColor: 'bg-cyan-100',
+        href: '/bi-courses',
         courses: [
             {
                 id: 'bi-1',
@@ -454,6 +457,7 @@ export const coursesData: Category[] = [
         borderColor: 'border-pink-200',
         bgColor: 'bg-pink-50',
         iconBgColor: 'bg-pink-100',
+        href: '/artificial-intelligence-courses',
         courses: [
             {
                 id: 'ai-1',
@@ -485,6 +489,7 @@ export const coursesData: Category[] = [
         borderColor: "border-blue-200",
         bgColor: "bg-blue-50",
         iconBgColor: "bg-blue-100",
+        href: '/digital-marketing-courses',
         courses: [
             {
                 id: 'dm-1',

@@ -5,7 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, CheckCircle2, Loader2, GraduationCap } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
+import { useRef } from 'react';
 
 interface EnrollModalProps {
     isOpen: boolean;
@@ -36,22 +38,23 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
     const [emailError, setEmailError] = useState<string | null>(null);
     const [phoneError, setPhoneError] = useState<string | null>(null);
 
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        setFullNameError,
+        setEmailError,
+        setPhoneError
+    ]);
+
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     // Validation functions
     const validateFullName = (name: string) => {
-        if (!name) {
-            setFullNameError('Full Name is required.');
-            return false;
-        }
-        if (name.trim().length < 3) {
-            setFullNameError('Full Name must be at least 3 characters.');
-            return false;
-        }
-        setFullNameError(null);
-        return true;
+        const error = validateFullNameLib(name);
+        setFullNameError(error);
+        return error === null;
     };
 
     const validateEmail = (email: string) => {
@@ -68,53 +71,9 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
     };
 
     const validatePhoneNumber = (phone: string | undefined) => {
-        // Phone is now mandatory for enrollment
-        if (!phone || phone.trim() === '') {
-            setPhoneError('Mobile Number is required.');
-            return false;
-        }
-
-        if (!isValidPhoneNumber(phone)) {
-            setPhoneError('Invalid phone number format.');
-            return false;
-        }
-
-        const digits = phone.replace(/\D/g, '');
-
-        // Check for repeating digits
-        if (/^(\d)\1+$/.test(digits)) {
-            setPhoneError('Phone number cannot consist of repeating digits.');
-            return false;
-        }
-
-        // Check for sequential digits
-        const isSequential = (num: string) => {
-            for (let i = 0; i < num.length - 2; i++) {
-                const n1 = parseInt(num[i]);
-                const n2 = parseInt(num[i + 1]);
-                const n3 = parseInt(num[i + 2]);
-                if (
-                    (n2 === n1 + 1 && n3 === n2 + 1) ||
-                    (n2 === n1 - 1 && n3 === n2 - 1)
-                ) {
-                    return true;
-                }
-            }
-            return false;
-        };
-        if (isSequential(digits)) {
-            setPhoneError('Phone number cannot consist of sequential digits.');
-            return false;
-        }
-
-        // Check for all zeros
-        if (/^0+$/.test(digits)) {
-            setPhoneError('Phone number cannot be all zeros.');
-            return false;
-        }
-
-        setPhoneError(null);
-        return true;
+        const error = validatePhone(phone);
+        setPhoneError(error);
+        return error === null;
     };
 
     // Handle input changes
@@ -253,6 +212,7 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
                             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] as const }}
                             className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
                             onClick={(e) => e.stopPropagation()}
+                            ref={formRef}
                         >
                             {/* Modal Header */}
                             <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-5 relative">
@@ -306,6 +266,7 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
                                                 <input
                                                     type="text"
                                                     id="enroll-fullName"
+                                                    maxLength={35}
                                                     name="fullName"
                                                     value={formData.fullName}
                                                     onChange={handleInputChange}
@@ -357,6 +318,7 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
                                                 <PhoneInput
                                                     id="enroll-phone"
                                                     international
+                                                    limitMaxLength={true}
                                                     defaultCountry="IN"
                                                     value={formData.phone}
                                                     onChange={handlePhoneChange}

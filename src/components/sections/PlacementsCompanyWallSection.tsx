@@ -120,7 +120,7 @@ function TickerRow({
     <div className="group relative isolate overflow-hidden rounded-2xl bg-transparent">
       <div
         className={`marquee-track ${direction === "ltr" ? "marquee-ltr" : "marquee-rtl"
-          } flex gap-4 md:gap-3 sm:gap-2 py-3 md:py-2.5 sm:py-2 will-change-transform`}
+          } flex w-max py-3 md:py-2.5 sm:py-2 will-change-transform`}
         style={{ "--dur": `${speedSec}s` } as CSSVar}
       >
         {loopItems.map((name, i) => {
@@ -138,6 +138,7 @@ function TickerRow({
                 rounded-2xl border border-black/10 bg-white
                 shadow-sm transition-shadow hover:shadow-md
                 p-3 md:p-2.5 sm:p-2 max-[425px]:p-2
+                mr-4 md:mr-3 sm:mr-2
               `}
               title={name}
             >
@@ -241,11 +242,11 @@ export default function PlacementsCompanyWallSection({ contained = false }: Prop
 
         <div className="mt-5 space-y-4">
           {/* Row 1: right → left */}
-          <TickerRow items={rows[0]} direction="ltr" speedSec={8} />
+          <TickerRow items={rows[0]} direction="ltr" speedSec={40} />
           {/* Row 2: left → right */}
-          <TickerRow items={rows[1]} direction="rtl" speedSec={8} />
+          <TickerRow items={rows[1]} direction="rtl" speedSec={40} />
           {/* Row 3: right → left */}
-          <TickerRow items={rows[2]} direction="ltr" speedSec={8} />
+          <TickerRow items={rows[2]} direction="ltr" speedSec={40} />
         </div>
       </Wrapper>
 

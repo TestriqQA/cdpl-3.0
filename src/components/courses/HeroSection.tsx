@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
 import { Award, Users, Star, Home, ChevronRight, TrendingUp, CheckCircle2, User, Mail } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import EnrollModal from "@/components/EnrollModal";
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+import { validatePhone } from '@/lib/formValidation';
 
 export default function HeroSection() {
     const [isEnrollOpen, setIsEnrollOpen] = useState(false);
@@ -21,6 +22,14 @@ export default function HeroSection() {
     const [fullNameError, setFullNameError] = useState<string | null>(null);
     const [emailError, setEmailError] = useState<string | null>(null);
     const [phoneError, setPhoneError] = useState<string | null>(null);
+
+    const formRef = useRef<HTMLFormElement>(null);
+
+    useFormErrorReset(formRef, [
+        setFullNameError,
+        setEmailError,
+        setPhoneError
+    ]);
 
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -59,51 +68,9 @@ export default function HeroSection() {
     };
 
     const validatePhoneNumber = (phone: string | undefined) => {
-        if (!phone) {
-            setPhoneError('Mobile Number is required.');
-            return false;
-        }
-        if (!isValidPhoneNumber(phone)) {
-            setPhoneError('Invalid phone number format.');
-            return false;
-        }
-
-        const digits = phone.replace(/\D/g, '');
-
-        // Check for repeating digits
-        if (/^(\d)\1+$/.test(digits)) {
-            setPhoneError('Phone number cannot consist of repeating digits.');
-            return false;
-        }
-
-        // Check for sequential digits
-        const isSequential = (num: string) => {
-            for (let i = 0; i < num.length - 2; i++) {
-                const n1 = parseInt(num[i]);
-                const n2 = parseInt(num[i + 1]);
-                const n3 = parseInt(num[i + 2]);
-                if (
-                    (n2 === n1 + 1 && n3 === n2 + 1) ||
-                    (n2 === n1 - 1 && n3 === n2 - 1)
-                ) {
-                    return true;
-                }
-            }
-            return false;
-        };
-        if (isSequential(digits)) {
-            setPhoneError('Phone number cannot consist of sequential digits.');
-            return false;
-        }
-
-        // Check for all zeros
-        if (/^0+$/.test(digits)) {
-            setPhoneError('Phone number cannot be all zeros.');
-            return false;
-        }
-
-        setPhoneError(null);
-        return true;
+        const error = validatePhone(phone); // Use imported function directly
+        setPhoneError(error);
+        return error === null;
     };
 
     // Handle input changes
@@ -243,7 +210,7 @@ export default function HeroSection() {
                 <div className="pointer-events-none absolute -top-40 -right-40 h-96 w-96 animate-pulse rounded-full bg-gradient-to-br from-blue-400/20 to-indigo-400/20 blur-3xl" />
                 <div className="pointer-events-none absolute -bottom-40 -left-40 h-96 w-96 animate-pulse rounded-full bg-gradient-to-tr from-violet-400/20 to-purple-400/20 blur-3xl" style={{ animationDelay: '2s' }} />
 
-                <div className="mx-auto max-w-7xl px-4 md:px-8 py-10">
+                <div className="mx-auto max-w-7xl px-4 md:px-8 py-10 relative z-10">
 
                     {/* Enhanced Breadcrumbs */}
                     <nav aria-label="Breadcrumb" className="mb-6">
@@ -478,7 +445,7 @@ export default function HeroSection() {
 
                         {/* RIGHT: Enhanced callback form with premium design (Replaced) */}
                         <div className="hidden md:block md:col-span-5 lg:col-span-4 mt-8 md:mt-0">
-                            <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8 sticky top-6">
+                            <div className="bg-white/95 rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8 sticky top-6">
                                 {/* Form Header - Catchy and Actionable */}
                                 <div className="mb-6">
                                     <div className="flex items-center justify-between mb-2">
@@ -515,7 +482,7 @@ export default function HeroSection() {
                                 )}
 
                                 {/* Form */}
-                                <form onSubmit={handleSubmit} className="space-y-4">
+                                <form onSubmit={handleSubmit} className="space-y-4" ref={formRef}>
 
                                     {/* Full Name Input */}
                                     <div>
@@ -526,6 +493,7 @@ export default function HeroSection() {
                                             <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                                             <input
                                                 type="text"
+                                                maxLength={35}
                                                 name="fullName"
                                                 value={formData.fullName}
                                                 onChange={handleInputChange}
@@ -575,6 +543,7 @@ export default function HeroSection() {
                                         <div className="relative">
                                             <PhoneInput
                                                 international
+                                                limitMaxLength={true}
                                                 defaultCountry="IN"
                                                 value={formData.phone}
                                                 onChange={handlePhoneChange}

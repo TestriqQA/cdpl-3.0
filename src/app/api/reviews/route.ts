@@ -6,6 +6,8 @@ import axios from 'axios';
 const CLIENT_ID = '1078247115476-cujpa333jod5j1a9441po9r39snkce25.apps.googleusercontent.com';
 const CLIENT_SECRET = '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';
 const REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN || ''; // User mentioned providing it, but it wasn't in the JSON. Checking env or fallback.
+// Base URL for Google My Business API v4 - the account/location path will be appended
+const GOOGLE_MY_BUSINESS_API_BASE = 'https://mybusiness.googleapis.com/v4';
 const REDIRECT_URI = 'https://www.cinutedigital.com/';
 
 // Fallback data in case API fails or no token
@@ -83,8 +85,12 @@ export async function GET() {
         // If we don't have a refresh token, return fallback immediately
         if (!REFRESH_TOKEN) {
             console.warn('Review API: No REFRESH_TOKEN found. Serving fallback data.');
-            return NextResponse.json({ reviews: FALLBACK_REVIEWS, totalReviewCount: 289, averageRating: 4.8 });
+            return NextResponse.json({ reviews: FALLBACK_REVIEWS, totalReviewCount: 300, averageRating: 4.8 });
         }
+
+        // Debug: Log environment variables
+        console.log('GOOGLE_REFRESH_TOKEN from env:', REFRESH_TOKEN ? 'Set (length: ' + REFRESH_TOKEN.length + ')' : 'NOT SET');
+        console.log('Using API Base URL:', GOOGLE_MY_BUSINESS_API_BASE);
 
         const auth = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
         auth.setCredentials({ refresh_token: REFRESH_TOKEN });
@@ -149,8 +155,8 @@ export async function GET() {
 
         const responseData = {
             reviews: reviews.length > 0 ? reviews : FALLBACK_REVIEWS, // Use fallback if empty list returned
-            totalReviewCount: reviewsData.totalReviewCount || 289,
-            averageRating: reviewsData.averageRating || 4.8
+            totalReviewCount: realTotalReviews > 300 ? realTotalReviews : 300,
+            averageRating: realTotalReviews > 0 ? realAverageRating : 4.8
         };
 
         // Update cache
@@ -159,14 +165,34 @@ export async function GET() {
 
         return NextResponse.json(responseData);
 
-    } catch (error) {
-        console.error('Error fetching Google Reviews:', error);
+    } catch (error: any) {
+        console.error('Error fetching Google Reviews:', error.message);
+        if (axios.isAxiosError(error)) {
+            console.error('API Status:', error.response?.status);
+            console.error('API Response:', JSON.stringify(error.response?.data, null, 2));
+            console.error('API URL:', error.config?.url);
+        } else {
+            console.error('Unexpected Error:', error);
+        }
+
         // Graceful degradation
         return NextResponse.json({
             reviews: FALLBACK_REVIEWS,
-            totalReviewCount: 289,
+            totalReviewCount: 300,
             averageRating: 4.8,
             error: 'Failed to fetch live reviews, showing cached data.'
         });
+    }
+}
+
+// Helper to map Google ENUM stars to numbers
+function mapStarRating(rating: string): string {
+    switch (rating) {
+        case 'FIVE': return '5';
+        case 'FOUR': return '4';
+        case 'THREE': return '3';
+        case 'TWO': return '2';
+        case 'ONE': return '1';
+        default: return '5'; // Valid number as fallback
     }
 }

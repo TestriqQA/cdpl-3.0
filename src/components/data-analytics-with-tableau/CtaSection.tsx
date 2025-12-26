@@ -10,7 +10,7 @@ export default function CtaSection() {
     const courseName = "Data Analytics & Visualization with Tableau";
 
     return (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-slate-800 to-slate-900">
+        <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-slate-800 to-slate-900">
             <div className="max-w-4xl mx-auto text-center">
                 {/* Main Heading */}
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">

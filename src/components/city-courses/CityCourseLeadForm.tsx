@@ -1,23 +1,33 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { TrendingUp, User, Mail, CheckCircle2 } from "lucide-react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { isValidPhoneNumber } from "libphonenumber-js";
+import {
+    validateFullName as validateFullNameLib,
+    validateEmail as validateEmailLib,
+    validatePhone as validatePhoneLib
+} from '@/lib/formValidation';
 import { motion, type Variants } from "framer-motion";
 
+// Update interface
 export interface CityCourseLeadFormProps {
     className?: string;
     tracks?: string[];
     onSubmit?: (data: any) => void;
     variants?: Variants;
+    courseName?: string;
+    cityName?: string;
 }
 
 export default function CityCourseLeadForm({
     className = "",
     onSubmit,
-    variants
+    variants,
+    courseName,
+    cityName,
 }: CityCourseLeadFormProps) {
     // Form state
     const [formData, setFormData] = useState({
@@ -31,54 +41,35 @@ export default function CityCourseLeadForm({
     const [emailError, setEmailError] = useState<string | null>(null);
     const [phoneError, setPhoneError] = useState<string | null>(null);
 
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        setFullNameError,
+        setEmailError,
+        setPhoneError
+    ]);
+
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     // Validation functions
     const validateFullName = (name: string) => {
-        if (!name) {
-            setFullNameError("Full Name is required.");
-            return false;
-        }
-        if (name.trim().length < 3) {
-            setFullNameError("Full Name must be at least 3 characters.");
-            return false;
-        }
-        setFullNameError(null);
-        return true;
+        const error = validateFullNameLib(name);
+        setFullNameError(error);
+        return error === null;
     };
 
     const validateEmail = (email: string) => {
-        if (!email) {
-            setEmailError("Email Address is required.");
-            return false;
-        }
-        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-            setEmailError("Invalid email format.");
-            return false;
-        }
-        setEmailError(null);
-        return true;
+        const error = validateEmailLib(email);
+        setEmailError(error);
+        return error === null;
     };
 
     const validatePhoneNumber = (phone: string | undefined) => {
-        if (!phone) {
-            setPhoneError("Mobile Number is required.");
-            return false;
-        }
-        if (!isValidPhoneNumber(phone)) {
-            setPhoneError("Invalid phone number format.");
-            return false;
-        }
-        // Basic checks for repeating patterns, similar to Home Hero
-        const digits = phone.replace(/\D/g, "");
-        if (/^(\d)\1+$/.test(digits)) {
-            setPhoneError("Phone number cannot consist of repeating digits.");
-            return false;
-        }
-        setPhoneError(null);
-        return true;
+        const error = validatePhoneLib(phone);
+        setPhoneError(error);
+        return error === null;
     };
 
     const handleInputChange = (
@@ -114,7 +105,7 @@ export default function CityCourseLeadForm({
             try {
                 if (onSubmit) {
                     // If a custom handler is provided
-                    onSubmit(formData);
+                    onSubmit({ ...formData, interestedTrack: courseName, location: cityName });
                     setIsSubmitted(true);
                     setTimeout(() => setIsSubmitted(false), 5000);
                     setFormData({ fullName: "", email: "", phone: "" });
@@ -127,14 +118,9 @@ export default function CityCourseLeadForm({
                         },
                         body: JSON.stringify({
                             ...formData,
-                            // Source will be handled by the parent or use a default here?
-                            // Best to let the parent handle the API call or stick to the Home Hero pattern.
-                            // Since Home Hero handles it inside the component, we'll do the same but verify the source.
                             source: 'City Course Page - Hero Section',
-                            // Location needs to be passed in ideally or extracted from URL in backend?
-                            // For now, we just send form data. The API route can extract location from referer if needed,
-                            // BUT the requested requirements didn't specify passing location prop to form, just input fields.
-                            // We'll send the raw data.
+                            interestedTrack: courseName || 'Not Specified',
+                            location: cityName || 'Not Specified',
                         }),
                     });
 
@@ -215,6 +201,7 @@ export default function CityCourseLeadForm({
       `}</style>
 
             <motion.div
+                ref={formRef}
                 variants={variants}
                 className={`bg-white/92 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8 ${className}`}
             >
@@ -265,6 +252,7 @@ export default function CityCourseLeadForm({
                             <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                             <input
                                 type="text"
+                                maxLength={35}
                                 name="fullName"
                                 value={formData.fullName}
                                 onChange={handleInputChange}
@@ -314,6 +302,7 @@ export default function CityCourseLeadForm({
                         <div className="relative">
                             <PhoneInput
                                 international
+                                limitMaxLength={true}
                                 defaultCountry="IN"
                                 value={formData.phone}
                                 onChange={handlePhoneChange}

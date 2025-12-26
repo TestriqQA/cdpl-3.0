@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Clock, Users, ArrowRight, Star, Zap, Download, BookOpen, Gauge, Shield, Smartphone, CheckCircle, Cpu, BarChart3, Code, TrendingUp, Cog, Trophy, Brain, Database } from 'lucide-react';
+import { Clock, Users, ArrowRight, Star, Zap, Download, BookOpen, Gauge, Shield, Smartphone, CheckCircle, Cpu, BarChart3, Code, TrendingUp, Cog, Trophy, Brain, Database, Megaphone, Briefcase, Rocket, PieChart, FileSpreadsheet, LayoutGrid } from 'lucide-react';
 import { DownloadFormButton } from '@/components/DownloadForm';
 import Link from 'next/link';
 import { FaChartBar } from 'react-icons/fa6';
@@ -73,7 +73,88 @@ const iconMap = {
   Trophy: <Trophy className="w-10 h-10" />,
   Brain: <Brain className="w-10 h-10" />,
   Database: <Database className="w-10 h-10" />,
+  Megaphone: <Megaphone className="w-10 h-10" />,
+  Briefcase: <Briefcase className="w-10 h-10" />,
+  Rocket: <Rocket className="w-10 h-10" />,
+  PieChart: <PieChart className="w-10 h-10" />,
+  FileSpreadsheet: <FileSpreadsheet className="w-10 h-10" />,
+  LayoutGrid: <LayoutGrid className="w-10 h-10" />,
 
+};
+
+// --- Isolated Countdown Component ---
+const CountdownTimer: React.FC<{ targetDate: Date }> = ({ targetDate }) => {
+  const [timeLeft, setTimeLeft] = useState<{ hours: string; minutes: string; seconds: string; isOver: boolean }>({
+    hours: '00', minutes: '00', seconds: '00', isOver: false
+  });
+
+  useEffect(() => {
+    const calculateTime = () => {
+      const now = Date.now();
+      const diff = Math.max(0, targetDate.getTime() - now);
+      const totalSeconds = Math.floor(diff / 1000);
+
+      if (diff <= 0) {
+        return { hours: '00', minutes: '00', seconds: '00', isOver: true };
+      }
+
+      return {
+        hours: pad(Math.floor(totalSeconds / 3600)),
+        minutes: pad(Math.floor((totalSeconds % 3600) / 60)),
+        seconds: pad(totalSeconds % 60),
+        isOver: false
+      };
+    };
+
+    // Initial cal
+    setTimeLeft(calculateTime());
+
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTime());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [targetDate]);
+
+  return (
+    <>
+      <div
+        className="grid grid-cols-3 gap-3 text-center"
+        role="timer"
+        aria-live="polite"
+      >
+        <div className="rounded-lg bg-white shadow-sm p-3">
+          <div className="text-xl font-bold text-slate-900 tabular-nums">
+            {timeLeft.hours}
+          </div>
+          <div className="text-[10px] text-slate-500 tracking-wide uppercase">
+            Hours
+          </div>
+        </div>
+        <div className="rounded-lg bg-white shadow-sm p-3">
+          <div className="text-xl font-bold text-slate-900 tabular-nums">
+            {timeLeft.minutes}
+          </div>
+          <div className="text-[10px] text-slate-500 tracking-wide uppercase">
+            Minutes
+          </div>
+        </div>
+        <div className="rounded-lg bg-white shadow-sm p-3">
+          <div className="text-xl font-bold text-slate-900 tabular-nums">
+            {timeLeft.seconds}
+          </div>
+          <div className="text-[10px] text-slate-500 tracking-wide uppercase">
+            Seconds
+          </div>
+        </div>
+      </div>
+      {timeLeft.isOver && (
+        <p className="mt-2 text-xs text-red-600 font-semibold">
+          Offer has ended.
+        </p>
+      )}
+    </>
+  );
 };
 
 const COURSES: Course[] = [
@@ -240,7 +321,7 @@ const COURSES: Course[] = [
     level: 'Beginner',
     popular: true,
     link: '/machine-learning-course',
-    icon: 'TrendingUp',
+    icon: 'Cpu',
     features: ['Machine Learning Python', 'Data Science Hero', 'Python ML Program', 'MLOps & Production-Ready ML Systems'],
     syllabusLink: 'https://www.cinutedigital.com/downloads/machine-learning-and-data-science-with-python-hero-program.pdf',
   },
@@ -255,7 +336,7 @@ const COURSES: Course[] = [
     level: 'Beginner',
     popular: true,
     link: '/generative-ai-course',
-    icon: 'TrendingUp',
+    icon: 'Brain',
     features: ['Deep Learning Basics', 'NLP Mastery Course', 'Clustering', 'Generative AI Skills'],
     syllabusLink: 'https://www.cinutedigital.com/downloads/deep-learning-nlp-and-generativeai.pdf',
   },
@@ -270,7 +351,7 @@ const COURSES: Course[] = [
     level: 'Beginner',
     popular: false,
     link: '/data-science-course',
-    icon: 'TrendingUp',
+    icon: 'Trophy',
     features: ['Advanced Data Science', 'Machine Learning Masterclass', 'AI Algorithms Pro', 'Generative AI & LLM Engineering in Practice'],
     syllabusLink: 'https://www.cinutedigital.com/downloads/advanced-data-science-and-machine-learning-masterclass.pdf',
   },
@@ -285,7 +366,7 @@ const COURSES: Course[] = [
     level: 'Beginner',
     popular: true,
     link: '/ai-course',
-    icon: 'TrendingUp',
+    icon: 'Database',
     features: ['Data Science Mastery', 'AI Master Program', 'Comprehensive ML AI'],
     syllabusLink: 'https://www.cinutedigital.com/downloads/comprehensive-data-science-and-ai-master-program.pdf',
   },
@@ -300,7 +381,7 @@ const COURSES: Course[] = [
     level: 'Beginner',
     popular: true,
     link: '/machine-learning-using-python',
-    icon: 'TrendingUp',
+    icon: 'Code',
     features: ['ML Algorithms Python', 'Python ML Coding', 'Scikit-Learn Mastery'],
     syllabusLink: 'https://www.cinutedigital.com/downloads/machine-learning-algorithms-using-python-programming.pdf',
   },
@@ -315,7 +396,7 @@ const COURSES: Course[] = [
     level: 'Beginner',
     popular: true,
     link: '/data-visualization-in-r-programming',
-    icon: 'TrendingUp',
+    icon: 'BarChart3',
     features: ['R ML Visualization', 'Data Viz R', 'R Programming ML'],
     syllabusLink: 'https://www.cinutedigital.com/downloads/machine-learning-and-data-visualization-using-r-programming.pdf',
   },
@@ -349,7 +430,7 @@ const COURSES: Course[] = [
     level: 'Beginner',
     popular: true,
     link: '/data-analytics',
-    icon: 'BarChart3',
+    icon: 'TrendingUp',
     features: ['Advanced Analytics Hero', 'Data Analytics Mastery', 'Predictive Analytics Pro'],
     syllabusLink: 'https://www.cinutedigital.com/downloads/advanced-data-analytics-hero-program.pdf',
   },
@@ -364,7 +445,7 @@ const COURSES: Course[] = [
     level: 'Beginner',
     popular: true,
     link: '/data-analytics-python',
-    icon: 'BarChart3',
+    icon: 'Code',
     features: ['Python Data Analytics', 'Advanced Analytics Libraries', 'Pandas NumPy Mastery'],
     syllabusLink: 'https://www.cinutedigital.com/downloads/advanced-data-analytics-with-python-libraries.pdf',
   },
@@ -379,7 +460,7 @@ const COURSES: Course[] = [
     level: 'Beginner',
     popular: true,
     link: '/data-analytics-and-visualization',
-    icon: 'BarChart3',
+    icon: 'FileSpreadsheet',
     features: ['Excel Data Analytics', 'Data Visualization Excel', 'Excel Analytics Mastery'],
     syllabusLink: 'https://www.cinutedigital.com/downloads/advanced-excel-for-data-analytics-&-visualization.pdf',
   },
@@ -394,7 +475,7 @@ const COURSES: Course[] = [
     level: 'Beginner',
     popular: true,
     link: '/data-analytics-with-tableau',
-    icon: 'BarChart3',
+    icon: 'PieChart',
     features: ['Tableau Data Analytics', 'Visualization Mastery Tableau', 'Interactive Dashboards Tableau'],
     syllabusLink: 'https://www.cinutedigital.com/downloads/data-analytics-&-visualization-with-tableau.pdf',
   },
@@ -424,7 +505,7 @@ const COURSES: Course[] = [
     level: 'Beginner',
     popular: true,
     link: '/masters-in-data-engineering',
-    icon: 'BarChart3',
+    icon: 'Trophy',
     features: ['Power BI/Tableau', 'Big Data Concepts', 'Data Warehousing'],
     syllabusLink: 'https://www.cinutedigital.com/downloads/data-analytics-with-bi-and-big-data-engineering-master-program.pdf',
   },
@@ -458,7 +539,7 @@ const COURSES: Course[] = [
     level: 'Master',
     popular: true,
     link: '/digital-marketing-course',
-    icon: 'Smartphone',
+    icon: 'Megaphone',
     features: ['Holistic Strategy & Planning', 'Advanced Analytics & Attribution', 'Multi-Channel Campaigns', 'Portfolio & Freelance Readiness'],
     syllabusLink: 'https://www.cinutedigital.com/downloads/ai-driven-digital-marketing-&-analytics.pdf',
   },
@@ -473,7 +554,7 @@ const COURSES: Course[] = [
     level: 'Beginner',
     popular: true,
     link: '/ai-in-digital-marketing',
-    icon: 'Smartphone',
+    icon: 'Briefcase',
     features: ['AI-Powered Market Research & Customer Avatars', 'Automated Content Creation at Scale', 'AI Ads Optimization & Predictive Analytics', 'Build Your Own No-Code AI Marketing Team'],
     syllabusLink: 'https://www.cinutedigital.com/downloads/digital-marketing-and-ai-for-business-owners-digital-marketing-and-ai-for-business-owners.pdf',
   },
@@ -488,7 +569,7 @@ const COURSES: Course[] = [
     level: 'Beginner',
     popular: true,
     link: '/ai-bootcamp',
-    icon: 'Smartphone',
+    icon: 'Rocket',
     features: ['Prompt Engineering for Ads & Copywriting', 'AI Tools Mastery (ChatGPT, Claude, Midjourney, ElevenLabs, etc.)', 'Automated Funnels & Omnichannel AI Workflows', 'AI-Driven Performance Marketing & ROAS Optimization'],
     syllabusLink: 'https://www.cinutedigital.com/downloads/digital-marketing-with-ai-bootcamp-digital-marketing-with-ai-bootcamp.pdf',
   },
@@ -499,25 +580,36 @@ const COURSES: Course[] = [
 const pad = (n: number) => n.toString().padStart(2, '0');
 
 // --- Course Card Component (extracted layout/design/features from ModuleCard) ---
-const CourseCard: React.FC<{ course: Course; index: number; nowMs: number }> = ({ course, index, nowMs }) => {
+const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index }) => {
   const variant = pickVariant(index);
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 18 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  // 48h fallback window from first mount (matches ModuleCard behavior)
-  const fallbackDeadlineRef = React.useRef<Date | null>(null);
-  if (!course.offerEndsAt && !fallbackDeadlineRef.current) {
-    fallbackDeadlineRef.current = new Date(Date.now() + 48 * 3600 * 1000);
-  }
-  const target: Date = course.offerEndsAt ? new Date(course.offerEndsAt) : (fallbackDeadlineRef.current as Date);
-  const diff = Math.max(0, target.getTime() - nowMs);
-  const totalSeconds = Math.floor(diff / 1000);
-  const hours = pad(Math.floor(totalSeconds / 3600));
-  const minutes = pad(Math.floor((totalSeconds % 3600) / 60));
-  const seconds = pad(totalSeconds % 60);
-  const isOver = diff <= 0;
+
+  // Initialize ONLY ONCE on mount to ensure consistent hydration
+  const [target, setTarget] = React.useState<Date | null>(null);
+
+  useEffect(() => {
+    if (course.offerEndsAt) {
+      setTarget(new Date(course.offerEndsAt));
+    } else {
+      // Create a consistent deadline for this user session if not set
+      // We use sessionStorage to persist it across reloads if possible, or just memoize for this session
+      // For now, simple stable date:
+      const saved = sessionStorage.getItem(`deadline-${course.id}`);
+      if (saved) {
+        setTarget(new Date(saved));
+      } else {
+        const d = new Date(Date.now() + 48 * 3600 * 1000);
+        sessionStorage.setItem(`deadline-${course.id}`, d.toISOString());
+        setTarget(d);
+      }
+    }
+  }, [course.id, course.offerEndsAt]);
+
+  if (!target) return null; // Or a skeleton
 
   return (
     <motion.article
@@ -612,43 +704,7 @@ const CourseCard: React.FC<{ course: Course; index: number; nowMs: number }> = (
             Limited-time offer ends in
           </p>
 
-          <div
-            className="grid grid-cols-3 gap-3 text-center"
-            role="timer"
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            <div className="rounded-lg bg-white shadow-sm p-3">
-              <div className="text-xl font-bold text-slate-900 tabular-nums">
-                {hours}
-              </div>
-              <div className="text-[10px] text-slate-500 tracking-wide uppercase">
-                Hours
-              </div>
-            </div>
-            <div className="rounded-lg bg-white shadow-sm p-3">
-              <div className="text-xl font-bold text-slate-900 tabular-nums">
-                {minutes}
-              </div>
-              <div className="text-[10px] text-slate-500 tracking-wide uppercase">
-                Minutes
-              </div>
-            </div>
-            <div className="rounded-lg bg-white shadow-sm p-3">
-              <div className="text-xl font-bold text-slate-900 tabular-nums">
-                {seconds}
-              </div>
-              <div className="text-[10px] text-slate-500 tracking-wide uppercase">
-                Seconds
-              </div>
-            </div>
-          </div>
-
-          {isOver && (
-            <p className="mt-2 text-xs text-red-600 font-semibold">
-              Offer has ended.
-            </p>
-          )}
+          <CountdownTimer targetDate={target} />
         </div>
 
         <div className="pt-4 space-y-3 mt-auto">
@@ -695,12 +751,12 @@ export default function HomeFeaturedCoursesSection() {
   const ALL_CATEGORIES = ['All', 'Software Testing', 'Data Science', 'Business Intelligence', 'Artificial Intelligence', 'Digital Marketing'];
   const [activeCategory, setActiveCategory] = useState(ALL_CATEGORIES[0]);
 
-  // Ticking clock passed to each card (matches ModuleCard pattern)
-  const [nowMs, setNowMs] = useState<number>(() => Date.now());
-  useEffect(() => {
-    const id = setInterval(() => setNowMs(Date.now()), 1000);
-    return () => clearInterval(id);
-  }, []);
+  // Ticking clock removed from parent to prevent full re-renders
+  // const [nowMs, setNowMs] = useState<number>(() => Date.now());
+  // useEffect(() => {
+  //   const id = setInterval(() => setNowMs(Date.now()), 1000);
+  //   return () => clearInterval(id);
+  // }, []);
 
   const filteredCourses = activeCategory === 'All'
     ? COURSES
@@ -751,7 +807,7 @@ export default function HomeFeaturedCoursesSection() {
         {/* Course Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCourses.map((course, index) => (
-            <CourseCard key={course.id} course={course} index={index} nowMs={nowMs} />
+            <CourseCard key={course.id} course={course} index={index} />
           ))}
         </div>
 

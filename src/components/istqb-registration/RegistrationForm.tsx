@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion } from 'framer-motion';
-import { User, Mail, MapPin, Briefcase, Award, ArrowRight, Loader2, Phone } from 'lucide-react';
+import { User, Mail, MapPin, Briefcase, Award, ArrowRight, Loader2 } from 'lucide-react';
 import { submitIstqbStep1 } from '@/app/istqb-registration/actions';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
@@ -30,12 +31,12 @@ const ISTQB_LEVELS = [
     "ISTQB Certified Tester Advanced Level Technical Test Analyst (CTAL-TTA)"
 ];
 
-const CustomInput = React.forwardRef(({ className, ...props }: any, ref) => (
+const CustomInput = React.forwardRef(({ ...props }: any, ref) => (
     <input {...props} ref={ref} className="w-full py-3 px-3 outline-none bg-transparent" required />
 ));
 CustomInput.displayName = 'CustomInput';
 
-import { isValidPhoneNumber } from 'libphonenumber-js';
+import { validatePhone } from '@/lib/formValidation';
 
 // ... other imports
 
@@ -59,6 +60,12 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
         phone?: string;
     }>({});
 
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        () => setErrors({})
+    ]);
+
     // Validation Functions (Matched with HomeHeroSection)
     const validateFullName = (name: string) => {
         if (!name) return 'Full Name is required.';
@@ -73,29 +80,8 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
     };
 
     const validatePhoneNumber = (phone: string | undefined) => {
-        if (!phone) return 'Mobile Number is required.';
-        if (!isValidPhoneNumber(phone)) return 'Invalid phone number format.';
-
-        const digits = phone.replace(/\D/g, '');
-        // Check for repeating digits
-        if (/^(\d)\1+$/.test(digits)) return 'Phone number cannot consist of repeating digits.';
-
-        // Check for sequential digits
-        const isSequential = (num: string) => {
-            for (let i = 0; i < num.length - 2; i++) {
-                const n1 = parseInt(num[i]);
-                const n2 = parseInt(num[i + 1]);
-                const n3 = parseInt(num[i + 2]);
-                if ((n2 === n1 + 1 && n3 === n2 + 1) || (n2 === n1 - 1 && n3 === n2 - 1)) return true;
-            }
-            return false;
-        };
-        if (isSequential(digits)) return 'Phone number cannot consist of sequential digits.';
-
-        // Check for all zeros
-        if (/^0+$/.test(digits)) return 'Phone number cannot be all zeros.';
-
-        return undefined;
+        const error = validatePhone(phone);
+        return error || undefined; // Original expected undefined for success
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -170,6 +156,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="bg-white rounded-3xl shadow-xl border border-slate-100 py-8 px-6 md:p-10 relative h-full flex flex-col"
+            ref={formRef}
         >
             {/* ... Decor & Header unchanged ... */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-100/40 to-transparent rounded-bl-full rounded-tr-3xl -z-10" />
@@ -188,6 +175,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
                         <input
                             type="text"
                             name="name"
+                            maxLength={35}
                             required
                             value={formData.name}
                             onChange={handleInputChange}
@@ -224,6 +212,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
                     <div className="relative phone-input-container">
                         <PhoneInput
                             international
+                            limitMaxLength={true}
                             defaultCountry="IN"
                             value={formData.phone}
                             onChange={handlePhoneChange}

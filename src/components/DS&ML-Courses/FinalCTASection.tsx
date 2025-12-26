@@ -9,6 +9,7 @@ import { EnrollFormData, EnrollPopup } from "../EnrollForms";
 import BrochureDownloadModal from '@/components/home/BrochureDownloadModal';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import { validatePhone } from '@/lib/formValidation';
 
 /**
  * Integrated CTA content (from your data)
@@ -81,6 +82,13 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
 
     const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        const phoneError = validatePhone(form.phone);
+        if (phoneError) {
+            alert(phoneError);
+            return;
+        }
+
         setIsSubmitting(true);
         try {
             const response = await fetch('/api/contact', {
@@ -121,7 +129,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                 <div className="absolute top-1/2 left-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-pink-200/30 blur-3xl" />
             </div>
 
-            <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+            <div className="relative z-10 mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
                 <motion.div
                     className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12"
                     variants={containerVariants}
@@ -273,6 +281,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                                 id="cta-name"
                                                 name="name"
                                                 type="text"
+                                                maxLength={35}
                                                 required
                                                 value={form.name}
                                                 onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
@@ -304,6 +313,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                             <PhoneInput
                                                 defaultCountry="IN"
                                                 international
+                                                limitMaxLength={true}
                                                 countryCallingCodeEditable={false}
                                                 value={form.phone}
                                                 onChange={(e) => setForm((f) => ({ ...f, phone: e || '' }))}

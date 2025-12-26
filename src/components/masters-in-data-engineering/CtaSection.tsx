@@ -14,7 +14,7 @@ const CtaSection: React.FC = () => {
   return (
     <section
       id="cta"
-      className="py-16 md:py-20 bg-gradient-to-r from-slate-900 via-teal-900 to-slate-900 relative overflow-hidden"
+      className="py-10 bg-gradient-to-r from-slate-900 via-teal-900 to-slate-900 relative overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">

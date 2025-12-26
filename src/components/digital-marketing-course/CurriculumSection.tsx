@@ -122,7 +122,7 @@ export default function CurriculumSection() {
 
 
   return (
-    <section id="curriculum" aria-labelledby="curriculum-heading" className="relative py-8 md:py-8 bg-white">
+    <section id="curriculum" aria-labelledby="curriculum-heading" className="relative py-10 bg-white">
       {/* Scaffold */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 [background:radial-gradient(600px_240px_at_50%_0%,rgba(2,132,199,0.06),transparent_60%)]" />

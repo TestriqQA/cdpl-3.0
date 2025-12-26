@@ -226,7 +226,7 @@ export default function CurriculumSection() {
     <section
       id="java-curriculum"
       aria-labelledby="curriculum-heading"
-      className="relative py-8 md:py-14 bg-gray-50"
+      className="relative py-10 bg-gray-50"
     >
       {/* subtle futuristic grid accent (sleek, non-intrusive) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">

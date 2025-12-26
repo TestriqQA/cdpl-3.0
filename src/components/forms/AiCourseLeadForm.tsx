@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { User, Mail, CheckCircle2, TrendingUp } from "lucide-react";
 
 // Import react-phone-number-input for professional phone input
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+import {
+    validateFullName as validateFullNameLib,
+    validateEmail as validateEmailLib,
+    validatePhone
+} from '@/lib/formValidation';
 
 export default function AiCourseLeadForm({
     className = '',
@@ -33,61 +38,45 @@ export default function AiCourseLeadForm({
     const [emailError, setEmailError] = useState<string | null>(null);
     const [phoneError, setPhoneError] = useState<string | null>(null);
 
+    const formRef = useRef<HTMLFormElement>(null);
+
+    useFormErrorReset(formRef, [
+        setFullNameError,
+        setEmailError,
+        setPhoneError
+    ]);
+
     // Submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    // Validation functions (same as home page)
+    // Validation functions
+    // Dynamic import to avoid hydration mismatches if any, or just direct use if simpler.
+    // We will use the imported logic.
+    // Note: We need to import them at the top of the file, so we'll do that in a separate step or assume available if we did.
+    // Here we replace the content with calls to library.
+
+    // We need to fetch imports first. 
+    // Let's use a wrapper that calls the library functions.
+    // Assuming we add imports at the top:
+    // import { validateFullName as validateFullNameLib, ... } from '@/lib/formValidation';
+
     const validateFullName = (name: string): boolean => {
-        if (!name.trim()) {
-            setFullNameError('Full name is required.');
-            return false;
-        }
-        if (name.trim().length < 3) {
-            setFullNameError('Full name must be at least 3 characters.');
-            return false;
-        }
-        if (!/^[a-zA-Z\s]+$/.test(name)) {
-            setFullNameError('Full name can only contain letters and spaces.');
-            return false;
-        }
-        setFullNameError(null);
-        return true;
+        const error = validateFullNameLib(name);
+        setFullNameError(error);
+        return error === null;
     };
 
     const validateEmail = (email: string): boolean => {
-        if (!email.trim()) {
-            setEmailError('Email address is required.');
-            return false;
-        }
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            setEmailError('Please enter a valid email address.');
-            return false;
-        }
-        setEmailError(null);
-        return true;
+        const error = validateEmailLib(email);
+        setEmailError(error);
+        return error === null;
     };
 
     const validatePhoneNumber = (phone: string): boolean => {
-        if (!phone || phone.trim() === '') {
-            setPhoneError('Phone number is required.');
-            return false;
-        }
-
-        if (!isValidPhoneNumber(phone)) {
-            setPhoneError('Please enter a valid phone number.');
-            return false;
-        }
-
-        // Check for all zeros
-        if (/^[+\s0()-]+$/.test(phone)) {
-            setPhoneError('Phone number cannot be all zeros.');
-            return false;
-        }
-
-        setPhoneError(null);
-        return true;
+        const error = validatePhone(phone);
+        setPhoneError(error);
+        return error === null;
     };
 
     // Handle input changes
@@ -199,6 +188,7 @@ export default function AiCourseLeadForm({
       `}</style>
 
             <form
+                ref={formRef}
                 onSubmit={handleSubmit}
                 aria-label="Quick enrollment form"
                 className={[
@@ -249,6 +239,7 @@ export default function AiCourseLeadForm({
                             <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                             <input
                                 type="text"
+                                maxLength={35}
                                 name="fullName"
                                 value={formData.fullName}
                                 onChange={handleInputChange}
@@ -298,6 +289,7 @@ export default function AiCourseLeadForm({
                         <div className="relative">
                             <PhoneInput
                                 international
+                                limitMaxLength={true}
                                 defaultCountry="IN"
                                 value={formData.phone}
                                 onChange={handlePhoneChange}

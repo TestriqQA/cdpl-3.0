@@ -80,8 +80,7 @@ export default function WhyLearnSection() {
 
     return (
         <section
-            className="py-5 md:py-10 bg-gradient-to-b from-white to-indigo-50"
-            id="why-learn"
+            className="py-10 bg-gradient-to-b from-white to-indigo-50"
             aria-labelledby="why-learn-title"
         >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

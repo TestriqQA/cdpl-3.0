@@ -64,7 +64,7 @@ const CurriculumSection: React.FC = () => {
   const courseName = "Data Analytics with BI & Big Data Engineering Master Program";
 
   return (
-    <section id="curriculum" className="bg-gray-50 py-16 sm:py-24">
+    <section id="curriculum" className="bg-gray-50 py-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-base font-semibold tracking-wide text-teal-600 uppercase">

@@ -108,7 +108,7 @@ export default function InstructorSection() {
   return (
     <section
       id="instructor"
-      className="py-16 md:py-2 bg-white"
+      className="py-10 bg-white"
       aria-label="Learn from Industry Leaders"
     >
 

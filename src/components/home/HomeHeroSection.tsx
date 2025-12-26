@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
@@ -21,7 +21,7 @@ import {
 // Import react-phone-number-input for professional phone input
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
 // Import BrochureDownloadModal
 import BrochureDownloadModal from './BrochureDownloadModal';
@@ -249,6 +249,9 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
 );
 
 const HomeHeroSection: React.FC = () => {
+  // Ref for the form container to handle click-outside
+  const formRef = useRef<HTMLDivElement>(null);
+
   // Form state
   const [formData, setFormData] = useState({
     fullName: '',
@@ -260,6 +263,27 @@ const HomeHeroSection: React.FC = () => {
   const [fullNameError, setFullNameError] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
+
+  // Handle click outside to blur inputs and clear errors
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (formRef.current && !formRef.current.contains(event.target as Node)) {
+        // If clicking outside the form, blur any active input inside the form
+        if (document.activeElement instanceof HTMLElement && formRef.current.contains(document.activeElement)) {
+          document.activeElement.blur();
+        }
+        // Clear all validation errors
+        setFullNameError(null);
+        setEmailError(null);
+        setPhoneError(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   // Loading and submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -276,16 +300,9 @@ const HomeHeroSection: React.FC = () => {
 
   // Validation functions
   const validateFullName = (name: string) => {
-    if (!name) {
-      setFullNameError('Full Name is required.');
-      return false;
-    }
-    if (name.trim().length < 3) {
-      setFullNameError('Full Name must be at least 3 characters.');
-      return false;
-    }
-    setFullNameError(null);
-    return true;
+    const error = validateFullNameLib(name);
+    setFullNameError(error);
+    return error === null;
   };
 
   const validateEmail = (email: string) => {
@@ -302,51 +319,9 @@ const HomeHeroSection: React.FC = () => {
   };
 
   const validatePhoneNumber = (phone: string | undefined) => {
-    if (!phone) {
-      setPhoneError('Mobile Number is required.');
-      return false;
-    }
-    if (!isValidPhoneNumber(phone)) {
-      setPhoneError('Invalid phone number format.');
-      return false;
-    }
-
-    const digits = phone.replace(/\D/g, '');
-
-    // Check for repeating digits
-    if (/^(\d)\1+$/.test(digits)) {
-      setPhoneError('Phone number cannot consist of repeating digits.');
-      return false;
-    }
-
-    // Check for sequential digits
-    const isSequential = (num: string) => {
-      for (let i = 0; i < num.length - 2; i++) {
-        const n1 = parseInt(num[i]);
-        const n2 = parseInt(num[i + 1]);
-        const n3 = parseInt(num[i + 2]);
-        if (
-          (n2 === n1 + 1 && n3 === n2 + 1) ||
-          (n2 === n1 - 1 && n3 === n2 - 1)
-        ) {
-          return true;
-        }
-      }
-      return false;
-    };
-    if (isSequential(digits)) {
-      setPhoneError('Phone number cannot consist of sequential digits.');
-      return false;
-    }
-
-    // Check for all zeros
-    if (/^0+$/.test(digits)) {
-      setPhoneError('Phone number cannot be all zeros.');
-      return false;
-    }
-
-    setPhoneError(null);
-    return true;
+    const error = validatePhone(phone);
+    setPhoneError(error);
+    return error === null;
   };
 
   // Handle input changes
@@ -442,7 +417,7 @@ const HomeHeroSection: React.FC = () => {
       className="order-2 lg:order-2 lg:col-span-5"
     >
       <div className="sticky top-4 max-w-sm mx-auto lg:ml-auto lg:mr-0">
-        <div className="bg-white/92 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8">
+        <div ref={formRef} className="bg-white/92 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8">
           {/* Form Header - Catchy and Actionable */}
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
@@ -490,6 +465,7 @@ const HomeHeroSection: React.FC = () => {
                 <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                 <input
                   type="text"
+                  maxLength={35}
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleInputChange}
@@ -539,6 +515,7 @@ const HomeHeroSection: React.FC = () => {
               <div className="relative">
                 <PhoneInput
                   international
+                  limitMaxLength={true}
                   defaultCountry="IN"
                   value={formData.phone}
                   onChange={handlePhoneChange}
@@ -607,8 +584,7 @@ const HomeHeroSection: React.FC = () => {
           border-radius: 0.5rem;
           font-size: 0.875rem;
           color: #1e293b;
-          outline: none;
-          transition: all 0.3s;
+          transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .phone-input-container .PhoneInputInput::placeholder {
@@ -662,6 +638,7 @@ const HomeHeroSection: React.FC = () => {
               repeat: Infinity,
               ease: "easeInOut"
             }}
+            style={{ willChange: 'transform, opacity' }}
             className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-orange-200 to-orange-100 rounded-full blur-3xl"
           />
           <motion.div
@@ -674,6 +651,7 @@ const HomeHeroSection: React.FC = () => {
               repeat: Infinity,
               ease: "easeInOut"
             }}
+            style={{ willChange: 'transform, opacity' }}
             className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-tr from-blue-200 to-blue-100 rounded-full blur-3xl"
           />
         </div>

@@ -37,7 +37,7 @@ export default function HeroSection() {
             </div>
 
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-12 md:pt-6 md:pb-16 relative z-10">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 relative z-10">
                 {/* Breadcrumbs */}
                 <nav aria-label="Breadcrumb" className="mb-4">
                     <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">

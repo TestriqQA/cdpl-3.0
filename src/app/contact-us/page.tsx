@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { ContactHeroSection } from '@/components/sections/ContactHeroSection';
 import { ContactMethodsSection } from '@/components/sections/ContactMethodSection';
-import { ContactOfficeMapSection } from '@/components/sections/ContactOfficeMapSection';
-import { ContactBookCallSection } from '@/components/sections/ContactBookCall';
-import { ContactFAQSection } from '@/components/sections/ContactFAQSection';
-import ContactReviewSection from '@/components/sections/ContactReviewSection';
+
+const ContactOfficeMapSection = dynamic(() => import('@/components/sections/ContactOfficeMapSection').then(mod => mod.ContactOfficeMapSection), { ssr: true });
+const ContactBookCallSection = dynamic(() => import('@/components/sections/ContactBookCall').then(mod => mod.ContactBookCallSection), { ssr: true });
+const ContactFAQSection = dynamic(() => import('@/components/sections/ContactFAQSection').then(mod => mod.ContactFAQSection), { ssr: true });
+const ContactReviewSection = dynamic(() => import('@/components/sections/ContactReviewSection'), { ssr: true });
+
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateContactPageSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";

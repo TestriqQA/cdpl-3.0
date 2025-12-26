@@ -13,10 +13,10 @@ type Stat = {
 
 // ✅ Stats extracted from the PDF (pp. 1 & 6)
 const stats: Stat[] = [
-  { value: '1,01,000+', label: 'Job Vacancies in India',  delay: 0.1, bg: 'bg-sky-50',     border: 'border-sky-200',     ink: 'text-sky-900' }, // 101,000+
-  { value: '4 LPA',     label: 'Freshers’ Average Salary', delay: 0.2, bg: 'bg-amber-50',   border: 'border-amber-200',   ink: 'text-amber-900' },
-  { value: '25%',       label: 'Market Growth (2020–2030)',delay: 0.3, bg: 'bg-emerald-50', border: 'border-emerald-200', ink: 'text-emerald-900' },
-  { value: '30 Hours',  label: 'Program Duration',         delay: 0.4, bg: 'bg-violet-50',  border: 'border-violet-200',  ink: 'text-violet-900' },
+  { value: '1,01,000+', label: 'Job Vacancies in India', delay: 0.1, bg: 'bg-sky-50', border: 'border-sky-200', ink: 'text-sky-900' }, // 101,000+
+  { value: '4 LPA', label: 'Freshers’ Average Salary', delay: 0.2, bg: 'bg-amber-50', border: 'border-amber-200', ink: 'text-amber-900' },
+  { value: '25%', label: 'Market Growth (2020–2030)', delay: 0.3, bg: 'bg-emerald-50', border: 'border-emerald-200', ink: 'text-emerald-900' },
+  { value: '30 Hours', label: 'Program Duration', delay: 0.4, bg: 'bg-violet-50', border: 'border-violet-200', ink: 'text-violet-900' },
 ];
 
 /** CountUp: animates the numeric portion of a value string (e.g. "101,000+", "4 LPA", "25%", "30 Hours") */
@@ -62,7 +62,7 @@ export default function StatsSection() {
     <section
       id="mysql-stats"
       aria-labelledby="stats-heading"
-      className="relative py-4 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* subtle top/bottom separators */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

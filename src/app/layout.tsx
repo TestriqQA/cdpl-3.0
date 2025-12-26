@@ -24,7 +24,7 @@ import { SITE_CONFIG, SEO_DEFAULTS } from "@/lib/seo-config";
 import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], display: 'swap' });
 
 // ============================================================================
 // DYNAMIC IMPORTS (for performance)
@@ -32,6 +32,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 const Header = dynamic(() => import("@/components/Layout/Header"), { ssr: true });
 const Footer = dynamic(() => import("@/components/Layout/Footer"), { ssr: true });
+const SpecialOfferBanner = dynamic(() => import("@/components/SpecialOfferBanner"), { ssr: true });
 
 // ============================================================================
 // GLOBAL METADATA (using the new generator)
@@ -86,13 +87,12 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href={SITE_CONFIG.appleTouchIcon} />
         <link rel="icon" href={SITE_CONFIG.favicon} />
 
-        {/* Preconnect to external domains for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+
       </head>
 
       <body className={`${inter.className} antialiased`}>
+        <SpecialOfferBanner />
         <Header />
         {children}
         <Footer />

@@ -112,6 +112,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
                             <CityCourseLeadForm
                                 variants={itemVariants}
                                 tracks={data.specializations}
+                                courseName={data.courseName}
+                                cityName={location}
                             />
                         </div>
 
@@ -182,6 +184,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
                             variants={itemVariants}
                             tracks={data.specializations}
                             className="mt-6"
+                            courseName={data.courseName}
+                            cityName={location}
                         />
                     </div>
                 </motion.div>

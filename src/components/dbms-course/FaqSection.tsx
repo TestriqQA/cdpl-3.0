@@ -12,7 +12,7 @@ export default function FaqSection() {
 
 
   return (
-    <section id="faq" aria-labelledby="faq-heading" className="relative py-8 md:py-10 bg-white">
+    <section id="faq" aria-labelledby="faq-heading" className="relative py-10 bg-white">
       {/* subtle frame lines for a clean, slightly futuristic look */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-4xl bg-slate-100" />

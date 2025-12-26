@@ -141,7 +141,7 @@ export default function MentorOutcomesSection() {
         </div>
 
         {/* KPIs */}
-        <div className="mb-8 grid gap-3 sm:grid-cols-4">
+        <div className="mb-8 grid grid-cols-1 min-[286px]:grid-cols-2 gap-3 sm:grid-cols-4">
           {[
             {
               num: "92%",
@@ -162,7 +162,7 @@ export default function MentorOutcomesSection() {
                 "absolute -left-6 -bottom-6 h-24 w-24 rounded-full bg-indigo-200/40",
             },
             {
-              num: "30–90d",
+              num: "30–90 days",
               label: "Typical time-to-offer",
               cls: "text-emerald-600",
               card:

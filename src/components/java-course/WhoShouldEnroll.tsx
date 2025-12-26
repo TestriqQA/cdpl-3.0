@@ -84,7 +84,7 @@ export default function WhoShouldEnroll() {
     <section
       id="who-should-enroll"
       aria-labelledby="enroll-heading"
-      className="relative py-8 md:py-14 bg-gray-50"
+      className="relative py-10 bg-gray-50"
     >
       {/* Subtle futuristic accent (sleek, non-intrusive) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">

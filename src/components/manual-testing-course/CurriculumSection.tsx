@@ -1,7 +1,7 @@
 /* ==================== CURRICULUM (Light Theme) — from PDF ==================== */
 "use client";
 
-import { useMemo, useState } from "react";
+
 import { CheckCircle2, BookOpen, Target, Sparkles, ChevronDown, NotebookPen, FlaskConical, Bug, Layers, Pin } from "lucide-react";
 
 /* ---------- Token: small color map so cards feel lively but not loud ---------- */
@@ -241,7 +241,7 @@ function CurriculumCard({ mod }: { mod: Module }) {
 
     return (
         <article
-            className={`group mx-auto relative rounded-2xl ${colors.cardBg} ring-1 ring-inset ${colors.borderColor} shadow-sm hover:shadow-md transition-shadow border-l-4 ${colors.accentBorder}`}
+            className={`group mx-auto relative rounded-2xl ${colors.cardBg} ring-1 ring-inset ${colors.borderColor} shadow-[0_1px_0_0_rgba(15,23,42,0.04)] transition hover:shadow-md focus-within:ring-2 focus-within:ring-slate-300 border-l-4 ${colors.accentBorder} h-full`}
             aria-label={`${mod.weeks}: ${mod.title}`}
         >
             <AccentBar accent={mod.accent} />
@@ -305,29 +305,11 @@ function CurriculumCard({ mod }: { mod: Module }) {
 
 /* ---------- Main Curriculum Section ---------- */
 export default function CurriculumSection() {
-    const [query, setQuery] = useState("");
-    const [sectionFilter, setSectionFilter] = useState<string>("All");
 
-    const sectionOptions = useMemo(
-        () => ["All", ...Array.from(new Set(MODULES.map(m => m.weeks)))],
-        []
-    );
-
-    const filtered = useMemo(() => {
-        const q = query.toLowerCase();
-        return MODULES.filter((m) => {
-            const hit =
-                m.title.toLowerCase().includes(q) ||
-                m.topics.some((t) => t.toLowerCase().includes(q)) ||
-                m.outcomes.some((o) => o.toLowerCase().includes(q));
-            const sectionOk = sectionFilter === "All" || m.weeks === sectionFilter;
-            return hit && sectionOk;
-        });
-    }, [query, sectionFilter]);
 
 
     return (
-        <section className="py-15 md:py-20 bg-white" id="curriculum" aria-label="Manual Software Testing Curriculum">
+        <section className="py-10 bg-white" aria-label="Manual Software Testing Curriculum">
 
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -341,38 +323,11 @@ export default function CurriculumSection() {
                     </p>
                 </div>
 
-                {/* Controls */}
-                <div className="mb-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-                    <div className="flex-1">
-                        <label htmlFor="curriculum-search" className="sr-only">Search curriculum</label>
-                        <input
-                            id="curriculum-search"
-                            placeholder="Search topics (e.g., 'DTLC', 'Regression Testing', 'Jira')"
-                            className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                            aria-label="Search curriculum topics"
-                        />
-                    </div>
 
-                    <div className="flex items-center gap-2">
-                        <label htmlFor="section-filter" className="sr-only">Filter by section</label>
-                        <select
-                            id="section-filter"
-                            className="rounded-xl border border-gray-300 bg-white px-3 py-3 text-sm text-gray-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            value={sectionFilter}
-                            onChange={(e) => setSectionFilter(e.target.value)}
-                        >
-                            {sectionOptions.map(opt => (
-                                <option key={opt}>{opt}</option>
-                            ))}
-                        </select>
-                    </div>
-                </div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8 items-start">
-                    {filtered.map((m) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8">
+                    {MODULES.map((m) => (
                         <CurriculumCard key={m.id} mod={m} />
                     ))}
                 </div>

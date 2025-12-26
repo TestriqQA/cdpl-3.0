@@ -39,7 +39,7 @@ export default function TestimonialsSection({
   const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
 
   return (
-    <section id={id} aria-labelledby={`${id}-heading`} className="relative py-12 sm:py-16 md:py-20">
+    <section id={id} aria-labelledby={`${id}-heading`} className="relative py-10">
       {/* Subtle grid backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.04)_1px,transparent_1px)] bg-[size:28px_28px]" />

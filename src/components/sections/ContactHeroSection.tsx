@@ -1,14 +1,18 @@
 // hero section
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { Phone, Mail, CalendarDays, Home, ChevronRight, User, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 // Import react-phone-number-input for professional phone input
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+import {
+  validatePhone as validatePhoneLib,
+  validateFullName as validateFullNameLib
+} from '@/lib/formValidation';
 
 type FormState = {
   fullName: string;
@@ -33,22 +37,25 @@ export function ContactHeroSection() {
   const [phoneError, setPhoneError] = useState<string | null>(null);
   const [messageError, setMessageError] = useState<string | null>(null);
 
+  const mobileFormRef = useRef<HTMLDivElement>(null);
+  const desktopFormRef = useRef<HTMLDivElement>(null);
+
+  useFormErrorReset([mobileFormRef, desktopFormRef], [
+    setFullNameError,
+    setEmailError,
+    setPhoneError,
+    setMessageError
+  ]);
+
   // Loading and submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Validation functions
   const validateFullName = (name: string) => {
-    if (!name) {
-      setFullNameError('Full Name is required.');
-      return false;
-    }
-    if (name.trim().length < 3) {
-      setFullNameError('Full Name must be at least 3 characters.');
-      return false;
-    }
-    setFullNameError(null);
-    return true;
+    const error = validateFullNameLib(name);
+    setFullNameError(error);
+    return error === null;
   };
 
   const validateEmail = (email: string) => {
@@ -65,51 +72,9 @@ export function ContactHeroSection() {
   };
 
   const validatePhoneNumber = (phone: string | undefined) => {
-    if (!phone) {
-      setPhoneError('Mobile Number is required.');
-      return false;
-    }
-    if (!isValidPhoneNumber(phone)) {
-      setPhoneError('Invalid phone number format.');
-      return false;
-    }
-
-    const digits = phone.replace(/\D/g, '');
-
-    // Check for repeating digits
-    if (/^(\d)\1+$/.test(digits)) {
-      setPhoneError('Phone number cannot consist of repeating digits.');
-      return false;
-    }
-
-    // Check for sequential digits
-    const isSequential = (num: string) => {
-      for (let i = 0; i < num.length - 2; i++) {
-        const n1 = parseInt(num[i]);
-        const n2 = parseInt(num[i + 1]);
-        const n3 = parseInt(num[i + 2]);
-        if (
-          (n2 === n1 + 1 && n3 === n2 + 1) ||
-          (n2 === n1 - 1 && n3 === n2 - 1)
-        ) {
-          return true;
-        }
-      }
-      return false;
-    };
-    if (isSequential(digits)) {
-      setPhoneError('Phone number cannot consist of sequential digits.');
-      return false;
-    }
-
-    // Check for all zeros
-    if (/^0+$/.test(digits)) {
-      setPhoneError('Phone number cannot be all zeros.');
-      return false;
-    }
-
-    setPhoneError(null);
-    return true;
+    const error = validatePhoneLib(phone);
+    setPhoneError(error);
+    return error === null;
   };
 
   const validateMessage = (message: string) => {
@@ -216,7 +181,7 @@ export function ContactHeroSection() {
           font-size: 0.875rem;
           color: #1e293b;
           outline: none;
-          transition: all 0.3s;
+          transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .phone-input-container .PhoneInputInput::placeholder {
@@ -264,7 +229,7 @@ export function ContactHeroSection() {
           padding: 0.30rem 1rem;
           padding-left: 0.875rem;
           padding-right: 1rem;
-          transition: all 0.3s;
+          transition: border-color 0.3s, box-shadow 0.3s;
           background-color: transparent;
         }
 
@@ -306,6 +271,7 @@ export function ContactHeroSection() {
           style={{
             background:
               "radial-gradient(60% 50% at 10% 10%, rgba(56,189,248,0.18), transparent 60%), radial-gradient(50% 40% at 90% 10%, rgba(167,139,250,0.18), transparent 60%)",
+            willChange: "transform",
           }}
         />
         {/* subtle grid overlay ABOVE white, BELOW content */}
@@ -358,7 +324,7 @@ export function ContactHeroSection() {
                 {/* gradient outer skin + 1px border */}
                 <div className="rounded-3xl p-[1px] bg-gradient-to-br from-sky-100/70 via-indigo-100/60 to-orange-100/70 shadow-2xl">
                   {/* inner glass panel */}
-                  <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8">
+                  <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8" ref={mobileFormRef}>
                     <h2 className="text-2xl font-bold text-slate-900">Get in Touch</h2>
                     <p className="mt-1.5 text-slate-600">
                       Have questions about our courses or placements? Our expert counselors are here to help you.
@@ -384,18 +350,20 @@ export function ContactHeroSection() {
                     <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                       {/* Full Name Input - TestRiq Style */}
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label htmlFor="fullName" className="block text-sm font-semibold text-gray-700 mb-2">
                           Full Name *
                         </label>
                         <div className="relative">
                           <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
                           <input
                             type="text"
+                            maxLength={35}
                             name="fullName"
                             value={formData.fullName}
                             onChange={handleInputChange}
                             placeholder="Enter your full name"
-                            className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${fullNameError
+                            id="fullName"
+                            className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 ${fullNameError
                               ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                               : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                               }`}
@@ -408,7 +376,7 @@ export function ContactHeroSection() {
 
                       {/* Email Input - TestRiq Style */}
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
                           Email Address *
                         </label>
                         <div className="relative">
@@ -419,7 +387,8 @@ export function ContactHeroSection() {
                             value={formData.email}
                             onChange={handleInputChange}
                             placeholder="Enter your email address"
-                            className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${emailError
+                            id="email"
+                            className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 ${emailError
                               ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                               : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                               }`}
@@ -432,7 +401,7 @@ export function ContactHeroSection() {
 
                       {/* Phone Input - TestRiq Style with react-phone-number-input */}
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
                           Mobile Number *
                         </label>
                         <div className="bg-white relative">
@@ -440,7 +409,9 @@ export function ContactHeroSection() {
                             }`}>
                             <Phone className="phone-icon h-5 w-5" />
                             <PhoneInput
+                              id="phone"
                               international
+                              limitMaxLength={true}
                               defaultCountry="IN"
                               value={formData.phone}
                               onChange={handlePhoneChange}
@@ -455,23 +426,24 @@ export function ContactHeroSection() {
 
                       {/* Area of Interest */}
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label htmlFor="interest" className="block text-sm font-semibold text-gray-700 mb-2">
                           Area of Interest
                         </label>
                         <select
+                          id="interest"
                           name="interest"
                           value={formData.interest}
                           onChange={handleInputChange}
-                          className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-all"
+                          className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-colors duration-300"
                         >
                           <option value="">Select…</option>
-                          <option value="Software Testing">Software Testing</option>
-                          <option value="Data Science">Data Science</option>
-                          <option value="Business Intelligence (BI)">Business Intelligence (BI)</option>
                           <option value="Artificial Intelligence (AI)">Artificial Intelligence (AI)</option>
+                          <option value="Business Intelligence (BI)">Business Intelligence (BI)</option>
+                          <option value="Corporate Training">Corporate Training</option>
+                          <option value="Data Science">Data Science</option>
                           <option value="Digital Marketing">Digital Marketing</option>
                           <option value="Full Stack Development">Full Stack Development</option>
-                          <option value="Corporate Training">Corporate Training</option>
+                          <option value="Software Testing">Software Testing</option>
                           <option value="Training & Event Services">Training & Event Services</option>
                           <option value="Others">Others</option>
                         </select>
@@ -479,7 +451,7 @@ export function ContactHeroSection() {
 
                       {/* Message */}
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
                           Message *
                         </label>
                         <textarea
@@ -488,7 +460,8 @@ export function ContactHeroSection() {
                           onChange={handleInputChange}
                           rows={3}
                           placeholder="Tell us how we can help..."
-                          className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${messageError
+                          id="message"
+                          className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 ${messageError
                             ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                             : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                             }`}
@@ -629,7 +602,7 @@ export function ContactHeroSection() {
               {/* gradient outer skin + 1px border */}
               <div className="rounded-3xl p-[1px] bg-gradient-to-br from-sky-100/70 via-indigo-100/60 to-orange-100/70 shadow-2xl">
                 {/* inner glass panel — constrained width */}
-                <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8 w-full md:max-w-md lg:max-w-sm xl:max-w-md">
+                <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8 w-full md:max-w-md lg:max-w-sm xl:max-w-md" ref={desktopFormRef}>
                   <h2 className="text-2xl font-bold text-slate-900">Get in Touch</h2>
                   <p className="mt-1.5 text-slate-600">
                     Share your goals — we&apos;ll help you find the perfect course or training plan.
@@ -655,7 +628,7 @@ export function ContactHeroSection() {
                   <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                     {/* Full Name Input - TestRiq Style */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="fullNameDesktop" className="block text-sm font-semibold text-gray-700 mb-2">
                         Full Name *
                       </label>
                       <div className="relative">
@@ -666,7 +639,8 @@ export function ContactHeroSection() {
                           value={formData.fullName}
                           onChange={handleInputChange}
                           placeholder="Enter your full name"
-                          className={`w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all bg-white ${fullNameError
+                          id="fullNameDesktop"
+                          className={`w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 bg-white ${fullNameError
                             ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                             : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                             }`}
@@ -679,7 +653,7 @@ export function ContactHeroSection() {
 
                     {/* Email Input - TestRiq Style */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="emailDesktop" className="block text-sm font-semibold text-gray-700 mb-2">
                         Email Address *
                       </label>
                       <div className="relative">
@@ -690,7 +664,8 @@ export function ContactHeroSection() {
                           value={formData.email}
                           onChange={handleInputChange}
                           placeholder="Enter your email address"
-                          className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${emailError
+                          id="emailDesktop"
+                          className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 ${emailError
                             ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                             : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                             }`}
@@ -703,7 +678,7 @@ export function ContactHeroSection() {
 
                     {/* Phone Input - TestRiq Style with react-phone-number-input */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="phoneDesktop" className="block text-sm font-semibold text-gray-700 mb-2">
                         Mobile Number *
                       </label>
                       <div className="relative bg-white">
@@ -711,6 +686,7 @@ export function ContactHeroSection() {
                           }`}>
                           <Phone className="bg-white phone-icon h-5 w-5" />
                           <PhoneInput
+                            id="phoneDesktop"
                             international
                             defaultCountry="IN"
                             value={formData.phone}
@@ -726,23 +702,24 @@ export function ContactHeroSection() {
 
                     {/* Area of Interest */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="interestDesktop" className="block text-sm font-semibold text-gray-700 mb-2">
                         Area of Interest
                       </label>
                       <select
+                        id="interestDesktop"
                         name="interest"
                         value={formData.interest}
                         onChange={handleInputChange}
-                        className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-all"
+                        className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-colors duration-300"
                       >
                         <option value="">Select…</option>
-                        <option value="Software Testing">Software Testing</option>
-                        <option value="Data Science">Data Science</option>
-                        <option value="Business Intelligence (BI)">Business Intelligence (BI)</option>
                         <option value="Artificial Intelligence (AI)">Artificial Intelligence (AI)</option>
+                        <option value="Business Intelligence (BI)">Business Intelligence (BI)</option>
+                        <option value="Corporate Training">Corporate Training</option>
+                        <option value="Data Science">Data Science</option>
                         <option value="Digital Marketing">Digital Marketing</option>
                         <option value="Full Stack Development">Full Stack Development</option>
-                        <option value="Corporate Training">Corporate Training</option>
+                        <option value="Software Testing">Software Testing</option>
                         <option value="Training & Event Services">Training & Event Services</option>
                         <option value="Others">Others</option>
                       </select>
@@ -750,16 +727,17 @@ export function ContactHeroSection() {
 
                     {/* Message */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="messageDesktop" className="block text-sm font-semibold text-gray-700 mb-2">
                         Message *
                       </label>
                       <textarea
+                        id="messageDesktop"
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
                         rows={3}
                         placeholder="Tell us how we can help..."
-                        className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${messageError
+                        className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 ${messageError
                           ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                           : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                           }`}

@@ -1,11 +1,20 @@
 'use client';
 
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, CheckCircle2, Loader2, Building2, Briefcase, Calendar, Users, MessageSquare, BookOpen, ChevronDown } from 'lucide-react';
-import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
+import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import ReactDOM from 'react-dom';
+import {
+    validateFullName,
+    validateEmail,
+    validatePhone,
+    validateCompany,
+    validateMessage,
+    validateParticipants
+} from '@/lib/formValidation';
 
 const WORKSHOP_TYPES = [
     "Corporate Training",
@@ -57,6 +66,12 @@ const WorkshopRequestModal = ({
         company: null,
     });
 
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        () => setErrors({})
+    ]);
+
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -65,20 +80,22 @@ const WorkshopRequestModal = ({
     const validateField = (name: string, value: string) => {
         switch (name) {
             case 'fullName':
-                return !value || value.trim().length < 3 ? 'Full Name is required (min 3 chars).' : null;
+                return validateFullName(value);
             case 'email':
-                return !value || !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value) ? 'Invalid email format.' : null;
+                return validateEmail(value);
             case 'company':
-                return !value || value.trim().length < 2 ? 'Company/Organization Name is required.' : null;
+                return validateCompany(value);
+            case 'participants':
+                return validateParticipants(value);
+            case 'message':
+                return validateMessage(value);
             default:
                 return null;
         }
     };
 
     const validatePhoneNumber = (phone: string | undefined) => {
-        if (!phone || phone.trim() === '') return 'Mobile Number is required.';
-        if (!isValidPhoneNumber(phone)) return 'Invalid phone number format.';
-        return null;
+        return validatePhone(phone);
     };
 
     // Handle input changes
@@ -87,7 +104,7 @@ const WorkshopRequestModal = ({
         setFormData(prev => ({ ...prev, [name]: value }));
 
         // Real-time validation for specific fields
-        if (['fullName', 'email', 'company'].includes(name)) {
+        if (['fullName', 'email', 'company', 'participants', 'message'].includes(name)) {
             setErrors(prev => ({ ...prev, [name]: validateField(name, value) }));
         }
     };
@@ -107,6 +124,9 @@ const WorkshopRequestModal = ({
             email: validateField('email', formData.email),
             company: validateField('company', formData.company),
             phone: validatePhoneNumber(formData.phone),
+            // Optional validations if fields are present
+            participants: formData.participants ? validateField('participants', formData.participants) : null,
+            message: formData.message ? validateField('message', formData.message) : null
         };
 
         setErrors(newErrors);
@@ -218,6 +238,7 @@ const WorkshopRequestModal = ({
                                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                                 className="relative w-full max-w-lg overflow-hidden rounded-2xl bg-white text-left shadow-2xl ring-1 ring-gray-900/5"
                                 onClick={(e) => e.stopPropagation()}
+                                ref={formRef}
                             >
                                 {/* Header */}
                                 <div className="bg-gradient-to-r from-blue-700 to-indigo-800 px-6 py-5 relative">
@@ -254,7 +275,7 @@ const WorkshopRequestModal = ({
                                                     <label className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Full Name <span className="text-red-500">*</span></label>
                                                     <div className="relative">
                                                         <User className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
-                                                        <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} placeholder="Kedar Jadhav" className="w-full pl-9 pr-3 py-2 border rounded-lg text-sm bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 border-gray-200 transition-all font-medium text-gray-900 placeholder:text-gray-400" disabled={isSubmitting} />
+                                                        <input type="text" maxLength={35} name="fullName" value={formData.fullName} onChange={handleInputChange} placeholder="Kedar Jadhav" className="w-full pl-9 pr-3 py-2 border rounded-lg text-sm bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 border-gray-200 transition-all font-medium text-gray-900 placeholder:text-gray-400" disabled={isSubmitting} />
                                                     </div>
                                                     {errors.fullName && <p className="text-xs text-red-600 mt-1">{errors.fullName}</p>}
                                                 </div>
@@ -293,6 +314,7 @@ const WorkshopRequestModal = ({
                                                     <label className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Mobile <span className="text-red-500">*</span></label>
                                                     <PhoneInput
                                                         international
+                                                        limitMaxLength={true}
                                                         defaultCountry="IN"
                                                         value={formData.phone}
                                                         onChange={handlePhoneChange}

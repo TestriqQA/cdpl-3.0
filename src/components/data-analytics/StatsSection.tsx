@@ -98,7 +98,7 @@ export default function StatsSection() {
     <section
       id="ada-stats"
       aria-labelledby="ada-stats-heading"
-      className="relative py-4 md:py-6 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop (fine grid + soft top glow; no heavy gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

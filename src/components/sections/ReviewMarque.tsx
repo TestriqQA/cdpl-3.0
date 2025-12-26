@@ -23,25 +23,19 @@ const GOOGLE_LOGO = '/slider_logos/google-logo.svg';
 function MarqueeRow({
   items,
   direction = 'left',
-  speed = 50
+  speed = 5
 }: {
   items: Review[];
   direction?: 'left' | 'right';
   speed?: number
 }) {
-  const [isPaused, setIsPaused] = useState(false);
-
   return (
-    <div
-      className="relative flex overflow-hidden"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    <div className="relative flex overflow-hidden group pointer-events-auto">
       <div
-        className={`flex gap-6 py-4 w-max`}
+        className="flex gap-6 py-4 w-max group-hover:[animation-play-state:paused_!important]"
         style={{
           animation: `marquee-${direction} ${speed}s linear infinite`,
-          animationPlayState: isPaused ? 'paused' : 'running'
+          willChange: 'transform'
         }}
       >
         {[...items, ...items, ...items].map((review, idx) => (
@@ -69,8 +63,8 @@ function ReviewCard({ review }: { review: Review }) {
           <div className="flex items-center gap-3">
             <div className="relative">
               <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 group-hover:ring-blue-400 transition-all">
-                {review.reviewerInfo.photoUrl ? (
-                  <img src={review.reviewerInfo.photoUrl} alt={review.name} className="w-full h-full object-cover" />
+                {review.reviewerInfo?.photoUrl ? (
+                  <img src={review.reviewerInfo.photoUrl} alt={review.name} referrerPolicy="no-referrer" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                 ) : (
                   <div className="w-full h-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold">
                     {review.name.charAt(0)}
@@ -86,7 +80,7 @@ function ReviewCard({ review }: { review: Review }) {
               <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">{dateStr}</div>
             </div>
           </div>
-          <Image src={GOOGLE_LOGO} alt="Google" width={20} height={20} className="w-5 h-5 opacity-50 grayscale group-hover:grayscale-0 transition-all" />
+          <Image src={GOOGLE_LOGO} alt="Google" width={50} height={50} className="w-16 h-16 opacity-50 grayscale group-hover:grayscale-0 transition-all" />
         </div>
 
         {/* Stars */}
@@ -152,7 +146,7 @@ export default function ReviewsMarquee() {
   const safeRow2 = row2.length > 5 ? row2 : reviews;
 
   return (
-    <section className="relative w-full overflow-hidden bg-slate-50 py-10">
+    <section className="relative w-full overflow-hidden bg-slate-50 py-5">
 
       {/* Background Decor */}
       <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
@@ -163,27 +157,7 @@ export default function ReviewsMarquee() {
       <div className="relative z-10 space-y-12">
 
         {/* Animated Header Visual */}
-        <div className="flex flex-col items-center justify-center space-y-6 pt-5 pb-5">
-          {/* Sound Wave Animation */}
-          <div className="flex items-center justify-center gap-1 h-16">
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="w-1.5 rounded-full bg-gradient-to-t from-blue-500 to-indigo-500"
-                animate={{
-                  height: [20, Math.random() * 60 + 20, 20],
-                  opacity: [0.5, 1, 0.5]
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  delay: i * 0.1,
-                  ease: "easeInOut"
-                }}
-              />
-            ))}
-          </div>
-
+        <div className="flex flex-col items-center justify-center space-y-6 pt-2">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -195,25 +169,25 @@ export default function ReviewsMarquee() {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
             </span>
             <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">
-              Live Student Voices • {stats.total}+ Verified Reviews
+              {stats.total}+ Verified Reviews
             </span>
           </motion.div>
         </div>
 
         {/* Marquees */}
         <div className="space-y-8 mask-linear-gradient">
-          <MarqueeRow items={safeRow1} direction="left" speed={60} />
-          <MarqueeRow items={safeRow2} direction="right" speed={70} />
+          <MarqueeRow items={safeRow1} direction="left" speed={150} />
+          <MarqueeRow items={safeRow2} direction="right" speed={150} />
         </div>
 
         {/* CSS for Marquee */}
         <style jsx>{`
             @keyframes marquee-left {
                 0% { transform: translateX(0); }
-                100% { transform: translateX(-100%); }
+                100% { transform: translateX(calc(-100% / 10)); }
             }
             @keyframes marquee-right {
-                0% { transform: translateX(-100%); }
+                0% { transform: translateX(calc(-100% / 10)); }
                 100% { transform: translateX(0); }
             }
             .mask-linear-gradient {

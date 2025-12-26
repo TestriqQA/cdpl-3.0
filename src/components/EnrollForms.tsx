@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import EnrollModal from "@/components/EnrollModal";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useFormErrorReset } from "@/hooks/useFormErrorReset";
+import { useRef } from "react";
 
 export type LeadFormData = {
     name: string;
@@ -30,18 +32,36 @@ export const LeadForm: React.FC<LeadFormProps> = ({ variants, onSubmit, classNam
         phone: "",
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    // Simple error state for immediate feedback
+    const [fieldErrors, setFieldErrors] = useState<{ name?: string | null, email?: string | null, phone?: string | null }>({});
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [() => setFieldErrors({})]);
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        onSubmit(form);
+
+        // Dynamic import validation to be consistent
+        const { validateFullName, validateEmail, validatePhone } = await import('@/lib/formValidation');
+
+        const nameError = validateFullName(form.name);
+        const emailError = validateEmail(form.email);
+        const phoneError = validatePhone(form.phone);
+
+        setFieldErrors({ name: nameError, email: emailError, phone: phoneError });
+
+        if (!nameError && !emailError && !phoneError) {
+            onSubmit(form);
+        }
     };
 
     return (
-        <motion.div variants={variants} className={`rounded-2xl border border-slate-200 bg-white p-6 shadow-lg ${className}`}>
+        <motion.div ref={formRef} variants={variants} className={`rounded-2xl border border-slate-200 bg-white p-6 shadow-lg ${className}`}>
             <h3 className="text-xl font-bold text-slate-900">Request a Callback</h3>
             <p className="mt-2 text-sm text-slate-600">
                 Enter your details to get the full curriculum, fees, and upcoming batch dates.
             </p>
-            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
                 <div>
                     <label htmlFor="name" className="mb-1 block text-sm font-medium text-slate-700">
                         Full Name
@@ -49,12 +69,13 @@ export const LeadForm: React.FC<LeadFormProps> = ({ variants, onSubmit, classNam
                     <input
                         id="name"
                         type="text"
-                        required
+                        maxLength={35}
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        className="block w-full rounded-lg border border-slate-300 text-slate-900 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className={`block w-full rounded-lg border ${fieldErrors.name ? 'border-red-500' : 'border-slate-300'} text-slate-900 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm`}
                         placeholder="Enter your name"
                     />
+                    {fieldErrors.name && <p className="mt-1 text-xs text-red-500">{fieldErrors.name}</p>}
                 </div>
                 <div>
                     <label htmlFor="email" className="mb-1 block text-sm font-medium text-slate-700">
@@ -63,12 +84,12 @@ export const LeadForm: React.FC<LeadFormProps> = ({ variants, onSubmit, classNam
                     <input
                         id="email"
                         type="email"
-                        required
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        className="block w-full rounded-lg border border-slate-300 text-slate-900 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className={`block w-full rounded-lg border ${fieldErrors.email ? 'border-red-500' : 'border-slate-300'} text-slate-900 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm`}
                         placeholder="you@example.com"
                     />
+                    {fieldErrors.email && <p className="mt-1 text-xs text-red-500">{fieldErrors.email}</p>}
                 </div>
                 <div>
                     <label htmlFor="phone" className="mb-1 block text-sm font-medium text-slate-700">
@@ -77,12 +98,13 @@ export const LeadForm: React.FC<LeadFormProps> = ({ variants, onSubmit, classNam
                     <input
                         id="phone"
                         type="tel"
-                        required
+                        maxLength={15}
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                        className="block w-full rounded-lg border border-slate-300 text-slate-900 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className={`block w-full rounded-lg border ${fieldErrors.phone ? 'border-red-500' : 'border-slate-300'} text-slate-900 px-3 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm`}
                         placeholder="+91 98765 43210"
                     />
+                    {fieldErrors.phone && <p className="mt-1 text-xs text-red-500">{fieldErrors.phone}</p>}
                 </div>
                 <button
                     type="submit"

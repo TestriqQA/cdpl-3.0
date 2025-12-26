@@ -15,7 +15,7 @@ export default function TestimonialsSection() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-heading"
-      className="relative py-12 sm:py-16 md:py-20"
+      className="relative py-10"
     >
       {/* Subtle futuristic backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

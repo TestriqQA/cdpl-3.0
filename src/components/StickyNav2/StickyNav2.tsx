@@ -27,7 +27,7 @@ export default function StickyNav({ navItems = software_testing }: StickyNavProp
       let current = '';
       navItems.forEach(sec => {
         const el = document.getElementById(sec.id);
-        if (el && el.getBoundingClientRect().top <= 120) {
+        if (el && el.getBoundingClientRect().top <= 200) {
           current = sec.id;
         }
       });
@@ -37,13 +37,15 @@ export default function StickyNav({ navItems = software_testing }: StickyNavProp
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navItems]);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
+      // Calculate offset: navbar height (~72px) + sticky nav height (~56px) + small padding (12px)
+      const offset = isScrolled ? 100 : 100;
       window.scrollTo({
-        top: el.offsetTop - (isScrolled ? 80 : 100),
+        top: el.offsetTop - offset,
         behavior: 'smooth'
       });
     }

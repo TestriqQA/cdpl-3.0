@@ -1,8 +1,10 @@
 "use client";
 
-import { TrendingUp, FolderOpen, Mail, ArrowRight } from "lucide-react";
+import { TrendingUp, FolderOpen, Mail, ArrowRight, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import { useState, useRef } from "react";
 import { getAllCategories, getPostsByCategory, getAllPosts } from "@/data/BlogPostData";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 
 interface BlogSidebarRelatedProps {
   currentPostId: string;
@@ -25,6 +27,36 @@ const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedPro
     postCount: allPosts.filter(post => post.categoryId === category.id).length
   }));
 
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useFormErrorReset(formRef, [
+    () => setError("")
+  ]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+
+    if (!email) {
+      setError("Email address is required");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
+    // Simulate API call
+    setIsSubscribed(true);
+    setEmail("");
+  };
+
   return (
     <aside className="space-y-6">
       {/* Related Posts Section */}
@@ -33,7 +65,7 @@ const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedPro
           <TrendingUp className="w-5 h-5 text-indigo-600" />
           <h3 className="text-lg font-bold text-gray-900">Related Posts</h3>
         </div>
-        
+
         {relatedPosts.length > 0 ? (
           <div className="space-y-4">
             {relatedPosts.map((post, index) => (
@@ -91,7 +123,7 @@ const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedPro
             </Link>
           ))}
         </div>
-        
+
         {/* View All Categories Link */}
         <div className="mt-4 pt-4 border-t border-purple-200">
           <Link
@@ -110,25 +142,51 @@ const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedPro
           <Mail className="w-5 h-5 text-orange-600" />
           <h3 className="text-lg font-bold text-gray-900">Newsletter</h3>
         </div>
-        <p className="text-sm text-gray-700 mb-4 leading-relaxed">
-          Get the latest articles and insights delivered directly to your inbox.
-        </p>
-        <form className="space-y-3">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="w-full px-4 py-2.5 bg-white border-2 border-orange-200 rounded-lg text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all"
-          />
-          <button
-            type="submit"
-            className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 text-sm"
-          >
-            Subscribe Now
-          </button>
-        </form>
-        <p className="text-xs text-gray-600 mt-3 text-center">
-          No spam. Unsubscribe anytime.
-        </p>
+
+        {isSubscribed ? (
+          <div className="text-center py-6">
+            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <CheckCircle2 className="w-6 h-6 text-green-600" />
+            </div>
+            <h4 className="text-gray-900 font-bold mb-1">Subscribed!</h4>
+            <p className="text-sm text-gray-600">
+              Thank you for subscribing to our newsletter.
+            </p>
+          </div>
+        ) : (
+          <>
+            <p className="text-sm text-gray-700 mb-4 leading-relaxed">
+              Get the latest articles and insights delivered directly to your inbox.
+            </p>
+            <form onSubmit={handleSubmit} className="space-y-3" ref={formRef}>
+              <div>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (error) setError("");
+                  }}
+                  placeholder="Enter your email"
+                  className={`w-full px-4 py-2.5 bg-white border-2 rounded-lg text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${error
+                    ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
+                    : 'border-orange-200 focus:border-orange-500 focus:ring-orange-200'
+                    }`}
+                />
+                {error && <p className="text-xs text-red-500 mt-1 ml-1">{error}</p>}
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 text-sm cursor-pointer"
+              >
+                Subscribe Now
+              </button>
+            </form>
+            <p className="text-xs text-gray-600 mt-3 text-center">
+              No spam. Unsubscribe anytime.
+            </p>
+          </>
+        )}
       </div>
 
       {/* Popular Tags */}

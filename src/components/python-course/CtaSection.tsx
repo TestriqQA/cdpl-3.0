@@ -10,7 +10,7 @@ export default function CtaSection() {
     <section
       id="enroll"
       aria-labelledby="cta-heading"
-      className="relative py-8 md:py-16"
+      className="relative py-10"
     >
       {/* Futuristic but subtle background */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -62,7 +62,7 @@ export default function CtaSection() {
           >
             Email Us
           </Link>
-          
+
         </div>
 
         {/* Trust strip */}

@@ -25,7 +25,7 @@ export default function ToolsSection() {
 
 
     return (
-        <section id="tools" aria-labelledby="tools-heading" className="relative py-8 sm:py-10 bg-white">
+        <section id="tools" aria-labelledby="tools-heading" className="relative py-10 bg-white">
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
                 <div className="absolute inset-x-0 bottom-0 mx-auto h-px max-w-7xl bg-slate-100" />

@@ -1,11 +1,30 @@
 "use client";
 
 import React from "react";
-import { MapPin, Mail, Phone } from "lucide-react";
+import { MapPin, Mail, Phone, Facebook, Linkedin, Instagram, Youtube } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+/** Minimal X (formerly Twitter) logo */
+function XLogo(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      role="img"
+      aria-label="X"
+      width="24"
+      height="24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M18.146 2.25H21.5l-7.49 8.55 8.79 10.95H16.52l-5.36-6.68-6.13 6.68H2.67l8.02-8.74L2.25 2.25h6.18l4.86 6.03 4.856-6.03Zm-1.054 18.9h1.786L7.988 3.95H6.093l10.999 17.2Z" />
+    </svg>
+  );
+}
 
 const Footer: React.FC = () => {
+  const pathname = usePathname();
   return (
     <footer className="bg-slate-100 text-slate-700">
       <div className="mx-auto max-w-7xl px-4 md:px-8 py-12">
@@ -36,20 +55,20 @@ const Footer: React.FC = () => {
               <div className="space-y-4 text-[15px] leading-relaxed">
 
                 <div>
-                  <p className="font-bold">Head Office (<span className="text-brand">CDPL</span>)</p>
+                  <p className="font-bold">Head Office (<span className="text-blue-700">CDPL</span>)</p>
                   <div className="flex items-start mt-1 gap-3">
                     <MapPin className="h-5 w-5 text-orange-500 mt-0.5" aria-hidden="true" />
-                    <Link className="hover:text-brand transition" href="https://www.google.com/maps/place/Cinute+Digital+Pvt.+Ltd.+A+Premier+Software+Training+Institute+(CDPL)/@19.29342,72.8685471,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b1af2b2c5fed:0x7104f80b9fec8b9d!8m2!3d19.293415!4d72.871122!16s%2Fg%2F11t5q_mt87?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D">
+                    <Link className="hover:text-blue-700 transition" href="https://www.google.com/maps/place/Cinute+Digital+Pvt.+Ltd.+A+Premier+Software+Training+Institute+(CDPL)/@19.29342,72.8685471,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b1af2b2c5fed:0x7104f80b9fec8b9d!8m2!3d19.293415!4d72.871122!16s%2Fg%2F11t5q_mt87?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D">
                       Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road, Mira Bhayandar, Mumbai, Maharashtra 401107
                     </Link>
                   </div>
                 </div>
 
                 <div>
-                  <p className="font-bold">Study Center <span className="text-red-800">MeghMehul Classes</span> (<span className="text-brand">Vasai</span>)</p>
+                  <p className="font-bold">Study Center <span className="text-red-800">MeghMehul Classes</span> (<span className="text-blue-700">Vasai</span>)</p>
                   <div className="flex items-start mt-1 gap-3">
                     <MapPin className="h-5 w-5 text-orange-500 mt-0.5" aria-hidden="true" />
-                    <Link className="hover:text-brand transition" href="https://maps.app.goo.gl/SACPou6JCdRZh5j98">
+                    <Link className="hover:text-blue-700 transition" href="https://maps.app.goo.gl/SACPou6JCdRZh5j98">
                       Shop No 7, Laxmi Palace, Opposite Vidhyavardhini Degree Engineering College, Gurunanak Nagar, Vasai West, Mumbai, Maharashtra - 401202
                     </Link>
                   </div>
@@ -72,7 +91,7 @@ const Footer: React.FC = () => {
                       href="tel:+917888383788"
                       className="hover:text-orange-600 transition-colors whitespace-nowrap"
                     >
-                      +91 78883 83788
+                      +91 78-883-837-88
                     </Link>
                     <span className="text-slate-300 whitespace-nowrap">|</span>
                     <Link
@@ -82,6 +101,29 @@ const Footer: React.FC = () => {
                       +91 84-889-889-84
                     </Link>
                   </div>
+                </div>
+
+                {/* Social Media Icons */}
+                <div className="flex items-center gap-5 mt-4">
+                  <Link href="https://www.facebook.com/cinutedigital" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="Facebook">
+                    <Facebook className="h-5 w-5" />
+                  </Link>
+
+                  <Link href="https://x.com/cinutedigital" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="X">
+                    <XLogo className="h-5 w-5" />
+                  </Link>
+
+                  <Link href="https://www.youtube.com/@cinutedigital" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="YouTube">
+                    <Youtube className="h-5 w-5" />
+                  </Link>
+
+                  <Link href="https://www.linkedin.com/company/cinute-digital/" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="LinkedIn">
+                    <Linkedin className="h-5 w-5" />
+                  </Link>
+
+                  <Link href="https://www.instagram.com/cinutedigital/" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="Instagram">
+                    <Instagram className="h-5 w-5" />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -147,25 +189,25 @@ const Footer: React.FC = () => {
               <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
                 <Link
                   href="/privacy-policy"
-                  className="rounded-full border border-slate-200 px-3 py-1.5 hover:border-orange-300 hover:text-orange-600 transition-colors"
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/privacy-policy" ? "border-orange-300 text-orange-600" : "border-slate-200 hover:border-orange-300 hover:text-orange-600"}`}
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/cookies-policy"
-                  className="rounded-full border border-slate-200 px-3 py-1.5 hover:border-orange-300 hover:text-orange-600 transition-colors"
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/cookies-policy" ? "border-orange-300 text-orange-600" : "border-slate-200 hover:border-orange-300 hover:text-orange-600"}`}
                 >
                   Cookies Policy
                 </Link>
                 <Link
                   href="/terms-of-service"
-                  className="rounded-full border border-slate-200 px-3 py-1.5 hover:border-orange-300 hover:text-orange-600 transition-colors"
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/terms-of-service" ? "border-orange-300 text-orange-600" : "border-slate-200 hover:border-orange-300 hover:text-orange-600"}`}
                 >
                   Terms and Conditions
                 </Link>
                 <Link
                   href="/cancellation-refund-policy"
-                  className="rounded-full border border-slate-200 px-3 py-1.5 hover:border-orange-300 hover:text-orange-600 transition-colors"
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/cancellation-refund-policy" ? "border-orange-300 text-orange-600" : "border-slate-200 hover:border-orange-300 hover:text-orange-600"}`}
                 >
                   Cancellation/Refund Policy
                 </Link>
@@ -188,7 +230,7 @@ const Footer: React.FC = () => {
               </p>
               {/* Powered By */}
               <div className="flex gap-4 space-y-4">
-                <h3 className="text-xl font-semibold text-orange-400">Powered By</h3>
+                <h3 className="text-xl font-semibold text-orange-700">Powered By</h3>
                 <Link href="https://www.testriq.com/" className="text-gray-300 hover:text-blue-400 hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
                   <Image src={'/images/Testriq-Logo-1.webp'} alt='Testriq_logo' title="Testriq-Logo" width={100} height={100} />
                 </Link>

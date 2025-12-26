@@ -188,7 +188,7 @@ export default function HeroManualTesting() {
     const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
 
     return (
-        <section className="relative py-10 md:py-12 bg-white" aria-labelledby="manual-testing-hero">
+        <section className="relative py-10 bg-white" aria-labelledby="manual-testing-hero">
             {/* Background (no color gradients) */}
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,#e5e7eb_1px,transparent_1px)] [background-size:26px_26px]" />
@@ -350,11 +350,39 @@ export default function HeroManualTesting() {
                         {/* Company logos + Stats */}
                         <div className="mt-10">
                             <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Alumni work at</p>
-                            <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 items-center gap-x-8 gap-y-3 opacity-90">
-                                <Image src="/company_images/Testriq-Logo-Black.webp" alt="Testriq" title="Testriq" width={150} height={24} />
-                                <Image src="/company_images/axiom.webp" alt="Pixelwave" title="Pixelwave" width={150} height={24} />
-                                <Image src="/company_images/credility.webp" alt="Groundwork Systems" title="Groundwork Systems" width={150} height={24} />
-                                <Image src="/company_images/marqetrix.webp" alt="Nitrosoft" title="Nitrosoft" width={150} height={24} />
+                            <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 items-center gap-x-8 gap-y-3">
+                                <Image
+                                    src="/company_images/Testriq-Logo-Black.webp"
+                                    alt="Testriq"
+                                    title="Testriq"
+                                    width={150}
+                                    height={24}
+                                    className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                />
+                                <Image
+                                    src="/company_images/axiom.webp"
+                                    alt="Pixelwave"
+                                    title="Pixelwave"
+                                    width={150}
+                                    height={24}
+                                    className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                />
+                                <Image
+                                    src="/company_images/credility.webp"
+                                    alt="Groundwork Systems"
+                                    title="Groundwork Systems"
+                                    width={150}
+                                    height={24}
+                                    className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                />
+                                <Image
+                                    src="/company_images/marqetrix.webp"
+                                    alt="Nitrosoft"
+                                    title="Nitrosoft"
+                                    width={150}
+                                    height={24}
+                                    className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                />
                             </div>
 
                             {/* NEW: PDF Stats with animated counters */}

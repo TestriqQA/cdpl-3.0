@@ -14,12 +14,12 @@ type Benefit = {
 };
 
 const benefits: Benefit[] = [
-  { icon: <Zap className="w-6 h-6" />,        title: '95% Faster Releases',   description: 'CI/CD pipelines, parallel test execution, rapid feedback loops.', bg: 'bg-sky-50',     iconColor: 'text-sky-700',     border: 'border-sky-200' },
-  { icon: <Cpu className="w-6 h-6" />,        title: 'AI Self-Healing Tests', description: 'Reduce flakiness with locator healing & smart retries.',          bg: 'bg-amber-50',  iconColor: 'text-amber-700',  border: 'border-amber-200' },
-  { icon: <Shield className="w-6 h-6" />,     title: 'Zero Regression Bugs',  description: 'Automated smoke, sanity, and nightly suites with reports.',       bg: 'bg-emerald-50',iconColor: 'text-emerald-700',border: 'border-emerald-200' },
-  { icon: <Globe className="w-6 h-6" />,      title: 'Cross-Platform Mastery',description: 'Web, Mobile, API & Desktop testing in one skillset.',              bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
-  { icon: <Bot className="w-6 h-6" />,        title: 'Future-Proof SDET',     description: 'Blend AI, DevOps, and QA to lead quality engineering.',           bg: 'bg-rose-50',   iconColor: 'text-rose-700',   border: 'border-rose-200' },
-  { icon: <TrendingUp className="w-6 h-6" />, title: 'Top-Tier Salaries',     description: 'SDETs command premium pay with in-demand automation skills.',     bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
+  { icon: <Zap className="w-6 h-6" />, title: '95% Faster Releases', description: 'CI/CD pipelines, parallel test execution, rapid feedback loops.', bg: 'bg-sky-50', iconColor: 'text-sky-700', border: 'border-sky-200' },
+  { icon: <Cpu className="w-6 h-6" />, title: 'AI Self-Healing Tests', description: 'Reduce flakiness with locator healing & smart retries.', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
+  { icon: <Shield className="w-6 h-6" />, title: 'Zero Regression Bugs', description: 'Automated smoke, sanity, and nightly suites with reports.', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
+  { icon: <Globe className="w-6 h-6" />, title: 'Cross-Platform Mastery', description: 'Web, Mobile, API & Desktop testing in one skillset.', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
+  { icon: <Bot className="w-6 h-6" />, title: 'Future-Proof SDET', description: 'Blend AI, DevOps, and QA to lead quality engineering.', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
+  { icon: <TrendingUp className="w-6 h-6" />, title: 'Top-Tier Salaries', description: 'SDETs command premium pay with in-demand automation skills.', bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
 ];
 
 export default function WhyAutomation() {
@@ -29,7 +29,7 @@ export default function WhyAutomation() {
     <section
       id="why-automation"
       aria-labelledby="why-automation-heading"
-      className="relative py-14 sm:py-16 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle separators for a clean, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -89,7 +89,7 @@ export default function WhyAutomation() {
         <p className="mx-auto mt-8 max-w-4xl text-center text-sm sm:text-base text-slate-600">
           Master tools like <strong>Selenium</strong>, <strong>Playwright</strong>, <strong>Cypress</strong>,
           <strong> REST Assured</strong>, and <strong>Jenkins</strong> while learning <em>test strategy, reporting,
-          observability,</em> and <em>scalable frameworks</em> that hiring managers value.
+            observability,</em> and <em>scalable frameworks</em> that hiring managers value.
         </p>
       </div>
     </section>

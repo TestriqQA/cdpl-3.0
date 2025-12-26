@@ -267,10 +267,7 @@ export default function AllPostsPage() {
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                           itemProp="image"
                         />
-                        {/* Category Badge */}
-                        <span className={`absolute top-4 left-4 px-3 py-1 ${category.color.bg} ${category.color.text} rounded-full text-xs font-medium`}>
-                          {category.name}
-                        </span>
+
                       </Link>
 
                       {/* Post Content */}

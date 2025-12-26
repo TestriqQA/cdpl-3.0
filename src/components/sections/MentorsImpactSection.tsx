@@ -163,7 +163,7 @@ export default function MentorsImpactSection() {
         </header>
 
         {/* Metrics */}
-        <div className="mb-6 grid gap-3 sm:grid-cols-4">
+        <div className="mb-6 grid grid-cols-1 min-[286px]:grid-cols-2 gap-3 sm:grid-cols-4">
           {[
             { num: "2,400+", label: "1:1 Sessions / month" },
             { num: "96%", label: "Interview-ready in 8 weeks" },

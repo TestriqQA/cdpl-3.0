@@ -50,7 +50,7 @@ export default function HeroSection() {
                 <div className="absolute inset-0 [mask-image:radial-gradient(80%_55%_at_50%_-4%,black,transparent)]" />
             </div>
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-14">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
 
                 {/* Breadcrumbs for SEO & UX */}
                 <nav aria-label="Breadcrumb" className="mb-8">
@@ -151,7 +151,10 @@ export default function HeroSection() {
                             <button
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' });
+                                    const el = document.getElementById('curriculum');
+                                    if (el) {
+                                        window.scrollTo({ top: el.offsetTop - 150, behavior: 'smooth' });
+                                    }
                                 }}
                                 className="cursor-pointer inline-flex items-center justify-center rounded-xl border-2 border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
                                 aria-label="View full Advanced Automation Testing curriculum"

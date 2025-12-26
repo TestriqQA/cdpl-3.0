@@ -112,7 +112,7 @@ const FaqSection: React.FC = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14 md:mb-16">
           <span className="text-base font-semibold tracking-wider text-orange-600 uppercase">

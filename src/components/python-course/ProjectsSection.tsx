@@ -102,7 +102,7 @@ export default function ProjectsSection() {
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="relative py-12 sm:py-16 md:py-20 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

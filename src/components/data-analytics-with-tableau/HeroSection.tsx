@@ -45,7 +45,7 @@ export default function HeroSection() {
     const courseName = "Data Analytics & Visualization with Tableau";
 
     return (
-        <section className="relative min-h-screen bg-gradient-to-br from-white via-blue-50 to-white pt-8 md:pt-12 pb-16 overflow-hidden">
+        <section className="relative min-h-screen bg-gradient-to-br from-white via-blue-50 to-white py-10 overflow-hidden">
             <Head>
                 <title>Tableau Course | Data Analytics & BI Dashboard Training (20 Hours)</title>
                 <meta

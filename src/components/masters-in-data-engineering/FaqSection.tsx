@@ -18,7 +18,7 @@ const FaqSection: React.FC = () => {
   const courseName = "Data Analytics with BI & Big Data Engineering Master Program";
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
+    <section className="py-10 bg-gradient-to-b from-white to-slate-50">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20 max-w-3xl mx-auto">

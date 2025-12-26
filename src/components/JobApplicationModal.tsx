@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { createPortal } from "react-dom";
 import { X, Upload, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 
@@ -43,7 +44,13 @@ export default function JobApplicationModal({
 
     const [resumeFile, setResumeFile] = useState<File | null>(null);
 
+
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        setError
+    ]);
 
     useEffect(() => {
         if (isOpen) {
@@ -106,6 +113,26 @@ export default function JobApplicationModal({
             setError("Please upload your resume.");
             setIsSubmitting(false);
             return;
+        }
+
+        // Strict Validation
+        const { validateFullName, validateEmail, validatePhone } = await import('@/lib/formValidation');
+
+        const nameError = validateFullName(formData.fullName);
+        if (nameError) { setError(nameError); setIsSubmitting(false); return; }
+
+        const emailError = validateEmail(formData.email);
+        if (emailError) { setError(emailError); setIsSubmitting(false); return; }
+
+        const phoneError = validatePhone(formData.phone);
+        if (phoneError) { setError(phoneError); setIsSubmitting(false); return; }
+
+        // CTC Validation - basic check to ensure not empty or too long
+        if (!formData.currentCtc || formData.currentCtc.length > 20) {
+            setError("Current CTC is invalid."); setIsSubmitting(false); return;
+        }
+        if (!formData.expectedCtc || formData.expectedCtc.length > 20) {
+            setError("Expected CTC is invalid."); setIsSubmitting(false); return;
         }
 
         try {
@@ -182,7 +209,7 @@ export default function JobApplicationModal({
                 />
 
                 {/* Modal Content */}
-                <div className="relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-slate-900/5">
+                <div className="relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-slate-900/5" ref={formRef}>
 
                     {/* Header */}
                     <div className="flex items-center justify-between border-b border-slate-100 bg-white px-6 py-4">
@@ -237,6 +264,7 @@ export default function JobApplicationModal({
                                             <label className={labelClass}>Full Name *</label>
                                             <input
                                                 required
+                                                maxLength={35}
                                                 name="fullName"
                                                 value={formData.fullName}
                                                 onChange={handleInputChange}
@@ -261,6 +289,7 @@ export default function JobApplicationModal({
                                             <input
                                                 required
                                                 type="tel"
+                                                maxLength={15}
                                                 name="phone"
                                                 value={formData.phone}
                                                 onChange={handleInputChange}

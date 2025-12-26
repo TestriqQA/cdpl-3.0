@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { BlogCategoryMenu } from "@/components/blog";
+import { SearchAgainButton } from "@/components/blog/SearchAgainButton";
 import { getAllPosts, getAllCategories } from "@/data/BlogPostData";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,10 +16,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const params = await searchParams;
   const query = params.q || "";
-  
+
   return {
-    title: query 
-      ? `Search Results for "${query}" | Tech Blog - Software Testing & Development` 
+    title: query
+      ? `Search Results for "${query}" | Tech Blog - Software Testing & Development`
       : "Search Blog Posts | Find Expert Articles on Software Testing, Web Development & AI",
     description: query
       ? `Discover ${query} articles and tutorials. Search our comprehensive blog covering software testing, web development, AI, machine learning, data science, DevOps, and modern development practices.`
@@ -28,7 +29,7 @@ export async function generateMetadata({
       : ['blog search', 'tech articles search', 'programming tutorials', 'software development search'],
     openGraph: {
       title: query ? `Search: "${query}" | Tech Blog` : "Search Tech Blog",
-      description: query 
+      description: query
         ? `Find articles about ${query} in our comprehensive tech blog`
         : "Search our comprehensive tech blog for expert articles and tutorials",
       type: "website",
@@ -67,25 +68,25 @@ export default async function SearchPage({
   // Enhanced search algorithm
   const searchResults = query.trim().length > 0
     ? allPosts.filter((post) => {
-        const searchLower = query.toLowerCase();
-        return (
-          post.title.toLowerCase().includes(searchLower) ||
-          post.description.toLowerCase().includes(searchLower) ||
-          post.category.toLowerCase().includes(searchLower) ||
-          post.author.toLowerCase().includes(searchLower) ||
-          post.excerpt.toLowerCase().includes(searchLower) ||
-          post.tags.some(tag => tag.toLowerCase().includes(searchLower)) ||
-          post.seo.keywords.some(keyword => keyword.toLowerCase().includes(searchLower))
-        );
-      }).sort((a, b) => {
-        // Prioritize title matches
-        const aTitle = a.title.toLowerCase().includes(query.toLowerCase());
-        const bTitle = b.title.toLowerCase().includes(query.toLowerCase());
-        if (aTitle && !bTitle) return -1;
-        if (!aTitle && bTitle) return 1;
-        // Then sort by publish date
-        return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime();
-      })
+      const searchLower = query.toLowerCase();
+      return (
+        post.title.toLowerCase().includes(searchLower) ||
+        post.description.toLowerCase().includes(searchLower) ||
+        post.category.toLowerCase().includes(searchLower) ||
+        post.author.toLowerCase().includes(searchLower) ||
+        post.excerpt.toLowerCase().includes(searchLower) ||
+        post.tags.some(tag => tag.toLowerCase().includes(searchLower)) ||
+        post.seo.keywords.some(keyword => keyword.toLowerCase().includes(searchLower))
+      );
+    }).sort((a, b) => {
+      // Prioritize title matches
+      const aTitle = a.title.toLowerCase().includes(query.toLowerCase());
+      const bTitle = b.title.toLowerCase().includes(query.toLowerCase());
+      if (aTitle && !bTitle) return -1;
+      if (!aTitle && bTitle) return 1;
+      // Then sort by publish date
+      return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime();
+    })
     : [];
 
   // Group results by category
@@ -96,7 +97,7 @@ export default async function SearchPage({
 
   // Popular searches (you can customize this)
   const popularSearches = [
-    "React", "Next.js", "TypeScript", "Testing", "AI", 
+    "React", "Next.js", "TypeScript", "Testing", "AI",
     "Machine Learning", "DevOps", "Python", "JavaScript", "AWS"
   ];
 
@@ -167,12 +168,13 @@ export default async function SearchPage({
                       Browse through our curated articles matching your search. Each article includes expert insights, practical examples, and actionable advice.
                     </p>
                   )}
-                  
-                  {/* Clear Search Button */}
-                  <div className="mt-6">
+
+                  {/* Clear Search & Search Again Buttons */}
+                  <div className="mt-6 flex flex-wrap justify-center gap-4">
+                    <SearchAgainButton />
                     <Link
                       href="/blog/search"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors shadow-sm border border-gray-200"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors shadow-sm border border-gray-200 font-medium"
                     >
                       <X className="w-4 h-4" />
                       Clear Search
@@ -248,8 +250,8 @@ export default async function SearchPage({
                                 <div className="flex items-center gap-4">
                                   <time className="flex items-center gap-1" dateTime={post.publishDate} itemProp="datePublished">
                                     <Calendar className="w-4 h-4" />
-                                    {new Date(post.publishDate).toLocaleDateString('en-US', { 
-                                      month: 'short', 
+                                    {new Date(post.publishDate).toLocaleDateString('en-US', {
+                                      month: 'short',
                                       day: 'numeric',
                                       year: 'numeric'
                                     })}

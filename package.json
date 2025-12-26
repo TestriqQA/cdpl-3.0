@@ -38,6 +38,7 @@
     "react-phone-number-input": "^3.4.13",
     "react-slick": "^0.30.2",
     "recharts": "^3.2.1",
+    "sharp": "^0.34.5",
     "slick-carousel": "^1.8.1",
     "sonner": "^2.0.7",
     "swiper": "^11.2.10",
@@ -62,5 +63,10 @@
     "postcss": "^8.4.39",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "> 1%"
+  ]
 }

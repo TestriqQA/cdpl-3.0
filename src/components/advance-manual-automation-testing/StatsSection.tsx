@@ -129,7 +129,7 @@ export default function StatsSection() {
       ref={sectionRef}
       id="program-stats"
       aria-labelledby="stats-heading"
-      className="relative py-8 md:py-10"
+      className="relative py-10"
     >
       {/* Subtle frame + lines (clean, slightly futuristic) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

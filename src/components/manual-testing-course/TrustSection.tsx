@@ -73,7 +73,7 @@ export default function TrustSection() {
         >
             <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(75%_60%_at_50%_0%,black,transparent)]" />
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
                 {/* Header copy with SEO keywords */}
                 <div className="mx-auto max-w-3xl text-center">
                     <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">

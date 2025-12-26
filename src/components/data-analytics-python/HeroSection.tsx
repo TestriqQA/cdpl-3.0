@@ -35,7 +35,7 @@ export default function HeroSection() {
                 <div className="animate-blob animation-delay-4000 absolute -bottom-8 left-20 h-72 w-72 rounded-full bg-indigo-200 opacity-20 mix-blend-multiply blur-3xl" />
             </div>
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-12 md:pt-6 md:pb-16">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
                 {/* Breadcrumbs */}
                 <nav aria-label="Breadcrumb" className="mb-5">
                     <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">

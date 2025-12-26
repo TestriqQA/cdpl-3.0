@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { X, User, Mail, Briefcase } from "lucide-react";
 import dynamic from "next/dynamic";
 import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
 import Link from "next/link";
+import { validatePhone } from '@/lib/formValidation';
 
 const PhoneInput = dynamic(() => import("react-phone-number-input"), { ssr: false });
 
@@ -36,6 +37,12 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
         email: "",
         number: ""
     });
+
+    const formRef = useRef<HTMLDivElement>(null);
+
+    useFormErrorReset(formRef, [
+        () => setErrors({ name: "", email: "", number: "" })
+    ]);
 
     // Reset form when modal opens
     useEffect(() => {
@@ -69,34 +76,10 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
     };
 
     const validateNumber = (number: string) => {
-        if (!number) return "Mobile Number is required.";
-        if (!isValidPhoneNumber(number)) return "Invalid phone number format.";
-
-        const digits = number.replace(/\D/g, '');
-        // Check for repeating digits
-        if (/^(\d)\1+$/.test(digits)) return "Phone number cannot consist of repeating digits.";
-
-        // Check for sequential digits
-        const isSequential = (num: string) => {
-            for (let i = 0; i < num.length - 2; i++) {
-                const n1 = parseInt(num[i]);
-                const n2 = parseInt(num[i + 1]);
-                const n3 = parseInt(num[i + 2]);
-                if (
-                    (n2 === n1 + 1 && n3 === n2 + 1) ||
-                    (n2 === n1 - 1 && n3 === n2 - 1)
-                ) {
-                    return true;
-                }
-            }
-            return false;
-        };
-        if (isSequential(digits)) return "Phone number cannot consist of sequential digits.";
-
-        // Check for all zeros
-        if (/^0+$/.test(digits)) return "Phone number cannot be all zeros.";
-
-        return "";
+        const error = validatePhone(number);
+        // validatePhone returns string error or null.
+        // Original expected empty string for success.
+        return error || "";
     };
 
     const handleBlur = (field: keyof typeof errors, value: string) => {
@@ -146,7 +129,7 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
             `}</style>
 
             {/* Modal Content */}
-            <div className="relative w-full h-[650px] max-w-lg bg-white/90 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl overflow-hidden transform transition-all animate-in fade-in zoom-in-95 duration-300">
+            <div className="relative w-full h-[650px] max-w-lg bg-white/90 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl overflow-hidden transform transition-all animate-in fade-in zoom-in-95 duration-300" ref={formRef}>
                 <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-brand to-purple-600"></div>
 
                 <div className="absolute top-4 right-4 z-10">
@@ -175,6 +158,7 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
                                     <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-brand transition-colors w-5 h-5" />
                                     <input
                                         type="text"
+                                        maxLength={35}
                                         value={formData.name}
                                         onChange={(e) => {
                                             const val = e.target.value;
@@ -217,6 +201,7 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
                                         <PhoneInput
                                             defaultCountry="IN"
                                             international
+                                            limitMaxLength={true}
                                             countryCallingCodeEditable={false}
                                             value={formData.number}
                                             onChange={(v) => {

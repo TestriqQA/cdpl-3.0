@@ -22,7 +22,7 @@ import { HOME_FAQS } from "@/components/home/HomeFAQSection";
 // DYNAMIC IMPORTS (for performance)
 // ============================================================================
 
-const HomeHeroSection = dynamic(() => import('@/components/home/HomeHeroSection'), { ssr: true });
+import HomeHeroSection from '@/components/home/HomeHeroSection';
 const HomeTrustBarSection = dynamic(() => import('@/components/home/HomeTrustBarSection'), { ssr: true });
 const HomeFeaturedCoursesSection = dynamic(() => import('@/components/home/HomeFeaturedCoursesSection'), { ssr: true });
 const HomeLearningExperienceSection = dynamic(() => import('@/components/home/HomeLearningExperienceSection'), { ssr: true });

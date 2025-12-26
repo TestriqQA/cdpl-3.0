@@ -101,7 +101,7 @@ export default function LearningPath() {
   ];
 
   return (
-    <section className="relative py-12 md:py-20 bg-white overflow-hidden" id="learning-path" aria-labelledby="learning-path-title">
+    <section className="relative py-10 bg-white overflow-hidden" id="learning-path" aria-labelledby="learning-path-title">
       {/* Subtle futuristic accents */}
       <div className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(50%_50%_at_50%_50%,black,transparent)]">
         <div className="absolute -top-10 -left-10 h-56 w-56 rounded-full border border-cyan-200/60"></div>
@@ -275,7 +275,12 @@ export default function LearningPath() {
         <div className="mt-10 text-center">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
-              onClick={() => document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const el = document.getElementById('curriculum');
+                if (el) {
+                  window.scrollTo({ top: el.offsetTop - 140, behavior: 'smooth' });
+                }
+              }}
               className="w-full sm:w-auto cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white px-6 py-3 text-base font-semibold text-gray-700 hover:bg-gray-50 transition-all hover:shadow-md focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
             >
               View Curriculum

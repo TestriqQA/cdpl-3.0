@@ -14,19 +14,19 @@ type Benefit = {
 };
 
 const benefits: Benefit[] = [
-  { icon: <CheckCircle />, title: '99.9% Data Accuracy',  description: 'Prevent costly BI & dashboard errors with strict reconciliation and schema checks.', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
-  { icon: <Zap />,         title: '10x Faster Validation', description: 'Automate ETL/ELT test suites for repeatable, audit-ready data quality.',         bg: 'bg-amber-50',   iconColor: 'text-amber-700',   border: 'border-amber-200' },
-  { icon: <Shield />,      title: 'Compliance-Ready',      description: 'GDPR, HIPAA, SOX-aligned test evidence with verifiable logs & reports.',       bg: 'bg-violet-50',  iconColor: 'text-violet-700',  border: 'border-violet-200' },
-  { icon: <Database />,    title: 'Pipeline Reliability',  description: 'Validate sources, transforms, partitions, and loads that power analytics & ML.', bg: 'bg-sky-50',     iconColor: 'text-sky-700',     border: 'border-sky-200' },
-  { icon: <Globe />,       title: 'Global Demand',         description: 'Every industry depends on governed data—finance, health, e-commerce, SaaS.',   bg: 'bg-indigo-50',  iconColor: 'text-indigo-700',  border: 'border-indigo-200' },
-  { icon: <TrendingUp />,  title: 'Higher Salaries',        description: 'ETL testing specialists earn up to 30% more than generic QA roles.',           bg: 'bg-rose-50',    iconColor: 'text-rose-700',    border: 'border-rose-200' },
+  { icon: <CheckCircle />, title: '99.9% Data Accuracy', description: 'Prevent costly BI & dashboard errors with strict reconciliation and schema checks.', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
+  { icon: <Zap />, title: '10x Faster Validation', description: 'Automate ETL/ELT test suites for repeatable, audit-ready data quality.', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
+  { icon: <Shield />, title: 'Compliance-Ready', description: 'GDPR, HIPAA, SOX-aligned test evidence with verifiable logs & reports.', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
+  { icon: <Database />, title: 'Pipeline Reliability', description: 'Validate sources, transforms, partitions, and loads that power analytics & ML.', bg: 'bg-sky-50', iconColor: 'text-sky-700', border: 'border-sky-200' },
+  { icon: <Globe />, title: 'Global Demand', description: 'Every industry depends on governed data—finance, health, e-commerce, SaaS.', bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
+  { icon: <TrendingUp />, title: 'Higher Salaries', description: 'ETL testing specialists earn up to 30% more than generic QA roles.', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
 ];
 
 export default function WhyEtlTesting() {
 
 
   return (
-    <section id="why-etl" aria-labelledby="why-etl-heading" className="relative py-12 md:py-10 bg-white">
+    <section id="why-etl" aria-labelledby="why-etl-heading" className="relative py-10 bg-white">
       {/* Subtle top/bottom separators for a sleek, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />

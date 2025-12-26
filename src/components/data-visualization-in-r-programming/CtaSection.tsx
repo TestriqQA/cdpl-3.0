@@ -13,7 +13,7 @@ export const CtaSection: React.FC = () => {
   const courseName = "Machine Learning and Data Visualization using R Programming";
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-900 relative overflow-hidden">
+    <section className="py-10 bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-900 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 right-10 w-72 h-72 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl"></div>

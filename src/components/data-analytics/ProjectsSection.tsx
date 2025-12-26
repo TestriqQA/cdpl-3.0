@@ -75,7 +75,7 @@ export default function ProjectsSection() {
 
 
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="relative py-10 md:py-12 bg-white">
+    <section id="projects" aria-labelledby="projects-heading" className="relative py-10 bg-white">
       {/* Subtle futuristic backdrop (fine grid + soft radial glow; no heavy gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.035)_1px,transparent_1px)] bg-[size:28px_28px]" />

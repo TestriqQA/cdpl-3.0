@@ -14,7 +14,7 @@ export default function TestimonialsSection() {
 
   return (
     <section
-      className="relative py-14 md:py-20 bg-white"
+      className="relative py-10 bg-white"
       aria-labelledby="testimonials-heading"
     >
       {/* Sleek top accent (thin gradient line only) */}

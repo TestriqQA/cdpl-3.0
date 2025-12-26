@@ -9,7 +9,7 @@ const CtaSection: React.FC = () => {
   const courseName = "Data Analytics & Visualization with Power BI";
 
   return (
-    <section className="py-16 md:py-24 bg-blue-600">
+    <section className="py-10 bg-blue-600">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
           <Zap size={48} className="text-white mx-auto mb-4" />

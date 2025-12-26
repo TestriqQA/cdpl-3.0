@@ -71,7 +71,7 @@ export default function StatsSection() {
     <section
       id="api-testing-stats"
       aria-labelledby="stats-heading"
-      className="relative py-8 sm:py-16"
+      className="relative py-10"
     >
       {/* Subtle backdrop: light, clean, no heavy gradients */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">

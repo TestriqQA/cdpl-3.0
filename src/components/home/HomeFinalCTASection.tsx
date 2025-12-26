@@ -1,7 +1,14 @@
 'use client';
+import { useRef } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 
 import React, { useState, useCallback } from 'react';
 import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import {
+  validatePhone,
+  validateFullName as validateFullNameLib
+} from '@/lib/formValidation';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Mail, User } from 'lucide-react';
 
@@ -27,10 +34,19 @@ export default function HomeFinalCTASection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useFormErrorReset(formRef, [
+    (val) => setErrors(prev => ({ ...prev, fullName: val || '' })),
+    (val) => setErrors(prev => ({ ...prev, email: val || '' })),
+    (val) => setErrors(prev => ({ ...prev, phone: val || '' })),
+  ]);
+
   // Validation functions from HomeHeroSection
   const validateFullName = useCallback((fullName: string) => {
-    if (!fullName.trim()) {
-      setErrors(prev => ({ ...prev, fullName: 'Full Name is required' }));
+    const error = validateFullNameLib(fullName);
+    if (error) {
+      setErrors(prev => ({ ...prev, fullName: error }));
       return false;
     }
     setErrors(prev => ({ ...prev, fullName: '' }));
@@ -50,18 +66,9 @@ export default function HomeFinalCTASection() {
   }, []);
 
   const validatePhoneNumber = useCallback((phone: string) => {
-    if (!phone) {
-      setErrors(prev => ({ ...prev, phone: 'Mobile Number is required' }));
-      return false;
-    } else if (phone.length < 10 || phone.length > 15) {
-      setErrors(prev => ({ ...prev, phone: 'Mobile Number is invalid' }));
-      return false;
-    } else if (/(.)\1{3}/.test(phone) || /(123|234|345|456|567|678|789|890|098|987|876|765|654|543|432|321|210)/.test(phone)) {
-      setErrors(prev => ({ ...prev, phone: 'Mobile Number cannot contain repeating or sequential digits' }));
-      return false;
-    }
-    setErrors(prev => ({ ...prev, phone: '' }));
-    return true;
+    const error = validatePhone(phone);
+    setErrors(prev => ({ ...prev, phone: error || '' }));
+    return error === null;
   }, []);
 
   const validateForm = useCallback(() => {
@@ -192,7 +199,7 @@ export default function HomeFinalCTASection() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="relative"
           >
-            <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-10 transform hover:shadow-3xl transition-shadow duration-300">
+            <div ref={formRef} className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-10 transform hover:shadow-3xl transition-shadow duration-300">
               {/* Form Header */}
               <div className="text-center mb-8">
                 <h3 className="text-3xl font-bold text-gray-900 mb-2">
@@ -231,6 +238,7 @@ export default function HomeFinalCTASection() {
                     <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                     <input
                       type="text"
+                      maxLength={35}
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleChange}
@@ -280,6 +288,7 @@ export default function HomeFinalCTASection() {
                   <div className="relative">
                     <PhoneInput
                       international
+                      limitMaxLength={true}
                       defaultCountry="IN"
                       value={formData.phone}
                       onChange={handlePhoneChange}

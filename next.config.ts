@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
 
   serverExternalPackages: ['@prisma/client'], // Remove this line if not using Prisma or similar
   productionBrowserSourceMaps: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
 };
 
 export default nextConfig;

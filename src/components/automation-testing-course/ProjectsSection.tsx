@@ -87,7 +87,7 @@ export default function ProjectsSection() {
 
 
   return (
-    <section id="projects" className="relative py-8 md:py-14 bg-white">
+    <section id="projects" className="relative py-10 bg-white">
       {/* subtle rails for a clean, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -104,7 +104,7 @@ export default function ProjectsSection() {
           className="text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            Build Elite <span className="text-ST">SDET Projects</span> 
+            Build Elite <span className="text-ST">SDET Projects</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
             Ship <strong>production-grade automation frameworks</strong> with <em>AI self-healing</em>,{' '}

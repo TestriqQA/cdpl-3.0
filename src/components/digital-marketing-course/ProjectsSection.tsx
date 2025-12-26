@@ -41,7 +41,7 @@ export default function ProjectsSection() {
     const [isEnrollOpen, setIsEnrollOpen] = useState(false);
     const courseName = "Digital Marketing & Analytics Master Program";
     return (
-        <section id="projects" aria-labelledby="projects-heading" className="relative py-8 md:py-10 bg-white">
+        <section id="projects" aria-labelledby="projects-heading" className="relative py-10 bg-white">
             {/* subtle futuristic scaffold */}
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute inset-x-0 top-0 h-px bg-slate-200" />

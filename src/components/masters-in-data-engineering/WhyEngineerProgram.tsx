@@ -94,7 +94,7 @@ const WhyEngineerProgram: React.FC = () => {
   const courseName = "Data Analytics with BI & Big Data Engineering Master Program";
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-10 bg-white">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header – content kept same, layout styled like reference */}
         <div className="mb-16 text-center md:mb-20">

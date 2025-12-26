@@ -46,7 +46,7 @@ const HeroSection: React.FC = () => {
     ];
 
     return (
-        <section className="bg-gray-50 py-12 md:py-10">
+        <section className="bg-gray-50 py-10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Breadcrumbs */}

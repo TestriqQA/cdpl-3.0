@@ -141,7 +141,7 @@ export default function CurriculumSection() {
     const courseName = "Advanced Excel for Data Analytics & Visualization";
 
     return (
-        <section id="curriculum" className="relative py-20 bg-white overflow-hidden">
+        <section id="curriculum" className="relative py-10 bg-white overflow-hidden">
             {/* Decorative elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>

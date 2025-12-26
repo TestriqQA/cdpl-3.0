@@ -85,7 +85,7 @@ export default function CareerSection(): JSX.Element {
 
 
   return (
-    <section id="career" className="relative py-4 md:py-10 bg-white">
+    <section id="career" className="relative py-10 bg-white">
       {/* subtle rails */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />

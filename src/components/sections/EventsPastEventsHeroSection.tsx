@@ -11,9 +11,10 @@ export default function EventsPastEventsHeroSection() {
 
   const handleScrollDown = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const featured = document.getElementById("featured-events");
     const all = document.getElementById("all-past-events");
-    (featured ?? all)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const featured = document.getElementById("featured-events");
+    // Prioritize "All Events" for direct browsing
+    (all ?? featured)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const handleEnquireClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -41,7 +42,7 @@ export default function EventsPastEventsHeroSection() {
           aria-hidden="true"
         >
           {/* left edge */}
-          <div className="absolute top-10 left-0 md:left-2 lg:left-4 animate-float">
+          <div className="absolute top-28 left-0 md:left-2 lg:left-4 animate-float">
             <Image
               src="/events/fire_lantern.png"
               alt=""

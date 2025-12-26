@@ -125,7 +125,7 @@ const ToolsSection: React.FC = () => {
   const courseName = "Data Analytics with BI & Big Data Engineering Master Program";
 
   return (
-    <section className="bg-white py-16 md:py-20">
+    <section className="bg-white py-10">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header (content preserved, layout updated) */}
         <div className="mb-16 text-center md:mb-20">

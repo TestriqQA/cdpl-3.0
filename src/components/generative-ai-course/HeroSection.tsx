@@ -27,7 +27,7 @@ export default function HeroSection() {
                 <div className="absolute inset-0 [mask-image:radial-gradient(1200px_600px_at_50%_-10%,black,transparent)]" />
             </div>
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-12 md:pt-12 md:pb-16">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
                 {/* Breadcrumbs */}
                 <nav aria-label="Breadcrumb" className="mb-8">
                     <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
