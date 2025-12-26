@@ -584,8 +584,7 @@ const HomeHeroSection: React.FC = () => {
           border-radius: 0.5rem;
           font-size: 0.875rem;
           color: #1e293b;
-          outline: none;
-          transition: all 0.3s;
+          transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .phone-input-container .PhoneInputInput::placeholder {
@@ -639,6 +638,7 @@ const HomeHeroSection: React.FC = () => {
               repeat: Infinity,
               ease: "easeInOut"
             }}
+            style={{ willChange: 'transform, opacity' }}
             className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-orange-200 to-orange-100 rounded-full blur-3xl"
           />
           <motion.div
@@ -651,6 +651,7 @@ const HomeHeroSection: React.FC = () => {
               repeat: Infinity,
               ease: "easeInOut"
             }}
+            style={{ willChange: 'transform, opacity' }}
             className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-tr from-blue-200 to-blue-100 rounded-full blur-3xl"
           />
         </div>

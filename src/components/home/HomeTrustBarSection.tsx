@@ -58,22 +58,22 @@ export default function HomeTrustBarSection() {
               whileHover={{ scale: 1.05 }}
               className="flex items-center justify-center h-16 p-2" // Reduced padding and height
             >
-              <Image 
+              <Image
                 src={getLogoPath(partner)}
                 alt={`${partner} Logo`}
                 title={`${partner} Logo`}
-                width={180} // Increased width for better visibility
+                width={140} // Optimized for display size (approx 150px)
                 height={60}
                 className="object-contain w-full h-full grayscale hover:grayscale-0 transition-all duration-300"
                 // Added sizes and priority for better Next.js Image optimization and SEO
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 33vw, 10vw"
                 priority={index < 5} // Prioritize loading for the first few logos
               />
             </motion.div>
           ))}
         </div>
 
-      
+
       </div>
     </section>
   );

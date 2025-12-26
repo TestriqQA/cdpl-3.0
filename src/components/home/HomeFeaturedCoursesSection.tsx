@@ -82,6 +82,81 @@ const iconMap = {
 
 };
 
+// --- Isolated Countdown Component ---
+const CountdownTimer: React.FC<{ targetDate: Date }> = ({ targetDate }) => {
+  const [timeLeft, setTimeLeft] = useState<{ hours: string; minutes: string; seconds: string; isOver: boolean }>({
+    hours: '00', minutes: '00', seconds: '00', isOver: false
+  });
+
+  useEffect(() => {
+    const calculateTime = () => {
+      const now = Date.now();
+      const diff = Math.max(0, targetDate.getTime() - now);
+      const totalSeconds = Math.floor(diff / 1000);
+
+      if (diff <= 0) {
+        return { hours: '00', minutes: '00', seconds: '00', isOver: true };
+      }
+
+      return {
+        hours: pad(Math.floor(totalSeconds / 3600)),
+        minutes: pad(Math.floor((totalSeconds % 3600) / 60)),
+        seconds: pad(totalSeconds % 60),
+        isOver: false
+      };
+    };
+
+    // Initial cal
+    setTimeLeft(calculateTime());
+
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTime());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [targetDate]);
+
+  return (
+    <>
+      <div
+        className="grid grid-cols-3 gap-3 text-center"
+        role="timer"
+        aria-live="polite"
+      >
+        <div className="rounded-lg bg-white shadow-sm p-3">
+          <div className="text-xl font-bold text-slate-900 tabular-nums">
+            {timeLeft.hours}
+          </div>
+          <div className="text-[10px] text-slate-500 tracking-wide uppercase">
+            Hours
+          </div>
+        </div>
+        <div className="rounded-lg bg-white shadow-sm p-3">
+          <div className="text-xl font-bold text-slate-900 tabular-nums">
+            {timeLeft.minutes}
+          </div>
+          <div className="text-[10px] text-slate-500 tracking-wide uppercase">
+            Minutes
+          </div>
+        </div>
+        <div className="rounded-lg bg-white shadow-sm p-3">
+          <div className="text-xl font-bold text-slate-900 tabular-nums">
+            {timeLeft.seconds}
+          </div>
+          <div className="text-[10px] text-slate-500 tracking-wide uppercase">
+            Seconds
+          </div>
+        </div>
+      </div>
+      {timeLeft.isOver && (
+        <p className="mt-2 text-xs text-red-600 font-semibold">
+          Offer has ended.
+        </p>
+      )}
+    </>
+  );
+};
+
 const COURSES: Course[] = [
   // --- Software Testing Courses ---
   {
@@ -505,25 +580,36 @@ const COURSES: Course[] = [
 const pad = (n: number) => n.toString().padStart(2, '0');
 
 // --- Course Card Component (extracted layout/design/features from ModuleCard) ---
-const CourseCard: React.FC<{ course: Course; index: number; nowMs: number }> = ({ course, index, nowMs }) => {
+const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index }) => {
   const variant = pickVariant(index);
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 18 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  // 48h fallback window from first mount (matches ModuleCard behavior)
-  const fallbackDeadlineRef = React.useRef<Date | null>(null);
-  if (!course.offerEndsAt && !fallbackDeadlineRef.current) {
-    fallbackDeadlineRef.current = new Date(Date.now() + 48 * 3600 * 1000);
-  }
-  const target: Date = course.offerEndsAt ? new Date(course.offerEndsAt) : (fallbackDeadlineRef.current as Date);
-  const diff = Math.max(0, target.getTime() - nowMs);
-  const totalSeconds = Math.floor(diff / 1000);
-  const hours = pad(Math.floor(totalSeconds / 3600));
-  const minutes = pad(Math.floor((totalSeconds % 3600) / 60));
-  const seconds = pad(totalSeconds % 60);
-  const isOver = diff <= 0;
+
+  // Initialize ONLY ONCE on mount to ensure consistent hydration
+  const [target, setTarget] = React.useState<Date | null>(null);
+
+  useEffect(() => {
+    if (course.offerEndsAt) {
+      setTarget(new Date(course.offerEndsAt));
+    } else {
+      // Create a consistent deadline for this user session if not set
+      // We use sessionStorage to persist it across reloads if possible, or just memoize for this session
+      // For now, simple stable date:
+      const saved = sessionStorage.getItem(`deadline-${course.id}`);
+      if (saved) {
+        setTarget(new Date(saved));
+      } else {
+        const d = new Date(Date.now() + 48 * 3600 * 1000);
+        sessionStorage.setItem(`deadline-${course.id}`, d.toISOString());
+        setTarget(d);
+      }
+    }
+  }, [course.id, course.offerEndsAt]);
+
+  if (!target) return null; // Or a skeleton
 
   return (
     <motion.article
@@ -618,43 +704,7 @@ const CourseCard: React.FC<{ course: Course; index: number; nowMs: number }> = (
             Limited-time offer ends in
           </p>
 
-          <div
-            className="grid grid-cols-3 gap-3 text-center"
-            role="timer"
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            <div className="rounded-lg bg-white shadow-sm p-3">
-              <div className="text-xl font-bold text-slate-900 tabular-nums">
-                {hours}
-              </div>
-              <div className="text-[10px] text-slate-500 tracking-wide uppercase">
-                Hours
-              </div>
-            </div>
-            <div className="rounded-lg bg-white shadow-sm p-3">
-              <div className="text-xl font-bold text-slate-900 tabular-nums">
-                {minutes}
-              </div>
-              <div className="text-[10px] text-slate-500 tracking-wide uppercase">
-                Minutes
-              </div>
-            </div>
-            <div className="rounded-lg bg-white shadow-sm p-3">
-              <div className="text-xl font-bold text-slate-900 tabular-nums">
-                {seconds}
-              </div>
-              <div className="text-[10px] text-slate-500 tracking-wide uppercase">
-                Seconds
-              </div>
-            </div>
-          </div>
-
-          {isOver && (
-            <p className="mt-2 text-xs text-red-600 font-semibold">
-              Offer has ended.
-            </p>
-          )}
+          <CountdownTimer targetDate={target} />
         </div>
 
         <div className="pt-4 space-y-3 mt-auto">
@@ -701,12 +751,12 @@ export default function HomeFeaturedCoursesSection() {
   const ALL_CATEGORIES = ['All', 'Software Testing', 'Data Science', 'Business Intelligence', 'Artificial Intelligence', 'Digital Marketing'];
   const [activeCategory, setActiveCategory] = useState(ALL_CATEGORIES[0]);
 
-  // Ticking clock passed to each card (matches ModuleCard pattern)
-  const [nowMs, setNowMs] = useState<number>(() => Date.now());
-  useEffect(() => {
-    const id = setInterval(() => setNowMs(Date.now()), 1000);
-    return () => clearInterval(id);
-  }, []);
+  // Ticking clock removed from parent to prevent full re-renders
+  // const [nowMs, setNowMs] = useState<number>(() => Date.now());
+  // useEffect(() => {
+  //   const id = setInterval(() => setNowMs(Date.now()), 1000);
+  //   return () => clearInterval(id);
+  // }, []);
 
   const filteredCourses = activeCategory === 'All'
     ? COURSES
@@ -757,7 +807,7 @@ export default function HomeFeaturedCoursesSection() {
         {/* Course Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCourses.map((course, index) => (
-            <CourseCard key={course.id} course={course} index={index} nowMs={nowMs} />
+            <CourseCard key={course.id} course={course} index={index} />
           ))}
         </div>
 
