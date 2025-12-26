@@ -67,6 +67,8 @@
   "browserslist": [
     "defaults",
     "not ie 11",
-    "> 1%"
+    "last 2 versions",
+    "> 0.2%",
+    "not dead"
   ]
 }

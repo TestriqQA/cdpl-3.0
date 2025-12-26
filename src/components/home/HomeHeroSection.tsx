@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { m, LazyMotion, domAnimation } from 'framer-motion';
 import {
   Award,
   TrendingUp,
@@ -121,7 +121,7 @@ interface DesktopHeroContentProps {
 const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure, onOpenVideo }) => (
   <>
     {/* Top Badge */}
-    <motion.div
+    <m.div
       {...fadeUp}
       className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-200 rounded-full px-4 py-2 mb-5"
     >
@@ -129,29 +129,29 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
       <span className="text-[11px] sm:text-xs font-semibold text-indigo-700">
         🏆 India&apos;s #1 Software Testing & Data Science Training Institute
       </span>
-    </motion.div>
+    </m.div>
 
     {/* Main Headline - Updated Copy */}
-    <motion.h1
+    <m.h1
       id="home-heading"
       {...fadeUp}
       transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.06 }}
       className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
     >
       Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span> with <span className="text-brand">100% Placement</span>
-    </motion.h1>
+    </m.h1>
 
     {/* Enhanced Subheadline */}
-    <motion.p
+    <m.p
       {...fadeUp}
       transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.12 }}
       className="mt-5 text-[15px] sm:text-base md:text-lg leading-7 text-slate-700"
     >
       Launch your tech career with industry-leading courses, live projects, and guaranteed job interviews. Join 5000+ successful graduates today.
-    </motion.p>
+    </m.p>
 
     {/* Trust Indicators - 3 Cards */}
-    <motion.div
+    <m.div
       {...fadeUp}
       transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.18 }}
       className="mt-7 grid grid-cols-1 sm:grid-cols-3 gap-4"
@@ -188,10 +188,10 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
           <div className="text-xs text-slate-600">Industry Experience</div>
         </div>
       </div>
-    </motion.div>
+    </m.div>
 
     {/* Key Features - 6 Benefits */}
-    <motion.div
+    <m.div
       {...fadeUp}
       transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.24 }}
       className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3"
@@ -209,11 +209,11 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
           <span className="text-sm text-slate-700">{feature.text}</span>
         </div>
       ))}
-    </motion.div>
+    </m.div>
 
 
     {/* CTA Buttons */}
-    <motion.div
+    <m.div
       {...fadeUp}
       transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.36 }}
       className="mt-7 flex flex-col sm:flex-row gap-4"
@@ -244,7 +244,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
         <Play className="h-5 w-5" />
         Watch CDPL
       </button>
-    </motion.div>
+    </m.div>
   </>
 );
 
@@ -410,7 +410,7 @@ const HomeHeroSection: React.FC = () => {
 
   // The original Lead Form block (Right side of the grid)
   const LeadForm = (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, scale: 0.985 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1.0] as const }}
@@ -421,9 +421,9 @@ const HomeHeroSection: React.FC = () => {
           {/* Form Header - Catchy and Actionable */}
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-xl font-bold text-slate-900">
+              <h2 className="text-xl font-bold text-slate-900">
                 Talk to an Advisor
-              </h3>
+              </h2>
               <div className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full">
                 <span className="text-xs font-bold text-white">FREE</span>
               </div>
@@ -569,7 +569,7 @@ const HomeHeroSection: React.FC = () => {
           </form>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 
   return (
@@ -584,7 +584,7 @@ const HomeHeroSection: React.FC = () => {
           border-radius: 0.5rem;
           font-size: 0.875rem;
           color: #1e293b;
-          transition: border-color 0.3s, box-shadow 0.3s;
+          /* transition: border-color 0.3s, box-shadow 0.3s; removed for performance */
         }
 
         .phone-input-container .PhoneInputInput::placeholder {
@@ -624,96 +624,98 @@ const HomeHeroSection: React.FC = () => {
         }
       `}</style>
 
-      <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50 lg:py-4 py-4 overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Animated gradient orbs */}
-          <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            style={{ willChange: 'transform, opacity' }}
-            className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-orange-200 to-orange-100 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.2, 0.4, 0.2],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            style={{ willChange: 'transform, opacity' }}
-            className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-tr from-blue-200 to-blue-100 rounded-full blur-3xl"
-          />
-        </div>
-
-        {/* Main Container */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          {/* --- Mobile Layout (lg:hidden) --- */}
-          <div className="lg:hidden">
-            {/* 1. Breadcrumb */}
-            {Breadcrumb}
-
-            {/* 2. Headline */}
-            <motion.h1
-              id="home-heading-mobile"
-              {...fadeUp}
-              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.06 }}
-              className="mt-2 py-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
-            >
-              Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span>
-            </motion.h1>
-
-            {/* 3. Description */}
-            <motion.p
-              {...fadeUp}
-              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.12 }}
-              className="mt-1 mb-1.5 text-[15px] sm:text-base leading-7 text-slate-700"
-            >
-              Launch your tech career with industry-leading courses, live projects, and guaranteed job interviews. Join 5000+ successful graduates today.
-            </motion.p>
-
-            {/* 4. Form Card */}
-            {LeadForm}
-
-            {/* 5. Mobile Feature List */}
-            <MobileFeatureList
-              onOpenBrochure={openBrochure}
-              onOpenVideo={openVideo}
+      <LazyMotion features={domAnimation}>
+        <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50 lg:py-4 py-4 overflow-hidden">
+          {/* Background decorative elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Animated gradient orbs */}
+            <m.div
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.5, 0.3],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              style={{ willChange: 'transform, opacity' }}
+              className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-orange-200 to-orange-100 rounded-full blur-3xl contains-strict"
+            />
+            <m.div
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.2, 0.4, 0.2],
+              }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              style={{ willChange: 'transform, opacity' }}
+              className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-tr from-blue-200 to-blue-100 rounded-full blur-3xl contains-strict"
             />
           </div>
 
-          {/* --- Desktop/Laptop Layout (hidden lg:block) --- */}
-          <div className="hidden lg:block">
-            {/* 1. Breadcrumb */}
-            {Breadcrumb}
+          {/* Main Container */}
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            {/* 2. Grid Layout - 8 columns left, 4 columns right */}
-            <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
+            {/* --- Mobile Layout (lg:hidden) --- */}
+            <div className="lg:hidden">
+              {/* 1. Breadcrumb */}
+              {Breadcrumb}
 
-              {/* Left Content - 8 columns (66.67% width) */}
-              <div className="order-1 lg:order-1 lg:col-span-7">
-                <DesktopHeroContent onOpenBrochure={openBrochure} onOpenVideo={openVideo} />
-              </div>
+              {/* 2. Headline */}
+              <m.h1
+                id="home-heading-mobile"
+                {...fadeUp}
+                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.06 }}
+                className="mt-2 py-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
+              >
+                Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span>
+              </m.h1>
 
-              {/* Right Form - 4 columns (33.33% width) */}
-              <div className="order-2 lg:order-2 lg:col-span-5">
-                {LeadForm}
+              {/* 3. Description */}
+              <m.p
+                {...fadeUp}
+                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.12 }}
+                className="mt-1 mb-1.5 text-[15px] sm:text-base leading-7 text-slate-700"
+              >
+                Launch your tech career with industry-leading courses, live projects, and guaranteed job interviews. Join 5000+ successful graduates today.
+              </m.p>
+
+              {/* 4. Form Card */}
+              {LeadForm}
+
+              {/* 5. Mobile Feature List */}
+              <MobileFeatureList
+                onOpenBrochure={openBrochure}
+                onOpenVideo={openVideo}
+              />
+            </div>
+
+            {/* --- Desktop/Laptop Layout (hidden lg:block) --- */}
+            <div className="hidden lg:block">
+              {/* 1. Breadcrumb */}
+              {Breadcrumb}
+
+              {/* 2. Grid Layout - 8 columns left, 4 columns right */}
+              <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
+
+                {/* Left Content - 8 columns (66.67% width) */}
+                <div className="order-1 lg:order-1 lg:col-span-7">
+                  <DesktopHeroContent onOpenBrochure={openBrochure} onOpenVideo={openVideo} />
+                </div>
+
+                {/* Right Form - 4 columns (33.33% width) */}
+                <div className="order-2 lg:order-2 lg:col-span-5">
+                  {LeadForm}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </LazyMotion>
 
       {/* Brochure Download Modal */}
       <BrochureDownloadModal

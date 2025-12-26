@@ -211,3 +211,8 @@ a[role="button"] {
   color: #0f766e !important;
   /* teal-700 */
 }
+
+/* Performance optimization */
+.contains-strict {
+  contain: strict;
+}

@@ -165,6 +165,7 @@ function TickerRow({
                     className="object-contain"
                     sizes="(max-width: 425px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
                     priority={false}
+                    quality={60}
                   />
                 </div>
               </div>
