@@ -62,19 +62,28 @@ export default function CareerSection() {
                             High-Paying Job Roles
                         </h3>
 
-                        <ul className="grid grid-cols-2 gap-3 sm:gap-4">
+                        <ul role="list" className="grid grid-cols-2 gap-3 sm:gap-4">
                             {roles.map((role, i) => {
                                 const hue = roleAccents[i % roleAccents.length];
+                                const colorClasses: Record<string, string> = {
+                                    slate: 'border-slate-200 hover:bg-slate-50 text-slate-800',
+                                    sky: 'border-sky-200 hover:bg-sky-50 text-sky-800',
+                                    amber: 'border-amber-200 hover:bg-amber-50 text-amber-800',
+                                    emerald: 'border-emerald-200 hover:bg-emerald-50 text-emerald-800',
+                                    violet: 'border-violet-200 hover:bg-violet-50 text-violet-800',
+                                    rose: 'border-rose-200 hover:bg-rose-50 text-rose-800',
+                                    cyan: 'border-cyan-200 hover:bg-cyan-50 text-cyan-800',
+                                    lime: 'border-lime-200 hover:bg-lime-50 text-lime-800',
+                                    indigo: 'border-indigo-200 hover:bg-indigo-50 text-indigo-800',
+                                    orange: 'border-orange-200 hover:bg-orange-50 text-orange-800',
+                                };
                                 return (
-                                    <li key={role}>
+                                    <li key={role} role="listitem">
                                         <div
                                             className={[
                                                 'rounded-xl border bg-white px-4 py-3 text-center text-sm font-medium shadow-sm transition',
-                                                `border-${hue}-200`,
-                                                `hover:bg-${hue}-50`,
-                                                `text-${hue}-800`,
+                                                colorClasses[hue] || colorClasses.sky,
                                             ].join(' ')}
-                                            role="listitem"
                                         >
                                             {role}
                                         </div>
@@ -107,17 +116,27 @@ export default function CareerSection() {
                             Top Hiring Companies
                         </h3>
 
-                        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+                        <ul role="list" className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
                             {companies.map((c, i) => {
                                 const hue = companyAccents[i % companyAccents.length];
+                                const colorClasses: Record<string, string> = {
+                                    slate: 'border-slate-200 hover:bg-slate-50 text-slate-800',
+                                    sky: 'border-sky-200 hover:bg-sky-50 text-sky-800',
+                                    amber: 'border-amber-200 hover:bg-amber-50 text-amber-800',
+                                    emerald: 'border-emerald-200 hover:bg-emerald-50 text-emerald-800',
+                                    violet: 'border-violet-200 hover:bg-violet-50 text-violet-800',
+                                    rose: 'border-rose-200 hover:bg-rose-50 text-rose-800',
+                                    cyan: 'border-cyan-200 hover:bg-cyan-50 text-cyan-800',
+                                    lime: 'border-lime-200 hover:bg-lime-50 text-lime-800',
+                                    indigo: 'border-indigo-200 hover:bg-indigo-50 text-indigo-800',
+                                    orange: 'border-orange-200 hover:bg-orange-50 text-orange-800',
+                                };
                                 return (
-                                    <li key={c}>
+                                    <li key={c} role="listitem">
                                         <div
                                             className={[
                                                 'rounded-xl border bg-white px-4 py-3 text-center text-sm font-semibold shadow-sm transition',
-                                                `border-${hue}-200`,
-                                                `hover:bg-${hue}-50`,
-                                                `text-${hue}-800`,
+                                                colorClasses[hue] || colorClasses.slate,
                                             ].join(' ')}
                                         >
                                             {c}

@@ -127,75 +127,34 @@ export async function GET() {
         const accessToken = (await auth.getAccessToken()).token;
         if (!accessToken) throw new Error('Failed to generate access token');
 
-        // v4 API requires 'accounts/{accountId}/locations/{locationId}'
-        // account.name is 'accounts/{accountId}'
-        // location.name is 'locations/{locationId}' (from Business Information API)
-        const parent = `${account.name}/${location.name}`;
-        console.log('Fetching reviews for parent:', parent);
-
-        const allReviews = [];
-        let nextPageToken = '';
-        let pageCount = 0;
-        const MAX_PAGES = 5; // Safety limit to prevent infinite loops
-
-        do {
-            console.log(`Fetching reviews page ${pageCount + 1}...`);
-            const params: any = { pageSize: 100 };
-            if (nextPageToken) {
-                params.pageToken = nextPageToken;
-            }
-
-            // Construct the full API URL: base/accounts/{id}/locations/{id}/reviews
-            const fullReviewsUrl = `${GOOGLE_MY_BUSINESS_API_BASE}/${parent}/reviews`;
-            console.log('Full Reviews URL:', fullReviewsUrl);
-
-            const reviewsResponse = await axios.get(
-                fullReviewsUrl,
-                {
-                    params,
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                }
-            );
-
-            const data = reviewsResponse.data;
-            const fetched = data.reviews || [];
-            allReviews.push(...fetched);
-
-            nextPageToken = data.nextPageToken;
-            pageCount++;
-
-        } while (nextPageToken && pageCount < MAX_PAGES);
-
-        const rawReviews = allReviews;
-        console.log(`Total reviews fetched: ${rawReviews.length}`);
-
-        // Debug: Log the first review to check field names
-        if (rawReviews.length > 0) {
-            console.log('Sample Raw Review:', JSON.stringify(rawReviews[0], null, 2));
-        }
-
-        // Map Google API format to our frontend format
-        const reviews = rawReviews.map((r: any) => {
-            return {
-                name: r.reviewer?.displayName || 'Anonymous',
-                reviewerInfo: {
-                    photoUrl: r.reviewer?.profilePhotoUrl || '',
-                    displayName: r.reviewer?.displayName || 'Anonymous'
+        const reviewsResponse = await axios.get(
+            `https://mybusiness.googleapis.com/v4/${account.name}/${location.name}/reviews`,
+            {
+                params: { pageSize: 20 },
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
                 },
-                comment: r.comment || '(No comment)',
-                starRating: mapStarRating(r.starRating),
-                createTime: r.createTime,
-                source: 'Google'
-            };
-        });
+            }
+        );
 
-        // Calculate stats
-        const realTotalReviews = reviews.length;
-        const realAverageRating = realTotalReviews > 0
-            ? reviews.reduce((acc: number, r: any) => acc + Number(r.starRating), 0) / realTotalReviews
-            : 0;
+        const reviewsData = reviewsResponse.data;
+        const apiReviews = reviewsData.reviews || [];
+
+        const realTotalReviews = reviewsData.totalReviewCount || 0;
+        const realAverageRating = reviewsData.averageRating || 0;
+
+        // Map API response to expected internal structure
+        const reviews = apiReviews.map((r: any) => ({
+            name: r.reviewer?.displayName || 'Anonymous',
+            reviewerInfo: {
+                photoUrl: r.reviewer?.profilePhotoUrl || '',
+                displayName: r.reviewer?.displayName || 'Anonymous'
+            },
+            comment: r.comment || '',
+            starRating: r.starRating || 'FIVE',
+            createTime: r.createTime || new Date().toISOString(),
+            source: 'Google'
+        }));
 
         const responseData = {
             reviews: reviews.length > 0 ? reviews : FALLBACK_REVIEWS, // Use fallback if empty list returned
@@ -229,14 +188,3 @@ export async function GET() {
     }
 }
 
-// Helper to map Google ENUM stars to numbers
-function mapStarRating(rating: string): string {
-    switch (rating) {
-        case 'FIVE': return '5';
-        case 'FOUR': return '4';
-        case 'THREE': return '3';
-        case 'TWO': return '2';
-        case 'ONE': return '1';
-        default: return '5'; // Valid number as fallback
-    }
-}

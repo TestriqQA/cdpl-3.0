@@ -199,9 +199,9 @@ export default function LeadForm({
         {/* Form Header - Same as home page */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="text-xl font-bold text-slate-900">
+            <h2 className="text-xl font-bold text-slate-900">
               Request a Callback
-            </h3>
+            </h2>
 
           </div>
           <p className="text-xs text-slate-600 mt-1">
