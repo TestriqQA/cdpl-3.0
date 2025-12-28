@@ -1,19 +1,21 @@
+import dynamic from 'next/dynamic';
 import HeroSection from '@/components/dbms-course/HeroSection';
-import StatsSection from '@/components/dbms-course/StatsSection';
-import WhyMysqlSection from '@/components/dbms-course/WhyMysqlSection';
-import CurriculumSection from '@/components/dbms-course/CurriculumSection';
-import ProjectsSection from '@/components/dbms-course/ProjectsSection';
-import TestimonialsSection from '@/components/dbms-course/TestimonialsSection';
-import CareerSection from '@/components/dbms-course/CareerSection';
-import WhoShouldEnroll from '@/components/dbms-course/WhoShouldEnroll';
-import ToolsSection from '@/components/dbms-course/ToolsSection';
-import FaqSection from '@/components/dbms-course/FaqSection';
-import CtaSection from '@/components/dbms-course/CtaSection';
-import StickyNav from '@/components/StickyNav2/StickyNav2';
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 import { DBMS_FAQS, DBMS_REVIEW_DATA } from "@/data/dbmsData";
+
+const StatsSection = dynamic(() => import('@/components/dbms-course/StatsSection'));
+const WhyMysqlSection = dynamic(() => import('@/components/dbms-course/WhyMysqlSection'));
+const CurriculumSection = dynamic(() => import('@/components/dbms-course/CurriculumSection'));
+const ProjectsSection = dynamic(() => import('@/components/dbms-course/ProjectsSection'));
+const TestimonialsSection = dynamic(() => import('@/components/dbms-course/TestimonialsSection'));
+const CareerSection = dynamic(() => import('@/components/dbms-course/CareerSection'));
+const WhoShouldEnroll = dynamic(() => import('@/components/dbms-course/WhoShouldEnroll'));
+const ToolsSection = dynamic(() => import('@/components/dbms-course/ToolsSection'));
+const FaqSection = dynamic(() => import('@/components/dbms-course/FaqSection'));
+const CtaSection = dynamic(() => import('@/components/dbms-course/CtaSection'));
+const StickyNav = dynamic(() => import('@/components/StickyNav2/StickyNav2'));
 
 export const metadata = generateMetadata({
   title: "MySQL Database Course | 100% Job Placement | 20-Hour Training",
