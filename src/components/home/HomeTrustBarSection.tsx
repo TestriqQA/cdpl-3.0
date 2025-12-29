@@ -32,7 +32,7 @@ export default function HomeTrustBarSection() {
   };
 
   return (
-    <section className="mt-4 py-4 bg-gray-50 border-y border-gray-200">
+    <section className="mt-4 py-4 bg-gray-50 border-y border-gray-200" aria-label="Our Partners">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -62,12 +62,12 @@ export default function HomeTrustBarSection() {
                 src={getLogoPath(partner)}
                 alt={`${partner} Logo`}
                 title={`${partner} Logo`}
-                width={140} // Optimized for display size (approx 150px)
-                height={60}
+                width={100}
+                height={40}
                 className="object-contain w-full h-full grayscale hover:grayscale-0 transition-all duration-300"
-                // Added sizes and priority for better Next.js Image optimization and SEO
-                sizes="(max-width: 768px) 33vw, 10vw"
-                priority={index < 5} // Prioritize loading for the first few logos
+                sizes="(max-width: 768px) 100px, 100px"
+                priority={index < 2}
+                quality={60}
               />
             </motion.div>
           ))}

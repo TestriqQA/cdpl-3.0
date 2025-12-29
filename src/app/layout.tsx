@@ -67,6 +67,10 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr">
       <head>
+        {/* Preconnect to critical domains */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+
         {/* ========================================
             STRUCTURED DATA (Schema.org)
             ======================================== */}
@@ -86,9 +90,6 @@ export default function RootLayout({
         <meta name="theme-color" content={SITE_CONFIG.themeColor} />
         <link rel="apple-touch-icon" href={SITE_CONFIG.appleTouchIcon} />
         <link rel="icon" href={SITE_CONFIG.favicon} />
-
-
-
       </head>
 
       <body className={`${inter.className} antialiased`}>
