@@ -1,21 +1,30 @@
 // pages/advanced-data-science-ml.tsx
-import HeroSection from "@/components/data-science-course/HeroSection";
-import StatsSection from "@/components/data-science-course/StatsSection";
-import WhyDSProgram from "@/components/data-science-course/WhyDSProgram";
-import CurriculumSection from "@/components/data-science-course/CurriculumSection";
-import ProjectsSection from "@/components/data-science-course/ProjectsSection";
-import TestimonialsSection from "@/components/data-science-course/TestimonialsSection";
-import CareerSection from "@/components/data-science-course/CareerSection";
-import WhoShouldEnroll from "@/components/data-science-course/WhoShouldEnroll";
-import ToolsSection from "@/components/data-science-course/ToolsSection";
-import FaqSection from "@/components/data-science-course/FaqSection";
-import CtaSection from "@/components/data-science-course/CtaSection";
-import CareerRoadmapSection from "@/components/data-science-course/CareerRoadmapSection";
-import StickyNav3 from "@/components/StickyNav2/StickyNav3";
-import JsonLd from "@/components/JsonLd";
+const HeroSection = dynamic(() => import('@/components/data-science-course/HeroSection'), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StatsSection = dynamic(() => import('@/components/data-science-course/StatsSection'), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyDSProgram = dynamic(() => import('@/components/data-science-course/WhyDSProgram'), { ssr: true, loading: () => <SectionLoader label="Loading why DS program section..." /> });
+const CurriculumSection = dynamic(() => import('@/components/data-science-course/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import('@/components/data-science-course/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const TestimonialsSection = dynamic(() => import('@/components/data-science-course/TestimonialsSection'), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const CareerSection = dynamic(() => import('@/components/data-science-course/CareerSection'), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const WhoShouldEnroll = dynamic(() => import('@/components/data-science-course/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const ToolsSection = dynamic(() => import('@/components/data-science-course/ToolsSection'), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const FaqSection = dynamic(() => import('@/components/data-science-course/FaqSection'), { ssr: true, loading: () => <SectionLoader label="Loading FAQs section..." /> });
+const CtaSection = dynamic(() => import('@/components/data-science-course/CtaSection'), { ssr: true, loading: () => <SectionLoader label="Loading CTA section..." /> });
+const CareerRoadmapSection = dynamic(() => import('@/components/data-science-course/CareerRoadmapSection'), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
+const StickyNav3 = dynamic(() => import('@/components/StickyNav2/StickyNav3'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
+const JsonLd = dynamic(() => import('@/components/JsonLd'), { ssr: true, loading: () => <SectionLoader label="Loading JSON-LD..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { DATA_SCIENCE_FAQS, DATA_SCIENCE_REVIEW_DATA } from "@/data/dataScienceData";
+import dynamic from "next/dynamic";
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 
 export const metadata = generateMetadata({
   title: "Advanced Data Science & Machine Learning Masterclass in Mumbai | 200-Hour Program | CDPL",

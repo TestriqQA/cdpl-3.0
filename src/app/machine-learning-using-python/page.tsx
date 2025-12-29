@@ -1,21 +1,30 @@
-import HeroSection from "@/components/machine-learning-using-python/HeroSection";
-import StickyNav from '@/components/StickyNav2/StickyNav2';
+const HeroSection = dynamic(() => import('@/components/machine-learning-using-python/HeroSection'), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StickyNav = dynamic(() => import('@/components/StickyNav2/StickyNav2'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 import { with_roadmap } from '@/components/StickyNavData';
-import StatsSection from "@/components/machine-learning-using-python/StatsSection";
-import WhyMLPythonProgram from "@/components/machine-learning-using-python/WhyMLPythonProgram";
-import CurriculumSection from "@/components/machine-learning-using-python/CurriculumSection";
-import ProjectsSection from "@/components/machine-learning-using-python/ProjectsSection";
-import ToolsSection from "@/components/machine-learning-using-python/ToolsSection";
-import TestimonialsSection from "@/components/machine-learning-using-python/TestimonialsSection";
-import CareerSection from "@/components/machine-learning-using-python/CareerSection";
-import WhoShouldEnroll from "@/components/machine-learning-using-python/WhoShouldEnroll";
-import CareerRoadmapSection from "@/components/machine-learning-using-python/CareerRoadmapSection";
-import FaqSection from "@/components/machine-learning-using-python/FaqSection";
+const StatsSection = dynamic(() => import('@/components/machine-learning-using-python/StatsSection'), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyMLPythonProgram = dynamic(() => import('@/components/machine-learning-using-python/WhyMLPythonProgram'), { ssr: true, loading: () => <SectionLoader label="Loading why ML Python program section..." /> });
+const CurriculumSection = dynamic(() => import('@/components/machine-learning-using-python/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import('@/components/machine-learning-using-python/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const ToolsSection = dynamic(() => import('@/components/machine-learning-using-python/ToolsSection'), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const TestimonialsSection = dynamic(() => import('@/components/machine-learning-using-python/TestimonialsSection'), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const CareerSection = dynamic(() => import('@/components/machine-learning-using-python/CareerSection'), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const WhoShouldEnroll = dynamic(() => import('@/components/machine-learning-using-python/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const CareerRoadmapSection = dynamic(() => import('@/components/machine-learning-using-python/CareerRoadmapSection'), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
+const FaqSection = dynamic(() => import('@/components/machine-learning-using-python/FaqSection'), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
 import CtaSection from "@/components/machine-learning-using-python/CtaSection";
 import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { ML_PYTHON_FAQS, ML_PYTHON_REVIEW_DATA } from "@/data/mlPythonData";
+import dynamic from "next/dynamic";
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+    return (
+        <div className="flex items-center justify-center py-16">
+            <p className="text-gray-500">{label}</p>
+        </div>
+    );
+}
 
 export const metadata = generateMetadata({
     title: "Machine Learning with Python Course in Mumbai | 45-Hour Master Program | CDPL",

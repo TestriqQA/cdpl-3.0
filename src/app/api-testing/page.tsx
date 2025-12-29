@@ -1,15 +1,25 @@
-import HeroSection from '@/components/api-testing/HeroSection';
-import StatsSection from '@/components/api-testing/StatsSection';
-import WhyApiTesting from '@/components/api-testing/WhyApiTesting';
-import CurriculumSection from '@/components/api-testing/CurriculumSection';
-import ProjectsSection from '@/components/api-testing/ProjectsSection';
-import CareerSection from '@/components/api-testing/CareerSection';
-import WhoShouldEnroll from '@/components/api-testing/WhoShouldEnroll';
-import ToolsSection from '@/components/api-testing/ToolsSection';
-import TestimonialsSection from '@/components/api-testing/TestimonialsSection';
-import FaqSection from '@/components/api-testing/FaqSection';
-import CtaSection from '@/components/api-testing/CtaSection';
-import StickyNav from '@/components/StickyNav2/StickyNav2';
+import dynamic from "next/dynamic";
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
+
+const HeroSection = dynamic(() => import("@/components/api-testing/HeroSection"), { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> });
+const StatsSection = dynamic(() => import("@/components/api-testing/StatsSection"), { ssr: true, loading: () => <SectionLoader label="Loading stats..." /> });
+const WhyApiTesting = dynamic(() => import("@/components/api-testing/WhyApiTesting"), { ssr: true, loading: () => <SectionLoader label="Loading why..." /> });
+const CurriculumSection = dynamic(() => import("@/components/api-testing/CurriculumSection"), { ssr: true, loading: () => <SectionLoader label="Loading curriculum..." /> });
+const ProjectsSection = dynamic(() => import("@/components/api-testing/ProjectsSection"), { ssr: true, loading: () => <SectionLoader label="Loading projects..." /> });
+const CareerSection = dynamic(() => import("@/components/api-testing/CareerSection"), { ssr: true, loading: () => <SectionLoader label="Loading career..." /> });
+const WhoShouldEnroll = dynamic(() => import("@/components/api-testing/WhoShouldEnroll"), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll..." /> });
+const ToolsSection = dynamic(() => import("@/components/api-testing/ToolsSection"), { ssr: true, loading: () => <SectionLoader label="Loading tools..." /> });
+const TestimonialsSection = dynamic(() => import("@/components/api-testing/TestimonialsSection"), { ssr: true, loading: () => <SectionLoader label="Loading testimonials..." /> });
+const FaqSection = dynamic(() => import("@/components/api-testing/FaqSection"), { ssr: true, loading: () => <SectionLoader label="Loading FAQs..." /> });
+const CtaSection = dynamic(() => import("@/components/api-testing/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading CTA..." /> });
+const StickyNav = dynamic(() => import("@/components/StickyNav2/StickyNav2"), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";

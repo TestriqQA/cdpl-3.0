@@ -1,15 +1,25 @@
-import HeroSection from '@/components/etl-testing/HeroSection';
-import StatsSection from '@/components/etl-testing/StatsSection';
-import WhyEtlTesting from '@/components/etl-testing/WhyEtlTesting';
-import CurriculumSection from '@/components/etl-testing/CurriculumSection';
-import ProjectsSection from '@/components/etl-testing/ProjectsSection';
-import TestimonialsSection from '@/components/etl-testing/TestimonialsSection';
-import CareerSection from '@/components/etl-testing/CareerSection';
-import WhoShouldEnroll from '@/components/etl-testing/WhoShouldEnroll';
-import ToolsSection from '@/components/etl-testing/ToolsSection';
-import FaqSection from '@/components/etl-testing/FaqSection';
-import CtaSection from '@/components/etl-testing/CtaSection';
-import StickyNav from '@/components/StickyNav2/StickyNav2';
+import dynamic from "next/dynamic";
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
+
+const HeroSection = dynamic(() => import('@/components/etl-testing/HeroSection'), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StatsSection = dynamic(() => import('@/components/etl-testing/StatsSection'), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyEtlTesting = dynamic(() => import('@/components/etl-testing/WhyEtlTesting'), { ssr: true, loading: () => <SectionLoader label="Loading why ETL testing section..." /> });
+const CurriculumSection = dynamic(() => import('@/components/etl-testing/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import('@/components/etl-testing/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const TestimonialsSection = dynamic(() => import('@/components/etl-testing/TestimonialsSection'), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const CareerSection = dynamic(() => import('@/components/etl-testing/CareerSection'), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const WhoShouldEnroll = dynamic(() => import('@/components/etl-testing/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const ToolsSection = dynamic(() => import('@/components/etl-testing/ToolsSection'), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const FaqSection = dynamic(() => import('@/components/etl-testing/FaqSection'), { ssr: true, loading: () => <SectionLoader label="Loading FAQs section..." /> });
+const CtaSection = dynamic(() => import('@/components/etl-testing/CtaSection'), { ssr: true, loading: () => <SectionLoader label="Loading CTA section..." /> });
+const StickyNav = dynamic(() => import('@/components/StickyNav2/StickyNav2'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";

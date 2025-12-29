@@ -1,22 +1,30 @@
 // pages/advanced-data-analytics.tsx
-import HeroSection from "@/components/data-analytics/HeroSection";
-import StatsSection from "@/components/data-analytics/StatsSection";
-import WhyAnalyticsProgram from "@/components/data-analytics/WhyAnalyticsProgram";
-import CurriculumSection from "@/components/data-analytics/CurriculumSection";
-import ProjectsSection from "@/components/data-analytics/ProjectsSection";
-import TestimonialsSection from "@/components/data-analytics/TestimonialsSection";
-import CareerSection from "@/components/data-analytics/CareerSection";
-import WhoShouldEnroll from "@/components/data-analytics/WhoShouldEnroll";
-import ToolsSection from "@/components/data-analytics/ToolsSection";
-import FaqSection from "@/components/data-analytics/FaqSection";
-import CtaSection from "@/components/data-analytics/CtaSection";
-import CareerRoadmapSection from "@/components/data-analytics/CareerRoadmapSection";
+const HeroSection = dynamic(() => import('@/components/data-analytics/HeroSection'), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StatsSection = dynamic(() => import('@/components/data-analytics/StatsSection'), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyAnalyticsProgram = dynamic(() => import('@/components/data-analytics/WhyAnalyticsProgram'), { ssr: true, loading: () => <SectionLoader label="Loading why analytics program section..." /> });
+const CurriculumSection = dynamic(() => import('@/components/data-analytics/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import('@/components/data-analytics/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const TestimonialsSection = dynamic(() => import('@/components/data-analytics/TestimonialsSection'), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const CareerSection = dynamic(() => import('@/components/data-analytics/CareerSection'), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const WhoShouldEnroll = dynamic(() => import('@/components/data-analytics/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const ToolsSection = dynamic(() => import('@/components/data-analytics/ToolsSection'), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const FaqSection = dynamic(() => import('@/components/data-analytics/FaqSection'), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
+const CtaSection = dynamic(() => import('@/components/data-analytics/CtaSection'), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
+const CareerRoadmapSection = dynamic(() => import('@/components/data-analytics/CareerRoadmapSection'), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
 import StickyNav3 from "@/components/StickyNav2/StickyNav3";
 import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { DATA_ANALYTICS_FAQS, DATA_ANALYTICS_REVIEW_DATA } from "@/data/dataAnalyticsData";
+import dynamic from "next/dynamic";
 
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 export const metadata = generateMetadata({
   title: "Advanced Data Analytics Hero Program | 110-Hour Training | Mumbai | CDPL",
   description: "110-Hour Hero Program in Advanced Data Analytics. Hands-on projects in Power BI, Tableau, Python, SQL. 100% job assistance, global certificates.",

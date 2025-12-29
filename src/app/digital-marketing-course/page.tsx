@@ -1,19 +1,30 @@
-import HeroSection from "@/components/digital-marketing-course/HeroSection";
-import StatsSection from "@/components/digital-marketing-course/StatsSection";
-import WhyMasterProgram from "@/components/digital-marketing-course/WhyMasterProgram";
-import CurriculumSection from "@/components/digital-marketing-course/CurriculumSection";
-import ProjectsSection from "@/components/digital-marketing-course/ProjectsSection";
-import TestimonialsSection from "@/components/digital-marketing-course/TestimonialsSection";
-import CareerSection from "@/components/digital-marketing-course/CareerSection";
-import WhoShouldEnroll from "@/components/digital-marketing-course/WhoShouldEnroll";
-import ToolsSection from "@/components/digital-marketing-course/ToolsSection";
-import FaqSection from "@/components/digital-marketing-course/FaqSection";
-import CtaSection from "@/components/digital-marketing-course/CtaSection";
-import StickyNav from "@/components/StickyNav2/StickyNav2";
-import JsonLd from "@/components/JsonLd";
+const HeroSection = dynamic(() => import("@/components/digital-marketing-course/HeroSection"), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StatsSection = dynamic(() => import("@/components/digital-marketing-course/StatsSection"), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyMasterProgram = dynamic(() => import("@/components/digital-marketing-course/WhyMasterProgram"), { ssr: true, loading: () => <SectionLoader label="Loading why master program section..." /> });
+const CurriculumSection = dynamic(() => import("@/components/digital-marketing-course/CurriculumSection"), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import("@/components/digital-marketing-course/ProjectsSection"), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const TestimonialsSection = dynamic(() => import("@/components/digital-marketing-course/TestimonialsSection"), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const CareerSection = dynamic(() => import("@/components/digital-marketing-course/CareerSection"), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const WhoShouldEnroll = dynamic(() => import("@/components/digital-marketing-course/WhoShouldEnroll"), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const ToolsSection = dynamic(() => import("@/components/digital-marketing-course/ToolsSection"), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const FaqSection = dynamic(() => import("@/components/digital-marketing-course/FaqSection"), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
+const CtaSection = dynamic(() => import("@/components/digital-marketing-course/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
+const StickyNav = dynamic(() => import("@/components/StickyNav2/StickyNav2"), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
+const JsonLd = dynamic(() => import("@/components/JsonLd"), { ssr: true, loading: () => <SectionLoader label="Loading json ld..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { DIGITAL_MARKETING_FAQS, DIGITAL_MARKETING_REVIEW_DATA } from "@/data/digitalMarketingData";
+import dynamic from "next/dynamic";
+
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
+
 
 export const metadata = generateMetadata({
   title: "AI-Driven Digital Marketing & Analytics Master Program | CDPL Mumbai",

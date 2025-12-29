@@ -1,21 +1,30 @@
-import HeroSection from '@/components/ai-bootcamp/HeroSection';
-import StickyNav from '@/components/StickyNav2/StickyNav2';
+const HeroSection = dynamic(() => import("@/components/ai-bootcamp/HeroSection"), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StickyNav = dynamic(() => import("@/components/StickyNav2/StickyNav2"), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 import { with_roadmap } from '@/components/StickyNavData';
-import StatsSection from '@/components/ai-bootcamp/StatsSection';
-import WhyEngineerProgram from '@/components/ai-bootcamp/WhyEngineerProgram';
-import CurriculumSection from '@/components/ai-bootcamp/CurriculumSection';
-import ProjectsSection from '@/components/ai-bootcamp/ProjectsSection';
-import TestimonialsSection from '@/components/ai-bootcamp/TestimonialsSection';
-import CareerSection from '@/components/ai-bootcamp/CareerSection';
-import WhoShouldEnroll from '@/components/ai-bootcamp/WhoShouldEnroll';
-import ToolsSection from '@/components/ai-bootcamp/ToolsSection';
-import FaqSection from '@/components/ai-bootcamp/FaqSection';
-import CtaSection from '@/components/ai-bootcamp/CtaSection';
-import CareerRoadmapSection from '@/components/ai-bootcamp/CareerRoadmapSection';
-import JsonLd from "@/components/JsonLd";
+const StatsSection = dynamic(() => import("@/components/ai-bootcamp/StatsSection"), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyEngineerProgram = dynamic(() => import("@/components/ai-bootcamp/WhyEngineerProgram"), { ssr: true, loading: () => <SectionLoader label="Loading why engineer program section..." /> });
+const CurriculumSection = dynamic(() => import("@/components/ai-bootcamp/CurriculumSection"), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import("@/components/ai-bootcamp/ProjectsSection"), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const TestimonialsSection = dynamic(() => import("@/components/ai-bootcamp/TestimonialsSection"), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const CareerSection = dynamic(() => import("@/components/ai-bootcamp/CareerSection"), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const WhoShouldEnroll = dynamic(() => import("@/components/ai-bootcamp/WhoShouldEnroll"), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const ToolsSection = dynamic(() => import("@/components/ai-bootcamp/ToolsSection"), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const FaqSection = dynamic(() => import("@/components/ai-bootcamp/FaqSection"), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
+const CtaSection = dynamic(() => import("@/components/ai-bootcamp/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
+const CareerRoadmapSection = dynamic(() => import("@/components/ai-bootcamp/CareerRoadmapSection"), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
+const JsonLd = dynamic(() => import("@/components/JsonLd"), { ssr: true, loading: () => <SectionLoader label="Loading json ld..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { AI_BOOTCAMP_FAQS, AI_BOOTCAMP_REVIEW_DATA } from "@/data/aiBootcampData";
+import dynamic from 'next/dynamic';
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+    return (
+        <div className="flex items-center justify-center py-16">
+            <p className="text-gray-500">{label}</p>
+        </div>
+    );
+}
 
 export const metadata = generateMetadata({
     title: "AI-Powered Digital Marketing Bootcamp | 30-Hour Expert Training | CDPL",

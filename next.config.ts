@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import path from "path";
+import bundleAnalyzer from "@next/bundle-analyzer";
 
 const nextConfig: NextConfig = {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -9,8 +9,13 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion', 'react-icons'],
+    optimizePackageImports: ['lucide-react', 'framer-motion', 'react-icons', 'next/image'],
+    cssChunking: true,     // Split + reorder CSS per route
+    optimizeCss: true,     // Inline critical CSS (Critters)
+    inlineCss: true        // Alternative inlining flag present in newer versions
   },
 };
 
-export default nextConfig;
+export default bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})(nextConfig);

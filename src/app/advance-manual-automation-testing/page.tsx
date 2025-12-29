@@ -1,19 +1,28 @@
-import HeroSection from '@/components/advance-manual-automation-testing/HeroSection';
-import StatsSection from '@/components/advance-manual-automation-testing/StatsSection';
-import WhyMasterProgram from '@/components/advance-manual-automation-testing/WhyMasterProgram';
-import CurriculumSection from '@/components/advance-manual-automation-testing/CurriculumSection';
-import ProjectsSection from '@/components/advance-manual-automation-testing/ProjectsSection';
-import TestimonialsSection from '@/components/advance-manual-automation-testing/TestimonialsSection';
-import CareerSection from '@/components/advance-manual-automation-testing/CareerSection';
-import WhoShouldEnroll from '@/components/advance-manual-automation-testing/WhoShouldEnroll';
-import ToolsSection from '@/components/advance-manual-automation-testing/ToolsSection';
-import FaqSection from '@/components/advance-manual-automation-testing/FaqSection';
-import CtaSection from '@/components/advance-manual-automation-testing/CtaSection';
-import StickyNav from '@/components/StickyNav2/StickyNav2';
+const HeroSection = dynamic(() => import('@/components/advance-manual-automation-testing/HeroSection'), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StatsSection = dynamic(() => import('@/components/advance-manual-automation-testing/StatsSection'), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyMasterProgram = dynamic(() => import('@/components/advance-manual-automation-testing/WhyMasterProgram'), { ssr: true, loading: () => <SectionLoader label="Loading why master program section..." /> });
+const CurriculumSection = dynamic(() => import('@/components/advance-manual-automation-testing/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import('@/components/advance-manual-automation-testing/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const TestimonialsSection = dynamic(() => import('@/components/advance-manual-automation-testing/TestimonialsSection'), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const CareerSection = dynamic(() => import('@/components/advance-manual-automation-testing/CareerSection'), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const WhoShouldEnroll = dynamic(() => import('@/components/advance-manual-automation-testing/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const ToolsSection = dynamic(() => import('@/components/advance-manual-automation-testing/ToolsSection'), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const FaqSection = dynamic(() => import('@/components/advance-manual-automation-testing/FaqSection'), { ssr: true, loading: () => <SectionLoader label="Loading FAQs section..." /> });
+const CtaSection = dynamic(() => import('@/components/advance-manual-automation-testing/CtaSection'), { ssr: true, loading: () => <SectionLoader label="Loading CTA section..." /> });
+const StickyNav = dynamic(() => import('@/components/StickyNav2/StickyNav2'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { ADVANCE_MANUAL_AUTOMATION_FAQS, ADVANCE_MANUAL_AUTOMATION_REVIEW_DATA } from "@/data/advanceManualAutomationData";
+import dynamic from 'next/dynamic';
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 
 export const metadata = generateMetadata({
   title: "Advanced Manual & Automation Testing Master Program | 100% Placement",

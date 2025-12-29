@@ -1,21 +1,30 @@
-import HeroSection from "@/components/data-analytics-and-visualization/HeroSection";
-import StickyNav from '@/components/StickyNav2/StickyNav2';
+const HeroSection = dynamic(() => import('@/components/data-analytics-and-visualization/HeroSection'), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StickyNav = dynamic(() => import('@/components/StickyNav2/StickyNav2'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 import { with_roadmap } from '@/components/StickyNavData';
-import StatsSection from "@/components/data-analytics-and-visualization/StatsSection";
-import WhyVisualizationProgram from "@/components/data-analytics-and-visualization/WhyVisualizationProgram";
-import CurriculumSection from "@/components/data-analytics-and-visualization/CurriculumSection";
-import ProjectsSection from "@/components/data-analytics-and-visualization/ProjectsSection";
-import TestimonialsSection from "@/components/data-analytics-and-visualization/TestimonialsSection";
-import CareerSection from "@/components/data-analytics-and-visualization/CareerSection";
-import WhoShouldEnroll from "@/components/data-analytics-and-visualization/WhoShouldEnroll";
-import ToolsSection from "@/components/data-analytics-and-visualization/ToolsSection";
-import CareerRoadmapSection from "@/components/data-analytics-and-visualization/CareerRoadmapSection";
-import FaqSection from "@/components/data-analytics-and-visualization/FaqSection";
-import CtaSection from "@/components/data-analytics-and-visualization/CtaSection";
-import JsonLd from "@/components/JsonLd";
+const StatsSection = dynamic(() => import("@/components/data-analytics-and-visualization/StatsSection"), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyVisualizationProgram = dynamic(() => import("@/components/data-analytics-and-visualization/WhyVisualizationProgram"), { ssr: true, loading: () => <SectionLoader label="Loading why visualization program section..." /> });
+const CurriculumSection = dynamic(() => import("@/components/data-analytics-and-visualization/CurriculumSection"), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import("@/components/data-analytics-and-visualization/ProjectsSection"), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const TestimonialsSection = dynamic(() => import("@/components/data-analytics-and-visualization/TestimonialsSection"), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const CareerSection = dynamic(() => import("@/components/data-analytics-and-visualization/CareerSection"), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const WhoShouldEnroll = dynamic(() => import("@/components/data-analytics-and-visualization/WhoShouldEnroll"), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const ToolsSection = dynamic(() => import("@/components/data-analytics-and-visualization/ToolsSection"), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const CareerRoadmapSection = dynamic(() => import("@/components/data-analytics-and-visualization/CareerRoadmapSection"), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
+const FaqSection = dynamic(() => import("@/components/data-analytics-and-visualization/FaqSection"), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
+const CtaSection = dynamic(() => import("@/components/data-analytics-and-visualization/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
+const JsonLd = dynamic(() => import("@/components/JsonLd"), { ssr: true, loading: () => <SectionLoader label="Loading json ld..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { DATA_ANALYTICS_VIS_FAQS, DATA_ANALYTICS_VIS_REVIEW_DATA } from "@/data/dataAnalyticsVisData";
+import dynamic from 'next/dynamic';
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+    return (
+        <div className="flex items-center justify-center py-16">
+            <p className="text-gray-500">{label}</p>
+        </div>
+    );
+}
 
 export const metadata = generateMetadata({
     title: "Advanced Excel for Data Analytics & Visualization | 20-Hour Course | Mumbai",

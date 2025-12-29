@@ -2,24 +2,33 @@
 // This file acts as the main page component that assembles all sections.
 
 import React from 'react';
-import HeroSection from '@/components/masters-in-data-engineering/HeroSection';
-import StickyNav from '@/components/StickyNav2/StickyNav2';
+const HeroSection = dynamic(() => import("@/components/masters-in-data-engineering/HeroSection"), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StickyNav = dynamic(() => import("@/components/StickyNav2/StickyNav2"), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 import { with_roadmap } from '@/components/StickyNavData';
-import StatsSection from '@/components/masters-in-data-engineering/StatsSection';
-import WhyEngineerProgram from '@/components/masters-in-data-engineering/WhyEngineerProgram';
-import CurriculumSection from '@/components/masters-in-data-engineering/CurriculumSection';
-import ProjectsSection from '@/components/masters-in-data-engineering/ProjectsSection';
-import TestimonialsSection from '@/components/masters-in-data-engineering/TestimonialsSection';
-import CareerSection from '@/components/masters-in-data-engineering/CareerSection';
-import WhoShouldEnroll from '@/components/masters-in-data-engineering/WhoShouldEnroll';
-import ToolsSection from '@/components/masters-in-data-engineering/ToolsSection';
-import FaqSection from '@/components/masters-in-data-engineering/FaqSection';
-import CtaSection from '@/components/masters-in-data-engineering/CtaSection';
-import CareerRoadmapSection from '@/components/masters-in-data-engineering/CareerRoadmapSection';
-import JsonLd from "@/components/JsonLd";
+const StatsSection = dynamic(() => import("@/components/masters-in-data-engineering/StatsSection"), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyEngineerProgram = dynamic(() => import("@/components/masters-in-data-engineering/WhyEngineerProgram"), { ssr: true, loading: () => <SectionLoader label="Loading why engineer program section..." /> });
+const CurriculumSection = dynamic(() => import("@/components/masters-in-data-engineering/CurriculumSection"), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import("@/components/masters-in-data-engineering/ProjectsSection"), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const TestimonialsSection = dynamic(() => import("@/components/masters-in-data-engineering/TestimonialsSection"), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const CareerSection = dynamic(() => import("@/components/masters-in-data-engineering/CareerSection"), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const WhoShouldEnroll = dynamic(() => import("@/components/masters-in-data-engineering/WhoShouldEnroll"), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const ToolsSection = dynamic(() => import("@/components/masters-in-data-engineering/ToolsSection"), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const FaqSection = dynamic(() => import("@/components/masters-in-data-engineering/FaqSection"), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
+const CtaSection = dynamic(() => import("@/components/masters-in-data-engineering/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
+const CareerRoadmapSection = dynamic(() => import("@/components/masters-in-data-engineering/CareerRoadmapSection"), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
+const JsonLd = dynamic(() => import("@/components/JsonLd"), { ssr: true, loading: () => <SectionLoader label="Loading json ld..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { DATA_ENGINEERING_MASTERS_FAQS, DATA_ENGINEERING_MASTERS_REVIEW_DATA } from "@/data/dataEngineeringMastersData";
+import dynamic from 'next/dynamic';
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+    return (
+        <div className="flex items-center justify-center py-16">
+            <p className="text-gray-500">{label}</p>
+        </div>
+    );
+}
 
 export const metadata = generateMetadata({
     title: "Master Program in Data Analytics & Data Engineering | Mumbai",

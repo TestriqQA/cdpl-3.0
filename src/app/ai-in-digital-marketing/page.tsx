@@ -1,21 +1,31 @@
-import HeroSection from "@/components/ai-in-digital-marketing/HeroSection";
-import StickyNav from '@/components/StickyNav2/StickyNav2';
+const HeroSection = dynamic(() => import("@/components/ai-in-digital-marketing/HeroSection"), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StickyNav = dynamic(() => import("@/components/StickyNav2/StickyNav2"), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 import { with_roadmap } from '@/components/StickyNavData';
-import StatsSection from "@/components/ai-in-digital-marketing/StatsSection";
-import WhyThisProgram from "@/components/ai-in-digital-marketing/WhyThisProgram";
-import CurriculumSection from "@/components/ai-in-digital-marketing/CurriculumSection";
-import ProjectsSection from "@/components/ai-in-digital-marketing/ProjectsSection";
-import TestimonialsSection from "@/components/ai-in-digital-marketing/TestimonialsSection";
-import WhoShouldEnroll from "@/components/ai-in-digital-marketing/WhoShouldEnroll";
-import ToolsSection from "@/components/ai-in-digital-marketing/ToolsSection";
-import CareerSection from "@/components/ai-in-digital-marketing/CareerSection";
-import CareerRoadmapSection from "@/components/ai-in-digital-marketing/CareerRoadmapSection";
-import FaqSection from "@/components/ai-in-digital-marketing/FaqSection";
-import CtaSection from "@/components/ai-in-digital-marketing/CtaSection";
-import JsonLd from "@/components/JsonLd";
+const StatsSection = dynamic(() => import("@/components/ai-in-digital-marketing/StatsSection"), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyThisProgram = dynamic(() => import("@/components/ai-in-digital-marketing/WhyThisProgram"), { ssr: true, loading: () => <SectionLoader label="Loading why this program section..." /> });
+const CurriculumSection = dynamic(() => import("@/components/ai-in-digital-marketing/CurriculumSection"), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import("@/components/ai-in-digital-marketing/ProjectsSection"), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const TestimonialsSection = dynamic(() => import("@/components/ai-in-digital-marketing/TestimonialsSection"), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const WhoShouldEnroll = dynamic(() => import("@/components/ai-in-digital-marketing/WhoShouldEnroll"), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const ToolsSection = dynamic(() => import("@/components/ai-in-digital-marketing/ToolsSection"), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const CareerSection = dynamic(() => import("@/components/ai-in-digital-marketing/CareerSection"), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const CareerRoadmapSection = dynamic(() => import("@/components/ai-in-digital-marketing/CareerRoadmapSection"), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
+const FaqSection = dynamic(() => import("@/components/ai-in-digital-marketing/FaqSection"), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
+const CtaSection = dynamic(() => import("@/components/ai-in-digital-marketing/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
+const JsonLd = dynamic(() => import("@/components/JsonLd"), { ssr: true, loading: () => <SectionLoader label="Loading json ld..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { AI_IN_DIGITAL_MARKETING_FAQS, AI_IN_DIGITAL_MARKETING_REVIEW_DATA } from "@/data/aiInDigitalMarketingData";
+import dynamic from 'next/dynamic';
+
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+    return (
+        <div className="flex items-center justify-center py-16">
+            <p className="text-gray-500">{label}</p>
+        </div>
+    );
+}
 
 export const metadata = generateMetadata({
     title: "Master Digital Marketing & AI for Business Owners | 10X Your Growth - Cinute Digital",

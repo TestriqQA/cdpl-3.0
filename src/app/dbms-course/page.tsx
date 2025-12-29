@@ -5,17 +5,25 @@ import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } fro
 import JsonLd from "@/components/JsonLd";
 import { DBMS_FAQS, DBMS_REVIEW_DATA } from "@/data/dbmsData";
 
-const StatsSection = dynamic(() => import('@/components/dbms-course/StatsSection'));
-const WhyMysqlSection = dynamic(() => import('@/components/dbms-course/WhyMysqlSection'));
-const CurriculumSection = dynamic(() => import('@/components/dbms-course/CurriculumSection'));
-const ProjectsSection = dynamic(() => import('@/components/dbms-course/ProjectsSection'));
-const TestimonialsSection = dynamic(() => import('@/components/dbms-course/TestimonialsSection'));
-const CareerSection = dynamic(() => import('@/components/dbms-course/CareerSection'));
-const WhoShouldEnroll = dynamic(() => import('@/components/dbms-course/WhoShouldEnroll'));
-const ToolsSection = dynamic(() => import('@/components/dbms-course/ToolsSection'));
-const FaqSection = dynamic(() => import('@/components/dbms-course/FaqSection'));
-const CtaSection = dynamic(() => import('@/components/dbms-course/CtaSection'));
-const StickyNav = dynamic(() => import('@/components/StickyNav2/StickyNav2'));
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
+
+const StatsSection = dynamic(() => import('@/components/dbms-course/StatsSection'), { ssr: true, loading: () => <SectionLoader label="Loading stats..." /> });
+const WhyMysqlSection = dynamic(() => import('@/components/dbms-course/WhyMysqlSection'), { ssr: true, loading: () => <SectionLoader label="Loading why..." /> });
+const CurriculumSection = dynamic(() => import('@/components/dbms-course/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum..." /> });
+const ProjectsSection = dynamic(() => import('@/components/dbms-course/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects..." /> });
+const TestimonialsSection = dynamic(() => import('@/components/dbms-course/TestimonialsSection'), { ssr: true, loading: () => <SectionLoader label="Loading testimonials..." /> });
+const CareerSection = dynamic(() => import('@/components/dbms-course/CareerSection'), { ssr: true, loading: () => <SectionLoader label="Loading career..." /> });
+const WhoShouldEnroll = dynamic(() => import('@/components/dbms-course/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll..." /> });
+const ToolsSection = dynamic(() => import('@/components/dbms-course/ToolsSection'), { ssr: true, loading: () => <SectionLoader label="Loading tools..." /> });
+const FaqSection = dynamic(() => import('@/components/dbms-course/FaqSection'), { ssr: true, loading: () => <SectionLoader label="Loading FAQs..." /> });
+const CtaSection = dynamic(() => import('@/components/dbms-course/CtaSection'), { ssr: true, loading: () => <SectionLoader label="Loading CTA..." /> });
+const StickyNav = dynamic(() => import('@/components/StickyNav2/StickyNav2'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 
 export const metadata = generateMetadata({
   title: "MySQL Database Course | 100% Job Placement | 20-Hour Training",

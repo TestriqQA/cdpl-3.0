@@ -1,21 +1,30 @@
 // pages/comprehensive-data-science-ai.tsx
-import HeroSection from "@/components/ai-course/HeroSection";
-import StatsSection from "@/components/ai-course/StatsSection";
-import WhyAIProgram from "@/components/ai-course/WhyAIProgram";
-import CurriculumSection from "@/components/ai-course/CurriculumSection";
-import ProjectsSection from "@/components/ai-course/ProjectsSection";
-import TestimonialsSection from "@/components/ai-course/TestimonialsSection";
-import CareerSection from "@/components/ai-course/CareerSection";
-import WhoShouldEnroll from "@/components/ai-course/WhoShouldEnroll";
-import ToolsSection from "@/components/ai-course/ToolsSection";
-import FaqSection from "@/components/ai-course/FaqSection";
-import CtaSection from "@/components/ai-course/CtaSection";
-import CareerRoadmapSection from "@/components/ai-course/CareerRoadmapSection";
-import StickyNav3 from "@/components/StickyNav2/StickyNav3";
-import JsonLd from "@/components/JsonLd";
+const HeroSection = dynamic(() => import('@/components/ai-course/HeroSection'), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StatsSection = dynamic(() => import('@/components/ai-course/StatsSection'), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyAIProgram = dynamic(() => import('@/components/ai-course/WhyAIProgram'), { ssr: true, loading: () => <SectionLoader label="Loading why AI program section..." /> });
+const CurriculumSection = dynamic(() => import('@/components/ai-course/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import('@/components/ai-course/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const TestimonialsSection = dynamic(() => import('@/components/ai-course/TestimonialsSection'), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const CareerSection = dynamic(() => import('@/components/ai-course/CareerSection'), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const WhoShouldEnroll = dynamic(() => import('@/components/ai-course/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const ToolsSection = dynamic(() => import('@/components/ai-course/ToolsSection'), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const FaqSection = dynamic(() => import('@/components/ai-course/FaqSection'), { ssr: true, loading: () => <SectionLoader label="Loading FAQs section..." /> });
+const CtaSection = dynamic(() => import('@/components/ai-course/CtaSection'), { ssr: true, loading: () => <SectionLoader label="Loading CTA section..." /> });
+const CareerRoadmapSection = dynamic(() => import('@/components/ai-course/CareerRoadmapSection'), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
+const StickyNav3 = dynamic(() => import('@/components/StickyNav2/StickyNav3'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
+const JsonLd = dynamic(() => import('@/components/JsonLd'), { ssr: true, loading: () => <SectionLoader label="Loading JSON-LD..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { AI_FAQS, AI_REVIEW_DATA } from "@/data/aiData";
+import dynamic from "next/dynamic";
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 
 export const metadata = generateMetadata({
   title: "Data Science & AI Master Program Mumbai | CDPL",
