@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, ChevronRight, Globe } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import EnquireModal from "./EnquireModal";
+import dynamic from "next/dynamic";
+const EnquireModal = dynamic(() => import("./EnquireModal"), { ssr: false });
 
 /* ----------------------- Types ----------------------- */
 type LogoItem = { name: string; logo: string };
@@ -562,7 +563,7 @@ const Header = () => {
     hoveredCourse ? hoveredCourseData?.description : selectedCategoryData?.description;
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50">
+    <header className="bg-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 sm:py-1">
           {/* Logo */}

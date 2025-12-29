@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Home, ChevronRight, Sparkles, ArrowRight } from "lucide-react";
 import { useState } from "react";
-import WorkshopRequestModal from "@/components/WorkshopRequestModal";
+import dynamic from "next/dynamic";
+const WorkshopRequestModal = dynamic(() => import("@/components/WorkshopRequestModal"), { ssr: false });
 
 export default function EventsPastEventsHeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);

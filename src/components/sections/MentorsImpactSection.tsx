@@ -219,11 +219,10 @@ export default function MentorsImpactSection() {
                 {/* Avatar overlapping */}
                 <div className="absolute -top-3 -left-3">
                   <div className="h-[108px] w-[108px] rounded-2xl bg-zinc-100 shadow-lg ring-1 ring-black/5 overflow-hidden">
-
                     <img
                       src={m.avatar}
-                      alt={`Mentor portrait — ${m.domain} ${m.company}`}
-                      title={`Mentor portrait — ${m.domain} ${m.company}`}
+                      alt={`${m.name} - ${m.domain} mentor at ${m.company}`}
+                      title={`${m.name} - ${m.domain} mentor at ${m.company}`}
                       width={108}
                       height={108}
                       loading="lazy"

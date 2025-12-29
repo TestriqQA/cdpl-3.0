@@ -4,7 +4,8 @@
 import { PropsWithChildren, useState } from "react";
 import { Check, Building2, Sparkles, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import WorkshopRequestModal from "@/components/WorkshopRequestModal";
+import dynamic from "next/dynamic";
+const WorkshopRequestModal = dynamic(() => import("@/components/WorkshopRequestModal"), { ssr: false });
 
 type Bullet = { label: string; sub?: string };
 

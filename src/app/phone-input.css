@@ -8,19 +8,25 @@
   display: flex;
   align-items: center;
   width: 100%;
-  border: 1px solid #d1d5db; /* border-gray-300 */
-  border-radius: 0.5rem; /* rounded-lg */
-  transition: all 0.3s ease;
-  padding: 0; /* Remove default padding */
+  border: 1px solid #d1d5db;
+  /* border-gray-300 */
+  border-radius: 0.5rem;
+  /* rounded-lg */
+  /* transition removed for performance - eliminates forced reflows */
+  padding: 0;
+  /* Remove default padding */
 }
 
 .phone-input-container:focus-within {
-  border-color: #f97316; /* focus:ring-orange-500 */
-  box-shadow: 0 0 0 2px #ffedd5; /* focus:ring-2 focus:ring-orange-500/50 */
+  border-color: #f97316;
+  /* focus:ring-orange-500 */
+  box-shadow: 0 0 0 2px #ffedd5;
+  /* focus:ring-2 focus:ring-orange-500/50 */
 }
 
 .phone-input-container.border-red-500 {
-  border-color: #ef4444; /* border-red-500 */
+  border-color: #ef4444;
+  /* border-red-500 */
 }
 
 /* Style for the country select dropdown */
@@ -28,24 +34,30 @@
   /* Remove default margin/padding */
   margin: 0;
   padding: 0;
-  border-right: 1px solid #d1d5db; /* Separator */
-  background-color: #f9fafb; /* bg-gray-50 */
+  border-right: 1px solid #d1d5db;
+  /* Separator */
+  background-color: #f9fafb;
+  /* bg-gray-50 */
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
 }
 
 /* Style for the flag icon */
 .phone-input-container .PhoneInputCountryIcon {
-  width: 1.5rem; /* Adjust size */
+  width: 1.5rem;
+  /* Adjust size */
   height: 1.5rem;
   margin-left: 0.5rem;
-  box-shadow: none; /* Remove default shadow */
-  border-radius: 0; /* Remove default border-radius */
+  box-shadow: none;
+  /* Remove default shadow */
+  border-radius: 0;
+  /* Remove default border-radius */
 }
 
 /* Style for the dropdown arrow */
 .phone-input-container .PhoneInputCountrySelectArrow {
-  color: #6b7280; /* text-gray-500 */
+  color: #6b7280;
+  /* text-gray-500 */
   margin-right: 0.5rem;
 }
 
@@ -53,11 +65,13 @@
 .phone-input-container .PhoneInputInput {
   /* Match the text input style */
   flex-grow: 1;
-  padding: 0.75rem 1rem; /* py-3 px-4 */
+  padding: 0.75rem 1rem;
+  /* py-3 px-4 */
   border: none;
   outline: none;
   background-color: transparent;
-  color: #1e293b; /* style={{ color: '#1e293b' }} */
+  color: #1e293b;
+  /* style={{ color: '#1e293b' }} */
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -87,4 +101,43 @@
 /* Ensure the input field takes up the remaining space */
 .phone-input-container .PhoneInputInput {
   padding-left: 0.5rem;
+}
+
+/* Additional phone input styling from HomeHeroSection */
+.phone-input-container .PhoneInputInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: #1e293b;
+  /* transition removed for performance */
+}
+
+.phone-input-container .PhoneInputInput::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+.phone-input-container .PhoneInputInput:focus {
+  border-color: #ff8c00;
+  box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.2);
+}
+
+.phone-input-container.border-red-500 .PhoneInputInput {
+  border-color: #ef4444;
+}
+
+.phone-input-container .PhoneInputCountry {
+  margin-right: 0.5rem;
+}
+
+/* Country dropdown styling */
+.phone-input-container .PhoneInputCountrySelect {
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.phone-input-container .PhoneInputCountrySelectArrow {
+  color: #64748b;
 }

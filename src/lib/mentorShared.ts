@@ -57,7 +57,7 @@ export const MENTORS: Mentor[] = [
     domain: "Data Science",
     experience: "12+ years",
     highlights: ["Leadership", "Analytics", "Machine Learning", "Strategy"],
-    avatar: "/mentors_images/Pravin-Maske.jpg",
+    avatar: "/mentors_images/Pravin-Maske.webp",
     bio: "pravin mhaske data science manager infosys analytics machine learning leadership india",
   },
   {
@@ -68,7 +68,7 @@ export const MENTORS: Mentor[] = [
     domain: "Data Science",
     experience: "10+ years",
     highlights: ["Academia", "Curriculum Design", "Research", "Python"],
-    avatar: "/mentors_images/Piyali-Mondal.jpg",
+    avatar: "/mentors_images/Piyali-Mondal.webp",
     bio: "piyali mondal program leader exeed college uae academia data science ai ml curriculum professor",
   },
   {
@@ -79,7 +79,7 @@ export const MENTORS: Mentor[] = [
     domain: "Data Science",
     experience: "8+ years",
     highlights: ["ML Research", "Time Series", "AutoML", "Python"],
-    avatar: "/mentors_images/Revathi-Soundarrajan.jpg",
+    avatar: "/mentors_images/Revathi-Soundarrajan.webp",
     bio: "revathi soundarrajan dr s revathi data scientist phd electra vehicles machine learning research usa",
   },
   {
@@ -90,7 +90,7 @@ export const MENTORS: Mentor[] = [
     domain: "Full-Stack",
     experience: "9+ years",
     highlights: ["JavaScript", "Training", "Backend", "System Design"],
-    avatar: "/mentors_images/Dnyaneshwar-Bhabad.jpg",
+    avatar: "/mentors_images/Dnyaneshwar-Bhabad.webp",
     bio: "dnyaneshwar bhabad assistant manager technology deloitte training software development full-stack india",
   },
   {
@@ -101,7 +101,7 @@ export const MENTORS: Mentor[] = [
     domain: "Data Science",
     experience: "7+ years",
     highlights: ["SQL", "Tableau", "Power BI", "ETL", "Python"],
-    avatar: "/mentors_images/Abhirupa-Manna.jpg",
+    avatar: "/mentors_images/Abhirupa-Manna.webp",
     bio: "abhirupa manna consultant kpmg data analytics bi sql tableau power bi qlikview etl python india",
   },
   {
@@ -112,7 +112,7 @@ export const MENTORS: Mentor[] = [
     domain: "Cloud",
     experience: "10+ years",
     highlights: ["Big Data", "AWS", "GCP", "Python", "SQL"],
-    avatar: "/mentors_images/Urvi-Verma.jpg",
+    avatar: "/mentors_images/Urvi-Verma.webp",
     bio: "urvi verma avp data engineering deutsche bank germany big data aws gcp cloud services python sql",
   },
   {
@@ -123,7 +123,7 @@ export const MENTORS: Mentor[] = [
     domain: "Full-Stack",
     experience: "5+ years",
     highlights: ["Java", "Python", "Genomic Data", "Software Development"],
-    avatar: "/mentors_images/Ishita.jpg",
+    avatar: "/mentors_images/Ishita.webp",
     bio: "eshita gangwar application engineer oracle usa masters computer science usc genomic data analysis software development",
   },
 ];

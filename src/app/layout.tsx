@@ -87,13 +87,20 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href={SITE_CONFIG.appleTouchIcon} />
         <link rel="icon" href={SITE_CONFIG.favicon} />
 
+        {/* Resource hints for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
 
       </head>
 
       <body className={`${inter.className} antialiased`}>
-        <SpecialOfferBanner />
-        <Header />
+        <div className="sticky top-0 z-[100] w-full">
+          <SpecialOfferBanner />
+          <Header />
+        </div>
         <main>{children}</main>
         <Footer />
         <GoogleAnalytics />

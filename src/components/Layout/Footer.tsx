@@ -363,6 +363,14 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-orange-300">Institute</h3>
             <ul>
               <li className='flex flex-col space-y-2'>
+                <FooterLink href="/mock-test">
+                  Mock Test
+                </FooterLink>
+
+                <FooterLink href="/istqb-registration">
+                  ISTQB Registration
+                </FooterLink>
+
                 <FooterLink href="/services">
                   Services
                 </FooterLink>

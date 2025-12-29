@@ -193,11 +193,12 @@ export default function MentorHeroSection() {
           {/* RIGHT — image (lifted up to align with content start; content unchanged) */}
           <div className="order-2 lg:order-2 relative flex items-start justify-center lg:justify-end mt-6 lg:mt-0 -translate-y-2 sm:-translate-y-3 lg:-translate-y-10 xl:-translate-y-12">
             <Image
-              src="/mentors_images/mentors-hero2.png"
+              src="/mentors_images/mentors-hero2.webp"
               alt="CDPL Mentors"
               title="CDPL Mentors"
-              width={1280}
-              height={960}
+              width={640}
+              height={480}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 544px, 640px"
               className="
                 w-full h-auto
                 max-w-[28rem] sm:max-w-[34rem]
@@ -205,6 +206,7 @@ export default function MentorHeroSection() {
                 rounded-2xl
               "
               priority
+              fetchPriority="high"
             />
           </div>
         </div>
@@ -218,7 +220,7 @@ function FloatingBadge({ className = "", children }: { className?: string; child
   return (
     <div
       className={`grid place-items-center h-14 w-14 rounded-full bg-white ring-2 ring-white shadow-sm ${className}`}
-      aria-hidden="true"
+      aria-hidden={true}
       style={{ boxShadow: "0 8px 30px rgba(2, 6, 23, 0.07)" }}
     >
       {children}

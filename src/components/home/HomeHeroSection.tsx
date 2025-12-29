@@ -574,56 +574,6 @@ const HomeHeroSection: React.FC = () => {
 
   return (
     <>
-      {/* Custom CSS for phone input */}
-      <style jsx global>{`
-        /* Phone input styling */
-        .phone-input-container .PhoneInputInput {
-          width: 100%;
-          padding: 0.75rem 1rem;
-          border: 1px solid #d1d5db;
-          border-radius: 0.5rem;
-          font-size: 0.875rem;
-          color: #1e293b;
-          /* transition: border-color 0.3s, box-shadow 0.3s; removed for performance */
-        }
-
-        .phone-input-container .PhoneInputInput::placeholder {
-          color: #64748b;
-          opacity: 1;
-        }
-
-        .phone-input-container .PhoneInputInput:focus {
-          border-color: #ff8c00;
-          ring: 2px;
-          ring-color: #ff8c00;
-          box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.2);
-        }
-
-        .phone-input-container.border-red-500 .PhoneInputInput {
-          border-color: #ef4444;
-        }
-
-        .phone-input-container .PhoneInputCountry {
-          margin-right: 0.5rem;
-        }
-
-        /* Country dropdown styling */
-        .phone-input-container .PhoneInputCountrySelect {
-          color: #1e293b;
-          font-weight: 500;
-        }
-
-        .phone-input-container .PhoneInputCountrySelectArrow {
-          color: #64748b;
-        }
-
-        /* Fix placeholder visibility for all inputs */
-        input::placeholder {
-          color: #64748b !important;
-          opacity: 1 !important;
-        }
-      `}</style>
-
       <LazyMotion features={domAnimation}>
         <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50 lg:py-4 py-4 overflow-hidden">
           {/* Background decorative elements */}

@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import axios from 'axios';
 import { Star, Quote, BadgeCheck } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 // --- Types ---
 interface Review {
@@ -23,7 +21,7 @@ const GOOGLE_LOGO = '/slider_logos/google-logo.svg';
 function MarqueeRow({
   items,
   direction = 'left',
-  speed = 5
+  speed = 150
 }: {
   items: Review[];
   direction?: 'left' | 'right';
@@ -110,8 +108,9 @@ export default function ReviewsMarquee() {
   useEffect(() => {
     async function fetchReviews() {
       try {
-        const res = await axios.get('/api/reviews');
-        const data = res.data;
+        const res = await fetch('/api/reviews');
+        if (!res.ok) throw new Error('Failed to fetch');
+        const data = await res.json();
         setReviews(data.reviews || []);
         if (data.totalReviewCount) {
           setStats({
@@ -159,10 +158,8 @@ export default function ReviewsMarquee() {
         {/* Animated Header Visual */}
         <div className="flex flex-col items-center justify-center space-y-6 pt-2">
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur border border-slate-200/50 rounded-full shadow-sm"
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur border border-slate-200/50 rounded-full shadow-sm animate-fade-in-up"
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -171,7 +168,7 @@ export default function ReviewsMarquee() {
             <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">
               {stats.total}+ Verified Reviews
             </span>
-          </motion.div>
+          </div>
         </div>
 
         {/* Marquees */}
@@ -190,6 +187,13 @@ export default function ReviewsMarquee() {
                 0% { transform: translateX(calc(-100% / 10)); }
                 100% { transform: translateX(0); }
             }
+            @keyframes fade-in-up {
+                0% { opacity: 0; transform: translateY(10px); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fade-in-up {
+                animation: fade-in-up 0.6s ease-out forwards;
+            }
             .mask-linear-gradient {
                 mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
                 -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -199,3 +203,4 @@ export default function ReviewsMarquee() {
     </section>
   );
 }
+

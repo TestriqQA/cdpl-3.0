@@ -13,7 +13,7 @@ export default function CTASection() {
             {/* Animated background */}
             <div
                 aria-hidden
-                className="absolute inset-0 opacity-[0.15]"
+                className="absolute inset-0 opacity-[0.15] animate-pan"
                 style={{
                     backgroundImage:
                         "radial-gradient(#94a3b8 1px, transparent 1px), radial-gradient(#94a3b8 1px, transparent 1px)",
@@ -23,7 +23,6 @@ export default function CTASection() {
                         "radial-gradient(60% 60% at 50% 40%, rgba(0,0,0,1), rgba(0,0,0,0.45) 60%, transparent 100%)",
                     WebkitMaskImage:
                         "radial-gradient(60% 60% at 50% 40%, rgba(0,0,0,1), rgba(0,0,0,0.45) 60%, transparent 100%)",
-                    animation: "pan 22s linear infinite",
                 }}
             />
             {/* Floating glows (no harsh gradients; soft, subtle) */}
@@ -88,26 +87,6 @@ export default function CTASection() {
                     Explore online courses with certification, live mentorship, portfolio projects, and job-focused training.
                 </p>
             </div>
-
-            {/* Local keyframes (styled-jsx) */}
-            <style jsx>{`
-        @keyframes pan {
-          0% { transform: translate3d(0,0,0); }
-          100% { transform: translate3d(50px, 50px, 0); }
-        }
-        @keyframes float-slow {
-          0% { transform: translate3d(0,0,0); opacity: 0.9; }
-          50% { transform: translate3d(0,-10px,0); opacity: 1; }
-          100% { transform: translate3d(0,0,0); opacity: 0.9; }
-        }
-        @keyframes float-slower {
-          0% { transform: translate3d(0,0,0) scale(1); opacity: 0.9; }
-          50% { transform: translate3d(0,8px,0) scale(1.02); opacity: 1; }
-          100% { transform: translate3d(0,0,0) scale(1); opacity: 0.9; }
-        }
-        .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
-        .animate-float-slower { animation: float-slower 9s ease-in-out infinite; }
-      `}</style>
         </section>
     );
 }

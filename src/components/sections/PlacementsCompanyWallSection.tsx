@@ -163,9 +163,9 @@ function TickerRow({
                     title={`${name} logo`}
                     fill
                     className="object-contain"
-                    sizes="(max-width: 425px) 100vw, (max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
+                    sizes="(max-width: 640px) 220px, 256px"
                     priority={false}
-                    quality={60}
+                    quality={75}
                   />
                 </div>
               </div>
