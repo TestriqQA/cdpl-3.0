@@ -625,7 +625,7 @@ const HomeHeroSection: React.FC = () => {
       `}</style>
 
       <LazyMotion features={domAnimation}>
-        <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50 lg:py-4 py-4 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50 lg:py-4 py-4 overflow-hidden" aria-labelledby="home-heading">
           {/* Background decorative elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {/* Animated gradient orbs */}
