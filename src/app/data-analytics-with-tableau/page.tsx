@@ -1,21 +1,30 @@
-import HeroSection from "@/components/data-analytics-with-tableau/HeroSection";
-import StickyNav from '@/components/StickyNav2/StickyNav2';
+const HeroSection = dynamic(() => import("@/components/data-analytics-with-tableau/HeroSection"), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StickyNav = dynamic(() => import("@/components/StickyNav2/StickyNav2"), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 import { with_roadmap } from '@/components/StickyNavData';
-import StatsSection from "@/components/data-analytics-with-tableau/StatsSection";
-import WhyTableauProgram from "@/components/data-analytics-with-tableau/WhyTableauProgram";
-import CurriculumSection from "@/components/data-analytics-with-tableau/CurriculumSection";
-import ProjectsSection from "@/components/data-analytics-with-tableau/ProjectsSection";
-import TestimonialsSection from "@/components/data-analytics-with-tableau/TestimonialsSection";
-import CareerSection from "@/components/data-analytics-with-tableau/CareerSection";
-import WhoShouldEnroll from "@/components/data-analytics-with-tableau/WhoShouldEnroll";
-import ToolsSection from "@/components/data-analytics-with-tableau/ToolsSection";
-import FaqSection from "@/components/data-analytics-with-tableau/FaqSection";
-import CtaSection from "@/components/data-analytics-with-tableau/CtaSection";
-import CareerRoadmapSection from "@/components/data-analytics-with-tableau/CareerRoadmapSection";
-import JsonLd from "@/components/JsonLd";
+const StatsSection = dynamic(() => import("@/components/data-analytics-with-tableau/StatsSection"), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyTableauProgram = dynamic(() => import("@/components/data-analytics-with-tableau/WhyTableauProgram"), { ssr: true, loading: () => <SectionLoader label="Loading why tableau program section..." /> });
+const CurriculumSection = dynamic(() => import("@/components/data-analytics-with-tableau/CurriculumSection"), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import("@/components/data-analytics-with-tableau/ProjectsSection"), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const TestimonialsSection = dynamic(() => import("@/components/data-analytics-with-tableau/TestimonialsSection"), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const CareerSection = dynamic(() => import("@/components/data-analytics-with-tableau/CareerSection"), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const WhoShouldEnroll = dynamic(() => import("@/components/data-analytics-with-tableau/WhoShouldEnroll"), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const ToolsSection = dynamic(() => import("@/components/data-analytics-with-tableau/ToolsSection"), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const FaqSection = dynamic(() => import("@/components/data-analytics-with-tableau/FaqSection"), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
+const CtaSection = dynamic(() => import("@/components/data-analytics-with-tableau/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
+const CareerRoadmapSection = dynamic(() => import("@/components/data-analytics-with-tableau/CareerRoadmapSection"), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
+const JsonLd = dynamic(() => import("@/components/JsonLd"), { ssr: true, loading: () => <SectionLoader label="Loading json ld..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { DATA_ANALYTICS_TABLEAU_FAQS, DATA_ANALYTICS_TABLEAU_REVIEW_DATA } from "@/data/dataAnalyticsTableauData";
+import dynamic from "next/dynamic";
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+    return (
+        <div className="flex items-center justify-center py-16">
+            <p className="text-gray-500">{label}</p>
+        </div>
+    );
+}
 
 export const metadata = generateMetadata({
     title: "Data Analytics with Tableau Course | 20-Hour Training | Mumbai | CDPL",

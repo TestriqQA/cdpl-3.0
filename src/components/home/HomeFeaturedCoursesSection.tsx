@@ -763,7 +763,7 @@ export default function HomeFeaturedCoursesSection() {
     : COURSES.filter(course => course.category === activeCategory);
 
   return (
-    <section className="py-6 lg:py-10 bg-gray-50">
+    <section className="py-6 lg:py-10 bg-gray-50" aria-labelledby="featured-courses-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -775,7 +775,7 @@ export default function HomeFeaturedCoursesSection() {
           <span className="inline-block px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
             Popular Courses
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 id="featured-courses-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Explore Our <span className="text-brand">Industry-Ready</span> Courses
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">

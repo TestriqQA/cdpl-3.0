@@ -1,21 +1,30 @@
-import HeroSection from '@/components/power-bi-course/HeroSection';
-import StickyNav from '@/components/StickyNav2/StickyNav2';
+const HeroSection = dynamic(() => import("@/components/power-bi-course/HeroSection"), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StickyNav = dynamic(() => import("@/components/StickyNav2/StickyNav2"), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 import { with_roadmap } from '@/components/StickyNavData';
-import StatsSection from '@/components/power-bi-course/StatsSection';
-import WhyBIProgram from '@/components/power-bi-course/WhyBIProgram';
-import CurriculumSection from '@/components/power-bi-course/CurriculumSection';
-import ProjectsSection from '@/components/power-bi-course/ProjectsSection';
-import TestimonialsSection from '@/components/power-bi-course/TestimonialsSection';
-import CareerSection from '@/components/power-bi-course/CareerSection';
-import WhoShouldEnroll from '@/components/power-bi-course/WhoShouldEnroll';
-import ToolsSection from '@/components/power-bi-course/ToolsSection';
-import FaqSection from '@/components/power-bi-course/FaqSection';
-import CtaSection from '@/components/power-bi-course/CtaSection';
-import CareerRoadmapSection from '@/components/power-bi-course/CareerRoadmapSection';
-import JsonLd from "@/components/JsonLd";
+const StatsSection = dynamic(() => import("@/components/power-bi-course/StatsSection"), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyBIProgram = dynamic(() => import("@/components/power-bi-course/WhyBIProgram"), { ssr: true, loading: () => <SectionLoader label="Loading why bi program section..." /> });
+const CurriculumSection = dynamic(() => import("@/components/power-bi-course/CurriculumSection"), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import("@/components/power-bi-course/ProjectsSection"), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const TestimonialsSection = dynamic(() => import("@/components/power-bi-course/TestimonialsSection"), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const CareerSection = dynamic(() => import("@/components/power-bi-course/CareerSection"), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const WhoShouldEnroll = dynamic(() => import("@/components/power-bi-course/WhoShouldEnroll"), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const ToolsSection = dynamic(() => import("@/components/power-bi-course/ToolsSection"), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const FaqSection = dynamic(() => import("@/components/power-bi-course/FaqSection"), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
+const CtaSection = dynamic(() => import("@/components/power-bi-course/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
+const CareerRoadmapSection = dynamic(() => import("@/components/power-bi-course/CareerRoadmapSection"), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
+const JsonLd = dynamic(() => import("@/components/JsonLd"), { ssr: true, loading: () => <SectionLoader label="Loading json ld..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { POWER_BI_FAQS, POWER_BI_REVIEW_DATA } from "@/data/powerBiData";
+import dynamic from 'next/dynamic';
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+    return (
+        <div className="flex items-center justify-center py-16">
+            <p className="text-gray-500">{label}</p>
+        </div>
+    );
+}
 
 export const metadata = generateMetadata({
     title: "Master Data Analytics & Visualization with Power BI | Certified Course",

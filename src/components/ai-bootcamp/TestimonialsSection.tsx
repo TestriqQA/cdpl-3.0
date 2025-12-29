@@ -1,10 +1,9 @@
-"use client";
-
-
+import { getGoogleReviews } from "@/lib/reviews";
 import ReviewsMarquee from "../sections/ReviewMarque";
 
 
-export default function TestimonialsSection() {
+export default async function TestimonialsSection() {
+    const { reviews, totalReviewCount, averageRating } = await getGoogleReviews();
 
     return (
         <section className="py-10 bg-gradient-to-b from-white to-slate-50">
@@ -23,7 +22,11 @@ export default function TestimonialsSection() {
                     </p>
                 </div>
 
-                <ReviewsMarquee />
+                <ReviewsMarquee
+                    initialReviews={reviews}
+                    initialTotal={totalReviewCount.toString()}
+                    initialRating={averageRating.toString()}
+                />
 
                 {/* Trust Indicators (like reference, with SEO focus) */}
                 <div className="mt-4 bg-gradient-to-r from-orange-50 to-blue-50 rounded-2xl p-8 md:p-12 border-2 border-orange-200">

@@ -1,21 +1,30 @@
 // pages/python-programming.tsx
-import HeroSection from "@/components/python-course/HeroSection";
-import StatsSection from "@/components/python-course/StatsSection";
-import WhyPythonProgram from "@/components/python-course/WhyPythonProgram";
-import CurriculumSection from "@/components/python-course/CurriculumSection";
-import ProjectsSection from "@/components/python-course/ProjectsSection";
-import CareerSection from "@/components/python-course/CareerSection";
-import WhoShouldEnroll from "@/components/python-course/WhoShouldEnroll";
-import ToolsSection from "@/components/python-course/ToolsSection";
-import TestimonialsSection from "@/components/python-course/TestimonialsSection";
-import CareerRoadmapSection from "@/components/python-course/CareerRoadmapSection";
-import FaqSection from "@/components/python-course/FaqSection";
-import CtaSection from "@/components/python-course/CtaSection";
-import StickyNav3 from "@/components/StickyNav2/StickyNav3";
+const HeroSection = dynamic(() => import('@/components/python-course/HeroSection'), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StatsSection = dynamic(() => import('@/components/python-course/StatsSection'), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyPythonProgram = dynamic(() => import('@/components/python-course/WhyPythonProgram'), { ssr: true, loading: () => <SectionLoader label="Loading why python program section..." /> });
+const CurriculumSection = dynamic(() => import('@/components/python-course/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import('@/components/python-course/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const CareerSection = dynamic(() => import('@/components/python-course/CareerSection'), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const WhoShouldEnroll = dynamic(() => import('@/components/python-course/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const ToolsSection = dynamic(() => import('@/components/python-course/ToolsSection'), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const TestimonialsSection = dynamic(() => import('@/components/python-course/TestimonialsSection'), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const CareerRoadmapSection = dynamic(() => import('@/components/python-course/CareerRoadmapSection'), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
+const FaqSection = dynamic(() => import('@/components/python-course/FaqSection'), { ssr: true, loading: () => <SectionLoader label="Loading FAQs section..." /> });
+const CtaSection = dynamic(() => import('@/components/python-course/CtaSection'), { ssr: true, loading: () => <SectionLoader label="Loading CTA section..." /> });
+const StickyNav3 = dynamic(() => import('@/components/StickyNav2/StickyNav3'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { PYTHON_FAQS, PYTHON_REVIEW_DATA } from "@/data/pythonData";
+import dynamic from "next/dynamic";
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 
 export const metadata = generateMetadata({
   title: "Python Programming Course in Mumbai | 80-Hour Job-Ready Training | CDPL",

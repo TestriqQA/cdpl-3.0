@@ -1,19 +1,28 @@
-import HeroSection from '@/components/advance-software-testing/HeroSection';
-import StatsSection from '@/components/advance-software-testing/StatsSection';
-import WhyAdvancedTesting from '@/components/advance-software-testing/WhyAdvancedTesting';
-import CurriculumSection from '@/components/advance-software-testing/CurriculumSection';
-import ProjectsSection from '@/components/advance-software-testing/ProjectsSection';
-import TestimonialsSection from '@/components/advance-software-testing/TestimonialsSection';
-import CareerSection from '@/components/advance-software-testing/CareerSection';
-import WhoShouldEnroll from '@/components/advance-software-testing/WhoShouldEnroll';
-import ToolsSection from '@/components/advance-software-testing/ToolsSection';
-import FaqSection from '@/components/advance-software-testing/FaqSection';
-import CtaSection from '@/components/advance-software-testing/CtaSection';
-import StickyNav from '@/components/StickyNav2/StickyNav2';
+const HeroSection = dynamic(() => import('@/components/advance-software-testing/HeroSection'), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+const StatsSection = dynamic(() => import('@/components/advance-software-testing/StatsSection'), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+const WhyAdvancedTesting = dynamic(() => import('@/components/advance-software-testing/WhyAdvancedTesting'), { ssr: true, loading: () => <SectionLoader label="Loading why advanced testing section..." /> });
+const CurriculumSection = dynamic(() => import('@/components/advance-software-testing/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
+const ProjectsSection = dynamic(() => import('@/components/advance-software-testing/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
+const TestimonialsSection = dynamic(() => import('@/components/advance-software-testing/TestimonialsSection'), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
+const CareerSection = dynamic(() => import('@/components/advance-software-testing/CareerSection'), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
+const WhoShouldEnroll = dynamic(() => import('@/components/advance-software-testing/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
+const ToolsSection = dynamic(() => import('@/components/advance-software-testing/ToolsSection'), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
+const FaqSection = dynamic(() => import('@/components/advance-software-testing/FaqSection'), { ssr: true, loading: () => <SectionLoader label="Loading FAQs section..." /> });
+const CtaSection = dynamic(() => import('@/components/advance-software-testing/CtaSection'), { ssr: true, loading: () => <SectionLoader label="Loading CTA section..." /> });
+const StickyNav = dynamic(() => import('@/components/StickyNav2/StickyNav2'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 import { ADVANCED_TESTING_FAQS, ADVANCED_TESTING_REVIEW_DATA } from "@/data/advancedTestingData";
+import dynamic from 'next/dynamic';
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 
 export const metadata = generateMetadata({
   title: "Advanced Software Testing Course | SDET Training | 100% Placement",

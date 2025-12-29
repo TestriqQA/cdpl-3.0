@@ -100,12 +100,26 @@ function ReviewCard({ review }: { review: Review }) {
   );
 }
 
-export default function ReviewsMarquee() {
-  const [reviews, setReviews] = useState<Review[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState({ total: '0', rating: '0.0' });
+interface ReviewsMarqueeProps {
+  initialReviews?: Review[];
+  initialTotal?: string;
+  initialRating?: string;
+}
+
+export default function ReviewsMarquee({ initialReviews, initialTotal, initialRating }: ReviewsMarqueeProps) {
+  const [reviews, setReviews] = useState<Review[]>(initialReviews || []);
+  const [loading, setLoading] = useState(!initialReviews);
+  const [stats, setStats] = useState({
+    total: initialTotal || '0',
+    rating: initialRating || '0.0'
+  });
 
   useEffect(() => {
+    // If we have initial data, don't fetch
+    if (initialReviews && initialReviews.length > 0) {
+      return;
+    }
+
     async function fetchReviews() {
       try {
         const res = await fetch('/api/reviews');
@@ -125,7 +139,7 @@ export default function ReviewsMarquee() {
       }
     }
     fetchReviews();
-  }, []);
+  }, [initialReviews]);
 
   if (loading) {
     return (
