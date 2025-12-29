@@ -562,12 +562,12 @@ const Header = () => {
     hoveredCourse ? hoveredCourseData?.description : selectedCategoryData?.description;
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50">
+    <header className="bg-white shadow-lg sticky top-0 z-50" role="banner">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 sm:py-1">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
+            <Link href="/" className="flex items-center space-x-2 sm:space-x-3" aria-label="Cinute Digital Home">
               <div className="rounded-lg">
                 <Image src="/cdpl-logo.png" alt="CDPL Logo" title="CDPL Logo" width={40} height={40} className="w-10 h-10 sm:w-12 sm:h-12 lg:w-20 lg:h-12 xl:w-14 xl:h-14" />
               </div>
@@ -925,7 +925,9 @@ const Header = () => {
               ref={mobileToggleRef}
               onClick={toggleMenu}
               className="text-gray-700 hover:text-brand p-2"
-              aria-label="Toggle menu"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
