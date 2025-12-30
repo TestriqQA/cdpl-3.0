@@ -393,7 +393,7 @@ export default function HeroManualTesting() {
                     </div>
 
                     {/* RIGHT */}
-                    <div className="relative lg:col-span-4">
+                    <div className="relative lg:col-span-4 min-h-[520px]">
 
                         <LeadForm variant="elevated" className="hidden lg:block" />
 
