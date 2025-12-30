@@ -16,7 +16,26 @@ import Image from "next/image";
 import Link from "next/link";
 const Modal = dynamic(() => import("@/components/Modal"), { ssr: false });
 const BrochureDownloadForm = dynamic(() => import("@/components/BrochureDownloadForm"), { ssr: false });
-const LeadForm = dynamic(() => import('../forms/ManualCourseLeadForm'), { ssr: false });
+
+function LeadFormSkeleton() {
+    return (
+        <div className="rounded-2xl border bg-white/92 backdrop-blur-xl p-6 sm:p-8 shadow-2xl border-slate-200 h-[520px] animate-pulse">
+            <div className="h-8 bg-slate-200 rounded w-3/4 mb-2"></div>
+            <div className="h-4 bg-slate-200 rounded w-full mb-6"></div>
+            <div className="space-y-4">
+                <div className="h-12 bg-slate-200 rounded"></div>
+                <div className="h-12 bg-slate-200 rounded"></div>
+                <div className="h-12 bg-slate-200 rounded"></div>
+                <div className="h-12 bg-slate-300 rounded"></div>
+            </div>
+        </div>
+    )
+}
+
+const LeadForm = dynamic(() => import('../forms/ManualCourseLeadForm'), {
+    ssr: false,
+    loading: () => <LeadFormSkeleton />
+});
 const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false });
 const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
 import dynamic from "next/dynamic";
@@ -252,7 +271,9 @@ export default function HeroManualTesting() {
 
                         {/* Lead Form For Mobile Screens and Tab Screens */}
                         {/* Lead Form For Mobile Screens */}
-                        <LeadForm variant="elevated" className="lg:hidden mt-8" />
+                        <div className="lg:hidden mt-8">
+                            <LeadForm variant="elevated" />
+                        </div>
 
                         {/* Trust Bar */}
                         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
@@ -367,6 +388,7 @@ export default function HeroManualTesting() {
                                     width={150}
                                     height={24}
                                     className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                    priority={true}
                                 />
                                 <Image
                                     src="/company_images/credility.webp"
@@ -375,6 +397,7 @@ export default function HeroManualTesting() {
                                     width={150}
                                     height={24}
                                     className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                    priority={true}
                                 />
                                 <Image
                                     src="/company_images/marqetrix.webp"
@@ -383,6 +406,7 @@ export default function HeroManualTesting() {
                                     width={150}
                                     height={24}
                                     className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                    priority={true}
                                 />
                             </div>
 
@@ -392,11 +416,8 @@ export default function HeroManualTesting() {
                     </div>
 
                     {/* RIGHT */}
-                    <div className="relative lg:col-span-4 min-h-[520px]">
-
-                        <LeadForm variant="elevated" className="hidden lg:block" />
-
-
+                    <div className="relative lg:col-span-4 min-h-[520px] hidden lg:block">
+                        <LeadForm variant="elevated" />
                     </div>
                 </div>
 
