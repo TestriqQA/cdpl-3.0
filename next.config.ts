@@ -15,9 +15,11 @@ const nextConfig: NextConfig = {
       'framer-motion',
       'react-icons',
       '@headlessui/react',
+      'lucide-react',
     ],
     optimizeCss: true, // Enable CSS optimization
     optimizeServerReact: true,
+    webpackBuildWorker: true, // Faster builds
   },
 
   // Compiler optimizations
@@ -25,6 +27,15 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production' ? {
       exclude: ['error', 'warn'],
     } : false,
+    // React compiler optimizations
+    reactRemoveProperties: process.env.NODE_ENV === 'production',
+  },
+
+  // Tree-shaking optimizations
+  modularizeImports: {
+    'lucide-react': {
+      transform: 'lucide-react/dist/esm/icons/{{member}}',
+    },
   },
 
   // Image optimization

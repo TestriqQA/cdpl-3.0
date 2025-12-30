@@ -29,7 +29,7 @@ export default function JobOpeningsHeroSection({
   })();
 
   return (
-    <LazyMotion features={domAnimation}>
+    <LazyMotion features={domAnimation} strict>
       <section className="relative bg-white">
         {/* soft CDPL glow */}
         <div className="pointer-events-none absolute inset-0 -z-10">
@@ -61,9 +61,9 @@ export default function JobOpeningsHeroSection({
           {/* Hero content */}
           <header>
             <m.h1
-              initial={{ opacity: 0, y: 12 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.3 }}
               className="mx-auto max-w-4xl text-center text-3xl font-semibold sm:text-4xl"
             >
               <span style={{ color: BRAND_BLUE }}>{firstPart}</span>
@@ -77,9 +77,9 @@ export default function JobOpeningsHeroSection({
 
             {subtitle && (
               <m.p
-                initial={{ opacity: 0, y: 6 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.4 }}
+                transition={{ duration: 0.2 }}
                 className="mx-auto mt-3 max-w-2xl text-center text-slate-600"
               >
                 {subtitle}
@@ -87,9 +87,9 @@ export default function JobOpeningsHeroSection({
             )}
 
             <m.div
-              initial={{ opacity: 0, y: 6 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.35 }}
+              transition={{ duration: 0.2 }}
               className="mt-5 flex justify-center"
             >
               <a

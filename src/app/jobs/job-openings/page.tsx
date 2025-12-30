@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import JobOpeningsHeroSection from "@/components/sections/JobOpeningsHeroSection";
+import JobOpeningsJobBrowser from "@/components/sections/JobOpeningsJobBrowser";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateCollectionPageSchema, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
@@ -69,7 +69,10 @@ const AUTH_HEADER = process.env.OPTIMHIRE_API_KEY
 
 async function ohFetch<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {
-    cache: "no-store",
+    next: {
+      revalidate: 3600, // Cache for 1 hour
+      tags: ['optimhire-jobs'] // For on-demand revalidation
+    },
     ...init,
     headers: { "Content-Type": "application/json", ...AUTH_HEADER, ...(init?.headers ?? {}) },
   });
@@ -245,30 +248,13 @@ export const metadata: Metadata = generateStaticPageMetadata({
   image: "/og-image-job-openings.jpg",
 });
 
-// ---- Loader for dynamic sections ----------------------------------------
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-16">
-      <p className="text-gray-500">{label}</p>
-    </div>
-  );
-}
-
-// ---- Dynamic Sections ----------------------------------------------------
-// Default export components → direct dynamic import (SSR enabled)
-// JobOpeningsHeroSection is now static
-
-const JobOpeningsJobBrowser = dynamic(
-  () => import("@/components/sections/JobOpeningsJobBrowser"),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading jobs..." />,
-  }
-);
-
 // ---- Page ----------------------------------------------------------------
+// Enable ISR: Regenerate page every hour
+export const revalidate = 3600;
+
 export default async function JobSharePage() {
-  const initial = await getJobsServer({ page: 1, size: 20 });
+  // Reduce initial fetch to 10 jobs for faster server response
+  const initial = await getJobsServer({ page: 1, size: 10 });
   const jobs = initial?.data?.job ?? [];
 
   // 1. Breadcrumb Schema
@@ -313,6 +299,15 @@ export default async function JobSharePage() {
 
   return (
     <>
+      {/* Preload critical font for LCP optimization */}
+      <link
+        rel="preload"
+        href="/_next/static/media/e4af272ccee01ff0-s.p.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
       {/* Structured Data */}
       <JsonLd id="job-openings-breadcrumb" schema={breadcrumbSchema} />
       <JsonLd id="job-openings-collection" schema={collectionPageSchema} />
@@ -339,7 +334,7 @@ export default async function JobSharePage() {
           <JobOpeningsJobBrowser
             initialJobs={jobs}
             totalCount={initial?.data?.total_count ?? 0}
-            pageSize={20}
+            pageSize={10}
             getJobsAction={getJobsServer}
             getJobByIdAction={getJobByIdServer}
             verifyCandidateAction={verifyCandidateServer}
