@@ -2,9 +2,10 @@
 /* ==================== LEARNING PATH (Light Theme, SEO-Optimized) ==================== */
 import { CheckCircle2, Clock, Rocket, BookOpen, ClipboardList, Bug, Briefcase, ShieldCheck, Target, Sparkles } from "lucide-react";
 import { useState } from "react";
-import CallbackModal from "@/components/CallbackModal";
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
-import EnrollModal from "@/components/EnrollModal";
+import dynamic from "next/dynamic";
+const CallbackModal = dynamic(() => import("@/components/CallbackModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false });
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
 
 const ACCENTS = ["cyan", "indigo", "emerald", "rose"] as const;
 type Accent = typeof ACCENTS[number];

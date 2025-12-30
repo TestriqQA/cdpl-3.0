@@ -6,12 +6,9 @@ import {
   CreditCard, BookOpen, Globe, Headphones, GraduationCap
 } from "lucide-react";
 import Link from "next/link";
-import EnrollModal from "@/components/EnrollModal";
+import dynamic from "next/dynamic";
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
 import { MANUAL_TESTING_FAQS as FAQS } from "@/data/manualTestingData";
-
-/* =========================
-   Types
-========================= */
 
 
 /* =========================

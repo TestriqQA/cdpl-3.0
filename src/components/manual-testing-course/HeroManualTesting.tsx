@@ -16,11 +16,12 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
-import Modal from "@/components/Modal";
-import BrochureDownloadForm from "@/components/BrochureDownloadForm";
-import LeadForm from '../forms/ManualCourseLeadForm';
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
-import EnrollModal from "@/components/EnrollModal";
+const Modal = dynamic(() => import("@/components/Modal"), { ssr: false });
+const BrochureDownloadForm = dynamic(() => import("@/components/BrochureDownloadForm"), { ssr: false });
+const LeadForm = dynamic(() => import('../forms/ManualCourseLeadForm'), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false });
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
+import dynamic from "next/dynamic";
 
 
 /* ----------------------- NEW: Count-up + Stats ----------------------- */

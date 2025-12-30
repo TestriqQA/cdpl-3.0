@@ -19,8 +19,9 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import CareerSessionModal from "@/components/CareerSessionModal";
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+import dynamic from "next/dynamic";
+const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false });
 
 /* ---------- Local, strongly-typed UI primitives ---------- */
 type JobRoleProps = { role: string; salary: string; keywords?: string[] };

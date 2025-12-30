@@ -12,8 +12,8 @@ import {
     GraduationCap,
 } from "lucide-react";
 import { useState, type JSX } from "react";
-import EnrollModal from "@/components/EnrollModal";
-
+import dynamic from "next/dynamic";
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
 
 type AccentColor = "indigo" | "emerald" | "sky" | "amber" | "rose" | "violet";
 

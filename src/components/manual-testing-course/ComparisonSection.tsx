@@ -4,7 +4,8 @@
 import Link from "next/link";
 import * as React from "react";
 import { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
+import dynamic from "next/dynamic";
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
 
 type Badge = { label: string; colorClasses: string };
 
