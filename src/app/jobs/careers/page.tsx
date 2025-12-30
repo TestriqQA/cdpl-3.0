@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import JobsCareersHeroSection from "@/components/sections/JobsCareersHeroSection";
 import type { Metadata } from "next";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateCollectionPageSchema, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
@@ -236,10 +237,8 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 // ====== Dynamic Section Imports (typed) ======
-const JobsCareersHeroSection = dynamic(
-    () => import("@/components/sections/JobsCareersHeroSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
-);
+// JobsCareersHeroSection is now static
+
 
 const JobsCareersOpenRolesSection = dynamic<{ jobs: Job[] }>(
     () => import("@/components/sections/JobsCareersOpenRolesSection"),
