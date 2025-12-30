@@ -10,58 +10,12 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
     );
 }
 
-const StickyNav = dynamic(
-    () => import("@/components/manual-testing-course/StickyNav"),
-    { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> }
-)
-
-const CareerSection = dynamic(
-    () => import("@/components/manual-testing-course/CareerSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading career..." /> }
-)
-const ComparisonSection = dynamic(
-    () => import("@/components/manual-testing-course/ComparisonSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading comparison..." /> }
-)
-const CurriculumSection = dynamic(
-    () => import("@/components/manual-testing-course/CurriculumSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading curriculum..." /> }
-)
-const FaqSection = dynamic(
-    () => import("@/components/manual-testing-course/FaqSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading FAQ..." /> }
-)
-const HeroManualTesting = dynamic(
-    () => import("@/components/manual-testing-course/HeroManualTesting"),
-    { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
-)
-const InstructorSection = dynamic(
-    () => import("@/components/manual-testing-course/InstructorSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading instructor..." /> }
-)
-const LearningPath = dynamic(
-    () => import("@/components/manual-testing-course/LearningPath"),
-    { ssr: true, loading: () => <SectionLoader label="Loading learning path..." /> }
-)
-const OtherCoursesSection = dynamic(
-    () => import("@/components/manual-testing-course/OtherCourseSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading other courses..." /> }
-)
-const ProjectsSection = dynamic(
-    () => import("@/components/manual-testing-course/ProjectSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading projects..." /> }
-)
-const ToolsSection = dynamic(
-    () => import("@/components/manual-testing-course/ToolsSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading tools..." /> }
-)
-const TrustSection = dynamic(
-    () => import("@/components/manual-testing-course/TrustSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading trust..." /> }
-)
-const WhyLearnSection = dynamic(
-    () => import("@/components/manual-testing-course/WhyLearnSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading why learn..." /> }
+import StickyNav from "@/components/manual-testing-course/StickyNav";
+import HeroManualTesting from "@/components/manual-testing-course/HeroManualTesting";
+import WhyLearnSection from "@/components/manual-testing-course/WhyLearnSection";
+const CourseDetailSections = dynamic(
+    () => import("./CourseDetailSections"),
+    { ssr: true, loading: () => <SectionLoader label="Loading additional content..." /> }
 )
 
 export default function ManualTestingPageContent() {
@@ -77,16 +31,9 @@ export default function ManualTestingPageContent() {
 
             {/* Ensure each subsequent section wrapper has the correct id */}
             <section id="why-learn"><WhyLearnSection /></section>
-            <section id="curriculum"><CurriculumSection /></section>
-            <section id="tools"><ToolsSection /></section>
-            <section id="projects"><ProjectsSection /></section>
-            <section id="learning-path"><LearningPath /></section>
-            <section id="instructor"><InstructorSection /></section>
-            <section id="career"><CareerSection /></section>
-            <section id="trust"><TrustSection /></section>
-            <section id="comparison"><ComparisonSection /></section>
-            <section id="other-courses"><OtherCoursesSection /></section>
-            <section id="faq"><FaqSection /></section>
+
+            {/* Grouped sections for performance */}
+            <CourseDetailSections />
         </main>
     );
 }

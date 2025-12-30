@@ -359,6 +359,7 @@ export default function HeroManualTesting() {
                                     width={150}
                                     height={24}
                                     className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                    priority={true}
                                 />
                                 <Image
                                     src="/company_images/axiom.webp"
