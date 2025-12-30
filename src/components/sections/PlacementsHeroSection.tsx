@@ -1,7 +1,9 @@
 // components/sections/PlacementsHeroSection.tsx
 "use client";
 
-import { m, LazyMotion, domAnimation } from "framer-motion";
+import { m, LazyMotion } from "framer-motion";
+const loadFeatures = () =>
+  import("framer-motion").then((res) => res.domAnimation);
 import {
   Sparkles,
   GraduationCap,
@@ -17,7 +19,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 const AdvisorModal = dynamic(() => import("@/components/ui/AdvisorModal"), { ssr: false });
 
@@ -65,8 +67,30 @@ function FloatingIcon({
   );
 }
 
+const MotionProvider = ({
+  children,
+  active,
+}: {
+  children: React.ReactNode;
+  active: boolean;
+}) => {
+  if (active) {
+    return <LazyMotion features={loadFeatures}>{children}</LazyMotion>;
+  }
+  return <>{children}</>;
+};
+
 export default function PlacementsHeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showFloatingIcons, setShowFloatingIcons] = useState(false);
+
+  useEffect(() => {
+    // Only show decorative floating icons on larger screens to save resources
+    const check = () => setShowFloatingIcons(window.innerWidth >= 1040);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -74,7 +98,7 @@ export default function PlacementsHeroSection() {
     { label: "Placements", href: "/jobs/placements" },
   ];
   return (
-    <LazyMotion features={domAnimation}>
+    <MotionProvider active={showFloatingIcons}>
       <section
         className="
         relative isolate overflow-hidden bg-white text-slate-900
@@ -92,24 +116,28 @@ export default function PlacementsHeroSection() {
 
         {/* Decorative layer (no pointer events) */}
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <FloatingIcon x="6%" y="9%" className="hidden min-[1040px]:grid">
-            <Briefcase className="h-6 w-6 text-[#6aa9ff]" />
-          </FloatingIcon>
-          <FloatingIcon x="40%" y="6%" className="hidden min-[1040px]:grid">
-            <BadgeCheck className="h-6 w-6 text-[#7ee7ff]" />
-          </FloatingIcon>
-          <FloatingIcon x="28%" y="14%" className="hidden min-[1040px]:grid">
-            <Building2 className="h-6 w-6 text-[#6aa9ff]" />
-          </FloatingIcon>
-          <FloatingIcon x="69%" y="12%" className="hidden min-[1040px]:grid">
-            <TrendingUp className="h-6 w-6 text-[#b0b9ff]" />
-          </FloatingIcon>
-          <FloatingIcon x="91%" y="8%" className="hidden min-[1040px]:grid">
-            <Trophy className="h-6 w-6 text-[#9d7bff]" />
-          </FloatingIcon>
-          <FloatingIcon x="87%" y="26%" className="hidden min-[1040px]:grid">
-            <MapPin className="h-6 w-6 text-[#7ee7ff]" />
-          </FloatingIcon>
+          {showFloatingIcons && (
+            <>
+              <FloatingIcon x="6%" y="9%">
+                <Briefcase className="h-6 w-6 text-[#6aa9ff]" />
+              </FloatingIcon>
+              <FloatingIcon x="40%" y="6%">
+                <BadgeCheck className="h-6 w-6 text-[#7ee7ff]" />
+              </FloatingIcon>
+              <FloatingIcon x="28%" y="14%">
+                <Building2 className="h-6 w-6 text-[#6aa9ff]" />
+              </FloatingIcon>
+              <FloatingIcon x="69%" y="12%">
+                <TrendingUp className="h-6 w-6 text-[#b0b9ff]" />
+              </FloatingIcon>
+              <FloatingIcon x="91%" y="8%">
+                <Trophy className="h-6 w-6 text-[#9d7bff]" />
+              </FloatingIcon>
+              <FloatingIcon x="87%" y="26%">
+                <MapPin className="h-6 w-6 text-[#7ee7ff]" />
+              </FloatingIcon>
+            </>
+          )}
 
           {/* Ambient sweeping lines */}
           <svg className="absolute left-0 top-0 h-full w-full">
@@ -261,6 +289,6 @@ export default function PlacementsHeroSection() {
           source="Placements Page - Hero Section"
         />
       </section>
-    </LazyMotion>
+    </MotionProvider>
   );
 }
