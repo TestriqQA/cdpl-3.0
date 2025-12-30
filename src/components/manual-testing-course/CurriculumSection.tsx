@@ -2,7 +2,7 @@
 "use client";
 
 
-import { CheckCircle2, BookOpen, Target, Sparkles, ChevronDown, NotebookPen, FlaskConical, Bug, Layers, Pin } from "lucide-react";
+import { LuBadgeCheck, LuBookOpen, LuTarget, LuSparkles, LuChevronDown, LuNotebookPen, LuFlaskConical, LuBug, LuLayers, LuPin } from "react-icons/lu";
 
 /* ---------- Token: small color map so cards feel lively but not loud ---------- */
 const ACCENTS = ["indigo", "cyan", "emerald", "amber", "rose", "violet"] as const;
@@ -208,7 +208,7 @@ function Badge({ children }: { children: string }) {
 function TopicPill({ label }: { label: string }) {
     return (
         <span className="inline-flex items-center rounded-full bg-gray-50 px-3 py-1 text-xs font-semibold text-gray-700 ring-1 ring-inset ring-gray-200">
-            <Pin className="mr-1 h-3 w-3" aria-hidden />
+            <LuPin className="mr-1 h-3 w-3" aria-hidden />
             {label}
         </span>
     );
@@ -220,13 +220,13 @@ function AccentBar({ accent }: { accent: Accent }) {
 
 function IconFor(title: string, accent: Accent) {
     const IconComponent =
-        /SDLC/i.test(title) ? Layers :
-            /Black Box/i.test(title) ? FlaskConical :
-                /Defect|DTLC/i.test(title) ? Bug :
-                    /Agile/i.test(title) ? Target :
-                        /Tools/i.test(title) ? NotebookPen :
-                            /STLC/i.test(title) ? BookOpen :
-                                Sparkles;
+        /SDLC/i.test(title) ? LuLayers :
+            /Black Box/i.test(title) ? LuFlaskConical :
+                /Defect|DTLC/i.test(title) ? LuBug :
+                    /Agile/i.test(title) ? LuTarget :
+                        /Tools/i.test(title) ? LuNotebookPen :
+                            /STLC/i.test(title) ? LuBookOpen :
+                                LuSparkles;
 
     return (
         <div className={`${COLOR_MAP[accent].iconBg} p-2.5 rounded-lg`}>
@@ -265,7 +265,7 @@ function CurriculumCard({ mod }: { mod: Module }) {
                     <ul className="space-y-2 text-sm leading-6 text-gray-700">
                         {mod.outcomes.map((o) => (
                             <li key={o} className="flex items-start">
-                                <CheckCircle2 className="mt-0.5 mr-2 h-4 w-4 text-emerald-600" aria-hidden />
+                                <LuBadgeCheck className="mt-0.5 mr-2 h-4 w-4 text-emerald-600" aria-hidden />
                                 <span>{o}</span>
                             </li>
                         ))}
@@ -274,7 +274,7 @@ function CurriculumCard({ mod }: { mod: Module }) {
 
                 <details className="mt-4">
                     <summary className="flex cursor-pointer select-none items-center gap-2 text-sm font-semibold text-gray-900 hover:text-gray-700">
-                        <ChevronDown className="h-4 w-4" aria-hidden />
+                        <LuChevronDown className="h-4 w-4" aria-hidden />
                         View all topics {mod.tools ? "& tools" : ""}
                     </summary>
                     <div className="mt-3 space-y-3">

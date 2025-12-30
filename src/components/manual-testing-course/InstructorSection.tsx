@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, Users, Building2, BookOpenCheck, ShieldCheck, Sparkles, Clock, Award, ThumbsUp, Quote } from "lucide-react";
+import { LuBadgeCheck, LuUsers, LuBuilding, LuBookOpenCheck, LuShieldCheck, LuSparkles, LuClock, LuAward, LuThumbsUp, LuQuote } from "react-icons/lu";
 import Link from "next/link";
 import { useMemo } from "react";
 
@@ -60,7 +60,7 @@ const Stat: React.FC<StatProps> = ({ label, value, sublabel, accent = "indigo" }
 const InstructorFeature: React.FC<FeatureProps> = ({ text, icon }) => (
   <li className="flex items-start gap-3">
     <span className="mt-0.5 inline-flex rounded-full bg-emerald-50 p-1.5 ring-1 ring-emerald-100">
-      {icon ?? <CheckCircle2 className="h-4 w-4 text-emerald-600" aria-hidden="true" />}
+      {icon ?? <LuBadgeCheck className="h-4 w-4 text-emerald-600" aria-hidden="true" />}
     </span>
     <span className="text-sm md:text-base text-slate-700">{text}</span>
   </li>
@@ -90,7 +90,7 @@ const Badge: React.FC<BadgeProps> = ({ text, accent = "slate" }) => {
 const ReviewCard: React.FC<ReviewProps> = ({ quote, name, role }) => (
   <figure className="rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm p-5">
     <div className="flex items-center gap-2 text-amber-500">
-      <Quote className="h-4 w-4" aria-hidden="true" />
+      <LuQuote className="h-4 w-4" aria-hidden="true" />
       <span className="text-xs font-semibold tracking-wide uppercase">Verified Review</span>
     </div>
     <blockquote className="mt-3 text-slate-700 italic">“{quote}”</blockquote>
@@ -161,12 +161,12 @@ export default function InstructorSection() {
 
               {/* Features */}
               <ul className="mt-8 grid sm:grid-cols-2 gap-4">
-                <InstructorFeature text="15+ Years in Quality Assurance" icon={<Clock className="h-4 w-4 text-emerald-600" />} />
-                <InstructorFeature text="Trained 3,000+ Testers with 95% Placement" icon={<Users className="h-4 w-4 text-emerald-600" />} />
-                <InstructorFeature text="ISTQB Advanced Test Manager" icon={<Award className="h-4 w-4 text-emerald-600" />} />
-                <InstructorFeature text="Automation & API Testing Expertise" icon={<BookOpenCheck className="h-4 w-4 text-emerald-600" />} />
-                <InstructorFeature text="SDET Mindset & Test Strategy" icon={<ShieldCheck className="h-4 w-4 text-emerald-600" />} />
-                <InstructorFeature text="Real-World Projects from E-com to FinTech" icon={<Building2 className="h-4 w-4 text-emerald-600" />} />
+                <InstructorFeature text="15+ Years in Quality Assurance" icon={<LuClock className="h-4 w-4 text-emerald-600" />} />
+                <InstructorFeature text="Trained 3,000+ Testers with 95% Placement" icon={<LuUsers className="h-4 w-4 text-emerald-600" />} />
+                <InstructorFeature text="ISTQB Advanced Test Manager" icon={<LuAward className="h-4 w-4 text-emerald-600" />} />
+                <InstructorFeature text="Automation & API Testing Expertise" icon={<LuBookOpenCheck className="h-4 w-4 text-emerald-600" />} />
+                <InstructorFeature text="SDET Mindset & Test Strategy" icon={<LuShieldCheck className="h-4 w-4 text-emerald-600" />} />
+                <InstructorFeature text="Real-World Projects from E-com to FinTech" icon={<LuBuilding className="h-4 w-4 text-emerald-600" />} />
               </ul>
 
               {/* CTA */}
@@ -178,7 +178,7 @@ export default function InstructorSection() {
                   Book a Free Demo
                 </Link>
                 <div className="inline-flex items-center gap-2 text-sm text-slate-600">
-                  <ThumbsUp className="h-4 w-4 text-emerald-600" />
+                  <LuThumbsUp className="h-4 w-4 text-emerald-600" />
                   <span>100% Live Mentor Support</span>
                 </div>
               </div>
@@ -251,7 +251,7 @@ export default function InstructorSection() {
               {/* Social proof banner */}
               <div className="flex items-center w-fit justify-between gap-3 rounded-2xl bg-slate-50 ring-1 ring-slate-200 p-4">
                 <div className="flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-rose-600" />
+                  <LuSparkles className="h-4 w-4 text-rose-600" />
                   <p className="text-sm font-semibold text-slate-800">
                     Top-Rated QA Mentor • 4.8/5
                   </p>
