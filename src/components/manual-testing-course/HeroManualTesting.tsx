@@ -1,27 +1,45 @@
 "use client";
 
 import {
-    CheckCircle2,
-    ChevronRight,
-    Star,
-    ShieldCheck,
-    Sparkles,
-    Home,
-    ArrowRight,
-    CloudDownload,
-    ArrowDownNarrowWide,
-} from "lucide-react";
-
+    LuBadgeCheck,
+    LuChevronRight,
+    LuStar,
+    LuShieldCheck,
+    LuSparkles,
+    LuArrowRight,
+    LuCloudDownload,
+    LuArrowDownNarrowWide,
+} from "react-icons/lu";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
 const Modal = dynamic(() => import("@/components/Modal"), { ssr: false });
 const BrochureDownloadForm = dynamic(() => import("@/components/BrochureDownloadForm"), { ssr: false });
-const LeadForm = dynamic(() => import('../forms/ManualCourseLeadForm'), { ssr: false });
+
+function LeadFormSkeleton() {
+    return (
+        <div className="rounded-2xl border bg-white/92 backdrop-blur-xl p-6 sm:p-8 shadow-2xl border-slate-200 h-[520px] animate-pulse">
+            <div className="h-8 bg-slate-200 rounded w-3/4 mb-2"></div>
+            <div className="h-4 bg-slate-200 rounded w-full mb-6"></div>
+            <div className="space-y-4">
+                <div className="h-12 bg-slate-200 rounded"></div>
+                <div className="h-12 bg-slate-200 rounded"></div>
+                <div className="h-12 bg-slate-200 rounded"></div>
+                <div className="h-12 bg-slate-300 rounded"></div>
+            </div>
+        </div>
+    )
+}
+
+const LeadForm = dynamic(() => import('../forms/ManualCourseLeadForm'), {
+    ssr: false,
+    loading: () => <LeadFormSkeleton />
+});
 const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false });
 const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
 import dynamic from "next/dynamic";
+import { Home } from "lucide-react";
 
 
 /* ----------------------- NEW: Count-up + Stats ----------------------- */
@@ -205,7 +223,7 @@ export default function HeroManualTesting() {
                             const isLast = i === breadcrumbs.length - 1;
                             return (
                                 <li key={i} className="flex items-center gap-2">
-                                    {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+                                    {i === 0 ? <Home className="h-4 w-4" /> : <LuChevronRight className="h-4 w-4" />}
                                     {c.href ? (
                                         <Link
                                             href={c.href}
@@ -234,7 +252,7 @@ export default function HeroManualTesting() {
                     {/* LEFT */}
                     <div className="lg:col-span-8">
                         <div className="hidden md:inline-flex mb-4 items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-0.5 md:py-1.5 text-xs font-semibold text-slate-700 shadow-sm">
-                            <Sparkles className="h-4 w-4 text-amber-500" />
+                            <LuSparkles className="h-4 w-4 text-amber-500" />
                             <span>ISTQB Foundation Aligned • Job-Oriented</span>
                         </div>
 
@@ -253,22 +271,24 @@ export default function HeroManualTesting() {
 
                         {/* Lead Form For Mobile Screens and Tab Screens */}
                         {/* Lead Form For Mobile Screens */}
-                        <LeadForm variant="elevated" className="lg:hidden mt-8" />
+                        <div className="lg:hidden mt-8">
+                            <LeadForm variant="elevated" />
+                        </div>
 
                         {/* Trust Bar */}
                         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
                             <div className="flex items-center gap-1 text-slate-800">
-                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
                                 <span className="ml-2 font-semibold">4.9/5</span>
                                 <span className="ml-1 text-slate-500">from 1,200+ reviews</span>
                             </div>
                             <span className="hidden h-3 w-px bg-slate-300 md:inline-block" />
                             <div className="flex items-center gap-2 text-slate-800">
-                                <ShieldCheck className="h-5 w-5 text-emerald-600" />
+                                <LuShieldCheck className="h-5 w-5 text-emerald-600" />
                                 <span>Trusted by 5000+ learners</span>
                             </div>
                         </div>
@@ -283,7 +303,7 @@ export default function HeroManualTesting() {
                                 Enroll Now
                                 <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
                             </button>
-
+ 
                             <button
                                 onClick={() => setIsDownloadOpen(true)}
                                 className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-2 py-4 text-base font-semibold text-slate-900 shadow-sm transition hover:shadow-md hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
@@ -292,7 +312,7 @@ export default function HeroManualTesting() {
                                 <Download className="mr-2 h-5 w-5 text-slate-700" />
                                 Download Syllabus (PDF)
                             </button>
-
+ 
                             <button
                                 className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-sky-700 px-3 py-4 text-base font-semibold text-white shadow-sm transition hover:bg-sky-800 hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 sm:ml-1"
                                 aria-label="Book a free demo class"
@@ -310,7 +330,7 @@ export default function HeroManualTesting() {
                                 aria-label="Enroll now in Manual Testing program"
                             >
                                 Enroll Now
-                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                <LuArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </button>
 
                             <button
@@ -319,7 +339,7 @@ export default function HeroManualTesting() {
                                 aria-label="Download Manual Testing Syllabus"
                             >
                                 Download Syllabus
-                                <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                <LuCloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </button>
 
                             <Link
@@ -328,7 +348,7 @@ export default function HeroManualTesting() {
                                 aria-label="View full Manual testing curriculum"
                             >
                                 View Curriculum
-                                <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                <LuArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </Link>
 
                         </div>
@@ -342,7 +362,7 @@ export default function HeroManualTesting() {
                                 { color: "text-rose-700", text: "Resume, Mock Interviews & Referrals" },
                             ].map((item, i) => (
                                 <li className="flex items-center gap-2" key={i}>
-                                    <CheckCircle2 className={`h-5 w-5 ${item.color}`} />
+                                    <LuBadgeCheck className={`h-5 w-5 ${item.color}`} />
                                     <span>{item.text}</span>
                                 </li>
                             ))}
@@ -368,6 +388,7 @@ export default function HeroManualTesting() {
                                     width={150}
                                     height={24}
                                     className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                    priority={true}
                                 />
                                 <Image
                                     src="/company_images/credility.webp"
@@ -376,6 +397,7 @@ export default function HeroManualTesting() {
                                     width={150}
                                     height={24}
                                     className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                    priority={true}
                                 />
                                 <Image
                                     src="/company_images/marqetrix.webp"
@@ -384,6 +406,7 @@ export default function HeroManualTesting() {
                                     width={150}
                                     height={24}
                                     className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                    priority={true}
                                 />
                             </div>
 
@@ -393,11 +416,8 @@ export default function HeroManualTesting() {
                     </div>
 
                     {/* RIGHT */}
-                    <div className="relative lg:col-span-4 min-h-[520px]">
-
-                        <LeadForm variant="elevated" className="hidden lg:block" />
-
-
+                    <div className="relative lg:col-span-4 min-h-[520px] hidden lg:block">
+                        <LeadForm variant="elevated" />
                     </div>
                 </div>
 
