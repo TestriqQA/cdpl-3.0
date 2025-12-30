@@ -563,7 +563,7 @@ const Header = () => {
     hoveredCourse ? hoveredCourseData?.description : selectedCategoryData?.description;
 
   return (
-    <header className="bg-white shadow-lg">
+    <header className="relative bg-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 sm:py-1">
           {/* Logo */}
@@ -581,7 +581,7 @@ const Header = () => {
             <Link href="/" className={`transition-colors text-sm xl:text-base px-4 py-6 active:text-brand ${pathname === "/" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>Home</Link>
 
             {/* Mega Menu Trigger */}
-            <div className="relative">
+            <div className="">
               <button
                 ref={coursesButtonRef}
                 type="button"
@@ -601,7 +601,7 @@ const Header = () => {
                 <div
                   id="mega-menu"
                   ref={megaMenuRef}
-                  className="fixed left-0 right-0 top-[72px] z-50"
+                  className="absolute left-0 right-0 top-full z-50"
                   onMouseEnter={cancelClose}
                   onMouseLeave={() => scheduleClose()}
                 >

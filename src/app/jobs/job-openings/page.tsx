@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import JobOpeningsHeroSection from "@/components/sections/JobOpeningsHeroSection";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateCollectionPageSchema, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
@@ -68,9 +69,9 @@ const AUTH_HEADER = process.env.OPTIMHIRE_API_KEY
 
 async function ohFetch<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {
+    cache: "no-store",
     ...init,
     headers: { "Content-Type": "application/json", ...AUTH_HEADER, ...(init?.headers ?? {}) },
-    cache: "no-store",
   });
   if (!res.ok) {
     const text = await res.text().catch(() => "");
@@ -165,7 +166,7 @@ async function getJobsServer(args: FetchJobsArgs = { page: 1, size: 10 }) {
   if (q) params.set("q", q);
   const query = params.toString();
 
-  const res = await ohFetch<JobListResponse>(`/job-list/?${query}`);
+  const res = await ohFetch<JobListResponse>(`/job-list/?${query}`, { next: { revalidate: 3600 } });
 
   const cleaned = {
     ...res,
@@ -255,13 +256,7 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 
 // ---- Dynamic Sections ----------------------------------------------------
 // Default export components → direct dynamic import (SSR enabled)
-const JobOpeningsHeroSection = dynamic(
-  () => import("@/components/sections/JobOpeningsHeroSection"),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading hero..." />,
-  }
-);
+// JobOpeningsHeroSection is now static
 
 const JobOpeningsJobBrowser = dynamic(
   () => import("@/components/sections/JobOpeningsJobBrowser"),
