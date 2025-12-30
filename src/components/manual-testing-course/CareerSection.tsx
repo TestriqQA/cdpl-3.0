@@ -3,20 +3,20 @@
 /* ==================== CAREER & SALARY (Light Theme) ==================== */
 
 import {
-  CheckCircle2,
-  Briefcase,
-  Users,
-  FileCheck,
-  Building2,
-  Star,
-  TrendingUp,
-  IndianRupee,
-  ArrowRight,
-  ShieldCheck,
-  Globe2,
-  PhoneIcon,
-  CloudDownload,
-} from "lucide-react";
+  LuBadgeCheck,
+  LuBriefcase,
+  LuUsers,
+  LuFileCheck,
+  LuBuilding,
+  LuStar,
+  LuTrendingUp,
+  LuIndianRupee,
+  LuArrowRight,
+  LuShieldCheck,
+  LuGlobe,
+  LuPhone,
+  LuCloudDownload,
+} from "react-icons/lu";
 import Image from "next/image";
 import { useState } from "react";
 import dynamic from "next/dynamic";
@@ -47,7 +47,7 @@ const JobRole = ({ role, salary, keywords = [] }: JobRoleProps) => (
       )}
     </div>
     <div className="ml-4 inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-1 text-emerald-700 border border-emerald-200">
-      <IndianRupee className="h-4 w-4" />
+      <LuIndianRupee className="h-4 w-4" />
       <span className="text-sm font-semibold">{salary}</span>
     </div>
   </div>
@@ -73,7 +73,7 @@ const CompanyBadge = ({ name, logoSrc }: CompanyBadgeProps) => (
       />
     ) : (
       <div className="flex items-center gap-2 text-gray-800">
-        <Building2 className="h-4 w-4" />
+        <LuBuilding className="h-4 w-4" />
         <span className="text-sm font-medium">{name}</span>
       </div>
     )}
@@ -137,9 +137,9 @@ export default function CareerSection() {
   ];
 
   const snapshots = [
-    { label: "Avg. Interview Calls", value: "5–10", icon: <PhoneIcon className="h-5 w-5" />, bgIcon: "bg-sky-800" },
-    { label: "Alumni Network", value: "5,000+", icon: <Users className="h-5 w-5" />, bgIcon: "bg-red-800" },
-    { label: "Hiring Partners", value: "50+", icon: <Building2 className="h-5 w-5" />, bgIcon: "bg-purple-800" },
+    { label: "Avg. Interview Calls", value: "5–10", icon: <LuPhone className="h-5 w-5" />, bgIcon: "bg-sky-800" },
+    { label: "Alumni Network", value: "5,000+", icon: <LuUsers className="h-5 w-5" />, bgIcon: "bg-red-800" },
+    { label: "Hiring Partners", value: "50+", icon: <LuBuilding className="h-5 w-5" />, bgIcon: "bg-purple-800" },
   ];
 
   return (
@@ -159,7 +159,7 @@ export default function CareerSection() {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-2 text-indigo-700">
-            <ShieldCheck className="h-4 w-4" />
+            <LuShieldCheck className="h-4 w-4" />
             <span className="text-[13px] font-medium">
               100% Placement Support • Job-Ready in 12 Weeks
             </span>
@@ -199,7 +199,7 @@ export default function CareerSection() {
             <div className="mb-6 flex items-center justify-between">
               <h3 className="text-2xl font-bold text-gray-900">High-Demand Roles</h3>
               <div className="inline-flex items-center gap-1 rounded-md border border-amber-200 bg-amber-50 px-2 py-1 text-amber-700">
-                <TrendingUp className="h-4 w-4" />
+                <LuTrendingUp className="h-4 w-4" />
                 <span className="text-xs font-medium">Top Keywords</span>
               </div>
             </div>
@@ -228,7 +228,7 @@ export default function CareerSection() {
             </div>
 
             <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-gray-600">
-              <Star className="h-4 w-4 text-yellow-500" />
+              <LuStar className="h-4 w-4 text-yellow-500" />
               <span>
                 SEO keywords: Manual Testing Course, Software Testing Jobs, QA Engineer Salary India 2025,
                 ISTQB Certification, Placement Assistance
@@ -247,7 +247,7 @@ export default function CareerSection() {
             {/* City-wise salary bands */}
             <div className="mt-6">
               <h4 className="text-sm font-semibold text-gray-800 mb-2 flex items-center gap-2">
-                <Globe2 className="h-4 w-4" />
+                <LuGlobe className="h-4 w-4" />
                 City-Wise Salary Bands
               </h4>
               <ul className="grid grid-cols-2 gap-2 text-sm">
@@ -280,19 +280,19 @@ export default function CareerSection() {
 
           <div className="grid md:grid-cols-3 gap-6">
             <PlacementFeature
-              icon={<FileCheck className="h-5 w-5" />}
+              icon={<LuFileCheck className="h-5 w-5" />}
               title="ATS Resume + LinkedIn Optimization"
               description="Beat filters with keyword-rich, QA-optimized profiles aligned to Naukri & LinkedIn search."
               badge="SEO-Ready"
             />
             <PlacementFeature
-              icon={<Users className="h-5 w-5" />}
+              icon={<LuUsers className="h-5 w-5" />}
               title="Mock Interviews with Senior QA"
               description="Real interviewer panels, role-based questions, and structured feedback loops."
               badge="Real-World"
             />
             <PlacementFeature
-              icon={<Briefcase className="h-5 w-5" />}
+              icon={<LuBriefcase className="h-5 w-5" />}
               title="Priority Referrals & Job Alerts"
               description="50+ partner companies, curated openings, and weekly recruiter connects."
               badge="Fast-Track"
@@ -304,7 +304,7 @@ export default function CareerSection() {
             {outcomes.map((o) => (
               <div key={o} className="flex items-start gap-3">
                 <div className="mt-0.5 rounded-md border border-emerald-200 bg-emerald-50 p-1">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-700" />
+                  <LuBadgeCheck className="h-4 w-4 text-emerald-700" />
                 </div>
                 <p className="text-gray-800">{o}</p>
               </div>
@@ -317,13 +317,13 @@ export default function CareerSection() {
               onClick={() => setIsCareerModalOpen(true)}
               className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-5 py-3 text-white font-semibold hover:bg-indigo-700"
             >
-              Get Free Career Session <ArrowRight className="ml-2 h-4 w-4" />
+              Get Free Career Session <LuArrowRight className="ml-2 h-4 w-4" />
             </button>
             <button
               onClick={() => setIsSyllabusModalOpen(true)}
               className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-gray-900 font-semibold hover:bg-gray-50 hover:text-indigo-700 hover:border-indigo-700"
             >
-              Download Syllabus <CloudDownload className="ml-2 h-4 w-4" />
+              Download Syllabus <LuCloudDownload className="ml-2 h-4 w-4" />
             </button>
           </div>
         </div>

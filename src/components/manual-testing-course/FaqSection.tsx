@@ -2,13 +2,14 @@
 
 import React, { useMemo, useState } from "react";
 import {
-  Plus, Minus, HelpCircle, BadgeCheck, Clock, Video, UserCheck,
-  CreditCard, BookOpen, Globe, Headphones, GraduationCap
-} from "lucide-react";
+  LuPlus, LuMinus, LuBadgeCheck, LuClock, LuVideo, LuUserCheck,
+  LuCreditCard, LuBookOpen, LuGlobe, LuHeadphones, LuGraduationCap
+} from "react-icons/lu";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
 import { MANUAL_TESTING_FAQS as FAQS } from "@/data/manualTestingData";
+import { HelpCircle } from "lucide-react";
 
 
 /* =========================
@@ -53,35 +54,35 @@ const categoryMeta: Record<Category, {
     text: "text-emerald-700",
     ring: "ring-emerald-200",
     dot: "bg-emerald-600",
-    icon: <Globe className="h-4 w-4" />
+    icon: <LuGlobe className="h-4 w-4" />
   },
   Curriculum: {
     lightBg: "bg-cyan-50",
     text: "text-cyan-700",
     ring: "ring-cyan-200",
     dot: "bg-cyan-600",
-    icon: <BookOpen className="h-4 w-4" />
+    icon: <LuBookOpen className="h-4 w-4" />
   },
   Certification: {
     lightBg: "bg-amber-50",
     text: "text-amber-700",
     ring: "ring-amber-200",
     dot: "bg-amber-600",
-    icon: <GraduationCap className="h-4 w-4" />
+    icon: <LuGraduationCap className="h-4 w-4" />
   },
   Career: {
     lightBg: "bg-violet-50",
     text: "text-violet-700",
     ring: "ring-violet-200",
     dot: "bg-violet-600",
-    icon: <UserCheck className="h-4 w-4" />
+    icon: <LuUserCheck className="h-4 w-4" />
   },
   Payments: {
     lightBg: "bg-rose-50",
     text: "text-rose-700",
     ring: "ring-rose-200",
     dot: "bg-rose-600",
-    icon: <CreditCard className="h-4 w-4" />
+    icon: <LuCreditCard className="h-4 w-4" />
   },
 };
 
@@ -146,7 +147,7 @@ function FAQItem({
           </div>
           <h3 className="text-base sm:text-lg font-semibold text-gray-900">{question}</h3>
         </div>
-        {open ? <Minus className="h-5 w-5 text-gray-500" /> : <Plus className="h-5 w-5 text-gray-500" />}
+        {open ? <LuMinus className="h-5 w-5 text-gray-500" /> : <LuPlus className="h-5 w-5 text-gray-500" />}
       </button>
       <div className={`grid transition-[grid-template-rows] ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
         <div className="overflow-hidden">
@@ -183,7 +184,7 @@ export default function FaqSection() {
         {/* Header */}
         <div className="text-center flex flex-col justify-center items-center mb-12 sm:mb-16">
           <span className="inline-flex w-fit items-center gap-2 rounded-full shadow-md border border-indigo-200 bg-indigo-50 px-2 py-1 text-[13px] font-medium text-indigo-700">
-            <BadgeCheck className="h-4 w-4" />
+            <LuBadgeCheck className="h-4 w-4" />
             Trusted by learners & hiring teams
           </span>
           <h2 className="mt-5 text-4xl font-bold text-blue-700">FAQs</h2>
@@ -230,9 +231,9 @@ export default function FaqSection() {
 
         {/* Stats Row */}
         <div className="mb-10 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-          <StatCard icon={<Clock className="h-5 w-5" />} label="Evening Cohorts" value="24X7 PM IST" bgColor={DARK_COLORS[6]} />
-          <StatCard icon={<Video className="h-5 w-5" />} label="Learning Access" value="Lifetime" bgColor={DARK_COLORS[7]} />
-          <StatCard icon={<Headphones className="h-5 w-5" />} label="Doubt Support" value="1:1 & Forums" bgColor={DARK_COLORS[8]} />
+          <StatCard icon={<LuClock className="h-5 w-5" />} label="Evening Cohorts" value="24X7 PM IST" bgColor={DARK_COLORS[6]} />
+          <StatCard icon={<LuVideo className="h-5 w-5" />} label="Learning Access" value="Lifetime" bgColor={DARK_COLORS[7]} />
+          <StatCard icon={<LuHeadphones className="h-5 w-5" />} label="Doubt Support" value="1:1 & Forums" bgColor={DARK_COLORS[8]} />
         </div>
 
         {/* FAQ List */}
@@ -263,7 +264,7 @@ export default function FaqSection() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="rounded-xl bg-white p-2 ring-1 ring-indigo-200">
-                <BadgeCheck className="h-5 w-5 text-indigo-600" />
+                <LuBadgeCheck className="h-5 w-5 text-indigo-600" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">Still have questions?</h3>
