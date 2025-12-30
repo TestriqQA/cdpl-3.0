@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 
 function SectionLoader({ label = "Loading..." }: { label?: string }) {
     return (
-        <div className="flex items-center justify-center py-16">
+        <div className="flex items-center justify-center py-16 min-h-[60vh]">
             <p className="text-gray-500">{label}</p>
         </div>
     );
