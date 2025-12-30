@@ -5,14 +5,19 @@ const nextConfig: NextConfig = {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
 
   serverExternalPackages: ['@prisma/client'], // Remove this line if not using Prisma or similar
-  productionBrowserSourceMaps: true,
+  productionBrowserSourceMaps: false,
   poweredByHeader: false,
   reactStrictMode: true,
 
   // Performance optimizations
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion', 'react-icons', '@headlessui/react'],
+    optimizePackageImports: [
+      'framer-motion',
+      'react-icons',
+      '@headlessui/react',
+    ],
     optimizeCss: true, // Enable CSS optimization
+    optimizeServerReact: true,
   },
 
   // Compiler optimizations
@@ -26,8 +31,8 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    deviceSizes: [320, 640, 750, 828, 1080, 1200, 1536, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 320, 346, 384],
   },
 };
 

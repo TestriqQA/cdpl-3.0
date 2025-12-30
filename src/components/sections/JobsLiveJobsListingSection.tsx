@@ -1,35 +1,14 @@
+// CLIENT COMPONENT — Live Jobs (CDPL)
 "use client";
 
 import { useMemo, useState } from "react";
-import dynamic from "next/dynamic";
 import type { Job } from "@/lib/jobsData";
 
+// CRITICAL: Static imports for critical content to eliminate loaders
+import { JobsLiveJobsFilterBarSection } from "./JobsLiveJobsFilterBarSection";
+import { JobsLiveJobsJobsGridSection } from "./JobsLiveJobsJobsGridSection";
+
 export type JobsFilters = { q: string; loc: string; type: string };
-
-// ---------- Loader (keep inline) ----------
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-16">
-      <p className="text-slate-500">{label}</p>
-    </div>
-  );
-}
-
-const JobsLiveJobsFilterBarSection = dynamic(
-  () =>
-    import("./JobsLiveJobsFilterBarSection").then(
-      (m) => m.JobsLiveJobsFilterBarSection
-    ),
-  { ssr: false, loading: () => <SectionLoader label="Loading filters..." /> }
-);
-
-const JobsLiveJobsJobsGridSection = dynamic(
-  () =>
-    import("./JobsLiveJobsJobsGridSection").then(
-      (m) => m.JobsLiveJobsJobsGridSection
-    ),
-  { ssr: false, loading: () => <SectionLoader label="Loading jobs..." /> }
-);
 
 export function JobsLiveJobsListingSection({ jobs }: { jobs: Job[] }) {
   const [filters, setFilters] = useState<JobsFilters>({ q: "", loc: "", type: "" });

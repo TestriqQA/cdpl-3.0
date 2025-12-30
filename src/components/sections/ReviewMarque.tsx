@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { Star, Quote, BadgeCheck } from 'lucide-react';
+import { Star } from 'lucide-react';
 
 // --- Types ---
 interface Review {
@@ -36,7 +36,7 @@ function MarqueeRow({
           willChange: 'transform'
         }}
       >
-        {[...items, ...items, ...items].map((review, idx) => (
+        {[...items, ...items].map((review, idx) => (
           <ReviewCard key={`${review.name}-${idx}`} review={review} />
         ))}
       </div>
@@ -49,52 +49,40 @@ function ReviewCard({ review }: { review: Review }) {
     month: 'short', year: 'numeric'
   });
 
+  const stars = Number(review.starRating) || 5;
+
   return (
-    <div className="w-[320px] sm:w-[380px] flex-shrink-0 perspective-1000">
-      <div className="h-full relative bg-white rounded-2xl p-6 border border-slate-100 shadow-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-200 group">
-
-        {/* Glow Effect on Hover */}
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-300 to-indigo-300 rounded-2xl opacity-0 group-hover:opacity-30 blur-md transition-opacity duration-300 -z-10"></div>
-
-        {/* Card Header */}
+    <div className="w-[320px] sm:w-[380px] flex-shrink-0">
+      <div className="h-full relative bg-white rounded-2xl p-6 border border-slate-100 shadow-sm transition-all duration-300 hover:shadow-lg group">
         <div className="flex justify-between items-start mb-4">
           <div className="flex items-center gap-3">
-            <div className="relative">
-              <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-slate-100 group-hover:ring-blue-400 transition-all">
-                {review.reviewerInfo?.photoUrl ? (
-                  <img src={review.reviewerInfo.photoUrl} alt={review.name} referrerPolicy="no-referrer" className="w-full h-full object-cover" loading="lazy" decoding="async" />
-                ) : (
-                  <div className="w-full h-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold">
-                    {review.name.charAt(0)}
-                  </div>
-                )}
-              </div>
-              <div className="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm">
-                <BadgeCheck className="w-3.5 h-3.5 text-blue-500 fill-blue-50" />
-              </div>
+            <div className="relative w-10 h-10 rounded-full overflow-hidden ring-1 ring-slate-100">
+              {review.reviewerInfo?.photoUrl ? (
+                <img src={review.reviewerInfo.photoUrl} alt="" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+              ) : (
+                <div className="w-full h-full bg-slate-50 flex items-center justify-center text-slate-400 font-bold">
+                  {review.name.charAt(0)}
+                </div>
+              )}
             </div>
             <div>
-              <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{review.name}</h3>
+              <h3 className="text-sm font-bold text-slate-900">{review.name}</h3>
               <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">{dateStr}</div>
             </div>
           </div>
-          <Image src={GOOGLE_LOGO} alt="Google" width={50} height={50} className="w-16 h-16 opacity-50 grayscale group-hover:grayscale-0 transition-all" />
+          <Image src={GOOGLE_LOGO} alt="Google" width={40} height={40} className="w-10 h-10 opacity-30" />
         </div>
 
-        {/* Stars */}
-        <div className="flex gap-0.5 mb-3">
+        {/* Stars - single container with SVG background or simplified icons */}
+        <div className="flex gap-0.5 mb-3 text-amber-400">
           {[...Array(5)].map((_, i) => (
-            <Star key={i} className={`w-3.5 h-3.5 ${i < Number(review.starRating) ? "fill-amber-400 text-amber-400" : "fill-slate-100 text-slate-200"}`} />
+            <Star key={i} className={`w-3 h-3 ${i < stars ? "fill-current" : "text-slate-100 fill-slate-100"}`} />
           ))}
         </div>
 
-        {/* Comment */}
-        <div className="relative">
-          <Quote className="absolute -top-2 -left-2 w-6 h-6 text-slate-100 transform rotate-180 -z-10" />
-          <p className="text-slate-600 text-sm leading-relaxed line-clamp-3 group-hover:text-slate-900 transition-colors">
-            "{review.comment}"
-          </p>
-        </div>
+        <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
+          "{review.comment}"
+        </p>
       </div>
     </div>
   );
@@ -150,13 +138,15 @@ export default function ReviewsMarquee({ initialReviews, initialTotal, initialRa
     );
   }
 
-  // Split reviews into two rows if enough data, otherwise duplicate
+  // Split reviews into two rows
   const mid = Math.ceil(reviews.length / 2);
   const row1 = reviews.slice(0, mid);
   const row2 = reviews.slice(mid);
-  // Ensure reasonably populated rows
-  const safeRow1 = row1.length > 5 ? row1 : reviews;
-  const safeRow2 = row2.length > 5 ? row2 : reviews;
+
+  // DENSE OPTIMIZATION: On mobile, we only need a few items for a seamless marquee
+  // We'll detect viewport or just serve a smaller subset by default for the initial SSR/Load
+  const safeRow1 = row1.slice(0, 3);
+  const safeRow2 = row2.slice(0, 3);
 
   return (
     <section className="relative w-full overflow-hidden bg-slate-50 py-5">

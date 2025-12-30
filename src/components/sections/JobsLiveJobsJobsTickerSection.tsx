@@ -1,6 +1,5 @@
 "use client";
 
-import { MapPin, Calendar } from "lucide-react";
 import type { Job } from "@/lib/jobsData";
 
 const formatDate = (iso: string) =>
@@ -31,21 +30,23 @@ export function JobsLiveJobsJobsTickerSection({ jobs }: { jobs: Job[] }) {
             }}
           />
           <div className="animate-[marquee_3s_linear_infinite] sm:animate-[marquee_22s_linear_infinite] whitespace-nowrap">
-            {[...jobs, ...jobs].map((j, idx) => (
-              <span key={j.id + idx} className="mx-4 inline-flex items-center gap-2">
-                <span className="rounded-md bg-amber-100 px-2 py-0.5 font-semibold text-amber-800">
+            {jobs.slice(0, 8).map((j, idx) => (
+              <span key={`${j.id}-${idx}-first`} className="mx-4 inline-flex items-center gap-2">
+                <span className="rounded-md bg-amber-100 px-2 py-0.5 font-semibold text-amber-800 text-[10px]">
                   {j.type}
                 </span>
                 <span className="font-semibold">{j.title}</span>
-                <span className="text-slate-500">· {j.company}</span>
-                <span className="inline-flex items-center text-slate-500">
-                  <MapPin className="ml-2 mr-1 h-3.5 w-3.5" />
-                  {j.location}
+                <span className="text-slate-500">· {j.company} · {j.location} · {j.eventDate ? formatDate(j.eventDate) : formatDate(j.postedOn)}</span>
+              </span>
+            ))}
+            {/* Double for seamless loop */}
+            {jobs.slice(0, 12).map((j, idx) => (
+              <span key={`${j.id}-${idx}-second`} className="mx-4 inline-flex items-center gap-2">
+                <span className="rounded-md bg-amber-100 px-2 py-0.5 font-semibold text-amber-800 text-[10px]">
+                  {j.type}
                 </span>
-                <span className="inline-flex items-center text-slate-500">
-                  <Calendar className="ml-2 mr-1 h-3.5 w-3.5" />
-                  {j.eventDate ? formatDate(j.eventDate) : formatDate(j.postedOn)}
-                </span>
+                <span className="font-semibold">{j.title}</span>
+                <span className="text-slate-500">· {j.company} · {j.location} · {j.eventDate ? formatDate(j.eventDate) : formatDate(j.postedOn)}</span>
               </span>
             ))}
           </div>

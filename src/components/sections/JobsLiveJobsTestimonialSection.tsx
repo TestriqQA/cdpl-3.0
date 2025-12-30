@@ -56,6 +56,7 @@ const DEFAULT_VIDEOS: VideoTestimonial[] = [
     transcript:
       "From fundamentals to frameworks—built test suites and automation scripts that impressed interviewers.",
   },
+  /* 
   {
     id: "vidhi-gohil",
     title: "Placed as Manual Software Tester",
@@ -67,7 +68,8 @@ const DEFAULT_VIDEOS: VideoTestimonial[] = [
     rating: 5,
     transcript:
       "Gained confidence through real defect triage, test planning, and interview prep with mentors.",
-  },
+  }
+  */
 ];
 
 /* ----------------------------- Helpers ------------------------------- */
@@ -158,7 +160,7 @@ function ShortsCard({
   useEffect(() => {
     if (!vidRef.current) return;
     if (hovering) {
-      vidRef.current.play().catch(() => {});
+      vidRef.current.play().catch(() => { });
     } else {
       vidRef.current.pause();
       vidRef.current.currentTime = 0;
@@ -284,7 +286,7 @@ export default function JobsLiveJobsTestimonialSection(
   const {
     heading = "CDPL Learner Shorts: Real Outcomes, Live Jobs",
     subheading =
-      "Swipe through short, vertical stories from learners who used CDPL's mentor-led tracks and live projects to secure interviews and offers.",
+    "Swipe through short, vertical stories from learners who used CDPL's mentor-led tracks and live projects to secure interviews and offers.",
     videos = DEFAULT_VIDEOS,
     // defaultTag stays in type but isn't destructured/used to avoid ESLint error
   } = props;
@@ -317,7 +319,7 @@ export default function JobsLiveJobsTestimonialSection(
         "fixed bottom-4 left-1/2 -translate-x-1/2 z-[70] px-3 py-1.5 rounded-full text-sm bg-black/80 text-white";
       document.body.appendChild(el);
       setTimeout(() => el.remove(), 1200);
-    } catch {}
+    } catch { }
   };
 
 
@@ -404,7 +406,7 @@ export default function JobsLiveJobsTestimonialSection(
             CDPL Success Stories
           </Pill>
 
-        <h2 className="mx-auto text-4xl font-bold tracking-tight leading-tight text-slate-900">
+          <h2 className="mx-auto text-4xl font-bold tracking-tight leading-tight text-slate-900">
             <span className="text-slate-900">{split.left}</span>{" "}
             <span className={BRAND_TEXT}>{split.right}</span>
           </h2>
