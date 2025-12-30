@@ -89,8 +89,7 @@ export default function RootLayout({
         <link rel="icon" href={SITE_CONFIG.favicon} />
 
         {/* Resource hints for performance */}
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
 
 
       </head>

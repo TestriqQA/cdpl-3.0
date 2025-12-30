@@ -21,6 +21,7 @@ import {
 // Import react-phone-number-input for professional phone input
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import styles from '../ui/phone-input.module.css';
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
 // Import BrochureDownloadModal
@@ -520,7 +521,7 @@ const HomeHeroSection: React.FC = () => {
                   value={formData.phone}
                   onChange={handlePhoneChange}
                   onBlur={() => validatePhoneNumber(formData.phone)}
-                  className={`phone-input-container ${phoneError ? 'border-red-500' : ''
+                  className={`${styles['phone-input-container']} ${phoneError ? 'border-red-500' : ''
                     }`}
                   placeholder="Enter phone number"
                 />

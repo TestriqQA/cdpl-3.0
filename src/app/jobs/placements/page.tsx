@@ -47,10 +47,7 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 /** =========================
  * Dynamic Imports (Client)
  * ========================= */
-const PlacementsHeroSection = dynamic(
-    () => import("@/components/sections/PlacementsHeroSection"),
-    { ssr: true, loading: () => <SectionLoader label="Preparing hero…" /> }
-);
+import PlacementsHeroSection from "@/components/sections/PlacementsHeroSection";
 const PlacementsHighlightsStatsSection = dynamic(
     () => import("@/components/sections/PlacementsHighlightsStatsSection"),
     { ssr: true, loading: () => <SectionLoader label="Loading highlights…" /> }

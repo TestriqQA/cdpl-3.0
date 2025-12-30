@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, TrendingUp, CheckCircle2, Loader2 } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import styles from './phone-input.module.css';
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
 interface AdvisorModalProps {
@@ -312,7 +313,7 @@ const AdvisorModal: React.FC<AdvisorModalProps> = ({
                                                     value={formData.phone}
                                                     onChange={handlePhoneChange}
                                                     placeholder="Enter your mobile number"
-                                                    className={`w-full [&>input]:pl-4 [&>input]:pr-4 [&>input]:py-3 [&>input]:border-2 [&>input]:rounded-lg [&>input]:text-gray-900 [&>input]:placeholder:text-gray-400 [&>input]:focus:outline-none [&>input]:focus:ring-2 [&>input]:transition-all [&>input]:placeholder-opacity-100 [&>input]:placeholder-shown:text-gray-400 ${phoneError
+                                                    className={`${styles.reset} [&>input]:pl-4 [&>input]:pr-4 [&>input]:py-3 [&>input]:border-2 [&>input]:rounded-lg [&>input]:text-gray-900 [&>input]:placeholder:text-gray-400 [&>input]:focus:outline-none [&>input]:focus:ring-2 [&>input]:transition-all [&>input]:placeholder-opacity-100 [&>input]:placeholder-shown:text-gray-400 ${phoneError
                                                         ? '[&>input]:border-red-300 [&>input]:focus:border-red-500 [&>input]:focus:ring-red-200'
                                                         : '[&>input]:border-gray-200 [&>input]:focus:border-[#ff8c00] [&>input]:focus:ring-orange-100'
                                                         }`}
