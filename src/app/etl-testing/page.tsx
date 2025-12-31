@@ -1,16 +1,81 @@
 import StickyNav from "@/components/StickyNav2/StickyNav2";
 import { TestimonialsClient, CtaClient } from "@/app/etl-testing/client-section";
-import {
-  HeroSection,
-  StatsSection,
-  WhyEtlTesting,
-  CurriculumSection,
-  ProjectsSection,
-  CareerSection,
-  WhoShouldEnroll,
-  ToolsSection,
-  FaqSection
-} from "@/app/etl-testing/server-sections";
+import dynamic from "next/dynamic";
+
+const withLoader = (label: string) => ({
+  loading: () => (
+    <div className="flex items-center justify-center py-16 text-gray-500">
+      {label}
+    </div>
+  ),
+});
+
+import HeroSection from '@/components/etl-testing/HeroSection'
+
+const StatsSection = dynamic(
+  () => import("@/components/etl-testing/StatsSection"),
+  {
+    ssr: true,
+    ...withLoader("Loading stats...")
+  },
+);
+
+const WhyEtlTesting = dynamic(
+  () => import("@/components/etl-testing/WhyEtlTesting"),
+  {
+    ssr: true,
+    ...withLoader("Loading why...")
+  },
+);
+
+const CurriculumSection = dynamic(
+  () => import("@/components/etl-testing/CurriculumSection"),
+  {
+    ssr: true,
+    ...withLoader("Loading curriculum...")
+  },
+);
+
+const ToolsSection = dynamic(
+  () => import("@/components/etl-testing/ToolsSection"),
+  {
+    ssr: true,
+    ...withLoader("Loading tools...")
+  },
+);
+
+const ProjectsSection = dynamic(
+  () => import("@/components/etl-testing/ProjectsSection"),
+  {
+    ssr: true,
+    ...withLoader("Loading projects...")
+  },
+);
+
+const CareerSection = dynamic(
+  () => import("@/components/etl-testing/CareerSection"),
+  {
+    ssr: true,
+    ...withLoader("Loading career...")
+  },
+);
+
+const WhoShouldEnroll = dynamic(
+  () => import("@/components/etl-testing/WhoShouldEnroll"),
+  {
+    ssr: true,
+    ...withLoader("Loading enrollment info...")
+  },
+);
+
+const FaqSection = dynamic(
+  () => import("@/components/etl-testing/FaqSection"),
+  {
+    ssr: true,
+    ...withLoader("Loading FAQs...")
+  },
+);
+
 
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";

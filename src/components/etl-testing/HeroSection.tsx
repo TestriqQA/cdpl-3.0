@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+
 import {
     Shuffle,
     Users,
@@ -16,9 +16,20 @@ import {
 import IconCard from '../ui/IconCard';
 import LeadForm from '../forms/ApiCourseLeadForm';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
-import EnrollModal from '@/components/EnrollModal';
-import SyllabusDownloadModal from '@/components/SyllabusDownloadModal';
+
+const SectionLoader = ({ label }: { label: string }) => {
+    return (
+        <div className="flex items-center justify-center h-full">
+            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+            <span className="ml-2 text-gray-900">{label}</span>
+        </div>
+    );
+};
+
+const EnrollModal = dynamic(() => import('@/components/EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
+const SyllabusDownloadModal = dynamic(() => import('@/components/SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus modal..." /> });
 
 
 /* -----------------------------
@@ -110,10 +121,7 @@ export default function HeroSection() {
                 </nav>
                 <div className="grid items-start gap-10 md:grid-cols-12">
                     {/* Left copy */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                    <div
                         className="md:col-span-7 lg:col-span-8"
                     >
                         {/* Badge */}
@@ -212,17 +220,14 @@ export default function HeroSection() {
                                 />
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Right: Desktop Form + Feature cards */}
-                    <motion.aside
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.12, ease: 'easeOut' }}
+                    <aside
                         className="hidden md:col-span-5 lg:col-span-4 md:block"
                     >
                         <LeadForm variant="elevated" source="ETL Testing Course Page - Hero Section" />
-                    </motion.aside>
+                    </aside>
                 </div>
             </div>
 
