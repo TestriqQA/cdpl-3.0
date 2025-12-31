@@ -1,6 +1,5 @@
 'use client';
 import { Star } from 'lucide-react';
-import { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import dynamic from 'next/dynamic';
 const ReviewsMarquee = dynamic(() => import('@/components/sections/ReviewMarque'), { ssr: false, loading: () => <SectionLoader label="Loading reviews..." /> });

@@ -1,5 +1,15 @@
+import dynamic from 'next/dynamic';
 
-import ReviewsMarquee from '../sections/ReviewMarque';
+const ReviewsMarquee = dynamic(() => import('../sections/ReviewMarque'), { ssr: false, loading: () => <SectionLoader label="Loading reviews marquee..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+    return (
+        <div className="flex items-center justify-center h-full">
+            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+            <span className="ml-2 text-gray-900">{label}</span>
+        </div>
+    );
+};
 
 
 export default function TestimonialsSection() {

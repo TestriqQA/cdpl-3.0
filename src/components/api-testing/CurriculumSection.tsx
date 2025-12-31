@@ -91,8 +91,17 @@ const accents = [
 ];
 
 import { useState } from 'react';
-import SyllabusDownloadModal from '@/components/SyllabusDownloadModal';
-import CareerSessionModal from '@/components/CareerSessionModal';
+import dynamic from 'next/dynamic';
+const SyllabusDownloadModal = dynamic(() => import('@/components/SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
+const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 
 export default function CurriculumSection() {
   const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);

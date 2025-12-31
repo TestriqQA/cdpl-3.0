@@ -19,11 +19,21 @@ import {
 import { motion } from 'framer-motion';
 import IconCard from '@/components/ui/IconCard';
 // import LeadForm from '../CourseLeadForm';
-import LeadForm from '../forms/ApiCourseLeadForm';
+import dynamic from 'next/dynamic';
+import LeadForm from '../forms/ApiCourseLeadForm'
 import Link from 'next/link';
 import { useState } from 'react';
-import EnrollModal from '@/components/EnrollModal';
-import SyllabusDownloadModal from '@/components/SyllabusDownloadModal';
+const EnrollModal = dynamic(() => import('../EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
+const SyllabusDownloadModal = dynamic(() => import('../SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+    return (
+        <div className="flex items-center justify-center h-full">
+            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+            <span className="ml-2 text-gray-900">{label}</span>
+        </div>
+    );
+};
 
 /** -----------------------------
  *  Feature cards (unchanged data)
