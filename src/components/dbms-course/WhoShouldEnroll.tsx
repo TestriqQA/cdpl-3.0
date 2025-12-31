@@ -3,7 +3,16 @@ import { motion } from 'framer-motion';
 import { Users, GraduationCap, Briefcase, Target, BadgeCheck, ArrowRight } from 'lucide-react';
 import IconCard from '../ui/IconCard';
 import { JSX, useState } from 'react';
-import EnrollModal from '@/components/EnrollModal';
+import dynamic from 'next/dynamic';
+const EnrollModal = dynamic(() => import('../EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
+const SectionLoader = ({ label }: { label: string }) => {
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+      <span className="ml-2 text-gray-900">{label}</span>
+    </div>
+  );
+};
 
 type Audience = {
   icon: JSX.Element;

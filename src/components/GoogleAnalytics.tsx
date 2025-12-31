@@ -40,12 +40,12 @@ const GoogleAnalytics = () => {
           we can use 'worker' strategy if Partytown is set up. 
           However, 'lazyOnload' is safer for general use to avoid blocking LCP. */}
       <Script
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
       />
       <Script
         id="gtag-init"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
