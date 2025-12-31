@@ -11,15 +11,15 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 import StickyNav from "@/components/manual-testing-course/StickyNav";
-import HeroManualTesting from "@/components/manual-testing-course/HeroManualTesting";
+import HeroManualTesting from "@/components/manual-testing-course/HeroManualTesting"; // Static Import for LCP
 
 const WhyLearnSection = dynamic(
     () => import("@/components/manual-testing-course/WhyLearnSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading additional content..." /> }
+    { ssr: false, loading: () => <SectionLoader label="Loading additional content..." /> }
 )
 const CourseDetailSections = dynamic(
     () => import("./CourseDetailSections"),
-    { ssr: true, loading: () => <SectionLoader label="Loading additional content..." /> }
+    { ssr: false, loading: () => <SectionLoader label="Loading additional content..." /> }
 )
 
 export default function ManualTestingPageContent() {
