@@ -13,13 +13,21 @@ import {
     CloudDownload,
     ArrowDownNarrowWide,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
 import IconCard from '../ui/IconCard';
 import LeadForm from '../forms/ApiCourseLeadForm';
 import Link from 'next/link';
 import { useState } from 'react';
-import EnrollModal from '@/components/EnrollModal';
-import SyllabusDownloadModal from '@/components/SyllabusDownloadModal';
+import dynamic from 'next/dynamic';
+const EnrollModal = dynamic(() => import('@/components/EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
+const SyllabusDownloadModal = dynamic(() => import('@/components/SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+    return (
+        <div className="flex items-center justify-center py-16">
+            <p className="text-gray-500">{label}</p>
+        </div>
+    );
+}
 
 /** -----------------------------
  *  Feature Cards
@@ -109,10 +117,7 @@ export default function HeroSection() {
 
                 <div className="grid items-start gap-10 md:grid-cols-12">
                     {/* LEFT: Copy */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                    <div
                         className="md:col-span-7 lg:col-span-8"
                     >
                         {/* Top trust strip */}
@@ -219,17 +224,14 @@ export default function HeroSection() {
                                 />
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* RIGHT: Desktop Form + Feature grid */}
-                    <motion.aside
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.12, ease: 'easeOut' }}
+                    <aside
                         className="hidden md:col-span-5 lg:col-span-4 md:block"
                     >
                         <LeadForm variant="elevated" source="Advanced Software Testing Course Page - Hero Section" />
-                    </motion.aside>
+                    </aside>
                 </div>
             </div>
 
