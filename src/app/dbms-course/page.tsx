@@ -3,13 +3,13 @@ const StatsSection = dynamic(() => import('@/components/dbms-course/StatsSection
 const WhyMysqlSection = dynamic(() => import('@/components/dbms-course/WhyMysqlSection'), { ssr: true, loading: () => <SectionLoader label="Loading why..." /> });
 const CurriculumSection = dynamic(() => import('@/components/dbms-course/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum..." /> });
 const ProjectsSection = dynamic(() => import('@/components/dbms-course/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects..." /> });
-const StickyNav = dynamic(() => import('@/components/StickyNav2/StickyNav2'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
+import StickyNav from '@/components/StickyNav2/StickyNav2';
 const CareerSection = dynamic(() => import('@/components/dbms-course/CareerSection'), { ssr: true, loading: () => <SectionLoader label="Loading career..." /> });
-const WhoShouldEnroll = dynamic(() => import('@/components/dbms-course/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll..." /> });
+const WhoShouldEnroll = dynamic(() => import('@/components/dbms-course/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading enrollment info..." /> });
 const ToolsSection = dynamic(() => import('@/components/dbms-course/ToolsSection'), { ssr: true, loading: () => <SectionLoader label="Loading tools..." /> });
 const FaqSection = dynamic(() => import('@/components/dbms-course/FaqSection'), { ssr: true, loading: () => <SectionLoader label="Loading FAQs..." /> });
-const TestimonialsSection = dynamic(() => import('./DbmsCourseClientContent').then(mod => mod.TestimonialsSection), { ssr: true, loading: () => <SectionLoader label="Loading testimonials..." /> });
-const CtaSection = dynamic(() => import('./DbmsCourseClientContent').then(mod => mod.CtaSection), { ssr: true, loading: () => <SectionLoader label="Loading CTA..." /> });
+import { TestimonialsSection } from '@/app/dbms-course/DbmsCourseClientContent';
+import { CtaSection } from '@/app/dbms-course/DbmsCourseClientContent';
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
     Database,
@@ -14,9 +14,8 @@ import {
     ArrowDownNarrowWide,
     CheckCircle2,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
 import IconCard from '@/components/ui/IconCard';
-import LeadForm from '../forms/ApiCourseLeadForm';
+import LeadForm from '@/components/forms/ApiCourseLeadForm';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -82,10 +81,7 @@ export default function HeroSection() {
 
                 <div className="grid items-start gap-10 md:grid-cols-12">
                     {/* Left column: copy */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                    <div
                         className="md:col-span-7 lg:col-span-8"
                     >
                         {/* badges */}
@@ -195,18 +191,15 @@ export default function HeroSection() {
                                 />
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Right column: Desktop Form */}
-                    <motion.aside
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.12, ease: 'easeOut' }}
+                    <aside
                         className="hidden md:col-span-5 lg:col-span-4 md:block"
                     >
                         <LeadForm variant="elevated" source="DBMS Course Page - Hero Section" />
 
-                    </motion.aside>
+                    </aside>
                 </div>
             </div>
 

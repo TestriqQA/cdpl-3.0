@@ -1,6 +1,5 @@
 'use client';
 import { Star } from 'lucide-react';
-import { useInView } from 'react-intersection-observer'
 import dynamic from 'next/dynamic';
 const ReviewsMarquee = dynamic(() => import('@/components/sections/ReviewMarque'), { ssr: false, loading: () => <SectionLoader label="Loading reviews..." /> });
 
@@ -30,8 +29,6 @@ export default function TestimonialsSection() {
     const avgRating =
         testimonials.reduce((s, t) => s + (t.rating || 0), 0) / (testimonials.length || 1);
 
-    const { ref, inView } = useInView({ triggerOnce: true, rootMargin: '200px' })
-
     return (
         <section id="testimonials" aria-labelledby="testimonials-heading" className="relative py-10 bg-white">
             {/* subtle top/bottom separators for a sleek frame */}
@@ -51,9 +48,7 @@ export default function TestimonialsSection() {
                     <strong> portfolio-ready projects</strong> built during the MySQL course.
                 </p>
 
-                <div ref={ref}>
-                    {inView ? <ReviewsMarquee /> : <SectionLoader label="Loading reviews..." />}
-                </div>
+                <ReviewsMarquee />
 
                 {/* aggregate rating pill */}
                 <div className="mt-8 flex items-center justify-center">
