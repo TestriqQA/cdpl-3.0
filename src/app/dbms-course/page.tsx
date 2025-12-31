@@ -1,9 +1,20 @@
-import dynamic from 'next/dynamic';
 import HeroSection from '@/components/dbms-course/HeroSection';
+const StatsSection = dynamic(() => import('@/components/dbms-course/StatsSection'), { ssr: true, loading: () => <SectionLoader label="Loading stats..." /> });
+const WhyMysqlSection = dynamic(() => import('@/components/dbms-course/WhyMysqlSection'), { ssr: true, loading: () => <SectionLoader label="Loading why..." /> });
+const CurriculumSection = dynamic(() => import('@/components/dbms-course/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum..." /> });
+const ProjectsSection = dynamic(() => import('@/components/dbms-course/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects..." /> });
+const StickyNav = dynamic(() => import('@/components/StickyNav2/StickyNav2'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
+const CareerSection = dynamic(() => import('@/components/dbms-course/CareerSection'), { ssr: true, loading: () => <SectionLoader label="Loading career..." /> });
+const WhoShouldEnroll = dynamic(() => import('@/components/dbms-course/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll..." /> });
+const ToolsSection = dynamic(() => import('@/components/dbms-course/ToolsSection'), { ssr: true, loading: () => <SectionLoader label="Loading tools..." /> });
+const FaqSection = dynamic(() => import('@/components/dbms-course/FaqSection'), { ssr: true, loading: () => <SectionLoader label="Loading FAQs..." /> });
+const TestimonialsSection = dynamic(() => import('./DbmsCourseClientContent').then(mod => mod.TestimonialsSection), { ssr: true, loading: () => <SectionLoader label="Loading testimonials..." /> });
+const CtaSection = dynamic(() => import('./DbmsCourseClientContent').then(mod => mod.CtaSection), { ssr: true, loading: () => <SectionLoader label="Loading CTA..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 import { DBMS_FAQS, DBMS_REVIEW_DATA } from "@/data/dbmsData";
+import dynamic from 'next/dynamic';
 
 function SectionLoader({ label = "Loading..." }: { label?: string }) {
   return (
@@ -12,18 +23,6 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
     </div>
   );
 }
-
-const StatsSection = dynamic(() => import('@/components/dbms-course/StatsSection'), { ssr: true, loading: () => <SectionLoader label="Loading stats..." /> });
-const WhyMysqlSection = dynamic(() => import('@/components/dbms-course/WhyMysqlSection'), { ssr: true, loading: () => <SectionLoader label="Loading why..." /> });
-const CurriculumSection = dynamic(() => import('@/components/dbms-course/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum..." /> });
-const ProjectsSection = dynamic(() => import('@/components/dbms-course/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects..." /> });
-const TestimonialsSection = dynamic(() => import('@/components/dbms-course/TestimonialsSection'), { ssr: true, loading: () => <SectionLoader label="Loading testimonials..." /> });
-const CareerSection = dynamic(() => import('@/components/dbms-course/CareerSection'), { ssr: true, loading: () => <SectionLoader label="Loading career..." /> });
-const WhoShouldEnroll = dynamic(() => import('@/components/dbms-course/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll..." /> });
-const ToolsSection = dynamic(() => import('@/components/dbms-course/ToolsSection'), { ssr: true, loading: () => <SectionLoader label="Loading tools..." /> });
-const FaqSection = dynamic(() => import('@/components/dbms-course/FaqSection'), { ssr: true, loading: () => <SectionLoader label="Loading FAQs..." /> });
-const CtaSection = dynamic(() => import('@/components/dbms-course/CtaSection'), { ssr: true, loading: () => <SectionLoader label="Loading CTA..." /> });
-const StickyNav = dynamic(() => import('@/components/StickyNav2/StickyNav2'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 
 export const metadata = generateMetadata({
   title: "MySQL Database Course | 100% Job Placement | 20-Hour Training",
@@ -72,7 +71,6 @@ export default function Home() {
       <JsonLd id="faq-schema" schema={faqSchema} />
 
       <HeroSection />
-
       {/* Sticky nav must appear right after hero */}
       <div className="hidden md:block sticky top-0 z-20">
         <StickyNav />
@@ -83,11 +81,13 @@ export default function Home() {
       <section id='curriculum'><CurriculumSection /></section>
       <section id='tools'><ToolsSection /></section>
       <section id='projects'><ProjectsSection /></section>
-      <section id='testimonials'><TestimonialsSection /></section>
+      <TestimonialsSection />
       <section id='career'><CareerSection /></section>
       <section id='who-should-enroll'><WhoShouldEnroll /></section>
       <section id='faqs'><FaqSection /></section>
-      <section id='contact'><CtaSection /></section>
+      <CtaSection />
+
+
     </>
   );
 }
