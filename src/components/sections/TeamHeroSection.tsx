@@ -172,7 +172,7 @@ export default function TeamHero() {
               <span style={{ color: brand }}>Cinute Digital</span>
             </h1>
 
-            <p className="mt-6 max-w-3xl text-base leading-7 text-slate-700 sm:text-lg">
+            <p className="mt-6 max-w-3xl text-base leading-7 text-slate-700 sm:text-lg" style={{ fontSizeAdjust: '0.5' }}>
               Learn from senior{" "}
               <strong className="font-bold">
                 Software Testing
@@ -256,7 +256,16 @@ export default function TeamHero() {
           </div>
 
           <div className="col-span-4 mt-10 lg:mt-0 flex justify-center">
-            <Image src="/Our-team-hero.png" alt="team-image" title="team-image" width={410} height={300} />
+            <Image
+              src="/Our-team-hero.png"
+              alt="team-image"
+              title="team-image"
+              width={410}
+              height={300}
+              quality={60}
+              sizes="(max-width: 768px) 100vw, 410px"
+              priority
+            />
           </div>
         </div>
 
