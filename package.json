@@ -69,7 +69,9 @@
     "typescript": "^5"
   },
   "browserslist": [
-    "defaults",
-    "supports es6-module"
+    "chrome >= 90",
+    "firefox >= 88",
+    "edge >= 90",
+    "safari >= 14.1"
   ]
 }

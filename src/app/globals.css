@@ -246,3 +246,36 @@ input::placeholder {
 .animate-float-slower {
   animation: float-slower 9s ease-in-out infinite;
 }
+
+/* Live Jobs Hero Animations */
+@keyframes floatY {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes floatYLarge {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+
+  50% {
+    transform: translateY(6px) rotate(45deg);
+  }
+}
+
+.animate-float-y-slow {
+  animation: floatY 6s ease-in-out infinite;
+}
+
+.animate-float-y-medium {
+  animation: floatYLarge 7.5s ease-in-out infinite;
+}

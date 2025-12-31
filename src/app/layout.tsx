@@ -24,7 +24,13 @@ import { SITE_CONFIG, SEO_DEFAULTS } from "@/lib/seo-config";
 import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 
-const inter = Inter({ subsets: ["latin"], display: 'swap' });
+const inter = Inter({
+  subsets: ["latin"],
+  display: 'swap',
+  preload: true,
+  adjustFontFallback: true,
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Arial', 'sans-serif'],
+});
 
 // ============================================================================
 // DYNAMIC IMPORTS (for performance)
