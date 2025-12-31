@@ -1,4 +1,4 @@
-'use client';
+
 import ReviewsMarquee from '../sections/ReviewMarque';
 
 
