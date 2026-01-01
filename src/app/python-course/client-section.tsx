@@ -18,6 +18,14 @@ export const TestimonialsClient = dynamic(
     }
 );
 
+export const FaqClient = dynamic(
+    () => import("@/components/python-course/FaqSection"),
+    {
+        ssr: false,
+        loading: () => <SectionLoader label="Loading FAQ..." />,
+    },
+);
+
 export const CtaClient = dynamic(
     () => import("@/components/python-course/CtaSection"),
     {

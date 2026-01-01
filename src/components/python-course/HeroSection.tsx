@@ -4,32 +4,41 @@
 
 'use client';
 import {
-    Code2,
-    Users,
-    Award,
-    Briefcase,
-    ArrowRight,
-    Star,
-    Globe2,
-    CheckCircle2,
-    Cpu,
-    Home,
-    ChevronRight,
-    CloudDownload,
-    ArrowDownNarrowWide,
-} from "lucide-react";
-import { motion } from "framer-motion";
+    FaCode,
+    FaUsers,
+    FaAward,
+    FaBriefcase,
+    FaArrowRight,
+    FaStar,
+    FaGlobe,
+    FaCheckCircle,
+    FaMicrochip,
+    FaHome,
+    FaChevronRight,
+    FaCloudDownloadAlt,
+    FaSortAmountDown,
+} from "react-icons/fa";
 import IconCard from "@/components/ui/IconCard";
 import LeadForm from "../forms/ApiCourseLeadForm";
 import Link from "next/link";
 import { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+import dynamic from "next/dynamic";
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+    return (
+        <div className="flex items-center justify-center h-full">
+            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+            <span className="ml-2 text-gray-900">{label}</span>
+        </div>
+    );
+};
 
 
 const features = [
     {
-        icon: <Code2 />,
+        icon: <FaCode />,
         title: "80% Hands-On",
         description: "Real Python labs & reviews",
         bg: "bg-emerald-50",
@@ -37,7 +46,7 @@ const features = [
         border: "border-emerald-200",
     },
     {
-        icon: <Users />,
+        icon: <FaUsers />,
         title: "Expert Faculty",
         description: "10+ yrs industry mentors",
         bg: "bg-indigo-50",
@@ -45,7 +54,7 @@ const features = [
         border: "border-indigo-200",
     },
     {
-        icon: <Award />,
+        icon: <FaAward />,
         title: "Global Certificate",
         description: "QR-verified completion",
         bg: "bg-amber-50",
@@ -53,7 +62,7 @@ const features = [
         border: "border-amber-200",
     },
     {
-        icon: <Briefcase />,
+        icon: <FaBriefcase />,
         title: "100% Placement",
         description: "Resume + mock interviews",
         bg: "bg-rose-50",
@@ -89,7 +98,7 @@ export default function HeroSection() {
                             const isLast = i === breadcrumbs.length - 1;
                             return (
                                 <li key={i} className="flex items-center gap-2">
-                                    {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+                                    {i === 0 ? <FaHome className="h-4 w-4" /> : <FaChevronRight className="h-4 w-4" />}
                                     {c.href ? (
                                         <Link
                                             href={c.href}
@@ -112,24 +121,21 @@ export default function HeroSection() {
 
                 <div className="grid items-start gap-10 md:grid-cols-12">
                     {/* Left column: copy (mirrors your API-Testing hero layout) */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                    <div
                         className="md:col-span-7 lg:col-span-8"
                     >
                         {/* Top identity strip + micro-badges */}
                         <div className="mb-5 hidden lg:flex flex-wrap items-center gap-2">
                             <span className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-900">
-                                <Star className="h-4 w-4 fill-current text-amber-500" />
+                                <FaStar className="h-4 w-4 fill-current text-amber-500" />
                                 4.9/5 Rated
                             </span>
                             <span className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3 py-1.5 text-xs font-semibold text-sky-800">
-                                <Globe2 className="h-4 w-4" />
+                                <FaGlobe className="h-4 w-4" />
                                 Live Online & Classroom
                             </span>
                             <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-800">
-                                <Cpu className="h-4 w-4" />
+                                <FaMicrochip className="h-4 w-4" />
                                 Project-Based
                             </span>
                         </div>
@@ -167,7 +173,7 @@ export default function HeroSection() {
                                 aria-label="Enroll now in Python program"
                             >
                                 Enroll Now
-                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                <FaArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </button>
 
                             <button
@@ -176,7 +182,7 @@ export default function HeroSection() {
                                 aria-label="Download Python Syllabus"
                             >
                                 Download Syllabus
-                                <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                <FaCloudDownloadAlt className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </button>
 
                             <button
@@ -191,26 +197,26 @@ export default function HeroSection() {
                                 aria-label="View full Python curriculum"
                             >
                                 View Curriculum
-                                <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                <FaSortAmountDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </button>
                         </div>
 
                         {/* Highlights (two columns on sm+, distinct dot colors) */}
                         <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
                             <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-600" />
+                                <FaCheckCircle className="mt-0.5 h-5 w-5 text-emerald-600" />
                                 80% practical labs with capstone reviews
                             </li>
                             <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-sky-600" />
+                                <FaCheckCircle className="mt-0.5 h-5 w-5 text-sky-600" />
                                 API, automation & testing fundamentals
                             </li>
                             <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-rose-600" />
+                                <FaCheckCircle className="mt-0.5 h-5 w-5 text-rose-600" />
                                 Interview prep & portfolio guidance
                             </li>
                             <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-amber-600" />
+                                <FaCheckCircle className="mt-0.5 h-5 w-5 text-amber-600" />
                                 QR-verified certificate + placement
                             </li>
                         </ul>
@@ -225,17 +231,14 @@ export default function HeroSection() {
                                 />
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Right column: Desktop form (sticky) */}
-                    <motion.aside
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.12, ease: 'easeOut' }}
+                    <aside
                         className="hidden md:col-span-5 lg:col-span-4 md:block"
                     >
                         <LeadForm variant="elevated" source="Python Course Page - Hero Section" />
-                    </motion.aside>
+                    </aside>
                 </div>
 
                 {/* Social proof strip (matches your pattern) */}

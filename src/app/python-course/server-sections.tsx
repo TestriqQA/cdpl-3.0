@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 export const StatsSection = dynamic(
     () => import("@/components/python-course/StatsSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-20" />,
     },
 );
@@ -15,7 +15,7 @@ export const StatsSection = dynamic(
 export const WhyPythonProgram = dynamic(
     () => import("@/components/python-course/WhyPythonProgram"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-96" />,
     },
 );
@@ -23,7 +23,7 @@ export const WhyPythonProgram = dynamic(
 export const CurriculumSection = dynamic(
     () => import("@/components/python-course/CurriculumSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-96" />,
     },
 );
@@ -31,7 +31,7 @@ export const CurriculumSection = dynamic(
 export const ProjectsSection = dynamic(
     () => import("@/components/python-course/ProjectsSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-96" />,
     },
 );
@@ -39,7 +39,7 @@ export const ProjectsSection = dynamic(
 export const CareerSection = dynamic(
     () => import("@/components/python-course/CareerSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-96" />,
     },
 );
@@ -47,7 +47,7 @@ export const CareerSection = dynamic(
 export const WhoShouldEnroll = dynamic(
     () => import("@/components/python-course/WhoShouldEnroll"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-96" />,
     },
 );
@@ -55,7 +55,7 @@ export const WhoShouldEnroll = dynamic(
 export const ToolsSection = dynamic(
     () => import("@/components/python-course/ToolsSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-96" />,
     },
 );
@@ -63,15 +63,7 @@ export const ToolsSection = dynamic(
 export const CareerRoadmapSection = dynamic(
     () => import("@/components/python-course/CareerRoadmapSection"),
     {
-        ssr: false,
-        loading: () => <div className="h-96" />,
-    },
-);
-
-export const FaqSection = dynamic(
-    () => import("@/components/python-course/FaqSection"),
-    {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-96" />,
     },
 );

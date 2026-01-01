@@ -1,9 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import ReviewsMarquee from "../sections/ReviewMarque";
-import EnrollModal from "@/components/EnrollModal";
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+import dynamic from "next/dynamic";
+const ReviewsMarquee = dynamic(() => import("../sections/ReviewMarque"), { ssr: false, loading: () => <SectionLoader label="Loading reviews marquee..." /> });
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+      <span className="ml-2 text-gray-900">{label}</span>
+    </div>
+  );
+};
 
 // ---------- Types ----------
 type Testimonial = {

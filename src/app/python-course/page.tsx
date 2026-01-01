@@ -1,5 +1,5 @@
 import StickyNav3 from "@/components/StickyNav2/StickyNav3";
-import { TestimonialsClient, CtaClient } from "@/app/python-course/client-section";
+import { TestimonialsClient, CtaClient, FaqClient } from "@/app/python-course/client-section";
 import HeroSection from '@/components/python-course/HeroSection';
 import JsonLd from "@/components/JsonLd";
 import {
@@ -11,7 +11,6 @@ import {
   WhoShouldEnroll,
   ToolsSection,
   CareerRoadmapSection,
-  FaqSection
 } from "@/app/python-course/server-sections";
 
 import { generateMetadata } from "@/lib/metadata-generator";
@@ -80,7 +79,7 @@ export default function PythonPage() {
       <section id='testimonials'><TestimonialsClient /></section>
       <section id='career'><CareerSection /></section>
       <section id='who-should-enroll'><WhoShouldEnroll /></section>
-      <section id='faqs'><FaqSection /></section>
+      <section id='faqs'><FaqClient /></section>
       <section id='contact'><CtaClient /></section>
     </>
   );
