@@ -1,9 +1,18 @@
 'use client';
 
 import { Briefcase, Building2, ArrowRight, Sparkles } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 import type { JSX } from 'react';
-import CareerSessionModal from '@/components/CareerSessionModal';
+const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 
 /* ---------- Motion typing & lazy loader (safe fallback) ---------- */
 type MotionOnlyProps = {

@@ -2,13 +2,6 @@
 
 import dynamic from "next/dynamic";
 
-const withLoader = (label: string) => ({
-    loading: () => (
-        <div className="flex items-center justify-center py-16 text-gray-500">
-            {label}
-        </div>
-    ),
-});
 
 // HeroSection moved to page.tsx for Static Import (LCP Optimization)
 

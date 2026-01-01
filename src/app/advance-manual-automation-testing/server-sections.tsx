@@ -8,14 +8,6 @@ const withLoader = (label: string) => ({
     ),
 });
 
-export const HeroSection = dynamic(
-    () => import("@/components/advance-manual-automation-testing/HeroSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading hero...")
-    },
-);
-
 export const StatsSection = dynamic(
     () => import("@/components/advance-manual-automation-testing/StatsSection"),
     {
@@ -80,10 +72,3 @@ export const FaqSection = dynamic(
     },
 );
 
-export const JsonLd = dynamic(
-    () => import("@/components/JsonLd"),
-    {
-        ssr: true,
-        ...withLoader("Loading json ld...")
-    },
-);

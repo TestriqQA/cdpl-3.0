@@ -1,7 +1,8 @@
 import StickyNav from '@/components/StickyNav2/StickyNav2';
 import { TestimonialsClient, CtaClient } from "@/app/advance-manual-automation-testing/client-section";
+import HeroSection from "@/components/advance-manual-automation-testing/HeroSection";
+import JsonLd from "@/components/JsonLd";
 import {
-  HeroSection,
   StatsSection,
   WhyMasterProgram,
   CurriculumSection,
@@ -10,7 +11,6 @@ import {
   WhoShouldEnroll,
   ToolsSection,
   FaqSection,
-  JsonLd
 } from "@/app/advance-manual-automation-testing/server-sections";
 
 import { generateMetadata } from "@/lib/metadata-generator";
