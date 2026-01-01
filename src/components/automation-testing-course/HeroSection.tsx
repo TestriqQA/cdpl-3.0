@@ -1,32 +1,40 @@
 'use client';
 import {
-    Bot,
-    Users,
-    Award,
-    Briefcase,
-    ArrowRight,
-    Home,
-    ChevronRight,
-    CloudDownload,
-    ArrowDownNarrowWide,
-} from 'lucide-react';
-import { motion } from 'framer-motion';
+    FaRobot,
+    FaUsers,
+    FaAward,
+    FaBriefcase,
+    FaArrowRight,
+    FaHome,
+    FaChevronRight,
+    FaCloudDownloadAlt,
+    FaSortAmountDown,
+} from 'react-icons/fa';
 import IconCard from '../ui/IconCard';
 import LeadForm from '../forms/ApiCourseLeadForm';
 import Link from 'next/link';
 import { useState } from 'react';
-import EnrollModal from '@/components/EnrollModal';
-import SyllabusDownloadModal from '@/components/SyllabusDownloadModal';
+import dynamic from 'next/dynamic';
+const EnrollModal = dynamic(() => import('@/components/EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
+const SyllabusDownloadModal = dynamic(() => import('@/components/SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+    return (
+        <div className="flex items-center justify-center py-16">
+            <p className="text-gray-500">{label}</p>
+        </div>
+    );
+}
 
 
 /* ---------------------------------------
    Feature cards (distinct, light accents)
 ---------------------------------------- */
 const features = [
-    { icon: <Bot />, title: '85% Hands-On', description: 'AI-powered test scripts & self-healing locators', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
-    { icon: <Users />, title: 'SDET Mentors', description: '10+ years, FAANG & product-based guidance', bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
-    { icon: <Award />, title: 'Global Cert', description: 'ISTQB Foundation + Advanced automation prep', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
-    { icon: <Briefcase />, title: '100% Placement', description: 'Resume clinic, mock interviews, referrals', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
+    { icon: <FaRobot />, title: '85% Hands-On', description: 'AI-powered test scripts & self-healing locators', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
+    { icon: <FaUsers />, title: 'SDET Mentors', description: '10+ years, FAANG & product-based guidance', bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
+    { icon: <FaAward />, title: 'Global Cert', description: 'ISTQB Foundation + Advanced automation prep', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
+    { icon: <FaBriefcase />, title: '100% Placement', description: 'Resume clinic, mock interviews, referrals', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
 ];
 
 /* ---------------------------------------
@@ -59,7 +67,7 @@ export default function HeroSection() {
                             const isLast = i === breadcrumbs.length - 1;
                             return (
                                 <li key={i} className="flex items-center gap-2">
-                                    {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+                                    {i === 0 ? <FaHome className="h-4 w-4" /> : <FaChevronRight className="h-4 w-4" />}
                                     {c.href ? (
                                         <Link
                                             href={c.href}
@@ -82,10 +90,7 @@ export default function HeroSection() {
 
                 <div className="grid items-start gap-10 md:grid-cols-12">
                     {/* LEFT: Copy */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                    <div
                         className="md:col-span-7 lg:col-span-8"
                     >
                         {/* badges — each chip has its own color */}
@@ -136,7 +141,7 @@ export default function HeroSection() {
                                 aria-label="Enroll now in Advanced Automation Testing"
                             >
                                 Enroll Now
-                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                <FaArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </button>
 
                             <button
@@ -145,7 +150,7 @@ export default function HeroSection() {
                                 aria-label="Download Advanced Automation Testing Syllabus"
                             >
                                 Download Syllabus
-                                <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                <FaCloudDownloadAlt className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </button>
 
                             <button
@@ -160,7 +165,7 @@ export default function HeroSection() {
                                 aria-label="View full Advanced Automation Testing curriculum"
                             >
                                 View Curriculum
-                                <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                <FaSortAmountDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </button>
                         </div>
 
@@ -194,18 +199,15 @@ export default function HeroSection() {
                                 />
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* RIGHT: Desktop Form + Feature cards (if desired) */}
-                    <motion.aside
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.12, ease: 'easeOut' }}
+                    <aside
                         className="hidden md:col-span-5 lg:col-span-4 md:block"
                     >
                         <LeadForm variant="elevated" source="Advanced Automation Testing Course Page - Hero Section" />
 
-                    </motion.aside>
+                    </aside>
                 </div>
             </div>
 

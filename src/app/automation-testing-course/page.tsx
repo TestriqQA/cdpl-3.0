@@ -3,16 +3,10 @@ import { software_testing } from '@/components/StickyNavData';
 import { TestimonialsClient, CtaClient } from "@/app/automation-testing-course/client-section";
 import HeroSection from '@/components/automation-testing-course/HeroSection';
 import JsonLd from "@/components/JsonLd";
-import {
-  StatsSection,
-  WhyAutomation,
-  CurriculumSection,
-  ProjectsSection,
-  CareerSection,
-  WhoShouldEnroll,
-  ToolsSection,
-  FaqSection
-} from "@/app/automation-testing-course/server-sections";
+
+
+import { StatsSection, WhyAutomation, CurriculumSection, ProjectsSection, CareerSection, WhoShouldEnroll, ToolsSection, FaqSection } from "@/app/automation-testing-course/server-sections";
+
 
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";

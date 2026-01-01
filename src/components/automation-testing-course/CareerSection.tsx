@@ -2,7 +2,16 @@
 import { Briefcase, Building2, ArrowRight, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import CareerSessionModal from '@/components/CareerSessionModal';
+import dynamic from 'next/dynamic';
+const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 
 type Role = { label: string; bg: string; text: string; border: string };
 type Company = { label: string; bg: string; text: string; border: string };
