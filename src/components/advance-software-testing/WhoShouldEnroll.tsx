@@ -3,7 +3,16 @@ import { Users, GraduationCap, Briefcase, Target, ArrowRight } from 'lucide-reac
 import IconCard from '../ui/IconCard';
 import { motion } from 'framer-motion';
 import { JSX, useState } from 'react';
-import EnrollModal from '@/components/EnrollModal';
+import dynamic from 'next/dynamic';
+const EnrollModal = dynamic(() => import('@/components/EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 
 type Audience = {
   icon: JSX.Element;

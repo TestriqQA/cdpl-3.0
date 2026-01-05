@@ -1,29 +1,22 @@
-const HeroSection = dynamic(() => import("@/components/prompt-engineering-course/HeroSection"), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
-const StatsSection = dynamic(() => import("@/components/prompt-engineering-course/StatsSection"), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
-const WhyPromptGenProgram = dynamic(() => import("@/components/prompt-engineering-course/WhyPromptGenProgram"), { ssr: true, loading: () => <SectionLoader label="Loading why prompt gen program section..." /> });
-const CurriculumSection = dynamic(() => import("@/components/prompt-engineering-course/CurriculumSection"), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
-const ProjectsSection = dynamic(() => import("@/components/prompt-engineering-course/ProjectsSection"), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
-const TestimonialsSection = dynamic(() => import("@/components/prompt-engineering-course/TestimonialsSection"), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
-const CareerSection = dynamic(() => import("@/components/prompt-engineering-course/CareerSection"), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
-const WhoShouldEnroll = dynamic(() => import("@/components/prompt-engineering-course/WhoShouldEnroll"), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
-const ToolsSection = dynamic(() => import("@/components/prompt-engineering-course/ToolsSection"), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
-const FaqSection = dynamic(() => import("@/components/prompt-engineering-course/FaqSection"), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
-const CtaSection = dynamic(() => import("@/components/prompt-engineering-course/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
-const CareerRoadmapSection = dynamic(() => import("@/components/prompt-engineering-course/CareerRoadmapSection"), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
-const StickyNav3 = dynamic(() => import("@/components/StickyNav2/StickyNav3"), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
-const JsonLd = dynamic(() => import("@/components/JsonLd"), { ssr: true, loading: () => <SectionLoader label="Loading json ld..." /> });
+import StickyNav3 from "@/components/StickyNav2/StickyNav3";
+import { TestimonialsClient, CtaClient } from "@/app/prompt-engineering-course/client-section";
+import {
+  HeroSection,
+  StatsSection,
+  WhyPromptGenProgram,
+  CurriculumSection,
+  ProjectsSection,
+  CareerSection,
+  WhoShouldEnroll,
+  ToolsSection,
+  FaqSection,
+  CareerRoadmapSection,
+  JsonLd
+} from "@/app/prompt-engineering-course/server-sections";
+
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { PROMPT_ENGINEERING_FAQS, PROMPT_ENGINEERING_REVIEW_DATA } from "@/data/promptEngineeringData";
-import dynamic from "next/dynamic";
-
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-16">
-      <p className="text-gray-500">{label}</p>
-    </div>
-  );
-}
 
 export const metadata = generateMetadata({
   title: "Prompt Engineering with Generative AI Course in Mumbai | 20-Hour Hero Program | CDPL",
@@ -81,11 +74,11 @@ export default function PromptGenPage() {
       <section id='tools'><ToolsSection /></section>
       <section id='roadmap'><CareerRoadmapSection /></section>
       <section id='projects'><ProjectsSection /></section>
-      <section id='testimonials'><TestimonialsSection /></section>
+      <section id='testimonials'><TestimonialsClient /></section>
       <section id='career'><CareerSection /></section>
       <section id='who-should-enroll'><WhoShouldEnroll /></section>
       <section id='faqs'><FaqSection /></section>
-      <section id='contact'><CtaSection /></section>
+      <section id='contact'><CtaClient /></section>
     </div>
   );
 }

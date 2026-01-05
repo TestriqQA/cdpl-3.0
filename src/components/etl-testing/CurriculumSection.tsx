@@ -1,8 +1,18 @@
 'use client';
 import { CheckCircle } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
-import SyllabusDownloadModal from '@/components/SyllabusDownloadModal';
-import CareerSessionModal from '@/components/CareerSessionModal';
+const SyllabusDownloadModal = dynamic(() => import('@/components/SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus modal..." /> });
+const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career modal..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+      <span className="ml-2 text-gray-900">{label}</span>
+    </div>
+  );
+};
 
 type Module = {
   title: string;

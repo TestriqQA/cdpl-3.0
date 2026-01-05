@@ -1,30 +1,21 @@
-// pages/python-programming.tsx
-const HeroSection = dynamic(() => import('@/components/python-course/HeroSection'), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
-const StatsSection = dynamic(() => import('@/components/python-course/StatsSection'), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
-const WhyPythonProgram = dynamic(() => import('@/components/python-course/WhyPythonProgram'), { ssr: true, loading: () => <SectionLoader label="Loading why python program section..." /> });
-const CurriculumSection = dynamic(() => import('@/components/python-course/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
-const ProjectsSection = dynamic(() => import('@/components/python-course/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
-const CareerSection = dynamic(() => import('@/components/python-course/CareerSection'), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
-const WhoShouldEnroll = dynamic(() => import('@/components/python-course/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
-const ToolsSection = dynamic(() => import('@/components/python-course/ToolsSection'), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
-const TestimonialsSection = dynamic(() => import('@/components/python-course/TestimonialsSection'), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
-const CareerRoadmapSection = dynamic(() => import('@/components/python-course/CareerRoadmapSection'), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
-const FaqSection = dynamic(() => import('@/components/python-course/FaqSection'), { ssr: true, loading: () => <SectionLoader label="Loading FAQs section..." /> });
-const CtaSection = dynamic(() => import('@/components/python-course/CtaSection'), { ssr: true, loading: () => <SectionLoader label="Loading CTA section..." /> });
-const StickyNav3 = dynamic(() => import('@/components/StickyNav2/StickyNav3'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
+import StickyNav3 from "@/components/StickyNav2/StickyNav3";
+import { TestimonialsClient, CtaClient, FaqClient } from "@/app/python-course/client-section";
+import HeroSection from '@/components/python-course/HeroSection';
 import JsonLd from "@/components/JsonLd";
+import {
+  StatsSection,
+  WhyPythonProgram,
+  CurriculumSection,
+  ProjectsSection,
+  CareerSection,
+  WhoShouldEnroll,
+  ToolsSection,
+  CareerRoadmapSection,
+} from "@/app/python-course/server-sections";
+
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { PYTHON_FAQS, PYTHON_REVIEW_DATA } from "@/data/pythonData";
-import dynamic from "next/dynamic";
-
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-16">
-      <p className="text-gray-500">{label}</p>
-    </div>
-  );
-}
 
 export const metadata = generateMetadata({
   title: "Python Programming Course in Mumbai | 80-Hour Job-Ready Training | CDPL",
@@ -85,11 +76,11 @@ export default function PythonPage() {
       <section id='tools'><ToolsSection /></section>
       <section id='roadmap'><CareerRoadmapSection /></section>
       <section id='projects'><ProjectsSection /></section>
-      <section id='testimonials'><TestimonialsSection /></section>
+      <section id='testimonials'><TestimonialsClient /></section>
       <section id='career'><CareerSection /></section>
       <section id='who-should-enroll'><WhoShouldEnroll /></section>
-      <section id='faqs'><FaqSection /></section>
-      <section id='contact'><CtaSection /></section>
+      <section id='faqs'><FaqClient /></section>
+      <section id='contact'><CtaClient /></section>
     </>
   );
 };
