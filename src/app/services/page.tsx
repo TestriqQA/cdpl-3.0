@@ -39,11 +39,14 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
   );
 }
 
+// ---------- Static Import for Hero (LCP Optimization) ----------
+import ServicesHeroSection from "@/components/sections/ServicesHeroSection";
+
 // ---------- Dynamic sections (SSR enabled) ----------
-const ServicesHeroSection = dynamic(
-  () => import("@/components/sections/ServicesHeroSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
-);
+// const ServicesHeroSection = dynamic(
+//   () => import("@/components/sections/ServicesHeroSection"),
+//   { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
+// );
 
 const ServicesGridSection = dynamic(
   () => import("@/components/sections/ServicesGridSection"),

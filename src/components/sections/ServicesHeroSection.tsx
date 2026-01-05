@@ -1,7 +1,7 @@
 // src/components/sections/ServicesHeroSection.tsx
 "use client";
 
-import { motion } from "framer-motion";
+
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { Home, ChevronRight, Sparkles, ArrowRight, Check } from "lucide-react";
@@ -10,7 +10,7 @@ import { useCallback, useState } from "react";
 
 const WorkshopRequestModal = dynamic(() => import("../WorkshopRequestModal"), { ssr: false });
 
-const easeBezier: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
 
 const gradientText =
   "bg-clip-text text-transparent bg-[linear-gradient(90deg,#0ea5e9,#2563eb,#22c55e)]";
@@ -49,12 +49,9 @@ export default function ServicesHeroSection() {
         {/* Floating decorative images (smaller; respect container; behind content) */}
         <div aria-hidden className="absolute inset-0 -z-10 pointer-events-none">
           {/* Top-left float */}
-          <motion.div
-            initial={{ y: 0, rotate: -3, opacity: 0.75 }}
-            animate={{ y: [-5, 5, -5], rotate: [-3, -1, -3], opacity: 0.8 }}
-            transition={{ duration: 5.2, repeat: Infinity, repeatType: "mirror", ease: "linear" }}
+          <div
             className="hidden sm:block absolute left-2 top-2"
-            style={{ width: 56, height: 56, willChange: 'transform' }}
+            style={{ width: 56, height: 56 }}
           >
             <Image
               src="/services/training_board.png"
@@ -64,15 +61,12 @@ export default function ServicesHeroSection() {
               className="w-full h-full object-contain opacity-80 mix-blend-multiply dark:mix-blend-normal"
               priority={false}
             />
-          </motion.div>
+          </div>
 
           {/* Middle-top (center-right) float */}
-          <motion.div
-            initial={{ y: 0, rotate: 2, opacity: 0.75 }}
-            animate={{ y: [6, -6, 6], rotate: [2, 3, 2], opacity: 0.85 }}
-            transition={{ duration: 6, repeat: Infinity, repeatType: "mirror", ease: "linear", delay: 0.25 }}
+          <div
             className="hidden md:block absolute right-[20%] top-0"
-            style={{ width: 64, height: 64, willChange: 'transform' }}
+            style={{ width: 64, height: 64 }}
           >
             <Image
               src="/services/training_board.png"
@@ -82,15 +76,12 @@ export default function ServicesHeroSection() {
               className="w-full h-full object-contain opacity-80 mix-blend-multiply dark:mix-blend-normal"
               priority={false}
             />
-          </motion.div>
+          </div>
 
           {/* Bottom-right float */}
-          <motion.div
-            initial={{ y: 0, rotate: -4, opacity: 0.75 }}
-            animate={{ y: [-8, 8, -8], rotate: [-4, -2, -4], opacity: 0.85 }}
-            transition={{ duration: 6.8, repeat: Infinity, repeatType: "mirror", ease: "linear", delay: 0.5 }}
+          <div
             className="hidden lg:block absolute right-3 bottom-2"
-            style={{ width: 72, height: 72, willChange: 'transform' }}
+            style={{ width: 72, height: 72 }}
           >
             <Image
               src="/services/training_board.png"
@@ -100,7 +91,7 @@ export default function ServicesHeroSection() {
               className="w-full h-full object-contain opacity-80 mix-blend-multiply dark:mix-blend-normal"
               priority={false}
             />
-          </motion.div>
+          </div>
         </div>
 
         {/* Breadcrumbs */}
@@ -183,10 +174,8 @@ export default function ServicesHeroSection() {
           </div>
 
           {/* RIGHT — bigger, borderless, blended visual */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.985 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.55, ease: easeBezier }}
+          {/* RIGHT — bigger, borderless, blended visual - ANIMATION REMOVED FOR LCP */}
+          <div
             className="order-2 lg:order-2 relative mt-4 lg:mt-6 h-72 w-full sm:h-80 md:h-[26rem] lg:h-[28rem]"
             aria-label="Team training and events hero visual"
           >
@@ -211,7 +200,7 @@ export default function ServicesHeroSection() {
               fetchPriority="high"
               quality={50}
             />
-          </motion.div>
+          </div>
         </div>
       </section>
       {isWorkshopModalOpen && (
