@@ -276,6 +276,9 @@ input::placeholder {
   animation: floatY 6s ease-in-out infinite;
 }
 
-.animate-float-y-medium {
-  animation: floatYLarge 7.5s ease-in-out infinite;
+
+/* Optimization: Defer rendering of off-screen sections */
+main > section:not(:first-child) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }

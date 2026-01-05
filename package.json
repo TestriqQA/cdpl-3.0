@@ -70,9 +70,11 @@
     "typescript": "^5"
   },
   "browserslist": [
-    "chrome >= 90",
-    "firefox >= 88",
-    "edge >= 90",
-    "safari >= 14.1"
+    "chrome >= 100",
+    "firefox >= 100",
+    "edge >= 100",
+    "safari >= 16",
+    "ios >= 16",
+    "not dead"
   ]
 }

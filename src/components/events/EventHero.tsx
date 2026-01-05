@@ -22,6 +22,8 @@ export default function EventHero({ event }: EventHeroProps) {
                             alt=""
                             fill
                             priority
+                            fetchPriority="high"
+                            sizes="100vw"
                             className="object-cover opacity-60 blur-2xl scale-110"
                             aria-hidden="true"
                         />

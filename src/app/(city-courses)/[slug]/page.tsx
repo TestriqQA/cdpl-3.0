@@ -11,13 +11,16 @@ import {
 import JsonLd from "@/components/JsonLd";
 
 import HeroSection from "@/components/city-courses/HeroSection";
-import CourseOverviewSection from "@/components/city-courses/CourseOverviewSection";
-import CurriculumSection from "@/components/city-courses/CurriculumSection";
-import ProjectsSection from "@/components/city-courses/ProjectsSection";
-import WhyChooseSection from "@/components/city-courses/WhyChooseSection";
-import CareerPathSection from "@/components/city-courses/CareerPathSection";
-import FAQSection from "@/components/city-courses/FAQSection";
-import CTASection from "@/components/city-courses/CTASection";
+import dynamic from "next/dynamic";
+// Dynamic imports for below-the-fold content
+const CourseOverviewSection = dynamic(() => import("@/components/city-courses/CourseOverviewSection"), { ssr: true });
+const CurriculumSection = dynamic(() => import("@/components/city-courses/CurriculumSection"), { ssr: true });
+const ProjectsSection = dynamic(() => import("@/components/city-courses/ProjectsSection"), { ssr: true });
+const WhyChooseSection = dynamic(() => import("@/components/city-courses/WhyChooseSection"), { ssr: true });
+const CareerPathSection = dynamic(() => import("@/components/city-courses/CareerPathSection"), { ssr: true });
+const FAQSection = dynamic(() => import("@/components/city-courses/FAQSection"), { ssr: true });
+const CTASection = dynamic(() => import("@/components/city-courses/CTASection"), { ssr: true });
+
 import NotFoundPage from "@/components/NotFoundPage";
 
 interface PageProps {

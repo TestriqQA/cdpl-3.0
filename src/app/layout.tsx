@@ -27,6 +27,7 @@ import GoogleAnalytics from '@/components/GoogleAnalytics';
 const inter = Inter({
   subsets: ["latin"],
   display: 'swap',
+  variable: '--font-inter',
   preload: true,
   adjustFontFallback: true,
   fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Arial', 'sans-serif'],
@@ -100,7 +101,7 @@ export default function RootLayout({
 
       </head>
 
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased`}>
         <div className="sticky top-0 z-[100] w-full">
           <SpecialOfferBanner />
           <Header />
