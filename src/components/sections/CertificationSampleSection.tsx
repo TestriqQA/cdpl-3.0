@@ -64,7 +64,7 @@ export default function CertificationSampleSection() {
                                         className="h-auto w-full object-contain"
                                         sizes="(max-width: 640px) 95vw, (max-width: 1024px) 50vw, 600px"
                                         priority
-                                        quality={60}
+                                        quality={40}
                                     />
                                 </div>
 
