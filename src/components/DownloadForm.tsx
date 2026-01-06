@@ -17,6 +17,7 @@ interface DownloadFormContentProps {
   courseTitle: string;
   syllabusLink?: string;
   source?: string;
+  location?: string;
   onSubmit: (data: DownloadFormValues) => void;
   onClose: () => void;
 }
@@ -27,6 +28,7 @@ export interface DownloadFormButtonProps {
   buttonText: React.ReactNode;
   buttonClassName: string;
   source?: string;
+  location?: string;
   onSubmit: (data: DownloadFormValues) => void;
 }
 
@@ -47,7 +49,7 @@ const validatePhoneNumber = (phone: string | undefined): string | null => {
 };
 
 // --- Reusable Form Component (Modal Content) ---
-const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, syllabusLink, source, onSubmit, onClose }) => {
+const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, syllabusLink, source, location, onSubmit, onClose }) => {
   const [formData, setFormData] = useState<DownloadFormValues>({
     fullName: '',
     email: '',
@@ -107,6 +109,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
             source: source || `Home Page - ${courseTitle} - Download Syllabus Modal Form`,
             courseName: courseTitle,
             syllabusLink,
+            location,
           }),
         });
 
@@ -305,6 +308,7 @@ export const DownloadFormButton: React.FC<DownloadFormButtonProps> = ({
   buttonText,
   buttonClassName,
   source,
+  location,
   onSubmit,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -372,6 +376,7 @@ export const DownloadFormButton: React.FC<DownloadFormButtonProps> = ({
                   courseTitle={courseTitle}
                   syllabusLink={syllabusLink}
                   source={source}
+                  location={location}
                   onSubmit={handleFormSubmit}
                   onClose={closeModal}
                 />

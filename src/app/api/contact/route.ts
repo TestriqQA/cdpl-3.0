@@ -314,12 +314,19 @@ export async function POST(request: Request) {
       adminTemplate = 'admin-notification-placement.html';
     } else if (isMentorsPageRequest) {
       adminTemplate = 'admin-notification-mentors.html';
-    } else if (source === 'City Course Page - Hero Section' || isCityCourseCareerExplore || isCityCourseCareerEnroll || isCityCourseCTAEnroll || isCityCourseCTADemo || (location && location !== 'Not specified' && location !== 'Not Provided')) { // Detect by source or location presence
+    } else if (isMentorsPageRequest) {
+      adminTemplate = 'admin-notification-mentors.html';
+    } else if ((source === 'City Course Page - Hero Section' || isCityCourseCareerExplore || isCityCourseCareerEnroll || isCityCourseCTAEnroll || isCityCourseCTADemo || (location && location !== 'Not specified' && location !== 'Not Provided')) && !isSyllabusRequest && !isBrochureRequest) { // Detect by source or location presence, but exclude specific types like syllabus/brochure
       subjectPrefix = `[CITY COURSE ENQUIRY] from ${location || 'Unknown City'}`;
       adminTemplate = 'admin-notification-city-course.html';
       // Fill specific data
       adminData.interestedTrack = interestedTrack || 'Not specified';
       adminData.location = location || 'Not specified';
+    }
+
+    // Ensure location is in adminData for all templates (fixing missing location in Syllabus/Basic templates)
+    if (location && !adminData.location) {
+      adminData.location = location;
     }
 
     if (isWorkshopRequest) {
