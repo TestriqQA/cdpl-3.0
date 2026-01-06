@@ -242,7 +242,7 @@ export default function HeroSection() {
                 isOpen={isSyllabusModalOpen}
                 onClose={() => setIsSyllabusModalOpen(false)}
                 courseName="ETL Testing"
-                source="ETL Testing Course Page - Hero Section - Syllabus Download"
+                source="ETL Testing Course Page - Hero Section - ETL Testing - Download Syllabus"
             />
 
         </section>

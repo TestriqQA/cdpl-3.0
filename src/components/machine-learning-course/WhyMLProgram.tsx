@@ -154,7 +154,7 @@ export default function WhyMLProgram() {
         isOpen={isSyllabusModalOpen}
         onClose={() => setIsSyllabusModalOpen(false)}
         courseName="Machine Learning and Data Science with Python"
-        source="Machine Learning Course Page - Why ML Section - Download Syllabus"
+        source="Machine Learning Course Page - Why ML Section - Machine Learning and Data Science with Python - Download Syllabus"
       />
 
     </section>

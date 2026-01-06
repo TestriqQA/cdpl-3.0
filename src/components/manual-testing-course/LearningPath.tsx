@@ -308,7 +308,7 @@ export default function LearningPath() {
         isOpen={isSyllabusModalOpen}
         onClose={() => setIsSyllabusModalOpen(false)}
         courseName="Manual Testing"
-        source="Manual Software Testing Course Page - Learning Path - Syllabus Download"
+        source="Manual Testing Course Page - Learning Path - Manual Testing - Download Syllabus"
       />
       <EnrollModal
         isOpen={isEnrollModalOpen}

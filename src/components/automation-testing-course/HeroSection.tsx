@@ -222,7 +222,7 @@ export default function HeroSection() {
                 isOpen={isSyllabusModalOpen}
                 onClose={() => setIsSyllabusModalOpen(false)}
                 courseName="Advanced Automation Testing"
-                source="Advanced Automation Testing Course Page - Hero Section - Syllabus Download"
+                source="Advanced Automation Testing Course Page - Hero Section - Advanced Automation Testing - Download Syllabus"
             />
 
         </section>

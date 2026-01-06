@@ -140,7 +140,7 @@ export default function ProjectsSection() {
             <SyllabusDownloadModal
                 isOpen={isSyllabusOpen}
                 onClose={() => setIsSyllabusOpen(false)}
-                source="Digital Marketing Course Page - Projects Section - Sample Portfolios"
+                source="Digital Marketing Course Page - Projects Section - Digital Marketing - Sample Portfolios"
                 courseName={courseName}
             />
             <EnrollModal

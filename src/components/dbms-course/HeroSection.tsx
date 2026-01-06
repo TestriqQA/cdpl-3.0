@@ -214,7 +214,7 @@ export default function HeroSection() {
                 isOpen={isSyllabusModalOpen}
                 onClose={() => setIsSyllabusModalOpen(false)}
                 courseName="MySQL DBMS"
-                source="DBMS Course Page - Hero Section - Download Syllabus"
+                source="DBMS Course Page - Hero Section - MySQL DBMS - Download Syllabus"
             />
         </section>
     );

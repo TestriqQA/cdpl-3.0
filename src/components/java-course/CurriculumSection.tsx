@@ -393,7 +393,7 @@ export default function CurriculumSection() {
         isOpen={isSyllabusModalOpen}
         onClose={() => setIsSyllabusModalOpen(false)}
         courseName="Java Programming"
-        source="Java Course Page - Curriculum Section - Syllabus Download"
+        source="Java Course Page - Curriculum Section - Java Programming - Download Detailed Syllabus"
       />
 
       {/* Assist crawlers & screen readers */}

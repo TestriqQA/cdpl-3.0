@@ -262,7 +262,7 @@ export default function CurriculumSection() {
         isOpen={isSyllabusModalOpen}
         onClose={() => setIsSyllabusModalOpen(false)}
         courseName="Master Program in Deep Learning, NLP & Generative AI"
-        source="Generative AI Course Page - Curriculum Section - Download Syllabus"
+        source="Generative AI Course Page - Curriculum Section - Generative AI - Download Syllabus"
       />
     </section>
   );

@@ -225,7 +225,7 @@ export default function CurriculumSection() {
         <SyllabusDownloadModal
           isOpen={isSyllabusOpen}
           onClose={() => setIsSyllabusOpen(false)}
-          source={`${source} - Syllabus Download`}
+          source="Prompt Engineering Course Page - Curriculum Section - Prompt Engineering - Download Detailed Syllabus"
           courseName={courseName}
         />
       </div>

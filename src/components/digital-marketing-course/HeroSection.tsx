@@ -233,7 +233,7 @@ export default function HeroSection() {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Digital Marketing Course Page - Hero Section - Download Syllabus"
+        source="Digital Marketing Course Page - Hero Section - Digital Marketing - Download Syllabus"
         courseName={courseName}
       />
 

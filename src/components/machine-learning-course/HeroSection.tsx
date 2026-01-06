@@ -190,6 +190,7 @@ export default function HeroSection() {
                 isOpen={isSyllabusModalOpen}
                 onClose={() => setIsSyllabusModalOpen(false)}
                 courseName="Machine Learning and Data Science with Python"
+                source="Machine Learning and Data Science Course Page - Hero Section - Machine Learning - Download Syllabus"
             />
 
         </section>

@@ -11,9 +11,10 @@ import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/fo
 interface BrochureDownloadModalProps {
   isOpen: boolean;
   onClose: () => void;
+  source?: string;
 }
 
-const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ isOpen, onClose }) => {
+const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ isOpen, onClose, source }) => {
   // Form state
   const [formData, setFormData] = useState({
     fullName: '',
@@ -105,7 +106,8 @@ const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ isOpen, o
           body: JSON.stringify({
             ...formData,
             phone: formData.phone || 'Not provided',
-            type: 'brochure'
+            type: 'brochure',
+            source: source || 'Brochure Download (Unknown Source)'
           }),
         });
 

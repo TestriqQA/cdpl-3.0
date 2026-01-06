@@ -239,7 +239,7 @@ export default function ToolsSection() {
         isOpen={isSyllabusModalOpen}
         onClose={() => setIsSyllabusModalOpen(false)}
         courseName="Java Programming"
-        source="Java Course Page - Tools Section - Download Setup Guide"
+        source="Java Course Page - Tools Section - Java - Download Setup Guide"
       />
 
       <CareerSessionModal

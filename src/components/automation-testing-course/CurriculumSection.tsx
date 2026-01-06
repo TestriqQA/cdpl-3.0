@@ -196,7 +196,7 @@ export default function CurriculumSection() {
                 isOpen={isSyllabusModalOpen}
                 onClose={() => setIsSyllabusModalOpen(false)}
                 courseName="Advanced Automation Testing"
-                source="Advanced Automation Testing Course Page - Curriculum Section - Syllabus Download"
+                source="Advanced Automation Testing Course Page - Curriculum Section - Advanced Automation Testing - Download Syllabus"
             />
 
             <CareerSessionModal

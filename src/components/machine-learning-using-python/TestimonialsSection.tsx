@@ -88,7 +88,7 @@ export default function TestimonialsSection() {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Machine Learning with Python - Testimonials Section - Download Syllabus"
+        source="Machine Learning Course Page - Testimonials Section - Machine Learning - Download Syllabus"
         courseName={courseName}
       />
     </section>

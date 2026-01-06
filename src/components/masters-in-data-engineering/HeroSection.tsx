@@ -195,7 +195,7 @@ export default function HeroSection() {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Data Engineering Course Page - Hero Section - View Curriculum"
+        source="Data Engineering Course Page - Hero Section - Data Engineering - Download Syllabus"
         courseName={courseName}
       />
     </section>

@@ -163,8 +163,8 @@ export async function POST(request: Request) {
 
     const isCityCourseCareerExplore = formSource === 'City Course - Career Path - Explore';
     const isCityCourseCareerEnroll = formSource === 'City Course - Career Path - Enroll';
-    const isCityCourseCTAEnroll = formSource === 'City Course - CTA Section - Enroll Now';
-    const isCityCourseCTADemo = formSource === 'City Course - CTA Section - Get Free Demo';
+    const isCityCourseCTAEnroll = formSource?.includes('Course Page - CTA Section - Enroll Now');
+    const isCityCourseCTADemo = formSource?.includes('Course Page - CTA Section - Get Free Demo');
 
     const isMentorRequest = formSource.includes('Team Page - Mentor Section');
     const isLiveJobsRequest = formSource.includes('Live Jobs Page - Hero Section');
@@ -177,7 +177,7 @@ export async function POST(request: Request) {
 
     // Preserve specific functional types (if they clearly indicate a specific action)
     if (isBrochureRequest || isSyllabusRequest) {
-      requestType = 'Download Enquiry';
+      requestType = 'Download Syllabus';
     } else if (isEnrollmentRequest) {
       requestType = 'Enroll Enquiry';
     } else if (isSessionEnquiry) {
@@ -299,6 +299,7 @@ export async function POST(request: Request) {
     } else if (type === 'affiliate') {
       subjectPrefix = `[AFFILIATE APPLICATION] from ${company || fullName}`;
       adminTemplate = 'admin-notification-affiliate.html';
+      adminData.company = company || 'N/A';
     } else if (interest || message) { // Previously hasDetailedFields
       adminTemplate = 'admin-notification.html';
     } else if (isHomeHeroForm) {
@@ -313,7 +314,7 @@ export async function POST(request: Request) {
       adminTemplate = 'admin-notification-placement.html';
     } else if (isMentorsPageRequest) {
       adminTemplate = 'admin-notification-mentors.html';
-    } else if (source === 'City Course Page - Hero Section' || isCityCourseCareerExplore || isCityCourseCareerEnroll || isCityCourseCTAEnroll || isCityCourseCTADemo) { // Detect by source if type isn't set
+    } else if (source === 'City Course Page - Hero Section' || isCityCourseCareerExplore || isCityCourseCareerEnroll || isCityCourseCTAEnroll || isCityCourseCTADemo || (location && location !== 'Not specified' && location !== 'Not Provided')) { // Detect by source or location presence
       subjectPrefix = `[CITY COURSE ENQUIRY] from ${location || 'Unknown City'}`;
       adminTemplate = 'admin-notification-city-course.html';
       // Fill specific data

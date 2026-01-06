@@ -247,7 +247,7 @@ export default function CurriculumSection() {
         isOpen={isSyllabusModalOpen}
         onClose={() => setIsSyllabusModalOpen(false)}
         courseName="Python Programming"
-        source="Python Course Page - Curriculum Section - Syllabus Download"
+        source="Python Course Page - Curriculum Section - Python Programming - Download Detailed Syllabus"
       />
 
     </section>

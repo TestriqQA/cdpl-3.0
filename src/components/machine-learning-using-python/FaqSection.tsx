@@ -120,7 +120,7 @@ export default function FaqSection() {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Machine Learning with Python - FAQ Section - Download Syllabus"
+        source="Machine Learning Course Page - FAQ Section - Machine Learning - Download Syllabus"
         courseName={courseName}
       />
     </section>
