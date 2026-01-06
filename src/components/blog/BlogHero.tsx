@@ -126,7 +126,7 @@ const BlogHero = () => {
                     alt={featuredPost.title}
                     fill
                     className="hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 768px) calc(100vw - 6rem), 50vw"
                     priority
                     quality={90}
                   />

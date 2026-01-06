@@ -1,12 +1,13 @@
 "use client";
 
 import { CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 
 
 
 export default function CertificationSampleSection() {
     return (
-        <section className="relative overflow-hidden bg-slate-50 py-12 sm:py-16">
+        <section className="relative overflow-hidden bg-slate-50 py-12 sm:py-16" style={{ minHeight: "600px" }}>
             {/* Background Decor */}
             <div className="absolute inset-0 opacity-30">
                 <div className="absolute -left-20 top-0 h-72 w-72 rounded-full bg-[#3CB371]/20 blur-3xl mix-blend-multiply filter" />
@@ -53,12 +54,17 @@ export default function CertificationSampleSection() {
 
                             {/* The Cert Card */}
                             <div className="relative rounded-2xl bg-white p-2 shadow-2xl ring-1 ring-slate-900/5">
-                                <div className="overflow-hidden rounded-xl border border-slate-100 bg-slate-50">
+                                <div className="overflow-hidden rounded-xl border border-slate-100 bg-slate-50 min-h-[250px]">
                                     {/* Using valid Image component with next/image */}
-                                    <img
+                                    <Image
                                         src="/certifications_images/cdpl_certifications_validation/cdpl_certificate_validation.jpg"
                                         alt="Sample Certificate"
+                                        width={2000}
+                                        height={1414}
                                         className="h-auto w-full object-contain"
+                                        sizes="(max-width: 640px) 95vw, (max-width: 1024px) 50vw, 600px"
+                                        priority
+                                        quality={60}
                                     />
                                 </div>
 

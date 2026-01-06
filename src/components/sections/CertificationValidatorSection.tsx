@@ -164,7 +164,7 @@ function CertificationValidatorContent() {
 
 
   return (
-    <section id="validator-section" className="bg-white">
+    <section id="validator-section" className="bg-white" style={{ minHeight: "400px" }}>
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
         {/* AAA Choice Modal */}
@@ -319,7 +319,7 @@ function CertificationValidatorContent() {
         )}
 
         {/* ===== Form Container ===== */}
-        <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm min-h-[290px]">
           {/* blend layers */}
           <span
             aria-hidden
@@ -431,7 +431,7 @@ function CertificationValidatorContent() {
                     alt="AAA Logo"
                     width={16}
                     height={16}
-                    className="h-3 w-auto object-contain"
+                    className="h-3 w-4 object-contain"
                   />
                   AAA
                 </button>
@@ -449,9 +449,47 @@ function CertificationValidatorContent() {
 // ============================================================================
 // OUTER COMPONENT - Wraps with Suspense
 // ============================================================================
+function ValidatorSkeleton() {
+  return (
+    <section id="validator-section" className="bg-white" style={{ minHeight: "400px" }}>
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        {/* Form Container Skeleton */}
+        <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm min-h-[290px]">
+          <div className="relative z-10 flex flex-col gap-6 animate-pulse">
+
+            {/* Form Grid (matches form element) */}
+            <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
+
+              {/* Input Skeleton */}
+              <div className="relative">
+                <div className="h-[42px] w-full rounded-xl bg-slate-100" />
+              </div>
+
+              {/* Button Skeleton */}
+              <div className="h-[42px] w-32 rounded-xl bg-slate-100" />
+
+              {/* Helper Text Skeleton - Max width constraint to simulate text wrap logic if needed, but fixed height is safer if we truncate. Real text is 'text-xs'. */}
+              <div className="col-span-full h-8 w-3/4 rounded bg-slate-100" />
+
+              {/* Badges Skeleton */}
+              <div className="col-span-full flex gap-2">
+                <div className="h-7 w-20 rounded-full bg-slate-100" />
+                <div className="h-7 w-20 rounded-full bg-slate-100" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// OUTER COMPONENT - Wraps with Suspense
+// ============================================================================
 export default function CertificationValidatorSection() {
   return (
-    <Suspense fallback={<SectionLoader label="Loading validator..." />}>
+    <Suspense fallback={<ValidatorSkeleton />}>
       <CertificationValidatorContent />
     </Suspense>
   );

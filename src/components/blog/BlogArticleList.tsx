@@ -84,7 +84,7 @@ const BlogArticleList: React.FC<BlogArticleListProps> = ({ posts }) => {
                               alt={post.title}
                               fill
                               className="group-hover:scale-105 transition-transform duration-500"
-                              sizes="(max-width: 768px) 100vw, 320px"
+                              sizes="(max-width: 768px) calc(100vw - 2rem), 320px"
                               quality={85}
                             />
                           ) : (

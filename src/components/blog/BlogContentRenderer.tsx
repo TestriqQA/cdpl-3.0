@@ -69,7 +69,7 @@ const BlogContentRenderer: React.FC<BlogContentRendererProps> = ({ slug }) => {
     <article className="max-w-7xl mx-auto py-0">
       {/* Introduction */}
       <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Introduction</h2>
-      <div 
+      <div
         className="prose prose-lg max-w-none mb-8 sm:mb-12 text-base sm:text-lg leading-relaxed text-gray-700"
         dangerouslySetInnerHTML={{ __html: content.introduction }}
       />
@@ -99,7 +99,7 @@ const BlogContentRenderer: React.FC<BlogContentRendererProps> = ({ slug }) => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">
             {section.title}
           </h2>
-          
+
           {/* Section Image - OPTIMIZED: Smaller, responsive heights for better blog layout */}
           {section.image && (
             <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 mb-6 sm:mb-8 rounded-xl overflow-hidden shadow-lg">
@@ -107,7 +107,7 @@ const BlogContentRenderer: React.FC<BlogContentRendererProps> = ({ slug }) => {
                 src={section.image}
                 alt={section.title}
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 85vw, 1200px"
+                sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 768px) 90vw, (max-width: 1024px) 85vw, 1200px"
                 priority={index === 0}
               />
             </div>
