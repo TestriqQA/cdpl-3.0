@@ -37,8 +37,8 @@ const inter = Inter({
 // DYNAMIC IMPORTS (for performance)
 // ============================================================================
 
-import Header from "@/components/Layout/Header";
-// const Header = dynamic(() => import("@/components/Layout/Header"), { ssr: true });
+// import Header from "@/components/Layout/Header";
+const Header = dynamic(() => import("@/components/Layout/Header"), { ssr: true });
 const Footer = dynamic(() => import("@/components/Layout/Footer"), { ssr: true });
 const SpecialOfferBanner = dynamic(() => import("@/components/SpecialOfferBanner"), { ssr: true });
 
