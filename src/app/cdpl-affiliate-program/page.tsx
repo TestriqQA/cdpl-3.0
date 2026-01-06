@@ -46,10 +46,14 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 // ---------- Dynamic sections (SSR enabled) ----------
-const AffiliateHeroSection = dynamic(
-  () => import("@/components/sections/AffiliateHeroSection"),
-  { ssr: true, loading: () => <SectionLoader label="Booting the hero..." /> }
-);
+import AffiliateHeroSection from "@/components/sections/AffiliateHeroSection";
+
+// ---------- Dynamic sections (SSR enabled) ----------
+// Hero is now static for LCP optimization
+// const AffiliateHeroSection = dynamic(
+//   () => import("@/components/sections/AffiliateHeroSection"),
+//   { ssr: true, loading: () => <SectionLoader label="Booting the hero..." /> }
+// );
 
 const AffiliateBenefitsSection = dynamic(
   () => import("@/components/sections/AffiliateBenefitsSection"),
