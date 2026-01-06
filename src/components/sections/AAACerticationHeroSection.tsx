@@ -87,6 +87,8 @@ export default function AAACerticationHeroSection() {
               width={1280}
               height={960}
               className="h-auto w-full max-w-[36rem] rounded-2xl"
+              sizes="(max-width: 640px) 95vw, (max-width: 1024px) 50vw, 600px"
+              quality={50}
               priority
             />
           </div>

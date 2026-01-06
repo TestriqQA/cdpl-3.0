@@ -18,11 +18,14 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
   );
 }
 
+import AAACerticationHeroSection from "@/components/sections/AAACerticationHeroSection";
+
 /* ---------- Dynamic sections (client components) ---------- */
-const AAACerticationHeroSection = dynamic(
-  () => import("@/components/sections/AAACerticationHeroSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
-);
+// Hero is now static for LCP optimization
+// const AAACerticationHeroSection = dynamic(
+//   () => import("@/components/sections/AAACerticationHeroSection"),
+//   { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
+// );
 
 const AAACertificationWhySection = dynamic(
   () => import("@/components/sections/AAACertificationWhySection"),
