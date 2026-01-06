@@ -255,7 +255,7 @@ export default function AffiliateHeroSection() {
         variant="affiliate"
         title="Apply for Affiliate Program"
         subtitle="Join our partner ecosystem today"
-        source="Website - Affiliate Hero"
+        source="Affiliate Program Page - Hero Section - Apply Now Button"
       />
     </section >
   );

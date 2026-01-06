@@ -243,7 +243,7 @@ export default function WhoShouldEnroll() {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Machine Learning with Python - Who Should Enroll - Download Syllabus"
+        source="Machine Learning Course Page - Who Should Enroll Section - Machine Learning - Download Syllabus"
         courseName={courseName}
       />
     </section>

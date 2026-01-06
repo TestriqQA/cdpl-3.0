@@ -104,7 +104,7 @@ export default function TestimonialsSection({
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
         courseName="Python Programming"
-        source="Python Course Page - Testimonials Section - Syllabus Download"
+        source="Python Course Page - Testimonials Section - Python Programming - Download Syllabus"
       />
     </section>
   );

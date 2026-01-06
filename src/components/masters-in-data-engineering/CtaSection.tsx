@@ -183,7 +183,7 @@ const CtaSection: React.FC = () => {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Data Engineering Course Page - CTA Section - Download Brochure"
+        source="Data Engineering Course Page - CTA Section - Data Engineering - Download Brochure"
         courseName={courseName}
       />
     </section>

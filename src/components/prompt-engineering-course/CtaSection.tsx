@@ -89,7 +89,7 @@ export default function CtaSection() {
         <SyllabusDownloadModal
           isOpen={isSyllabusOpen}
           onClose={() => setIsSyllabusOpen(false)}
-          source={`${source} - Syllabus Download`}
+          source="Prompt Engineering Course Page - CTA Section - Prompt Engineering - Download Syllabus"
           courseName={courseName}
         />
 

@@ -162,7 +162,7 @@ export default function FaqSection() {
         isOpen={isSyllabusModalOpen}
         onClose={() => setIsSyllabusModalOpen(false)}
         courseName="Java Programming"
-        source="Java Course Page - FAQ Section - Syllabus Download"
+        source="Java Course Page - FAQ Section - Java - Download Syllabus"
       />
 
       {/* Accessible helpers */}

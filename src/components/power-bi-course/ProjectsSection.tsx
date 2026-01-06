@@ -156,7 +156,7 @@ const ProjectsSection: React.FC = () => {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Power BI Course Page - Projects Section - Download Syllabus"
+        source="Power BI Course Page - Projects Section - Power BI - Download Syllabus"
         courseName={courseName}
       />
     </section>

@@ -128,7 +128,7 @@ const CurriculumSection: React.FC = () => {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Data Engineering Course Page - Curriculum Section - Download Syllabus"
+        source="Data Engineering Course Page - Curriculum Section - Data Engineering - Download Full Syllabus"
         courseName={courseName}
       />
     </section>

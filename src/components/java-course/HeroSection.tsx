@@ -254,7 +254,7 @@ export default function HeroSection() {
                 isOpen={isSyllabusModalOpen}
                 onClose={() => setIsSyllabusModalOpen(false)}
                 courseName="Java Programming"
-                source="Java Course Page - Hero Section - Syllabus Download"
+                source="Java Course Page - Hero Section - Java - Download Syllabus"
             />
 
         </section>

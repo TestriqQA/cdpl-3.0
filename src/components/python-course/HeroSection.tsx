@@ -263,7 +263,7 @@ export default function HeroSection() {
                 isOpen={isSyllabusModalOpen}
                 onClose={() => setIsSyllabusModalOpen(false)}
                 courseName="Python Programming"
-                source="Python Course Page - Hero Section - Syllabus Download"
+                source="Python Course Page - Hero Section - Python Programming - Download Syllabus"
             />
 
         </section>

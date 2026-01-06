@@ -224,7 +224,7 @@ export default function CurriculumSection() {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Digital Marketing Course Page - Curriculum Section - Download Syllabus"
+        source="Digital Marketing Course Page - Curriculum Section - Digital Marketing - Download Syllabus"
         courseName={courseName}
       />
       <EnrollModal

@@ -15,7 +15,6 @@ interface EnrollModalProps {
     courseName?: string;
     source?: string;
     location?: string;
-    interestedTrack?: string;
 }
 
 const EnrollModal: React.FC<EnrollModalProps> = ({
@@ -23,8 +22,7 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
     onClose,
     courseName = "Course",
     source,
-    location,
-    interestedTrack
+    location
 }) => {
     // Form state
     const [formData, setFormData] = useState({
@@ -120,8 +118,7 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
                         type: 'enrollment',
                         source: source || `${courseName} Course Page - Enroll Now`,
                         courseName,
-                        location,
-                        interestedTrack
+                        location
                     }),
                 });
 

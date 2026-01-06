@@ -163,7 +163,7 @@ const HeroSection: React.FC = () => {
             <SyllabusDownloadModal
                 isOpen={isSyllabusOpen}
                 onClose={() => setIsSyllabusOpen(false)}
-                source="Power BI Course Page - Hero Section - Download Syllabus"
+                source="Power BI Course Page - Hero Section - Power BI - Download Syllabus"
                 courseName={courseName}
             />
         </section>

@@ -268,7 +268,7 @@ const ProjectsSection: React.FC = () => {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Data Engineering Course Page - Projects Section - Download Syllabus"
+        source="Data Engineering Course Page - Projects Section - Data Engineering - Download Project Syllabus"
         courseName={courseName}
       />
     </section>

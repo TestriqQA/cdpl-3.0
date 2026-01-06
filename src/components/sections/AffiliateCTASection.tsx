@@ -66,7 +66,7 @@ export default function AffiliateCTASection() {
                 variant="affiliate"
                 title="Apply for Affiliate Program"
                 subtitle="Join our partner ecosystem today"
-                source="Website - Affiliate CTA"
+                source="Affiliate Program Page - CTA Section - Apply Now Button"
             />
         </div>
     );

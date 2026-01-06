@@ -169,7 +169,7 @@ export default function HeroSection() {
                 isOpen={isSyllabusModalOpen}
                 onClose={() => setIsSyllabusModalOpen(false)}
                 courseName="Master Program in Deep Learning, NLP & Generative AI"
-                source="Generative AI Course Page - Hero Section - Download Syllabus"
+                source="Generative AI Course Page - Hero Section - Generative AI - Download Syllabus"
             />
 
         </section>

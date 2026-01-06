@@ -185,7 +185,7 @@ export default function HeroSection() {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source={`${source} - Syllabus Download`}
+        source="Prompt Engineering Course Page - Hero Section - Prompt Engineering - Download Syllabus"
         courseName={courseName}
       />
     </section>

@@ -437,7 +437,7 @@ export default function HeroManualTesting() {
                     isOpen={isSyllabusModalOpen}
                     onClose={() => setIsSyllabusModalOpen(false)}
                     courseName="Manual Testing"
-                    source="Manual Testing Course - Hero Section - Download Button"
+                    source="Manual Testing Course Page - Hero Section - Manual Testing - Download Syllabus"
                 />
 
                 {/* SEO helper text */}

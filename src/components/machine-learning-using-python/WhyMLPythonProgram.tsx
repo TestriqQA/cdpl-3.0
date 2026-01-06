@@ -155,7 +155,7 @@ export default function WhyMLPythonProgram() {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Machine Learning with Python - Why ML Section - Download Syllabus"
+        source="Machine Learning Course Page - Why ML Section - Machine Learning - Download Syllabus"
         courseName={courseName}
       />
     </section>

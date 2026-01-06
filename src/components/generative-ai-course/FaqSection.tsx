@@ -112,7 +112,7 @@ export default function FaqSection() {
         isOpen={isSyllabusModalOpen}
         onClose={() => setIsSyllabusModalOpen(false)}
         courseName="Master Program in Deep Learning, NLP & Generative AI"
-        source="Generative AI Course Page - FAQ Section - Download Syllabus"
+        source="Generative AI Course Page - FAQ Section - Generative AI - Download Syllabus"
       />
 
     </section>

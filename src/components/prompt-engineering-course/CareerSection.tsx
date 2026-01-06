@@ -187,7 +187,7 @@ export default function CareerSection() {
         <SyllabusDownloadModal
           isOpen={isSyllabusOpen}
           onClose={() => setIsSyllabusOpen(false)}
-          source={`${source} - Download Portfolio Guide`}
+          source="Prompt Engineering Course Page - Career Section - Prompt Engineering - Download Portfolio Guide"
           courseName={courseName}
         />
       </div>

@@ -46,6 +46,11 @@ export const validateFullName = (name: string): string | null => {
         return 'Please enter a valid name.';
     }
 
+    // Check for at least one vowel (a, e, i, o, u, y) - basic check to filter random consonant strings
+    if (!/[aeiouyAEIOUY]/.test(trimmedName)) {
+        return 'Name must contain at least one vowel.';
+    }
+
     return null;
 };
 
@@ -53,6 +58,7 @@ export const validateFullName = (name: string): string | null => {
  * Validates an email address.
  * - Standard regex check.
  * - Length check.
+ * - Checks for numeric-only local part.
  */
 export const validateEmail = (email: string): string | null => {
     if (!email || email.trim() === '') {
@@ -69,6 +75,12 @@ export const validateEmail = (email: string): string | null => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(trimmedEmail)) {
         return 'Invalid email format.';
+    }
+
+    // Check if local part (before @) is all numbers
+    const localPart = trimmedEmail.split('@')[0];
+    if (/^\d+$/.test(localPart)) {
+        return 'Email address cannot be just numbers.';
     }
 
     return null;

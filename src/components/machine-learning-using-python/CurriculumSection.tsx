@@ -207,7 +207,7 @@ export default function CurriculumSection() {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Machine Learning with Python Course Page - Curriculum Section - Download Syllabus"
+        source="Machine Learning with Python Course Page - Curriculum Section - Machine Learning with Python - Download Detailed Syllabus"
         courseName={courseName}
       />
     </section>

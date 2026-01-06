@@ -208,7 +208,7 @@ export default function HeroSection() {
             <SyllabusDownloadModal
                 isOpen={isSyllabusOpen}
                 onClose={() => setIsSyllabusOpen(false)}
-                source="Machine Learning with Python Course Page - Hero Section - Syllabus Download"
+                source="Machine Learning with Python Course Page - Hero Section - Machine Learning with Python - Download Syllabus"
                 courseName={courseName}
             />
             <CareerSessionModal

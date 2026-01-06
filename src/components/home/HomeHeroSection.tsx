@@ -668,6 +668,7 @@ const HomeHeroSection: React.FC = () => {
       <BrochureDownloadModal
         isOpen={isBrochureModalOpen}
         onClose={() => setIsBrochureModalOpen(false)}
+        source="Home Page - Hero Section - Download Brochure Button"
       />
 
       {/* YouTube Video Modal */}
