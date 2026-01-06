@@ -164,7 +164,7 @@ function CertificationValidatorContent() {
 
 
   return (
-    <section id="validator-section" className="bg-white" style={{ minHeight: "400px" }}>
+    <section id="validator-section" className="bg-white" style={{ minHeight: "500px" }}>
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
         {/* AAA Choice Modal */}
@@ -451,7 +451,7 @@ function CertificationValidatorContent() {
 // ============================================================================
 function ValidatorSkeleton() {
   return (
-    <section id="validator-section" className="bg-white" style={{ minHeight: "400px" }}>
+    <section id="validator-section" className="bg-white" style={{ minHeight: "500px" }}>
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         {/* Form Container Skeleton */}
         <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm min-h-[290px]">

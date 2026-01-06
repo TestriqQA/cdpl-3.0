@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
       '@headlessui/react',
       'lucide-react',
     ],
-    optimizeCss: false, // Disabled to prevent render blocking
+    optimizeCss: true, // Re-enabled for LCP
     optimizeServerReact: true,
     webpackBuildWorker: true, // Faster builds
   },
