@@ -19,10 +19,14 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 /* ---------- Dynamic sections (client components) ---------- */
-const ACTDCertificationHeroSection = dynamic(
-  () => import("@/components/sections/ACTDCertificationHeroSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
-);
+import ACTDCertificationHeroSection from "@/components/sections/ACTDCertificationHeroSection";
+
+/* ---------- Dynamic sections (client components) ---------- */
+// Hero is now static for LCP optimization
+// const ACTDCertificationHeroSection = dynamic(
+//   () => import("@/components/sections/ACTDCertificationHeroSection"),
+//   { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
+// );
 
 const ACTDCertificationTracksSection = dynamic(
   () => import("@/components/sections/ACTDCertificationTracksSection"),
