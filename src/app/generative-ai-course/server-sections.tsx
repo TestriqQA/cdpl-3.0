@@ -8,21 +8,7 @@ const withLoader = (label: string) => ({
     ),
 });
 
-export const HeroSection = dynamic(
-    () => import("@/components/generative-ai-course/HeroSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading hero...")
-    },
-);
 
-export const StatsSection = dynamic(
-    () => import("@/components/generative-ai-course/StatsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading stats...")
-    },
-);
 
 export const WhyGenAIProgram = dynamic(
     () => import("@/components/generative-ai-course/WhyGenAIProgram"),

@@ -103,13 +103,14 @@ export default function CareerRoadmapSection() {
         </header>
 
         {/* Timeline */}
-        <ol className="relative mx-auto mt-10 max-w-4xl">
+        {/* Timeline */}
+        <div className="relative mx-auto mt-10 max-w-4xl">
           {/* Center spine */}
           <div
             aria-hidden
             className="pointer-events-none absolute left-4 top-0 h-full w-px bg-slate-200 sm:left-1/2"
           />
-          <div className="space-y-6">
+          <ol className="space-y-6">
             {STEPS.map((s, i) => (
               <li
                 key={s.n}
@@ -169,8 +170,8 @@ export default function CareerRoadmapSection() {
                 </article>
               </li>
             ))}
-          </div>
-        </ol>
+          </ol>
+        </div>
 
         {/* CTA */}
         <div className="mt-12 text-center">
@@ -210,7 +211,7 @@ function KPI({ label, value, note }: { label: string; value: string; note: strin
     <div className="rounded-xl border border-slate-200 bg-white/80 p-4 shadow-[0_1px_0_0_rgba(15,23,42,0.04)] backdrop-blur">
       <div className="text-[11px] font-semibold text-slate-600">{label}</div>
       <div className="mt-1 text-2xl font-bold tracking-tight text-slate-900">{value}</div>
-      <div className="mt-0.5 text-xs text-slate-500">{note}</div>
+      <div className="mt-0.5 text-xs text-slate-600">{note}</div>
     </div>
   );
 }

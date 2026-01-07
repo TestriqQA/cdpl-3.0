@@ -8,21 +8,7 @@ const withLoader = (label: string) => ({
     ),
 });
 
-export const HeroSection = dynamic(
-    () => import("@/components/machine-learning-course/HeroSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading hero...")
-    },
-);
 
-export const StatsSection = dynamic(
-    () => import("@/components/machine-learning-course/StatsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading stats...")
-    },
-);
 
 export const WhyMLProgram = dynamic(
     () => import("@/components/machine-learning-course/WhyMLProgram"),

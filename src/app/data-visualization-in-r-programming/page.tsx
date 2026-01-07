@@ -1,7 +1,7 @@
-const HeroSection = dynamic(() => import('@/components/data-visualization-in-r-programming/HeroSection').then(mod => mod.HeroSection), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+import { HeroSection } from '@/components/data-visualization-in-r-programming/HeroSection';
 const StickyNav = dynamic(() => import('@/components/StickyNav2/StickyNav2'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 import { with_roadmap } from '@/components/StickyNavData';
-const StatsSection = dynamic(() => import('@/components/data-visualization-in-r-programming/StatsSection').then(mod => mod.StatsSection), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+import { StatsSection } from '@/components/data-visualization-in-r-programming/StatsSection';
 const WhyRSection = dynamic(() => import('@/components/data-visualization-in-r-programming/WhyRSection').then(mod => mod.WhyRSection), { ssr: true, loading: () => <SectionLoader label="Loading why R section..." /> });
 const CurriculumSection = dynamic(() => import('@/components/data-visualization-in-r-programming/CurriculumSection').then(mod => mod.CurriculumSection), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
 const ProjectsSection = dynamic(() => import('@/components/data-visualization-in-r-programming/ProjectsSection').then(mod => mod.ProjectsSection), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
@@ -12,7 +12,7 @@ const WhoShouldEnroll = dynamic(() => import('@/components/data-visualization-in
 const TestimonialsSection = dynamic(() => import('@/components/data-visualization-in-r-programming/TestimonialsSection').then(mod => mod.TestimonialsSection), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
 const FaqSection = dynamic(() => import('@/components/data-visualization-in-r-programming/FaqSection').then(mod => mod.FaqSection), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
 const CtaSection = dynamic(() => import('@/components/data-visualization-in-r-programming/CtaSection').then(mod => mod.CtaSection), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
-const JsonLd = dynamic(() => import('@/components/JsonLd'), { ssr: true, loading: () => <SectionLoader label="Loading json ld..." /> });
+import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { R_DATA_VIS_FAQS, R_DATA_VIS_REVIEW_DATA } from "@/data/rDataVisData";

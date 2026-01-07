@@ -1,9 +1,9 @@
 import StickyNav from "@/components/StickyNav2/StickyNav2";
 import { with_roadmap } from '@/components/StickyNavData';
 import { TestimonialsClient, CtaClient } from "@/app/machine-learning-using-python/client-section";
+import HeroSection from "@/components/machine-learning-using-python/HeroSection";
+import StatsSection from "@/components/machine-learning-using-python/StatsSection";
 import {
-    HeroSection,
-    StatsSection,
     WhyMLPythonProgram,
     CurriculumSection,
     ProjectsSection,

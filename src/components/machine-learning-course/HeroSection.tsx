@@ -8,8 +8,10 @@ import Link from "next/link";
 import LeadForm from "@/components/forms/MachineLearningCourseLeadForm";
 import { ChevronRight, Home, ArrowRight, CloudDownload, ArrowDownNarrowWide } from "lucide-react";
 import { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+import dynamic from "next/dynamic";
+
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false });
 
 export default function HeroSection() {
     const [isPopupOpen, setIsPopupOpen] = useState(false);

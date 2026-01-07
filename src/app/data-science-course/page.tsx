@@ -1,8 +1,8 @@
 import StickyNav3 from "@/components/StickyNav2/StickyNav3";
 import { TestimonialsClient, CtaClient } from "@/app/data-science-course/client-section";
+import HeroSection from "@/components/data-science-course/HeroSection";
+import StatsSection from "@/components/data-science-course/StatsSection";
 import {
-  HeroSection,
-  StatsSection,
   WhyDSProgram,
   CurriculumSection,
   ProjectsSection,

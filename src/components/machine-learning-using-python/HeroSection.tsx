@@ -11,9 +11,11 @@ import {
 import Link from "next/link";
 import React, { useState } from "react";
 import MachineLearningCourseLeadForm from "../forms/MachineLearningCourseLeadForm";
-import EnrollModal from "../EnrollModal";
-import SyllabusDownloadModal from "../SyllabusDownloadModal";
-import CareerSessionModal from "../CareerSessionModal";
+import dynamic from "next/dynamic";
+
+const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
+const CareerSessionModal = dynamic(() => import("../CareerSessionModal"), { ssr: false });
 
 export default function HeroSection() {
     const [isEnrollOpen, setIsEnrollOpen] = useState(false);

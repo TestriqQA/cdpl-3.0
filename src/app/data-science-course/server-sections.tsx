@@ -8,21 +8,7 @@ const withLoader = (label: string) => ({
     ),
 });
 
-export const HeroSection = dynamic(
-    () => import("@/components/data-science-course/HeroSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading hero...")
-    },
-);
 
-export const StatsSection = dynamic(
-    () => import("@/components/data-science-course/StatsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading stats...")
-    },
-);
 
 export const WhyDSProgram = dynamic(
     () => import("@/components/data-science-course/WhyDSProgram"),
@@ -88,10 +74,4 @@ export const CareerRoadmapSection = dynamic(
     },
 );
 
-export const JsonLd = dynamic(
-    () => import("@/components/JsonLd"),
-    {
-        ssr: true,
-        ...withLoader("Loading json ld...")
-    },
-);
+export { default as JsonLd } from "@/components/JsonLd";

@@ -1,8 +1,8 @@
 import StickyNav3 from "@/components/StickyNav2/StickyNav3";
 import { TestimonialsClient, CtaClient } from "@/app/machine-learning-course/client-section";
+import HeroSection from "@/components/machine-learning-course/HeroSection";
+import StatsSection from "@/components/machine-learning-course/StatsSection";
 import {
-  HeroSection,
-  StatsSection,
   WhyMLProgram,
   CurriculumSection,
   ProjectsSection,

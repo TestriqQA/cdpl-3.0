@@ -4,9 +4,11 @@ import Link from "next/link";
 import { useState } from "react";
 import GenerativeAICourseLeadForm from "@/components/forms/GenerativeAICourseLeadForm";
 import { ChevronRight, Home, ArrowRight, CloudDownload, ArrowDownNarrowWide } from "lucide-react";
-import EnrollModal from "@/components/EnrollModal";
-import CareerSessionModal from "@/components/CareerSessionModal";
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+import dynamic from "next/dynamic";
+
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
+const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false });
 
 export default function HeroSection() {
     const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);

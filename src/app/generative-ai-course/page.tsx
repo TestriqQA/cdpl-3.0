@@ -1,8 +1,8 @@
 import StickyNav3 from "@/components/StickyNav2/StickyNav3";
 import { TestimonialsClient, CtaClient } from "@/app/generative-ai-course/client-section";
+import HeroSection from "@/components/generative-ai-course/HeroSection";
+import StatsSection from "@/components/generative-ai-course/StatsSection";
 import {
-  HeroSection,
-  StatsSection,
   WhyGenAIProgram,
   CurriculumSection,
   ProjectsSection,
