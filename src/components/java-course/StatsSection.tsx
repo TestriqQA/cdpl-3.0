@@ -1,9 +1,4 @@
 // components/sections/StatsSection.tsx
-// Sleek, responsive, SEO-friendly stats section.
-// Now sources stats from the provided PDF and adds on-scroll count-up animations.
-
-"use client";
-
 import {
   ShieldCheck,
   Cpu,
@@ -13,87 +8,9 @@ import {
   Banknote,
 } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import CareerSessionModal from "@/components/CareerSessionModal";
-
-/** ---------------- Count-up on scroll ---------------- */
-function useInView<T extends HTMLElement>(options?: IntersectionObserverInit) {
-  const ref = useRef<T | null>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    const el = ref.current;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          io.unobserve(el); // fire once
-        }
-      },
-      { root: null, threshold: 0.2, ...options }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [options]);
-
-  return { ref, inView };
-}
-
-function CountUp({
-  value,
-  started,
-  duration = 1200,
-  className,
-}: {
-  value: string; // e.g., "25%", "101,000+", "4 LPA", "30 Hours"
-  started: boolean;
-  duration?: number;
-  className?: string;
-}) {
-  // Parse prefix/number/suffix to animate just the numeric part
-  const { prefix, num, suffix } = useMemo(() => {
-    const trimmed = value.trim();
-    // Capture optional prefix, number (with commas/decimals), and suffix
-    const match =
-      trimmed.match(/^(\D*)\s*([0-9][0-9,\.]*)\s*(.*)$/) || ["", "", "0", ""];
-    const prefix = match[1] ?? "";
-    const numStr = (match[2] ?? "0").replace(/,/g, "");
-    const suffix = match[3] ?? "";
-    const num = parseFloat(numStr) || 0;
-    return { prefix, num, suffix };
-  }, [value]);
-
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!started) return;
-    let raf = 0;
-    const start = performance.now();
-    const animate = (t: number) => {
-      const p = Math.min(1, (t - start) / duration);
-      const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
-      setDisplay(num * eased);
-      if (p < 1) raf = requestAnimationFrame(animate);
-    };
-    raf = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(raf);
-  }, [started, duration, num]);
-
-  // Format with commas; keep integers when original looked like an int
-  const isInt = Number.isInteger(num);
-  const formatted = (isInt ? Math.round(display) : display).toLocaleString(undefined, {
-    maximumFractionDigits: isInt ? 0 : 1,
-  });
-
-  return (
-    <span className={className}>
-      {prefix}
-      {formatted}
-      {suffix ? ` ${suffix}` : ""}
-    </span>
-  );
-}
+import React from "react";
+import { MentorButton } from "./common/ActionButtons";
+import AnimatedCounter from "./common/AnimatedCounter";
 
 /** ---------------- Types ---------------- */
 type Stat = {
@@ -174,20 +91,16 @@ const STATS: Stat[] = [
 ];
 
 export default function StatsSection() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const title =
     "Why Java Leads Enterprise Development in 2025: Performance, Security & Scalability";
   const description =
     "Java remains the #1 enterprise language for building secure, cloud-native, high-performance applications at scale. With Spring Boot, Microservices, Kubernetes, and the JVM, teams ship resilient software faster-backed by a vast talent pool and Fortune 500 adoption.";
-
-  const { ref: sectionRef, inView } = useInView<HTMLElement>({ threshold: 0.15 });
 
   return (
     <section
       id="java-enterprise-stats"
       aria-labelledby="java-stats-heading"
       className="relative py-10"
-      ref={sectionRef}
     >
       {/* subtle futuristic accent (sleek, no heavy gradients) */}
       <div
@@ -252,10 +165,8 @@ export default function StatsSection() {
 
                   <div className="flex-1">
                     <div className="flex items-baseline justify-between">
-                      {/* CountUp animates from 0 once the section is in view */}
-                      <CountUp
+                      <AnimatedCounter
                         value={value}
-                        started={inView}
                         className={["text-3xl font-extrabold tracking-tight", textClass].join(" ")}
                       />
                     </div>
@@ -300,23 +211,14 @@ export default function StatsSection() {
           >
             Explore Java Curriculum
           </Link>
-          <button
-            onClick={() => setIsModalOpen(true)}
+          <MentorButton
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
+            source="Java Course Page - Stats Section - Talk to a Mentor"
           >
             Talk to a Mentor
-          </button>
+          </MentorButton>
         </div>
       </div>
-
-      <CareerSessionModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        courseName="Java Programming"
-        source="Java Course Page - Stats Section - Talk to a Mentor"
-        title="Talk to a Mentor"
-        subtitle="Get expert guidance on your Java career path."
-      />
 
       {/* JSON-LD for SEO (FAQ) */}
       <script

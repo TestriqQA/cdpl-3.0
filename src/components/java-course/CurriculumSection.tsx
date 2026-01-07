@@ -2,8 +2,6 @@
 // Sleek, responsive, SEO-friendly curriculum section with subtle futuristic accents.
 // Updated from the PDF: Modules 1–15 + Capstone (pages 16–19). No repeated colors.
 
-"use client";
-
 import {
   BookOpenCheck,
   Database,
@@ -17,9 +15,8 @@ import {
   Briefcase,
   ChevronRight,
 } from "lucide-react";
-import React, { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+import React from "react";
+import { EnrollButton, SyllabusButton } from "./common/ActionButtons";
 
 type Module = {
   num: string;
@@ -213,9 +210,6 @@ const MODULES: Module[] = [
 ];
 
 export default function CurriculumSection() {
-  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
-  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
-
   const title = "Java Programming Curriculum";
   const subtitle =
     "A 30-hour, job-ready path: essentials → control flow → data structures → OOP → collections → regex → exceptions, finishing with a hands-on capstone.";
@@ -325,14 +319,13 @@ export default function CurriculumSection() {
                   <span className={["text-xs font-semibold", m.text].join(" ")}>
                     Outcome-Focused
                   </span>
-                  <button
-                    onClick={() => setIsSyllabusModalOpen(true)}
+                  <SyllabusButton
                     className="inline-flex items-center text-sm font-semibold text-gray-900 hover:opacity-80"
                     aria-label={`See topics in Module ${m.num}`}
                   >
                     See topics
                     <ChevronRight className="ml-1 h-4 w-4" />
-                  </button>
+                  </SyllabusButton>
                 </div>
               </article>
 
@@ -365,36 +358,22 @@ export default function CurriculumSection() {
 
         {/* Actions */}
         <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-4">
-          <button
-            onClick={() => setIsEnrollModalOpen(true)}
+          <EnrollButton
             className="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
             aria-label="Apply to the Java curriculum"
+            source="Java Course Page - Curriculum Section - Apply Now"
           >
             Apply Now
-          </button>
-          <button
-            onClick={() => setIsSyllabusModalOpen(true)}
+          </EnrollButton>
+          <SyllabusButton
             className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
             aria-label="Download full Java syllabus PDF"
+            source="Java Course Page - Curriculum Section - Java Programming - Download Detailed Syllabus"
           >
             Download Syllabus (PDF)
-          </button>
+          </SyllabusButton>
         </div>
       </div>
-
-      <EnrollModal
-        isOpen={isEnrollModalOpen}
-        onClose={() => setIsEnrollModalOpen(false)}
-        courseName="Java Programming"
-        source="Java Course Page - Curriculum Section - Apply Now"
-      />
-
-      <SyllabusDownloadModal
-        isOpen={isSyllabusModalOpen}
-        onClose={() => setIsSyllabusModalOpen(false)}
-        courseName="Java Programming"
-        source="Java Course Page - Curriculum Section - Java Programming - Download Detailed Syllabus"
-      />
 
       {/* Assist crawlers & screen readers */}
       <h1 className="sr-only">{title}</h1>

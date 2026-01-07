@@ -15,9 +15,10 @@ import {
   Settings2,
   ChevronRight,
 } from "lucide-react";
+import dynamic from "next/dynamic";
 import React, { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
-import CareerSessionModal from "@/components/CareerSessionModal";
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false, loading: () => <div>Loading...</div> });
+const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false, loading: () => <div>Loading...</div> });
 
 type Role = {
   title: string;
