@@ -4,8 +4,10 @@ import React, { useState } from 'react';
 import { Clock, CheckCircle, Award, Briefcase, ArrowRight, CloudDownload, ArrowDownNarrowWide, Star, Users, TrendingUp, Home, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
-import EnrollModal from "../EnrollModal";
-import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import dynamic from "next/dynamic";
+
+const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
 
 // Interface for the key features under the main title
 interface FeatureCardProps {
@@ -92,7 +94,7 @@ const HeroSection: React.FC = () => {
                             Master <span className="text-blue-600">Data Analytics</span> & Visualization with <span className="text-orange-500">Power BI</span>
                         </h1>
 
-                        <div className="md:hidden mt-6 mb-6">
+                        <div className="md:hidden mt-6 mb-6 min-h-[500px]">
                             <ApiCourseLeadForm source="Power BI Course Page - Hero Section (Mobile)" />
                         </div>
 
@@ -142,12 +144,12 @@ const HeroSection: React.FC = () => {
                         </div>
                         <br />
                         <p className="text-base text-gray-500 mb-10">
-                            **Key Skills:** Power BI Desktop, Power BI Service, DAX Calculations, Power Query (M), Data Modeling, Advanced Visualization, Report Publishing, and Collaboration.
+                            **Key Skills:** Power BI Desktop, Power BI Service, DAX Calculations, Power Query (M), Data Modeling, and Advanced Visualization, Report Publishing, and Collaboration.
                         </p>
                     </div>
 
                     {/* Right Column: Lead Form */}
-                    <div className="hidden md:block md:col-span-5 lg:col-span-4 md:top-8 sticky">
+                    <div className="hidden md:block md:col-span-5 lg:col-span-4 md:top-8 sticky min-h-[600px]">
                         <ApiCourseLeadForm source="Power BI Course Page - Hero Section (Desktop)" />
                     </div>
 

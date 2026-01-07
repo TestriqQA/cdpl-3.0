@@ -1,8 +1,9 @@
 import StickyNav from "@/components/StickyNav2/StickyNav2";
 import { TestimonialsClient, CtaClient } from "@/app/digital-marketing-course/client-section";
+import HeroSection from "@/components/digital-marketing-course/HeroSection";
+import StatsSection from "@/components/digital-marketing-course/StatsSection";
+import JsonLd from "@/components/JsonLd";
 import {
-  HeroSection,
-  StatsSection,
   WhyMasterProgram,
   CurriculumSection,
   ProjectsSection,
@@ -10,7 +11,6 @@ import {
   WhoShouldEnroll,
   ToolsSection,
   FaqSection,
-  JsonLd
 } from "@/app/digital-marketing-course/server-sections";
 
 import { generateMetadata } from "@/lib/metadata-generator";

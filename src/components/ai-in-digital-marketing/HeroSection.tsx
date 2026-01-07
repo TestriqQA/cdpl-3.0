@@ -4,9 +4,11 @@ import { courseData } from "@/components/ai-in-digital-marketing/courseData";
 import { ArrowRight, ChevronRight, Clock, Home, CloudDownload, ArrowDownNarrowWide } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import ApiCourseLeadForm from "@/components/forms/ApiCourseLeadForm";
-import EnrollModal from "@/components/EnrollModal";
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false });
 
 export default function HeroSection() {
   const { basic } = courseData;
@@ -108,7 +110,7 @@ export default function HeroSection() {
             </h1>
 
             {/* Mobile form under H1 */}
-            <div className="mt-6 block md:hidden">
+            <div className="mt-6 block md:hidden min-h-[500px]">
               <ApiCourseLeadForm source="AI Digital Marketing - Hero Section (Mobile)" />
             </div>
 
@@ -211,7 +213,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right: Desktop form (top-aligned) */}
-          <div className="hidden md:block md:col-span-4 lg:col-span-4 md:top-8 sticky">
+          <div className="hidden md:block md:col-span-4 lg:col-span-4 md:top-8 sticky min-h-[600px]">
             <ApiCourseLeadForm source="AI Digital Marketing - Hero Section (Desktop)" />
           </div>
         </div>

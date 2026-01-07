@@ -129,7 +129,6 @@ export default function StatsSection() {
         >
           {/* Card 1 — $671.86B by 2028 (PDF p.4) */}
           <div
-            role="listitem"
             className="
               group relative rounded-2xl border p-7 sm:p-8 text-center shadow-sm
               bg-white border-orange-100
@@ -168,7 +167,6 @@ export default function StatsSection() {
 
           {/* Card 2 — 4th Most High-Income Skill (PDF p.4) */}
           <div
-            role="listitem"
             className="
               group relative rounded-2xl border p-7 sm:p-8 text-center shadow-sm
               bg-white border-yellow-100
@@ -201,7 +199,6 @@ export default function StatsSection() {
 
           {/* Card 3 — #3 Most In-Demand Skill (PDF p.4) */}
           <div
-            role="listitem"
             className="
               group relative rounded-2xl border p-7 sm:p-8 text-center shadow-sm
               bg-white border-emerald-100

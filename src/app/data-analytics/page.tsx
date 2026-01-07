@@ -1,6 +1,6 @@
 // pages/advanced-data-analytics.tsx
-const HeroSection = dynamic(() => import('@/components/data-analytics/HeroSection'), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
-const StatsSection = dynamic(() => import('@/components/data-analytics/StatsSection'), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+import HeroSection from '@/components/data-analytics/HeroSection';
+import StatsSection from '@/components/data-analytics/StatsSection';
 const WhyAnalyticsProgram = dynamic(() => import('@/components/data-analytics/WhyAnalyticsProgram'), { ssr: true, loading: () => <SectionLoader label="Loading why analytics program section..." /> });
 const CurriculumSection = dynamic(() => import('@/components/data-analytics/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
 const ProjectsSection = dynamic(() => import('@/components/data-analytics/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });

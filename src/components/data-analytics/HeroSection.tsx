@@ -6,9 +6,12 @@
 
 import Link from "next/link";
 import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
-import EnrollModal from "../EnrollModal";
-import SyllabusDownloadModal from "../SyllabusDownloadModal";
-import CareerSessionModal from "../CareerSessionModal";
+import dynamic from "next/dynamic";
+
+const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
+const CareerSessionModal = dynamic(() => import("../CareerSessionModal"), { ssr: false });
+
 import { ChevronRight, Home, ArrowRight, CloudDownload, ArrowDownNarrowWide } from "lucide-react";
 import { useState } from "react";
 
@@ -83,7 +86,7 @@ export default function HeroSection() {
                         </h1>
 
                         {/* Mobile form directly under headline */}
-                        <div className="mt-5 block md:hidden">
+                        <div className="mt-5 block md:hidden min-h-[500px]">
                             <ApiCourseLeadForm source="Data Analytics Course Page - Hero Section" />
                         </div>
 
@@ -153,7 +156,7 @@ export default function HeroSection() {
                     </div>
 
                     {/* Right column: Desktop form & visual */}
-                    <div className="relative lg:col-span-4 hidden md:block">
+                    <div className="relative lg:col-span-4 hidden md:block min-h-[600px]">
                         <ApiCourseLeadForm source="Data Analytics Course Page - Hero Section" />
                     </div>
                 </div>

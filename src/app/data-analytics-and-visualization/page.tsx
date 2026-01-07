@@ -1,7 +1,7 @@
-const HeroSection = dynamic(() => import('@/components/data-analytics-and-visualization/HeroSection'), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
+import HeroSection from '@/components/data-analytics-and-visualization/HeroSection';
 const StickyNav = dynamic(() => import('@/components/StickyNav2/StickyNav2'), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
 import { with_roadmap } from '@/components/StickyNavData';
-const StatsSection = dynamic(() => import("@/components/data-analytics-and-visualization/StatsSection"), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+import StatsSection from "@/components/data-analytics-and-visualization/StatsSection";
 const WhyVisualizationProgram = dynamic(() => import("@/components/data-analytics-and-visualization/WhyVisualizationProgram"), { ssr: true, loading: () => <SectionLoader label="Loading why visualization program section..." /> });
 const CurriculumSection = dynamic(() => import("@/components/data-analytics-and-visualization/CurriculumSection"), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
 const ProjectsSection = dynamic(() => import("@/components/data-analytics-and-visualization/ProjectsSection"), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
@@ -12,7 +12,7 @@ const ToolsSection = dynamic(() => import("@/components/data-analytics-and-visua
 const CareerRoadmapSection = dynamic(() => import("@/components/data-analytics-and-visualization/CareerRoadmapSection"), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
 const FaqSection = dynamic(() => import("@/components/data-analytics-and-visualization/FaqSection"), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
 const CtaSection = dynamic(() => import("@/components/data-analytics-and-visualization/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
-const JsonLd = dynamic(() => import("@/components/JsonLd"), { ssr: true, loading: () => <SectionLoader label="Loading json ld..." /> });
+import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { DATA_ANALYTICS_VIS_FAQS, DATA_ANALYTICS_VIS_REVIEW_DATA } from "@/data/dataAnalyticsVisData";

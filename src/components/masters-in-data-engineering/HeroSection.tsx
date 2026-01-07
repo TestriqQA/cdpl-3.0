@@ -4,8 +4,10 @@ import { ArrowRight, ChevronRight, Clock, Home, CloudDownload, ArrowDownNarrowWi
 import Link from "next/link";
 import React, { useState } from "react";
 import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
-import EnrollModal from "../EnrollModal";
-import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import dynamic from "next/dynamic";
+
+const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
 
 const highlights = [
   { icon: "⏱️", label: "155 Hours of Structured Training" },
@@ -84,7 +86,7 @@ export default function HeroSection() {
             </h1>
 
             {/* Mobile form (under H1) */}
-            <div className="mt-3 md:hidden">
+            <div className="mt-3 md:hidden min-h-[500px]">
               <ApiCourseLeadForm source="Data Engineering Course Page - Hero Section (Mobile)" />
             </div>
 
@@ -180,7 +182,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right: Desktop form (top-aligned & sticky) */}
-          <div className="hidden md:block md:col-span-5 lg:col-span-4 md:top-8 sticky">
+          <div className="hidden md:block md:col-span-5 lg:col-span-4 md:top-8 sticky min-h-[600px]">
             <ApiCourseLeadForm source="Data Engineering Course Page - Hero Section (Desktop)" />
           </div>
         </div>

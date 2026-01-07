@@ -1,9 +1,10 @@
 import StickyNav from "@/components/StickyNav2/StickyNav2";
 import { with_roadmap } from '@/components/StickyNavData';
 import { TestimonialsClient, CtaClient } from "@/app/power-bi-course/client-section";
+import HeroSection from "@/components/power-bi-course/HeroSection";
+import StatsSection from "@/components/power-bi-course/StatsSection";
+import JsonLd from "@/components/JsonLd";
 import {
-    HeroSection,
-    StatsSection,
     WhyBIProgram,
     CurriculumSection,
     ProjectsSection,
@@ -12,7 +13,6 @@ import {
     ToolsSection,
     FaqSection,
     CareerRoadmapSection,
-    JsonLd
 } from "@/app/power-bi-course/server-sections";
 
 import { generateMetadata } from "@/lib/metadata-generator";

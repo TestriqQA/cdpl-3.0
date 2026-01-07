@@ -2,9 +2,10 @@ import React from 'react';
 import StickyNav from "@/components/StickyNav2/StickyNav2";
 import { with_roadmap } from '@/components/StickyNavData';
 import { TestimonialsClient, CtaClient } from "@/app/masters-in-data-engineering/client-section";
+import HeroSection from "@/components/masters-in-data-engineering/HeroSection";
+import StatsSection from "@/components/masters-in-data-engineering/StatsSection";
+import JsonLd from "@/components/JsonLd";
 import {
-    HeroSection,
-    StatsSection,
     WhyEngineerProgram,
     CurriculumSection,
     ProjectsSection,
@@ -13,7 +14,6 @@ import {
     ToolsSection,
     FaqSection,
     CareerRoadmapSection,
-    JsonLd
 } from "@/app/masters-in-data-engineering/server-sections";
 
 import { generateMetadata } from "@/lib/metadata-generator";

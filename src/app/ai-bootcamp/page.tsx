@@ -1,7 +1,8 @@
-const HeroSection = dynamic(() => import("@/components/ai-bootcamp/HeroSection"), { ssr: true, loading: () => <SectionLoader label="Loading hero section..." /> });
-const StickyNav = dynamic(() => import("@/components/StickyNav2/StickyNav2"), { ssr: true, loading: () => <SectionLoader label="Loading sticky nav..." /> });
+import HeroSection from "@/components/ai-bootcamp/HeroSection";
+import StickyNav from "@/components/StickyNav2/StickyNav2";
 import { with_roadmap } from '@/components/StickyNavData';
-const StatsSection = dynamic(() => import("@/components/ai-bootcamp/StatsSection"), { ssr: true, loading: () => <SectionLoader label="Loading stats section..." /> });
+import StatsSection from "@/components/ai-bootcamp/StatsSection";
+import JsonLd from "@/components/JsonLd";
 const WhyEngineerProgram = dynamic(() => import("@/components/ai-bootcamp/WhyEngineerProgram"), { ssr: true, loading: () => <SectionLoader label="Loading why engineer program section..." /> });
 const CurriculumSection = dynamic(() => import("@/components/ai-bootcamp/CurriculumSection"), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
 const ProjectsSection = dynamic(() => import("@/components/ai-bootcamp/ProjectsSection"), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
@@ -12,7 +13,6 @@ const ToolsSection = dynamic(() => import("@/components/ai-bootcamp/ToolsSection
 const FaqSection = dynamic(() => import("@/components/ai-bootcamp/FaqSection"), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
 const CtaSection = dynamic(() => import("@/components/ai-bootcamp/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
 const CareerRoadmapSection = dynamic(() => import("@/components/ai-bootcamp/CareerRoadmapSection"), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
-const JsonLd = dynamic(() => import("@/components/JsonLd"), { ssr: true, loading: () => <SectionLoader label="Loading json ld..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { AI_BOOTCAMP_FAQS, AI_BOOTCAMP_REVIEW_DATA } from "@/data/aiBootcampData";

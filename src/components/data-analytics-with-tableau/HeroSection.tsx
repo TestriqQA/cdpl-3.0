@@ -4,9 +4,11 @@ import Link from "next/link";
 import Head from "next/head";
 import React, { useState } from "react";
 import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
-import EnrollModal from "../EnrollModal";
-import SyllabusDownloadModal from "../SyllabusDownloadModal";
-import CareerSessionModal from "../CareerSessionModal";
+import dynamic from "next/dynamic";
+
+const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
+const CareerSessionModal = dynamic(() => import("../CareerSessionModal"), { ssr: false });
 
 const heroData = {
     title: "Master Data Analytics & Visualization with Tableau",
@@ -114,7 +116,7 @@ export default function HeroSection() {
                             </h1>
 
                             {/* Mobile form (under H1) */}
-                            <div className="mt-3 md:hidden">
+                            <div className="mt-3 md:hidden min-h-[500px]">
                                 <ApiCourseLeadForm source="Tableau Course Page - Hero Section (Mobile)" courseName={courseName} />
                             </div>
 
@@ -209,7 +211,7 @@ export default function HeroSection() {
                     </div>
 
                     {/* Right spacer to balance grid (form moved to top) */}
-                    <div className="md:col-span-5 lg:col-span-4 hidden md:block">
+                    <div className="md:col-span-5 lg:col-span-4 hidden md:block min-h-[600px]">
                         <ApiCourseLeadForm source="Tableau Course Page - Hero Section (Desktop)" courseName={courseName} />
                     </div>
                 </div>

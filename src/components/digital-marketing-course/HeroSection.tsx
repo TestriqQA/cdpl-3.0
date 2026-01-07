@@ -15,13 +15,14 @@ import {
   CloudDownload,
   ArrowDownNarrowWide
 } from 'lucide-react';
-import { motion } from 'framer-motion';
 import IconCard from '@/components/ui/IconCard';
 import ApiCourseLeadForm from '../forms/ApiCourseLeadForm';
 import Link from 'next/link';
 import { useState } from 'react';
-import EnrollModal from '../EnrollModal';
-import SyllabusDownloadModal from '../SyllabusDownloadModal';
+import dynamic from 'next/dynamic';
+
+const EnrollModal = dynamic(() => import('../EnrollModal'), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import('../SyllabusDownloadModal'), { ssr: false });
 
 /** -----------------------------
  * Feature tiles (distinct colors, no repeats)
@@ -107,10 +108,7 @@ export default function HeroSection() {
 
         <div className="grid items-start gap-10 md:grid-cols-12">
           {/* Left column: copy */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+          <div
             className="md:col-span-7 lg:col-span-8"
           >
             {/* badges */}
@@ -141,7 +139,7 @@ export default function HeroSection() {
             </h1>
 
             {/* Mobile form just below H1 */}
-            <div className="mt-6 block md:hidden">
+            <div className="mt-6 block md:hidden min-h-[500px]">
               <ApiCourseLeadForm source="Digital Marketing Course Page - Hero Section (Mobile)" />
             </div>
 
@@ -214,10 +212,10 @@ export default function HeroSection() {
                 />
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Right column: Desktop Form (Sticky) */}
-          <div className="hidden md:block md:col-span-5 lg:col-span-4 md:top-8 sticky">
+          <div className="hidden md:block md:col-span-5 lg:col-span-4 md:top-8 sticky min-h-[600px]">
             <ApiCourseLeadForm source="Digital Marketing Course Page - Hero Section (Desktop)" />
           </div>
         </div>

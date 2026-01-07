@@ -4,8 +4,10 @@ import { ArrowRight, ChevronRight, Home, CloudDownload, ArrowDownNarrowWide } fr
 import Link from "next/link";
 import React, { useState } from "react";
 import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
-import EnrollModal from "../EnrollModal";
-import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import dynamic from "next/dynamic";
+
+const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
 
 /** --- Updated SEO-optimized Hero --- */
 export default function HeroSection() {
@@ -82,7 +84,7 @@ export default function HeroSection() {
                                 </span>
                             </h1>
 
-                            <div className="md:hidden">
+                            <div className="md:hidden min-h-[500px]">
                                 <ApiCourseLeadForm source="Data Analytics & Visualization Course Page - Hero Section (Mobile)" courseName={courseName} />
                             </div>
 
@@ -187,7 +189,7 @@ export default function HeroSection() {
                     </div>
 
                     {/* Right: Desktop form (top-aligned & sticky) */}
-                    <div className="hidden md:block md:col-span-5 lg:col-span-4 md:top-8 sticky">
+                    <div className="hidden md:block md:col-span-5 lg:col-span-4 md:top-8 sticky min-h-[600px]">
                         <ApiCourseLeadForm source="Data Analytics & Visualization Course Page - Hero Section (Desktop)" courseName={courseName} />
                     </div>
                     {/* /Right section */}

@@ -78,7 +78,6 @@ export default function CareerSection() {
             return (
               <span
                 key={job}
-                role="listitem"
                 tabIndex={0}
                 className={[
                   'inline-flex items-center justify-center rounded-xl border px-4 py-3 text-sm font-semibold shadow-[0_1px_0_0_rgba(15,23,42,0.05)]',
