@@ -8,21 +8,7 @@ const withLoader = (label: string) => ({
     ),
 });
 
-export const HeroSection = dynamic(
-    () => import("@/components/prompt-engineering-course/HeroSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading hero...")
-    },
-);
-
-export const StatsSection = dynamic(
-    () => import("@/components/prompt-engineering-course/StatsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading stats...")
-    },
-);
+// HeroSection and StatsSection removed (now static in page.tsx)
 
 export const WhyPromptGenProgram = dynamic(
     () => import("@/components/prompt-engineering-course/WhyPromptGenProgram"),
@@ -88,10 +74,4 @@ export const CareerRoadmapSection = dynamic(
     },
 );
 
-export const JsonLd = dynamic(
-    () => import("@/components/JsonLd"),
-    {
-        ssr: true,
-        ...withLoader("Loading json ld...")
-    },
-);
+// JsonLd removed (now static in page.tsx)

@@ -1,8 +1,9 @@
 import StickyNav3 from "@/components/StickyNav2/StickyNav3";
 import { TestimonialsClient, CtaClient } from "@/app/prompt-engineering-course/client-section";
+import HeroSection from "@/components/prompt-engineering-course/HeroSection";
+import StatsSection from "@/components/prompt-engineering-course/StatsSection";
+import JsonLd from "@/components/JsonLd";
 import {
-  HeroSection,
-  StatsSection,
   WhyPromptGenProgram,
   CurriculumSection,
   ProjectsSection,
@@ -10,8 +11,7 @@ import {
   WhoShouldEnroll,
   ToolsSection,
   FaqSection,
-  CareerRoadmapSection,
-  JsonLd
+  CareerRoadmapSection
 } from "@/app/prompt-engineering-course/server-sections";
 
 import { generateMetadata } from "@/lib/metadata-generator";
