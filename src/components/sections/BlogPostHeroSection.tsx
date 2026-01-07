@@ -80,7 +80,7 @@ export const BlogPostHeroSection: React.FC<BlogPostHeroSectionProps> = ({ slug }
                     src={post.featuredImage || getFallbackImage(post.categoryId)}
                     alt={post.title}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 85vw, 1200px"
+                    sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 768px) 90vw, (max-width: 1024px) 85vw, 1200px"
                     priority
                     quality={90}
                 />

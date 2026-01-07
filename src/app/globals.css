@@ -246,3 +246,39 @@ input::placeholder {
 .animate-float-slower {
   animation: float-slower 9s ease-in-out infinite;
 }
+
+/* Live Jobs Hero Animations */
+@keyframes floatY {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes floatYLarge {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+
+  50% {
+    transform: translateY(6px) rotate(45deg);
+  }
+}
+
+.animate-float-y-slow {
+  animation: floatY 6s ease-in-out infinite;
+}
+
+
+/* Optimization: Defer rendering of off-screen sections */
+main > section:not(:first-child) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}

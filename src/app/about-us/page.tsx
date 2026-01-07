@@ -24,49 +24,46 @@ import JsonLd from "@/components/JsonLd";
 // DYNAMIC IMPORTS
 // ============================================================================
 
-const AboutHeroSection = dynamic(
-  () => import("@/components/sections/AboutHeroSection"),
-  { ssr: true }
-);
+import AboutHeroSection from "@/components/sections/AboutHeroSection";
 
 const AboutStatsSection = dynamic(
   () => import("@/components/sections/AboutStatsSection"),
-  { ssr: true }
+  { ssr: true, loading: () => null }
 );
 
 const AboutWhyJoinUs = dynamic(
   () => import("@/components/sections/AboutWhyJoinUs"),
-  { ssr: true }
+  { ssr: true, loading: () => null }
 );
 
 const AboutStorySection = dynamic(
   () => import("@/components/sections/AboutStorySection"),
-  { ssr: true }
+  { ssr: true, loading: () => null }
 );
 
 const AboutFacultyStrip = dynamic(
   () => import("@/components/sections/AboutFacultyStrip"),
-  { ssr: true }
+  { ssr: true, loading: () => null }
 );
 
 const AboutMissionVision = dynamic(
   () => import("@/components/sections/AboutVisionMission"),
-  { ssr: true }
+  { ssr: true, loading: () => null }
 );
 
 const AboutFAQSection = dynamic(
   () => import("@/components/sections/AboutFAQSection"),
-  { ssr: true }
+  { ssr: true, loading: () => null }
 );
 
 const AboutCTASection = dynamic(
   () => import("@/components/sections/AboutCTASection"),
-  { ssr: true }
+  { ssr: true, loading: () => null }
 );
 
 const AboutAccreditations = dynamic(
   () => import("@/components/sections/AboutAccreditations"),
-  { ssr: true }
+  { ssr: true, loading: () => null }
 );
 
 // ============================================================================
@@ -198,10 +195,6 @@ export default function AboutPage(): React.ReactElement {
           MAIN CONTENT
           ======================================== */}
       <main className="relative isolate">
-        {/* Subtle background glow */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="mx-auto h-[50rem] w-[50rem] -translate-y-40 rounded-full bg-[radial-gradient(closest-side,rgba(59,130,246,0.10),transparent)] blur-3xl" />
-        </div>
 
         <AboutHeroSection />
         <AboutStatsSection />

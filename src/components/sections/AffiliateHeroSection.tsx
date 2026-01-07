@@ -238,6 +238,7 @@ export default function AffiliateHeroSection() {
                 priority
                 sizes="(max-width: 640px) 92vw, (max-width: 1024px) 48vw, 600px"
                 className="h-auto w-full select-none"
+                quality={50}
                 style={{
                   WebkitMaskImage:
                     "radial-gradient(130% 130% at 60% 40%, black 72%, transparent 100%)",

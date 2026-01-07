@@ -324,6 +324,7 @@ export default function JobOpeningsJobBrowser({
                                             value={exp[0]}
                                             onChange={(e) => setExp([Number(e.target.value), exp[1]])}
                                             className="w-24 rounded-md border border-slate-300 bg-white px-2 py-1 text-sm"
+                                            aria-label="Minimum experience in years"
                                         />
                                         <span className="text-slate-400">—</span>
                                         <input
@@ -333,6 +334,7 @@ export default function JobOpeningsJobBrowser({
                                             value={exp[1]}
                                             onChange={(e) => setExp([exp[0], Number(e.target.value)])}
                                             className="w-24 rounded-md border border-slate-300 bg-white px-2 py-1 text-sm"
+                                            aria-label="Maximum experience in years"
                                         />
                                     </div>
                                 </div>

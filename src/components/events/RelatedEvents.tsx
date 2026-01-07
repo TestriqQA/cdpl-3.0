@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import { getFeaturedEvents } from "@/data/eventsData";
+import NextImage from "next/image";
 
 interface RelatedEventsProps {
     currentSlug: string;
@@ -37,11 +38,17 @@ export default function RelatedEvents({ currentSlug }: RelatedEventsProps) {
                         >
                             <div className="relative h-56 overflow-hidden">
                                 {event.heroImageUrl ? (
-                                    <img
-                                        src={event.heroImageUrl}
-                                        alt={event.title}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                    />
+                                    <React.Fragment>
+                                        <div className="relative w-full h-full">
+                                            <NextImage
+                                                src={event.heroImageUrl}
+                                                alt={event.title}
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                            />
+                                        </div>
+                                    </React.Fragment>
                                 ) : (
                                     <div className={`w-full h-full ${event.categoryColor || "bg-blue-600"} opacity-10 group-hover:opacity-20 transition-opacity`} />
                                 )}

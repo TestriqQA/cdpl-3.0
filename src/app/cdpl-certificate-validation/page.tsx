@@ -13,25 +13,15 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
   );
 }
 
+import CertificationBreadcrumb from "@/components/sections/CertificationBreadcrumb";
+import CertificationValidatorSection from "@/components/sections/CertificationValidatorSection";
+import CertificationSampleSection from "@/components/sections/CertificationSampleSection";
+
 /* ---------- Dynamic sections (client components) ---------- */
-const CertificationBreadcrumb = dynamic(
-  () => import("@/components/sections/CertificationBreadcrumb"),
-  { ssr: true, loading: () => <SectionLoader label="Loading breadcrumb..." /> }
-);
-
-const CertificationValidatorSection = dynamic(
-  () => import("@/components/sections/CertificationValidatorSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading validator..." /> }
-);
-
+// Kept Features dynamic as it is likely below fold
 const CertificationFeaturesSection = dynamic(
   () => import("@/components/sections/CertificationFeaturesSection"),
   { ssr: true, loading: () => <SectionLoader label="Loading features..." /> }
-);
-
-const CertificationSampleSection = dynamic(
-  () => import("@/components/sections/CertificationSampleSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading showcase..." /> }
 );
 
 /* ---------- SEO ---------- */

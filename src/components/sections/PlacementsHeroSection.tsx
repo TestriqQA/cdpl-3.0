@@ -1,7 +1,9 @@
 // components/sections/PlacementsHeroSection.tsx
 "use client";
 
-import { m, LazyMotion, domAnimation } from "framer-motion";
+import { m, LazyMotion } from "framer-motion";
+const loadFeatures = () =>
+  import("framer-motion").then((res) => res.domAnimation);
 import {
   Sparkles,
   GraduationCap,
@@ -17,7 +19,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 const AdvisorModal = dynamic(() => import("@/components/ui/AdvisorModal"), { ssr: false });
 
@@ -65,8 +67,30 @@ function FloatingIcon({
   );
 }
 
+const MotionProvider = ({
+  children,
+  active,
+}: {
+  children: React.ReactNode;
+  active: boolean;
+}) => {
+  if (active) {
+    return <LazyMotion features={loadFeatures}>{children}</LazyMotion>;
+  }
+  return <>{children}</>;
+};
+
 export default function PlacementsHeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showFloatingIcons, setShowFloatingIcons] = useState(false);
+
+  useEffect(() => {
+    // Only show decorative floating icons on larger screens to save resources
+    const check = () => setShowFloatingIcons(window.innerWidth >= 1040);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -74,7 +98,7 @@ export default function PlacementsHeroSection() {
     { label: "Placements", href: "/jobs/placements" },
   ];
   return (
-    <LazyMotion features={domAnimation}>
+    <MotionProvider active={showFloatingIcons}>
       <section
         className="
         relative isolate overflow-hidden bg-white text-slate-900
@@ -92,24 +116,28 @@ export default function PlacementsHeroSection() {
 
         {/* Decorative layer (no pointer events) */}
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <FloatingIcon x="6%" y="9%" className="hidden min-[1040px]:grid">
-            <Briefcase className="h-6 w-6 text-[#6aa9ff]" />
-          </FloatingIcon>
-          <FloatingIcon x="40%" y="6%" className="hidden min-[1040px]:grid">
-            <BadgeCheck className="h-6 w-6 text-[#7ee7ff]" />
-          </FloatingIcon>
-          <FloatingIcon x="28%" y="14%" className="hidden min-[1040px]:grid">
-            <Building2 className="h-6 w-6 text-[#6aa9ff]" />
-          </FloatingIcon>
-          <FloatingIcon x="69%" y="12%" className="hidden min-[1040px]:grid">
-            <TrendingUp className="h-6 w-6 text-[#b0b9ff]" />
-          </FloatingIcon>
-          <FloatingIcon x="91%" y="8%" className="hidden min-[1040px]:grid">
-            <Trophy className="h-6 w-6 text-[#9d7bff]" />
-          </FloatingIcon>
-          <FloatingIcon x="87%" y="26%" className="hidden min-[1040px]:grid">
-            <MapPin className="h-6 w-6 text-[#7ee7ff]" />
-          </FloatingIcon>
+          {showFloatingIcons && (
+            <>
+              <FloatingIcon x="6%" y="9%">
+                <Briefcase className="h-6 w-6 text-[#6aa9ff]" />
+              </FloatingIcon>
+              <FloatingIcon x="40%" y="6%">
+                <BadgeCheck className="h-6 w-6 text-[#7ee7ff]" />
+              </FloatingIcon>
+              <FloatingIcon x="28%" y="14%">
+                <Building2 className="h-6 w-6 text-[#6aa9ff]" />
+              </FloatingIcon>
+              <FloatingIcon x="69%" y="12%">
+                <TrendingUp className="h-6 w-6 text-[#b0b9ff]" />
+              </FloatingIcon>
+              <FloatingIcon x="91%" y="8%">
+                <Trophy className="h-6 w-6 text-[#9d7bff]" />
+              </FloatingIcon>
+              <FloatingIcon x="87%" y="26%">
+                <MapPin className="h-6 w-6 text-[#7ee7ff]" />
+              </FloatingIcon>
+            </>
+          )}
 
           {/* Ambient sweeping lines */}
           <svg className="absolute left-0 top-0 h-full w-full">
@@ -167,32 +195,23 @@ export default function PlacementsHeroSection() {
           <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-8 lg:gap-12">
             {/* LEFT — text (densified to avoid empty feel) */}
             <div className="order-1 md:order-1 max-w-2xl md:flex-1 md:basis-[60%] lg:basis-[62%]">
-              <m.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+              <div
                 className="inline-flex items-center gap-2 rounded-full border border-sky-200/70 px-3 py-1 text-sm bg-white/85 backdrop-blur-md text-gray-800"
               >
                 <Sparkles className="h-4 w-4 text-[#6aa9ff]" />
                 <span>Real Hiring Outcomes</span>
-              </m.p>
+              </div>
 
-              <m.h1
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.08 }}
+              <h1
                 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl"
               >
                 <span style={{ color: "#0069A8" }}>CDPL Student</span>{" "}
                 <span style={{ color: "var(--color-brand, #ff8c00)" }}>
                   Placements
                 </span>
-              </m.h1>
+              </h1>
 
-              <m.p
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.14 }}
+              <p
                 className="mt-4 mx-auto max-w-3xl text-base text-slate-700 sm:text-lg lg:mx-0"
               >
                 Explore roles, companies, locations, and success stories from learners across{" "}
@@ -201,25 +220,19 @@ export default function PlacementsHeroSection() {
                 <strong className="text-slate-900">Full-Stack</strong>, and{" "}
                 <strong className="text-slate-900">Cloud/DevOps</strong> programs by
                 Cinute Digital Pvt Ltd (CDPL).
-              </m.p>
+              </p>
 
               {/* Added supporting paragraph like Jobs hero to fill left space */}
-              <m.p
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.17 }}
+              <p
                 className="mt-4 mx-auto max-w-3xl text-[15px] leading-7 text-slate-700 sm:text-base md:text-lg lg:mx-0"
               >
                 We work closely with mentors and hiring partners to guide profiles, refine resumes,
                 and prep for interviews, so students move faster from training to{" "}
                 <span className="font-semibold text-slate-900">real offers</span>.
-              </m.p>
+              </p>
 
               {/* Compact highlights row to enrich content density */}
-              <m.div
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.18 }}
+              <div
                 className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4"
               >
                 <div className="flex items-center gap-2 rounded-xl bg-green-50 px-4 py-2 ring-1 ring-green-200">
@@ -234,13 +247,10 @@ export default function PlacementsHeroSection() {
                   <Trophy className="h-4 w-4 text-indigo-700" />
                   <span className="text-sm text-indigo-700">Interview ready</span>
                 </div>
-              </m.div>
+              </div>
 
               {/* CTA */}
-              <m.div
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
+              <div
                 className="mt-6 flex items-center justify-center md:justify-start"
               >
                 <button
@@ -251,14 +261,14 @@ export default function PlacementsHeroSection() {
                   Talk to a Placement Advisor
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </button>
-              </m.div>
+              </div>
             </div>
 
             {/* RIGHT — visual (smaller + raised, like Jobs hero) */}
             <div className="order-2 md:order-2 relative self-start mt-6 md:mt-0 md:basis-[40%] lg:basis-[38%] -translate-y-1 sm:-translate-y-2 md:-translate-y-4 lg:-translate-y-8">
               <div className="relative ml-0 mr-0 w-full md:ml-auto max-w-[24rem] sm:max-w-[26rem] md:w-[300px] lg:w-[360px] xl:w-[400px]">
                 <Image
-                  src="/placement_images/placments_hero2.png"
+                  src="/placement_images/placments_hero2.webp"
                   alt="CDPL Student Placements illustration — partner companies & verified outcomes"
                   title="CDPL Student Placements illustration — partner companies & verified outcomes"
                   width={640}
@@ -279,6 +289,6 @@ export default function PlacementsHeroSection() {
           source="Placements Page - Hero Section"
         />
       </section>
-    </LazyMotion>
+    </MotionProvider>
   );
 }

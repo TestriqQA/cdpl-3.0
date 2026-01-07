@@ -34,6 +34,35 @@ function Pill({ children }: { children: React.ReactNode }) {
   );
 }
 
+const TECH_DICT = [
+  "jmeter",
+  "selenium",
+  "postman",
+  "restassured",
+  "rest assured",
+  "cypress",
+  "playwright",
+  "appium",
+  "java",
+  "python",
+  "javascript",
+  "typescript",
+  "sql",
+  "mysql",
+  "postgres",
+  "mongodb",
+  "jenkins",
+  "docker",
+  "kubernetes",
+  "aws",
+  "azure",
+  "gcp",
+  "react",
+  "node",
+  "next.js",
+  "ci/cd",
+];
+
 export function JobsLiveJobsJobCardSection({
   job,
   onShare,
@@ -49,40 +78,13 @@ export function JobsLiveJobsJobCardSection({
       ? `Posted: ${formatDate(job.postedOn)}`
       : "";
 
-  const techFromText = (() => {
+  const techFromText = useMemo(() => {
     const hay = [job.title, ...(job.highlights || []), ...(job.responsibilities || [])]
       .join(" ")
       .toLowerCase();
-    const DICT = [
-      "jmeter",
-      "selenium",
-      "postman",
-      "restassured",
-      "rest assured",
-      "cypress",
-      "playwright",
-      "appium",
-      "java",
-      "python",
-      "javascript",
-      "typescript",
-      "sql",
-      "mysql",
-      "postgres",
-      "mongodb",
-      "jenkins",
-      "docker",
-      "kubernetes",
-      "aws",
-      "azure",
-      "gcp",
-      "react",
-      "node",
-      "next.js",
-      "ci/cd",
-    ];
+
     const found = new Set<string>();
-    for (const k of DICT) if (hay.includes(k)) found.add(k.replace(/\brest assured\b/, "Rest Assured"));
+    for (const k of TECH_DICT) if (hay.includes(k)) found.add(k.replace(/\brest assured\b/, "Rest Assured"));
     const title = (s: string) =>
       s
         .split(/[\s/]+/)
@@ -93,7 +95,7 @@ export function JobsLiveJobsJobCardSection({
       .map(title)
       .slice(0, 12)
       .sort();
-  })();
+  }, [job.title, job.highlights, job.responsibilities]);
 
   // --- IMAGE HANDLING ---
   // Only attempt to render an image if a bannerImage is explicitly provided.

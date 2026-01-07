@@ -10,14 +10,12 @@ import {
     validateEmail as validateEmailLib,
     validatePhone as validatePhoneLib
 } from '@/lib/formValidation';
-import { motion, type Variants } from "framer-motion";
 
 // Update interface
 export interface CityCourseLeadFormProps {
     className?: string;
     tracks?: string[];
     onSubmit?: (data: any) => void;
-    variants?: Variants;
     courseName?: string;
     cityName?: string;
 }
@@ -25,7 +23,6 @@ export interface CityCourseLeadFormProps {
 export default function CityCourseLeadForm({
     className = "",
     onSubmit,
-    variants,
     courseName,
     cityName,
 }: CityCourseLeadFormProps) {
@@ -200,9 +197,8 @@ export default function CityCourseLeadForm({
         }
       `}</style>
 
-            <motion.div
+            <div
                 ref={formRef}
-                variants={variants}
                 className={`bg-white/92 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8 ${className}`}
             >
                 {/* Form Header */}
@@ -354,7 +350,7 @@ export default function CityCourseLeadForm({
                         </div>
                     </div>
                 </form>
-            </motion.div>
+            </div>
         </>
     );
 }

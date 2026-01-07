@@ -113,7 +113,7 @@ export default function Page() {
       </div>
 
       <JobsLiveJobsJobsHeroSection />
-      <JobsLiveJobsJobsTickerSection jobs={JOBS_WITH_BANNER} />
+      <JobsLiveJobsJobsTickerSection jobs={JOBS_WITH_BANNER.slice(0, 12)} />
       <JobsLiveJobsListingSection jobs={JOBS_WITH_BANNER} />
 
       {/* Below the fold sections load dynamically */}

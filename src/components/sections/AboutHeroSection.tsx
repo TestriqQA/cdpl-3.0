@@ -85,10 +85,9 @@ export default function AboutHeroSection() {
                         About <span className="text-brand">Cinute Digital</span>
                     </motion.h1>
 
-                    <motion.p
-                        {...fadeUp}
-                        transition={{ ...(fadeUp.transition as Transition), delay: 0.12 }}
+                    <p
                         className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-700 sm:text-base md:text-lg"
+                        style={{ fontSizeAdjust: '0.5' }}
                     >
                         Cinute Digital is a premier <strong>EdTech institute</strong> delivering{" "}
                         <strong>industry-ready training</strong> in <strong>Software Testing</strong>,{" "}
@@ -98,7 +97,7 @@ export default function AboutHeroSection() {
                         <strong> high-growth tech jobs</strong>. Our <strong>job-oriented courses</strong> blend hands-on
                         labs, interview prep, and real business case studies—built to boost your{" "}
                         <strong>skills, employability, and salary growth</strong>.
-                    </motion.p>
+                    </p>
 
                     <motion.ul
                         {...fadeUp}

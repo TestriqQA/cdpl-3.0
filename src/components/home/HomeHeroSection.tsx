@@ -122,34 +122,32 @@ interface DesktopHeroContentProps {
 const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure, onOpenVideo }) => (
   <>
     {/* Top Badge */}
-    <m.div
-      {...fadeUp}
+    {/* Top Badge - ANIMATION REMOVED FOR LCP */}
+    <div
       className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-200 rounded-full px-4 py-2 mb-5"
     >
       <Sparkles className="h-3.5 w-3.5 text-indigo-500" aria-hidden="true" />
       <span className="text-[11px] sm:text-xs font-semibold text-indigo-700">
         🏆 India&apos;s #1 Software Testing & Data Science Training Institute
       </span>
-    </m.div>
+    </div>
 
     {/* Main Headline - Updated Copy */}
-    <m.h1
+    {/* Main Headline - Updated Copy - ANIMATION REMOVED FOR LCP */}
+    <h1
       id="home-heading"
-      {...fadeUp}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.06 }}
       className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
     >
       Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span> with <span className="text-brand">100% Placement</span>
-    </m.h1>
+    </h1>
 
     {/* Enhanced Subheadline */}
-    <m.p
-      {...fadeUp}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.12 }}
+    {/* Enhanced Subheadline - ANIMATION REMOVED FOR LCP */}
+    <p
       className="mt-5 text-[15px] sm:text-base md:text-lg leading-7 text-slate-700"
     >
       Launch your tech career with industry-leading courses, live projects, and guaranteed job interviews. Join 5000+ successful graduates today.
-    </m.p>
+    </p>
 
     {/* Trust Indicators - 3 Cards */}
     <m.div
@@ -617,23 +615,21 @@ const HomeHeroSection: React.FC = () => {
               {Breadcrumb}
 
               {/* 2. Headline */}
-              <m.h1
+              {/* 2. Headline - ANIMATION REMOVED FOR LCP */}
+              <h1
                 id="home-heading-mobile"
-                {...fadeUp}
-                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.06 }}
                 className="mt-2 py-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
               >
                 Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span>
-              </m.h1>
+              </h1>
 
               {/* 3. Description */}
-              <m.p
-                {...fadeUp}
-                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.12 }}
+              {/* 3. Description - ANIMATION REMOVED FOR LCP */}
+              <p
                 className="mt-1 mb-1.5 text-[15px] sm:text-base leading-7 text-slate-700"
               >
                 Launch your tech career with industry-leading courses, live projects, and guaranteed job interviews. Join 5000+ successful graduates today.
-              </m.p>
+              </p>
 
               {/* 4. Form Card */}
               {LeadForm}

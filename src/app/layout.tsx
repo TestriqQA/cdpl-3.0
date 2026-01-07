@@ -24,14 +24,21 @@ import { SITE_CONFIG, SEO_DEFAULTS } from "@/lib/seo-config";
 import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 
-const inter = Inter({ subsets: ["latin"], display: 'swap' });
+const inter = Inter({
+  subsets: ["latin"],
+  display: 'swap',
+  variable: '--font-inter',
+  preload: true,
+  adjustFontFallback: true,
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Arial', 'sans-serif'],
+});
 
 // ============================================================================
 // DYNAMIC IMPORTS (for performance)
 // ============================================================================
 
-import Header from "@/components/Layout/Header";
-// const Header = dynamic(() => import("@/components/Layout/Header"), { ssr: true });
+// import Header from "@/components/Layout/Header";
+const Header = dynamic(() => import("@/components/Layout/Header"), { ssr: true });
 const Footer = dynamic(() => import("@/components/Layout/Footer"), { ssr: true });
 const SpecialOfferBanner = dynamic(() => import("@/components/SpecialOfferBanner"), { ssr: true });
 
@@ -88,17 +95,13 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href={SITE_CONFIG.appleTouchIcon} />
         <link rel="icon" href={SITE_CONFIG.favicon} />
 
-        {/* Resource hints for performance */}
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Resource hints for performance - only for actually used origins */}
 
 
 
       </head>
 
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased`}>
         <div className="sticky top-0 z-[100] w-full">
           <SpecialOfferBanner />
           <Header />
