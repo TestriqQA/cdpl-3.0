@@ -4,7 +4,8 @@
 'use client';
 
 import { useState } from "react";
-import CareerSessionModal from "@/components/CareerSessionModal";
+import dynamic from "next/dynamic";
+const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false, loading: () => <div>Loading...</div> });
 
 type Project = {
     title: string;

@@ -3,8 +3,9 @@
 
 'use client';
 
+import dynamic from "next/dynamic";
 import { useState } from "react";
-import CareerSessionModal from "@/components/CareerSessionModal";
+const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false, loading: () => <div>Loading...</div> });
 
 type Step = {
     n: number;

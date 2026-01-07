@@ -1,7 +1,7 @@
 import StickyNav3 from "@/components/StickyNav2/StickyNav3";
 import { TestimonialsClient, CtaClient } from "@/app/java-course/client-section";
+import HeroSection from "@/components/java-course/HeroSection";
 import {
-  HeroSection,
   StatsSection,
   WhyJavaProgram,
   CurriculumSection,

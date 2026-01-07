@@ -2,8 +2,6 @@
 // Sleek, responsive, SEO-friendly "Why Java Program" section.
 // No repeated colors, minimal/futuristic accents, fully self-contained.
 
-"use client";
-
 import {
   Timer,
   FolderGit2,
@@ -14,9 +12,7 @@ import {
   Rocket,
 } from "lucide-react";
 
-import { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+import { EnrollButton, SyllabusButton } from "./common/ActionButtons";
 
 type Pill = {
   icon: React.ComponentType<{ className?: string }>;
@@ -77,9 +73,6 @@ const PILLS: Pill[] = [
 ];
 
 export default function WhyJavaProgram() {
-  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
-  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
-
   const title = "Your Gateway to Top 1% Java Developer";
   const subtitle =
     "Job-ready Java training covering Core Java, Spring Boot, REST APIs, Microservices, SQL, and Cloud fundamentals-designed for high-growth engineering careers.";
@@ -175,35 +168,21 @@ export default function WhyJavaProgram() {
 
         {/* Micro-CTA row */}
         <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-4">
-          <button
-            onClick={() => setIsEnrollModalOpen(true)}
+          <EnrollButton
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
+            source="Java Course Page - Why Java Program Section - Apply for Program"
           >
             Apply for the Program
             <Rocket className="ml-2 h-4 w-4" />
-          </button>
-          <button
-            onClick={() => setIsSyllabusModalOpen(true)}
+          </EnrollButton>
+          <SyllabusButton
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
+            source="Java Course Page - Why Java Program Section - Syllabus Download"
           >
             Download Syllabus (PDF)
-          </button>
+          </SyllabusButton>
         </div>
       </div>
-
-      <EnrollModal
-        isOpen={isEnrollModalOpen}
-        onClose={() => setIsEnrollModalOpen(false)}
-        courseName="Java Programming"
-        source="Java Course Page - Why Java Program Section - Apply for Program"
-      />
-
-      <SyllabusDownloadModal
-        isOpen={isSyllabusModalOpen}
-        onClose={() => setIsSyllabusModalOpen(false)}
-        courseName="Java Programming"
-        source="Java Course Page - Why Java Program Section - Syllabus Download"
-      />
 
       {/* Assist crawlers that read visible content */}
       <h1 className="sr-only">{title}</h1>

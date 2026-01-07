@@ -8,14 +8,6 @@ const withLoader = (label: string) => ({
     ),
 });
 
-export const HeroSection = dynamic(
-    () => import("@/components/java-course/HeroSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading hero...")
-    },
-);
-
 export const StatsSection = dynamic(
     () => import("@/components/java-course/StatsSection"),
     {

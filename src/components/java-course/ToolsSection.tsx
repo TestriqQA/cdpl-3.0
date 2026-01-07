@@ -18,8 +18,9 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
-import CareerSessionModal from "@/components/CareerSessionModal";
+import dynamic from "next/dynamic";
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <div>Loading...</div> });
+const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false, loading: () => <div>Loading...</div> });
 
 type Tool = {
   name: string;

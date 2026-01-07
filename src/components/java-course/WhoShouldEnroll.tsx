@@ -13,8 +13,9 @@ import {
   Users,
 } from "lucide-react";
 import React, { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+import dynamic from "next/dynamic";
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false, loading: () => <div>Loading...</div> });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <div>Loading...</div> });
 
 type Audience = {
   title: string;

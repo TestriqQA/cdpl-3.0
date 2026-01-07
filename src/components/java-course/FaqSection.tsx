@@ -15,12 +15,13 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-import CareerSessionModal from "@/components/CareerSessionModal";
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false, loading: () => <div>Loading...</div> });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <div>Loading...</div> });
 
 
 
 import { JAVA_FAQS } from "@/data/javaData";
+import dynamic from "next/dynamic";
 
 const FAQ_METADATA = [
   { icon: GraduationCap, bg: "bg-sky-50", text: "text-sky-900", ring: "ring-sky-200" },
