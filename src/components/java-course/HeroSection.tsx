@@ -165,7 +165,7 @@ export default function HeroSection() {
 
                             <ScrollButton
                                 targetId="curriculum"
-                                className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
+                                className="md:hidden cursor-pointer inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
                                 aria-label="View full Java curriculum"
                             >
                                 View Curriculum
