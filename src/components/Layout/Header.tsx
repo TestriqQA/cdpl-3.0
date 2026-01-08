@@ -621,14 +621,14 @@ const Header = () => {
                                   className={`block px-4 py-2 text-sm rounded-lg transition-colors active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === href ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                                   onClick={toggleMenu}
                                 >
-                                  â€¢ {course.name}
+                                  &bull; {course.name}
                                 </Link>
                               ) : (
                                 <div
                                   key={idx}
                                   className="block px-4 py-2 text-sm text-gray-600 rounded-lg"
                                 >
-                                  â€¢ {course.name}
+                                  &bull; {course.name}
                                 </div>
                               );
                             })}
@@ -642,7 +642,7 @@ const Header = () => {
                     className={`block px-4 py-2 text-sm font-medium active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/courses" ? "text-brand" : "text-brand hover:text-brand"}`}
                     onClick={toggleMenu}
                   >
-                    View All Courses â†’
+                    View All Courses &rarr;
                   </Link>
                 </div>
               )}
@@ -677,28 +677,28 @@ const Header = () => {
                     className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/live-jobs" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                     onClick={toggleMenu}
                   >
-                    â€¢ Live Jobs
+                    &bull; Live Jobs
                   </Link>
                   <Link
                     href="/jobs/placements"
                     className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/placements" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                     onClick={toggleMenu}
                   >
-                    â€¢ Placements
+                    &bull; Placements
                   </Link>
                   <Link
                     href="/jobs/careers"
                     className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/careers" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                     onClick={toggleMenu}
                   >
-                    â€¢ Careers
+                    &bull; Careers
                   </Link>
                   <Link
                     href="/jobs/job-openings"
                     className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/job-openings" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                     onClick={toggleMenu}
                   >
-                    â€¢ Job Openings
+                    &bull; Job Openings
                   </Link>
                 </div>
               )}
@@ -724,14 +724,14 @@ const Header = () => {
                     className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/about-us" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                     onClick={toggleMenu}
                   >
-                    â€¢ About CDPL
+                    &bull; About CDPL
                   </Link>
                   <Link
                     href="/our-team"
                     className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/our-team" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                     onClick={toggleMenu}
                   >
-                    â€¢ Our Team
+                    &bull; Our Team
                   </Link>
                 </div>
               )}
