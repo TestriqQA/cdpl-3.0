@@ -116,9 +116,9 @@ export default function LeadForm({
 
     return (
         <div className="w-full overflow-hidden" ref={formRef}>
-            <h3 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 break-words">
+            <h2 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 break-words">
                 {title}
-            </h3>
+            </h2>
             <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base break-words">
                 {subtitle}
             </p>
@@ -171,7 +171,10 @@ export default function LeadForm({
                         value={form.watch('phone')}
                         onChange={(v) => form.setValue('phone', v || '')}
                         className="w-full [&>input]:w-full [&>input]:border-none [&>input]:outline-none [&>input]:bg-transparent overflow-hidden"
-                        inputClass="!w-full !pl-14 !text-base !border-none !outline-none !ring-0"
+                        numberInputProps={{
+                            className: "!w-full !text-base !border-none !outline-none !ring-0",
+                            "aria-label": "Phone Number"
+                        }}
                         containerClass="w-full"
                     />
                     {form.formState.errors.phone && (

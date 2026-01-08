@@ -296,18 +296,18 @@ export default function HeroSection(): React.JSX.Element {
                         </ol>
                     </nav>
 
-                    <motion.div {...fadeUp} className="inline-flex items-center gap-2 bg-white border border-slate-100 rounded-full px-3 py-1 text-sm font-medium text-slate-700 shadow-sm mb-4">
+                    <div className="inline-flex items-center gap-2 bg-white border border-slate-100 rounded-full px-3 py-1 text-sm font-medium text-slate-700 shadow-sm mb-4">
                         <Sparkles className="h-4 w-4 text-amber-500" />
                         <span>India's #1 Software Testing Training Institute</span>
-                    </motion.div>
+                    </div>
 
-                    <motion.h1 {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.06 }} className="text-3xl font-extrabold text-slate-900 leading-tight">
+                    <h1 className="text-3xl font-extrabold text-slate-900 leading-tight">
                         Master <span className="text-orange-500">Software Testing</span> & Quality Assurance
-                    </motion.h1>
+                    </h1>
 
-                    <motion.p {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.12 }} className="mt-3 text-base text-slate-600">
+                    <p className="mt-3 text-base text-slate-600">
                         Become a certified Software Tester. Learn Manual Testing, Automation (Selenium & Playwright), API testing, Performance testing and build a portfolio of real testing projects with placement-ready skills.
-                    </motion.p>
+                    </p>
 
                     {/* Form below heading on mobile */}
                     <div className="my-8">

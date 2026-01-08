@@ -1,8 +1,8 @@
 import StickyNav from '@/components/StickyNav2/StickyNav2';
 import { general_course } from '@/components/StickyNavData';
 import { TestimonialsClient, CtaClient } from "@/app/software-testing-course/client-section";
+import HeroSection from '@/components/software-testing-course/HeroSection';
 import {
-  HeroSection,
   FeaturesSection,
   CurriculumSection,
   CoursesSection,

@@ -212,7 +212,9 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
                                             }}
                                             onBlur={() => handleBlur('number', formData.number)}
                                             className="w-full [&>input]:w-full [&>input]:border-none [&>input]:outline-none [&>input]:bg-transparent"
-                                            inputClass="!w-full !pl-14 !text-base !border-none !outline-none !ring-0 !bg-transparent"
+                                            numberInputProps={{
+                                                className: "!w-full !text-base !border-none !outline-none !ring-0 !bg-transparent"
+                                            }}
                                             placeholder="Phone Number"
                                         />
                                     </div>

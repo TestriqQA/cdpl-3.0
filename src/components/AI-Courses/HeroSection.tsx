@@ -21,8 +21,13 @@ import {
 import { EnrollPopup } from '@/components/EnrollForms';
 import BrochureDownloadModal from '@/components/home/BrochureDownloadModal';
 import YouTubeVideoModal from '@/components/home/YouTubeVideoModal';
-import LeadForm from './LeadForm';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+const LeadForm = dynamic(() => import('./LeadForm'), {
+    loading: () => <div className="w-full h-[450px] bg-slate-50 animate-pulse rounded-xl" />,
+    ssr: false
+});
 
 const fadeUp = {
     initial: { opacity: 0, y: 10 },
@@ -299,21 +304,18 @@ export default function HeroSection(): React.JSX.Element {
                         </ol>
                     </nav>
 
-                    <motion.div
-                        {...fadeUp}
+                    <div
                         className="inline-flex items-center gap-2 bg-white border border-slate-100 rounded-full px-3 py-1 text-sm font-medium text-slate-700 shadow-sm mb-4"
                     >
                         <Sparkles className="h-4 w-4 text-amber-500" />
                         <span>India's #1 Artificial Intelligence Training Institute</span>
-                    </motion.div>
+                    </div>
 
-                    <motion.h1
-                        {...fadeUp}
-                        transition={{ ...fadeUp.transition, delay: 0.06 }}
+                    <h1
                         className="text-3xl font-extrabold text-slate-900 leading-tight"
                     >
                         Master <span className="text-orange-500">Artificial Intelligence</span> & Machine Learning
-                    </motion.h1>
+                    </h1>
 
                     {/* Form below heading on mobile */}
                     <div className="my-8">

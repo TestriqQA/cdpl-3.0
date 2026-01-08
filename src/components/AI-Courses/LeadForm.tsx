@@ -171,7 +171,9 @@ export default function LeadForm({
                         value={form.watch('phone')}
                         onChange={(v) => form.setValue('phone', v || '')}
                         className="w-full [&>input]:w-full [&>input]:border-none [&>input]:outline-none [&>input]:bg-transparent overflow-hidden"
-                        inputClass="!w-full !pl-14 !text-base !border-none !outline-none !ring-0"
+                        numberInputProps={{
+                            className: "!w-full !text-base !border-none !outline-none !ring-0"
+                        }}
                         containerClass="w-full"
                     />
                     {form.formState.errors.phone && (

@@ -335,7 +335,9 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                                 value={form.phone}
                                                 onChange={(e) => setForm((f) => ({ ...f, phone: e || '' }))}
                                                 className="w-full [&>input]:w-full [&>input]:border-none [&>input]:outline-none [&>input]:py-3 [&>input]:px-3 [&>input]:rounded-lg [&>input]:bg-white backdrop-blur-sm overflow-hidden"
-                                                inputClass="!w-full !pl-14 !text-base !border-none !outline-none !ring-0"
+                                                numberInputProps={{
+                                                    className: "!w-full !text-base !border-none !outline-none !ring-0"
+                                                }}
                                                 containerClass="w-full"
                                             />
                                         </div>

@@ -110,7 +110,7 @@ export default function CurriculumSection() {
                     transition={{ delay: 0.2 }}
                     className="mb-12"
                 >
-                    <div className="flex flex-wrap justify-center gap-3 mb-8">
+                    <div className="flex flex-wrap justify-center gap-3 mb-8" role="tablist">
                         {tracks.map((track, index) => {
                             const isActive = index === activeTrack;
                             const theme = gradientThemes[index % gradientThemes.length];
