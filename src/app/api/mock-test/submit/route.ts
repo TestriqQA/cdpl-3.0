@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getCourseBySlug } from "@/lib/mock-db";
 import nodemailer from "nodemailer";
+import { appendRowToSheet } from '@/lib/google-sheets';
 
 export async function POST(req: Request) {
     try {
@@ -157,6 +158,21 @@ export async function POST(req: Request) {
         } else {
             console.warn("SMTP credentials missing, skipping user email.");
         }
+
+        // Append to Google Sheet (Async)
+        // Check if userDetails has number or phone
+        const userPhone = userDetails.number || userDetails.phone || '';
+
+        appendRowToSheet({
+            date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+            fullName: userDetails.name,
+            email: userDetails.email,
+            phone: userPhone,
+            source: 'Mock Test Page',
+            type: 'Mock Test Submission',
+            interest: courseSlug,
+            message: `Score: ${score}/30 (${percentage}%)`
+        }).catch(err => console.error('Google Sheet background update error:', err));
 
         return NextResponse.json({ success: true, score });
 
