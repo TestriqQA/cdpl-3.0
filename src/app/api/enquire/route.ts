@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import fs from 'fs/promises';
 import path from 'path';
+import { appendRowToSheet } from '@/lib/google-sheets';
 
 export async function POST(request: Request) {
     try {
@@ -44,6 +45,18 @@ export async function POST(request: Request) {
             html: htmlContent,
             replyTo: email,
         });
+
+        // Append to Google Sheet (Async)
+        appendRowToSheet({
+            date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+            fullName: name,
+            email,
+            phone,
+            source: 'Training Enquiry API', // Likely from EnquireModal
+            type: 'Training Enquiry',
+            interest: '',
+            message: `Company: ${company}. Message: ${message}`
+        }).catch(err => console.error('Google Sheet background update error:', err));
 
         return NextResponse.json({ message: 'Enquiry sent successfully' }, { status: 200 });
     } catch (error) {

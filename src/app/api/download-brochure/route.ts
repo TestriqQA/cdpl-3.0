@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { getTemplatedEmail } from '@/lib/email-utils';
+import { appendRowToSheet } from '@/lib/google-sheets';
 
 // --- Configuration ---
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@example.com';
@@ -89,6 +90,18 @@ export async function POST(request: Request) {
         // 4. Send Emails
         const adminSuccess = await sendEmail(adminMailOptions);
         const userSuccess = await sendEmail(userMailOptions);
+
+        // 5. Append to Google Sheet (Async)
+        appendRowToSheet({
+            date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+            fullName,
+            email,
+            phone,
+            source: `Home Page - ${courseTitle}`,
+            type: 'Brochure Download',
+            interest: courseTitle,
+            message: `Syllabus Link: ${syllabusLink || 'Not provided'}`
+        }).catch(err => console.error('Google Sheet background update error:', err));
 
         if (adminSuccess && userSuccess) {
             return NextResponse.json({ message: 'Brochure request processed successfully' }, { status: 200 });

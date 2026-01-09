@@ -30,7 +30,8 @@ export async function pushLeadToTeleCRM(leadData: {
     // Clean phone number: remove any non-digit characters except leading '+'
     const cleanPhone = leadData.phone.replace(/[^\d+]/g, '');
 
-    const url = `${process.env.TELECRM_API_URL}/enterprise/${enterpriseId}/autoupdatelead`;
+    const baseUrl = process.env.TELECRM_API_URL || 'https://api.telecrm.in';
+    const url = `${baseUrl}/enterprise/${enterpriseId}/autoupdatelead`;
 
     const payload: TeleCRMPayload = {
         fields: {

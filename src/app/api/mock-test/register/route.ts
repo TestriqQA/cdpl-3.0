@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { appendRowToSheet } from '@/lib/google-sheets';
 
 export async function POST(req: Request) {
     try {
@@ -121,6 +122,19 @@ export async function POST(req: Request) {
             try {
                 const info = await transporter.sendMail(mailOptions);
                 console.log("Email sent successfully!", info.messageId);
+
+                // Append to Google Sheet (Async)
+                appendRowToSheet({
+                    date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+                    fullName: name,
+                    email,
+                    phone: number,
+                    source: 'Mock Test Page',
+                    type: 'Mock Test Registration',
+                    interest: courseName,
+                    message: `Occupation: ${occupation}`
+                }).catch(err => console.error('Google Sheet background update error:', err));
+
                 return NextResponse.json({ success: true, message: "Email sent successfully" });
             } catch (sendError) {
                 console.error("Nodemailer Send Error:", sendError);
@@ -130,6 +144,20 @@ export async function POST(req: Request) {
             console.warn("SMTP credentials missing in env variables.");
             console.log("Debug Env Vars:");
             console.log("SMTP_USER defined:", !!process.env.SMTP_USER);
+
+            // Simulation - still try to log if possible (though arguably if env vars consistenly missing, sheets might fail too)
+            // But let's add it for consistency in simulation mode if sheet envs exist
+            appendRowToSheet({
+                date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+                fullName: name,
+                email,
+                phone: number,
+                source: 'Mock Test Page (Simulation)',
+                type: 'Mock Test Registration',
+                interest: courseName,
+                message: `Occupation: ${occupation}`
+            }).catch(err => console.error('Google Sheet background update error:', err));
+
             return NextResponse.json({ success: true, message: "Email simulation (credentials missing)" });
         }
 
