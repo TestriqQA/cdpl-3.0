@@ -23,8 +23,8 @@ export type FeaturedEvent = {
   location: string;
   attendees: string | number;
   organization: string;
-  purpose: string;        // not shown
-  highlights: string[];   // not shown
+  purpose?: string;        // not shown
+  highlights?: string[];   // not shown
   category: string;
   categoryColor: string;
   featured?: boolean;
@@ -199,9 +199,9 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
                           {event.featured && (
                             <>
                               <span className="sr-only">Featured</span>
-                              <div className="absolute inset-x-0 top-0 h-[3px] bg-[#FF8C00] shadow-[0_0_6px_rgba(255,140,0,0.5)] z-10" />
+                              <div className="absolute inset-x-0 top-0 h-[3px] bg-orange-700 shadow-[0_0_6px_rgba(194,65,12,0.5)] z-10" />
                               <div className="absolute right-3 top-3 z-10">
-                                <span className="inline-flex items-center gap-1 rounded-full bg-[#FF8C00] px-3 py-1 text-[11px] font-black uppercase tracking-wide text-white shadow-md ring-1 ring-white/60">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-orange-700 px-3 py-1 text-[11px] font-black uppercase tracking-wide text-white shadow-md ring-1 ring-white/60">
                                   <Crown className="h-3.5 w-3.5" />
                                   Featured
                                 </span>
@@ -218,10 +218,10 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
                                   alt={event.title}
                                   width={500}
                                   height={500}
-                                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+                                  sizes="(max-width: 640px) 384px, (max-width: 1024px) 45vw, 30vw"
                                   quality={60}
                                   className="w-full h-full object-cover"
-                                  priority={i === middleStart || i === middleStart + 1}
+                                  loading="lazy"
                                 />
                               ) : (
                                 <Calendar className="h-16 w-16 text-purple-300" />
@@ -264,7 +264,7 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
                             </div>
 
                             <div className="mt-auto shrink-0">
-                              <Link href={`/events/${event.slug}`}>
+                              <Link href={`/events/${event.slug}`} aria-label={`View details about ${event.title}`}>
                                 <button
                                   className={`w-full text-white px-4 py-2.5 rounded-xl font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 text-sm cursor-pointer ${cs.btnBg}`}
                                 >
@@ -327,7 +327,7 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
 
       {/* Dots */}
       {base.length > 1 && (
-        <div className="mt-4 flex items-center justify-center gap-2">
+        <div className="mt-4 flex items-center justify-center gap-5">
           {base.map((_, i) => (
             <button
               key={i}
@@ -338,7 +338,7 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
               }}
               aria-label={`Go to slide ${i + 1}`}
               className={[
-                "h-2.5 rounded-full transition-all",
+                "relative h-2.5 rounded-full transition-all after:absolute after:-inset-4 after:content-['']",
                 i === activeDot ? "w-6 bg-gray-900" : "w-2.5 bg-gray-300",
               ].join(" ")}
             />

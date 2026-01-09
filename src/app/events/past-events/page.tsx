@@ -1,7 +1,6 @@
 // app/events/past-events/page.tsx
 import type { Metadata } from "next";
 import type { ComponentProps } from "react";
-import dynamic from "next/dynamic";
 import { pastEvents } from "@/data/eventsData";
 import { PAST_EVENTS_FAQS } from "@/data/pastEventsData";
 import { generateMetadata } from "@/lib/metadata-generator";
@@ -14,45 +13,21 @@ import type {
 } from "@/components/sections/EventsPastEventsAllEventsSection";
 import type { FeaturedEvent } from "@/components/sections/EventsPastEventsFeaturedEventsSliderSection";
 
-// Small inline loader for dynamic sections
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-8">
-      <p className="text-gray-500">{label}</p>
-    </div>
-  );
-}
+
 
 // ---------- Dynamic sections (SSR enabled) ----------
 // Static imports for partial hydration / immediate LCP
 import EventsPastEventsHeroSection from "@/components/sections/EventsPastEventsHeroSection";
 
 // Dynamic imports for below-the-fold content
-const EventsPastEventsFeaturedEventsSliderSection = dynamic(
-  () => import("@/components/sections/EventsPastEventsFeaturedEventsSliderSection"),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading featured events..." />,
-  }
-);
-
-const EventsPastEventsAllEventsSection = dynamic(
-  () => import("@/components/sections/EventsPastEventsAllEventsSection"),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading events..." />,
-  }
-);
+// Client-side wrapper for heavy sections to allow ssr: false
+import PastEventsLazySections from "@/components/wrappers/PastEventsLazySections";
 
 
 
-const EventsPastEventsCTASection = dynamic(
-  () => import("@/components/sections/EventsPastEventsCTASection"),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading call-to-action..." />,
-  }
-);
+
+
+
 
 // Infer prop types from the AllEvents section to avoid `any`
 type AllEventsProps = ComponentProps<
@@ -157,8 +132,6 @@ export default function PastEventsPage() {
       location: e.location,
       attendees: e.attendees,
       organization: e.organization,
-      purpose: e.purpose,
-      highlights: e.highlights,
       category: e.category,
       categoryColor: (CATEGORY_STYLES[e.category] ?? FALLBACK).badgeBg,
       featured: e.featured,
@@ -229,39 +202,13 @@ export default function PastEventsPage() {
         {/* HERO (separate component) */}
         <EventsPastEventsHeroSection />
 
-        {/* Featured */}
-        {featuredEvents.length > 0 && (
-          <section id="featured-events" className="py-10 w-full">
-            <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-              <h2 className="mb-6 text-4xl font-bold">
-                <span style={{ color: "rgb(0, 105, 168)" }}>Featured</span>{" "}
-                <span style={{ color: "rgb(255, 140, 0)" }}>Events</span>
-              </h2>
-              <EventsPastEventsFeaturedEventsSliderSection
-                events={featuredEvents}
-                autoplayMs={4500}
-                cardHClass="h-[480px]"
-              />
-            </div>
-          </section>
-        )}
+        {/* Main Content Sections (Client-side Lazy Loaded for TBT) */}
+        <PastEventsLazySections
+          featuredEvents={featuredEvents}
+          regularEvents={regularEvents}
+        />
 
-        {/* All Past Events */}
-        <section id="all-past-events" className="py-4 w-full">
-          <div className="max-w-7xl mx-auto px-4 py-0 sm:px-6 lg:px-8">
-            <h2 className="mb-6 text-4xl font-bold">
-              <span style={{ color: "rgb(0, 105, 168)" }}>All Past</span>{" "}
-              <span style={{ color: "rgb(255, 140, 0)" }}>Events</span>
-            </h2>
-            <EventsPastEventsAllEventsSection
-              events={regularEvents}
-              cardMinHClass="min-h-[480px]"
-            />
-          </div>
-        </section>
 
-        {/* CTA (separate component) */}
-        <EventsPastEventsCTASection />
       </div>
     </>
   );

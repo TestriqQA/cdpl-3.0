@@ -26,7 +26,7 @@ export default function EventsPastEventsHeroActions() {
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <button
                     onClick={handleEnquireClick}
-                    className="cursor-pointer inline-flex w-full items-center justify-center rounded-2xl bg-[#FF8C00] px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-slate-900/10 transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2 sm:w-auto"
+                    className="cursor-pointer inline-flex w-full items-center justify-center rounded-2xl bg-orange-700 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-slate-900/10 transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2 sm:w-auto"
                 >
                     Enquire for Training <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </button>

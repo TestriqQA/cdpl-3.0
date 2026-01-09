@@ -108,7 +108,7 @@ export default function EventsPastEventsAllEventsSection({
                 </p>
 
                 <div className="mt-auto">
-                  <Link href={`/events/${event.slug}`}>
+                  <Link href={`/events/${event.slug}`} aria-label={`View details about ${event.title}`}>
                     <button
                       className={`w-full text-white px-4 py-2.5 rounded-xl font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 text-sm cursor-pointer ${cs.btnBg}`}
                     >

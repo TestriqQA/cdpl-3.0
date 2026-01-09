@@ -143,7 +143,7 @@ export default function EventsPastEventsCTASection({
                     href="/mentors"
                     className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 sm:w-auto sm:py-2.5"
                   >
-                    Learn more
+                    Meet our Mentors
                     <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                   </Link>
 

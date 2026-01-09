@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
     ],
     optimizeCss: true, // Re-enabled for LCP
     optimizeServerReact: true,
-    webpackBuildWorker: true, // Faster builds
+    // webpackBuildWorker: true, // Commented out to ensure critters runs reliably
   },
 
   // Compiler optimizations

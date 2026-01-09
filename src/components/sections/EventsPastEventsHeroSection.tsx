@@ -75,8 +75,8 @@ export default function EventsPastEventsHeroSection() {
                 alt="Corporate training workshop illustration showing professionals learning software testing and data science"
                 title="CDPL Corporate Training Workshop"
                 fill
-                sizes="(max-width: 640px) 256px, (max-width: 1024px) 40vw, 33vw"
-                quality={75}
+                sizes="(max-width: 640px) 256px, (max-width: 1024px) 50vw, 33vw"
+                quality={65}
                 className="object-contain p-4"
                 priority
               />

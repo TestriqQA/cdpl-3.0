@@ -152,7 +152,7 @@ const Header = () => {
 
 
   return (
-    <header className="relative bg-white shadow-lg">
+    <header className="relative bg-gradient-to-r from-white via-white to-slate-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 sm:py-1">
           {/* Logo */}
@@ -161,7 +161,7 @@ const Header = () => {
               <div className="rounded-lg">
                 <Image src="/cdpl-logo.png" alt="CDPL Logo" title="CDPL Logo" width={40} height={40} className="w-10 h-10 sm:w-12 sm:h-12 lg:w-20 lg:h-12 xl:w-14 xl:h-14" priority={true} />
               </div>
-              <span className="text-lg sm:text-xl lg:text-2xl font-bold text-orange-600">Cinute Digital</span>
+              <span className="text-[19px] sm:text-xl lg:text-2xl font-bold text-orange-600">Cinute Digital</span>
             </Link>
           </div>
 
