@@ -65,9 +65,9 @@ export default function EventsPastEventsAllEventsSection({
                     <Image
                       src={event.heroImageUrl}
                       alt={event.title}
-                      width={500}
-                      height={500}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      quality={50}
                       className="w-full h-full object-cover"
                     />
                   ) : (

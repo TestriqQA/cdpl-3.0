@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, Download, CheckCircle2, Loader2 } from 'lucide-react';
@@ -15,6 +16,13 @@ interface BrochureDownloadModalProps {
 }
 
 const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ isOpen, onClose, source }) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
   // Form state
   const [formData, setFormData] = useState({
     fullName: '',
@@ -171,9 +179,9 @@ const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ isOpen, o
     };
   }, [isOpen, isSubmitting, handleClose]);
 
-  return (
+  if (!mounted) return null;
 
-
+  return createPortal(
     <>
       {/* Custom CSS for phone input */}
       <style jsx global>{`
@@ -359,7 +367,8 @@ const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ isOpen, o
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </>,
+    document.body
   );
 };
 
