@@ -2,7 +2,8 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import LeadForm from "./forms/ManualCourseLeadForm";
 
 interface CareerSessionModalProps {
@@ -22,6 +23,13 @@ export default function CareerSessionModal({
     title = "Get a Free Career Session",
     subtitle
 }: CareerSessionModalProps) {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        return () => setMounted(false);
+    }, []);
+
     // Close on escape key
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
@@ -37,7 +45,9 @@ export default function CareerSessionModal({
         };
     }, [isOpen, onClose]);
 
-    return (
+    if (!mounted) return null;
+
+    return createPortal(
         <AnimatePresence>
             {isOpen && (
                 <>
@@ -84,6 +94,7 @@ export default function CareerSessionModal({
                     </div>
                 </>
             )}
-        </AnimatePresence>
+        </AnimatePresence>,
+        document.body
     );
 }

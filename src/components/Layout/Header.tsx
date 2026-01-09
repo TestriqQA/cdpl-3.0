@@ -2,21 +2,22 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, ChevronRight, Globe } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { courseCategories, type LogoItem } from "@/data/headerData";
+import { courseSlugs } from "@/data/headerSlugs";
 const EnquireModal = dynamic(() => import("./EnquireModal"), { ssr: false });
+const MegaMenuContent = dynamic(() => import("./MegaMenuContent"), { ssr: false });
+const MobileMenuContent = dynamic(() => import("./MobileMenuContent"), { ssr: false });
 
 /* ----------------------- Header ----------------------- */
 const Header = () => {
   const pathname = usePathname();
 
   // Extract all course slugs for active state check
-  const allCourseSlugs = courseCategories.flatMap(category =>
-    category.courses.map(course => course.slug)
-  ).filter((slug): slug is string => !!slug);
+  // Use lightweight courseSlugs instead of calculating from full object
+  const allCourseSlugs = courseSlugs;
 
   // Check if the current pathname is a course page
   const isCourseActive = allCourseSlugs.some(slug => pathname.startsWith(`/${slug}`));
@@ -33,12 +34,6 @@ const Header = () => {
 
   const isCoursesMenuOpen = isMegaMenuOpen || isCourseActive || isCoursesBaseActive;
 
-  // const isJobsActive = pathname.startsWith("/jobs");
-  // const isAboutActive = pathname.startsWith("/about") || pathname.startsWith("/our-team");
-  const [selectedCategory, setSelectedCategory] = useState<string>(courseCategories[0].id);
-  const [hoveredCourse, setHoveredCourse] = useState<string | null>(null);
-  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
-
   // Other dropdowns
   const [isJobsOpen, setIsJobsOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
@@ -47,18 +42,7 @@ const Header = () => {
   const jobsButtonRef = useRef<HTMLButtonElement | null>(null);
   const jobsMenuRef = useRef<HTMLDivElement | null>(null);
 
-  // Mobile accordions
-  const [mobileSections, setMobileSections] = useState<{
-    courses: boolean;
-    jobs: boolean;
-    about: boolean;
-    openCategoryId: string | null;
-  }>({
-    courses: false,
-    jobs: false,
-    about: false,
-    openCategoryId: null,
-  });
+
 
   // Refs to detect boundaries
   const panelRef = useRef<HTMLDivElement | null>(null);
@@ -93,8 +77,6 @@ const Header = () => {
 
   const closeMega = () => {
     setIsMegaMenuOpen(false);
-    setHoveredCourse(null);
-    setHoveredCategory(null);
   };
 
   const toggleMega = () => {
@@ -165,34 +147,9 @@ const Header = () => {
   // Mobile toggles
   const toggleMenu = () => {
     setIsMenuOpen((v) => !v);
-    if (isMenuOpen) setMobileSections({ courses: false, jobs: false, about: false, openCategoryId: null });
   };
 
-  const toggleMobileSection = (key: "courses" | "jobs" | "about") => {
-    setMobileSections((s) => {
-      const next = { ...s, [key]: !s[key] };
-      if (key === "courses" && s.courses) next.openCategoryId = null;
-      return next;
-    });
-  };
-  const toggleMobileCategory = (categoryId: string) => {
-    setMobileSections((s) => ({ ...s, openCategoryId: s.openCategoryId === categoryId ? null : categoryId }));
-  };
 
-  // Derived
-  const selectedCategoryData = courseCategories.find((cat) => cat.id === selectedCategory)!;
-  const hoveredCourseData = selectedCategoryData?.courses.find((c) => c.name === hoveredCourse);
-
-  // Prefer explicit rightColumnImages, else fall back to first two governingBodies
-  const rightColumnBodies: LogoItem[] = (() => {
-    const src = hoveredCourse
-      ? hoveredCourseData?.rightColumnImages ?? hoveredCourseData?.rightColumnImages ?? []
-      : selectedCategoryData?.rightColumnImages ?? selectedCategoryData?.rightColumnImages ?? [];
-    return (src || []).slice(0, 2);
-  })();
-
-  const displayDescription =
-    hoveredCourse ? hoveredCourseData?.description : selectedCategoryData?.description;
 
   return (
     <header className="relative bg-white shadow-lg">
@@ -245,160 +202,8 @@ const Header = () => {
                       onMouseEnter={cancelClose}
                       onMouseLeave={() => scheduleClose()}
                     >
-                      <div className="grid grid-cols-12 gap-4 p-4 sm:p-6 lg:p-6">
-                        {/* Column 1: Categories */}
-                        <div className="col-span-12 sm:col-span-4 lg:col-span-3 border-r border-gray-200 pr-4">
-                          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 sm:mb-4">Categories</h3>
-                          <div className="space-y-1 max-h-[420px] overflow-y-auto pr-2">
-                            {courseCategories.map((category) => {
-                              const href = category.slug ? `/${category.slug}` : undefined;
-                              return href ? (
-                                <Link
-                                  href={href}
-                                  key={category.id}
-                                  onMouseEnter={() => {
-                                    setSelectedCategory(category.id);
-                                    setHoveredCategory(category.id);
-                                    setHoveredCourse(null);
-                                  }}
-                                  onClick={() => setSelectedCategory(category.id)}
-                                  className={`w-full text-left px-3 py-2 rounded-lg transition-all duration-200 flex items-center justify-between group text-sm ${selectedCategory === category.id ? "bg-orange-50 text-brand font-medium" : "text-gray-700 hover:bg-gray-50"
-                                    }`}
-                                  aria-current={selectedCategory === category.id ? "true" : "false"}
-                                >
-                                  <span>{category.name}</span>
-                                  <ChevronRight
-                                    className={`h-4 w-4 transition-transform ${selectedCategory === category.id ? "text-brand" : "text-gray-400"
-                                      }`}
-                                  />
-                                </Link>
-                              ) : (
-                                <div
-                                  key={category.id}
-                                  onMouseEnter={() => {
-                                    setSelectedCategory(category.id);
-                                    setHoveredCategory(category.id);
-                                    setHoveredCourse(null);
-                                  }}
-                                  onClick={() => setSelectedCategory(category.id)}
-                                  className={`w-full text-left px-3 py-2 rounded-lg transition-all duration-200 flex items-center justify-between group text-sm ${selectedCategory === category.id ? "bg-orange-50 text-brand font-medium" : "text-gray-700 hover:bg-gray-50"
-                                    }`}
-                                  aria-current={selectedCategory === category.id ? "true" : "false"}
-                                >
-                                  <span>{category.name}</span>
-                                  <ChevronRight
-                                    className={`h-4 w-4 transition-transform ${selectedCategory === category.id ? "text-brand" : "text-gray-400"
-                                      }`}
-                                  />
-                                </div>
-                              )
-                            })}
-                          </div>
-                          <Link href="/courses" className="mt-4 flex items-center text-brand hover:text-brand font-medium text-sm group" onClick={closeMega}>
-                            View All Courses
-                            <ChevronRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                          </Link>
-                        </div>
-
-                        {/* Column 2: Courses */}
-                        <div className="col-span-12 sm:col-span-4 lg:col-span-5 pr-0 sm:pr-4">
-                          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 sm:mb-4">Courses</h3>
-                          <div className="grid grid-cols-1 gap-1 max-h-[420px] overflow-y-auto pr-2">
-                            {selectedCategoryData?.courses.map((course, index) => {
-                              const isHovered = hoveredCourse === course.name;
-                              const href = course.slug ? `/${course.slug}` : undefined;
-                              const itemClasses = `flex items-start px-3 py-2 rounded-lg transition-all duration-200 group ${isHovered ? "bg-orange-50 text-brand" : "text-gray-700 hover:bg-orange-50 hover:text-brand"
-                                }`;
-
-                              const inner = (
-                                <>
-                                  <div className="flex-shrink-0 mt-1">
-                                    <div
-                                      className={`w-2 h-2 rounded-full transition-transform ${isHovered ? "bg-brand scale-125" : "bg-brand group-hover:scale-125"
-                                        }`}
-                                    />
-                                  </div>
-                                  <div className="ml-3">
-                                    <p className="font-medium text-sm">{course.name}</p>
-                                  </div>
-                                </>
-                              );
-
-                              return href ? (
-                                <Link
-                                  key={index}
-                                  href={href}
-                                  onMouseEnter={() => setHoveredCourse(course.name)}
-                                  className={itemClasses}
-                                  onClick={closeMega}
-                                >
-                                  {inner}
-                                </Link>
-                              ) : (
-                                <div
-                                  key={index}
-                                  onMouseEnter={() => setHoveredCourse(course.name)}
-                                  className={itemClasses}
-                                  role="button"
-                                  tabIndex={0}
-                                >
-                                  {inner}
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-
-                        {/* Column 3: Two stacked images (distinct slots) */}
-                        <div className="col-span-12 sm:col-span-4 lg:col-span-4 bg-gradient-to-br from-orange-50 to-purple-50 rounded-xl p-4">
-                          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                            {hoveredCourse || hoveredCategory ? "Certifications" : "Governing Bodies"}
-                          </h3>
-                          <p className="text-xs text-gray-600 mb-4">
-                            {hoveredCourse
-                              ? "Certified by leading organizations"
-                              : hoveredCategory
-                                ? "Certified by leading organizations"
-                                : "Hover over a category or course to see its certifications"}
-                          </p>
-
-                          <div className="grid grid-rows-2 gap-4">
-                            {[0, 1].map((i) => {
-                              const body = rightColumnBodies[i];
-                              return (
-                                <div
-                                  key={i + (body?.name || "placeholder")}
-                                  className="bg-white rounded-lg p-4 hover:shadow-md transition-all duration-200 flex items-center justify-center h-32"
-                                >
-                                  {body ? (
-                                    <Image
-                                      src={body.logo}
-                                      alt={body.name}
-                                      className="object-contain h-full w-auto rounded-md"
-                                      width={400}
-                                      height={128}
-                                      priority={false}
-                                    />
-                                  ) : (
-                                    <div className="flex items-center justify-center h-full w-full text-gray-300 text-xs">
-                                      Image slot
-                                    </div>
-                                  )}
-                                </div>
-                              );
-                            })}
-                          </div>
-
-                          <p className="text-xs text-gray-600 mt-4 mb-4">
-                            {displayDescription || "Select a category or course to view its description"}
-                          </p>
-                          <div className="mt-4 pt-4 border-t border-gray-200">
-                            <div className="flex items-center text-xs text-gray-600">
-                              <Globe className="h-4 w-4 mr-2 text-brand flex-shrink-0" />
-                              <span>Globally Recognized Certifications</span>
-                            </div>
-                          </div>
-                        </div>
+                      <div className="bg-white rounded-b-2xl shadow-2xl border-t-4 border-brand overflow-hidden">
+                        <MegaMenuContent closeMega={closeMega} />
                       </div>
                     </div>
                   </div>
@@ -569,212 +374,7 @@ const Header = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div ref={mobileMenuRef} className="lg:hidden bg-white border-t border-gray-100 max-h-[calc(100vh-73px)] overflow-y-auto shadow-xl">
-          <div className="px-4 pt-2 pb-6 space-y-1">
-            <Link
-              href="/"
-              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/" ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-              onClick={toggleMenu}
-            >
-              Home
-            </Link>
-
-            {/* Mobile Courses Accordion */}
-            <div className="space-y-2">
-              <button
-                onClick={() => toggleMobileSection("courses")}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${isCoursesMenuOpen ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-                aria-expanded={mobileSections.courses}
-                aria-controls="mobile-courses"
-              >
-                <span>Courses</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-200 ${mobileSections.courses ? "rotate-180" : ""}`}
-                />
-              </button>
-
-              {mobileSections.courses && (
-                <div id="mobile-courses" className="pl-4 space-y-2">
-                  {courseCategories.map((category) => {
-                    const isOpen = mobileSections.openCategoryId === category.id;
-                    return (
-                      <div key={category.id} className="space-y-2">
-                        <button
-                          onClick={() => toggleMobileCategory(category.id)}
-                          className="w-full flex items-center justify-between px-4 py-2 text-sm text-gray-600 hover:text-brand hover:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none rounded-lg transition-colors outline-none"
-                          aria-expanded={isOpen}
-                          aria-controls={`mobile-category-${category.id}`}
-                        >
-                          <span>{category.name}</span>
-                          <ChevronRight
-                            className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-90" : ""}`}
-                          />
-                        </button>
-
-                        {isOpen && (
-                          <div id={`mobile-category-${category.id}`} className="pl-4 space-y-1">
-                            {category.courses.map((course, idx) => {
-                              const href = course.slug ? `/${course.slug}` : undefined;
-                              return href ? (
-                                <Link
-                                  key={idx}
-                                  href={href}
-                                  className={`block px-4 py-2 text-sm rounded-lg transition-colors active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === href ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
-                                  onClick={toggleMenu}
-                                >
-                                  &bull; {course.name}
-                                </Link>
-                              ) : (
-                                <div
-                                  key={idx}
-                                  className="block px-4 py-2 text-sm text-gray-600 rounded-lg"
-                                >
-                                  &bull; {course.name}
-                                </div>
-                              );
-                            })}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                  <Link
-                    href="/courses"
-                    className={`block px-4 py-2 text-sm font-medium active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/courses" ? "text-brand" : "text-brand hover:text-brand"}`}
-                    onClick={toggleMenu}
-                  >
-                    View All Courses &rarr;
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* Mobile Services Link */}
-            <Link
-              href="/services"
-              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/services") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-              onClick={toggleMenu}
-            >
-              Services
-            </Link>
-
-            {/* Mobile Jobs Accordion */}
-            <div className="space-y-2">
-              <button
-                onClick={() => toggleMobileSection("jobs")}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/jobs") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-                aria-expanded={mobileSections.jobs}
-                aria-controls="mobile-jobs"
-              >
-                <span>Jobs</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-200 ${mobileSections.jobs ? "rotate-180" : ""}`}
-                />
-              </button>
-              {mobileSections.jobs && (
-                <div id="mobile-jobs" className="pl-4 space-y-1">
-                  <Link
-                    href="/jobs/live-jobs"
-                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/live-jobs" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
-                    onClick={toggleMenu}
-                  >
-                    &bull; Live Jobs
-                  </Link>
-                  <Link
-                    href="/jobs/placements"
-                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/placements" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
-                    onClick={toggleMenu}
-                  >
-                    &bull; Placements
-                  </Link>
-                  <Link
-                    href="/jobs/careers"
-                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/careers" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
-                    onClick={toggleMenu}
-                  >
-                    &bull; Careers
-                  </Link>
-                  <Link
-                    href="/jobs/job-openings"
-                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/job-openings" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
-                    onClick={toggleMenu}
-                  >
-                    &bull; Job Openings
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* Mobile About Accordion */}
-            <div className="space-y-2">
-              <button
-                onClick={() => toggleMobileSection("about")}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/about") || pathname.startsWith("/our-team") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-                aria-expanded={mobileSections.about}
-                aria-controls="mobile-about"
-              >
-                <span>About</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-200 ${mobileSections.about ? "rotate-180" : ""}`}
-                />
-              </button>
-              {mobileSections.about && (
-                <div id="mobile-about" className="pl-4 space-y-1">
-                  <Link
-                    href="/about-us"
-                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/about-us" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
-                    onClick={toggleMenu}
-                  >
-                    &bull; About CDPL
-                  </Link>
-                  <Link
-                    href="/our-team"
-                    className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/our-team" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
-                    onClick={toggleMenu}
-                  >
-                    &bull; Our Team
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <Link
-              href="/events/past-events"
-              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/events") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-              onClick={toggleMenu}
-            >
-              Event
-            </Link>
-            <Link
-              href="/mentors"
-              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/mentors") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-              onClick={toggleMenu}
-            >
-              Mentors
-            </Link>
-            <Link
-              href="/blog"
-              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/blog") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-              onClick={toggleMenu}
-            >
-              Blog
-            </Link>
-            <Link
-              href="/contact-us"
-              className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/contact-us") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
-              onClick={toggleMenu}
-            >
-              Contact
-            </Link>
-            <button
-              onClick={() => {
-                toggleMenu();
-                setIsEnquireModalOpen(true);
-              }}
-              className="w-full block px-4 py-3 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg text-center text-sm sm:text-base font-semibold"
-            >
-              Free Demo
-            </button>
-          </div>
+          <MobileMenuContent closeMenu={toggleMenu} openEnquire={() => { setIsEnquireModalOpen(true); }} />
         </div>
       )}
 

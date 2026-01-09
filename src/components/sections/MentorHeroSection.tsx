@@ -1,16 +1,9 @@
-"use client";
-
+import BrowseMentorsButton from "./BrowseMentorsButton";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, Home } from "lucide-react";
 
 export default function MentorHeroSection() {
-  // Smooth scroll for "Browse mentors"
-  const handleBrowseClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const el = document.querySelector("#mentors-impact"); // ⬅️ target
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -158,14 +151,7 @@ export default function MentorHeroSection() {
               >
                 Book a free session
               </Link>
-              <Link
-                href="#mentors-impact"                 /* ⬅️ updated href */
-                onClick={handleBrowseClick}
-                className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 ring-1 ring-slate-200 transition hover:bg-slate-50"
-                aria-label="Browse mentors"
-              >
-                Browse mentors
-              </Link>
+              <BrowseMentorsButton />
             </div>
 
             {/* trust row */}
@@ -198,7 +184,7 @@ export default function MentorHeroSection() {
               title="CDPL Mentors"
               width={640}
               height={480}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 544px, 640px"
+              sizes="(max-width: 640px) 85vw, (max-width: 1024px) 50vw, 640px"
               className="
                 w-full h-auto
                 max-w-[28rem] sm:max-w-[34rem]
@@ -207,6 +193,7 @@ export default function MentorHeroSection() {
               "
               priority
               fetchPriority="high"
+              quality={60}
             />
           </div>
         </div>

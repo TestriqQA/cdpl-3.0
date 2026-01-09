@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, CheckCircle2, Loader2, FileDown } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
@@ -26,6 +27,13 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
   courseName = "Course",
   source
 }) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
   // Form state
   const [formData, setFormData] = useState({
     fullName: '',
@@ -176,9 +184,9 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
     };
   }, [isOpen, isSubmitting, handleClose]);
 
-  return (
+  if (!mounted) return null;
 
-
+  return createPortal(
     <>
       {/* Custom CSS for phone input */}
       <style jsx global>{`
@@ -364,7 +372,8 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </>,
+    document.body
   );
 };
 

@@ -24,14 +24,10 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 // ---------- Dynamic sections (SSR enabled) ----------
-const EventsPastEventsAllEventsSection = dynamic(
-  () => import("@/components/sections/EventsPastEventsAllEventsSection"),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading events..." />,
-  }
-);
+// Static imports for partial hydration / immediate LCP
+import EventsPastEventsHeroSection from "@/components/sections/EventsPastEventsHeroSection";
 
+// Dynamic imports for below-the-fold content
 const EventsPastEventsFeaturedEventsSliderSection = dynamic(
   () => import("@/components/sections/EventsPastEventsFeaturedEventsSliderSection"),
   {
@@ -40,13 +36,15 @@ const EventsPastEventsFeaturedEventsSliderSection = dynamic(
   }
 );
 
-const EventsPastEventsHeroSection = dynamic(
-  () => import("@/components/sections/EventsPastEventsHeroSection"),
+const EventsPastEventsAllEventsSection = dynamic(
+  () => import("@/components/sections/EventsPastEventsAllEventsSection"),
   {
     ssr: true,
-    loading: () => <SectionLoader label="Loading hero..." />,
+    loading: () => <SectionLoader label="Loading events..." />,
   }
 );
+
+
 
 const EventsPastEventsCTASection = dynamic(
   () => import("@/components/sections/EventsPastEventsCTASection"),

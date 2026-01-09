@@ -29,14 +29,11 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 // ---------- Dynamic sections (SSR enabled like your example) ----------
-const MentorHeroSection = dynamic(
-  () => import("@/components/sections/MentorHeroSection"),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading hero..." />,
-  }
-);
+// ---------- Static sections (Critical for LCP/CLS) ----------
+import MentorHeroSection from "@/components/sections/MentorHeroSection";
+import MentorsImpactSection from "@/components/sections/MentorsImpactSection";
 
+// ---------- Dynamic sections (Below fold) ----------
 const MentorProcessFlowSection = dynamic(
   () => import("@/components/sections/MentorProcessFlowSection"),
   {
@@ -53,14 +50,6 @@ const MentorHelpCTASection = dynamic(
   }
 );
 
-const MentorsImpactSection = dynamic(
-  () => import("@/components/sections/MentorsImpactSection"),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading impact..." />,
-  }
-);
-
 const MentorOutcomesSection = dynamic(
   () => import("@/components/sections/MentorOutcomesSection"),
   {
@@ -68,6 +57,8 @@ const MentorOutcomesSection = dynamic(
     loading: () => <SectionLoader label="Loading outcomes..." />,
   }
 );
+
+
 
 // ============================================================================
 // MENTORS PAGE COMPONENT
