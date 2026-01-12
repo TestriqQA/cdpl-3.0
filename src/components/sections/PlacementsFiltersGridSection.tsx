@@ -53,7 +53,7 @@ type Domain = "All" | "QA";
 ============================================================ */
 
 const DOMAIN_COLORS = {
-  QA: { bg: "bg-orange-50", text: "text-[#ff8c00]", ring: "ring-[#ff8c00]/20" },
+  QA: { bg: "bg-orange-50", text: "text-[#d04502]", ring: "ring-[#d04502]/20" },
 };
 
 const COMPANY_LOGOS: Record<string, string> = {
@@ -230,7 +230,7 @@ export default function PlacementsFiltersGridSection({ contained = false }: Prop
                       {/* BODY */}
                       <div className="relative min-w-0 mt-0.5">
                         <p className="truncate text-xs sm:text-sm text-slate-600">{p.company}</p>
-                        <h4 className="truncate text-[1.02rem] sm:text-lg font-extrabold text-slate-900">{p.name}</h4>
+                        <h3 className="truncate text-[1.02rem] sm:text-lg font-extrabold text-slate-900">{p.name}</h3>
                       </div>
 
                       <div className="relative mt-2.5">

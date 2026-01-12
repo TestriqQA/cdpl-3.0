@@ -202,7 +202,7 @@ export function JobsLiveJobsJobCardSection({
                 boxShadow: "inset 0 0 0 1px rgba(15,23,42,0.06)",
               }}
             >
-              <Briefcase className="h-5 w-5" style={{ color: "#ff8c00" }} />
+              <Briefcase className="h-5 w-5" style={{ color: "#d04502" }} />
             </div>
 
             <div className="min-w-0">
@@ -234,7 +234,10 @@ export function JobsLiveJobsJobCardSection({
                 )}
 
                 {dateText && (
-                  <span className="inline-flex items-center before:content-['•'] before:mr-2 before:text-slate-300">
+                  <span
+                    className="inline-flex items-center before:content-['•'] before:mr-2 before:text-slate-300"
+                    suppressHydrationWarning
+                  >
                     📅 {dateText}
                   </span>
                 )}
@@ -307,7 +310,10 @@ export function JobsLiveJobsJobCardSection({
               <div className="mt-2 text-sm leading-relaxed text-slate-600">
                 {job.venue && <p>• {job.venue}</p>}
                 {(job.eventDate || job.timeWindow) && (
-                  <p>• {job.eventDate ? formatDate(job.eventDate) : ""} {job.timeWindow ? `(${job.timeWindow})` : ""}</p>
+                  <p suppressHydrationWarning>
+                    • {job.eventDate ? formatDate(job.eventDate) : ""}{" "}
+                    {job.timeWindow ? `(${job.timeWindow})` : ""}
+                  </p>
                 )}
               </div>
             </div>
@@ -330,8 +336,8 @@ export function JobsLiveJobsJobCardSection({
             {job.applyEmail && (
               <a
                 href={`mailto:${job.applyEmail}`}
-                className="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-orange-300"
-                style={{ backgroundColor: "var(--color-brand, #ff8c00)" }}
+                className="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-orange-400"
+                style={{ backgroundColor: "#d04502" }}
               >
                 <Mail className="mr-2 h-4 w-4" />
                 Apply via Email

@@ -358,7 +358,8 @@ const Header = () => {
           <div className="hidden sm:flex items-center">
             <button
               onClick={() => setIsEnquireModalOpen(true)}
-              className="cursor-pointer hidden lg:block bg-brand text-white px-4 sm:px-5 py-2 rounded-lg hover:from-orange-500 hover:to-orange-600 transition-all duration-200 transform hover:scale-105 text-sm font-semibold"
+              className="cursor-pointer hidden lg:block text-white px-4 sm:px-5 py-2 rounded-lg hover:bg-[#c2410c] transition-all duration-200 transform hover:scale-105 text-sm font-semibold shadow-md"
+              style={{ backgroundColor: "#d04502" }}
             >
               Free Demo
             </button>

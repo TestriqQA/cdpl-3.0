@@ -16,8 +16,8 @@ export function JobsLiveJobsHeroCTA() {
         <>
             <button
                 onClick={() => setIsModalOpen(true)}
-                className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-white shadow-sm transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 cursor-pointer hover:bg-[#e67e00]"
-                style={{ backgroundColor: "#ff8c00" }}
+                className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-white shadow-sm transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 cursor-pointer hover:bg-[#c2410c] focus-visible:ring-orange-400"
+                style={{ backgroundColor: "#d04502" }}
             >
                 Talk to a Career Advisor
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />

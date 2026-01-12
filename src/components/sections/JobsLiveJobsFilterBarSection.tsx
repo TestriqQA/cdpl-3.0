@@ -96,7 +96,7 @@ function FancySelect({
         aria-expanded={open}
         onClick={toggle}
         onKeyDown={onKeyDown}
-        className={`flex w-full items-center justify-between rounded-xl border border-slate-200 bg-white/90 px-3 py-2 text-left text-sm text-slate-900 shadow-sm backdrop-blur focus:outline-none focus:ring-2 focus:ring-orange-200 ${buttonClassName}`}
+        className={`flex w-full items-center justify-between rounded-xl border border-slate-200 bg-white/90 px-3 py-2 text-left text-sm text-slate-900 shadow-sm backdrop-blur focus:outline-none focus:ring-2 focus:ring-orange-400 ${buttonClassName}`}
       >
         <span className="flex min-w-0 items-center gap-2">
           {leadingIcon}
@@ -139,7 +139,7 @@ function FancySelect({
               >
                 <span className="truncate">{opt.label}</span>
                 {selected ? (
-                  <Check className="ml-2 h-4 w-4 text-[#ff8c00]" />
+                  <Check className="ml-2 h-4 w-4 text-[#c2410c]" />
                 ) : (
                   <span className="ml-2 h-4 w-4" />
                 )}
@@ -153,7 +153,7 @@ function FancySelect({
       <style jsx global>{`
         .custom-options {
           scrollbar-width: thin;
-          scrollbar-color: rgba(255, 140, 0, 0.6) transparent;
+          scrollbar-color: rgba(194, 65, 12, 0.6) transparent;
         }
         .custom-options::-webkit-scrollbar {
           width: 10px;
@@ -161,8 +161,8 @@ function FancySelect({
         .custom-options::-webkit-scrollbar-thumb {
           background: linear-gradient(
             180deg,
-            rgba(255, 140, 0, 0.6),
-            rgba(255, 184, 77, 0.6)
+            rgba(194, 65, 12, 0.6),
+            rgba(194, 65, 12, 0.6)
           );
           border-radius: 9999px;
           border: 3px solid transparent;
@@ -171,8 +171,8 @@ function FancySelect({
         .custom-options::-webkit-scrollbar-thumb:hover {
           background: linear-gradient(
             180deg,
-            rgba(255, 140, 0, 0.8),
-            rgba(255, 184, 77, 0.8)
+            rgba(194, 65, 12, 0.8),
+            rgba(194, 65, 12, 0.8)
           );
         }
       `}</style>
@@ -229,7 +229,7 @@ export function JobsLiveJobsFilterBarSection({
         className="pointer-events-none absolute inset-x-0 -top-3 h-16 rounded-2xl opacity-30 blur-2xl"
         style={{
           background:
-            "linear-gradient(90deg, rgba(255,140,0,.20), rgba(125,211,252,.22))",
+            "linear-gradient(90deg, rgba(194,65,12,.20), rgba(125,211,252,.22))",
         }}
       />
       <div className="relative grid gap-2 sm:grid-cols-12">

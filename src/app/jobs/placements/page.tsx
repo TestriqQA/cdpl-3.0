@@ -134,7 +134,7 @@ export default function PlacementsPage() {
                 >
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <h2 className="mb-8 text-center text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl">
-                            Placed <span className="text-orange-500">Students</span>
+                            Placed <span className="text-[#d04502]">Students</span>
                         </h2>
                         <PlacementsOffersTickerSection />
                     </div>
