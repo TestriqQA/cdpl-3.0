@@ -4,7 +4,6 @@ import { useState, useMemo, useRef, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { User, Mail, CheckCircle2, Loader2, BookOpen, ChevronDown } from "lucide-react";
 import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
 import { coursesData } from "@/components/courses/coursesData";
 import { validateFullName, validatePhone } from "@/lib/formValidation";
 

@@ -122,7 +122,7 @@ export const metadata: Metadata = generateMetadata({
 export default function PastEventsPage() {
   const featuredEvents: FeaturedEvent[] = pastEvents
     .filter((e) => e.featured)
-    .slice(0, 10)
+    .slice(0, 6) // OPTIMIZATION: Reduce from 10 to 6 to lower hydration cost (6 * 3 clones = 18 vs 30 cards)
     .map((e) => ({
       id: e.id,
       slug: e.slug,
@@ -139,7 +139,9 @@ export default function PastEventsPage() {
     }));
 
   // Type this exactly as the AllEvents section expects
+  // OPTIMIZATION: Prune unused fields and truncate text. Slice to 12 for initial payload (rest loaded client-side).
   const regularEvents: AllEventsProps["events"] = pastEvents
+    .slice(0, 12)
     .map((e) => ({
       id: e.id,
       slug: e.slug,
@@ -148,9 +150,9 @@ export default function PastEventsPage() {
       date: e.date,
       location: e.location,
       attendees: e.attendees,
-      organization: e.organization,
-      purpose: e.purpose,
-      highlights: e.highlights,
+      organization: "", // Unused in Grid View, passed as empty to satisfy TS
+      purpose: e.purpose.length > 250 ? e.purpose.substring(0, 250) + "..." : e.purpose, // Truncate for 3-line clamp
+      highlights: [], // Unused in Grid View, save bytes
       category: e.category,
       heroImageUrl: e.heroImageUrl,
     }));

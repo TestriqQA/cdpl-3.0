@@ -4,7 +4,7 @@ import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 
 import React, { useState, useCallback } from 'react';
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
+
 import {
   validatePhone,
   validateFullName as validateFullNameLib

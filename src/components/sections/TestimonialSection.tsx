@@ -170,6 +170,22 @@ function ColumnMarquee({ direction, children }: ColumnMarqueeProps) {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
+      <style jsx>{`
+        @keyframes homeTestimonialScrollUp {
+          0% { transform: translateY(0%); }
+          100% { transform: translateY(-50%); }
+        }
+        @keyframes homeTestimonialScrollDown {
+          0% { transform: translateY(-50%); }
+          100% { transform: translateY(0%); }
+        }
+        .animate-scroll-up {
+          animation: homeTestimonialScrollUp 20s linear infinite;
+        }
+        .animate-scroll-down {
+          animation: homeTestimonialScrollDown 20s linear infinite;
+        }
+      `}</style>
       <div
         className={`flex flex-col ${direction === 'up' ? 'animate-scroll-up' : 'animate-scroll-down'}`}
         style={{ animationPlayState: paused ? 'paused' : 'running' }}

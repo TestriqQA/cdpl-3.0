@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
+
 
 import {
     validateFullName as validateFullNameLib,

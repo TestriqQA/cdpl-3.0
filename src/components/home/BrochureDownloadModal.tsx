@@ -6,7 +6,7 @@ import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, Download, CheckCircle2, Loader2 } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
+
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
 interface BrochureDownloadModalProps {

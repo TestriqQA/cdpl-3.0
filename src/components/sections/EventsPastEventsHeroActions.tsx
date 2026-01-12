@@ -39,15 +39,17 @@ export default function EventsPastEventsHeroActions() {
                 </button>
             </div>
 
-            <WorkshopRequestModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                source="Events Past Events Hero Section"
-                title="Corporate Training Enquiry"
-                subtitle="Enquire about our corporate training programs and workshops."
-                interest="Corporate Training"
-                variant="workshop"
-            />
+            {isModalOpen && (
+                <WorkshopRequestModal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    source="Events Past Events Hero Section"
+                    title="Corporate Training Enquiry"
+                    subtitle="Enquire about our corporate training programs and workshops."
+                    interest="Corporate Training"
+                    variant="workshop"
+                />
+            )}
         </>
     );
 }

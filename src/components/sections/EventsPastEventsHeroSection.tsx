@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Home, ChevronRight, Sparkles } from "lucide-react";
-import EventsPastEventsHeroActions from "./EventsPastEventsHeroActions";
-import EventsPastEventsFloatingLanterns from "./EventsPastEventsFloatingLanterns";
+import {
+  EventsPastEventsHeroActionsDynamic,
+  EventsPastEventsFloatingLanternsDynamic
+} from "./EventsPastEventsHeroClientWrappers";
 
 export default function EventsPastEventsHeroSection() {
   return (
@@ -20,7 +22,7 @@ export default function EventsPastEventsHeroSection() {
       {/* container (relative) so floating lanterns respect max width */}
       <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
 
-        <EventsPastEventsFloatingLanterns />
+        <EventsPastEventsFloatingLanternsDynamic />
 
         {/* ✅ Breadcrumb (Matched to About Us) */}
         <nav aria-label="Breadcrumb" className="mb-6 relative z-10">
@@ -63,8 +65,8 @@ export default function EventsPastEventsHeroSection() {
               Explore our portfolio of successfully conducted <strong>Corporate Training Programs</strong>, <strong>Technical Workshops</strong>, and <strong>Industry Seminars</strong>. From <strong>Software Testing</strong> and <strong>Data Science</strong> to <strong>AI/ML</strong>, we empower organizations and professionals with job-ready skills and hands-on expertise.
             </p>
 
-            {/* Buttons & Modal Logic (Client Component) */}
-            <EventsPastEventsHeroActions />
+            {/* Buttons & Modal Logic (Client Component) - Dynamically Hydrated */}
+            <EventsPastEventsHeroActionsDynamic />
           </div>
 
           {/* RIGHT — image */}
@@ -75,10 +77,11 @@ export default function EventsPastEventsHeroSection() {
                 alt="Corporate training workshop illustration showing professionals learning software testing and data science"
                 title="CDPL Corporate Training Workshop"
                 fill
-                sizes="(max-width: 640px) 256px, (max-width: 1024px) 50vw, 33vw"
-                quality={65}
+                sizes="(max-width: 640px) 90vw, (max-width: 1200px) 50vw, 33vw"
+                quality={60}
                 className="object-contain p-4"
                 priority
+                fetchPriority="high"
               />
             </div>
           </div>

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { X, User, Mail, Briefcase } from "lucide-react";
 import dynamic from "next/dynamic";
-import 'react-phone-number-input/style.css';
+
 import Link from "next/link";
 import { validatePhone } from '@/lib/formValidation';
 

@@ -8,7 +8,7 @@ import Link from "next/link";
 import { EnrollFormData, EnrollPopup } from "../EnrollForms";
 import BrochureDownloadModal from '@/components/home/BrochureDownloadModal';
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
+
 import { validatePhone } from '@/lib/formValidation';
 
 /**

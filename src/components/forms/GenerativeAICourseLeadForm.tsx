@@ -6,7 +6,7 @@ import { User, Mail, CheckCircle2, TrendingUp } from "lucide-react";
 
 // Import react-phone-number-input for professional phone input
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
+
 import { validateFullName as validateFullNameLib, validatePhone } from '@/lib/formValidation';
 
 export default function GenerativeAICourseLeadForm({

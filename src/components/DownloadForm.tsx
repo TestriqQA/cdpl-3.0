@@ -3,7 +3,7 @@ import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, TrendingUp, CheckCircle2, Download } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
+
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
 // --- Types ---

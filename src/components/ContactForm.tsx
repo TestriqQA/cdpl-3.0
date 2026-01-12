@@ -9,7 +9,7 @@ import dynamic from 'next/dynamic';
 // Import react-phone-number-input for professional phone input
 // Use dynamic import to ensure it's only loaded on the client side
 const PhoneInput = dynamic(() => import('react-phone-number-input'), { ssr: false });
-import 'react-phone-number-input/style.css';
+
 import {
   validateFullName as validateFullNameLib,
   validateEmail as validateEmailLib,

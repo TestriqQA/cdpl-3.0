@@ -3,7 +3,7 @@
 import React, { useState, useCallback, useRef } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
+
 import {
   validateFullName as validateFullNameLib,
   validateEmail as validateEmailLib,

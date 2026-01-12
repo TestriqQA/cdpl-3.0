@@ -14,6 +14,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import 'react-phone-number-input/style.css'; // Restored to fix UI regression (Broken flag dropdown)
 import dynamic from "next/dynamic";
 import {
   generateOrganizationSchema,

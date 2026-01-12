@@ -5,6 +5,7 @@ import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { X, User, Mail, TrendingUp, CheckCircle2 } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
 interface EnquireModalProps {

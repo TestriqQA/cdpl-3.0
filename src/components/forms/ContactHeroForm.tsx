@@ -4,7 +4,7 @@ import React, { useState, useRef } from "react";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { Phone, Mail, User, CheckCircle2 } from "lucide-react";
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
+
 import {
     validatePhone as validatePhoneLib,
     validateFullName as validateFullNameLib

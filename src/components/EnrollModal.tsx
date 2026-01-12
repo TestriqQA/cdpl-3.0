@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, CheckCircle2, Loader2, GraduationCap } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
+
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { useRef } from 'react';

@@ -27,6 +27,13 @@ const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isEnquireModalOpen, setIsEnquireModalOpen] = useState(false);
+  const [hasEnquireModalLoaded, setHasEnquireModalLoaded] = useState(false);
+
+  useEffect(() => {
+    if (isEnquireModalOpen) {
+      setHasEnquireModalLoaded(true);
+    }
+  }, [isEnquireModalOpen]);
 
   // Mega menu state (layout unchanged)
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
@@ -378,7 +385,10 @@ const Header = () => {
         </div>
       )}
 
-      <EnquireModal isOpen={isEnquireModalOpen} onClose={() => setIsEnquireModalOpen(false)} />
+      {/* Lazy load EnquireModal to save initial TBT (libphonenumber-js) */}
+      {(isEnquireModalOpen || hasEnquireModalLoaded) && (
+        <EnquireModal isOpen={isEnquireModalOpen} onClose={() => setIsEnquireModalOpen(false)} />
+      )}
     </header >
   );
 };

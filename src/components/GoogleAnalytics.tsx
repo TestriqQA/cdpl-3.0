@@ -39,8 +39,14 @@ const GoogleAnalytics = () => {
       {/* Using 'afterInteractive' or 'lazyOnload' is good, but for maximum performance 
           we can use 'worker' strategy if Partytown is set up. 
           However, 'lazyOnload' is safer for general use to avoid blocking LCP. */}
+      {/* 
+        STRATEGY: Mixed
+        1. External Script (Heavy): 'lazyOnload' to avoid TBT on mobile.
+        2. Init Script (Light): 'afterInteractive' to define window.gtag shim immediately.
+           This prevents ReferenceErrors if other components call gtag before the heavy script loads.
+      */}
       <Script
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
       />
       <Script

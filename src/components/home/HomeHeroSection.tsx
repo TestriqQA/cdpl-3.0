@@ -20,7 +20,7 @@ import {
 
 // Import react-phone-number-input for professional phone input
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
+
 import styles from '../ui/phone-input.module.css';
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 

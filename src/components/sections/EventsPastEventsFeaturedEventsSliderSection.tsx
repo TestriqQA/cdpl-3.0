@@ -74,23 +74,58 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
 
   const GAP_PX = 24;
 
-  const getSlideWidth = () => {
+  /* -------------------------------------------------------------------------- */
+  /* PERFORMANCE OPTIMIZATION: Prevent Forced Reflows                            */
+  /* -------------------------------------------------------------------------- */
+  // We cache the slide width to avoid querying the DOM (offsetWidth) 
+  // on every single tick or index change, which causes synchronous layout thrashing.
+  const slideWidthRef = useRef<number>(0);
+
+  const updateDimensions = () => {
     const el = trackRef.current;
-    if (!el) return 0;
+    if (!el) return;
     const slide = el.querySelector<HTMLElement>("[data-slide]");
-    // Fallback if slide not found (though it should be via CSS)
-    return slide ? slide.offsetWidth + GAP_PX : el.clientWidth;
+    if (slide) {
+      slideWidthRef.current = slide.offsetWidth + GAP_PX;
+    } else {
+      slideWidthRef.current = el.clientWidth;
+    }
   };
+
+  // Update on mount and resize
+  useEffect(() => {
+    // Initial measure with a small delay to ensure DOM is ready
+    const timer = setTimeout(updateDimensions, 100);
+
+    const handleResize = () => {
+      // Debounce slightly if needed, but simple rAF or direct call is usually fine for resize
+      requestAnimationFrame(updateDimensions);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timer);
+    };
+  }, []);
 
   const scrollToIndex = (i: number, behavior: ScrollBehavior = "smooth") => {
     const el = trackRef.current;
     if (!el || !base.length) return;
-    const w = getSlideWidth();
+
+    // Safety check: if width is 0 (first run), calculate it once
+    if (slideWidthRef.current === 0) updateDimensions();
+
+    const w = slideWidthRef.current;
     el.scrollTo({ left: i * w, behavior });
   };
 
   useEffect(() => {
     if (!base.length || !inView) return; // Wait for inView
+
+    // Measure before initial scroll
+    updateDimensions();
+
     const id = requestAnimationFrame(() => {
       setIndex(middleStart);
       scrollToIndex(middleStart, "auto");
