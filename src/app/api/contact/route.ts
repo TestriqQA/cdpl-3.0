@@ -623,18 +623,23 @@ export async function POST(request: Request) {
       source: formSource,
     }).catch(err => console.error('TeleCRM background push error:', err));
 
-    // 7. Append to Google Sheet (Async)
-    appendRowToSheet({
-      date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-      fullName,
-      email,
-      phone,
-      source: formSource,
-      type: requestType || 'General Enquiry',
+    // 7. Append to Google Sheet (Awaited per user request/sync fix)
+    try {
+      await appendRowToSheet({
+        date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+        fullName,
+        email,
+        phone,
+        source: formSource,
+        type: requestType || 'General Enquiry',
 
-      interest: interest || '',
-      message: message || '',
-    }).catch(err => console.error('Google Sheet background update error:', err));
+        interest: interest || '',
+        message: message || '',
+      });
+      console.log('Google Sheet updated successfully');
+    } catch (err) {
+      console.error('Google Sheet background update error:', err);
+    }
 
     if (adminSuccess && userSuccess) {
       return NextResponse.json({ message: 'Form submitted and emails sent successfully' }, { status: 200 });
