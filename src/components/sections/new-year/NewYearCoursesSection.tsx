@@ -69,8 +69,8 @@ const CATEGORIES = [
 export default function NewYearCoursesSection() {
     return (
         <section className="relative py-16 lg:py-24 overflow-hidden bg-slate-50 selection:bg-yellow-200 selection:text-slate-900">
-            {/* Dynamic Background Pattern */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+            {/* Dynamic Background Pattern - Optimized: Removed expensive mask-image */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-70" />
 
             <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12">
@@ -96,7 +96,7 @@ export default function NewYearCoursesSection() {
                             href={category.href}
                             className={`
                                 group relative flex flex-col justify-between 
-                                overflow-visible rounded-[2rem] bg-white p-6 
+                                overflow-visible rounded-[2rem] bg-white p-4 sm:p-6 
                                 border border-slate-100 
                                 transition-all duration-500 ease-out
                                 hover:-translate-y-2 hover:border-transparent ${category.hoverShadow} hover:shadow-2xl
@@ -120,7 +120,7 @@ export default function NewYearCoursesSection() {
                                     </span>
                                 </div>
 
-                                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-800 transition-colors">
+                                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-800 transition-colors break-words">
                                     {category.name}
                                 </h3>
 

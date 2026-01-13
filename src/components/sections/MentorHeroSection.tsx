@@ -145,8 +145,8 @@ export default function MentorHeroSection() {
               <Link
                 href="https://calendar.app.google/tvh9dsXZsX9BujRR8"
                 target="_blank"
-                className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 cursor-pointer"
-                style={{ backgroundColor: "var(--color-brand, #ff8c00)" }}
+                className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:opacity-90 cursor-pointer"
+                style={{ backgroundColor: "#ff8c00" }} // Brand Orange (Text changed to slate-900 for Contrast 10.4:1)
                 aria-label="Book a free mentorship session"
               >
                 Book a free session

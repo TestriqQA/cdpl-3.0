@@ -163,25 +163,24 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 sm:py-1">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center flex-shrink-0">
             <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
               <div className="rounded-lg">
-                <Image src="/cdpl-logo.png" alt="CDPL Logo" title="CDPL Logo" width={40} height={40} className="w-10 h-10 sm:w-12 sm:h-12 lg:w-20 lg:h-12 xl:w-14 xl:h-14" priority={true} />
+                <Image src="/cdpl-logo.png" alt="CDPL Logo" title="CDPL Logo" width={40} height={40} className="w-10 h-10 sm:w-12 sm:h-12 xl:w-14 xl:h-14" priority={true} />
               </div>
-              <span className="text-[19px] sm:text-xl lg:text-2xl font-bold text-orange-600">Cinute Digital</span>
+              <span className="text-[19px] sm:text-xl xl:text-2xl font-bold text-orange-600">Cinute Digital</span>
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center justify-start">
-            <Link href="/" className={`transition-colors text-sm xl:text-base px-4 py-6 active:text-brand ${pathname === "/" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>Home</Link>
+            <Link href="/" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname === "/" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>Home</Link>
 
             {/* Mega Menu Trigger */}
             <div className="">
               <button
                 ref={coursesButtonRef}
                 type="button"
-                className={`transition-colors flex items-center text-sm xl:text-base px-4 py-6 active:text-brand ${isCoursesMenuOpen ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
+                className={`transition-colors flex items-center text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${isCoursesMenuOpen ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
                 aria-expanded={isMegaMenuOpen}
                 aria-controls="mega-menu"
                 onMouseEnter={openMega}
@@ -218,12 +217,12 @@ const Header = () => {
               )}
             </div>
 
-            <Link href="/services" className={`transition-colors text-sm xl:text-base px-4 py-6 active:text-brand ${pathname.startsWith("/services") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>Services</Link>
+            <Link href="/services" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/services") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>Services</Link>
 
-            <Link href="/events/past-events" className={`transition-colors text-sm xl:text-base px-4 py-6 active:text-brand ${pathname.startsWith("/events") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/events/past-events" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/events") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               Event
             </Link>
-            <Link href="/mentors" className={`transition-colors text-sm xl:text-base px-4 py-6 active:text-brand ${pathname.startsWith("/mentors") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/mentors" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/mentors") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               Mentors
             </Link>
 
@@ -242,7 +241,7 @@ const Header = () => {
                     });
                   }
                 }}
-                className={`transition-colors flex items-center text-sm xl:text-base px-4 py-6 active:text-brand ${pathname.startsWith("/jobs") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
+                className={`transition-colors flex items-center text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/jobs") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
                 aria-haspopup="menu"
                 aria-expanded={isJobsOpen}
                 aria-controls="jobs-menu"
@@ -309,7 +308,7 @@ const Header = () => {
                     });
                   }
                 }}
-                className={`transition-colors flex items-center text-sm xl:text-base px-4 py-6 ${pathname.startsWith("/about") || pathname.startsWith("/our-team") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
+                className={`transition-colors flex items-center text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 ${pathname.startsWith("/about") || pathname.startsWith("/our-team") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
                 aria-haspopup="menu"
                 aria-expanded={isAboutOpen}
                 aria-controls="about-menu"
@@ -346,16 +345,16 @@ const Header = () => {
               )}
             </div>
 
-            <Link href="/blog" className={`transition-colors text-sm xl:text-base px-4 py-6 ${pathname.startsWith("/blog") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/blog" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 ${pathname.startsWith("/blog") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               Blog
             </Link>
-            <Link href="/contact-us" className={`transition-colors text-sm xl:text-base px-4 py-6 ${pathname.startsWith("/contact-us") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/contact-us" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 ${pathname.startsWith("/contact-us") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               Contact
             </Link>
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden sm:flex items-center">
+          <div className="hidden sm:flex items-center flex-shrink-0">
             <button
               onClick={() => setIsEnquireModalOpen(true)}
               className="cursor-pointer hidden lg:block text-white px-4 sm:px-5 py-2 rounded-lg hover:bg-[#c2410c] transition-all duration-200 transform hover:scale-105 text-sm font-semibold shadow-md"

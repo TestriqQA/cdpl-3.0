@@ -1,7 +1,8 @@
 "use client";
 
+import { Suspense } from "react";
 import NewYearOfferForm from "@/components/forms/NewYearOfferForm";
-import { Sparkles, Clock, CalendarDays } from "lucide-react";
+import { Sparkles, Clock, CalendarDays, Loader2 } from "lucide-react";
 
 export default function NewYearHeroSection() {
     return (
@@ -11,9 +12,9 @@ export default function NewYearHeroSection() {
                 {/* Dark gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-indigo-950 opacity-90" />
 
-                {/* Animated fireworks/particles placeholder or simple glow */}
-                <div className="absolute top-0 left-1/4 h-96 w-96 rounded-full bg-indigo-600/20 blur-3xl filter" />
-                <div className="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-violet-600/20 blur-3xl filter" />
+                {/* Animated fireworks/particles placeholder or simple glow - Optimized to Radial Gradient */}
+                <div className="absolute top-0 left-1/4 h-96 w-96 rounded-full bg-[radial-gradient(circle,rgba(79,70,229,0.2)_0%,transparent_70%)]" />
+                <div className="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-[radial-gradient(circle,rgba(124,58,237,0.2)_0%,transparent_70%)]" />
 
                 {/* Pattern */}
                 <div
@@ -28,12 +29,12 @@ export default function NewYearHeroSection() {
                 <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-8">
                     {/* Left Content */}
                     <div className="text-center lg:text-left">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 backdrop-blur-sm">
-                            <Sparkles className="h-4 w-4 text-yellow-400" />
+                        <div className="inline-flex flex-wrap items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 backdrop-blur-sm max-w-full">
+                            <Sparkles className="h-4 w-4 text-yellow-400 flex-shrink-0" />
                             <span>New Year Special Offer</span>
                         </div>
 
-                        <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl break-words">
                             Unlock Your Tech Career in <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">2026</span>
                         </h1>
 
@@ -42,15 +43,15 @@ export default function NewYearHeroSection() {
                         </p>
 
                         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
-                            <div className="flex items-center gap-2 rounded-lg bg-white/5 px-4 py-3 border border-white/10 backdrop-blur-sm">
-                                <Clock className="h-5 w-5 text-yellow-400" />
+                            <div className="flex items-center gap-2 rounded-lg bg-white/5 px-4 py-3 border border-white/10 backdrop-blur-sm w-full sm:w-auto justify-center sm:justify-start">
+                                <Clock className="h-5 w-5 text-yellow-400 flex-shrink-0" />
                                 <div className="text-left">
                                     <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Offer Ends</p>
                                     <p className="text-sm font-bold text-white">Jan 10th, 11:59 PM</p>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-2 rounded-lg bg-white/5 px-4 py-3 border border-white/10 backdrop-blur-sm">
-                                <CalendarDays className="h-5 w-5 text-indigo-400" />
+                            <div className="flex items-center gap-2 rounded-lg bg-white/5 px-4 py-3 border border-white/10 backdrop-blur-sm w-full sm:w-auto justify-center sm:justify-start">
+                                <CalendarDays className="h-5 w-5 text-indigo-400 flex-shrink-0" />
                                 <div className="text-left">
                                     <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Next Batch</p>
                                     <p className="text-sm font-bold text-white">Starts Jan 15th</p>
@@ -59,7 +60,7 @@ export default function NewYearHeroSection() {
                         </div>
 
                         {/* Decorative fireworks/celebration emoji text */}
-                        <div className="mt-10 animate-bounce text-2xl lg:mx-0 mx-auto w-max">
+                        <div className="mt-10 animate-bounce text-2xl lg:mx-0 mx-auto w-fit">
                             🎉 🚀 🎓
                         </div>
                     </div>
@@ -68,7 +69,9 @@ export default function NewYearHeroSection() {
                     <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:ml-auto">
                         {/* Glow effect behind form */}
                         <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-indigo-500 to-pink-500 opacity-30 blur-lg transition duration-1000 group-hover:opacity-100 group-hover:duration-200" />
-                        <NewYearOfferForm />
+                        <Suspense fallback={<div className="h-[600px] w-full bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 flex items-center justify-center"><Loader2 className="h-8 w-8 text-indigo-500 animate-spin" /></div>}>
+                            <NewYearOfferForm />
+                        </Suspense>
                     </div>
                 </div>
             </div>

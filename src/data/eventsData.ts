@@ -171,7 +171,7 @@ export const pastEvents: PastEvent[] = [
     location: "St. Francis Institute of Technology, Mumbai",
     attendees: 50,
     category: "MoU Signing",
-    categoryColor: "bg-green-600",  // Green for partnership/collaboration theme
+    categoryColor: "bg-green-700",  // Green for partnership/collaboration theme
     serviceType: "Partnership",
     purpose: "Testriq QA Lab has proudly signed a Memorandum of Understanding (MoU) with St. Francis Institute of Technology (SFIT) to strengthen industry-academia collaboration in the field of software testing and quality assurance. This strategic partnership aims to bridge the gap between theoretical education and practical industry demands by providing students with hands-on experience, expert guidance, and career-building opportunities. Cinute Digital Pvt. Ltd. (CDPL), the learning and development unit of Testriq QA Lab, will play a crucial role in delivering specialized training programs, workshops, and live projects to ensure students acquire industry-relevant skills.",
     trainingDuration: "The MoU signing ceremony was attended by distinguished representatives from both institutions",
@@ -249,7 +249,7 @@ export const pastEvents: PastEvent[] = [
     location: "St. John Institute of Management and Research, Mumbai",
     attendees: 56,
     category: "MoU Signing",
-    categoryColor: "bg-green-600",  // Green for partnership/collaboration theme
+    categoryColor: "bg-green-700",  // Green for partnership/collaboration theme
     serviceType: "Partnership",
     purpose: "Testriq QA Lab has officially signed an Institutional Memorandum of Understanding (MoU) with St. John College of Engineering and Management (SJCEM) to foster industry-academic collaboration in the field of software testing, quality assurance, and business intelligence applications. This partnership aims to provide students with hands-on training, industry exposure, and career development opportunities, bridging the gap between academic learning and industry demands. Cinute Digital Pvt. Ltd. (CDPL), the learning and development unit of Testriq QA Lab, will play a vital role in delivering specialized training programs, workshops, and live projects, ensuring students gain practical, job-ready skills in the rapidly evolving IT industry.",
     trainingDuration: "The MoU signing ceremony was attended by",
@@ -319,7 +319,7 @@ export const pastEvents: PastEvent[] = [
     location: "Vidyavardhini College of Engineering, Vasai West, Vasai-Virar, Maharashtra 401202",
     attendees: 57,
     category: "MoU Signing",
-    categoryColor: "bg-green-600",  // Green for partnership/collaboration theme
+    categoryColor: "bg-green-700",  // Green for partnership/collaboration theme
     serviceType: "Partnership",
     purpose: "Testriq QA Lab proudly signed a Memorandum of Understanding (MoU) with Vidyavardhini College of Engineering, marking a significant step toward strengthening industry-academic collaboration in the field of software testing and quality assurance. The MoU aims to facilitate knowledge sharing, skill development, and career opportunities for engineering students, ensuring they are equipped with the latest industry-relevant expertise. Cinute Digital Pvt. Ltd. (CDPL), the learning and development unit of Testriq QA Lab, will play a key role in delivering training, workshops, and hands-on learning experiences under this collaboration.",
     trainingDuration: "The formal MoU signing ceremony was graced by esteemed dignitaries, including",
@@ -393,7 +393,7 @@ export const pastEvents: PastEvent[] = [
     location: "Ismail Yusuf College Arts, Science and Commerce",
     attendees: 62,
     category: "MoU Signing",
-    categoryColor: "bg-green-600",  // Green for partnership/collaboration theme
+    categoryColor: "bg-green-700",  // Green for partnership/collaboration theme
     serviceType: "Partnership",
     purpose: "Cinute Digital Pvt. Ltd. (CDPL) had the privilege of hosting students from the Department of Statistics, B.Sc., Government of Maharashtra’s Ismail Yusuf College, for a site visit and an insightful seminar on Careers in Software Testing and Data Science. The visit aimed to bridge the gap between academic learning and industry expectations, offering students a deeper understanding of career opportunities in the IT sector. Guided by their faculty, students explored the dynamic world of software testing and data science, gaining valuable industry insights.",
     trainingDuration: "The seminar was structured to provide a comprehensive overview of software testing and data science, covering",
@@ -467,7 +467,7 @@ export const pastEvents: PastEvent[] = [
     location: "Bhavan’s College Andheri",
     attendees: 111,
     category: "Career Guidance Seminar",
-    categoryColor: "bg-green-600",  // Green for partnership/collaboration theme
+    categoryColor: "bg-green-700",  // Green for partnership/collaboration theme
     serviceType: "Business Intelligence",
     purpose: "In the evolving digital landscape, data analytics and visualization are no longer just technical skills-they are essential competencies for professionals across industries. The Faculty Development Program (FDP) on Power BI & Tableau, organized by Bhavan’s College, Andheri (West), Department of Computer Science in collaboration with IQAC and CDPL, aimed to equip educators and professionals with cutting-edge knowledge of Business Intelligence (BI) tools to enhance their teaching and research capabilities.",
     trainingDuration: "The FDP provided an interactive and hands-on learning experience, covering",
@@ -532,7 +532,7 @@ export const pastEvents: PastEvent[] = [
     location: "MKES Trust Nagindas Khandwala College",
     attendees: 85,
     category: "Career Guidance Seminar",
-    categoryColor: "bg-green-600",  // Green for partnership/collaboration theme
+    categoryColor: "bg-green-700",  // Green for partnership/collaboration theme
     serviceType: "Artificial Intelligence and Machine Learning (AI-ML)",
     purpose: "Artificial Intelligence (AI) is no longer just a futuristic concept—it is transforming industries, businesses, and human interactions in real time. However, with rapid advancements in AI, new challenges arise, including ethical concerns, bias, and governance issues.",
     trainingDuration: "The session covered a comprehensive overview of AI and its industrial impact",
@@ -605,7 +605,7 @@ export const pastEvents: PastEvent[] = [
     location: "Online Event",
     attendees: 87,
     category: "Career Guidance Seminar",
-    categoryColor: "bg-green-600",  // Green for partnership/collaboration theme
+    categoryColor: "bg-green-700",  // Green for partnership/collaboration theme
     serviceType: "Artificial Intelligence and Machine Learning (AI-ML)",
     purpose: "Civil engineering projects generate vast amounts of data, from site surveys to material procurement and project timelines. Yet, this data often remains underutilized due to the lack of proper analytical tools. The session aimed to introduce Business Intelligence (BI) in Civil Engineering, focusing on how data visualization and analytics can help professionals make better decisions.",
     trainingDuration: "The session covered several key aspects of BI in Civil Engineering",
@@ -683,7 +683,7 @@ export const pastEvents: PastEvent[] = [
     location: "Lords Universal College - Goregaon, Mumbai",
     attendees: 50,
     category: "Career Guidance Seminar",
-    categoryColor: "bg-green-600",  // Green for partnership/collaboration theme
+    categoryColor: "bg-green-700",  // Green for partnership/collaboration theme
     serviceType: "Data Science",
     purpose: "The Navigating the World of Data Science session provided a comprehensive overview of the rapidly growing field of data science and its potential for transformative career opportunities. This one-day event aimed to demystify data science concepts, showcase emerging trends, and guide participants in building a robust career roadmap in this exciting domain.",
     trainingDuration: "The event featured an engaging mix of expert-led discussions, interactive activities, and real-world case studies",
@@ -763,7 +763,7 @@ export const pastEvents: PastEvent[] = [
     location: "SVKM’s Dwarkadas J. Sanghvi College of Engineering (DJSCE) - Vile Parle, Mumbai",
     attendees: 34,
     category: "Internship Program",
-    categoryColor: "bg-green-600",  // Green for partnership/collaboration theme
+    categoryColor: "bg-green-700",  // Green for partnership/collaboration theme
     serviceType: "Data Science",
     purpose: "The Internship Program at DJ Sanghvi College of Engineering was designed to bridge the gap between theoretical education and real-world industry practices. With 105 participants, this initiative aimed to equip students with the skills, knowledge, and confidence required to excel in the dynamic IT and engineering sectors. The program provided a comprehensive overview of industry demands while fostering hands-on learning experiences to prepare students for future careers.",
     trainingDuration: "The program was crafted to ensure a balance of technical knowledge, practical exposure, and career readiness",

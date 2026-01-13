@@ -3,9 +3,11 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { User, Mail, CheckCircle2, Loader2, BookOpen, ChevronDown } from "lucide-react";
-import PhoneInput from "react-phone-number-input";
 import { coursesData } from "@/components/courses/coursesData";
 import { validateFullName, validatePhone } from "@/lib/formValidation";
+import dynamic from "next/dynamic";
+
+const PhoneInput = dynamic(() => import("react-phone-number-input"), { ssr: false });
 
 export default function NewYearOfferForm() {
     // Flatten courses for the dropdown
@@ -165,7 +167,7 @@ export default function NewYearOfferForm() {
                 <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-green-500/20 mb-6">
                     <CheckCircle2 className="h-8 w-8 text-green-500" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Offer Claimed! 🎉</h3>
+                <h2 className="text-2xl font-bold text-white mb-2">Offer Claimed! 🎉</h2>
                 <p className="text-slate-300">
                     Thank you for your interest. Our admissions team will contact you shortly to complete your enrollment with the <span className="text-yellow-400 font-bold">50% discount</span>.
                 </p>
@@ -180,9 +182,9 @@ export default function NewYearOfferForm() {
     }
 
     return (
-        <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 bg-white/5 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/10 shadow-2xl">
+        <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 bg-white/5 backdrop-blur-sm p-3 sm:p-8 rounded-2xl border border-white/10 shadow-2xl">
             <div className="space-y-2">
-                <h3 className="text-xl font-semibold text-white">Claim Your 50% Discount</h3>
+                <h2 className="text-xl font-semibold text-white">Claim Your 50% Discount</h2>
                 <p className="text-sm text-slate-400">Fill out the form below to lock in this limited-time offer.</p>
             </div>
 
@@ -344,7 +346,7 @@ export default function NewYearOfferForm() {
             <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-slate-900 font-bold py-3.5 rounded-xl transition-all duration-200 transform hover:scale-[1.02] shadow-lg hover:shadow-yellow-500/25 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-slate-900 font-bold py-3.5 px-1.5 rounded-xl transition-all duration-200 transform hover:scale-[1.02] shadow-lg hover:shadow-yellow-500/25 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 h-auto min-h-[56px]"
             >
                 {isSubmitting ? (
                     <>
@@ -353,8 +355,8 @@ export default function NewYearOfferForm() {
                     </>
                 ) : (
                     <>
-                        Get 50% OFF Now
-                        <span className="text-xs bg-slate-900/20 px-2 py-0.5 rounded text-slate-800 font-bold ml-1">- Limited Time</span>
+                        <span>Get 50% OFF Now</span>
+                        <span className="text-xs bg-slate-900/20 px-1.5 py-0.5 rounded text-slate-800 font-bold">- Limited Time</span>
                     </>
                 )}
             </button>

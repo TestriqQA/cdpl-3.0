@@ -2,7 +2,8 @@
 
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { m, LazyMotion, domAnimation } from 'framer-motion';
+import dynamic from 'next/dynamic';
+
 import {
   Award,
   TrendingUp,
@@ -25,10 +26,10 @@ import styles from '../ui/phone-input.module.css';
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
 // Import BrochureDownloadModal
-import BrochureDownloadModal from './BrochureDownloadModal';
+const BrochureDownloadModal = dynamic(() => import('./BrochureDownloadModal'), { ssr: false });
 
 // Import YouTubeVideoModal
-import YouTubeVideoModal from './YouTubeVideoModal';
+const YouTubeVideoModal = dynamic(() => import('./YouTubeVideoModal'), { ssr: false });
 
 // Component for the list of features/stats (for mobile)
 interface MobileFeatureListProps {
@@ -106,12 +107,7 @@ const MobileFeatureList: React.FC<MobileFeatureListProps> = ({ onOpenBrochure, o
   </div>
 );
 
-// Animation variants
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const }
-};
+
 
 // Component for desktop hero content
 interface DesktopHeroContentProps {
@@ -150,9 +146,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
     </p>
 
     {/* Trust Indicators - 3 Cards */}
-    <m.div
-      {...fadeUp}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.18 }}
+    <div
       className="mt-7 grid grid-cols-1 sm:grid-cols-3 gap-4"
     >
       {/* Card 1 - Students Placed */}
@@ -187,12 +181,10 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
           <div className="text-xs text-slate-600">Industry Experience</div>
         </div>
       </div>
-    </m.div>
+    </div>
 
     {/* Key Features - 6 Benefits */}
-    <m.div
-      {...fadeUp}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.24 }}
+    <div
       className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3"
     >
       {[
@@ -208,13 +200,11 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
           <span className="text-sm text-slate-700">{feature.text}</span>
         </div>
       ))}
-    </m.div>
+    </div>
 
 
     {/* CTA Buttons */}
-    <m.div
-      {...fadeUp}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.36 }}
+    <div
       className="mt-7 flex flex-col sm:flex-row gap-4"
     >
       {/* Primary CTA - Download Brochure */}
@@ -243,7 +233,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
         <Play className="h-5 w-5" />
         Watch CDPL
       </button>
-    </m.div>
+    </div>
   </>
 );
 
@@ -409,10 +399,7 @@ const HomeHeroSection: React.FC = () => {
 
   // The original Lead Form block (Right side of the grid)
   const LeadForm = (
-    <m.div
-      initial={{ opacity: 0, scale: 0.985 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1.0] as const }}
+    <div
       className="order-2 lg:order-2 lg:col-span-5"
     >
       <div className="sticky top-4 max-w-sm mx-auto lg:ml-auto lg:mr-0">
@@ -568,101 +555,79 @@ const HomeHeroSection: React.FC = () => {
           </form>
         </div>
       </div>
-    </m.div>
+    </div>
   );
 
   return (
     <>
-      <LazyMotion features={domAnimation}>
-        <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50 lg:py-4 py-4 overflow-hidden" aria-labelledby="home-heading">
-          {/* Background decorative elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {/* Animated gradient orbs */}
-            <m.div
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.5, 0.3],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              style={{ willChange: 'transform, opacity' }}
-              className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-orange-200 to-orange-100 rounded-full blur-3xl contains-strict"
-            />
-            <m.div
-              animate={{
-                scale: [1, 1.3, 1],
-                opacity: [0.2, 0.4, 0.2],
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              style={{ willChange: 'transform, opacity' }}
-              className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-tr from-blue-200 to-blue-100 rounded-full blur-3xl contains-strict"
+      <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50 lg:py-4 py-4 overflow-hidden" aria-labelledby="home-heading">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Static gradient orbs (Optimized for Main Thread) */}
+          <div
+            className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-orange-200 to-orange-100 rounded-full blur-3xl opacity-30 contains-strict"
+          />
+          <div
+            className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-tr from-blue-200 to-blue-100 rounded-full blur-3xl opacity-20 contains-strict"
+          />
+        </div>
+
+        {/* Main Container */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* --- Mobile Layout (lg:hidden) --- */}
+          <div className="lg:hidden">
+            {/* 1. Breadcrumb */}
+            {Breadcrumb}
+
+            {/* 2. Headline */}
+            {/* 2. Headline - ANIMATION REMOVED FOR LCP */}
+            <h1
+              id="home-heading-mobile"
+              className="mt-2 py-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
+            >
+              Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span>
+            </h1>
+
+            {/* 3. Description */}
+            {/* 3. Description - ANIMATION REMOVED FOR LCP */}
+            <p
+              className="mt-1 mb-1.5 text-[15px] sm:text-base leading-7 text-slate-700"
+            >
+              Launch your tech career with industry-leading courses, live projects, and guaranteed job interviews. Join 5000+ successful graduates today.
+            </p>
+
+            {/* 4. Form Card */}
+            {LeadForm}
+
+            {/* 5. Mobile Feature List */}
+            <MobileFeatureList
+              onOpenBrochure={openBrochure}
+              onOpenVideo={openVideo}
             />
           </div>
 
-          {/* Main Container */}
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* --- Desktop/Laptop Layout (hidden lg:block) --- */}
+          <div className="hidden lg:block">
+            {/* 1. Breadcrumb */}
+            {Breadcrumb}
 
-            {/* --- Mobile Layout (lg:hidden) --- */}
-            <div className="lg:hidden">
-              {/* 1. Breadcrumb */}
-              {Breadcrumb}
+            {/* 2. Grid Layout - 8 columns left, 4 columns right */}
+            <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
 
-              {/* 2. Headline */}
-              {/* 2. Headline - ANIMATION REMOVED FOR LCP */}
-              <h1
-                id="home-heading-mobile"
-                className="mt-2 py-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
-              >
-                Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span>
-              </h1>
+              {/* Left Content - 8 columns (66.67% width) */}
+              <div className="order-1 lg:order-1 lg:col-span-7">
+                <DesktopHeroContent onOpenBrochure={openBrochure} onOpenVideo={openVideo} />
+              </div>
 
-              {/* 3. Description */}
-              {/* 3. Description - ANIMATION REMOVED FOR LCP */}
-              <p
-                className="mt-1 mb-1.5 text-[15px] sm:text-base leading-7 text-slate-700"
-              >
-                Launch your tech career with industry-leading courses, live projects, and guaranteed job interviews. Join 5000+ successful graduates today.
-              </p>
-
-              {/* 4. Form Card */}
-              {LeadForm}
-
-              {/* 5. Mobile Feature List */}
-              <MobileFeatureList
-                onOpenBrochure={openBrochure}
-                onOpenVideo={openVideo}
-              />
-            </div>
-
-            {/* --- Desktop/Laptop Layout (hidden lg:block) --- */}
-            <div className="hidden lg:block">
-              {/* 1. Breadcrumb */}
-              {Breadcrumb}
-
-              {/* 2. Grid Layout - 8 columns left, 4 columns right */}
-              <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
-
-                {/* Left Content - 8 columns (66.67% width) */}
-                <div className="order-1 lg:order-1 lg:col-span-7">
-                  <DesktopHeroContent onOpenBrochure={openBrochure} onOpenVideo={openVideo} />
-                </div>
-
-                {/* Right Form - 4 columns (33.33% width) */}
-                <div className="order-2 lg:order-2 lg:col-span-5">
-                  {LeadForm}
-                </div>
+              {/* Right Form - 4 columns (33.33% width) */}
+              <div className="order-2 lg:order-2 lg:col-span-5">
+                {LeadForm}
               </div>
             </div>
           </div>
-        </section>
-      </LazyMotion>
+        </div>
+      </section>
 
       {/* Brochure Download Modal */}
       <BrochureDownloadModal

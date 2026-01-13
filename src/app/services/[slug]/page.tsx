@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { trainingServices, type TrainingService } from '@/data/servicesData';
 import { pastEvents } from '@/data/eventsData';
 import { type ServiceClient } from '@/types/service';
-import { generateMetadata as generateSEOMetadata } from '@/lib/metadata-generator';
+import { generateMetadata as generateSEOMetadata, generateMetaDescription } from '@/lib/metadata-generator';
 import { generateServiceSchema, generateBreadcrumbSchema } from '@/lib/schema-generators';
 import JsonLd from '@/components/JsonLd';
 
@@ -140,10 +140,20 @@ export async function generateMetadata(
     'Cinute Digital training'
   ];
 
+  // Optimize description: Combine tagline and short description, then clean/truncate
+  // Use generateMetaDescription helper to ensure optimal length (approx 160 chars)
+  const rawDescription = `${service.tagline} ${service.shortDescription}`;
+  const generatedDesc = generateMetaDescription(rawDescription, 160);
+
+  // FALLBACK SAFEGUARD: Ensure strictly non-empty string
+  const finalDescription = (generatedDesc && generatedDesc.length > 10)
+    ? generatedDesc
+    : `Join CDPL's ${service.title} training program. Industry-expert led courses with 100% placement support. Master usage with real-world projects.`;
+
   // Generate enhanced metadata using SEO utility
   return generateSEOMetadata({
     title: `${service.title} | CDPL`,
-    description: `${service.tagline} — ${service.shortDescription} Learn ${service.title} with industry projects, mentor-led classes, and job-ready skills at CDPL.`,
+    description: finalDescription,
     keywords,
     url: `/services/${slug}`,
     image: `/og-images/og-service-${slug}.webp`,

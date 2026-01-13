@@ -27,9 +27,9 @@ type Case = {
   avatar: string;
 };
 
-const BRAND = "#ff8c00";
+const BRAND = "#b45309"; // Darker orange for WCAG AA constrast
 const GRADIENT_BRAND =
-  "linear-gradient(90deg, #ff8c00 0%, #ffb558 55%, #ffd19e 100%)";
+  "linear-gradient(90deg, #b45309 0%, #ff8c00 55%, #ffd19e 100%)";
 const GRADIENT_ACCENT = "linear-gradient(90deg,#e0f2ff 0%,#efe9ff 100%)";
 
 const DOMAINS = ["All", "QA", "Full-Stack", "Cloud & DevOps"];

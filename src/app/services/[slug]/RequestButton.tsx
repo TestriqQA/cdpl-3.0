@@ -1,7 +1,11 @@
 'use client';
 
 import { useState } from "react";
-import WorkshopRequestModal from "@/components/WorkshopRequestModal";
+import dynamic from "next/dynamic";
+
+const WorkshopRequestModal = dynamic(() => import("@/components/WorkshopRequestModal"), {
+  ssr: false,
+});
 
 interface RequestButtonProps {
   serviceTitle: string;
@@ -9,11 +13,15 @@ interface RequestButtonProps {
 
 export default function RequestButton({ serviceTitle }: RequestButtonProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [shouldLoadModal, setShouldLoadModal] = useState(false);
 
   return (
     <>
       <button
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => {
+          setShouldLoadModal(true);
+          setIsModalOpen(true);
+        }}
         aria-label={`Request ${serviceTitle}`}
         className="
         cursor-pointer group relative inline-flex items-center justify-center
@@ -47,19 +55,7 @@ export default function RequestButton({ serviceTitle }: RequestButtonProps) {
             mix-blend-soft-light
           "
           />
-          {/* Fine texture (SVG noise) */}
-          <span
-            aria-hidden
-            className="pointer-events-none absolute inset-0 rounded-[10px] opacity-20"
-            style={{
-              backgroundImage:
-                "url(\"data:image/svg+xml;utf8,\
-              <svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'>\
-                <filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter>\
-                <rect width='100%' height='100%' filter='url(%23n)' opacity='0.04'/>\
-              </svg>\")",
-            }}
-          />
+          {/* Fine texture (removed for performance) */}
           {/* Sheen sweep */}
           <span
             aria-hidden
@@ -96,14 +92,17 @@ export default function RequestButton({ serviceTitle }: RequestButtonProps) {
         />
       </button>
 
-      <WorkshopRequestModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        source={`Service Detail Page - ${serviceTitle}`}
-        title={`Request Service: ${serviceTitle}`}
-        subtitle="Get detailed curriculum and corporate batch info"
-        serviceName={serviceTitle}
-      />
+      {shouldLoadModal && (
+        <WorkshopRequestModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          source={`Service Detail Page - ${serviceTitle}`}
+          title={`Request Service: ${serviceTitle}`}
+          subtitle="Get detailed curriculum and corporate batch info"
+          serviceName={serviceTitle}
+        />
+      )
+      }
     </>
   );
 }

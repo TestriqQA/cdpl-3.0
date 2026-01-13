@@ -155,7 +155,7 @@ export default function EventContent({ event }: EventContentProps) {
                                 <Image src={event.organizationImage} alt={event.organization} width={64} height={64} />
                             </div>
                             <div className="flex-1">
-                                <h4 className="text-xl font-bold text-slate-900 mb-1">{event.organization}</h4>
+                                <h3 className="text-xl font-bold text-slate-900 mb-1">{event.organization}</h3>
                                 <div className="flex flex-wrap gap-2">
                                     {event.organizationWebsite && (
                                         <Link href={event.organizationWebsite.toString()} target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-blue-600 transition-colors" title="Website">
@@ -201,7 +201,7 @@ export default function EventContent({ event }: EventContentProps) {
                                 href={event.organizationAbout.toString()}
                                 className="inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
                             >
-                                <span>More Info</span>
+                                <span>More Info<span className="sr-only"> about {event.organization}</span></span>
                                 <ExternalLink className="w-4 h-4" />
                             </Link>
                         )}
@@ -228,9 +228,9 @@ export default function EventContent({ event }: EventContentProps) {
                                 />
                             </div>
                         )}
-                        <h4 className="text-xl font-bold text-slate-900">
+                        <h3 className="text-xl font-bold text-slate-900">
                             {event.venueTitle || event.location}
-                        </h4>
+                        </h3>
                         <p className="text-md text-slate-700 leading-relaxed">
                             {event.venueDescription}
                         </p>
