@@ -139,9 +139,13 @@ export async function appendRowToSheet(data: {
         });
 
         console.log('Google Sheet updated successfully.');
-    } catch (error) {
-        console.error('Error updating Google Sheet:', error);
-        // Don't throw, so we don't block the main response
+    } catch (error: any) {
+        console.error('Error updating Google Sheet:', {
+            message: error.message,
+            stack: error.stack,
+            data: { fullName: data.fullName, email: data.email }
+        });
+        // Don't throw, so we don't block the main response, but we've logged the detail
     }
 }
 
