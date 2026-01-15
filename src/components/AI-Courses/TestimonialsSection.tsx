@@ -115,7 +115,7 @@ export default function TestimonialsSection() {
                         </motion.button>
                     </div>
                 </motion.div>
-                <EnrollPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} onSubmit={handleEnrollSubmit} />
+                <EnrollPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} onSubmit={handleEnrollSubmit} source="Artificial Intelligence Course Category Page - Testimonials Section - Enroll Now" />
 
 
             </div>

@@ -154,7 +154,7 @@ export default function FaqSection() {
         isOpen={isCareerModalOpen}
         onClose={() => setIsCareerModalOpen(false)}
         courseName="Java Programming"
-        source="Java Course Page - FAQ Section - Talk to a Mentor"
+        source="Java Programming Course Page - FAQ Section - Talk to a Mentor"
         title="Talk to a Mentor"
         subtitle="Get answers to all your questions about our Java program."
       />
@@ -163,7 +163,7 @@ export default function FaqSection() {
         isOpen={isSyllabusModalOpen}
         onClose={() => setIsSyllabusModalOpen(false)}
         courseName="Java Programming"
-        source="Java Course Page - FAQ Section - Java - Download Syllabus"
+        source="Java Programming Course Page - FAQ Section - Download Syllabus"
       />
 
       {/* Accessible helpers */}

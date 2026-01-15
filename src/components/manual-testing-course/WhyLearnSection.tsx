@@ -306,6 +306,7 @@ export default function WhyLearnSection() {
                 isOpen={isEnrollModalOpen}
                 onClose={() => setIsEnrollModalOpen(false)}
                 courseName="Manual Testing"
+                source="Manual Testing Course Page - Why Learn Section - Apply Now"
             />
         </section >
     );

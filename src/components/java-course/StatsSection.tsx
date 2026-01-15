@@ -213,7 +213,7 @@ export default function StatsSection() {
           </Link>
           <MentorButton
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
-            source="Java Course Page - Stats Section - Talk to a Mentor"
+            source="Java Programming Course Page - Stats Section - Talk to a Mentor"
           >
             Talk to a Mentor
           </MentorButton>

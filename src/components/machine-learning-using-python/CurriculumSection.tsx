@@ -201,13 +201,13 @@ export default function CurriculumSection() {
       <EnrollModal
         isOpen={isEnrollOpen}
         onClose={() => setIsEnrollOpen(false)}
-        source="Machine Learning with Python Course Page - Curriculum Section - Apply Now"
+        source="Machine Learning Algorithms with Python Course Page - Curriculum Section - Apply Now"
         courseName={courseName}
       />
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Machine Learning with Python Course Page - Curriculum Section - Machine Learning with Python - Download Detailed Syllabus"
+        source="Machine Learning Algorithms with Python Course Page - Curriculum Section - Download Syllabus"
         courseName={courseName}
       />
     </section>

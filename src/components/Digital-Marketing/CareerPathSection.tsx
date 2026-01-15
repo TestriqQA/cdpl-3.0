@@ -306,7 +306,7 @@ export default function CareerPathSection() {
 
     return (
         <section className="relative py-10 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
-            <EnrollPopup isOpen={isEnrollOpen} onClose={() => setIsEnrollOpen(false)} onSubmit={handleEnrollSubmit} />
+            <EnrollPopup isOpen={isEnrollOpen} onClose={() => setIsEnrollOpen(false)} onSubmit={handleEnrollSubmit} source="Digital Marketing Course Category Page - Career Section - Enroll Now" />
             <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
                 <div className="absolute top-20 left-10 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />
                 <div className="absolute top-40 right-10 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" />
@@ -377,7 +377,7 @@ export default function CareerPathSection() {
                         </div>
                     </div>
                 </motion.div>
-                <BrochureDownloadModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} />
+                <BrochureDownloadModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} source="Digital Marketing Course Category Page - Career Section - Download Career Guide" />
             </div>
 
             <style jsx>{`

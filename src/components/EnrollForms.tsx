@@ -121,10 +121,11 @@ interface EnrollPopupProps {
     isOpen: boolean;
     onClose: () => void;
     onSubmit?: (data: EnrollFormData) => void;
+    source?: string;
 }
 
-export const EnrollPopup: React.FC<EnrollPopupProps> = ({ isOpen, onClose }) => {
+export const EnrollPopup: React.FC<EnrollPopupProps> = ({ isOpen, onClose, source }) => {
     return (
-        <EnrollModal isOpen={isOpen} onClose={onClose} courseName="Course" />
+        <EnrollModal isOpen={isOpen} onClose={onClose} courseName="Course" source={source} />
     );
 };

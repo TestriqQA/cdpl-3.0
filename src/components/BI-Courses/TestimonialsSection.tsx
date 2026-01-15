@@ -118,6 +118,7 @@ export default function TestimonialsSection() {
                     isOpen={isPopupOpen}
                     onClose={() => setIsPopupOpen(false)}
                     onSubmit={handleEnrollSubmit}
+                    source="Business Intelligence Course Category Page - Testimonials Section - Enroll Now"
                 />
             </div>
 

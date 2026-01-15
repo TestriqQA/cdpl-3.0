@@ -199,14 +199,14 @@ export default function WhoShouldEnroll() {
         isOpen={isEnrollModalOpen}
         onClose={() => setIsEnrollModalOpen(false)}
         courseName="Java Programming"
-        source="Java Course Page - Who Should Enroll Section - Check Eligibility"
+        source="Java Programming Course Page - Who Should Enroll Section - Check Eligibility"
       />
 
       <SyllabusDownloadModal
         isOpen={isSyllabusModalOpen}
         onClose={() => setIsSyllabusModalOpen(false)}
         courseName="Java Programming"
-        source="Java Course Page - Who Should Enroll Section - Syllabus Download"
+        source="Java Programming Course Page - Who Should Enroll Section - Download Syllabus"
       />
 
       {/* Accessible helpers */}

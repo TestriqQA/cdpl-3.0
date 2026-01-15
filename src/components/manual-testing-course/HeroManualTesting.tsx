@@ -272,7 +272,7 @@ export default function HeroManualTesting() {
                         {/* Lead Form For Mobile Screens and Tab Screens */}
                         {/* Lead Form For Mobile Screens */}
                         <div className="lg:hidden mt-8">
-                            <LeadForm variant="elevated" />
+                            <LeadForm variant="elevated" source="Manual Testing Course Page - Hero Section (Mobile) - Get Started Now" />
                         </div>
 
                         {/* Trust Bar */}
@@ -417,7 +417,7 @@ export default function HeroManualTesting() {
 
                     {/* RIGHT */}
                     <div className="relative lg:col-span-4 min-h-[520px] hidden lg:block">
-                        <LeadForm variant="elevated" />
+                        <LeadForm variant="elevated" source="Manual Testing Course Page - Hero Section (Desktop) - Get Started Now" />
                     </div>
                 </div>
 
@@ -426,18 +426,18 @@ export default function HeroManualTesting() {
                     isOpen={isPopupOpen}
                     onClose={() => setIsPopupOpen(false)}
                     courseName="Manual Testing"
+                    source="Manual Testing Course Page - Hero Section - Enroll Now"
                 />
 
                 <Modal isOpen={isDownloadOpen} onClose={() => setIsDownloadOpen(false)} title="Download Manual Testing Syllabus">
                     <BrochureDownloadForm onClose={() => setIsDownloadOpen(false)} />
                 </Modal>
 
-                {/* Syllabus Download Modal */}
                 <SyllabusDownloadModal
                     isOpen={isSyllabusModalOpen}
                     onClose={() => setIsSyllabusModalOpen(false)}
                     courseName="Manual Testing"
-                    source="Manual Testing Course Page - Hero Section - Manual Testing - Download Syllabus"
+                    source="Manual Testing Course Page - Hero Section - Download Syllabus"
                 />
 
                 {/* SEO helper text */}

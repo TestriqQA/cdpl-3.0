@@ -302,18 +302,19 @@ export default function LearningPath() {
       <CallbackModal
         isOpen={isCallbackModalOpen}
         onClose={() => setIsCallbackModalOpen(false)}
-        source="Manual Software Testing Course Page - Learning Path"
+        source="Manual Testing Course Page - Learning Path Section - Explore"
       />
       <SyllabusDownloadModal
         isOpen={isSyllabusModalOpen}
         onClose={() => setIsSyllabusModalOpen(false)}
         courseName="Manual Testing"
-        source="Manual Testing Course Page - Learning Path - Manual Testing - Download Syllabus"
+        source="Manual Testing Course Page - Learning Path Section - Download Syllabus"
       />
       <EnrollModal
         isOpen={isEnrollModalOpen}
         onClose={() => setIsEnrollModalOpen(false)}
         courseName="Manual Testing"
+        source="Manual Testing Course Page - Learning Path Section - Start Your QA Journey"
       />
     </section>
   );

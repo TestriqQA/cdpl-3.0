@@ -99,10 +99,10 @@ const ROLES: Role[] = [
 export default function CareerSection() {
   const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
   const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
-  const [enrollSource, setEnrollSource] = useState("Java Course Page - Career Section");
+  const [enrollSource, setEnrollSource] = useState("Java Programming Course Page - Career Section");
 
   const handleApplyClick = (roleTitle: string) => {
-    setEnrollSource(`Java Course Page - Career Section - Apply for ${roleTitle}`);
+    setEnrollSource(`Java Programming Course Page - Career Section - Apply for ${roleTitle}`);
     setIsEnrollModalOpen(true);
   };
 
@@ -227,7 +227,7 @@ export default function CareerSection() {
           </button>
           <button
             onClick={() => {
-              setEnrollSource("Java Course Page - Career Section - Download Resume Template");
+              setEnrollSource("Java Programming Course Page - Career Section - Download Resume Template");
               setIsEnrollModalOpen(true);
             }}
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
@@ -247,7 +247,7 @@ export default function CareerSection() {
       <CareerSessionModal
         isOpen={isCareerModalOpen}
         onClose={() => setIsCareerModalOpen(false)}
-        source="Java Course Page - Career Section - Browse Open Roles"
+        source="Java Programming Course Page - Career Section - Browse Open Roles"
       />
 
       {/* Accessible helpers for crawlers & screen readers */}

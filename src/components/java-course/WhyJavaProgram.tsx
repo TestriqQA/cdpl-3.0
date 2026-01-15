@@ -170,14 +170,14 @@ export default function WhyJavaProgram() {
         <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-4">
           <EnrollButton
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
-            source="Java Course Page - Why Java Program Section - Apply for Program"
+            source="Java Programming Course Page - Why Java Program Section - Apply for Program"
           >
             Apply for the Program
             <Rocket className="ml-2 h-4 w-4" />
           </EnrollButton>
           <SyllabusButton
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
-            source="Java Course Page - Why Java Program Section - Syllabus Download"
+            source="Java Programming Course Page - Why Java Program Section - Download Syllabus"
           >
             Download Syllabus (PDF)
           </SyllabusButton>

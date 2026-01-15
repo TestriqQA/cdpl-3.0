@@ -298,6 +298,7 @@ export default function ProjectsSection(): JSX.Element {
                 isOpen={isEnrollModalOpen}
                 onClose={() => setIsEnrollModalOpen(false)}
                 courseName="Manual Testing Projects"
+                source="Manual Testing Course Page - Projects Section - Start Project"
             />
         </section >
     );

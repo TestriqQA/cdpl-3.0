@@ -129,7 +129,7 @@ export default function HeroSection() {
 
                         {/* Mobile form */}
                         <div className="mt-6 block md:hidden">
-                            <LeadForm variant="elevated" source="Java Course Page - Hero Section" />
+                            <LeadForm variant="elevated" source="Java Programming Course Page - Hero Section (Mobile) - Get Started Now" />
                         </div>
 
                         <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
@@ -148,7 +148,7 @@ export default function HeroSection() {
                             <EnrollButton
                                 className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
                                 aria-label="Enroll now in Java program"
-                                source="Java Course Page - Hero Section - Enroll Now"
+                                source="Java Programming Course Page - Hero Section - Enroll Now"
                             >
                                 Enroll Now
                                 <FaArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -157,7 +157,7 @@ export default function HeroSection() {
                             <SyllabusButton
                                 className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
                                 aria-label="Download Java Syllabus"
-                                source="Java Course Page - Hero Section - Java - Download Syllabus"
+                                source="Java Programming Course Page - Hero Section - Download Syllabus"
                             >
                                 Download Syllabus
                                 <FaCloudDownloadAlt className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
@@ -209,7 +209,7 @@ export default function HeroSection() {
                     <aside
                         className="hidden md:col-span-5 lg:col-span-4 md:block"
                     >
-                        <LeadForm variant="elevated" source="Java Course Page - Hero Section" />
+                        <LeadForm variant="elevated" source="Java Programming Course Page - Hero Section (Desktop) - Get Started Now" />
                     </aside>
                 </div>
 
