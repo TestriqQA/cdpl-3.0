@@ -136,13 +136,13 @@ export default function CtaSection() {
       <EnrollModal
         isOpen={isEnrollOpen}
         onClose={() => setIsEnrollOpen(false)}
-        source="Machine Learning with Python - CTA Section - Enroll Now"
+        source="Machine Learning Algorithms with Python Course Page - CTA Section - Enroll Now"
         courseName={courseName}
       />
       <CareerSessionModal
         isOpen={isCareerOpen}
         onClose={() => setIsCareerOpen(false)}
-        source="Machine Learning with Python - CTA Section - Free Demo"
+        source="Machine Learning Algorithms with Python Course Page - CTA Section - Free Demo"
         courseName={courseName}
       />
     </section>

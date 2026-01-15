@@ -219,13 +219,13 @@ export default function CareerSection() {
       <EnrollModal
         isOpen={isEnrollOpen}
         onClose={() => setIsEnrollOpen(false)}
-        source="Machine Learning with Python - Career Section - Placement Assistance"
+        source="Machine Learning Algorithms with Python Course Page - Career Section - Placement Assistance"
         courseName={courseName}
       />
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Machine Learning Course Page - Career Section - Machine Learning - Download Portfolio Guide"
+        source="Machine Learning Algorithms with Python Course Page - Career Section - Download Portfolio Guide"
         courseName={courseName}
       />
     </section>

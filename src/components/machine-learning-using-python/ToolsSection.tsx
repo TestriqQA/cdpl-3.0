@@ -172,7 +172,7 @@ export default function ToolsSection() {
       <CareerSessionModal
         isOpen={isCareerOpen}
         onClose={() => setIsCareerOpen(false)}
-        source="Machine Learning with Python - Tools Section - Book Demo"
+        source="Machine Learning Algorithms with Python Course Page - Tools Section - Book a Free Demo"
         courseName={courseName}
       />
     </section>

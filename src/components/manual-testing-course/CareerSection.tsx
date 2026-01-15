@@ -354,13 +354,13 @@ export default function CareerSection() {
       <CareerSessionModal
         isOpen={isCareerModalOpen}
         onClose={() => setIsCareerModalOpen(false)}
-        source="Manual Software Testing Course Page - Session Enquiry"
+        source="Manual Testing Course Page - Career Section - Get Free Career Session"
       />
       <SyllabusDownloadModal
         isOpen={isSyllabusModalOpen}
         onClose={() => setIsSyllabusModalOpen(false)}
         courseName="Manual Testing"
-        source="Manual Testing Course Page - Career Section - Manual Testing - Download Syllabus"
+        source="Manual Testing Course Page - Career Section - Download Syllabus"
       />
     </section>
   );

@@ -276,8 +276,8 @@ export default function HeroSection(): React.JSX.Element {
 
     return (
         <section className="relative bg-white py-10 overflow-hidden">
-            <EnrollPopup isOpen={isEnrollOpen} onClose={() => setIsEnrollOpen(false)} onSubmit={() => { }} />
-            <BrochureDownloadModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} />
+            <EnrollPopup isOpen={isEnrollOpen} onClose={() => setIsEnrollOpen(false)} onSubmit={() => { }} source="Artificial Intelligence Course Category Page - Hero Section - Enroll Now" />
+            <BrochureDownloadModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} source="Artificial Intelligence Course Category Page - Hero Section - Download Brochure" />
             <YouTubeVideoModal isOpen={isVideoOpen} onClose={() => setIsVideoOpen(false)} videoUrl={videoUrl} />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -324,7 +324,7 @@ export default function HeroSection(): React.JSX.Element {
                                 title="Start Your Free Demo"
                                 subtitle="Chat with an expert advisor"
                                 showCourse={false}
-                                source="Artificial Intelligence - Hero Section - Mobile Form"
+                                source="Artificial Intelligence Course Category Page - Hero Section - Mobile Form"
                             />
                         </div>
                     </div>
@@ -355,7 +355,7 @@ export default function HeroSection(): React.JSX.Element {
                                         title="Start Your Free Demo"
                                         subtitle="Chat with an expert advisor & unlock a personalised learning plan"
                                         showCourse={false}
-                                        source="Artificial Intelligence - Hero Section - Right Form"
+                                        source="Artificial Intelligence Course Category Page - Hero Section - Right Form"
                                     />
                                 </div>
                             </motion.div>

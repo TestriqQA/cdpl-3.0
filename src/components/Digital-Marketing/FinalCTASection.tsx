@@ -99,7 +99,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                     email: form.email,
                     phone: form.phone,
                     type: 'Course Category Enquiry',
-                    source: 'Digital Marketing - Final Cta - Right Section form',
+                    source: 'Digital Marketing Course Category Page - Final CTA Section - Right Form',
                 }),
             });
 
@@ -348,8 +348,8 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                     </motion.div>
                 </motion.div>
             </div>
-            <EnrollPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} onSubmit={handleEnrollSubmit} />
-            <BrochureDownloadModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} />
+            <EnrollPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} onSubmit={handleEnrollSubmit} source="Digital Marketing Course Category Page - Final CTA Section - Enroll Now" />
+            <BrochureDownloadModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} source="Digital Marketing Course Category Page - Final CTA Section - Download Brochure" />
         </section>
     );
 };

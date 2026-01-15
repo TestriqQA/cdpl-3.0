@@ -292,6 +292,7 @@ export default function FaqSection() {
         isOpen={isEnrollModalOpen}
         onClose={() => setIsEnrollModalOpen(false)}
         courseName="Manual Testing"
+        source="Manual Testing Course Page - FAQ Section - Apply Now"
       />
     </section>
   );

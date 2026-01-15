@@ -365,7 +365,7 @@ export default function OtherCoursesSection() {
       <CareerSessionModal
         isOpen={isCareerModalOpen}
         onClose={() => setIsCareerModalOpen(false)}
-        source="Manual Software Testing Course Page - Other Courses Section"
+        source="Manual Testing Course Page - Other Courses Section - Get Free Counselling"
       />
     </section>
   );

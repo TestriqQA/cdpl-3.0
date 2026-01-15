@@ -14,7 +14,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     source?: string;
 }
 
-export function EnrollButton({ children, className, courseName = "Java Programming", source = "Java Course Page", ...props }: ButtonProps) {
+export function EnrollButton({ children, className, courseName = "Java Programming", source = "Java Programming Course Page", ...props }: ButtonProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [hasOpened, setHasOpened] = useState(false);
 
@@ -42,7 +42,7 @@ export function EnrollButton({ children, className, courseName = "Java Programmi
     );
 }
 
-export function SyllabusButton({ children, className, courseName = "Java Programming", source = "Java Course Page", ...props }: ButtonProps) {
+export function SyllabusButton({ children, className, courseName = "Java Programming", source = "Java Programming Course Page", ...props }: ButtonProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [hasOpened, setHasOpened] = useState(false);
 
@@ -70,7 +70,7 @@ export function SyllabusButton({ children, className, courseName = "Java Program
     );
 }
 
-export function MentorButton({ children, className, courseName = "Java Programming", source = "Java Course Page", ...props }: ButtonProps) {
+export function MentorButton({ children, className, courseName = "Java Programming", source = "Java Programming Course Page", ...props }: ButtonProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [hasOpened, setHasOpened] = useState(false);
 

@@ -99,7 +99,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                     email: form.email,
                     phone: form.phone,
                     type: 'Course Category Enquiry',
-                    source: 'Artificial Intelligence - Final Cta - Right Section form',
+                    source: 'Artificial Intelligence Course Category Page - Final CTA Section - Right Form',
                 }),
             });
 
@@ -365,8 +365,8 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
 
 
             </div>
-            <EnrollPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} onSubmit={handleEnrollSubmit} />
-            <BrochureDownloadModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} />
+            <EnrollPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} onSubmit={handleEnrollSubmit} source="Artificial Intelligence Course Category Page - Final CTA Section - Enroll Now" />
+            <BrochureDownloadModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} source="Artificial Intelligence Course Category Page - Final CTA Section - Download Brochure" />
         </section>
     );
 };
