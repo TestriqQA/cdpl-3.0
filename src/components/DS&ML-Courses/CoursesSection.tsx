@@ -88,7 +88,7 @@ const CourseCard: React.FC<{ course: Course; index: number; nowMs: number }> = (
             whileHover={{ y: -10 }}
             className={`relative group bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/20 ${variant.hoverBorder} transform hover:-translate-y-2 flex flex-col h-full`}
         >
-            <EnrollPopup isOpen={isEnrollOpen} onClose={() => setIsEnrollOpen(false)} onSubmit={(data) => console.log(data)} />
+            <EnrollPopup isOpen={isEnrollOpen} onClose={() => setIsEnrollOpen(false)} onSubmit={(data) => console.log(data)} source={`Data Science & Machine Learning Course Category Page - Courses Section - ${course.title} - Enroll Now`} />
             <div className={`${variant.header} p-6 relative overflow-hidden`}>
                 {/* Background Pattern (simplified) */}
                 <div className="absolute inset-0 opacity-10">
@@ -233,6 +233,7 @@ const CourseCard: React.FC<{ course: Course; index: number; nowMs: number }> = (
                         onSubmit={(values) => {
                             console.log("Download form submitted:", { ...values, course: course.title });
                         }}
+                        source={`Data Science & Machine Learning Course Category Page - Courses Section - ${course.title} - Download Syllabus`}
                     />
                 </div>
             </div>

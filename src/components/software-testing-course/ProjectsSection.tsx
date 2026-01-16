@@ -373,7 +373,7 @@ const ProjectsSection = () => {
                         </motion.button>
                     </div>
                 </motion.div>
-                <EnrollPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} onSubmit={handleEnrollSubmit} />
+                <EnrollPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} onSubmit={handleEnrollSubmit} source="Software Testing Course Category Page - Projects Section - Enroll Now" />
             </div>
 
             <style jsx>{`

@@ -102,9 +102,8 @@ export default function HeroSection() {
                             </span>
                         </h1>
 
-                        {/* Mobile form under H1 */}
                         <div className="mt-3 md:hidden">
-                            <MachineLearningCourseLeadForm />
+                            <MachineLearningCourseLeadForm source="Machine Learning Algorithms with Python Course Page - Hero Section (Mobile) - Get Started Now" />
                         </div>
 
                         {/* Subheading */}
@@ -194,9 +193,8 @@ export default function HeroSection() {
                         </div>
                     </div>
 
-                    {/* Right: Desktop form (top-aligned) */}
                     <div className="hidden md:block md:col-span-5 lg:col-span-4 md:top-8">
-                        <MachineLearningCourseLeadForm />
+                        <MachineLearningCourseLeadForm source="Machine Learning Algorithms with Python Course Page - Hero Section (Desktop) - Get Started Now" />
                     </div>
                 </div>
             </div>
@@ -204,19 +202,19 @@ export default function HeroSection() {
             <EnrollModal
                 isOpen={isEnrollOpen}
                 onClose={() => setIsEnrollOpen(false)}
-                source="Machine Learning with Python Course Page - Hero Section - Enroll Now"
+                source="Machine Learning Algorithms with Python Course Page - Hero Section - Enroll Now"
                 courseName={courseName}
             />
             <SyllabusDownloadModal
                 isOpen={isSyllabusOpen}
                 onClose={() => setIsSyllabusOpen(false)}
-                source="Machine Learning with Python Course Page - Hero Section - Machine Learning with Python - Download Syllabus"
+                source="Machine Learning Algorithms with Python Course Page - Hero Section - Download Syllabus"
                 courseName={courseName}
             />
             <CareerSessionModal
                 isOpen={isCareerOpen}
                 onClose={() => setIsCareerOpen(false)}
-                source="Machine Learning with Python - Hero Section - Free Demo"
+                source="Machine Learning Algorithms with Python Course Page - Hero Section - Free Demo"
                 courseName={courseName}
             />
         </section>

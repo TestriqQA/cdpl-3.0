@@ -287,7 +287,7 @@ export default function CareerRoadmapSection() {
       <CareerSessionModal
         isOpen={isCareerOpen}
         onClose={() => setIsCareerOpen(false)}
-        source="Machine Learning with Python - Career Roadmap - Get Personalized Roadmap"
+        source="Machine Learning Algorithms with Python Course Page - Career Roadmap Section - Get Personalized Roadmap"
         courseName={courseName}
       />
     </section>

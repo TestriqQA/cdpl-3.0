@@ -267,7 +267,7 @@ export default function StatsSection() {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Machine Learning Course Page - Stats Section - Machine Learning - Download Syllabus"
+        source="Machine Learning Algorithms with Python Course Page - Stats Section - Download Syllabus"
         courseName={courseName}
       />
     </section>

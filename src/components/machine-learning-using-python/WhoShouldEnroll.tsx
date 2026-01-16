@@ -237,13 +237,13 @@ export default function WhoShouldEnroll() {
       <EnrollModal
         isOpen={isEnrollOpen}
         onClose={() => setIsEnrollOpen(false)}
-        source="Machine Learning with Python - Who Should Enroll - Check Eligibility"
+        source="Machine Learning Algorithms with Python Course Page - Who Should Enroll Section - Check Eligibility"
         courseName={courseName}
       />
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Machine Learning Course Page - Who Should Enroll Section - Machine Learning - Download Syllabus"
+        source="Machine Learning Algorithms with Python Course Page - Who Should Enroll Section - Download Syllabus"
         courseName={courseName}
       />
     </section>

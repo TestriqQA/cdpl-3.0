@@ -217,7 +217,7 @@ export default function ProjectsSection() {
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 courseName="Java Programming"
-                source="Java Course Page - Projects Section"
+                source="Java Programming Course Page - Projects Section"
                 title="Get Access to Sample Portfolios"
                 subtitle="Enter your details to view our student portfolio showcase."
             />

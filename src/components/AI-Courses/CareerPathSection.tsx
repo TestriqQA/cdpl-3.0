@@ -311,7 +311,7 @@ export default function CareerPathSection() {
 
     return (
         <section className="relative py-10 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
-            <EnrollPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} onSubmit={handleEnrollSubmit} />
+            <EnrollPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} onSubmit={handleEnrollSubmit} source="Artificial Intelligence Course Category Page - Career Section - Enroll Now" />
 
             <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
                 {/* Header */}
@@ -392,7 +392,7 @@ export default function CareerPathSection() {
                         </div>
                     </div>
                 </motion.div>
-                <BrochureDownloadModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} />
+                <BrochureDownloadModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} source="Artificial Intelligence Course Category Page - Career Section - Download Career Guide" />
             </div>
 
             <style jsx>{`

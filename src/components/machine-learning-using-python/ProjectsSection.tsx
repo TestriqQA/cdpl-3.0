@@ -193,7 +193,7 @@ export default function ProjectsSection() {
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Machine Learning Course Page - Projects Section - Machine Learning - Download Full Project List"
+        source="Machine Learning Algorithms with Python Course Page - Projects Section - Download Full Project List"
         courseName={courseName}
       />
     </section>

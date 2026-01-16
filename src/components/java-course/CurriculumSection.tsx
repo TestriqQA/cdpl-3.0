@@ -322,6 +322,7 @@ export default function CurriculumSection() {
                   <SyllabusButton
                     className="inline-flex items-center text-sm font-semibold text-gray-900 hover:opacity-80"
                     aria-label={`See topics in Module ${m.num}`}
+                    source={`Java Programming Course Page - Curriculum Section - Module ${m.num} - See Topics`}
                   >
                     See topics
                     <ChevronRight className="ml-1 h-4 w-4" />
@@ -361,14 +362,14 @@ export default function CurriculumSection() {
           <EnrollButton
             className="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
             aria-label="Apply to the Java curriculum"
-            source="Java Course Page - Curriculum Section - Apply Now"
+            source="Java Programming Course Page - Curriculum Section - Apply Now"
           >
             Apply Now
           </EnrollButton>
           <SyllabusButton
             className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
             aria-label="Download full Java syllabus PDF"
-            source="Java Course Page - Curriculum Section - Java Programming - Download Detailed Syllabus"
+            source="Java Programming Course Page - Curriculum Section - Download Syllabus"
           >
             Download Syllabus (PDF)
           </SyllabusButton>

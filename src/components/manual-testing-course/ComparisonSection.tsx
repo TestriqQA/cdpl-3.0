@@ -302,6 +302,7 @@ export default function ComparisonSection({
         isOpen={isEnrollModalOpen}
         onClose={() => setIsEnrollModalOpen(false)}
         courseName="Manual Testing"
+        source="Manual Testing Course Page - Comparison Section - Enroll Now"
       />
     </section>
   );

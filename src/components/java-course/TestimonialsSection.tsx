@@ -90,14 +90,14 @@ export default function TestimonialsSection({
         isOpen={isEnrollModalOpen}
         onClose={() => setIsEnrollModalOpen(false)}
         courseName="Java Programming"
-        source="Java Course Page - Testimonials Section - Enroll Now"
+        source="Java Programming Course Page - Testimonials Section - Enroll Now"
       />
 
       <SyllabusDownloadModal
         isOpen={isSyllabusModalOpen}
         onClose={() => setIsSyllabusModalOpen(false)}
         courseName="Java Programming"
-        source="Java Course Page - Testimonials Section - Java - Download Syllabus"
+        source="Java Programming Course Page - Testimonials Section - Download Syllabus"
       />
 
     </section>

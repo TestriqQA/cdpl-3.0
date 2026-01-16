@@ -114,13 +114,13 @@ export default function FaqSection() {
       <EnrollModal
         isOpen={isEnrollOpen}
         onClose={() => setIsEnrollOpen(false)}
-        source="Machine Learning with Python - FAQ Section - Talk to Advisor"
+        source="Machine Learning Algorithms with Python Course Page - FAQ Section - Talk to Advisor"
         courseName={courseName}
       />
       <SyllabusDownloadModal
         isOpen={isSyllabusOpen}
         onClose={() => setIsSyllabusOpen(false)}
-        source="Machine Learning Course Page - FAQ Section - Machine Learning - Download Syllabus"
+        source="Machine Learning Algorithms with Python Course Page - FAQ Section - Download Syllabus"
         courseName={courseName}
       />
     </section>
