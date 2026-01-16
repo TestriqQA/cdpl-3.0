@@ -1,4 +1,3 @@
-import { isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js';
 
 // Configuration constants
 const MAX_NAME_LENGTH = 35;
@@ -98,42 +97,46 @@ export const validatePhone = (phone: string | undefined): string | null => {
         return 'Mobile Number is required.';
     }
 
-    if (!isValidPhoneNumber(phone)) {
-        return 'Invalid phone number format.';
+    // Remove any non-digit characters for checking
+    const cleanPhone = phone.replace(/\D/g, '');
+
+    // Check availability
+    if (cleanPhone.length === 0) return 'Invalid phone number.';
+
+    // Check length (Indian mobile numbers are 10 digits)
+    // If user enters +91 (12 digits), we accept it but validate the last 10.
+    // If user enters 0 leading, we can optionally strip it, but strict 10 is usually best for "plain" input.
+    // Let's allow 10 to 12 digits (to accommodate +91 or 0 prefix) but focus validation on the last 10.
+    if (cleanPhone.length < 10 || cleanPhone.length > 13) {
+        return 'Please enter a valid 10-digit mobile number.';
     }
 
-    console.log('[Validation] Checking phone:', phone);
-    const parsed = parsePhoneNumber(phone);
-    console.log('[Validation] Parsed:', parsed ? parsed.nationalNumber : 'null');
+    const tenDigits = cleanPhone.slice(-10);
 
-    if (!parsed) return 'Invalid phone number.';
-
-    const digits = parsed.nationalNumber as string;
-
-    if (digits.length < 10) {
-        return 'Phone number is too short.';
-    }
-
-    // Check for all zeros
-    if (/^0+$/.test(digits)) {
+    // 1. Check for all zeros
+    if (/^0+$/.test(tenDigits)) {
         return 'Phone number cannot be all zeros.';
     }
 
-    // Check for repeating digits (e.g., 9999999999)
-    if (/^(\d)\1+$/.test(digits)) {
+    // 2. Check for repeating digits (e.g., 9999999999)
+    if (/^(\d)\1+$/.test(tenDigits)) {
         return 'Phone number cannot consist of repeating digits.';
     }
 
-    // Check for sequential digits (e.g., 1234567890 or 9876543210)
-    // Simple check for 123456, 987654 etc.
+    // 3. Check for sequential digits (Ascending & Descending)
     const isSequential = (num: string) => {
         const seqAsc = "01234567890123456789";
         const seqDesc = "98765432109876543210";
         return seqAsc.includes(num) || seqDesc.includes(num);
     };
 
-    if (isSequential(digits)) {
+    if (isSequential(tenDigits)) {
         return 'Phone number cannot consist of sequential digits.';
+    }
+
+    // 4. Basic Indian Mobile validation (starts with 6-9)
+    if (!/^[6-9]\d{9}$/.test(tenDigits)) {
+        return 'Please enter a valid Indian mobile number.';
     }
 
     return null;

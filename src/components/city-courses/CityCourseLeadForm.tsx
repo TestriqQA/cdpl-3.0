@@ -17,6 +17,7 @@ export interface CityCourseLeadFormProps {
     onSubmit?: (data: any) => void;
     courseName?: string;
     cityName?: string;
+    source?: string;
 }
 
 export default function CityCourseLeadForm({
@@ -24,6 +25,7 @@ export default function CityCourseLeadForm({
     onSubmit,
     courseName,
     cityName,
+    source,
 }: CityCourseLeadFormProps) {
     // Form state
     const [formData, setFormData] = useState({
@@ -114,7 +116,7 @@ export default function CityCourseLeadForm({
                         },
                         body: JSON.stringify({
                             ...formData,
-                            source: 'City Course Page - Hero Section',
+                            source: source || 'City Course Page - Hero Section',
                             interestedTrack: courseName || 'Not Specified',
                             location: cityName || 'Not Specified',
                         }),
