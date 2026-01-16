@@ -42,6 +42,9 @@ export default function JobApplicationModal({
         noticePeriod: "", // This will be the dropdown value
     });
 
+    const [isOtherLocation, setIsOtherLocation] = useState(false);
+    const [selectedLocation, setSelectedLocation] = useState("");
+
     const [resumeFile, setResumeFile] = useState<File | null>(null);
 
 
@@ -71,6 +74,8 @@ export default function JobApplicationModal({
                 expectedCtc: "",
                 noticePeriod: "",
             });
+            setIsOtherLocation(false);
+            setSelectedLocation("");
         } else {
             document.body.style.overflow = "unset";
         }
@@ -195,6 +200,26 @@ export default function JobApplicationModal({
         "Other",
     ];
 
+    const locationOptions = [
+        "Western Mumbai", "Central Mumbai", "Harbour Mumbai", "Delhi", "Bangalore",
+        "Chennai", "Hyderabad", "Kolkata", "Noida", "Ahmedabad", "Aurangabad",
+        "Jaipur", "Surat", "Lucknow", "Pune", "Nashik", "Nagpur", "Gurgaon",
+        "Indore", "Bhubaneswar", "Bhopal", "Ranchi", "Kochi", "Chandigarh",
+        "Other"
+    ];
+
+    const handleLocationSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const val = e.target.value;
+        setSelectedLocation(val);
+        if (val === "Other") {
+            setIsOtherLocation(true);
+            setFormData(prev => ({ ...prev, location: "" }));
+        } else {
+            setIsOtherLocation(false);
+            setFormData(prev => ({ ...prev, location: val }));
+        }
+    };
+
     const fieldClass =
         "w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-orange-300 focus:outline-none focus:ring-4 focus:ring-orange-100";
     const labelClass = "mb-1.5 block text-xs font-semibold text-slate-700 text-left";
@@ -294,19 +319,32 @@ export default function JobApplicationModal({
                                                 value={formData.phone}
                                                 onChange={handleInputChange}
                                                 className={fieldClass}
-                                                placeholder="+91 98765 43210"
+                                                placeholder="9876543210"
                                             />
                                         </div>
                                         <div>
                                             <label className={labelClass}>Location *</label>
-                                            <input
+                                            <select
                                                 required
-                                                name="location"
-                                                value={formData.location}
-                                                onChange={handleInputChange}
+                                                value={selectedLocation}
+                                                onChange={handleLocationSelect}
                                                 className={fieldClass}
-                                                placeholder="City"
-                                            />
+                                            >
+                                                <option value="">Select City...</option>
+                                                {locationOptions.map((opt) => (
+                                                    <option key={opt} value={opt}>{opt}</option>
+                                                ))}
+                                            </select>
+                                            {isOtherLocation && (
+                                                <input
+                                                    required
+                                                    name="location"
+                                                    value={formData.location}
+                                                    onChange={handleInputChange}
+                                                    className={`${fieldClass} mt-2`}
+                                                    placeholder="Enter your location"
+                                                />
+                                            )}
                                         </div>
                                         <div>
                                             <label className={labelClass}>Skills, Tools *</label>
