@@ -30,6 +30,7 @@ export async function uploadResumeToDrive(fileBuffer: Buffer, fileName: string, 
     try {
         const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
         const rawPrivateKey = process.env.GOOGLE_PRIVATE_KEY;
+        const folderId = process.env.GOOGLE_DRIVE_FOLDER_ID;
 
         if (!clientEmail || !rawPrivateKey) {
             console.warn('Google Credentials missing for Drive upload.');
@@ -47,9 +48,15 @@ export async function uploadResumeToDrive(fileBuffer: Buffer, fileName: string, 
 
         const drive = google.drive({ version: 'v3', auth });
 
-        const fileMetadata = {
+        const fileMetadata: { name: string; parents?: string[] } = {
             name: fileName,
         };
+
+        if (folderId) {
+            fileMetadata.parents = [folderId];
+        } else {
+            console.warn('GOOGLE_DRIVE_FOLDER_ID is not set. Uploading to root folder.');
+        }
 
         const media = {
             mimeType: mimeType,
@@ -60,6 +67,7 @@ export async function uploadResumeToDrive(fileBuffer: Buffer, fileName: string, 
             requestBody: fileMetadata,
             media: media,
             fields: 'id, webViewLink, webContentLink',
+            supportsAllDrives: true,
         });
 
         const fileId = file.data.id;
@@ -72,14 +80,18 @@ export async function uploadResumeToDrive(fileBuffer: Buffer, fileName: string, 
                     role: 'reader',
                     type: 'anyone',
                 },
+                supportsAllDrives: true,
             });
         }
 
         console.log('File uploaded to Drive:', file.data.webViewLink);
         return file.data.webViewLink;
 
-    } catch (error) {
-        console.error('Drive upload error:', error);
+    } catch (error: any) {
+        console.error('Drive upload error:', error.message);
+        if (error.code === 404) {
+            console.error('Possible cause: Folder ID not found or Service Account does not have access.');
+        }
         return null;
     }
 }
@@ -165,9 +177,10 @@ export async function appendJobApplicationToSheet(data: {
     source?: string;
 }) {
     try {
-        // Use a specific sheet ID for jobs if available, otherwise fall back to the main one (or fail if strict)
-        // User requested a separate Google Sheet.
         const sheetId = process.env.GOOGLE_SHEET_ID_JOBS || process.env.GOOGLE_SHEET_ID;
+
+
+
         const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
         const rawPrivateKey = process.env.GOOGLE_PRIVATE_KEY;
 
