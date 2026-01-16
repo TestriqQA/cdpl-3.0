@@ -27,7 +27,7 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
     const id = useId();
 
     // Brand via CSS var to keep Tailwind clean
-    const brand = "#ff8c00";
+    const brand = "#c2410c";
 
     // Keyboard shortcut: "/" focuses search
     const searchRef = useRef<HTMLInputElement | null>(null);
@@ -131,7 +131,7 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-x-0 -top-10 mx-auto h-40 max-w-5xl blur-2xl"
                 style={{
-                    background: "radial-gradient(60% 60% at 50% 35%, rgba(255,140,0,0.12), rgba(255,140,0,0))",
+                    background: "radial-gradient(600px 300px at 50% 35%, rgba(194,65,12,0.12), rgba(194,65,12,0))",
                 }}
             />
 
@@ -142,7 +142,7 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
                         id={`${id}-directory`}
                         className="text-4xl font-bold tracking-tight text-slate-900"
                     >
-                        Our <span className="text-brand">Team</span> Directory
+                        Our <span className="text-[#ea580c]">Team</span> Directory
                     </h2>
                     <p className="mt-5 mx-auto max-w-5xl text-lg text-slate-600">
                         Discover experienced <strong className="font-semibold">mentors, faculty, and advisors</strong> in{" "}
@@ -189,7 +189,7 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
 
             {/* SEO helper copy */}
             <div className="mt-12 md:mt-14 rounded-3xl border border-slate-200 bg-white p-6">
-                <h3 className="text-xl font-bold text-slate-900">Learn with industry mentors at <span className="text-brand">Cinute Digital</span></h3>
+                <h3 className="text-xl font-bold text-slate-900">Learn with industry mentors at <span className="text-[#ea580c]">Cinute Digital</span></h3>
                 <p className="mt-2 text-md leading-6 text-slate-600">
                     Our mentor directory brings together{" "}
                     <strong className="font-semibold">

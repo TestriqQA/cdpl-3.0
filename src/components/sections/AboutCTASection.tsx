@@ -42,7 +42,7 @@ export default function AboutCTASection() {
                                 id="cta-heading"
                                 className="text-xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
                             >
-                                Build a <span className="text-[#ff8c00]">job-ready</span> tech career with
+                                Build a <span className="text-[#c2410c]">job-ready</span> tech career with
                                 Cinute Digital
                             </h3>
                             <p className="mt-5 max-w-2xl text-lg leading-6 text-slate-700">
@@ -57,27 +57,27 @@ export default function AboutCTASection() {
                             {/* Trust signals */}
                             <ul className="mt-6 grid gap-2 text-md text-slate-800 sm:grid-cols-2">
                                 <li className="flex items-start gap-2">
-                                    <ShieldCheck className="mt-0.5 h-4 w-4 text-[#ff8c00]" aria-hidden />
+                                    <ShieldCheck className="mt-0.5 h-4 w-4 text-[#c2410c]" aria-hidden />
                                     <span>
                                         <strong>Outcome-focused curriculum</strong> with Selenium, Playwright,
                                         Postman, REST APIs, SQL, Git & CI/CD.
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-2">
-                                    <Star className="mt-0.5 h-4 w-4 text-[#ff8c00]" aria-hidden />
+                                    <Star className="mt-0.5 h-4 w-4 text-[#c2410c]" aria-hidden />
                                     <span>
                                         <strong>Mentor-led learning</strong> + <strong>daily doubt support</strong>{" "}
                                         via community channels.
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-2">
-                                    <Check className="mt-0.5 h-4 w-4 text-[#ff8c00]" aria-hidden />
+                                    <Check className="mt-0.5 h-4 w-4 text-[#c2410c]" aria-hidden />
                                     <span>
                                         <strong>Placement guidance</strong>: resume, mock interviews, referrals.
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-2">
-                                    <Calendar className="mt-0.5 h-4 w-4 text-[#ff8c00]" aria-hidden />
+                                    <Calendar className="mt-0.5 h-4 w-4 text-[#c2410c]" aria-hidden />
                                     <span>
                                         Flexible cohorts, <strong>recordings</strong>, and{" "}
                                         <strong>weekend doubt-clearing</strong>.
@@ -112,7 +112,7 @@ export default function AboutCTASection() {
                         <div className="rounded-2xl border border-slate-200 bg-white/95 p-5 shadow-sm backdrop-blur">
                             <p className="text-xl font-bold text-slate-900">
                                 Talk to{" "}
-                                <span className="text-[#ff8c00]">Admissions & Career Experts</span>
+                                <span className="text-[#c2410c]">Admissions & Career Experts</span>
                             </p>
                             <p className="mt-1 text-xs leading-5 text-slate-600">
                                 Get a free skills assessment, course recommendations, and an ROI-driven
@@ -122,14 +122,14 @@ export default function AboutCTASection() {
                             <div className="mt-4 grid gap-3">
                                 <button
                                     onClick={() => setIsModalOpen(true)}
-                                    className="inline-flex w-full items-center justify-center rounded-xl bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-90 focus:outline-none focus:ring-2 focus:ring-[#ff8c00]/40 cursor-pointer"
+                                    className="inline-flex w-full items-center justify-center rounded-xl bg-[#c2410c] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-90 focus:outline-none focus:ring-2 focus:ring-[#c2410c]/40 cursor-pointer"
                                 >
                                     Get Counseling
                                 </button>
 
                                 <Link
                                     href="tel:++91 84-889-889-84"
-                                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-blue-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-[#ff8c00]/30"
+                                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-blue-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-[#c2410c]/30"
                                     aria-label="Call our admissions team"
                                 >
                                     <Phone className="h-4 w-4" aria-hidden />
@@ -138,7 +138,7 @@ export default function AboutCTASection() {
 
                                 <Link
                                     href="mailto:contact@cinutedigital.com"
-                                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-yellow-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-[#ff8c00]/30"
+                                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-yellow-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-[#c2410c]/30"
                                     aria-label="Email our admissions team"
                                 >
                                     <Mail className="h-4 w-4" aria-hidden />
@@ -148,7 +148,7 @@ export default function AboutCTASection() {
                                 <Link
                                     href="https://wa.me/9152929342"
                                     target="_blank"
-                                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-green-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-[#ff8c00]/30"
+                                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-green-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-[#c2410c]/30"
                                     aria-label="Chat on WhatsApp"
                                 >
                                     <MessageCircle className="h-4 w-4" aria-hidden />
@@ -158,7 +158,7 @@ export default function AboutCTASection() {
                                 <Link
                                     href="https://calendar.app.google/tvh9dsXZsX9BujRR8"
                                     target="_blank"
-                                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-purple-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-[#ff8c00]/30"
+                                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-purple-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-[#c2410c]/30"
                                     aria-label="Book a 15-minute counseling slot"
                                 >
                                     <Calendar className="h-4 w-4" aria-hidden />
@@ -169,11 +169,11 @@ export default function AboutCTASection() {
                             {/* EMI + badge row */}
                             <div className="mt-4 flex flex-col gap-2 rounded-xl border border-slate-200 bg-white p-3">
                                 <div className="flex items-center gap-2 text-xs text-slate-700">
-                                    <ShieldCheck className="h-4 w-4 text-[#ff8c00]" aria-hidden />
+                                    <ShieldCheck className="h-4 w-4 text-[#c2410c]" aria-hidden />
                                     EMI & milestone-based payment plans available
                                 </div>
                                 <div className="flex items-center gap-2 text-xs text-slate-700">
-                                    <Star className="h-4 w-4 text-[#ff8c00]" aria-hidden />
+                                    <Star className="h-4 w-4 text-[#c2410c]" aria-hidden />
                                     Scholarship options for deserving candidates
                                 </div>
                             </div>

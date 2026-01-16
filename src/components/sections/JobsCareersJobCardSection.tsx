@@ -78,7 +78,7 @@ export function JobsCareersJobCardSection({ job }: { job: Job }) {
                   boxShadow: "inset 0 0 0 1px rgba(15, 23, 42, 0.06)",
                 }}
               >
-                <Briefcase className="h-5 w-5" style={{ color: "#ff8c00" }} />
+                <Briefcase className="h-5 w-5" style={{ color: "#ea580c" }} />
               </div>
 
               <div className="min-w-0">
@@ -128,9 +128,9 @@ export function JobsCareersJobCardSection({ job }: { job: Job }) {
 
       {/* Summary */}
       {job.summary ? (
-        <p className="mt-3 text-[13.5px] leading-relaxed text-slate-700">
+        <div className="mt-3 text-[13.5px] leading-relaxed text-slate-700">
           {job.summary}
-        </p>
+        </div>
       ) : null}
 
       {/* Responsibilities / Requirements */}
@@ -284,8 +284,8 @@ export function JobsCareersJobCardSection({ job }: { job: Job }) {
         <button
           type="button"
           onClick={() => setOpenForm(true)}
-          className="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-orange-300"
-          style={{ backgroundColor: "var(--color-brand, #ff8c00)" }}
+          className="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#c2410c]"
+          style={{ backgroundColor: "#c2410c" }}
           aria-haspopup="dialog"
           aria-expanded={openForm}
         >
@@ -305,17 +305,17 @@ export function JobsCareersJobCardSection({ job }: { job: Job }) {
       >
         <div className="mb-2 flex items-start gap-2">
           <Info className="mt-0.5 h-4 w-4 text-slate-500" />
-          <p className="text-[13.5px] leading-relaxed text-slate-700">
+          <div className="text-[13.5px] leading-relaxed text-slate-700">
             <span className="font-semibold text-slate-900">Tip:</span> Keep a
             short note on why CDPL + 2 links that show your craft (PRs, case
             studies, dashboards, demos). Strong writing and outcomes beat long
             resumes.
-          </p>
+          </div>
         </div>
-        <p className="text-[12.5px] text-slate-500">
+        <div className="text-[12.5px] text-slate-500">
           We&apos;re an equal-opportunity employer. We value diversity and are
           committed to an inclusive, respectful workplace.
-        </p>
+        </div>
       </div>
 
       {/* New Job Application Modal */}

@@ -50,7 +50,7 @@ const PILLARS: Pillar[] = [
 
 export default function AboutMissionVision({
   className,
-  brand = "#ff8c00", // warm, engaging accent; easy to tweak from parent
+  brand = "#c2410c", // warm, engaging accent; easy to tweak from parent
 }: Props) {
   return (
     <section

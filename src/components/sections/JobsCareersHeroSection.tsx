@@ -15,7 +15,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-const BRAND_ORANGE = "#ff8c00";
+
 
 function FloatingIcon({
   children,
@@ -210,7 +210,7 @@ export default function JobsCareersHeroSection() {
           <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-8 lg:gap-12">
             {/* LEFT — text */}
             <div className="order-1 md:order-1 max-w-2xl md:flex-1 md:basis-[60%] lg:basis-[62%]">
-              <m.p
+              <m.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -218,7 +218,7 @@ export default function JobsCareersHeroSection() {
               >
                 <Sparkles className="h-4 w-4 text-[#6aa9ff]" />
                 <span>Join the team</span>
-              </m.p>
+              </m.div>
 
               <m.h1
                 initial={{ opacity: 0, y: 8 }}
@@ -227,10 +227,10 @@ export default function JobsCareersHeroSection() {
                 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl"
               >
                 <span style={{ color: "#0069A8" }}>Build the future of</span>{" "}
-                <span style={{ color: BRAND_ORANGE }}>outcomes-first ed-tech</span>
+                <span style={{ color: "#c2410c" }}>outcomes-first ed-tech</span>
               </m.h1>
 
-              <m.p
+              <m.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.14 }}
@@ -238,7 +238,7 @@ export default function JobsCareersHeroSection() {
               >
                 Ship learner-centric experiences, accelerate career outcomes, and raise the bar for
                 quality in Indian ed-tech with Cinute Digital Pvt Ltd (CDPL).
-              </m.p>
+              </m.div>
 
               {/* Compact highlights row */}
               <m.div
@@ -270,8 +270,8 @@ export default function JobsCareersHeroSection() {
               >
                 <Link
                   href="#open-roles"
-                  className="group inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-white shadow-sm ring-1 ring-black/5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-500 active:translate-y-[1px]"
-                  style={{ backgroundColor: BRAND_ORANGE }}
+                  className="group inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-white shadow-sm ring-1 ring-white/10 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#c2410c] active:translate-y-[1px]"
+                  style={{ backgroundColor: "#c2410c" }}
                 >
                   View open roles
                 </Link>

@@ -9,7 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 
-const BRAND = "#ff8c00";
+const BRAND = "#c2410c";
 
 const stats = [
   { label: "Expert Mentors", value: "60+", note: "QA, Automation, Data" },
@@ -44,7 +44,7 @@ const VIS = {
   tokenOpacity: 0.75,
 };
 
-function BackgroundFuturisticMotion({ brand = "#ff8c00" }) {
+function BackgroundFuturisticMotion({ brand = "#c2410c" }) {
   return (
     <div
       className="pointer-events-none absolute z-0 overflow-x-hidden hidden md:block"
@@ -163,7 +163,7 @@ export default function TeamHero() {
               className="mt-6 text-3xl font-extrabold tracking-tight sm:text-5xl bg-clip-text text-transparent bg-brand"
             >
               <span className="text-sky-600">Meet the People Behind</span>{" "}
-              <span style={{ color: brand }}>Cinute Digital</span>
+              <span style={{ color: "#ea580c" }}>Cinute Digital</span>
             </h1>
 
             <p className="mt-6 max-w-3xl text-base leading-7 text-slate-700 sm:text-lg" style={{ fontSizeAdjust: '0.5' }}>
@@ -247,7 +247,7 @@ export default function TeamHero() {
                 <dd className={`mt-1 text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br ${gradients[idx]}`}>
                   {s.value}
                 </dd>
-                {s.note && <p className="mt-0.5 text-xs text-slate-500">{s.note}</p>}
+                {s.note && <dd className="mt-0.5 text-xs text-slate-500">{s.note}</dd>}
               </div>
             );
           })}

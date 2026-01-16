@@ -29,11 +29,7 @@ type Job = {
 };
 
 
-function norm(s: string) { return s.toLowerCase(); }
-function formatLoc(iso?: string) {
-  return iso ? new Date(iso).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }) : "";
-}
-void norm; void formatLoc;
+
 
 export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
   const [isLg, setIsLg] = useState(false);
@@ -69,7 +65,7 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
   const showDetail = isLg || !!selectedId;
 
   return (
-    <>
+    <div>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
         {/* LEFT: list */}
         {showList && (
@@ -90,9 +86,17 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
                       exit={{ opacity: 0, y: 6 }}
                       transition={{ duration: 0.2, ease: "easeOut" }}
                     >
-                      <button
+                      <div
+                        role="button"
+                        tabIndex={0}
                         onClick={() => setSelectedId(job.id)}
-                        className={`group grid w-full grid-cols-[auto,1fr] gap-3 p-4 text-left transition ${active ? "bg-orange-50/40" : "hover:bg-slate-50 focus:bg-slate-50"}`}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setSelectedId(job.id);
+                          }
+                        }}
+                        className={`group grid w-full grid-cols-[auto,1fr] gap-3 p-4 text-left transition cursor-pointer ${active ? "bg-orange-50/40" : "hover:bg-slate-50 focus:bg-slate-50"}`}
                       >
                         <div
                           className="grid h-10 w-10 shrink-0 place-items-center rounded-xl"
@@ -120,10 +124,10 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
                           </p>
 
                           {job.summary ? (
-                            <p className="mt-2 line-clamp-2 text-[12.5px] leading-relaxed text-slate-700">{job.summary}</p>
+                            <div className="mt-2 line-clamp-2 text-[12.5px] leading-relaxed text-slate-700">{job.summary}</div>
                           ) : null}
                         </div>
-                      </button>
+                      </div>
                     </motion.li>
                   );
                 })}
@@ -136,8 +140,8 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
               ) : canLoad ? (
                 <button
                   onClick={() => setVisible((v) => Math.min(v + 12, sorted.length))}
-                  className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-orange-300"
-                  style={{ backgroundColor: "var(--color-brand, #ff8c00)" }}
+                  className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#c2410c]"
+                  style={{ backgroundColor: "#c2410c" }}
                 >
                   Load more <ArrowRight className="h-4 w-4" />
                 </button>
@@ -204,6 +208,6 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
         .nice-scroll::-webkit-scrollbar-button { display: none !important; width:0 !important; height:0 !important; }
         .nice-scroll::-webkit-scrollbar-corner { background: transparent; }
       `}</style>
-    </>
+    </div>
   );
 }

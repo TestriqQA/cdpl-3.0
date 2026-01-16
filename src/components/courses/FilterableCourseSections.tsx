@@ -140,7 +140,8 @@ function RevealCoursesGrid({
         <>
           <div
             ref={shellRef}
-            className="overflow-hidden transition-[height] duration-500 ease-in-out"
+            className={`overflow-hidden transition-[height] duration-500 ease-in-out ${expanded ? "" : "invisible"
+              }`}
             aria-hidden={!expanded}
           >
             <div

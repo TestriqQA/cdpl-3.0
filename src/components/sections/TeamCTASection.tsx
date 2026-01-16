@@ -53,7 +53,7 @@ export default function TeamCTASection() {
               className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
             >
               Learn with mentors who build{" "}
-              <span className="text-[--brand]">careers</span>—not just courses
+              <span className="text-[#ea580c]">careers</span>—not just courses
             </h2>
 
             <p className="mt-3 text-sm leading-6 text-slate-700 sm:text-base">
@@ -76,7 +76,7 @@ export default function TeamCTASection() {
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-0.5 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-orange-100 ring-1 ring-orange-200">
-                    <Check className="h-3.5 w-3.5 text-[--brand]" />
+                    <Check className="h-3.5 w-3.5 text-[#c2410c]" />
                   </span>
                   <span className="text-sm text-slate-800">{item}</span>
                 </li>
@@ -87,8 +87,8 @@ export default function TeamCTASection() {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="courses"
-                className="inline-flex items-center justify-center rounded-2xl bg-[--brand] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:translate-y-0"
-                style={{ backgroundColor: "var(--brand)" }}
+                className="inline-flex items-center justify-center rounded-2xl bg-[#c2410c] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:translate-y-0"
+                style={{ backgroundColor: "#c2410c" }}
                 aria-label="Explore programs and view curriculum"
               >
                 Explore Programs

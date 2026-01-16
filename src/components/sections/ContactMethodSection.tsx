@@ -182,9 +182,9 @@ export function ContactMethodsSection() {
 
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
           {[
-            { title: "Software Testing Courses", note: "Manual • Automation • QA", bgColor: "bg-blue-50", textColor: "text-blue-500", borderColor: "ring-blue-500" },
-            { title: "Data Science & AI Programs", note: "Python • ML • Power BI", bgColor: "bg-green-50", textColor: "text-green-500", borderColor: "ring-green-500" },
-            { title: "Full-Stack Development", note: "React • Node.js • SQL", bgColor: "bg-purple-50", textColor: "text-purple-500", borderColor: "ring-purple-500" },
+            { title: "Software Testing Courses", note: "Manual • Automation • QA", bgColor: "bg-blue-50", textColor: "text-blue-700", borderColor: "ring-blue-500" },
+            { title: "Data Science & AI Programs", note: "Python • ML • Power BI", bgColor: "bg-green-50", textColor: "text-green-700", borderColor: "ring-green-500" },
+            { title: "Full-Stack Development", note: "React • Node.js • SQL", bgColor: "bg-purple-50", textColor: "text-purple-700", borderColor: "ring-purple-500" },
           ].map((pill) => (
             <div
               key={pill.title}
