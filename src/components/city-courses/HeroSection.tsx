@@ -100,6 +100,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
                                 tracks={data.specializations}
                                 courseName={data.courseName}
                                 cityName={location}
+                                source={`(${location} ${data.courseName}) - Hero Section - Mobile Form`}
                             />
                         </div>
 
@@ -162,6 +163,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
                             className="mt-6"
                             courseName={data.courseName}
                             cityName={location}
+                            source={`(${location} ${data.courseName}) - Hero Section - Desktop Form`}
                         />
                     </div>
                 </div>
@@ -192,7 +194,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
                     onClose={() => setIsPopupOpen(false)}
                     courseName={data.courseName}
                     location={location}
-                    source="City Course Page - Hero Section"
+                    source={`(${location} ${data.courseName}) - Hero Section - Enroll Now`}
                 />
             )}
         </section>
