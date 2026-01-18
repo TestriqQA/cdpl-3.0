@@ -97,8 +97,7 @@ export default function HeroSection() {
             {/* CTAs */}
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <button
-                onClick={() => setIsEnrollOpen(true)}
-                className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-green-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-green-200 transition-all hover:bg-green-700 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-green-100"
+                className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-green-700 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-green-200 transition-all hover:bg-green-800 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-green-100"
               >
                 Enroll Now
                 <ArrowRight className="ml-2 w-4 h-4" />

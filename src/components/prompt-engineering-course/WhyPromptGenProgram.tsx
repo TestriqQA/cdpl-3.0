@@ -23,11 +23,11 @@ export default function WhyPromptGenProgram() {
 
 
     const featureChips = [
-        { label: "20 Hours", color: "bg-indigo-600 text-white" },
-        { label: "Hands-On Projects", color: "bg-emerald-600 text-white" },
+        { label: "20 Hours", color: "bg-indigo-700 text-white" },
+        { label: "Hands-On Projects", color: "bg-emerald-700 text-white" },
         { label: "Expert Instructors", color: "bg-amber-500 text-gray-900" },
-        { label: "Beginner Friendly", color: "bg-sky-600 text-white" },
-        { label: "100% Job-Ready", color: "bg-rose-600 text-white" },
+        { label: "Beginner Friendly", color: "bg-sky-700 text-white" },
+        { label: "100% Job-Ready", color: "bg-rose-700 text-white" },
     ];
 
     const outcomes = [
@@ -119,13 +119,13 @@ export default function WhyPromptGenProgram() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <header className="text-center mb-10 md:mb-12">
-                    <h1
+                    <h2
                         id="why-promptgen-heading"
                         className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900"
                     >
                         Prompt Engineering with Gen&nbsp;AI —{" "}
                         <span className="text-DS">A Complete Overview</span>
-                    </h1>
+                    </h2>
                     <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
                         Learn to <strong>design prompts that perform</strong> across models and use-cases.
                         Build automation and content systems with <strong>measurable quality</strong>,

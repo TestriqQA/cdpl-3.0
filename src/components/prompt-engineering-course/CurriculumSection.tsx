@@ -20,14 +20,14 @@ const MODULES: Module[] = [
     title: "Introduction to AI",
     outcome:
       "What is AI, its evolution, and importance • Real-world applications • AI vs. Machine Learning vs. Deep Learning • Limitations and ethical considerations.",
-    accent: { bg: "bg-green-50", text: "text-green-900", border: "border-green-200", ring: "focus:ring-green-300", bar: "bg-green-600" },
+    accent: { bg: "bg-green-50", text: "text-green-900", border: "border-green-200", ring: "focus:ring-green-300", bar: "bg-green-700" },
   },
   {
     num: "02",
     title: "AI Ecosystem & ML Foundations",
     outcome:
       "Subfields of AI (NLP, Computer Vision, Robotics, ML) • Intro to Machine Learning • Learning types (Supervised, Unsupervised) • Basics of Neural Networks • Everyday AI-powered tech.",
-    accent: { bg: "bg-sky-50", text: "text-sky-900", border: "border-sky-200", ring: "focus:ring-sky-300", bar: "bg-sky-600" },
+    accent: { bg: "bg-sky-50", text: "text-sky-900", border: "border-sky-200", ring: "focus:ring-sky-300", bar: "bg-sky-700" },
   },
   {
     num: "03",
@@ -41,49 +41,49 @@ const MODULES: Module[] = [
     title: "Generative Learning & Technical Concepts",
     outcome:
       "Foundational model families (LLMs, LIMs, LAMs) • Fine-tuning and transfer learning • Transformer architecture fundamentals.",
-    accent: { bg: "bg-violet-50", text: "text-violet-900", border: "border-violet-200", ring: "focus:ring-violet-300", bar: "bg-violet-600" },
+    accent: { bg: "bg-violet-50", text: "text-violet-900", border: "border-violet-200", ring: "focus:ring-violet-300", bar: "bg-violet-700" },
   },
   {
     num: "05",
     title: "Evolution & Power of Large Language Models",
     outcome:
       "LLM basics (NLP, prompting, zero-shot & few-shot) • Evolution of LLMs (GPT, Claude, Llama, Gemini/Bard, Pi) • Tokenization, embeddings, context windows • Real-world use cases (chat & voice assistants).",
-    accent: { bg: "bg-emerald-50", text: "text-emerald-900", border: "border-emerald-200", ring: "focus:ring-emerald-300", bar: "bg-emerald-600" },
+    accent: { bg: "bg-emerald-50", text: "text-emerald-900", border: "border-emerald-200", ring: "focus:ring-emerald-300", bar: "bg-emerald-700" },
   },
   {
     num: "06",
     title: "Computer Vision & LIMs — Teaching AI to See",
     outcome:
       "Intro to Computer Vision • Image processing and feature extraction • Large Image Models (Stable Diffusion, Leonardo.ai, DALL-E) • LIM applications.",
-    accent: { bg: "bg-rose-50", text: "text-rose-900", border: "border-rose-200", ring: "focus:ring-rose-300", bar: "bg-rose-600" },
+    accent: { bg: "bg-rose-50", text: "text-rose-900", border: "border-rose-200", ring: "focus:ring-rose-300", bar: "bg-rose-700" },
   },
   {
     num: "07",
     title: "Video, Speech & Generative AI Tools",
     outcome:
       "Video & speech AI tooling (e.g., VEED, PlayHT, Suno.ai) • Text-to-Speech & Speech-to-Text applications • AI-powered video & audio generation.",
-    accent: { bg: "bg-indigo-50", text: "text-indigo-900", border: "border-indigo-200", ring: "focus:ring-indigo-300", bar: "bg-indigo-600" },
+    accent: { bg: "bg-indigo-50", text: "text-indigo-900", border: "border-indigo-200", ring: "focus:ring-indigo-300", bar: "bg-indigo-700" },
   },
   {
     num: "08",
     title: "Prompt Engineering & Practical Applications",
     outcome:
       "Prompting foundations • Zero-shot, one-shot, few-shot techniques • Case studies (e.g., brand campaigns) • Hands-on: designing prompts across different AI models.",
-    accent: { bg: "bg-teal-50", text: "text-teal-900", border: "border-teal-200", ring: "focus:ring-teal-300", bar: "bg-teal-600" },
+    accent: { bg: "bg-teal-50", text: "text-teal-900", border: "border-teal-200", ring: "focus:ring-teal-300", bar: "bg-teal-700" },
   },
   {
     num: "09",
     title: "Responsible AI & Governance",
     outcome:
       "Ethics and bias in AI models • Governance for responsible deployment • Regulations & compliance • Best practices: Human-in-the-loop, monitoring, AI collaboration.",
-    accent: { bg: "bg-fuchsia-50", text: "text-fuchsia-900", border: "border-fuchsia-200", ring: "focus:ring-fuchsia-300", bar: "bg-fuchsia-600" },
+    accent: { bg: "bg-fuchsia-50", text: "text-fuchsia-900", border: "border-fuchsia-200", ring: "focus:ring-fuchsia-300", bar: "bg-fuchsia-700" },
   },
   {
     num: "10",
     title: "Capstone Project & Certification",
     outcome:
       "Real-world AI implementation project • Assessment and certification pathway.",
-    accent: { bg: "bg-cyan-50", text: "text-cyan-900", border: "border-cyan-200", ring: "focus:ring-cyan-300", bar: "bg-cyan-600" },
+    accent: { bg: "bg-cyan-50", text: "text-cyan-900", border: "border-cyan-200", ring: "focus:ring-cyan-300", bar: "bg-cyan-700" },
   },
 ];
 

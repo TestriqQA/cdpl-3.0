@@ -187,7 +187,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => setIsPopupOpen(true)}
-                                className="group inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-4 font-bold text-white shadow-xl hover:shadow-2xl transition-all duration-300"
+                                className="group inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-orange-700 to-orange-800 px-8 py-4 font-bold text-white shadow-xl hover:shadow-2xl transition-all duration-300"
                             >
                                 Start Your Journey Now
                                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -198,7 +198,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                 <button
                                     onClick={() => setIsBrochureOpen(true)}
-                                    className="inline-flex items-center justify-center rounded-xl border-2 border-gray-300 bg-white px-8 py-4 font-bold text-gray-800 shadow-lg hover:border-orange-500 hover:shadow-xl transition-all duration-300"
+                                    className="inline-flex items-center justify-center rounded-xl border-2 border-gray-300 bg-white px-8 py-4 font-bold text-gray-800 shadow-lg hover:border-orange-700 hover:shadow-xl transition-all duration-300"
                                 >
                                     Download Brochure
                                 </button>
@@ -246,7 +246,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                             {/* Location */}
                             <motion.div
                                 whileHover={{ y: -4 }}
-                                className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-orange-500 to-red-500 p-5 shadow-lg hover:shadow-2xl transition-all duration-300"
+                                className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-orange-700 to-red-600 p-5 shadow-lg hover:shadow-2xl transition-all duration-300"
                             >
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
                                 <div className="relative">
@@ -302,7 +302,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                                 required
                                                 value={form.name}
                                                 onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                                                className="block w-full rounded-lg border border-white/20 bg-white px-4 py-3 text-black placeholder-indigo-200 shadow-sm backdrop-blur-sm outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
+                                                className="block w-full rounded-lg border border-white/20 bg-white px-4 py-3 text-black placeholder-indigo-200 shadow-sm backdrop-blur-sm outline-none transition focus:border-orange-700 focus:ring-2 focus:ring-orange-700"
                                                 placeholder="Enter your name"
                                             />
                                         </div>
@@ -318,7 +318,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                                 required
                                                 value={form.email}
                                                 onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                                                className="block w-full rounded-lg border border-white/20 bg-white px-4 py-3 text-black placeholder-indigo-200 shadow-sm backdrop-blur-sm outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
+                                                className="block w-full rounded-lg border border-white/20 bg-white px-4 py-3 text-black placeholder-indigo-200 shadow-sm backdrop-blur-sm outline-none transition focus:border-orange-700 focus:ring-2 focus:ring-orange-700"
                                                 placeholder="you@example.com"
                                             />
                                         </div>
@@ -336,7 +336,8 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                                 onChange={(e) => setForm((f) => ({ ...f, phone: e || '' }))}
                                                 className="w-full [&>input]:w-full [&>input]:border-none [&>input]:outline-none [&>input]:py-3 [&>input]:px-3 [&>input]:rounded-lg [&>input]:bg-white backdrop-blur-sm overflow-hidden"
                                                 numberInputProps={{
-                                                    className: "!w-full !text-base !border-none !outline-none !ring-0"
+                                                    className: "!w-full !text-base !border-none !outline-none !ring-0",
+                                                    "aria-label": "Phone Number"
                                                 }}
                                                 containerClass="w-full"
                                             />

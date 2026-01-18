@@ -25,7 +25,7 @@ const benefits = [
         icon: Zap,
         title: "Interview Confidence",
         description: "Discuss actual implementations in interviews with hands-on experience in ETL, dashboards, and analytics.",
-        color: "from-orange-500 to-red-600",
+        color: "from-orange-700 to-red-600",
         bgColor: "from-orange-50 to-red-50"
     }
 ];
@@ -62,8 +62,8 @@ const ProjectCard = ({ project, index, onEnroll }: { project: typeof ProjectCont
         {
             card: "from-orange-500/5 via-amber-500/5 to-orange-600/5",
             border: "border-orange-200",
-            accent: "from-orange-600 to-amber-600",
-            iconBg: "from-orange-500 to-amber-600",
+            accent: "from-orange-700 to-amber-600",
+            iconBg: "from-orange-700 to-amber-600",
             badge: "bg-orange-50 text-orange-700 border-orange-200",
             glow: "shadow-orange-500/20"
         },

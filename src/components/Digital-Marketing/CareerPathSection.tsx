@@ -75,11 +75,11 @@ const CareerCard = ({ path, index, onEnroll }: { path: CareerPath; index: number
         {
             card: "from-orange-500/5 via-amber-500/5 to-orange-600/5",
             border: "border-orange-200",
-            accent: "from-orange-600 to-amber-600",
+            accent: "from-orange-700 to-amber-700",
             iconBg: "bg-orange-50",
-            iconColor: "text-orange-600",
+            iconColor: "text-orange-700",
             badge: "bg-orange-50 text-orange-700 border-orange-200",
-            glow: "shadow-orange-500/20",
+            glow: "shadow-orange-700/20",
         },
     ];
 
@@ -340,7 +340,7 @@ export default function CareerPathSection() {
                     <StatCard icon={TrendingUp} value="40%" label="Avg. Salary Hike" gradient="from-blue-500 to-cyan-600" />
                     <StatCard icon={Users} value="2,500+" label="Students Placed" gradient="from-purple-500 to-fuchsia-600" />
                     <StatCard icon={Building2} value="500+" label="Hiring Partners" gradient="from-emerald-500 to-teal-600" />
-                    <StatCard icon={Award} value="95%" label="Success Rate" gradient="from-orange-500 to-amber-600" />
+                    <StatCard icon={Award} value="95%" label="Success Rate" gradient="from-orange-700 to-amber-700" />
                 </div>
 
                 {/* Career Cards Grid */}

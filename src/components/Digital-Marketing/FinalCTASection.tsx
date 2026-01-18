@@ -183,7 +183,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                         <motion.div variants={itemVariants} className="mt-8 flex flex-col gap-3 sm:flex-row">
                             <button
                                 onClick={() => setIsPopupOpen(true)}
-                                className="group inline-flex items-center justify-center cursor-pointer rounded-lg bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] px-8 py-3.5 font-semibold text-white shadow-lg transition hover:shadow-xl"
+                                className="group inline-flex items-center justify-center cursor-pointer rounded-lg bg-gradient-to-r from-orange-700 to-orange-800 px-8 py-3.5 font-semibold text-white shadow-lg transition hover:shadow-xl"
                             >
                                 Enroll Now
                                 <ArrowRight className="ml-2 h-5 w-5 transition group-hover:translate-x-0.5" />
@@ -285,7 +285,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                                 required
                                                 value={form.name}
                                                 onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                                                className="block w-full rounded-lg border border-white/20 bg-white px-4 py-3 text-black placeholder-indigo-200 shadow-sm backdrop-blur-sm outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
+                                                className="block w-full rounded-lg border border-white/20 bg-white px-4 py-3 text-black placeholder-indigo-200 shadow-sm backdrop-blur-sm outline-none transition focus:border-orange-700 focus:ring-2 focus:ring-orange-700"
                                                 placeholder="Enter your name"
                                             />
                                         </div>
@@ -301,7 +301,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                                 required
                                                 value={form.email}
                                                 onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                                                className="block w-full rounded-lg border border-white/20 bg-white px-4 py-3 text-black placeholder-indigo-200 shadow-sm backdrop-blur-sm outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
+                                                className="block w-full rounded-lg border border-white/20 bg-white px-4 py-3 text-black placeholder-indigo-200 shadow-sm backdrop-blur-sm outline-none transition focus:border-orange-700 focus:ring-2 focus:ring-orange-700"
                                                 placeholder="you@example.com"
                                             />
                                         </div>
@@ -319,7 +319,8 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                                 onChange={(e) => setForm((f) => ({ ...f, phone: e || '' }))}
                                                 className="w-full [&>input]:w-full [&>input]:border-none [&>input]:outline-none [&>input]:py-3 [&>input]:px-3 [&>input]:rounded-lg [&>input]:bg-white backdrop-blur-sm overflow-hidden"
                                                 numberInputProps={{
-                                                    className: "!w-full !text-base !border-none !outline-none !ring-0"
+                                                    className: "!w-full !text-base !border-none !outline-none !ring-0",
+                                                    "aria-label": "Phone Number"
                                                 }}
                                                 containerClass="w-full"
                                             />

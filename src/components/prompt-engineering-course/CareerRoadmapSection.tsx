@@ -121,7 +121,7 @@ export default function CareerRoadmapSection() {
         </header>
 
         {/* Timeline */}
-        <ol className="relative mx-auto mt-10 max-w-4xl">
+        <div role="list" className="relative mx-auto mt-10 max-w-4xl">
           {/* Center spine */}
           <div
             aria-hidden
@@ -129,7 +129,8 @@ export default function CareerRoadmapSection() {
           />
           <div className="space-y-6">
             {STEPS.map((s, i) => (
-              <li
+              <div
+                role="listitem"
                 key={s.n}
                 className="relative grid grid-cols-[28px_1fr] items-start gap-4 sm:grid-cols-[1fr_28px_1fr]"
               >
@@ -192,10 +193,10 @@ export default function CareerRoadmapSection() {
                     <div className={["h-1 w-3/4 rounded-full", s.accent.bar].join(" ")} />
                   </div>
                 </article>
-              </li>
+              </div>
             ))}
           </div>
-        </ol>
+        </div>
 
         {/* CTA */}
         <div className="mt-12 text-center">
