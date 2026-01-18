@@ -203,7 +203,7 @@ export default function HeroSection() {
                             {/* Mobile Form: Functional React Form */}
                             <div className="sticky md:hidden top-6 mt-10 rounded-3xl border border-slate-200/60 bg-white/95 backdrop-blur-xl p-7 md:p-8 shadow-2xl shadow-slate-900/10 transition-all hover:shadow-slate-900/15">
                                 <div className="absolute top-px left-0 right-0 h-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 rounded-t-3xl" />
-                                <h3 className="mb-2 text-xl text-slate-900 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text">Request a Callback</h3>
+                                <h2 className="mb-2 text-xl text-slate-900 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text">Request a Callback</h2>
                                 <p className="mb-7 text-sm text-slate-600 leading-relaxed">
                                     Enter your details to get the full curriculum, fees, and upcoming batch dates.
                                 </p>

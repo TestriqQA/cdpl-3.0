@@ -11,7 +11,7 @@ import AdvisorModal from "@/components/ui/AdvisorModal";
  * - Accessible accordion with keyboard and ARIA support
  * - JSON-LD (FAQPage) for rich results
  * - Lightweight client-side search/filter
- * - Subtle gradients using brand #ff8c00
+ * - Subtle gradients using brand #c2410c
  */
 
 type FAQ = {
@@ -185,7 +185,7 @@ export default function AboutFAQSection() {
                                 >
                                     {/* Accent glow when open */}
                                     <span
-                                        className={`pointer-events-none absolute left-0 top-0 h-full w-[3px] rounded-l-[28px] transition ${isOpen ? "bg-[#ff8c00]" : "bg-transparent"
+                                        className={`pointer-events-none absolute left-0 top-0 h-full w-[3px] rounded-l-[28px] transition ${isOpen ? "bg-[#c2410c]" : "bg-transparent"
                                             }`}
                                         aria-hidden="true"
                                     />
@@ -250,7 +250,7 @@ export default function AboutFAQSection() {
                     </p>
                     <button
                         onClick={() => setIsModalOpen(true)}
-                        className="inline-flex items-center justify-center rounded-xl bg-[#ff8c00] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#ff8c00]/40 cursor-pointer"
+                        className="inline-flex items-center justify-center rounded-xl bg-[#c2410c] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#c2410c]/40 cursor-pointer"
                     >
                         Get Counseling
                     </button>

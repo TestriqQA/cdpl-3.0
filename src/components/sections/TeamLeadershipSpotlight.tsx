@@ -50,15 +50,15 @@ export default function LeadershipSpotlight({ }: Props) {
             <div className="mb-12 text-center">
                 <div className="mb-6 flex flex-wrap items-center justify-center gap-3 md:gap-2">
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm backdrop-blur-sm">
-                        <Sparkles className="h-3.5 w-3.5 text-orange-500" aria-hidden="true" />
+                        <Sparkles className="h-3.5 w-3.5 text-[#c2410c]" aria-hidden="true" />
                         Future-Ready Leadership
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm backdrop-blur-sm">
-                        <ShieldCheck className="h-3.5 w-3.5 text-orange-500" aria-hidden="true" />
+                        <ShieldCheck className="h-3.5 w-3.5 text-[#c2410c]" aria-hidden="true" />
                         ISO-Aligned Training
                     </span>
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-xs font-medium text-slate-700 shadow-sm backdrop-blur-sm">
-                        <GraduationCap className="h-3.5 w-3.5 text-orange-500" aria-hidden="true" />
+                        <GraduationCap className="h-3.5 w-3.5 text-[#c2410c]" aria-hidden="true" />
                         Mentor-Led Learning
                     </span>
                 </div>
@@ -215,14 +215,14 @@ function LeaderCard({ leader, index }: { leader: TeamLeaderType; index: number }
                             </p>
 
                             <div className="flex mt-5 flex-row items-center gap-3 text-gray-600">
-                                <p className="bg-gray-100 px-3 py-1 rounded-full text-xs border border-brand">
+                                <p className="bg-gray-100 px-3 py-1 rounded-full text-xs border border-[#c2410c]">
                                     {leader.experience}
                                 </p>
                                 <p className="text-sm">{leader.specialization}</p>
 
                                 {leader.location && (
                                     <p className="flex items-center gap-2 text-sm text-slate-600">
-                                        <MapPin className="h-4 w-4 text-orange-500" />
+                                        <MapPin className="h-4 w-4 text-[#c2410c]" />
                                         {leader.location}
                                     </p>
                                 )}
@@ -261,7 +261,7 @@ function LeaderCard({ leader, index }: { leader: TeamLeaderType; index: number }
                             <div className="space-y-2">
                                 {leader.achievements.map((achievement, achIndex) => (
                                     <div key={achIndex} className="flex items-center gap-3">
-                                        <div className="w-2 h-2 bg-[theme(color.brand)] rounded-full"></div>
+                                        <div className="w-2 h-2 bg-[#c2410c] rounded-full"></div>
                                         <span className="text-gray-700">{achievement}</span>
                                     </div>
                                 ))}
@@ -279,8 +279,8 @@ function LeaderCard({ leader, index }: { leader: TeamLeaderType; index: number }
                                 aria-label={`Connect with ${leader.name} on LinkedIn`}
                                 className="flex items-center group rounded-xl border-2 p-2 border-slate-400 bg-white transition-all hover:border-orange-300 hover:bg-orange-50"
                             >
-                                <Linkedin className="mr-2 h-4 w-4 text-orange-600" />
-                                <p className="font-semibold text-brand ">Connect on LinkedIn</p>
+                                <Linkedin className="mr-2 h-4 w-4 text-[#c2410c]" />
+                                <p className="font-semibold text-[#c2410c] ">Connect on LinkedIn</p>
                             </Link>
                         )}
                     </div>

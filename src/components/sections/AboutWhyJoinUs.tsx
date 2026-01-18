@@ -144,7 +144,7 @@ export default function AboutWhyJoinUs() {
         </p>
         <h2 id="why-join-heading" className="mt-3 text-4xl font-bold tracking-tight">
           Why join{" "}
-          <span className="bg-clip-text text-transparent bg-brand">
+          <span className="bg-clip-text text-transparent bg-[#c2410c]">
             Cinute Digital
           </span>
           {'\u00A0'}?
@@ -212,7 +212,7 @@ export default function AboutWhyJoinUs() {
                 {/* SEO micro-tags */}
                 <p className="mt-6 flex flex-wrap gap-2 text-xs leading-4 text-slate-500">
                   {seo.map((s) => (
-                    <span key={s} className="w-fit rounded-md bg-green-100 p-0.5 px-1.5">
+                    <span key={s} className="w-fit rounded-md bg-green-100 p-0.5 px-1.5 text-emerald-800">
                       {s}
                     </span>
                   ))}
@@ -229,14 +229,14 @@ export default function AboutWhyJoinUs() {
         <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
           <Link
             href="courses"
-            className="inline-flex items-center justify-center rounded-2xl bg-brand px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-slate-900/10 transition hover:-translate-y-px hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
+            className="inline-flex items-center justify-center rounded-2xl bg-[#c2410c] px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-slate-900/10 transition hover:-translate-y-px hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
           >
             Explore Courses
             <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
           </Link>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="inline-flex items-center justify-center rounded-2xl bg-white/90 px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-brand transition hover:bg-brand hover:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2 cursor-pointer"
+            className="inline-flex items-center justify-center rounded-2xl bg-white/90 px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-[#c2410c] transition hover:bg-[#c2410c] hover:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2 cursor-pointer"
           >
             Talk to an Advisor
           </button>

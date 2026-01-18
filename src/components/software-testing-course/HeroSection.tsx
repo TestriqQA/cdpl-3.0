@@ -18,11 +18,13 @@ import {
 } from 'lucide-react';
 
 // Local components
-import { EnrollPopup } from '@/components/EnrollForms';
-import BrochureDownloadModal from '@/components/home/BrochureDownloadModal';
-import YouTubeVideoModal from '@/components/home/YouTubeVideoModal';
-import LeadForm from './LeadForm';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import LeadForm from './LeadForm';
+
+const EnrollPopup = dynamic(() => import('@/components/EnrollForms').then(mod => mod.EnrollPopup), { ssr: false });
+const BrochureDownloadModal = dynamic(() => import('@/components/home/BrochureDownloadModal'), { ssr: false });
+const YouTubeVideoModal = dynamic(() => import('@/components/home/YouTubeVideoModal'), { ssr: false });
 
 const fadeUp = {
     initial: { opacity: 0, y: 10 },
@@ -79,24 +81,24 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
             <div aria-hidden className="absolute -left-24 -top-20 w-96 h-96 rounded-full blur-3xl opacity-30 bg-gradient-to-tr from-orange-200 to-yellow-100 pointer-events-none" />
 
             {/* Small badge */}
-            <motion.div {...fadeUp} className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-slate-100 rounded-full px-3 py-1 text-sm font-medium text-slate-700 shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-slate-100 rounded-full px-3 py-1 text-sm font-medium text-slate-700 shadow-sm">
                 <Sparkles className="h-4 w-4 text-amber-500" />
                 <span>India's #1 Software Testing Training Institute</span>
-            </motion.div>
+            </div>
 
             {/* Headline + micro graphic */}
             <div className="mt-6 flex gap-8 items-start">
                 <div className="max-w-5xl">
-                    <motion.h1 {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.06 }} className="text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900">
-                        Master <span className="text-orange-500">Software Testing</span> & Quality Assurance - Ship reliable software
-                    </motion.h1>
+                    <h1 className="text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900">
+                        Master <span className="text-[#ea580c]">Software Testing</span> & Quality Assurance - Ship reliable software
+                    </h1>
 
-                    <motion.p {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.12 }} className="mt-4 text-base text-slate-600">
+                    <p className="mt-4 text-base text-slate-600">
                         Industry-focused training in Manual & Automation Testing with hands-on projects using Selenium, Playwright, Postman, JMeter and CI/CD test pipelines. Build a testing portfolio, earn ISTQB-aligned certification, and get placement support for QA & SDET roles.
-                    </motion.p>
+                    </p>
 
                     {/* Feature chips (clean minimal icons) */}
-                    <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.18 }} className="mt-6 flex flex-wrap gap-3">
+                    <div className="mt-6 flex flex-wrap gap-3">
                         <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-50 border border-slate-100 rounded-full text-sm text-slate-700 shadow-sm">
                             <BarChart3 className="w-4 h-4 text-indigo-500" />
                             <span className="font-medium">Hands-on Test Projects</span>
@@ -111,13 +113,13 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
                             <PieChart className="w-4 h-4 text-emerald-500" />
                             <span className="font-medium">API & Performance Testing</span>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* CTA row — keeps original handlers intact */}
-                    <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.24 }} className="mt-6 flex items-center gap-3">
+                    <div className="mt-6 flex items-center gap-3">
                         <button
                             onClick={onOpenBrochure}
-                            className="inline-flex items-center gap-2 px-5 py-4 bg-orange-600 text-white rounded-lg text-md font-semibold shadow hover:translate-y-[-1px] transition-transform"
+                            className="inline-flex items-center gap-2 px-5 py-4 bg-[#c2410c] text-white rounded-lg text-md font-semibold shadow hover:translate-y-[-1px] transition-transform"
                         >
                             <Download className="h-4 w-4" />
                             Download Brochure
@@ -130,12 +132,10 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
                             <Play className="h-4 w-4" />
                             Watch CDPL
                         </button>
-                    </motion.div>
+                    </div>
 
                     {/* Trust Indicators - 3 Cards */}
-                    <motion.div
-                        {...fadeUp}
-                        transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.18 }}
+                    <div
                         className="mt-7 grid grid-cols-1 sm:grid-cols-3 gap-4"
                     >
                         {/* Card 1 - Students Placed */}
@@ -170,7 +170,7 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
                                 <div className="text-xs text-slate-600">Industry Experience</div>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* microcopy for SEO and trust */}
                     <p className="mt-3 text-sm text-slate-600 max-w-2xl">
@@ -190,7 +190,7 @@ const MobileFeatureList: React.FC<{ onOpenBrochure: () => void; onOpenVideo: () 
                 <span className="font-semibold">5,000+ Students Placed</span>
             </div>
             <div className="flex items-center gap-2">
-                <Star className="h-4 w-4 text-orange-500 flex-shrink-0" />
+                <Star className="h-4 w-4 text-[#c2410c] flex-shrink-0" />
                 <span className="font-semibold">4.9/5 Student Rating</span>
             </div>
             <div className="flex items-center gap-2">
@@ -226,7 +226,7 @@ const MobileFeatureList: React.FC<{ onOpenBrochure: () => void; onOpenVideo: () 
         <div className="flex flex-col sm:flex-row gap-3">
             <button
                 onClick={onOpenBrochure}
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-orange-600 text-white text-sm font-semibold rounded-lg w-full"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-[#c2410c] text-white text-sm font-semibold rounded-lg w-full"
             >
                 <Download className="h-4 w-4" />
                 Download Brochure
@@ -302,7 +302,7 @@ export default function HeroSection(): React.JSX.Element {
                     </div>
 
                     <h1 className="text-3xl font-extrabold text-slate-900 leading-tight">
-                        Master <span className="text-orange-500">Software Testing</span> & Quality Assurance
+                        Master <span className="text-[#ea580c]">Software Testing</span> & Quality Assurance
                     </h1>
 
                     <p className="mt-3 text-base text-slate-600">

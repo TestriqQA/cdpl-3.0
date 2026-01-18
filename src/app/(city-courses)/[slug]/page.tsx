@@ -12,6 +12,11 @@ import JsonLd from "@/components/JsonLd";
 
 import HeroSection from "@/components/city-courses/HeroSection";
 import dynamic from "next/dynamic";
+// Helper: interpolate {location_name} with actual location
+function interpolateLocation(text: string, location: string): string {
+  return text.replace(/{location_name}/g, location).replace(/{city}/g, location);
+}
+
 // Dynamic imports for below-the-fold content
 const CourseOverviewSection = dynamic(() => import("@/components/city-courses/CourseOverviewSection"), { ssr: true });
 const CurriculumSection = dynamic(() => import("@/components/city-courses/CurriculumSection"), { ssr: true });
@@ -122,6 +127,8 @@ export default async function CoursePage({ params }: PageProps) {
     return <NotFoundPage />;
   }
 
+  const city = data.location || "";
+
   // --- Structured Data Generation ---
 
   // 1. Breadcrumb Schema
@@ -183,7 +190,15 @@ export default async function CoursePage({ params }: PageProps) {
         <WhyChooseSection data={data} />
         <CareerPathSection data={data} />
         <FAQSection data={data} />
-        <CTASection data={data} />
+        <CTASection data={{
+          ...data,
+          ctaContent: {
+            ...data.ctaContent,
+            title: interpolateLocation(data.ctaContent.title, city),
+            subtitle: interpolateLocation(data.ctaContent.subtitle, city),
+            description: interpolateLocation(data.ctaContent.description, city),
+          }
+        }} />
       </main>
     </>
   );

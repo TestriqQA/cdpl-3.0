@@ -150,7 +150,7 @@ export default function JobsCareersBenefitsSection() {
                                     />
                                 </div>
 
-                                <meta itemProp="position" content={`${i + 1}`} />
+
 
                                 <div className="flex items-start gap-3">
                                     <div className="relative shrink-0">
@@ -175,9 +175,9 @@ export default function JobsCareersBenefitsSection() {
                                             {b.title}
                                         </h3>
                                         <span aria-hidden className="mt-1 block h-[2px] w-8 rounded-full" style={{ background: `linear-gradient(90deg, ${accent} 0%, ${accentTint} 100%)` }} />
-                                        <p className="mt-2 text-sm leading-relaxed text-neutral-700 break-words" itemProp="description">
+                                        <div className="mt-2 text-sm leading-relaxed text-neutral-700 break-words" itemProp="description">
                                             {b.desc}
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -209,9 +209,9 @@ export default function JobsCareersBenefitsSection() {
                     })}
                 </ul>
 
-                <p className="mt-8 text-xs text-neutral-500">
+                <div className="mt-8 text-xs text-neutral-500">
                     CDPL is product-led. We value clarity, craft, and measurable learner outcomes.
-                </p>
+                </div>
             </div>
 
 

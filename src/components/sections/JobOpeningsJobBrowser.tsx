@@ -303,7 +303,7 @@ export default function JobOpeningsJobBrowser({
                                                     key={key}
                                                     onClick={() => setLocType(key)}
                                                     className={`rounded-md px-3 py-1 text-xs transition ${active
-                                                        ? "bg-orange-500 text-white shadow-sm"
+                                                        ? "bg-[#d04502] text-white shadow-sm"
                                                         : "bg-white text-slate-700 ring-1 ring-slate-300 hover:bg-slate-50"
                                                         }`}
                                                 >
@@ -363,7 +363,7 @@ export default function JobOpeningsJobBrowser({
                                                 </div>
 
                                                 <div className="min-w-0">
-                                                    <h3 className="truncate text-[15px] font-semibold text-slate-900">{job.job_title}</h3>
+                                                    <h2 className="truncate text-[15px] font-semibold text-slate-900">{job.job_title}</h2>
                                                     <div className="mt-1 flex flex-wrap items-center gap-x-5 gap-y-1 text-xs text-slate-600">
                                                         <span className="flex items-center gap-1">
                                                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
@@ -399,7 +399,7 @@ export default function JobOpeningsJobBrowser({
                                                             setSelected(job.job_id);
                                                             requestAnimationFrame(() => setDrawerOpen(true));
                                                         }}
-                                                        className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-orange-500 via-orange-500 to-amber-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-95"
+                                                        className="inline-flex items-center justify-center rounded-md bg-[#d04502] px-4 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-95"
                                                     >
                                                         View »
                                                     </button>

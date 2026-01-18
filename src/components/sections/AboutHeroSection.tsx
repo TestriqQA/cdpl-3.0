@@ -82,7 +82,7 @@ export default function AboutHeroSection() {
                         transition={{ ...(fadeUp.transition as Transition), delay: 0.06 }}
                         className={`mt-4 py-1 text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl ${gradientText}`}
                     >
-                        About <span className="text-brand">Cinute Digital</span>
+                        About <span className="text-[#ea580c]">Cinute Digital</span>
                     </motion.h1>
 
                     <p
@@ -123,7 +123,7 @@ export default function AboutHeroSection() {
                     >
                         <Link
                             href='courses'
-                            className="inline-flex w-full items-center justify-center rounded-2xl bg-brand px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-slate-900/10 transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2 sm:w-auto"
+                            className="inline-flex w-full items-center justify-center rounded-2xl bg-[#c2410c] px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-slate-900/10 transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2 sm:w-auto"
                         >
                             Explore Courses <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                         </Link>
@@ -141,8 +141,8 @@ export default function AboutHeroSection() {
                         className="mt-7 flex flex-wrap items-center gap-3 text-sm"
                     >
                         <div className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white/85 px-3 py-2 shadow-sm dark:border-slate-200/60 dark:bg-white/85">
-                            <Star className="h-4 w-4 text-amber-500" aria-hidden="true" />
-                            <span className="font-semibold text-amber-500">4.8/5</span>
+                            <Star className="h-4 w-4 text-[#b45309]" aria-hidden="true" />
+                            <span className="font-semibold text-[#b45309]">4.8/5</span>
                             <span className="text-slate-500">&nbsp;avg learner rating</span>
                         </div>
                         <div className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white/85 px-3 py-2 text-slate-800 shadow-sm dark:border-slate-200/60 dark:bg-white/85">

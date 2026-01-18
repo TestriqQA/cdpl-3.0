@@ -132,7 +132,7 @@ const CTASection: React.FC<CTASectionProps> = ({ data }) => {
               className="mt-8 flex flex-col gap-3 sm:flex-row"
             >
               <button
-                onClick={() => openPopup(`${data.courseName || 'City'} Course Page - CTA Section - Enroll Now`)}
+                onClick={() => openPopup(`(${data.location || 'City'} ${data.courseName || 'Course'}) - CTA Section - Enroll Now`)}
                 className="group inline-flex items-center justify-center cursor-pointer rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-3.5 font-semibold text-white shadow-lg transition hover:shadow-xl"
               >
                 Enroll Now
@@ -140,7 +140,7 @@ const CTASection: React.FC<CTASectionProps> = ({ data }) => {
               </button>
 
               <button
-                onClick={() => openPopup(`${data.courseName || 'City'} Course Page - CTA Section - Get Free Demo`)}
+                onClick={() => openPopup(`(${data.location || 'City'} ${data.courseName || 'Course'}) - CTA Section - Get Free Demo`)}
                 className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-8 py-3.5 font-semibold text-slate-800 shadow-sm transition hover:border-slate-400 hover:shadow-md cursor-pointer"
               >
                 Get Free Demo
