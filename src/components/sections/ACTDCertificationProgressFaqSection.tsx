@@ -28,7 +28,7 @@ export default function ACTDCertificationProgressFaqSection() {
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <h3 className="text-xl font-extrabold">Cohort flow</h3>
           <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
+            <div className="flex items-center justify-between text-xs font-semibold text-slate-800">
               <span>Progress</span>
               <span>{pct}%</span>
             </div>
@@ -47,17 +47,16 @@ export default function ACTDCertificationProgressFaqSection() {
                 <button
                   key={s}
                   onClick={() => setIdx(i)}
-                  className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
-                    i === idx
-                      ? "border-zinc-300 text-zinc-900 shadow-sm"
-                      : "border-zinc-200 text-zinc-600 hover:border-zinc-300"
-                  }`}
+                  className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${i === idx
+                    ? "border-zinc-300 text-zinc-900 shadow-sm"
+                    : "border-zinc-200 text-zinc-600 hover:border-zinc-300"
+                    }`}
                   style={
                     i === idx
                       ? {
-                          background:
-                            "linear-gradient(90deg, #ff8c00 0%, #ffb558 55%, #ffd19e 100%)",
-                        }
+                        background:
+                          "linear-gradient(90deg, #ff8c00 0%, #ffb558 55%, #ffd19e 100%)",
+                      }
                       : undefined
                   }
                 >
@@ -90,7 +89,7 @@ function FaqRow({ q, a }: { q: string; a: string }) {
         <span>{q}</span>
         <span className={`transition ${open ? "rotate-180" : ""}`}>▾</span>
       </button>
-      {open && <p className="px-4 py-3 text-sm text-slate-700">{a}</p>}
+      {open && <p className="px-4 py-3 text-sm text-slate-800">{a}</p>}
     </div>
   );
 }

@@ -32,7 +32,7 @@ const ISTQB_LEVELS = [
 ];
 
 const CustomInput = React.forwardRef(({ ...props }: any, ref) => (
-    <input {...props} ref={ref} className="w-full py-3 px-3 outline-none bg-transparent" required />
+    <input {...props} ref={ref} className="w-full py-3 px-3 outline-none bg-transparent" required aria-label="Phone Number" />
 ));
 CustomInput.displayName = 'CustomInput';
 
@@ -331,12 +331,12 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
                                 : 'border-slate-200 hover:border-indigo-300'
                                 }`}
                         >
-                            <span className={`block truncate ${!selectedLevel ? 'text-slate-400 font-normal' : 'text-slate-900 font-medium'}`}>
+                            <span className={`block truncate ${!selectedLevel ? 'text-slate-500 font-normal' : 'text-slate-900 font-medium'}`}>
                                 {selectedLevel || "Select Level"}
                             </span>
                             <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                                 <svg
-                                    className={`w-5 h-5 text-slate-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                                    className={`w-5 h-5 text-slate-500 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"

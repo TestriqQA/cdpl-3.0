@@ -35,12 +35,12 @@ export default function AAACerticationHeroSection() {
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         {/* Breadcrumbs */}
         <nav aria-label="Breadcrumb" className="mb-3">
-          <ol className="flex items-center gap-2 text-sm text-slate-500">
+          <ol className="flex items-center gap-2 text-sm text-slate-600">
             <li className="flex items-center gap-2">
               <Home className="h-4 w-4" />
               <Link href="/" className="hover:text-indigo-700">Home</Link>
             </li>
-            <li aria-hidden className="text-slate-400">/</li>
+            <li aria-hidden className="text-slate-500">/</li>
             <li className="font-medium text-slate-700">AAA Certification</li>
           </ol>
         </nav>
@@ -54,7 +54,7 @@ export default function AAACerticationHeroSection() {
 
             <h1 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
               <span style={{ color: "#0069A8" }}>AAA Certification </span>
-              <span style={{ color: "rgb(255, 140, 0)" }}>by CDPL</span>
+              <span style={{ color: "#c2410c" }}>by CDPL</span>
             </h1>
 
             <p className="mt-4 mx-auto max-w-2xl text-base sm:text-lg text-slate-600 lg:mx-0">

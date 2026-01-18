@@ -44,12 +44,12 @@ type Variant = {
 };
 
 const VARIANTS: Variant[] = [
-  { activeBg: "bg-cyan-500", activeText: "text-white", hoverBorder: "hover:border-cyan-300", accentColor: "text-cyan-500" },
-  { activeBg: "bg-fuchsia-500", activeText: "text-white", hoverBorder: "hover:border-fuchsia-300", accentColor: "text-fuchsia-500" },
-  { activeBg: "bg-lime-500", activeText: "text-slate-900", hoverBorder: "hover:border-lime-300", accentColor: "text-lime-500" },
-  { activeBg: "bg-orange-500", activeText: "text-white", hoverBorder: "hover:border-orange-300", accentColor: "text-orange-500" },
-  { activeBg: "bg-indigo-500", activeText: "text-white", hoverBorder: "hover:border-indigo-300", accentColor: "text-indigo-500" },
-  { activeBg: "bg-red-500", activeText: "text-white", hoverBorder: "hover:border-red-300", accentColor: "text-red-500" },
+  { activeBg: "bg-cyan-700", activeText: "text-white", hoverBorder: "hover:border-cyan-600", accentColor: "text-cyan-700" },
+  { activeBg: "bg-fuchsia-700", activeText: "text-white", hoverBorder: "hover:border-fuchsia-600", accentColor: "text-fuchsia-700" },
+  { activeBg: "bg-lime-500", activeText: "text-slate-900", hoverBorder: "hover:border-lime-300", accentColor: "text-lime-600" },
+  { activeBg: "bg-orange-700", activeText: "text-white", hoverBorder: "hover:border-orange-600", accentColor: "text-orange-700" },
+  { activeBg: "bg-indigo-700", activeText: "text-white", hoverBorder: "hover:border-indigo-600", accentColor: "text-indigo-700" },
+  { activeBg: "bg-red-700", activeText: "text-white", hoverBorder: "hover:border-red-600", accentColor: "text-red-700" },
 ];
 
 function pickVariant(i: number): Variant {

@@ -118,7 +118,7 @@ export default function MockTestListing() {
                                         </div>
                                     </div>
 
-                                    <h3 className="text-2xl font-bold text-slate-900 mb-2">{category.name}</h3>
+                                    <h2 className="text-2xl font-bold text-slate-900 mb-2">{category.name}</h2>
                                     <div className="w-8 h-1 bg-slate-200 rounded-full mb-6 group-hover:w-full group-hover:bg-current transition-all duration-500 text-blue-500" />
 
                                     <div className="grid grid-cols-1 gap-3">
@@ -131,10 +131,10 @@ export default function MockTestListing() {
                                                 <div className={`absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 bg-gradient-to-r ${style.bg} to-transparent`} />
 
                                                 <div className="relative z-10 flex-1">
-                                                    <h4 className="font-semibold text-slate-700 group-hover/card:text-slate-900 transition-colors mb-0.5">
+                                                    <h3 className="font-semibold text-slate-700 group-hover/card:text-slate-900 transition-colors mb-0.5">
                                                         {course.name}
-                                                    </h4>
-                                                    <span className="text-xs font-medium text-slate-400 group-hover/card:text-brand-600 transition-colors uppercase tracking-wider">
+                                                    </h3>
+                                                    <span className="text-xs font-medium text-slate-500 group-hover/card:text-brand-600 transition-colors uppercase tracking-wider">
                                                         Begin Assessment
                                                     </span>
                                                 </div>

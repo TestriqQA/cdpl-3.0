@@ -180,7 +180,7 @@ export default function ReviewsHeroSection() {
                 <ShieldCheck className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Status</div>
+                <div className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">Status</div>
                 <div className="text-xs font-bold text-slate-800">Verified Alumni</div>
               </div>
             </motion.div>
@@ -188,13 +188,13 @@ export default function ReviewsHeroSection() {
             <motion.div
               animate={{ y: [10, -10, 10] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute hidden md:block bottom-32 left-0 lg:-left-12 z-10 bg-white/90 backdrop-blur border border-slate-100 p-3 rounded-2xl shadow-lg flex items-center gap-2"
+              className="absolute hidden md:flex bottom-32 left-0 lg:-left-12 z-10 bg-white/90 backdrop-blur border border-slate-100 p-3 rounded-2xl shadow-lg items-center gap-2"
             >
               <div className="bg-blue-100 p-1.5 rounded-full text-blue-600">
                 <Activity className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Impact</div>
+                <div className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">Impact</div>
                 <div className="text-xs font-bold text-slate-800">Top 1% Career Growth</div>
               </div>
             </motion.div>
@@ -243,12 +243,12 @@ export default function ReviewsHeroSection() {
                               </div>
                             </div>
                             <div>
-                              <h3 className="text-lg font-bold text-slate-900">{review.name}</h3>
+                              <h2 className="text-lg font-bold text-slate-900">{review.name}</h2>
                               <div className="flex items-center gap-2">
                                 <div className="flex text-amber-400">
                                   {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-current" />)}
                                 </div>
-                                <span className="text-xs font-medium text-slate-400">5.0</span>
+                                <span className="text-xs font-medium text-slate-600">5.0</span>
                               </div>
                             </div>
                           </div>

@@ -74,7 +74,7 @@ export default function RootLayout({
   const aiMetaTags = generateAIMetaTags();
 
   return (
-    <html lang="en" dir="ltr">
+    <html lang="en" dir="ltr" data-scroll-behavior="smooth">
       <head>
         {/* ========================================
             STRUCTURED DATA (Schema.org)

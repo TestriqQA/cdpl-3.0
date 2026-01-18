@@ -26,11 +26,7 @@ const EnrollPopup = dynamic(() => import('@/components/EnrollForms').then(mod =>
 const BrochureDownloadModal = dynamic(() => import('@/components/home/BrochureDownloadModal'), { ssr: false });
 const YouTubeVideoModal = dynamic(() => import('@/components/home/YouTubeVideoModal'), { ssr: false });
 
-const fadeUp = {
-    initial: { opacity: 0, y: 10 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.45, ease: [0.25, 0.1, 0.25, 1.0] as const }
-};
+
 
 /**
  * Redesigned desktop left content: sleek layered cards, micro-illustration,

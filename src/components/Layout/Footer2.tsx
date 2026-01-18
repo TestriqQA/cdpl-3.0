@@ -232,7 +232,7 @@ const Footer: React.FC = () => {
               <div className="flex gap-4 space-y-4">
                 <h3 className="text-xl font-semibold text-orange-700">Powered By</h3>
                 <Link href="https://www.testriq.com/" className="text-gray-300 hover:text-blue-400 hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  <Image src={'/images/Testriq-Logo-1.webp'} alt='Testriq_logo' title="Testriq-Logo" width={100} height={100} />
+                  <Image src={'/images/Testriq-Logo-1.webp'} alt='Testriq_logo' title="Testriq-Logo" width={100} height={100} style={{ width: "auto", height: "auto" }} />
                 </Link>
               </div>
             </div>

@@ -19,14 +19,14 @@ export default function CertificationSampleSection() {
 
                     {/* Text Content */}
                     <div className="lg:col-span-5 relative z-10 text-center lg:text-left">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-[#3CB371]/30 bg-[#3CB371]/10 px-3 py-1 text-sm font-medium text-[#3CB371]">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-green-600/30 bg-green-600/10 px-3 py-1 text-sm font-medium text-green-900">
                             <CheckCircle2 className="h-4 w-4" />
                             <span>Gold Standard Verification</span>
                         </div>
                         <h2 className="mt-6 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
                             Authenticity You Can Trust
                         </h2>
-                        <p className="mt-4 text-lg text-slate-600 leading-relaxed">
+                        <p className="mt-4 text-lg text-slate-700 leading-relaxed">
                             Our certificates are more than just images. They are digital assets backed by a secure, real-time registry.
                             Recruiters can verify credentials instantly, ensuring that every CDPL scholar gets the recognition they deserve.
                         </p>
@@ -70,8 +70,8 @@ export default function CertificationSampleSection() {
 
                                 {/* Floating Badge */}
                                 <div className="absolute -bottom-6 -right-6 hidden sm:flex h-20 w-20 items-center justify-center rounded-full bg-white p-1 shadow-xl ring-1 ring-slate-900/5">
-                                    <div className="flex h-full w-full items-center justify-center rounded-full bg-[#3CB371]/10">
-                                        <CheckCircle2 className="h-8 w-8 text-[#3CB371]" />
+                                    <div className="flex h-full w-full items-center justify-center rounded-full bg-green-600/10">
+                                        <CheckCircle2 className="h-8 w-8 text-green-700" />
                                     </div>
                                 </div>
                             </div>

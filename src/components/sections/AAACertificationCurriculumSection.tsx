@@ -25,7 +25,7 @@ export default function AAACertificationCurriculumSection() {
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <header className="mb-6 sm:mb-8">
           <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">What you’ll learn</h2>
-          <p className="mt-2 max-w-3xl text-[15px] text-slate-700 sm:text-base">
+          <p className="mt-2 max-w-3xl text-[15px] text-slate-800 sm:text-base">
             A focused syllabus driving demonstrable competence and AAA exam readiness.
           </p>
         </header>
@@ -55,7 +55,7 @@ function Row({ title, bullets }: { title: string; bullets: string[] }) {
         <span className={`transition ${open ? "rotate-180" : ""}`}>▾</span>
       </button>
       {open && (
-        <ul className="px-4 py-3 list-disc pl-5 text-sm text-slate-700">
+        <ul className="px-4 py-3 list-disc pl-5 text-sm text-slate-800">
           {bullets.map((b) => (
             <li key={b} className="mb-1">
               {b}

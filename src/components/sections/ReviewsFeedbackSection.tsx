@@ -77,7 +77,7 @@ function ReviewCard({ review }: { review: StudentReview }) {
               </h3>
               <div className="text-xs text-slate-500 font-medium">{review.role}</div>
             </div>
-            <div className="flex items-center gap-0.5" aria-label={`Rated ${review.rating} stars`}>
+            <div className="flex items-center gap-0.5" role="img" aria-label={`Rated ${review.rating} stars`}>
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
                   key={i}
@@ -98,7 +98,7 @@ function ReviewCard({ review }: { review: StudentReview }) {
               {review.course}
             </span>
             {review.company && (
-              <span className="text-xs text-slate-400 font-medium">Placed at {review.company}</span>
+              <span className="text-xs text-slate-500 font-medium">Placed at {review.company}</span>
             )}
           </div>
         </div>
@@ -144,7 +144,7 @@ export default function ReviewsFeedbackSection() {
               </div>
               <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
                 Real Result.<br />
-                <span className="text-slate-400">Real Reviews.</span>
+                <span className="text-slate-500">Real Reviews.</span>
               </h2>
               <p className="text-slate-600 leading-relaxed text-lg">
                 Explore how professionals transformed their careers. Filter by your domain to see relevant stories.
@@ -165,7 +165,7 @@ export default function ReviewsFeedbackSection() {
 
             {/* Desktop Filters */}
             <div className="space-y-3">
-              <div className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+              <div className="text-xs font-bold text-slate-600 uppercase tracking-widest flex items-center gap-2">
                 <Filter className="w-3 h-3" />
                 Filter by Role
               </div>
@@ -225,7 +225,7 @@ export default function ReviewsFeedbackSection() {
               <span className="text-sm font-bold text-slate-500">
                 Showing {displayReviews.length} of {filteredReviews.length} reviews
               </span>
-              <span className="text-xs font-semibold text-slate-400 uppercase">
+              <span className="text-xs font-semibold text-slate-600 uppercase">
                 Sorted by Recent
               </span>
             </div>

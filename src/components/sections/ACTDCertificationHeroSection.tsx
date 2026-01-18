@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Home } from "lucide-react";
 
-const BRAND_ORANGE = "rgb(255, 140, 0)";
+const BRAND_ORANGE = "#c2410c";
 const BRAND_BLUE = "#0069A8";
 
 export default function ACTDCertificationHeroSection() {
@@ -13,12 +13,12 @@ export default function ACTDCertificationHeroSection() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-slate-50 to-white" />
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <nav aria-label="Breadcrumb" className="mb-3">
-          <ol className="flex items-center gap-2 text-sm text-slate-500">
+          <ol className="flex items-center gap-2 text-sm text-slate-600">
             <li className="flex items-center gap-2">
               <Home className="h-4 w-4" />
               <Link href="/" className="hover:text-indigo-700">Home</Link>
             </li>
-            <li aria-hidden className="text-slate-400">/</li>
+            <li aria-hidden className="text-slate-500">/</li>
             <li className="font-medium text-slate-700">ACTD Certification</li>
           </ol>
         </nav>
@@ -41,7 +41,7 @@ export default function ACTDCertificationHeroSection() {
               <span style={{ color: BRAND_ORANGE }}> by CDPL</span>
             </h1>
 
-            <p className="mt-4 mx-auto max-w-2xl text-base sm:text-lg text-slate-600 lg:mx-0">
+            <p className="mt-4 mx-auto max-w-2xl text-base sm:text-lg text-slate-800 lg:mx-0">
               Learn through sprints, labs, mentor reviews, and a capstone that proves your skills to recruiters.
             </p>
 

@@ -22,7 +22,7 @@ import { useState } from "react";
 import WorkshopRequestModal from "../WorkshopRequestModal";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-const BRAND_COLOR = "var(--color-brand, #ff8c00)";
+const BRAND_COLOR = "#c2410c";
 
 // Tiny floating icon chip (background layer)
 function FloatingIcon({

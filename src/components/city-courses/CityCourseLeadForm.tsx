@@ -205,9 +205,9 @@ export default function CityCourseLeadForm({
                 {/* Form Header */}
                 <div className="mb-6">
                     <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-xl font-bold text-slate-900">
+                        <h2 className="text-xl font-bold text-slate-900">
                             Talk to an Advisor
-                        </h3>
+                        </h2>
                         <div className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full">
                             <span className="text-xs font-bold text-white">FREE</span>
                         </div>

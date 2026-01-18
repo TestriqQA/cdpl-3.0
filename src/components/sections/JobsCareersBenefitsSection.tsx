@@ -11,8 +11,8 @@ import {
     Coins,
     Sparkles,
     ArrowRight,
-    Link,
 } from "lucide-react";
+import Link from "next/link";
 
 const BRAND_COLOR = "#ff8c00";
 const easeBezier: [number, number, number, number] = [0.22, 1, 0.36, 1];

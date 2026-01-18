@@ -228,7 +228,7 @@ function FaqRow({
         className="relative overflow-hidden transition-all duration-300 ease-out"
         style={{ maxHeight: open ? maxH : 0, opacity: open ? 1 : 0.98 }}
       >
-        <div ref={bodyRef} className="px-4 pb-4 text-sm text-slate-700">
+        <div ref={bodyRef} className="px-4 pb-4 text-sm text-slate-800">
           {a}
         </div>
       </div>

@@ -98,7 +98,7 @@ export default function LocationsHeroSection() {
               <Link
                 href="/contact-us"
                 className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
-                style={{ backgroundColor: "var(--color-brand, #ff8c00)" }}
+                style={{ backgroundColor: "#c2410c" }}
               >
                 Talk to our team
               </Link>

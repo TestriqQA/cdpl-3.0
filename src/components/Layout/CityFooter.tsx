@@ -10,7 +10,7 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
     return (
         <Link
             href={href}
-            className={`hover:text-brand hover:translate-x-2 active:text-brand active:translate-x-2 transition-all duration-300 ease-in-out text-sm ${isActive ? "text-brand translate-x-2" : "text-gray-300"}`}
+            className={`hover:text-orange-400 hover:translate-x-2 active:text-orange-400 active:translate-x-2 transition-all duration-300 ease-in-out text-sm ${isActive ? "text-orange-400 translate-x-2" : "text-gray-300"}`}
         >
             {children}
         </Link>
@@ -228,7 +228,7 @@ const CityFooter = () => {
                 </div>
                 <Link
                     href="/locations-we-serve"
-                    className={`mt-2 inline-block px-6 py-2 border-2 text-md font-semibold rounded-md transition-all duration-300 ease-in-out ${pathname === "/locations-we-serve" ? "bg-orange-400 text-white border-orange-400" : "border-orange-400 text-orange-400 hover:bg-orange-400 hover:text-white"}`}
+                    className={`mt-2 inline-block px-6 py-2 border-2 text-md font-semibold rounded-md transition-all duration-300 ease-in-out ${pathname === "/locations-we-serve" ? "bg-orange-700 text-white border-orange-700" : "border-orange-700 text-orange-400 hover:bg-orange-700 hover:text-white"}`}
                 >
                     View All
                 </Link>
