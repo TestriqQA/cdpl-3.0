@@ -171,10 +171,10 @@ const COLOR_MAP: Record<Accent, {
         accentBorder: "border-cyan-600"
     },
     emerald: {
-        iconBg: "bg-emerald-600",
+        iconBg: "bg-emerald-700",
         cardBg: "bg-emerald-50",
         borderColor: "border-emerald-200",
-        accentBorder: "border-emerald-600"
+        accentBorder: "border-emerald-700"
     },
     amber: {
         iconBg: "bg-amber-600",
@@ -265,7 +265,7 @@ function CurriculumCard({ mod }: { mod: Module }) {
                     <ul className="space-y-2 text-sm leading-6 text-gray-700">
                         {mod.outcomes.map((o) => (
                             <li key={o} className="flex items-start">
-                                <LuBadgeCheck className="mt-0.5 mr-2 h-4 w-4 text-emerald-600" aria-hidden />
+                                <LuBadgeCheck className="mt-0.5 mr-2 h-4 w-4 text-emerald-800" aria-hidden />
                                 <span>{o}</span>
                             </li>
                         ))}

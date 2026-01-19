@@ -169,7 +169,7 @@ export default function HeroSection() {
                         <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                             <button
                                 onClick={() => setIsEnrollModalOpen(true)}
-                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-teal-600 bg-teal-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-teal-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-teal-200"
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-teal-700 bg-teal-700 px-6 py-3 text-base font-semibold text-white transition hover:bg-teal-800 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-teal-200"
                                 aria-label="Enroll now in Python program"
                             >
                                 Enroll Now
@@ -178,7 +178,7 @@ export default function HeroSection() {
 
                             <button
                                 onClick={() => setIsSyllabusModalOpen(true)}
-                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-teal-600 bg-teal-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-teal-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-teal-200"
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-teal-700 bg-teal-700 px-6 py-3 text-base font-semibold text-white transition hover:bg-teal-800 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-teal-200"
                                 aria-label="Download Python Syllabus"
                             >
                                 Download Syllabus

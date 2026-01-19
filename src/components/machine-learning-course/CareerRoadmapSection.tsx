@@ -162,9 +162,9 @@ export default function CareerRoadmapSection() {
                       {s.badge}
                     </span>
                   </div>
-                  <h3 className="mt-2 text-base sm:text-lg font-bold tracking-tight text-slate-900">
+                  <p className="mt-2 text-base sm:text-lg font-bold tracking-tight text-slate-900">
                     {s.title}
-                  </h3>
+                  </p>
                   <p className="mt-1 text-sm text-slate-700">{s.desc}</p>
                 </article>
               </li>

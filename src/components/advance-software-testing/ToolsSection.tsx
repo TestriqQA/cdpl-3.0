@@ -120,7 +120,7 @@ export default function ToolsSection() {
                   </h3>
 
                   {/* tiny helper copy for SEO & clarity */}
-                  <p className="mt-2 text-center text-xs text-slate-500">
+                  <p className="mt-2 text-center text-xs text-slate-700">
                     Widely used in automation pipelines for scalable, maintainable testing.
                   </p>
                 </div>

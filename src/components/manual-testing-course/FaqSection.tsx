@@ -22,7 +22,7 @@ type Category = "Admissions" | "Curriculum" | "Certification" | "Career" | "Paym
 ========================= */
 const DARK_COLORS = [
   "bg-indigo-600",
-  "bg-emerald-600",
+  "bg-emerald-700",
   "bg-cyan-600",
   "bg-amber-600",
   "bg-violet-600",
@@ -51,9 +51,9 @@ const categoryMeta: Record<Category, {
   },
   Admissions: {
     lightBg: "bg-emerald-50",
-    text: "text-emerald-700",
+    text: "text-emerald-800",
     ring: "ring-emerald-200",
-    dot: "bg-emerald-600",
+    dot: "bg-emerald-700",
     icon: <LuGlobe className="h-4 w-4" />
   },
   Curriculum: {

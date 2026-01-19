@@ -69,37 +69,37 @@ const PROJECTS: Project[] = [
 const ACCENTS = [
   {
     line: "bg-sky-400/80",
-    ring: "focus:ring-sky-300",
+    ring: "focus:ring-sky-500",
     chip: "bg-sky-50 text-sky-800 border-sky-200",
     halo: "shadow-[0_10px_30px_-12px_rgba(2,132,199,0.45)]",
   },
   {
     line: "bg-emerald-400/80",
-    ring: "focus:ring-emerald-300",
+    ring: "focus:ring-emerald-500",
     chip: "bg-emerald-50 text-emerald-800 border-emerald-200",
     halo: "shadow-[0_10px_30px_-12px_rgba(16,185,129,0.45)]",
   },
   {
     line: "bg-amber-400/80",
-    ring: "focus:ring-amber-300",
+    ring: "focus:ring-amber-500",
     chip: "bg-amber-50 text-amber-900 border-amber-200",
     halo: "shadow-[0_10px_30px_-12px_rgba(245,158,11,0.45)]",
   },
   {
     line: "bg-violet-400/80",
-    ring: "focus:ring-violet-300",
+    ring: "focus:ring-violet-500",
     chip: "bg-violet-50 text-violet-800 border-violet-200",
     halo: "shadow-[0_10px_30px_-12px_rgba(139,92,246,0.45)]",
   },
   {
     line: "bg-rose-400/80",
-    ring: "focus:ring-rose-300",
+    ring: "focus:ring-rose-500",
     chip: "bg-rose-50 text-rose-800 border-rose-200",
     halo: "shadow-[0_10px_30px_-12px_rgba(244,63,94,0.45)]",
   },
   {
     line: "bg-indigo-400/80",
-    ring: "focus:ring-indigo-300",
+    ring: "focus:ring-indigo-500",
     chip: "bg-indigo-50 text-indigo-800 border-indigo-200",
     halo: "shadow-[0_10px_30px_-12px_rgba(99,102,241,0.45)]",
   },

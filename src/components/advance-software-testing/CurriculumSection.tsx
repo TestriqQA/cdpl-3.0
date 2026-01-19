@@ -108,13 +108,13 @@ export default function CurriculumSection() {
                 {/* SEO-supportive intro row (updated to match brochure) */}
                 <div className="mx-auto mt-6 mb-8 grid max-w-4xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-3">
                     <p className="flex items-center gap-2">
-                        <Layers className="h-4 w-4 text-slate-500" /> Framework design & best practices
+                        <Layers className="h-4 w-4 text-slate-700" /> Framework design & best practices
                     </p>
                     <p className="flex items-center gap-2">
-                        <Award className="h-4 w-4 text-slate-500" /> Portfolio-ready real-time projects
+                        <Award className="h-4 w-4 text-slate-700" /> Portfolio-ready real-time projects
                     </p>
                     <p className="flex items-center gap-2">
-                        <Clock className="h-4 w-4 text-slate-500" /> 95 hours • 3.5 months • mentor-led
+                        <Clock className="h-4 w-4 text-slate-700" /> 95 hours • 3.5 months • mentor-led
                     </p>
                 </div>
 
@@ -155,7 +155,7 @@ export default function CurriculumSection() {
                                     ))}
                                 </ul>
 
-                                <p className="mt-4 text-xs text-slate-500">
+                                <p className="mt-4 text-xs text-slate-700">
                                     Outcomes: hands-on labs, assessment checklists, CI/CD integration, and evidence-based reporting.
                                 </p>
                             </li>

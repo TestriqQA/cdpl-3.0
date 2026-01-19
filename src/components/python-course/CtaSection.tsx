@@ -85,7 +85,7 @@ export default function CtaSection() {
         </div>
 
         {/* Location + schedule hint */}
-        <p className="mt-6 text-xs sm:text-sm text-slate-600">
+        <p className="mt-6 text-xs sm:text-sm text-slate-900">
           Mira Road &amp; Vasai, Maharashtra • Weekday/Weekend batches • Hybrid learning available
         </p>
       </div>

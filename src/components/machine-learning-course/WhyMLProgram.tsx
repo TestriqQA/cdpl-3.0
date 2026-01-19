@@ -81,7 +81,7 @@ export default function WhyMLProgram() {
         <div className="mt-10 grid gap-6 text-left md:grid-cols-2">
           {/* Left: bullets */}
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h3 className="text-lg md:text-xl font-bold text-slate-900">What You’ll Learn</h3>
+            <p className="text-lg md:text-xl font-bold text-slate-900">What You’ll Learn</p>
             <ul className="mt-3 grid grid-cols-1 gap-2 text-sm md:text-base text-slate-700">
               {BULLETS.map((b, idx) => (
                 <li key={idx} className="flex items-start gap-2">

@@ -75,7 +75,7 @@ export default function CtaSection() {
               <Clock className="h-6 w-6 text-amber-700" />
               <div>
                 <div className="font-semibold text-amber-900">30-Hour Live Training</div>
-                <div className="text-sm text-amber-800/80">Weekend & evening batches</div>
+                <div className="text-sm text-amber-900">Weekend & evening batches</div>
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function CtaSection() {
               <Award className="h-6 w-6 text-emerald-700" />
               <div>
                 <div className="font-semibold text-emerald-900">ISTQB + AI Certification</div>
-                <div className="text-sm text-emerald-800/80">QR-verified credential</div>
+                <div className="text-sm text-emerald-900">QR-verified credential</div>
               </div>
             </div>
           </div>
@@ -95,7 +95,7 @@ export default function CtaSection() {
               <CheckCircle className="h-6 w-6 text-violet-700" />
               <div>
                 <div className="font-semibold text-violet-900">100% Placement Support</div>
-                <div className="text-sm text-violet-800/80">Resume, mock interviews, referrals</div>
+                <div className="text-sm text-violet-900">Resume, mock interviews, referrals</div>
               </div>
             </div>
           </div>

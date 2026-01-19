@@ -38,7 +38,7 @@ interface ReviewProps {
 const accentMap: Record<Accent, string> = {
   indigo: "text-indigo-700 bg-indigo-50 ring-indigo-100",
   cyan: "text-cyan-700 bg-cyan-50 ring-cyan-100",
-  emerald: "text-emerald-700 bg-emerald-50 ring-emerald-100",
+  emerald: "text-emerald-800 bg-emerald-50 ring-emerald-100",
   amber: "text-amber-700 bg-amber-50 ring-amber-100",
   rose: "text-rose-700 bg-rose-50 ring-rose-100",
   slate: "text-slate-700 bg-slate-50 ring-slate-100",
@@ -71,7 +71,7 @@ const Badge: React.FC<BadgeProps> = ({ text, accent = "slate" }) => {
     const m: Record<Accent, string> = {
       indigo: "bg-indigo-50 text-indigo-700 ring-indigo-100 py-2 text-[13px] shadow-md",
       cyan: "bg-cyan-50 text-cyan-700 ring-cyan-100",
-      emerald: "bg-emerald-50 text-emerald-700 ring-emerald-100",
+      emerald: "bg-emerald-50 text-emerald-800 ring-emerald-100",
       amber: "bg-amber-50 text-amber-700 ring-amber-100",
       rose: "bg-rose-50 text-rose-700 ring-rose-100",
       slate: "bg-slate-50 text-slate-700 ring-slate-100",
@@ -161,12 +161,12 @@ export default function InstructorSection() {
 
               {/* Features */}
               <ul className="mt-8 grid sm:grid-cols-2 gap-4">
-                <InstructorFeature text="15+ Years in Quality Assurance" icon={<LuClock className="h-4 w-4 text-emerald-600" />} />
-                <InstructorFeature text="Trained 3,000+ Testers with 95% Placement" icon={<LuUsers className="h-4 w-4 text-emerald-600" />} />
-                <InstructorFeature text="ISTQB Advanced Test Manager" icon={<LuAward className="h-4 w-4 text-emerald-600" />} />
-                <InstructorFeature text="Automation & API Testing Expertise" icon={<LuBookOpenCheck className="h-4 w-4 text-emerald-600" />} />
-                <InstructorFeature text="SDET Mindset & Test Strategy" icon={<LuShieldCheck className="h-4 w-4 text-emerald-600" />} />
-                <InstructorFeature text="Real-World Projects from E-com to FinTech" icon={<LuBuilding className="h-4 w-4 text-emerald-600" />} />
+                <InstructorFeature text="15+ Years in Quality Assurance" icon={<LuClock className="h-4 w-4 text-emerald-800" />} />
+                <InstructorFeature text="Trained 3,000+ Testers with 95% Placement" icon={<LuUsers className="h-4 w-4 text-emerald-800" />} />
+                <InstructorFeature text="ISTQB Advanced Test Manager" icon={<LuAward className="h-4 w-4 text-emerald-800" />} />
+                <InstructorFeature text="Automation & API Testing Expertise" icon={<LuBookOpenCheck className="h-4 w-4 text-emerald-800" />} />
+                <InstructorFeature text="SDET Mindset & Test Strategy" icon={<LuShieldCheck className="h-4 w-4 text-emerald-800" />} />
+                <InstructorFeature text="Real-World Projects from E-com to FinTech" icon={<LuBuilding className="h-4 w-4 text-emerald-800" />} />
               </ul>
 
               {/* CTA */}

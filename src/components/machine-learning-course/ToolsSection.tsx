@@ -162,7 +162,7 @@ export default function ToolsSection() {
                 {/* name + dot */}
                 <div className="flex items-center gap-2">
                   <span className={`inline-block h-2.5 w-2.5 rounded-full ${t.accent.dot}`} aria-hidden />
-                  <h3 className={`truncate text-sm md:text-base font-bold ${t.accent.text}`}>{t.name}</h3>
+                  <p className={`truncate text-sm md:text-base font-bold ${t.accent.text}`}>{t.name}</p>
                 </div>
                 <p className="mt-1 line-clamp-2 text-xs md:text-sm text-slate-700">{t.desc}</p>
 

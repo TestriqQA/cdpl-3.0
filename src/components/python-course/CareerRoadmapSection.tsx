@@ -34,7 +34,7 @@ const STEPS: Step[] = [
       bg: "bg-emerald-50",
       text: "text-emerald-900",
       border: "border-emerald-200",
-      ring: "focus:ring-emerald-300",
+      ring: "focus:ring-emerald-500",
     },
   },
   {
@@ -46,7 +46,7 @@ const STEPS: Step[] = [
       bg: "bg-sky-50",
       text: "text-sky-900",
       border: "border-sky-200",
-      ring: "focus:ring-sky-300",
+      ring: "focus:ring-sky-500",
     },
   },
   {
@@ -58,7 +58,7 @@ const STEPS: Step[] = [
       bg: "bg-amber-50",
       text: "text-amber-900",
       border: "border-amber-200",
-      ring: "focus:ring-amber-300",
+      ring: "focus:ring-amber-500",
     },
   },
   {
@@ -70,7 +70,7 @@ const STEPS: Step[] = [
       bg: "bg-violet-50",
       text: "text-violet-900",
       border: "border-violet-200",
-      ring: "focus:ring-violet-300",
+      ring: "focus:ring-violet-500",
     },
   },
 ];
@@ -112,13 +112,14 @@ export default function CareerRoadmapSection() {
         </header>
 
         {/* Timeline */}
-        <ol className="relative mx-auto mt-10 max-w-4xl">
+        {/* Timeline */}
+        <div className="relative mx-auto mt-10 max-w-4xl">
           {/* Center spine */}
           <div
             aria-hidden
             className="pointer-events-none absolute left-4 top-0 h-full w-px bg-slate-200 sm:left-1/2"
           />
-          <div className="space-y-6">
+          <ol className="space-y-6">
             {STEPS.map((s, i) => (
               <li
                 key={s.n}
@@ -167,10 +168,8 @@ export default function CareerRoadmapSection() {
                 >
                   {/* Subtle Watermark Number */}
                   <div
-                    className={[
-                      "absolute -top-1 right-3 text-6xl font-extrabold opacity-[0.07] select-none pointer-events-none",
-                      s.accent.text
-                    ].join(" ")}
+                    aria-hidden="true"
+                    className="absolute -top-1 right-3 text-6xl font-extrabold text-slate-100 select-none pointer-events-none"
                   >
                     {s.n.toString().padStart(2, '0')}
                   </div>
@@ -192,8 +191,8 @@ export default function CareerRoadmapSection() {
                 </article>
               </li>
             ))}
-          </div>
-        </ol>
+          </ol>
+        </div>
 
         {/* CTA */}
         <div className="mt-12 text-center">

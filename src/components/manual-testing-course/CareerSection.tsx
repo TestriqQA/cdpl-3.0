@@ -46,7 +46,7 @@ const JobRole = ({ role, salary, keywords = [] }: JobRoleProps) => (
         </ul>
       )}
     </div>
-    <div className="ml-4 inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-1 text-emerald-700 border border-emerald-200">
+    <div className="ml-4 inline-flex items-center gap-1 rounded-md bg-emerald-50 px-2 py-1 text-emerald-800 border border-emerald-200">
       <LuIndianRupee className="h-4 w-4" />
       <span className="text-sm font-semibold">{salary}</span>
     </div>
@@ -93,7 +93,7 @@ const PlacementFeature = ({ icon, title, description, badge }: FeatureProps) => 
         {icon}
       </div>
       {badge && (
-        <span className="text-[11px] rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 font-medium text-emerald-700">
+        <span className="text-[11px] rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 font-medium text-emerald-800">
           {badge}
         </span>
       )}

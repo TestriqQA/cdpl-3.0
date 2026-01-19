@@ -201,7 +201,7 @@ export default function CurriculumSection() {
                 </ul>
 
                 {/* outcome microcopy */}
-                <p className="mt-4 text-xs text-slate-500">
+                <p className="mt-4 text-xs text-slate-700">
                   Outcomes: hands-on labs, checklists, and review rubrics to validate every ETL stage (extract → transform → load).
                 </p>
               </li>

@@ -95,7 +95,7 @@ const CheckIcon = () => (
     aria-hidden="true"
     className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100"
   >
-    <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 text-emerald-600">
+    <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 text-emerald-800">
       <path
         fillRule="evenodd"
         d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414l2.293 2.293 6.793-6.793a1 1 0 011.414 0z"

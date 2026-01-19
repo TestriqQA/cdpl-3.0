@@ -34,10 +34,10 @@ const COLOR_MAP: Record<Accent, {
     ring: "ring-indigo-200"
   },
   emerald: {
-    iconBg: "bg-emerald-600",
+    iconBg: "bg-emerald-700",
     cardBg: "bg-emerald-50",
     border: "border-emerald-200",
-    accentBorder: "border-emerald-600",
+    accentBorder: "border-emerald-700",
     ring: "ring-emerald-200"
   },
   rose: {
@@ -167,7 +167,7 @@ export default function LearningPath() {
                 <div className="mt-4 space-y-2">
                   {p.outcomes.map((o) => (
                     <div key={o} className="flex items-start gap-2">
-                      <LuBadgeCheck className="w-4 h-4 mt-0.5 text-green-600" aria-hidden="true" />
+                      <LuBadgeCheck className="w-4 h-4 mt-0.5 text-green-700" aria-hidden="true" />
                       <span className="text-sm text-gray-800">{o}</span>
                     </div>
                   ))}
@@ -193,7 +193,7 @@ export default function LearningPath() {
                   </div>
                   <button
                     onClick={() => setIsCallbackModalOpen(true)}
-                    className={`w-full sm:w-auto justify-center cursor-pointer inline-flex items-center gap-2 text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg px-3 py-2 ${p.accent === "cyan" ? "bg-cyan-600 focus:ring-cyan-500" : p.accent === "indigo" ? "bg-indigo-600 focus:ring-indigo-500" : p.accent === "emerald" ? "bg-emerald-600 focus:ring-emerald-500" : "bg-rose-600 focus:ring-rose-500"}`}
+                    className={`w-full sm:w-auto justify-center cursor-pointer inline-flex items-center gap-2 text-sm font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg px-3 py-2 ${p.accent === "cyan" ? "bg-cyan-600 focus:ring-cyan-500" : p.accent === "indigo" ? "bg-indigo-600 focus:ring-indigo-500" : p.accent === "emerald" ? "bg-emerald-700 focus:ring-emerald-500" : "bg-rose-600 focus:ring-rose-500"}`}
                     aria-label={`Request callback for ${p.title}`}
                   >
                     Explore <LuTarget className="w-4 h-4" aria-hidden="true" />

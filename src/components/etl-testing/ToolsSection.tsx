@@ -103,7 +103,7 @@ export default function ToolsSection() {
                   </p>
 
                   {/* invisible focus target for keyboard users */}
-                  <span className="absolute inset-0 rounded-2xl" tabIndex={0} aria-hidden="true" />
+                  <span className="absolute inset-0 rounded-2xl" tabIndex={0} />
                 </article>
               </motion.div>
             );

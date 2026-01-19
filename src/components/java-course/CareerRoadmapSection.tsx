@@ -103,13 +103,14 @@ export default function CareerRoadmapSection() {
                 </header>
 
                 {/* Timeline */}
-                <ol className="relative mx-auto mt-10 max-w-4xl">
+                {/* Timeline */}
+                <div className="relative mx-auto mt-10 max-w-4xl">
                     {/* Center spine */}
                     <div
                         aria-hidden
                         className="pointer-events-none absolute left-4 top-0 h-full w-px bg-slate-200 sm:left-1/2"
                     />
-                    <div className="space-y-6">
+                    <ol className="space-y-6">
                         {STEPS.map((s, i) => (
                             <li
                                 key={s.n}
@@ -173,8 +174,8 @@ export default function CareerRoadmapSection() {
                                 </article>
                             </li>
                         ))}
-                    </div>
-                </ol>
+                    </ol>
+                </div>
 
                 {/* CTA */}
                 <div className="mt-12 text-center">

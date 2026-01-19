@@ -166,7 +166,7 @@ export default function CurriculumSection() {
                   ))}
                 </ul>
 
-                <p className="mt-4 text-xs text-slate-500">
+                <p className="mt-4 text-xs text-slate-700">
                   Outcomes: hands-on labs, assessment checklists, and take-home exercises for mastery.
                 </p>
               </li>

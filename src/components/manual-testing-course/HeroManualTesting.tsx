@@ -73,7 +73,7 @@ type StatColor = {
 /** 8 unique color schemes — no repeats */
 const STAT_COLORS: StatColor[] = [
     { bg: "bg-indigo-50", border: "border-indigo-200", text: "text-indigo-800", chip: "text-indigo-700/80" },
-    { bg: "bg-emerald-50", border: "border-emerald-200", text: "text-emerald-800", chip: "text-emerald-700/80" },
+    { bg: "bg-emerald-50", border: "border-emerald-200", text: "text-emerald-800", chip: "text-emerald-800" },
     { bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-800", chip: "text-amber-700/80" },
     { bg: "bg-sky-50", border: "border-sky-200", text: "text-sky-800", chip: "text-sky-700/80" },
     { bg: "bg-rose-50", border: "border-rose-200", text: "text-rose-800", chip: "text-rose-700/80" },

@@ -77,7 +77,7 @@ export default function WhyPythonProgram() {
               "border-amber-200 bg-amber-50",
               "border-violet-200 bg-violet-50",
             ];
-            const ring = ["focus:ring-sky-300", "focus:ring-emerald-300", "focus:ring-amber-300", "focus:ring-violet-300"][idx % 4];
+            const ring = ["focus:ring-sky-500", "focus:ring-emerald-500", "focus:ring-amber-500", "focus:ring-violet-500"][idx % 4];
             const badge = ["text-sky-700", "text-emerald-700", "text-amber-700", "text-violet-700"][idx % 4];
 
             return (

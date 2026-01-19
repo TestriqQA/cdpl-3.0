@@ -109,7 +109,7 @@ export default function ProjectsSection() {
                   Deliverables: test design, SQL evidence, reconciliation logs, and audit-ready reports.
                 </p>
                 {/* focus helper */}
-                <span className="absolute inset-0 rounded-2xl" tabIndex={0} aria-hidden="true" />
+                <span className="absolute inset-0 rounded-2xl" tabIndex={0} />
               </motion.article>
             );
           })}

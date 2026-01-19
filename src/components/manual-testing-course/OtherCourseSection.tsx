@@ -142,8 +142,8 @@ function pickVariant(index: number) {
       hoverBorder: "hover:border-indigo-300",
     },
     {
-      header: "bg-gradient-to-br from-emerald-600 to-teal-700",
-      button: "bg-emerald-600 hover:bg-emerald-700",
+      header: "bg-gradient-to-br from-emerald-700 to-teal-800",
+      button: "bg-emerald-700 hover:bg-emerald-800",
       hoverBorder: "hover:border-emerald-300",
     },
     {
@@ -296,7 +296,7 @@ export default function OtherCoursesSection() {
 
           {/* Trust strip */}
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm">
-            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 font-medium text-emerald-700 ring-1 ring-emerald-200">
+            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 font-medium text-emerald-800 ring-1 ring-emerald-200">
               <LuStar className="h-4 w-4" aria-hidden="true" /> 4.8/5 Learner Rating
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1 font-medium text-indigo-700 ring-1 ring-indigo-200">

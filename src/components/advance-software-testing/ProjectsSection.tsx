@@ -125,7 +125,7 @@ export default function ProjectsSection() {
                 </ul>
 
                 {/* micro-footnote for SEO & clarity */}
-                <p className="mt-4 text-[11px] leading-5 text-slate-500">
+                <p className="mt-4 text-[11px] leading-5 text-slate-700">
                   Deliverables: test plans, evidence-rich reports, CI results, and a public repo link.
                 </p>
               </div>

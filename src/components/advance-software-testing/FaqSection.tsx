@@ -96,9 +96,9 @@ export default function FaqSection() {
                           <p className="text-sm sm:text-base leading-relaxed">{faq.answer}</p>
                         </div>
                         {/* micro copy for SEO */}
-                        <p className="mt-3 pl-5 sm:pl-6 text-xs sm:text-sm text-slate-500">
-                          Still curious? Explore details on <em>course curriculum</em>, <em>live projects</em>,{' '}
-                          <em>ISTQB prep</em>, and <em>job assistance</em> in our program brochure.
+                        <p className="mt-3 pl-5 sm:pl-6 text-xs sm:text-sm text-slate-700">
+                          Still curious? Explore details on <em className="text-slate-900 font-medium not-italic">course curriculum</em>, <em className="text-slate-900 font-medium not-italic">live projects</em>,{' '}
+                          <em className="text-slate-900 font-medium not-italic">ISTQB prep</em>, and <em className="text-slate-900 font-medium not-italic">job assistance</em> in our program brochure.
                         </p>
                       </div>
                     </motion.div>

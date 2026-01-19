@@ -39,7 +39,7 @@ const accentClasses: Record<AccentColor, string> = {
     indigo:
         "border-indigo-200 hover:shadow-indigo-100 [&_.chip]:bg-indigo-50 [&_.chip]:text-indigo-700 [&_.dot]:bg-indigo-500",
     emerald:
-        "border-emerald-200 hover:shadow-emerald-100 [&_.chip]:bg-emerald-50 [&_.chip]:text-emerald-700 [&_.dot]:bg-emerald-500",
+        "border-emerald-200 hover:shadow-emerald-100 [&_.chip]:bg-emerald-50 [&_.chip]:text-emerald-800 [&_.dot]:bg-emerald-600",
     sky:
         "border-sky-200 hover:shadow-sky-100 [&_.chip]:bg-sky-50 [&_.chip]:text-sky-700 [&_.dot]:bg-sky-500",
     amber:
