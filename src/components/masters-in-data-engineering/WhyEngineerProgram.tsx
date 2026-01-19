@@ -98,7 +98,7 @@ const WhyEngineerProgram: React.FC = () => {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header – content kept same, layout styled like reference */}
         <div className="mb-16 text-center md:mb-20">
-          <h2 className="text-sm font-semibold tracking-[0.2em] text-teal-600 uppercase">
+          <h2 className="text-sm font-semibold tracking-[0.2em] text-[#0f766e] uppercase">
             The Competitive Edge
           </h2>
           <h3 className="mt-2 text-3xl font-bold text-slate-900 md:text-4xl">
@@ -128,7 +128,7 @@ const WhyEngineerProgram: React.FC = () => {
               >
                 {/* Icon Container */}
                 <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-lg bg-white/60 backdrop-blur-sm transition-transform group-hover:scale-110">
-                  <div className="text-teal-600">
+                  <div className="text-[#0f766e]">
                     <Icon className="h-8 w-8" aria-hidden="true" />
                   </div>
                 </div>
@@ -140,7 +140,7 @@ const WhyEngineerProgram: React.FC = () => {
 
                 {/* Highlight Badge (new SEO-friendly micro-copy) */}
                 <div className="mb-3 inline-block">
-                  <span className="rounded-full bg-teal-100/70 px-3 py-1 text-xs font-semibold text-teal-700">
+                  <span className="rounded-full bg-teal-100/70 px-3 py-1 text-xs font-semibold text-[#0f766e]">
                     {item.highlight}
                   </span>
                 </div>
@@ -214,7 +214,7 @@ const WhyEngineerProgram: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsEnrollOpen(true)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-teal-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0f766e] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-teal-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer"
           >
             Start Your Journey
             <ArrowRight className="h-5 w-5" />

@@ -93,7 +93,7 @@ const CareerRoadmapSection: React.FC = () => {
     <section className="bg-white py-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-base font-semibold tracking-wide text-teal-600 uppercase">
+          <h2 className="text-base font-semibold tracking-wide text-[#0f766e] uppercase">
             SEO Boost: Long-Term Vision
           </h2>
           <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -146,7 +146,7 @@ const CareerRoadmapSection: React.FC = () => {
                     <p className="text-lg font-semibold text-gray-900 mb-3">
                       {step.role}
                     </p>
-                    <p className="text-gray-600">{step.description}</p>
+                    <p className="text-gray-900">{step.description}</p>
                   </div>
 
                   {/* Icon Circle */}
@@ -181,7 +181,7 @@ const CareerRoadmapSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsEnrollOpen(true)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#c2410c] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-[#9a3412] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
           >
             Start Your Roadmap
             <ArrowRight className="h-5 w-5" />

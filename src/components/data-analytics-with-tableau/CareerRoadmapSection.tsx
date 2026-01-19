@@ -72,7 +72,7 @@ export default function CareerRoadmapSection() {
                                 <div key={item.id} className="relative">
                                     {/* Circle */}
                                     <div className="flex justify-center mb-8">
-                                        <div className="w-16 h-16 bg-white border-4 border-orange-600 rounded-full flex items-center justify-center text-2xl shadow-lg relative z-10">
+                                        <div className="w-16 h-16 bg-white border-4 border-[#d04502] rounded-full flex items-center justify-center text-2xl shadow-lg relative z-10">
                                             {item.icon}
                                         </div>
                                     </div>
@@ -102,7 +102,7 @@ export default function CareerRoadmapSection() {
                                 <div className="flex gap-6">
                                     {/* Circle */}
                                     <div className="flex-shrink-0">
-                                        <div className="w-16 h-16 bg-white border-4 border-orange-600 rounded-full flex items-center justify-center text-2xl shadow-lg">
+                                        <div className="w-16 h-16 bg-white border-4 border-[#d04502] rounded-full flex items-center justify-center text-2xl shadow-lg">
                                             {item.icon}
                                         </div>
                                     </div>
@@ -179,14 +179,14 @@ export default function CareerRoadmapSection() {
                                     "Ready for senior roles and specialized positions",
                             },
                         ].map((phase, index) => (
-                            <div key={index} className="bg-white rounded-lg p-6 border-l-4 border-orange-600">
+                            <div key={index} className="bg-white rounded-lg p-6 border-l-4 border-[#d04502]">
                                 <div className="flex items-start justify-between mb-4">
                                     <div>
                                         <h4 className="text-xl font-bold text-gray-900">{phase.phase}</h4>
                                         <p className="text-sm text-gray-600 mt-1">{phase.focus}</p>
                                     </div>
                                     <div className="text-right hidden lg:block">
-                                        <div className="text-2xl font-bold text-orange-600">{phase.duration}</div>
+                                        <div className="text-2xl font-bold text-gray-950">{phase.duration}</div>
                                     </div>
                                 </div>
 
@@ -196,7 +196,7 @@ export default function CareerRoadmapSection() {
                                         <ul className="space-y-2">
                                             {phase.outcomes.map((outcome, idx) => (
                                                 <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                                                    <span className="text-orange-600 font-bold flex-shrink-0">✓</span>
+                                                    <span className="text-gray-950 font-bold flex-shrink-0">✓</span>
                                                     <span>{outcome}</span>
                                                 </li>
                                             ))}
@@ -262,7 +262,7 @@ export default function CareerRoadmapSection() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="text-center">
-                            <div className="text-5xl font-bold text-purple-600 mb-3">500+</div>
+                            <div className="text-5xl font-bold text-gray-950 mb-3">500+</div>
                             <p className="text-gray-700 font-semibold mb-2">Successful Graduates</p>
                             <p className="text-sm text-gray-600">
                                 Placed in top companies worldwide
@@ -270,7 +270,7 @@ export default function CareerRoadmapSection() {
                         </div>
 
                         <div className="text-center">
-                            <div className="text-5xl font-bold text-blue-600 mb-3">4 LPA</div>
+                            <div className="text-5xl font-bold text-gray-950 mb-3">4 LPA</div>
                             <p className="text-gray-700 font-semibold mb-2">Average Starting Salary</p>
                             <p className="text-sm text-gray-600">
                                 For freshers with our certification
@@ -278,7 +278,7 @@ export default function CareerRoadmapSection() {
                         </div>
 
                         <div className="text-center">
-                            <div className="text-5xl font-bold text-orange-600 mb-3">100%</div>
+                            <div className="text-5xl font-bold text-gray-950 mb-3">100%</div>
                             <p className="text-gray-700 font-semibold mb-2">Job Assistance</p>
                             <p className="text-sm text-gray-600">
                                 Guaranteed support for placement
@@ -294,7 +294,7 @@ export default function CareerRoadmapSection() {
                     </p>
                     <button
                         onClick={() => setIsEnrollOpen(true)}
-                        className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        className="bg-[#7c2d12] hover:bg-[#c2410c] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Enroll Now and Begin Your Journey
                     </button>

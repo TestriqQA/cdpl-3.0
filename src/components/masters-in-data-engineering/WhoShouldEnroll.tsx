@@ -130,7 +130,7 @@ const WhoShouldEnroll: React.FC = () => {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header – text kept same, styling upgraded */}
         <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-sm font-semibold tracking-[0.25em] text-teal-600 uppercase">
+          <h2 className="text-sm font-semibold tracking-[0.25em] text-[#0f766e] uppercase">
             Target Audience
           </h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold mb-4 text-slate-900">
@@ -140,7 +140,7 @@ const WhoShouldEnroll: React.FC = () => {
             This program is designed for ambitious individuals ready to take on
             the most challenging and rewarding roles in the data industry.
           </p>
-          <p className="mt-3 text-sm text-slate-500 max-w-3xl mx-auto">
+          <p className="mt-3 text-sm text-slate-700 max-w-3xl mx-auto">
             Whether you&apos;re an <strong>IT professional</strong>,{" "}
             <strong>recent graduate</strong>,{" "}
             <strong>BI / Data Analyst</strong>, or{" "}
@@ -162,7 +162,7 @@ const WhoShouldEnroll: React.FC = () => {
                 className="bg-white rounded-xl p-8 border-2 border-slate-200 hover:border-teal-300 hover:shadow-lg transition-all duration-300"
               >
                 {/* Icon */}
-                <div className="mb-4 inline-flex items-center justify-center rounded-full bg-teal-50 border border-teal-200 p-4 text-teal-600">
+                <div className="mb-4 inline-flex items-center justify-center rounded-full bg-teal-50 border border-teal-200 p-4 text-[#0f766e]">
                   <Icon className="h-8 w-8" aria-hidden="true" />
                 </div>
 
@@ -260,7 +260,7 @@ const WhoShouldEnroll: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsEnrollOpen(true)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-teal-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0f766e] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-teal-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer"
           >
             Check Your Eligibility
             <ArrowRight className="h-5 w-5" />

@@ -159,7 +159,7 @@ export default function HeroSection() {
             <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row md:justify-start items-center">
               <button
                 onClick={() => setIsEnrollOpen(true)}
-                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-orange-600 bg-orange-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-orange-600 bg-orange-700 px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-800 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
               >
                 Enroll Now
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -167,7 +167,7 @@ export default function HeroSection() {
 
               <button
                 onClick={() => setIsSyllabusOpen(true)}
-                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-orange-600 bg-orange-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-orange-600 bg-orange-700 px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-800 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
               >
                 Download Syllabus
                 <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />

@@ -24,14 +24,14 @@ const iconMap = {
 };
 
 const colorClasses = [
-    { bg: "bg-blue-100", text: "text-blue-600", border: "border-blue-200" },
-    { bg: "bg-indigo-100", text: "text-indigo-600", border: "border-indigo-200" },
-    { bg: "bg-cyan-100", text: "text-cyan-600", border: "border-cyan-200" },
-    { bg: "bg-purple-100", text: "text-purple-600", border: "border-purple-200" },
-    { bg: "bg-pink-100", text: "text-pink-600", border: "border-pink-200" },
-    { bg: "bg-green-100", text: "text-green-600", border: "border-green-200" },
-    { bg: "bg-orange-100", text: "text-orange-600", border: "border-orange-200" },
-    { bg: "bg-red-100", text: "text-red-600", border: "border-red-200" },
+    { bg: "bg-blue-100", text: "text-[#1d4ed8]", border: "border-blue-200" },
+    { bg: "bg-indigo-100", text: "text-[#4338ca]", border: "border-indigo-200" },
+    { bg: "bg-cyan-100", text: "text-[#0e7490]", border: "border-cyan-200" },
+    { bg: "bg-purple-100", text: "text-[#7e22ce]", border: "border-purple-200" },
+    { bg: "bg-pink-100", text: "text-[#be185d]", border: "border-pink-200" },
+    { bg: "bg-green-100", text: "text-[#047857]", border: "border-green-200" },
+    { bg: "bg-orange-100", text: "text-[#d04502]", border: "border-orange-200" },
+    { bg: "bg-red-100", text: "text-[#b91c1c]", border: "border-red-200" },
 ];
 
 export const advantages = [

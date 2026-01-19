@@ -54,11 +54,11 @@ export default function HomeValuePropositionSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-semibold mb-4">
             Why Choose CDPL
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            What Makes Us <span className="text-orange-600">Different</span>
+            What Makes Us <span className="text-orange-700">Different</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             We don&apos;t just train, we transform careers. Here&apos;s how Cinute Digital stands apart from other training institutes.
@@ -74,9 +74,9 @@ export default function HomeValuePropositionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ 
-                y: -5, 
-                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)' 
+              whileHover={{
+                y: -5,
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
               }}
               className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:border-orange-200 transition-all duration-300"
             >
@@ -158,7 +158,7 @@ export default function HomeValuePropositionSection() {
           </div>
 
           <div className="mt-8 text-center">
-            <button className="px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+            <button className="px-8 py-4 bg-orange-700 hover:bg-orange-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
               Talk to an Advisor
             </button>
           </div>

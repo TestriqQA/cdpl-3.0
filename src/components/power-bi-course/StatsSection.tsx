@@ -38,7 +38,7 @@ const StatCard: React.FC<StatCardProps> = ({ value, label, icon: Icon, color }) 
         <Icon size={32} style={{ color }} />
       </div>
       <p className="text-4xl font-extrabold text-gray-900 mb-2">{value}</p>
-      <p className="text-lg font-medium text-gray-500 text-center">{label}</p>
+      <p className="text-lg font-medium text-gray-700 text-center">{label}</p>
     </div>
   );
 };
@@ -84,7 +84,7 @@ const StatsSection: React.FC = () => {
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
             Unlock Your Future: Key Statistics Driving the Power BI Market
           </h2>
-          <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
+          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
             The demand for skilled Power BI professionals is soaring. Invest in a
             skill that guarantees career growth and high returns.
           </p>
@@ -100,7 +100,7 @@ const StatsSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsCareerSessionOpen(true)}
-            className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+            className="w-full sm:w-auto bg-[#c2410c] hover:bg-[#9a3412] text-white font-bold py-5 px-8 my-4 rounded-lg transition-all flex sm:inline-flex min-h-[60px] justify-center items-center cursor-pointer shadow-none"
           >
             Book a Free Career Session
           </button>

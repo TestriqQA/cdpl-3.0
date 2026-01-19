@@ -67,7 +67,7 @@ const CurriculumSection: React.FC = () => {
     <section id="curriculum" className="bg-gray-50 py-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-base font-semibold tracking-wide text-teal-600 uppercase">
+          <h2 className="text-base font-semibold tracking-wide text-[#0f766e] uppercase">
             Master Program Structure
           </h2>
           <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -117,7 +117,7 @@ const CurriculumSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsSyllabusOpen(true)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#c2410c] px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-[#9a3412] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
           >
             <Download className="h-5 w-5" />
             Download Full Syllabus

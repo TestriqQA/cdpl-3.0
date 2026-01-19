@@ -336,7 +336,7 @@ export default function ToolsSection() {
                         </p>
                         <button
                             onClick={() => setIsEnrollOpen(true)}
-                            className="cursor-pointer inline-flex items-center justify-center px-8 py-3 rounded-xl bg-orange-600 text-white font-semibold shadow-md hover:bg-orange-700 transition-colors"
+                            className="cursor-pointer inline-flex items-center justify-center px-8 py-3 rounded-xl bg-[#d04502] text-white font-semibold shadow-md hover:bg-orange-700 transition-colors"
                         >
                             Master These Tools Today
                         </button>

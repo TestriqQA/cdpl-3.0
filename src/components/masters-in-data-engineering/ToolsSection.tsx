@@ -129,7 +129,7 @@ const ToolsSection: React.FC = () => {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header (content preserved, layout updated) */}
         <div className="mb-16 text-center md:mb-20">
-          <h2 className="text-sm font-semibold tracking-[0.2em] text-teal-600 uppercase">
+          <h2 className="text-sm font-semibold tracking-[0.2em] text-[#0f766e] uppercase">
             Technology Stack
           </h2>
           <h3 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
@@ -139,7 +139,7 @@ const ToolsSection: React.FC = () => {
             Our program covers the essential tools required for both Business
             Intelligence and Big Data Engineering roles.
           </p>
-          <p className="mx-auto mt-3 max-w-4xl text-sm text-slate-500">
+          <p className="mx-auto mt-3 max-w-4xl text-sm text-slate-700">
             Learn how to combine <strong>Tableau</strong>,{" "}
             <strong>Power BI</strong>, <strong>Excel</strong>,{" "}
             <strong>MySQL</strong>, <strong>Python</strong>,{" "}
@@ -160,7 +160,7 @@ const ToolsSection: React.FC = () => {
               className={`group rounded-xl border-2 border-slate-200 bg-gradient-to-br ${tool.color} p-6 transition-all duration-300 hover:border-teal-300 hover:shadow-lg`}
             >
               {/* Icon (using first letter as placeholder logo) */}
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-white/70 text-2xl font-bold text-teal-600 shadow-sm group-hover:scale-110 transition-transform">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-white/70 text-2xl font-bold text-[#0f766e] shadow-sm group-hover:scale-110 transition-transform">
                 {tool.name.charAt(0)}
               </div>
 
@@ -284,7 +284,7 @@ const ToolsSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsEnrollOpen(true)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-teal-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0f766e] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-teal-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer"
           >
             Start Learning These Tools
             <ArrowRight className="h-5 w-5" />

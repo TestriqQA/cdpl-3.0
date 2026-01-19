@@ -164,7 +164,7 @@ export default function CurriculumSection() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Comprehensive <span className="text-orange-600">Curriculum</span>
+                        Comprehensive <span className="text-[#d04502]">Curriculum</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-4xl mx-auto">
                         Master 7 modules covering Python fundamentals to advanced data visualization. Each module is designed with hands-on projects and real-world applications.
@@ -195,7 +195,7 @@ export default function CurriculumSection() {
                                     </div>
                                 </div>
                                 <ChevronDown
-                                    className={`w-6 h-6 text-orange-600 transition-transform duration-300 ${expandedModule === module.id ? "rotate-180" : ""
+                                    className={`w-6 h-6 text-[#d04502] transition-transform duration-300 ${expandedModule === module.id ? "rotate-180" : ""
                                         }`}
                                 />
                             </button>
@@ -206,13 +206,13 @@ export default function CurriculumSection() {
                                     {/* Topics */}
                                     <div className="mb-6">
                                         <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                                            <BookOpen className="w-5 h-5 text-orange-600" />
+                                            <BookOpen className="w-5 h-5 text-[#d04502]" />
                                             Topics Covered
                                         </h4>
                                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                             {module.topics.map((topic, idx) => (
                                                 <li key={idx} className="flex items-start gap-3 text-slate-700">
-                                                    <span className="text-orange-500 font-bold mt-0.5">•</span>
+                                                    <span className="text-[#d04502] font-bold mt-0.5">•</span>
                                                     <span>{topic}</span>
                                                 </li>
                                             ))}
@@ -232,7 +232,7 @@ export default function CurriculumSection() {
                                                         key={idx}
                                                         className="flex items-start gap-3 bg-orange-50 p-3 rounded-lg border border-orange-200"
                                                     >
-                                                        <span className="text-orange-600 font-bold">→</span>
+                                                        <span className="text-[#d04502] font-bold">→</span>
                                                         <span className="text-slate-700">{project}</span>
                                                     </li>
                                                 ))}
@@ -266,14 +266,14 @@ export default function CurriculumSection() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <button
                         onClick={() => setIsSyllabusOpen(true)}
-                        className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
+                        className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl bg-[#d04502] px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
                     >
                         <Download className="h-5 w-5" />
                         Download Full Syllabus
                     </button>
                     <button
                         onClick={() => setIsCareerSessionOpen(true)}
-                        className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl border-2 border-orange-200 bg-white px-6 py-3 text-base font-semibold text-orange-700 shadow-sm transition-all hover:border-orange-300 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-200"
+                        className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl border-2 border-orange-200 bg-white px-6 py-3 text-base font-semibold text-[#d04502] shadow-sm transition-all hover:border-orange-300 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-200"
                     >
                         <Phone className="h-5 w-5" />
                         Book a Career Session

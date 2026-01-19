@@ -269,7 +269,7 @@ export default function WhoShouldEnroll() {
                         </p>
                         <button
                             onClick={() => setIsEnrollOpen(true)}
-                            className="cursor-pointer inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
+                            className="cursor-pointer inline-flex items-center justify-center rounded-lg bg-[#d04502] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
                         >
                             Check Your Eligibility
                         </button>

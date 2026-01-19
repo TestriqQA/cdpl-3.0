@@ -83,7 +83,7 @@ export default function WhyAnalyticsPythonProgram() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Why Choose <span className="text-orange-600">Our Program</span>?
+                        Why Choose <span className="text-[#d04502]">Our Program</span>?
                     </h2>
                     <p className="text-lg text-slate-600 max-w-4xl mx-auto">
                         At Cinute Digital, we prepare you to deliver transformative value. Our curriculum bridges theoretical knowledge with practical expertise, ensuring you stand out as a proficient data analyst in any industry.
@@ -99,7 +99,7 @@ export default function WhyAnalyticsPythonProgram() {
                         >
                             {/* Icon Container */}
                             <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-white/60 backdrop-blur-sm group-hover:scale-110 transition-transform">
-                                <div className="text-orange-600">{advantage.icon}</div>
+                                <div className="text-[#d04502]">{advantage.icon}</div>
                             </div>
 
                             {/* Title */}
@@ -109,7 +109,7 @@ export default function WhyAnalyticsPythonProgram() {
 
                             {/* Highlight Badge */}
                             <div className="inline-block mb-3">
-                                <span className="text-xs font-semibold text-orange-600 bg-orange-100/60 px-3 py-1 rounded-full">
+                                <span className="text-xs font-semibold text-[#d04502] bg-orange-100/60 px-3 py-1 rounded-full">
                                     {advantage.highlight}
                                 </span>
                             </div>

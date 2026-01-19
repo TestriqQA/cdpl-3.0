@@ -91,7 +91,7 @@ const HeroSection: React.FC = () => {
                         </div>
 
                         <h1 className="md:mt-0 max-w-3xl text-3xl md:text-4xl xl:text-5xl font-extrabold leading-snug md:leading-tight tracking-tight text-slate-900 break-words">
-                            Master <span className="text-blue-600">Data Analytics</span> & Visualization with <span className="text-orange-500">Power BI</span>
+                            Master <span className="text-blue-600">Data Analytics</span> & Visualization with <span className="text-[#c2410c]">Power BI</span>
                         </h1>
 
                         <div className="md:hidden mt-6 mb-6 min-h-[500px]">
@@ -105,16 +105,16 @@ const HeroSection: React.FC = () => {
 
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-12">
+                        <div className="flex flex-col sm:flex-row gap-8 mb-12">
                             <button
                                 onClick={() => setIsEnrollOpen(true)}
-                                className="flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-orange-600 rounded-xl shadow-lg hover:bg-orange-700 transition-all duration-300 transform hover:scale-[1.02] cursor-pointer"
+                                className="w-full sm:w-auto min-h-[60px] flex sm:inline-flex items-center justify-center px-6 py-5 my-2 text-base font-semibold text-white bg-[#c2410c] rounded-xl shadow-none hover:bg-[#9a3412] transition-all duration-300 cursor-pointer"
                             >
                                 Enroll Now <ArrowRight size={20} className="ml-2" />
                             </button>
                             <button
                                 onClick={() => setIsSyllabusOpen(true)}
-                                className="flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-orange-600 rounded-xl shadow-lg hover:bg-orange-700 transition-all duration-300 transform hover:scale-[1.02] cursor-pointer"
+                                className="w-full sm:w-auto min-h-[60px] flex sm:inline-flex items-center justify-center px-6 py-5 my-2 text-base font-semibold text-white bg-[#c2410c] rounded-xl shadow-none hover:bg-[#9a3412] transition-all duration-300 cursor-pointer"
                             >
                                 Download Syllabus <CloudDownload size={20} className="ml-2" />
                             </button>

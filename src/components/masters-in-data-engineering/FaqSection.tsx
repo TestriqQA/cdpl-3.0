@@ -22,11 +22,11 @@ const FaqSection: React.FC = () => {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
-          <h2 className="text-sm font-semibold tracking-[0.25em] text-teal-600 uppercase">
+          <h2 className="text-sm font-semibold tracking-[0.25em] text-[#0f766e] uppercase">
             Quick Answers
           </h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Frequently Asked <span className="text-teal-600">Questions</span>
+            Frequently Asked <span className="text-[#0f766e]">Questions</span>
           </h3>
           <p className="text-lg text-slate-600">
             Everything you need to know about the program, eligibility, and
@@ -72,7 +72,7 @@ const FaqSection: React.FC = () => {
                         {item.question}
                       </h4>
                       <ChevronDown
-                        className={`w-6 h-6 text-teal-600 transition-transform duration-300 flex-shrink-0 ${expandedFAQ === index ? "rotate-180" : ""
+                        className={`w-6 h-6 text-[#0f766e] transition-transform duration-300 flex-shrink-0 ${expandedFAQ === index ? "rotate-180" : ""
                           }`}
                       />
                     </button>
@@ -107,13 +107,13 @@ const FaqSection: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
               onClick={() => setIsEnrollOpen(true)}
-              className="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-lg transition-colors cursor-pointer"
+              className="px-6 py-3 bg-[#0f766e] hover:bg-teal-700 text-white font-semibold rounded-lg transition-colors cursor-pointer"
             >
               Enroll Now
             </button>
             <Link
               href="tel:+917888383788"
-              className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors"
+              className="px-6 py-3 bg-[#c2410c] hover:bg-[#9a3412] text-white font-bold rounded-lg transition-colors"
             >
               📞 Call Us
             </Link>
@@ -139,7 +139,7 @@ const FaqSection: React.FC = () => {
         source="Data Engineering Course Page - FAQ Section - Enroll Now"
         courseName={courseName}
       />
-    </section>
+    </section >
   );
 };
 

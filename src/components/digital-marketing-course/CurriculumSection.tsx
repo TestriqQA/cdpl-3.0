@@ -208,7 +208,7 @@ export default function CurriculumSection() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <button
             onClick={() => setIsSyllabusOpen(true)}
-            className="cursor-pointer rounded-xl border border-orange-500 bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-200"
+            className="cursor-pointer rounded-xl border border-orange-700 bg-orange-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-800 focus:outline-none focus:ring-4 focus:ring-orange-200"
           >
             Get Full Syllabus PDF
           </button>

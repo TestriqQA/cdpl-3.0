@@ -19,16 +19,16 @@ const CtaSection: React.FC = () => {
           <p className="text-lg text-blue-200 mb-8">
             Don&apos;t miss out on the booming demand for data visualization professionals. Enroll today and secure your future in data analytics.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+          <div className="flex flex-col sm:flex-row justify-center gap-8">
             <button
               onClick={() => setIsEnrollOpen(true)}
-              className="flex items-center justify-center cursor-pointer px-8 py-4 text-lg font-semibold text-blue-600 bg-white rounded-xl shadow-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-[1.02]"
+              className="w-full sm:w-auto min-h-[60px] flex sm:inline-flex items-center justify-center cursor-pointer px-8 py-5 my-2 text-lg font-semibold text-blue-600 bg-white rounded-xl shadow-none hover:bg-gray-100 transition-all duration-300"
             >
               Enroll Now & Start Learning <ArrowRight size={20} className="ml-3" />
             </button>
             <button
               onClick={() => setIsEnrollOpen(true)}
-              className="flex items-center justify-center px-8 py-4 text-lg font-semibold text-white border-2 border-white rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300 cursor-pointer"
+              className="w-full sm:w-auto min-h-[60px] flex sm:inline-flex items-center justify-center px-8 py-5 my-2 text-lg font-semibold text-white border-2 border-white rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300 cursor-pointer"
             >
               Request a Free Demo
             </button>

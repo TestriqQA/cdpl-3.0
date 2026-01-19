@@ -46,17 +46,17 @@ const CareerSection: React.FC = () => {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-sm font-semibold tracking-[0.25em] text-teal-600 uppercase">
+          <h2 className="text-sm font-semibold tracking-[0.25em] text-[#0f766e] uppercase">
             Career Advancement
           </h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            High-Impact <span className="text-teal-600">Career Opportunities</span>
+            High-Impact <span className="text-[#0f766e]">Career Opportunities</span>
           </h3>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Our graduates are prepared for the most in-demand roles in the data
             industry, commanding competitive salaries.
           </p>
-          <p className="mt-3 text-sm text-slate-500 max-w-3xl mx-auto">
+          <p className="mt-3 text-sm text-slate-700 max-w-3xl mx-auto">
             This <strong>Data Analytics with BI and Big Data Engineering Master Program</strong>{" "}
             opens doors to high-growth roles like{" "}
             <strong>Business Intelligence Analyst</strong>,{" "}
@@ -69,7 +69,7 @@ const CareerSection: React.FC = () => {
         {/* Target Roles / Job Roles Grid */}
         <div className="mb-12">
           <h4 className="text-2xl font-bold text-slate-900 text-center mb-8 flex items-center justify-center">
-            <Target className="h-6 w-6 text-teal-600 mr-2" /> Target Roles
+            <Target className="h-6 w-6 text-[#0f766e] mr-2" /> Target Roles
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {careerRoles.map((role) => (
@@ -78,7 +78,7 @@ const CareerSection: React.FC = () => {
                 className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-6 border-2 border-slate-200 hover:border-teal-300 hover:shadow-lg transition-all duration-300 group text-left"
               >
                 {/* Icon */}
-                <div className="flex justify-center mb-4 text-teal-600 group-hover:scale-110 transition-transform">
+                <div className="flex justify-center mb-4 text-[#0f766e] group-hover:scale-110 transition-transform">
                   <Briefcase className="w-8 h-8" />
                 </div>
 
@@ -97,7 +97,7 @@ const CareerSection: React.FC = () => {
                   <p className="text-xs text-slate-600 mb-1">
                     Expected Salary Range (India)
                   </p>
-                  <p className="text-lg font-bold text-teal-600 inline-flex items-center justify-center gap-1">
+                  <p className="text-lg font-bold text-[#0f766e] inline-flex items-center justify-center gap-1">
                     {role.salaryRange}
                   </p>
                 </div>
@@ -186,7 +186,7 @@ const CareerSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsCareerSessionOpen(true)}
-            className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+            className="bg-[#c2410c] hover:bg-[#9a3412] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
           >
             Book a Free Career Session
           </button>

@@ -78,7 +78,7 @@ export default function ProjectsSection() {
                             className="bg-gradient-to-br from-white to-gray-50 rounded-2xl border-2 border-gray-200 overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1"
                         >
                             {/* Header with Icon */}
-                            <div className="bg-gradient-to-r from-orange-500 to-orange-600 p-6 text-white">
+                            <div className="bg-gradient-to-r from-[#7c2d12] to-[#ea580c] p-6 text-white">
                                 <div className="flex items-start justify-between">
                                     <div>
                                         <div className="text-4xl mb-3">{project.icon}</div>
@@ -187,7 +187,7 @@ export default function ProjectsSection() {
                 <div className="mt-16 text-center">
                     <button
                         onClick={() => setIsSyllabusOpen(true)}
-                        className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        className="bg-[#7c2d12] hover:bg-[#c2410c] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Download Project Details
                     </button>

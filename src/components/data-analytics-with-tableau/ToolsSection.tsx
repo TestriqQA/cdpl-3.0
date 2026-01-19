@@ -11,7 +11,7 @@ const toolsData = [
             "Leading data visualization and business intelligence platform",
         icon: "📊",
         bgColor: "bg-orange-100",
-        textColor: "text-orange-600",
+        textColor: "text-gray-950",
     },
     {
         id: 2,
@@ -20,7 +20,7 @@ const toolsData = [
         description: "Create custom calculations and derived fields in Tableau",
         icon: "🧮",
         bgColor: "bg-blue-100",
-        textColor: "text-blue-600",
+        textColor: "text-gray-950",
     },
     {
         id: 3,
@@ -29,7 +29,7 @@ const toolsData = [
         description: "Publish and share interactive dashboards across organizations",
         icon: "🖥️",
         bgColor: "bg-green-100",
-        textColor: "text-green-600",
+        textColor: "text-gray-950",
     },
     {
         id: 4,
@@ -38,7 +38,7 @@ const toolsData = [
         description: "Share interactive visualizations with the public",
         icon: "🌐",
         bgColor: "bg-purple-100",
-        textColor: "text-purple-600",
+        textColor: "text-gray-950",
     },
     {
         id: 5,
@@ -47,7 +47,7 @@ const toolsData = [
         description: "Combine data from multiple sources seamlessly",
         icon: "🔗",
         bgColor: "bg-yellow-100",
-        textColor: "text-yellow-600",
+        textColor: "text-gray-950",
     },
     {
         id: 6,
@@ -56,7 +56,7 @@ const toolsData = [
         description: "Perform statistical analysis and forecasting",
         icon: "📈",
         bgColor: "bg-pink-100",
-        textColor: "text-pink-600",
+        textColor: "text-gray-950",
     },
 ];
 
@@ -120,19 +120,19 @@ export default function ToolsSection() {
                             </h4>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">
-                                    <span className="text-orange-600 font-bold flex-shrink-0">•</span>
+                                    <span className="text-gray-950 font-bold flex-shrink-0">•</span>
                                     <span className="text-gray-700">
                                         <span className="font-semibold">Tableau Desktop:</span> Professional visualization and analytics
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="text-orange-600 font-bold flex-shrink-0">•</span>
+                                    <span className="text-gray-950 font-bold flex-shrink-0">•</span>
                                     <span className="text-gray-700">
                                         <span className="font-semibold">Tableau Public:</span> Free version for learning and sharing
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="text-orange-600 font-bold flex-shrink-0">•</span>
+                                    <span className="text-gray-950 font-bold flex-shrink-0">•</span>
                                     <span className="text-gray-700">
                                         <span className="font-semibold">Tableau Server:</span> Enterprise deployment and collaboration
                                     </span>
@@ -146,19 +146,19 @@ export default function ToolsSection() {
                             </h4>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">
-                                    <span className="text-blue-600 font-bold flex-shrink-0">•</span>
+                                    <span className="text-gray-950 font-bold flex-shrink-0">•</span>
                                     <span className="text-gray-700">
                                         <span className="font-semibold">Calculated Fields:</span> Custom calculations and expressions
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="text-blue-600 font-bold flex-shrink-0">•</span>
+                                    <span className="text-gray-950 font-bold flex-shrink-0">•</span>
                                     <span className="text-gray-700">
                                         <span className="font-semibold">Data Blending:</span> Combine multiple data sources
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="text-blue-600 font-bold flex-shrink-0">•</span>
+                                    <span className="text-gray-950 font-bold flex-shrink-0">•</span>
                                     <span className="text-gray-700">
                                         <span className="font-semibold">Advanced Analytics:</span> Statistical analysis and forecasting
                                     </span>
@@ -199,11 +199,11 @@ export default function ToolsSection() {
                         ].map((item, index) => (
                             <div key={index} className="flex gap-6 items-start">
                                 <div className="flex-shrink-0">
-                                    <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-orange-600 text-white font-bold">
+                                    <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gray-950 text-white font-bold">
                                         {index + 1}
                                     </div>
                                 </div>
-                                <div className="flex-1 bg-white rounded-lg p-6 border-l-4 border-orange-600">
+                                <div className="flex-1 bg-white rounded-lg p-6 border-l-4 border-gray-950">
                                     <div className="font-bold text-gray-900 mb-1">{item.phase}</div>
                                     <div className="text-sm text-gray-600 mb-2">{item.duration}</div>
                                     <p className="text-gray-700">
@@ -222,7 +222,7 @@ export default function ToolsSection() {
                     </p>
                     <button
                         onClick={() => setIsEnrollOpen(true)}
-                        className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        className="bg-[#7c2d12] hover:bg-[#c2410c] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Enroll Now and Start Learning →
                     </button>

@@ -24,7 +24,7 @@ export default function FaqSection() {
                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
                         Frequently Asked Questions
                     </h2>
-                    <p className="text-lg text-gray-600">
+                    <p className="text-lg text-gray-900">
                         Find answers to common questions about our Tableau course
                     </p>
                 </div>
@@ -41,7 +41,7 @@ export default function FaqSection() {
                                 <div className="flex items-center gap-4 w-full text-left">
                                     {/* Number */}
                                     <div className="flex-shrink-0">
-                                        <div className="flex items-center justify-center h-10 w-10 rounded-full bg-orange-100 text-orange-600 font-bold text-sm">
+                                        <div className="flex items-center justify-center h-10 w-10 rounded-full bg-orange-100 text-gray-950 font-bold text-sm">
                                             {index + 1}
                                         </div>
                                     </div>
@@ -54,7 +54,7 @@ export default function FaqSection() {
                             </AccordionTrigger>
 
                             <AccordionContent className="px-6 py-4 bg-gray-50 border-t-2 border-gray-200">
-                                <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                                <p className="text-gray-900 leading-relaxed">{faq.answer}</p>
                             </AccordionContent>
                         </AccordionItem>
                     ))}
@@ -70,12 +70,12 @@ export default function FaqSection() {
                         <div className="text-center border-2 border-orange-500 rounded-2xl p-3 hover:-translate-y-2 transition-all">
                             <div className="text-4xl mb-3">📞</div>
                             <h4 className="font-bold text-gray-900 mb-2">Call Us</h4>
-                            <p className="text-gray-700 mb-3">
+                            <p className="text-gray-900 mb-3">
                                 Speak with our course counselors directly
                             </p>
                             <Link
                                 href="tel:+917888383788"
-                                className="text-orange-600 text-xs md:text-base font-semibold hover:underline"
+                                className="text-gray-950 text-xs md:text-base font-semibold hover:underline inline-block p-2"
                             >
                                 +91 788-83-83-788
                             </Link>
@@ -84,12 +84,12 @@ export default function FaqSection() {
                         <div className="text-center border-2 border-orange-500 rounded-2xl p-3 hover:-translate-y-2 transition-all">
                             <div className="text-4xl mb-3">✉️</div>
                             <h4 className="font-bold text-gray-900 mb-2">Email Us</h4>
-                            <p className="text-gray-700 mb-3">
+                            <p className="text-gray-900 mb-3">
                                 Get detailed information via email
                             </p>
                             <Link
                                 href="mailto:contact@cinutedigital.com"
-                                className="text-orange-600 text-xs lg:text-base font-semibold hover:underline"
+                                className="text-gray-950 text-xs lg:text-base font-semibold hover:underline inline-block p-2"
                             >
                                 contact@cinutedigital.com
                             </Link>
@@ -98,10 +98,10 @@ export default function FaqSection() {
                         <div className="text-center border-2 border-orange-500 rounded-2xl p-3 hover:-translate-y-2 transition-all">
                             <div className="text-4xl mb-3">💬</div>
                             <h4 className="font-bold text-gray-900 mb-2">Live Chat</h4>
-                            <p className="text-gray-700 mb-3">
+                            <p className="text-gray-900 mb-3">
                                 Chat with our support team in real-time
                             </p>
-                            <Link href="https://wa.me/9152929342" className="text-orange-600 text-xs md:text-base font-semibold hover:underline">
+                            <Link href="https://wa.me/9152929342" className="text-gray-950 text-xs md:text-base font-semibold hover:underline inline-block p-2">
                                 Start Chat
                             </Link>
                         </div>
@@ -110,12 +110,12 @@ export default function FaqSection() {
 
                 {/* CTA */}
                 <div className="mt-16 text-center">
-                    <p className="text-gray-600 text-lg mb-6">
+                    <p className="text-gray-900 text-lg mb-6">
                         Ready to start your Tableau learning journey? Enroll now and get started!
                     </p>
                     <button
                         onClick={() => setIsEnrollOpen(true)}
-                        className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        className="bg-[#7c2d12] hover:bg-[#c2410c] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Enroll Now & Get Free Consultation →
                     </button>

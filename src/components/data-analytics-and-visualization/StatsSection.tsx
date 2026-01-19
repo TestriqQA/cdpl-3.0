@@ -12,12 +12,12 @@ import CareerSessionModal from "../CareerSessionModal";
  */
 
 const colorClasses = [
-    "from-blue-500 to-blue-600",
-    "from-indigo-500 to-indigo-600",
-    "from-cyan-500 to-cyan-600",
-    "from-purple-500 to-purple-600",
-    "from-pink-500 to-pink-600",
-    "from-green-500 to-green-600",
+    "from-[#1d4ed8] to-[#1e40af]",
+    "from-[#4338ca] to-[#3730a3]",
+    "from-[#0891b2] to-[#0e7490]",
+    "from-[#7e22ce] to-[#6b21a8]",
+    "from-[#be185d] to-[#9d174d]",
+    "from-[#15803d] to-[#166534]",
 ];
 
 export const stats = [
@@ -246,7 +246,7 @@ export default function StatsSection() {
                 <div className="mt-16 text-center">
                     <button
                         onClick={() => setIsCareerSessionOpen(true)}
-                        className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        className="bg-[#d04502] hover:bg-[#c2410c] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Book a Free Career Session
                     </button>

@@ -16,6 +16,7 @@ const CtaSection = dynamic(() => import("@/components/ai-in-digital-marketing/Ct
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { AI_IN_DIGITAL_MARKETING_FAQS, AI_IN_DIGITAL_MARKETING_REVIEW_DATA } from "@/data/aiInDigitalMarketingData";
+import { getGoogleReviews } from "@/lib/reviews";
 import dynamic from 'next/dynamic';
 
 
@@ -46,7 +47,9 @@ export const metadata = generateMetadata({
     image: "/og-images/ai-in-digital-marketing.jpg",
 });
 
-export default function AiInDigitalMarketingPage() {
+export default async function AiInDigitalMarketingPage() {
+    const reviewsData = await getGoogleReviews();
+
     const courseSchema = generateCourseSchema({
         name: "Master Digital Marketing & AI for Business Owners",
         description: "A 3-month cohort program to master digital marketing and AI strategies tailored for business owners.",
@@ -86,7 +89,13 @@ export default function AiInDigitalMarketingPage() {
                 <section id="tools"><ToolsSection /></section>
                 <section id="roadmap"><CareerRoadmapSection /></section>
                 <section id="projects"><ProjectsSection /></section>
-                <section id="testimonials"><TestimonialsSection /></section>
+                <section id="testimonials">
+                    <TestimonialsSection
+                        initialReviews={reviewsData.reviews}
+                        initialTotal={reviewsData.totalReviewCount?.toString()}
+                        initialRating={reviewsData.averageRating?.toString()}
+                    />
+                </section>
                 <section id="who-should-enroll"><WhoShouldEnroll /></section>
                 <section id="career"><CareerSection /></section>
                 <section id="faqs"><FaqSection /></section>

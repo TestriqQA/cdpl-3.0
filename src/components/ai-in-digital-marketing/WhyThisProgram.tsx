@@ -135,7 +135,7 @@ export default function WhyThisProgram() {
     w-full sm:w-auto
     px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3
     text-sm sm:text-base md:text-lg
-    bg-orange-600 hover:bg-orange-700
+    bg-[#d04502] hover:bg-orange-700
     text-white font-bold
     rounded-xl
     text-center

@@ -17,7 +17,7 @@ interface Module {
 
 const colorClasses: Record<ColorVariant, { bg: string; text: string }> = {
   blue: { bg: 'bg-blue-100', text: 'text-blue-600' },
-  orange: { bg: 'bg-orange-100', text: 'text-orange-600' },
+  orange: { bg: 'bg-orange-100', text: 'text-[#c2410c]' },
   green: { bg: 'bg-green-100', text: 'text-green-600' },
   purple: { bg: 'bg-purple-100', text: 'text-purple-600' },
   pink: { bg: 'bg-pink-100', text: 'text-pink-600' },
@@ -165,7 +165,7 @@ const CurriculumSection: React.FC = () => {
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
             10 Modules to Master Power BI from Zero to Expert
           </h2>
-          <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
+          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
             Our meticulously designed curriculum covers every aspect of Power BI, focusing on practical application and industry best practices.
           </p>
         </div>
@@ -191,7 +191,7 @@ const CurriculumSection: React.FC = () => {
                   </div>
                   <ChevronDown
                     size={24}
-                    className={`text-gray-500 transition-transform duration-300 ${activeIndex === index ? 'rotate-180' : 'rotate-0'}`}
+                    className={`text-gray-700 transition-transform duration-300 ${activeIndex === index ? 'rotate-180' : 'rotate-0'}`}
                   />
                 </button>
 
@@ -215,7 +215,7 @@ const CurriculumSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsSyllabusOpen(true)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
+            className="w-full sm:w-auto flex sm:inline-flex min-h-[60px] items-center justify-center gap-2 rounded-xl bg-[#c2410c] px-6 py-5 my-4 text-base font-semibold text-white shadow-none transition-all hover:bg-[#9a3412] focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
           >
             <Download className="h-5 w-5" />
             Download Full Syllabus

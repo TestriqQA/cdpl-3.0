@@ -25,7 +25,7 @@ export default function FaqSection() {
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">Frequently Asked Questions</span>
+                        <span className="bg-gradient-to-r from-[#d04502] via-[#ea580c] to-[#d04502] bg-clip-text text-transparent">Frequently Asked Questions</span>
                     </h2>
                     <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                         Find answers to common questions about our course, learning approach, and career support.
@@ -47,7 +47,7 @@ export default function FaqSection() {
                                 className="w-full px-6 py-5 flex items-center justify-between cursor-pointer bg-gradient-to-r from-slate-50 to-white hover:from-blue-50 hover:to-indigo-50 transition-all duration-300"
                             >
                                 <div className="flex items-center gap-4 text-left">
-                                    <HelpCircle className="w-6 h-6 text-blue-600 flex-shrink-0" />
+                                    <HelpCircle className="w-6 h-6 text-[#1d4ed8] flex-shrink-0" />
                                     <h3 className="text-lg font-semibold text-slate-900">
                                         {faq.question}
                                     </h3>

@@ -97,7 +97,7 @@ const WhoShouldEnroll: React.FC = () => {
           <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-gray-900">
             Who Will Benefit Most from This Course?
           </h2>
-          <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
+          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
             This program is designed for both technical and non-technical learners across various professional backgrounds.
           </p>
         </div>
@@ -112,7 +112,7 @@ const WhoShouldEnroll: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsEnrollOpen(true)}
-            className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+            className="w-full sm:w-auto bg-[#c2410c] hover:bg-[#9a3412] text-white font-bold py-5 px-8 my-4 rounded-lg transition-all flex sm:inline-flex min-h-[60px] justify-center items-center cursor-pointer shadow-none"
           >
             Enroll Now
           </button>

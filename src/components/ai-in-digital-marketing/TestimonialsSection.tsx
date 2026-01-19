@@ -5,7 +5,13 @@ import { useState } from "react";
 import EnrollModal from "@/components/EnrollModal";
 import CareerSessionModal from "@/components/CareerSessionModal";
 
-export default function TestimonialsSection() {
+interface TestimonialsSectionProps {
+  initialReviews?: any[];
+  initialTotal?: string;
+  initialRating?: string;
+}
+
+export default function TestimonialsSection({ initialReviews, initialTotal, initialRating }: TestimonialsSectionProps) {
   const [isEnrollOpen, setIsEnrollOpen] = useState(false);
   const [isCareerOpen, setIsCareerOpen] = useState(false);
   const courseName = "AI in Digital Marketing Course";
@@ -23,7 +29,7 @@ export default function TestimonialsSection() {
           </p>
         </div>
 
-        <ReviewsMarquee />
+        <ReviewsMarquee initialReviews={initialReviews} initialTotal={initialTotal} initialRating={initialRating} />
 
         {/* Bottom CTA */}
         <div className="mt-16 text-center">

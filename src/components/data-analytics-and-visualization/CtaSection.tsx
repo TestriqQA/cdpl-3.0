@@ -23,7 +23,7 @@ export default function CtaSection() {
                     <div className="text-white space-y-8 lg:col-span-8">
                         <div className="space-y-4">
                             <h2 className="text-3xl md:text-4xl font-bold leading-tight">
-                                Ready to <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">Master</span> Excel?
+                                Ready to <span className="bg-gradient-to-r from-[#d04502] via-[#ea580c] to-[#d04502] bg-clip-text text-transparent">Master</span> Excel?
                             </h2>
                             <p className="text-xl text-blue-100 leading-relaxed">
                                 Join thousands of successful professionals who have transformed their careers with our comprehensive Excel training program.
@@ -51,7 +51,7 @@ export default function CtaSection() {
                         <div className="flex flex-col md:flex-row gap-4 pt-4">
                             <button
                                 onClick={() => setIsEnrollOpen(true)}
-                                className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 cursor-pointer text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                                className="bg-gradient-to-r from-[#1d4ed8] to-[#4338ca] hover:from-[#1e40af] hover:to-[#3730a3] cursor-pointer text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                             >
                                 Enroll Now
                                 <ArrowRight className="w-5 h-5" />

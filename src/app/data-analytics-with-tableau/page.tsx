@@ -65,11 +65,11 @@ export default function Home() {
     const faqSchema = generateFAQSchema(DATA_ANALYTICS_TABLEAU_FAQS);
 
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col bg-gray-50">
             <JsonLd id="course-schema" schema={courseSchema} />
             <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
             <JsonLd id="faq-schema" schema={faqSchema} />
-            <main>
+            <div className="flex-1">
                 {/* Hero Section */}
                 <HeroSection />
 
@@ -109,7 +109,7 @@ export default function Home() {
 
                 {/* Final CTA Section */}
                 <section id="contact"><CtaSection /></section>
-            </main>
+            </div>
         </div>
     );
 }

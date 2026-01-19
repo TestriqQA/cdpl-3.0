@@ -50,7 +50,7 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="hover:text-brand hover:translate-x-2 active:textColor-orange-500 active:text-orange-500 focus-visible:text-orange-500 active:translate-x-2 active:transition-none focus-visible:transition-none transition-all duration-300 ease-in-out text-sm outline-none text-gray-300"
+      className="hover:text-brand hover:translate-x-2 active:textColor-orange-500 active:text-orange-500 focus-visible:text-orange-500 active:translate-x-2 active:transition-none focus-visible:transition-none transition-all duration-300 ease-in-out text-sm outline-none text-gray-300 inline-block py-2 px-3"
     >
       {children}
     </Link>

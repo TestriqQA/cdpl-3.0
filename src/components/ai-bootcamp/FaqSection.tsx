@@ -92,7 +92,7 @@ export default function FaqSection() {
                     </p>
                     <button
                         onClick={() => setIsCareerSessionOpen(true)}
-                        className="btn-cta cursor-pointer inline-flex items-center justify-center px-8 py-3 rounded-xl bg-orange-600 text-white font-semibold shadow-md hover:bg-orange-700 transition-colors"
+                        className="btn-cta cursor-pointer inline-flex items-center justify-center px-8 py-3 rounded-xl bg-[#d04502] text-white font-semibold shadow-md hover:bg-orange-700 transition-colors"
                     >
                         Speak to a Career Counselor
                     </button>

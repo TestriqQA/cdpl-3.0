@@ -80,7 +80,7 @@ export default function CareerSection() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Your <span className="text-orange-600">Career Path</span>
+                        Your <span className="text-[#d04502]">Career Path</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
                         Explore diverse career opportunities in data analytics across multiple industries and roles.
@@ -112,7 +112,7 @@ export default function CareerSection() {
                             {/* Salary */}
                             <div className="pt-4 border-t border-slate-300">
                                 <p className="text-xs text-slate-600 mb-1">Expected Salary</p>
-                                <p className="text-lg font-bold text-orange-600">{role.salary}</p>
+                                <p className="text-lg font-bold text-[#d04502]">{role.salary}</p>
                             </div>
                         </div>
                     ))}
@@ -140,7 +140,7 @@ export default function CareerSection() {
                             },
                         ].map((item, idx) => (
                             <div key={idx} className="text-center">
-                                <div className="flex justify-center mb-4 text-orange-400">
+                                <div className="flex justify-center mb-4 text-[#d04502]">
                                     {item.icon}
                                 </div>
                                 <h4 className="text-lg font-bold mb-2">{item.title}</h4>
@@ -183,14 +183,14 @@ export default function CareerSection() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <button
                         onClick={() => setIsSessionOpen(true)}
-                        className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
+                        className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl bg-[#d04502] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
                     >
                         Get Placement Assistance
                         <ArrowRight className="h-5 w-5" />
                     </button>
                     <button
                         onClick={() => setIsSyllabusOpen(true)}
-                        className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl border-2 border-orange-200 bg-white px-8 py-4 text-base font-semibold text-orange-700 shadow-sm transition-all hover:border-orange-300 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-200"
+                        className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl border-2 border-orange-200 bg-white px-8 py-4 text-base font-semibold text-[#d04502] shadow-sm transition-all hover:border-orange-300 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-200"
                     >
                         <Download className="h-5 w-5" />
                         Download Placement Report

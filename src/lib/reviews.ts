@@ -29,7 +29,7 @@ export interface ReviewsData {
 const FALLBACK_REVIEWS: Review[] = [
     {
         name: "Prathik Singh",
-        reviewerInfo: { photoUrl: "", displayName: "Prathik Singh" },
+        reviewerInfo: { photoUrl: "/images/Image1.jpg", displayName: "Prathik Singh" },
         comment: "I had the opportunity to intern at Cinute, and it has been a great learning experience... I worked on data analysis in Excel, created dashboards, and explored Power BI & Tableau. The quality of teaching is so good...",
         starRating: "FIVE",
         createTime: "2025-06-27T10:00:00Z",
@@ -37,7 +37,7 @@ const FALLBACK_REVIEWS: Review[] = [
     },
     {
         name: "bhumika Ankush",
-        reviewerInfo: { photoUrl: "", displayName: "bhumika Ankush" },
+        reviewerInfo: { photoUrl: "/images/Image2.jpg", displayName: "bhumika Ankush" },
         comment: "The subjects taught are relevant and help prepare students for real-world challenges.",
         starRating: "FIVE",
         createTime: "2025-06-27T11:00:00Z",
@@ -45,7 +45,7 @@ const FALLBACK_REVIEWS: Review[] = [
     },
     {
         name: "Vedang Mohit",
-        reviewerInfo: { photoUrl: "", displayName: "Vedang Mohit" },
+        reviewerInfo: { photoUrl: "/images/Image3.jpg", displayName: "Vedang Mohit" },
         comment: "The subjects taught are relevant and help prepare students for real-world challenges.",
         starRating: "FIVE",
         createTime: "2025-06-27T12:00:00Z",
@@ -53,7 +53,7 @@ const FALLBACK_REVIEWS: Review[] = [
     },
     {
         name: "Aryan Prasad",
-        reviewerInfo: { photoUrl: "", displayName: "Aryan Prasad" },
+        reviewerInfo: { photoUrl: "/images/Image4.jpg", displayName: "Aryan Prasad" },
         comment: "It's a good opportunity to do course and learn coding languages... good mentors.",
         starRating: "FIVE",
         createTime: "2025-06-27T13:00:00Z",
@@ -61,7 +61,7 @@ const FALLBACK_REVIEWS: Review[] = [
     },
     {
         name: "Dhruv Salvi",
-        reviewerInfo: { photoUrl: "", displayName: "Dhruv Salvi" },
+        reviewerInfo: { photoUrl: "/images/Image5.jpg", displayName: "Dhruv Salvi" },
         comment: "Helped me to learn and gain a lot of knowledge and skills growth throughout, humble and good communicating staff and members.",
         starRating: "FIVE",
         createTime: "2025-06-27T14:00:00Z",
@@ -69,7 +69,7 @@ const FALLBACK_REVIEWS: Review[] = [
     },
     {
         name: "Bhuvan Sharma",
-        reviewerInfo: { photoUrl: "", displayName: "Bhuvan Sharma" },
+        reviewerInfo: { photoUrl: "/images/Image6.jpg", displayName: "Bhuvan Sharma" },
         comment: "Good information provided by the domain providers, very good at communicating and humble...",
         starRating: "FIVE",
         createTime: "2025-06-27T15:00:00Z",
@@ -77,7 +77,7 @@ const FALLBACK_REVIEWS: Review[] = [
     },
     {
         name: "Durgesh parab",
-        reviewerInfo: { photoUrl: "", displayName: "Durgesh parab" },
+        reviewerInfo: { photoUrl: "/images/Image7.jpg", displayName: "Durgesh parab" },
         comment: "It is best company to get experience... I’m learning full-stack with highly talented staff...",
         starRating: "FIVE",
         createTime: "2025-06-27T16:00:00Z",

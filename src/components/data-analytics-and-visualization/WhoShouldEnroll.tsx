@@ -34,12 +34,12 @@ const whoShouldEnroll = [
 ];
 
 const colorClasses = [
-    { bg: "bg-blue-100", text: "text-blue-600", border: "border-blue-200", gradient: "from-blue-500 to-blue-600" },
-    { bg: "bg-indigo-100", text: "text-indigo-600", border: "border-indigo-200", gradient: "from-indigo-500 to-indigo-600" },
-    { bg: "bg-cyan-100", text: "text-cyan-600", border: "border-cyan-200", gradient: "from-cyan-500 to-cyan-600" },
-    { bg: "bg-purple-100", text: "text-purple-600", border: "border-purple-200", gradient: "from-purple-500 to-purple-600" },
-    { bg: "bg-pink-100", text: "text-pink-600", border: "border-pink-200", gradient: "from-pink-500 to-pink-600" },
-    { bg: "bg-green-100", text: "text-green-600", border: "border-green-200", gradient: "from-green-500 to-green-600" },
+    { bg: "bg-blue-100", text: "text-[#1d4ed8]", border: "border-blue-200", gradient: "from-[#1d4ed8] to-[#1e40af]" },
+    { bg: "bg-indigo-100", text: "text-[#4338ca]", border: "border-indigo-200", gradient: "from-[#4338ca] to-[#3730a3]" },
+    { bg: "bg-cyan-100", text: "text-[#0e7490]", border: "border-cyan-200", gradient: "from-[#0891b2] to-[#0e7490]" },
+    { bg: "bg-purple-100", text: "text-[#7e22ce]", border: "border-purple-200", gradient: "from-[#7e22ce] to-[#6b21a8]" },
+    { bg: "bg-pink-100", text: "text-[#be185d]", border: "border-pink-200", gradient: "from-[#be185d] to-[#9d174d]" },
+    { bg: "bg-green-100", text: "text-[#15803d]", border: "border-green-200", gradient: "from-[#15803d] to-[#166534]" },
 ];
 
 export default function WhoShouldEnroll() {
@@ -60,7 +60,7 @@ export default function WhoShouldEnroll() {
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        Who Should <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">Enroll</span>?
+                        Who Should <span className="bg-gradient-to-r from-[#d04502] via-[#ea580c] to-[#d04502] bg-clip-text text-transparent">Enroll</span>?
                     </h2>
                     <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                         This course is designed for anyone looking to master data analytics. Whether you&apos;re a beginner or professional, there&apos;s something for you.

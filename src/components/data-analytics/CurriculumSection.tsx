@@ -99,7 +99,7 @@ export default function CurriculumSection() {
 
   const accents = [
     { cardBg: 'bg-orange-50', cardBorder: 'border-orange-200', badgeBg: 'bg-orange-600', badgeText: 'text-white', ink: 'text-orange-800', icon: 'text-orange-700' },
-    { cardBg: 'bg-emerald-50', cardBorder: 'border-emerald-200', badgeBg: 'bg-emerald-600', badgeText: 'text-white', ink: 'text-emerald-800', icon: 'text-emerald-700' },
+    { cardBg: 'bg-emerald-50', cardBorder: 'border-emerald-200', badgeBg: 'bg-[#047857]', badgeText: 'text-white', ink: 'text-emerald-800', icon: 'text-emerald-700' },
     { cardBg: 'bg-sky-50', cardBorder: 'border-sky-200', badgeBg: 'bg-sky-600', badgeText: 'text-white', ink: 'text-sky-800', icon: 'text-sky-700' },
     { cardBg: 'bg-rose-50', cardBorder: 'border-rose-200', badgeBg: 'bg-rose-600', badgeText: 'text-white', ink: 'text-rose-800', icon: 'text-rose-700' },
     { cardBg: 'bg-indigo-50', cardBorder: 'border-indigo-200', badgeBg: 'bg-indigo-600', badgeText: 'text-white', ink: 'text-indigo-800', icon: 'text-indigo-700' },

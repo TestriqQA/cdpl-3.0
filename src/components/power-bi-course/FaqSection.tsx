@@ -115,7 +115,7 @@ const FaqSection: React.FC = () => {
     <section className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14 md:mb-16">
-          <span className="text-base font-semibold tracking-wider text-orange-600 uppercase">
+          <span className="text-base font-semibold tracking-wider text-[#c2410c] uppercase">
             Frequently Asked Questions
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
@@ -133,7 +133,7 @@ const FaqSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsEnrollOpen(true)}
-            className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+            className="w-full sm:w-auto bg-[#c2410c] hover:bg-[#9a3412] text-white font-bold py-5 px-8 my-4 rounded-lg transition-all flex sm:inline-flex min-h-[60px] justify-center items-center cursor-pointer shadow-none"
           >
             Still have questions? Contact Us
           </button>

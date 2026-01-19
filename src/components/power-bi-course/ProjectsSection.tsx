@@ -67,7 +67,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <p className="text-gray-600 mb-6 flex-grow">{description}</p>
 
         <div className="mt-auto">
-          <h4 className="text-sm font-semibold text-gray-500 mb-2 flex items-center">
+          <h4 className="text-sm font-semibold text-gray-700 mb-2 flex items-center">
             <span className="mr-2" aria-hidden="true">🛠️</span> Key Skills Applied:
           </h4>
           <div className="flex flex-wrap gap-2">
@@ -124,13 +124,13 @@ const ProjectsSection: React.FC = () => {
     <section className="py-10 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="text-base font-semibold tracking-wider text-orange-600 uppercase">
+          <span className="text-base font-semibold tracking-wider text-[#c2410c] uppercase">
             Hands-On Experience
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
             Real-Time Projects Across Diverse Industries
           </h2>
-          <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
+          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
             Apply your Power BI skills to complex, industry-relevant datasets and build a portfolio that impresses hiring managers.
           </p>
         </div>
@@ -145,7 +145,7 @@ const ProjectsSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsSyllabusOpen(true)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
+            className="w-full sm:w-auto flex sm:inline-flex min-h-[60px] items-center justify-center gap-2 rounded-xl bg-[#c2410c] px-8 py-5 my-4 text-lg font-semibold text-white shadow-none transition-all hover:bg-[#9a3412] focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
           >
             <Download className="h-5 w-5" />
             Download Project Syllabus

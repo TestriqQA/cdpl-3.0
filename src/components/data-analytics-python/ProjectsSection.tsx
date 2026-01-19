@@ -50,7 +50,7 @@ export default function ProjectsSection() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Real-Time <span className="text-orange-600">Projects</span>
+                        Real-Time <span className="text-[#d04502]">Projects</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-4xl mx-auto">
                         Work on industry-relevant projects across multiple domains. Gain hands-on experience with real-world datasets and practical applications.
@@ -65,13 +65,13 @@ export default function ProjectsSection() {
                             className={`bg-gradient-to-br ${project.bgColor} rounded-xl p-8 border-2 ${project.borderColor} hover:shadow-xl transition-all duration-300`}
                         >
                             {/* Icon */}
-                            <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-white/60 text-orange-600">
+                            <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-white/60 text-[#d04502]">
                                 {project.icon}
                             </div>
 
                             {/* Domain Badge */}
                             <div className="mb-3">
-                                <span className="text-xs font-bold text-orange-600 bg-orange-100/60 px-3 py-1 rounded-full">
+                                <span className="text-xs font-bold text-[#d04502] bg-orange-100/60 px-3 py-1 rounded-full">
                                     Domain: {project.domain}
                                 </span>
                             </div>
@@ -146,7 +146,7 @@ export default function ProjectsSection() {
                             key={idx}
                             className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 border-2 border-orange-200"
                         >
-                            <div className="text-orange-600 mb-3">{benefit.icon}</div>
+                            <div className="text-[#d04502] mb-3">{benefit.icon}</div>
                             <h4 className="text-lg font-bold text-slate-900 mb-2">{benefit.title}</h4>
                             <p className="text-slate-600 text-sm">{benefit.description}</p>
                         </div>

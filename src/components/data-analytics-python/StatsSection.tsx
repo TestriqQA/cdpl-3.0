@@ -21,7 +21,7 @@ export default function StatsSection() {
             label: "Market Growth",
             description: "Data analytics industry growth from 2020 to 2030",
             bgGradient: "from-blue-50 to-blue-100",
-            iconBg: "bg-blue-500",
+            iconBg: "bg-[#1d4ed8]",
             ariaLabel: "Twenty five percent market growth from 2020 to 2030",
         },
         {
@@ -30,7 +30,7 @@ export default function StatsSection() {
             label: "Job Vacancies",
             description: "Active openings for Python Data Analysts in India",
             bgGradient: "from-orange-50 to-orange-100",
-            iconBg: "bg-orange-500",
+            iconBg: "bg-[#d04502]",
             ariaLabel: "Over one hundred and one thousand job vacancies",
         },
         {
@@ -77,7 +77,7 @@ export default function StatsSection() {
                         className="text-3xl md:text-4xl font-bold mb-4 text-slate-900"
                     >
                         Why Choose Our{" "}
-                        <span className="text-orange-600">
+                        <span className="text-[#d04502]">
                             Python Data Analytics Course
                         </span>
                         ?
@@ -149,7 +149,7 @@ export default function StatsSection() {
                     <div className="flex items-start gap-4 sm:gap-6">
                         <div className="flex-shrink-0">
                             <div
-                                className="flex items-center justify-center h-12 w-12 rounded-xl bg-orange-500 text-white"
+                                className="flex items-center justify-center h-12 w-12 rounded-xl bg-[#d04502] text-white"
                                 aria-hidden="true"
                             >
                                 <span className="text-xl">💡</span>

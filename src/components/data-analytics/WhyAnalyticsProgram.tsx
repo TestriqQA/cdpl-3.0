@@ -21,7 +21,7 @@ export default function WhyAnalyticsProgram() {
 
     const featureChips = [
         { label: "110 Hours", color: "bg-indigo-600 text-white" },
-        { label: "Hands-On Projects", color: "bg-emerald-600 text-white" },
+        { label: "Hands-On Projects", color: "bg-[#047857] text-white" },
         { label: "Expert Faculty", color: "bg-amber-500 text-gray-900" },
         { label: "Beginner Friendly", color: "bg-sky-600 text-white" },
         { label: "100% Job-Ready", color: "bg-rose-600 text-white" },
@@ -122,12 +122,12 @@ export default function WhyAnalyticsProgram() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <header className="text-center mb-10 md:mb-12">
-                    <h1
+                    <h2
                         id="why-analytics-heading"
                         className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900"
                     >
                         Advanced Data Analytics - <span className="text-DS">A Complete Overview</span>
-                    </h1>
+                    </h2>
                     <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
                         Learn to <strong>analyze complex datasets</strong>, build{" "}
                         <strong>insightful dashboards</strong>, apply <strong>statistics</strong> and{" "}

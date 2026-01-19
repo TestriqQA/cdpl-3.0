@@ -101,7 +101,7 @@ export default function HeroSection() {
                         {/* Duration Badge */}
                         <div className="inline-flex items-center gap-2 px-3 py-0.5 bg-orange-100 rounded-full">
                             <span className="text-2xl">⏱️</span>
-                            <span className="text-sm font-semibold text-orange-600">
+                            <span className="text-sm font-semibold text-[#9a3412]">
                                 Duration: {heroData.duration}
                             </span>
                         </div>
@@ -110,9 +110,9 @@ export default function HeroSection() {
                         <div className="space-y-4">
                             <h1 className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
                                 Master {" "}
-                                <span className="text-orange-600">Data Analytics &</span>{" "}
-                                <span className="text-blue-600">Visualization</span>{" "}
-                                <span className="text-purple-600">with Tableau</span>
+                                <span className="text-[#d04502]">Data Analytics &</span>{" "}
+                                <span className="text-[#1d4ed8]">Visualization</span>{" "}
+                                <span className="text-[#7e22ce]">with Tableau</span>
                             </h1>
 
                             {/* Mobile form (under H1) */}
@@ -131,7 +131,7 @@ export default function HeroSection() {
                         <div className="flex flex-col sm:flex-row gap-3 pt-4">
                             <button
                                 onClick={() => setIsEnrollOpen(true)}
-                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-orange-600 bg-orange-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#d04502] bg-[#d04502] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#c2410c] hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-300"
                                 aria-label="Enroll now in Tableau program"
                             >
                                 Enroll Now
@@ -140,7 +140,7 @@ export default function HeroSection() {
 
                             <button
                                 onClick={() => setIsSyllabusOpen(true)}
-                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-orange-600 bg-orange-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#d04502] bg-[#d04502] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#c2410c] hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-300"
                                 aria-label="Download Syllabus"
                             >
                                 Download Syllabus

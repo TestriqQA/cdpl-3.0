@@ -64,7 +64,7 @@ export default function CtaSection() {
                     <div className="flex flex-col md:flex-row gap-4 justify-center mb-10">
                         <button
                             onClick={() => setIsEnrollOpen(true)}
-                            className="cursor-pointer flex items-center bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all"
+                            className="cursor-pointer flex items-center bg-[#d04502] hover:bg-orange-600 text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all"
                         >
                             Enroll Now
                             <ArrowRight className="w-5 h-5 ml-2" />

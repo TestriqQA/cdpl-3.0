@@ -28,7 +28,7 @@ const palette: Record<
   { bg: string; text: string; ring: string; grad: string; dot: string }
 > = {
   blue: { bg: 'bg-blue-100', text: 'text-blue-600', ring: 'ring-blue-200', grad: 'from-blue-500/20 to-cyan-500/20', dot: 'bg-blue-600' },
-  orange: { bg: 'bg-orange-100', text: 'text-orange-600', ring: 'ring-orange-200', grad: 'from-orange-500/20 to-amber-500/20', dot: 'bg-orange-600' },
+  orange: { bg: 'bg-orange-100', text: 'text-[#c2410c]', ring: 'ring-orange-200', grad: 'from-orange-500/20 to-amber-500/20', dot: 'bg-[#c2410c]' },
   green: { bg: 'bg-green-100', text: 'text-green-600', ring: 'ring-green-200', grad: 'from-emerald-500/20 to-lime-500/20', dot: 'bg-green-600' },
   purple: { bg: 'bg-purple-100', text: 'text-purple-600', ring: 'ring-purple-200', grad: 'from-purple-500/20 to-fuchsia-500/20', dot: 'bg-purple-600' },
   pink: { bg: 'bg-pink-100', text: 'text-pink-600', ring: 'ring-pink-200', grad: 'from-pink-500/20 to-rose-500/20', dot: 'bg-pink-600' },
@@ -103,7 +103,7 @@ const CareerRoadmapSection: React.FC = () => {
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
             The 6-Step Career Roadmap to Power BI Mastery
           </h2>
-          <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
+          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
             Follow our proven learning path designed to take you from beginner to a market-ready professional in just 20 hours.
           </p>
         </div>
@@ -184,7 +184,7 @@ const CareerRoadmapSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsEnrollOpen(true)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
+            className="w-full sm:w-auto flex sm:inline-flex min-h-[60px] items-center justify-center gap-2 rounded-xl bg-[#c2410c] px-8 py-5 my-4 text-lg font-semibold text-white shadow-none transition-all hover:bg-[#9a3412] focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
           >
             Start Your Roadmap
             <ArrowRight className="h-5 w-5" />

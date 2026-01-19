@@ -27,7 +27,7 @@ const CtaSection: React.FC = () => {
           {/* Main Heading (content preserved) */}
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
             Ready to Launch Your{" "}
-            <span className="text-teal-300">High-Paying Data Career?</span>
+            <span className="text-teal-200">High-Paying Data Career?</span>
           </h2>
 
           {/* Subheading (content preserved) */}
@@ -82,7 +82,7 @@ const CtaSection: React.FC = () => {
           <div className="flex flex-col md:flex-row gap-4 justify-center mb-10">
             <button
               onClick={() => setIsEnrollOpen(true)}
-              className="flex items-center justify-center cursor-pointer bg-teal-500 hover:bg-teal-600 text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all"
+              className="flex items-center justify-center cursor-pointer bg-[#0f766e] hover:bg-teal-700 text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all"
             >
               Enroll Now
               <ArrowRight className="w-5 h-5 ml-2" />

@@ -99,7 +99,7 @@ const ProjectsSection: React.FC = () => {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header (content preserved, styling aligned to reference) */}
         <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-sm font-semibold tracking-[0.2em] text-teal-600 uppercase">
+          <h2 className="text-sm font-semibold tracking-[0.2em] text-[#0f766e] uppercase">
             Practical Application
           </h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
@@ -109,7 +109,7 @@ const ProjectsSection: React.FC = () => {
             Your portfolio is your resume. Complete industry-grade projects that
             demonstrate your mastery of the entire data stack.
           </p>
-          <p className="mt-3 text-sm text-slate-500 max-w-4xl mx-auto">
+          <p className="mt-3 text-sm text-slate-700 max-w-4xl mx-auto">
             Each capstone in this{" "}
             <strong>
               Data Analytics with BI and Big Data Engineering Master Program
@@ -134,7 +134,7 @@ const ProjectsSection: React.FC = () => {
                 className={`bg-gradient-to-br ${meta.bgColor} rounded-xl p-8 border-2 ${meta.borderColor} hover:shadow-xl transition-all duration-300`}
               >
                 {/* Icon */}
-                <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-white/70 text-teal-600">
+                <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-white/70 text-[#0f766e]">
                   <Icon className="w-8 h-8" />
                 </div>
 
@@ -236,7 +236,7 @@ const ProjectsSection: React.FC = () => {
               key={idx}
               className="bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl p-6 border-2 border-teal-200"
             >
-              <div className="text-teal-600 mb-3">{benefit.icon}</div>
+              <div className="text-[#0f766e] mb-3">{benefit.icon}</div>
               <h4 className="text-lg font-bold text-slate-900 mb-2">
                 {benefit.title}
               </h4>
@@ -257,7 +257,7 @@ const ProjectsSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsSyllabusOpen(true)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#c2410c] px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-[#9a3412] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
           >
             <Download className="h-5 w-5" />
             Download Project Syllabus

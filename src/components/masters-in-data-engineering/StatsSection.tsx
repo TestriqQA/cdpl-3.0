@@ -109,7 +109,7 @@ const StatsSection: React.FC = () => {
             className="mb-4 text-3xl font-bold text-slate-900 md:text-4xl"
           >
             Program Highlights &{" "}
-            <span className="text-teal-600">
+            <span className="text-[#0f766e]">
               Data Engineering Career Opportunities
             </span>
           </h2>
@@ -280,7 +280,7 @@ const StatsSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsCareerSessionOpen(true)}
-            className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+            className="bg-[#c2410c] hover:bg-[#9a3412] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
           >
             Book a Free Career Session
           </button>

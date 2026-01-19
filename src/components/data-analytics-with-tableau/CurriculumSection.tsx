@@ -235,10 +235,10 @@ export default function CurriculumSection() {
                                     {/* Module Info */}
                                     <div className="flex-1">
                                         <div className="flex items-center gap-3 mb-1">
-                                            <span className="inline-block bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-bold">
+                                            <span className="inline-block bg-orange-100 text-gray-950 px-3 py-1 rounded-full text-xs font-bold">
                                                 Module {module.id}
                                             </span>
-                                            <span className="text-sm font-semibold text-gray-500">
+                                            <span className="text-sm font-semibold text-gray-900">
                                                 {module.duration}
                                             </span>
                                         </div>
@@ -249,7 +249,7 @@ export default function CurriculumSection() {
 
                                     {/* Topics Count */}
                                     <div className="text-right flex-shrink-0">
-                                        <div className="text-sm text-gray-500">
+                                        <div className="text-sm text-gray-900">
                                             {module.topics.length} topics
                                         </div>
                                     </div>
@@ -275,7 +275,7 @@ export default function CurriculumSection() {
                                                     key={topicIndex}
                                                     className="flex items-start gap-3 p-3 bg-white rounded-lg border border-gray-200"
                                                 >
-                                                    <span className="text-orange-600 font-bold flex-shrink-0">
+                                                    <span className="text-gray-950 font-bold flex-shrink-0">
                                                         ✓
                                                     </span>
                                                     <span className="text-gray-700 text-sm">{topic}</span>
@@ -345,7 +345,7 @@ export default function CurriculumSection() {
                 <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
                     <button
                         onClick={() => setIsSyllabusOpen(true)}
-                        className="inline-flex items-center justify-center rounded-xl border-2 border-orange-600 bg-white px-6 py-3 text-base font-semibold text-orange-700 shadow-sm transition hover:bg-orange-50 focus:outline-none focus:ring-4 focus:ring-orange-200 cursor-pointer"
+                        className="inline-flex items-center justify-center rounded-xl border-2 border-[#7c2d12] bg-white px-6 py-3 text-base font-semibold text-[#7c2d12] shadow-sm transition hover:bg-orange-50 focus:outline-none focus:ring-4 focus:ring-orange-200 cursor-pointer"
                     >
                         Download Detailed Syllabus (PDF)
                     </button>
@@ -357,7 +357,7 @@ export default function CurriculumSection() {
                     </button>
                     <button
                         onClick={() => setIsEnrollOpen(true)}
-                        className="inline-flex items-center justify-center rounded-xl bg-orange-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-orange-700 focus:outline-none focus:ring-4 focus:ring-orange-200 cursor-pointer"
+                        className="inline-flex items-center justify-center rounded-xl bg-[#7c2d12] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#c2410c] focus:outline-none focus:ring-4 focus:ring-orange-200 cursor-pointer"
                     >
                         Enroll Now & Start Learning →
                     </button>

@@ -84,7 +84,7 @@ const MobileFeatureList: React.FC<MobileFeatureListProps> = ({ onOpenBrochure, o
     <div className="flex flex-col sm:flex-row gap-4">
       <button
         onClick={onOpenBrochure}
-        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto cursor-pointer"
+        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-700 to-orange-800 text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto cursor-pointer"
       >
         <Download className="h-5 w-5" />
         Download Brochure
@@ -192,7 +192,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
         { icon: CheckCircle2, text: '90+ Real-World Projects', color: 'text-blue-600' },
         { icon: CheckCircle2, text: 'ISTQB & Industry Certifications', color: 'text-purple-600' },
         { icon: CheckCircle2, text: '100% Job Support with Interview Guarantee', color: 'text-indigo-600' },
-        { icon: CheckCircle2, text: 'Flexible Weekend & Weekday Batches', color: 'text-orange-600' },
+        { icon: CheckCircle2, text: 'Flexible Weekend & Weekday Batches', color: 'text-orange-700' },
         { icon: CheckCircle2, text: 'Lifetime Access to Course Materials', color: 'text-teal-600' },
       ].map((feature, index) => (
         <div key={index} className="flex items-start gap-2">
@@ -210,7 +210,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
       {/* Primary CTA - Download Brochure */}
       <button
         onClick={onOpenBrochure}
-        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
+        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-700 to-orange-800 text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
       >
         <Download className="h-5 w-5" />
         Download Brochure
@@ -414,7 +414,7 @@ const HomeHeroSection: React.FC = () => {
                 <span className="text-xs font-bold text-white">FREE</span>
               </div>
             </div>
-            <p className="text-sm font-semibold text-orange-600">
+            <p className="text-sm font-semibold text-orange-700">
               Get FREE Demo Class Instantly!
             </p>
             <p className="text-xs text-slate-600 mt-1">
@@ -457,7 +457,7 @@ const HomeHeroSection: React.FC = () => {
                   onChange={handleInputChange}
                   onBlur={() => validateFullName(formData.fullName)}
                   required
-                  className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${fullNameError ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-700 focus:outline-none transition-all duration-300 ${fullNameError ? 'border-red-500' : 'border-gray-300'
                     }`}
                   placeholder="Enter your full name"
                   style={{ color: '#1e293b' }}
@@ -482,7 +482,7 @@ const HomeHeroSection: React.FC = () => {
                   onChange={handleInputChange}
                   onBlur={() => validateEmail(formData.email)}
                   required
-                  className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${emailError ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-700 focus:outline-none transition-all duration-300 ${emailError ? 'border-red-500' : 'border-gray-300'
                     }`}
                   placeholder="Enter your email address"
                   style={{ color: '#1e293b' }}
@@ -520,7 +520,7 @@ const HomeHeroSection: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 px-6 bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full py-3 px-6 bg-gradient-to-r from-orange-700 to-orange-800 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>

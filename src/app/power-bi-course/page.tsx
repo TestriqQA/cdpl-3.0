@@ -64,27 +64,23 @@ const PowerBIPage: React.FC = () => {
             <JsonLd id="course-schema" schema={courseSchema} />
             <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
             <JsonLd id="faq-schema" schema={faqSchema} />
-            <main>
-                {/* Note: You would typically include a Header/Navbar component here */}
+            <HeroSection />
+            <div className="hidden md:block sticky top-0 z-20">
+                <StickyNav navItems={with_roadmap} />
+            </div>
+            <section id="program-stats"><StatsSection /></section>
+            <section id="why-master-program"><WhyBIProgram /></section>
+            <section id="curriculum"><CurriculumSection /></section>
+            <section id="tools"><ToolsSection /></section>
+            <section id="roadmap"><CareerRoadmapSection /></section>
+            <section id="projects"><ProjectsSection /></section>
+            <section id="career"><CareerSection /></section>
+            <section id="who-should-enroll"><WhoShouldEnroll /></section>
+            <section id="testimonials"><TestimonialsClient /></section>
+            <section id="faqs"><FaqSection /></section>
+            <section id="contact"><CtaClient /></section>
 
-                <HeroSection />
-                <div className="hidden md:block sticky top-0 z-20">
-                    <StickyNav navItems={with_roadmap} />
-                </div>
-                <section id="program-stats"><StatsSection /></section>
-                <section id="why-master-program"><WhyBIProgram /></section>
-                <section id="curriculum"><CurriculumSection /></section>
-                <section id="tools"><ToolsSection /></section>
-                <section id="roadmap"><CareerRoadmapSection /></section>
-                <section id="projects"><ProjectsSection /></section>
-                <section id="career"><CareerSection /></section>
-                <section id="who-should-enroll"><WhoShouldEnroll /></section>
-                <section id="testimonials"><TestimonialsClient /></section>
-                <section id="faqs"><FaqSection /></section>
-                <section id="contact"><CtaClient /></section>
-
-                {/* Note: You would typically include a Footer component here */}
-            </main>
+            {/* Note: You would typically include a Footer component here */}
         </>
     );
 };

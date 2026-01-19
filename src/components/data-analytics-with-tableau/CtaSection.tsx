@@ -26,24 +26,24 @@ export default function CtaSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
                     <div className="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
                         <div className="text-4xl mb-3">🎯</div>
-                        <h3 className="font-bold text-slate-900 mb-2">Industry-Ready Skills</h3>
-                        <p className="text-orange-500 text-sm">
+                        <h3 className="font-bold text-white mb-2">Industry-Ready Skills</h3>
+                        <p className="text-white text-sm">
                             Master in-demand Tableau skills valued by top companies
                         </p>
                     </div>
 
                     <div className="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
                         <div className="text-4xl mb-3">💼</div>
-                        <h3 className="font-bold text-slate-900 mb-2">Career Support</h3>
-                        <p className="text-orange-500 text-sm">
+                        <h3 className="font-bold text-white mb-2">Career Support</h3>
+                        <p className="text-white text-sm">
                             100% job assistance with placement in top companies
                         </p>
                     </div>
 
                     <div className="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
                         <div className="text-4xl mb-3">🏆</div>
-                        <h3 className="font-bold text-slate-900 mb-2">Global Certificate</h3>
-                        <p className="text-orange-500 text-sm">
+                        <h3 className="font-bold text-white mb-2">Global Certificate</h3>
+                        <p className="text-white text-sm">
                             Internationally recognized certification with QR validation
                         </p>
                     </div>
@@ -53,7 +53,7 @@ export default function CtaSection() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                     <button
                         onClick={() => setIsEnrollOpen(true)}
-                        className="bg-white cursor-pointer text-orange-600 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all text-lg"
+                        className="bg-white cursor-pointer text-[#7c2d12] font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all text-lg"
                     >
                         Enroll Now & Get Started →
                     </button>

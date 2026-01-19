@@ -220,7 +220,7 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
                                         onChange={handleInputChange}
                                         onBlur={() => validateFullName(formData.fullName)}
                                         required
-                                        className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${fullNameError ? 'border-red-500' : 'border-gray-300'
+                                        className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-700 focus:outline-none transition-all duration-300 ${fullNameError ? 'border-red-500' : 'border-gray-300'
                                             }`}
                                         placeholder="Enter your full name"
                                         style={{ color: '#1e293b' }}
@@ -245,7 +245,7 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
                                         onChange={handleInputChange}
                                         onBlur={() => validateEmail(formData.email)}
                                         required
-                                        className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${emailError ? 'border-red-500' : 'border-gray-300'
+                                        className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-700 focus:outline-none transition-all duration-300 ${emailError ? 'border-red-500' : 'border-gray-300'
                                             }`}
                                         placeholder="Enter your email address"
                                         style={{ color: '#1e293b' }}
@@ -285,7 +285,7 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full py-3 px-6 bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                                className="w-full py-3 px-6 bg-gradient-to-r from-orange-700 to-orange-800 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                             >
                                 {isSubmitting ? (
                                     <>
@@ -341,10 +341,10 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
                 }
 
                 .phone-input-container .PhoneInputInput:focus {
-                    border-color: #ff8c00;
+                    border-color: #c2410c;
                     ring: 2px;
-                    ring-color: #ff8c00;
-                    box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.2);
+                    ring-color: #c2410c;
+                    box-shadow: 0 0 0 2px rgba(194, 65, 12, 0.2);
                 }
 
                 .phone-input-container.border-red-500 .PhoneInputInput {
