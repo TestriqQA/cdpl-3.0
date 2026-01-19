@@ -66,7 +66,7 @@ function ReviewCard({ review }: { review: Review }) {
               )}
             </div>
             <div>
-              <h3 className="text-sm font-bold text-slate-900">{review.name}</h3>
+              <div className="text-sm font-bold text-slate-900">{review.name}</div>
               <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">{dateStr}</div>
             </div>
           </div>

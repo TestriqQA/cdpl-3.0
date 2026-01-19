@@ -188,7 +188,7 @@ export const CareerSection: React.FC = () => {
               <div className="mt-6 flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={() => setIsEnrollOpen(true)}
-                  className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors cursor-pointer"
+                  className="px-6 py-3 bg-orange-700 hover:bg-orange-800 text-white font-semibold rounded-lg transition-colors cursor-pointer"
                 >
                   Apply for Placement Assistance
                 </button>

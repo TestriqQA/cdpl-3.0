@@ -87,7 +87,7 @@ export default function CtaSection() {
             </button>
             <button
               onClick={() => setIsCareerOpen(true)}
-              className="border-white text-white bg-orange-500 hover:bg-orange-700 transition-all font-bold rounded-lg text-lg px-8 py-3"
+              className="border-white text-white bg-orange-700 hover:bg-orange-800 transition-all font-bold rounded-lg text-lg px-8 py-3"
             >
               Schedule Free Demo
             </button>

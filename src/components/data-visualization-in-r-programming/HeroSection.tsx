@@ -110,7 +110,7 @@ export const HeroSection: React.FC = () => {
                         <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                             <button
                                 onClick={() => setIsEnrollOpen(true)}
-                                className="inline-flex items-center justify-center cursor-pointer rounded-xl bg-orange-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                                className="inline-flex items-center justify-center cursor-pointer rounded-xl bg-orange-700 px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-800 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
                                 aria-label="Enroll now in R Programming Course"
                             >
                                 Enroll Now
@@ -119,7 +119,7 @@ export const HeroSection: React.FC = () => {
 
                             <button
                                 onClick={() => setIsSyllabusOpen(true)}
-                                className="inline-flex items-center justify-center cursor-pointer rounded-xl bg-orange-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                                className="inline-flex items-center justify-center cursor-pointer rounded-xl bg-orange-700 px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-800 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
                                 aria-label="Download R Programming Syllabus"
                             >
                                 Download Syllabus

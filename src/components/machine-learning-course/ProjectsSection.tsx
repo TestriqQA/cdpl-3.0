@@ -199,13 +199,13 @@ export default function ProjectsSection() {
                   >
                     <Icon className="w-6 h-6" strokeWidth={2} />
                   </div>
-                  <p
+                  <h3
                     id={p.title.replace(/\s+/g, "-").toLowerCase()}
                     className="text-lg md:text-xl font-bold text-slate-900"
                   >
                     <span className={p.accent.text}># </span>
                     {p.title}
-                  </p>
+                  </h3>
                 </div>
 
                 <p className="mt-3 text-sm md:text-base text-slate-700">{p.desc}</p>

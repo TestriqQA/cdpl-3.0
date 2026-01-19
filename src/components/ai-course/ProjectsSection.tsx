@@ -113,10 +113,10 @@ export default function ProjectsSection() {
                 {/* top accent bar */}
                 <div className={["absolute left-0 right-0 top-0 h-1 rounded-t-2xl", p.accent.bar].join(" ")} aria-hidden />
 
-                <h3 id={id} className="text-lg md:text-xl font-bold text-slate-900">
+                <h2 id={id} className="text-lg md:text-xl font-bold text-slate-900">
                   <span className={p.accent.text}># </span>
                   {p.title}
-                </h3>
+                </h2>
                 <p className="mt-3 text-sm md:text-base text-slate-700">{p.desc}</p>
 
                 {/* outcomes */}

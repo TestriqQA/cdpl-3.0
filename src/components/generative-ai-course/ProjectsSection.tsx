@@ -202,10 +202,10 @@ export default function ProjectsSection() {
                   <div className={["rounded-xl p-2 shrink-0 border", p.accent.border, p.accent.text].join(" ")} aria-hidden>
                     <Icon className="w-6 h-6" strokeWidth={2} />
                   </div>
-                  <h3 id={id} className="text-lg md:text-xl font-bold text-slate-900">
+                  <h2 id={id} className="text-lg md:text-xl font-bold text-slate-900">
                     <span className={p.accent.text}># </span>
                     {p.title}
-                  </h3>
+                  </h2>
                 </div>
 
                 <p className="mt-3 text-sm md:text-base text-slate-700">{p.desc}</p>

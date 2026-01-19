@@ -121,75 +121,75 @@ export default function CareerRoadmapSection() {
             aria-hidden
             className="pointer-events-none absolute left-4 top-0 h-full w-px bg-slate-200 sm:left-1/2"
           />
-          <div className="space-y-6">
-            {STEPS.map((s, i) => (
-              <li
-                key={s.n}
-                className="relative grid grid-cols-[28px_1fr] items-start gap-4 sm:grid-cols-[1fr_28px_1fr]"
-              >
-                {/* Dot on spine */}
-                <span
-                  aria-hidden
-                  className={[
-                    "absolute left-[14px] top-3 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-white shadow",
-                    "sm:left-1/2 sm:-translate-x-1/2",
-                    s.accent.dot,
-                  ].join(" ")}
-                />
 
-                {/* Step number badge */}
-                <div
-                  className={[
-                    "row-span-2 mt-1 flex h-7 w-7 items-center justify-center rounded-full border text-xs font-bold shadow-sm bg-white",
-                    s.accent.text,
-                    s.accent.border,
-                  ].join(" ")}
-                  aria-label={`Step ${s.n}`}
-                  title={`Step ${s.n}`}
-                >
-                  {s.n}
+          {STEPS.map((s, i) => (
+            <li
+              key={s.n}
+              className="relative grid grid-cols-[28px_1fr] items-start gap-4 sm:grid-cols-[1fr_28px_1fr] mb-6 last:mb-0"
+            >
+              {/* Dot on spine */}
+              <span
+                aria-hidden
+                className={[
+                  "absolute left-[14px] top-3 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-white shadow",
+                  "sm:left-1/2 sm:-translate-x-1/2",
+                  s.accent.dot,
+                ].join(" ")}
+              />
+
+              {/* Step number badge */}
+              <div
+                className={[
+                  "row-span-2 mt-1 flex h-7 w-7 items-center justify-center rounded-full border text-xs font-bold shadow-sm bg-white",
+                  s.accent.text,
+                  s.accent.border,
+                ].join(" ")}
+                aria-label={`Step ${s.n}`}
+                title={`Step ${s.n}`}
+              >
+                {s.n}
+              </div>
+
+              {/* Card (zig-zag on desktop) */}
+              <article
+                tabIndex={0}
+                className={[
+                  "relative col-start-2 rounded-2xl border p-4 sm:p-5 shadow-[0_1px_0_0_rgba(15,23,42,0.05)] backdrop-blur transition",
+                  "hover:shadow-md focus:outline-none",
+                  s.accent.bg,
+                  s.accent.text,
+                  s.accent.border,
+                  s.accent.ring,
+                  i % 2 === 0 ? "sm:col-start-3" : "sm:col-start-1 sm:row-start-1",
+                ].join(" ")}
+              >
+                {/* Top accent bar */}
+                <div className={["absolute left-0 top-0 h-1.5 w-full", s.accent.bar].join(" ")} aria-hidden />
+
+                <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold">
+                  <span
+                    className={[
+                      "inline-flex items-center rounded-full border px-2.5 py-1 bg-white/70 text-slate-700",
+                      s.accent.border,
+                    ].join(" ")}
+                  >
+                    {s.badge}
+                  </span>
                 </div>
 
-                {/* Card (zig-zag on desktop) */}
-                <article
-                  tabIndex={0}
-                  className={[
-                    "relative col-start-2 rounded-2xl border p-4 sm:p-5 shadow-[0_1px_0_0_rgba(15,23,42,0.05)] backdrop-blur transition",
-                    "hover:shadow-md focus:outline-none",
-                    s.accent.bg,
-                    s.accent.text,
-                    s.accent.border,
-                    s.accent.ring,
-                    i % 2 === 0 ? "sm:col-start-3" : "sm:col-start-1 sm:row-start-1",
-                  ].join(" ")}
-                >
-                  {/* Top accent bar */}
-                  <div className={["absolute left-0 top-0 h-1.5 w-full", s.accent.bar].join(" ")} aria-hidden />
+                <h3 className="mt-2 text-base sm:text-lg font-bold tracking-tight text-slate-900">
+                  {s.title}
+                </h3>
+                <p className="mt-1 text-sm text-slate-700">{s.desc}</p>
 
-                  <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold">
-                    <span
-                      className={[
-                        "inline-flex items-center rounded-full border px-2.5 py-1 bg-white/70 text-slate-700",
-                        s.accent.border,
-                      ].join(" ")}
-                    >
-                      {s.badge}
-                    </span>
-                  </div>
+                {/* Bottom progress bar */}
+                <div className="mt-4 h-1 w-full rounded-full bg-white/80" aria-hidden>
+                  <div className={["h-1 w-4/5 rounded-full", s.accent.bar].join(" ")} />
+                </div>
+              </article>
+            </li>
+          ))}
 
-                  <h3 className="mt-2 text-base sm:text-lg font-bold tracking-tight text-slate-900">
-                    {s.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-slate-700">{s.desc}</p>
-
-                  {/* Bottom progress bar */}
-                  <div className="mt-4 h-1 w-full rounded-full bg-white/80" aria-hidden>
-                    <div className={["h-1 w-4/5 rounded-full", s.accent.bar].join(" ")} />
-                  </div>
-                </article>
-              </li>
-            ))}
-          </div>
         </ol>
 
         {/* CTA */}

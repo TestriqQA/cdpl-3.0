@@ -155,10 +155,10 @@ export default function WhoShouldEnroll() {
                   >
                     <Icon className="w-6 h-6" strokeWidth={2} />
                   </div>
-                  <p id={id} className="text-lg md:text-xl font-bold text-slate-900">
+                  <h3 id={id} className="text-lg md:text-xl font-bold text-slate-900">
                     <span className={p.accent.text}># </span>
                     {p.title}
-                  </p>
+                  </h3>
                 </div>
 
                 <p className="mt-3 text-sm md:text-base text-slate-700">{p.blurb}</p>

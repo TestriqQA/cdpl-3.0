@@ -82,7 +82,7 @@ export const CtaSection: React.FC = () => {
           <div className="flex flex-col md:flex-row gap-4 justify-center mb-10">
             <button
               onClick={() => setIsEnrollOpen(true)}
-              className="flex items-center justify-center cursor-pointer bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-4 text-base rounded-lg shadow-lg hover:shadow-xl transition-all"
+              className="flex items-center justify-center cursor-pointer bg-orange-700 hover:bg-orange-800 text-white font-semibold px-8 py-4 text-base rounded-lg shadow-lg hover:shadow-xl transition-all"
             >
               Enroll Now
               <ArrowRight className="w-5 h-5 ml-2" />

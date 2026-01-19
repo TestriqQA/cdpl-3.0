@@ -27,16 +27,20 @@ export default function WhyAIProgram() {
 
 
   const featureChips = [
-    { label: "255 Hours", color: "bg-indigo-600 text-white" },
-    { label: "Hands-On Projects", color: "bg-emerald-600 text-white" },
-    { label: "Expert Faculty", color: "bg-amber-500 text-gray-900" },
-    { label: "Prior Exp Helpful", color: "bg-sky-600 text-white" },
-    { label: "100% Job-Ready", color: "bg-rose-600 text-white" },
+    { label: "255 Hours", color: "bg-indigo-700 text-white" },
+    { label: "Hands-On Projects", color: "bg-emerald-700 text-white" },
+    { label: "Expert Faculty", color: "bg-amber-700 text-white" }, // Changed text to white for better contrast
+    { label: "Prior Exp Helpful", color: "bg-sky-700 text-white" },
+    { label: "100% Job-Ready", color: "bg-rose-700 text-white" },
   ];
 
   const outcomes = [
     {
       icon: Layers,
+      // ... (omitting strictly unchanged outcomes to keep context small, but need to be careful with replace tool, better to target lines 30-34 separately if possible. I'll do multiple replacements in one file using multi_replace is safer if blocks are far apart, but chips are lines 30-35 and headings are 140. )
+
+      // WAIT. The replace_file_content tool only supports CONTIGUOUS blocks. I cannot do chips AND h1 in one go if they are far apart.
+      // I will use multi_replace for WhyAIProgram.tsx to do both.
       iconColor: "text-violet-700",
       iconBg: "bg-violet-50",
       border: "border-violet-200",
@@ -135,13 +139,13 @@ export default function WhyAIProgram() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <header className="flex flex-col justify-center items-center text-center mb-10 md:mb-12">
-          <h1
+          <h2
             id="why-ai-heading"
             className="text-3xl md:text-4xl max-w-4xl font-bold tracking-tight text-gray-900"
           >
             Comprehensive Data Science &amp; AI -{" "}
             <span className="text-DS">Master Program Overview</span>
-          </h1>
+          </h2>
           <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
             Go end-to-end from <strong>data processing</strong> to{" "}
             <strong>advanced AI deployment</strong>. Build a{" "}
@@ -174,7 +178,7 @@ export default function WhyAIProgram() {
                 <span className={`p-2.5 rounded-xl ${o.iconBg} ring-1 ring-black/5`} aria-hidden="true">
                   <o.icon className={`w-6 h-6 ${o.iconColor}`} strokeWidth={2.2} />
                 </span>
-                <h3 className="text-lg font-bold text-gray-900">{o.title}</h3>
+                <h2 className="text-lg font-bold text-gray-900">{o.title}</h2>
               </div>
               <p className="mt-3 text-gray-700 leading-relaxed">{o.text}</p>
             </article>

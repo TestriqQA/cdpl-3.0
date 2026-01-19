@@ -117,12 +117,12 @@ export default function WhyGenAIProgram() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <header className="text-center mb-10 md:mb-12">
-          <h1
+          <h2
             id="why-genai-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900"
           >
             <span className="text-DS">Deep Learning</span>, <span className="text-DS">NLP</span> & <span className="text-DS">Generative AI</span> with <span className="text-DS">Python</span>
-          </h1>
+          </h2>
           <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 max-w-4xl mx-auto">
             An advanced, practical program to{" "}
             <strong>design, train, fine-tune, and deploy</strong> modern AI models-

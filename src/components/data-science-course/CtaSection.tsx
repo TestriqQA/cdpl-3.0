@@ -165,7 +165,7 @@ export default function CtaSection() {
               label="Chat on WhatsApp"
               sublabel="Quick questions answered"
               icon={MessageCircle}
-              className="bg-emerald-600 text-white"
+              className="bg-emerald-700 text-white"
               ring="focus:ring-emerald-300"
               aria="Open WhatsApp chat with admissions"
             />

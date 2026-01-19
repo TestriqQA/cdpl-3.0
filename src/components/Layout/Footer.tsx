@@ -11,7 +11,7 @@ const Footer2 = dynamic(
     ssr: true,
     loading: () => (
       <div className="flex items-center justify-center h-screen bg-[theme(color.background)]">
-        <p className="text-gray-700">Loading...</p>
+        <p className="text-gray-300">Loading...</p>
       </div>
     ),
   }
@@ -23,7 +23,7 @@ const CityFooter = dynamic(
     ssr: true,
     loading: () => (
       <div className="flex items-center justify-center h-screen bg-[theme(color.background)]">
-        <p className="text-gray-700">Loading...</p>
+        <p className="text-gray-300">Loading...</p>
       </div>
     ),
   }
