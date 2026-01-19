@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
                 </p>
               </div>
 
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+              <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-600">
                 Get In Touch
               </h2>
 
@@ -189,31 +189,31 @@ const Footer: React.FC = () => {
               <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
                 <Link
                   href="/privacy-policy"
-                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/privacy-policy" ? "border-orange-300 text-orange-600" : "border-slate-200 hover:border-orange-300 hover:text-orange-600"}`}
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/privacy-policy" ? "border-orange-300 text-orange-700" : "border-slate-200 hover:border-orange-300 hover:text-orange-700"}`}
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/cookies-policy"
-                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/cookies-policy" ? "border-orange-300 text-orange-600" : "border-slate-200 hover:border-orange-300 hover:text-orange-600"}`}
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/cookies-policy" ? "border-orange-300 text-orange-700" : "border-slate-200 hover:border-orange-300 hover:text-orange-700"}`}
                 >
                   Cookies Policy
                 </Link>
                 <Link
                   href="/terms-of-service"
-                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/terms-of-service" ? "border-orange-300 text-orange-600" : "border-slate-200 hover:border-orange-300 hover:text-orange-600"}`}
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/terms-of-service" ? "border-orange-300 text-orange-700" : "border-slate-200 hover:border-orange-300 hover:text-orange-700"}`}
                 >
                   Terms and Conditions
                 </Link>
                 <Link
                   href="/cancellation-refund-policy"
-                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/cancellation-refund-policy" ? "border-orange-300 text-orange-600" : "border-slate-200 hover:border-orange-300 hover:text-orange-600"}`}
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/cancellation-refund-policy" ? "border-orange-300 text-orange-700" : "border-slate-200 hover:border-orange-300 hover:text-orange-700"}`}
                 >
                   Cancellation/Refund Policy
                 </Link>
               </div>
 
-              <p className="text-xs text-center text-slate-500">
+              <p className="text-xs text-center text-slate-600">
                 ISO 9001:2015 (QMS) 27001:2013 (ISMS) Certified Company.
               </p>
             </div>
