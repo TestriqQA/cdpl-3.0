@@ -34,7 +34,7 @@ const MODULES: Module[] = [
     title: "Introduction to Generative AI",
     outcome:
       "What Generative AI is and how it creates new content • How it differs from traditional AI • Cross-domain use cases (marketing, healthcare, finance, gaming, etc.).",
-    accent: { bg: "bg-amber-50", text: "text-amber-900", border: "border-amber-200", ring: "focus:ring-amber-300", bar: "bg-amber-600" },
+    accent: { bg: "bg-amber-50", text: "text-amber-900", border: "border-amber-200", ring: "focus:ring-amber-300", bar: "bg-amber-800" },
   },
   {
     num: "04",
