@@ -397,7 +397,7 @@ export default function JobOpeningsJobBrowser({
                                                     <button
                                                         onClick={() => {
                                                             setSelected(job.job_id);
-                                                            requestAnimationFrame(() => setDrawerOpen(true));
+                                                            setDrawerOpen(true);
                                                         }}
                                                         className="inline-flex items-center justify-center rounded-md bg-[#d04502] px-4 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-95"
                                                     >
@@ -451,7 +451,8 @@ export default function JobOpeningsJobBrowser({
             </div>
 
             {/* details overlay — NO key prop (prevents remount/fetch loops) */}
-            {drawerOpen && selected && (
+            {/* details overlay — Keep mounted to allow AnimatePresence to handle exit animations */}
+            {selected && (
                 <JobOpeningsJobDetails
                     jobId={selected}
                     open={drawerOpen}
