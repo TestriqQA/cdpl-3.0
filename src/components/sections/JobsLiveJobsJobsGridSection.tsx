@@ -93,7 +93,7 @@ export function JobsLiveJobsJobsGridSection({
       let targetId = hash?.replace(/^#/, "") || "";
       if (!targetId) {
         const params = new URLSearchParams(search);
-        const qId = params.get("id");
+        const qId = params.get("id") || params.get("jobId");
         if (qId) targetId = qId;
       }
       try {
@@ -122,7 +122,7 @@ export function JobsLiveJobsJobsGridSection({
       let targetId = hash?.replace(/^#/, "") || "";
       if (!targetId) {
         const params = new URLSearchParams(search);
-        const qId = params.get("id");
+        const qId = params.get("id") || params.get("jobId");
         if (qId) targetId = qId;
       }
       try {

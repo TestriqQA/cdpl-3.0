@@ -63,7 +63,7 @@ export default async function EventDetailPage({ params }: PageProps) {
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
-    { name: "Past Events", url: "/events/past-events" },
+    { name: "Events", url: "/events" },
     { name: event.title, url: `/events/${event.slug}` },
   ]);
 
@@ -83,7 +83,7 @@ export default async function EventDetailPage({ params }: PageProps) {
             </li>
             <li className="flex items-center gap-2">
               <ChevronRight className="h-4 w-4 text-slate-400" />
-              <Link href="/events/past-events" className="hover:text-blue-600 transition-colors">Past Events</Link>
+              <Link href="/events" className="hover:text-blue-600 transition-colors">Events</Link>
             </li>
             <li className="flex items-center gap-2">
               <ChevronRight className="h-4 w-4 text-slate-400" />

@@ -210,7 +210,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
             </div>
 
             <Link
-                href="/events/past-events"
+                href="/events"
                 className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/events") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 onClick={closeMenu}
             >

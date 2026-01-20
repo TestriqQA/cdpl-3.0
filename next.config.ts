@@ -53,6 +53,46 @@ const nextConfig: NextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        source: '/email-marketing',
+        destination: '/digital-marketing-courses',
+        permanent: true,
+      },
+      {
+        source: '/actd-certification-training',
+        destination: '/actd-certification',
+        permanent: true,
+      },
+      {
+        source: '/events/software-testing-workshop-bangalore',
+        destination: '/events/past-events',
+        permanent: true,
+      },
+      {
+        source: '/events/faculty-development-mumbai-university',
+        destination: '/events/past-events',
+        permanent: true,
+      },
+      {
+        source: '/events/fullstack-workshop-infosys-pune',
+        destination: '/events/past-events',
+        permanent: true,
+      },
+      {
+        source: '/events/data-science-bootcamp-iit-delhi',
+        destination: '/events/past-events',
+        permanent: true,
+      },
+      {
+        source: '/events/industrial-visit-tata-motors',
+        destination: '/events/past-events',
+        permanent: true,
+      },
+      {
+        source: '/events/past-events',
+        destination: '/events',
+        permanent: true,
+      },
     ];
   },
 };

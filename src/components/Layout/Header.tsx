@@ -219,7 +219,7 @@ const Header = () => {
 
             <Link href="/services" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/services") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>Services</Link>
 
-            <Link href="/events/past-events" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/events") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/events" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/events") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               Event
             </Link>
             <Link href="/mentors" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/mentors") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>

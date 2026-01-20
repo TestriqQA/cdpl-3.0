@@ -375,7 +375,7 @@ const Footer = () => {
                   Services
                 </FooterLink>
 
-                <FooterLink href="/events/past-events">
+                <FooterLink href="/events">
                   Events
                 </FooterLink>
 

@@ -33,11 +33,7 @@ export default function EventsPastEventsHeroSection() {
             </li>
             <li className="flex items-center gap-2">
               <ChevronRight className="h-4 w-4" />
-              <span>Events</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <ChevronRight className="h-4 w-4" />
-              <Link href="/events/past-events" className="font-semibold text-slate-900">Past Events</Link>
+              <Link href="/events" className="font-semibold text-slate-900">Events</Link>
             </li>
           </ol>
         </nav>

@@ -65,7 +65,7 @@ export default function EventDetailsHeroSection({ event }: Props) {
             </li>
             <li>
               <Link
-                href="/events/past-events"
+                href="/events"
                 className="font-medium text-slate-700 hover:text-slate-900"
               >
                 Events
@@ -74,7 +74,7 @@ export default function EventDetailsHeroSection({ event }: Props) {
             <li aria-hidden className="text-slate-400">
               ›
             </li>
-            <Link href={`/events/past-events/${event.slug}`} className="truncate max-w-[45ch] text-slate-700">{event.slug}</Link>
+            <Link href={`/events/${event.slug}`} className="truncate max-w-[45ch] text-slate-700">{event.slug}</Link>
           </ol>
         </nav>
 

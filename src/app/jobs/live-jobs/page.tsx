@@ -20,14 +20,20 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
   );
 }
 
-export const metadata: Metadata = generateStaticPageMetadata({
-  title: {
+type Props = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const resolvedSearchParams = await searchParams;
+  const jobId = resolvedSearchParams?.jobId as string | undefined;
+
+  // Default metadata
+  const baseTitle = {
     absolute: "Live Jobs & Placement Alerts | CDPL",
-  },
-  description:
-    "Verified live jobs and walk-in drives curated by CDPL. QA, Automation, Data, and Engineering roles across India with internships, fresher support, and interview prep guidance",
-  url: "/jobs/live-jobs",
-  keywords: [
+  };
+  const baseDesc = "Verified live jobs and walk-in drives curated by CDPL. QA, Automation, Data, and Engineering roles across India with internships, fresher support, and interview prep guidance";
+  const baseKeywords = [
     "live jobs",
     "placement alerts",
     "walk-in drives",
@@ -36,9 +42,31 @@ export const metadata: Metadata = generateStaticPageMetadata({
     "automation testing jobs",
     "data science jobs",
     "CDPL jobs",
-  ],
-  image: "/testimonial_images/job_image.jpg",
-});
+  ];
+
+  if (jobId) {
+    const job = JOBS.find((j) => j.id === jobId);
+    if (job) {
+      return generateStaticPageMetadata({
+        title: {
+          absolute: `${job.title} | ${job.company} - CDPL Jobs`,
+        },
+        description: `Apply for ${job.title} at ${job.company} in ${job.location}. ${job.highlights?.[0] || 'Verified job opening'} - CDPL Placement Alerts.`,
+        url: `/jobs/live-jobs?jobId=${job.id}`,
+        keywords: [...baseKeywords, job.title, job.company, job.location],
+        image: job.bannerImage || "/testimonial_images/job_image.jpg",
+      });
+    }
+  }
+
+  return generateStaticPageMetadata({
+    title: baseTitle,
+    description: baseDesc,
+    url: "/jobs/live-jobs",
+    keywords: baseKeywords,
+    image: "/testimonial_images/job_image.jpg",
+  });
+}
 
 // Dynamic sections for below-the-fold content
 const JobsLiveJobsWhyWePostJobsSection = dynamic(

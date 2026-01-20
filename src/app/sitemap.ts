@@ -90,7 +90,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Events Pages
 
     {
-      url: `${siteUrl}/events/past-events`,
+      url: `${siteUrl}/events`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.6,
