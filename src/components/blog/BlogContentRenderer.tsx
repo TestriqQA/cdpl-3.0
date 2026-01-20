@@ -102,11 +102,12 @@ const BlogContentRenderer: React.FC<BlogContentRendererProps> = ({ slug }) => {
 
           {/* Section Image - OPTIMIZED: Smaller, responsive heights for better blog layout */}
           {section.image && (
-            <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 mb-6 sm:mb-8 rounded-xl overflow-hidden shadow-lg">
+            <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 mb-6 sm:mb-8 rounded-xl overflow-hidden shadow-lg backdrop-blur-sm">
               <Image
                 src={section.image}
                 alt={section.title}
                 fill
+                className="object-contain"
                 sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 768px) 90vw, (max-width: 1024px) 85vw, 1200px"
                 priority={index === 0}
               />
@@ -146,12 +147,12 @@ const BlogContentRenderer: React.FC<BlogContentRendererProps> = ({ slug }) => {
                   className="group block bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
                 >
                   {relatedPost.featuredImage && (
-                    <div className="relative h-32 sm:h-40 bg-gray-100">
+                    <div className="relative h-32 sm:h-40 bg-gray-100 backdrop-blur-sm">
                       <Image
                         src={relatedPost.featuredImage}
                         alt={relatedPost.title}
                         fill
-                        className="group-hover:scale-105 transition-transform duration-500"
+                        className="object-contain group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                   )}

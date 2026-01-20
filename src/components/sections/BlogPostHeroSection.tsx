@@ -74,12 +74,12 @@ export const BlogPostHeroSection: React.FC<BlogPostHeroSectionProps> = ({ slug }
                 </div>
             </div>
 
-            {/* Featured Image - OPTIMIZED: ~420px max height with responsive scaling */}
-            <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[420px] mb-6 sm:mb-8 rounded-lg overflow-hidden shadow-lg bg-gradient-to-br from-indigo-50 to-blue-50">
+            <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[420px] mb-6 sm:mb-8 rounded-lg overflow-hidden shadow-lg bg-gradient-to-br from-indigo-50 to-blue-50 backdrop-blur-sm">
                 <Image
                     src={post.featuredImage || getFallbackImage(post.categoryId)}
                     alt={post.title}
                     fill
+                    className="object-contain"
                     sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 768px) 90vw, (max-width: 1024px) 85vw, 1200px"
                     priority
                     quality={90}

@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { FaXTwitter, FaLinkedin, FaFacebook } from 'react-icons/fa6';
-import { getPostBySlug} from '@/data/BlogPostData';
+import { getPostBySlug } from '@/data/BlogPostData';
 import BlogSidebarRelated from '@/components/blog/BlogSidebarRelated';
 import BlogContentRenderer from '@/components/blog/BlogContentRenderer';
 import { notFound } from 'next/navigation';
@@ -14,7 +14,7 @@ interface BlogPostSectionProps {
 
 export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ slug }) => {
     const post = getPostBySlug(slug);
-    
+
     if (!post) {
         notFound();
     }
@@ -94,7 +94,7 @@ export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ slug }) => {
                             href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-200 text-sm sm:text-base"
+                            className="flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm sm:text-base"
                         >
                             <FaFacebook className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                             <span className="font-medium">Facebook</span>
@@ -105,9 +105,9 @@ export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ slug }) => {
 
             {/* Sidebar with Related Posts */}
             <aside className="lg:col-span-1">
-                <BlogSidebarRelated 
-                    currentPostId={post.id} 
-                    categoryId={post.categoryId} 
+                <BlogSidebarRelated
+                    currentPostId={post.id}
+                    categoryId={post.categoryId}
                 />
             </aside>
         </section>

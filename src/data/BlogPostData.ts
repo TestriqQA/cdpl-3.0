@@ -265,8 +265,8 @@ export const CATEGORIES: Record<string, Category> = {
     slug: "software-testing",
     description: "Testing strategies, automation, and quality assurance practices",
     color: {
-      bg: "bg-teal-100",
-      text: "text-teal-700",
+      bg: "bg-teal-50",
+      text: "text-teal-800",
     },
   },
   "data-science": {
@@ -275,8 +275,8 @@ export const CATEGORIES: Record<string, Category> = {
     slug: "data-science",
     description: "Data analysis, visualization, and data-driven decision making",
     color: {
-      bg: "bg-orange-100",
-      text: "text-orange-700",
+      bg: "bg-orange-50",
+      text: "text-orange-800",
     },
   },
   "digital-marketing": {

@@ -253,7 +253,7 @@ export default function CategoriesPage() {
                       >
                         {category.name}
                       </h3>
-                      <p className="text-sm opacity-90" itemProp="description">
+                      <p className="text-sm" itemProp="description">
                         {category.description}
                       </p>
                     </div>
