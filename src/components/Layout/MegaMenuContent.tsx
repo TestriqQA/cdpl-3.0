@@ -81,7 +81,7 @@ export default function MegaMenuContent({ closeMega }: MegaMenuContentProps) {
                     })}
                 </div>
                 <Link href="/courses" className="mt-4 flex items-center text-brand hover:text-brand font-medium text-sm group" onClick={closeMega}>
-                    View All Courses
+                    <span className="nav-link-bold" data-text="View All Courses">View All Courses</span>
                     <ChevronRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
             </div>

@@ -293,8 +293,7 @@ export default function HomeFinalCTASection() {
                       value={formData.phone}
                       onChange={handlePhoneChange}
                       onBlur={() => validatePhoneNumber(formData.phone)}
-                      className={`phone-input-container ${errors.phone ? 'border-red-500' : ''
-                        }`}
+                      className={`phone-input-container ${errors.phone ? 'error' : ''}`}
                       placeholder="Enter phone number"
                     />
                   </div>
@@ -343,30 +342,71 @@ export default function HomeFinalCTASection() {
             </div>
           </motion.div>
         </div>
+
+        <style jsx global>{`
+          @keyframes blob {
+            0% {
+              transform: translate(0px, 0px) scale(1);
+            }
+            33% {
+              transform: translate(30px, -50px) scale(1.1);
+            }
+            66% {
+              transform: translate(-20px, 20px) scale(0.9);
+            }
+            100% {
+              transform: translate(0px, 0px) scale(1);
+            }
+          }
+          .animate-blob {
+            animation: blob 7s infinite;
+          }
+          .animation-delay-4000 {
+            animation-delay: 4s;
+          }
+
+          /* Phone Input Styling - Separate Boxes Style */
+          .phone-input-container {
+            display: flex;
+            align-items: stretch;
+            width: 100%;
+            gap: 0.5rem;
+            background: transparent;
+          }
+
+          .phone-input-container .PhoneInputCountry {
+            display: flex !important;
+            align-items: center !important;
+            padding: 0 0.5rem !important;
+            border: 1px solid #d1d5db !important;
+            border-radius: 0.5rem !important;
+            background-color: white !important;
+            transition: all 0.3s ease !important;
+          }
+
+          .phone-input-container .PhoneInputInput {
+            flex-grow: 1 !important;
+            padding: 0.75rem 1rem !important;
+            border: 1px solid #d1d5db !important;
+            border-radius: 0.5rem !important;
+            outline: none !important;
+            background-color: white !important;
+            color: #1e293b !important;
+            font-size: 0.875rem !important;
+            transition: all 0.3s ease !important;
+          }
+
+          .phone-input-container .PhoneInputInput:focus {
+            border-color: #f97316 !important;
+            box-shadow: 0 0 0 2px #ffedd5 !important;
+          }
+
+          .phone-input-container.error .PhoneInputCountry,
+          .phone-input-container.error .PhoneInputInput {
+            border-color: #ef4444 !important;
+          }
+        `}</style>
       </div>
     </section>
   );
 }
-
-<style jsx global>{`
-  @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-  }
-  .animate-blob {
-    animation: blob 7s infinite;
-  }
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
-`}</style>

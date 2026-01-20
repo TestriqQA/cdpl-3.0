@@ -1,5 +1,34 @@
 @import "tailwindcss";
 
+::selection {
+  background-color: #ff8d01;
+  color: white;
+}
+
+.nav-link-bold {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link-bold::after {
+  content: attr(data-text);
+  height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: none;
+  font-weight: 600;
+  /* Semibold to match active state */
+}
+
+/* Trigger bold when the parent link/button is hovered to ensure consistent hitbox */
+:is(a, button):hover .nav-link-bold,
+.nav-link-bold:hover {
+  font-weight: 600;
+}
+
 @theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

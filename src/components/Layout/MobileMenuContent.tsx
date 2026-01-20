@@ -47,7 +47,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                 className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/" ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 onClick={closeMenu}
             >
-                Home
+                <span className="nav-link-bold" data-text="Home">Home</span>
             </Link>
 
             {/* Mobile Courses Accordion */}
@@ -58,7 +58,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                     aria-expanded={mobileSections.courses}
                     aria-controls="mobile-courses"
                 >
-                    <span>Courses</span>
+                    <span className="nav-link-bold" data-text="Courses">Courses</span>
                     <ChevronDown
                         className={`h-4 w-4 transition-transform duration-200 ${mobileSections.courses ? "rotate-180" : ""}`}
                     />
@@ -93,7 +93,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                                                         className={`block px-4 py-2 text-sm rounded-lg transition-colors active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === href ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                                                         onClick={closeMenu}
                                                     >
-                                                        &bull; {course.name}
+                                                        &bull; <span className="nav-link-bold" data-text={course.name}>{course.name}</span>
                                                     </Link>
                                                 ) : (
                                                     <div
@@ -114,7 +114,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                             className={`block px-4 py-2 text-sm font-medium active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/courses" ? "text-brand" : "text-brand hover:text-brand"}`}
                             onClick={closeMenu}
                         >
-                            View All Courses &rarr;
+                            <span className="nav-link-bold" data-text="View All Courses &rarr;">View All Courses &rarr;</span>
                         </Link>
                     </div>
                 )}
@@ -126,7 +126,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                 className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/services") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 onClick={closeMenu}
             >
-                Services
+                <span className="nav-link-bold" data-text="Services">Services</span>
             </Link>
 
             {/* Mobile Jobs Accordion */}
@@ -137,7 +137,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                     aria-expanded={mobileSections.jobs}
                     aria-controls="mobile-jobs"
                 >
-                    <span>Jobs</span>
+                    <span className="nav-link-bold" data-text="Jobs">Jobs</span>
                     <ChevronDown
                         className={`h-4 w-4 transition-transform duration-200 ${mobileSections.jobs ? "rotate-180" : ""}`}
                     />
@@ -149,28 +149,28 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                             className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/live-jobs" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                             onClick={closeMenu}
                         >
-                            &bull; Live Jobs
+                            &bull; <span className="nav-link-bold" data-text="Live Jobs">Live Jobs</span>
                         </Link>
                         <Link
                             href="/jobs/placements"
                             className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/placements" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                             onClick={closeMenu}
                         >
-                            &bull; Placements
+                            &bull; <span className="nav-link-bold" data-text="Placements">Placements</span>
                         </Link>
                         <Link
                             href="/jobs/careers"
                             className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/careers" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                             onClick={closeMenu}
                         >
-                            &bull; Careers
+                            &bull; <span className="nav-link-bold" data-text="Careers">Careers</span>
                         </Link>
                         <Link
                             href="/jobs/job-openings"
                             className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/job-openings" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                             onClick={closeMenu}
                         >
-                            &bull; Job Openings
+                            &bull; <span className="nav-link-bold" data-text="Job Openings">Job Openings</span>
                         </Link>
                     </div>
                 )}
@@ -184,7 +184,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                     aria-expanded={mobileSections.about}
                     aria-controls="mobile-about"
                 >
-                    <span>About</span>
+                    <span className="nav-link-bold" data-text="About">About</span>
                     <ChevronDown
                         className={`h-4 w-4 transition-transform duration-200 ${mobileSections.about ? "rotate-180" : ""}`}
                     />
@@ -196,14 +196,14 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                             className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/about-us" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                             onClick={closeMenu}
                         >
-                            &bull; About CDPL
+                            &bull; <span className="nav-link-bold" data-text="About CDPL">About CDPL</span>
                         </Link>
                         <Link
                             href="/our-team"
                             className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/our-team" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                             onClick={closeMenu}
                         >
-                            &bull; Our Team
+                            &bull; <span className="nav-link-bold" data-text="Our Team">Our Team</span>
                         </Link>
                     </div>
                 )}
@@ -214,28 +214,28 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                 className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/events") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 onClick={closeMenu}
             >
-                Event
+                <span className="nav-link-bold" data-text="Event">Event</span>
             </Link>
             <Link
                 href="/mentors"
                 className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/mentors") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 onClick={closeMenu}
             >
-                Mentors
+                <span className="nav-link-bold" data-text="Mentors">Mentors</span>
             </Link>
             <Link
                 href="/blog"
                 className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/blog") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 onClick={closeMenu}
             >
-                Blog
+                <span className="nav-link-bold" data-text="Blog">Blog</span>
             </Link>
             <Link
                 href="/contact-us"
                 className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/contact-us") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 onClick={closeMenu}
             >
-                Contact
+                <span className="nav-link-bold" data-text="Contact">Contact</span>
             </Link>
             <button
                 onClick={() => {

@@ -11,6 +11,8 @@ const EnquireModal = dynamic(() => import("./EnquireModal"), { ssr: false });
 const MegaMenuContent = dynamic(() => import("./MegaMenuContent"), { ssr: false });
 const MobileMenuContent = dynamic(() => import("./MobileMenuContent"), { ssr: false });
 
+// Dummy comment to force build refresh
+
 /* ----------------------- Header ----------------------- */
 const Header = () => {
   const pathname = usePathname();
@@ -173,7 +175,9 @@ const Header = () => {
           </div>
 
           <nav className="hidden lg:flex items-center justify-start">
-            <Link href="/" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname === "/" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>Home</Link>
+            <Link href="/" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname === "/" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+              <span className="nav-link-bold" data-text="Home">Home</span>
+            </Link>
 
             {/* Mega Menu Trigger */}
             <div className="">
@@ -181,13 +185,11 @@ const Header = () => {
                 ref={coursesButtonRef}
                 type="button"
                 className={`transition-colors flex items-center text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${isCoursesMenuOpen ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
-                aria-expanded={isMegaMenuOpen}
-                aria-controls="mega-menu"
                 onMouseEnter={openMega}
                 onMouseLeave={() => scheduleClose()}
                 onClick={toggleMega}
               >
-                Courses
+                <span className="nav-link-bold" data-text="Courses">Courses</span>
                 <ChevronDown className="ml-1 h-4 w-4" />
               </button>
 
@@ -217,13 +219,16 @@ const Header = () => {
               )}
             </div>
 
-            <Link href="/services" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/services") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>Services</Link>
+            <Link href="/services" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/services") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+              <span className="nav-link-bold" data-text="Services">Services</span>
+            </Link>
 
             <Link href="/events" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/events") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
-              Event
+              <span className="nav-link-bold" data-text="Event">Event</span>
             </Link>
+
             <Link href="/mentors" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/mentors") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
-              Mentors
+              <span className="nav-link-bold" data-text="Mentors">Mentors</span>
             </Link>
 
             {/* Jobs Dropdown (Desktop) */}
@@ -246,7 +251,7 @@ const Header = () => {
                 aria-expanded={isJobsOpen}
                 aria-controls="jobs-menu"
               >
-                Jobs
+                <span className="nav-link-bold" data-text="Jobs">Jobs</span>
                 <ChevronDown className="ml-1 h-4 w-4" />
               </button>
 
@@ -265,28 +270,28 @@ const Header = () => {
                       role="menuitem"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-brand-50 focus:text-brand outline-none"
                     >
-                      Live Jobs
+                      <span className="nav-link-bold" data-text="Live Jobs">Live Jobs</span>
                     </Link>
                     <Link
                       href="/jobs/placements"
                       role="menuitem"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
                     >
-                      Placements
+                      <span className="nav-link-bold" data-text="Placements">Placements</span>
                     </Link>
                     <Link
                       href="/jobs/careers"
                       role="menuitem"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
                     >
-                      Careers
+                      <span className="nav-link-bold" data-text="Careers">Careers</span>
                     </Link>
                     <Link
                       href="/jobs/job-openings"
                       role="menuitem"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
                     >
-                      Job Openings
+                      <span className="nav-link-bold" data-text="Job Openings">Job Openings</span>
                     </Link>
                   </div>
                 </div>
@@ -313,7 +318,7 @@ const Header = () => {
                 aria-expanded={isAboutOpen}
                 aria-controls="about-menu"
               >
-                About
+                <span className="nav-link-bold" data-text="About">About</span>
                 <ChevronDown className="ml-1 h-4 w-4" />
               </button>
 
@@ -331,14 +336,14 @@ const Header = () => {
                       role="menuitem"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
                     >
-                      About CDPL
+                      <span className="nav-link-bold" data-text="About CDPL">About CDPL</span>
                     </Link>
                     <Link
                       href="/our-team"
                       role="menuitem"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
                     >
-                      Our Team
+                      <span className="nav-link-bold" data-text="Our Team">Our Team</span>
                     </Link>
                   </div>
                 </div>
@@ -346,10 +351,10 @@ const Header = () => {
             </div>
 
             <Link href="/blog" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 ${pathname.startsWith("/blog") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
-              Blog
+              <span className="nav-link-bold" data-text="Blog">Blog</span>
             </Link>
             <Link href="/contact-us" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 ${pathname.startsWith("/contact-us") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
-              Contact
+              <span className="nav-link-bold" data-text="Contact">Contact</span>
             </Link>
           </nav>
 
@@ -379,16 +384,20 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div ref={mobileMenuRef} className="lg:hidden bg-white border-t border-gray-100 max-h-[calc(100vh-73px)] overflow-y-auto shadow-xl">
-          <MobileMenuContent closeMenu={toggleMenu} openEnquire={() => { setIsEnquireModalOpen(true); }} />
-        </div>
-      )}
+      {
+        isMenuOpen && (
+          <div ref={mobileMenuRef} className="lg:hidden bg-white border-t border-gray-100 max-h-[calc(100vh-73px)] overflow-y-auto shadow-xl">
+            <MobileMenuContent closeMenu={toggleMenu} openEnquire={() => { setIsEnquireModalOpen(true); }} />
+          </div>
+        )
+      }
 
       {/* Lazy load EnquireModal to save initial TBT (libphonenumber-js) */}
-      {(isEnquireModalOpen || hasEnquireModalLoaded) && (
-        <EnquireModal isOpen={isEnquireModalOpen} onClose={() => setIsEnquireModalOpen(false)} />
-      )}
+      {
+        (isEnquireModalOpen || hasEnquireModalLoaded) && (
+          <EnquireModal isOpen={isEnquireModalOpen} onClose={() => setIsEnquireModalOpen(false)} />
+        )
+      }
     </header >
   );
 };
