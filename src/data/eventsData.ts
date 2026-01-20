@@ -1,5 +1,4 @@
 
-import React from "react";
 
 export const CDPL_ORG = {
   name: "Cinute Digital Pvt. Ltd. (CDPL)",

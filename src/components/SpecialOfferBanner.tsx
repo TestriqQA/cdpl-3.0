@@ -1,8 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function SpecialOfferBanner() {
     const pathname = usePathname();
