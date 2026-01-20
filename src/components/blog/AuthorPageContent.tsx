@@ -21,7 +21,7 @@ export const AuthorPageContent: React.FC<AuthorPageContentProps> = ({ author, po
         <div className="min-h-screen bg-[#F8FAFC] overflow-x-hidden relative selection:bg-indigo-100 selection:text-indigo-900">
             {/* Background Pattern */}
             <div className="fixed inset-0 pointer-events-none opacity-40 z-0">
-                <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-[0.03]" />
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 via-blue-50/50 to-indigo-50/50" />
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-100/40 to-transparent rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
                 <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-100/40 to-transparent rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
             </div>
