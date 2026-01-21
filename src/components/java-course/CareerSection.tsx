@@ -251,7 +251,7 @@ export default function CareerSection() {
       />
 
       {/* Accessible helpers for crawlers & screen readers */}
-      <h1 className="sr-only">{title}</h1>
+      <p className="sr-only">{title}</p>
       <p className="sr-only">{subtitle}</p>
     </section>
   );

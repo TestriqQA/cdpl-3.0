@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function CertificationSampleSection() {
     return (
-        <section className="relative overflow-hidden bg-slate-50 py-12 sm:py-16" style={{ minHeight: "700px" }}>
+        <section className="relative overflow-hidden bg-slate-50 py-10 sm:py-16">
             {/* Background Decor */}
             <div className="absolute inset-0 opacity-30">
                 <div className="absolute -left-20 top-0 h-72 w-72 rounded-full bg-[#3CB371]/20 blur-3xl mix-blend-multiply filter" />

@@ -306,9 +306,9 @@ export default function HeroSection(): React.JSX.Element {
                         <span>India's #1 Business Intelligence Training Institute</span>
                     </div>
 
-                    <h1 className="text-3xl font-extrabold text-slate-900 leading-tight">
+                    <h2 className="text-3xl font-extrabold text-slate-900 leading-tight">
                         Master <span className="text-orange-700">Business Intelligence</span> & Data Analytics
-                    </h1>
+                    </h2>
 
                     <p className="mt-3 text-base text-slate-600">
                         Become a certified Business Intelligence professional. Learn SQL, Power BI, Tableau, data modeling, dashboard design, and storytelling with data — build a portfolio of real BI projects with placement-ready skills.

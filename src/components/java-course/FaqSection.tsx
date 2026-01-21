@@ -167,7 +167,7 @@ export default function FaqSection() {
       />
 
       {/* Accessible helpers */}
-      <h1 className="sr-only">{title}</h1>
+      <p className="sr-only">{title}</p>
       <p className="sr-only">{subtitle}</p>
     </section>
   );

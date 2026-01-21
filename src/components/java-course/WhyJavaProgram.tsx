@@ -185,7 +185,7 @@ export default function WhyJavaProgram() {
       </div>
 
       {/* Assist crawlers that read visible content */}
-      <h1 className="sr-only">{title}</h1>
+      <p className="sr-only">{title}</p>
     </section>
   );
 }

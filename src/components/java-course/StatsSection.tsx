@@ -260,7 +260,7 @@ export default function StatsSection() {
         }}
       />
       {/* Meta-like enhancement for crawlers that read visible content */}
-      <h1 className="sr-only">{title}</h1>
+      <p className="sr-only">{title}</p>
     </section>
   );
 }

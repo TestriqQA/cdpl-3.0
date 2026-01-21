@@ -82,9 +82,9 @@ const BlogHero = () => {
 
               {/* Title - Optimized for readability */}
               <Link href={`/blog/${featuredPost.slug}`}>
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight hover:text-indigo-600 transition-colors duration-300">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight hover:text-indigo-600 transition-colors duration-300">
                   {featuredPost.title}
-                </h1>
+                </h2>
               </Link>
 
               {/* Description - Optimal reading color */}

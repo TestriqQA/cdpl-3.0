@@ -310,11 +310,11 @@ export default function HeroSection(): React.JSX.Element {
                         <span>India's #1 Artificial Intelligence Training Institute</span>
                     </div>
 
-                    <h1
+                    <h2
                         className="text-3xl font-extrabold text-slate-900 leading-tight"
                     >
                         Master <span className="text-orange-700">Artificial Intelligence</span> & Machine Learning
-                    </h1>
+                    </h2>
 
                     {/* Form below heading on mobile */}
                     <div className="my-8">

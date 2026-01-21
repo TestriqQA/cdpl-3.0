@@ -120,9 +120,9 @@ export default function LocationsWeServePage() {
         <meta itemProp="description" content="Explore CDPL training centers across India and the UAE in 50+ cities." />
 
         {/* SEO-friendly H1 - Hidden visually but available for SEO */}
-        <h1 className="sr-only">
+        <p className="sr-only">
           CDPL Locations We Serve - Software Testing & Programming Courses in India & UAE
-        </h1>
+        </p>
 
         {/* Page content */}
         <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">

@@ -582,12 +582,12 @@ const HomeHeroSection: React.FC = () => {
 
             {/* 2. Headline */}
             {/* 2. Headline - ANIMATION REMOVED FOR LCP */}
-            <h1
+            <h2
               id="home-heading-mobile"
               className="mt-2 py-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
             >
               Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span>
-            </h1>
+            </h2>
 
             {/* 3. Description */}
             {/* 3. Description - ANIMATION REMOVED FOR LCP */}

@@ -49,10 +49,5 @@ export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "url": SITE_CONFIG.url,
-  "name": SITE_CONFIG.name,
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": `${SITE_CONFIG.url}/search?q={search_term_string}`, // Assuming a search page exists
-    "query-input": "required name=search_term_string"
-  }
+  "name": SITE_CONFIG.name
 };

@@ -25,7 +25,7 @@ const features = [
 
 export default function CertificationFeaturesSection() {
     return (
-        <section className="bg-slate-50/50 py-12 sm:py-16">
+        <section className="bg-slate-50/50 py-10 sm:py-10">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
                 {/* Header */}

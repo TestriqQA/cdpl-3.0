@@ -79,6 +79,17 @@ export default function CertificateValidationPage() {
       <meta itemProp="applicationCategory" content="BusinessApplication" />
 
       <CertificationBreadcrumb />
+
+      {/* Page Title */}
+      <div className="mx-auto max-w-7xl px-4 pt-1 pb-1 sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <span className="text-indigo-700">Certificate</span> <span className="text-orange-600">Validation</span>
+        </h1>
+        <p className="mt-2 max-w-2xl text-lg text-slate-600">
+          Verify the authenticity of CDPL, AAA, and ACTD certifications instantly.
+        </p>
+      </div>
+
       <CertificationValidatorSection />
       <CertificationSampleSection />
       <CertificationFeaturesSection />

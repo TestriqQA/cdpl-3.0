@@ -3,7 +3,7 @@ import { Home } from "lucide-react";
 
 export default function CertificationBreadcrumb() {
     return (
-        <section className="relative isolate bg-white text-slate-900 pt-8 pb-2" style={{ minHeight: "64px" }}>
+        <section className="relative isolate bg-white text-slate-900 pt-4 pb-1" style={{ minHeight: "64px" }}>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <nav aria-label="Breadcrumb">
                     <ol className="flex items-center gap-2 text-sm text-slate-500">

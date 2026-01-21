@@ -241,9 +241,10 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                 </header>
 
                 {/* SEO-friendly H1 - Hidden visually but available for SEO */}
-                <h1 className="sr-only">
+                <p className="sr-only">
                     {category.name} Articles and Tutorials - Expert Insights and Best Practices from CDPL
-                </h1>
+                </p>
+
 
                 {/* Main Content Area */}
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

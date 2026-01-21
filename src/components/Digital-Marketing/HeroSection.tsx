@@ -302,9 +302,9 @@ export default function HeroSection(): React.JSX.Element {
                         <span>India's #1 Digital Marketing Training Institute</span>
                     </div>
 
-                    <h1 className="text-3xl font-extrabold text-slate-900 leading-tight">
+                    <h2 className="text-3xl font-extrabold text-slate-900 leading-tight">
                         Master <span className="text-orange-700">Digital Marketing</span> & Analytics
-                    </h1>
+                    </h2>
 
                     <p className="mt-3 text-base text-slate-600">
                         Become a certified Digital Marketing expert. Learn SEO, SEM, Social Media, Content Marketing, and Analytics with live projects and 100% placement support.

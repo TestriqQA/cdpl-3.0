@@ -93,6 +93,21 @@ const nextConfig: NextConfig = {
         destination: '/events',
         permanent: true,
       },
+      {
+        source: '/authors/:slug',
+        destination: '/blog/author/:slug',
+        permanent: true,
+      },
+      {
+        source: '/blog/category/ai-ml',
+        destination: '/blog/category/artificial-intelligence',
+        permanent: true,
+      },
+      {
+        source: '/blog/how-prompt-engineering-can-automate-test-case-generation',
+        destination: '/blog/category/software-testing',
+        permanent: true,
+      },
     ];
   },
 };

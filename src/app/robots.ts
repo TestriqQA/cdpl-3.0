@@ -30,7 +30,7 @@ export default function robots(): MetadataRoute.Robots {
           'Baiduspider',  // Baidu
           'YandexBot',    // Yandex
         ],
-        allow: ['/', '/_next/static/'],
+        allow: ['/', '/_next/static/', '/_next/image*'],
         disallow: [
           '/api/',
           '/admin/',
@@ -59,7 +59,7 @@ export default function robots(): MetadataRoute.Robots {
           'PerplexityBot',    // Perplexity AI
           'YouBot',           // You.com AI
         ],
-        allow: ['/', '/_next/static/'],
+        allow: ['/', '/_next/static/', '/_next/image*'],
         disallow: [
           '/api/',
           '/admin/',
@@ -108,7 +108,7 @@ export default function robots(): MetadataRoute.Robots {
       // ========================================
       {
         userAgent: '*',
-        allow: ['/', '/_next/static/'],
+        allow: ['/', '/_next/static/', '/_next/image*'],
         disallow: [
           '/api/',
           '/admin/',

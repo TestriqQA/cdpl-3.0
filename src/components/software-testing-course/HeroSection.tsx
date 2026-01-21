@@ -297,9 +297,9 @@ export default function HeroSection(): React.JSX.Element {
                         <span>India's #1 Software Testing Training Institute</span>
                     </div>
 
-                    <h1 className="text-3xl font-extrabold text-slate-900 leading-tight">
+                    <h2 className="text-3xl font-extrabold text-slate-900 leading-tight">
                         Master <span className="text-[#ea580c]">Software Testing</span> & Quality Assurance
-                    </h1>
+                    </h2>
 
                     <p className="mt-3 text-base text-slate-600">
                         Become a certified Software Tester. Learn Manual Testing, Automation (Selenium & Playwright), API testing, Performance testing and build a portfolio of real testing projects with placement-ready skills.
