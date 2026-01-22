@@ -306,7 +306,7 @@ export const pastEvents: PastEvent[] = [
     venueTitle: "St. John Institute of Management and Research",
     venueAddress: "Mumbai, Maharashtra",
     venueDescription: "St. John Institute of Management and Research (SJIMR), established in 2007, is located in Palghar, Maharashtra. Affiliated with the University of Mumbai, it offers undergraduate and postgraduate programs, including BE and MMS. The college provides modern infrastructure, skilled faculty, and focuses on practical skills and industry readiness. SJIMR emphasizes holistic development and has a strong placement record, making it a great choice for students aiming to excel in their careers.",
-    venueImageUrl: "/events/institutional-mou-signing-between-st-john-college-of-engineering-and-management-and-testriq-qa-lab/st-john-college.png"
+    venueImageUrl: "/events/institutional-mou-signing-between-st-john-college-of-engineering-and-management-and-testriq-qa-lab/ST-John-College.png"
   },
   {
     id: "mou-signing-between-vidyavardhini-testriq",
@@ -2454,7 +2454,7 @@ export const pastEvents: PastEvent[] = [
     ],
     keyTakeaways: [],
     highlights: [],
-    heroImageUrl: "/events/cmpl-expo-at-bkc-for-collaborations/CMPL-EXPO-thumb.jfif",
+    heroImageUrl: "/events/cmpl-expo-at-bkc-for-collaborations/CMPL-EXPO-thumb.jpg",
     success: "Our experience at the Cmpl Expo at BKC was both inspiring and productive. Testriq QA Lab is excited about the new possibilities that have emerged from this event, and we are eager to turn these opportunities into successful collaborations that drive innovation and success for all parties involved.",
     featured: true,  // Assumed prominent as a partnership milestone
     organizationImage: "/cdpl-logo.png",
@@ -2510,7 +2510,7 @@ export const pastEvents: PastEvent[] = [
     ],
     keyTakeaways: [],
     highlights: [],
-    heroImageUrl: "/events/job-fair-at-dj-sanghavi-college-of-engineering/job-fair-dj-sanghavi.jfif",
+    heroImageUrl: "/events/job-fair-at-dj-sanghavi-college-of-engineering/job-fair-dj-sanghavi.jpg",
     success: "The job fair was an exhilarating experience, and we are thrilled with the connections we made. Testriq QA Lab looks forward to welcoming fresh talent into our team and helping them embark on successful careers in the dynamic field of software testing and quality assurance.",
     featured: true,  // Assumed prominent as a partnership milestone
     organizationImage: "/cdpl-logo.png",

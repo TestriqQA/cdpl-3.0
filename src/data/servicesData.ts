@@ -1,10 +1,10 @@
-import { 
-  Presentation, 
-  Wrench, 
-  Briefcase, 
-  GraduationCap, 
-  Users, 
-  BookOpen, 
+import {
+  Presentation,
+  Wrench,
+  Briefcase,
+  GraduationCap,
+  Users,
+  BookOpen,
   Factory,
   Settings,
   Rocket,

@@ -135,7 +135,7 @@ export const AUTHORS: Record<string, Author> = {
     id: "cezzane-khan",
     name: "Cezzane Khan",
     bio: "Cezzane Khan is a dedicated and innovative Data Science Trainer committed to empowering individuals and organizations.",
-    avatar: "/blog/authors/cezzane-khan.png",
+    avatar: "/blog/authors/cezzane-kha.png",
     role: "Data Science Trainer",
     social: {
       linkedin: "https://www.linkedin.com/in/khan-cezzane"
