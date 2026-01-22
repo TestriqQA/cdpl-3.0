@@ -54,7 +54,7 @@ export default function CookiesPolicyPage() {
                 Cookies means small files that are placed on Your computer, mobile device or any other device by a website, containing details of your browsing history on that website among its many uses.
               </li>
               <li>
-                Website refers to Cinute Digital Private Limited, accessible from <a className="underline text-blue-600 hover:text-blue-800" href="https://cinutedigital.com" target="_blank" rel="noopener noreferrer">https://cinutedigital.com</a>
+                Website refers to Cinute Digital Private Limited, accessible from <a className="underline text-blue-600 hover:text-blue-800" href="https://cinutedigital.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Cinute Digital Website" title="Visit Cinute Digital Website">Cinute Digital Private Limited (CDPL)</a>
               </li>
               <li>
                 You means the individual accessing or using the Website, or a company, or any legal entity on behalf of which such individual is accessing or using the Website, as applicable.
@@ -109,16 +109,16 @@ export default function CookiesPolicyPage() {
               If You’d like to delete Cookies or instruct your web browser to delete or refuse Cookies, please visit the help pages of your web browser.
             </p>
             <p className={P}>
-              For the Chrome web browser, please visit this page from Google: <a className="underline text-blue-600 hover:text-blue-800" href="https://support.google.com/" target="_blank" rel="noopener noreferrer">Chrome Browser Settings</a>
+              For the Chrome web browser, please visit this page from Google: <a className="underline text-blue-600 hover:text-blue-800" href="https://support.google.com/" target="_blank" rel="noopener noreferrer" aria-label="Chrome Browser Settings" title="Chrome Browser Settings">Chrome Browser Settings</a>
             </p>
             <p className={P}>
-              For the Internet Explorer web browser, please visit this page from Microsoft: <a className="underline text-blue-600 hover:text-blue-800" href="http://support.microsoft.com/kb/278835" target="_blank" rel="noopener noreferrer">Disable Cookies in Internet Explorer</a>
+              For the Internet Explorer web browser, please visit this page from Microsoft: <a className="underline text-blue-600 hover:text-blue-800" href="https://support.microsoft.com/en-us/windows/delete-and-manage-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener noreferrer" aria-label="Disable Cookies in Internet Explorer" title="Disable Cookies in Internet Explorer">Disable Cookies in Internet Explorer</a>
             </p>
             <p className={P}>
-              For the Firefox web browser, please visit this page from Mozilla: <a className="underline text-blue-600 hover:text-blue-800" href="https://support.mozilla.org/" target="_blank" rel="noopener noreferrer">Firefox Cookie Settings</a>
+              For the Firefox web browser, please visit this page from Mozilla: <a className="underline text-blue-600 hover:text-blue-800" href="https://support.mozilla.org/" target="_blank" rel="noopener noreferrer" aria-label="Firefox Cookie Settings" title="Firefox Cookie Settings">Firefox Cookie Settings</a>
             </p>
             <p className={P}>
-              For the Safari web browser, please visit this page from Apple: <a className="underline text-blue-600 hover:text-blue-800" href="https://support.apple.com/guide/safari/" target="_blank" rel="noopener noreferrer">Safari Privacy Controls</a>
+              For the Safari web browser, please visit this page from Apple: <a className="underline text-blue-600 hover:text-blue-800" href="https://support.apple.com/guide/safari/" target="_blank" rel="noopener noreferrer" aria-label="Safari Privacy Controls" title="Safari Privacy Controls">Safari Privacy Controls</a>
             </p>
             <p className={P}>
               For any other web browser, please visit your web browser’s official web pages.
@@ -128,7 +128,7 @@ export default function CookiesPolicyPage() {
           {/* More Information about Cookies */}
           <section className="space-y-4">
             <h2 className={H2}>More Information about Cookies</h2>
-            <p className={P}>You can learn more about cookies: <a href="#" className="underline text-blue-600 hover:text-blue-800">What Are Cookies?</a>.</p>
+            <p className={P}>You can learn more about cookies: <a href="#" className="underline text-blue-600 hover:text-blue-800" aria-label="What Are Cookies?" title="What Are Cookies?">What Are Cookies?</a>.</p>
           </section>
         </div>
       </main>

@@ -86,8 +86,8 @@ export default function PrivacyPolicyPage() {
                 <li>
                   <strong>Facebook Fan Page</strong> is a public profile named Cinute Digital Pvt. Ltd. specifically created by the Company on the Facebook
                   social network, accessible from{" "}
-                  <a className="underline" href="https://www.facebook.com/cinutedigital" target="_blank" rel="noopener noreferrer">
-                    https://www.facebook.com/cinutedigital
+                  <a className="underline text-blue-600 hover:text-blue-800" href="https://www.facebook.com/cinutedigital" target="_blank" rel="noopener noreferrer" aria-label="Visit Cinute Digital Facebook Page" title="Visit Cinute Digital Facebook Page">
+                    Cinute Digital Facebook Page
                   </a>.
                 </li>
                 <li><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</li>
@@ -121,8 +121,8 @@ export default function PrivacyPolicyPage() {
                 </li>
                 <li>
                   <strong>Website</strong> refers to Cinute Digital Pvt. Ltd. accessible from{" "}
-                  <a className="underline" href="https://cinutedigital.com/" target="_blank" rel="noopener noreferrer">
-                    https://cinutedigital.com/
+                  <a className="underline text-blue-600 hover:text-blue-800" href="https://cinutedigital.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Cinute Digital Website" title="Visit Cinute Digital Website">
+                    Cinute Digital Website
                   </a>
                 </li>
                 <li>
@@ -223,12 +223,14 @@ export default function PrivacyPolicyPage() {
                   for Browser Cookies. For more information on how You can delete Flash Cookies, please read “Where can I change the settings for disabling,
                   or deleting local shared objects?” available at{" "}
                   <a
-                    className="underline"
+                    className="underline text-blue-600 hover:text-blue-800"
                     href="https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Learn how to disable Flash cookies"
+                    title="Learn how to disable Flash cookies"
                   >
-                    https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html
+                    Adobe Flash Player Help page
                   </a>
                 </li>
                 <li>
@@ -425,8 +427,8 @@ export default function PrivacyPolicyPage() {
               </p>
               <p className={P}>
                 For more information on the privacy practices of Google, please visit the Google Privacy &amp; Terms web page:{" "}
-                <a className="underline" href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-                  https://policies.google.com/privacy
+                <a className="underline text-blue-600 hover:text-blue-800" href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" aria-label="Read Google Privacy Policy" title="Read Google Privacy Policy">
+                  Google Privacy & Terms
                 </a>.
               </p>
             </div>
@@ -445,24 +447,24 @@ export default function PrivacyPolicyPage() {
                 <strong>Mailchimp</strong><br />
                 Mailchimp is an email marketing sending service provided by The Rocket Science Group LLC.<br />
                 For more information on the privacy practices of Mailchimp, please visit their Privacy policy:{" "}
-                <a className="underline" href="https://mailchimp.com/legal/privacy/" target="_blank" rel="noopener noreferrer">
-                  https://mailchimp.com/legal/privacy/
+                <a className="underline text-blue-600 hover:text-blue-800" href="https://mailchimp.com/legal/privacy/" target="_blank" rel="noopener noreferrer" aria-label="Read Mailchimp Privacy Policy" title="Read Mailchimp Privacy Policy">
+                  Mailchimp Privacy Policy
                 </a>
               </li>
               <li>
                 <strong>AWeber</strong><br />
                 AWeber is an email marketing sending service provided by AWeber Communications.<br />
                 For more information on the privacy practices of AWeber, please visit their Privacy policy:{" "}
-                <a className="underline" href="https://www.aweber.com/privacy.htm" target="_blank" rel="noopener noreferrer">
-                  https://www.aweber.com/privacy.htm
+                <a className="underline text-blue-600 hover:text-blue-800" href="https://www.aweber.com/privacy.htm" target="_blank" rel="noopener noreferrer" aria-label="Read AWeber Privacy Policy" title="Read AWeber Privacy Policy">
+                  AWeber Privacy Policy
                 </a>
               </li>
               <li>
                 <strong>GetResponse</strong><br />
                 GetResponse is an email marketing sending service provided by GetResponse.<br />
                 For more information on the privacy practices of GetResponse, please visit their Privacy policy:{" "}
-                <a className="underline" href="https://www.getresponse.com/legal/privacy" target="_blank" rel="noopener noreferrer">
-                  https://www.getresponse.com/legal/privacy
+                <a className="underline text-blue-600 hover:text-blue-800" href="https://www.getresponse.com/legal/privacy" target="_blank" rel="noopener noreferrer" aria-label="Read GetResponse Privacy Policy" title="Read GetResponse Privacy Policy">
+                  GetResponse Privacy Policy
                 </a>.
               </li>
             </ul>
@@ -540,22 +542,22 @@ export default function PrivacyPolicyPage() {
             <h3 className={H3}>Data Controller for the Facebook Fan Page</h3>
             <p className={P}>
               The Company is the Data Controller of Your Personal Data collected while using the Service. As operator of the Facebook Fan Page{" "}
-              <a className="underline" href="https://www.facebook.com/cinutedigital" target="_blank" rel="noopener noreferrer">
-                https://www.facebook.com/cinutedigital
+              <a className="underline text-blue-600 hover:text-blue-800" href="https://www.facebook.com/cinutedigital" target="_blank" rel="noopener noreferrer" aria-label="Visit Cinute Digital Facebook Page" title="Visit Cinute Digital Facebook Page">
+                Cinute Digital Facebook Page
               </a>, the Company and the operator of the social network Facebook are Joint Controllers.
             </p>
             <p className={P}>
               The Company has entered into agreements with Facebook that define the terms for use of the Facebook Fan Page, among other things. These terms are
               mostly based on the Facebook Terms of Service:
               {" "}
-              <a className="underline" href="https://www.facebook.com/terms.php" target="_blank" rel="noopener noreferrer">
-                https://www.facebook.com/terms.php
+              <a className="underline text-blue-600 hover:text-blue-800" href="https://www.facebook.com/terms.php" target="_blank" rel="noopener noreferrer" aria-label="Read Facebook Terms of Service" title="Read Facebook Terms of Service">
+                Facebook Terms of Service
               </a>
             </p>
             <p className={P}>
               Visit the Facebook Privacy Policy{" "}
-              <a className="underline" href="https://www.facebook.com/policy.php" target="_blank" rel="noopener noreferrer">
-                https://www.facebook.com/policy.php
+              <a className="underline text-blue-600 hover:text-blue-800" href="https://www.facebook.com/policy.php" target="_blank" rel="noopener noreferrer" aria-label="Read Facebook Privacy Policy" title="Read Facebook Privacy Policy">
+                Facebook Data Policy
               </a>{" "}
               for more information about how Facebook manages Personal data or contact Facebook online, or by mail: Facebook, Inc. ATTN, Privacy Operations,
               1601 Willow Road, Menlo Park, CA 94025, United States.
@@ -823,8 +825,8 @@ export default function PrivacyPolicyPage() {
                 <li>By email: contact@cinutedigital.com</li>
                 <li>
                   By visiting this page on our website:{" "}
-                  <a className="underline" href="https://cinutedigital.com/contact-us/" target="_blank" rel="noopener noreferrer">
-                    https://cinutedigital.com/contact-us/
+                  <a className="underline text-blue-600 hover:text-blue-800" href="https://cinutedigital.com/contact-us/" target="_blank" rel="noopener noreferrer" aria-label="Contact Cinute Digital" title="Contact Cinute Digital">
+                    Contact Us
                   </a>
                 </li>
                 <li>By phone number: +91 788-83-83-788</li>
@@ -874,9 +876,9 @@ export default function PrivacyPolicyPage() {
               <h3 className={H3}>Website</h3>
               <p className={P}>You can opt out of receiving ads that are personalized as served by our Service Providers by following our instructions presented on the Service:</p>
               <ul className={UL}>
-                <li><a className="underline" href="http://www.networkadvertising.org/choices/" target="_blank" rel="noopener noreferrer">The NAI’s opt-out platform: http://www.networkadvertising.org/choices/</a></li>
-                <li><a className="underline" href="http://www.youronlinechoices.com/" target="_blank" rel="noopener noreferrer">The EDAA’s opt-out platform: http://www.youronlinechoices.com/</a></li>
-                <li><a className="underline" href="http://optout.aboutads.info/?c=2&lang=EN" target="_blank" rel="noopener noreferrer">The DAA’s opt-out platform: http://optout.aboutads.info/?c=2&lang=EN</a></li>
+                <li><a className="underline text-blue-600 hover:text-blue-800" href="http://www.networkadvertising.org/choices/" target="_blank" rel="noopener noreferrer" aria-label="Visit NAI Opt-out Platform" title="Visit NAI Opt-out Platform">The NAI’s opt-out platform</a></li>
+                <li><a className="underline text-blue-600 hover:text-blue-800" href="http://www.youronlinechoices.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit EDAA Opt-out Platform" title="Visit EDAA Opt-out Platform">The EDAA’s opt-out platform</a></li>
+                <li><a className="underline text-blue-600 hover:text-blue-800" href="http://optout.aboutads.info/?c=2&lang=EN" target="_blank" rel="noopener noreferrer" aria-label="Visit DAA Opt-out Platform" title="Visit DAA Opt-out Platform">The DAA’s opt-out platform</a></li>
               </ul>
               <p className={P}>
                 The opt out will place a cookie on Your computer that is unique to the browser You use to opt out. If you change browsers or delete the cookies
@@ -966,8 +968,8 @@ export default function PrivacyPolicyPage() {
               <li>By email: contact@cinutedigital.com</li>
               <li>
                 By visiting this page on our website:{" "}
-                <a className="underline" href="https://cinutedigital.com/contact-us/" target="_blank" rel="noopener noreferrer">
-                  https://cinutedigital.com/contact-us/
+                <a className="underline text-blue-600 hover:text-blue-800" href="https://cinutedigital.com/contact-us/" target="_blank" rel="noopener noreferrer" aria-label="Contact Cinute Digital" title="Contact Cinute Digital">
+                  Contact Us
                 </a>
               </li>
               <li>By phone number: +91 788-83-83-788</li>

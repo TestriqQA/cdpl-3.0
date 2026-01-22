@@ -13,18 +13,18 @@ export default function CareerSection() {
   const courseName = "Advanced Data Science and Machine Learning Masterclass";
 
   const companies = [
-    { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
-    { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" },
-    { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
-    { name: "IBM", logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" },
-    { name: "Accenture", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" },
-    { name: "Deloitte", logo: "https://upload.wikimedia.org/wikipedia/commons/5/56/Deloitte.svg" },
-    { name: "TCS", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" },
-    { name: "Infosys", logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" },
-    { name: "Wipro", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg" },
-    { name: "Capgemini", logo: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_201x_logo.svg" },
-    { name: "Cognizant", logo: "https://upload.wikimedia.org/wikipedia/commons/4/43/Cognizant_logo_2022.svg" },
-    { name: "HCLTech", logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/HCL_Tech_logo_2022.svg" },
+    { name: "Google", logo: "/images/logos/google.svg" },
+    { name: "Microsoft", logo: "/images/logos/microsoft.svg" },
+    { name: "Amazon", logo: "/images/logos/amazon.svg" },
+    { name: "IBM", logo: "/images/logos/ibm.svg" },
+    { name: "Accenture", logo: "/images/logos/accenture.svg" },
+    { name: "Deloitte", logo: "/images/logos/deloitte.svg" },
+    { name: "TCS", logo: "/images/logos/tcs.svg" },
+    { name: "Infosys", logo: "/images/logos/infosys.svg" },
+    { name: "Wipro", logo: "/images/logos/wipro.svg" },
+    { name: "Capgemini", logo: "/images/logos/capgemini.svg" },
+    { name: "Cognizant", logo: "/images/logos/cognizant.svg" },
+    { name: "HCLTech", logo: "/images/logos/hcltech.svg" },
   ];
 
   const roles = [

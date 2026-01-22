@@ -311,9 +311,9 @@ export default function HeroSection(): React.JSX.Element {
                         <span>India's #1 Data Science Training Institute</span>
                     </div>
 
-                    <h1 className="text-3xl font-extrabold text-slate-900 leading-tight">
+                    <div className="text-3xl font-extrabold text-slate-900 leading-tight">
                         Master <span className="text-orange-700">Data Science</span> & Machine Learning
-                    </h1>
+                    </div>
 
                     <p className="mt-3 text-base text-slate-600">
                         Become a certified Data Scientist. Learn Python, Machine Learning (scikit-learn), Deep Learning, NLP, SQL, data visualization, and model deployment — build a portfolio of real data projects with placement-ready skills.

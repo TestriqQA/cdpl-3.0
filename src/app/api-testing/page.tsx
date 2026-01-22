@@ -85,6 +85,13 @@ import {
 } from "@/lib/schema-generators";
 
 import { API_TESTING_FAQS, API_TESTING_REVIEW_DATA } from "@/data/apiTestingData";
+import { generateMetadata } from "@/lib/metadata-generator";
+
+export const metadata = generateMetadata({
+  title: "API Testing Course with POSTMAN & RestAPIs",
+  description: "Master API testing in 15 hours with live projects, global certification, and placement support.",
+  url: "/api-testing",
+});
 
 export default function Page() {
   const courseSchema = generateCourseSchema({
