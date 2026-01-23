@@ -24,7 +24,7 @@ export default function FaqSection() {
         {/* Section Header – reference layout + SEO-enhanced copy */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Frequently Asked <span className="text-orange-600">Questions</span>
+            Frequently Asked <span className="text-brand">Questions</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Find answers to common questions about our{" "}
@@ -70,7 +70,7 @@ export default function FaqSection() {
                           {faq.question}
                         </h4>
                         <ChevronDown
-                          className={`w-6 h-6 text-orange-600 transition-transform duration-300 flex-shrink-0 ${expandedFAQ === globalIdx ? "rotate-180" : ""
+                          className={`w-6 h-6 text-brand transition-transform duration-300 flex-shrink-0 ${expandedFAQ === globalIdx ? "rotate-180" : ""
                             }`}
                         />
                       </button>
@@ -104,12 +104,12 @@ export default function FaqSection() {
             <em>AI-powered digital marketing course</em> fits your career goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="https://calendar.app.google/tvh9dsXZsX9BujRR8" className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl">
+            <Link href="https://calendar.app.google/tvh9dsXZsX9BujRR8" className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl">
               Schedule a Free Consultation
             </Link>
             <button
               onClick={() => setIsCareerOpen(true)}
-              className="border-2 border-orange-600 text-orange-600 hover:bg-orange-50 font-bold py-3 px-8 rounded-xl transition-all cursor-pointer"
+              className="border-2 border-brand text-brand hover:bg-orange-50 font-bold py-3 px-8 rounded-xl transition-all cursor-pointer"
             >
               Contact Us
             </button>
@@ -121,7 +121,7 @@ export default function FaqSection() {
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
                 href="tel:+917888383788"
-                className="px-4 py-2 bg-white hover:bg-slate-50 border border-orange-300 rounded-lg font-semibold text-orange-600 transition-colors"
+                className="px-4 py-2 bg-white hover:bg-slate-50 border border-orange-300 rounded-lg font-semibold text-brand transition-colors"
               >
                 📞 Call Us
               </Link>

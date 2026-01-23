@@ -246,7 +246,7 @@ export default function StatsSection() {
                 <div className="mt-16 text-center">
                     <button
                         onClick={() => setIsCareerSessionOpen(true)}
-                        className="bg-[#d04502] hover:bg-[#c2410c] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Book a Free Career Session
                     </button>

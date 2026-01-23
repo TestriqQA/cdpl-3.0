@@ -34,7 +34,7 @@ const roleAccents = [
   'bg-violet-50 border-violet-200 text-violet-900',
   'bg-rose-50 border-rose-200 text-rose-900',
   'bg-indigo-50 border-indigo-200 text-indigo-900',
-  'bg-orange-50 border-orange-200 text-orange-900',
+  'bg-orange-50 border-orange-200 text-brand',
   'bg-teal-50 border-teal-200 text-teal-900',
 ];
 

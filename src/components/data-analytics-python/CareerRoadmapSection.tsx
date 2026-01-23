@@ -97,7 +97,7 @@ export default function CareerRoadmapSection() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Your <span className="text-[#d04502]">Career Roadmap</span>
+                        Your <span className="text-brand">Career Roadmap</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
                         Follow a structured path to career advancement in data analytics. From junior analyst to industry leader, we&apos;ll guide you every step of the way.
@@ -121,10 +121,10 @@ export default function CareerRoadmapSection() {
                                             className={`bg-gradient-to-br ${phase.color} rounded-xl p-6 border-2 border-slate-200 w-full mb-8 hover:shadow-lg transition-shadow`}
                                         >
                                             {/* Icon */}
-                                            <div className="text-[#d04502] mb-3">{phase.icon}</div>
+                                            <div className="text-brand mb-3">{phase.icon}</div>
 
                                             {/* Phase */}
-                                            <p className="text-xs font-bold text-[#d04502] mb-2">
+                                            <p className="text-xs font-bold text-brand mb-2">
                                                 {phase.phase}
                                             </p>
 
@@ -139,12 +139,12 @@ export default function CareerRoadmapSection() {
                                             {/* Salary */}
                                             <div className="bg-white/60 rounded-lg p-2 mb-3 text-center">
                                                 <p className="text-xs text-slate-600">Expected Salary</p>
-                                                <p className="font-bold text-[#d04502]">{phase.salary}</p>
+                                                <p className="font-bold text-brand">{phase.salary}</p>
                                             </div>
                                         </div>
 
                                         {/* Connector Circle */}
-                                        <div className="w-6 h-6 rounded-full bg-white border-4 border-[#d04502] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                                        <div className="w-6 h-6 rounded-full bg-white border-4 border-[#ff8c00] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
                                     </div>
                                 ))}
                             </div>
@@ -161,14 +161,14 @@ export default function CareerRoadmapSection() {
                                 )}
 
                                 {/* Timeline Dot */}
-                                <div className="absolute left-0 top-2 w-5 h-5 rounded-full bg-[#d04502] border-4 border-white"></div>
+                                <div className="absolute left-0 top-2 w-5 h-5 rounded-full bg-brand border-4 border-white"></div>
 
                                 {/* Card */}
                                 <div
                                     className={`bg-gradient-to-br ${phase.color} rounded-xl p-6 border-2 border-slate-200 hover:shadow-lg transition-shadow`}
                                 >
                                     {/* Phase */}
-                                    <p className="text-xs font-bold text-[#d04502] mb-2">
+                                    <p className="text-xs font-bold text-brand mb-2">
                                         {phase.phase}
                                     </p>
 
@@ -187,7 +187,7 @@ export default function CareerRoadmapSection() {
                                         </div>
                                         <div>
                                             <p className="text-xs text-slate-600">Salary</p>
-                                            <p className="font-semibold text-[#d04502]">
+                                            <p className="font-semibold text-brand">
                                                 {phase.salary}
                                             </p>
                                         </div>
@@ -237,9 +237,9 @@ export default function CareerRoadmapSection() {
                             className="bg-white rounded-xl p-8 border-2 border-slate-200 hover:border-orange-300 transition-all"
                         >
                             <div className="flex items-start gap-4 mb-4">
-                                <div className="text-[#d04502]">{phase.icon}</div>
+                                <div className="text-brand">{phase.icon}</div>
                                 <div>
-                                    <p className="text-xs font-bold text-[#d04502]">
+                                    <p className="text-xs font-bold text-brand">
                                         {phase.phase}
                                     </p>
                                     <h3 className="text-xl font-bold text-slate-900">
@@ -256,7 +256,7 @@ export default function CareerRoadmapSection() {
                                 <ul className="space-y-1">
                                     {phase.skills.map((skill, sidx) => (
                                         <li key={sidx} className="text-sm text-slate-600 flex items-center gap-2">
-                                            <span className="text-[#d04502]">→</span> {skill}
+                                            <span className="text-brand">→</span> {skill}
                                         </li>
                                     ))}
                                 </ul>
@@ -271,7 +271,7 @@ export default function CareerRoadmapSection() {
                                     {phase.roles.map((role, ridx) => (
                                         <span
                                             key={ridx}
-                                            className="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full"
+                                            className="text-xs bg-orange-100 text-brand px-3 py-1 rounded-full"
                                         >
                                             {role}
                                         </span>
@@ -321,7 +321,7 @@ export default function CareerRoadmapSection() {
                             },
                         ].map((factor, idx) => (
                             <div key={idx} className="flex gap-4">
-                                <div className="w-10 h-10 rounded-full bg-[#d04502] flex items-center justify-center font-bold flex-shrink-0">
+                                <div className="w-10 h-10 rounded-full bg-brand flex items-center justify-center font-bold flex-shrink-0">
                                     {factor.number}
                                 </div>
                                 <div>

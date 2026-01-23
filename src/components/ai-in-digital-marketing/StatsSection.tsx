@@ -28,7 +28,7 @@ export default function StatsSection() {
             id="stats-heading"
             className="text-3xl md:text-4xl font-bold mb-4 text-slate-900"
           >
-            Why Choose <span className="text-orange-600">Our Program?</span>
+            Why Choose <span className="text-brand">Our Program?</span>
           </h2>
           <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto">
             Proven results from thousands of successful students who have

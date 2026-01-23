@@ -141,7 +141,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
 
       {/* Form Header */}
       <div className="mb-6 text-center">
-        <Download className="h-8 w-8 text-orange-700 mx-auto mb-2" />
+        <Download className="h-8 w-8 text-brand mx-auto mb-2" />
         <h3 className="text-xl font-bold text-slate-900">
           Download Syllabus for <span className="text-blue-600">{courseTitle}</span>
         </h3>
@@ -200,7 +200,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
                 onChange={handleInputChange}
                 onBlur={(e) => setErrors(prev => ({ ...prev, fullName: validateFullName(e.target.value) }))}
                 required
-                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-700 focus:outline-none transition-all duration-300 ${errors.fullName ? 'border-red-500' : 'border-gray-300'
+                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand focus:outline-none transition-all duration-300 ${errors.fullName ? 'border-red-500' : 'border-gray-300'
                   }`}
                 placeholder="Enter your full name"
                 style={{ color: '#1e293b' }}
@@ -225,7 +225,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
                 onChange={handleInputChange}
                 onBlur={(e) => setErrors(prev => ({ ...prev, email: validateEmail(e.target.value) }))}
                 required
-                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-700 focus:outline-none transition-all duration-300 ${errors.email ? 'border-red-500' : 'border-gray-300'
+                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand focus:outline-none transition-all duration-300 ${errors.email ? 'border-red-500' : 'border-gray-300'
                   }`}
                 placeholder="Enter your email address"
                 style={{ color: '#1e293b' }}
@@ -263,7 +263,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3 px-6 bg-gradient-to-r from-orange-700 to-orange-800 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full py-3 px-6 bg-gradient-to-r from-brand to-brand text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isSubmitting ? (
               <>

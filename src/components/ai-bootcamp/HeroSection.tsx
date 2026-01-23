@@ -63,7 +63,7 @@ export default function HeroSection() {
                                 {c.href ? (
                                     <Link
                                         href={c.href}
-                                        className={`hover:text-orange-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""
+                                        className={`hover:text-brand ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""
                                             }`}
                                     >
                                         {c.label}
@@ -87,7 +87,7 @@ export default function HeroSection() {
                             <div className="w-fit inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/80 px-4 py-2 shadow-sm backdrop-blur-sm transition-shadow hover:shadow-md">
                                 <Clock className="h-4 w-4 text-orange-500" />
                                 <span className="text-sm font-semibold text-slate-700">
-                                    Duration: <span className="text-orange-600">30 Hours</span>
+                                    Duration: <span className="text-brand">30 Hours</span>
                                 </span>
                             </div>
                             <span className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white">
@@ -98,7 +98,7 @@ export default function HeroSection() {
                         {/* H1 */}
                         <h1 className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
                             <span>Future-Proof Your Career with </span>
-                            <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">
+                            <span className="bg-gradient-to-r from-orange-500 via-brand to-red-500 bg-clip-text text-transparent">
                                 AI-Powered
                             </span>
                             <span> </span>
@@ -130,7 +130,7 @@ export default function HeroSection() {
                         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row md:justify-start items-center">
                             <button
                                 onClick={() => setIsEnrollOpen(true)}
-                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#d04502] bg-[#d04502] px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#ff8c00] bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
                             >
                                 Enroll Now
                                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -138,7 +138,7 @@ export default function HeroSection() {
 
                             <button
                                 onClick={() => setIsSyllabusOpen(true)}
-                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#d04502] bg-[#d04502] px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#ff8c00] bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
                             >
                                 Download Syllabus
                                 <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />

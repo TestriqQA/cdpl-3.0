@@ -93,7 +93,7 @@ export default function WhoShouldEnroll() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Who Should <span className="text-[#d04502]">Enroll</span>?
+                        Who Should <span className="text-brand">Enroll</span>?
                     </h2>
                     <p className="text-lg text-slate-600 max-w-3xl mx-auto">
                         This course is designed for diverse learners. Whether you&apos;re a beginner or a professional seeking to advance your skills, we have the right program for you.
@@ -131,7 +131,7 @@ export default function WhoShouldEnroll() {
                                             key={ridx}
                                             className="flex items-start gap-2 text-sm text-slate-600"
                                         >
-                                            <CheckCircle className="w-4 h-4 text-[#d04502] flex-shrink-0 mt-0.5" />
+                                            <CheckCircle className="w-4 h-4 text-brand flex-shrink-0 mt-0.5" />
                                             <span>{req}</span>
                                         </li>
                                     ))}
@@ -147,13 +147,13 @@ export default function WhoShouldEnroll() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {prerequisites.map((prereq, idx) => (
                             <div key={idx}>
-                                <h4 className="text-lg font-bold text-[#d04502] mb-4">
+                                <h4 className="text-lg font-bold text-brand mb-4">
                                     {prereq.category}
                                 </h4>
                                 <ul className="space-y-3">
                                     {prereq.items.map((item, iidx) => (
                                         <li key={iidx} className="flex items-start gap-3">
-                                            <span className="text-[#d04502] mt-1">✓</span>
+                                            <span className="text-brand mt-1">✓</span>
                                             <span className="text-slate-200 text-sm">{item}</span>
                                         </li>
                                     ))}
@@ -202,14 +202,14 @@ export default function WhoShouldEnroll() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <button
                         onClick={() => setIsEnrollOpen(true)}
-                        className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl bg-[#d04502] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
+                        className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-brand hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
                     >
                         Enroll Now
                         <ArrowRight className="h-5 w-5" />
                     </button>
                     <button
                         onClick={() => setIsSyllabusOpen(true)}
-                        className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl border-2 border-orange-200 bg-white px-8 py-4 text-base font-semibold text-[#d04502] shadow-sm transition-all hover:border-orange-300 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-200"
+                        className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl border-2 border-orange-200 bg-white px-8 py-4 text-base font-semibold text-brand shadow-sm transition-all hover:border-orange-300 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-200"
                     >
                         <Download className="h-5 w-5" />
                         Download Syllabus

@@ -22,7 +22,7 @@ import {
 import Link from "next/link";
 import AdvisorModal from "@/components/ui/AdvisorModal";
 
-const BRAND = "#c2410c"; // Cinute Digital brand
+const BRAND = "#ff8c00"; // Cinute Digital brand
 
 // ---------------------------------------------
 // Color map (static Tailwind classes – no string interpolation)
@@ -141,7 +141,7 @@ export default function TeamCultureSection() {
             className="text-4xl font-bold tracking-tight text-slate-900 text-center"
           >
             The People Behind{" "}
-            <span style={{ color: "#ea580c" }}>Job-Ready</span> Careers
+            <span style={{ color: "#ff8c00" }}>Job-Ready</span> Careers
           </h2>
 
           <p className="mt-8 max-w-5xl text-lg leading-6 text-slate-700 text-center">
@@ -281,7 +281,7 @@ export default function TeamCultureSection() {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center rounded-xl bg-orange-500 p-3 text-white shadow-lg transition-all hover:translate-y-1 hover:bg-orange-600 cursor-pointer"
+              className="flex items-center rounded-xl bg-orange-500 p-3 text-white shadow-lg transition-all hover:translate-y-1 hover:bg-brand cursor-pointer"
             >
               Talk to a mentor <ArrowRight className="ml-2 h-4 w-4" />
             </button>

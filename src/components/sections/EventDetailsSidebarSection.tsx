@@ -36,7 +36,7 @@ export default function EventDetailsSidebarSection({ event }: Props) {
 
         <div className="p-6 space-y-4">
           <Line
-            icon={<Calendar className="h-4 w-4 text-orange-600" />}
+            icon={<Calendar className="h-4 w-4 text-brand" />}
             label="Event Date"
             value={event.date}
           />

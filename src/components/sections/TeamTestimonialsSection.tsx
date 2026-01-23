@@ -211,7 +211,7 @@ export default function TeamTestimonialsSection() {
                                 {t.outcomes.map((o) => (
                                     <span
                                         key={o}
-                                        className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2 py-0.5 text-[11px] font-medium text-orange-700 ring-1 ring-inset ring-orange-200"
+                                        className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2 py-0.5 text-[11px] font-medium text-brand ring-1 ring-inset ring-orange-200"
                                     >
                                         <CheckCircle2 className="h-3.5 w-3.5" aria-hidden />
                                         {o}

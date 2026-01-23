@@ -256,7 +256,7 @@ export default function WhoShouldEnroll() {
                     </p>
                     <button
                         onClick={() => setIsEnrollOpen(true)}
-                        className="bg-[#7c2d12] hover:bg-[#c2410c] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Check Your Eligibility and Enroll
                     </button>

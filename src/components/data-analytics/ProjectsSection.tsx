@@ -24,7 +24,7 @@ const PROJECTS: Project[] = [
     desc: "Predict weekly/monthly sales and visualize KPIs for regions, categories, and channels.",
     outcomes: ["ARIMA/Prophet vs. ML regressors", "Backtesting & seasonality analysis", "Executive-ready KPI views"],
     tools: ["Python", "Pandas", "Prophet", "Plotly"],
-    accent: { bar: "bg-orange-500", border: "border-orange-200", text: "text-orange-700", chip: "bg-orange-50", ring: "focus:ring-orange-300" },
+    accent: { bar: "bg-orange-500", border: "border-orange-200", text: "text-brand", chip: "bg-orange-50", ring: "focus:ring-orange-300" },
     icon: LineChart,
   },
   {

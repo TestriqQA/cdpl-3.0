@@ -53,7 +53,7 @@ export const CareerRoadmapSection: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
             {/* Split last word in accent color like other sections */}
             {career_roadmap_section.title.split(" ").slice(0, -1).join(" ")}{" "}
-            <span className="text-orange-600">
+            <span className="text-brand">
               {career_roadmap_section.title.split(" ").slice(-1)}
             </span>
           </h2>
@@ -99,12 +99,12 @@ export const CareerRoadmapSection: React.FC = () => {
                         className={`bg-gradient-to-br ${colorClass} rounded-xl p-6 border-2 border-slate-200 w-full mb-8 hover:shadow-lg transition-shadow`}
                       >
                         {/* Icon */}
-                        <div className="text-orange-600 mb-3">
+                        <div className="text-brand mb-3">
                           <IconComponent className="w-8 h-8" />
                         </div>
 
                         {/* Phase / Step label */}
-                        <p className="text-xs font-bold text-orange-600 mb-2">
+                        <p className="text-xs font-bold text-brand mb-2">
                           Step {step.step}
                         </p>
 
@@ -123,7 +123,7 @@ export const CareerRoadmapSection: React.FC = () => {
                           <p className="text-xs text-slate-600">
                             Focus in this stage
                           </p>
-                          <p className="font-bold text-orange-600 text-xs">
+                          <p className="font-bold text-brand text-xs">
                             Build strong skills in R, data visualization & ML
                             fundamentals
                           </p>
@@ -162,7 +162,7 @@ export const CareerRoadmapSection: React.FC = () => {
                     className={`bg-gradient-to-br ${colorClass} rounded-xl p-6 border-2 border-slate-200 hover:shadow-lg transition-shadow`}
                   >
                     {/* Step label */}
-                    <p className="text-xs font-bold text-orange-600 mb-2">
+                    <p className="text-xs font-bold text-brand mb-2">
                       Step {step.step}
                     </p>
 
@@ -173,7 +173,7 @@ export const CareerRoadmapSection: React.FC = () => {
 
                     {/* Icon & short summary row */}
                     <div className="flex items-start gap-3 mb-3">
-                      <IconComponent className="w-5 h-5 text-orange-600 mt-0.5" />
+                      <IconComponent className="w-5 h-5 text-brand mt-0.5" />
                       <p className="text-sm text-slate-600">
                         {step.description}
                       </p>
@@ -216,11 +216,11 @@ export const CareerRoadmapSection: React.FC = () => {
                 className="bg-white rounded-xl p-8 border-2 border-slate-200 hover:border-orange-300 transition-all"
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="text-orange-600">
+                  <div className="text-brand">
                     <IconComponent className="w-7 h-7" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-orange-600">
+                    <p className="text-xs font-bold text-brand">
                       Step {step.step}
                     </p>
                     <h3 className="text-xl font-bold text-slate-900">
@@ -350,7 +350,7 @@ export const CareerRoadmapSection: React.FC = () => {
         <div className="flex justify-center mt-12">
           <button
             onClick={() => setIsCareerOpen(true)}
-            className="inline-flex items-center justify-center cursor-pointer rounded-lg bg-orange-600 px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-200"
+            className="inline-flex items-center justify-center cursor-pointer rounded-lg bg-brand px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-brand hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-200"
           >
             Get Personalized Roadmap
           </button>

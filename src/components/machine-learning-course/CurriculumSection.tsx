@@ -81,7 +81,7 @@ const MODULES: Module[] = [
     title: "Sampling, Hypothesis Tests & Regression",
     outcome:
       "Sampling & CLT, confidence intervals, z/t/chi-square/ANOVA, correlation (Pearson/Spearman), simple linear regression.",
-    accent: { bg: "bg-orange-50", text: "text-orange-900", border: "border-orange-200", ring: "focus:ring-orange-300" },
+    accent: { bg: "bg-orange-50", text: "text-brand", border: "border-orange-200", ring: "focus:ring-orange-300" },
   },
   {
     num: "11",
@@ -118,7 +118,7 @@ export default function CurriculumSection() {
     { cardBg: 'bg-teal-50', cardBorder: 'border-teal-200', badgeBg: 'bg-teal-700', badgeText: 'text-white', ink: 'text-teal-800', icon: 'text-teal-700' },
     { cardBg: 'bg-fuchsia-50', cardBorder: 'border-fuchsia-200', badgeBg: 'bg-fuchsia-700', badgeText: 'text-white', ink: 'text-fuchsia-800', icon: 'text-fuchsia-700' },
     { cardBg: 'bg-lime-50', cardBorder: 'border-lime-200', badgeBg: 'bg-lime-700', badgeText: 'text-white', ink: 'text-lime-800', icon: 'text-lime-700' },
-    { cardBg: 'bg-orange-50', cardBorder: 'border-orange-200', badgeBg: 'bg-orange-700', badgeText: 'text-white', ink: 'text-orange-800', icon: 'text-orange-700' },
+    { cardBg: 'bg-orange-50', cardBorder: 'border-orange-200', badgeBg: 'bg-brand', badgeText: 'text-white', ink: 'text-brand', icon: 'text-brand' },
     { cardBg: 'bg-cyan-50', cardBorder: 'border-cyan-200', badgeBg: 'bg-cyan-700', badgeText: 'text-white', ink: 'text-cyan-800', icon: 'text-cyan-700' },
     { cardBg: 'bg-stone-50', cardBorder: 'border-stone-200', badgeBg: 'bg-stone-700', badgeText: 'text-white', ink: 'text-stone-800', icon: 'text-stone-700' },
   ];

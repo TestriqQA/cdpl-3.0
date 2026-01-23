@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import {
   generateBreadcrumbSchema,
-  generateOrganizationSchema,
   generateCourseSchema,
   generateFAQSchema
 } from "@/lib/schema-generators";
@@ -73,7 +72,7 @@ export default function ACTDCertificationTrainingPage() {
     { name: "ACTD Certification", url: "/actd-certification-training" },
   ]);
 
-  const organizationSchema = generateOrganizationSchema();
+  // const organizationSchema = generateOrganizationSchema(); // REMOVED (Redundant)
 
   const courseSchema = generateCourseSchema({
     name: "ACTD Certification Training - Agile, Cloud & Test-Driven Development",
@@ -121,7 +120,7 @@ export default function ACTDCertificationTrainingPage() {
       className="bg-white text-slate-900"
     >
       <JsonLd id="actd-breadcrumb" schema={breadcrumbSchema} />
-      <JsonLd id="actd-org" schema={organizationSchema} />
+      {/* <JsonLd id="actd-org" schema={organizationSchema} /> */}
       <JsonLd id="actd-course" schema={courseSchema} />
       <JsonLd id="actd-faq" schema={faqSchema} />
 

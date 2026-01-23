@@ -84,7 +84,7 @@ export default function CareerSection() {
                                     cyan: 'border-cyan-200 hover:bg-cyan-50 text-cyan-800',
                                     lime: 'border-lime-200 hover:bg-lime-50 text-lime-800',
                                     indigo: 'border-indigo-200 hover:bg-indigo-50 text-indigo-800',
-                                    orange: 'border-orange-200 hover:bg-orange-50 text-orange-800',
+                                    orange: 'border-orange-200 hover:bg-orange-50 text-brand',
                                 };
                                 return (
                                     <li key={role} role="listitem">
@@ -138,7 +138,7 @@ export default function CareerSection() {
                                     cyan: 'border-cyan-200 hover:bg-cyan-50 text-cyan-800',
                                     lime: 'border-lime-200 hover:bg-lime-50 text-lime-800',
                                     indigo: 'border-indigo-200 hover:bg-indigo-50 text-indigo-800',
-                                    orange: 'border-orange-200 hover:bg-orange-50 text-orange-800',
+                                    orange: 'border-orange-200 hover:bg-orange-50 text-brand',
                                 };
                                 return (
                                     <li key={c} role="listitem">

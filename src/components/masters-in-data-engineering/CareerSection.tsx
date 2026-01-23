@@ -186,7 +186,7 @@ const CareerSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsCareerSessionOpen(true)}
-            className="bg-[#c2410c] hover:bg-[#9a3412] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+            className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
           >
             Book a Free Career Session
           </button>

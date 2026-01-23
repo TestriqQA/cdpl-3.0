@@ -6,7 +6,6 @@ import {
   generateCourseSchema,
   generateBreadcrumbSchema,
   generateFAQSchema,
-  generateOrganizationSchema,
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
@@ -142,8 +141,8 @@ export default async function CoursePage({ params }: PageProps) {
 
   const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems);
 
-  // 2. Organization Schema
-  const organizationSchema = generateOrganizationSchema();
+  // 2. Organization Schema - REMOVED (Redundant with layout.tsx)
+  // const organizationSchema = generateOrganizationSchema();
 
   // 3. Course Schema
   // Extract learning outcomes from modules
@@ -175,7 +174,7 @@ export default async function CoursePage({ params }: PageProps) {
   return (
     <>
       <JsonLd id={`course-${slug}-breadcrumb`} schema={breadcrumbSchema} />
-      <JsonLd id={`course-${slug}-org`} schema={organizationSchema} />
+      {/* <JsonLd id={`course-${slug}-org`} schema={organizationSchema} /> */}
       <JsonLd id={`course-${slug}-schema`} schema={courseSchema} />
       <JsonLd id={`course-${slug}-faq`} schema={faqSchema} />
 

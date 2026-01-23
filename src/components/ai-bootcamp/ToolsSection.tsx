@@ -202,7 +202,7 @@ export default function ToolsSection() {
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
                         Your AI & Digital Marketing{" "}
-                        <span className="text-orange-600">Arsenal of Tools</span>
+                        <span className="text-brand">Arsenal of Tools</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-3xl mx-auto">
                         Go beyond theory and get hands-on with{" "}
@@ -231,7 +231,7 @@ export default function ToolsSection() {
                             </h3>
 
                             {/* Category */}
-                            <p className="text-xs font-semibold text-orange-600 mb-3">
+                            <p className="text-xs font-semibold text-brand mb-3">
                                 {tool.category}
                             </p>
 
@@ -336,7 +336,7 @@ export default function ToolsSection() {
                         </p>
                         <button
                             onClick={() => setIsEnrollOpen(true)}
-                            className="cursor-pointer inline-flex items-center justify-center px-8 py-3 rounded-xl bg-[#d04502] text-white font-semibold shadow-md hover:bg-orange-700 transition-colors"
+                            className="cursor-pointer inline-flex items-center justify-center px-8 py-3 rounded-xl bg-brand text-white font-semibold shadow-md hover:bg-brand transition-colors"
                         >
                             Master These Tools Today
                         </button>

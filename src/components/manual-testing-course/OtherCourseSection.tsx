@@ -152,7 +152,7 @@ function pickVariant(index: number) {
       hoverBorder: "hover:border-rose-300",
     },
     {
-      header: "bg-gradient-to-br from-amber-600 to-orange-700",
+      header: "bg-gradient-to-br from-amber-600 to-brand",
       button: "bg-amber-600 hover:bg-amber-700",
       hoverBorder: "hover:border-amber-300",
     },

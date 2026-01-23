@@ -255,8 +255,8 @@ export default function PlacementsHeroSection() {
               >
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="group inline-flex items-center gap-2 rounded-xl px-5 py-3 font-semibold text-white shadow-sm ring-1 ring-black/5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-400 active:translate-y-[1px] cursor-pointer hover:bg-[#c2410c]"
-                  style={{ backgroundColor: "#d04502" }}
+                  className="group inline-flex items-center gap-2 rounded-xl px-5 py-3 font-semibold text-white shadow-sm ring-1 ring-black/5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-400 active:translate-y-[1px] cursor-pointer hover:bg-brand"
+                  style={{ backgroundColor: "#ff8c00" }}
                 >
                   Talk to a Placement Advisor
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

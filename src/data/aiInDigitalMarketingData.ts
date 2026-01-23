@@ -48,6 +48,6 @@ export const AI_IN_DIGITAL_MARKETING_FAQS: AiInDigitalMarketingFaq[] = [
 ];
 
 export const AI_IN_DIGITAL_MARKETING_REVIEW_DATA = {
-    ratingValue: 9.6,
+    ratingValue: 4.8,
     reviewCount: 500, // Based on stats in courseData
 };

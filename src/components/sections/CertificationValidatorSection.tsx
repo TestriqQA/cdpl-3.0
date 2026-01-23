@@ -423,7 +423,7 @@ function CertificationValidatorContent() {
                 <button
                   type="button"
                   onClick={() => setQuery("CD402")}
-                  className="flex items-center gap-1 rounded-full border border-orange-200 bg-orange-50 pl-2 pr-3 py-1 text-xs font-semibold text-orange-700 hover:bg-orange-100"
+                  className="flex items-center gap-1 rounded-full border border-orange-200 bg-orange-50 pl-2 pr-3 py-1 text-xs font-semibold text-brand hover:bg-orange-100"
                   aria-label="Use example CD402"
                 >
                   <Image

@@ -42,7 +42,7 @@ export default function ToolsSection() {
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Tools & <span className="text-orange-600">Technologies</span>
+            Tools & <span className="text-brand">Technologies</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             Master industry-standard tools used by top digital marketers and
@@ -73,7 +73,7 @@ export default function ToolsSection() {
               </h3>
 
               {/* Category */}
-              <p className="text-xs font-semibold text-orange-600 mb-3">
+              <p className="text-xs font-semibold text-brand mb-3">
                 {tool.category}
               </p>
 
@@ -239,7 +239,7 @@ export default function ToolsSection() {
     w-full sm:w-auto
     px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3
     text-sm sm:text-base md:text-lg
-    bg-[#d04502] hover:bg-orange-700
+    bg-brand hover:bg-brand
     text-white font-bold
     rounded-xl
     text-center

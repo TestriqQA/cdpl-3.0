@@ -12,7 +12,7 @@ export default function CtaSection() {
     const courseName = "AI Bootcamp Course";
 
     return (
-        <section className="py-10 bg-gradient-to-r from-slate-900 via-orange-900 to-slate-900 relative overflow-hidden">
+        <section className="py-10 bg-gradient-to-r from-slate-900 via-brand to-slate-900 relative overflow-hidden">
             {/* Background decoration (same style as reference) */}
             <div className="absolute inset-0 opacity-10">
                 <div className="absolute top-20 right-10 w-72 h-72 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
@@ -67,7 +67,7 @@ export default function CtaSection() {
                     <div className="flex flex-col md:flex-row gap-4 justify-center mb-10">
                         <button
                             onClick={() => setIsEnrollOpen(true)}
-                            className="cursor-pointer flex items-center justify-center bg-[#d04502] hover:bg-orange-600 text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all"
+                            className="cursor-pointer flex items-center justify-center bg-brand hover:bg-brand text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all"
                         >
                             Enroll Now
                             <ArrowRight className="w-5 h-5 ml-2" />

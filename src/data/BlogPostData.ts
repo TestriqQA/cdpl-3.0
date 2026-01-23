@@ -276,7 +276,7 @@ export const CATEGORIES: Record<string, Category> = {
     description: "Data analysis, visualization, and data-driven decision making",
     color: {
       bg: "bg-orange-50",
-      text: "text-orange-800",
+      text: "text-brand",
     },
   },
   "digital-marketing": {

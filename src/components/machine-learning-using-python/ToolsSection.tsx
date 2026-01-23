@@ -162,7 +162,7 @@ export default function ToolsSection() {
         <div className="mt-12 flex justify-center">
           <button
             onClick={() => setIsCareerOpen(true)}
-            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-orange-600 bg-orange-600 px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-200"
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-brand bg-brand px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-brand hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-200"
           >
             Book a Free Demo
           </button>

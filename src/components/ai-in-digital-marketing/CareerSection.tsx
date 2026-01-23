@@ -94,7 +94,7 @@ export default function CareerSection() {
         {/* Section Header – reference layout + SEO-rich copy */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Career <span className="text-orange-600">Opportunities</span>
+            Career <span className="text-brand">Opportunities</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Multiple career paths and growth opportunities after completing the
@@ -149,7 +149,7 @@ export default function CareerSection() {
               {/* Salary – styled like reference “Expected Salary” */}
               <div className="pt-4 border-t border-slate-300">
                 <p className="text-xs text-slate-600 mb-1">Expected Salary</p>
-                <p className="text-lg font-bold text-orange-600">
+                <p className="text-lg font-bold text-brand">
                   {path.salary}
                 </p>
               </div>
@@ -202,7 +202,7 @@ export default function CareerSection() {
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="w-16 h-16 bg-brand text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 1
               </div>
               <h5 className="font-bold text-white mb-2">Learn Skills</h5>
@@ -211,7 +211,7 @@ export default function CareerSection() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="w-16 h-16 bg-brand text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 2
               </div>
               <h5 className="font-bold text-white mb-2">Build Portfolio</h5>
@@ -281,7 +281,7 @@ export default function CareerSection() {
     w-full sm:w-auto
     px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3
     text-sm sm:text-base md:text-lg
-    bg-[#d04502] hover:bg-orange-700
+    bg-brand hover:bg-brand
     text-white font-bold
     rounded-xl
     text-center

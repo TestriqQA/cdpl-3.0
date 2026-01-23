@@ -24,7 +24,7 @@ export default function TrainersCTASection() {
                     {/* LEFT: pitch + actions */}
                     <div className="max-w-2xl">
                         <div className="flex flex-wrap items-center gap-2">
-                            <span className="inline-flex items-center gap-1.5 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-medium text-orange-700">
+                            <span className="inline-flex items-center gap-1.5 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-medium text-brand">
                                 <Sparkles className="h-3.5 w-3.5" />
                                 Mentor-Led, Outcome-Driven
                             </span>
@@ -67,7 +67,7 @@ export default function TrainersCTASection() {
                         <div className="mt-6 flex flex-wrap items-center gap-3">
                             <Link
                                 href="/apply"
-                                className="inline-flex items-center justify-center rounded-xl bg-[#ff8c00] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-orange-300"
+                                className="inline-flex items-center justify-center rounded-xl bg-brand px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-orange-300"
                             >
                                 Apply Now <ArrowRight className="ml-1.5 h-4 w-4" />
                             </Link>
@@ -135,7 +135,7 @@ export default function TrainersCTASection() {
                                     <Link
                                         key={p.href}
                                         href={p.href}
-                                        className="inline-flex items-center rounded-full bg-orange-50 px-3 py-1 text-xs font-medium text-orange-700 ring-1 ring-inset ring-orange-200 transition hover:bg-orange-100"
+                                        className="inline-flex items-center rounded-full bg-orange-50 px-3 py-1 text-xs font-medium text-brand ring-1 ring-inset ring-orange-200 transition hover:bg-orange-100"
                                     >
                                         {p.label}
                                     </Link>

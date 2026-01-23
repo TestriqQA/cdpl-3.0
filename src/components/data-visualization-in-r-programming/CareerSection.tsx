@@ -109,7 +109,7 @@ export const CareerSection: React.FC = () => {
                 {/* Salary Band */}
                 <div className="pt-4 border-t border-slate-300">
                   <p className="text-xs text-slate-600 mb-1">Typical Salary Range (India)*</p>
-                  <p className="text-lg font-bold text-orange-600">{meta.salary}</p>
+                  <p className="text-lg font-bold text-brand">{meta.salary}</p>
                 </div>
               </div>
             );
@@ -188,7 +188,7 @@ export const CareerSection: React.FC = () => {
               <div className="mt-6 flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={() => setIsEnrollOpen(true)}
-                  className="px-6 py-3 bg-orange-700 hover:bg-orange-800 text-white font-semibold rounded-lg transition-colors cursor-pointer"
+                  className="px-6 py-3 bg-brand hover:bg-brand text-white font-semibold rounded-lg transition-colors cursor-pointer"
                 >
                   Apply for Placement Assistance
                 </button>

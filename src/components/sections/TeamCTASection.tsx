@@ -43,7 +43,7 @@ export default function TeamCTASection() {
         <div className="grid items-center gap-10 md:grid-cols-2">
           {/* LEFT */}
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/80 px-3 py-1 text-xs font-medium text-orange-700 shadow-sm backdrop-blur">
+            <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/80 px-3 py-1 text-xs font-medium text-brand shadow-sm backdrop-blur">
               <ShieldCheck className="h-3.5 w-3.5" />
               Mentor-Led, Job-Ready Learning
             </div>
@@ -53,7 +53,7 @@ export default function TeamCTASection() {
               className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
             >
               Learn with mentors who build{" "}
-              <span className="text-[#ea580c]">careers</span>—not just courses
+              <span className="text-brand">careers</span>—not just courses
             </h2>
 
             <p className="mt-3 text-sm leading-6 text-slate-700 sm:text-base">
@@ -76,7 +76,7 @@ export default function TeamCTASection() {
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-0.5 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-orange-100 ring-1 ring-orange-200">
-                    <Check className="h-3.5 w-3.5 text-[#c2410c]" />
+                    <Check className="h-3.5 w-3.5 text-brand" />
                   </span>
                   <span className="text-sm text-slate-800">{item}</span>
                 </li>
@@ -87,8 +87,8 @@ export default function TeamCTASection() {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="courses"
-                className="inline-flex items-center justify-center rounded-2xl bg-[#c2410c] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:translate-y-0"
-                style={{ backgroundColor: "#c2410c" }}
+                className="inline-flex items-center justify-center rounded-2xl bg-brand px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:translate-y-0"
+                style={{ backgroundColor: "#ff8c00" }}
                 aria-label="Explore programs and view curriculum"
               >
                 Explore Programs
@@ -102,7 +102,7 @@ export default function TeamCTASection() {
               </Link>
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="inline-flex items-center justify-center rounded-2xl border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-semibold text-orange-700 ring-1 ring-inset ring-orange-200 transition hover:-translate-y-0.5 hover:bg-orange-100 active:translate-y-0 cursor-pointer"
+                className="inline-flex items-center justify-center rounded-2xl border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-semibold text-brand ring-1 ring-inset ring-orange-200 transition hover:-translate-y-0.5 hover:bg-orange-100 active:translate-y-0 cursor-pointer"
                 aria-label="Talk to a mentor"
               >
                 Talk to a mentor

@@ -46,7 +46,7 @@ const benefits = [
         title: "Interview Confidence",
         description:
             "Discuss actual implementations in interviews — from feature engineering to model deployment.",
-        color: "from-orange-700 to-red-600",
+        color: "from-brand to-red-600",
         bgColor: "from-orange-50 to-red-50",
     },
 ];
@@ -77,11 +77,11 @@ const gradients = [
         glow: "shadow-emerald-500/20",
     },
     {
-        card: "from-orange-500/5 via-amber-500/5 to-orange-600/5",
+        card: "from-orange-500/5 via-amber-500/5 to-brand/5",
         border: "border-orange-200",
-        accent: "from-orange-700 to-amber-600",
-        iconBg: "from-orange-700 to-amber-600",
-        badge: "bg-orange-50 text-orange-700 border-orange-200",
+        accent: "from-brand to-amber-600",
+        iconBg: "from-brand to-amber-600",
+        badge: "bg-orange-50 text-brand border-orange-200",
         glow: "shadow-orange-500/20",
     },
     {

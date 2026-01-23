@@ -26,7 +26,7 @@ const colorClasses: Record<
   { bg: string; text: string; ring: string; grad: string; glow: string }
 > = {
   blue: { bg: 'bg-blue-100', text: 'text-blue-600', ring: 'ring-blue-200', grad: 'from-blue-500/20 to-cyan-500/20', glow: 'group-hover:shadow-blue-200' },
-  orange: { bg: 'bg-orange-100', text: 'text-orange-600', ring: 'ring-orange-200', grad: 'from-orange-500/20 to-amber-500/20', glow: 'group-hover:shadow-orange-200' },
+  orange: { bg: 'bg-orange-100', text: 'text-brand', ring: 'ring-orange-200', grad: 'from-orange-500/20 to-amber-500/20', glow: 'group-hover:shadow-orange-200' },
   green: { bg: 'bg-green-100', text: 'text-green-600', ring: 'ring-green-200', grad: 'from-emerald-500/20 to-lime-500/20', glow: 'group-hover:shadow-green-200' },
   purple: { bg: 'bg-purple-100', text: 'text-purple-600', ring: 'ring-purple-200', grad: 'from-purple-500/20 to-fuchsia-500/20', glow: 'group-hover:shadow-purple-200' },
   pink: { bg: 'bg-pink-100', text: 'text-pink-600', ring: 'ring-pink-200', grad: 'from-pink-500/20 to-rose-500/20', glow: 'group-hover:shadow-pink-200' },
@@ -148,7 +148,7 @@ const WhyBIProgram: React.FC = () => {
     <section className="py-10 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">
-          <span className="text-sm md:text-base font-semibold tracking-wider text-[#c2410c] uppercase">
+          <span className="text-sm md:text-base font-semibold tracking-wider text-brand uppercase">
             Program Advantages
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
@@ -169,7 +169,7 @@ const WhyBIProgram: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsEnrollOpen(true)}
-            className="w-full sm:w-auto bg-[#c2410c] hover:bg-[#9a3412] text-white font-bold py-5 px-8 my-4 rounded-lg transition-all flex sm:inline-flex min-h-[60px] justify-center items-center cursor-pointer shadow-none"
+            className="w-full sm:w-auto bg-brand hover:bg-brand text-white font-bold py-5 px-8 my-4 rounded-lg transition-all flex sm:inline-flex min-h-[60px] justify-center items-center cursor-pointer shadow-none"
           >
             Start Your Journey Today
           </button>

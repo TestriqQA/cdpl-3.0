@@ -46,9 +46,9 @@ const CATEGORY_STYLES: Record<
     text: "text-blue-600",
   },
   "Academic Training": {
-    badgeBg: "bg-orange-600",
-    btnBg: "bg-orange-600",
-    text: "text-orange-600",
+    badgeBg: "bg-brand",
+    btnBg: "bg-brand",
+    text: "text-brand",
   },
   "Web Development": {
     badgeBg: "bg-cyan-600",

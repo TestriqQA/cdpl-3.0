@@ -119,7 +119,7 @@ export default function AboutStatsSection() {
                     target: 100,
                     suffix: "%" as Suffix,
                     desc: "Career guidance, mock interviews & referrals",
-                    color: "#EA580C", // orange-600
+                    color: "#ff8c00", // brand
                     bgColor: "orange-50"
                 },
             ] as const,
@@ -171,7 +171,7 @@ export default function AboutStatsSection() {
                     className="mt-2 text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-sky-500 via-blue-600 to-green-500"
                 >
                     Career-focused results with{" "}
-                    <span className="text-[#c2410c]">Cinute Digital</span>
+                    <span className="text-brand">Cinute Digital</span>
                 </h2>
                 <p className="mt-6 mx-auto max-w-5xl md:text-lg leading-6 text-slate-600 sm:text-base">
                     Real <strong>EdTech</strong> impact: <strong>industry-ready skills</strong>,{" "}
@@ -229,13 +229,13 @@ export default function AboutStatsSection() {
                 <div className="mt-12 flex flex-wrap items-center justify-center gap-3 text-center">
                     <Link
                         href="/jobs/placements"
-                        className="inline-flex items-center justify-center rounded-xl ring-1 ring-[#c2410c] bg-white px-4 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-[#c2410c] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300"
+                        className="inline-flex items-center justify-center rounded-xl ring-1 ring-[#ff8c00] bg-white px-4 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-brand hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300"
                     >
                         Explore Placements
                     </Link>
                     <Link
                         href="/reviews"
-                        className="inline-flex items-center justify-center rounded-xl bg-[#c2410c] px-4 py-3 text-sm font-semibold text-white shadow-sm shadow-slate-900/10 transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-900"
+                        className="inline-flex items-center justify-center rounded-xl bg-brand px-4 py-3 text-sm font-semibold text-white shadow-sm shadow-slate-900/10 transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-900"
                     >
                         Read Learner Reviews
                     </Link>

@@ -97,7 +97,7 @@ export default function StatsSection() {
             className="text-3xl md:text-4xl font-bold mb-4 text-slate-900"
           >
             Why Invest in{" "}
-            <span className="text-orange-600">Machine Learning</span>?
+            <span className="text-brand">Machine Learning</span>?
           </h2>
 
           {/* Original content kept, then expanded for SEO */}
@@ -256,7 +256,7 @@ export default function StatsSection() {
         <div className="mt-12 flex justify-center">
           <button
             onClick={() => setIsSyllabusOpen(true)}
-            className="inline-flex items-center justify-center cursor-pointer rounded-full border border-slate-200 bg-white px-8 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-200"
+            className="inline-flex items-center justify-center cursor-pointer rounded-full border border-slate-200 bg-white px-8 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-brand focus:outline-none focus:ring-4 focus:ring-orange-200"
           >
             <Download className="mr-2 h-4 w-4" />
             Download Syllabus (PDF)

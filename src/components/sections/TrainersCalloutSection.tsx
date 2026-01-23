@@ -58,7 +58,7 @@ export default function TrainersCalloutSection() {
       <div className="mb-6 flex flex-col items-start gap-3 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/80 px-3 py-1 text-xs font-medium text-slate-700 shadow-sm backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5 text-[#ff8c00]" />
+            <Sparkles className="h-3.5 w-3.5 text-brand" />
             Mentor-Led, Job-Ready Training
           </span>
           <h2
@@ -80,7 +80,7 @@ export default function TrainersCalloutSection() {
 
         {/* Trust chips */}
         <div className="mt-2 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2.5 py-1 text-xs font-semibold text-orange-700 ring-1 ring-inset ring-orange-200">
+          <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2.5 py-1 text-xs font-semibold text-brand ring-1 ring-inset ring-orange-200">
             <ShieldCheck className="h-3.5 w-3.5" />
             Outcomes First
           </span>
@@ -122,7 +122,7 @@ export default function TrainersCalloutSection() {
               <ul className="mt-3 space-y-1.5 text-sm text-slate-700">
                 {it.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-2">
-                    <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-[#ff8c00]" aria-hidden="true" />
+                    <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
                     <span>{b}</span>
                   </li>
                 ))}
@@ -140,7 +140,7 @@ export default function TrainersCalloutSection() {
       <div className="mt-8 flex flex-wrap items-center gap-3">
         <Link
           href="/apply"
-          className="inline-flex items-center justify-center rounded-2xl bg-[#ff8c00] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-orange-300"
+          className="inline-flex items-center justify-center rounded-2xl bg-brand px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-orange-300"
         >
           Apply for Mentor-Led Programs
         </Link>

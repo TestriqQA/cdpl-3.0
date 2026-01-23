@@ -64,7 +64,7 @@ export function AAAVerificationChoiceModal({
 
                 <div className="flex flex-col items-center text-center">
                     <div className="mb-4 rounded-full bg-orange-100 p-3">
-                        <AlertCircle className="h-8 w-8 text-orange-600" />
+                        <AlertCircle className="h-8 w-8 text-brand" />
                     </div>
                     <h3 className="text-xl font-bold text-slate-900">
                         Verify AAA Certificate

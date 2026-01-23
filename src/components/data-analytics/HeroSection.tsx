@@ -52,7 +52,7 @@ export default function HeroSection() {
                                 {c.href ? (
                                     <Link
                                         href={c.href}
-                                        className={`hover:text-orange-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
+                                        className={`hover:text-brand ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
                                     >
                                         {c.label}
                                     </Link>
@@ -71,7 +71,7 @@ export default function HeroSection() {
                     <div className="md:col-span-7 lg:col-span-8">
                         {/* Micro-badges (distinct colors, no repeats) */}
                         <div className="mb-4 hidden lg:flex w-fit items-center gap-2 text-[11px] font-semibold text-slate-700">
-                            <span className="rounded-full bg-orange-50 px-2 py-0.5 text-orange-700 border border-orange-200">Live Online + Classroom</span>
+                            <span className="rounded-full bg-orange-50 px-2 py-0.5 text-brand border border-orange-200">Live Online + Classroom</span>
                             <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-emerald-800 border border-emerald-200">110 Hours</span>
                             <span className="rounded-full bg-sky-50 px-2 py-0.5 text-sky-700 border border-sky-200">Project-based</span>
                             <span className="rounded-full bg-rose-50 px-2 py-0.5 text-rose-800 border border-rose-200">Placement Support</span>

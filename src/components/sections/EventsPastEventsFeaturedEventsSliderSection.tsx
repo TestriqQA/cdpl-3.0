@@ -40,7 +40,7 @@ const CATEGORY_STYLES: Record<
   "AI & Machine Learning": { badgeBg: "bg-purple-600", btnBg: "bg-purple-600", text: "text-purple-600" },
   "Software Testing": { badgeBg: "bg-green-600", btnBg: "bg-green-600", text: "text-green-600" },
   "Data Science": { badgeBg: "bg-blue-600", btnBg: "bg-blue-600", text: "text-blue-600" },
-  "Academic Training": { badgeBg: "bg-orange-600", btnBg: "bg-orange-600", text: "text-orange-600" },
+  "Academic Training": { badgeBg: "bg-brand", btnBg: "bg-brand", text: "text-brand" },
   "Web Development": { badgeBg: "bg-cyan-600", btnBg: "bg-cyan-600", text: "text-cyan-600" },
   "Industrial Training": { badgeBg: "bg-teal-600", btnBg: "bg-teal-600", text: "text-teal-600" },
   "Corporate Training": { badgeBg: "bg-pink-600", btnBg: "bg-pink-600", text: "text-pink-600" },
@@ -234,9 +234,9 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
                           {event.featured && (
                             <>
                               <span className="sr-only">Featured</span>
-                              <div className="absolute inset-x-0 top-0 h-[3px] bg-orange-700 shadow-[0_0_6px_rgba(194,65,12,0.5)] z-10" />
+                              <div className="absolute inset-x-0 top-0 h-[3px] bg-brand shadow-[0_0_6px_rgba(194,65,12,0.5)] z-10" />
                               <div className="absolute right-3 top-3 z-10">
-                                <span className="inline-flex items-center gap-1 rounded-full bg-orange-700 px-3 py-1 text-[11px] font-black uppercase tracking-wide text-white shadow-md ring-1 ring-white/60">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-brand px-3 py-1 text-[11px] font-black uppercase tracking-wide text-white shadow-md ring-1 ring-white/60">
                                   <Crown className="h-3.5 w-3.5" />
                                   Featured
                                 </span>

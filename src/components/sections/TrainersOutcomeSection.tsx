@@ -71,7 +71,7 @@ export default function TrainersOutcomeSection() {
               <div className="flex items-center justify-between">
                 <h4 className="text-base font-semibold text-slate-900">{t.title}</h4>
                 <span
-                  className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium text-orange-700 ring-1 ring-inset"
+                  className="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium text-brand ring-1 ring-inset"
                   style={{ background: "rgba(255,140,0,0.08)", borderColor: "rgba(255,140,0,0.35)" }}
                 >
                   {t.duration}

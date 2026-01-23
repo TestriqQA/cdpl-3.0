@@ -41,7 +41,7 @@ const stats: Stat[] = [
         label: "Most In-Demand Skill",
         description: "According to Michael Page 2023",
         icon: <Zap className="w-6 h-6" aria-hidden="true" />,
-        color: "text-orange-600",
+        color: "text-brand",
         bgGradient: "from-orange-50 to-orange-100",
         iconBg: "bg-orange-500",
         ariaLabel: "Rank three most in demand skill according to Michael Page 2023",
@@ -221,7 +221,7 @@ export default function StatsSection() {
                                 </p>
                                 <button
                                     onClick={() => setIsEnrollOpen(true)}
-                                    className="cursor-pointer inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
+                                    className="cursor-pointer inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-orange-500 to-brand px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:from-brand hover:to-brand hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
                                 >
                                     Start Your Journey Today
                                 </button>

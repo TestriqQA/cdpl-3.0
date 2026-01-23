@@ -82,7 +82,7 @@ export default function AboutHeroSection() {
                         transition={{ ...(fadeUp.transition as Transition), delay: 0.06 }}
                         className={`mt-4 py-1 text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl ${gradientText}`}
                     >
-                        About <span className="text-[#ea580c]">Cinute Digital</span>
+                        About <span className="text-brand">Cinute Digital</span>
                     </motion.h1>
 
                     <p
@@ -123,7 +123,7 @@ export default function AboutHeroSection() {
                     >
                         <Link
                             href='courses'
-                            className="inline-flex w-full items-center justify-center rounded-2xl bg-[#c2410c] px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-slate-900/10 transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2 sm:w-auto"
+                            className="inline-flex w-full items-center justify-center rounded-2xl bg-brand px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-slate-900/10 transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2 sm:w-auto"
                         >
                             Explore Courses <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                         </Link>

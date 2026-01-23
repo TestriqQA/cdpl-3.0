@@ -19,7 +19,7 @@ const EDGE_RINGS = ["ring-sky-200", "ring-rose-200", "ring-violet-200"] as const
 
 const STAT_NUMBER_GRADS = [
   "from-sky-600 via-cyan-600 to-emerald-600",
-  "from-amber-600 via-orange-600 to-rose-600",
+  "from-amber-600 via-brand to-rose-600",
   "from-indigo-600 via-violet-600 to-fuchsia-600",
 ] as const;
 

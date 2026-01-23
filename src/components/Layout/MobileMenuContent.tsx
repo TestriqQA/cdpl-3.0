@@ -242,7 +242,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                     closeMenu();
                     openEnquire();
                 }}
-                className="w-full block px-4 py-3 bg-gradient-to-r from-green-500 to-green-700 text-white rounded-lg text-center text-sm sm:text-base font-semibold"
+                className="w-full block px-4 py-3 bg-brand hover:bg-orange-600 text-white rounded-lg text-center text-sm sm:text-base font-semibold"
             >
                 Free Demo
             </button>

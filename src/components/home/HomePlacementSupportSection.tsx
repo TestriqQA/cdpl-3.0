@@ -50,7 +50,7 @@ export default function HomePlacementSupportSection() {
     { number: '500+', label: 'Learners Placed', gradient: 'from-indigo-500 to-blue-600', icon: '👨‍💼' },
     { number: '1.5×', label: 'Avg Package Growth', gradient: 'from-green-500 to-emerald-600', icon: '📈' },
     { number: '50+', label: 'Cities Covered', gradient: 'from-rose-500 to-pink-600', icon: '🌍' },
-    { number: '50+', label: 'Hiring Partners', gradient: 'from-amber-500 to-orange-600', icon: '🤝' },
+    { number: '50+', label: 'Hiring Partners', gradient: 'from-amber-500 to-brand', icon: '🤝' },
   ];
 
   const placementProcess = [

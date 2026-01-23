@@ -29,7 +29,7 @@ export function Badge({ children }: { children: React.ReactNode }) {
 
 export function Pill({ children }: { children: React.ReactNode }) {
     return (
-        <span className="inline-flex items-center rounded-full bg-orange-50 px-3 py-1 text-[11px] font-medium text-orange-700 ring-1 ring-orange-200">
+        <span className="inline-flex items-center rounded-full bg-orange-50 px-3 py-1 text-[11px] font-medium text-brand ring-1 ring-orange-200">
             {children}
         </span>
     );

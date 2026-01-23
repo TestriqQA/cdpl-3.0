@@ -46,7 +46,7 @@ export default function HeroSection() {
                 {c.href ? (
                   <Link
                     href={c.href}
-                    className={`hover:text-orange-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
+                    className={`hover:text-brand ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
                   >
                     {c.label}
                   </Link>
@@ -109,7 +109,7 @@ export default function HeroSection() {
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row md:justify-start items-center">
               <button
                 onClick={() => setIsEnrollOpen(true)}
-                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#c2410c] bg-[#c2410c] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#9a3412] hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#ff8c00] bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
               >
                 Enroll Now
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -117,7 +117,7 @@ export default function HeroSection() {
 
               <button
                 onClick={() => setIsSyllabusOpen(true)}
-                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#c2410c] bg-[#c2410c] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#9a3412] hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#ff8c00] bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
               >
                 Download Syllabus
                 <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />

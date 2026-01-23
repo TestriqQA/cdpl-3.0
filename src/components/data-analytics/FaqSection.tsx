@@ -12,7 +12,7 @@ const ACCENT_STYLES = [
   {
     bar: "bg-orange-500",
     border: "border-orange-200",
-    text: "text-orange-700",
+    text: "text-brand",
     ring: "focus:ring-orange-300",
     chip: "bg-orange-50",
   },

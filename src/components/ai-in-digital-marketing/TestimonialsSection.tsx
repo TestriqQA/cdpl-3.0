@@ -21,7 +21,7 @@ export default function TestimonialsSection({ initialReviews, initialTotal, init
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            Success <span className="text-orange-600">Stories</span>
+            Success <span className="text-brand">Stories</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Real results from real students who have transformed their
@@ -45,7 +45,7 @@ export default function TestimonialsSection({ initialReviews, initialTotal, init
     w-full sm:w-auto
     px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3
     text-sm sm:text-base md:text-lg
-    bg-orange-600 hover:bg-orange-700
+    bg-brand hover:bg-brand
     text-white font-bold
     rounded-xl
     text-center

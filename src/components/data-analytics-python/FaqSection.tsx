@@ -16,7 +16,7 @@ export default function FaqSection() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Frequently Asked <span className="text-[#d04502]">Questions</span>
+                        Frequently Asked <span className="text-brand">Questions</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
                         Find answers to common questions about our course, enrollment, and career opportunities.
@@ -28,7 +28,7 @@ export default function FaqSection() {
                     <div key={category} className="mb-12">
                         {/* Category Title */}
                         <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                            <span className="w-1 h-8 bg-[#d04502] rounded-full"></span>
+                            <span className="w-1 h-8 bg-brand rounded-full"></span>
                             {category}
                         </h3>
 
@@ -56,7 +56,7 @@ export default function FaqSection() {
                                                     {faq.question}
                                                 </h4>
                                                 <ChevronDown
-                                                    className={`w-6 h-6 text-[#d04502] transition-transform duration-300 flex-shrink-0 ${expandedFAQ === globalIdx ? "rotate-180" : ""
+                                                    className={`w-6 h-6 text-brand transition-transform duration-300 flex-shrink-0 ${expandedFAQ === globalIdx ? "rotate-180" : ""
                                                         }`}
                                                 />
                                             </button>
@@ -87,7 +87,7 @@ export default function FaqSection() {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Link
                             href="tel:+917888383788"
-                            className="cursor-pointer px-6 py-3 bg-[#d04502] hover:bg-orange-700 text-white font-semibold rounded-lg transition-colors"
+                            className="cursor-pointer px-6 py-3 bg-brand hover:bg-brand text-white font-semibold rounded-lg transition-colors"
                         >
                             📞 Call Us
                         </Link>

@@ -73,7 +73,7 @@ const colorClasses = [
     { bg: "bg-purple-100", text: "text-[#7e22ce]", border: "border-purple-200", gradient: "from-[#7e22ce] to-[#6b21a8]" },
     { bg: "bg-pink-100", text: "text-[#be185d]", border: "border-pink-200", gradient: "from-[#be185d] to-[#9d174d]" },
     { bg: "bg-green-100", text: "text-[#15803d]", border: "border-green-200", gradient: "from-[#15803d] to-[#166534]" },
-    { bg: "bg-orange-100", text: "text-[#d04502]", border: "border-orange-200", gradient: "from-[#d04502] to-[#c2410c]" },
+    { bg: "bg-orange-100", text: "text-brand", border: "border-orange-200", gradient: "from-[#ff8c00] to-[#ff8c00]" },
     { bg: "bg-red-100", text: "text-[#b91c1c]", border: "border-red-200", gradient: "from-[#b91c1c] to-[#991b1b]" },
 ];
 
@@ -95,7 +95,7 @@ export default function CareerSection() {
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        <span className="bg-gradient-to-r from-[#d04502] via-[#ea580c] to-[#d04502] bg-clip-text text-transparent">Career</span> Opportunities
+                        <span className="bg-gradient-to-r from-[#ff8c00] via-[#ff8c00] to-[#ff8c00] bg-clip-text text-transparent">Career</span> Opportunities
                     </h2>
                     <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                         Excel expertise opens doors to multiple high-paying roles across industries. Explore the career paths available to you.

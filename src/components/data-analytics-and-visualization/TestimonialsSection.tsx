@@ -19,7 +19,7 @@ export default function TestimonialsSection() {
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        What Our <span className="bg-gradient-to-r from-[#d04502] via-[#ea580c] to-[#d04502] bg-clip-text text-transparent">Students Say</span>
+                        What Our <span className="bg-gradient-to-r from-[#ff8c00] via-[#ff8c00] to-[#ff8c00] bg-clip-text text-transparent">Students Say</span>
                     </h2>
                     <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                         Join thousands of successful students who have transformed their careers with our training.
@@ -51,7 +51,7 @@ export default function TestimonialsSection() {
                 <div className="mt-16 text-center">
                     <button
                         onClick={() => setIsEnrollOpen(true)}
-                        className="bg-[#d04502] hover:bg-[#c2410c] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Join Our Success Story
                     </button>

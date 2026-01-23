@@ -34,7 +34,7 @@ export default function HomeStatsSection() {
       end: 500,
       suffix: '+',
       label: 'Students Placed',
-      color: 'from-orange-500 to-orange-600',
+      color: 'from-orange-500 to-brand',
     },
     {
       icon: Award,
@@ -96,7 +96,7 @@ export default function HomeStatsSection() {
           <p className="text-xl text-gray-300 mb-6">
             Join thousands of successful professionals who transformed their careers with CDPL
           </p>
-          <button className="px-8 py-4 bg-orange-700 hover:bg-orange-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+          <button className="px-8 py-4 bg-brand hover:bg-brand text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
             Start Your Journey Today
           </button>
         </motion.div>

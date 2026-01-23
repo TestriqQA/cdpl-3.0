@@ -171,7 +171,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       </p>
       <button
         onClick={() => setIsSubmitted(false)}
-        className="inline-flex items-center px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-lg shadow-lg transition-all duration-300"
+        className="inline-flex items-center px-6 py-3 bg-brand hover:bg-brand text-white font-bold rounded-lg shadow-lg transition-all duration-300"
       >
         {successButtonText}
       </button>
@@ -285,7 +285,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             <span className="text-xs font-bold text-white">FREE</span>
           </div>
         </div>
-        <p className="text-sm font-semibold text-orange-600">
+        <p className="text-sm font-semibold text-brand">
           {isSubmitted ? successSubHeaderText : subHeaderText}
         </p>
         <p className="text-xs text-slate-600 mt-1">

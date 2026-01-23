@@ -36,7 +36,7 @@ export default function TestimonialsSection() {
           {/* Trust strip */}
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
             <span className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-3 py-1 text-sm font-medium text-gray-800">
-              <Sparkles className="w-4 h-4 text-orange-600" />
+              <Sparkles className="w-4 h-4 text-brand" />
               4.9/5 Average Rating
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-3 py-1 text-sm font-medium text-gray-800">

@@ -144,7 +144,7 @@ export default function CurriculumSection() {
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            5-Core <span className="text-orange-600">Curriculum Modules</span>
+            5-Core <span className="text-brand">Curriculum Modules</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-4xl mx-auto">
             {subtitle}
@@ -177,7 +177,7 @@ export default function CurriculumSection() {
                   </div>
                 </div>
                 <ChevronDown
-                  className={`w-6 h-6 text-orange-600 transition-transform duration-300 ${expandedModule === module.id ? "rotate-180" : ""
+                  className={`w-6 h-6 text-brand transition-transform duration-300 ${expandedModule === module.id ? "rotate-180" : ""
                     }`}
                 />
               </button>
@@ -188,7 +188,7 @@ export default function CurriculumSection() {
                   {/* Topics */}
                   <div className="mb-6">
                     <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                      <BookOpen className="w-5 h-5 text-orange-600" />
+                      <BookOpen className="w-5 h-5 text-brand" />
                       Topics Covered
                     </h4>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -214,7 +214,7 @@ export default function CurriculumSection() {
                             key={idx}
                             className="flex items-start gap-3 bg-orange-50 p-3 rounded-lg border border-orange-200"
                           >
-                            <span className="text-orange-600 font-bold">→</span>
+                            <span className="text-brand font-bold">→</span>
                             <span className="text-slate-700">{project}</span>
                           </li>
                         ))}

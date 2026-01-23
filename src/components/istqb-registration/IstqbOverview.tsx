@@ -12,7 +12,7 @@ export default function IstqbOverview() {
             className="bg-white/50 backdrop-blur-sm rounded-3xl p-8 border border-white/50 shadow-sm sticky top-24 h-full"
         >
             <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600">
+                <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center text-brand">
                     <BookOpen className="w-5 h-5" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900">

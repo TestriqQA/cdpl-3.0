@@ -68,7 +68,7 @@ export default function CareerSection() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-slate-900">
-                        Your <span className="text-orange-600">Digital Marketing Career Path</span>
+                        Your <span className="text-brand">Digital Marketing Career Path</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-3xl mx-auto">
                         Unlock high-demand careers in{" "}
@@ -199,7 +199,7 @@ export default function CareerSection() {
                     </p>
                     <button
                         onClick={() => setIsEnrollOpen(true)}
-                        className="cursor-pointer inline-flex items-center justify-center px-8 py-3 rounded-full bg-[#d04502] text-white font-semibold text-base md:text-lg shadow-md hover:bg-orange-700 transition-colors"
+                        className="cursor-pointer inline-flex items-center justify-center px-8 py-3 rounded-full bg-brand text-white font-semibold text-base md:text-lg shadow-md hover:bg-brand transition-colors"
                     >
                         Start Your Digital Marketing Career Journey
                         <ArrowRight className="ml-2 h-5 w-5" />

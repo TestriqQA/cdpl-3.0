@@ -126,12 +126,12 @@ const CareerCard = ({ path, index, onEnroll }: { path: CareerPath; index: number
             glow: "shadow-emerald-500/20",
         },
         {
-            card: "from-orange-500/5 via-amber-500/5 to-orange-600/5",
+            card: "from-orange-500/5 via-amber-500/5 to-brand/5",
             border: "border-orange-200",
-            accent: "from-orange-600 to-amber-600",
+            accent: "from-brand to-amber-600",
             iconBg: "bg-orange-50",
-            iconColor: "text-orange-600",
-            badge: "bg-orange-50 text-orange-700 border-orange-200",
+            iconColor: "text-brand",
+            badge: "bg-orange-50 text-brand border-orange-200",
             glow: "shadow-orange-500/20",
         },
     ];
@@ -203,7 +203,7 @@ const CareerCard = ({ path, index, onEnroll }: { path: CareerPath; index: number
                                     initial={{ scale: 0, rotate: -45 }}
                                     whileInView={{ scale: 1, rotate: 0 }}
                                     transition={{ delay: index * 0.08 + 0.12, type: "spring" }}
-                                    className="flex items-center gap-1 text-xs font-bold px-3 py-1 bg-orange-50 text-orange-700 border border-orange-200 rounded-full"
+                                    className="flex items-center gap-1 text-xs font-bold px-3 py-1 bg-orange-50 text-brand border border-orange-200 rounded-full"
                                 >
                                     <TrendingUp className="w-3 h-3" /> Trending
                                 </motion.span>

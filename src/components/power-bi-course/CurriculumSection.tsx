@@ -17,7 +17,7 @@ interface Module {
 
 const colorClasses: Record<ColorVariant, { bg: string; text: string }> = {
   blue: { bg: 'bg-blue-100', text: 'text-blue-600' },
-  orange: { bg: 'bg-orange-100', text: 'text-[#c2410c]' },
+  orange: { bg: 'bg-orange-100', text: 'text-brand' },
   green: { bg: 'bg-green-100', text: 'text-green-600' },
   purple: { bg: 'bg-purple-100', text: 'text-purple-600' },
   pink: { bg: 'bg-pink-100', text: 'text-pink-600' },
@@ -215,7 +215,7 @@ const CurriculumSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsSyllabusOpen(true)}
-            className="w-full sm:w-auto flex sm:inline-flex min-h-[60px] items-center justify-center gap-2 rounded-xl bg-[#c2410c] px-6 py-5 my-4 text-base font-semibold text-white shadow-none transition-all hover:bg-[#9a3412] focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
+            className="w-full sm:w-auto flex sm:inline-flex min-h-[60px] items-center justify-center gap-2 rounded-xl bg-brand px-6 py-5 my-4 text-base font-semibold text-white shadow-none transition-all hover:bg-brand focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
           >
             <Download className="h-5 w-5" />
             Download Full Syllabus

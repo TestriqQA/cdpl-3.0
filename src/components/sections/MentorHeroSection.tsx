@@ -124,7 +124,7 @@ export default function MentorHeroSection() {
 
             <h1 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl text-[#0069A8]">
               Meet CDPL’s industry{" "}
-              <span style={{ color: "var(--color-brand, #ff8c00)" }}>mentors</span>
+              <span className="text-brand">mentors</span>
             </h1>
 
             <p className="mt-4 mx-auto lg:mx-0 max-w-3xl text-base sm:text-lg text-slate-600">
@@ -145,8 +145,7 @@ export default function MentorHeroSection() {
               <Link
                 href="https://calendar.app.google/tvh9dsXZsX9BujRR8"
                 target="_blank"
-                className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:opacity-90 cursor-pointer"
-                style={{ backgroundColor: "#ff8c00" }} // Brand Orange (Text changed to slate-900 for Contrast 10.4:1)
+                className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:opacity-90 cursor-pointer bg-brand"
                 aria-label="Book a free mentorship session"
               >
                 Book a free session

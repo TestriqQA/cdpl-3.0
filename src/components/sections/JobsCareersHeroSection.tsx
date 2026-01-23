@@ -227,7 +227,7 @@ export default function JobsCareersHeroSection() {
                 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl"
               >
                 <span style={{ color: "#0069A8" }}>Build the future of</span>{" "}
-                <span style={{ color: "#c2410c" }}>outcomes-first ed-tech</span>
+                <span style={{ color: "#ff8c00" }}>outcomes-first ed-tech</span>
               </m.h1>
 
               <m.div
@@ -270,8 +270,8 @@ export default function JobsCareersHeroSection() {
               >
                 <Link
                   href="#open-roles"
-                  className="group inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-white shadow-sm ring-1 ring-white/10 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#c2410c] active:translate-y-[1px]"
-                  style={{ backgroundColor: "#c2410c" }}
+                  className="group inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-white shadow-sm ring-1 ring-white/10 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#ff8c00] active:translate-y-[1px]"
+                  style={{ backgroundColor: "#ff8c00" }}
                 >
                   View open roles
                 </Link>

@@ -53,7 +53,7 @@ export default function CareerRoadmapSection() {
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        Your Learning <span className="bg-gradient-to-r from-[#d04502] via-[#ea580c] to-[#d04502] bg-clip-text text-transparent">Journey</span>
+                        Your Learning <span className="bg-gradient-to-r from-[#ff8c00] via-[#ff8c00] to-[#ff8c00] bg-clip-text text-transparent">Journey</span>
                     </h2>
                     <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                         Follow our proven 6-step learning path to become a market-ready Excel expert and secure your dream job.

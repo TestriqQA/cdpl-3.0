@@ -222,7 +222,7 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
                             ref={formRef}
                         >
                             {/* Modal Header */}
-                            <div className="bg-gradient-to-r from-orange-700 to-orange-800 px-6 py-5 relative">
+                            <div className="bg-gradient-to-r from-brand to-brand px-6 py-5 relative">
                                 <button
                                     onClick={handleClose}
                                     disabled={isSubmitting}
@@ -280,7 +280,7 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
                                                     placeholder="Enter your full name"
                                                     className={`w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${fullNameError
                                                         ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
-                                                        : 'border-gray-200 focus:border-orange-700 focus:ring-orange-100'
+                                                        : 'border-gray-200 focus:border-brand focus:ring-orange-100'
                                                         }`}
                                                     disabled={isSubmitting}
                                                 />
@@ -306,7 +306,7 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
                                                     placeholder="Enter your email address"
                                                     className={`w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${emailError
                                                         ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
-                                                        : 'border-gray-200 focus:border-orange-700 focus:ring-orange-100'
+                                                        : 'border-gray-200 focus:border-brand focus:ring-orange-100'
                                                         }`}
                                                     disabled={isSubmitting}
                                                 />
@@ -332,7 +332,7 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
                                                     placeholder="Enter your mobile number (e.g., 98765 43210)"
                                                     className={`w-full [&>input]:pl-4 [&>input]:pr-4 [&>input]:py-3 [&>input]:border-2 [&>input]:rounded-lg [&>input]:text-gray-900 [&>input]:placeholder:text-gray-400 [&>input]:focus:outline-none [&>input]:focus:ring-2 [&>input]:transition-all [&>input]:placeholder-opacity-100 [&>input]:placeholder-shown:text-gray-400 ${phoneError
                                                         ? '[&>input]:border-red-300 [&>input]:focus:border-red-500 [&>input]:focus:ring-red-200'
-                                                        : '[&>input]:border-gray-200 [&>input]:focus:border-orange-700 [&>input]:focus:ring-orange-100'
+                                                        : '[&>input]:border-gray-200 [&>input]:focus:border-brand [&>input]:focus:ring-orange-100'
                                                         }`}
                                                     disabled={isSubmitting}
                                                 />
@@ -346,7 +346,7 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
                                         <button
                                             type="submit"
                                             disabled={isSubmitting}
-                                            className="w-full bg-gradient-to-r from-orange-700 to-orange-800 text-white font-semibold py-3.5 px-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
+                                            className="w-full bg-gradient-to-r from-brand to-brand text-white font-semibold py-3.5 px-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
                                         >
                                             {isSubmitting ? (
                                                 <>

@@ -56,7 +56,7 @@ export default function CtaSection() {
                 <div className="mx-auto mt-8 max-w-4xl rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-[0_1px_0_0_rgba(15,23,42,0.06)] backdrop-blur">
                     {/* highlight row */}
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 text-left">
-                        <Highlight title="Next Cohort" value="Starts Soon" color="text-orange-700" />
+                        <Highlight title="Next Cohort" value="Starts Soon" color="text-brand" />
                         <Highlight title="Learning Hours" value="~80 hrs" color="text-sky-700" />
                         <Highlight title="Placement" value="100% Assistance" color="text-emerald-700" />
                     </div>
@@ -65,7 +65,7 @@ export default function CtaSection() {
                     <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center">
                         <Link
                             href="tel:+917888383788"
-                            className="group inline-flex w-full items-center justify-center rounded-xl border border-orange-600 bg-orange-700 px-4 py-3 text-base font-semibold text-white transition hover:bg-orange-800 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200 sm:w-auto"
+                            className="group inline-flex w-full items-center justify-center rounded-xl border border-brand bg-brand px-4 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200 sm:w-auto"
                             aria-label="Call Cinute Digital to enroll"
                         >
                             Call Now: +91&nbsp;788-83-83-788

@@ -34,7 +34,7 @@ export default function HomeCourseCategoriesSection() {
       title: 'Automation',
       description: 'Selenium, Playwright, API Testing, CI/CD',
       courses: '5 Courses',
-      color: 'from-orange-500 to-orange-600',
+      color: 'from-orange-500 to-brand',
       link: '/courses/automation',
     },
     {
@@ -73,11 +73,11 @@ export default function HomeCourseCategoriesSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-2 bg-orange-100 text-brand rounded-full text-sm font-semibold mb-4">
             Course Categories
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Explore Our <span className="text-orange-700">Training Programs</span>
+            Explore Our <span className="text-brand">Training Programs</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             From software testing to data science, we offer comprehensive training programs designed to make you industry-ready.
@@ -120,11 +120,11 @@ export default function HomeCourseCategoriesSection() {
 
                     {/* Courses Count */}
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold text-orange-700 group-hover:text-white transition-colors duration-300">
+                      <span className="text-sm font-semibold text-brand group-hover:text-white transition-colors duration-300">
                         {category.courses}
                       </span>
                       <svg
-                        className="w-6 h-6 text-orange-700 group-hover:text-white transform group-hover:translate-x-2 transition-all duration-300"
+                        className="w-6 h-6 text-brand group-hover:text-white transform group-hover:translate-x-2 transition-all duration-300"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -148,7 +148,7 @@ export default function HomeCourseCategoriesSection() {
         >
           <Link
             href="/courses"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-orange-700 hover:bg-orange-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-brand hover:bg-brand text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
           >
             <span>View All Courses</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

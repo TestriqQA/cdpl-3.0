@@ -35,7 +35,7 @@ export const FaqSection: React.FC = () => {
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
             R Programming Course{" "}
-            <span className="text-orange-600">Frequently Asked Questions</span>
+            <span className="text-brand">Frequently Asked Questions</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             Find clear answers about our{" "}
@@ -81,7 +81,7 @@ export const FaqSection: React.FC = () => {
                         className="w-full px-6 py-5 flex items-center justify-between cursor-pointer hover:bg-slate-50 transition-colors gap-4"
                       >
                         <div className="flex items-center gap-3 text-left">
-                          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-50 text-orange-600">
+                          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-50 text-brand">
                             <HelpCircle className="w-4 h-4" />
                           </span>
                           <h4 className="text-lg font-semibold text-slate-900">
@@ -89,7 +89,7 @@ export const FaqSection: React.FC = () => {
                           </h4>
                         </div>
                         <ChevronDown
-                          className={`w-6 h-6 text-orange-600 transition-transform duration-300 flex-shrink-0 ${expandedFAQ === globalIdx ? "rotate-180" : ""
+                          className={`w-6 h-6 text-brand transition-transform duration-300 flex-shrink-0 ${expandedFAQ === globalIdx ? "rotate-180" : ""
                             }`}
                         />
                       </button>
@@ -125,7 +125,7 @@ export const FaqSection: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
               onClick={() => setIsEnrollOpen(true)}
-              className="px-6 py-3 bg-orange-700 hover:bg-orange-800 text-white font-semibold rounded-lg transition-colors cursor-pointer"
+              className="px-6 py-3 bg-brand hover:bg-brand text-white font-semibold rounded-lg transition-colors cursor-pointer"
             >
               📞 Talk to a Career Expert
             </button>

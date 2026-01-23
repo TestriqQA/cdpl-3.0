@@ -472,7 +472,7 @@ export default function JobApplicationModal({
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="inline-flex items-center gap-2 rounded-full bg-[#c2410c] px-6 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-[#9a3412] focus:outline-none focus:ring-2 focus:ring-[#c2410c] focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                                        className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-brand focus:outline-none focus:ring-2 focus:ring-[#ff8c00] focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
                                     >
                                         {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}
                                         {isSubmitting ? "Submitting..." : "Submit Application"}

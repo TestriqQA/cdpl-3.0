@@ -23,11 +23,11 @@ const STEPS: Step[] = [
     badge: "Job-Ready Foundations",
     accent: {
       bg: "bg-orange-50",
-      text: "text-orange-900",
+      text: "text-brand",
       border: "border-orange-200",
       ring: "focus:ring-orange-300",
       dot: "bg-orange-500",
-      bar: "bg-orange-600",
+      bar: "bg-brand",
     },
   },
   {

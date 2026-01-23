@@ -72,7 +72,7 @@ export default function CareerRoadmapSection() {
                                 <div key={item.id} className="relative">
                                     {/* Circle */}
                                     <div className="flex justify-center mb-8">
-                                        <div className="w-16 h-16 bg-white border-4 border-[#d04502] rounded-full flex items-center justify-center text-2xl shadow-lg relative z-10">
+                                        <div className="w-16 h-16 bg-white border-4 border-[#ff8c00] rounded-full flex items-center justify-center text-2xl shadow-lg relative z-10">
                                             {item.icon}
                                         </div>
                                     </div>
@@ -102,7 +102,7 @@ export default function CareerRoadmapSection() {
                                 <div className="flex gap-6">
                                     {/* Circle */}
                                     <div className="flex-shrink-0">
-                                        <div className="w-16 h-16 bg-white border-4 border-[#d04502] rounded-full flex items-center justify-center text-2xl shadow-lg">
+                                        <div className="w-16 h-16 bg-white border-4 border-[#ff8c00] rounded-full flex items-center justify-center text-2xl shadow-lg">
                                             {item.icon}
                                         </div>
                                     </div>
@@ -179,7 +179,7 @@ export default function CareerRoadmapSection() {
                                     "Ready for senior roles and specialized positions",
                             },
                         ].map((phase, index) => (
-                            <div key={index} className="bg-white rounded-lg p-6 border-l-4 border-[#d04502]">
+                            <div key={index} className="bg-white rounded-lg p-6 border-l-4 border-[#ff8c00]">
                                 <div className="flex items-start justify-between mb-4">
                                     <div>
                                         <h4 className="text-xl font-bold text-gray-900">{phase.phase}</h4>
@@ -294,7 +294,7 @@ export default function CareerRoadmapSection() {
                     </p>
                     <button
                         onClick={() => setIsEnrollOpen(true)}
-                        className="bg-[#7c2d12] hover:bg-[#c2410c] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Enroll Now and Begin Your Journey
                     </button>

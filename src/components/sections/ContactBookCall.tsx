@@ -39,7 +39,7 @@ export function ContactBookCallSection() {
               <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
                 {[
                   { title: "15–20 mins on Zoom/Phone", bgColor: "bg-purple-50", textColor: "text-purple-700" },
-                  { title: "Free advisory call", bgColor: "bg-orange-50", textColor: "text-orange-700" },
+                  { title: "Free advisory call", bgColor: "bg-orange-50", textColor: "text-brand" },
                   { title: "Live mentor-led courses", bgColor: "bg-indigo-50", textColor: "text-indigo-700" },
                   { title: "Placement assistance", bgColor: "bg-emerald-50", textColor: "text-emerald-700" }
                 ].map((t) => (
@@ -99,7 +99,7 @@ export function ContactBookCallSection() {
             actionPlatform: ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"],
             inLanguage: "en-IN",
           },
-          result: { "@type": "Event", name: "1:1 Career Counseling Call", eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode" },
+
         })}
       </Script>
     </section>

@@ -46,10 +46,10 @@ const gradientThemes = [
         borderColor: "border-emerald-200"
     },
     {
-        gradient: "from-orange-500 via-amber-500 to-orange-600",
+        gradient: "from-orange-500 via-amber-500 to-brand",
         lightGradient: "from-orange-50 via-amber-50 to-orange-100",
         glowColor: "shadow-orange-500/20",
-        textColor: "text-orange-600",
+        textColor: "text-brand",
         bgLight: "bg-orange-50",
         borderColor: "border-orange-200"
     }

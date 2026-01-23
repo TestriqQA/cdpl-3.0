@@ -286,11 +286,7 @@ export function generateLocalBusinessSchema(): WithContext<Record<string, unknow
         closes,
       };
     }),
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-    },
+    // aggregateRating removed to avoid duplication with Global Organization Schema
   };
 }
 
@@ -616,6 +612,7 @@ interface VideoSchemaInput {
   duration?: string; // ISO 8601 format (e.g., "PT1M30S" for 1 min 30 sec)
   contentUrl?: string;
   embedUrl?: string;
+  url?: string; // URL of the page where the video is shown
 }
 
 /**
@@ -629,6 +626,8 @@ export function generateVideoSchema(video: VideoSchemaInput): WithContext<Record
     description: video.description,
     thumbnailUrl: getImageUrl(video.thumbnailUrl),
     uploadDate: video.uploadDate,
+    // Ensure URL is present for "Video is on a watch page" validation
+    url: video.url ? getFullUrl(video.url) : SITE_CONFIG.url,
     ...(video.duration && { duration: video.duration }),
     ...(video.contentUrl && { contentUrl: video.contentUrl }),
     ...(video.embedUrl && { embedUrl: video.embedUrl }),
@@ -794,17 +793,18 @@ export function generateHomePageSchema(faqs?: { question: string; answer: string
     name: 'Transform Your Career with CDPL',
     description: 'Discover how CDPL helps you master Software Testing, Data Science, and AI/ML with 100% placement support.',
     thumbnailUrl: '/images/video-thumbnail.jpg', // Ensure this image exists or use a valid URL
-    uploadDate: '2024-01-01', // Update with actual upload date
+    uploadDate: '2024-01-01T08:00:00+08:00', // Update with actual upload date
     contentUrl: 'https://www.youtube.com/watch?v=8kB2wESj1n8',
     embedUrl: 'https://www.youtube.com/embed/8kB2wESj1n8',
+    url: SITE_CONFIG.url, // Explicitly point to the watch page (Home Page)
   });
 
-  // 5. Website Schema (Sitelinks Search Box)
-  const websiteSchema = generateWebsiteSchema();
+  // 5. Website Schema - REMOVED TO AVOID DUPLICATION WITH LAYOUT
+  // const websiteSchema = generateWebsiteSchema();
 
   // Filter out undefined schemas
   return [
-    websiteSchema,
+    // websiteSchema, // Removed
     localBusinessSchema,
     itemListSchema,
     faqSchema,

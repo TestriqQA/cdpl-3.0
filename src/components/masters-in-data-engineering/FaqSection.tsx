@@ -113,7 +113,7 @@ const FaqSection: React.FC = () => {
             </button>
             <Link
               href="tel:+917888383788"
-              className="px-6 py-3 bg-[#c2410c] hover:bg-[#9a3412] text-white font-bold rounded-lg transition-colors"
+              className="px-6 py-3 bg-brand hover:bg-brand text-white font-bold rounded-lg transition-colors"
             >
               📞 Call Us
             </Link>

@@ -29,7 +29,7 @@ const ROLES: Role[] = [
 
 const COMPANIES: Company[] = [
   { label: 'Google', bg: 'bg-slate-50', text: 'text-slate-800', border: 'border-slate-200' },
-  { label: 'Amazon', bg: 'bg-orange-50', text: 'text-orange-800', border: 'border-orange-200' },
+  { label: 'Amazon', bg: 'bg-orange-50', text: 'text-brand', border: 'border-orange-200' },
   { label: 'Microsoft', bg: 'bg-blue-50', text: 'text-blue-800', border: 'border-blue-200' },
   { label: 'Meta', bg: 'bg-cyan-50', text: 'text-cyan-800', border: 'border-cyan-200' },
   { label: 'Netflix', bg: 'bg-red-50', text: 'text-red-800', border: 'border-red-200' },

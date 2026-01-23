@@ -355,8 +355,8 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
                                             setSelectedLevel(level);
                                             setIsOpen(false);
                                         }}
-                                        className={`w-full text-left px-4 py-2.5 text-sm hover:bg-orange-50 hover:text-orange-700 transition-colors
-                                            ${selectedLevel === level ? 'bg-orange-50 text-orange-700 font-medium' : 'text-slate-700'}
+                                        className={`w-full text-left px-4 py-2.5 text-sm hover:bg-orange-50 hover:text-brand transition-colors
+                                            ${selectedLevel === level ? 'bg-orange-50 text-brand font-medium' : 'text-slate-700'}
                                         `}
                                     >
                                         {level}
@@ -371,7 +371,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
                     <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-orange-500/30 transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                        className="w-full bg-gradient-to-r from-brand to-amber-600 hover:from-brand hover:to-amber-700 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-orange-500/30 transition-all transform hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
                         {isSubmitting ? (
                             <>

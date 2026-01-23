@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-
 import { ChevronDown } from "lucide-react";
 import AdvisorModal from "@/components/ui/AdvisorModal";
 
@@ -9,81 +8,21 @@ import AdvisorModal from "@/components/ui/AdvisorModal";
  * AboutFAQSection — sleek, light-themed, and slightly futuristic FAQ
  * - SEO-ready copy for an EdTech institute (Cinute Digital)
  * - Accessible accordion with keyboard and ARIA support
- * - JSON-LD (FAQPage) for rich results
  * - Lightweight client-side search/filter
- * - Subtle gradients using brand #c2410c
+ * - Subtle gradients using brand #ff8c00
  */
 
-type FAQ = {
-    q: string;
-    a: string;
+export type FAQItem = {
+    question: string;
+    answer: string;
     tags?: string[];
 };
 
-const faqs: FAQ[] = [
-    {
-        q: "Do you provide placement assistance?",
-        a: "Yes. Our dedicated Career Services team offers resume reviews, portfolio polishing, mock interviews, and direct referrals through hiring partners. Many learners secure interviews within 2–6 weeks of completing capstone projects.",
-        tags: ["career services", "placements", "jobs"],
-    },
-    {
-        q: "Are the programs beginner friendly?",
-        a: "Absolutely. Each program starts with fundamentals and hands-on guided labs. No prior coding experience is required for our beginner tracks.",
-        tags: ["beginners", "foundations", "non-tech"],
-    },
-    {
-        q: "Will I work on live projects?",
-        a: "Yes. You’ll build job-ready skills through live or sandbox projects mirroring real business scenarios, version control, code reviews, and CI/CD workflows.",
-        tags: ["projects", "real-world", "portfolio"],
-    },
-    {
-        q: "What makes your curriculum industry-aligned?",
-        a: "Our modules are co-designed with practitioners from QA, Data, and DevOps. Tooling includes Git, GitHub Actions, Postman, REST APIs, Selenium, Playwright, SQL, and cloud fundamentals so your skills map directly to hiring needs.",
-        tags: ["industry", "tools", "curriculum"],
-    },
-    {
-        q: "How are classes delivered—online or in-person?",
-        a: "We run live online cohorts with recordings and Q&A, plus weekend doubt-clearing sessions. Select cities also host optional in-person meetups and hiring drives.",
-        tags: ["online", "hybrid", "recordings"],
-    },
-    {
-        q: "Do you offer certifications?",
-        a: "Yes. You’ll receive a Cinute Digital certificate on completion. We also guide you for global certifications like ISTQB (for Software Testing) and provide exam preparation resources.",
-        tags: ["certificate", "ISTQB", "credentials"],
-    },
-    {
-        q: "What is the typical program duration?",
-        a: "Most job-ready tracks span 10–24 weeks, with flexible schedules for working professionals. Accelerated bootcamps are available for focused upskilling.",
-        tags: ["duration", "schedule", "bootcamp"],
-    },
-    {
-        q: "Is there doubt support and mentorship?",
-        a: "Every learner gets mentor hours, Discord/Slack community access, and daily doubt support. Premium tracks include 1-on-1 career mentorship and mock interviews.",
-        tags: ["mentor", "support", "community"],
-    },
-    {
-        q: "Do you provide EMI or flexible payment plans?",
-        a: "Yes. We offer EMI options and milestone-based payment plans for most programs. Speak with our admissions team for the best fit.",
-        tags: ["EMI", "payment", "fees"],
-    },
-    {
-        q: "Can I switch tracks if my interests change?",
-        a: "Within the first 2 weeks, you can switch to another eligible cohort based on seat availability and prerequisites.",
-        tags: ["track switch", "flexibility"],
-    },
-    {
-        q: "What outcomes can I expect after completion?",
-        a: "Graduates showcase a portfolio of real projects, pass structured assessments, and get interview referrals. Many transition into roles such as QA Engineer, Automation Tester, Data Analyst, or Junior ML Engineer.",
-        tags: ["outcomes", "roles", "career"],
-    },
-    {
-        q: "Where can I view the full syllabus and upcoming cohorts?",
-        a: "Visit the program pages for detailed syllabus, start dates, and application steps. You can also request a personalized counseling call.",
-        tags: ["syllabus", "cohorts", "apply"],
-    },
-];
+interface AboutFAQSectionProps {
+    faqs: FAQItem[];
+}
 
-export default function AboutFAQSection() {
+export default function AboutFAQSection({ faqs }: AboutFAQSectionProps) {
     const [open, setOpen] = useState<number | null>(0);
     const [query] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -93,39 +32,18 @@ export default function AboutFAQSection() {
         if (!q) return faqs;
         return faqs.filter(
             (f) =>
-                f.q.toLowerCase().includes(q) ||
-                f.a.toLowerCase().includes(q) ||
+                f.question.toLowerCase().includes(q) ||
+                f.answer.toLowerCase().includes(q) ||
                 (f.tags ?? []).some((t) => t.toLowerCase().includes(q))
         );
-    }, [query]);
-
-    // JSON-LD for FAQ rich results (SEO)
-    const jsonLd = useMemo(
-        () => ({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqs.map((f) => ({
-                "@type": "Question",
-                name: f.q,
-                acceptedAnswer: {
-                    "@type": "Answer",
-                    text: f.a,
-                },
-            })),
-        }),
-        []
-    );
+    }, [query, faqs]);
 
     return (
         <section
             className="mx-auto max-w-7xl px-4 py-6 md:py-14 sm:px-6 lg:px-8"
             aria-labelledby="faq-heading"
         >
-            {/* JSON-LD script for SEO */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-            />
+            {/* JSON-LD script removed to avoid duplication */}
 
             <div className="rounded-[28px] border border-slate-200 bg-white shadow-sm">
                 {/* Header */}
@@ -173,7 +91,7 @@ export default function AboutFAQSection() {
 
                             return (
                                 <div
-                                    key={f.q}
+                                    key={f.question}
                                     className={`relative transition ${isOpen ? "bg-white" : "bg-white"
                                         }`}
                                     style={{
@@ -185,7 +103,7 @@ export default function AboutFAQSection() {
                                 >
                                     {/* Accent glow when open */}
                                     <span
-                                        className={`pointer-events-none absolute left-0 top-0 h-full w-[3px] rounded-l-[28px] transition ${isOpen ? "bg-[#c2410c]" : "bg-transparent"
+                                        className={`pointer-events-none absolute left-0 top-0 h-full w-[3px] rounded-l-[28px] transition ${isOpen ? "bg-brand" : "bg-transparent"
                                             }`}
                                         aria-hidden="true"
                                     />
@@ -197,7 +115,7 @@ export default function AboutFAQSection() {
                                         className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left outline-none transition hover:bg-slate-50 focus:bg-slate-50"
                                     >
                                         <span className="flex-1 text-base font-medium leading-6 text-slate-900">
-                                            {f.q}
+                                            {f.question}
                                         </span>
                                         <ChevronDown
                                             className={`h-5 w-5 shrink-0 text-slate-400 transition-transform ${isOpen ? "rotate-180" : "rotate-0"
@@ -217,7 +135,7 @@ export default function AboutFAQSection() {
                                     >
                                         <div className="min-h-0">
                                             <p className="pb-5 text-sm leading-6 text-slate-700">
-                                                {f.a}
+                                                {f.answer}
                                             </p>
 
                                             {/* Tags */}
@@ -250,7 +168,7 @@ export default function AboutFAQSection() {
                     </p>
                     <button
                         onClick={() => setIsModalOpen(true)}
-                        className="inline-flex items-center justify-center rounded-xl bg-[#c2410c] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#c2410c]/40 cursor-pointer"
+                        className="inline-flex items-center justify-center rounded-xl bg-brand px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#ff8c00]/40 cursor-pointer"
                     >
                         Get Counseling
                     </button>

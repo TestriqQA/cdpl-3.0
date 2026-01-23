@@ -257,7 +257,7 @@ const ProjectsSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsSyllabusOpen(true)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#c2410c] px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-[#9a3412] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-brand hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
           >
             <Download className="h-5 w-5" />
             Download Project Syllabus

@@ -18,7 +18,7 @@ export default function FaqSection() {
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-8 text-slate-900">
                         Frequently Asked Questions{" "}
-                        <span className="text-orange-600">(FAQs)</span>
+                        <span className="text-brand">(FAQs)</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-4xl mx-auto">
                         Everything you need to know about the program, logistics, flexible hybrid learning,
@@ -51,7 +51,7 @@ export default function FaqSection() {
                                     {faq.question}
                                 </h3>
                                 <ChevronDown
-                                    className={`w-6 h-6 text-orange-600 transition-transform duration-300 flex-shrink-0 ${expandedIndex === index ? "rotate-180" : ""
+                                    className={`w-6 h-6 text-brand transition-transform duration-300 flex-shrink-0 ${expandedIndex === index ? "rotate-180" : ""
                                         }`}
                                 />
                             </button>
@@ -92,7 +92,7 @@ export default function FaqSection() {
                     </p>
                     <button
                         onClick={() => setIsCareerSessionOpen(true)}
-                        className="btn-cta cursor-pointer inline-flex items-center justify-center px-8 py-3 rounded-xl bg-[#d04502] text-white font-semibold shadow-md hover:bg-orange-700 transition-colors"
+                        className="btn-cta cursor-pointer inline-flex items-center justify-center px-8 py-3 rounded-xl bg-brand text-white font-semibold shadow-md hover:bg-brand transition-colors"
                     >
                         Speak to a Career Counselor
                     </button>

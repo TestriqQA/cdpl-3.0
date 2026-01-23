@@ -23,7 +23,7 @@ export default function CtaSection() {
                     <div className="text-white space-y-8 lg:col-span-8">
                         <div className="space-y-4">
                             <h2 className="text-3xl md:text-4xl font-bold leading-tight">
-                                Ready to <span className="bg-gradient-to-r from-[#d04502] via-[#ea580c] to-[#d04502] bg-clip-text text-transparent">Master</span> Excel?
+                                Ready to <span className="bg-gradient-to-r from-[#ff8c00] via-[#ff8c00] to-[#ff8c00] bg-clip-text text-transparent">Master</span> Excel?
                             </h2>
                             <p className="text-xl text-blue-100 leading-relaxed">
                                 Join thousands of successful professionals who have transformed their careers with our comprehensive Excel training program.
@@ -129,7 +129,7 @@ export default function CtaSection() {
     px-4 py-3 sm:px-6 sm:py-3 md:px-10 md:py-4
     text-sm sm:text-base md:text-lg
     bg-gradient-to-r from-yellow-400 to-orange-500
-    hover:from-yellow-500 hover:to-orange-600
+    hover:from-yellow-500 hover:to-brand
     text-slate-900 font-bold
     rounded-lg
     text-center

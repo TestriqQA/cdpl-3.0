@@ -11,7 +11,7 @@ export default async function TestimonialsSection() {
                 {/* Section Header (layout + style like reference) */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Student <span className="text-orange-600">Testimonials</span>
+                        Student <span className="text-brand">Testimonials</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
                         Hear from our successful graduates who have transformed their careers
@@ -100,7 +100,7 @@ export default async function TestimonialsSection() {
                         className="animate-fadeInUp"
                         style={{ animationDelay: "200ms" }}
                     >
-                        <div className="text-4xl font-bold text-orange-600 mb-2">100%</div>
+                        <div className="text-4xl font-bold text-brand mb-2">100%</div>
                         <p className="text-gray-600">Satisfaction Rate</p>
                     </div>
                 </div>

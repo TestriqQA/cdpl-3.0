@@ -27,10 +27,10 @@ const MODULES: Module[] = [
       "Master data wrangling, profiling, missing-value strategy, outlier treatment, text/date handling, and reproducible ETL.",
     accent: {
       bg: "bg-orange-50",
-      text: "text-orange-900",
+      text: "text-brand",
       border: "border-orange-200",
       ring: "focus:ring-orange-300",
-      bar: "bg-orange-600",
+      bar: "bg-brand",
     },
   },
   {
@@ -98,7 +98,7 @@ export default function CurriculumSection() {
     "advanced data analytics curriculum, business intelligence syllabus, data visualization storytelling, predictive analytics forecasting, statistics for data analysts, Power BI Tableau SQL";
 
   const accents = [
-    { cardBg: 'bg-orange-50', cardBorder: 'border-orange-200', badgeBg: 'bg-orange-600', badgeText: 'text-white', ink: 'text-orange-800', icon: 'text-orange-700' },
+    { cardBg: 'bg-orange-50', cardBorder: 'border-orange-200', badgeBg: 'bg-brand', badgeText: 'text-white', ink: 'text-brand', icon: 'text-brand' },
     { cardBg: 'bg-emerald-50', cardBorder: 'border-emerald-200', badgeBg: 'bg-[#047857]', badgeText: 'text-white', ink: 'text-emerald-800', icon: 'text-emerald-700' },
     { cardBg: 'bg-sky-50', cardBorder: 'border-sky-200', badgeBg: 'bg-sky-600', badgeText: 'text-white', ink: 'text-sky-800', icon: 'text-sky-700' },
     { cardBg: 'bg-rose-50', cardBorder: 'border-rose-200', badgeBg: 'bg-rose-600', badgeText: 'text-white', ink: 'text-rose-800', icon: 'text-rose-700' },

@@ -64,16 +64,16 @@ export default function HeroSection() {
                     <div className="flex flex-col md:col-span-7 lg:col-span-8">
                         {/* Duration Badge */}
                         <div className="mb-4 w-fit inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/80 px-4 py-2 shadow-sm backdrop-blur-sm transition-shadow hover:shadow-md">
-                            <Clock className="h-4 w-4 text-[#d04502]" />
+                            <Clock className="h-4 w-4 text-brand" />
                             <span className="text-sm font-semibold text-slate-700">
-                                Duration: <span className="text-[#d04502]">20 Hours</span>
+                                Duration: <span className="text-brand">20 Hours</span>
                             </span>
                         </div>
 
                         {/* H1 */}
                         <h1 className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
                             <span>Master </span>
-                            <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">
+                            <span className="bg-gradient-to-r from-orange-500 via-brand to-red-500 bg-clip-text text-transparent">
                                 Advanced Data Analytics
                             </span>
                             <span> with </span>
@@ -105,7 +105,7 @@ export default function HeroSection() {
                         <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                             <button
                                 onClick={() => setIsEnrollOpen(true)}
-                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#d04502] bg-[#d04502] px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#ff8c00] bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
                                 aria-label="Enroll now in Data Analytics program"
                             >
                                 Enroll Now
@@ -114,7 +114,7 @@ export default function HeroSection() {
 
                             <button
                                 onClick={() => setIsSyllabusOpen(true)}
-                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#d04502] bg-[#d04502] px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#ff8c00] bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
                                 aria-label="Download Syllabus"
                             >
                                 Download Syllabus

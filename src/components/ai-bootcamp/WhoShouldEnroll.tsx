@@ -38,7 +38,7 @@ const audiences: Audience[] = [
             "Future-proof your role by mastering AI-driven marketing, data-led decision-making, and advanced analytics to switch to high-paying digital roles in India and globally.",
         icon: Briefcase,
         bgClass: "bg-orange-50",
-        iconClass: "text-orange-600",
+        iconClass: "text-brand",
         idealFor: [
             "Professionals from sales, marketing, IT, HR, or operations looking to transition into digital marketing",
             "Mid-career professionals who want promotions, salary hikes, or leadership roles in growth marketing",
@@ -269,7 +269,7 @@ export default function WhoShouldEnroll() {
                         </p>
                         <button
                             onClick={() => setIsEnrollOpen(true)}
-                            className="cursor-pointer inline-flex items-center justify-center rounded-lg bg-[#d04502] px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
+                            className="cursor-pointer inline-flex items-center justify-center rounded-lg bg-brand px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:from-brand hover:to-brand hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
                         >
                             Check Your Eligibility
                         </button>

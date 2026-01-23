@@ -180,7 +180,7 @@ const CourseCard = ({ course }: { course: Course }) => {
             <CountdownTimer targetDate={nextBatchDate} />
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-sm font-semibold text-orange-700">Only {course.seatsLeft} seats left!</span>
+            <span className="text-sm font-semibold text-brand">Only {course.seatsLeft} seats left!</span>
             <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-pulse">
               HURRY!
             </span>

@@ -14,7 +14,7 @@ export default function AffiliateCTASection() {
         "--labelBg" | "--labelText" | "--titleColor" | "--btnBg" | "--btnText"
     > = {
         // Distinct solids (no gradients)
-        "--labelBg": "#c2410c",   // label/tag: dark orange for contrast
+        "--labelBg": "#ff8c00",   // label/tag: dark orange for contrast
         "--labelText": "rgb(255, 255, 255)",
         "--titleColor": "rgb(0, 105, 168)", // title: deep blue
         "--btnBg": "rgb(222, 247, 236)",    // button: light (not white) mint

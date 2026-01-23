@@ -14,8 +14,8 @@ import { CheckCircle2, Award, Users, Briefcase, Clock, Globe, HeadphonesIcon, Tr
 // Define a color palette for the cards
 const colorPalette = [
   {
-    bg: 'bg-gradient-to-br from-orange-500 to-orange-600',
-    text: 'text-orange-600',
+    bg: 'bg-gradient-to-br from-orange-500 to-brand',
+    text: 'text-brand',
     ring: 'ring-orange-500',
     hoverBorder: 'hover:border-orange-300',
   },
@@ -117,11 +117,11 @@ export default function HomeWhyChooseSection() {
           viewport={{ once: true, amount: 0.2 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-semibold tracking-wider mb-3">
+          <span className="inline-block px-4 py-1 bg-orange-100 text-brand rounded-full text-sm font-semibold tracking-wider mb-3">
             Your Career Advantage
           </span>
           <h2 id="why-choose-cdpl-heading" className="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
-            Why <span className="text-orange-700">Choose CDPL</span> for Your Future?
+            Why <span className="text-brand">Choose CDPL</span> for Your Future?
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto font-light">
             We are committed to transforming your career with a unique blend of expert-led training, personalized support, and guaranteed placement assistance.

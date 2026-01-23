@@ -102,9 +102,9 @@ const FAQItem: React.FC<{
         {
             bg: "from-orange-50 to-amber-50",
             border: "border-orange-200",
-            icon: "from-orange-700 to-amber-700",
+            icon: "from-brand to-amber-700",
             iconBg: "bg-orange-50",
-            iconColor: "text-orange-700",
+            iconColor: "text-brand",
             hover: "hover:bg-orange-50",
             active: "bg-gradient-to-r from-orange-50 to-amber-50"
         },

@@ -109,7 +109,7 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
                           <div className="flex items-start justify-between gap-2">
                             <h3 className="truncate text-[15px] font-extrabold leading-tight text-slate-900">{job.title}</h3>
                             {active && (
-                              <span className="shrink-0 rounded-full border border-orange-200 bg-orange-50 px-2 py-0.5 text-[10px] font-semibold text-orange-700">
+                              <span className="shrink-0 rounded-full border border-orange-200 bg-orange-50 px-2 py-0.5 text-[10px] font-semibold text-brand">
                                 Selected
                               </span>
                             )}
@@ -140,8 +140,8 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
               ) : canLoad ? (
                 <button
                   onClick={() => setVisible((v) => Math.min(v + 12, sorted.length))}
-                  className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#c2410c]"
-                  style={{ backgroundColor: "#c2410c" }}
+                  className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#ff8c00]"
+                  style={{ backgroundColor: "#ff8c00" }}
                 >
                   Load more <ArrowRight className="h-4 w-4" />
                 </button>

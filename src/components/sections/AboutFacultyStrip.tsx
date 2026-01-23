@@ -43,7 +43,7 @@ const DEFAULT_MENTORS: Mentor[] = [
 
 export default function AboutFacultyStrip({
   className,
-  brand = "#c2410c",
+  brand = "#ff8c00",
   mentors = DEFAULT_MENTORS,
   heading = (<>Learn from <span className="text-brand">Mentors</span> </>),
   subheading = (<>10+ years average experience across <strong>Software Testing</strong>, <strong>Automation</strong>, <strong>Data Science</strong> & <strong>AI/ML</strong>.</>),

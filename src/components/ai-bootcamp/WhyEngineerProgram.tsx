@@ -77,7 +77,7 @@ export default function WhyEngineerProgram() {
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
                         Why This is the ONLY{" "}
-                        <span className="text-orange-600">
+                        <span className="text-brand">
                             Digital Marketing Program You Need
                         </span>
                     </h2>
@@ -101,7 +101,7 @@ export default function WhyEngineerProgram() {
                         >
                             {/* Icon Container */}
                             <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-white/60 backdrop-blur-sm group-hover:scale-110 transition-transform">
-                                <div className="text-orange-600">{feature.icon}</div>
+                                <div className="text-brand">{feature.icon}</div>
                             </div>
 
                             {/* Title */}
@@ -111,7 +111,7 @@ export default function WhyEngineerProgram() {
 
                             {/* Highlight Badge */}
                             <div className="inline-block mb-3">
-                                <span className="text-xs font-semibold text-orange-600 bg-orange-100/60 px-3 py-1 rounded-full">
+                                <span className="text-xs font-semibold text-brand bg-orange-100/60 px-3 py-1 rounded-full">
                                     {feature.highlight}
                                 </span>
                             </div>

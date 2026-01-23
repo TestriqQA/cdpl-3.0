@@ -110,7 +110,7 @@ export const StatsSection: React.FC = () => {
             className="text-3xl md:text-4xl font-bold mb-4 text-slate-900"
           >
             Why Learners Trust Our{" "}
-            <span className="text-orange-600">
+            <span className="text-brand">
               R Data Visualization & Machine Learning Program
             </span>
             ?
@@ -253,7 +253,7 @@ export const StatsSection: React.FC = () => {
         <div className="flex justify-center mt-12">
           <button
             onClick={() => setIsSyllabusOpen(true)}
-            className="inline-flex items-center justify-center cursor-pointer rounded-lg border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-700 shadow-sm transition-all hover:border-orange-400 hover:text-orange-600 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-orange-100"
+            className="inline-flex items-center justify-center cursor-pointer rounded-lg border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-700 shadow-sm transition-all hover:border-orange-400 hover:text-brand hover:shadow-md focus:outline-none focus:ring-4 focus:ring-orange-100"
           >
             <CloudDownload className="mr-2 h-5 w-5" />
             Download Syllabus (PDF)

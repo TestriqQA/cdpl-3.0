@@ -73,13 +73,13 @@ const CareerCard = ({ path, index, onEnroll }: { path: CareerPath; index: number
             glow: "shadow-emerald-500/20",
         },
         {
-            card: "from-orange-500/5 via-amber-500/5 to-orange-600/5",
+            card: "from-orange-500/5 via-amber-500/5 to-brand/5",
             border: "border-orange-200",
-            accent: "from-orange-700 to-amber-700",
+            accent: "from-brand to-amber-700",
             iconBg: "bg-orange-50",
-            iconColor: "text-orange-700",
-            badge: "bg-orange-50 text-orange-700 border-orange-200",
-            glow: "shadow-orange-700/20",
+            iconColor: "text-brand",
+            badge: "bg-orange-50 text-brand border-orange-200",
+            glow: "shadow-brand/20",
         },
     ];
 
@@ -150,7 +150,7 @@ const CareerCard = ({ path, index, onEnroll }: { path: CareerPath; index: number
                                     initial={{ scale: 0, rotate: -180 }}
                                     whileInView={{ scale: 1, rotate: 0 }}
                                     transition={{ delay: 0.15, type: "spring" }}
-                                    className="flex items-center gap-1 text-xs font-bold px-3 py-1 bg-orange-50 text-orange-700 border border-orange-200 rounded-full"
+                                    className="flex items-center gap-1 text-xs font-bold px-3 py-1 bg-orange-50 text-brand border border-orange-200 rounded-full"
                                 >
                                     <TrendingUp className="w-3 h-3" />
                                     Trending
@@ -340,7 +340,7 @@ export default function CareerPathSection() {
                     <StatCard icon={TrendingUp} value="40%" label="Avg. Salary Hike" gradient="from-blue-500 to-cyan-600" />
                     <StatCard icon={Users} value="2,500+" label="Students Placed" gradient="from-purple-500 to-fuchsia-600" />
                     <StatCard icon={Building2} value="500+" label="Hiring Partners" gradient="from-emerald-500 to-teal-600" />
-                    <StatCard icon={Award} value="95%" label="Success Rate" gradient="from-orange-700 to-amber-700" />
+                    <StatCard icon={Award} value="95%" label="Success Rate" gradient="from-brand to-amber-700" />
                 </div>
 
                 {/* Career Cards Grid */}

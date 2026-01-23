@@ -22,7 +22,7 @@ const STATS: Stat[] = [
     accent: {
       bar: "bg-orange-500",
       border: "border-orange-200",
-      text: "text-orange-700",
+      text: "text-brand",
       chip: "bg-orange-50",
       ring: "focus:ring-orange-300",
     },

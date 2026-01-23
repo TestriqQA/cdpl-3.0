@@ -18,7 +18,7 @@ const COMPANIES: Company[] = [
     logo: "/tcs-logo.png",
     alt: "TCS logo",
     href: "https://www.tcs.com/",
-    accent: { bg: "bg-orange-50", text: "text-orange-900", border: "border-orange-200", ring: "focus:ring-orange-300" },
+    accent: { bg: "bg-orange-50", text: "text-brand", border: "border-orange-200", ring: "focus:ring-orange-300" },
   },
   {
     name: "Infosys",
@@ -99,7 +99,7 @@ export default function CareerSection() {
 
         {/* KPI / subtitle strip */}
         <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-[11px] font-semibold text-slate-700 backdrop-blur">
-          <span className="text-orange-700">•</span>
+          <span className="text-brand">•</span>
           <span className="text-slate-900">{subKpi}</span>
           <span className="text-indigo-700">•</span>
           <span>Pan-India • Product & Services • Startup & Enterprise</span>
@@ -135,7 +135,7 @@ export default function CareerSection() {
 
         {/* Role chips (distinct colors, no repeats) */}
         <div className="mx-auto mt-8 flex max-w-3xl flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-slate-700">
-          <span className="rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-orange-900">Data Analyst</span>
+          <span className="rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-brand">Data Analyst</span>
           <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-900">BI Analyst</span>
           <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sky-900">Analytics Engineer</span>
           <span className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-rose-900">Product Analyst</span>

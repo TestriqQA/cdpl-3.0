@@ -80,7 +80,7 @@ const roadmapSteps = [
       "Lifetime community and support access",
     ],
     icon: "🚀",
-    color: "from-orange-500 to-orange-600",
+    color: "from-orange-500 to-brand",
   },
 ];
 

@@ -798,7 +798,7 @@ export const trainingServices: TrainingService[] = [
     tagline: "Digital transformation, e-governance, data security, and citizen-first service delivery for public institutions",
     shortDescription: "Specialized upskilling for municipalities (including BMC), departments, and public sector units—covering e-governance systems, digital literacy, data management, and cybersecurity.",
     fullDescription: "Our Government & Public Sector Training programs are tailored for municipal corporations, state departments, and public agencies. This includes dedicated offerings for the Brihanmumbai Municipal Corporation (BMC). We design practical, job-relevant curricula that improve adoption of e-governance systems, strengthen digital literacy, enhance data management and cybersecurity, and streamline citizen service delivery. Content respects government processes, multilingual needs, accessibility, and audit/compliance requirements, ensuring sustainable transformation.",
-    color: "from-amber-500 to-orange-600",
+    color: "from-amber-500 to-brand",
     features: [
       "Government-focused curriculum & use-cases",
       "Process & policy mapping to training",

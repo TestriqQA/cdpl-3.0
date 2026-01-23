@@ -44,7 +44,7 @@ export default function ProjectsSection() {
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        Real-World <span className="bg-gradient-to-r from-[#d04502] via-[#ea580c] to-[#d04502] bg-clip-text text-transparent">Projects</span>
+                        Real-World <span className="bg-gradient-to-r from-[#ff8c00] via-[#ff8c00] to-[#ff8c00] bg-clip-text text-transparent">Projects</span>
                     </h2>
                     <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                         Work on industry-relevant projects that mirror real business scenarios. Build a portfolio that impresses employers.
@@ -169,7 +169,7 @@ export default function ProjectsSection() {
                 <div className="mt-16 text-center">
                     <button
                         onClick={() => setIsSyllabusOpen(true)}
-                        className="bg-[#d04502] hover:bg-[#c2410c] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Download Project Guide
                     </button>

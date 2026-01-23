@@ -54,7 +54,7 @@ export default function AAACerticationHeroSection() {
 
             <h1 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
               <span style={{ color: "#0069A8" }}>AAA Certification </span>
-              <span style={{ color: "#c2410c" }}>by CDPL</span>
+              <span style={{ color: "#ff8c00" }}>by CDPL</span>
             </h1>
 
             <p className="mt-4 mx-auto max-w-2xl text-base sm:text-lg text-slate-600 lg:mx-0">

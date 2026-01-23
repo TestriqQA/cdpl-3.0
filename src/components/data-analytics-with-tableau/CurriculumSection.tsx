@@ -213,7 +213,7 @@ export default function CurriculumSection() {
                         Master 12 modules covering everything from Tableau basics to advanced analytics and dashboard design
                     </p>
                     <div className="mt-6 inline-block bg-orange-100 px-6 py-3 rounded-full">
-                        <span className="text-orange-700 font-semibold">
+                        <span className="text-brand font-semibold">
                             Total Duration: 20 Hours
                         </span>
                     </div>
@@ -345,7 +345,7 @@ export default function CurriculumSection() {
                 <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
                     <button
                         onClick={() => setIsSyllabusOpen(true)}
-                        className="inline-flex items-center justify-center rounded-xl border-2 border-[#7c2d12] bg-white px-6 py-3 text-base font-semibold text-[#7c2d12] shadow-sm transition hover:bg-orange-50 focus:outline-none focus:ring-4 focus:ring-orange-200 cursor-pointer"
+                        className="inline-flex items-center justify-center rounded-xl border-2 border-[#ff8c00] bg-white px-6 py-3 text-base font-semibold text-brand shadow-sm transition hover:bg-orange-50 focus:outline-none focus:ring-4 focus:ring-orange-200 cursor-pointer"
                     >
                         Download Detailed Syllabus (PDF)
                     </button>
@@ -357,7 +357,7 @@ export default function CurriculumSection() {
                     </button>
                     <button
                         onClick={() => setIsEnrollOpen(true)}
-                        className="inline-flex items-center justify-center rounded-xl bg-[#7c2d12] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#c2410c] focus:outline-none focus:ring-4 focus:ring-orange-200 cursor-pointer"
+                        className="inline-flex items-center justify-center rounded-xl bg-brand px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-brand focus:outline-none focus:ring-4 focus:ring-orange-200 cursor-pointer"
                     >
                         Enroll Now & Start Learning →
                     </button>

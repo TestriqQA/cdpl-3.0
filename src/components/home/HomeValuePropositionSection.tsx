@@ -54,11 +54,11 @@ export default function HomeValuePropositionSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-2 bg-orange-100 text-brand rounded-full text-sm font-semibold mb-4">
             Why Choose CDPL
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            What Makes Us <span className="text-orange-700">Different</span>
+            What Makes Us <span className="text-brand">Different</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             We don&apos;t just train, we transform careers. Here&apos;s how Cinute Digital stands apart from other training institutes.
@@ -81,7 +81,7 @@ export default function HomeValuePropositionSection() {
               className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:border-orange-200 transition-all duration-300"
             >
               {/* Icon */}
-              <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-brand rounded-xl flex items-center justify-center mb-6">
                 <prop.icon className="w-7 h-7 text-white" />
               </div>
 
@@ -112,7 +112,7 @@ export default function HomeValuePropositionSection() {
               <thead>
                 <tr className="border-b-2 border-gray-300">
                   <th className="text-left py-4 px-4 font-bold text-gray-700">Feature</th>
-                  <th className="text-center py-4 px-4 font-bold text-orange-700">CDPL</th>
+                  <th className="text-center py-4 px-4 font-bold text-brand">CDPL</th>
                   <th className="text-center py-4 px-4 font-bold text-gray-500">Others</th>
                 </tr>
               </thead>
@@ -158,7 +158,7 @@ export default function HomeValuePropositionSection() {
           </div>
 
           <div className="mt-8 text-center">
-            <button className="px-8 py-4 bg-orange-700 hover:bg-orange-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+            <button className="px-8 py-4 bg-brand hover:bg-brand text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
               Talk to an Advisor
             </button>
           </div>

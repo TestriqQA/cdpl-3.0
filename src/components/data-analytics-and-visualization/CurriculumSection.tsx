@@ -152,7 +152,7 @@ export default function CurriculumSection() {
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        Comprehensive <span className="bg-gradient-to-r from-[#d04502] via-[#ea580c] to-[#d04502] bg-clip-text text-transparent">Curriculum</span>
+                        Comprehensive <span className="bg-gradient-to-r from-[#ff8c00] via-[#ff8c00] to-[#ff8c00] bg-clip-text text-transparent">Curriculum</span>
                     </h2>
                     <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                         Master 13 comprehensive modules covering everything from Excel basics to advanced dashboards and real-world projects.
@@ -292,14 +292,14 @@ export default function CurriculumSection() {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
                     <button
                         onClick={() => setIsSyllabusOpen(true)}
-                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#d04502] px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-[#c2410c] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
+                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-brand hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
                     >
                         <Download className="h-5 w-5" />
                         Download Full Syllabus
                     </button>
                     <button
                         onClick={() => setIsCareerSessionOpen(true)}
-                        className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-orange-200 bg-white px-6 py-3 text-base font-semibold text-[#c2410c] shadow-sm transition-all hover:border-orange-300 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-200 cursor-pointer"
+                        className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-orange-200 bg-white px-6 py-3 text-base font-semibold text-brand shadow-sm transition-all hover:border-orange-300 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-200 cursor-pointer"
                     >
                         <Phone className="h-5 w-5" />
                         Book a Career Session

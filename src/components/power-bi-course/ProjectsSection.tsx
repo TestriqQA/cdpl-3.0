@@ -20,7 +20,7 @@ const palette: Record<
   { bg: string; text: string; borderTop: string; ring: string; grad: string }
 > = {
   blue: { bg: "bg-blue-100", text: "text-blue-700", borderTop: "border-blue-500", ring: "ring-blue-200", grad: "from-blue-500/20 to-cyan-500/20" },
-  orange: { bg: "bg-orange-100", text: "text-orange-700", borderTop: "border-orange-500", ring: "ring-orange-200", grad: "from-orange-500/20 to-amber-500/20" },
+  orange: { bg: "bg-orange-100", text: "text-brand", borderTop: "border-orange-500", ring: "ring-orange-200", grad: "from-orange-500/20 to-amber-500/20" },
   green: { bg: "bg-green-100", text: "text-green-700", borderTop: "border-green-500", ring: "ring-green-200", grad: "from-emerald-500/20 to-lime-500/20" },
 };
 
@@ -124,7 +124,7 @@ const ProjectsSection: React.FC = () => {
     <section className="py-10 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="text-base font-semibold tracking-wider text-[#c2410c] uppercase">
+          <span className="text-base font-semibold tracking-wider text-brand uppercase">
             Hands-On Experience
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
@@ -145,7 +145,7 @@ const ProjectsSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsSyllabusOpen(true)}
-            className="w-full sm:w-auto flex sm:inline-flex min-h-[60px] items-center justify-center gap-2 rounded-xl bg-[#c2410c] px-8 py-5 my-4 text-lg font-semibold text-white shadow-none transition-all hover:bg-[#9a3412] focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
+            className="w-full sm:w-auto flex sm:inline-flex min-h-[60px] items-center justify-center gap-2 rounded-xl bg-brand px-8 py-5 my-4 text-lg font-semibold text-white shadow-none transition-all hover:bg-brand focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
           >
             <Download className="h-5 w-5" />
             Download Project Syllabus

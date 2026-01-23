@@ -218,11 +218,11 @@ export default function CareerSection() {
                         ].map((item, index) => (
                             <div key={index} className="flex gap-6 items-start">
                                 <div className="flex-shrink-0">
-                                    <div className="flex items-center justify-center h-12 w-11 rounded-lg bg-[#d04502] text-white font-bold">
+                                    <div className="flex items-center justify-center h-12 w-11 rounded-lg bg-brand text-white font-bold">
                                         {index + 1}
                                     </div>
                                 </div>
-                                <div className="flex-1 bg-white rounded-lg p-6 border-l-4 border-[#d04502]">
+                                <div className="flex-1 bg-white rounded-lg p-6 border-l-4 border-[#ff8c00]">
                                     <div className="font-bold text-gray-900 mb-1">{item.stage}</div>
                                     <div className="text-lg font-semibold text-gray-950 mb-2">
                                         {item.role}
@@ -271,13 +271,13 @@ export default function CareerSection() {
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <button
                             onClick={() => setIsEnrollOpen(true)}
-                            className="bg-[#7c2d12] hover:bg-[#c2410c] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                            className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                         >
                             Enroll Now & Secure Your Future →
                         </button>
                         <button
                             onClick={() => setIsSyllabusOpen(true)}
-                            className="bg-white border-2 border-[#7c2d12] text-[#7c2d12] hover:bg-orange-50 font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                            className="bg-white border-2 border-[#ff8c00] text-brand hover:bg-orange-50 font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                         >
                             Download Syllabus
                         </button>

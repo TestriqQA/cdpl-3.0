@@ -194,7 +194,7 @@ export default function DesktopLeadForm() {
                         <span className="text-xs font-bold text-white">FREE</span>
                     </div>
                 </div>
-                <p className="text-sm font-semibold text-orange-600">
+                <p className="text-sm font-semibold text-brand">
                     Get FREE Demo Class Instantly!
                 </p>
                 <p className="text-xs text-slate-600 mt-1">

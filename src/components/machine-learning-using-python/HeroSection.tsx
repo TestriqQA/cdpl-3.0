@@ -55,7 +55,7 @@ export default function HeroSection() {
                                     {c.href ? (
                                         <Link
                                             href={c.href}
-                                            className={`hover:text-orange-700 ${isLast
+                                            className={`hover:text-brand ${isLast
                                                 ? "font-semibold text-slate-900"
                                                 : ""
                                                 }`}
@@ -64,7 +64,7 @@ export default function HeroSection() {
                                         </Link>
                                     ) : (
                                         <span
-                                            className={`hover:text-orange-700 ${isLast
+                                            className={`hover:text-brand ${isLast
                                                 ? "font-semibold text-slate-900"
                                                 : ""
                                                 }`}
@@ -86,14 +86,14 @@ export default function HeroSection() {
                         <div className="mb-4 w-fit inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/80 px-4 py-2 shadow-sm backdrop-blur-sm transition-shadow hover:shadow-md">
                             <Clock className="h-4 w-4 text-orange-500" />
                             <span className="text-sm font-semibold text-slate-700">
-                                Duration: <span className="text-orange-600">45 Hours</span>
+                                Duration: <span className="text-brand">45 Hours</span>
                             </span>
                         </div>
 
                         {/* H1 - same style as reference */}
                         <h1 className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
                             <span>Master </span>
-                            <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">
+                            <span className="bg-gradient-to-r from-orange-500 via-brand to-red-500 bg-clip-text text-transparent">
                                 Machine Learning Algorithms
                             </span>
                             <span> with </span>
@@ -127,7 +127,7 @@ export default function HeroSection() {
                         <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                             <button
                                 onClick={() => setIsEnrollOpen(true)}
-                                className="inline-flex items-center justify-center cursor-pointer rounded-xl bg-orange-700 px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-800 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                                className="inline-flex items-center justify-center cursor-pointer rounded-xl bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
                                 aria-label="Enroll now in Machine Learning with Python"
                             >
                                 Enroll Now
@@ -136,7 +136,7 @@ export default function HeroSection() {
 
                             <button
                                 onClick={() => setIsSyllabusOpen(true)}
-                                className="inline-flex items-center justify-center cursor-pointer rounded-xl bg-orange-700 px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-800 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                                className="inline-flex items-center justify-center cursor-pointer rounded-xl bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
                                 aria-label="Download Machine Learning Syllabus"
                             >
                                 Download Syllabus

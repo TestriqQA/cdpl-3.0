@@ -139,7 +139,7 @@ function FancySelect({
               >
                 <span className="truncate">{opt.label}</span>
                 {selected ? (
-                  <Check className="ml-2 h-4 w-4 text-[#c2410c]" />
+                  <Check className="ml-2 h-4 w-4 text-brand" />
                 ) : (
                   <span className="ml-2 h-4 w-4" />
                 )}

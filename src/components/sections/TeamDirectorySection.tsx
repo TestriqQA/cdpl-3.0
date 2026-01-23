@@ -27,7 +27,7 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
     const id = useId();
 
     // Brand via CSS var to keep Tailwind clean
-    const brand = "#c2410c";
+    const brand = "#ff8c00";
 
     // Keyboard shortcut: "/" focuses search
     const searchRef = useRef<HTMLInputElement | null>(null);
@@ -142,7 +142,7 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
                         id={`${id}-directory`}
                         className="text-4xl font-bold tracking-tight text-slate-900"
                     >
-                        Our <span className="text-[#ea580c]">Team</span> Directory
+                        Our <span className="text-brand">Team</span> Directory
                     </h2>
                     <p className="mt-5 mx-auto max-w-5xl text-lg text-slate-600">
                         Discover experienced <strong className="font-semibold">mentors, faculty, and advisors</strong> in{" "}
@@ -189,7 +189,7 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
 
             {/* SEO helper copy */}
             <div className="mt-12 md:mt-14 rounded-3xl border border-slate-200 bg-white p-6">
-                <h3 className="text-xl font-bold text-slate-900">Learn with industry mentors at <span className="text-[#ea580c]">Cinute Digital</span></h3>
+                <h3 className="text-xl font-bold text-slate-900">Learn with industry mentors at <span className="text-brand">Cinute Digital</span></h3>
                 <p className="mt-2 text-md leading-6 text-slate-600">
                     Our mentor directory brings together{" "}
                     <strong className="font-semibold">
@@ -293,7 +293,7 @@ function Avatar({ name, src }: { name: string; src?: string }) {
             <Image src={src} alt={`${name} avatar`} title={`${name} avatar`} width={160} height={120} className="object-cover rounded-full" />
         </div>
     ) : (
-        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-100 to-amber-100 text-sm font-semibold text-orange-700 ring-1 ring-slate-200">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-100 to-amber-100 text-sm font-semibold text-brand ring-1 ring-slate-200">
             {initials}
         </div>
     );

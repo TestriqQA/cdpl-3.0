@@ -253,7 +253,7 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
 
                         <button
                             type="submit"
-                            className="w-full cursor-pointer bg-gradient-to-r from-brand to-orange-600 text-white font-bold py-4 px-6 rounded-xl hover:shadow-lg hover:shadow-brand/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+                            className="w-full cursor-pointer bg-gradient-to-r from-brand to-brand text-white font-bold py-4 px-6 rounded-xl hover:shadow-lg hover:shadow-brand/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
                         >
                             Start Assessment
                         </button>

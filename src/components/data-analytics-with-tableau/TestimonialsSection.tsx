@@ -65,7 +65,7 @@ export default function TestimonialsSection() {
                     </p>
                     <button
                         onClick={() => setIsEnrollOpen(true)}
-                        className="bg-[#431407] hover:bg-[#c2410c] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        className="bg-[#431407] hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Start Your Success Story →
                     </button>

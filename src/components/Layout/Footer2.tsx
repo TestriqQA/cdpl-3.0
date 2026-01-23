@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
                 <div>
                   <p className="font-bold">Head Office (<span className="text-blue-700">CDPL</span>)</p>
                   <div className="flex items-start mt-1 gap-3">
-                    <MapPin className="h-5 w-5 text-orange-700 mt-0.5" aria-hidden="true" />
+                    <MapPin className="h-5 w-5 text-brand mt-0.5" aria-hidden="true" />
                     <Link className="hover:text-blue-700 transition" href="https://www.google.com/maps/place/Cinute+Digital+Pvt.+Ltd.+A+Premier+Software+Training+Institute+(CDPL)/@19.29342,72.8685471,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b1af2b2c5fed:0x7104f80b9fec8b9d!8m2!3d19.293415!4d72.871122!16s%2Fg%2F11t5q_mt87?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D">
                       Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road, Mira Bhayandar, Mumbai, Maharashtra 401107
                     </Link>
@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
                 <div>
                   <p className="font-bold">Study Center <span className="text-red-800">MeghMehul Classes</span> (<span className="text-blue-700">Vasai</span>)</p>
                   <div className="flex items-start mt-1 gap-3">
-                    <MapPin className="h-5 w-5 text-orange-700 mt-0.5" aria-hidden="true" />
+                    <MapPin className="h-5 w-5 text-brand mt-0.5" aria-hidden="true" />
                     <Link className="hover:text-blue-700 transition" href="https://maps.app.goo.gl/SACPou6JCdRZh5j98">
                       Shop No 7, Laxmi Palace, Opposite Vidhyavardhini Degree Engineering College, Gurunanak Nagar, Vasai West, Mumbai, Maharashtra - 401202
                     </Link>
@@ -75,28 +75,28 @@ const Footer: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-orange-700" aria-hidden="true" />
+                  <Mail className="h-5 w-5 text-brand" aria-hidden="true" />
                   <Link
                     href="mailto:contact@cinutedigital.com"
-                    className="hover:text-orange-800 transition-colors"
+                    className="hover:text-brand transition-colors"
                   >
                     contact@cinutedigital.com
                   </Link>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <Phone className="h-5 w-5 text-orange-700 mt-0.5" aria-hidden="true" />
+                  <Phone className="h-5 w-5 text-brand mt-0.5" aria-hidden="true" />
                   <div className="flex flex-row flex-wrap items-center gap-2">
                     <Link
                       href="tel:+917888383788"
-                      className="hover:text-orange-800 transition-colors whitespace-nowrap"
+                      className="hover:text-brand transition-colors whitespace-nowrap"
                     >
                       +91 78-883-837-88
                     </Link>
                     <span className="text-slate-300 whitespace-nowrap">|</span>
                     <Link
                       href="tel:+918488988984"
-                      className="hover:text-orange-800 transition-colors whitespace-nowrap"
+                      className="hover:text-brand transition-colors whitespace-nowrap"
                     >
                       +91 84-889-889-84
                     </Link>
@@ -189,25 +189,25 @@ const Footer: React.FC = () => {
               <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
                 <Link
                   href="/privacy-policy"
-                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/privacy-policy" ? "border-orange-300 text-orange-700" : "border-slate-200 hover:border-orange-300 hover:text-orange-700"}`}
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/privacy-policy" ? "border-orange-300 text-brand" : "border-slate-200 hover:border-orange-300 hover:text-brand"}`}
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/cookies-policy"
-                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/cookies-policy" ? "border-orange-300 text-orange-700" : "border-slate-200 hover:border-orange-300 hover:text-orange-700"}`}
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/cookies-policy" ? "border-orange-300 text-brand" : "border-slate-200 hover:border-orange-300 hover:text-brand"}`}
                 >
                   Cookies Policy
                 </Link>
                 <Link
                   href="/terms-of-service"
-                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/terms-of-service" ? "border-orange-300 text-orange-700" : "border-slate-200 hover:border-orange-300 hover:text-orange-700"}`}
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/terms-of-service" ? "border-orange-300 text-brand" : "border-slate-200 hover:border-orange-300 hover:text-brand"}`}
                 >
                   Terms and Conditions
                 </Link>
                 <Link
                   href="/cancellation-refund-policy"
-                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/cancellation-refund-policy" ? "border-orange-300 text-orange-700" : "border-slate-200 hover:border-orange-300 hover:text-orange-700"}`}
+                  className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/cancellation-refund-policy" ? "border-orange-300 text-brand" : "border-slate-200 hover:border-orange-300 hover:text-brand"}`}
                 >
                   Cancellation/Refund Policy
                 </Link>
@@ -230,7 +230,7 @@ const Footer: React.FC = () => {
               </p>
               {/* Powered By */}
               <div className="flex gap-4 space-y-4">
-                <h3 className="text-xl font-semibold text-[#d04502]">Powered By</h3>
+                <h3 className="text-xl font-semibold text-brand">Powered By</h3>
                 <Link href="https://www.testriq.com/" className="text-gray-300 hover:text-blue-400 hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
                   <Image src={'/images/Testriq-Logo-1.webp'} alt='Testriq_logo' title="Testriq-Logo" width={100} height={100} style={{ width: "auto", height: "auto" }} />
                 </Link>

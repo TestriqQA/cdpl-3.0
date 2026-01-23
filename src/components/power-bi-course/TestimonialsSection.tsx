@@ -30,7 +30,7 @@ const TestimonialsSection: React.FC = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setIsEnrollOpen(true)}
-            className="w-full sm:w-auto bg-[#c2410c] hover:bg-[#9a3412] text-white font-bold py-5 px-8 my-4 rounded-lg transition-all flex sm:inline-flex min-h-[60px] justify-center items-center cursor-pointer shadow-none"
+            className="w-full sm:w-auto bg-brand hover:bg-brand text-white font-bold py-5 px-8 my-4 rounded-lg transition-all flex sm:inline-flex min-h-[60px] justify-center items-center cursor-pointer shadow-none"
           >
             Join Our Success Story
           </button>

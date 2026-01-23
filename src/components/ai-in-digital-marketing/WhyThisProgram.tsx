@@ -25,7 +25,7 @@ export default function WhyThisProgram() {
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Why <span className="text-orange-600">This Program?</span>
+            Why <span className="text-brand">This Program?</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             Unique advantages that set us apart from other digital marketing
@@ -50,7 +50,7 @@ export default function WhyThisProgram() {
             >
               {/* Icon Container */}
               <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-white/60 backdrop-blur-sm group-hover:scale-110 transition-transform">
-                <div className="text-orange-600 text-4xl">
+                <div className="text-brand text-4xl">
                   {advantage.icon}
                 </div>
               </div>
@@ -63,7 +63,7 @@ export default function WhyThisProgram() {
               {/* Optional highlight badge if present in data */}
               {advantage.highlight && (
                 <div className="inline-block mb-3">
-                  <span className="text-xs font-semibold text-orange-600 bg-orange-100/60 px-3 py-1 rounded-full">
+                  <span className="text-xs font-semibold text-brand bg-orange-100/60 px-3 py-1 rounded-full">
                     {advantage.highlight}
                   </span>
                 </div>
@@ -135,7 +135,7 @@ export default function WhyThisProgram() {
     w-full sm:w-auto
     px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3
     text-sm sm:text-base md:text-lg
-    bg-[#d04502] hover:bg-orange-700
+    bg-brand hover:bg-brand
     text-white font-bold
     rounded-xl
     text-center

@@ -93,7 +93,7 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
             <div className="mt-6 flex gap-8 items-start">
                 <div className="max-w-5xl">
                     <motion.h1 {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.06 }} className="text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900">
-                        Master <span className="text-orange-700">Business Intelligence</span> & Data Analytics - Turn data into actionable insights
+                        Master <span className="text-brand">Business Intelligence</span> & Data Analytics - Turn data into actionable insights
                     </motion.h1>
 
                     <motion.p {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.12 }} className="mt-4 text-base text-slate-600">
@@ -122,7 +122,7 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
                     <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.24 }} className="mt-6 flex items-center gap-3">
                         <button
                             onClick={onOpenBrochure}
-                            className="inline-flex items-center gap-2 px-5 py-4 bg-orange-700 text-white rounded-lg text-md font-semibold shadow hover:bg-orange-800 hover:translate-y-[-1px] transition-all"
+                            className="inline-flex items-center gap-2 px-5 py-4 bg-brand text-white rounded-lg text-md font-semibold shadow hover:bg-brand hover:translate-y-[-1px] transition-all"
                         >
                             <Download className="h-4 w-4" />
                             Download Brochure
@@ -156,7 +156,7 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
 
                         {/* Card 2 - Rating */}
                         <div className="flex flex-col lg:flex-row items-center gap-3 p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                            <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-700 rounded-lg flex items-center justify-center">
+                            <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-amber-500 to-brand rounded-lg flex items-center justify-center">
                                 <Star className="h-5 w-5 text-white fill-white" />
                             </div>
                             <div className="text-center lg:text-left">
@@ -230,7 +230,7 @@ const MobileFeatureList: React.FC<{ onOpenBrochure: () => void; onOpenVideo: () 
         <div className="flex flex-col sm:flex-row gap-3">
             <button
                 onClick={onOpenBrochure}
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-orange-700 text-white text-sm font-semibold rounded-lg w-full"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-brand text-white text-sm font-semibold rounded-lg w-full"
             >
                 <Download className="h-4 w-4" />
                 Download Brochure
@@ -307,7 +307,7 @@ export default function HeroSection(): React.JSX.Element {
                     </div>
 
                     <h2 className="text-3xl font-extrabold text-slate-900 leading-tight">
-                        Master <span className="text-orange-700">Business Intelligence</span> & Data Analytics
+                        Master <span className="text-brand">Business Intelligence</span> & Data Analytics
                     </h2>
 
                     <p className="mt-3 text-base text-slate-600">

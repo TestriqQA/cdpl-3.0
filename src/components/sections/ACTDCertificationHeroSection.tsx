@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Home } from "lucide-react";
 
-const BRAND_ORANGE = "#c2410c";
+const BRAND_ORANGE = "#ff8c00";
 const BRAND_BLUE = "#0069A8";
 
 export default function ACTDCertificationHeroSection() {

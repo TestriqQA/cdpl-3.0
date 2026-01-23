@@ -139,7 +139,7 @@ const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedPro
       {/* Newsletter Section */}
       <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-6 shadow-sm border border-orange-100">
         <div className="flex items-center gap-2 mb-4">
-          <Mail className="w-5 h-5 text-orange-600" />
+          <Mail className="w-5 h-5 text-brand" />
           <h3 className="text-lg font-bold text-gray-900">Newsletter</h3>
         </div>
 
@@ -177,7 +177,7 @@ const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedPro
               </div>
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 text-sm cursor-pointer"
+                className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-brand hover:to-amber-600 text-white font-semibold py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 text-sm cursor-pointer"
               >
                 Subscribe Now
               </button>

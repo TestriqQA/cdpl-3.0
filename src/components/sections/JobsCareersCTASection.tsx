@@ -21,7 +21,7 @@ export default function JobsCareersCTASection() {
                 <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white p-6 sm:p-8">
                     <div className="max-w-2xl">
                         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
-                            Don’t see a <span className="text-orange-700">perfect</span> fit?
+                            Don’t see a <span className="text-brand">perfect</span> fit?
                         </h2>
                         <p className="mt-2 text-gray-700 text-sm sm:text-base">
                             Tell us how you can raise the bar. Great people shape new roles.
@@ -32,8 +32,8 @@ export default function JobsCareersCTASection() {
                             <Link
                                 href="#open-roles"
                                 onClick={handleScroll}
-                                className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-sm transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#c2410c] hover:opacity-95"
-                                style={{ backgroundColor: "#c2410c" }}
+                                className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-sm transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ff8c00] hover:opacity-95"
+                                style={{ backgroundColor: "#ff8c00" }}
                             >
                                 View open roles
                                 <ArrowRight className="ml-2 h-4 w-4" />

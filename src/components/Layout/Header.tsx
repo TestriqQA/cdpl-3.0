@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -170,7 +170,7 @@ const Header = () => {
               <div className="rounded-lg">
                 <Image src="/cdpl-logo.png" alt="CDPL Logo" title="CDPL Logo" width={40} height={40} className="w-10 h-10 sm:w-12 sm:h-12 xl:w-14 xl:h-14" priority={true} />
               </div>
-              <span className="text-[19px] sm:text-xl xl:text-2xl font-bold text-[#d04502]">Cinute Digital</span>
+              <span className="text-[19px] sm:text-xl xl:text-2xl font-bold text-brand">Cinute Digital</span>
             </Link>
           </div>
 
@@ -362,8 +362,7 @@ const Header = () => {
           <div className="hidden sm:flex items-center flex-shrink-0">
             <button
               onClick={() => setIsEnquireModalOpen(true)}
-              className="cursor-pointer hidden lg:block text-white px-4 sm:px-5 py-2 rounded-lg hover:bg-[#c2410c] transition-all duration-200 transform hover:scale-105 text-sm font-semibold shadow-md"
-              style={{ backgroundColor: "#d04502" }}
+              className="cursor-pointer hidden lg:block text-white px-4 sm:px-5 py-2 rounded-lg bg-brand hover:bg-orange-600 transition-all duration-200 transform hover:scale-105 text-sm font-semibold shadow-md"
             >
               Free Demo
             </button>

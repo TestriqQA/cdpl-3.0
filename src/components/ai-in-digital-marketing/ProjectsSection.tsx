@@ -51,7 +51,7 @@ export default function ProjectsSection() {
         {/* Section Header – layout like reference, SEO boosted */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Real-Time <span className="text-orange-600">Projects</span>
+            Real-Time <span className="text-brand">Projects</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-4xl mx-auto">
             Work on{" "}
@@ -82,13 +82,13 @@ export default function ProjectsSection() {
               )} hover:shadow-xl transition-all duration-300`}
             >
               {/* Icon */}
-              <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-white/60 text-orange-600">
+              <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-white/60 text-brand">
                 {iconByIndex(idx)}
               </div>
 
               {/* Difficulty Badge */}
               <div className="mb-3 flex flex-wrap gap-2 justify-between items-center">
-                <span className="text-xs font-bold text-orange-600 bg-orange-100/60 px-3 py-1 rounded-full">
+                <span className="text-xs font-bold text-brand bg-orange-100/60 px-3 py-1 rounded-full">
                   Difficulty: {project.difficulty}
                 </span>
                 <span className="text-xs font-semibold text-slate-700 bg-white/60 px-3 py-1 rounded-full border border-slate-200">
@@ -197,7 +197,7 @@ export default function ProjectsSection() {
               key={idx}
               className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 border-2 border-orange-200"
             >
-              <div className="text-orange-600 mb-3">{benefit.icon}</div>
+              <div className="text-brand mb-3">{benefit.icon}</div>
               <h4 className="text-lg font-bold text-slate-900 mb-2">
                 {benefit.title}
               </h4>
@@ -210,7 +210,7 @@ export default function ProjectsSection() {
         <div className="mt-16 p-8 bg-gradient-to-r from-orange-50 to-indigo-50 rounded-2xl border-2 border-orange-200">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <p className="text-4xl font-bold text-orange-600 mb-2">
+              <p className="text-4xl font-bold text-brand mb-2">
                 {projects.length}+
               </p>
               <p className="text-gray-700 font-semibold">Real Projects</p>
@@ -220,7 +220,7 @@ export default function ProjectsSection() {
               <p className="text-gray-700 font-semibold">Hands-On Learning</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-orange-600 mb-2">
+              <p className="text-4xl font-bold text-brand mb-2">
                 Portfolio
               </p>
               <p className="text-gray-700 font-semibold">Ready for Jobs</p>

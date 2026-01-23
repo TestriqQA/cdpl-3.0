@@ -30,7 +30,7 @@ const colorClasses = [
     { bg: "bg-purple-100", text: "text-[#7e22ce]", border: "border-purple-200" },
     { bg: "bg-pink-100", text: "text-[#be185d]", border: "border-pink-200" },
     { bg: "bg-green-100", text: "text-[#047857]", border: "border-green-200" },
-    { bg: "bg-orange-100", text: "text-[#d04502]", border: "border-orange-200" },
+    { bg: "bg-orange-100", text: "text-brand", border: "border-orange-200" },
     { bg: "bg-red-100", text: "text-[#b91c1c]", border: "border-red-200" },
 ];
 
@@ -93,7 +93,7 @@ export default function WhyVisualizationProgram() {
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        Why Choose <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">Cinute Digital</span>?
+                        Why Choose <span className="bg-gradient-to-r from-orange-500 via-brand to-orange-500 bg-clip-text text-transparent">Cinute Digital</span>?
                     </h2>
                     <p className="text-xl text-slate-600 max-w-4xl mx-auto">
                         We combine industry expertise with hands-on learning to transform you into a market-ready Excel professional.

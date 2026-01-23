@@ -147,7 +147,7 @@ export default function StatsSection() {
               "
             />
             <dt className="sr-only">Market Size</dt>
-            <dd className="text-3xl sm:text-4xl font-extrabold tracking-tight text-orange-700">
+            <dd className="text-3xl sm:text-4xl font-extrabold tracking-tight text-brand">
               <CountUp
                 end={671.86}
                 decimals={2}

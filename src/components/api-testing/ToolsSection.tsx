@@ -29,9 +29,9 @@ const tools: Tool[] = [
         icon: <MessageSquare className="w-6 h-6" />,
         bg: 'bg-orange-50',
         border: 'border-orange-200',
-        ink: 'text-orange-900',
-        iconTint: 'text-orange-700',
-        chip: 'bg-orange-100 text-orange-800 border-orange-200',
+        ink: 'text-brand',
+        iconTint: 'text-brand',
+        chip: 'bg-orange-100 text-brand border-orange-200',
     },
     {
         name: 'REST APIs',

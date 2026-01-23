@@ -14,7 +14,7 @@ export default function CareerRoadmapSection() {
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
                         8 Steps to Your{" "}
-                        <span className="text-orange-600">Career Transformation</span>
+                        <span className="text-brand">Career Transformation</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-3xl mx-auto">
                         From joining the program to landing your dream job – here is the
@@ -41,7 +41,7 @@ export default function CareerRoadmapSection() {
                             </p>
                         </div>
                         {/* Icon/Dot */}
-                        <div className="absolute left-0 md:left-1/2 w-12 h-12 rounded-full border-4 border-white bg-orange-600 shadow-md flex items-center justify-center transform md:-translate-x-1/2 z-10 order-1 md:order-2">
+                        <div className="absolute left-0 md:left-1/2 w-12 h-12 rounded-full border-4 border-white bg-brand shadow-md flex items-center justify-center transform md:-translate-x-1/2 z-10 order-1 md:order-2">
                             <span className="text-white font-bold">1</span>
                         </div>
                         {/* Empty Right (Desktop) */}
@@ -51,7 +51,7 @@ export default function CareerRoadmapSection() {
                     {/* Step 2: Foundation */}
                     <div className="relative flex flex-col md:flex-row items-center mb-12 md:mb-16 group">
                         <div className="md:w-1/2 hidden md:block"></div>
-                        <div className="absolute left-0 md:left-1/2 w-12 h-12 rounded-full border-4 border-white bg-orange-600 shadow-md flex items-center justify-center transform md:-translate-x-1/2 z-10">
+                        <div className="absolute left-0 md:left-1/2 w-12 h-12 rounded-full border-4 border-white bg-brand shadow-md flex items-center justify-center transform md:-translate-x-1/2 z-10">
                             <span className="text-white font-bold">2</span>
                         </div>
                         <div className="md:w-1/2 md:pl-12 pl-16 w-full text-left">
@@ -76,7 +76,7 @@ export default function CareerRoadmapSection() {
                                 with hands-on exercises.
                             </p>
                         </div>
-                        <div className="absolute left-0 md:left-1/2 w-12 h-12 rounded-full border-4 border-white bg-orange-600 shadow-md flex items-center justify-center transform md:-translate-x-1/2 z-10 order-1 md:order-2">
+                        <div className="absolute left-0 md:left-1/2 w-12 h-12 rounded-full border-4 border-white bg-brand shadow-md flex items-center justify-center transform md:-translate-x-1/2 z-10 order-1 md:order-2">
                             <span className="text-white font-bold">3</span>
                         </div>
                         <div className="md:w-1/2 hidden md:block order-3"></div>
@@ -110,7 +110,7 @@ export default function CareerRoadmapSection() {
                                 that proves your expertise.
                             </p>
                         </div>
-                        <div className="absolute left-0 md:left-1/2 w-12 h-12 rounded-full border-4 border-white bg-orange-600 shadow-md flex items-center justify-center transform md:-translate-x-1/2 z-10 order-1 md:order-2">
+                        <div className="absolute left-0 md:left-1/2 w-12 h-12 rounded-full border-4 border-white bg-brand shadow-md flex items-center justify-center transform md:-translate-x-1/2 z-10 order-1 md:order-2">
                             <span className="text-white font-bold">5</span>
                         </div>
                         <div className="md:w-1/2 hidden md:block order-3"></div>
@@ -119,7 +119,7 @@ export default function CareerRoadmapSection() {
                     {/* Step 6: Career Prep */}
                     <div className="relative flex flex-col md:flex-row items-center mb-12 md:mb-16 group">
                         <div className="md:w-1/2 hidden md:block"></div>
-                        <div className="absolute left-0 md:left-1/2 w-12 h-12 rounded-full border-4 border-white bg-orange-600 shadow-md flex items-center justify-center transform md:-translate-x-1/2 z-10">
+                        <div className="absolute left-0 md:left-1/2 w-12 h-12 rounded-full border-4 border-white bg-brand shadow-md flex items-center justify-center transform md:-translate-x-1/2 z-10">
                             <span className="text-white font-bold">6</span>
                         </div>
                         <div className="md:w-1/2 md:pl-12 pl-16 w-full text-left">

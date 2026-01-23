@@ -120,13 +120,13 @@ export const ProjectsSection: React.FC = () => {
                 className={`bg-gradient-to-br ${style.bgColor} rounded-xl p-8 border-2 ${style.borderColor} hover:shadow-xl transition-all duration-300 flex flex-col h-full`}
               >
                 {/* Icon */}
-                <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-white/70 text-orange-600">
+                <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-white/70 text-brand">
                   {getDomainIcon(project.title)}
                 </div>
 
                 {/* Domain Badge (derived from project title, no change in original content) */}
                 <div className="mb-3">
-                  <span className="text-xs font-bold text-orange-600 bg-orange-100/70 px-3 py-1 rounded-full">
+                  <span className="text-xs font-bold text-brand bg-orange-100/70 px-3 py-1 rounded-full">
                     Domain: {getDomainLabel(project.title)}
                   </span>
                 </div>
@@ -181,7 +181,7 @@ export const ProjectsSection: React.FC = () => {
         <div className="flex justify-center mb-16">
           <button
             onClick={() => setIsSyllabusOpen(true)}
-            className="inline-flex items-center justify-center cursor-pointer rounded-lg border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-700 shadow-sm transition-all hover:border-orange-400 hover:text-orange-600 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-orange-100"
+            className="inline-flex items-center justify-center cursor-pointer rounded-lg border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-700 shadow-sm transition-all hover:border-orange-400 hover:text-brand hover:shadow-md focus:outline-none focus:ring-4 focus:ring-orange-100"
           >
             <CloudDownload className="mr-2 h-5 w-5" />
             Download Full Project List
@@ -246,7 +246,7 @@ export const ProjectsSection: React.FC = () => {
               key={idx}
               className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 border-2 border-orange-200"
             >
-              <div className="text-orange-600 mb-3">{benefit.icon}</div>
+              <div className="text-brand mb-3">{benefit.icon}</div>
               <h4 className="text-lg font-bold text-slate-900 mb-2">
                 {benefit.title}
               </h4>

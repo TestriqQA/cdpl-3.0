@@ -130,52 +130,64 @@ export default function AboutPage(): React.ReactElement {
   // 3. FAQ Schema
   const faqs = [
     {
-      question: "What is CDPL (Cinute Digital)?",
-      answer: "CDPL (Cinute Digital) is India's premier EdTech institute specializing in industry-ready training for Software Testing, Automation, Data Science, and AI/ML. Founded in 2020, we've empowered 5000+ professionals with hands-on learning, expert mentorship, and 100% placement support.",
+      question: "Do you provide placement assistance?",
+      answer: "Yes. Our dedicated Career Services team offers resume reviews, portfolio polishing, mock interviews, and direct referrals through hiring partners. Many learners secure interviews within 2–6 weeks of completing capstone projects.",
+      tags: ["career services", "placements", "jobs"],
     },
     {
-      question: "When was CDPL founded?",
-      answer: "CDPL was founded in 2020 by a group of passionate tech professionals who believed education should evolve with industry needs. Our mission from day one has been to bridge the gap between academic learning and real-world job requirements.",
+      question: "Are the programs beginner friendly?",
+      answer: "Absolutely. Each program starts with fundamentals and hands-on guided labs. No prior coding experience is required for our beginner tracks.",
+      tags: ["beginners", "foundations", "non-tech"],
     },
     {
-      question: "What makes CDPL different from other training institutes?",
-      answer: "CDPL stands out through our unique combination of live projects, mentor-led learning, portfolio-first approach, and guaranteed placement support. We focus on job-ready skills with hands-on practice on real-world scenarios, not just theory. Our curriculum is continuously updated to match industry demands.",
+      question: "Will I work on live projects?",
+      answer: "Yes. You’ll build job-ready skills through live or sandbox projects mirroring real business scenarios, version control, code reviews, and CI/CD workflows.",
+      tags: ["projects", "real-world", "portfolio"],
     },
     {
-      question: "Where is CDPL located?",
-      answer: "CDPL is headquartered in Mira Road East, Mumbai, Maharashtra. We serve learners across India through both online and offline training modes. Our programs are accessible to students from Mumbai, Pune, Bangalore, Delhi, and other major cities.",
+      question: "What makes your curriculum industry-aligned?",
+      answer: "Our modules are co-designed with practitioners from QA, Data, and DevOps. Tooling includes Git, GitHub Actions, Postman, REST APIs, Selenium, Playwright, SQL, and cloud fundamentals so your skills map directly to hiring needs.",
+      tags: ["industry", "tools", "curriculum"],
     },
     {
-      question: "What is CDPL's mission and vision?",
-      answer: "Our mission is to empower learners with real-world skills through live projects, mentor feedback, and interview preparation. Our vision is to build an inclusive EdTech ecosystem where lifelong learning, innovation, and career outcomes converge—creating talent that drives high-impact products and services.",
+      question: "How are classes delivered—online or in-person?",
+      answer: "We run live online cohorts with recordings and Q&A, plus weekend doubt-clearing sessions. Select cities also host optional in-person meetups and hiring drives.",
+      tags: ["online", "hybrid", "recordings"],
     },
     {
-      question: "What courses does CDPL offer?",
-      answer: "CDPL offers comprehensive training programs in Software Testing (Manual & Automation), API Testing, Data Science, Machine Learning, Artificial Intelligence, Data Analytics, Python Programming, Java Programming, ETL Testing, and Digital Marketing. All courses include live projects, expert mentorship, and placement assistance.",
+      question: "Do you offer certifications?",
+      answer: "Yes. You’ll receive a Cinute Digital certificate on completion. We also guide you for global certifications like ISTQB (for Software Testing) and provide exam preparation resources.",
+      tags: ["certificate", "ISTQB", "credentials"],
     },
     {
-      question: "Does CDPL provide placement support?",
-      answer: "Yes! We provide 100% placement support including resume building, portfolio development, mock interviews, interview preparation, and direct referrals to our 50+ hiring partners. Our placement team works with you until you land your first job.",
+      question: "What is the typical program duration?",
+      answer: "Most job-ready tracks span 10–24 weeks, with flexible schedules for working professionals. Accelerated bootcamps are available for focused upskilling.",
+      tags: ["duration", "schedule", "bootcamp"],
     },
     {
-      question: "Who are the mentors at CDPL?",
-      answer: "Our mentors are industry experts with 10-15+ years of hands-on experience. They include QA leads, data scientists, automation architects, and senior engineers from top product companies and MNCs. All mentors are actively working professionals who bring real-world insights to the classroom.",
+      question: "Is there doubt support and mentorship?",
+      answer: "Every learner gets mentor hours, Discord/Slack community access, and daily doubt support. Premium tracks include 1-on-1 career mentorship and mock interviews.",
+      tags: ["mentor", "support", "community"],
     },
     {
-      question: "Is CDPL certified or accredited?",
-      answer: "Yes, CDPL is ISO 9001:2015 certified for quality management and is a recognized Skill India (NSDC) partner. We are also an ISTQB certified training partner. Our certifications ensure that our training meets international quality standards.",
+      question: "Do you provide EMI or flexible payment plans?",
+      answer: "Yes. We offer EMI options and milestone-based payment plans for most programs. Speak with our admissions team for the best fit.",
+      tags: ["EMI", "payment", "fees"],
     },
     {
-      question: "What is CDPL's teaching methodology?",
-      answer: "We follow a hands-on, project-based learning approach with live mentor-led classes, real-world projects and case studies, collaborative peer learning, regular assessments and feedback, mock interviews and soft skills training, and continuous doubt support.",
+      question: "Can I switch tracks if my interests change?",
+      answer: "Within the first 2 weeks, you can switch to another eligible cohort based on seat availability and prerequisites.",
+      tags: ["track switch", "flexibility"],
     },
     {
-      question: "How many students has CDPL trained?",
-      answer: "CDPL has successfully trained and upskilled 5000+ professionals in software testing, data science, and AI/ML. Our alumni work in leading companies across India and globally.",
+      question: "What outcomes can I expect after completion?",
+      answer: "Graduates showcase a portfolio of real projects, pass structured assessments, and get interview referrals. Many transition into roles such as QA Engineer, Automation Tester, Data Analyst, or Junior ML Engineer.",
+      tags: ["outcomes", "roles", "career"],
     },
     {
-      question: "Does CDPL offer flexible learning options?",
-      answer: "Yes! We offer flexible learning options including weekend batches, weekday evening batches, fast-track intensive programs, and self-paced learning with recorded sessions. You can choose the format that best fits your schedule.",
+      question: "Where can I view the full syllabus and upcoming cohorts?",
+      answer: "Visit the program pages for detailed syllabus, start dates, and application steps. You can also request a personalized counseling call.",
+      tags: ["syllabus", "cohorts", "apply"],
     },
   ];
 
@@ -204,7 +216,7 @@ export default function AboutPage(): React.ReactElement {
         <AboutFacultyStrip />
         <AboutAccreditations />
         <AboutCTASection />
-        <AboutFAQSection />
+        <AboutFAQSection faqs={faqs} />
       </main>
     </LightTheme>
   );

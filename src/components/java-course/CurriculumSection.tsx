@@ -148,7 +148,7 @@ const MODULES: Module[] = [
       "public/private/protected/default, static/final; overview + use of the Decorator pattern.",
     icon: Database,
     bg: "bg-orange-50",
-    text: "text-orange-900",
+    text: "text-brand",
     ring: "ring-orange-200",
     badge: "Access",
   },

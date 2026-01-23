@@ -30,7 +30,7 @@ const ACCENTS = [
   { border: "border-indigo-200", text: "text-indigo-800", bg: "bg-indigo-50", ring: "focus:ring-indigo-300" },
   { border: "border-teal-200", text: "text-teal-800", bg: "bg-teal-50", ring: "focus:ring-teal-300" },
   { border: "border-fuchsia-200", text: "text-fuchsia-800", bg: "bg-fuchsia-50", ring: "focus:ring-fuchsia-300" },
-  { border: "border-orange-200", text: "text-orange-800", bg: "bg-orange-50", ring: "focus:ring-orange-300" },
+  { border: "border-orange-200", text: "text-brand", bg: "bg-orange-50", ring: "focus:ring-orange-300" },
   { border: "border-cyan-200", text: "text-cyan-800", bg: "bg-cyan-50", ring: "focus:ring-cyan-300" },
   { border: "border-lime-200", text: "text-lime-800", bg: "bg-lime-50", ring: "focus:ring-lime-300" },
   { border: "border-pink-200", text: "text-pink-800", bg: "bg-pink-50", ring: "focus:ring-pink-300" },

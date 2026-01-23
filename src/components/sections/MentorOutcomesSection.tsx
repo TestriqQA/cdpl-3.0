@@ -146,7 +146,7 @@ export default function MentorOutcomesSection() {
             {
               num: "92%",
               label: "Offer rate post mock rounds",
-              cls: "text-orange-600",
+              cls: "text-brand",
               card:
                 "relative overflow-hidden rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-amber-100 p-4 text-center shadow-sm",
               deco:

@@ -278,7 +278,7 @@ const TestInterface = ({ questions, courseName, onSubmit, isSubmitting }: TestIn
                             <button
                                 onClick={handleComplete}
                                 disabled={isSubmitting}
-                                className="relative bg-brand text-white px-6 sm:px-10 py-3 cursor-pointer rounded-xl font-bold shadow-lg shadow-brand/30 hover:bg-orange-600 hover:transform hover:-translate-y-0.5 transition-all flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed group/btn"
+                                className="relative bg-brand text-white px-6 sm:px-10 py-3 cursor-pointer rounded-xl font-bold shadow-lg shadow-brand/30 hover:bg-brand hover:transform hover:-translate-y-0.5 transition-all flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed group/btn"
                             >
                                 {isSubmitting ? 'Finishing...' : 'Complete Test'}
                                 {showWarning && (

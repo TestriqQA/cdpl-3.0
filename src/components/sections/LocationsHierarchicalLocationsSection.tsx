@@ -48,13 +48,13 @@ const COURSE_CONFIG: Record<
   "web-development": {
     label: "Web Development",
     icon: <Code className="w-3.5 h-3.5" />,
-    color: "bg-orange-100 text-orange-700 ring-orange-300",
+    color: "bg-orange-100 text-brand ring-orange-300",
   },
   // (Optional) Backward-compat alias for any legacy data still using "programming"
   programming: {
     label: "Web Development",
     icon: <Code className="w-3.5 h-3.5" />,
-    color: "bg-orange-100 text-orange-700 ring-orange-300",
+    color: "bg-orange-100 text-brand ring-orange-300",
   },
 };
 

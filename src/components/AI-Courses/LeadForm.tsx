@@ -132,7 +132,7 @@ export default function LeadForm({
                         {...form.register('name')}
                         maxLength={35}
                         placeholder="Full Name"
-                        className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-600 overflow-hidden"
+                        className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand overflow-hidden"
                     />
                     {form.formState.errors.name && (
                         <p className="text-red-500 text-xs sm:text-sm mt-1 break-words">
@@ -149,7 +149,7 @@ export default function LeadForm({
                         {...form.register('email')}
                         type="email"
                         placeholder="Email Address"
-                        className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-600 overflow-hidden"
+                        className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand overflow-hidden"
                     />
                     {form.formState.errors.email && (
                         <p className="text-red-500 text-xs sm:text-sm mt-1 break-words">
@@ -161,7 +161,7 @@ export default function LeadForm({
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                     Phone Number *
                 </label>
-                <div className="phone-input-wrapper w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-orange-600 bg-white overflow-hidden">
+                <div className="phone-input-wrapper w-full px-3 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus-within:ring-2 focus-within:ring-brand bg-white overflow-hidden">
 
                     <PhoneInput
                         limitMaxLength={true}
@@ -187,7 +187,7 @@ export default function LeadForm({
                 {showCourse && (
                     <select
                         {...form.register('course')}
-                        className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-600 bg-white overflow-hidden"
+                        className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand bg-white overflow-hidden"
                     >
                         <option value="">Select Course</option>
                         <option>Prompt Engineering with Gen AI</option>
@@ -197,7 +197,7 @@ export default function LeadForm({
                 <button
                     type="submit"
                     disabled={form.formState.isSubmitting}
-                    className="w-full bg-orange-700 hover:bg-orange-800 text-white font-bold py-3 sm:py-4 rounded-xl text-base sm:text-lg transition overflow-hidden"
+                    className="w-full bg-brand hover:bg-brand text-white font-bold py-3 sm:py-4 rounded-xl text-base sm:text-lg transition overflow-hidden"
                 >
                     {form.formState.isSubmitting ? 'Submitting...' : buttonText}
                 </button>

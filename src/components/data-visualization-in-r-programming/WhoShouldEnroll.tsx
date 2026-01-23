@@ -136,7 +136,7 @@ export const WhoShouldEnroll: React.FC = () => {
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
             {who_should_enroll_section.title}{" "}
-            <span className="text-orange-600">for R Data Visualization</span>
+            <span className="text-brand">for R Data Visualization</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             {/* original line preserved */}
@@ -265,13 +265,13 @@ export const WhoShouldEnroll: React.FC = () => {
         <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4">
           <button
             onClick={() => setIsEnrollOpen(true)}
-            className="inline-flex items-center justify-center cursor-pointer rounded-lg bg-orange-600 px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-200"
+            className="inline-flex items-center justify-center cursor-pointer rounded-lg bg-brand px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-brand hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-200"
           >
             Check Eligibility & Apply
           </button>
           <button
             onClick={() => setIsSyllabusOpen(true)}
-            className="inline-flex items-center justify-center cursor-pointer rounded-lg border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-700 shadow-sm transition-all hover:border-orange-400 hover:text-orange-600 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-orange-100"
+            className="inline-flex items-center justify-center cursor-pointer rounded-lg border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-700 shadow-sm transition-all hover:border-orange-400 hover:text-brand hover:shadow-md focus:outline-none focus:ring-4 focus:ring-orange-100"
           >
             <CloudDownload className="mr-2 h-5 w-5" />
             Download Detailed Syllabus (PDF)

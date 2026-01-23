@@ -161,7 +161,7 @@ export default function WhyTableauProgram() {
                 <div className="mt-16 text-center">
                     <button
                         onClick={() => setIsEnrollOpen(true)}
-                        className="bg-[#7c2d12] hover:bg-[#c2410c] text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Enroll Now
                     </button>

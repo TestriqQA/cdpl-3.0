@@ -125,7 +125,7 @@ const StatsSection = () => {
       suffix: "%",
       label: "Placement Rate",
       description: "Within 6 months of completion",
-      color: "from-orange-500 to-orange-600",
+      color: "from-orange-500 to-brand",
     },
     {
       icon: <Clock className="w-7 h-7" />,

@@ -90,7 +90,7 @@ export default function IstqbRegistrationContainer() {
                                     {/* Back to Form Button (Inside Card) */}
                                     <button
                                         onClick={() => setStep(1)}
-                                        className="absolute top-6 left-6 flex items-center gap-2 text-slate-400 hover:text-orange-600 font-medium transition-colors text-sm"
+                                        className="absolute top-6 left-6 flex items-center gap-2 text-slate-400 hover:text-brand font-medium transition-colors text-sm"
                                     >
                                         <ArrowLeft className="w-4 h-4" />
                                         Back

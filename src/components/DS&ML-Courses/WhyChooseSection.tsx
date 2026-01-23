@@ -94,9 +94,9 @@ const gradientThemes = [
         glow: 'group-hover:shadow-emerald-500/20',
     },
     {
-        bg: 'bg-gradient-to-br from-orange-500/10 via-amber-500/10 to-orange-600/10',
+        bg: 'bg-gradient-to-br from-orange-500/10 via-amber-500/10 to-brand/10',
         border: 'border-orange-200/50',
-        iconBg: 'bg-gradient-to-br from-orange-700 to-amber-600',
+        iconBg: 'bg-gradient-to-br from-brand to-amber-600',
         glow: 'group-hover:shadow-orange-500/20',
     },
     {

@@ -56,7 +56,7 @@ export const CurriculumSection: React.FC = () => {
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
             {curriculum_section.title.split(" ").slice(0, -1).join(" ")}{" "}
-            <span className="text-orange-600">
+            <span className="text-brand">
               {curriculum_section.title.split(" ").slice(-1)}
             </span>
           </h2>
@@ -133,7 +133,7 @@ export const CurriculumSection: React.FC = () => {
                     </div>
                   </div>
                   <ChevronDown
-                    className={`w-6 h-6 text-orange-600 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""
+                    className={`w-6 h-6 text-brand transition-transform duration-300 ${isExpanded ? "rotate-180" : ""
                       }`}
                   />
                 </button>
@@ -144,7 +144,7 @@ export const CurriculumSection: React.FC = () => {
                     {/* Topics Covered */}
                     <div className="mb-6">
                       <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                        <BookOpen className="w-5 h-5 text-orange-600" />
+                        <BookOpen className="w-5 h-5 text-brand" />
                         Topics Covered in this R Module
                       </h4>
                       <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -175,7 +175,7 @@ export const CurriculumSection: React.FC = () => {
                               key={idx}
                               className="flex items-start gap-3 bg-orange-50 p-3 rounded-lg border border-orange-200"
                             >
-                              <span className="text-orange-600 font-bold">
+                              <span className="text-brand font-bold">
                                 →
                               </span>
                               <span className="text-slate-700">{project}</span>
@@ -258,14 +258,14 @@ export const CurriculumSection: React.FC = () => {
         <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4">
           <button
             onClick={() => setIsEnrollOpen(true)}
-            className="inline-flex items-center justify-center cursor-pointer rounded-lg bg-orange-600 px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-orange-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-200"
+            className="inline-flex items-center justify-center cursor-pointer rounded-lg bg-brand px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-brand hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-200"
           >
             Apply Now
             <ArrowRight className="ml-2 h-5 w-5" />
           </button>
           <button
             onClick={() => setIsSyllabusOpen(true)}
-            className="inline-flex items-center justify-center cursor-pointer rounded-lg border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-700 shadow-sm transition-all hover:border-orange-400 hover:text-orange-600 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-orange-100"
+            className="inline-flex items-center justify-center cursor-pointer rounded-lg border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-700 shadow-sm transition-all hover:border-orange-400 hover:text-brand hover:shadow-md focus:outline-none focus:ring-4 focus:ring-orange-100"
           >
             <CloudDownload className="mr-2 h-5 w-5" />
             Download Syllabus

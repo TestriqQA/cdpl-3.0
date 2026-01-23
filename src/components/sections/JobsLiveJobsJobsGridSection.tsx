@@ -160,7 +160,7 @@ export function JobsLiveJobsJobsGridSection({
           {filtered.length === 1 ? "role" : "roles"}
         </span>
         {filters.q || filters.loc || filters.type ? (
-          <span className="rounded-full border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs text-orange-700">
+          <span className="rounded-full border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs text-brand">
             Filters active
           </span>
         ) : null}

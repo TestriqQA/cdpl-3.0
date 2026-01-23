@@ -30,7 +30,7 @@ const SERVICES: Service[] = [
         href: "/services/software-testing",
         colorFrom: "#FFE6BF",
         colorTo: "#FFF2DF",
-        ink: "#9a3412",
+        ink: "#ff8c00",
     },
     {
         id: "datascience",

@@ -9,7 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 
-const BRAND = "#c2410c";
+const BRAND = "#ff8c00";
 
 const stats = [
   { label: "Expert Mentors", value: "60+", note: "QA, Automation, Data" },
@@ -44,7 +44,7 @@ const VIS = {
   tokenOpacity: 0.75,
 };
 
-function BackgroundFuturisticMotion({ brand = "#c2410c" }) {
+function BackgroundFuturisticMotion({ brand = "#ff8c00" }) {
   return (
     <div
       className="pointer-events-none absolute z-0 overflow-x-hidden hidden md:block"
@@ -163,14 +163,14 @@ export default function TeamHero() {
               className="mt-6 text-3xl font-extrabold tracking-tight sm:text-5xl bg-clip-text text-transparent bg-brand"
             >
               <span className="text-sky-600">Meet the People Behind</span>{" "}
-              <span style={{ color: "#ea580c" }}>Cinute Digital</span>
+              <span style={{ color: "#ff8c00" }}>Cinute Digital</span>
             </h1>
 
             <p className="mt-6 max-w-3xl text-base leading-7 text-slate-700 sm:text-lg" style={{ fontSizeAdjust: '0.5' }}>
               Learn from senior <strong className="font-bold">Software Testing, Automation, and Data Science</strong> practitioners who ship <strong className="font-bold">production-grade solutions</strong>. Our mentor-led programs blend <strong className="font-bold">agile workflows, CI/CD pipelines, API & UI automation, and analytics</strong> so you graduate with a <strong className="font-bold">job-ready portfolio</strong> and interview-ready skills.
             </p>
 
-            <div className="mt-7 hidden md:inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-sm text-orange-800">
+            <div className="mt-7 hidden md:inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-sm text-brand">
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" /></svg>
               <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600">
                 5,000+
@@ -234,7 +234,7 @@ export default function TeamHero() {
             const gradients = [
               'from-rose-600 via-pink-600 to-fuchsia-600',
               'from-cyan-600 via-sky-600 to-blue-600',
-              'from-amber-600 via-orange-600 to-red-600'
+              'from-amber-600 via-brand to-red-600'
             ];
             return (
               <div

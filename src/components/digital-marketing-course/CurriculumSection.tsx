@@ -109,7 +109,7 @@ const ACCENTS = [
   { ring: "ring-fuchsia-300", soft: "bg-fuchsia-50", badge: "text-fuchsia-800 bg-fuchsia-100", text: "text-fuchsia-900" },
   { ring: "ring-lime-300", soft: "bg-lime-50", badge: "text-lime-800 bg-lime-100", text: "text-lime-900" },
   { ring: "ring-cyan-300", soft: "bg-cyan-50", badge: "text-cyan-800 bg-cyan-100", text: "text-cyan-900" },
-  { ring: "ring-orange-300", soft: "bg-orange-50", badge: "text-orange-800 bg-orange-100", text: "text-orange-900" },
+  { ring: "ring-orange-300", soft: "bg-orange-50", badge: "text-brand bg-orange-100", text: "text-brand" },
   { ring: "ring-stone-300", soft: "bg-stone-50", badge: "text-stone-800 bg-stone-100", text: "text-stone-900" },
   { ring: "ring-blue-300", soft: "bg-blue-50", badge: "text-blue-800 bg-blue-100", text: "text-blue-900" },
   { ring: "ring-purple-300", soft: "bg-purple-50", badge: "text-purple-800 bg-purple-100", text: "text-purple-900" },
@@ -208,7 +208,7 @@ export default function CurriculumSection() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <button
             onClick={() => setIsSyllabusOpen(true)}
-            className="cursor-pointer rounded-xl border border-orange-700 bg-orange-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-800 focus:outline-none focus:ring-4 focus:ring-orange-200"
+            className="cursor-pointer rounded-xl border border-brand bg-brand px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand focus:outline-none focus:ring-4 focus:ring-orange-200"
           >
             Get Full Syllabus PDF
           </button>

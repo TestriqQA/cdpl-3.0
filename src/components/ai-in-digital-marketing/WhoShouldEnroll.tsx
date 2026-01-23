@@ -16,7 +16,7 @@ export default function WhoShouldEnroll() {
         {/* Section Header – layout like reference, SEO boosted */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Who Should <span className="text-orange-600">Enroll</span>?
+            Who Should <span className="text-brand">Enroll</span>?
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             This AI-powered digital marketing program is designed for{" "}
@@ -181,7 +181,7 @@ export default function WhoShouldEnroll() {
             </p>
             <button
               onClick={() => setIsEnrollOpen(true)}
-              className="bg-[#d04502] hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl cursor-pointer"
+              className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl cursor-pointer"
             >
               Check Your Fit
             </button>
