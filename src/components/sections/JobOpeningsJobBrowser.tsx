@@ -303,7 +303,7 @@ export default function JobOpeningsJobBrowser({
                                                     key={key}
                                                     onClick={() => setLocType(key)}
                                                     className={`rounded-md px-3 py-1 text-xs transition ${active
-                                                        ? "bg-[#d04502] text-white shadow-sm"
+                                                        ? "bg-brand text-white shadow-sm"
                                                         : "bg-white text-slate-700 ring-1 ring-slate-300 hover:bg-slate-50"
                                                         }`}
                                                 >
@@ -399,7 +399,7 @@ export default function JobOpeningsJobBrowser({
                                                             setSelected(job.job_id);
                                                             setDrawerOpen(true);
                                                         }}
-                                                        className="inline-flex items-center justify-center rounded-md bg-[#d04502] px-4 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-95"
+                                                        className="inline-flex items-center justify-center rounded-md bg-brand px-4 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-95"
                                                     >
                                                         View »
                                                     </button>

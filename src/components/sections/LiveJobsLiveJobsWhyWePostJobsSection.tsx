@@ -79,7 +79,7 @@ const THEMES: Record<
     cardBg: "bg-orange-50",
     border: "border-orange-200",
     iconWrapBg: "bg-orange-100",
-    iconColor: "text-[#d04502]",
+    iconColor: "text-brand",
     titleColor: "text-slate-900",
     bodyColor: "text-slate-800",
     listBulletColor: "text-slate-800",
@@ -133,7 +133,7 @@ export default function JobsLiveJobsWhyWePostJobsSection() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         {/* Eyebrow */}
         <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
-          <Sparkles className="h-3.5 w-3.5 text-[#d04502]" />
+          <Sparkles className="h-3.5 w-3.5 text-brand" />
           Why we post nearby jobs for CDPL students
         </p>
 
@@ -143,7 +143,7 @@ export default function JobsLiveJobsWhyWePostJobsSection() {
             id="why-cdpl-posts-jobs"
             className="text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl"
           >
-            Why CDPL posts <span className="text-[#d04502]">verified nearby jobs</span> for students
+            Why CDPL posts <span className="text-brand">verified nearby jobs</span> for students
           </h2>
           <p className="mt-3 text-lg text-slate-700">
             We make job search simpler: CDPL curates active roles across{" "}
@@ -158,7 +158,7 @@ export default function JobsLiveJobsWhyWePostJobsSection() {
         {/* KPIs (numbers have different colors per card) */}
         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {[
-            { v: "60+", l: "Expert mentors", cls: "text-[#d04502]" },
+            { v: "60+", l: "Expert mentors", cls: "text-brand" },
             { v: "5000+", l: "Learners guided", cls: "text-indigo-600" },
             { v: "50+", l: "Hiring partners", cls: "text-emerald-600" },
             { v: "4.9/5", l: "Avg. mentor rating", cls: "text-sky-600" },
@@ -167,7 +167,7 @@ export default function JobsLiveJobsWhyWePostJobsSection() {
               key={l}
               className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm"
             >
-              <div className="mx-auto h-1 w-16 rounded-full bg-[#d04502]" />
+              <div className="mx-auto h-1 w-16 rounded-full bg-brand" />
               <p className={`mt-3 text-xl font-extrabold ${cls}`}>{v}</p>
               <p className="text-sm text-slate-600">{l}</p>
             </div>
@@ -223,7 +223,7 @@ export default function JobsLiveJobsWhyWePostJobsSection() {
           <Link
             href="/jobs/live-jobs"
             className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-orange-400"
-            style={{ backgroundColor: "#d04502" }}
+            style={{ backgroundColor: "#ff8c00" }}
           >
             Explore nearby jobs <ArrowRight className="h-4 w-4" />
           </Link>

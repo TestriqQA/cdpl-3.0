@@ -66,7 +66,7 @@ export default function PlacementsNewsletterCTASection({ contained = false }: Pr
                             </div>
                             <button
                                 type="submit"
-                                className="rounded-xl bg-[#ff8c00] px-4 py-3 text-white transition-transform duration-200
+                                className="rounded-xl bg-brand px-4 py-3 text-white transition-transform duration-200
                            hover:opacity-95 hover:-translate-y-0.5
                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#ff8c00]
                            max-[325px]:w-full"

@@ -52,7 +52,7 @@ export function JobsLiveJobsListingSection({ jobs }: { jobs: Job[] }) {
         {/* Non-hero H2: "Latest" black, "openings" brand color (no gradient) */}
         <h2 id="jobs-listing" className="text-4xl font-bold tracking-tight">
           <span className="text-slate-900">Latest</span>{" "}
-          <span className="text-[#d04502]">openings</span>
+          <span className="text-brand">openings</span>
         </h2>
 
         {/* Body text (match AboutStatsSection paragraph scale & color) */}

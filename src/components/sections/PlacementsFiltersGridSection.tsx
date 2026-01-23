@@ -53,7 +53,7 @@ type Domain = "All" | "QA";
 ============================================================ */
 
 const DOMAIN_COLORS = {
-  QA: { bg: "bg-orange-50", text: "text-[#d04502]", ring: "ring-[#d04502]/20" },
+  QA: { bg: "bg-orange-50", text: "text-brand", ring: "ring-[#ff8c00]/20" },
 };
 
 const COMPANY_LOGOS: Record<string, string> = {

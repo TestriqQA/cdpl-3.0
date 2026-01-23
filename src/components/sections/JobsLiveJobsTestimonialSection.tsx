@@ -87,7 +87,7 @@ const LIGHT = {
   iconBtn: "bg-white/90 hover:bg-white text-slate-900",
 };
 
-const BRAND_TEXT = "text-[#ff8c00]";
+const BRAND_TEXT = "text-brand";
 
 function splitHeadingForColoring(input: string): { left: string; right: string } {
   const emDashIdx = input.indexOf("—");

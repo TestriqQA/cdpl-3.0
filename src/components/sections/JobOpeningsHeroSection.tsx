@@ -8,7 +8,7 @@ type HeroProps = {
   scrollToId?: string;
 };
 
-const BRAND_ORANGE = "#d04502";
+const BRAND_ORANGE = "#ff8c00";
 const BRAND_BLUE = "#0069A8";
 
 export default function JobOpeningsHeroSection({
@@ -75,7 +75,7 @@ export default function JobOpeningsHeroSection({
           <div className="mt-5 flex justify-center">
             <a
               href={`#${scrollToId ?? ""}`}
-              className="inline-flex items-center gap-2 rounded-xl bg-[#d04502] px-5 py-2.5 text-sm font-semibold text-white shadow hover:opacity-95"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow hover:opacity-95"
             >
               {ctaLabel}
               <svg

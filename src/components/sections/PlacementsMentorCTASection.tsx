@@ -57,7 +57,7 @@ export default function PlacementsMentorCTASection({ contained = false }: Props)
                             <div className="flex lg:justify-end">
                                 <button
                                     onClick={() => setIsModalOpen(true)}
-                                    className="inline-flex items-center gap-2 rounded-xl bg-[#d04502] px-5 py-3 text-white transition-opacity duration-200 hover:opacity-95 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-400 cursor-pointer"
+                                    className="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 text-white transition-opacity duration-200 hover:opacity-95 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-400 cursor-pointer"
                                 >
                                     Apply Now <ArrowRight className="h-4 w-4" />
                                 </button>

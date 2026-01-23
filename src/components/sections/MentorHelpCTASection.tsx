@@ -226,7 +226,7 @@ function BrandHighlighted({ text }: { text: string }) {
 function Ribbon({ children }: { children: React.ReactNode }) {
   return (
     <div
-      className="inline-flex select-none items-center rounded-full border border-neutral-200 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#ff8c00] shadow-sm"
+      className="inline-flex select-none items-center rounded-full border border-neutral-200 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-brand shadow-sm"
       style={{
         background:
           "linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9))",

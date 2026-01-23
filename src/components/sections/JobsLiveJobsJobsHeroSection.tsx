@@ -47,7 +47,7 @@ export default function JobsLiveJobsJobsHeroSection() {
             <div
               className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-[11px] font-medium text-slate-700 shadow-sm backdrop-blur sm:text-xs"
             >
-              <Sparkles className="h-3.5 w-3.5 text-[#d04502]" />
+              <Sparkles className="h-3.5 w-3.5 text-brand" />
               <span>CDPL Live Jobs • Verified nearby roles</span>
             </div>
 
@@ -58,7 +58,7 @@ export default function JobsLiveJobsJobsHeroSection() {
                 Helping CDPL learners land the right opportunities
               </span>{" "}
               <span>&ndash; </span>
-              <span style={{ color: "#d04502" }}>faster.</span>
+              <span style={{ color: "#ff8c00" }}>faster.</span>
             </h1>
 
             <p
@@ -110,7 +110,7 @@ export default function JobsLiveJobsJobsHeroSection() {
               >
                 <defs>
                   <linearGradient id="cdplStroke" x1="0" x2="1">
-                    <stop offset="0%" stopColor="#d04502" />
+                    <stop offset="0%" stopColor="#ff8c00" />
                     <stop offset="50%" stopColor="#f97316" />
                     <stop offset="100%" stopColor="#fdba74" />
                   </linearGradient>

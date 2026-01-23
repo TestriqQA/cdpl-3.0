@@ -71,7 +71,7 @@ function TestimonialCard({ name, role, rating, content, image }: Testimonial) {
     >
       <div className="p-6">
         <div className="flex items-center mb-2">
-          <Star className="h-4 w-4 text-[#ff8c00] fill-[#ff8c00] mr-1" />
+          <Star className="h-4 w-4 text-brand fill-[#ff8c00] mr-1" />
           <span className="text-sm font-medium">{rating}</span>
         </div>
         <p className="text-sm mb-4">{content}</p>

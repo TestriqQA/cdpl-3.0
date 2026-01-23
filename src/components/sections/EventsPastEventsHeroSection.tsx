@@ -50,7 +50,7 @@ export default function EventsPastEventsHeroSection() {
             <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
               <span className="text-[#0069A8]">Corporate Training</span>{" "}
               <span className="text-slate-900">&amp;</span>{" "}
-              <span className="text-[#FF8C00]">Workshops</span>
+              <span className="text-brand">Workshops</span>
             </h1>
 
             {/* LCP TEXT - Inline style added to prevent color blocking from external CSS */}

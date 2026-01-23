@@ -91,7 +91,7 @@ const BRAND_RING =
     "ring-1 ring-[#ffedd5] hover:ring-[#ffd19e] dark:ring-[#ffedd5]";
 const BRAND_BG =
     "bg-gradient-to-b from-white via-white to-[#fff7ed] dark:from-white dark:via-white dark:to-[#fff7ed]";
-const BRAND_ACCENT_TEXT = "text-[#ff8c00]";
+const BRAND_ACCENT_TEXT = "text-brand";
 
 const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -212,7 +212,7 @@ export default function JobsCareersCultureSection() {
                         className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight"
                     >
                         Culture &nbsp;
-                        <span className="text-[#ff8c00]">that ships outcomes</span>
+                        <span className="text-brand">that ships outcomes</span>
                     </h2>
 
                     <p className="mt-2 max-w-2xl text-sm sm:text-base text-neutral-600">
