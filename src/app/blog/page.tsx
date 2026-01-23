@@ -1,6 +1,6 @@
-import dynamic from 'next/dynamic';
 import React from 'react';
 import { BlogCategoryMenu, BlogHero, BlogSidebar } from '@/components/blog';
+import BlogArticleList from "@/components/blog/BlogArticleList";
 import type { Metadata } from 'next';
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import {
@@ -10,22 +10,12 @@ import {
     generateFAQSchema
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
-
-// Dynamically import BlogArticleList for better performance
-const BlogArticleList = dynamic(
-    () => import("@/components/blog/BlogArticleList"),
-    {
-        ssr: true,
-        loading: () => (
-            <div className="flex items-center justify-center py-20">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
-            </div>
-        ),
-    }
-);
+import { client } from '@/sanity/client';
+import { POSTS_QUERY } from '@/sanity/lib/queries';
+import { SanityPost } from '@/sanity/types';
 
 // ============================================================================
-// SEO METADATA - Enhanced with generateSEO utility
+// SEO METADATA
 // ============================================================================
 export const metadata: Metadata = {
     ...generateStaticPageMetadata({
@@ -59,7 +49,12 @@ export const metadata: Metadata = {
 // ============================================================================
 // MAIN BLOG PAGE COMPONENT
 // ============================================================================
-export default function BlogPage() {
+export default async function BlogPage() {
+    // Fetch data from Sanity
+    const posts: SanityPost[] = await client.fetch(POSTS_QUERY, {}, {
+        next: { revalidate: 60 } // Revalidate every minute
+    });
+
     // Breadcrumb Schema
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: 'Home', url: '/' },
@@ -82,6 +77,7 @@ export default function BlogPage() {
             question: 'What topics does the CDPL blog cover?',
             answer: 'The CDPL blog covers a wide range of technology topics including Software Testing, Web Development (React, Next.js), AI/ML, Data Science, DevOps, Automation, Cloud Computing, and software engineering best practices. All articles are written by industry experts with practical experience.'
         },
+        // ... (truncated FAQs for brevity if needed, but keeping them is fine)
         {
             question: 'How often is the CDPL blog updated?',
             answer: 'The CDPL blog is updated regularly with fresh content, tutorials, and industry insights. New articles are published multiple times per week covering the latest trends and technologies.'
@@ -136,7 +132,7 @@ export default function BlogPage() {
                         <div className="grid lg:grid-cols-3 gap-8">
                             {/* Article List - 2 columns */}
                             <main className="lg:col-span-2" role="main" aria-label="Blog articles">
-                                <BlogArticleList />
+                                <BlogArticleList posts={posts} />
                             </main>
 
                             {/* Sidebar - 1 column */}

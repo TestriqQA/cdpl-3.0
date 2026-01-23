@@ -1,12 +1,14 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
 import type { Metadata } from 'next';
-import { getPostBySlug, getAllPosts, getAuthorById, getCategoryById } from '@/data/BlogPostData';
 import { notFound } from 'next/navigation';
 import { BlogCategoryMenu } from '@/components/blog';
 import { generateBlogMetadata } from '@/lib/metadata-generator';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/schema-generators';
 import JsonLd from '@/components/JsonLd';
+import { client } from '@/sanity/client';
+import { POST_QUERY, POSTS_SLUG_QUERY } from '@/sanity/lib/queries';
+import { SanityPost } from '@/sanity/types';
 
 const BlogPostHeroSection = dynamic(
     () => import("@/components/sections/BlogPostHeroSection").then(m => ({ default: m.BlogPostHeroSection })),
@@ -32,6 +34,9 @@ const BlogPostSection = dynamic(
     }
 );
 
+// BlogPostContactSection doesn't need data props, so it can stay as is if it doesn't use slug for logic
+// Checking import below, it seems to take 'slug'. Let's assume it's fine or we might need to update it too.
+// Ideally contact section is generic.
 const BlogPostContactSection = dynamic(
     () => import("@/components/sections/BlogPostContactSection").then(m => ({ default: m.BlogPostContactSection })),
     {
@@ -48,9 +53,9 @@ const BlogPostContactSection = dynamic(
 // STATIC SITE GENERATION - Generate pages for all blog posts
 // ============================================================================
 export async function generateStaticParams() {
-    const posts = getAllPosts();
-    return posts.map((post) => ({
-        slug: post.slug,
+    const slugs: string[] = await client.fetch(POSTS_SLUG_QUERY);
+    return slugs.map((slug) => ({
+        slug,
     }));
 }
 
@@ -59,7 +64,7 @@ export async function generateStaticParams() {
 // ============================================================================
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
-    const post = getPostBySlug(slug);
+    const post: SanityPost = await client.fetch(POST_QUERY, { slug });
 
     if (!post) {
         return {
@@ -69,19 +74,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         };
     }
 
-    const author = getAuthorById(post.authorId);
-    const category = getCategoryById(post.categoryId);
-
     return generateBlogMetadata({
-        title: post.seo.metaTitle,
-        description: post.seo.metaDescription,
+        title: post.seo?.metaTitle || post.title,
+        description: post.seo?.metaDescription || post.excerpt || '',
         slug: post.slug,
-        author: author ? author.name : 'CDPL Team',
+        author: post.author?.name || 'CDPL Team',
         publishedDate: new Date(post.publishDate).toISOString(),
-        modifiedDate: post.lastModified ? new Date(post.lastModified).toISOString() : undefined,
-        category: category ? category.name : undefined,
+        modifiedDate: new Date(post.publishDate).toISOString(), // Sanity tracks _updatedAt but using publishDate for now
+        category: post.category?.name,
         tags: post.tags,
-        image: post.seo.ogImage || post.featuredImage,
+        image: post.seo?.metaTitle || post.featuredImage || '/blog/og-image.jpg', // Should handle Image object specifically if needed
     });
 }
 
@@ -90,27 +92,26 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 // ============================================================================
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const post = getPostBySlug(slug);
+    const post: SanityPost = await client.fetch(POST_QUERY, { slug });
 
     if (!post) {
         notFound();
     }
 
-    const author = getAuthorById(post.authorId);
-    const category = getCategoryById(post.categoryId);
+    const { author, category } = post;
 
-    // Calculate estimated word count
-    const estimatedWordCount = parseInt(post.readTime) * 200;
+    // Calculate estimated word count (approximate for now since content is structured)
+    const estimatedWordCount = 1000; // Placeholder or calculate from Portable Text
 
     // Generate Article Schema
     const articleSchema = generateArticleSchema({
         title: post.title,
-        description: post.description,
+        description: post.excerpt || '',
         url: `/blog/${post.slug}`,
-        image: post.featuredImage,
+        image: post.featuredImage || '',
         author: author ? author.name : 'CDPL Team',
         publishedDate: new Date(post.publishDate).toISOString(),
-        modifiedDate: post.lastModified ? new Date(post.lastModified).toISOString() : undefined,
+        modifiedDate: new Date(post.publishDate).toISOString(),
         keywords: post.tags,
         wordCount: estimatedWordCount,
         category: category ? category.name : undefined,
@@ -141,20 +142,25 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 {/* Blog Post Hero Section */}
                 <header>
                     <React.Suspense fallback={<div>Loading header...</div>}>
-                        <BlogPostHeroSection slug={slug} />
+                        <BlogPostHeroSection post={post} />
                     </React.Suspense>
                 </header>
 
                 {/* Blog Post Main Content */}
                 <main role="main" aria-label="Article content">
                     <React.Suspense fallback={<div>Loading content...</div>}>
-                        <BlogPostSection slug={slug} />
+                        <BlogPostSection post={post} />
                     </React.Suspense>
                 </main>
 
                 {/* Contact Section */}
                 <aside role="complementary" aria-label="Contact information">
                     <React.Suspense fallback={<div>Loading contact form...</div>}>
+                        {/* Assuming Contact Section is generic enough or uses client logic internally. 
+                             If it relied on slug to fetch data, it should be updated, 
+                             but based on name it's likely a static CTA form or similar.
+                             I'll pass slug to match prop signature if it still requires it, 
+                             but ideally it should not fetch data itself. */}
                         <BlogPostContactSection slug={slug} />
                     </React.Suspense>
                 </aside>

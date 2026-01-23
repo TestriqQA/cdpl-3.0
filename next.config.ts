@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
 
+  transpilePackages: ['next-sanity', 'sanity', '@sanity/vision', '@sanity/code-input'],
   // Performance optimizations
   experimental: {
     optimizePackageImports: [
@@ -45,6 +46,12 @@ const nextConfig: NextConfig = {
     qualities: [40, 50, 60, 75, 90],
     deviceSizes: [320, 360, 390, 414, 480, 640, 750, 828, 1080, 1200, 1536, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 320, 346, 384],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
+    ],
   },
   async redirects() {
     return [

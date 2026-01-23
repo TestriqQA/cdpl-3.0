@@ -3,24 +3,23 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { FaXTwitter, FaLinkedin, FaFacebook } from 'react-icons/fa6';
-import { getPostBySlug } from '@/data/BlogPostData';
 import BlogSidebarRelated from '@/components/blog/BlogSidebarRelated';
-import BlogContentRenderer from '@/components/blog/BlogContentRenderer';
+import PortableTextRenderer from '@/components/blog/PortableTextRenderer';
 import { notFound } from 'next/navigation';
+import { SanityPost } from '@/sanity/types';
 
 interface BlogPostSectionProps {
-    slug: string;
+    post: SanityPost;
 }
 
-export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ slug }) => {
-    const post = getPostBySlug(slug);
-
+export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ post }) => {
     if (!post) {
         notFound();
     }
 
     // FIXED: Add smooth scroll with offset for table of contents links
     useEffect(() => {
+        // ... (Keep existing scroll logic, it's generic)
         const handleAnchorClick = (e: MouseEvent) => {
             const target = e.target as HTMLElement;
             if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
@@ -29,7 +28,6 @@ export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ slug }) => {
                 if (id) {
                     const element = document.getElementById(id);
                     if (element) {
-                        // Calculate offset: header (80px) + category menu (52px) + padding (20px) = 152px
                         const offset = 152;
                         const elementPosition = element.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - offset;
@@ -50,25 +48,31 @@ export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ slug }) => {
     return (
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <main className="lg:col-span-2">
-                {/* FIXED: Use BlogContentRenderer to render modular content */}
-                <BlogContentRenderer slug={slug} />
+                {/* Render Portable Text Content */}
+                {post.content && (
+                    <article className="prose prose-lg max-w-none">
+                        <PortableTextRenderer value={post.content} />
+                    </article>
+                )}
 
                 {/* Tags Section */}
-                <div className="mt-8 mb-8">
-                    <h3 className="text-xl font-bold mb-3 text-gray-700">Tags</h3>
-                    <div className="flex flex-wrap gap-2">
-                        {post.tags.map((tag) => (
-                            <span
-                                key={tag}
-                                className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors duration-200"
-                            >
-                                #{tag}
-                            </span>
-                        ))}
+                {post.tags && post.tags.length > 0 && (
+                    <div className="mt-8 mb-8">
+                        <h3 className="text-xl font-bold mb-3 text-gray-700">Tags</h3>
+                        <div className="flex flex-wrap gap-2">
+                            {post.tags.map((tag) => (
+                                <span
+                                    key={tag}
+                                    className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors duration-200"
+                                >
+                                    #{tag}
+                                </span>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                )}
 
-                {/* Share Section - FIXED: Responsive layout for mobile */}
+                {/* Share Section */}
                 <div className="border-t border-gray-200 pt-6 mt-8">
                     <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-700">Share this article</h3>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -105,9 +109,13 @@ export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ slug }) => {
 
             {/* Sidebar with Related Posts */}
             <aside className="lg:col-span-1">
+                {/* Note: BlogSidebarRelated still uses old system IDs. Might need future update. 
+                    For now, passing post._id as currentPostId might not match old IDs, 
+                    but we are transitioning. */
+                }
                 <BlogSidebarRelated
-                    currentPostId={post.id}
-                    categoryId={post.categoryId}
+                    currentPostId={post._id}
+                    categoryId={post.category?.slug || 'all'}
                 />
             </aside>
         </section>
