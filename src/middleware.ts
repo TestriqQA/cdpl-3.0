@@ -5,9 +5,12 @@ export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     const host = request.headers.get('host') || '';
 
+    console.log(`Middleware running. Host: ${host}, Path: ${url.pathname}`);
+
     // Check if the request is for the 'validate' subdomain
     // This matches validate.cinutedigital.com and www.validate.cinutedigital.com
-    if (host.includes('validate.cinutedigital.com')) {
+    if (host.includes('validate.cinutedigital.com') || host.includes('validate.localhost')) {
+        console.log('Redirecting validate subdomain...');
         const targetUrl = new URL('https://www.cinutedigital.com/cdpl-certificate-validation');
 
         // Extract path (e.g., /XYZ) and convert to ?id=XYZ
