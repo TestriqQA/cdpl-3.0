@@ -1,11 +1,13 @@
 import { Metadata } from "next";
 import { BlogCategoryMenu } from "@/components/blog";
-import { getAllPosts, getAllCategories } from "@/data/BlogPostData";
 import Link from "next/link";
 import Image from "next/image";
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateBreadcrumbSchema } from "@/lib/schema-generators";
+import { client } from "@/sanity/client";
+import { CATEGORIES_WITH_COUNTS_QUERY, POSTS_QUERY } from "@/sanity/lib/queries";
+import { SanityPost, SanityCategory } from "@/sanity/types";
 
 // ============================================================================
 // SEO METADATA - ENHANCED
@@ -41,14 +43,17 @@ export const metadata: Metadata = generateStaticPageMetadata({
 // ============================================================================
 // ALL POSTS PAGE COMPONENT
 // ============================================================================
-export default function AllPostsPage() {
-  const allPosts = getAllPosts();
-  const categories = getAllCategories();
+export default async function AllPostsPage() {
+  const [allPosts, categories] = await Promise.all([
+    client.fetch<SanityPost[]>(POSTS_QUERY),
+    client.fetch<SanityCategory[]>(CATEGORIES_WITH_COUNTS_QUERY)
+  ]);
 
   // Group posts by category for better organization
+  // Using slug or name matching since we don't have explicit category IDs in Sanity Post (we have reference object)
   const postsByCategory = categories.map(category => ({
     category,
-    posts: allPosts.filter(post => post.categoryId === category.id)
+    posts: allPosts.filter(post => post.category?.name === category.name)
   })).filter(group => group.posts.length > 0);
 
   // ============================================================================
@@ -97,16 +102,14 @@ export default function AllPostsPage() {
             "@type": "BlogPosting",
             "@id": `https://www.cinutedigital.com/blog/${post.slug}#article`,
             "headline": post.title,
-            "description": post.description,
+            "description": post.excerpt,
             "image": post.featuredImage,
             "url": `https://www.cinutedigital.com/blog/${post.slug}`,
             "datePublished": new Date(post.publishDate).toISOString(),
-            "dateModified": post.lastModified
-              ? new Date(post.lastModified).toISOString()
-              : new Date(post.publishDate).toISOString(),
+            "dateModified": new Date(post.publishDate).toISOString(),
             "author": {
               "@type": "Person",
-              "name": post.author
+              "name": post.author?.name
             },
             "publisher": {
               "@type": "Organization",
@@ -118,8 +121,8 @@ export default function AllPostsPage() {
                 "height": 60
               }
             },
-            "articleSection": post.category,
-            "keywords": post.tags.join(', '),
+            "articleSection": post.category?.name,
+            "keywords": post.tags?.join(', '),
             "inLanguage": "en-IN"
           }
         }))
@@ -212,12 +215,15 @@ export default function AllPostsPage() {
                 All Posts ({allPosts.length})
               </Link>
               {categories.map(category => {
-                const count = allPosts.filter(p => p.categoryId === category.id).length;
+                // We can use the pre-calculated count if we trust the query, or filter here. 
+                // The query now returns 'count', so let's try to use that if consistent, but we are filtering 'posts' anyway.
+                // To be safe and consistent with the posts displayed:
+                const count = allPosts.filter(p => p.category?.name === category.name).length;
                 return (
                   <Link
-                    key={category.id}
+                    key={category.slug}
                     href={`/blog/category/${category.slug}`}
-                    className={`px-4 py-2 ${category.color.bg} ${category.color.text} rounded-lg hover:opacity-80 transition-opacity font-medium`}
+                    className={`px-4 py-2 ${category.color?.bg || 'bg-gray-100'} ${category.color?.text || 'text-gray-800'} rounded-lg hover:opacity-80 transition-opacity font-medium`}
                   >
                     {category.name} ({count})
                   </Link>
@@ -231,7 +237,7 @@ export default function AllPostsPage() {
         <main className="bg-gray-50 py-12" role="main">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {postsByCategory.map(({ category, posts }) => (
-              <section key={category.id} className="mb-16">
+              <section key={category.slug} className="mb-16">
                 {/* Category Header */}
                 <div className="flex items-center justify-between mb-8">
                   <div>
@@ -253,20 +259,24 @@ export default function AllPostsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {posts.map(post => (
                     <article
-                      key={post.slug}
+                      key={post._id}
                       className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden group"
                       itemScope
                       itemType="https://schema.org/BlogPosting"
                     >
                       {/* Featured Image */}
                       <Link href={`/blog/${post.slug}`} className="block relative h-48 overflow-hidden">
-                        <Image
-                          src={post.featuredImage}
-                          alt={post.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          itemProp="image"
-                        />
+                        {post.featuredImage ? (
+                          <Image
+                            src={post.featuredImage}
+                            alt={post.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            itemProp="image"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 bg-gray-200" />
+                        )}
 
                       </Link>
 
@@ -284,10 +294,12 @@ export default function AllPostsPage() {
                               })}
                             </time>
                           </span>
-                          <span className="flex items-center gap-1">
-                            <Clock className="w-4 h-4" />
-                            {post.readTime}
-                          </span>
+                          {post.readTime && (
+                            <span className="flex items-center gap-1">
+                              <Clock className="w-4 h-4" />
+                              {post.readTime}
+                            </span>
+                          )}
                         </div>
 
                         {/* Title */}
@@ -299,14 +311,14 @@ export default function AllPostsPage() {
 
                         {/* Description */}
                         <p className="text-gray-600 mb-4 line-clamp-2" itemProp="description">
-                          {post.description}
+                          {post.excerpt}
                         </p>
 
                         {/* Author */}
                         <div className="flex items-center gap-2 text-sm text-gray-500">
                           <User className="w-4 h-4" />
                           <span itemProp="author" itemScope itemType="https://schema.org/Person">
-                            <span itemProp="name">{post.author}</span>
+                            <span itemProp="name">{post.author?.name}</span>
                           </span>
                         </div>
 
@@ -325,3 +337,5 @@ export default function AllPostsPage() {
     </>
   );
 }
+
+

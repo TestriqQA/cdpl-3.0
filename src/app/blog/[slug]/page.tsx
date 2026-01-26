@@ -7,8 +7,8 @@ import { generateBlogMetadata } from '@/lib/metadata-generator';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/schema-generators';
 import JsonLd from '@/components/JsonLd';
 import { client } from '@/sanity/client';
-import { POST_QUERY, POSTS_SLUG_QUERY } from '@/sanity/lib/queries';
-import { SanityPost } from '@/sanity/types';
+import { POST_QUERY, POSTS_SLUG_QUERY, RELATED_POSTS_QUERY, CATEGORIES_WITH_COUNTS_QUERY, LATEST_POSTS_QUERY } from '@/sanity/lib/queries';
+import { SanityPost, SanityCategory } from '@/sanity/types';
 
 const BlogPostHeroSection = dynamic(
     () => import("@/components/sections/BlogPostHeroSection").then(m => ({ default: m.BlogPostHeroSection })),
@@ -92,11 +92,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 // ============================================================================
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
+
+    // Fetch Post
     const post: SanityPost = await client.fetch(POST_QUERY, { slug });
 
     if (!post) {
         notFound();
     }
+
+    // Fetch Additional Data for Sidebar and Related Content
+    const [relatedPosts, categories, latestPosts] = await Promise.all([
+        client.fetch<SanityPost[]>(RELATED_POSTS_QUERY, {
+            categorySlug: post.category?.slug || 'all',
+            currentId: post._id
+        }),
+        client.fetch<SanityCategory[]>(CATEGORIES_WITH_COUNTS_QUERY),
+        client.fetch<SanityPost[]>(LATEST_POSTS_QUERY)
+    ]);
 
     const { author, category } = post;
 
@@ -149,18 +161,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 {/* Blog Post Main Content */}
                 <main role="main" aria-label="Article content">
                     <React.Suspense fallback={<div>Loading content...</div>}>
-                        <BlogPostSection post={post} />
+                        <BlogPostSection
+                            post={post}
+                            relatedPosts={relatedPosts}
+                            categories={categories}
+                            latestPosts={latestPosts}
+                        />
                     </React.Suspense>
                 </main>
 
                 {/* Contact Section */}
                 <aside role="complementary" aria-label="Contact information">
                     <React.Suspense fallback={<div>Loading contact form...</div>}>
-                        {/* Assuming Contact Section is generic enough or uses client logic internally. 
-                             If it relied on slug to fetch data, it should be updated, 
-                             but based on name it's likely a static CTA form or similar.
-                             I'll pass slug to match prop signature if it still requires it, 
-                             but ideally it should not fetch data itself. */}
                         <BlogPostContactSection slug={slug} />
                     </React.Suspense>
                 </aside>

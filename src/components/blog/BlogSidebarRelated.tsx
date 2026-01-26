@@ -3,29 +3,33 @@
 import { TrendingUp, FolderOpen, Mail, ArrowRight, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { useState, useRef } from "react";
-import { getAllCategories, getPostsByCategory, getAllPosts } from "@/data/BlogPostData";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
+import { SanityPost, SanityCategory } from "@/sanity/types";
 
 interface BlogSidebarRelatedProps {
-  currentPostId: string;
-  categoryId: string;
+  relatedPosts: SanityPost[];
+  categories: SanityCategory[];
+  latestPosts: SanityPost[];
 }
 
-const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedProps) => {
-  // Get related posts from the same category, excluding current post
-  const relatedPosts = getPostsByCategory(categoryId)
-    .filter(post => post.id !== currentPostId)
-    .slice(0, 5); // Get top 5 related posts
+const BlogSidebarRelated = ({ relatedPosts, categories, latestPosts }: BlogSidebarRelatedProps) => {
+  // Categories are passed with counts if available (from CATEGORIES_WITH_COUNTS_QUERY)
+  // Or we can just display them. If 'count' is available in SanityCategory (we need to check query)
+  // CATEGORIES_WITH_COUNTS_QUERY returns { ..., count }
 
-  // Get ALL categories
-  const allCategories = getAllCategories();
-  const allPosts = getAllPosts();
+  // Tags from latest posts
+  const popularTags = latestPosts
+    .flatMap(post => post.tags || [])
+    .reduce((acc: Record<string, number>, tag) => {
+      if (tag) acc[tag] = (acc[tag] || 0) + 1;
+      return acc;
+    }, {});
 
-  // Calculate post count for each category dynamically
-  const categoriesWithCounts = allCategories.map(category => ({
-    ...category,
-    postCount: allPosts.filter(post => post.categoryId === category.id).length
-  }));
+  const topTags = Object.entries(popularTags)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10)
+    .map(([tag]) => tag);
+
 
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -70,7 +74,7 @@ const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedPro
           <div className="space-y-4">
             {relatedPosts.map((post, index) => (
               <Link
-                key={post.id}
+                key={post._id}
                 href={`/blog/${post.slug}`}
                 className="group block"
               >
@@ -84,9 +88,9 @@ const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedPro
                     </h4>
                     <div className="flex items-center gap-2 mt-1.5 text-xs text-gray-600">
                       <span className="px-2 py-0.5 bg-white rounded-full font-medium">
-                        {post.category}
+                        {post.category?.name}
                       </span>
-                      <span className="text-indigo-600 font-semibold">{post.readTime}</span>
+                      {post.readTime && <span className="text-indigo-600 font-semibold">{post.readTime}</span>}
                     </div>
                   </div>
                 </div>
@@ -94,11 +98,11 @@ const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedPro
             ))}
           </div>
         ) : (
-          <p className="text-sm text-gray-600">No related posts found in this category.</p>
+          <p className="text-sm text-gray-600">No related posts found.</p>
         )}
       </div>
 
-      {/* Categories Section - FIXED: No scroll, full height */}
+      {/* Categories Section */}
       <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 shadow-sm border border-purple-100">
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-2">
@@ -106,20 +110,21 @@ const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedPro
             <h3 className="text-lg font-bold text-gray-900">Categories</h3>
           </div>
         </div>
-        {/* REMOVED: max-h-80 overflow-y-auto - Now shows all categories without scroll */}
         <div className="space-y-2">
-          {categoriesWithCounts.map((category) => (
+          {categories.map((category) => (
             <Link
-              key={category.id}
+              key={category.slug}
               href={`/blog/category/${category.slug}`}
               className="group flex items-center justify-between p-3 bg-white hover:bg-purple-50 rounded-lg transition-all duration-200 border border-transparent hover:border-purple-200"
             >
               <span className="text-sm font-medium text-gray-700 group-hover:text-purple-700 transition-colors">
                 {category.name}
               </span>
-              <span className="px-2.5 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">
-                {category.postCount}
-              </span>
+              {(category as any).count !== undefined && (
+                <span className="px-2.5 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">
+                  {(category as any).count}
+                </span>
+              )}
             </Link>
           ))}
         </div>
@@ -193,15 +198,19 @@ const BlogSidebarRelated = ({ currentPostId, categoryId }: BlogSidebarRelatedPro
       <div className="bg-gradient-to-br from-cyan-50 to-teal-50 rounded-xl p-6 shadow-sm border border-cyan-100">
         <h3 className="text-lg font-bold text-gray-900 mb-4">Popular Tags</h3>
         <div className="flex flex-wrap gap-2">
-          {['React', 'JavaScript', 'TypeScript', 'Next.js', 'AI', 'Web Dev', 'CSS', 'Node.js', 'Python', 'DevOps'].map((tag) => (
-            <Link
-              key={tag}
-              href={`/blog/search?q=${tag.toLowerCase()}`}
-              className="px-3 py-1.5 bg-white hover:bg-cyan-100 text-gray-700 hover:text-cyan-700 text-xs font-medium rounded-full border border-cyan-200 hover:border-cyan-300 transition-all duration-200"
-            >
-              #{tag}
-            </Link>
-          ))}
+          {topTags.length > 0 ? (
+            topTags.map((tag) => (
+              <Link
+                key={tag}
+                href={`/blog/search?q=${tag.toLowerCase()}`}
+                className="px-3 py-1.5 bg-white hover:bg-cyan-100 text-gray-700 hover:text-cyan-700 text-xs font-medium rounded-full border border-cyan-200 hover:border-cyan-300 transition-all duration-200"
+              >
+                #{tag}
+              </Link>
+            ))
+          ) : (
+            <p className="text-sm text-gray-600">No tags available.</p>
+          )}
         </div>
       </div>
     </aside>

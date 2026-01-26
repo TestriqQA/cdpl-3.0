@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { BlogCategoryMenu } from '@/components/blog';
 import BlogSidebarCategory from '@/components/blog/BlogSidebarCategory';
-import { getCategoryBySlug, getPostsByCategory, getAllCategories } from '@/data/BlogPostData';
 import { notFound } from 'next/navigation';
 import CategoryHero from '@/components/blog/CategoryHero';
 import CategoryArticleList from '@/components/blog/CategoryArticleList';
@@ -11,12 +10,15 @@ import {
     generateBreadcrumbSchema
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
+import { client } from '@/sanity/client';
+import { CATEGORIES_WITH_COUNTS_QUERY, CATEGORY_POSTS_QUERY, CATEGORY_QUERY } from '@/sanity/lib/queries';
+import { SanityCategory, SanityPost } from '@/sanity/types';
 
 // ============================================================================
 // STATIC SITE GENERATION - Generate pages for all categories
 // ============================================================================
 export async function generateStaticParams() {
-    const categories = getAllCategories();
+    const categories = await client.fetch<SanityCategory[]>(CATEGORIES_WITH_COUNTS_QUERY);
     return categories.map((category) => ({
         slug: category.slug,
     }));
@@ -27,7 +29,7 @@ export async function generateStaticParams() {
 // ============================================================================
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
-    const category = getCategoryBySlug(slug);
+    const category = await client.fetch<SanityCategory>(CATEGORY_QUERY, { slug });
 
     if (!category) {
         return {
@@ -40,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         };
     }
 
-    const posts = getPostsByCategory(category.id);
+    const posts = await client.fetch<SanityPost[]>(CATEGORY_POSTS_QUERY, { slug });
     const latestPost = posts[0];
 
     return {
@@ -48,7 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         title: {
             absolute: `${category.name} Articles & Tutorials | CDPL Blog`,
         },
-        description: `${category.description} Explore ${posts.length}+ in-depth articles, tutorials, and best practices on ${category.name.toLowerCase()}. Learn from CDPL industry experts and stay updated with the latest trends.`,
+        description: `${category.description || ''} Explore ${posts.length}+ in-depth articles, tutorials, and best practices on ${category.name.toLowerCase()}. Learn from CDPL industry experts and stay updated with the latest trends.`,
 
         // Keywords - Category-specific
         keywords: [
@@ -92,7 +94,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         // Open Graph - Enhanced
         openGraph: {
             title: `${category.name} - Expert Articles, Tutorials & Best Practices | CDPL`,
-            description: `${category.description} ${posts.length}+ articles to help you master ${category.name.toLowerCase()}.`,
+            description: `${category.description || ''} ${posts.length}+ articles to help you master ${category.name.toLowerCase()}.`,
             url: `https://www.cinutedigital.com/blog/category/${category.slug}`,
             siteName: 'CDPL Tech Blog',
             images: [
@@ -112,7 +114,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         twitter: {
             card: 'summary_large_image',
             title: `${category.name} - Expert Articles & Tutorials | CDPL`,
-            description: `${category.description} ${posts.length}+ articles available.`,
+            description: `${category.description || ''} ${posts.length}+ articles available.`,
             images: [latestPost?.featuredImage || '/blog/og-image.jpg'],
             creator: '@cinutedigital',
             site: '@cinutedigital',
@@ -143,13 +145,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 // ============================================================================
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const category = getCategoryBySlug(slug);
+
+    // Parallel fetching
+    const [category, posts, categoriesWithCounts] = await Promise.all([
+        client.fetch<SanityCategory>(CATEGORY_QUERY, { slug }),
+        client.fetch<SanityPost[]>(CATEGORY_POSTS_QUERY, { slug }),
+        client.fetch<any[]>(CATEGORIES_WITH_COUNTS_QUERY)
+    ]);
 
     if (!category) {
         notFound();
     }
 
-    const posts = getPostsByCategory(category.id);
+    const featuredPost = posts[0];
+    const otherPosts = posts.slice(1);
 
     // ============================================================================
     // ENHANCED STRUCTURED DATA (JSON-LD)
@@ -160,22 +169,20 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         posts.slice(0, 20).map((post) => ({
             name: post.title,
             url: `/blog/${post.slug}`,
-            description: post.description,
+            description: post.excerpt,
             image: post.featuredImage,
             type: 'BlogPosting',
             itemSchema: {
                 '@type': 'BlogPosting',
                 '@id': `https://www.cinutedigital.com/blog/${post.slug}#article`,
                 headline: post.title,
-                description: post.description,
+                description: post.excerpt,
                 image: post.featuredImage,
                 datePublished: new Date(post.publishDate).toISOString(),
-                dateModified: post.lastModified
-                    ? new Date(post.lastModified).toISOString()
-                    : new Date(post.publishDate).toISOString(),
+                dateModified: new Date(post.publishDate).toISOString(),
                 author: {
                     '@type': 'Person',
-                    name: post.author,
+                    name: post.author?.name,
                 },
                 publisher: {
                     '@type': 'Organization',
@@ -190,7 +197,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                 url: `https://www.cinutedigital.com/blog/${post.slug}`,
                 mainEntityOfPage: `https://www.cinutedigital.com/blog/${post.slug}`,
                 articleSection: category.name,
-                keywords: post.tags.join(', '),
+                keywords: post.tags?.join(', '),
                 inLanguage: 'en-IN'
             }
         })),
@@ -200,7 +207,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     // CollectionPage Schema
     const collectionPageSchema = generateCollectionPageSchema({
         name: `${category.name} Articles - CDPL Blog`,
-        description: category.description,
+        description: category.description || '',
         url: `/blog/category/${category.slug}`,
     });
 
@@ -227,7 +234,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
             >
                 {/* Hidden metadata for schema.org */}
                 <meta itemProp="name" content={`${category.name} Articles - CDPL Blog`} />
-                <meta itemProp="description" content={category.description} />
+                <meta itemProp="description" content={category.description || ''} />
                 <meta itemProp="url" content={`https://www.cinutedigital.com/blog/category/${category.slug}`} />
 
                 {/* Category Navigation Menu */}
@@ -237,7 +244,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
                 {/* Category Hero Section */}
                 <header>
-                    <CategoryHero categoryId={category.id} categoryName={category.name} />
+                    <CategoryHero category={category} post={featuredPost} />
                 </header>
 
                 {/* SEO-friendly H1 - Hidden visually but available for SEO */}
@@ -251,14 +258,18 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {/* Main Content - Article List */}
                         <main className="lg:col-span-2" role="main" aria-label={`${category.name} articles`}>
-                            <CategoryArticleList categoryId={category.id} categoryName={category.name} />
+                            <CategoryArticleList
+                                categoryName={category.name}
+                                posts={otherPosts}
+                            />
                         </main>
 
                         {/* Sidebar with Category-Specific Content */}
                         <aside className="lg:col-span-1" role="complementary" aria-label="Category sidebar">
                             <BlogSidebarCategory
-                                categoryId={category.id}
                                 categoryName={category.name}
+                                categoryPosts={posts}
+                                categories={categoriesWithCounts}
                             />
                         </aside>
                     </div>

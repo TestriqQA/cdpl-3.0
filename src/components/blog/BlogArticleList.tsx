@@ -130,7 +130,7 @@ const BlogArticleList: React.FC<BlogArticleListProps> = ({ posts = [] }) => {
 
                         {/* Meta Information */}
                         <div className="flex flex-wrap items-center gap-4 text-xs text-gray-600 pt-4 border-t border-gray-100">
-                          {author && (
+                          {author && author.name && (
                             <div className="flex items-center gap-1.5">
                               {author.avatar ? (
                                 <Image src={author.avatar} alt={author.name} width={24} height={24} className="rounded-full" />

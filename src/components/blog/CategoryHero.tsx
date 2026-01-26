@@ -3,24 +3,20 @@
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { getPostsByCategory, getCategoryById, getAuthorById } from "@/data/BlogPostData";
+import { SanityPost, SanityCategory } from "@/sanity/types";
 
 interface CategoryHeroProps {
-  categoryId: string;
-  categoryName: string;
+  category: SanityCategory;
+  post?: SanityPost;
 }
 
-const CategoryHero: React.FC<CategoryHeroProps> = ({ categoryId, categoryName }) => {
-  // Get latest post from this category
-  const posts = getPostsByCategory(categoryId);
-  
-  if (posts.length === 0) return null;
-  
-  const featuredPost = posts[0]; // Latest post in this category
-  const category = getCategoryById(featuredPost.categoryId);
-  const author = getAuthorById(featuredPost.authorId);
+const CategoryHero: React.FC<CategoryHeroProps> = ({ category, post }) => {
+  if (!post) return null;
 
-  if (!category || !author) return null;
+  const featuredPost = post;
+  const author = featuredPost.author;
+
+  if (!author) return null;
 
   // Format date
   const formattedDate = new Date(featuredPost.publishDate).toLocaleDateString('en-US', {
@@ -35,7 +31,7 @@ const CategoryHero: React.FC<CategoryHeroProps> = ({ categoryId, categoryName })
         {/* Category Title */}
         <div className="mb-6">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
-            {categoryName}
+            {category.name}
           </h1>
           <p className="text-lg text-gray-700 leading-relaxed">
             {category.description}
@@ -50,7 +46,7 @@ const CategoryHero: React.FC<CategoryHeroProps> = ({ categoryId, categoryName })
               {/* Category Badge */}
               <div className="flex items-center gap-3">
                 <span
-                  className={`inline-block px-3 py-1 ${category.color.bg} ${category.color.text} text-xs font-semibold rounded-md`}
+                  className={`inline-block px-3 py-1 ${category.color?.bg || 'bg-gray-100'} ${category.color?.text || 'text-gray-800'} text-xs font-semibold rounded-md`}
                 >
                   Latest in {category.name}
                 </span>
@@ -63,7 +59,7 @@ const CategoryHero: React.FC<CategoryHeroProps> = ({ categoryId, categoryName })
 
               {/* Description - Optimal reading color */}
               <p className="text-gray-700 text-lg leading-relaxed">
-                {featuredPost.description}
+                {featuredPost.excerpt}
               </p>
 
               {/* Meta Information - Subtle but readable */}

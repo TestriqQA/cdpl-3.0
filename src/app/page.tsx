@@ -33,6 +33,10 @@ const HomeLatestBlogSection = dynamic(() => import('@/components/home/HomeLatest
 const HomeFAQSection = dynamic(() => import('@/components/home/HomeFAQSection'), { ssr: true });
 const HomeFinalCTASection = dynamic(() => import('@/components/home/HomeFinalCTASection'), { ssr: true });
 
+import { client } from "@/sanity/client";
+import { LATEST_POSTS_QUERY } from "@/sanity/lib/queries";
+import { SanityPost } from "@/sanity/types";
+
 // ============================================================================
 // HOME PAGE METADATA
 // ============================================================================
@@ -58,6 +62,8 @@ export const metadata: Metadata = generateMetadata({
     "data science course in Mumbai",
     "IT courses with placement",
     "best software testing institute",
+    "CDPL blog",
+    "technology courses"
   ],
   url: '/',
 });
@@ -66,7 +72,14 @@ export const metadata: Metadata = generateMetadata({
 // HOME PAGE COMPONENT
 // ============================================================================
 
-export default function HomePage(): React.ReactElement {
+export default async function HomePage(): Promise<React.ReactElement> {
+  // ========================================
+  // DATA FETCHING
+  // ========================================
+  const latestPosts: SanityPost[] = await client.fetch(LATEST_POSTS_QUERY, {}, {
+    next: { revalidate: 3600 } // Revalidate every hour
+  });
+
   // ========================================
   // SCHEMA DATA
   // ========================================
@@ -102,7 +115,7 @@ export default function HomePage(): React.ReactElement {
           </div>
         </section>
         <HomeWhyChooseSection />
-        <HomeLatestBlogSection />
+        <HomeLatestBlogSection posts={latestPosts} />
         <HomeFAQSection />
         <HomeFinalCTASection />
       </main>

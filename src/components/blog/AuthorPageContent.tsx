@@ -5,12 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Linkedin, Twitter, Github, Globe, FileText, ArrowLeft, BookOpen, Quote } from "lucide-react";
-import { Author, BlogPost } from "@/data/BlogPostData";
+import { SanityAuthor, SanityPost } from "@/sanity/types";
 import { BlogArticleList } from "@/components/blog";
 
 interface AuthorPageContentProps {
-    author: Author;
-    posts: BlogPost[];
+    author: SanityAuthor;
+    posts: SanityPost[];
 }
 
 export const AuthorPageContent: React.FC<AuthorPageContentProps> = ({ author, posts }) => {
@@ -200,7 +200,7 @@ const SocialButton = ({ href, icon: Icon, label, color }: { href: string, icon: 
 );
 
 // Helper
-function getYearsActive(posts: BlogPost[]) {
+function getYearsActive(posts: SanityPost[]) {
     if (!posts || posts.length === 0) return 1;
     const dates = posts.map(p => new Date(p.publishDate).getFullYear());
     const min = Math.min(...dates);

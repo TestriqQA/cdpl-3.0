@@ -1,10 +1,12 @@
 import { Metadata } from "next";
 import { BlogCategoryMenu } from "@/components/blog";
 import { SearchAgainButton } from "@/components/blog/SearchAgainButton";
-import { getAllPosts, getAllCategories } from "@/data/BlogPostData";
 import Link from "next/link";
 import Image from "next/image";
 import { Calendar, Clock, User, Search as SearchIcon, X } from "lucide-react";
+import { client } from "@/sanity/client";
+import { CATEGORIES_WITH_COUNTS_QUERY, SEARCH_POSTS_QUERY } from "@/sanity/lib/queries";
+import { SanityPost, SanityCategory } from "@/sanity/types";
 
 // ============================================================================
 // DYNAMIC METADATA GENERATION - SEO Optimized
@@ -62,26 +64,40 @@ export default async function SearchPage({
 }) {
   const params = await searchParams;
   const query = params.q || "";
-  const allPosts = getAllPosts();
-  const categories = getAllCategories();
+
+  // Fetch all posts and categories from Sanity
+  // Note: For larger sites, use groq filtering. For static/small sites, client-side or server-side filtering of all posts is okay.
+  const [allPosts, categories] = await Promise.all([
+    client.fetch<SanityPost[]>(SEARCH_POSTS_QUERY),
+    client.fetch<SanityCategory[]>(CATEGORIES_WITH_COUNTS_QUERY)
+  ]);
 
   // Enhanced search algorithm
   const searchResults = query.trim().length > 0
     ? allPosts.filter((post) => {
       const searchLower = query.toLowerCase();
+      // Handle optional fields safely
+      const titleMatch = post.title?.toLowerCase().includes(searchLower);
+      const excerptMatch = post.excerpt?.toLowerCase().includes(searchLower);
+      const categoryMatch = post.category?.name.toLowerCase().includes(searchLower);
+      const authorMatch = post.author?.name.toLowerCase().includes(searchLower);
+      const tagsMatch = post.tags?.some(tag => tag.toLowerCase().includes(searchLower));
+      const keywordMatch = post.seo?.keywords?.some(keyword => keyword.toLowerCase().includes(searchLower));
+      const descriptionMatch = post.seo?.metaDescription?.toLowerCase().includes(searchLower);
+
       return (
-        post.title.toLowerCase().includes(searchLower) ||
-        post.description.toLowerCase().includes(searchLower) ||
-        post.category.toLowerCase().includes(searchLower) ||
-        post.author.toLowerCase().includes(searchLower) ||
-        post.excerpt.toLowerCase().includes(searchLower) ||
-        post.tags.some(tag => tag.toLowerCase().includes(searchLower)) ||
-        post.seo.keywords.some(keyword => keyword.toLowerCase().includes(searchLower))
+        titleMatch ||
+        excerptMatch ||
+        categoryMatch ||
+        authorMatch ||
+        tagsMatch ||
+        keywordMatch ||
+        descriptionMatch
       );
     }).sort((a, b) => {
       // Prioritize title matches
-      const aTitle = a.title.toLowerCase().includes(query.toLowerCase());
-      const bTitle = b.title.toLowerCase().includes(query.toLowerCase());
+      const aTitle = a.title?.toLowerCase().includes(query.toLowerCase());
+      const bTitle = b.title?.toLowerCase().includes(query.toLowerCase());
       if (aTitle && !bTitle) return -1;
       if (!aTitle && bTitle) return 1;
       // Then sort by publish date
@@ -90,9 +106,10 @@ export default async function SearchPage({
     : [];
 
   // Group results by category
+  // Using slug matching safely
   const resultsByCategory = categories.map(category => ({
     category,
-    posts: searchResults.filter(post => post.categoryId === category.id)
+    posts: searchResults.filter(post => post.category?.name === category.name) // Using name match since ID might not propagate or differ
   })).filter(group => group.posts.length > 0);
 
   // Popular searches (you can customize this)
@@ -119,12 +136,12 @@ export default async function SearchPage({
         "item": {
           "@type": "BlogPosting",
           "headline": post.title,
-          "description": post.description,
+          "description": post.excerpt,
           "url": `https://yoursite.com/blog/${post.slug}`,
           "datePublished": new Date(post.publishDate).toISOString(),
           "author": {
             "@type": "Person",
-            "name": post.author
+            "name": post.author?.name
           }
         }
       }))
@@ -208,7 +225,7 @@ export default async function SearchPage({
               <>
                 {/* Results by Category */}
                 {resultsByCategory.map(({ category, posts }) => (
-                  <section key={category.id} className="mb-12">
+                  <section key={category.slug} className="mb-12">
                     <div className="flex items-center gap-3 mb-6">
                       <h2 className="text-2xl font-bold text-gray-900">{category.name}</h2>
                       <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold">
@@ -219,22 +236,28 @@ export default async function SearchPage({
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                       {posts.map(post => (
                         <article
-                          key={post.id}
+                          key={post._id}
                           className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group"
                           itemScope
                           itemType="https://schema.org/BlogPosting"
                         >
                           <Link href={`/blog/${post.slug}`} className="block">
                             <div className="relative h-48 bg-gray-200">
-                              <Image
-                                src={post.featuredImage}
-                                alt={`${post.title} - Featured Image`}
-                                fill
-                                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              />
-                              <div className={`absolute top-4 left-4 px-3 py-1 ${category.color.bg} ${category.color.text} rounded-full text-xs font-semibold`}>
-                                {post.category}
+                              {post.featuredImage ? (
+                                <Image
+                                  src={post.featuredImage}
+                                  alt={`${post.title} - Featured Image`}
+                                  fill
+                                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                />
+                              ) : (
+                                <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                                  <SearchIcon className="w-12 h-12 text-gray-300" />
+                                </div>
+                              )}
+                              <div className={`absolute top-4 left-4 px-3 py-1 ${category.color?.bg || 'bg-gray-100'} ${category.color?.text || 'text-gray-800'} rounded-full text-xs font-semibold`}>
+                                {post.category?.name}
                               </div>
                             </div>
 
@@ -243,7 +266,7 @@ export default async function SearchPage({
                                 {post.title}
                               </h3>
                               <p className="text-gray-600 mb-4 line-clamp-3 leading-relaxed" itemProp="description">
-                                {post.description}
+                                {post.excerpt}
                               </p>
 
                               <div className="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
@@ -256,16 +279,18 @@ export default async function SearchPage({
                                       year: 'numeric'
                                     })}
                                   </time>
-                                  <span className="flex items-center gap-1">
-                                    <Clock className="w-4 h-4" />
-                                    {post.readTime}
-                                  </span>
+                                  {post.readTime && (
+                                    <span className="flex items-center gap-1">
+                                      <Clock className="w-4 h-4" />
+                                      {post.readTime}
+                                    </span>
+                                  )}
                                 </div>
                               </div>
 
                               <div className="flex items-center gap-2 mt-4">
                                 <User className="w-4 h-4 text-gray-400" />
-                                <span className="text-sm text-gray-600" itemProp="author">{post.author}</span>
+                                <span className="text-sm text-gray-600" itemProp="author">{post.author?.name}</span>
                               </div>
                             </div>
                           </Link>
@@ -351,4 +376,9 @@ export default async function SearchPage({
     </>
   );
 }
+
+// ============================================================================
+// DYNAMIC METADATA GENERATION - SEO Optimized
+// ============================================================================
+
 

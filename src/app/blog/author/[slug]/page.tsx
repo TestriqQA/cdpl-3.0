@@ -1,21 +1,23 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { generateMetadata as generateCentralMetadata } from "@/lib/metadata-generator";
-import { getAuthorById, getPostsByAuthorId, AUTHORS } from "@/data/BlogPostData";
 import { AuthorPageContent } from "@/components/blog/AuthorPageContent";
+import { client } from "@/sanity/client";
+import { AUTHOR_QUERY, AUTHOR_POSTS_QUERY, AUTHORS_QUERY } from "@/sanity/lib/queries";
+import { SanityAuthor, SanityPost } from "@/sanity/types";
 
 // SSG: Generate pages for all authors
 export async function generateStaticParams() {
-    return Object.keys(AUTHORS).map((slug) => ({
-        slug,
+    const authors = await client.fetch<SanityAuthor[]>(AUTHORS_QUERY);
+    return authors.map((author) => ({
+        slug: author.slug,
     }));
 }
 
 // SEO: Generate metadata
-
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
-    const author = getAuthorById(slug);
+    const author = await client.fetch<SanityAuthor>(AUTHOR_QUERY, { slug });
 
     if (!author) {
         return {
@@ -25,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     return generateCentralMetadata({
         title: `${author.name} - Author at CDPL`,
-        description: `Read articles and tutorials by ${author.name}, ${author.role} at CDPL. ${author.bio.slice(0, 150)}...`,
+        description: `Read articles and tutorials by ${author.name}, ${author.role || 'Author'} at CDPL. ${author.bio?.slice(0, 150) || ''}...`,
         url: `/blog/author/${slug}`,
         image: author.avatar,
         type: 'article', // Using article/website type, best fit
@@ -36,13 +38,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 // Page Component
 export default async function AuthorPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const author = getAuthorById(slug);
+
+    // Parallel fetching for performance
+    const [author, posts] = await Promise.all([
+        client.fetch<SanityAuthor>(AUTHOR_QUERY, { slug }),
+        client.fetch<SanityPost[]>(AUTHOR_POSTS_QUERY, { slug })
+    ]);
 
     if (!author) {
         notFound();
     }
-
-    const posts = getPostsByAuthorId(slug);
 
     return <AuthorPageContent author={author} posts={posts} />;
 }

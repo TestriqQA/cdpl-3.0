@@ -25,6 +25,34 @@ const SanityImage = ({ value }: { value: any }) => {
 const components: PortableTextComponents = {
     types: {
         image: SanityImage,
+        table: ({ value }: { value: any }) => {
+            const { rows } = value;
+            if (!rows || !rows.length) return null;
+
+            return (
+                <div className="my-8 overflow-x-auto">
+                    <table className="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg overflow-hidden">
+                        <tbody className="bg-white divide-y divide-gray-200">
+                            {rows.map((row: any, rowIndex: number) => (
+                                <tr key={row._key || rowIndex} className={rowIndex === 0 ? "bg-gray-50" : "hover:bg-gray-50 transition-colors"}>
+                                    {row.cells.map((cell: string, cellIndex: number) => {
+                                        const CellTag = rowIndex === 0 ? 'th' : 'td';
+                                        return (
+                                            <CellTag
+                                                key={cellIndex}
+                                                className={`px-6 py-4 whitespace-nowrap text-sm text-gray-700 border-r last:border-r-0 border-gray-200 ${rowIndex === 0 ? 'font-bold text-gray-900' : ''}`}
+                                            >
+                                                {cell}
+                                            </CellTag>
+                                        );
+                                    })}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        },
         code: ({ value }: { value: any }) => (
             <div className="my-8 bg-gray-900 rounded-lg p-4 overflow-x-auto">
                 <pre className="text-gray-100 font-mono text-sm">

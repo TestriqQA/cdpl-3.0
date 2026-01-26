@@ -67,7 +67,8 @@ export default defineType({
                     options: {
                         withFilename: true
                     }
-                }
+                },
+                { type: 'table' }
             ],
         }),
         defineField({

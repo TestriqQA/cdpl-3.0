@@ -6,13 +6,16 @@ import { FaXTwitter, FaLinkedin, FaFacebook } from 'react-icons/fa6';
 import BlogSidebarRelated from '@/components/blog/BlogSidebarRelated';
 import PortableTextRenderer from '@/components/blog/PortableTextRenderer';
 import { notFound } from 'next/navigation';
-import { SanityPost } from '@/sanity/types';
+import { SanityPost, SanityCategory } from '@/sanity/types';
 
 interface BlogPostSectionProps {
     post: SanityPost;
+    relatedPosts: SanityPost[];
+    categories: SanityCategory[];
+    latestPosts: SanityPost[];
 }
 
-export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ post }) => {
+export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ post, relatedPosts, categories, latestPosts }) => {
     if (!post) {
         notFound();
     }
@@ -114,8 +117,9 @@ export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ post }) => {
                     but we are transitioning. */
                 }
                 <BlogSidebarRelated
-                    currentPostId={post._id}
-                    categoryId={post.category?.slug || 'all'}
+                    relatedPosts={relatedPosts}
+                    categories={categories}
+                    latestPosts={latestPosts}
                 />
             </aside>
         </section>

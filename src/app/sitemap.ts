@@ -2,7 +2,9 @@ import { MetadataRoute } from 'next';
 import { courseData } from '@/types/courseData';
 import { pastEvents } from '@/data/eventsData';
 import { trainingServices } from '@/data/servicesData';
-import { BLOG_POSTS, CATEGORIES, AUTHORS } from '@/data/BlogPostData';
+import { client } from '@/sanity/client';
+import { POSTS_QUERY, CATEGORIES_QUERY, AUTHORS_QUERY } from '@/sanity/lib/queries';
+import { SanityPost, SanityCategory, SanityAuthor } from '@/sanity/types';
 
 /**
  * Dynamic XML Sitemap for CDPL
@@ -22,6 +24,13 @@ import { BLOG_POSTS, CATEGORIES, AUTHORS } from '@/data/BlogPostData';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.cinutedigital.com';
   const currentDate = new Date().toISOString();
+
+  // Fetch dynamic data from Sanity
+  const [posts, categories, authors] = await Promise.all([
+    client.fetch<SanityPost[]>(POSTS_QUERY),
+    client.fetch<SanityCategory[]>(CATEGORIES_QUERY),
+    client.fetch<SanityAuthor[]>(AUTHORS_QUERY)
+  ]);
 
   // ========================================
   // STATIC PAGES
@@ -287,16 +296,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // 4. Individual Blog Posts (e.g., /blog/what-is-data-science)
-  // BLOG_POSTS is an array of BlogPost objects
-  const blogPostPages: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
+  const blogPostPages: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${siteUrl}/blog/${post.slug}`,
-    lastModified: post.lastModified ? new Date(post.lastModified) : new Date(post.publishDate),
+    lastModified: post.publishDate || currentDate, // Sanity should provide _updatedAt as well if we query it, but publishDate is good
     changeFrequency: 'daily',
     priority: 0.7,
   }));
 
   // 5. Blog Category Pages (e.g., /blog/category/data-science)
-  const blogCategoryPages: MetadataRoute.Sitemap = Object.values(CATEGORIES).map((category) => ({
+  const blogCategoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
     url: `${siteUrl}/blog/category/${category.slug}`,
     lastModified: currentDate,
     changeFrequency: 'weekly',
@@ -304,8 +312,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // 6. Blog Author Pages (e.g., /blog/author/shoeb-shaikh)
-  const blogAuthorPages: MetadataRoute.Sitemap = Object.values(AUTHORS).map((author) => ({
-    url: `${siteUrl}/blog/author/${author.id}`,
+  const blogAuthorPages: MetadataRoute.Sitemap = authors.map((author) => ({
+    url: `${siteUrl}/blog/author/${author.slug}`,
     lastModified: currentDate,
     changeFrequency: 'monthly',
     priority: 0.5,

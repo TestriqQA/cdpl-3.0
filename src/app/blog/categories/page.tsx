@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { BlogCategoryMenu } from "@/components/blog";
-import { getAllCategories, getAllPosts } from "@/data/BlogPostData";
 import Link from "next/link";
 import { FolderOpen, ArrowRight, FileText, TrendingUp } from "lucide-react";
 import BlogCategoriesClient from "./BlogCategoriesClient";
@@ -10,6 +9,9 @@ import {
   generateBreadcrumbSchema
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
+import { client } from "@/sanity/client";
+import { CATEGORIES_WITH_COUNTS_QUERY, POSTS_QUERY } from "@/sanity/lib/queries";
+import { SanityCategory, SanityPost } from "@/sanity/types";
 
 // ============================================================================
 // SEO METADATA - ENHANCED
@@ -90,22 +92,15 @@ export const metadata: Metadata = {
 // ============================================================================
 // CATEGORIES PAGE COMPONENT
 // ============================================================================
-export default function CategoriesPage() {
-  const categories = getAllCategories();
-  const allPosts = getAllPosts();
+export default async function CategoriesPage() {
+  // Fetch categories with counts and latest post from Sanity
+  // We also fetch all posts to calculate total count efficiently if needed, or rely on individual calls
+  // The query `CATEGORIES_WITH_COUNTS_QUERY` now includes 'count' and 'latestPost'
 
-  // Calculate posts per category
-  const categoriesWithCounts = categories
-    .map((category) => ({
-      ...category,
-      postCount: allPosts.filter((post) => post.categoryId === category.id).length,
-      latestPost: allPosts
-        .filter((post) => post.categoryId === category.id)
-        .sort(
-          (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
-        )[0],
-    }))
-    .filter((cat) => cat.postCount > 0);
+  const categories = await client.fetch<(SanityCategory & { count: number, latestPost?: any })[]>(CATEGORIES_WITH_COUNTS_QUERY);
+  const allPosts = await client.fetch<SanityPost[]>(POSTS_QUERY); // Needed for total calculations/SEO
+
+  const categoriesWithCounts = categories.filter((cat) => cat.count > 0);
 
   const totalPosts = allPosts.length;
   const totalCategories = categoriesWithCounts.length;
@@ -234,18 +229,18 @@ export default function CategoriesPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {categoriesWithCounts.map((category) => (
                 <article
-                  key={category.id}
+                  key={category.slug}
                   className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group"
                   itemScope
                   itemType="https://schema.org/Thing"
                 >
                   <Link href={`/blog/category/${category.slug}`} className="block">
                     <div
-                      className={`p-6 ${category.color.bg} ${category.color.text} border-b-4 border-opacity-50`}
+                      className={`p-6 ${category.color?.bg || 'bg-gray-100'} ${category.color?.text || 'text-gray-800'} border-b-4 border-opacity-50`}
                     >
                       <div className="flex items-center justify-between mb-3">
                         <FolderOpen className="w-8 h-8" aria-hidden="true" />
-                        <span className="text-2xl font-bold">{category.postCount}</span>
+                        <span className="text-2xl font-bold">{category.count}</span>
                       </div>
                       <h3
                         className="text-2xl font-bold mb-2 group-hover:underline"
@@ -278,8 +273,8 @@ export default function CategoriesPage() {
                         <div className="flex items-center gap-2 text-sm text-gray-600">
                           <FileText className="w-4 h-4" />
                           <span>
-                            {category.postCount}{" "}
-                            {category.postCount === 1 ? "Article" : "Articles"}
+                            {category.count}{" "}
+                            {category.count === 1 ? "Article" : "Articles"}
                           </span>
                         </div>
                         <span className="text-purple-600 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
@@ -345,3 +340,8 @@ export default function CategoriesPage() {
     </>
   );
 }
+
+// ============================================================================
+// SEO METADATA - ENHANCED
+// ============================================================================
+
