@@ -2,7 +2,7 @@
 /** Minimal certificate preview card that prefers a public image if present */
 import Image from "next/image";
 import { useState } from "react";
-import type { Certificate } from "@/data/certificates/registry";
+import type { Certificate } from "@/types/certificate";
 
 export function CertificationPreviewSection({ cert, onClick }: { cert: Certificate; onClick?: () => void }) {
   // Use explicit imageUrl from registry if available, else fallback to constructed path

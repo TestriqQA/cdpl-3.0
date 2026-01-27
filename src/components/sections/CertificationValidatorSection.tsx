@@ -4,10 +4,29 @@ import { useEffect, useMemo, useState, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Certificate, getCertificateById } from "@/data/certificates/registry";
 import { CheckCircle2, AlertCircle, Link as LinkIcon, Copy } from "lucide-react";
 import dynamic from "next/dynamic";
 import { AAAVerificationChoiceModal } from "../ui/AAAVerificationChoiceModal";
+import { client } from "@/sanity/client";
+import { urlFor } from "@/sanity/lib/image";
+
+// Define local type for component state, matching Sanity schema
+type SanityCertificate = {
+  certificateId: string;
+  holderName: string;
+  program: "AAA" | "CDPL";
+  status: "Valid" | "Revoked" | "Expired";
+  certificateImage: any; // Image object
+};
+
+// Adapter type to match existing component expectations if needed
+// Or we just update usages. Let's update usages to use Sanity fields directly.
+// Existing usage: result.id, result.holder, result.program, result.status.
+// Sanity fields: certificateId, holderName, program, status.
+// We can just map them or update UI to use new names. 
+// Let's Map them to existing 'Certificate' interface to minimize UI churn.
+
+import { Certificate } from "@/types/certificate";
 
 function SectionLoader({ label = "Loading..." }: { label?: string }) {
   return (
@@ -30,6 +49,7 @@ function CertificationValidatorContent() {
   const [query, setQuery] = useState("");
   const [result, setResult] = useState<Certificate | null>(null);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
   // AAA Choice State
@@ -50,7 +70,7 @@ function CertificationValidatorContent() {
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  const validateAndShow = (raw: string) => {
+  const validateAndShow = async (raw: string) => {
     const id = raw.trim().toUpperCase();
     setError("");
     setResult(null);
@@ -65,22 +85,48 @@ function CertificationValidatorContent() {
       setUrlId(undefined);
       return;
     }
-    const hit = getCertificateById(id);
-    if (!hit) {
-      setError("No certificate found for this ID.");
-      setUrlId(undefined);
-      return;
-    }
 
-    // Intercept AAA certificates
-    if (hit.program === "AAA") {
-      setPendingCertificate(hit);
-      setShowAAAChoice(true);
-      return;
-    }
+    setLoading(true);
+    try {
+      // Fetch from Sanity
+      const sanityQuery = `*[_type == "certificate" && certificateId == $id][0]`;
+      const sanityDoc = await client.fetch<SanityCertificate>(sanityQuery, { id });
 
-    setResult(hit);
-    setUrlId(hit.id); // show in URL for sharing
+      if (!sanityDoc) {
+        setError("No certificate found for this ID.");
+        setUrlId(undefined);
+        return;
+      }
+
+      // Map Sanity Doc to Component State
+      const imageUrl = sanityDoc.certificateImage ? urlFor(sanityDoc.certificateImage).url() : "";
+
+      const mappedCert: Certificate = {
+        id: sanityDoc.certificateId,
+        holder: sanityDoc.holderName,
+        program: sanityDoc.program,
+        status: sanityDoc.status,
+        imageUrl: imageUrl
+      };
+
+      const hit = mappedCert;
+
+      // Intercept AAA certificates
+      if (hit.program === "AAA") {
+        setPendingCertificate(hit);
+        setShowAAAChoice(true);
+        return;
+      }
+
+      setResult(hit);
+      setUrlId(hit.id); // show in URL for sharing
+
+    } catch (err) {
+      console.error("Validation error:", err);
+      setError("An error occurred while verifying. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleAAAChoice = (type: "official" | "cdpl") => {
@@ -401,10 +447,20 @@ function CertificationValidatorContent() {
 
               <button
                 type="submit"
-                className="rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 flex items-center gap-2"
+                disabled={loading}
+                className="rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <span>Validate</span>
-                <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                {loading ? (
+                  <>
+                    <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <span>Verifying...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Validate</span>
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                  </>
+                )}
               </button>
 
               {/* helper + quick examples */}

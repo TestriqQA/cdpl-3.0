@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AlertCircle, Link as LinkIcon } from "lucide-react";
-import { Certificate } from "@/data/certificates/registry";
+import { Certificate } from "@/types/certificate";
 
 interface AAAVerificationChoiceModalProps {
     isOpen: boolean;
