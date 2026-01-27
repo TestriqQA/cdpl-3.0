@@ -382,6 +382,10 @@ const Footer = () => {
                     Home
                   </FooterLink>
 
+                  <FooterLink href="/cms">
+                    CMS Login
+                  </FooterLink>
+
                   <FooterLink href="/mock-test">
                     Mock Test
                   </FooterLink>

@@ -7,7 +7,7 @@ import { schema } from './src/sanity/schema'
 import { apiVersion, dataset, projectId } from './src/sanity/env'
 
 export default defineConfig({
-    basePath: '/studio',
+    basePath: '/cms',
     projectId: projectId!,
     dataset: dataset!,
     // Add and edit the content schema in the './sanity/schema' folder

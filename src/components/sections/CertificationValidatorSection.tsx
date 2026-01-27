@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState, Suspense } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -182,8 +183,14 @@ function CertificationValidatorContent() {
     };
     if (isLightboxOpen || showAAAChoice) {
       window.addEventListener("keydown", handleEsc);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
     }
-    return () => window.removeEventListener("keydown", handleEsc);
+    return () => {
+      window.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "";
+    }
   }, [isLightboxOpen, showAAAChoice]);
 
   // Hydration-safe links
@@ -223,9 +230,9 @@ function CertificationValidatorContent() {
         />
 
         {/* Lightbox Overlay */}
-        {isLightboxOpen && result && (
+        {isLightboxOpen && result && createPortal(
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
             onClick={() => setIsLightboxOpen(false)}
           >
             <div className="relative max-h-full max-w-5xl rounded-lg bg-white p-1">
@@ -240,10 +247,11 @@ function CertificationValidatorContent() {
                 className="overflow-auto"
                 onClick={(e) => e.stopPropagation()} // prevent closing when clicking content
               >
-                <CertificationPreviewSection cert={result} />
+                <CertificationPreviewSection cert={result} isLightbox={true} />
               </div>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
 
         {/* ===== Result Section (Separate Block) ===== */}

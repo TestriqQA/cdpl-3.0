@@ -4,12 +4,28 @@ import Image from "next/image";
 import { useState } from "react";
 import type { Certificate } from "@/types/certificate";
 
-export function CertificationPreviewSection({ cert, onClick }: { cert: Certificate; onClick?: () => void }) {
+export function CertificationPreviewSection({ cert, onClick, isLightbox = false }: { cert: Certificate; onClick?: () => void; isLightbox?: boolean }) {
   // Use explicit imageUrl from registry if available, else fallback to constructed path
   const imgSrc = cert.imageUrl || `/certificates/${cert.id}.jpg`;
   const [imgOk, setImgOk] = useState(true);
 
   if (imgOk) {
+    if (isLightbox) {
+      return (
+        <div className="flex h-full w-full items-center justify-center">
+          <Image
+            src={imgSrc}
+            alt={`${cert.id} preview`}
+            width={1200}
+            height={850}
+            className="max-h-[85vh] w-auto max-w-full rounded shadow-lg object-contain"
+            priority={true}
+            onError={() => setImgOk(false)}
+          />
+        </div>
+      );
+    }
+
     return (
       <div className="w-full rounded-xl border border-slate-200 bg-white p-2">
         <button
