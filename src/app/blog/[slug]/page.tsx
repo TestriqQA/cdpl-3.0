@@ -60,6 +60,11 @@ export async function generateStaticParams() {
 }
 
 // ============================================================================
+// REVALIDATION (ISR) - Update cache every 60 seconds
+// ============================================================================
+export const revalidate = 60;
+
+// ============================================================================
 // DYNAMIC METADATA GENERATION - SEO Optimized
 // ============================================================================
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
