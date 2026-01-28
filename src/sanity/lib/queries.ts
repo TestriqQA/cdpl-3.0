@@ -18,6 +18,7 @@ export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0] {
   "slug": slug.current,
   publishDate,
   excerpt,
+  description,
   "featuredImage": featuredImage.asset->url,
   "author": author->{
     name, 

@@ -109,6 +109,11 @@ export const BlogPostHeroSection: React.FC<BlogPostHeroSectionProps> = ({ post }
                 <p className="text-base sm:text-lg leading-relaxed text-gray-700">
                     {post.excerpt}
                 </p>
+                {post.description && (
+                    <p className="text-base sm:text-lg leading-relaxed text-gray-700 mt-4">
+                        {post.description}
+                    </p>
+                )}
             </div>
         </section>
     );

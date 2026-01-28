@@ -51,6 +51,13 @@ export default defineType({
             rows: 3
         }),
         defineField({
+            name: 'description',
+            title: 'Description',
+            type: 'text',
+            rows: 3,
+            description: 'Short description shown in the hero section.'
+        }),
+        defineField({
             name: 'content',
             title: 'Content',
             type: 'array',

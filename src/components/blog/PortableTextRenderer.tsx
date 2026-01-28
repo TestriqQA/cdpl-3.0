@@ -22,7 +22,34 @@ const SanityImage = ({ value }: { value: any }) => {
     )
 }
 
+// Helper to generate IDs from text
+const slugify = (text: string) => {
+    return text
+        .toString()
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+};
+
+// Extract text content from children (which might be arrays of spans)
+const getTextContent = (children: any): string => {
+    if (typeof children === 'string') return children;
+    if (Array.isArray(children)) {
+        return children.map(child => {
+            if (typeof child === 'string') return child;
+            if (child.props && child.props.text) return child.props.text; // Direct props access if available
+            if (child.typeof === 'span') return child.props.children; // React element
+            return '';
+        }).join('');
+    }
+    return '';
+};
+
 const components: PortableTextComponents = {
+    // ... (keep usage of image type above)
     types: {
         image: SanityImage,
         table: ({ value }: { value: any }) => {
@@ -67,9 +94,19 @@ const components: PortableTextComponents = {
         ),
     },
     block: {
-        h2: ({ children }) => <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-12 mb-6">{children}</h2>,
-        h3: ({ children }) => <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mt-8 mb-4">{children}</h3>,
-        h4: ({ children }) => <h4 className="text-lg sm:text-xl font-bold text-gray-800 mt-6 mb-3">{children}</h4>,
+        h2: ({ children, value }) => {
+            // Try to use the key as a stable ID or fallback to slugifying content
+            const id = value._key || slugify(getTextContent(children));
+            return <h2 id={id} className="text-2xl sm:text-3xl font-bold text-gray-900 mt-12 mb-6 scroll-mt-24">{children}</h2>;
+        },
+        h3: ({ children, value }) => {
+            const id = value._key || slugify(getTextContent(children));
+            return <h3 id={id} className="text-xl sm:text-2xl font-bold text-gray-900 mt-8 mb-4 scroll-mt-24">{children}</h3>;
+        },
+        h4: ({ children, value }) => {
+            const id = value._key || slugify(getTextContent(children));
+            return <h4 id={id} className="text-lg sm:text-xl font-bold text-gray-800 mt-6 mb-3 scroll-mt-24">{children}</h4>;
+        },
         normal: ({ children }) => <p className="text-base sm:text-lg leading-relaxed text-gray-700 mb-6">{children}</p>,
         blockquote: ({ children }) => (
             <blockquote className="border-l-4 border-indigo-500 pl-4 py-2 my-8 bg-indigo-50 rounded-r-lg italic text-gray-700 text-lg">

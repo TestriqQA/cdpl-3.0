@@ -28,6 +28,7 @@ export interface SanityPost {
     slug: string; // Query returns string
     publishDate: string;
     excerpt?: string;
+    description?: string;
     featuredImage?: string; // Query returns URL string
     author?: SanityAuthor;
     category?: SanityCategory;
