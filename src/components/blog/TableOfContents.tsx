@@ -18,7 +18,7 @@ interface TableOfContentsProps {
 const TableOfContents: React.FC<TableOfContentsProps> = ({ content, isMobile = false }) => {
     const [activeId, setActiveId] = useState<string>("");
     const [headings, setHeadings] = useState<TocItem[]>([]);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true); // OpenByDefault for mobile per user request
 
     // Helper to generate IDs - MUST MATCH PortableTextRenderer logic
     const slugify = (text: string) => {
@@ -98,7 +98,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content, isMobile = f
                     onClick={() => setIsOpen(!isOpen)}
                     className="w-full flex items-center justify-between p-4 bg-white hover:bg-gray-50 transition-colors"
                 >
-                    <h3 className="text-gray-900 font-bold text-sm uppercase tracking-wider">
+                    <h3 className="text-gray-900 font-bold text-sm uppercase tracking-wider font-sans">
                         Table of Contents
                     </h3>
                     <svg
@@ -151,7 +151,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content, isMobile = f
 
     return (
         <nav className="sticky top-24 max-h-[calc(100vh-120px)] overflow-y-auto hidden lg:block p-4">
-            <h3 className="text-gray-900 font-bold mb-4 uppercase text-xs tracking-wider">
+            <h3 className="text-gray-900 font-bold mb-4 uppercase text-xs tracking-wider font-sans">
                 Table of Contents
             </h3>
             <ul className="space-y-2 text-sm border-l-2 border-gray-100">

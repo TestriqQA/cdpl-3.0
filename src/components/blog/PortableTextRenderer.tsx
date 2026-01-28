@@ -57,7 +57,7 @@ const components: PortableTextComponents = {
             if (!rows || !rows.length) return null;
 
             return (
-                <div className="my-8 overflow-x-auto">
+                <div className="my-8 overflow-x-auto pb-2 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:hover:bg-gray-400">
                     <table className="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg overflow-hidden">
                         <tbody className="bg-white divide-y divide-gray-200">
                             {rows.map((row: any, rowIndex: number) => (

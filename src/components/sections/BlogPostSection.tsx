@@ -25,7 +25,7 @@ export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ post, relatedP
 
     return (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8">
                 {/* Left Sidebar - Table of Contents (Desktop) */}
                 <aside className="hidden lg:block lg:col-span-3">
                     <div className="sticky top-24">

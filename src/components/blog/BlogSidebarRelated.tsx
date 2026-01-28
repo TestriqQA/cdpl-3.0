@@ -64,7 +64,7 @@ const BlogSidebarRelated = ({ relatedPosts, categories, latestPosts }: BlogSideb
   return (
     <aside className="space-y-6">
       {/* Related Posts Section */}
-      <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl p-6 shadow-sm border border-indigo-100">
+      <div className="bg-gradient-to-br from-indigo-50 to-blue-50 rounded-xl p-5 shadow-sm border border-indigo-100">
         <div className="flex items-center gap-2 mb-5">
           <TrendingUp className="w-5 h-5 text-indigo-600" />
           <h3 className="text-lg font-bold text-gray-900">Related Posts</h3>
@@ -103,7 +103,7 @@ const BlogSidebarRelated = ({ relatedPosts, categories, latestPosts }: BlogSideb
       </div>
 
       {/* Categories Section */}
-      <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 shadow-sm border border-purple-100">
+      <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-5 shadow-sm border border-purple-100">
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-2">
             <FolderOpen className="w-5 h-5 text-purple-600" />
@@ -142,7 +142,7 @@ const BlogSidebarRelated = ({ relatedPosts, categories, latestPosts }: BlogSideb
       </div>
 
       {/* Newsletter Section */}
-      <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-6 shadow-sm border border-orange-100">
+      <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-5 shadow-sm border border-orange-100">
         <div className="flex items-center gap-2 mb-4">
           <Mail className="w-5 h-5 text-brand" />
           <h3 className="text-lg font-bold text-gray-900">Newsletter</h3>
@@ -195,7 +195,7 @@ const BlogSidebarRelated = ({ relatedPosts, categories, latestPosts }: BlogSideb
       </div>
 
       {/* Popular Tags */}
-      <div className="bg-gradient-to-br from-cyan-50 to-teal-50 rounded-xl p-6 shadow-sm border border-cyan-100">
+      <div className="bg-gradient-to-br from-cyan-50 to-teal-50 rounded-xl p-5 shadow-sm border border-cyan-100">
         <h3 className="text-lg font-bold text-gray-900 mb-4">Popular Tags</h3>
         <div className="flex flex-wrap gap-2">
           {topTags.length > 0 ? (
