@@ -150,7 +150,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content, isMobile = f
     }
 
     return (
-        <nav className="sticky top-24 max-h-[calc(100vh-120px)] overflow-y-auto hidden lg:block p-4">
+        <nav className="sticky top-24 max-h-[calc(100vh-120px)] overflow-y-auto hidden lg:block p-4 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-gray-300">
             <h3 className="text-gray-900 font-bold mb-4 uppercase text-xs tracking-wider font-sans">
                 Table of Contents
             </h3>
