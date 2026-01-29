@@ -46,12 +46,23 @@ export const BlogPostHeroSection: React.FC<BlogPostHeroSectionProps> = ({ post }
                 />
             )}
 
-            <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[420px] mb-6 sm:mb-8 rounded-lg overflow-hidden shadow-lg bg-gradient-to-br from-indigo-50 to-blue-50 backdrop-blur-sm">
+            <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[420px] mb-6 sm:mb-8 rounded-lg overflow-hidden shadow-lg bg-gray-100 dark:bg-gray-800">
+                {/* Blurred Background Layer */}
+                <Image
+                    src={post.featuredImage || getFallbackImage(post.category?.slug)}
+                    alt=""
+                    fill
+                    className="object-cover blur-xl scale-110 opacity-60 dark:opacity-40"
+                    aria-hidden="true"
+                    priority
+                />
+
+                {/* Main Image Layer */}
                 <Image
                     src={post.featuredImage || getFallbackImage(post.category?.slug)}
                     alt={post.title}
                     fill
-                    className="object-contain"
+                    className="object-contain z-10 relative"
                     sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 768px) 90vw, (max-width: 1024px) 85vw, 1200px"
                     priority
                     quality={90}

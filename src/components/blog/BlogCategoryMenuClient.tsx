@@ -229,7 +229,7 @@ const BlogCategoryMenuClient = ({ allPosts, allCategories }: BlogCategoryMenuCli
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
                                         placeholder="Search articles..."
-                                        className="bg-transparent text-white placeholder-white/70 px-4 py-2 outline-none w-48 sm:w-64 text-sm"
+                                        className="bg-transparent text-white placeholder-white/70 px-4 py-2 outline-none w-48 sm:w-64 text-sm search-input-white"
                                     />
                                     <button
                                         type="button"
@@ -324,6 +324,9 @@ const BlogCategoryMenuClient = ({ allPosts, allCategories }: BlogCategoryMenuCli
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
+        }
+        .search-input-white::placeholder {
+          color: rgba(255, 255, 255, 0.7) !important;
         }
       `}</style>
         </div>

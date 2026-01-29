@@ -134,7 +134,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content, isMobile = f
                                             }
                                         }}
                                         className={cn(
-                                            "block text-gray-600 hover:text-indigo-600 transition-colors text-sm",
+                                            "block text-gray-600 hover:text-brand transition-colors text-sm",
                                             heading.level === 3 && "pl-4 text-xs"
                                         )}
                                     >
@@ -161,7 +161,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content, isMobile = f
                         className={cn(
                             "pl-4 py-1 transition-all duration-200 border-l-2 -ml-[2px]",
                             activeId === heading.id
-                                ? "border-indigo-600 text-indigo-600 font-medium"
+                                ? "border-brand text-brand font-medium"
                                 : "border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-300"
                         )}
                     >
