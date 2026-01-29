@@ -124,6 +124,14 @@ const components: PortableTextComponents = {
             )
         },
     },
+    list: {
+        bullet: ({ children }) => <ul className="list-disc ml-6 my-6 space-y-2 text-gray-700">{children}</ul>,
+        number: ({ children }) => <ol className="list-decimal ml-6 my-6 space-y-2 text-gray-700">{children}</ol>,
+    },
+    listItem: {
+        bullet: ({ children }) => <li className="pl-1">{children}</li>,
+        number: ({ children }) => <li className="pl-1">{children}</li>,
+    },
 }
 
 export default function PortableTextRenderer({ value }: { value: any }) {

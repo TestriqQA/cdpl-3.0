@@ -9,6 +9,8 @@ import TableOfContents from '@/components/blog/TableOfContents';
 import { notFound } from 'next/navigation';
 import { SanityPost, SanityCategory } from '@/sanity/types';
 
+import BlogAuthorInfo from '@/components/blog/BlogAuthorInfo';
+
 interface BlogPostSectionProps {
     post: SanityPost;
     relatedPosts: SanityPost[];
@@ -64,6 +66,16 @@ export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ post, relatedP
                         </div>
                     )}
 
+                    {/* Mobile Author Info */}
+                    {post.author && (
+                        <BlogAuthorInfo
+                            author={post.author}
+                            publishDate={post.publishDate}
+                            readTime={post.readTime}
+                            className="flex sm:hidden mb-8 mt-8 border-t border-gray-200 pt-6"
+                        />
+                    )}
+
                     {/* Share Section */}
                     <div className="border-t border-gray-200 pt-6 mt-8">
                         <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-700">Share this article</h3>
@@ -101,11 +113,13 @@ export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ post, relatedP
 
                 {/* Right Sidebar - Related Posts */}
                 <aside className="lg:col-span-3">
-                    <BlogSidebarRelated
-                        relatedPosts={relatedPosts}
-                        categories={categories}
-                        latestPosts={latestPosts}
-                    />
+                    <div className="sticky top-24">
+                        <BlogSidebarRelated
+                            relatedPosts={relatedPosts}
+                            categories={categories}
+                            latestPosts={latestPosts}
+                        />
+                    </div>
                 </aside>
             </div>
         </section>
