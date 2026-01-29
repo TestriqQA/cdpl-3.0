@@ -57,6 +57,18 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
   );
 };
 
+// Institute links without translate effect
+const InstituteLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+  return (
+    <Link
+      href={href}
+      className="hover:text-brand active:text-orange-500 focus-visible:text-orange-500 transition-colors duration-300 ease-in-out text-sm outline-none text-gray-300 inline-block py-2 px-3"
+    >
+      {children}
+    </Link>
+  );
+};
+
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white" role="contentinfo">
@@ -65,7 +77,7 @@ const Footer = () => {
           {/* Data Science, AI - ML & BI Courses */}
           <div className="space-y-4 flex flex-col lg:contents">
             <div className="space-y-4 lg:col-start-1 lg:row-start-1">
-              <h2 className="text-lg font-semibold text-orange-300">Data Science</h2>
+              <h2 className="text-lg font-semibold text-brand">Data Science</h2>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/ds-ml-courses">
@@ -96,13 +108,17 @@ const Footer = () => {
                     Machine Learning and Data Visualization using R Programming
                   </FooterLink>
 
+                  <FooterLink href="/python-course">
+                    Python Programming
+                  </FooterLink>
+
                 </li>
               </ul>
             </div>
 
             {/* Artificial Intelligence */}
             <div className="space-y-4 lg:col-start-1 lg:row-start-2">
-              <h2 className="text-lg font-semibold text-orange-300">Artificial Intelligence(AI)</h2>
+              <h2 className="text-lg font-semibold text-brand">Artificial Intelligence(AI)</h2>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/artificial-intelligence-courses">
@@ -115,40 +131,12 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-
-            {/* Follow Us (desktop) */}
-            <div className="space-y-4 hidden lg:block lg:col-start-1 lg:row-start-3">
-              <h2 className="text-lg font-semibold text-orange-300">Follow Us On</h2>
-              <ul className="space-y-2">
-                <li className='flex items-center gap-5'>
-                  <Link href="https://www.facebook.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
-                    <Facebook />
-                  </Link>
-
-                  <Link href="https://x.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="X">
-                    <XLogo />
-                  </Link>
-
-                  <Link href="https://www.youtube.com/@cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="YouTube">
-                    <Youtube />
-                  </Link>
-
-                  <Link href="https://www.linkedin.com/company/cinute-digital/" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="LinkedIn">
-                    <Linkedin />
-                  </Link>
-
-                  <Link href="https://www.instagram.com/cinutedigital/" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Instagram">
-                    <Instagram />
-                  </Link>
-                </li>
-              </ul>
-            </div>
           </div>
 
           {/* Software Testing Courses */}
           <div className="space-y-4 flex flex-col lg:contents">
             <div className="space-y-4 lg:col-start-2 lg:row-start-1">
-              <h2 className="text-lg font-semibold text-orange-300">Software Testing Courses</h2>
+              <h2 className="text-lg font-semibold text-brand">Software Testing Courses</h2>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/software-testing-course">
@@ -187,9 +175,6 @@ const Footer = () => {
                     Advanced Manual and Automation Testing
                   </FooterLink>
 
-                  <FooterLink href="/python-course">
-                    Python Programming
-                  </FooterLink>
 
                   <FooterLink href="/java-course">
                     Java Programming
@@ -200,7 +185,7 @@ const Footer = () => {
 
             {/* Digital Marketing */}
             <div className="space-y-4 lg:col-start-2 lg:row-start-2">
-              <h2 className="text-lg font-semibold text-orange-300">Digital Marketing</h2>
+              <h2 className="text-lg font-semibold text-brand">Digital Marketing</h2>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/digital-marketing-courses">
@@ -226,7 +211,7 @@ const Footer = () => {
           {/* Digital Marketing (actually BI) */}
           <div className="space-y-4 flex flex-col lg:contents">
             <div className="space-y-4 lg:col-start-3 lg:row-start-1">
-              <h2 className="text-lg font-semibold text-orange-300">Business Development(BI)</h2>
+              <h2 className="text-lg font-semibold text-brand">Business Development(BI)</h2>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/bi-courses">
@@ -263,7 +248,7 @@ const Footer = () => {
 
             {/* Blogs and Categories */}
             <div className="space-y-4 lg:col-start-3 lg:row-start-2">
-              <h2 className="text-lg font-semibold text-orange-300">Blogs</h2>
+              <h2 className="text-lg font-semibold text-brand">Blogs</h2>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/blog">
@@ -297,7 +282,7 @@ const Footer = () => {
           {/* Services */}
           <div className="space-y-4 lg:contents">
             <div className="space-y-4 lg:col-start-4 lg:row-start-1">
-              <h2 className="text-lg font-semibold text-orange-300">Services</h2>
+              <h2 className="text-lg font-semibold text-brand">Services</h2>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/services/campus-to-corporate">
@@ -347,9 +332,31 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Events */}
+            {/* Certifications and Accreditation */}
             <div className="space-y-4 lg:col-start-4 lg:row-start-2">
-              <h2 className="text-lg font-semibold text-orange-300">Events</h2>
+              <h2 className="text-lg font-semibold text-brand">Certifications and Accreditation</h2>
+              <ul>
+                <li className='flex flex-col space-y-2'>
+                  <FooterLink href="/aaa-certification">
+                    AAA Certification
+                  </FooterLink>
+
+                  <FooterLink href="/actd-certification">
+                    ACTD Certification
+                  </FooterLink>
+
+                  <FooterLink href="/cdpl-certificate-validation">
+                    Validate Your Certificate
+                  </FooterLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Events - Column 5 */}
+          <div className="space-y-4 flex flex-col lg:contents">
+            <div className="space-y-4 lg:col-start-5 lg:row-start-1">
+              <h2 className="text-lg font-semibold text-brand">Events</h2>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/events/business-analytics-course-at-aldel-institute-of-management">
@@ -367,107 +374,56 @@ const Footer = () => {
                   <FooterLink href="/events/national-conference-on-applications-of-ai-promises-perils-and-sustainability-mkes-trust-nagindas-khandwala-college">
                     National Conference on AI (MKES)
                   </FooterLink>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Institute */}
-          <div className="space-y-4 flex flex-col lg:contents">
-            <div className="space-y-4 lg:col-start-5 lg:row-start-1">
-              <h2 className="text-lg font-semibold text-orange-300">Institute</h2>
-              <ul>
-                <li className='flex flex-col space-y-2'>
-                  <FooterLink href="/">
-                    Home
+                  <FooterLink href="/events/faculty-development-program-fdp-on-power-bi-tableau-unlocking-future-ready-careers-bhavans-college-andheri">
+                    FDP on Power BI & Tableau (Bhavans College)
                   </FooterLink>
-
-                  <FooterLink href="/cms">
-                    CMS Login
+                  <FooterLink href="/events/internship-program-dj-sanghvi-college">
+                    Internship Program (DJ Sanghvi)
                   </FooterLink>
-
-                  <FooterLink href="/mock-test">
-                    Mock Test
+                  <FooterLink href="/events/techoutsav">
+                    Techoutsav
                   </FooterLink>
-
-                  <FooterLink href="/istqb-registration">
-                    ISTQB Registration
+                  <FooterLink href="/events/industrial-visit-thakur-college-of-science-commerce">
+                    Industrial Visit (Thakur College)
                   </FooterLink>
-
-                  <FooterLink href="/services">
-                    Services
-                  </FooterLink>
-
-                  <FooterLink href="/events">
-                    Events
-                  </FooterLink>
-
-                  <FooterLink href="/mentors">
-                    Mentors
-                  </FooterLink>
-
-                  <FooterLink href="/jobs/placements">
-                    Placements
-                  </FooterLink>
-
-                  <FooterLink href="/jobs/live-jobs">
-                    Live Jobs
-                  </FooterLink>
-
-                  <FooterLink href="/jobs/job-openings">
-                    Job Openings
-                  </FooterLink>
-
-                  <FooterLink href="/jobs/careers">
-                    Careers
-                  </FooterLink>
-
-                  <FooterLink href="/about-us">
-                    About CDPL
-                  </FooterLink>
-
-                  <FooterLink href="/our-team">
-                    Our Team
-                  </FooterLink>
-
-                  <FooterLink href="/reviews">
-                    Reviews
-                  </FooterLink>
-
-                  <FooterLink href="/cdpl-affiliate-program">
-                    Affiliate Program
-                  </FooterLink>
-
-                  <FooterLink href="/contact-us">
-                    Contact Us
+                  <FooterLink href="/events/placement-drive-at-cinute-digital-pvt-ltd-for-tech-mahindra-and-transunion-cibil">
+                    Placement Drive (Tech Mahindra)
                   </FooterLink>
                 </li>
               </ul>
             </div>
 
-            {/* Certifications and Accreditation */}
-            <div className="space-y-4 lg:col-start-5 lg:row-start-2">
-              <h2 className="text-lg font-semibold text-orange-300">Certifications and Accreditation</h2>
-              <ul>
-                <li className='flex flex-col space-y-2'>
-                  <FooterLink href="/aaa-certification">
-                    AAA Certification
-                  </FooterLink>
+            {/* Follow Us (desktop) - Column 5 Row 2 */}
+            <div className="space-y-4 hidden lg:block lg:col-start-5 lg:row-start-2">
+              <h2 className="text-lg font-semibold text-brand">Follow Us On</h2>
+              <ul className="space-y-2">
+                <li className='flex items-center gap-5'>
+                  <Link href="https://www.facebook.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
+                    <Facebook />
+                  </Link>
 
-                  <FooterLink href="/actd-certification">
-                    ACTD Certification
-                  </FooterLink>
+                  <Link href="https://x.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="X">
+                    <XLogo />
+                  </Link>
 
-                  <FooterLink href="/cdpl-certificate-validation">
-                    Validate Your Certificate
-                  </FooterLink>
+                  <Link href="https://www.youtube.com/@cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="YouTube">
+                    <Youtube />
+                  </Link>
+
+                  <Link href="https://www.linkedin.com/company/cinute-digital/" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="LinkedIn">
+                    <Linkedin />
+                  </Link>
+
+                  <Link href="https://www.instagram.com/cinutedigital/" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Instagram">
+                    <Instagram />
+                  </Link>
                 </li>
               </ul>
             </div>
 
             {/* Follow Us (mobile) */}
             <div className="space-y-4 lg:hidden">
-              <h2 className="text-lg font-semibold text-orange-300">Follow Us On</h2>
+              <h2 className="text-lg font-semibold text-brand">Follow Us On</h2>
               <ul className="space-y-2">
                 <li className='flex items-center gap-5'>
                   <Link href="https://www.facebook.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
@@ -493,6 +449,31 @@ const Footer = () => {
               </ul>
             </div>
           </div>
+        </div>
+
+        {/* Institute - Separate Horizontal Row Below Grid */}
+        <div className="mt-8 pt-8 border-t border-gray-700/50">
+          <h2 className="text-lg font-semibold text-brand mb-4">Institute</h2>
+          <ul>
+            <li className='flex flex-wrap'>
+              <InstituteLink href="/">Home</InstituteLink>
+              <InstituteLink href="/cms">CMS Login</InstituteLink>
+              <InstituteLink href="/mock-test">Mock Test</InstituteLink>
+              <InstituteLink href="/istqb-registration">ISTQB Registration</InstituteLink>
+              <InstituteLink href="/services">Services</InstituteLink>
+              <InstituteLink href="/events">Events</InstituteLink>
+              <InstituteLink href="/mentors">Mentors</InstituteLink>
+              <InstituteLink href="/jobs/placements">Placements</InstituteLink>
+              <InstituteLink href="/jobs/live-jobs">Live Jobs</InstituteLink>
+              <InstituteLink href="/jobs/job-openings">Job Openings</InstituteLink>
+              <InstituteLink href="/jobs/careers">Careers</InstituteLink>
+              <InstituteLink href="/about-us">About CDPL</InstituteLink>
+              <InstituteLink href="/our-team">Our Team</InstituteLink>
+              <InstituteLink href="/reviews">Reviews</InstituteLink>
+              <InstituteLink href="/cdpl-affiliate-program">Affiliate Program</InstituteLink>
+              <InstituteLink href="/contact-us">Contact Us</InstituteLink>
+            </li>
+          </ul>
         </div>
       </div>
 

@@ -81,12 +81,12 @@ const components: PortableTextComponents = {
             );
         },
         code: ({ value }: { value: any }) => (
-            <div className="my-8 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+            <div className="my-8 bg-gray-900 rounded-lg p-4 overflow-x-auto [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-gray-800 [&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:hover:bg-gray-500 [scrollbar-width:thin] [scrollbar-color:rgb(75,85,99)_rgb(31,41,55)]">
                 <pre className="text-gray-100 font-mono text-sm">
                     <code>{value.code}</code>
                 </pre>
                 {value.filename && (
-                    <div className="mt-2 text-xs text-gray-500 border-t border-gray-700 pt-2">
+                    <div className="mt-2 text-xs text-gray-400 border-t border-gray-700 pt-2">
                         {value.filename}
                     </div>
                 )}
