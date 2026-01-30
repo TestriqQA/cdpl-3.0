@@ -1,153 +1,146 @@
-/* ==================== CURRICULUM (Light Theme) — from PDF ==================== */
+/* ==================== CURRICULUM (Manual Testing 2025) ==================== */
 "use client";
 
-
-import { LuBadgeCheck, LuBookOpen, LuTarget, LuSparkles, LuChevronDown, LuNotebookPen, LuFlaskConical, LuBug, LuLayers, LuPin } from "react-icons/lu";
+import { LuBadgeCheck, LuBookOpen, LuTarget, LuSparkles, LuChevronDown, LuNotebookPen, LuFlaskConical, LuBug, LuPin, LuCode, LuDatabase, LuSmartphone } from "react-icons/lu";
+import Link from "next/link";
 
 /* ---------- Token: small color map so cards feel lively but not loud ---------- */
-const ACCENTS = ["indigo", "cyan", "emerald", "amber", "rose", "violet"] as const;
+const ACCENTS = ["indigo", "cyan", "emerald", "amber", "rose", "violet", "sky", "fuchsia"] as const;
 type Accent = typeof ACCENTS[number];
 
 void ACCENTS;
 
 type Module = {
     id: string;
-    weeks: string; // used as a simple section label (Module 1, Module 2, …)
+    weeks: string;
     title: string;
     accent: Accent;
-    outcomes: string[]; // kept for UI consistency; populated strictly with PDF items when applicable
     topics: string[];
-    projects: string[];
-    tools?: string[];
+    internalLink?: { label: string; href: string };
 };
 
-/* ====== Extracted curriculum only (PDF pages 16–17) ====== */
+/* ====== 8 Modules from user requirements (Manual Testing Course Content) ====== */
 const MODULES: Module[] = [
     {
-        id: "sdlc-models",
-        weeks: "Module 1",
-        title: "Software Development Life Cycle (SDLC): Types of SDLC",
+        id: "fundamentals",
+        weeks: "Week 1-2",
+        title: "Software Testing Fundamentals",
         accent: "indigo",
-        outcomes: [],
         topics: [
-            "Waterfall Model",
-            "Spiral Model",
-            "V-Model (V & V Model)",
-            "Prototype Model (Dynamic Model)",
-            "Hybrid Model"
-        ],
-        projects: []
+            "Introduction to software quality assurance and quality control",
+            "SDLC (Software Development Life Cycle) models: Waterfall, Agile, V-Model, Spiral",
+            "STLC (Software Testing Life Cycle) phases and entry/exit criteria",
+            "Testing principles, objectives, and limitations",
+            "White Box vs Black Box vs Grey Box testing techniques",
+            "Verification vs Validation concepts",
+            "Error, Defect, Bug, and Failure terminology"
+        ]
     },
     {
-        id: "overview-stlc",
-        weeks: "Module 2",
-        title: "Software Testing Overview & STLC",
+        id: "test-design",
+        weeks: "Week 3-4",
+        title: "Test Design Techniques",
         accent: "cyan",
-        outcomes: [],
         topics: [
-            "Software Testing Overview",
-            "Software Testing Life Cycle (STLC)",
-            "Types of Software Testing & Usage in Corporate",
-            "White Box Testing",
-            "Black Box Testing",
-            "Gray Box"
-        ],
-        projects: []
+            "Equivalence Partitioning and Boundary Value Analysis",
+            "Decision Table and State Transition testing",
+            "Use Case testing and exploratory testing strategies",
+            "Writing effective test scenarios and test cases",
+            "IEEE 829 Test Case template standards",
+            "Positive and negative testing approaches",
+            "Requirements Traceability Matrix (RTM) creation"
+        ]
     },
     {
-        id: "black-box-types",
-        weeks: "Module 3",
-        title: "Black Box Testing Overview: Types of Black Box Testing",
+        id: "test-management",
+        weeks: "Week 5-6",
+        title: "Test Management & Defect Tracking",
         accent: "emerald",
-        outcomes: [],
         topics: [
-            "Functionality Testing",
-            "Integration Testing",
-            "System Testing",
-            "Acceptance Testing",
-            "Usability / GUI Testing",
-            "Performance Testing",
-            "Security Testing",
-            "Compatibility Testing",
-            "Responsive Testing",
-            "Configuration Testing",
-            "Reliability Testing",
-            "Globalization / Localization Testing",
-            "Recovery Testing",
-            "Adhoc Testing",
-            "Requirement Testing",
-            "Documentation Testing",
-            "Exploratory Testing",
-            "Smoke Testing",
-            "Regression Testing",
-            "Sanity Testing",
-            "Re-Testing"
-        ],
-        projects: []
+            "Defect life cycle and severity vs priority classification",
+            "Bug reporting best practices with screenshots and logs",
+            "Jira mastery: Creating projects, epics, stories, bugs, and sprints",
+            "TestRail and Zephyr for test case management",
+            "Test metrics: Defect density, test coverage, pass/fail rates",
+            "Test estimation techniques: Work Breakdown Structure, Function Points",
+            "Daily standups, retrospectives, and QA reporting"
+        ]
     },
     {
-        id: "defect-tracking",
-        weeks: "Module 4",
-        title: "Defect Tracking & Reporting",
+        id: "agile-scrum",
+        weeks: "Week 7-8",
+        title: "Agile & Scrum for QA Testers",
         accent: "amber",
-        outcomes: [],
         topics: [
-            "Identification of defect",
-            "Defect tracking process",
-            "Defect reporting process",
-            "Various types of defects",
-            "Severity & Priority levels for defects",
-            "Defect Tracking Life Cycle (DTLC)"
-        ],
-        projects: []
+            "Agile methodology fundamentals and manifesto",
+            "Scrum framework: Roles (Product Owner, Scrum Master, Team)",
+            "Sprint planning, daily scrums, reviews, and retrospectives",
+            "User story acceptance criteria and Definition of Done",
+            "QA role in Agile teams and continuous testing",
+            "Kanban boards and workflow management",
+            "Working with cross-functional development teams"
+        ]
     },
     {
-        id: "agile",
-        weeks: "Module 5",
-        title: "Agile Methodology (Agile Model)",
+        id: "api-testing",
+        weeks: "Week 9",
+        title: "API Testing Basics with Postman",
         accent: "rose",
-        outcomes: [],
         topics: [
-            "Overview of Agile process",
-            "Importance of Agile process",
-            "Agile meetings and their importance",
-            "Members Involved in Agile Model",
-            "Working agile model"
+            "REST API fundamentals: GET, POST, PUT, DELETE methods",
+            "JSON and XML response validation",
+            "Postman installation and collections setup",
+            "Authorization headers and authentication testing",
+            "Status code verification (200, 400, 500 series)",
+            "Basic API test case scenarios"
         ],
-        projects: []
+        internalLink: { label: "Advance to our API Testing Course", href: "/api-testing" }
     },
     {
-        id: "stlc-detailed",
-        weeks: "Module 6",
-        title: "Software Test Life Cycle (STLC) — In Detail",
+        id: "database-testing",
+        weeks: "Week 10",
+        title: "Database Testing Essentials",
         accent: "violet",
-        outcomes: [],
         topics: [
-            "System Study",
-            "Preparation of Test Plan",
-            "Test Cases Writing",
-            "Preparation of Traceability Matrix",
-            "Test Execution",
-            "Defect Tracking Life Cycle (DTLC)",
-            "Preparation of Test Execution Report",
-            "Retrospect Meeting"
+            "Introduction to MySQL and SQL basics",
+            "SELECT, INSERT, UPDATE, DELETE queries for testing",
+            "JOIN operations to validate multi-table data",
+            "Data integrity and referential integrity checks",
+            "Backend vs Frontend data validation",
+            "Common database testing scenarios"
         ],
-        projects: []
+        internalLink: { label: "Explore our DBMS Course", href: "/dbms-course" }
     },
     {
-        id: "tools",
-        weeks: "Module 7",
-        title: "Test Management Tools",
-        accent: "indigo",
-        outcomes: [],
+        id: "mobile-web-testing",
+        weeks: "Week 11",
+        title: "Mobile & Web Application Testing",
+        accent: "sky",
         topics: [
-            "Excel — Test case writing & bug reporting",
-            "TestRail — Test case management",
-            "Jira — Bug tracking, release scheduling & sprint management",
-            "Mantis BT — Bug tracking"
-        ],
-        projects: [],
-        tools: ["Excel", "TestRail", "Jira", "Mantis BT"]
+            "Web testing: Cross-browser testing (Chrome, Firefox, Safari, Edge)",
+            "Responsive design testing (desktop, tablet, mobile viewports)",
+            "Mobile app testing fundamentals (Android and iOS)",
+            "Installation, compatibility, and interruption testing",
+            "UI/UX validation and usability testing",
+            "Performance and security testing basics",
+            "Accessibility testing (WCAG guidelines)"
+        ]
+    },
+    {
+        id: "projects-placement",
+        weeks: "Week 12",
+        title: "Industry Projects & Placement Prep",
+        accent: "fuchsia",
+        topics: [
+            "Live Project 1: E-commerce website end-to-end testing (registration, cart, checkout, payment gateway)",
+            "Live Project 2: Banking application test case creation and execution",
+            "Live Project 3: Healthcare mobile app defect reporting and retesting",
+            "Resume crafting for manual QA tester roles",
+            "5+ mock interviews with real-time feedback",
+            "Common manual testing interview questions (50+ Q&A)",
+            "HR round preparation and salary negotiation tips",
+            "LinkedIn profile optimization and job portal strategies"
+        ]
     }
 ];
 
@@ -193,6 +186,18 @@ const COLOR_MAP: Record<Accent, {
         cardBg: "bg-violet-50",
         borderColor: "border-violet-200",
         accentBorder: "border-violet-600"
+    },
+    sky: {
+        iconBg: "bg-sky-600",
+        cardBg: "bg-sky-50",
+        borderColor: "border-sky-200",
+        accentBorder: "border-sky-600"
+    },
+    fuchsia: {
+        iconBg: "bg-fuchsia-600",
+        cardBg: "bg-fuchsia-50",
+        borderColor: "border-fuchsia-200",
+        accentBorder: "border-fuchsia-600"
     }
 };
 
@@ -220,13 +225,15 @@ function AccentBar({ accent }: { accent: Accent }) {
 
 function IconFor(title: string, accent: Accent) {
     const IconComponent =
-        /SDLC/i.test(title) ? LuLayers :
-            /Black Box/i.test(title) ? LuFlaskConical :
-                /Defect|DTLC/i.test(title) ? LuBug :
-                    /Agile/i.test(title) ? LuTarget :
-                        /Tools/i.test(title) ? LuNotebookPen :
-                            /STLC/i.test(title) ? LuBookOpen :
-                                LuSparkles;
+        /Fundamentals/i.test(title) ? LuBookOpen :
+            /Test Design/i.test(title) ? LuFlaskConical :
+                /Test Management|Defect/i.test(title) ? LuBug :
+                    /Agile|Scrum/i.test(title) ? LuTarget :
+                        /API Testing/i.test(title) ? LuCode :
+                            /Database/i.test(title) ? LuDatabase :
+                                /Mobile|Web/i.test(title) ? LuSmartphone :
+                                    /Projects|Placement/i.test(title) ? LuNotebookPen :
+                                        LuSparkles;
 
     return (
         <div className={`${COLOR_MAP[accent].iconBg} p-2.5 rounded-lg`}>
@@ -255,45 +262,35 @@ function CurriculumCard({ mod }: { mod: Module }) {
                 </div>
 
                 <div className="mb-4 flex flex-wrap gap-2">
-                    {mod.topics.slice(0, 6).map((t) => (
-                        <TopicPill key={t} label={t} />
+                    {mod.topics.slice(0, 4).map((t) => (
+                        <TopicPill key={t} label={t.length > 40 ? t.substring(0, 40) + '...' : t} />
                     ))}
                 </div>
-
-                {/* Only render list if outcomes exist (we keep outcomes empty to stay faithful to PDF) */}
-                {mod.outcomes.length > 0 && (
-                    <ul className="space-y-2 text-sm leading-6 text-gray-700">
-                        {mod.outcomes.map((o) => (
-                            <li key={o} className="flex items-start">
-                                <LuBadgeCheck className="mt-0.5 mr-2 h-4 w-4 text-emerald-800" aria-hidden />
-                                <span>{o}</span>
-                            </li>
-                        ))}
-                    </ul>
-                )}
 
                 <details className="mt-4">
                     <summary className="flex cursor-pointer select-none items-center gap-2 text-sm font-semibold text-gray-900 hover:text-gray-700">
                         <LuChevronDown className="h-4 w-4" aria-hidden />
-                        View all topics {mod.tools ? "& tools" : ""}
+                        View all topics ({mod.topics.length})
                     </summary>
                     <div className="mt-3 space-y-3">
                         <div>
-                            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Topics</p>
-                            <ul className="mt-1 list-disc pl-5 text-sm text-gray-700">
+                            <ul className="mt-1 space-y-2 text-sm text-gray-700">
                                 {mod.topics.map((p) => (
-                                    <li key={p}>{p}</li>
+                                    <li key={p} className="flex items-start">
+                                        <LuBadgeCheck className="mt-0.5 mr-2 h-4 w-4 text-emerald-800 flex-shrink-0" aria-hidden />
+                                        <span>{p}</span>
+                                    </li>
                                 ))}
                             </ul>
                         </div>
-                        {mod.tools && (
-                            <div className="flex flex-wrap items-center gap-2">
-                                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mr-1">Tools</p>
-                                {mod.tools.map((tool) => (
-                                    <span key={tool} className="rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-800 ring-1 ring-inset ring-gray-200">
-                                        {tool}
-                                    </span>
-                                ))}
+                        {mod.internalLink && (
+                            <div className="pt-2 border-t border-gray-200">
+                                <Link
+                                    href={mod.internalLink.href}
+                                    className="inline-flex items-center text-sm font-medium text-indigo-700 hover:text-indigo-600 transition"
+                                >
+                                    {mod.internalLink.label} →
+                                </Link>
                             </div>
                         )}
                     </div>
@@ -305,25 +302,18 @@ function CurriculumCard({ mod }: { mod: Module }) {
 
 /* ---------- Main Curriculum Section ---------- */
 export default function CurriculumSection() {
-
-
-
     return (
-        <section className="py-10 bg-white" aria-label="Manual Software Testing Curriculum">
-
-
+        <section className="py-10 bg-white" aria-label="Manual Testing Course Curriculum">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="text-center mb-10 md:mb-12">
                     <h2 className="text-4xl font-bold text-gray-900 mb-3">
-                        Manual Software Testing <span className="text-blue-700">Curriculum</span>
+                        What You'll Learn: <span className="text-blue-700">Complete Manual Testing Curriculum</span>
                     </h2>
                     <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-                        Extracted directly from the provided syllabus PDF - focusing strictly on curriculum items.
+                        Comprehensive 12-week program covering SDLC, STLC, test design, Jira, Agile, API testing, and real-world QA projects.
                     </p>
                 </div>
-
-
 
                 {/* Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-8">

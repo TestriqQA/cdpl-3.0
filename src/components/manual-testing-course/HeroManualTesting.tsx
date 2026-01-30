@@ -260,13 +260,13 @@ export default function HeroManualTesting() {
                             id="manual-testing-hero"
                             className="mt-3 md:mt-0 text-2xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
                         >
-                            Best <span className='text-ST'>Manual Testing Course</span>{" "}
-                            with 100% Placement <br className="md:hidden" /> Support
+                            <span className='text-ST'>Manual Testing Course</span> with 100% Placement –{" "}
+                            <br className="hidden md:block" />Launch Your QA Career in 12 Weeks
                         </h1>
 
                         <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Upgrade your QA career with hands-on <strong>Software Testing Training</strong>, <strong>ISTQB Prep</strong>, and real-world{" "}
-                            <strong>Manual Testing</strong> projects. Live classes, mentor support, interview preparation, and a curated job pipeline.
+                            Break into software quality assurance with Cinute Digital's comprehensive manual testing course—no coding background needed. Master test case design, defect tracking, <strong>ISTQB preparation</strong>, and real-world{" "}
+                            <strong>QA workflows</strong> to land your first testing role in Mumbai, Pune, or across India.
                         </p>
 
                         {/* Lead Form For Mobile Screens and Tab Screens */}
@@ -289,7 +289,7 @@ export default function HeroManualTesting() {
                             <span className="hidden h-3 w-px bg-slate-300 md:inline-block" />
                             <div className="flex items-center gap-2 text-slate-800">
                                 <LuShieldCheck className="h-5 w-5 text-emerald-600" />
-                                <span>Trusted by 5000+ learners</span>
+                                <span>5,000+ Alumni Placed</span>
                             </div>
                         </div>
 
@@ -356,10 +356,10 @@ export default function HeroManualTesting() {
                         {/* Feature bullets */}
                         <ul className="mt-8 grid grid-cols-1 gap-3 text-slate-700 sm:grid-cols-2">
                             {[
-                                { color: "text-emerald-600", text: "12-Week Live Program" },
-                                { color: "text-indigo-700", text: "ISTQB Foundation Preparation" },
-                                { color: "text-sky-700", text: "Manual + Agile + SDLC/STLC" },
-                                { color: "text-rose-700", text: "Resume, Mock Interviews & Referrals" },
+                                { color: "text-emerald-600", text: "12-Week Live Instructor-Led Program" },
+                                { color: "text-indigo-700", text: "ISTQB Foundation Certification Prep" },
+                                { color: "text-sky-700", text: "90+ Hands-On Projects" },
+                                { color: "text-rose-700", text: "100% Placement Support" },
                             ].map((item, i) => (
                                 <li className="flex items-center gap-2" key={i}>
                                     <LuBadgeCheck className={`h-5 w-5 ${item.color}`} />
@@ -443,9 +443,9 @@ export default function HeroManualTesting() {
                 {/* SEO helper text */}
                 <div className="mx-auto mt-10 max-w-4xl text-center">
                     <p className="text-sm leading-relaxed text-slate-600">
-                        Join India’s leading <strong>Manual Testing Course</strong> for freshers and working professionals. Master{" "}
-                        <strong>software testing fundamentals, test cases, bug reporting</strong>, <strong>Agile &amp; Scrum</strong>, and interview skills.
-                        Available in <strong>online</strong> and <strong>classroom</strong> modes with <strong>placement assistance</strong> across Mumbai • Pune • Bengaluru.
+                        Join India's leading <strong>Manual Testing Course</strong> with 5,000+ successful alumni. Master{" "}
+                        <strong>test case design, defect tracking, Jira, Agile workflows</strong>, and <strong>ISTQB Foundation preparation</strong>.
+                        Available in <strong>online</strong> and <strong>classroom modes</strong> (Mumbai, Thane) with <strong>100% placement support</strong>.
                     </p>
                 </div>
             </div>
