@@ -57,7 +57,7 @@ export default function CertificationSampleSection() {
                                 <div className="overflow-hidden rounded-xl border border-slate-100 bg-slate-50 min-h-[250px]">
                                     {/* Using valid Image component with next/image */}
                                     <Image
-                                        src="/certifications_images/cdpl_certifications_validation/cdpl_certificate_validation.jpg"
+                                        src="/certifications_images/cdpl_certifications_validation/cdpl_certificate_validation.webp"
                                         alt="Sample Certificate"
                                         width={2000}
                                         height={1414}
