@@ -91,7 +91,7 @@ const HeroSection: React.FC = () => {
                         </div>
 
                         <h1 className="md:mt-0 max-w-3xl text-3xl md:text-4xl xl:text-5xl font-extrabold leading-snug md:leading-tight tracking-tight text-slate-900 break-words">
-                            Master <span className="text-blue-600">Data Analytics</span> & Visualization with <span className="text-brand">Power BI</span>
+                            #1 <span className="text-blue-600">Power BI Course</span> in Mumbai & Thane with <span className="text-brand">100% Placement</span>
                         </h1>
 
                         <div className="md:hidden mt-6 mb-6 min-h-[500px]">
@@ -99,8 +99,9 @@ const HeroSection: React.FC = () => {
                         </div>
 
                         <p className="mt-3 text-lg text-gray-600 mb-8 max-w-3xl">
-                            Transform raw data into powerful, actionable insights. Learn from industry experts to master Microsoft Power BI, DAX, and Data Modeling for creating stunning, interactive dashboards.
+                            Is Power BI worth learning? Yes! Master the world's most in-demand business intelligence tool. Learn <strong>how to create dashboards in Power BI</strong> from scratch, master DAX, and use <strong>Power BI Service</strong> to launch your career as a high-paid <strong>Power BI Developer</strong> in Mumbai.
                         </p>
+
 
 
 

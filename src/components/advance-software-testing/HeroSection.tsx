@@ -143,7 +143,7 @@ export default function HeroSection() {
                             id="software-testing-hero"
                             className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
                         >
-                            Advanced Software Testing with <span className='text-ST'>Selenium, Appium, API, Cypress & Performance</span>
+                            Master <span className='text-ST'>Selenium Training</span> & SDET with Appium, Cypress & Performance Testing
                         </h1>
 
                         {/* FORM on mobile: directly below title */}
@@ -153,13 +153,10 @@ export default function HeroSection() {
 
                         {/* Supporting copy */}
                         <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Become a <strong>full-stack QA engineer</strong> with real projects, CI/CD integration, and
-                            enterprise-grade reporting. Learn test design, automation frameworks, mobile testing, and performance
-                            analysis that employers trust.
+                            Looking for a <strong>selenium course near me</strong> in Mumbai or Thane? Become a <strong>full-stack QA engineer</strong> with our comprehensive <strong>SDET training</strong>. This <strong>selenium automation course</strong> covers real projects, CI/CD integration, and enterprise-grade reporting. <strong>Learn Selenium</strong> WebDriver, Appium for mobile, API testing, and Cypress automation.
                         </p>
                         <p className="mt-3 max-w-3xl text-sm text-slate-600">
-                            Topics include Selenium WebDriver & Page Objects, Appium for Android/iOS, API testing best practices,
-                            Cypress component/e2e, Jenkins/GitHub Actions, evidence-based reporting, and metrics that matter.
+                            Topics: <strong>Selenium java course</strong>, Page Objects, <strong>Appium training</strong> for Android/iOS, <strong>API testing</strong> best practices, <strong>Cypress automation course</strong> for component/e2e, Jenkins/GitHub Actions, and evidence-based reporting.
                         </p>
 
                         {/* CTAs */}
@@ -199,7 +196,7 @@ export default function HeroSection() {
                         <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
                             <li className="flex items-start gap-2">
                                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-600" />
-                                80% practical labs with project reviews
+                                80% practical labs with real <strong>selenium automation</strong> projects
                             </li>
                             <li className="flex items-start gap-2">
                                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-indigo-600" />
@@ -207,11 +204,11 @@ export default function HeroSection() {
                             </li>
                             <li className="flex items-start gap-2">
                                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-rose-600" />
-                                Interview prep & portfolio guidance
+                                Interview prep & portfolio for <strong>SDET</strong> roles
                             </li>
                             <li className="flex items-start gap-2">
                                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-amber-600" />
-                                QR-verified global certification
+                                QR-verified ISTQB + Automation certification
                             </li>
                         </ul>
 

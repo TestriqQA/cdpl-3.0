@@ -83,10 +83,10 @@ export default function WhyAnalyticsPythonProgram() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Why Choose <span className="text-brand">Our Program</span>?
+                        Why Choose Our <span className="text-brand">Data Analytics Course</span> with Python?
                     </h2>
                     <p className="text-lg text-slate-600 max-w-4xl mx-auto">
-                        At Cinute Digital, we prepare you to deliver transformative value. Our curriculum bridges theoretical knowledge with practical expertise, ensuring you stand out as a proficient data analyst in any industry.
+                        At Cinute Digital, we answer the question <strong>"what to study to become a data analyst"</strong> with industry-aligned training. Our curriculum bridges theory with practical expertise, ensuring you learn <strong>how to use python data analysis</strong> for real business impact. Ideal for those asking <strong>who can do data analyst course</strong>.
                     </p>
                 </div>
 
@@ -129,7 +129,7 @@ export default function WhyAnalyticsPythonProgram() {
                             Transform Your Career with Confidence
                         </h3>
                         <p className="text-slate-200 leading-relaxed mb-6">
-                            Our unique blend of practical training, expert mentorship, and industry-aligned curriculum ensures you&apos;re not just learning Python libraries-you&apos;re becoming a market-ready data analyst. With our 80:20 approach, real-time projects, and personalized doubt-solving sessions, you&apos;ll gain the confidence and skills needed to excel in your career. Our placement team works tirelessly to connect you with top companies, making your transition from learner to professional seamless and successful.
+                            Our unique blend of practical training, expert mentorship, and industry-aligned curriculum ensures you&apos;re not just learning Python libraries—you&apos;re becoming a market-ready data analyst. With our 80:20 approach, real-time projects, and personalized doubt-solving, you&apos;ll master <strong>how to use python in data analysis</strong> and gain the confidence needed for a successful <strong>career in data analytics</strong>.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <div className="flex items-start gap-3">

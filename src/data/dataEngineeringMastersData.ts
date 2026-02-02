@@ -2,29 +2,29 @@ import { type QA } from "@/types/faq";
 
 export const DATA_ENGINEERING_MASTERS_FAQS: QA[] = [
     {
-        question: "What is the eligibility for this program?",
-        answer: "A bachelor's degree in any discipline is generally required. Basic knowledge of programming or databases is beneficial but not mandatory, as the program starts with foundational concepts.",
-        category: "Eligibility & Basics",
+        question: "Why is this considered the best institute for data analytics in Mumbai?",
+        answer: "Unlike basic courses, we provide a 155-hour data analytics program in Mumbai that covers both BI and Big Data. We focus on sql in data analytics, Spark, and Hadoop with a 100% placement track record.",
+        category: "Excellence",
     },
     {
-        question: "Is this program suitable for beginners?",
-        answer: "Yes, the curriculum is structured to take beginners through foundational concepts in SQL and Python before moving to advanced topics like Big Data Engineering and BI tools.",
-        category: "Learning Format & Suitability",
+        question: "Do I need an IIT or IIM background for this?",
+        answer: "No. While we provide data analytics iit-grade depth and iim business analytics-level logic, our course is open to all ambitious graduates. We teach you how to become a data analyst in india from the ground up.",
+        category: "Eligibility",
     },
     {
-        question: "What is the difference between a Data Analyst and a Data Engineer?",
-        answer: "A Data Analyst focuses on analyzing data to extract insights and create reports (using BI tools). A Data Engineer focuses on building and maintaining the robust infrastructure (pipelines, databases) that makes the data available for the analyst.",
-        category: "Roles & Career Clarity",
+        question: "What 'sql for data analytics' skills will I learn?",
+        answer: "You will master everything from basic joins to advanced sql analytics, CTEs, window functions, and database optimization for Big Data pipelines.",
+        category: "Curriculum",
     },
     {
-        question: "What kind of job assistance is provided?",
-        answer: "We provide comprehensive job assistance including resume building, mock interviews, portfolio review, and connections to our network of hiring partners. We are committed to helping you secure a role.",
-        category: "Placement & Job Assistance",
+        question: "Are there specific certifications for data engineers included?",
+        answer: "Yes, we prepare you for globally recognized certifications in industry-standard tools like Tableau, Power BI, and Big Data concepts, ensuring you have the right data engineer certification credentials.",
+        category: "Certification",
     },
     {
-        question: "Are the certifications globally recognized?",
-        answer: "Yes, the program includes preparation for and certification in industry-standard tools and technologies like Tableau, Power BI, and Big Data concepts, which are globally recognized.",
-        category: "Certification & Recognition",
+        question: "What kind of job assistance is provided for software engineer jobs in mumbai?",
+        answer: "We provide comprehensive job assistance including resume building, mock interviews, portfolio review, and connections to our network of hiring partners for roles like BI Analyst and Data Engineer.",
+        category: "Career",
     },
 ];
 

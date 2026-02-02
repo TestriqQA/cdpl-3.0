@@ -110,10 +110,10 @@ export default function CareerSection(): JSX.Element {
           className="text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            High-Paying <span className='text-ST'>QA Careers</span>
+            High-Paying <span className='text-ST'>QA Careers</span> After Selenium Training
           </h2>
           <p className="mt-5 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            <strong>4,00,000+ open roles</strong> across India • Typical salary band <strong>₹5–20 LPA</strong>.
+            Master <strong>what is selenium testing</strong>, <strong>ui testing</strong>, and <strong>mobile automation testing</strong> to unlock top QA roles. Prepare for <strong>web testing interview questions</strong> and pass the <strong>selenium quiz</strong> with confidence. <strong>4,00,000+ QA openings</strong> • Typical salary <strong>₹5–20 LPA</strong>.
           </p>
         </MotionDiv>
 

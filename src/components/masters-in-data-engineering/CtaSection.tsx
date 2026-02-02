@@ -26,8 +26,7 @@ const CtaSection: React.FC = () => {
         <div className="max-w-3xl mx-auto text-center">
           {/* Main Heading (content preserved) */}
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
-            Ready to Launch Your{" "}
-            <span className="text-teal-200">High-Paying Data Career?</span>
+            Ready to Master <span className="text-teal-200">Big Data Engineering?</span>
           </h2>
 
           {/* Subheading (content preserved) */}

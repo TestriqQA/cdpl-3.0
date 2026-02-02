@@ -122,8 +122,7 @@ export default function ToolsSection() {
                         <span className='text-ST'>Tools</span> You’ll Master
                     </h2>
                     <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-                        Practice with industry-standard tools used by <strong>Fortune 500</strong> teams—perfect for{' '}
-                        <strong>API Testing</strong>, <strong>Automation</strong>, and <strong>Security</strong> workflows.
+                        Get hands-on with top <strong>free API testing tools</strong> and enterprise platforms. Learn <strong>how to test api</strong> effectively using industry-standard <strong>API testing tools</strong>.
                     </p>
                 </motion.header>
 

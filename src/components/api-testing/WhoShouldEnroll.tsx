@@ -30,25 +30,25 @@ const audience: Audience[] = [
   {
     icon: <Users className="w-6 h-6" />,
     title: 'Career Switchers',
-    description: 'Non-IT professionals transitioning to high-growth QA roles with API testing.',
+    description: 'Non-IT pros. Learn what is API testing in software testing from scratch.',
     bg: 'bg-sky-50', iconColor: 'text-sky-700', border: 'border-sky-200',
   },
   {
     icon: <GraduationCap className="w-6 h-6" />,
     title: 'Fresh Graduates',
-    description: 'BSc, BTech, BCA grads kick-start IT careers with job-ready API skills.',
+    description: 'B.Tech/BCA. Get job-ready with API testing javatpoint style easy learning + practicals.',
     bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200',
   },
   {
     icon: <Briefcase className="w-6 h-6" />,
     title: 'Job Seekers',
-    description: 'Upskill quickly—move from low-growth roles to API test automation.',
+    description: 'Upskill with free API testing tools knowledge and commercial tool mastery.',
     bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200',
   },
   {
     icon: <Target className="w-6 h-6" />,
     title: 'Manual Testers',
-    description: 'Advance from UI testing to API automation, security, and performance.',
+    description: 'Upgrade from manual to API automation testing.',
     bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200',
   },
 ];
@@ -107,9 +107,7 @@ export default function WhoShouldEnroll() {
         {/* SEO-supportive line */}
         <div className="mx-auto mt-10 max-w-4xl text-center">
           <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-            Learn <strong>Postman</strong>, <strong>REST/GraphQL</strong>, <strong>JSON Schema validation</strong>,{' '}
-            <strong>CI/CD integration</strong>, and <strong>OWASP API security</strong> to become job-ready for QA, SDET,
-            and Automation roles.
+            Perfect for those asking "how to <strong>learn API testing</strong>?" or looking for a <strong>manual testing course with placement</strong> that includes API skills.
           </p>
         </div>
         {/* CTA */}

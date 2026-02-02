@@ -86,8 +86,7 @@ export default function CareerSection() {
             High-Paying <span className="text-ST">ETL Testing</span> Careers
           </h2>
           <p className="mt-8 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            Break into <strong>Data QA</strong>, <strong>DWH Testing</strong>, and <strong>BI Quality</strong> roles with
-            hands-on projects, interview prep, and portfolio-driven learning.
+            Break into <strong>Data QA</strong>, <strong>DWH Testing</strong>, and <strong>BI Quality</strong> roles. The average <strong>ETL developer</strong> salary is attractive. Learn the <strong>ETL tester roles and responsibilities</strong> that hiring managers seek. We prepare you for common <strong>ETL testing interview questions</strong>.
           </p>
         </motion.div>
 

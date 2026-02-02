@@ -50,7 +50,7 @@ const CareerSection: React.FC = () => {
             Career Advancement
           </h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            High-Impact <span className="text-[#0f766e]">Career Opportunities</span>
+            Land High-Paying <span className="text-[#0f766e]">Software Engineer Jobs in Mumbai</span>
           </h3>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Our graduates are prepared for the most in-demand roles in the data

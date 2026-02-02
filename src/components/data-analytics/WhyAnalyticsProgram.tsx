@@ -126,14 +126,10 @@ export default function WhyAnalyticsProgram() {
                         id="why-analytics-heading"
                         className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900"
                     >
-                        Advanced Data Analytics - <span className="text-DS">A Complete Overview</span>
+                        Advanced Data Analytics - <span className="text-DS">A Complete Career Overview</span>
                     </h2>
                     <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
-                        Learn to <strong>analyze complex datasets</strong>, build{" "}
-                        <strong>insightful dashboards</strong>, apply <strong>statistics</strong> and{" "}
-                        <strong>predictive modeling</strong>, and turn data into business decisions using{" "}
-                        <strong>Power BI</strong>, <strong>Tableau</strong>, <strong>SQL</strong>, and{" "}
-                        <strong>Python</strong>.
+                        In 2025-2026, the demand for <strong>certified data analysts</strong> is at an all-time high. Our <strong>data analyst full course</strong> covers every aspect of the data lifecycle, from SQL modeling to advanced BI storytelling.
                     </p>
                 </header>
 

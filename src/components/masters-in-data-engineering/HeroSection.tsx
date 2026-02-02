@@ -76,13 +76,12 @@ export default function HeroSection() {
             <h1 className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
               <span>Master </span>
               <span className="bg-gradient-to-r from-teal-500 via-teal-600 to-emerald-500 bg-clip-text text-transparent">
-                Data Analytics & Business Intelligence
+                Data Engineering: The Best BI and Big Data Engineering Program
               </span>
-              <span> with </span>
+              <span> in </span>
               <span className="bg-gradient-to-r from-slate-900 to-indigo-600 bg-clip-text text-transparent">
-                Big Data Engineering
+                Mumbai
               </span>
-              <span> Master Program</span>
             </h1>
 
             {/* Mobile form (under H1) */}
@@ -92,17 +91,13 @@ export default function HeroSection() {
 
             {/* Subheading */}
             <p className="mt-4 max-w-3xl text-center text-base leading-relaxed text-slate-600 md:text-left md:text-lg">
-              Master the complete data lifecycle from enterprise BI reporting and dashboards
-              to designing robust Big Data pipelines, ETL workflows, and cloud-based data
-              platforms. Build dual expertise in analytics and engineering to future-proof your
-              career.
+              Launch your career as a <strong>certified data engineer</strong> with India&apos;s most intensive 155-hour master program. Master <strong>SQL for data analytics</strong>, <strong>BI and big data engineering</strong>, and robust ETL workflows. Get <strong>Guaranteed Interviews</strong> and join 5,000+ successful alumni in Mumbai&apos;s thriving data economy.
             </p>
 
             {/* SEO keywords line */}
             <p className="mt-3 max-w-3xl text-center text-sm text-slate-600 md:text-left">
-              Topics: Power BI, Tableau, SQL, Python, data warehousing, ETL, Hadoop, Spark,
-              data lakes, cloud data engineering, data modeling, reporting automation, and
-              real-world BI & Big Data projects.
+              Become a <strong>bi data analyst</strong> or <strong>sql data analyst</strong> with mastery in Power BI, Tableau, SQL, Python, Hadoop, Spark,
+              Databricks, and cloud data engineering. The <strong>best institute for data analytics</strong> for <strong>software engineer jobs in mumbai</strong>.
             </p>
 
             {/* CTAs */}

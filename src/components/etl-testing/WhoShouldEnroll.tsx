@@ -25,10 +25,10 @@ type Audience = {
 };
 
 const audience: Audience[] = [
-  { icon: <Users />, title: 'Career Switchers', description: 'Non-tech professionals moving into high-growth Data QA roles', bg: 'bg-sky-50', iconColor: 'text-sky-700', border: 'border-sky-200' },
-  { icon: <GraduationCap />, title: 'Fresh Graduates', description: 'BSc, BTech, BCA students seeking job-ready ETL testing skills', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
-  { icon: <Briefcase />, title: 'Manual Testers', description: 'Upskill from UI/functional testing to data quality & DWH testing', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
-  { icon: <Target />, title: 'SQL Learners', description: 'Apply SQL to real ETL/ELT pipelines, reconciliation & reporting', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
+  { icon: <Users />, title: 'Career Switchers', description: 'Non-tech professionals moving into high-growth Data QA roles. Learn what is ETL from basics.', bg: 'bg-sky-50', iconColor: 'text-sky-700', border: 'border-sky-200' },
+  { icon: <GraduationCap />, title: 'Fresh Graduates', description: 'BSc, BTech, BCA students seeking job-ready ETL testing training skills.', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
+  { icon: <Briefcase />, title: 'Manual Testers', description: 'Upskill from UI/functional testing to data quality & DWH testing. Understand ETL vs ELT.', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
+  { icon: <Target />, title: 'SQL Learners', description: 'Apply SQL to real ETL/ELT pipelines, reconciliation & reporting. Master SQL queries for ETL testing.', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
 ];
 
 export default function WhoShouldEnroll() {
@@ -68,8 +68,8 @@ export default function WhoShouldEnroll() {
           </h2>
 
           <p className="mt-6 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            No prior ETL experience needed. If you want to work with <strong>data quality</strong>,{' '}
-            <strong>data warehouses</strong>, and <strong>analytics pipelines</strong>, this program is for you.
+            No prior <strong>ETL</strong> experience needed. Wondering <strong>what is ETL process</strong> and if this is for you? If you want to work with <strong>data quality</strong>,{' '}
+            <strong>data warehouses</strong>, and <strong>analytics pipelines</strong>, this <strong>ETL testing course</strong> is for you.
           </p>
         </motion.header>
 

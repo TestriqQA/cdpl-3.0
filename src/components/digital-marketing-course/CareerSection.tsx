@@ -53,8 +53,7 @@ export default function CareerSection() {
         {/* Heading */}
         <header className="text-center max-w-4xl mx-auto">
           <h2 id="careers-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            Know Your Future as a{' '}
-            <span className="text-green-700">Digital Marketing & Analytics Professional</span>
+            Secure a High-Paying <span className="text-green-700">Digital Marketing Job</span> in Mumbai
           </h2>
 
           {/* KPI band */}
@@ -65,9 +64,7 @@ export default function CareerSection() {
           </div>
 
           <p className="mt-6 text-sm sm:text-base text-slate-600">
-            High-growth roles across <strong>SEO</strong>, <strong>Performance Marketing (PPC)</strong>,{' '}
-            <strong>Social Media</strong>, <strong>Content</strong>, <strong>Analytics/Attribution</strong> and{' '}
-            <strong>CRM/Lifecycle</strong>. Build a portfolio recruiters love.
+            Demand for Digital Marketing professionals in Mumbai is at an all-time high. Master <strong>SEO, Performance Ads (PPC), and Analytics</strong> with the best institute to secure 100% placement in top MNCs and Agencies.
           </p>
         </header>
 

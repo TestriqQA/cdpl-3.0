@@ -88,11 +88,12 @@ const CareerSection: React.FC = () => {
             Career Opportunities
           </span>
           <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-gray-900">
-            Know Your Future: Job Roles After Certification
+            Lucrative Power BI Developer Jobs in Mumbai & Thane
           </h2>
           <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
-            Become a market-ready Power BI expert qualified for high-demand roles across various industries.
+            Become a market-ready <strong>Power BI Developer</strong> qualified for high-demand <strong>data analyst</strong> roles across Mumbai's top IT and finance sectors.
           </p>
+
         </div>
 
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-4">

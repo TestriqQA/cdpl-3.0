@@ -26,17 +26,17 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
   );
 }
 export const metadata = generateMetadata({
-  title: "Advanced Data Analytics Hero Program | 110-Hour Training | Mumbai | CDPL",
-  description: "110-Hour Hero Program in Advanced Data Analytics. Hands-on projects in Power BI, Tableau, Python, SQL. 100% job assistance, global certificates.",
+  title: "Advanced Data Analytics Course Mumbai | Data Analyst Training",
+  description: "Master the data analyst full course in Mumbai with 110 hours of intensive training. Advanced data analytics, Python, SQL & Power BI with 100% job placement.",
   keywords: [
-    "advanced data analytics course mumbai",
-    "data analytics hero program",
-    "power bi training",
-    "tableau course",
-    "data analyst jobs mumbai",
-    "python for data analytics",
-    "sql training",
-    "business intelligence course"
+    "data analyst full course",
+    "advanced data analytics",
+    "data analytics course Mumbai",
+    "data analyst course Mumbai",
+    "data analytics training",
+    "business intelligence course",
+    "power bi and tableau course",
+    "master data analytics"
   ],
   url: "/data-analytics",
   image: "/og-images/data-analytics.jpg",
@@ -44,8 +44,8 @@ export const metadata = generateMetadata({
 
 export default function AdvancedDataAnalyticsPage() {
   const courseSchema = generateCourseSchema({
-    name: "Advanced Data Analytics Hero Program",
-    description: "110-Hour Hero Program in Advanced Data Analytics. Hands-on projects in Power BI, Tableau, Python, SQL. 100% job assistance, global certificates.",
+    name: "Advanced Data Analytics Hero Program: Full Course in Mumbai",
+    description: "Master the data analyst full course in Mumbai with 110 hours of intensive training. Advanced data analytics, Python, SQL & Power BI with 100% job placement.",
     url: "/data-analytics",
     slug: "data-analytics",
     price: 45000,

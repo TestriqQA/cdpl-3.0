@@ -50,7 +50,7 @@ export default function WhoShouldEnroll() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Who Should Enroll in this <span className="text-indigo-600">Masterclass?</span>
+            Is This Data Science Full Course Right for You?
           </h2>
           <p className="text-lg text-slate-600">
             This program is meticulously designed to cater to learners from diverse backgrounds, ensuring a smooth transition into the world of Data Science and AI.

@@ -12,7 +12,17 @@ export default function ToolsSection() {
       {/* ... (keep background) */}
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* ... (keep header and grid) */}
+        <header className="mx-auto max-w-3xl text-center mb-12">
+          <h2
+            id="tools-heading"
+            className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
+          >
+            Tools & Technologies Mastered in This AI and Data Science Course
+          </h2>
+          <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
+            Master the exact tech stack used by industry giants like Google, Meta, and Amazon. From <strong>advanced data science</strong> libraries to model tracking tools, we cover it all.
+          </p>
+        </header>
 
         {/* Reassurance strip */}
         <aside className="mx-auto mt-8 max-w-5xl rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm flex flex-col items-center gap-4 sm:flex-row sm:justify-between">

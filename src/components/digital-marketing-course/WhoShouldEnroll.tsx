@@ -112,12 +112,10 @@ export default function WhoShouldEnrollSection() {
                         id="who-heading"
                         className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
                     >
-                        Who Should <span className="text-green-700">Enroll</span>?
+                        Who Should Join Our <span className="text-green-700">Digital Marketing Course</span>?
                     </h2>
                     <p className="mt-4 text-sm sm:text-base text-slate-600">
-                        Beginner-friendly yet <strong>career-accelerating</strong>. Ideal for{' '}
-                        <strong>switchers, students, professionals</strong> and <strong>founders</strong> who want
-                        practical <em>Digital Marketing</em> & <em>Analytics</em> skills - SEO, PPC, Social, GA4, CRO and Automation.
+                        Our program is the best <strong>Digital Marketing training in Mumbai</strong> for anyone looking to scale their career. Ideal for <strong>freshers, working professionals, and entrepreneurs</strong> who want to master SEO, SEM, and Analytics.
                     </p>
 
                     <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold">

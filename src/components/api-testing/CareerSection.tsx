@@ -52,8 +52,7 @@ export default function CareerSection() {
                         Launch Your <span className="text-ST">API Testing</span> Career
                     </h2>
                     <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-                        Average fresher salary: <strong>₹4–8 LPA</strong>. Build job-ready skills in <strong>Postman</strong>, <strong>REST/GraphQL</strong>,{' '}
-                        <strong>automation</strong>, and <strong>OWASP API security</strong> to unlock high-growth roles.
+                        Average salary: <strong>₹4–8 LPA</strong>. With skills in <strong>API automation testing</strong> and <strong>Postman</strong>, you become eligible for roles like <strong>API Tester</strong> and <strong>SDET</strong>. Companies need experts who know <strong>how to test api</strong> thoroughly.
                     </p>
                 </motion.header>
 

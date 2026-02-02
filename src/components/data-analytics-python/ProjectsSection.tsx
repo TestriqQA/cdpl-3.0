@@ -50,10 +50,10 @@ export default function ProjectsSection() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Real-Time <span className="text-brand">Projects</span>
+                        Build Your <span className="text-brand">Portfolio</span> with Real Data Analytics Projects
                     </h2>
                     <p className="text-lg text-slate-600 max-w-4xl mx-auto">
-                        Work on industry-relevant projects across multiple domains. Gain hands-on experience with real-world datasets and practical applications.
+                        Don&apos;t just learn <strong>what is data analytics course</strong> theory. Build real projects that showcase <strong>how to analyse data using python</strong> for actual business scenarios.
                     </p>
                 </div>
 

@@ -66,12 +66,9 @@ export default function WhyDSProgram() {
                 <div className="mt-12 md:mt-14 grid lg:grid-cols-3 gap-6 items-start">
                     <article className="lg:col-span-2 rounded-2xl border border-gray-200 p-6 md:p-8">
                         {/* ... (keep content) */}
-                        <h2 className="text-2xl font-bold text-gray-900">What you’ll learn (and build)</h2>
+                        <h2 className="text-2xl font-bold text-gray-900">Advanced Data Science - A Complete Career Overview</h2>
                         <p className="mt-3 text-gray-700 leading-relaxed">
-                            From <strong>EDA & feature engineering</strong> to{" "}
-                            <strong>model development</strong> and <strong>MLOps</strong>, this masterclass focuses
-                            on deployable skills. You’ll ship APIs, dashboards, and reproducible experiments that
-                            translate to interviews and on-the-job success.
+                            The demand for <strong>certified data scientists</strong> is at an all-time high. Our <strong>data science full course</strong> covers every aspect of the data lifecycle, from visualization to **MLOps** and deployments.
                         </p>
                         <ul className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
                             {bullets.map((b, idx) => (

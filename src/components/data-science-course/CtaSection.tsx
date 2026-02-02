@@ -99,11 +99,7 @@ export default function CtaSection() {
             id="cta-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Ready to Master{" "}
-            <span className="text-DS">
-              Data Science & ML
-            </span>
-            ?
+            Ready to Master <span className="text-DS">Advanced Data Science?</span>
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
             Enroll today and get <strong>100% job assistance</strong>,{" "}

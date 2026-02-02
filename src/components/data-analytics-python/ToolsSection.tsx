@@ -92,10 +92,10 @@ export default function ToolsSection() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Tools & <span className="text-brand">Technologies</span>
+                        <span className="text-brand">Tools</span> You&apos;ll Master in This Python Data Analysis Course
                     </h2>
                     <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-                        Master industry-standard tools and libraries used by data professionals worldwide.
+                        Learn the exact tools used by top data analysts. Our <strong>data analytics courses</strong> cover everything you need to know about <strong>how to use python in data analysis</strong>.
                     </p>
                 </div>
 

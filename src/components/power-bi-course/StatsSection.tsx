@@ -82,12 +82,12 @@ const StatsSection: React.FC = () => {
             Career Potential
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
-            Unlock Your Future: Key Statistics Driving the Power BI Market
+            Is Power BI in Demand? Explore the Career Growth Stats
           </h2>
           <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
-            The demand for skilled Power BI professionals is soaring. Invest in a
-            skill that guarantees career growth and high returns.
+            The demand for skilled <strong>Power BI Developers</strong> is soaring across Mumbai's corporate landscape. Invest in the best <strong>Power BI training</strong> that guarantees career growth and high returns.
           </p>
+
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">

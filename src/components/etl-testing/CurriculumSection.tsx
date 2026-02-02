@@ -156,9 +156,8 @@ export default function CurriculumSection() {
 
         {/* SEO supportive line */}
         <p className="mx-auto mt-4 mb-6 max-w-3xl text-center text-sm sm:text-base text-slate-600">
-          Learn <strong>DW architecture</strong>, <strong>SQL-based ETL validation</strong>, <strong>manual & automated testing</strong>, and
-          development with <strong>Talend</strong> and <strong>Informatica</strong>. Wrap up with <strong>capstone projects</strong> integrating
-          Snowflake, SnapLogic, and Power BI.
+          From <strong>what is ETL</strong> basics to advanced <strong>ETL automation testing</strong>. Learn <strong>DW architecture</strong>, <strong>SQL-based ETL validation</strong>, <strong>manual & automated testing</strong>, and
+          development with <strong>Talend</strong> and <strong>Informatica</strong>. Wrap up with <strong>capstone projects</strong> integrating Snowflake, SnapLogic, and Power BI. This <strong>ETL testing training</strong> prepares you for real <strong>ETL testing interview questions</strong>.
         </p>
 
         {/* Responsive grid */}

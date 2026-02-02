@@ -380,7 +380,10 @@ export default function CareerPathSection() {
                         <span className="text-sm font-semibold text-blue-700">Career Opportunities</span>
                     </motion.div>
 
-                    <h2 className="mt-10 text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{careerPathContent.title}</h2>
+                    <h2 className="mt-10 text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                        Software Testing <span className="text-brand">Jobs & Career Roles</span> in Mumbai
+                    </h2>
+
 
                     <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-green-50 border border-green-200 rounded-full">
                         <Target className="w-5 h-5 text-green-600" />

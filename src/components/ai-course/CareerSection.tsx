@@ -99,7 +99,8 @@ export default function CareerSection() {
           Top Companies Hiring{" "}
           <span className="text-DS">
             DS &amp; AI Professionals
-          </span>
+          </span>{" "}
+          After Masters in AI and ML
         </h2>
 
         {/* KPI pill */}
@@ -110,7 +111,9 @@ export default function CareerSection() {
           <span>Product • Services • Startups • Enterprises</span>
         </div>
 
-        <p className="mt-3 text-base md:text-lg text-slate-700">{sub}</p>
+        <p className="mt-3 text-base md:text-lg text-slate-700">
+          High-growth careers across Data Science, Machine Learning Engineering, MLOps, and Applied AI in product & services companies. Our <strong>ai master program mumbai</strong> prepares you for <strong>masters in artificial intelligence india</strong> roles.
+        </p>
         {/* Hidden SEO keywords for crawlers */}
         <p className="sr-only">{keywords}</p>
 

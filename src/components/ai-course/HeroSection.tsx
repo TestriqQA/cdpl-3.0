@@ -71,9 +71,8 @@ export default function HeroSection() {
                             id="dsai-hero"
                             className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
                         >
-                            Master Program in{" "}
-                            <span className="text-DS">Comprehensive Data Science</span> &{" "}
-                            <span className="text-DS">AI</span>
+                            <span className="text-DS">Masters in AI and ML</span> –{" "}
+                            Data Science Master Program Mumbai with 100% Placement
                         </h1>
 
                         {/* Mobile form directly under headline (FORM 1) */}
@@ -82,14 +81,14 @@ export default function HeroSection() {
                         </div>
 
                         <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Become industry-ready with <strong>Python</strong>, <strong>Statistics</strong>,{" "}
+                            Pursuing a <strong>masters in ai and ml</strong> in India? Our <strong>ai master program mumbai</strong> makes you industry-ready with <strong>Python</strong>, <strong>Statistics</strong>,{" "}
                             <strong>Machine Learning</strong>, <strong>Deep Learning</strong>, <strong>NLP</strong>,{" "}
                             <strong>Time Series</strong>, <strong>Big Data (Spark)</strong>, and <strong>MLOps</strong>. Build portfolio
-                            projects and earn a <strong>QR-verified certificate</strong>.
+                            projects and earn a <strong>QR-verified certificate</strong>. Ideal for those seeking <strong>ms in artificial intelligence in india</strong>.
                         </p>
                         <p className="mt-2 max-w-3xl text-sm text-slate-600">
-                            Curriculum includes Pandas/NumPy, EDA & visualization, model evaluation, feature engineering, pipelines, basic
-                            Transformers, cloud deployments, and CI/CD best practices.
+                            This <strong>post graduate program in ai and machine learning</strong> covers Pandas/NumPy, EDA & visualization, model evaluation, feature engineering, pipelines, basic
+                            Transformers, cloud deployments, and CI/CD best practices. Perfect for <strong>masters in data science and artificial intelligence in india</strong>.
                         </p>
 
                         {/* CTAs */}
@@ -126,7 +125,7 @@ export default function HeroSection() {
                         <ul className="mt-6 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-emerald-600" />
-                                80% practical labs with mentor feedback
+                                80% practical labs with mentor feedback for <strong>masters in ai in india</strong>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-indigo-600" />
@@ -134,7 +133,7 @@ export default function HeroSection() {
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-rose-600" />
-                                Model evaluation, tracking, and reporting
+                                Model evaluation, tracking for <strong>data science master program mumbai</strong>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-amber-600" />

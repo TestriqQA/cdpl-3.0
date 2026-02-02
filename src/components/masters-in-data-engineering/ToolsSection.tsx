@@ -136,8 +136,7 @@ const ToolsSection: React.FC = () => {
             Master the Industry&apos;s Leading Data Stack
           </h3>
           <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
-            Our program covers the essential tools required for both Business
-            Intelligence and Big Data Engineering roles.
+            Learn the exact tech stack used in <strong>software engineer jobs in mumbai</strong>. Our program covers the essential tools required for both <strong>bi data analyst</strong> and <strong>sql for data analytics</strong> roles.
           </p>
           <p className="mx-auto mt-3 max-w-4xl text-sm text-slate-700">
             Learn how to combine <strong>Tableau</strong>,{" "}

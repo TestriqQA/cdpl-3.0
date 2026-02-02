@@ -16,7 +16,7 @@ export default function FaqSection() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Frequently Asked <span className="text-brand">Questions</span>
+                        Frequently Asked Questions About <span className="text-brand">Data Analytics Course</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
                         Find answers to common questions about our course, enrollment, and career opportunities.

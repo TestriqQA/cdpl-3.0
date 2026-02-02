@@ -32,8 +32,7 @@ export default function CtaSection() {
           </h2>
 
           <p className="mt-3 text-sm sm:text-base text-slate-600">
-            Live <strong>15-hour</strong> mentor-led training • <strong>Postman</strong>, <strong>REST/GraphQL</strong>,{' '}
-            <strong>JSON Schema</strong>, <strong>OWASP API security</strong>, and <strong>CI/CD</strong>.
+            Master <strong>what is API testing</strong>, <strong>Postman</strong>, and <strong>Automation</strong> in 15 hours.
           </p>
 
           {/* Primary actions */}

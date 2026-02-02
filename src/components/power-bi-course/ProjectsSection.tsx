@@ -128,11 +128,12 @@ const ProjectsSection: React.FC = () => {
             Hands-On Experience
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
-            Real-Time Projects Across Diverse Industries
+            Real-World Power BI Report Examples & Capstone Projects
           </h2>
           <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
-            Apply your Power BI skills to complex, industry-relevant datasets and build a portfolio that impresses hiring managers.
+            Learn <strong>how to create dashboards in Power BI</strong> by working on industry-specific datasets. Build a portfolio of <strong>Power BI report examples</strong> that prove your expertise to top recruiters in Mumbai.
           </p>
+
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">

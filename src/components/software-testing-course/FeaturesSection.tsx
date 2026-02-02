@@ -209,14 +209,12 @@ export default function TestingFeaturesSection() {
                     </motion.div>
 
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                        Build Reliable Software with{" "}
-                        <span className="text-brand">
-                            Expert QA & Test Automation
-                        </span>
+                        Expert <span className="text-brand">Software Testing Training</span> in Mumbai & Thane
                     </h2>
                     <p className="text-lg text-gray-600 leading-relaxed">
-                        Learn manual testing, automation (Selenium, Playwright, Cypress), API & performance testing, and QA best practices. Become a job-ready SDET or QA engineer with hands-on projects, interview prep, and industry certification guidance.
+                        Industry-ready Software Testing course in Mumbai designed to bridge the gap between education and employment. Master Manual Testing, Automation (Selenium, Java, API), and Performance testing with 100% Job Placement assistance.
                     </p>
+
                 </motion.div>
 
                 {/* Features grid */}

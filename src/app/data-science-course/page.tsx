@@ -19,15 +19,17 @@ import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } fro
 import { DATA_SCIENCE_FAQS, DATA_SCIENCE_REVIEW_DATA } from "@/data/dataScienceData";
 
 export const metadata = generateMetadata({
-  title: "Advanced Data Science & Machine Learning Masterclass in Mumbai | 200-Hour Program | CDPL",
-  description: "200-Hour Masterclass in Advanced Data Science and Machine Learning. Hands-on projects, 100% job assistance, global certificates.",
+  title: "Advanced Data Science & Machine Learning Masterclass Mumbai | Placement",
+  description: "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with 100% job placement.",
   keywords: [
-    "advanced data science course mumbai",
-    "machine learning masterclass",
-    "data science training mumbai",
-    "ml jobs mumbai",
-    "deep learning course",
-    "ai masterclass"
+    "data science full course",
+    "advanced data science",
+    "data science course Mumbai",
+    "data scientist course Mumbai",
+    "data science training",
+    "master machine learning",
+    "ai and data science course",
+    "master data science"
   ],
   url: "/data-science-course",
   image: "/og-images/data-science-course.jpg",
@@ -35,8 +37,8 @@ export const metadata = generateMetadata({
 
 export default function AdvancedDSMLPage() {
   const courseSchema = generateCourseSchema({
-    name: "Advanced Data Science & Machine Learning Masterclass",
-    description: "200-Hour Masterclass in Advanced Data Science and Machine Learning. Hands-on projects, 100% job assistance, global certificates.",
+    name: "Advanced Data Science and Machine Learning Masterclass: Full Course in Mumbai",
+    description: "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with 100% job placement.",
     url: "/data-science-course",
     slug: "data-science-course",
     price: 50000,

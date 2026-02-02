@@ -99,11 +99,11 @@ export default function CurriculumSection() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl text-slate-900 text-center font-bold mb-4">
-          Complete <span className="text-ST">QA Master Curriculum</span>
+          Complete <span className="text-ST">QA Master Curriculum</span> – Selenium, Cypress & Mobile Testing
         </h2>
 
         <p className="text-slate-600 text-lg text-center">
-          Manual to Automation - <strong>180 hours</strong> of job-ready, project-based training over <strong>6.5 months</strong>
+          Manual to Automation — <strong>180 hours</strong> of job-ready, project-based training over <strong>6.5 months</strong>. Learn <strong>what is selenium testing</strong>, <strong>what is ui testing</strong>, <strong>mobile app automation testing</strong>, and more.
         </p>
 
         {/* Cards */}
@@ -175,7 +175,7 @@ export default function CurriculumSection() {
         {/* SEO supportive copy */}
         <p className="mx-auto mt-8 max-w-4xl text-center text-sm sm:text-base text-slate-600">
           Each module blends concise theory with <strong>hands-on labs</strong>, real defect triage, and
-          <strong> CI/CD-ready automation</strong> so you can demonstrate <em>UI, API, Mobile, and DB</em> skills for QA/SDET roles.
+          <strong> CI/CD-ready automation</strong> so you can demonstrate <em>UI, API, Mobile, and DB</em> skills for QA/SDET roles. Use <strong>selenium practice sites</strong> for real <strong>automation testing projects with selenium</strong>.
         </p>
 
         {/* Bottom mini-CTAs */}

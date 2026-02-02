@@ -27,7 +27,7 @@ const audience: Audience[] = [
   {
     icon: <Users className="h-6 w-6" />,
     title: 'Career Switchers',
-    description: 'Transition from non-tech roles to QA with mentor-led projects.',
+    description: 'Transition from non-tech roles to QA with mentor-led projects. Learn what is selenium testing from basics.',
     bg: 'bg-sky-50',
     iconColor: 'text-sky-700',
     border: 'border-sky-200',
@@ -35,7 +35,7 @@ const audience: Audience[] = [
   {
     icon: <GraduationCap className="h-6 w-6" />,
     title: 'Fresh Graduates',
-    description: 'BTech • BCA • BCom — get job-ready QA skills fast.',
+    description: 'BTech • BCA • BCom — get job-ready skills fast. Perfect for tester fresher candidates.',
     bg: 'bg-emerald-50',
     iconColor: 'text-emerald-700',
     border: 'border-emerald-200',
@@ -43,7 +43,7 @@ const audience: Audience[] = [
   {
     icon: <Briefcase className="h-6 w-6" />,
     title: 'Manual Testers',
-    description: 'Level up to automation (UI • API • Mobile • CI/CD).',
+    description: 'Level up to automation (ui testing • API • Mobile • CI/CD). Master selenium methods.',
     bg: 'bg-amber-50',
     iconColor: 'text-amber-700',
     border: 'border-amber-200',
@@ -51,7 +51,7 @@ const audience: Audience[] = [
   {
     icon: <Target className="h-6 w-6" />,
     title: 'Developers',
-    description: 'Add reliable testing to your stack and ship with confidence.',
+    description: 'Add reliable testing to your stack. Use selenium practice sites and jest testing knowledge.',
     bg: 'bg-violet-50',
     iconColor: 'text-violet-700',
     border: 'border-violet-200',
@@ -90,11 +90,10 @@ export default function WhoShouldEnroll() {
             Who Should <span className="text-ST">Enroll</span>?
           </h2>
           <p className="mx-auto mt-3 max-w-3xl text-sm sm:text-base text-slate-600">
-            No prior experience required. Ideal for <strong>career switchers</strong>,{' '}
+            No prior experience required. Ideal for <strong>tester fresher</strong> candidates, <strong>career switchers</strong>,{' '}
             <strong>fresh graduates</strong>, <strong>manual testers</strong>, and{' '}
-            <strong>developers</strong> seeking <em>job-ready QA & SDET skills</em>-framework
-            design, <abbr title="Continuous Integration / Continuous Delivery">CI/CD</abbr>, and
-            real projects.
+            <strong>developers</strong> seeking <em>job-ready QA & SDET skills</em>—framework
+            design, <strong>ci testing</strong>, and real <strong>automation testing projects with selenium</strong>.
           </p>
 
           {/* Micro-badges with distinct colors */}

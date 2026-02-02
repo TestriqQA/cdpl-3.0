@@ -97,7 +97,7 @@ const CareerRoadmapSection: React.FC = () => {
             SEO Boost: Long-Term Vision
           </h2>
           <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Your 5-Step Career Roadmap to Becoming a Big Data Engineer
+            Your 5-Step Path to Becoming a Big Data Engineer
           </h3>
           <p className="mt-4 text-xl text-gray-500">
             This master program is the launchpad for a decade-long career progression in the

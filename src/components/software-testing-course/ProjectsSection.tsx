@@ -289,8 +289,9 @@ const ProjectsSection = () => {
                     </motion.div>
 
                     <h2 className="mt-5 text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                        {projectsContent.title}
+                        Industry-Level <span className="text-brand">Software Testing Projects</span> for Portfolio
                     </h2>
+
 
                     <p className="text-xl font-semibold text-gray-700 mb-4">
                         {projectsContent.subtitle}

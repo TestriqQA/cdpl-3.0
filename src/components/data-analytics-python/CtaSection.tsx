@@ -27,7 +27,7 @@ export default function CtaSection() {
 
                     {/* Subheading */}
                     <p className="text-lg md:text-xl text-slate-200 mb-8 leading-relaxed">
-                        Join 500+ successful graduates who have mastered Python data analytics and secured high-paying jobs at top companies. Start your journey today and become a market-ready data professional in just 20 hours.
+                        Join 500+ successful graduates who have mastered **python data analysis course** and secured high-paying jobs. Start your **career in data analytics** today—learn **how to become a data analyst** in just 20 hours with our **best data analytics courses** in Mumbai/Thane.
                     </p>
 
                     {/* Key Benefits */}

@@ -81,8 +81,7 @@ export default function HeroSection() {
                             id="analytics-hero"
                             className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
                         >
-                            Master Program in{" "}
-                            <span className="text-DS">Advanced Data Analytics</span>
+                            Advanced <span className="text-DS">Data Analytics</span> Hero Program: Full Course in Mumbai
                         </h1>
 
                         {/* Mobile form directly under headline */}
@@ -91,12 +90,10 @@ export default function HeroSection() {
                         </div>
 
                         <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Become a job-ready <strong>Data Analyst</strong> with <strong>Excel-to-ETL</strong>, <strong>SQL</strong>,{" "}
-                            <strong>Python (Pandas/NumPy)</strong>, <strong>Statistics</strong>, <strong>Power BI / Tableau</strong>,{" "}
-                            A/B testing and storytelling dashboards. Ship portfolio projects and earn a <strong>QR-verified certificate</strong>.
+                            Master the <strong>data analyst full course</strong> in Mumbai with 110 hours of intensive training. From <strong>advanced data analytics</strong> to business intelligence, we prepare you for high-impact roles with <strong>Guaranteed Interviews</strong> and 5+ real-time projects.
                         </p>
                         <p className="mt-2 max-w-3xl text-sm text-slate-600">
-                            Curriculum includes data modeling, DAX, joins/window functions, EDA, feature prep, automation, and lightweight ML for forecasting & classification.
+                            Become a <strong>certified data analyst</strong> with mastery in Python, SQL, Power BI, and Tableau. Our <strong>data analytics training</strong> in Mumbai/Thane focuses on 80% practical labs and industry-ready dashboard deployments.
                         </p>
 
                         {/* CTAs */}
@@ -136,7 +133,7 @@ export default function HeroSection() {
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-sky-600" />
-                                BI dashboards (Power BI / Tableau) & storytelling
+                                90+ Case Studies & 5+ Real-time Projects
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-rose-600" />
@@ -144,7 +141,7 @@ export default function HeroSection() {
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-indigo-600" />
-                                Statistics, experimentation & insights for business
+                                Guaranteed Interviews & 100% Placement Support
                             </li>
                         </ul>
 

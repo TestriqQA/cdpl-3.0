@@ -134,7 +134,7 @@ const WhoShouldEnroll: React.FC = () => {
             Target Audience
           </h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Who Is This Master Program For?
+            Is This Data Engineering Master Program Right for You?
           </h3>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             This program is designed for ambitious individuals ready to take on

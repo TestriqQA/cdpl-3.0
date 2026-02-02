@@ -98,7 +98,7 @@ export default function WhoShouldEnroll() {
             id="wse-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Who Is This <span className="text-DS">Course For</span>
+            Is This Data Analyst Full Course Right for You?
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
             Whether you’re starting out or leveling up, this{" "}

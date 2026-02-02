@@ -23,7 +23,7 @@ export default function FaqSection() {
         {/* Heading */}
         <header className="text-center">
           <h2 id="faq-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-green-700">
-            Frequently Asked Questions
+            Digital Marketing Course Mumbai - FAQs
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600">
             Everything you need to know about the program - certifications, placements, projects, and schedules.

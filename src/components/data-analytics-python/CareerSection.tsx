@@ -80,10 +80,10 @@ export default function CareerSection() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Your <span className="text-brand">Career Path</span>
+                        Your <span className="text-brand">Career Path</span> in Data Analytics
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Explore diverse career opportunities in data analytics across multiple industries and roles.
+                        Explore diverse <strong>career in data analytics</strong> opportunities. Our <strong>python data analysis course</strong> prepares you for roles across multiple industries. Perfect for those asking <strong>how to become a data analyst</strong>.
                     </p>
                 </div>
 

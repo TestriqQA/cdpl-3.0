@@ -71,7 +71,7 @@ const CurriculumSection: React.FC = () => {
             Master Program Structure
           </h2>
           <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Comprehensive Curriculum: From Data Visualization to Big Data Pipelines
+            6-Module Roadmap: Your Path to Mastering BI & Data Engineering
           </h3>
           <p className="mt-4 text-xl text-gray-500">
             Our 6-module structure ensures a progressive learning path, covering every aspect of the modern data landscape.

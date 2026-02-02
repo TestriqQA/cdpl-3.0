@@ -68,9 +68,9 @@ export default function FaqSection() {
         <header className="mx-auto max-w-3xl text-center">
           <h2
             id="faq-heading"
-            className="text-3xl md:text-4xl font-bold tracking-tight text-DS"
+            className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Frequently Asked Questions
+            Frequently Asked Questions About the Data Analytics Course
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
             Everything you need to know about our{" "}

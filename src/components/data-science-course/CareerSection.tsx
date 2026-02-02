@@ -43,7 +43,7 @@ export default function CareerSection() {
           {/* Left Column: Content */}
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-              Launch Your Career in <span className="text-indigo-600">Data Science & AI</span>
+              Placement Partners & Career Opportunities in Mumbai
             </h2>
             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
               The demand for skilled data professionals is skyrocketing. Our program prepares you for high-impact roles with top-tier companies, offering comprehensive placement support and portfolio building.

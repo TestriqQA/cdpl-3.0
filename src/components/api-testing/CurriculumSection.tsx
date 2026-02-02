@@ -121,8 +121,7 @@ export default function CurriculumSection() {
         </h2>
 
         <p className="mx-auto mb-8 max-w-3xl text-center text-sm leading-relaxed text-slate-600 sm:text-base">
-          Master <strong>Postman</strong>, <strong>REST</strong>, <strong>GraphQL</strong>, <strong>JSON Schema</strong>, <strong>automation scripts</strong>, and <strong>OWASP API security</strong>.
-          Build a portfolio with real-world API projects to become job-ready for QA and Automation roles.
+          From <strong>what is API testing</strong> basics to advanced <strong>API automation testing tools</strong>. Master <strong>Postman API testing tutorial</strong> modules, <strong>REST API automation</strong>, and build a <strong>sample REST API for testing</strong> portfolio.
         </p>
 
         {/* Cards */}

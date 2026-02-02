@@ -115,7 +115,7 @@ export default function CurriculumSection() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl text-center text-slate-900 font-bold mb-4">
-          5-Core <span className="text-DS">Curriculum Modules</span>
+          5-Core Curriculum Modules: Your Data Analytics Roadmap
         </h2>
 
         <p className="mx-auto mb-8 max-w-3xl text-center text-sm leading-relaxed text-slate-600 sm:text-base">

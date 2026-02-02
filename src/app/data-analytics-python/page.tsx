@@ -27,15 +27,23 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 export const metadata = generateMetadata({
-    title: "Data Analytics with Python Course | 20-Hour Training | Mumbai | CDPL",
-    description: "20-Hour Master Program in Data Analytics with Python. Hands-on projects, 100% job assistance, global certificates.",
+    title: "Best Data Analytics Course with Python | 20-Hour Training Mumbai | 100% Job Assistance",
+    description: "Learn how to become a data analyst with our Python data analysis course in Mumbai/Thane. 20-hour hands-on training with real projects, global certification, and 100% placement support. Best data analytics courses for beginners.",
     keywords: [
-        "data analytics with python course mumbai",
-        "python for data analytics",
-        "pandas course",
-        "matplotlib training",
-        "data analyst jobs mumbai",
-        "python programming for data science"
+        "what is data analytics course",
+        "what is data analyst course",
+        "how to learn data analytics",
+        "who can do data analyst course",
+        "how to become a data analyst",
+        "how to analyse data using python",
+        "what is data analysis in python",
+        "python data analysis course",
+        "data analytics courses",
+        "data analytics certification",
+        "best data analytics courses",
+        "data analyst course duration",
+        "career in data analytics",
+        "data analyst courses for beginners"
     ],
     url: "/data-analytics-python",
     image: "/og-images/data-analytics-python.jpg",
@@ -43,8 +51,8 @@ export const metadata = generateMetadata({
 
 export default function Home() {
     const courseSchema = generateCourseSchema({
-        name: "Master Program in Data Analytics using Python",
-        description: "20-Hour Master Program in Data Analytics with Python. Hands-on projects, 100% job assistance, global certificates.",
+        name: "Best Data Analytics Course with Python | 20-Hour Training Mumbai",
+        description: "20-hour python data analysis course with hands-on projects, global certification, and 100% job assistance. Learn how to become a data analyst in Mumbai/Thane.",
         url: "/data-analytics-python",
         slug: "data-analytics-python",
         price: 25000,

@@ -24,10 +24,10 @@ type Audience = {
 };
 
 const audience: Audience[] = [
-  { icon: <Users className="w-6 h-6" />, title: 'Manual Testers', description: 'Upgrade to automation (UI + API + Mobile)', bg: 'bg-sky-50', iconColor: 'text-sky-700', border: 'border-sky-200' },
-  { icon: <GraduationCap className="w-6 h-6" />, title: 'Fresh Graduates', description: 'BTech • BCA • MCA — job-ready in weeks', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
-  { icon: <Briefcase className="w-6 h-6" />, title: 'Career Switchers', description: 'Non-tech to SDET with mentor-led projects', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
-  { icon: <Target className="w-6 h-6" />, title: 'Developers', description: 'Add reliable testing to your skillset', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
+  { icon: <Users className="w-6 h-6" />, title: 'Manual Testers', description: 'Upgrade to automation (UI + API + Mobile). Learn selenium to advance your career.', bg: 'bg-sky-50', iconColor: 'text-sky-700', border: 'border-sky-200' },
+  { icon: <GraduationCap className="w-6 h-6" />, title: 'Fresh Graduates', description: 'BTech • BCA • MCA — job-ready with selenium training in weeks.', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
+  { icon: <Briefcase className="w-6 h-6" />, title: 'Career Switchers', description: 'Non-tech to SDET with mentor-led projects. Selenium online classes for flexibility.', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
+  { icon: <Target className="w-6 h-6" />, title: 'Developers', description: 'Add reliable testing to your skillset. Selenium java course integration.', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
 ];
 
 export default function WhoShouldEnroll() {
@@ -61,9 +61,9 @@ export default function WhoShouldEnroll() {
             Who Should <span className="text-ST">Join</span>?
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            Perfect for <strong>manual testers</strong>, <strong>fresh graduates</strong>,{' '}
+            Looking for a <strong>selenium course near me</strong>? Perfect for <strong>manual testers</strong>, <strong>fresh graduates</strong>,{' '}
             <strong>career switchers</strong>, and <strong>developers</strong> who want industry-ready
-            <em> Automation Testing</em> & <em> SDET</em> skills-framework design, CI/CD, and real projects.
+            <em> Automation Testing</em> & <em> SDET</em> skills—framework design, CI/CD, and real projects.
           </p>
           {/* micro badges row */}
           <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold">

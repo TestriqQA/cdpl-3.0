@@ -2,29 +2,24 @@ import { type QA } from "@/types/faq";
 
 export const DATA_ANALYTICS_FAQS: QA[] = [
     {
-        question: "Is prior data or coding experience required?",
-        answer: "No. We start from fundamentals and move to advanced analytics. You’ll learn Python, SQL, BI dashboards, and ML step by step with mentor support.",
+        question: "Is prior coding experience required for the data analyst full course?",
+        answer: "While basic programming knowledge is helpful, our data analyst full course in Mumbai starts from the fundamentals of Python and SQL. We guide you through everything from scratch.",
         category: "Prerequisites",
     },
     {
-        question: "What is the duration and learning format?",
-        answer: "About 110 hours of guided learning over 10–14 weeks. Expect 80% practical labs, code reviews, and portfolio-grade projects.",
-        category: "Schedule",
+        question: "What makes the 'Data Analytics Hero Program' different?",
+        answer: "Unlike basic certifications, our advanced data analytics training includes 110+ hours of training, Power BI mastery, and guaranteed interviews with top MNCs in Mumbai and Thane.",
+        category: "Program Details",
     },
     {
-        question: "Do you provide job assistance?",
-        answer: "Yes—100% job assistance with resume revamp, ATS keywords, mock interviews, and referrals. We also help you showcase projects on GitHub/LinkedIn.",
+        question: "What salary package can I expect as a data analyst?",
+        answer: "Graduates of our data analytics training in Mumbai/Thane typically secure packages between ₹7 LPA to ₹15 LPA, depending on their performance and prior experience.",
         category: "Career",
     },
     {
-        question: "Which tools and projects are included?",
-        answer: "Python, Pandas, SQL, Power BI/Tableau, and ML basics. Projects include forecasting, segmentation, churn prediction, and KPI dashboards.",
+        question: "Do you provide business intelligence and dashboarding training?",
+        answer: "Yes, this is a comprehensive business intelligence course. We cover everything from data modeling in SQL to creating interactive dashboards in Power BI and Tableau.",
         category: "Curriculum",
-    },
-    {
-        question: "Is this suitable for career switchers and students?",
-        answer: "Absolutely. The curriculum is beginner-friendly but industry-aligned. You’ll build a recruiter-ready portfolio and get interview prep.",
-        category: "General",
     },
 ];
 

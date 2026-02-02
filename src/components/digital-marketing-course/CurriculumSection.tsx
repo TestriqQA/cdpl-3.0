@@ -133,11 +133,10 @@ export default function CurriculumSection() {
       <div className="mx-auto max-w-7xl px-4 xl:px-6">
         <header className="text-center">
           <h2 id="curriculum-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            Course Curriculum - <span className="text-green-700">14 Modules</span>
+            Advanced <span className="text-green-700">Digital Marketing Course</span> Modules
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            A <strong>portfolio-first</strong>, <strong>job-ready</strong> roadmap: master SEO, performance ads, GA4/GTM,
-            CRO, media planning, dashboards, attribution, and lifecycle automation.
+            Our comprehensive <strong>14-module curriculum</strong> is designed for the 2025-2026 job market. Learn from the best Digital Marketing institute in Mumbai with placement focus on SEO, SEM, SMM, and Analytics.
           </p>
         </header>
 

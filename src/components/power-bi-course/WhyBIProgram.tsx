@@ -152,11 +152,12 @@ const WhyBIProgram: React.FC = () => {
             Program Advantages
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
-            Why Choose Our Power BI Certification Program?
+            Is Power BI worth learning? Discover the Top Reasons to Join!
           </h2>
           <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
-            We bridge the gap between academic learning and industry demands with a focus on practical, high-quality training.
+            As data-driven decision-making becomes critical, <strong>Power BI is highly in demand</strong> globally. Our <strong>Power BI course</strong> bridge the gap between academic learning and industry demands with a focus on practical, high-quality training in Mumbai & Thane.
           </p>
+
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">

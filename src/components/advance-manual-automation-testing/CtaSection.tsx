@@ -29,11 +29,10 @@ export default function CtaSection() {
           className="text-center"
         >
           <h2 id="cta-heading" className="text-3xl md:text-4xl font-bold tracking-tight">
-            Become a <span className="text-cyan-300">Complete QA Engineer</span>
+            Become a <span className="text-cyan-300">Complete QA Engineer</span> – Master Selenium & UI Testing
           </h2>
           <p className="mt-3 text-base sm:text-lg md:text-xl text-slate-200">
-            Next cohort starts in <strong className="text-white">2 days</strong> — limited seats, high-impact
-            mentorship, and placement support.
+            Learn <strong className="text-white">what is selenium testing</strong>, <strong className="text-white">what is ui testing</strong>, and <strong className="text-white">mobile automation testing</strong> in our 180-hour Master Program. Next cohort starts in <strong className="text-white">2 days</strong>. Limited seats in Mumbai/Thane.
           </p>
 
           {/* Primary Actions */}

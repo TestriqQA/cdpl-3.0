@@ -55,13 +55,12 @@ export default function ToolsSection() {
             id="tools-heading"
             className="text-3xl md:text-4xl font-bold text-gray-900"
           >
-            <span className="text-DS">Tools</span> & <span className="text-DS">Technologies</span> You’ll Master
+            Tools & Technologies Mastered in This Data Analytics Course
           </h2>
           <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
-            Build real, job-ready skills across{" "}
-            <strong>data wrangling</strong>, <strong>SQL modeling</strong>,{" "}
+            Learn the exact tech stack used by Amazon, Google, and TCS. Build real, job-ready skills across{" "}
+            <strong>data analyst full course</strong> essentials: <strong>data wrangling</strong>, <strong>SQL modeling</strong>,{" "}
             <strong>dashboard design</strong>, and <strong>predictive analytics</strong>.
-            Curated stack recruiters recognize and teams rely on.
           </p>
 
           {/* quick highlights / KPIs */}

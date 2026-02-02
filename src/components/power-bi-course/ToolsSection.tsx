@@ -111,11 +111,12 @@ const ToolsSection: React.FC = () => {
             Tools & Technologies
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
-            The Power BI Ecosystem You Will Master
+            What is Power BI? Master the Complete Tool Ecosystem
           </h2>
           <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
-            Our course provides hands-on mastery of the entire Microsoft Power BI suite and its core languages.
+            Our <strong>Power BI course</strong> provides hands-on mastery of the entire <strong>Power BI tool</strong> suite. Learn <strong>why Power BI is used</strong> globally for <strong>data visualization</strong> and business intelligence.
           </p>
+
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">

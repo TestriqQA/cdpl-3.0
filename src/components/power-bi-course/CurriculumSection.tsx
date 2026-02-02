@@ -163,11 +163,12 @@ const CurriculumSection: React.FC = () => {
             Comprehensive Learning Path
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
-            10 Modules to Master Power BI from Zero to Expert
+            Latest Power BI Course Syllabus 2025-26: From Zero to Expert
           </h2>
           <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
-            Our meticulously designed curriculum covers every aspect of Power BI, focusing on practical application and industry best practices.
+            Our meticulously designed <strong>Power BI syllabus</strong> covers everything from <strong>Power BI Desktop</strong> setup to <strong>Power BI Service</strong> publishing. Master <strong>Power BI visualizations</strong> and DAX with industry-led modules.
           </p>
+
         </div>
 
         <div className="max-w-4xl mx-auto space-y-4">

@@ -91,10 +91,7 @@ export default function CareerSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         {/* Heading */}
         <h2 id="careers-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-          Top Companies Hiring{" "}
-          <span className="text-DS">
-            Data Analytics Professionals
-          </span>
+          Placement Partners & Career Opportunities in Mumbai
         </h2>
 
         {/* KPI / subtitle strip */}

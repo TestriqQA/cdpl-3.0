@@ -19,15 +19,19 @@ import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } fro
 import { AI_FAQS, AI_REVIEW_DATA } from "@/data/aiData";
 
 export const metadata = generateMetadata({
-  title: "Data Science & AI Master Program Mumbai | CDPL",
-  description: "255-Hour Master Program in Comprehensive Data Science and AI. Hands-on projects, 100% job assistance, global certificates.",
+  title: "Masters in AI and ML | AI Master Program Mumbai | 100% Placement Support",
+  description: "Enroll in our Masters in AI and ML in India. 255-hour Data Science & AI Master Program in Mumbai/Thane. Get post graduate program in ai and machine learning with 100% job assistance.",
   keywords: [
-    "comprehensive data science course mumbai",
-    "ai master program",
-    "data science and ai training",
-    "data scientist jobs mumbai",
-    "machine learning course",
-    "artificial intelligence training"
+    "masters in ai and ml",
+    "ms in artificial intelligence in india",
+    "ai master program mumbai",
+    "masters in ai in india",
+    "masters in data science and artificial intelligence in india",
+    "data science master program mumbai",
+    "post graduate program in ai and ml",
+    "post graduate program in ai and machine learning",
+    "masters in artificial intelligence india",
+    "masters in ai and ml in india"
   ],
   url: "/ai-course",
   image: "/og-images/ai-course.jpg",

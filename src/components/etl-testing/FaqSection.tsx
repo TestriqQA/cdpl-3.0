@@ -31,7 +31,7 @@ export default function FaqSection() {
         {/* SEO-supportive microcopy */}
         <p className="mx-auto mt-2 mb-10 max-w-2xl text-center text-sm sm:text-base text-slate-600">
           Learn how our <strong>mentor-led</strong> program prepares you for <strong>ETL / ELT pipelines</strong>,{' '}
-          <strong>data quality</strong>, and <strong>industry certifications</strong> with job assistance.
+          <strong>data quality</strong>, and <strong>industry certifications</strong> with job assistance. Get answers to common <strong>ETL testing interview questions with answers</strong>.
         </p>
 
         <div className="space-y-3 sm:space-y-4">

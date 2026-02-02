@@ -95,11 +95,12 @@ const WhoShouldEnroll: React.FC = () => {
             Target Audience
           </span>
           <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-gray-900">
-            Who Will Benefit Most from This Course?
+            Who Should Enroll in Our Power BI Training in Mumbai?
           </h2>
           <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
-            This program is designed for both technical and non-technical learners across various professional backgrounds.
+            <strong>Does Power BI require coding?</strong> Not at all! This course is designed for both technical and non-technical learners across Mumbai & Thane who want to master <strong>business intelligence</strong>.
           </p>
+
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">

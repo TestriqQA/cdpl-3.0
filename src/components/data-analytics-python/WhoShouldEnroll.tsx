@@ -20,7 +20,7 @@ export default function WhoShouldEnroll() {
     const audiences: AudienceSegment[] = [
         {
             title: "Beginners with Basic Python",
-            description: "If you have basic Python knowledge and want to dive into data analytics, this course is perfect for you.",
+            description: "If you're asking **how to become a data analyst**, this **data analyst courses for beginners** is perfect. Learn **what is data analysis in python** from scratch.",
             icon: "🎯",
             requirements: [
                 "Basic understanding of Python variables and loops",
@@ -30,7 +30,7 @@ export default function WhoShouldEnroll() {
         },
         {
             title: "Intermediate Users",
-            description: "Enhance your analytics and visualization expertise with advanced Python libraries and techniques.",
+            description: "Enhance your **python data analysis course** expertise with advanced techniques. Master **how to use python data analysis** for complex scenarios.",
             icon: "📈",
             requirements: [
                 "Intermediate Python programming skills",
@@ -40,7 +40,7 @@ export default function WhoShouldEnroll() {
         },
         {
             title: "Professionals Seeking Career Change",
-            description: "Professionals from finance, healthcare, retail, technology, marketing, or research looking to transition into data analytics.",
+            description: "From finance, healthcare, retail, or marketing—learn **what skills are required for data analyst** roles and transition into a **career in data analytics**.",
             icon: "💼",
             requirements: [
                 "Basic Python knowledge (recommended)",
@@ -50,7 +50,7 @@ export default function WhoShouldEnroll() {
         },
         {
             title: "Students & Graduates",
-            description: "Recent graduates or students looking to build practical skills for job readiness in the data analytics field.",
+            description: "Recent graduates or students looking to build practical skills. Answer **what to study to become a data analyst** with hands-on projects and **data analytics certification**.",
             icon: "🎓",
             requirements: [
                 "Basic Python knowledge or willingness to learn",
@@ -93,10 +93,10 @@ export default function WhoShouldEnroll() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Who Should <span className="text-brand">Enroll</span>?
+                        Who Should <span className="text-brand">Enroll</span>? – Data Analyst Course Eligibility
                     </h2>
                     <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-                        This course is designed for diverse learners. Whether you&apos;re a beginner or a professional seeking to advance your skills, we have the right program for you.
+                        Wondering <strong>who can do data analyst course</strong>? This course is designed for diverse learners asking <strong>what to learn to become data analyst</strong>. Whether you&apos;re a beginner or a professional seeking to advance your skills, we have the right program for you.
                     </p>
                 </div>
 

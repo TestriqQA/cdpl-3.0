@@ -134,7 +134,7 @@ export default function HeroSection() {
                             id="etl-hero"
                             className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
                         >
-                            <span className='text-ST'>ETL Testing</span> using SQL & Enterprise Tools
+                            Master <span className='text-ST'>ETL Testing</span> with SQL & Enterprise Tools – 100% Placement Support
                         </h1>
 
                         {/* Mobile form under H1 */}
@@ -144,15 +144,13 @@ export default function HeroSection() {
 
                         {/* Sub copy */}
                         <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Validate data at every stage-<strong>extract</strong>,{' '}
-                            <strong>transform</strong>, and <strong>load</strong>. Learn{' '}
-                            <em>dataset profiling, schema checks, reconciliation, automation,
-                                and reporting</em> to ensure accurate BI & analytics.
+                            Understand <strong>what is ETL testing</strong> and validate data at every stage—<strong>extract</strong>,{' '}
+                            <strong>transform</strong>, and <strong>load</strong>. Learn practical skills in{' '}
+                            <em>dataset profiling, schema checks, reconciliation, and automation</em> to ensure accurate BI & analytics. This <strong>ETL testing course</strong> is your gateway to becoming an <strong>ETL developer</strong>.
                         </p>
                         <p className="mt-3 max-w-3xl text-sm text-slate-600">
-                            Topics: test design for ETL/ELT, SQL data quality rules, SCD types,
-                            partitioning, orchestration basics, CI/CD integration, and evidence-based
-                            reporting for audits.
+                            Topics: <strong>ETL vs ELT</strong>, <strong>what is ETL in data warehouse</strong>, SQL data quality rules, SCD types,
+                            partitioning, orchestration basics, CI/CD integration, and audit-ready reporting. Master <strong>ETL testing tools</strong> like Informatica and Talend.
                         </p>
 
                         {/* CTAs */}
@@ -195,15 +193,15 @@ export default function HeroSection() {
                         <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
                             <li className="flex items-start gap-2">
                                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-600" />
-                                80% practical labs with real datasets
+                                80% practical labs with real <strong>ETL pipeline</strong> datasets
                             </li>
                             <li className="flex items-start gap-2">
                                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-indigo-600" />
-                                Data quality rules & reconciliation tests
+                                Data quality rules & <strong>SQL reconciliation</strong> tests
                             </li>
                             <li className="flex items-start gap-2">
                                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-rose-600" />
-                                Interview prep & portfolio guidance
+                                Interview prep & <strong>ETL testing interview questions</strong> portfolio
                             </li>
                             <li className="flex items-start gap-2">
                                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-amber-600" />

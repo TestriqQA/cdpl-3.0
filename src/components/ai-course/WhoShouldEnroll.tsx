@@ -74,12 +74,12 @@ export default function WhoShouldEnroll() {
             id="wse-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Who Is This <span className="text-DS">Course For</span>
+            Who Is This <span className="text-DS">Course For</span> – Masters in AI and ML in India
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
-            Whether you’re a <strong>beginner</strong>, <strong>analyst</strong>, or an experienced{" "}
-            <strong>professional</strong>, this program helps you build a recruiter-ready portfolio in{" "}
-            <strong>Data Science</strong> & <strong>AI</strong>.
+            Whether you're a <strong>beginner</strong>, <strong>analyst</strong>, or an experienced{" "}
+            <strong>professional</strong>, this <strong>post graduate program in ai and ml</strong> helps you build a recruiter-ready portfolio in{" "}
+            <strong>Data Science</strong> & <strong>AI</strong>. Perfect for those seeking <strong>ms in artificial intelligence in india</strong>.
           </p>
           {/* SEO helper (visually hidden) */}
           <p className="sr-only">{seoKeywords}</p>

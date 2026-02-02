@@ -52,10 +52,10 @@ export default function ProjectsSection() {
             <div className="mx-auto max-w-7xl px-4 xl:px-10">
                 <header className="text-center">
                     <h2 id="projects-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-                        Hands-On <span className="text-green-700">Projects</span> You’ll Work On
+                        Top <span className="text-green-700">Digital Marketing Projects</span> for Your Portfolio
                     </h2>
                     <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-                        Real briefs. Real deliverables. <strong>Portfolio-ready work</strong> that proves your skills to hiring managers.
+                        Work on real-world briefs from Mumbai's top brands. Our <strong>project-first training</strong> ensures you are job-ready with a professional portfolio in SEO, Ads, and Analytics.
                     </p>
                 </header>
 

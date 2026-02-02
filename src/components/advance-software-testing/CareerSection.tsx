@@ -73,9 +73,7 @@ export default function CareerSection() {
             High-Paying <span className="text-ST">SDET</span> Careers
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            <strong>2,50,000+ QA openings</strong> across India with fast-growing demand for{' '}
-            <strong>Automation Engineers</strong> and <strong>SDETs</strong>. Average fresher salary:{' '}
-            <strong>₹6–18 LPA</strong> depending on stack, location, and interview performance.
+            <strong>SDET training</strong> opens doors to top roles. With skills in <strong>selenium automation training</strong>, <strong>appium selenium</strong>, and <strong>cypress automation course</strong>, you'll be ready for high-paying positions. Average fresher salary: <strong>₹6–18 LPA</strong>.
           </p>
         </motion.div>
 

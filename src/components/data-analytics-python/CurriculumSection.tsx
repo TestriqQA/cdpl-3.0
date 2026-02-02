@@ -164,10 +164,10 @@ export default function CurriculumSection() {
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Comprehensive <span className="text-brand">Curriculum</span>
+                        Complete <span className="text-brand">Data Analytics</span> Curriculum – What to Study to Become a Data Analyst
                     </h2>
                     <p className="text-lg text-slate-600 max-w-4xl mx-auto">
-                        Master 7 modules covering Python fundamentals to advanced data visualization. Each module is designed with hands-on projects and real-world applications.
+                        Our 20-hour curriculum answers <strong>what is data analyst course</strong> with 7 comprehensive modules. Learn <strong>how to become a data analyst</strong> from scratch with hands-on training.
                     </p>
                 </div>
 

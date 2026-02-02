@@ -36,13 +36,13 @@ export default function CtaSection() {
             Ready to Master{" "}
             <span className="text-DS">
               Data Science &amp; AI
-            </span>
-            ?
+            </span>{" "}
+            – Masters in AI and ML in India?
           </h2>
           <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-700">
-            Enroll now for <strong>global certification</strong>,{" "}
+            Enroll in our <strong>ai master program mumbai</strong> for <strong>global certification</strong>,{" "}
             <strong>job assistance</strong>, and a <strong>portfolio-first</strong> curriculum in
-            Python, ML, Deep Learning, NLP/GenAI, and MLOps.
+            Python, ML, Deep Learning, NLP/GenAI, and MLOps. Start your <strong>masters in ai and ml</strong> journey today.
           </p>
         </header>
 

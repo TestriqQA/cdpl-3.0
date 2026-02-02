@@ -26,7 +26,7 @@ const FaqSection: React.FC = () => {
             Quick Answers
           </h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Frequently Asked <span className="text-[#0f766e]">Questions</span>
+            FAQ: <span className="text-[#0f766e]">BI & Big Data Engineering Master Program</span>
           </h3>
           <p className="text-lg text-slate-600">
             Everything you need to know about the program, eligibility, and

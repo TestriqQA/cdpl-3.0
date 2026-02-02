@@ -18,22 +18,33 @@ import {
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
 import { POWER_BI_FAQS, POWER_BI_REVIEW_DATA } from "@/data/powerBiData";
+const pageTitle = "Best Power BI Course in Mumbai & Thane | Master Data Analytics with 100% Placement";
+
+const pageDescription = "Enroll in the best Power BI course in Mumbai & Thane. Master Power BI Desktop, DAX, and Service in 20 hours. Get 100% job placement assistance and become a certified Power BI Developer.";
+const pageKeywords = [
+    "Power BI Course in Mumbai",
+    "Power BI Course in Thane",
+    "Power BI Developer Course",
+    "Data Analytics Course",
+    "Power BI Certification",
+    "DAX training",
+    "Power Query",
+    "Business Intelligence course",
+    "Data Visualization training",
+    "what is power bi",
+    "power bi placement mumbai",
+    "how to learn power bi",
+    "power bi syllabus pdf"
+];
 
 export const metadata = generateMetadata({
-    title: "Master Data Analytics & Visualization with Power BI | Certified Course",
-    description: "Enroll in the best Power BI course. Master DAX, Data Modeling, and Visualization in 20 hours. Get 100% job assistance and global certification.",
-    keywords: [
-        "Power BI Course",
-        "Data Analytics",
-        "Power BI Certification",
-        "DAX training",
-        "Power Query",
-        "Business Intelligence course",
-        "Data Visualization training"
-    ],
+    title: pageTitle,
+    description: pageDescription,
+    keywords: pageKeywords,
     url: "/power-bi-course",
     image: "/og-images/power-bi-course.jpg",
 });
+
 
 const PowerBIPage: React.FC = () => {
     const courseSchema = generateCourseSchema({

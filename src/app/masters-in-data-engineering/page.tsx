@@ -21,15 +21,25 @@ import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } fro
 import { DATA_ENGINEERING_MASTERS_FAQS, DATA_ENGINEERING_MASTERS_REVIEW_DATA } from "@/data/dataEngineeringMastersData";
 
 export const metadata = generateMetadata({
-    title: "Master Program in Data Analytics & Data Engineering | Mumbai",
-    description: "Comprehensive Master Program in Data Analytics, BI & Big Data Engineering. Learn SQL, Python, Tableau, Power BI, Hadoop, Spark. 100% job assistance.",
+    title: "Master Program in Data Engineering | BI & Big Data Engineering Course | Mumbai",
+    description: "Master the best data analytics program in Mumbai. Learn SQL for data analytics, BI & big data engineering, and spark. 100% job placement at Cinute Digital.",
     keywords: [
-        "data engineering courses in mumbai",
-        "big data training",
-        "business intelligence master program",
-        "data analytics and engineering course",
-        "hadoop spark training",
-        "etl developer course"
+        "best institute for data analytics",
+        "sql data analyst",
+        "bi and big data engineering",
+        "iim business analytics",
+        "bi data analyst",
+        "sql for data analytics",
+        "data analytics program mumbai",
+        "software engineer jobs in mumbai",
+        "data engineering certifications",
+        "sql analytics",
+        "data analytics iit",
+        "certifications for data engineers",
+        "how to become data analyst in india",
+        "data engineer certification",
+        "iit data analytics",
+        "sql in data analytics"
     ],
     url: "/masters-in-data-engineering",
     image: "/og-images/masters-in-data-engineering.jpg",
@@ -37,8 +47,8 @@ export const metadata = generateMetadata({
 
 const DataAnalyticsMasterProgramPage: React.FC = () => {
     const courseSchema = generateCourseSchema({
-        name: "Master Program in Data Analytics, BI & Big Data Engineering",
-        description: "Comprehensive Master Program in Data Analytics, BI & Big Data Engineering. Learn SQL, Python, Tableau, Power BI, Hadoop, Spark. 100% job assistance.",
+        name: "Master Program in Data Engineering: BI & Big Data Engineering Course",
+        description: "155-hour intensive master program in Mumbai covering SQL for data analytics, BI tools, and Big Data engineering with Spark and Hadoop. 100% placement.",
         url: "/masters-in-data-engineering",
         slug: "masters-in-data-engineering",
         price: 45000,

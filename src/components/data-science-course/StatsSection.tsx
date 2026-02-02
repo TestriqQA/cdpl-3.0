@@ -202,12 +202,10 @@ export default function StatsSection() {
             id="dsml-stats-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Why <span className="text-DS">Advanced Data Science & ML</span>?
+            Why Choose Our <span className="text-DS">Advanced Data Science</span> Masterclass?
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
-            Data Science fuels <strong>products, operations, and strategy</strong>. Build
-            <strong> Python</strong>/<strong>SQL</strong>/<strong>ML</strong> skills with mentor-led projects and
-            recruiter-ready outcomes.
+            Join Mumbai&apos;s most intensive <strong>data science training</strong>. We don&apos;t just teach algorithms; we build careers. With a <strong>4.8/5 rating</strong> and a legacy of <strong>5,000+ placements</strong>, we are the <strong>best institute for data science</strong> in Mumbai and Thane.
           </p>
           <p className="sr-only">{seoKeywords}</p>
         </header>

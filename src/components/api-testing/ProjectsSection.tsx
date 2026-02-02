@@ -79,8 +79,7 @@ export default function ProjectsSection() {
             Build Your <span className='text-ST'>Portfolio</span> with <span className='text-ST'>Real Projects</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            Practice <strong>API testing</strong>, <strong>automation</strong>, and <strong>security</strong> on realistic services.
-            Publish to <strong>GitHub</strong> and showcase outcomes on your resume and LinkedIn.
+            Don't just <strong>learn API testing</strong> theory. Execute <strong>API testing examples</strong> on live apps. Practice <strong>api testing means</strong> delivering bug-free code with these capstones.
           </p>
         </motion.header>
 

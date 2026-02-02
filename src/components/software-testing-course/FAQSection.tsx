@@ -29,52 +29,53 @@ const faqs: FAQ[] = [
     {
         id: 1,
         icon: HelpCircle,
-        q: "What is Software Testing and why should I learn it?",
-        a: "Software Testing ensures applications work as intended and meet quality standards. Learning testing opens stable career paths (QA Engineer, Automation Engineer, Performance Tester) and equips you to improve product reliability. Testers are essential across industries — finance, e-commerce, health-tech — making skills highly employable.",
+        q: "Which is the best software testing course in Mumbai for placement?",
+        a: "CDPL offers the best software testing course in Mumbai with 100% placement assistance. Our curriculum covers Manual Testing, Automation (Selenium), API Testing, and ETL testing, ensuring you are job-ready for top QA roles with industry-recognized certification.",
     },
     {
         id: 2,
         icon: BookOpen,
-        q: "Do I need programming experience to join this course?",
-        a: "No prior programming experience is required for the manual testing modules. For automation tracks you'll learn the necessary scripting (JavaScript/Python/Java) step-by-step. The course focuses on practical, hands-on labs — from test case design to building automation frameworks with Selenium/Appium and API testing with Postman.",
+        q: "Do I need coding experience for the Software Testing course?",
+        a: "No prior coding experience is required. We start from the absolute basics of Manual Testing and SDLC. For Automation Testing, we teach you necessary Java and Python scripting from scratch, ensuring even non-IT students can master the tools.",
     },
     {
         id: 3,
         icon: Clock,
-        q: "How long does the Software Testing program take?",
-        a: "Our core program runs for 12–16 weeks depending on the track (manual + automation). Typical commitment is 6–10 hours/week for part-time batches. We also offer intensives and self-paced options. Each track includes projects, assignments and a capstone to demonstrate job readiness.",
+        q: "What is the duration of the Software Testing course in Mumbai?",
+        a: "The duration varies from 8 to 16 weeks depending on the track you choose (Manual, Automation, or Master Program). Typical batches run for 3-4 months with weekend and weekday options available in Mumbai & Thane.",
     },
     {
         id: 4,
         icon: Award,
-        q: "Which certifications and outcomes will I receive?",
-        a: "On completion you'll receive an industry-recognized Software Testing Professional certificate. We also prepare you for role-specific certifications (ISTQB Foundation Level, automation tool badges) and provide exam prep material and mock tests to help you succeed.",
+        q: "Will I get ISTQB certification support?",
+        a: "Yes, our course is fully aligned with the ISTQB Foundation Level syllabus. We provide dedicated training, mock exams, and resources to help you clear the ISTQB certification on your first attempt.",
     },
     {
         id: 5,
         icon: DollarSign,
-        q: "What salary can I expect after completing the course?",
-        a: "Entry-level QA roles in India typically start around ₹3-6 LPA, automation and specialized roles (performance, security testing) often range ₹5-12 LPA. Graduates who upskill to automation commonly report 30–50% salary improvements depending on prior experience and role.",
+        q: "What is the average salary after a software testing course?",
+        a: "Freshers in Mumbai can expect a salary of ₹3.5 LPA to ₹6 LPA. For candidates with automation skills (Selenium, Playwright, API), the packages can range from ₹6 LPA to ₹12 LPA+, depending on the company and expertise.",
     },
     {
         id: 6,
         icon: Briefcase,
-        q: "What job support and placement assistance do you provide?",
-        a: "We offer end-to-end career support: resume & portfolio reviews, mock interviews with industry experts, recruiter introductions, and placement guidance. Our placement partners include product companies, consultancies and testing service providers who regularly hire our graduates.",
+        q: "Does CDPL provide 100% Job Placement?",
+        a: "Yes, we provide 100% replacement assistance, which includes resume building, LinkedIn optimization, and guaranteed interview calls until you secure a job in the QA domain.",
     },
     {
         id: 7,
         icon: Users,
-        q: "What is the class size and learning format?",
-        a: "We maintain small cohorts (max ~20 learners) to ensure personal attention. Classes are live and interactive with experienced instructors, plus recordings and lab access. You’ll get lifetime access to materials and membership in our alumni community for networking.",
+        q: "Is there a demo session available?",
+        a: "Absolutely! We encourage students to attend a free interactive demo session at our Mumbai or Thane centers (or online) to experience our teaching style and interact with our expert mentors.",
     },
     {
         id: 8,
         icon: CheckCircle,
-        q: "Which tools and technologies will I master?",
-        a: "You’ll get hands-on experience with Selenium, Appium (mobile), Postman for API testing, JMeter for performance testing, CI/CD integration with Jenkins/GitHub Actions, and test management tools like JIRA. We also cover test design techniques, automation frameworks and basic scripting with Python/JavaScript.",
+        q: "What tools will I learn in this QA training?",
+        a: "You will master industry-standard tools like Selenium WebDriver, JUnit, TestNG, Maven, Jenkins (for CI/CD), Postman (API), JMeter (Performance), JIRA (Bug Tracking), and SQL (Database Testing).",
     },
 ];
+
 
 const FAQItem: React.FC<{
     faq: FAQ;
@@ -258,8 +259,9 @@ export default function FAQSection() {
                     </motion.div>
 
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                        Frequently Asked <span className="text-brand">Questions</span>
+                        Software Testing Course <span className="text-brand">Mumbai FAQ</span>
                     </h2>
+
 
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
                         Everything you need to know about our Software Testing courses, tools you’ll learn, certification paths, and career support.

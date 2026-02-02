@@ -39,8 +39,7 @@ export default function FaqSection() {
 
                 {/* SEO-supportive intro line */}
                 <p className="mx-auto mb-8 max-w-2xl text-center text-sm sm:text-base text-slate-600">
-                    Learn about <strong>beginner eligibility</strong>, <strong>certificate verification</strong>,{' '}
-                    <strong>live class hours</strong>, and <strong>job assistance</strong> for API Testing with Postman, REST/GraphQL, and CI/CD.
+                    Answers to <strong>what is API testing</strong>, eligibility, and placement.
                 </p>
 
                 <ul className="space-y-4">

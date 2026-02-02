@@ -76,9 +76,8 @@ export default function HeroSection() {
               id="dsml-hero"
               className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
             >
-              Master Program in{" "}
-              <span className="text-DS">Advanced Data Science</span> &{" "}
-              <span className="text-DS">Machine Learning</span>
+              Advanced <span className="text-DS">Data Science</span> and{" "}
+              <span className="text-DS">Machine Learning</span> Masterclass: Full Course in Mumbai
             </h1>
 
             {/* Mobile form directly under headline (FORM 1) */}
@@ -87,13 +86,10 @@ export default function HeroSection() {
             </div>
 
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-              Become industry-ready with <strong>Statistics</strong>, <strong>Supervised & Unsupervised ML</strong>,{" "}
-              <strong>Feature Engineering</strong>, <strong>Model Evaluation</strong>, and <strong>Deployments</strong>.
-              Build portfolio projects and earn a <strong>QR-verified certificate</strong>.
+              Master the <strong>data science full course</strong> in Mumbai with 200 hours of intensive training. From <strong>advanced data science</strong> to cutting-edge <strong>machine learning</strong>, we prepare you for high-paying roles with <strong>Guaranteed Interviews</strong> and 10+ real-time projects.
             </p>
             <p className="mt-2 max-w-3xl text-sm text-slate-600">
-              Curriculum includes Python (Pandas/NumPy), EDA & Data Visualization, Scikit-learn, XGBoost, basic Deep Learning,
-              ML pipelines, <abbr title="Machine Learning Operations">MLOps</abbr> fundamentals, and CI/CD best practices.
+              Become a <strong>certified data scientist</strong> with mastery in Python, SQL, Statistics, Deep Learning, and AI. Our <strong>data science training</strong> in Mumbai/Thane focuses on 80% practical labs and industry-ready Model Deployments.
             </p>
 
             {/* CTAs */}

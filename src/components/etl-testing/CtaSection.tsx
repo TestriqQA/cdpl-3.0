@@ -40,8 +40,7 @@ export default function CtaSection() {
           </h2>
 
           <p className="mt-6 text-sm sm:text-base text-slate-600">
-            Next cohort starts in <strong>3 days</strong>. Limited seats—talk to our admissions team or email us for the
-            detailed syllabus, fees, and batch timings.
+            Master <strong>what is ETL testing</strong>, <strong>SQL for data validation</strong>, and <strong>ETL tools</strong> in 18 hours. Next cohort starts in <strong>3 days</strong>. Limited seats. Join our <strong>ETL testing training</strong> in Mumbai/Thane.
           </p>
 
           {/* actions */}

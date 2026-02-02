@@ -91,14 +91,10 @@ export default function ProjectsSection() {
             id="projects-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Real-World{" "}
-            <span className="text-DS">
-              DS & ML Projects
-            </span>
+            10+ Real-Time Industry Projects & Capstones
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
-            Apply <strong>advanced techniques</strong> to solve real business challenges. Build a{" "}
-            <strong>recruiter-ready portfolio</strong> with clean code, clear storytelling, and measurable impact.
+            Build a high-impact portfolio with <strong>advanced data science</strong> projects across diverse domains like Healthcare, Finance, and Retail.
           </p>
           {/* SEO helper (visually hidden) */}
           <p className="sr-only">{seoKeywords}</p>

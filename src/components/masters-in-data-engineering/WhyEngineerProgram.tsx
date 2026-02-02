@@ -102,18 +102,13 @@ const WhyEngineerProgram: React.FC = () => {
             The Competitive Edge
           </h2>
           <h3 className="mt-2 text-3xl font-bold text-slate-900 md:text-4xl">
-            Why Choose This Master Program?
+            BI & Big Data Engineering: Build a Future-Proof Career
           </h3>
           <p className="mx-auto mt-4 max-w-4xl text-lg text-slate-600">
-            We bridge the gap between data analysis and data engineering,
-            creating a full-stack data professional.
+            In 2026, the distinction between a <strong>bi data analyst</strong> and a <strong>data engineer</strong> is blurring. Companies like Amazon and Google seek &quot;Full-Stack&quot; professionals.
           </p>
           <p className="mx-auto mt-3 max-w-4xl text-sm text-slate-500">
-            This <strong>Data Analytics with BI and Big Data Engineering Master Program</strong>{" "}
-            is ideal for graduates, working professionals, and career switchers who want to
-            become <strong>job-ready BI Analysts, Data Analysts, and Data Engineers</strong> with
-            expertise in <strong>Business Intelligence tools, data pipelines, and scalable Big Data
-              platforms</strong>.
+            Whether you&apos;re looking for <strong>data analytics iit</strong>-level depth or <strong>iim business analytics</strong> business logic, our <strong>Data Analytics with BI and Big Data Engineering Master Program</strong> delivers it right here in Mumbai for <strong>bi data analyst</strong> and <strong>certified data engineer</strong> aspirants.
           </p>
         </div>
 

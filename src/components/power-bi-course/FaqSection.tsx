@@ -119,8 +119,9 @@ const FaqSection: React.FC = () => {
             Frequently Asked Questions
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
-            Everything You Need to Know Before Enrolling
+            Power BI Course Mumbai & Thane: Frequently Asked Questions
           </h2>
+
         </div>
 
         <div className="max-w-3xl mx-auto space-y-2.5">

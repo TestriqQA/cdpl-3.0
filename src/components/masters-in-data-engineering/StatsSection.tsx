@@ -110,26 +110,12 @@ const StatsSection: React.FC = () => {
           >
             Program Highlights &{" "}
             <span className="text-[#0f766e]">
-              Data Engineering Career Opportunities
+              Data Engineering Career ROI
             </span>
           </h2>
 
           <p className="mx-auto max-w-4xl text-base text-slate-600 sm:text-lg">
-            Invest in a{" "}
-            <strong>
-              Data Analytics with Business Intelligence and Big Data Engineering
-              Master Program
-            </strong>{" "}
-            built for maximum{" "}
-            <strong>career impact and return on investment</strong>. Gain
-            in-demand skills across{" "}
-            <strong>
-              BI tools, data warehousing, ETL pipelines, cloud platforms,
-            </strong>{" "}
-            and <strong>Big Data technologies</strong> that hiring managers
-            actively look for in{" "}
-            <strong>Data Engineer, BI Developer, and Analytics Engineer</strong>{" "}
-            roles.
+            Why settle for a basic course when you can join the <strong>best institute for data analytics</strong> in Mumbai? Our <strong>data analytics program in Mumbai</strong> is designed for maximum career impact. With a <strong>4.8/5 rating</strong> and an average salary hike of <strong>₹12 LPA</strong>, we bridge the gap between learning and high-paying employment via <strong>bi and big data engineering</strong> mastery.
           </p>
         </header>
 

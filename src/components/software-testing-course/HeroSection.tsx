@@ -86,11 +86,11 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
             <div className="mt-6 flex gap-8 items-start">
                 <div className="max-w-5xl">
                     <h1 className="text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900">
-                        Master <span className="text-brand">Software Testing</span> & Quality Assurance - Ship reliable software
+                        Best <span className="text-brand">Software Testing Course</span> in Mumbai & Thane
                     </h1>
 
                     <p className="mt-4 text-base text-slate-600">
-                        Industry-focused training in Manual & Automation Testing with hands-on projects using Selenium, Playwright, Postman, JMeter and CI/CD test pipelines. Build a testing portfolio, earn ISTQB-aligned certification, and get placement support for QA & SDET roles.
+                        Become a Job-Ready QA Professional. Master Manual & Automation Testing (Selenium, Playwright, API) with industry-expert mentors. 100% Placement Support, ISTQB-aligned training, and real-time projects in Mumbai & Thane.
                     </p>
 
                     {/* Feature chips (clean minimal icons) */}
@@ -298,11 +298,11 @@ export default function HeroSection(): React.JSX.Element {
                     </div>
 
                     <h2 className="text-3xl font-extrabold text-slate-900 leading-tight">
-                        Master <span className="text-brand">Software Testing</span> & Quality Assurance
+                        Best <span className="text-brand">Software Testing</span> Course in Mumbai
                     </h2>
 
                     <p className="mt-3 text-base text-slate-600">
-                        Become a certified Software Tester. Learn Manual Testing, Automation (Selenium & Playwright), API testing, Performance testing and build a portfolio of real testing projects with placement-ready skills.
+                        Master Manual & Automation Testing (Selenium, Java, API) with 100% Job Placement. Certified Software Testing training in Mumbai & Thane with real-world case studies and guaranteed interview calls.
                     </p>
 
                     {/* Form below heading on mobile */}

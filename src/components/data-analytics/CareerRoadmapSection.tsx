@@ -93,7 +93,7 @@ export default function CareerRoadmapSection() {
         {/* Header */}
         <header className="text-center max-w-3xl mx-auto">
           <h2 id="career-roadmap-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            Your <span className="text-DS">Analytics Career Roadmap</span>
+            Your Roadmap to Becoming a Data Analyst in 4 Steps
           </h2>
           <p className="mt-3 text-base md:text-lg text-slate-700">{subtitle}</p>
 

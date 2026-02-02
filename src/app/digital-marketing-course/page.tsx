@@ -18,15 +18,17 @@ import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } fro
 import { DIGITAL_MARKETING_FAQS, DIGITAL_MARKETING_REVIEW_DATA } from "@/data/digitalMarketingData";
 
 export const metadata = generateMetadata({
-  title: "AI-Driven Digital Marketing & Analytics Master Program | CDPL Mumbai",
-  description: "80-Hour Job-Ready Digital Marketing Course in Mumbai with AI, SEO, PPC, Google Ads, Social Media & Analytics. 100% Placement Assistance.",
+  title: "Best Digital Marketing Course in Mumbai with 100% Placement | CDPL",
+  description: "Join the #1 Digital Marketing Course in Mumbai. Master AI-Driven SEO, PPC, Google Ads, Social Media, and Analytics with 100% Placement Support. 80+ Hours of Practical Training.",
   keywords: [
     "digital marketing course Mumbai",
-    "AI digital marketing training",
-    "SEO course",
-    "Google Ads certification",
-    "social media marketing",
-    "digital analytics"
+    "digital marketing course in Mumbai with placement",
+    "best digital marketing institute in Mumbai",
+    "SEO training Mumbai",
+    "Google Ads course Mumbai",
+    "social media marketing course Mumbai",
+    "digital analytics training",
+    "AI in digital marketing"
   ],
   url: "/digital-marketing-course",
   image: "/og-images/digital-marketing-course.jpg",
@@ -34,14 +36,14 @@ export const metadata = generateMetadata({
 
 export default function DigitalMarketingPage() {
   const courseSchema = generateCourseSchema({
-    name: "AI-Driven Digital Marketing & Analytics Master Program",
-    description: "80-Hour Job-Ready Digital Marketing Course in Mumbai with AI, SEO, PPC, Google Ads, Social Media & Analytics. 100% Placement Assistance.",
+    name: "Advanced AI-Driven Digital Marketing & Analytics Master Program",
+    description: "A comprehensive 80-hour digital marketing mastery program in Mumbai covering SEO, SEM, SMM, Content Marketing, and AI Tools with guaranteed placement assistance.",
     url: "/digital-marketing-course",
     slug: "digital-marketing-course",
     price: 35000,
     currency: "INR",
     duration: "P3M", // ~3 months
-    instructor: "Expert Digital Marketers",
+    instructor: "Industry Expert Digital Marketing Practitioners",
     rating: DIGITAL_MARKETING_REVIEW_DATA.ratingValue,
     reviewCount: DIGITAL_MARKETING_REVIEW_DATA.reviewCount,
     image: "/og-images/digital-marketing-course.jpg",
@@ -50,7 +52,7 @@ export default function DigitalMarketingPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Courses", url: "/courses" },
-    { name: "Digital Marketing", url: "/digital-marketing-course" },
+    { name: "Digital Marketing Course in Mumbai", url: "/digital-marketing-course" },
   ]);
 
   const faqSchema = generateFAQSchema(DIGITAL_MARKETING_FAQS);

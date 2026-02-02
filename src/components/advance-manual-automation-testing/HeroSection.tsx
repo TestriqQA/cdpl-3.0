@@ -109,8 +109,8 @@ export default function HeroSection() {
               id="manual-automation-hero"
               className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
             >
-              Master <span className="text-indigo-600">Manual & Automation Testing</span>{' '}
-              for <span className="text-indigo-600">High-Paying QA Careers</span>
+              Master <span className="text-indigo-600">Manual & Automation Testing</span> –{' '}
+              Learn <span className="text-indigo-600">What is Selenium Testing</span> & Get Placed
             </h1>
 
             {/* FORM — mobile: directly under H1 */}
@@ -119,13 +119,13 @@ export default function HeroSection() {
             </div>
 
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-              Master <strong>ISTQB Manual Testing</strong>, <strong>Selenium</strong>, <strong>Cypress</strong>,{' '}
+              Understand <strong>what is selenium testing</strong> and <strong>what is ui testing</strong> from scratch. Master <strong>ISTQB Manual Testing</strong>, <strong>Selenium</strong>, <strong>Cypress</strong>,{' '}
               <strong>API</strong>, <strong>Mobile</strong>, and <strong>CI/CD</strong>. Build a portfolio with
-              production-like projects and get <strong>100% placement assistance</strong>.
+              production-like projects using <strong>selenium practice sites</strong> and get <strong>100% placement assistance</strong>. Ideal for <strong>tester fresher</strong> candidates.
             </p>
             <p className="mt-3 max-w-3xl text-sm text-slate-600">
-              Includes test design techniques, defect lifecycle, framework architecture, Page Object Model, contract testing,
-              device lab runs, and automated reporting with evidence.
+              Learn <strong>what is selenium testing tool used for</strong>, test design techniques, defect lifecycle, framework architecture, Page Object Model,
+              and <strong>automated ui testing</strong> with evidence-based reporting. Covers <strong>unit testing</strong>, <strong>system testing</strong>, and <strong>web application testing</strong>.
             </p>
 
             {/* CTAs */}
@@ -165,19 +165,19 @@ export default function HeroSection() {
             <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-800 sm:grid-cols-2">
               <li className="flex items-start gap-2">
                 <span className="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-emerald-500" />
-                70% structured manual + 30% automation pathway
+                70% structured manual + 30% <strong>automation testing projects with selenium</strong>
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-indigo-500" />
-                CI/CD integration (Jenkins & GitHub Actions)
+                <strong>CI testing</strong> integration (Jenkins & GitHub Actions)
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-rose-500" />
-                Interview prep, portfolio review, and referrals
+                Interview prep for <strong>web testing interview questions</strong> & referrals
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-amber-500" />
-                Dual certificate with QR verification
+                Dual certificate (Manual + Automation) with QR verification
               </li>
             </ul>
 

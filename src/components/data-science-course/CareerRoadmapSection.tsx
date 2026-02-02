@@ -15,7 +15,14 @@ export default function CareerRoadmapSection() {
       {/* ... (keep background) */}
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* ... (keep header and timeline) */}
+        <header className="mx-auto max-w-3xl text-center mb-12">
+          <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl mb-4">
+            Your Roadmap to Becoming a Data Scientist in 4 Steps
+          </h2>
+          <p className="max-w-3xl mx-auto text-lg text-slate-600">
+            Our <strong>data science full course</strong> follows a proven 4-stage journey to transform you from a beginner to a job-ready professional in Mumbai.
+          </p>
+        </header>
 
         {/* CTA */}
         <div className="mt-12 text-center">

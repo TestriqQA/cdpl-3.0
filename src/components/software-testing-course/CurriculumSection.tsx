@@ -92,8 +92,9 @@ export default function CurriculumSection() {
                     </motion.div>
 
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                        {data?.title}
+                        Latest <span className="text-brand">Software Testing Course Syllabus</span> 2025-26
                     </h2>
+
 
                     {data?.subtitle && (
                         <p className="mx-auto max-w-3xl text-lg text-gray-600 leading-relaxed">

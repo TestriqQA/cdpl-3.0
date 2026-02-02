@@ -34,7 +34,7 @@ export const COURSES: Course[] = [
         id: 1,
         title: 'Manual Software Testing',
         category: 'Software Testing',
-        description: 'Learn to facilitate Scrum teams and drive Agile projects effectively.',
+        description: 'Master manual testing, SDLC, STLC, and bug tracking with JIRA. Ideal for beginners starting their QA career in Mumbai.',
         duration: '50 Hours',
         students: '1200+',
         rating: 4.9,
@@ -49,7 +49,7 @@ export const COURSES: Course[] = [
         id: 2,
         title: 'Advanced Automation Testing',
         category: 'Software Testing',
-        description: 'Drive product vision and delivery in SAFe settings.',
+        description: 'Learn Selenium WebDriver with Java, TestNG, and CI/CD pipelines. The most industry-demanded automation course in Thane.',
         duration: '85 Hours',
         students: '950+',
         rating: 4.8,
@@ -64,7 +64,7 @@ export const COURSES: Course[] = [
         id: 3,
         title: 'API Testing using POSTMAN and RestAPIs',
         category: 'Software Testing',
-        description: 'Master API testing using Postman, Rest Assured, and Groovy for robust web services.',
+        description: 'Master API testing using Postman, Rest Assured, and Groovy for robust web services validation.',
         duration: '15 Hours',
         students: '700+',
         rating: 4.7,
@@ -79,7 +79,7 @@ export const COURSES: Course[] = [
         id: 4,
         title: 'ETL Testing Course',
         category: 'Software Testing',
-        description: 'Master the art of leading enterprise-wide Agile transformations using the Scaled Agile Framework (SAFe).',
+        description: 'Learn Data Warehouse testing, SQL queries, and ETL tools like Talend and Informatica. High-demand skills for QA experts.',
         duration: '100 Hours',
         students: '500+',
         rating: 4.6,
@@ -94,7 +94,7 @@ export const COURSES: Course[] = [
         id: 5,
         title: 'Database Management System using MySQL',
         category: 'Software Testing',
-        description: 'Master SQL queries, database design, and management with MySQL. Learn to build scalable and efficient database solutions.',
+        description: 'Master SQL for QA. Learn complex queries, database design, and backend validation techniques essential for software testers.',
         duration: '40 Hours',
         students: '500+',
         rating: 4.8,
@@ -109,7 +109,7 @@ export const COURSES: Course[] = [
         id: 6,
         title: 'Advanced Software Testing',
         category: 'Software Testing',
-        description: 'Go beyond the basics—build strategies, manage risk, and measure quality with actionable metrics.',
+        description: 'Go beyond the basics—build test strategies, manage risk, and master QA metrics for senior roles.',
         duration: '95 Hours',
         students: '2,268+',
         rating: 4.8,
@@ -124,7 +124,7 @@ export const COURSES: Course[] = [
         id: 7,
         title: 'Master Program in Java Programming',
         category: 'Software Testing',
-        description: 'Become industry-ready with Core Java, OOP, Collections, JDBC, Spring Boot, REST APIs, unit testing, and deployment. Build portfolio projects and earn a QR-verified certificate.',
+        description: 'Perfect for automation testers. Master Core Java, OOPs, Collections, and Exception handling from scratch.',
         duration: '30 Hours',
         students: 'Not specified',
         rating: 4.9,
@@ -146,7 +146,7 @@ export const COURSES: Course[] = [
         id: 8,
         title: 'Advanced Manual & Automation Testing — Master Program',
         category: 'Software Testing',
-        description: 'End-to-end mastery: advanced test strategy and leadership combined with enterprise-grade automation and CI/CD.',
+        description: 'Integrated program: Advanced Manual Testing + Selenium + API + JMeter + 100% Placement in Mumbai.',
         duration: '180 Hours',
         students: '2,302+',
         rating: 4.8,
@@ -168,7 +168,7 @@ export const COURSES: Course[] = [
         id: 9,
         title: 'Python Programming',
         category: 'Software Testing',
-        description: 'Master Python Programming from absolute basics all the way to advanced and professional-level concepts! Dive deep into Python syntax, data structures, object-oriented programming, functional programming, automation scripting, and real-world problem-solving through engaging, hands-on projects that reinforce every concept.',
+        description: 'Learn Python for automation scripting and AI-driven testing. Master data structures and advanced coding for QA.',
         duration: '30 Hours',
         students: '2,268+',
         rating: 4.8,
@@ -447,11 +447,34 @@ export const batches = [
     { type: 'Fast-Track', start: '20 Dec 2025', seats: 3, instructor: 'Vikram Sir (Ex-TCS)' },
 ];
 
-export const faqs = [
-    { q: 'Do you provide placement?', a: 'Yes, 100% placement assistance. Job-Ready plan has job guarantee.' },
-    { q: 'Is the course live or recorded?', a: '100% live interactive classes. Recordings provided for revision.' },
-    { q: 'Any prerequisites?', a: 'No prior coding needed. We teach everything from scratch.' },
-    { q: 'Will I get a certificate?', a: 'Yes, industry-recognized certificate on completion.' },
-    { q: 'What if I miss a class?', a: 'You get recording + doubt session + backup class.' },
-    { q: 'Do you help with resume building?', a: 'Yes, professional resume + LinkedIn optimization included.' },
+export const softwareTestingFaqs = [
+    {
+        question: 'Which is the best software testing course in Mumbai for placement?',
+        answer: 'CDPL offers the best software testing course in Mumbai with 100% placement assistance. Our curriculum covers Manual, Automation (Selenium), API, and ETL testing, ensuring you are job-ready for top QA roles.'
+    },
+    {
+        question: 'What is the salary after completing a software testing course in Mumbai?',
+        answer: 'Freshers can expect a starting salary of ₹3.5 LPA to ₹6 LPA after completing our Software Testing course. With experience and automation skills, salaries can go up to ₹15 LPA+.'
+    },
+    {
+        question: 'Are there any prerequisites for the Software Testing course?',
+        answer: 'No prior coding knowledge is required. We start from the absolute basics of Manual Testing and then progress to Automation and Java for QA.'
+    },
+    {
+        question: 'Does CDPL provide ISTQB certification training?',
+        answer: 'Yes, our Software Testing course is aligned with ISTQB standards. We provide dedicated sessions for ISTQB Foundation level certification preparation.'
+    },
+    {
+        question: 'What tools are covered in the Automation Testing course?',
+        answer: 'Our automation module covers Selenium WebDriver, Java, TestNG, Maven, Jenkins (CI/CD), Postman (API Testing), and JMeter (Performance Testing).'
+    },
+    {
+        question: 'Can I attend a free demo session?',
+        answer: 'Yes, we offer free interactive demo sessions every week. You can chat with our expert advisors in Mumbai & Thane to understand the career roadmap.'
+    },
+    {
+        question: 'Is it possible to switch from a non-IT background to QA?',
+        answer: 'Absolutely! Many of our successful students come from non-IT backgrounds like sales, teaching, or admin. Our step-by-step training makes the transition smooth.'
+    },
 ];
+

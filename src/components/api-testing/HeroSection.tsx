@@ -121,8 +121,7 @@ export default function HeroSection() {
                             id="api-testing-hero"
                             className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
                         >
-                            Master <span className='text-ST'>API Testing with Postman, REST & GraphQL</span>
-
+                            Master <span className='text-ST'>API Testing</span> & <span className='text-ST'>Automation</span> with Postman, REST & GraphQL
                         </h1>
 
 
@@ -138,8 +137,7 @@ export default function HeroSection() {
                             transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
                         >
                             <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                                Build job-ready skills in <strong>API testing, automation frameworks</strong>, <strong>CI/CD</strong>, and <strong>API security</strong>. Practice with real-world
-                                projects, learn best practices for <em>contract testing, schema validation, mocking, and performance checks</em>, and earn a verified certificate.
+                                Build high-demand skills in <strong>API automation testing</strong>, <strong>REST API examples</strong>, and <strong>security validation</strong>. Learn <strong>how to test API</strong> endpoints efficiently with <strong>Postman</strong>, ensure robust backend performance, and secure your career with our <strong>100% placement support</strong>.
                             </p>
                             <p className="mt-3 max-w-3xl text-sm text-slate-600">
                                 Topics include Postman Collections & Newman, REST principles, GraphQL queries & mutations, Swagger/OpenAPI, OAuth2 & JWT, data-driven tests, Jenkins/GitHub Actions,
@@ -186,15 +184,15 @@ export default function HeroSection() {
                             <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
                                 <li className="flex items-start gap-2">
                                     <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-600" />
-                                    80% practical labs with project reviews
+                                    80% practical labs with <strong>API testing examples</strong>
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <CheckCircle2 className="mt-0.5 h-5 w-5 text-indigo-600" />
-                                    CI/CD integration (Jenkins, GitHub Actions)
+                                    CI/CD integration (Jenkins, GitHub Actions) for <strong>API automation</strong>
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <CheckCircle2 className="mt-0.5 h-5 w-5 text-rose-600" />
-                                    Interview prep & portfolio guidance
+                                    Interview prep & <strong>API test cases examples</strong> portfolio
                                 </li>
                                 <li className="flex items-start gap-2">
                                     <CheckCircle2 className="mt-0.5 h-5 w-5 text-amber-600" />

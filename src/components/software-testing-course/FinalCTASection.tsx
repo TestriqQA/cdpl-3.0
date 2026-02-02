@@ -15,9 +15,10 @@ import { validatePhone } from '@/lib/formValidation';
  * Integrated CTA content (from your data)
  */
 const ctaContent = {
-    title: "Ready to Start Your Testing Career?",
-    description: "Join 500+ students who have successfully launched their QA careers.",
-    subtitle: "Enroll now and get 20% discount for limited time.",
+    title: "Start Your Software Testing Career in Mumbai Today!",
+    description: "Join 2,500+ successful graduates who have launched their QA careers with our expert-led training in Mumbai & Thane.",
+    subtitle: "100% Placement Support & ISTQB-Aligned Curriculum.",
+
     benefits: [
         "Industry-recognized certificate",
         "Lifetime access to course materials",

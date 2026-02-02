@@ -30,19 +30,10 @@ export default function CtaSection() {
             id="cta-heading"
             className="text-3xl md:text-4xl font-bold leading-tight text-slate-900"
           >
-            Ready to Master{" "}
-            <span className="DS">
-              Advanced Data Analytics
-            </span>
-            ?
+            Ready to Master <span className="text-DS">Advanced Data Analytics?</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-700">
-            Enroll now for a project-first program with{" "}
-            <strong>global certification</strong>,{" "}
-            <strong>110+ guided hours</strong>, and{" "}
-            <strong>100% job assistance</strong>-covering{" "}
-            <strong>Power BI</strong>, <strong>Tableau</strong>,{" "}
-            <strong>SQL</strong>, and <strong>Python</strong>.
+            Don't get left behind in the data revolution. Join the <strong>Hero Program</strong> today and secure your future with <strong>100% placement assistance</strong> and hands-on tool mastery covering <strong>Power BI</strong>, <strong>Tableau</strong>, <strong>SQL</strong>, and <strong>Python</strong>.
           </p>
         </header>
 

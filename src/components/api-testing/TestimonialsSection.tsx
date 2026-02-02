@@ -30,8 +30,7 @@ export default function TestimonialsSection() {
 
                 {/* SEO-supportive intro line */}
                 <p className="mx-auto mb-8 max-w-3xl text-center text-sm leading-relaxed text-slate-600 sm:text-base">
-                    Real reviews from professionals who mastered <strong>Postman</strong>, <strong>REST/GraphQL</strong>,{' '}
-                    <strong>JSON Schema validation</strong>, <strong>CI/CD</strong>, and <strong>OWASP API security</strong>.
+                    Hear from students who mastered <strong>what is API testing with example</strong> projects and landed top jobs.
                 </p>
 
                 <ReviewsMarquee />

@@ -72,14 +72,14 @@ export default function HeroSection() {
 
                         {/* H1 */}
                         <h1 className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
-                            <span>Master </span>
                             <span className="bg-gradient-to-r from-orange-500 via-brand to-red-500 bg-clip-text text-transparent">
-                                Advanced Data Analytics
+                                Best Data Analytics Course
                             </span>
                             <span> with </span>
                             <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                                Python Libraries
+                                Python
                             </span>
+                            <span> – 20 Hours to a Data Analyst Career</span>
                         </h1>
 
                         {/* Mobile form (under H1) */}
@@ -89,16 +89,12 @@ export default function HeroSection() {
 
                         {/* Subheading */}
                         <p className="mt-4 max-w-3xl text-center text-base leading-relaxed text-slate-600 md:text-left md:text-lg">
-                            Transform raw data into powerful, insight-driven visualizations. Learn from
-                            industry experts and master Python libraries for data science, analytics, and
-                            interactive dashboards in just 20 hours.
+                            Wondering <strong>what is data analytics course</strong> and <strong>how to become a data analyst</strong>? Our <strong>python data analysis course</strong> in Mumbai/Thane transforms beginners into job-ready professionals. Learn <strong>how to analyse data using python</strong> with Pandas, NumPy, Matplotlib, Seaborn, and Plotly—all in just 20 intensive hours with <strong>100% placement support</strong>.
                         </p>
 
                         {/* SEO keywords line */}
                         <p className="mt-3 max-w-3xl text-center text-sm text-slate-600 md:text-left">
-                            Topics: Pandas, NumPy, Matplotlib, Seaborn, Plotly, Streamlit, EDA, data
-                            visualization, dashboard design, real-world analytics projects, business
-                            intelligence, KPI tracking, reporting automation.
+                            Topics: <strong>what is data analysis in python</strong>, <strong>data analytics subjects</strong>, EDA & visualization, dashboard design, real-world projects, business intelligence, KPI tracking, reporting automation. Ideal for those asking <strong>how to use python in data analysis</strong>.
                         </p>
 
                         {/* CTAs */}
@@ -177,10 +173,7 @@ export default function HeroSection() {
 
                         {/* Extra SEO copy */}
                         <div className="mt-8 max-w-3xl text-center text-xs leading-relaxed text-slate-500 md:text-left">
-                            This data analytics course is designed to help students and
-                            working professionals transition into analytics roles with Python. Build a
-                            job-ready portfolio using real datasets, learn best practices for EDA,
-                            visualization, dashboarding, and communicate insights for business impact.
+                            This <strong>data analytics course</strong> is designed for students and working professionals seeking a <strong>career in data analytics</strong>. Build a job-ready portfolio, learn <strong>what skills are required for data analyst</strong> roles, and get <strong>best data analytics courses</strong> experience with hands-on projects.
                         </div>
                     </div>
 

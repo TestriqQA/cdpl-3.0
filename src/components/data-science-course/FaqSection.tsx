@@ -31,7 +31,7 @@ export default function FaqSection() {
             id="faq-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Frequently Asked Questions
+            Frequently Asked Questions About the Data Science Course
           </h2>
           <p className="mt-3 text-sm sm:text-base md:text-lg text-gray-700">
             Everything you need to know about our{" "}

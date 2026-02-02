@@ -143,15 +143,15 @@ export default function WhyAIProgram() {
             id="why-ai-heading"
             className="text-3xl md:text-4xl max-w-4xl font-bold tracking-tight text-gray-900"
           >
-            Comprehensive Data Science &amp; AI -{" "}
-            <span className="text-DS">Master Program Overview</span>
+            <span className="text-DS">Masters in AI and ML</span> –{" "}
+            Comprehensive Program Overview
           </h2>
           <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
             Go end-to-end from <strong>data processing</strong> to{" "}
             <strong>advanced AI deployment</strong>. Build a{" "}
             <strong>job-ready portfolio</strong> in <strong>Python</strong>,{" "}
             <strong>scikit-learn</strong>, <strong>TensorFlow</strong>,{" "}
-            <strong>NLP/GenAI</strong>, and <strong>MLOps</strong>-guided by industry experts.
+            <strong>NLP/GenAI</strong>, and <strong>MLOps</strong>—guided by industry experts. This <strong>post graduate program in ai and ml</strong> prepares you for top roles in <strong>masters in artificial intelligence india</strong>.
           </p>
         </header>
 
@@ -211,7 +211,7 @@ export default function WhyAIProgram() {
               <em>
                 data science and AI course, ML masterclass, deep learning with TensorFlow, NLP and
                 Generative AI, MLOps pipeline, model monitoring, cloud AI solutions, Python data
-                analysis
+                analysis, masters in ai and ml, ai master program mumbai, post graduate program in ai and ml
               </em>
               .
             </p>
