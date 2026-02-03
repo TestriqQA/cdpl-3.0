@@ -48,11 +48,26 @@ export async function POST(request: Request) {
     // 2. Determine Email Content based on 'type' and available fields
     const isBrochureRequest = type === 'brochure';
     const formSource = source || (isBrochureRequest ? 'Home Page - Brochure Download Modal' : 'Contact Form');
-    const subjectPrefix = isBrochureRequest ? '[BROCHURE DOWNLOAD - HOME PAGE]' : '[NEW LEAD]';
-    
-    // Use detailed template if interest or message is provided, otherwise use basic template
+    const isHomeHeroForm = formSource.includes('Home Hero') || formSource.includes('Enquiry Form - Home Hero Section');
+
+    // Subject Prefix Logic
+    let subjectPrefix = '[NEW LEAD]';
+    if (isBrochureRequest) {
+      subjectPrefix = '[BROCHURE DOWNLOAD - HOME PAGE]';
+    } else if (isHomeHeroForm) {
+      subjectPrefix = '[Enquiry]';
+    }
+
+    // Admin Template Logic
+    let adminTemplate = 'admin-notification-basic.html';
+    // Use detailed template if interest or message is provided
     const hasDetailedFields = interest || message;
-    const adminTemplate = hasDetailedFields ? 'admin-notification.html' : 'admin-notification-basic.html';
+
+    if (hasDetailedFields) {
+      adminTemplate = 'admin-notification.html';
+    } else if (isHomeHeroForm) {
+      adminTemplate = 'admin-notification-home-hero.html';
+    }
 
     // 3. Prepare Admin Notification Email
     const adminData: Record<string, string> = {
@@ -60,10 +75,11 @@ export async function POST(request: Request) {
       email,
       phone,
       type: isBrochureRequest ? 'Brochure Download' : 'General Inquiry',
-      source: formSource,
+      source: isHomeHeroForm ? 'Enquiry Form - Home Hero Section' : formSource,
       downloadLink: isBrochureRequest ? BROCHURE_DOWNLOAD_LINK : 'N/A',
+      year: new Date().getFullYear().toString(),
     };
-    
+
     // Only include interest and message if they exist (for detailed template)
     if (hasDetailedFields) {
       if (interest) adminData.interest = interest;
@@ -71,12 +87,16 @@ export async function POST(request: Request) {
     }
     const adminHtml = await getTemplatedEmail(adminTemplate, adminData);
 
+    const adminSubject = isHomeHeroForm
+      ? `${subjectPrefix} New Lead from ${fullName} - Home Page Form`
+      : `${subjectPrefix} New Lead from ${fullName} - ${formSource}`;
+
     const adminMailOptions: nodemailer.SendMailOptions = {
       from: SMTP_FROM_EMAIL,
       to: ADMIN_EMAIL,
       cc: CC_EMAIL,
       bcc: BCC_EMAIL,
-      subject: `${subjectPrefix} New Lead from ${fullName} - ${formSource}`,
+      subject: adminSubject,
       html: adminHtml,
     };
 
@@ -87,6 +107,7 @@ export async function POST(request: Request) {
       const userHtml = await getTemplatedEmail('brochure-confirmation.html', {
         fullName,
         downloadLink: BROCHURE_DOWNLOAD_LINK,
+        year: new Date().getFullYear().toString(),
       });
 
       userMailOptions = {
@@ -97,7 +118,12 @@ export async function POST(request: Request) {
       };
     } else {
       // General Contact Confirmation
-      const userHtml = await getTemplatedEmail('user-confirmation.html', { fullName });
+      const userHtml = await getTemplatedEmail('user-confirmation.html', {
+        fullName,
+        phone,
+        email,
+        year: new Date().getFullYear().toString(),
+      });
 
       userMailOptions = {
         from: SMTP_FROM_EMAIL,
