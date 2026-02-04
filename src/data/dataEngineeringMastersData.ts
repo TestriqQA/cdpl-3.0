@@ -2,29 +2,39 @@ import { type QA } from "@/types/faq";
 
 export const DATA_ENGINEERING_MASTERS_FAQS: QA[] = [
     {
-        question: "Why is this considered the best institute for data analytics in Mumbai?",
-        answer: "Unlike basic courses, we provide a 155-hour data analytics program in Mumbai that covers both BI and Big Data. We focus on sql in data analytics, Spark, and Hadoop with a 100% placement track record.",
-        category: "Excellence",
-    },
-    {
-        question: "Do I need an IIT or IIM background for this?",
-        answer: "No. While we provide data analytics iit-grade depth and iim business analytics-level logic, our course is open to all ambitious graduates. We teach you how to become a data analyst in india from the ground up.",
+        question: "Who can join this Data Analytics with BI and Big Data Engineering program?",
+        answer: "It is open to freshers, IT professionals, and non-tech graduates. We start from basics of SQL for data analytics and move to advanced Big Data concepts.",
         category: "Eligibility",
     },
     {
-        question: "What 'sql for data analytics' skills will I learn?",
-        answer: "You will master everything from basic joins to advanced sql analytics, CTEs, window functions, and database optimization for Big Data pipelines.",
+        question: "Is this course suitable for beginners with no coding experience?",
+        answer: "Yes. We teach Python and SQL in data analytics from scratch. You don't need prior programming knowledge to excel in this Data Analytics Program Mumbai.",
+        category: "Eligibility",
+    },
+    {
+        question: "Do you offer placement support for Data Engineer roles?",
+        answer: "Yes. Our placement cell connects you with Software Engineer Jobs in Mumbai and data roles at top MNCs. We help you build a portfolio for Data Engineer Certifications.",
+        category: "Career",
+    },
+    {
+        question: "How does this differ from a standard Data Analyst course?",
+        answer: "Most courses cover only visualization. We cover BI and Big Data Engineering (Hadoop, Spark), making you eligible for higher-paying Data Engineer and BI Developer roles.",
         category: "Curriculum",
     },
     {
-        question: "Are there specific certifications for data engineers included?",
-        answer: "Yes, we prepare you for globally recognized certifications in industry-standard tools like Tableau, Power BI, and Big Data concepts, ensuring you have the right data engineer certification credentials.",
+        question: "Will I get certifications for Power BI, Tableau, and Big Data?",
+        answer: "Yes. We prepare you for global Data Engineering Certifications and provide course completion certificates that are recognized by hiring partners.",
         category: "Certification",
     },
     {
-        question: "What kind of job assistance is provided for software engineer jobs in mumbai?",
-        answer: "We provide comprehensive job assistance including resume building, mock interviews, portfolio review, and connections to our network of hiring partners for roles like BI Analyst and Data Engineer.",
+        question: "What is the starting salary after this course?",
+        answer: "Freshers can expect ₹5-8 LPA, while experienced professionals transitioning to Bi and Big Data Engineering can see hikes of 40-50%.",
         category: "Career",
+    },
+    {
+        question: "Can I switch from a non-IT background to Data Engineering?",
+        answer: "Absolutely. Many of our students switch from marketing, sales, or support to become a SQL Data Analyst or Data Engineer through our structured mentoring.",
+        category: "Eligibility",
     },
 ];
 

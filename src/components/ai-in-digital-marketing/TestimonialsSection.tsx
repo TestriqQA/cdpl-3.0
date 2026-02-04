@@ -14,7 +14,8 @@ interface TestimonialsSectionProps {
 export default function TestimonialsSection({ initialReviews, initialTotal, initialRating }: TestimonialsSectionProps) {
   const [isEnrollOpen, setIsEnrollOpen] = useState(false);
   const [isCareerOpen, setIsCareerOpen] = useState(false);
-  const courseName = "AI in Digital Marketing Course";
+
+  const courseName = "Master Digital Marketing & AI for Business Owners";
   return (
     <section className="py-10 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -24,8 +25,8 @@ export default function TestimonialsSection({ initialReviews, initialTotal, init
             Success <span className="text-brand">Stories</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Real results from real students who have transformed their
-            businesses
+            Real results from real students and business owners who have transformed their
+            growth trajectory.
           </p>
         </div>
 
@@ -35,7 +36,7 @@ export default function TestimonialsSection({ initialReviews, initialTotal, init
         <div className="mt-16 text-center">
           <div className="inline-block p-8 bg-gradient-to-r from-orange-100 to-indigo-100 rounded-2xl border-2 border-orange-300">
             <p className="text-lg text-gray-900 font-semibold mb-4">
-              Ready to become our next success story?
+              Ready to become our next business success story?
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button

@@ -41,7 +41,7 @@ const enrichedTools: EnrichedTool[] = toolsData.map((tool) => {
         ...tool,
         color: "from-blue-50 to-blue-100",
         description:
-          "Enterprise-grade BI platform for interactive dashboards, visual analytics, and business storytelling.",
+          "Enterprise-grade BI platform for SQL Data Analyst reporting.",
       };
     case "Power BI":
       return {
@@ -55,42 +55,42 @@ const enrichedTools: EnrichedTool[] = toolsData.map((tool) => {
         ...tool,
         color: "from-green-50 to-emerald-100",
         description:
-          "The most widely used spreadsheet tool for data analysis, reporting, and quick visualization.",
+          "Essential tool for Data Analytics.",
       };
     case "MySQL":
       return {
         ...tool,
         color: "from-sky-50 to-sky-100",
         description:
-          "Relational database engine used to store, manage, and query structured data for analytics workloads.",
+          "Core engine for SQL for data analytics.",
       };
     case "Python":
       return {
         ...tool,
         color: "from-indigo-50 to-indigo-100",
         description:
-          "Versatile programming language for data engineering, automation, analytics, and scripting.",
+          "Versatile programming language for Data Engineering and automation.",
       };
     case "Apache Spark":
       return {
         ...tool,
         color: "from-orange-50 to-orange-100",
         description:
-          "Distributed Big Data processing engine optimized for large-scale data pipelines and real-time analytics.",
+          "Engine for BI and Big Data Engineering pipelines.",
       };
     case "Databricks":
       return {
         ...tool,
         color: "from-rose-50 to-rose-100",
         description:
-          "Unified analytics and lakehouse platform for collaborative data engineering and machine learning.",
+          "Unified platform for collaborative Data Engineering.",
       };
     case "Apache Hadoop":
       return {
         ...tool,
         color: "from-slate-50 to-slate-100",
         description:
-          "Big Data framework for distributed storage and batch processing across large clusters.",
+          "Framework for distributed storage.",
       };
     default:
       return {
@@ -136,18 +136,10 @@ const ToolsSection: React.FC = () => {
             Master the Industry&apos;s Leading Data Stack
           </h3>
           <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
-            Learn the exact tech stack used in <strong>software engineer jobs in mumbai</strong>. Our program covers the essential tools required for both <strong>bi data analyst</strong> and <strong>sql for data analytics</strong> roles.
+            Our program covers tools for <strong>BI Data Analyst</strong> and <strong>Big Data Engineering</strong> roles.
           </p>
           <p className="mx-auto mt-3 max-w-4xl text-sm text-slate-700">
-            Learn how to combine <strong>Tableau</strong>,{" "}
-            <strong>Power BI</strong>, <strong>Excel</strong>,{" "}
-            <strong>MySQL</strong>, <strong>Python</strong>,{" "}
-            <strong>Apache Spark</strong>, <strong>Databricks</strong>, and{" "}
-            <strong>Hadoop</strong> to build end-to-end{" "}
-            <strong>data pipelines, BI dashboards, and scalable Big Data
-              solutions</strong>-skills that are highly demanded for{" "}
-            <strong>BI Analyst, Data Engineer, and Analytics Engineer</strong>{" "}
-            roles.
+            Learn to combine <strong>Tableau</strong>, <strong>Power BI</strong>, <strong>SQL in data analytics</strong>, <strong>Python</strong>, <strong>Apache Spark</strong>, <strong>Databricks</strong>, and <strong>Hadoop</strong> to build end-to-end data pipelines.
           </p>
         </div>
 

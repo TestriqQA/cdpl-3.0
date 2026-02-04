@@ -11,7 +11,7 @@ export default function FaqSection() {
 
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
   const [isCareerOpen, setIsCareerOpen] = useState(false);
-  const courseName = "AI in Digital Marketing Course";
+  const courseName = "Master Digital Marketing & AI for Business Owners";
 
   // Group by category if available, else everything under "General"
   const categories = Array.from(
@@ -28,12 +28,10 @@ export default function FaqSection() {
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Find answers to common questions about our{" "}
-            <strong>AI in Digital Marketing program</strong>, from{" "}
-            <em>course fees, duration, eligibility, certification</em> to{" "}
-            <em>placement support and career outcomes</em>. This FAQ helps you
-            decide if this is the right{" "}
-            <strong>job-oriented digital marketing course with AI</strong> for
-            you.
+            <strong>AI Digital Marketing for Business Owners program</strong>, from{" "}
+            <em>course fees, schedule, business applicability</em> to{" "}
+            <em>ROI and support</em>. This FAQ helps you decide if this is the{" "}
+            <strong>best digital marketing course for your business growth</strong>.
           </p>
         </div>
 
@@ -137,10 +135,9 @@ export default function FaqSection() {
           <p className="mt-4 text-xs sm:text-sm text-slate-500 max-w-3xl mx-auto">
             Keywords: <em>digital marketing course FAQ</em>,{" "}
             <em>AI in digital marketing training questions</em>,{" "}
-            <em>online digital marketing course with placement support</em>,{" "}
-            <em>best digital marketing institute in Mumbai</em>,{" "}
-            <em>course duration, fees, eligibility, certification</em>,{" "}
-            <em>job-oriented digital marketing program</em>.
+            <em>business marketing course details</em>,{" "}
+            <em>best digital marketing institute for business owners</em>,{" "}
+            <em>course duration, fees, business support</em>.
           </p>
         </div>
       </div>

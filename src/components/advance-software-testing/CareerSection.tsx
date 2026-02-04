@@ -73,7 +73,7 @@ export default function CareerSection() {
             High-Paying <span className="text-ST">SDET</span> Careers
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            <strong>SDET training</strong> opens doors to top roles. With skills in <strong>selenium automation training</strong>, <strong>appium selenium</strong>, and <strong>cypress automation course</strong>, you'll be ready for high-paying positions. Average fresher salary: <strong>₹6–18 LPA</strong>.
+            <strong>SDET training</strong> opens doors to premium roles. With expertise in <strong>selenium</strong>, <strong>API</strong>, and <strong>mobile testing</strong>, you can demand higher salaries. Average fresher package: <strong>₹4–8 LPA</strong>.
           </p>
         </motion.div>
 

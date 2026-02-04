@@ -30,18 +30,20 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 
 export const metadata = generateMetadata({
     title: "Master Digital Marketing & AI for Business Owners | 10X Your Growth - Cinute Digital",
-    description: "A 3-month cohort program to master digital marketing and AI strategies tailored for business owners. Learn SEO, paid ads (Google/Meta), CRO, and marketing automation to 10X your business.",
+    description: "Master Business Marketing Strategies & AI. Learn Local Business SEO, Digital Marketing Sales, and Marketing Automation for Business Owners. The #1 AI Digital Marketing Course to grow your business.",
     keywords: [
         "Digital Marketing for Business Owners",
+        "Business Marketing Strategies",
+        "Local Business SEO",
+        "Marketing Automation for Business Owners",
         "AI for Business Growth",
-        "Digital Marketing Course",
-        "SEO for Business",
-        "Facebook Ads Training",
-        "Google Ads Course",
-        "Marketing Automation",
-        "Business Growth Strategy",
-        "Digital Marketing Training",
-        "AI Marketing Tools"
+        "Digital Marketing Sales",
+        "SEO for Business Owners",
+        "Social Media Marketing Business",
+        "Small Business SEO",
+        "Grow Your Business with Digital Marketing",
+        "AI Digital Marketing",
+        "Online Marketing Business"
     ],
     url: "/ai-in-digital-marketing",
     image: "/og-images/ai-in-digital-marketing.jpg",

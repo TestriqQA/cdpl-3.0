@@ -51,22 +51,16 @@ export default function ProjectsSection() {
         {/* Section Header – layout like reference, SEO boosted */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Real-Time <span className="text-brand">Projects</span>
+            Real-Time <span className="text-brand">Projects for Business Growth</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-4xl mx-auto">
             Work on{" "}
-            <strong>industry-relevant AI in Digital Marketing projects</strong>{" "}
-            that build your portfolio and practical skills. Implement{" "}
+            <strong>live business case studies</strong>. Implement{" "}
             <strong>
-              SEO, Google Ads, Meta Ads, content marketing, automation
+              local SEO, lead generation funnels, automated email sequences,
             </strong>{" "}
-            and <strong>AI tools like ChatGPT &amp; DeepSeek</strong> in
-            real-world scenarios so you can confidently apply for{" "}
-            <em>
-              digital marketing, performance marketing, and growth marketing
-              jobs
-            </em>
-            .
+            and <strong>AI-driven ad campaigns</strong> for real niches. Stop learning theory and start building
+            assets that generate <span className="font-bold text-slate-800">real revenue</span>.
           </p>
         </div>
 
@@ -140,14 +134,12 @@ export default function ProjectsSection() {
             Domain Knowledge Coverage for Digital Marketing
           </h3>
           <p className="text-slate-200 mb-8 leading-relaxed">
-            Our <strong>AI in Digital Marketing projects</strong> cover multiple
-            high-growth business verticals so you can learn how to plan and
-            execute <strong>campaigns that actually convert</strong>. From{" "}
+            Our <strong>AI in Digital Marketing projects</strong> cover high-growth sectors.
+            Learn how to plan and execute <strong>campaigns that actually convert</strong>. From{" "}
             <strong>e-commerce funnels</strong> and{" "}
-            <strong>local lead generation</strong> to{" "}
-            <strong>personal brand growth, SaaS, and B2B marketing</strong>,
-            you&apos;ll get exposure to the real challenges agencies and brands
-            face every day.
+            <strong>local lead generation for services</strong> to{" "}
+            <strong>B2B lead generation systems</strong>,
+            you&apos;ll face the real challenges entrepreneurs solve daily.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {domains.map((domain, idx) => (
@@ -167,7 +159,7 @@ export default function ProjectsSection() {
             <em>AI digital marketing projects</em>,{" "}
             <em>Google Ads &amp; Meta Ads practical training</em>,{" "}
             <em>SEO and content marketing portfolio</em>,{" "}
-            <em>job-ready digital marketing course with projects</em>.
+            <em>business marketing strategy projects</em>.
           </p>
         </div>
 
@@ -228,11 +220,8 @@ export default function ProjectsSection() {
           </div>
           <p className="mt-4 text-xs sm:text-sm text-slate-600 max-w-3xl">
             Your <strong>AI in Digital Marketing portfolio</strong> will
-            showcase end-to-end projects that hiring managers love to
-            see—strategy, execution, tracking, and results. Perfect for{" "}
-            <em>freshers, working professionals, and freelancers</em> who want
-            to stand out in competitive{" "}
-            <strong>digital marketing job roles</strong>.
+            showcase end-to-end projects that prove you can drive business growth—strategy, execution, tracking, and ROI.
+            Perfect for <em>business owners, working professionals, and freelancers</em> who want solid proof of competence.
           </p>
         </div>
       </div>

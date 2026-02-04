@@ -26,7 +26,7 @@ const stats: Stat[] = [
     cardBg: 'bg-emerald-50',
     cardBorder: 'border-emerald-200',
     text: 'text-emerald-900',
-    caption: 'Growth outlook for software testing in the decade',
+    caption: 'Growth outlook for software testing in India',
   },
   {
     value: '101,000+',
@@ -35,43 +35,43 @@ const stats: Stat[] = [
     cardBg: 'bg-sky-50',
     cardBorder: 'border-sky-200',
     text: 'text-sky-900',
-    caption: 'Open roles across product and services companies',
+    caption: 'Open roles for Selenium & SDET professionals',
   },
   {
-    value: '4 LPA',
+    value: '4-8 LPA',
     label: 'Fresher Average Salary',
     delay: 0.2,
     cardBg: 'bg-amber-50',
     cardBorder: 'border-amber-200',
     text: 'text-amber-900',
-    caption: 'Typical starting CTC for software testing freshers',
-  },
-  {
-    value: '75%',
-    label: 'Job Satisfaction',
-    delay: 0.25,
-    cardBg: 'bg-violet-50',
-    cardBorder: 'border-violet-200',
-    text: 'text-violet-900',
-    caption: 'Satisfaction level reported for QA/testing careers',
-  },
-  {
-    value: '32%',
-    label: "India's Share in Global Market",
-    delay: 0.3,
-    cardBg: 'bg-rose-50',
-    cardBorder: 'border-rose-200',
-    text: 'text-rose-900',
-    caption: 'Share of the global software testing market',
+    caption: 'Typical starting package after SDET training',
   },
   {
     value: '95 Hours',
     label: 'Total Training Duration',
-    delay: 0.35,
+    delay: 0.25,
     cardBg: 'bg-slate-50',
     cardBorder: 'border-slate-200',
     text: 'text-slate-900',
-    caption: 'End-to-end contact hours for the program',
+    caption: 'Comprehensive selenium online course with projects',
+  },
+  {
+    value: '75%',
+    label: 'Job Satisfaction',
+    delay: 0.3,
+    cardBg: 'bg-violet-50',
+    cardBorder: 'border-violet-200',
+    text: 'text-violet-900',
+    caption: 'Satisfaction level reported for Automation Testers',
+  },
+  {
+    value: '100%',
+    label: 'Placement Assistance',
+    delay: 0.35,
+    cardBg: 'bg-rose-50',
+    cardBorder: 'border-rose-200',
+    text: 'text-rose-900',
+    caption: 'Dedicated support until you get hired',
   },
 ];
 
@@ -164,8 +164,7 @@ export default function StatsSection() {
             Real-World <span className="text-ST">QA & Automation</span> Career Metrics
           </h2>
           <p className="mt-3 text-lg leading-relaxed text-slate-600">
-            Figures below are sourced from our program brochure and industry snapshot-market demand, salary benchmarks,
-            satisfaction, and duration.
+            Join the booming automation market. Our <strong>advanced software testing course</strong> prepares you for the <strong>100,000+ job vacancies</strong> in India's top product and service companies.
           </p>
         </header>
 
@@ -199,9 +198,7 @@ export default function StatsSection() {
         {/* SEO-supportive copy */}
         <div className="mx-auto mt-8 max-w-4xl text-center">
           <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-            Build strength in <strong>Manual Testing</strong>, <strong>API Testing (Postman)</strong>, and{' '}
-            <strong>DBMS (MySQL)</strong>, with test management and defect tracking tools to accelerate hiring
-            readiness.
+            Build strength in <strong>Manual Testing</strong>, <strong>API Testing (Postman)</strong>, <strong>DBMS (MySQL)</strong>, and <strong>Selenium Java</strong> with our comprehensive curriculum designed for <strong>freshers and manual testers</strong>.
           </p>
         </div>
       </div>

@@ -76,7 +76,7 @@ export default function HeroSection() {
             <h1 className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
               <span>Master </span>
               <span className="bg-gradient-to-r from-teal-500 via-teal-600 to-emerald-500 bg-clip-text text-transparent">
-                Data Engineering: The Best BI and Big Data Engineering Program
+                Data Analytics & Business Intelligence with Big Data Engineering
               </span>
               <span> in </span>
               <span className="bg-gradient-to-r from-slate-900 to-indigo-600 bg-clip-text text-transparent">
@@ -91,13 +91,12 @@ export default function HeroSection() {
 
             {/* Subheading */}
             <p className="mt-4 max-w-3xl text-center text-base leading-relaxed text-slate-600 md:text-left md:text-lg">
-              Launch your career as a <strong>certified data engineer</strong> with India&apos;s most intensive 155-hour master program. Master <strong>SQL for data analytics</strong>, <strong>BI and big data engineering</strong>, and robust ETL workflows. Get <strong>Guaranteed Interviews</strong> and join 5,000+ successful alumni in Mumbai&apos;s thriving data economy.
+              Master the complete data lifecycle from enterprise <strong>BI data analyst</strong> dashboards to designing robust <strong>BI and Big Data Engineering</strong> pipelines. Build dual expertise in <strong>SQL for data analytics</strong>, ETL workflows, and cloud-based data platforms.
             </p>
 
             {/* SEO keywords line */}
             <p className="mt-3 max-w-3xl text-center text-sm text-slate-600 md:text-left">
-              Become a <strong>bi data analyst</strong> or <strong>sql data analyst</strong> with mastery in Power BI, Tableau, SQL, Python, Hadoop, Spark,
-              Databricks, and cloud data engineering. The <strong>best institute for data analytics</strong> for <strong>software engineer jobs in mumbai</strong>.
+              Topics: <strong>SQL in data analytics</strong>, Power BI, Tableau, Python, data warehousing, ETL, Hadoop, Spark, data lakes, cloud data engineering, data modeling, and real-world <strong>data engineering certifications</strong> projects.
             </p>
 
             {/* CTAs */}

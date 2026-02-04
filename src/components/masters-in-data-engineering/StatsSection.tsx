@@ -42,7 +42,7 @@ const enrichedStats: EnrichedStat[] = statsData.map((stat) => {
       return {
         ...stat,
         description:
-          "5.5-month structured Data Analytics with BI and Big Data Engineering master program designed for working professionals and graduates.",
+          "5.5-month structured Data Analytics with BI and Big Data Engineering master program designed for working professionals and graduates seeking Data Engineer Certification.",
         bgGradient: "from-teal-50 to-teal-100",
         iconBg: "bg-teal-500",
         ariaLabel:
@@ -52,7 +52,7 @@ const enrichedStats: EnrichedStat[] = statsData.map((stat) => {
       return {
         ...stat,
         description:
-          "155 hours of intensive, mentor-led training covering Business Intelligence, data warehousing, ETL, Big Data tools, and cloud data engineering.",
+          "155 hours of intensive, mentor-led training covering Business Intelligence, data warehousing, ETL, and how to become a data analyst in India.",
         bgGradient: "from-emerald-50 to-emerald-100",
         iconBg: "bg-emerald-500",
         ariaLabel:
@@ -62,7 +62,7 @@ const enrichedStats: EnrichedStat[] = statsData.map((stat) => {
       return {
         ...stat,
         description:
-          "40%+ projected job growth in Data Engineering and BI roles across India and global analytics hubs.",
+          "40%+ projected job growth in Data Engineering and BI Data Analyst roles across India and global analytics hubs.",
         bgGradient: "from-sky-50 to-sky-100",
         iconBg: "bg-sky-500",
         ariaLabel:
@@ -115,7 +115,7 @@ const StatsSection: React.FC = () => {
           </h2>
 
           <p className="mx-auto max-w-4xl text-base text-slate-600 sm:text-lg">
-            Why settle for a basic course when you can join the <strong>best institute for data analytics</strong> in Mumbai? Our <strong>data analytics program in Mumbai</strong> is designed for maximum career impact. With a <strong>4.8/5 rating</strong> and an average salary hike of <strong>₹12 LPA</strong>, we bridge the gap between learning and high-paying employment via <strong>bi and big data engineering</strong> mastery.
+            Why settle for a basic course when you can join the <strong>best institute for data analytics</strong> with our <strong>Data Analytics Program Mumbai</strong>? Gain in-demand skills across <strong>SQL analytics</strong>, ETL pipelines, and Big Data technologies that hiring managers actively look for in <strong>Software Engineer Jobs in Mumbai</strong>.
           </p>
         </header>
 
@@ -191,29 +191,7 @@ const StatsSection: React.FC = () => {
                 Data Economy
               </h3>
               <p className="text-sm leading-relaxed text-slate-700 sm:text-base">
-                Modern enterprises in{" "}
-                <strong>banking and finance, healthcare, e-commerce, FMCG,
-                  telecom, IT services, and consulting</strong> rely on{" "}
-                <strong>Data Engineers and BI professionals</strong> to design{" "}
-                <strong>
-                  scalable data pipelines, ETL workflows, and analytical
-                  dashboards
-                </strong>
-                . This{" "}
-                <strong>
-                  Data Analytics with BI and Big Data Engineering master program
-                </strong>{" "}
-                helps you bridge the skills gap with{" "}
-                <strong>
-                  real-world projects, interview preparation, and portfolio
-                  guidance
-                </strong>
-                -so you can confidently target{" "}
-                <strong>
-                  Data Engineer, BI Developer, Analytics Engineer, and
-                  Reporting Analyst
-                </strong>{" "}
-                roles.
+                Modern enterprises in banking, healthcare, and e-commerce rely on Data Engineers and <strong>SQL Data Analysts</strong> to design scalable data pipelines. This <strong>BI and Big Data Engineering</strong> master program bridges the skills gap with real-world projects—so you can confidently target <strong>Data Engineer, BI Developer, and Analytics Engineer</strong> roles.
               </p>
 
               <ul className="mt-4 grid grid-cols-1 gap-2 text-sm text-slate-700 sm:grid-cols-2 sm:text-[15px]">
@@ -252,11 +230,7 @@ const StatsSection: React.FC = () => {
               </ul>
 
               <p className="mt-4 text-xs text-slate-600 sm:text-sm">
-                Keywords: Data Analytics with BI and Big Data Engineering Course
-                • Business Intelligence Training • Data Engineer Certification •
-                BI Developer Jobs • Big Data Engineering Program • ETL and Data
-                Warehouse Course • Cloud Data Engineering • High-Paying Analytics
-                Career • Job-Oriented BI and Data Engineering Master Program.
+                Keywords: <strong>Best Institute for Data Analytics</strong>, <strong>SQL Data Analyst</strong>, <strong>Bi and Big Data Engineering</strong>, <strong>IIM Business Analytics</strong>, <strong>Data Analytics Program Mumbai</strong>, <strong>Data Engineering Certifications</strong>, <strong>How to Become Data Analyst in India</strong>.
               </p>
             </div>
           </div>

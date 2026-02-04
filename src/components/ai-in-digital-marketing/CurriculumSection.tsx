@@ -12,7 +12,7 @@ export default function CurriculumSection() {
   const [expandedModule, setExpandedModule] = useState<number | null>(null);
   const [isEnrollOpen, setIsEnrollOpen] = useState(false);
   const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
-  const courseName = "AI in Digital Marketing Course";
+  const courseName = "Master Digital Marketing & AI for Business Owners";
 
   // Reusable gradient colors for modules (cycled through)
   const colorClasses = [
@@ -31,24 +31,15 @@ export default function CurriculumSection() {
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Comprehensive{" "}
-            <span className="text-brand">AI Marketing Curriculum</span>
+            Comprehensive <span className="text-brand">AI Digital Marketing Course for Business Owners</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-4xl mx-auto">
-            Master <strong>AI in Digital Marketing</strong> with{" "}
-            <strong>13 in-depth modules</strong> covering{" "}
-            performance marketing, social media advertising, marketing
-            automation, AI tools, analytics, and ROI-driven growth strategies.
-            This <strong>job-ready AI digital marketing course</strong> is
-            designed for students, professionals, entrepreneurs, and business
-            owners who want to build <strong>high-converting campaigns</strong>{" "}
-            and <strong>scale revenue using AI</strong>.
+            From <strong>Local SEO for Businesses</strong> to Advanced AI Automation—A Complete Roadmap.
           </p>
           <p className="mt-4 text-sm md:text-base text-slate-500 max-w-3xl mx-auto">
-            Learn how to apply <strong>ChatGPT, automation, data-driven
-              decision-making, performance tracking, and conversion optimization</strong>{" "}
-            to real-world marketing funnels, lead generation systems, and
-            eCommerce or service-based businesses.
+            Master <strong>AI in Digital Marketing</strong> with modules designed for real-world impact.
+            Learn <strong>search engine optimization for local business</strong>, <strong>social media marketing business</strong> tactics,
+            and advanced AI integration to build <strong>high-converting campaigns</strong>.
           </p>
         </div>
 

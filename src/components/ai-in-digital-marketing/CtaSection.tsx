@@ -7,7 +7,7 @@ import EnrollModal from "@/components/EnrollModal";
 
 export default function CtaSection() {
   const [isEnrollOpen, setIsEnrollOpen] = useState(false);
-  const courseName = "AI in Digital Marketing Course";
+  const courseName = "Master Digital Marketing & AI for Business Owners";
   return (
     <section className="py-10 bg-gradient-to-r from-slate-900 via-brand to-slate-900 relative overflow-hidden">
       {/* Background decoration */}
@@ -26,13 +26,11 @@ export default function CtaSection() {
           {/* Subheading (original content + SEO boost) */}
           <p className="text-lg md:text-xl text-slate-200 mb-8 leading-relaxed">
             Join hundreds of successful entrepreneurs, freelancers, and business
-            owners who have transformed their businesses with our Digital
-            Marketing &amp; AI program. This{" "}
-            <strong>AI-powered digital marketing course</strong> is designed to
-            help you generate more leads, increase sales, and build a
-            high-converting online presence using{" "}
-            <em>performance marketing, SEO, social media, and marketing
-              automation</em>.
+            owners who have scaled their revenue with our program. This{" "}
+            <strong>AI-powered digital marketing course for business</strong> is designed to
+            help you generate consistent leads, automate sales, and build a
+            brand that dominates your local market using{" "}
+            <em>marketing automation, SEO, and AI tools</em>.
           </p>
 
           {/* Key Benefits – using your original 3 cards */}
@@ -84,9 +82,9 @@ export default function CtaSection() {
             </p>
             <p className="text-slate-300 text-sm mt-2">
               Offer valid for the next 50 enrollments only. Secure your seat in
-              this <strong>high-demand Digital Marketing &amp; AI bootcamp</strong>{" "}
+              this <strong>business-focused Digital Marketing &amp; AI masterclass</strong>{" "}
               and start scaling your business with proven{" "}
-              <em>growth marketing, funnel building, and automation strategies</em>.
+              <em>growth strategies, funnels, and automation systems</em>.
             </p>
           </div>
 
@@ -143,9 +141,9 @@ export default function CtaSection() {
           <p className="mt-4 text-xs sm:text-sm text-slate-500 max-w-3xl mx-auto">
             Keywords: <em>digital marketing course with AI</em>,{" "}
             <em>digital marketing program for entrepreneurs</em>,{" "}
-            <em>AI-driven marketing bootcamp</em>,{" "}
-            <em>online digital marketing course with 1:1 mentorship</em>,{" "}
-            <em>performance marketing &amp; AI tools training</em>.
+            <em>business marketing course</em>,{" "}
+            <em>online digital marketing course with business mentorship</em>,{" "}
+            <em>marketing automation training</em>.
           </p>
         </div>
       </div>

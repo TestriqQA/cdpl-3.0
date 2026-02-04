@@ -7,7 +7,7 @@ import EnrollModal from "@/components/EnrollModal";
 
 export default function WhoShouldEnroll() {
   const [isEnrollOpen, setIsEnrollOpen] = useState(false);
-  const courseName = "AI in Digital Marketing Course";
+  const courseName = "Master Digital Marketing & AI for Business Owners";
   const { targetAudience, industryApplications } = courseData;
 
   return (
@@ -20,10 +20,10 @@ export default function WhoShouldEnroll() {
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             This AI-powered digital marketing program is designed for{" "}
-            <strong>students, working professionals, entrepreneurs, freelancers, and career switchers</strong>{" "}
-            across multiple industries who want to master{" "}
-            <strong>SEO, performance marketing, social media marketing, automation, and AI tools</strong>{" "}
-            to accelerate their growth.
+            <strong>Business Owners, Entrepreneurs, Freelancers, and Working Professionals</strong>{" "}
+            who want to master{" "}
+            <strong>business marketing strategies, local SEO, marketing automation, and AI for business</strong>{" "}
+            to scale their revenue.
           </p>
         </div>
 
@@ -79,7 +79,9 @@ export default function WhoShouldEnroll() {
             <strong>AI in digital marketing</strong> drives impact in{" "}
             <strong>e-commerce, education, healthcare, real estate, SaaS, B2B, local businesses</strong>{" "}
             and more—so your skills translate directly into{" "}
-            <strong>job-ready, practical outcomes</strong>.
+            <strong>job-ready, practical outcomes</strong>. Whether you run a{" "}
+            <strong>clinic, real estate firm, coaching business, or e-commerce store</strong>,
+            you&apos;ll learn strategies that work for your niche.
           </p>
 
           <div className="grid grid-cols-1 gap-4">
@@ -122,11 +124,10 @@ export default function WhoShouldEnroll() {
 
           <p className="mt-6 text-xs sm:text-sm text-slate-300 max-w-4xl">
             Keywords: <em>AI in digital marketing course</em>,{" "}
-            <em>digital marketing for e-commerce</em>,{" "}
-            <em>performance marketing for startups</em>,{" "}
-            <em>social media marketing for brands</em>,{" "}
-            <em>marketing automation and AI tools</em>,{" "}
-            <em>job-oriented digital marketing program</em>.
+            <em>digital marketing for business owners</em>,{" "}
+            <em>marketing automation for small business</em>,{" "}
+            <em>business and marketing strategy course</em>,{" "}
+            <em>how to do digital marketing for business</em>.
           </p>
         </div>
 

@@ -11,10 +11,10 @@ const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: fal
 const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false });
 
 export default function HeroSection() {
-  const { basic } = courseData;
+
   const [isEnrollOpen, setIsEnrollOpen] = useState(false);
   const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
-  const courseName = "AI in Digital Marketing Course";
+  const courseName = "Master Digital Marketing & AI for Business Owners";
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -93,7 +93,7 @@ export default function HeroSection() {
               <Clock className="h-4 w-4 text-orange-500" />
               <span className="text-sm font-semibold text-slate-700">
                 Duration:{" "}
-                <span className="text-brand">{basic.duration}</span>
+                <span className="text-brand">3 Months</span>
               </span>
             </div>
 
@@ -101,11 +101,11 @@ export default function HeroSection() {
             <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 md:mt-0 md:text-4xl xl:text-5xl">
               <span>Master </span>
               <span className="bg-gradient-to-r from-orange-500 via-brand to-red-500 bg-clip-text text-transparent">
-                Digital Marketing
+                AI in Digital Marketing
               </span>
-              <span> & </span>
+              <span>: Grow Your Business with </span>
               <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                AI Automation
+                Digital Marketing Strategies
               </span>
             </h1>
 
@@ -116,19 +116,17 @@ export default function HeroSection() {
 
             {/* Subheading – using basic.subtitle */}
             <p className="mt-4 max-w-3xl text-center text-base leading-relaxed text-slate-600 md:text-left md:text-lg">
-              {basic.subtitle}
+              The #1 AI Digital Marketing Course for Business Owners in Mumbai & Thane to 10X Growth.
             </p>
 
             {/* Description – using basic.description */}
             <p className="mt-3 max-w-3xl text-center text-sm text-slate-600 md:text-left">
-              {basic.description}
+              Stop relying on agencies. Learn <strong>business marketing strategies</strong>, <strong>local business SEO</strong>, and <strong>marketing automation for business owners</strong> in this 3-month comprehensive program. Master <strong>AI digital marketing</strong> tools to generate leads, automate sales, and build a profitable <strong>online marketing business</strong> system yourself.
             </p>
 
             {/* Key SEO topics line */}
             <p className="mt-3 max-w-3xl text-center text-xs text-slate-600 md:text-left">
-              Topics: AI content creation, performance marketing with AI, Meta & Google Ads,
-              AI-powered SEO, marketing automation, funnels, lead generation, marketing
-              analytics, chatbot automation, email workflows, and more.
+              Topics: <strong>Business Marketing Strategies</strong>, <strong>Local Business SEO</strong>, <strong>Marketing Automation</strong>, <strong>AI for Business Owners</strong>, <strong>Digital Marketing Sales</strong>.
             </p>
 
             {/* CTAs (Standardized) */}
@@ -161,10 +159,10 @@ export default function HeroSection() {
             {/* Highlights (similar layout to reference) */}
             <div className="mt-8 grid w-full max-w-2xl grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
               {[
-                { icon: "📊", label: "Real Projects" },
-                { icon: "🤖", label: "AI Tools Training" },
-                { icon: "🎓", label: "Industry Certification" },
-                { icon: "💼", label: "Job & Business Ready" },
+                { icon: "📊", label: "90+ Real Projects" },
+                { icon: "🤖", label: "24/7 Mentor Support" },
+                { icon: "🎓", label: "Google/Meta Certified" },
+                { icon: "💼", label: "#1 for Business Owners" },
               ].map((item, idx) => (
                 <div
                   key={idx}
@@ -183,32 +181,30 @@ export default function HeroSection() {
               <div className="flex items-center gap-2">
                 <span className="text-2xl">⭐</span>
                 <span>
-                  <strong className="text-slate-900">9.6/10</strong> Program Rating
+                  <strong className="text-slate-900">4.9/5</strong> Rating (1200+ Reviews)
                 </span>
               </div>
               <div className="hidden h-6 w-px bg-slate-300 sm:block" />
               <div className="flex items-center gap-2">
                 <span className="text-2xl">👥</span>
                 <span>
-                  <strong className="text-slate-900">500+</strong> Successful Graduates
+                  <strong className="text-slate-900">5000+</strong> Trained
                 </span>
               </div>
               <div className="hidden h-6 w-px bg-slate-300 sm:block" />
               <div className="flex items-center gap-2">
                 <span className="text-2xl">🏆</span>
                 <span>
-                  <strong className="text-slate-900">14+ Years</strong> Expertise
+                  <strong className="text-slate-900">14+ Years</strong> Experience
                 </span>
               </div>
             </div>
 
             {/* Extra SEO copy */}
             <div className="mt-8 max-w-3xl text-center text-xs leading-relaxed text-slate-500 md:text-left">
-              This AI-powered digital marketing course is built for students, entrepreneurs,
-              freelancers, and working professionals who want to dominate social media, ads,
-              and organic marketing using modern AI tools. Learn how to plan campaigns, create
-              high-converting content, optimize ads, and automate your marketing to grow
-              revenue faster.
+              This AI-powered digital marketing course is built for <strong>Business Owners</strong>,
+              Entrepreneurs, Freelancers, and professionals who want to dominate social media, Google,
+              and organic marketing using modern AI and automation tools.
             </div>
           </div>
 

@@ -9,21 +9,21 @@ const careerRoles: CareerRole[] = [
   {
     id: 1,
     title: "Business Intelligence Analyst",
-    description: "Focus on reporting, dashboards, and data-driven strategy.",
+    description: "Focus on strategy and SQL Analytics.",
     salaryRange: "₹6 L - ₹15 L",
   },
   {
     id: 2,
     title: "Data Analyst",
     description:
-      "Focus on statistical analysis, insight generation, and data storytelling.",
+      "Focus on insights and Data Analytics.",
     salaryRange: "₹5 L - ₹12 L",
   },
   {
     id: 3,
     title: "Big Data Engineer",
     description:
-      "Focus on building and maintaining scalable data pipelines and infrastructure.",
+      "Focus on Bi and Big Data Engineering.",
     salaryRange: "₹8 L - ₹25 L+",
   },
 ];
@@ -117,19 +117,19 @@ const CareerSection: React.FC = () => {
                 icon: <TrendingUp className="w-8 h-8" />,
                 title: "Rapid Career Growth",
                 description:
-                  "Data professionals see 40–50% salary growth within 2–3 years of experience in analytics, BI, and Big Data roles.",
+                  "Data Engineers see 40–50% salary growth within 2–3 years.",
               },
               {
                 icon: <Briefcase className="w-8 h-8" />,
                 title: "Multiple Career Paths",
                 description:
-                  "Start as a Data Analyst or BI Analyst and move into specialized roles such as Big Data Engineer, Analytics Engineer, or Data Architect.",
+                  "Start as a SQL Data Analyst and move into specialized roles suck as Big Data Engineer.",
               },
               {
                 icon: <Users className="w-8 h-8" />,
                 title: "Global Opportunities",
                 description:
-                  "Work with top MNCs and tech giants worldwide, with options for remote and on-site positions in data-driven teams.",
+                  "Work in Software Engineer Jobs in Mumbai and global markets.",
               },
             ].map((item, idx) => (
               <div key={idx} className="text-center">

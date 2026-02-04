@@ -18,62 +18,62 @@ type Module = { title: string; topics: string[] };
 const curriculum: Module[] = [
     // From “Course Curriculum – Manual Software Testing” spread
     {
-        title: 'Manual Software Testing',
+        title: 'Manual Software Testing Fundamentals',
         topics: [
-            'SDLC & STLC fundamentals',
+            'SDLC, STLC & Bug Life Cycle',
             'Black/White/Grey Box testing',
-            'Functional, Integration, System, Acceptance',
+            'Functional, Integration, System, UAT',
             'Regression, Smoke & Sanity suites',
         ],
     },
     // From Test Management / Agile / Defect Tracking pages
     {
-        title: 'Test Management & Agile',
+        title: 'Test Management & Agile Methodology',
         topics: [
             'Test Plans, Test Cases & RTM',
-            'Agile process & ceremonies',
+            'Agile Scrum process & ceremonies',
             'Jira, TestRail, Mantis BT usage',
-            'DTLC with Severity/Priority & Reporting',
+            'Defect Tracking & Priority/Severity',
         ],
     },
     // From API Testing using POSTMAN & RestAPIs pages
     {
-        title: 'API Testing using POSTMAN & RestAPIs',
+        title: 'API Testing using POSTMAN & RestAssured',
         topics: [
             'GET/POST/PUT/PATCH/DELETE requests',
-            'Status, headers, cookies, response time',
-            'JSON Schema & response body validation',
-            'Collections, Workspaces, Environments & Auth',
+            'Status, headers, cookies, payload',
+            'JSON Schema & response validation',
+            'Chaining requests & Environment variables',
         ],
     },
     // From DBMS using MySQL pages
     {
-        title: 'DBMS using MySQL',
+        title: 'DBMS using MySQL for Testers',
         topics: [
-            'SELECT/WHERE/GROUP BY/HAVING clauses',
-            'INNER/OUTER/SELF/NATURAL/CROSS joins',
-            'DDL, DML, TCL, DCL',
-            'Views, Procedures, Functions, Triggers',
+            'SELECT/WHERE/Joins for data validation',
+            'DDL, DML operations for test data',
+            'Views, Stored Procedures basics',
+            'Validating backend data integrity',
         ],
     },
     // From Real-Time Projects / Domain Knowledge pages
     {
-        title: 'Real-Time Projects & Domains',
+        title: 'Selenium Automation with Java',
         topics: [
-            'E-commerce testing scenarios',
-            'CRM workflows & validations',
-            'Gaming: UX, performance & stability',
-            'Phone Book app: data integrity & security',
+            'WebDriver setup & Locators (XPath)',
+            'Handling Popups, Frames, Windows',
+            'TestNG Framework & Annotations',
+            'Page Object Model (POM) Design Pattern',
         ],
     },
     // From Course Highlights + Certification pages
     {
-        title: 'Course Highlights & Certification',
+        title: 'Advanced Automation & Mobile Testing',
         topics: [
-            '95 hours • 3.5 months',
-            '6+ assignments • 5 projects',
-            'AAA-validated certification',
-            'Hybrid: Classroom + Online',
+            'Cypress testing course fundamentals',
+            'Appium testing course for Mobile Apps',
+            'CI/CD with Jenkins & Git',
+            'Intro to Performance Testing (JMeter)',
         ],
     },
 ];
@@ -156,7 +156,7 @@ export default function CurriculumSection() {
                                 </ul>
 
                                 <p className="mt-4 text-xs text-slate-700">
-                                    Outcomes: hands-on labs, assessment checklists, CI/CD integration, and evidence-based reporting.
+                                    Outcomes: Build a robust <strong>hybrid framework</strong>, perform <strong>cross-browser testing</strong>, and execute <strong>mobile automation</strong> on real devices.
                                 </p>
                             </li>
                         );

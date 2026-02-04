@@ -10,28 +10,28 @@ const enrollmentCriteria: WhoShouldEnrollItem[] = [
     id: 1,
     title: "IT Professionals",
     description:
-      "Looking to transition from traditional IT roles (e.g., QA, Support) into high-demand, future-proof data engineering and analytics positions.",
+      "Looking to transition to Data Engineering Certifications roles. Need interest in SQL for data analytics.",
     icon: "Briefcase",
   },
   {
     id: 2,
     title: "Recent Graduates",
     description:
-      "Seeking a comprehensive, job-ready skill set right out of college to secure a high-paying entry-level role in the data domain.",
+      "Seeking a high-paying SQL Data Analyst role. Desire to build a Data Analytics skill set.",
     icon: "GraduationCap",
   },
   {
     id: 3,
     title: "BI Analysts & Data Analysts",
     description:
-      "Wanting to upgrade their skills to include Big Data Engineering tools (Spark, Hadoop) to handle massive datasets and advance their careers.",
+      "Wanting to upgrade to BI and Big Data Engineering. Experience in SQL Analytics.",
     icon: "RefreshCw",
   },
   {
     id: 4,
     title: "Career Changers",
     description:
-      "Anyone with a basic understanding of programming or databases who is eager to enter the lucrative and rapidly growing field of data.",
+      "Anyone eager to enter the lucrative Data Analytics Program Mumbai. Motivation to learn SQL in Data Analytics.",
     icon: "User",
   },
 ];
@@ -98,25 +98,25 @@ const successFactors = [
   {
     title: "Regular Practice",
     description:
-      "Allocate consistent weekly time for coding exercises, SQL queries, BI dashboards, and Big Data labs.",
+      "Allocate consistent time for SQL Analytics and Big Data Engineering labs.",
     icon: "⏰",
   },
   {
     title: "Active Participation",
     description:
-      "Engage in doubt-solving, peer discussions, and mentor sessions to accelerate your learning.",
+      "Engage in discussions for Data Analytics Program Mumbai topics.",
     icon: "🤝",
   },
   {
     title: "Project-First Mindset",
     description:
-      "Complete all real-world projects to build a strong portfolio in BI, Data Analytics, and Big Data Engineering.",
+      "Complete all real-world projects to build a strong portfolio in BI and Big Data Engineering.",
     icon: "🎯",
   },
   {
     title: "Continuous Learning",
     description:
-      "Stay updated with new tools, cloud services, and industry use cases in the data ecosystem.",
+      "Stay updated with new tools and Certifications for Data Engineers.",
     icon: "📚",
   },
 ];

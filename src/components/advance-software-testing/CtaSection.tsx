@@ -50,7 +50,7 @@ export default function CtaSection() {
             Become a <span className="text-ST">Full-Stack SDET</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600">
-            Master <strong>selenium training</strong>, <strong>appium training</strong>, and <strong>cypress automation course</strong> in our comprehensive <strong>SDET training</strong>. Next cohort starts in <strong>2 days</strong>. Limited seats in Mumbai/Thane.
+            Master <strong>Selenium</strong>, <strong>Appium</strong>, and <strong>Cypress</strong> in our comprehensive <strong>SDET training</strong>. Next batch starts soon. Enroll now for <strong>100% placement support</strong>.
           </p>
 
           {/* Primary actions */}

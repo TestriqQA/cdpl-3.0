@@ -80,8 +80,7 @@ export default function CareerSection() {
   const courseName = "Comprehensive Data Science and AI - Master Program";
 
   const jobs = "101,000+ Job Vacancies in India";
-  const sub =
-    "High-growth careers across Data Science, Machine Learning Engineering, MLOps, and Applied AI in product & services companies.";
+
   const keywords =
     "data science jobs India, machine learning engineer hiring, AI careers, analytics roles, data scientist vacancies, MLOps jobs, DS AI placements";
 

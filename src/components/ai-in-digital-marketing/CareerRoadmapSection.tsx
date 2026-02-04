@@ -7,7 +7,7 @@ import EnrollModal from "@/components/EnrollModal";
 
 export default function CareerRoadmapSection() {
   const [isEnrollOpen, setIsEnrollOpen] = useState(false);
-  const courseName = "AI in Digital Marketing Course";
+  const courseName = "Master Digital Marketing & AI for Business Owners";
   const { learningPath } = courseData;
 
   return (
@@ -20,7 +20,7 @@ export default function CareerRoadmapSection() {
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             An 8-step structured learning path designed to transform you into a
-            digital marketing expert
+            digital marketing expert and business leader.
           </p>
         </div>
 

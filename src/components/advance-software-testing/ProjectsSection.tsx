@@ -18,9 +18,9 @@ type Project = {
 const projects: Project[] = [
   {
     icon: <ShoppingCart className="w-7 h-7" />,
-    title: 'E-Commerce Full-Stack Testing',
+    title: 'E-Commerce Automation Framework',
     description:
-      'Automate end-to-end user journeys: auth, cart, checkout, payments, and order lifecycle with robust reporting.',
+      'Automate end-to-end user journeys: login, cart, payment, and checkout using Selenium Java & TestNG.',
     features: ['POM + TestNG', 'API + DB Validation', 'Cross-Browser', 'Jenkins CI'],
     cardBg: 'bg-sky-50',
     cardBorder: 'border-sky-200',
@@ -29,9 +29,9 @@ const projects: Project[] = [
   },
   {
     icon: <Smartphone className="w-7 h-7" />,
-    title: 'Banking Mobile App',
+    title: 'Banking Mobile App Testing',
     description:
-      'Build reliable Appium test suites for Android/iOS on real devices and cloud farms to validate critical flows.',
+      'Build reliable Appium test suites for Android/iOS. Validate secure logins, transactions, and gestures.',
     features: ['Gestures', 'OTP Handling', 'Biometric Login', 'Cloud Device Farm'],
     cardBg: 'bg-emerald-50',
     cardBorder: 'border-emerald-200',
@@ -40,9 +40,9 @@ const projects: Project[] = [
   },
   {
     icon: <Shield className="w-7 h-7" />,
-    title: 'Security & Performance Suite',
+    title: 'API & Performance Suite',
     description:
-      'Establish quality gates with load tests and automated OWASP scans to prevent regressions before release.',
+      'Validate REST APIs using Rest Assured and load test endpoints with JMeter for scalability.',
     features: ['JMeter Scripts', 'ZAP Automation', 'SSL Testing', 'Report Dashboard'],
     cardBg: 'bg-amber-50',
     cardBorder: 'border-amber-200',

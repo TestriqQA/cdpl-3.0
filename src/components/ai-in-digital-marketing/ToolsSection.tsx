@@ -17,7 +17,7 @@ interface ToolCategory {
 
 export default function ToolsSection() {
   const [isEnrollOpen, setIsEnrollOpen] = useState(false);
-  const courseName = "AI in Digital Marketing Course";
+  const courseName = "Master Digital Marketing & AI for Business Owners";
   const { tools } = courseData as { tools: ToolCategory[] };
 
   // Flatten tools
@@ -42,15 +42,12 @@ export default function ToolsSection() {
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Tools & <span className="text-brand">Technologies</span>
+            Tools & <span className="text-brand">Technologies</span> for Business Automation
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            Master industry-standard tools used by top digital marketers and
-            businesses worldwide. From <strong>AI tools</strong> to{" "}
-            <strong>analytics, automation, SEO, social media, and CRM
-              platforms</strong>, you&apos;ll work hands-on with the exact
-            marketing stack used in high-performing{" "}
-            <em>agencies, brands, and performance marketing teams</em>.
+            Master the <strong>business automation software</strong> and <strong>AI digital marketing</strong> tools that sustain
+            high-growth companies. From <strong>CRM integrations</strong> to <strong>chatbots</strong> and <strong>ad platforms</strong>,
+            learn the exact tech stack needed to run a lean, profitable marketing operation.
           </p>
         </div>
 
@@ -97,10 +94,7 @@ export default function ToolsSection() {
             <strong>AI + Digital Marketing tool stack</strong> that covers{" "}
             <strong>SEO, performance marketing, email automation, analytics,
               social media, and AI content generation</strong>. This ensures you
-            are job-ready for roles like{" "}
-            <em>Digital Marketing Specialist, Performance Marketer, SEO
-              Executive, Social Media Manager, Growth Marketer</em>, and{" "}
-            <em>Freelance Digital Marketer</em>.
+            can build <strong>marketing automation for business owners</strong> systems that work 24/7.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -254,10 +248,9 @@ export default function ToolsSection() {
 
             <p className="mt-5 text-xs sm:text-sm text-slate-600 max-w-3xl mx-auto">
               Perfect for anyone looking for a{" "}
-              <em>job-oriented digital marketing course with tools</em>,{" "}
-              <em>AI marketing training</em>, or{" "}
-              <em>hands-on performance marketing program</em> that mirrors real
-              agency workflows.
+              <em>digital marketing course for business owners</em>,{" "}
+              <em>marketing automation training</em>, or{" "}
+              <em>hands-on AI marketing program</em> that solves real business problems.
             </p>
           </div>
         </div>

@@ -6,44 +6,44 @@ export type AiInDigitalMarketingFaq = {
 
 export const AI_IN_DIGITAL_MARKETING_FAQS: AiInDigitalMarketingFaq[] = [
     {
-        question: "Who is this course specifically designed for?",
-        answer: "This course is designed for business owners, entrepreneurs, freelancers, consultants, and anyone looking to master digital marketing and AI strategies to grow their business. No prior digital marketing experience is required.",
-        category: "General",
+        question: "Is this course suitable for small business owners?",
+        answer: "Absolutely. This course is specifically designed for business owners, entrepreneurs, and startups. We focus on low-cost, high-impact strategies like local SEO, organic social media growth, and AI automation tools that reduce the need for large marketing teams.",
+        category: "Business",
     },
     {
-        question: "What is the duration and time commitment for the program?",
-        answer: "The program is a 3-month cohort program requiring 6 hours per week commitment, totaling 40-50 learning hours. You can attend sessions in our Learning Space or online, whichever suits you best.",
-        category: "General",
+        question: "Can I use these strategies for my B2B business?",
+        answer: "Yes. The curriculum covers B2B-specific strategies including LinkedIn marketing, cold email automation, lead nurturing funnels, and CRM integration to help you generate high-quality B2B leads.",
+        category: "Business",
     },
     {
-        question: "What is the learning format?",
-        answer: "We offer a hybrid Learning Space + Online training pattern. Trainers conduct live sessions from our Learning Spaces, which are live-streamed for online participants. All sessions are recorded for later viewing.",
-        category: "General",
+        question: "Do I need to hire a team after this course?",
+        answer: "The goal of this course is to make you self-sufficient. With the AI tools and automation techniques you'll learn, you can manage your marketing alone or with a very small team, saving significant costs on agency fees.",
+        category: "Operations",
     },
     {
-        question: "Do I need prior digital marketing experience?",
-        answer: "No pre-requisite is required. Whether you're a complete beginner or have some experience, you can choose between Core or Advanced modules based on your current expertise level.",
-        category: "Eligibility",
+        question: "What specific AI tools will be covered?",
+        answer: "We cover practical business applications of ChatGPT for content and copy, Midjourney/DALL-E for visuals, and specialized AI tools for video creation, ad optimization, and workflow automation (like Zapier/Make).",
+        category: "Tools",
     },
     {
-        question: "What kind of support or consultation is provided?",
-        answer: "We provide 1:1 doubt-solving sessions and lifetime consultation. Whenever you need help, our team is just a call away. We also offer business niche-based and specific problem-solving consultation.",
+        question: "How is this different from a general digital marketing course?",
+        answer: "General courses focus on 'getting a job'. This course focuses on 'growing a business'. We skip the fluff and focus purely on strategies that drive revenue, leads, and brand visibility for business owners.",
+        category: "Comparison",
+    },
+    {
+        question: "What is the duration and schedule?",
+        answer: "The program is a 3-month intensive cohort with weekend or weekday batches available to suit busy business schedules. You also get lifetime access to the community and updated course materials.",
+        category: "Logistics",
+    },
+    {
+        question: "Will I get help with my own business marketing during the course?",
+        answer: "Yes, the course includes live project work where you will apply the strategies directly to your own business under the mentorship of experts.",
         category: "Support",
     },
     {
-        question: "What tools and technologies will I master?",
-        answer: "You'll learn industry-standard tools including SEMrush, Ahrefs, ChatGPT, GA4, Meta Ads, Google Ads, LinkedIn Ads, Data Studio, and many more. All tools are selected based on current industry needs.",
-        category: "Curriculum",
-    },
-    {
-        question: "What certifications will I receive?",
-        answer: "Upon completion, you'll receive internationally recognized certifications in Digital Marketing, Digital Analytics, and Social Media Specialist.",
-        category: "Certification",
-    },
-    {
-        question: "How will this course help my business?",
-        answer: "Based on our case studies, students have achieved 300% increase in online sales, 60% jump in website traffic, and significant lead generation improvements. The course teaches strategies specifically tailored to your business niche.",
-        category: "Outcomes",
+        question: "What if I miss a live session?",
+        answer: "All live sessions are recorded and uploaded to your learning portal within 24 hours, so you can watch them at your convenience.",
+        category: "logistics",
     },
 ];
 

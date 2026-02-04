@@ -26,7 +26,7 @@ const FaqSection: React.FC = () => {
             Quick Answers
           </h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            FAQ: <span className="text-[#0f766e]">BI & Big Data Engineering Master Program</span>
+            FAQ: <span className="text-[#0f766e]">Data Analytics & Big Data Engineering Program</span>
           </h3>
           <p className="text-lg text-slate-600">
             Everything you need to know about the program, eligibility, and
@@ -34,10 +34,10 @@ const FaqSection: React.FC = () => {
           </p>
           <p className="mt-3 text-sm text-slate-500">
             Get clarity on how this{" "}
-            <strong>Data Analytics with BI and Big Data Engineering Master Program</strong>{" "}
+            <strong>Data Analytics Program Mumbai</strong>{" "}
             helps you transition into{" "}
-            <em>Business Intelligence, Data Analyst, and Big Data Engineer</em>{" "}
-            roles using tools like <strong>SQL, Python, Tableau, Power BI, Hadoop, and Spark</strong>.
+            <em>Business Intelligence, SQL Data Analyst, and Big Data Engineer</em>{" "}
+            roles.
           </p>
         </div>
 
@@ -125,10 +125,7 @@ const FaqSection: React.FC = () => {
             </Link>
           </div>
           <p className="mt-4 text-xs text-slate-600 sm:text-sm">
-            Keywords: Data Analytics with BI and Big Data Engineering FAQ •
-            eligibility for data engineering course • job assistance and
-            placement support • globally recognized Tableau and Power BI
-            certifications • difference between Data Analyst and Data Engineer.
+            Keywords: <strong>Best Institute for Data Analytics</strong>, <strong>SQL Data Analyst</strong>, <strong>Bi and Big Data Engineering</strong>, <strong>IIM Business Analytics</strong>, <strong>Data Analytics Program Mumbai</strong>, <strong>Data Engineering Certifications</strong>, <strong>How to Become Data Analyst in India</strong>.
           </p>
         </div>
       </div>

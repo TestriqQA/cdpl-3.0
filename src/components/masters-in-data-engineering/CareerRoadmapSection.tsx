@@ -10,7 +10,7 @@ const roadmapData: CareerPathStep[] = [
     id: 1,
     title: "Step 1: Foundation & Analysis",
     description:
-      "Master SQL, Excel, and basic Python. This program provides the core skills to start as a Data Analyst or Junior BI Analyst.",
+      "Master SQL in data analytics and Excel. Start your journey as a SQL Data Analyst.",
     role: "Data Analyst / Junior BI Analyst",
   },
   {
@@ -24,14 +24,14 @@ const roadmapData: CareerPathStep[] = [
     id: 3,
     title: "Step 3: Data Engineering Associate",
     description:
-      "Learn Hadoop and the fundamentals of distributed systems, focusing on data warehousing and data lake concepts.",
+      "Learn Hadoop and Certifications for Data Engineers concepts.",
     role: "Junior Data Engineer",
   },
   {
     id: 4,
     title: "Step 4: Big Data Engineer Mastery",
     description:
-      "Master Apache Spark, Databricks, and build complex, scalable ETL/ELT pipelines for massive datasets.",
+      "Master Apache Spark and BI and Big Data Engineering pipelines.",
     role: "Big Data Engineer",
   },
   {
@@ -97,7 +97,7 @@ const CareerRoadmapSection: React.FC = () => {
             SEO Boost: Long-Term Vision
           </h2>
           <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Your 5-Step Path to Becoming a Big Data Engineer
+            Your 5-Step Career Roadmap to Becoming a Big Data Engineer
           </h3>
           <p className="mt-4 text-xl text-gray-500">
             This master program is the launchpad for a decade-long career progression in the
@@ -106,14 +106,9 @@ const CareerRoadmapSection: React.FC = () => {
           {/* extra SEO-rich line */}
           <p className="mt-3 text-sm text-gray-500">
             Follow a proven path from{" "}
-            <strong>Data Analyst and Junior BI Analyst</strong> roles into{" "}
-            <strong>Business Intelligence Specialist</strong>,{" "}
-            <strong>Junior Data Engineer</strong>,{" "}
-            <strong>Big Data Engineer</strong>, and finally{" "}
-            <strong>Data Architect / Data Lead</strong>. This roadmap is tailored for a{" "}
-            high-demand <strong>Data Analytics with BI and Big Data Engineering master program</strong>{" "}
-            targeting global <em>data engineer jobs</em>, <em>BI careers</em>, and{" "}
-            <em>cloud-driven big data roles</em>.
+            <strong>Data Analyst</strong> roles into{" "}
+            <strong>Big Data Engineer</strong>. This roadmap is tailored for a{" "}
+            high-demand <strong>Data Analytics Program Mumbai</strong>.
           </p>
         </div>
 

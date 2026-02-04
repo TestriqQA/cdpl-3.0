@@ -7,7 +7,7 @@ import CareerSessionModal from "@/components/CareerSessionModal";
 
 export default function CareerSection() {
   const [isCareerOpen, setIsCareerOpen] = useState(false);
-  const courseName = "AI in Digital Marketing Course";
+  const courseName = "Master Digital Marketing & AI for Business Owners";
   const careerPaths = [
     {
       title: "Digital Marketing Manager",
@@ -94,7 +94,7 @@ export default function CareerSection() {
         {/* Section Header – reference layout + SEO-rich copy */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Career <span className="text-brand">Opportunities</span>
+            Career & <span className="text-brand">Business Opportunities</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Multiple career paths and growth opportunities after completing the
@@ -103,7 +103,7 @@ export default function CareerSection() {
               high-demand digital marketing, performance marketing, and AI-driven
               marketing roles
             </strong>{" "}
-            across agencies, brands, startups, and global companies.
+            or launch your own <strong>online marketing business</strong>.
           </p>
         </div>
 
@@ -181,7 +181,7 @@ export default function CareerSection() {
                 icon: <Users className="w-8 h-8" />,
                 title: "Global & Remote Opportunities",
                 description:
-                  "Work with top companies, agencies, and global clients in remote, hybrid, or on-site roles across industries.",
+                  "Work with top companies, agencies, and global clients in remote, hybrid, or on-site roles across industries. Or start your freelance consulting.",
               },
             ].map((item, idx) => (
               <div key={idx} className="text-center">
@@ -243,17 +243,16 @@ export default function CareerSection() {
             Keywords:{" "}
             <em>digital marketing career opportunities</em>,{" "}
             <em>performance marketing jobs</em>,{" "}
-            <em>SEO specialist salary in India</em>,{" "}
+            <em>start digital marketing agency</em>,{" "}
             <em>freelance digital marketer income</em>,{" "}
-            <em>AI in digital marketing careers</em>,{" "}
-            <em>job-oriented digital marketing course with placement</em>.
+            <em>AI in digital marketing careers</em>.
           </p>
         </div>
 
         {/* Top Hiring Companies – adapted to digital marketing */}
         <div className="bg-gradient-to-r from-orange-50 to-blue-50 rounded-2xl p-8 md:p-12 border-2 border-orange-200 mb-12">
           <h3 className="text-2xl font-bold text-slate-900 mb-8 text-center">
-            Top Companies Hiring Digital Marketing & Performance Marketers
+            Top Companies Hiring Digital Marketing & AI Professionals
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {hiringCompanies.map((company, idx) => (
@@ -272,7 +271,7 @@ export default function CareerSection() {
         <div className="text-center">
           <div className="inline-block p-8 bg-gradient-to-r from-orange-100 to-indigo-100 rounded-2xl border-2 border-orange-300">
             <p className="text-lg text-gray-900 font-semibold mb-4">
-              Ready to launch your digital marketing career?
+              Ready to launch your digital marketing career or business?
             </p>
             <button
               onClick={() => setIsCareerOpen(true)}

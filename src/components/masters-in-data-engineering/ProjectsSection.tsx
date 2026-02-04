@@ -18,28 +18,28 @@ const projectsData: ProjectItem[] = [
     id: 1,
     title: "E-commerce Sales & Inventory Dashboard",
     description:
-      "Design and implement a dynamic Business Intelligence dashboard using Power BI and Tableau to track key performance indicators (KPIs) like sales, inventory levels, and customer lifetime value, sourced from a MySQL database.",
+      "Design a BI Data Analyst dashboard using Power BI and SQL Analytics.",
     tools: ["Power BI", "Tableau", "MySQL", "SQL"],
   },
   {
     id: 2,
     title: "Social Media Sentiment Analysis Pipeline",
     description:
-      "Build a Big Data pipeline using Apache Spark (PySpark) to ingest real-time social media data, perform natural language processing (NLP) for sentiment analysis, and store the results in a data lake (HDFS).",
+      "Build a Big Data Engineering pipeline using Apache Spark (PySpark) to ingest real-time social media data.",
     tools: ["Apache Spark", "PySpark", "Hadoop (HDFS)", "Python"],
   },
   {
     id: 3,
     title: "Financial Data ETL and Data Warehouse",
     description:
-      "Develop a robust Extract, Transform, Load (ETL) process using Databricks to clean, transform, and load large volumes of financial transaction data into a structured data warehouse for regulatory reporting and advanced analytics.",
+      "Develop an ETL process using Databricks similar to IIM Business Analytics case studies.",
     tools: ["Databricks", "Apache Spark", "ETL/ELT", "Data Modeling"],
   },
   {
     id: 4,
     title: "Advanced Predictive Analytics with Python",
     description:
-      "Utilize Python libraries (Pandas, Scikit-learn) to build a predictive model (e.g., customer churn prediction) and visualize the results using Matplotlib and Seaborn, demonstrating end-to-end analytical capability.",
+      "Utilize Python libraries (Pandas, Scikit-learn) to showcase Data Analytics capabilities.",
     tools: ["Python", "Pandas", "Matplotlib", "Seaborn", "Machine Learning"],
   },
 ];
@@ -182,14 +182,7 @@ const ProjectsSection: React.FC = () => {
             Domain Knowledge Coverage
           </h3>
           <p className="text-slate-200 mb-8 leading-relaxed">
-            Our projects span multiple business domains so you gain exposure to{" "}
-            <strong>real-world data challenges</strong>, not just textbook
-            examples. From <strong>e-commerce dashboards</strong> and{" "}
-            <strong>social media analytics</strong> to{" "}
-            <strong>financial data warehouses</strong> and{" "}
-            <strong>cloud-based Big Data pipelines</strong>, you build the
-            domain understanding recruiters look for in{" "}
-            <strong>BI & Big Data Engineering</strong> roles.
+            Our projects span domains like <strong>Software Engineer Jobs in Mumbai</strong> sectors so you gain exposure to real-world challenges. From e-commerce dashboards to financial data warehouses, you build the domain understanding recruiters look for in <strong>BI and Big Data Engineering</strong> roles.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {domains.map((domain, idx) => (
@@ -217,19 +210,19 @@ const ProjectsSection: React.FC = () => {
               icon: <BarChart3 className="w-8 h-8" />,
               title: "Portfolio Building",
               description:
-                "Create impressive, domain-specific projects that you can showcase in your resume, LinkedIn profile, and job interviews.",
+                "Create impressive projects that you can showcase for Certifications for Data Engineers.",
             },
             {
               icon: <Users className="w-8 h-8" />,
               title: "Real-World Experience",
               description:
-                "Work with realistic datasets, cloud tools, and analytics workflows used by BI teams and data engineering squads.",
+                "Work with realistic datasets used by SQL Data Analyst teams.",
             },
             {
               icon: <Zap className="w-8 h-8" />,
               title: "Skill Mastery",
               description:
-                "Apply Business Intelligence, Big Data, and Python analytics concepts end-to-end and build confidence for production use cases.",
+                "Apply skills end-to-end and master Data Analytics Program Mumbai concepts.",
             },
           ].map((benefit, idx) => (
             <div
