@@ -42,7 +42,7 @@ export default function ToolsSection() {
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Tools & <span className="text-brand">Technologies</span> for Business Automation
+            Master <span className="text-brand">AI Tools & Technologies</span> for Business Automation
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             Master the <strong>business automation software</strong> and <strong>AI digital marketing</strong> tools that sustain

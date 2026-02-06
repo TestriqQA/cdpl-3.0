@@ -25,7 +25,7 @@ export default function WhyThisProgram() {
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Why Digital Marketing is Important for <span className="text-brand">Business Growth in 2026?</span>
+            Why <span className="text-brand">Digital Marketing & AI</span> is Critical for Business Growth?
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             Unlock the power of <strong>Digital Marketing with AI</strong> to scale smarter, not harder.

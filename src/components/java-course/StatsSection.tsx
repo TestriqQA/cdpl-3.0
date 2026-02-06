@@ -220,45 +220,7 @@ export default function StatsSection() {
         </div>
       </div>
 
-      {/* JSON-LD for SEO (FAQ) */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Is Java still the best choice for enterprise applications in 2025?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text:
-                    "Yes. Java remains the top enterprise language due to its security, performance, cloud-native ecosystem (Spring Boot, Kubernetes), and a massive talent pool.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Why do Fortune 500 companies prefer Java?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text:
-                    "Java offers strong stability, long-term support releases, mature tooling, and high scalability—ideal for mission-critical workloads and microservice architectures.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "What modern Java features improve performance?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text:
-                    "Modern JVM improvements include advanced garbage collectors, JIT optimizations, and Virtual Threads, helping teams build high-throughput, low-latency services.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
+
       {/* Meta-like enhancement for crawlers that read visible content */}
       <p className="sr-only">{title}</p>
     </section>

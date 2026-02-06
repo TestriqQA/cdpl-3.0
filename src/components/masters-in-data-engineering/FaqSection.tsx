@@ -34,7 +34,7 @@ const FaqSection: React.FC = () => {
           </p>
           <p className="mt-3 text-sm text-slate-500">
             Get clarity on how this{" "}
-            <strong>Data Analytics Program Mumbai</strong>{" "}
+            Data Analytics Program Mumbai{" "}
             helps you transition into{" "}
             <em>Business Intelligence, SQL Data Analyst, and Big Data Engineer</em>{" "}
             roles.
@@ -98,11 +98,11 @@ const FaqSection: React.FC = () => {
           </h3>
           <p className="text-slate-600 mb-6 max-w-2xl mx-auto">
             Our counseling team can guide you on whether this{" "}
-            <strong>BI & Big Data Engineering master program</strong> is the
+            BI & Big Data Engineering master program is the
             right fit for your goals—whether you&apos;re an{" "}
             <em>IT professional, fresher, BI analyst, or career changer</em>.
             Reach out for personalized guidance on{" "}
-            <strong>career paths, placements, and curriculum details</strong>.
+            career paths, placements, and curriculum details.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
@@ -125,7 +125,7 @@ const FaqSection: React.FC = () => {
             </Link>
           </div>
           <p className="mt-4 text-xs text-slate-600 sm:text-sm">
-            Keywords: <strong>Best Institute for Data Analytics</strong>, <strong>SQL Data Analyst</strong>, <strong>Bi and Big Data Engineering</strong>, <strong>IIM Business Analytics</strong>, <strong>Data Analytics Program Mumbai</strong>, <strong>Data Engineering Certifications</strong>, <strong>How to Become Data Analyst in India</strong>.
+            Keywords: Best Institute for Data Analytics, SQL Data Analyst, Bi and Big Data Engineering, IIM Business Analytics, Data Analytics Program Mumbai, Data Engineering Certifications, How to Become Data Analyst in India.
           </p>
         </div>
       </div>

@@ -9,42 +9,42 @@ const curriculumData: CurriculumModule[] = [
   {
     id: 1,
     title: 'Module 1: Data Visualization & BI Mastery',
-    description: 'Master leading tools to create compelling reports.',
+    description: 'Master Power BI and Tableau. Essential for any SQL Data Analyst.',
     icon: 'BarChart',
     details: ['Data Analytics with Tableau', 'Data Visualization in Excel', 'Data Analytics with Power BI'],
   },
   {
     id: 2,
     title: 'Module 2: Data Foundation & SQL',
-    description: 'Build a strong foundation in SQL for data analytics and databases.',
+    description: 'Master SQL for data analytics. Design schemas and write complex queries.',
     icon: 'Database',
     details: ['Database Management System using MySQL', 'Advanced SQL Analytics Queries', 'Data Modeling Basics'],
   },
   {
     id: 3,
     title: 'Module 3: Advanced Analytics with Python',
-    description: 'Leverage Python for Data Analytics.',
+    description: 'Automate analysis with Python. Key for modern Data Analytics Certifications.',
     icon: 'Code',
     details: ['Data Visualization in Python (Matplotlib, Seaborn)', 'Pandas for Data Manipulation', 'NumPy for Numerical Computing'],
   },
   {
     id: 4,
     title: 'Module 4: Big Data Engineering Core',
-    description: 'Dive into distributed systems and BI and Big Data Engineering.',
+    description: 'Learn Hadoop ecosystem. The foundation of BI and Big Data Engineering.',
     icon: 'Server',
     details: ['Big Data Engineering with Hadoop (HDFS, MapReduce)', 'Hadoop Ecosystem Overview', 'Data Ingestion Techniques'],
   },
   {
     id: 5,
     title: 'Module 5: Real-Time Processing with Spark',
-    description: 'Master Apache Spark for high-speed Data Engineering.',
+    description: 'High-speed processing with Apache Spark. In-demand for Software Engineer Jobs in Mumbai.',
     icon: 'Zap',
     details: ['Big Data Engineering with Apache Spark & Databricks', 'PySpark Programming', 'Building ETL/ELT Pipelines'],
   },
   {
     id: 6,
     title: 'Module 6: Capstone Project & Certification',
-    description: 'Apply skills to an industry-grade project for Data Engineer Certification.',
+    description: 'Build a portfolio. Get job-ready with our Data Engineering Certifications.',
     icon: 'Layers',
     details: ['End-to-End Data Pipeline Implementation', 'Certification Exam Preparation', 'Portfolio Review'],
   },
@@ -68,13 +68,13 @@ const CurriculumSection: React.FC = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-base font-semibold tracking-wide text-[#0f766e] uppercase">
-            Master Program Structure
+            Detailed Syllabus for 2026
           </h2>
           <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Comprehensive Curriculum: From Data Visualization to Big Data Pipelines
+            Masters in Data Engineering: From <span className="text-[#0f766e]">SQL Data Analyst</span> to Architect
           </h3>
           <p className="mt-4 text-xl text-gray-500">
-            Our 6-module structure ensures a progressive learning path.
+            Our 6-module structure rivals IIM Business Analytics and IIT Data Analytics programs.
           </p>
         </div>
 

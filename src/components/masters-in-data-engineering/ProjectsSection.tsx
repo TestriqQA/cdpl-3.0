@@ -18,28 +18,28 @@ const projectsData: ProjectItem[] = [
     id: 1,
     title: "E-commerce Sales & Inventory Dashboard",
     description:
-      "Design a BI Data Analyst dashboard using Power BI and SQL Analytics.",
+      "Design a BI Data Analyst dashboard. Visualize KPIs using Power BI and SQL Analytics.",
     tools: ["Power BI", "Tableau", "MySQL", "SQL"],
   },
   {
     id: 2,
     title: "Social Media Sentiment Analysis Pipeline",
     description:
-      "Build a Big Data Engineering pipeline using Apache Spark (PySpark) to ingest real-time social media data.",
+      "A complete Big Data Engineering pipeline. Ingest real-time data with Apache Spark (PySpark).",
     tools: ["Apache Spark", "PySpark", "Hadoop (HDFS)", "Python"],
   },
   {
     id: 3,
     title: "Financial Data ETL and Data Warehouse",
     description:
-      "Develop an ETL process using Databricks similar to IIM Business Analytics case studies.",
+      "Build a secure ETL process on Databricks. Applies IIM Business Analytics case study logic.",
     tools: ["Databricks", "Apache Spark", "ETL/ELT", "Data Modeling"],
   },
   {
     id: 4,
     title: "Advanced Predictive Analytics with Python",
     description:
-      "Utilize Python libraries (Pandas, Scikit-learn) to showcase Data Analytics capabilities.",
+      "Use Python for advanced modeling. Essential for top-tier Data Analytics Program Mumbai roles.",
     tools: ["Python", "Pandas", "Matplotlib", "Seaborn", "Machine Learning"],
   },
 ];
@@ -100,26 +100,16 @@ const ProjectsSection: React.FC = () => {
         {/* Section Header (content preserved, styling aligned to reference) */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-sm font-semibold tracking-[0.2em] text-[#0f766e] uppercase">
-            Practical Application
+            Hands-on Experience
           </h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            Build a Portfolio: 10+ Real-World Data Projects
+            Build a <span className="text-[#0f766e]">Data Engineer Certification</span> Portfolio
           </h3>
           <p className="mt-4 text-lg text-slate-600 max-w-4xl mx-auto">
-            Your portfolio is your resume. Complete industry-grade projects that
-            demonstrate your mastery of the entire data stack.
+            Don&apos;t just watch. Build. Our 10+ projects rival data analytics iit casework.
           </p>
           <p className="mt-3 text-sm text-slate-700 max-w-4xl mx-auto">
-            Each capstone in this{" "}
-            <strong>
-              Data Analytics with BI and Big Data Engineering Master Program
-            </strong>{" "}
-            is designed to simulate real{" "}
-            <strong>Business Intelligence, Data Engineering, and Analytics</strong>{" "}
-            scenarios so you can confidently showcase your skills to hiring
-            managers for <strong>BI Analyst</strong>,{" "}
-            <strong>Data Analyst</strong>, and <strong>Data Engineer</strong>{" "}
-            roles.
+            Solve real problems in BI Data Analyst dashboards and SQL Analytics. Perfect for demonstrating skills for Software Engineer Jobs in Mumbai.
           </p>
         </div>
 
@@ -182,7 +172,7 @@ const ProjectsSection: React.FC = () => {
             Domain Knowledge Coverage
           </h3>
           <p className="text-slate-200 mb-8 leading-relaxed">
-            Our projects span domains like <strong>Software Engineer Jobs in Mumbai</strong> sectors so you gain exposure to real-world challenges. From e-commerce dashboards to financial data warehouses, you build the domain understanding recruiters look for in <strong>BI and Big Data Engineering</strong> roles.
+            Our projects span domains like Software Engineer Jobs in Mumbai sectors so you gain exposure to real-world challenges. From e-commerce dashboards to financial data warehouses, you build the domain understanding recruiters look for in BI and Big Data Engineering roles.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {domains.map((domain, idx) => (
@@ -239,11 +229,11 @@ const ProjectsSection: React.FC = () => {
         </div>
 
         <p className="mt-6 text-center text-xs text-slate-600 sm:text-sm">
-          This <strong>project-driven master program</strong> helps you build a
+          This project-driven master program helps you build a
           strong, proof-based portfolio for{" "}
-          <strong>Data Analytics, Business Intelligence, and Big Data
-            Engineering</strong> careers with <strong>job-oriented, real-time
-              projects</strong>.
+          Data Analytics, Business Intelligence, and Big Data
+          Engineering careers with job-oriented, real-time
+          projects.
         </p>
 
         {/* CTA */}
@@ -264,7 +254,7 @@ const ProjectsSection: React.FC = () => {
         source="Data Engineering Course Page - Projects Section - Data Engineering - Download Project Syllabus"
         courseName={courseName}
       />
-    </section>
+    </section >
   );
 };
 

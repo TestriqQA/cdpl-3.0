@@ -20,7 +20,7 @@ export default function CtaSection() {
         <div className="max-w-3xl mx-auto text-center">
           {/* Main Heading */}
           <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Ready to 10X Your Business?
+            Ready to 10X Your Business with <br className="hidden md:block" /> AI & Marketing Automation?
           </h2>
 
           {/* Subheading (original content + SEO boost) */}

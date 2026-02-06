@@ -72,13 +72,13 @@ export default function HeroSection() {
               </span>
             </div>
 
-            {/* H1 (same style as reference, updated text) */}
+            {/* H1 (SEO optimized) */}
             <h1 className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
               <span>Master </span>
               <span className="bg-gradient-to-r from-teal-500 via-teal-600 to-emerald-500 bg-clip-text text-transparent">
-                Data Analytics & Business Intelligence with Big Data Engineering
+                Data Engineering & Business Intelligence
               </span>
-              <span> in </span>
+              <span> with Placement in </span>
               <span className="bg-gradient-to-r from-slate-900 to-indigo-600 bg-clip-text text-transparent">
                 Mumbai
               </span>
@@ -91,12 +91,12 @@ export default function HeroSection() {
 
             {/* Subheading */}
             <p className="mt-4 max-w-3xl text-center text-base leading-relaxed text-slate-600 md:text-left md:text-lg">
-              Master the complete data lifecycle from enterprise <strong>BI data analyst</strong> dashboards to designing robust <strong>BI and Big Data Engineering</strong> pipelines. Build dual expertise in <strong>SQL for data analytics</strong>, ETL workflows, and cloud-based data platforms.
+              Join the best institute for data analytics. Become a high-paid SQL Data Analyst or Big Data Engineer. Learn BI and Big Data Engineering, SQL for data analytics, and cloud pipelines with 100% job support.
             </p>
 
             {/* SEO keywords line */}
             <p className="mt-3 max-w-3xl text-center text-sm text-slate-600 md:text-left">
-              Topics: <strong>SQL in data analytics</strong>, Power BI, Tableau, Python, data warehousing, ETL, Hadoop, Spark, data lakes, cloud data engineering, data modeling, and real-world <strong>data engineering certifications</strong> projects.
+              Topics: Data analytics program Mumbai, Power BI, Python, data engineering certifications, Hadoop, Spark, SQL analytics, and real-world software engineer jobs in mumbai preparation.
             </p>
 
             {/* CTAs */}

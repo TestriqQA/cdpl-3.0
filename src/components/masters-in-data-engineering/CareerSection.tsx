@@ -9,21 +9,21 @@ const careerRoles: CareerRole[] = [
   {
     id: 1,
     title: "Business Intelligence Analyst",
-    description: "Focus on strategy and SQL Analytics.",
+    description: "Build dashboards and strategic reports. Use SQL Analytics and Power BI.",
     salaryRange: "₹6 L - ₹15 L",
   },
   {
     id: 2,
     title: "Data Analyst",
     description:
-      "Focus on insights and Data Analytics.",
+      "Analyze trends with Python and SQL. A perfect entry point for Software Engineer Jobs in Mumbai.",
     salaryRange: "₹5 L - ₹12 L",
   },
   {
     id: 3,
     title: "Big Data Engineer",
     description:
-      "Focus on Bi and Big Data Engineering.",
+      "Design scalable pipelines using Spark/Hadoop. The peak of BI and Big Data Engineering.",
     salaryRange: "₹8 L - ₹25 L+",
   },
 ];
@@ -53,16 +53,10 @@ const CareerSection: React.FC = () => {
             Land High-Paying <span className="text-[#0f766e]">Software Engineer Jobs in Mumbai</span>
           </h3>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Our graduates are prepared for the most in-demand roles in the data
-            industry, commanding competitive salaries.
+            Master SQL Analytics and BI Data Analyst skills to command top salaries.
           </p>
           <p className="mt-3 text-sm text-slate-700 max-w-3xl mx-auto">
-            This <strong>Data Analytics with BI and Big Data Engineering Master Program</strong>{" "}
-            opens doors to high-growth roles like{" "}
-            <strong>Business Intelligence Analyst</strong>,{" "}
-            <strong>Data Analyst</strong>, and <strong>Big Data Engineer</strong>{" "}
-            across top <em>IT, consulting, product, and cloud companies</em> in
-            India and global markets.
+            This Masters in Data Engineering opens doors to roles like BI Data Analyst, SQL Data Analyst, and Big Data Engineer. Better placement outcomes than many IIT data analytics short courses.
           </p>
         </div>
 
@@ -156,7 +150,7 @@ const CareerSection: React.FC = () => {
             Our Graduates Work At
           </h3>
           <p className="text-sm text-slate-600 mb-8 text-center max-w-3xl mx-auto">
-            Alumni from this <strong>Data Analytics with BI and Big Data Engineering</strong>{" "}
+            Alumni from this Data Analytics with BI and Big Data Engineering{" "}
             program have the skills to apply for roles at leading{" "}
             <em>product companies, IT service firms, consulting giants, and cloud providers</em>.
           </p>
@@ -176,9 +170,9 @@ const CareerSection: React.FC = () => {
           </div>
           <p className="mt-6 text-xs text-slate-600 sm:text-sm text-center">
             Top recruiters include{" "}
-            <strong>Amazon, Accenture, TCS, Wipro, Google, Microsoft</strong> and many more
-            organizations building <strong>data platforms, BI dashboards, and Big Data
-              solutions</strong>.
+            Amazon, Accenture, TCS, Wipro, Google, Microsoft and many more
+            organizations building data platforms, BI dashboards, and Big Data
+            solutions.
           </p>
         </div>
 
@@ -199,7 +193,7 @@ const CareerSection: React.FC = () => {
         source="Data Engineering Course Page - Career Section - Career Session"
         courseName={courseName}
       />
-    </section>
+    </section >
   );
 };
 

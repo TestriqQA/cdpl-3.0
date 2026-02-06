@@ -10,28 +10,28 @@ const enrollmentCriteria: WhoShouldEnrollItem[] = [
     id: 1,
     title: "IT Professionals",
     description:
-      "Looking to transition to Data Engineering Certifications roles. Need interest in SQL for data analytics.",
+      "Transition from support to Software Engineer Jobs in Mumbai. Master BI and Big Data Engineering.",
     icon: "Briefcase",
   },
   {
     id: 2,
     title: "Recent Graduates",
     description:
-      "Seeking a high-paying SQL Data Analyst role. Desire to build a Data Analytics skill set.",
+      "Kickstart your career as a SQL Data Analyst. Learn SQL for Data Analytics from scratch.",
     icon: "GraduationCap",
   },
   {
     id: 3,
     title: "BI Analysts & Data Analysts",
     description:
-      "Wanting to upgrade to BI and Big Data Engineering. Experience in SQL Analytics.",
+      "Upgrade to Big Data. Move beyond basic reporting to Data Engineering Certifications roles.",
     icon: "RefreshCw",
   },
   {
     id: 4,
     title: "Career Changers",
     description:
-      "Anyone eager to enter the lucrative Data Analytics Program Mumbai. Motivation to learn SQL in Data Analytics.",
+      "Non-tech background? Our Data Analytics Program Mumbai makes you a Certified Data Engineer.",
     icon: "User",
   },
 ];
@@ -131,21 +131,20 @@ const WhoShouldEnroll: React.FC = () => {
         {/* Section Header – text kept same, styling upgraded */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-sm font-semibold tracking-[0.25em] text-[#0f766e] uppercase">
-            Target Audience
+            Eligibility & Prerequisites
           </h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Is This Data Engineering Master Program Right for You?
+            Who Needs This <span className="text-[#0f766e]">Data Engineer Certification</span>?
           </h3>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            This program is designed for ambitious individuals ready to take on
-            the most challenging and rewarding roles in the data industry.
+            Wondering how to become a data analyst in India or transition to Big Data? This is your path.
           </p>
           <p className="mt-3 text-sm text-slate-700 max-w-3xl mx-auto">
-            Whether you&apos;re an <strong>IT professional</strong>,{" "}
-            <strong>recent graduate</strong>,{" "}
-            <strong>BI / Data Analyst</strong>, or{" "}
-            <strong>career changer</strong>, this{" "}
-            <strong>Data Analytics with BI and Big Data Engineering Master Program</strong>{" "}
+            Whether you&apos;re an IT professional,{" "}
+            recent graduate,{" "}
+            BI / Data Analyst, or{" "}
+            career changer, this{" "}
+            Data Analytics with BI and Big Data Engineering Master Program{" "}
             gives you a structured path toward{" "}
             <em>high-paying data analytics, BI, and data engineering jobs</em>.
           </p>
@@ -222,7 +221,7 @@ const WhoShouldEnroll: React.FC = () => {
           </div>
           <p className="mt-6 text-xs text-slate-300 sm:text-sm">
             Ideal for learners aiming for{" "}
-            <strong>Business Intelligence, Data Analytics, and Big Data Engineering</strong>{" "}
+            Business Intelligence, Data Analytics, and Big Data Engineering{" "}
             careers with technologies like <em>SQL, Python, Power BI, Tableau,
               Hadoop, Spark, Databricks, and cloud platforms</em>.
           </p>

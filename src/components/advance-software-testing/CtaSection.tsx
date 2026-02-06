@@ -47,7 +47,7 @@ export default function CtaSection() {
             id="cta-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Become a <span className="text-ST">Full-Stack SDET</span>
+            Enroll in the Best <span className="text-ST">Selenium Course Near Me</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600">
             Master <strong>Selenium</strong>, <strong>Appium</strong>, and <strong>Cypress</strong> in our comprehensive <strong>SDET training</strong>. Next batch starts soon. Enroll now for <strong>100% placement support</strong>.

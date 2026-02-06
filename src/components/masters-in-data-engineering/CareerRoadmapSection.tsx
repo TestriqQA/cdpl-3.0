@@ -106,9 +106,9 @@ const CareerRoadmapSection: React.FC = () => {
           {/* extra SEO-rich line */}
           <p className="mt-3 text-sm text-gray-500">
             Follow a proven path from{" "}
-            <strong>Data Analyst</strong> roles into{" "}
-            <strong>Big Data Engineer</strong>. This roadmap is tailored for a{" "}
-            high-demand <strong>Data Analytics Program Mumbai</strong>.
+            Data Analyst roles into{" "}
+            Big Data Engineer. This roadmap is tailored for a{" "}
+            high-demand Data Analytics Program Mumbai.
           </p>
         </div>
 
@@ -163,12 +163,12 @@ const CareerRoadmapSection: React.FC = () => {
 
         {/* SEO footer copy */}
         <div className="mt-12 max-w-4xl mx-auto text-center text-xs leading-relaxed text-gray-500 sm:text-sm">
-          This <strong>Big Data Engineer career roadmap</strong> is ideal for graduates,
+          This Big Data Engineer career roadmap is ideal for graduates,
           working professionals, and career switchers who want a clear{" "}
-          <strong>end-to-end path in Data Analytics, Business Intelligence, and Data Engineering</strong>.
+          end-to-end path in Data Analytics, Business Intelligence, and Data Engineering.
           From mastering <em>SQL, Excel, Python, Tableau, Power BI, Hadoop, Spark, Databricks</em>
           to leading <em>data teams on AWS, Azure, and GCP</em>, this roadmap helps you plan your
-          journey toward <strong>high-paying Big Data Engineer and Data Architect roles</strong> in
+          journey toward high-paying Big Data Engineer and Data Architect roles in
           India and global markets.
         </div>
 

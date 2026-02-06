@@ -3,7 +3,12 @@ import Link from "next/link";
 import { Sparkles, Home, ChevronRight } from "lucide-react";
 import { JobsLiveJobsHeroCTA } from "./JobsLiveJobsHeroCTA";
 
-export default function JobsLiveJobsJobsHeroSection() {
+interface Props {
+  customTitle?: React.ReactNode;
+  customDescription?: string;
+}
+
+export default function JobsLiveJobsJobsHeroSection({ customTitle, customDescription }: Props) {
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Jobs" },
@@ -54,18 +59,23 @@ export default function JobsLiveJobsJobsHeroSection() {
             <h1
               className="mt-4 py-1 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.2]"
             >
-              <span style={{ color: "rgb(0, 105, 168)" }}>
-                Helping CDPL learners land the right opportunities
-              </span>{" "}
-              <span>&ndash; </span>
-              <span style={{ color: "#ff8c00" }}>faster.</span>
+              {customTitle ? (
+                customTitle
+              ) : (
+                <>
+                  <span style={{ color: "rgb(0, 105, 168)" }}>
+                    Helping CDPL learners land the right opportunities
+                  </span>{" "}
+                  <span>&ndash; </span>
+                  <span style={{ color: "#ff8c00" }}>faster.</span>
+                </>
+              )}
             </h1>
 
             <p
               className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-700 sm:text-base md:text-lg"
             >
-              Explore verified roles in QA Automation, Data Science, Full Stack Development, and DevOps,
-              curated specially for CDPL students.
+              {customDescription || "Explore verified roles in QA Automation, Data Science, Full Stack Development, and DevOps, curated specially for CDPL students."}
             </p>
 
             <p

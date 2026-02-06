@@ -102,7 +102,7 @@ export default function CurriculumSection() {
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <h2 className="text-3xl md:text-4xl text-slate-900 text-center font-bold mb-4">
-                    Industry-Ready <span className="text-ST">Advanced Software Testing</span> Curriculum
+                    Comprehensive <span className="text-ST">Selenium & SDET Training</span> Curriculum
                 </h2>
 
                 {/* SEO-supportive intro row (updated to match brochure) */}

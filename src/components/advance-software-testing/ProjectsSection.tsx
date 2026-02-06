@@ -72,7 +72,7 @@ export default function ProjectsSection() {
           className="text-center"
         >
           <h2 id="projects-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            Build Your <span className="text-ST">SDET Portfolio</span>
+            Live Projects in our <span className="text-ST">Application Tester Course</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
             Production-style projects that showcase <strong>UI, API, Mobile</strong>, and <strong>Performance</strong> automation skills. Perfect

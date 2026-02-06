@@ -161,7 +161,7 @@ export default function StatsSection() {
         {/* heading */}
         <header className="mx-auto mb-8 max-w-3xl text-center">
           <h2 id="qa-stats-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            Real-World <span className="text-ST">QA & Automation</span> Career Metrics
+            <span className="text-ST">Advanced Software Testing Course</span> Career Insights
           </h2>
           <p className="mt-3 text-lg leading-relaxed text-slate-600">
             Join the booming automation market. Our <strong>advanced software testing course</strong> prepares you for the <strong>100,000+ job vacancies</strong> in India's top product and service companies.

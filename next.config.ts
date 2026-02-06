@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
       '@headlessui/react',
       'lucide-react',
     ],
-    optimizeCss: true, // Re-enabled for LCP
+    optimizeCss: false, // Disabled: incompatible with Tailwind v4 (causes build error)
     optimizeServerReact: true,
     // webpackBuildWorker: true, // Commented out to ensure critters runs reliably
   },
@@ -113,6 +113,21 @@ const nextConfig: NextConfig = {
       {
         source: '/blog/how-prompt-engineering-can-automate-test-case-generation',
         destination: '/blog/category/software-testing',
+        permanent: true,
+      },
+      {
+        source: '/events/sttp-iot-applications',
+        destination: '/events',
+        permanent: true,
+      },
+      {
+        source: '/events/train-the-trainer-program-corporate',
+        destination: '/events',
+        permanent: true,
+      },
+      {
+        source: '/events/6-days-workshop-on-machine-learning-with-hands-on-training-on-industry-projects-2',
+        destination: '/events',
         permanent: true,
       },
     ];

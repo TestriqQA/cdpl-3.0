@@ -58,7 +58,7 @@ export default function ToolsSection() {
             id="tools-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            <span className='text-ST'>Tools</span> You’ll Master
+            <span className='text-ST'>Tools</span> in this Selenium Java Course
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
             Master an industry-proven <strong>SDET toolchain</strong> — build stable frameworks, integrate with{' '}

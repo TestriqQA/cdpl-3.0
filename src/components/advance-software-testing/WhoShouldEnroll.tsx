@@ -58,12 +58,11 @@ export default function WhoShouldEnroll() {
             id="enroll-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900"
           >
-            Who Should <span className="text-ST">Join</span>?
+            Who Should Enroll in this <span className="text-ST">Selenium Testing Course</span>?
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
             Looking for a <strong>selenium course near me</strong>? Perfect for <strong>manual testers</strong>, <strong>fresh graduates</strong>,{' '}
-            <strong>career switchers</strong>, and <strong>developers</strong> who want industry-ready
-            <em> Automation Testing</em> & <em> SDET</em> skills—framework design, CI/CD, and real projects.
+            <strong>career switchers</strong> looking for an <strong>application tester course</strong>, and developers wanting <strong>SDET training</strong>.
           </p>
           {/* micro badges row */}
           <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold">

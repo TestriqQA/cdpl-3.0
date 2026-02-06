@@ -153,10 +153,10 @@ export default function HeroSection() {
 
                         {/* Supporting copy */}
                         <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Looking for a <strong>job-oriented software testing course</strong>? Join India's top-rated <strong>SDET training</strong> program. Learn <strong>Selenium automation</strong>, <strong>API testing</strong>, <strong>Mobile App testing (Appium)</strong>, and <strong>Cypress</strong>. Get <strong>100% placement support</strong> and become a complete <strong>Automation Test Engineer</strong>.
+                            Looking for the best <strong>selenium certification course</strong>? Join India's top-rated <strong>SDET training</strong> program. Learn <strong>Selenium Java course</strong> concepts, <strong>API testing</strong>, <strong>Mobile App testing (Appium)</strong>, and <strong>Cypress</strong>. Get <strong>100% placement support</strong> and become a complete <strong>Automation Test Engineer</strong>.
                         </p>
                         <p className="mt-3 max-w-3xl text-sm text-slate-600">
-                            Topics: <strong>Selenium java course</strong>, Page Objects, <strong>Appium training</strong> for Android/iOS, <strong>API testing</strong> best practices, <strong>Cypress automation course</strong> for component/e2e, Jenkins/GitHub Actions, and evidence-based reporting.
+                            Topics: <strong>Selenium online courses</strong>, Page Objects, <strong>Appium testing course</strong>, <strong>API testing</strong>, <strong>Cypress testing course</strong>, Jenkins/GitHub Actions. Better than any <strong>free selenium course</strong> with dedicated mentorship.
                         </p>
 
                         {/* CTAs */}

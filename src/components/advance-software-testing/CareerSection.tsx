@@ -70,7 +70,7 @@ export default function CareerSection() {
           className="text-center mb-10 sm:mb-12"
         >
           <h2 id="career-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            High-Paying <span className="text-ST">SDET</span> Careers
+            Unlock High-Paying <span className="text-ST">SDET & Automation</span> Careers
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
             <strong>SDET training</strong> opens doors to premium roles. With expertise in <strong>selenium</strong>, <strong>API</strong>, and <strong>mobile testing</strong>, you can demand higher salaries. Average fresher package: <strong>₹4–8 LPA</strong>.

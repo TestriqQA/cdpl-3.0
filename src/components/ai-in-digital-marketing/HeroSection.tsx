@@ -103,9 +103,9 @@ export default function HeroSection() {
               <span className="bg-gradient-to-r from-orange-500 via-brand to-red-500 bg-clip-text text-transparent">
                 AI in Digital Marketing
               </span>
-              <span>: Grow Your Business with </span>
+              <span>: 10X Your Business with </span>
               <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                Digital Marketing Strategies
+                Automation & SEO Strategies
               </span>
             </h1>
 
@@ -159,10 +159,10 @@ export default function HeroSection() {
             {/* Highlights (similar layout to reference) */}
             <div className="mt-8 grid w-full max-w-2xl grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
               {[
-                { icon: "📊", label: "90+ Real Projects" },
-                { icon: "🤖", label: "24/7 Mentor Support" },
-                { icon: "🎓", label: "Google/Meta Certified" },
-                { icon: "💼", label: "#1 for Business Owners" },
+                { icon: "📊", label: "Real Projects" },
+                { icon: "🤖", label: "AI Tools Training" },
+                { icon: "🎓", label: "Industry Certification" },
+                { icon: "💼", label: "Job & Business Ready" },
               ].map((item, idx) => (
                 <div
                   key={idx}

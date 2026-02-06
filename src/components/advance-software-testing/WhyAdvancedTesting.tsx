@@ -63,12 +63,11 @@ export default function WhyAdvancedTesting() {
             id="why-advanced-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Why Master <span className="text-ST">Selenium Automation Training</span> in 2026?
+            Why Choose This <span className="text-ST">Selenium Automation Course</span>?
           </h2>
 
           <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-600 max-w-3xl mx-auto">
-            <strong>Selenium training</strong> is the gateway to high-paying QA roles. Move beyond manual testing and build expertise in <strong>UI, API, Mobile</strong>, and
-            <strong> DevOps</strong> workflows to become a broader <strong>SDET</strong> with measurable impact.
+            <strong>Selenium training</strong> is the gateway to high-paying QA roles. Move beyond manual testing and build expertise in <strong>UI, API, Mobile</strong> with our <strong>advanced software testing course</strong> designed for 2026.
           </p>
         </motion.header>
 

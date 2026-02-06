@@ -42,41 +42,37 @@ const enrichedStats: EnrichedStat[] = statsData.map((stat) => {
       return {
         ...stat,
         description:
-          "5.5-month structured Data Analytics with BI and Big Data Engineering master program designed for working professionals and graduates seeking Data Engineer Certification.",
+          "5.5-month structured Data Analytics Program Mumbai designed for working professionals seeking Data Engineering Certifications.",
         bgGradient: "from-teal-50 to-teal-100",
         iconBg: "bg-teal-500",
-        ariaLabel:
-          "Program duration five and a half months for BI and Big Data Engineering master program",
+        ariaLabel: "Program duration 5.5 months",
       };
     case 2:
       return {
         ...stat,
         description:
-          "155 hours of intensive, mentor-led training covering Business Intelligence, data warehousing, ETL, and how to become a data analyst in India.",
+          "155 hours of intensive, mentor-led training. Master SQL in data analytics, Python, and Big Data Engineering concepts.",
         bgGradient: "from-emerald-50 to-emerald-100",
         iconBg: "bg-emerald-500",
-        ariaLabel:
-          "One hundred fifty five hours of intensive BI and Big Data training",
+        ariaLabel: "155 hours of training",
       };
     case 3:
       return {
         ...stat,
         description:
-          "40%+ projected job growth in Data Engineering and BI Data Analyst roles across India and global analytics hubs.",
+          "40%+ projected growth for SQL Data Analyst and Big Data Engineer roles in India's top tech hubs.",
         bgGradient: "from-sky-50 to-sky-100",
         iconBg: "bg-sky-500",
-        ariaLabel:
-          "Over forty percent projected job growth in data engineering careers",
+        ariaLabel: "40% job growth",
       };
     case 4:
       return {
         ...stat,
         description:
-          "Average salary hike of up to ₹12 LPA for certified Data Engineers, BI Developers, and Analytics professionals.",
+          "Average salary hike of up to ₹12 LPA. Top option for Software Engineer Jobs in Mumbai aspirants.",
         bgGradient: "from-yellow-50 to-amber-100",
         iconBg: "bg-amber-500",
-        ariaLabel:
-          "Average salary hike up to twelve lakh per annum for certified engineers",
+        ariaLabel: "12 LPA salary hike",
       };
     default:
       return {
@@ -110,12 +106,12 @@ const StatsSection: React.FC = () => {
           >
             Program Highlights &{" "}
             <span className="text-[#0f766e]">
-              Data Engineering Career ROI
+              Data Engineering Certifications
             </span>
           </h2>
 
           <p className="mx-auto max-w-4xl text-base text-slate-600 sm:text-lg">
-            Why settle for a basic course when you can join the <strong>best institute for data analytics</strong> with our <strong>Data Analytics Program Mumbai</strong>? Gain in-demand skills across <strong>SQL analytics</strong>, ETL pipelines, and Big Data technologies that hiring managers actively look for in <strong>Software Engineer Jobs in Mumbai</strong>.
+            Why settle for less? Join the best institute for data analytics. Our Data Analytics Program Mumbai delivers in-demand skills in SQL analytics, BI and Big Data Engineering, preparing you for top Software Engineer Jobs in Mumbai.
           </p>
         </header>
 
@@ -191,14 +187,14 @@ const StatsSection: React.FC = () => {
                 Data Economy
               </h3>
               <p className="text-sm leading-relaxed text-slate-700 sm:text-base">
-                Modern enterprises in banking, healthcare, and e-commerce rely on Data Engineers and <strong>SQL Data Analysts</strong> to design scalable data pipelines. This <strong>BI and Big Data Engineering</strong> master program bridges the skills gap with real-world projects—so you can confidently target <strong>Data Engineer, BI Developer, and Analytics Engineer</strong> roles.
+                Modern enterprises in banking, healthcare, and e-commerce rely on Data Engineers and SQL Data Analysts to design scalable data pipelines. This BI and Big Data Engineering master program bridges the skills gap with real-world projects—so you can confidently target Data Engineer, BI Developer, and Analytics Engineer roles.
               </p>
 
               <ul className="mt-4 grid grid-cols-1 gap-2 text-sm text-slate-700 sm:grid-cols-2 sm:text-[15px]">
                 <li className="flex items-start gap-2">
                   <span aria-hidden="true">✅</span>
                   <span>
-                    <strong>End-to-end stack:</strong> BI tools, SQL, data
+                    End-to-end stack: BI tools, SQL, data
                     warehousing, ETL, Big Data technologies, and cloud data
                     engineering basics
                   </span>
@@ -206,7 +202,7 @@ const StatsSection: React.FC = () => {
                 <li className="flex items-start gap-2">
                   <span aria-hidden="true">✅</span>
                   <span>
-                    <strong>Industry projects:</strong> build dashboards, data
+                    Industry projects: build dashboards, data
                     pipelines, and reporting solutions using real business
                     scenarios
                   </span>
@@ -214,7 +210,7 @@ const StatsSection: React.FC = () => {
                 <li className="flex items-start gap-2">
                   <span aria-hidden="true">✅</span>
                   <span>
-                    <strong>Career support:</strong> resume optimization, mock
+                    Career support: resume optimization, mock
                     interviews, LinkedIn profile review, and job assistance for
                     BI & Data Engineering roles
                   </span>
@@ -222,7 +218,7 @@ const StatsSection: React.FC = () => {
                 <li className="flex items-start gap-2">
                   <span aria-hidden="true">✅</span>
                   <span>
-                    <strong>Flexible learning:</strong> weekend / evening
+                    Flexible learning: weekend / evening
                     batches, online and classroom options for working
                     professionals and students
                   </span>
@@ -230,7 +226,7 @@ const StatsSection: React.FC = () => {
               </ul>
 
               <p className="mt-4 text-xs text-slate-600 sm:text-sm">
-                Keywords: <strong>Best Institute for Data Analytics</strong>, <strong>SQL Data Analyst</strong>, <strong>Bi and Big Data Engineering</strong>, <strong>IIM Business Analytics</strong>, <strong>Data Analytics Program Mumbai</strong>, <strong>Data Engineering Certifications</strong>, <strong>How to Become Data Analyst in India</strong>.
+                Keywords: Best Institute for Data Analytics, SQL Data Analyst, Bi and Big Data Engineering, IIM Business Analytics, Data Analytics Program Mumbai, Data Engineering Certifications, How to Become Data Analyst in India.
               </p>
             </div>
           </div>

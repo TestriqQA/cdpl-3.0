@@ -96,11 +96,20 @@ const JOBS_WITH_BANNER: Job[] = JOBS.map((j) => ({
   bannerImage: j.bannerImage ?? DEFAULT_BANNER,
 }));
 
-export default function Page() {
+export default async function Page({ searchParams }: Props) {
+  const resolvedSearchParams = await searchParams;
+  const jobId = resolvedSearchParams?.jobId as string | undefined;
+
+  let selectedJob: Job | undefined;
+  if (jobId) {
+    selectedJob = JOBS.find((j) => j.id === jobId);
+  }
+
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Jobs", url: "/jobs" },
     { name: "Live Jobs", url: "/jobs/live-jobs" },
+    ...(selectedJob ? [{ name: selectedJob.title, url: `/jobs/live-jobs?jobId=${selectedJob.id}` }] : []),
   ]);
 
   const collectionPageSchema = generateCollectionPageSchema({
@@ -127,6 +136,23 @@ export default function Page() {
     url: `/jobs/live-jobs?jobId=${job.id}`,
   }));
 
+  // Logic for rendered content
+  const displayedJobs = selectedJob ? [{ ...selectedJob, bannerImage: selectedJob.bannerImage ?? DEFAULT_BANNER }] : JOBS_WITH_BANNER;
+
+  const heroTitle = selectedJob ? (
+    <>
+      <span style={{ color: "rgb(0, 105, 168)" }}>{selectedJob.title}</span>
+      {" "}
+      <span className="text-slate-900">at</span>
+      {" "}
+      <span style={{ color: "#ff8c00" }}>{selectedJob.company}</span>
+    </>
+  ) : undefined;
+
+  const heroDescription = selectedJob
+    ? `Apply now for the ${selectedJob.title} position at ${selectedJob.company} in ${selectedJob.location}. Verified opportunity curated by CDPL.`
+    : undefined;
+
   return (
     <main className="bg-white text-slate-900 relative">
       <JsonLd id="live-jobs-breadcrumb" schema={breadcrumbSchema} />
@@ -140,9 +166,12 @@ export default function Page() {
         />
       </div>
 
-      <JobsLiveJobsJobsHeroSection />
-      <JobsLiveJobsJobsTickerSection jobs={JOBS_WITH_BANNER.slice(0, 12)} />
-      <JobsLiveJobsListingSection jobs={JOBS_WITH_BANNER} />
+      <JobsLiveJobsJobsHeroSection customTitle={heroTitle} customDescription={heroDescription} />
+
+      {/* Hide ticker on detail view to reduce noise */}
+      {!selectedJob && <JobsLiveJobsJobsTickerSection jobs={JOBS_WITH_BANNER.slice(0, 12)} />}
+
+      <JobsLiveJobsListingSection jobs={displayedJobs} />
 
       {/* Below the fold sections load dynamically */}
       <JobsLiveJobsWhyWePostJobsSection />

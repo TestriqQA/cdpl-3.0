@@ -26,22 +26,15 @@ const CtaSection: React.FC = () => {
         <div className="max-w-3xl mx-auto text-center">
           {/* Main Heading (content preserved) */}
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
-            Ready to Master <span className="text-teal-200">Big Data Engineering?</span>
+            Enroll in the Top <span className="text-teal-200">Masters in Data Engineering</span>
           </h2>
 
-          {/* Subheading (content preserved) */}
           <p className="text-lg md:text-xl text-slate-200 mb-4 leading-relaxed">
-            Don&apos;t just analyze data-engineer the future. Enroll now to secure
-            your spot in the next cohort.
+            Join 5,000+ alumni who transformed their careers. Certifications for data engineers included.
           </p>
           {/* Extra SEO copy */}
           <p className="text-sm text-slate-300 mb-8 leading-relaxed">
-            Join a{" "}
-            <strong>Data Analytics with BI and Big Data Engineering Master Program</strong>{" "}
-            designed to make you job-ready for{" "}
-            <em>Business Intelligence Analyst, Data Analyst, and Big Data Engineer</em>{" "}
-            roles with skills in <strong>SQL, Python, Tableau, Power BI, Hadoop, Spark,
-              Databricks, and cloud platforms</strong>.
+            Our Data Analytics Program Mumbai covers everything: SQL Data Analyst skills, Python, BI and Big Data Engineering.
           </p>
 
           {/* Key Benefits */}
@@ -115,8 +108,8 @@ const CtaSection: React.FC = () => {
               and unlock exclusive career support benefits.
             </p>
             <p className="text-slate-200 text-sm mt-2">
-              Ideal for <strong>IT professionals, fresh graduates, BI analysts,
-                and career changers</strong> looking to move into{" "}
+              Ideal for IT professionals, fresh graduates, BI analysts,
+              and career changers looking to move into{" "}
               <em>high-growth data roles</em>.
             </p>
           </div>
@@ -148,7 +141,7 @@ const CtaSection: React.FC = () => {
         <div className="mt-16 text-center border-t border-white/10 pt-8">
           <p className="text-slate-300 mb-4">
             Have questions about the{" "}
-            <strong>Data Analytics with BI and Big Data Engineering Master Program</strong>?
+            Data Analytics with BI and Big Data Engineering Master Program?
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-white">
             <Link
@@ -185,7 +178,7 @@ const CtaSection: React.FC = () => {
         source="Data Engineering Course Page - CTA Section - Data Engineering - Download Brochure"
         courseName={courseName}
       />
-    </section>
+    </section >
   );
 };
 

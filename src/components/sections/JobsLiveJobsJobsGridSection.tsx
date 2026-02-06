@@ -38,11 +38,17 @@ export function JobsLiveJobsJobsGridSection({
   jobs: Job[];
   filters: JobsFilters;
 }) {
-  const baseUrl = useMemo(() => {
+  const buildShareUrl = (id: string) => {
     if (typeof window === "undefined") return "";
-    return `${window.location.origin}${window.location.pathname}${window.location.search}`;
-  }, []);
-  const buildShareUrl = (id: string) => `${baseUrl}#${encodeURIComponent(id)}`;
+    const url = new URL(window.location.pathname, window.location.origin);
+    // Ensure we strip existing search params to avoid duplicates, but keep path
+    // If we want to be strict about /jobs/live-jobs, we could force it, 
+    // but using current pathname is safer if this component is used elsewhere.
+    // However, the user specifically asked for "detail page url".
+    // Since this section is likely only on live-jobs, current path is fine.
+    url.searchParams.set("jobId", id);
+    return url.toString();
+  };
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
 

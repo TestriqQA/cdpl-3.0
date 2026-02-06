@@ -33,7 +33,7 @@ interface EnrichedTool extends ToolItem {
   color: string;
 }
 
-// Enrich tools with gradient colors + short descriptions (content: names/categories remain same)
+// Enrich tools with gradient colors + short descriptions
 const enrichedTools: EnrichedTool[] = toolsData.map((tool) => {
   switch (tool.name) {
     case "Tableau":
@@ -41,56 +41,56 @@ const enrichedTools: EnrichedTool[] = toolsData.map((tool) => {
         ...tool,
         color: "from-blue-50 to-blue-100",
         description:
-          "Enterprise-grade BI platform for SQL Data Analyst reporting.",
+          "Leading BI tool for SQL Data Analyst roles. Visualize SQL analytics data effortlessly.",
       };
     case "Power BI":
       return {
         ...tool,
         color: "from-yellow-50 to-amber-100",
         description:
-          "Microsoft’s flagship Business Intelligence tool for self-service analytics, KPI dashboards, and reporting.",
+          "Essential for Business Intelligence. Learn to build dashboards for data analytics programs.",
       };
     case "Microsoft Excel":
       return {
         ...tool,
         color: "from-green-50 to-emerald-100",
         description:
-          "Essential tool for Data Analytics.",
+          "The foundation of data analysis. Master advanced functions for quick insights.",
       };
     case "MySQL":
       return {
         ...tool,
         color: "from-sky-50 to-sky-100",
         description:
-          "Core engine for SQL for data analytics.",
+          "Master SQL for data analytics. Design schemas and query robust databases.",
       };
     case "Python":
       return {
         ...tool,
         color: "from-indigo-50 to-indigo-100",
         description:
-          "Versatile programming language for Data Engineering and automation.",
+          "Automate ETL with Python. A must-have skill for Data Engineering Certifications.",
       };
     case "Apache Spark":
       return {
         ...tool,
         color: "from-orange-50 to-orange-100",
         description:
-          "Engine for BI and Big Data Engineering pipelines.",
+          "High-speed processing for Big Data Engineering. Handle massive datasets.",
       };
     case "Databricks":
       return {
         ...tool,
         color: "from-rose-50 to-rose-100",
         description:
-          "Unified platform for collaborative Data Engineering.",
+          "Unified analytics platform. Learn modern cloud data engineering workflows.",
       };
     case "Apache Hadoop":
       return {
         ...tool,
         color: "from-slate-50 to-slate-100",
         description:
-          "Framework for distributed storage.",
+          "Understanding distributed storage (HDFS) is key for any Big Data Engineer.",
       };
     default:
       return {
@@ -130,16 +130,16 @@ const ToolsSection: React.FC = () => {
         {/* Section Header (content preserved, layout updated) */}
         <div className="mb-16 text-center md:mb-20">
           <h2 className="text-sm font-semibold tracking-[0.2em] text-[#0f766e] uppercase">
-            Technology Stack
+            Industry-Standard Stack
           </h2>
           <h3 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Master the Industry&apos;s Leading Data Stack
+            Tools in our <span className="text-[#0f766e]">Data Analytics Program Mumbai</span>
           </h3>
           <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
-            Our program covers tools for <strong>BI Data Analyst</strong> and <strong>Big Data Engineering</strong> roles.
+            Master the stack preferred by top MNCs for BI and Big Data Engineering.
           </p>
           <p className="mx-auto mt-3 max-w-4xl text-sm text-slate-700">
-            Learn to combine <strong>Tableau</strong>, <strong>Power BI</strong>, <strong>SQL in data analytics</strong>, <strong>Python</strong>, <strong>Apache Spark</strong>, <strong>Databricks</strong>, and <strong>Hadoop</strong> to build end-to-end data pipelines.
+            From SQL in data analytics to Certifications for Data Engineers tools like Spark and Tableau, we cover it all.
           </p>
         </div>
 
@@ -263,11 +263,11 @@ const ToolsSection: React.FC = () => {
           </div>
           <p className="mt-6 text-center text-xs text-slate-600 sm:text-sm">
             This structured learning roadmap ensures you grow from{" "}
-            <strong>BI fundamentals</strong> to{" "}
-            <strong>full-fledged Big Data Engineering</strong>, making you
-            highly competitive for <strong>data analytics</strong>,{" "}
-            <strong>BI developer</strong>, and{" "}
-            <strong>data engineer</strong> job roles.
+            BI fundamentals to{" "}
+            full-fledged Big Data Engineering, making you
+            highly competitive for data analytics,{" "}
+            BI developer, and{" "}
+            data engineer job roles.
           </p>
         </div>
 
