@@ -116,9 +116,10 @@ const components: PortableTextComponents = {
     },
     marks: {
         link: ({ children, value }) => {
-            const rel = !value.href.startsWith('/') ? 'noreferrer noopener' : undefined
+            const href = value?.href || '#'
+            const rel = !href.startsWith('/') ? 'noreferrer noopener' : undefined
             return (
-                <Link href={value.href} rel={rel} className="text-indigo-600 hover:text-indigo-800 underline transition-colors">
+                <Link href={href} rel={rel} className="text-indigo-600 hover:text-indigo-800 underline transition-colors">
                     {children}
                 </Link>
             )

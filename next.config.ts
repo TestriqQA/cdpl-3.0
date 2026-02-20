@@ -25,6 +25,36 @@ const nextConfig: NextConfig = {
     // webpackBuildWorker: true, // Commented out to ensure critters runs reliably
   },
 
+  // Fix: Tailwind v4 generates CSS with data URIs that contain '&' characters.
+  // Next.js's CSS loader misinterprets these as module paths, causing "Can't resolve './&'" errors.
+  webpack: (config) => {
+    // Find and update the css-loader rules to not resolve url() references
+    const rules = config.module?.rules;
+    if (rules) {
+      for (const rule of rules) {
+        if (rule && typeof rule === 'object' && rule.oneOf) {
+          for (const oneOfRule of rule.oneOf) {
+            if (oneOfRule?.use && Array.isArray(oneOfRule.use)) {
+              for (const loader of oneOfRule.use) {
+                if (
+                  loader &&
+                  typeof loader === 'object' &&
+                  typeof loader.loader === 'string' &&
+                  loader.loader.includes('css-loader') &&
+                  !loader.loader.includes('postcss-loader')
+                ) {
+                  if (!loader.options) loader.options = {};
+                  loader.options.url = false;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return config;
+  },
+
   // Compiler optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? {
