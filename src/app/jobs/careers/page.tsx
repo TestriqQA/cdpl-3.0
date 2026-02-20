@@ -223,6 +223,29 @@ const JOBS: Job[] = [
         ],
         applyEmail: "careers@cinutedigital.com",
     },
+    {
+        id: "software-testing-internship-master-program-1",
+        title: "One Year Internship cum Software Testing Master Program",
+        team: "Training",
+        location: "Mumbai",
+        type: "Internship",
+        experience: "0–1 yrs",
+        summary:
+            "Learn while working on industry projects with a Job Guarantee agreement. Register and start your successful IT career — our counsellor will guide you through the process. Easy EMI options available.",
+        responsibilities: [
+            "Learn and work on real industry projects throughout the program",
+            "Master software testing concepts, tools, and best practices",
+            "Complete structured training with hands-on project experience",
+            "Register via the link to begin — our counsellor will guide you through the process",
+        ],
+        requirements: [
+            "Graduation year should be 2026, 2025, or 2024",
+            "Any stream (strong preference for Engineering and B.Sc students)",
+            "Good communication skills",
+            "Should be from Mumbai",
+        ],
+        applyEmail: "careers@cinutedigital.com",
+    },
 ];
 
 
