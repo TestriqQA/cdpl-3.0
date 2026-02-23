@@ -139,3 +139,18 @@ export const LATEST_POSTS_QUERY = groq`*[_type == "post" && defined(slug.current
   tags,
   readTime
 }`
+
+export const JOBS_QUERY = groq`*[_type == "job" && isActive == true] | order(team asc, title asc) {
+  _id,
+  title,
+  "id": slug.current,
+  team,
+  location,
+  type,
+  experience,
+  summary,
+  responsibilities,
+  requirements,
+  applyEmail,
+  applyLink
+}`

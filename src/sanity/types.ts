@@ -42,3 +42,18 @@ export interface SanityPost {
     }
     readTime?: string; // Calculated on client or server
 }
+
+export interface SanityJob {
+    _id: string;
+    id: string;              // slug.current mapped as "id" for backward compat
+    title: string;
+    team: string;
+    location: string;
+    type: string;
+    experience: string;
+    summary: string;
+    responsibilities: string[];
+    requirements: string[];
+    applyEmail?: string;
+    applyLink?: string;
+}

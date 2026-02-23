@@ -13,29 +13,7 @@ import {
   Tag,
 } from "lucide-react";
 import JobApplicationModal from "@/components/JobApplicationModal";
-
-// Define Job type locally to avoid import issues
-type Job = {
-  id: string;
-  title: string;
-  team:
-  | "Engineering"
-  | "Data"
-  | "Product"
-  | "Growth"
-  | "Student Success"
-  | "Operations"
-  | "Sales"
-  | "Training";
-  location: "Bengaluru" | "Pune" | "Remote (India)" | "Hybrid (Bengaluru)" | "Mumbai";
-  type: "Full-time" | "Contract" | "Internship";
-  experience: "0–1 yrs" | "1–3 yrs" | "3–5 yrs" | "5–8 yrs" | "8+ yrs";
-  summary: string;
-  responsibilities: string[];
-  requirements: string[];
-  applyEmail?: string;
-  applyLink?: string;
-};
+import { SanityJob } from "@/sanity/types";
 
 function useBodyScrollLock(locked: boolean) {
   useEffect(() => {
@@ -48,7 +26,7 @@ function useBodyScrollLock(locked: boolean) {
   }, [locked]);
 }
 
-export function JobsCareersJobCardSection({ job }: { job: Job }) {
+export function JobsCareersJobCardSection({ job }: { job: SanityJob }) {
   const [openForm, setOpenForm] = useState(false);
 
   useBodyScrollLock(openForm);

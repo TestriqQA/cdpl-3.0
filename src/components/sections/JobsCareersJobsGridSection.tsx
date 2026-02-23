@@ -4,34 +4,12 @@ import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Briefcase, Building2, Calendar, MapPin } from "lucide-react";
 import { JobsCareersJobCardSection } from "./JobsCareersJobCardSection";
-
-// Define Job type locally to avoid import issues
-type Job = {
-  id: string;
-  title: string;
-  team:
-  | "Engineering"
-  | "Data"
-  | "Product"
-  | "Growth"
-  | "Student Success"
-  | "Operations"
-  | "Sales"
-  | "Training";
-  location: "Bengaluru" | "Pune" | "Remote (India)" | "Hybrid (Bengaluru)" | "Mumbai";
-  type: "Full-time" | "Contract" | "Internship";
-  experience: "0–1 yrs" | "1–3 yrs" | "3–5 yrs" | "5–8 yrs" | "8+ yrs";
-  summary: string;
-  responsibilities: string[];
-  requirements: string[];
-  applyEmail?: string;
-  applyLink?: string;
-};
+import { SanityJob } from "@/sanity/types";
 
 
 
 
-export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
+export default function JobsCareersJobsGridSection({ jobs }: { jobs: SanityJob[] }) {
   const [isLg, setIsLg] = useState(false);
   useEffect(() => {
     const mql = window.matchMedia("(min-width: 1024px)");
