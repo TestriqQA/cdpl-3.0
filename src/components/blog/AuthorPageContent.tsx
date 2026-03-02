@@ -18,9 +18,9 @@ export const AuthorPageContent: React.FC<AuthorPageContentProps> = ({ author, po
     const yearsActive = posts.length > 0 ? getYearsActive(posts) : 1;
 
     return (
-        <div className="min-h-screen bg-[#F8FAFC] overflow-x-hidden relative selection:bg-indigo-100 selection:text-indigo-900">
+        <div className="min-h-screen bg-[#F8FAFC] relative selection:bg-indigo-100 selection:text-indigo-900">
             {/* Background Pattern */}
-            <div className="fixed inset-0 pointer-events-none opacity-40 z-0">
+            <div className="fixed inset-0 pointer-events-none opacity-40 z-0 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 via-blue-50/50 to-indigo-50/50" />
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-100/40 to-transparent rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
                 <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-100/40 to-transparent rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
@@ -45,7 +45,7 @@ export const AuthorPageContent: React.FC<AuthorPageContentProps> = ({ author, po
                     {/* Sticky Sidebar */}
                     <motion.div
                         // Optimized LCP: Removed initial opacity:0
-                        className="lg:col-span-4 lg:sticky lg:top-24 space-y-8"
+                        className="lg:col-span-4 lg:sticky lg:top-24 h-max space-y-8"
                     >
                         {/* Profile Card */}
                         <div className="bg-white/80 backdrop-blur-md border border-white/50 rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-500">
@@ -97,18 +97,32 @@ export const AuthorPageContent: React.FC<AuthorPageContentProps> = ({ author, po
                                 </div>
 
                                 {/* Social Actions */}
-                                <div className="flex gap-2 justify-center">
+                                <div className="flex flex-col gap-3">
                                     {author.social?.linkedin && (
-                                        <SocialButton href={author.social.linkedin} icon={Linkedin} label="LinkedIn" color="hover:text-[#0077b5] hover:border-[#0077b5] px-8 bg-" />
+                                        <Link
+                                            href={author.social.linkedin}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-full flex items-center justify-center gap-2 p-3 bg-[#0a66c2] hover:bg-[#004182] text-white rounded-xl transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1"
+                                            title="LinkedIn"
+                                            aria-label="LinkedIn"
+                                        >
+                                            <Linkedin className="w-5 h-5" />
+                                            <span className="font-medium">LinkedIn</span>
+                                        </Link>
                                     )}
-                                    {author.social?.twitter && (
-                                        <SocialButton href={author.social.twitter} icon={Twitter} label="Twitter" color="hover:text-[#1da1f2] hover:border-[#1da1f2]" />
-                                    )}
-                                    {author.social?.github && (
-                                        <SocialButton href={author.social.github} icon={Github} label="Github" color="hover:text-slate-900 hover:border-slate-900" />
-                                    )}
-                                    {author.social?.website && (
-                                        <SocialButton href={author.social.website} icon={Globe} label="Website" color="hover:text-emerald-600 hover:border-emerald-600" />
+                                    {(author.social?.twitter || author.social?.github || author.social?.website) && (
+                                        <div className="flex gap-2 justify-center">
+                                            {author.social?.twitter && (
+                                                <SocialButton href={author.social.twitter} icon={Twitter} label="Twitter" color="hover:text-[#1da1f2] hover:border-[#1da1f2]" />
+                                            )}
+                                            {author.social?.github && (
+                                                <SocialButton href={author.social.github} icon={Github} label="Github" color="hover:text-slate-900 hover:border-slate-900" />
+                                            )}
+                                            {author.social?.website && (
+                                                <SocialButton href={author.social.website} icon={Globe} label="Website" color="hover:text-emerald-600 hover:border-emerald-600" />
+                                            )}
+                                        </div>
                                     )}
                                 </div>
                             </div>
