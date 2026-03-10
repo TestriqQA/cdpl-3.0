@@ -80,35 +80,35 @@ const Footer = () => {
               <h2 className="text-lg font-semibold text-brand">Data Science</h2>
               <ul>
                 <li className='flex flex-col space-y-2'>
-                  <FooterLink href="/ds-ml-courses">
+                  <FooterLink href="/courses/ds-ml-courses">
                     Data Science - Overview
                   </FooterLink>
 
-                  <FooterLink href="/ai-course">
+                  <FooterLink href="/courses/ds-ml-courses/ai-course">
                     Comprehensive Data Science and AI - Master Program
                   </FooterLink>
 
-                  <FooterLink href="/machine-learning-course">
+                  <FooterLink href="/courses/ds-ml-courses/machine-learning-course">
                     Machine Learning and Data Science with Python
                   </FooterLink>
 
-                  <FooterLink href="/generative-ai-course">
+                  <FooterLink href="/courses/ds-ml-courses/generative-ai-course">
                     Deep Learning, NLP and Generative AI
                   </FooterLink>
 
-                  <FooterLink href="/data-science-course">
+                  <FooterLink href="/courses/ds-ml-courses/data-science-course">
                     Advanced Data Science &amp; Machine Learning Masterclass
                   </FooterLink>
 
-                  <FooterLink href="/machine-learning-using-python">
+                  <FooterLink href="/courses/ds-ml-courses/machine-learning-using-python">
                     Machine Learning Algorithms using python Programming
                   </FooterLink>
 
-                  <FooterLink href="/data-visualization-in-r-programming">
+                  <FooterLink href="/courses/ds-ml-courses/data-visualization-in-r-programming">
                     Machine Learning and Data Visualization using R Programming
                   </FooterLink>
 
-                  <FooterLink href="/python-course">
+                  <FooterLink href="/courses/software-testing-course/python-course">
                     Python Programming
                   </FooterLink>
 
@@ -121,11 +121,11 @@ const Footer = () => {
               <h2 className="text-lg font-semibold text-brand">Artificial Intelligence(AI)</h2>
               <ul>
                 <li className='flex flex-col space-y-2'>
-                  <FooterLink href="/artificial-intelligence-courses">
+                  <FooterLink href="/courses/artificial-intelligence-courses">
                     Artificial Intelligence (AI) - Overview
                   </FooterLink>
 
-                  <FooterLink href="/prompt-engineering-course">
+                  <FooterLink href="/courses/artificial-intelligence-courses/prompt-engineering-course">
                     Prompt Engineering with Gen AI
                   </FooterLink>
                 </li>
@@ -139,44 +139,44 @@ const Footer = () => {
               <h2 className="text-lg font-semibold text-brand">Software Testing Courses</h2>
               <ul>
                 <li className='flex flex-col space-y-2'>
-                  <FooterLink href="/software-testing-course">
+                  <FooterLink href="/courses/software-testing-course">
                     Software Testing - Overview
                   </FooterLink>
 
-                  <FooterLink href="/manual-testing-course">
+                  <FooterLink href="/courses/software-testing-course/manual-testing-course">
                     Manual Software Testing
                   </FooterLink>
 
-                  <FooterLink href="/api-testing">
+                  <FooterLink href="/courses/software-testing-course/api-testing">
                     API Testing using POSTMAN and RestAPIs
                   </FooterLink>
 
-                  <FooterLink href="/dbms-course">
+                  <FooterLink href="/courses/software-testing-course/dbms-course">
                     Database Management System using MySQL
                   </FooterLink>
 
-                  <FooterLink href="/etl-testing">
+                  <FooterLink href="/courses/software-testing-course/etl-testing">
                     ETL Testing Course
                   </FooterLink>
 
-                  <FooterLink href="/advance-software-testing">
+                  <FooterLink href="/courses/software-testing-course/advance-software-testing">
                     Advanced Software Testing
                   </FooterLink>
 
-                  <FooterLink href="/automation-testing-course">
+                  <FooterLink href="/courses/software-testing-course/automation-testing-course">
                     Advanced Automation Testing
                   </FooterLink>
 
-                  <FooterLink href="/advance-manual-automation-testing">
+                  <FooterLink href="/courses/software-testing-course/advance-manual-automation-testing">
                     Advanced Manual and Automation Testing
                   </FooterLink>
 
-                  <FooterLink href="/advance-manual-automation-testing">
+                  <FooterLink href="/courses/software-testing-course/advance-manual-automation-testing">
                     Advanced Manual and Automation Testing
                   </FooterLink>
 
 
-                  <FooterLink href="/java-course">
+                  <FooterLink href="/courses/software-testing-course/java-course">
                     Java Programming
                   </FooterLink>
                 </li>
@@ -188,19 +188,19 @@ const Footer = () => {
               <h2 className="text-lg font-semibold text-brand">Digital Marketing</h2>
               <ul>
                 <li className='flex flex-col space-y-2'>
-                  <FooterLink href="/digital-marketing-courses">
+                  <FooterLink href="/courses/digital-marketing-courses">
                     Digital Marketing - Overview
                   </FooterLink>
 
-                  <FooterLink href="/digital-marketing-course">
+                  <FooterLink href="/courses/digital-marketing-courses/digital-marketing-course">
                     Digital Marketing and Analytics - Master Program
                   </FooterLink>
 
-                  <FooterLink href="/ai-in-digital-marketing">
+                  <FooterLink href="/courses/digital-marketing-courses/ai-in-digital-marketing">
                     Digital Marketing and AI (For Business Owners)
                   </FooterLink>
 
-                  <FooterLink href="/ai-bootcamp">
+                  <FooterLink href="/courses/digital-marketing-courses/ai-bootcamp">
                     Digital Marketing With AI Bootcamp
                   </FooterLink>
                 </li>
@@ -214,31 +214,31 @@ const Footer = () => {
               <h2 className="text-lg font-semibold text-brand">Business Development(BI)</h2>
               <ul>
                 <li className='flex flex-col space-y-2'>
-                  <FooterLink href="/bi-courses">
+                  <FooterLink href="/courses/bi-courses">
                     Business Intelligence (BI) - Overview
                   </FooterLink>
 
-                  <FooterLink href="/data-analytics">
+                  <FooterLink href="/courses/bi-courses/data-analytics">
                     Advanced Data Analytics - Hero Program
                   </FooterLink>
 
-                  <FooterLink href="/data-analytics-python">
+                  <FooterLink href="/courses/bi-courses/data-analytics-python">
                     Advanced Data Analytics with Python Libraries
                   </FooterLink>
 
-                  <FooterLink href="/data-analytics-and-visualization">
+                  <FooterLink href="/courses/bi-courses/data-analytics-and-visualization">
                     Excel for Data Analytics & Visualization
                   </FooterLink>
 
-                  <FooterLink href="/data-analytics-with-tableau">
+                  <FooterLink href="/courses/bi-courses/data-analytics-with-tableau">
                     Data Analytics & Visualization with Tableau
                   </FooterLink>
 
-                  <FooterLink href="/power-bi-course">
+                  <FooterLink href="/courses/bi-courses/power-bi-course">
                     Data Analytics & Visualization with Power BI
                   </FooterLink>
 
-                  <FooterLink href="/masters-in-data-engineering">
+                  <FooterLink href="/courses/bi-courses/masters-in-data-engineering">
                     Data Analytics With BI And Big Data Engineering - Master Program
                   </FooterLink>
 

@@ -26,6 +26,7 @@ export default function HeroSection() {
     const breadcrumbs = [
         { label: "Home", href: "/" },
         { label: "Courses", href: "/courses" },
+        { label: 'Data Science & ML', href: '/courses/ds-ml-courses' },
         { label: "Machine Learning Algorithms with Python" },
     ];
 

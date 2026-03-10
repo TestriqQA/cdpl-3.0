@@ -60,6 +60,156 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/software-testing-course',
+        destination: '/courses/software-testing-course',
+        permanent: true,
+      },
+      {
+        source: '/manual-testing-course',
+        destination: '/courses/software-testing-course/manual-testing-course',
+        permanent: true,
+      },
+      {
+        source: '/automation-testing-course',
+        destination: '/courses/software-testing-course/automation-testing-course',
+        permanent: true,
+      },
+      {
+        source: '/api-testing',
+        destination: '/courses/software-testing-course/api-testing',
+        permanent: true,
+      },
+      {
+        source: '/etl-testing',
+        destination: '/courses/software-testing-course/etl-testing',
+        permanent: true,
+      },
+      {
+        source: '/dbms-course',
+        destination: '/courses/software-testing-course/dbms-course',
+        permanent: true,
+      },
+      {
+        source: '/advance-software-testing',
+        destination: '/courses/software-testing-course/advance-software-testing',
+        permanent: true,
+      },
+      {
+        source: '/java-course',
+        destination: '/courses/software-testing-course/java-course',
+        permanent: true,
+      },
+      {
+        source: '/advance-manual-automation-testing',
+        destination: '/courses/software-testing-course/advance-manual-automation-testing',
+        permanent: true,
+      },
+      {
+        source: '/python-course',
+        destination: '/courses/software-testing-course/python-course',
+        permanent: true,
+      },
+      {
+        source: '/ds-ml-courses',
+        destination: '/courses/ds-ml-courses',
+        permanent: true,
+      },
+      {
+        source: '/machine-learning-course',
+        destination: '/courses/ds-ml-courses/machine-learning-course',
+        permanent: true,
+      },
+      {
+        source: '/generative-ai-course',
+        destination: '/courses/ds-ml-courses/generative-ai-course',
+        permanent: true,
+      },
+      {
+        source: '/data-science-course',
+        destination: '/courses/ds-ml-courses/data-science-course',
+        permanent: true,
+      },
+      {
+        source: '/ai-course',
+        destination: '/courses/ds-ml-courses/ai-course',
+        permanent: true,
+      },
+      {
+        source: '/machine-learning-using-python',
+        destination: '/courses/ds-ml-courses/machine-learning-using-python',
+        permanent: true,
+      },
+      {
+        source: '/data-visualization-in-r-programming',
+        destination: '/courses/ds-ml-courses/data-visualization-in-r-programming',
+        permanent: true,
+      },
+      {
+        source: '/bi-courses',
+        destination: '/courses/bi-courses',
+        permanent: true,
+      },
+      {
+        source: '/data-analytics',
+        destination: '/courses/bi-courses/data-analytics',
+        permanent: true,
+      },
+      {
+        source: '/data-analytics-python',
+        destination: '/courses/bi-courses/data-analytics-python',
+        permanent: true,
+      },
+      {
+        source: '/data-analytics-and-visualization',
+        destination: '/courses/bi-courses/data-analytics-and-visualization',
+        permanent: true,
+      },
+      {
+        source: '/data-analytics-with-tableau',
+        destination: '/courses/bi-courses/data-analytics-with-tableau',
+        permanent: true,
+      },
+      {
+        source: '/power-bi-course',
+        destination: '/courses/bi-courses/power-bi-course',
+        permanent: true,
+      },
+      {
+        source: '/masters-in-data-engineering',
+        destination: '/courses/bi-courses/masters-in-data-engineering',
+        permanent: true,
+      },
+      {
+        source: '/artificial-intelligence-courses',
+        destination: '/courses/artificial-intelligence-courses',
+        permanent: true,
+      },
+      {
+        source: '/prompt-engineering-course',
+        destination: '/courses/artificial-intelligence-courses/prompt-engineering-course',
+        permanent: true,
+      },
+      {
+        source: '/digital-marketing-courses',
+        destination: '/courses/digital-marketing-courses',
+        permanent: true,
+      },
+      {
+        source: '/digital-marketing-course',
+        destination: '/courses/digital-marketing-courses/digital-marketing-course',
+        permanent: true,
+      },
+      {
+        source: '/ai-in-digital-marketing',
+        destination: '/courses/digital-marketing-courses/ai-in-digital-marketing',
+        permanent: true,
+      },
+      {
+        source: '/ai-bootcamp',
+        destination: '/courses/digital-marketing-courses/ai-bootcamp',
+        permanent: true,
+      },
+      {
         source: '/index.html',
         destination: '/',
         permanent: true,

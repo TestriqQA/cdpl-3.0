@@ -79,6 +79,7 @@ export default function HeroSection() {
     const breadcrumbs = [
         { label: "Home", href: "/" },
         { label: "Courses", href: "/courses" },
+        { label: 'Software Testing', href: '/courses/software-testing-course' },
         { label: "Python Master Program" },
     ];
 

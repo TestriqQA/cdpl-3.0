@@ -197,48 +197,48 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ========================================
   const coursePages: MetadataRoute.Sitemap = [
     // Software Testing Courses
-    'manual-testing-course',
-    'automation-testing-course',
-    'advance-manual-automation-testing',
-    'advance-software-testing',
-    'api-testing',
-    'etl-testing',
+    'courses/software-testing-course/manual-testing-course',
+    'courses/software-testing-course/automation-testing-course',
+    'courses/software-testing-course/advance-manual-automation-testing',
+    'courses/software-testing-course/advance-software-testing',
+    'courses/software-testing-course/api-testing',
+    'courses/software-testing-course/etl-testing',
 
     // Data & Analytics Courses
-    'data-science-course',
-    'data-analytics',
-    'data-analytics-and-visualization',
-    'data-analytics-python',
-    'data-analytics-with-tableau',
-    'data-visualization-in-r-programming',
-    'dbms-course',
-    'masters-in-data-engineering',
-    'power-bi-course',
+    'courses/ds-ml-courses/data-science-course',
+    'courses/bi-courses/data-analytics',
+    'courses/bi-courses/data-analytics-and-visualization',
+    'courses/bi-courses/data-analytics-python',
+    'courses/bi-courses/data-analytics-with-tableau',
+    'courses/ds-ml-courses/data-visualization-in-r-programming',
+    'courses/software-testing-course/dbms-course',
+    'courses/bi-courses/masters-in-data-engineering',
+    'courses/bi-courses/power-bi-course',
 
     // AI & ML Courses
-    'ai-course',
-    'ai-bootcamp',
-    'ai-in-digital-marketing',
-    'machine-learning-course',
-    'machine-learning-using-python',
-    'generative-ai-course',
-    'prompt-engineering-course',
+    'courses/ds-ml-courses/ai-course',
+    'courses/digital-marketing-courses/ai-bootcamp',
+    'courses/digital-marketing-courses/ai-in-digital-marketing',
+    'courses/ds-ml-courses/machine-learning-course',
+    'courses/ds-ml-courses/machine-learning-using-python',
+    'courses/ds-ml-courses/generative-ai-course',
+    'courses/artificial-intelligence-courses/prompt-engineering-course',
 
     // Programming Courses
-    'python-course',
-    'java-course',
+    'courses/software-testing-course/python-course',
+    'courses/software-testing-course/java-course',
 
     // Digital Marketing
-    'digital-marketing-course',
+    'courses/digital-marketing-courses/digital-marketing-course',
 
     // Category & Certification Pages
     'aaa-certification',
     'actd-certification',
-    'artificial-intelligence-courses',
-    'bi-courses',
-    'digital-marketing-courses',
-    'ds-ml-courses',
-    'software-testing-course',
+    'courses/artificial-intelligence-courses',
+    'courses/bi-courses',
+    'courses/digital-marketing-courses',
+    'courses/ds-ml-courses',
+    'courses/software-testing-course',
 
   ].map((slug) => ({
     url: `${siteUrl}/${slug}`,

@@ -74,8 +74,9 @@ export default function HeroSection() {
     const breadcrumbs = [
         { label: "Home", href: "/" },
         { label: "Courses", href: "/courses" },
+        { label: 'Software Testing', href: '/courses/software-testing-course' },
         { label: "Advanced Software Testing" },
-    ]
+    ];
 
     return (
         <section id="hero-software-testing" aria-labelledby="software-testing-hero" className="relative overflow-hidden">

@@ -26,6 +26,8 @@ export default function HeroSection() {
 
     const breadcrumbs = [
         { label: "Home", href: "/" },
+        { label: 'Courses', href: '/courses' },
+        { label: 'Digital Marketing', href: '/courses/digital-marketing-courses' },
         { label: "Digital Marketing", href: null },
         { label: "AI Bootcamp", href: "/ai-bootcamp" },
     ];

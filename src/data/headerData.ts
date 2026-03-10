@@ -19,7 +19,7 @@ export const courseCategories: Category[] = [
     {
         id: "software-testing-courses",
         name: "Software Testing Courses",
-        slug: "software-testing-course",
+        slug: "courses/software-testing-course",
         description:
             "Master Agile methodologies and Scrum frameworks to enhance team collaboration and project delivery.",
         rightColumnImages: [
@@ -29,7 +29,7 @@ export const courseCategories: Category[] = [
         courses: [
             {
                 name: "Manual Software Testing",
-                slug: "manual-testing-course",
+                slug: "courses/software-testing-course/manual-testing-course",
                 description: "Learn to facilitate Scrum teams and drive Agile projects effectively.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -38,7 +38,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "API Testing using POSTMAN and RestAPIs",
-                slug: "api-testing",
+                slug: "courses/software-testing-course/api-testing",
                 description: "Master product backlog management and stakeholder collaboration.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -47,7 +47,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Database Management System using MySQL",
-                slug: "dbms-course",
+                slug: "courses/software-testing-course/dbms-course",
                 description: "Gain advanced Scrum knowledge to lead high-performing teams.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -56,7 +56,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "ETL Testing Course",
-                slug: "etl-testing",
+                slug: "courses/software-testing-course/etl-testing",
                 description: "Learn to lead Agile transformations using the SAFe framework.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -65,7 +65,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Advanced Software Testing",
-                slug: "advance-software-testing",
+                slug: "courses/software-testing-course/advance-software-testing",
                 description: "Facilitate SAFe practices for scaled Agile environments.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -74,7 +74,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Advanced Automation Testing",
-                slug: "automation-testing-course",
+                slug: "courses/software-testing-course/automation-testing-course",
                 description: "Drive product vision and delivery in SAFe settings.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -83,7 +83,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Advanced Manual and Automation Testing - Master Program",
-                slug: "advance-manual-automation-testing",
+                slug: "courses/software-testing-course/advance-manual-automation-testing",
                 description: "Blend Agile principles with PMI project management standards.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -92,7 +92,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Python Programming",
-                slug: "python-course",
+                slug: "courses/software-testing-course/python-course",
                 description: "Master containerization and orchestration technologies.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -101,7 +101,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Java Programming",
-                slug: "java-course",
+                slug: "courses/software-testing-course/java-course",
                 description: "Automate CI/CD pipelines with Jenkins.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -113,7 +113,7 @@ export const courseCategories: Category[] = [
     {
         id: "data-science",
         name: "Data Science",
-        slug: "ds-ml-courses",
+        slug: "courses/ds-ml-courses",
         description: "Prepare for job interviews with practical skills and confidence.",
         rightColumnImages: [
             { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -122,7 +122,7 @@ export const courseCategories: Category[] = [
         courses: [
             {
                 name: "Machine Learning and Data Science with Python - Hero Program",
-                slug: "machine-learning-course",
+                slug: "courses/ds-ml-courses/machine-learning-course",
                 description: "Build strategies to ace behavioral and technical interviews.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -131,7 +131,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Deep Learning, NLP and GenerativeAI",
-                slug: "generative-ai-course",
+                slug: "courses/ds-ml-courses/generative-ai-course",
                 description: "Practice real-world interview scenarios with feedback.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -140,7 +140,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Advanced Data Science and Machine Learning Masterclass",
-                slug: "data-science-course",
+                slug: "courses/ds-ml-courses/data-science-course",
                 description: "Master coding challenges and technical questions.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -149,7 +149,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Comprehensive Data Science and AI - Master Program",
-                slug: "ai-course",
+                slug: "courses/ds-ml-courses/ai-course",
                 description: "Master coding challenges and technical questions.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -158,7 +158,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Python Programming",
-                slug: "python-course",
+                slug: "courses/software-testing-course/python-course",
                 description: "Master containerization and orchestration technologies.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -167,7 +167,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Machine Learning Algorithms using python Programming",
-                slug: "machine-learning-using-python",
+                slug: "courses/ds-ml-courses/machine-learning-using-python",
                 description: "Master containerization and orchestration technologies.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -176,7 +176,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Machine Learning and Data Visualization using R Programming",
-                slug: "data-visualization-in-r-programming",
+                slug: "courses/ds-ml-courses/data-visualization-in-r-programming",
                 description: "Master containerization and orchestration technologies.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -188,7 +188,7 @@ export const courseCategories: Category[] = [
     {
         id: "business-intelligence",
         name: "Business Intelligence (BI)",
-        slug: "bi-courses",
+        slug: "courses/bi-courses",
         description: "Develop skills to manage projects efficiently and effectively.",
         rightColumnImages: [
             { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -196,7 +196,7 @@ export const courseCategories: Category[] = [
         ], courses: [
             {
                 name: "Advanced Data Analytics - Hero Program",
-                slug: "data-analytics",
+                slug: "courses/bi-courses/data-analytics",
                 description: "Craft a standout resume to impress recruiters.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -205,7 +205,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: " Advanced Data Analytics with Python Libraries",
-                slug: "data-analytics-python",
+                slug: "courses/bi-courses/data-analytics-python",
                 description: "Craft a standout resume to impress recruiters.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -214,7 +214,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Excel for Data Analytics & Visualization",
-                slug: "data-analytics-and-visualization",
+                slug: "courses/bi-courses/data-analytics-and-visualization",
                 description: "Craft a standout resume to impress recruiters.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -223,7 +223,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Data Analytics & Visualization with Tableau",
-                slug: "data-analytics-with-tableau",
+                slug: "courses/bi-courses/data-analytics-with-tableau",
                 description: "Craft a standout resume to impress recruiters.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -232,7 +232,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Data Analytics & Visualization with Power BI",
-                slug: "power-bi-course",
+                slug: "courses/bi-courses/power-bi-course",
                 description: "Craft a standout resume to impress recruiters.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -241,7 +241,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Data Analytics With BI And Big Data Engineering Master Program",
-                slug: "masters-in-data-engineering",
+                slug: "courses/bi-courses/masters-in-data-engineering",
                 description: "Craft a standout resume to impress recruiters.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -250,7 +250,7 @@ export const courseCategories: Category[] = [
             },
             // {
             //   name: "Big Data Engineering",
-            //   slug: "data-engineering-course",
+            //   slug: "courses/bi-courses/data-engineering-course",
             //   description: "Master coding challenges and technical questions.",
             //   rightColumnImages: [
             //     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -263,7 +263,7 @@ export const courseCategories: Category[] = [
     {
         id: "artificial-intelligence",
         name: "Artificial Intelligence (AI)",
-        slug: "artificial-intelligence-courses",
+        slug: "courses/artificial-intelligence-courses",
         description: "Develop skills to manage projects efficiently and effectively.",
         rightColumnImages: [
             { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -271,7 +271,7 @@ export const courseCategories: Category[] = [
         ], courses: [
             {
                 name: "Prompt Engineering with Generative AI",
-                slug: "prompt-engineering-course",
+                slug: "courses/artificial-intelligence-courses/prompt-engineering-course",
                 description: "Master coding challenges and technical questions.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -283,7 +283,7 @@ export const courseCategories: Category[] = [
     {
         id: "digital-marketing",
         name: "Digital Marketing",
-        slug: "digital-marketing-courses",
+        slug: "courses/digital-marketing-courses",
         description: "Develop skills to manage projects efficiently and effectively.",
         rightColumnImages: [
             { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -291,7 +291,7 @@ export const courseCategories: Category[] = [
         ], courses: [
             {
                 name: "AI-Driven Digital Marketing & Analytics",
-                slug: "digital-marketing-course",
+                slug: "courses/digital-marketing-courses/digital-marketing-course",
                 description: "Earn the globally recognized PMP certification.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -300,7 +300,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: " Digital Marketing and AI (For Business Owners)",
-                slug: "ai-in-digital-marketing",
+                slug: "courses/digital-marketing-courses/ai-in-digital-marketing",
                 description: "Earn the globally recognized PMP certification.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -309,7 +309,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Digital Marketing With AI Bootcamp",
-                slug: "ai-bootcamp",
+                slug: "courses/digital-marketing-courses/ai-bootcamp",
                 description: "Earn the globally recognized PMP certification.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -328,7 +328,7 @@ export const courseCategories: Category[] = [
         ], courses: [
             {
                 name: "Advanced Software Testing",
-                slug: "advance-software-testing",
+                slug: "courses/software-testing-course/advance-software-testing",
                 description: "Analyze data to drive business decisions.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -337,7 +337,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Advanced Automation Testing",
-                slug: "automation-testing-course",
+                slug: "courses/software-testing-course/automation-testing-course",
                 description: "Build predictive models with machine learning techniques.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -346,7 +346,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Advanced Data Science and Machine Learning - Masterclass",
-                slug: "data-science-course",
+                slug: "courses/ds-ml-courses/data-science-course",
                 description: "Use Python for data analysis and visualization.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },
@@ -355,7 +355,7 @@ export const courseCategories: Category[] = [
             },
             {
                 name: "Data Analysis with BI & Big Data Engineering - Master Program",
-                slug: "masters-in-data-engineering",
+                slug: "courses/bi-courses/masters-in-data-engineering",
                 description: "Create interactive data visualizations with Power BI.",
                 rightColumnImages: [
                     { name: "Advanced Software Testing", logo: "/cdpl-logo.png" },

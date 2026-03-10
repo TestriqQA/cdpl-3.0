@@ -20,10 +20,11 @@ export default function HeroSection() {
   const [isCareerSessionOpen, setIsCareerSessionOpen] = useState(false);
 
   const breadcrumbs = [
-    { label: "Home", href: "/" },
+        { label: "Home", href: "/" },
     { label: "Courses", href: "/courses" },
+        { label: 'Data Science & ML', href: '/courses/ds-ml-courses' },
     { label: "Advanced DS & ML Masterclass", href: "/data-science-course" },
-  ];
+    ];
 
   const courseName = "Advanced Data Science and Machine Learning Masterclass";
 

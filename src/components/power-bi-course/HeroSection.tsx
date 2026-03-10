@@ -44,6 +44,7 @@ const HeroSection: React.FC = () => {
     const breadcrumbs = [
         { label: "Home", href: "/" },
         { label: "Courses", href: "/courses" },
+        { label: 'BI Courses', href: '/courses/bi-courses' },
         { label: "Data Analytics & Visualization with Power BI" },
     ];
 
