@@ -10,7 +10,7 @@
  * @version 2.0.0
  * @updated 2025-11-12
  */
-
+import MetaPixel from '@/components/MetaPixel'
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -103,6 +103,8 @@ export default function RootLayout({
       </head>
 
       <body className={`${inter.variable} font-sans antialiased`}>
+        <MetaPixel />
+
         <div className="sticky top-0 z-[100] w-full">
           <SpecialOfferBanner />
           <Header />
