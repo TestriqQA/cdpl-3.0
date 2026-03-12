@@ -1,9 +1,21 @@
 'use client'
 
 import Script from 'next/script'
+import { usePathname } from 'next/navigation'
+import { useEffect } from 'react'
 
 export default function MetaPixel() {
     const pixelId = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID
+    const pathname = usePathname()
+
+    useEffect(() => {
+        if (!pixelId) return
+        
+        // Ensure fbq has loaded
+        if (typeof window !== 'undefined' && window.fbq) {
+            window.fbq('track', 'PageView')
+        }
+    }, [pathname, pixelId])
 
     if (!pixelId) return null // Safety check
 
@@ -21,7 +33,7 @@ export default function MetaPixel() {
             n.queue=[];t=b.createElement(e);t.async=!0;
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net');
+            'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '${pixelId}');
             fbq('track', 'PageView');
           `,
@@ -38,3 +50,4 @@ export default function MetaPixel() {
         </>
     )
 }
+
