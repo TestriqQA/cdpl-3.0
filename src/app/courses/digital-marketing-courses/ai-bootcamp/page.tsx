@@ -1,4 +1,4 @@
-import HeroSection from "@/components/ai-bootcamp/HeroSection";
+import HeroSection from "@/components/digital-marketing-course/HeroSection";
 import StickyNav from "@/components/StickyNav2/StickyNav2";
 import { with_roadmap } from '@/components/StickyNavData';
 import StatsSection from "@/components/ai-bootcamp/StatsSection";
@@ -59,7 +59,7 @@ export default function AiBootcampPage() {
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: "/" },
         { name: "Courses", url: "/courses" },
-    { name: "Digital Marketing Courses", url: "/courses/digital-marketing-courses" },
+        { name: "Digital Marketing Courses", url: "/courses/digital-marketing-courses" },
         { name: "AI Bootcamp", url: '/courses/digital-marketing-courses/ai-bootcamp' },
     ]);
 

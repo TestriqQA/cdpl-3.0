@@ -24,12 +24,11 @@ export default function HeroSection() {
   };
 
   const breadcrumbs = [
-        { label: "Home", href: "/" },
-        { label: 'Courses', href: '/courses' },
-        { label: 'Artificial Intelligence', href: '/courses/artificial-intelligence-courses' },
-    { label: "Artificial Intelligence", href: null },
+    { label: "Home", href: "/" },
+    { label: 'Courses', href: '/courses' },
+    { label: 'Artificial Intelligence', href: '/courses/artificial-intelligence-courses' },
     { label: "Prompt Engineering with Generative AI", href: "/prompt-engineering-course" },
-    ];
+  ];
 
   return (
     <section id="hero" aria-labelledby="pe-hero" className="relative overflow-hidden bg-white">

@@ -69,12 +69,11 @@ export default function HeroSection() {
 
 
   const breadcrumbs = [
-        { label: 'Home', href: '/' },
-        { label: 'Courses', href: '/courses' },
-        { label: 'Digital Marketing', href: '/courses/digital-marketing-courses' },
-    { label: 'Digital Marketing Course', href: null },
+    { label: 'Home', href: '/' },
+    { label: 'Courses', href: '/courses' },
+    { label: 'Digital Marketing', href: '/courses/digital-marketing-courses' },
     { label: 'Digital Marketing Course in Mumbai', href: '/digital-marketing-course' },
-    ];
+  ];
 
   return (
     <section id="hero" aria-labelledby="dm-hero" className="relative overflow-hidden">
