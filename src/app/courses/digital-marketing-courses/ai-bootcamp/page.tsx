@@ -1,4 +1,4 @@
-import HeroSection from "@/components/digital-marketing-course/HeroSection";
+import HeroSection from "@/components/ai-bootcamp/HeroSection";
 import StickyNav from "@/components/StickyNav2/StickyNav2";
 import { with_roadmap } from '@/components/StickyNavData';
 import StatsSection from "@/components/ai-bootcamp/StatsSection";
