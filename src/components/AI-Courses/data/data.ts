@@ -64,7 +64,7 @@ export const COURSES: Course[] = [
         rating: 4.9,
         level: 'Master',
         popular: true,
-        link: '/prompt-engineering-course',
+        link: '/courses/artificial-intelligence-courses/prompt-engineering-course',
         icon: 'Brain',
         features: ['AI Foundations & Generative AI', 'Large Language Models & Multimodal AI', 'Prompt Engineering Techniques', 'Responsible AI, Governance & Capstone'],
         syllabusLink: 'https://www.cinutedigital.com/downloads/prompt-engineering-with-gen-ai.pdf',

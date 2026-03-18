@@ -49,6 +49,7 @@ const DesktopHeroContent: React.FC<{
 }> = ({ onOpenBrochure, onOpenVideo }) => {
     const breadcrumbs = [
         { label: 'Home', href: '/' },
+        { label: 'Courses', href: '/courses' },
         { label: 'Artificial Intelligence' },
     ];
 
@@ -270,6 +271,7 @@ export default function HeroSection(): React.JSX.Element {
     // Breadcrumbs used for mobile (kept in sync with DesktopHeroContent)
     const breadcrumbs = [
         { label: 'Home', href: '/' },
+        { label: 'Courses', href: '/courses' },
         { label: 'Artificial Intelligence' },
     ];
 

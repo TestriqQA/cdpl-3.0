@@ -175,7 +175,6 @@ export default function LeadForm({
                             className: "!w-full !text-base !border-none !outline-none !ring-0",
                             "aria-label": "Phone Number"
                         }}
-                        containerClass="w-full"
                     />
                     {form.formState.errors.phone && (
                         <p className="text-red-500 text-xs sm:text-sm mt-1 break-words">

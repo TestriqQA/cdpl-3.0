@@ -25,7 +25,8 @@ export default function HeroSection() {
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
-    { label: "Artificial Intelligence", href: null },
+    { label: 'Courses', href: '/courses' },
+    { label: 'Artificial Intelligence', href: '/courses/artificial-intelligence-courses' },
     { label: "Prompt Engineering with Generative AI", href: "/prompt-engineering-course" },
   ];
 

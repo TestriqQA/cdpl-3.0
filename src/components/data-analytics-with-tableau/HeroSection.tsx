@@ -34,10 +34,11 @@ const heroData = {
 
 /** ---- Optional: visible breadcrumb for internal linking ---- */
 const breadcrumbs = [
-    { label: "Home", href: "/" },
+        { label: "Home", href: "/" },
     { label: "Courses", href: "/courses" },
+        { label: 'BI Courses', href: '/courses/bi-courses' },
     { label: "Data Analytics & Visualization with Tableau" },
-];
+    ];
 
 export default function HeroSection() {
     const [isEnrollOpen, setIsEnrollOpen] = useState(false);

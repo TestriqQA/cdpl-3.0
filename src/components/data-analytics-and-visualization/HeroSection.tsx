@@ -30,6 +30,7 @@ export default function HeroSection() {
     const breadcrumbs = [
         { label: "Home", href: "/" },
         { label: "Courses", href: "/courses" },
+        { label: 'BI Courses', href: '/courses/bi-courses' },
         { label: "Advanced Excel for Data Analytics & Visualization", href: "/data-analytics-and-visualization" },
     ];
 

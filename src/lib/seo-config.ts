@@ -229,7 +229,7 @@ export const COURSE_CATEGORIES = [
 export const FEATURED_COURSES = [
   {
     name: 'Manual Software Testing',
-    slug: 'manual-testing-course',
+    slug: 'courses/software-testing-course/manual-testing-course',
     description: 'Learn to facilitate Scrum teams and drive Agile projects effectively with comprehensive manual testing training.',
     duration: 'P12W', // 12 weeks in ISO 8601 format
     level: 'Beginner',
@@ -241,7 +241,7 @@ export const FEATURED_COURSES = [
   },
   {
     name: 'Advanced Automation Testing',
-    slug: 'automation-testing-course',
+    slug: 'courses/software-testing-course/automation-testing-course',
     description: 'Drive product vision and delivery in SAFe settings with advanced automation testing skills.',
     duration: 'P16W',
     level: 'Intermediate',
@@ -253,7 +253,7 @@ export const FEATURED_COURSES = [
   },
   {
     name: 'Advanced Data Science and Machine Learning Masterclass',
-    slug: 'data-science-course',
+    slug: 'courses/ds-ml-courses/data-science-course',
     description: 'Master coding challenges and technical questions with comprehensive data science training.',
     duration: 'P20W',
     level: 'Advanced',

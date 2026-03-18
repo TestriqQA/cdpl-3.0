@@ -43,6 +43,7 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
 
     const breadcrumbs = [
         { label: 'Home', href: '/' },
+        { label: 'Courses', href: '/courses' },
         { label: 'Digital Marketing' },
     ];
 
@@ -258,6 +259,7 @@ export default function HeroSection(): React.JSX.Element {
 
     const breadcrumbs = [
         { label: 'Home', href: '/' },
+        { label: 'Courses', href: '/courses' },
         { label: 'Digital Marketing' },
     ];
 

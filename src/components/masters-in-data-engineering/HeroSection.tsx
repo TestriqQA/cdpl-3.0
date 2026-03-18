@@ -22,10 +22,12 @@ export default function HeroSection() {
   const courseName = "Data Analytics with BI & Big Data Engineering Master Program";
 
   const breadcrumbs = [
-    { label: "Home", href: "/" },
+        { label: "Home", href: "/" },
+        { label: 'Courses', href: '/courses' },
+        { label: 'BI Courses', href: '/courses/bi-courses' },
     { label: "Business Intelligence", href: null }, // non-clickable middle breadcrumb
     { label: "Data Analytics with BI & Big Data Engineering", href: "/masters-in-data-engineering" },
-  ];
+    ];
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-teal-50 to-slate-100">

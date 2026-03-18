@@ -17,10 +17,11 @@ export default function HeroSection() {
   const courseName = "Master Digital Marketing & AI for Business Owners";
 
   const breadcrumbs = [
-    { label: "Home", href: "/" },
+        { label: "Home", href: "/" },
     { label: "Courses", href: "/courses" },
+        { label: 'Digital Marketing', href: '/courses/digital-marketing-courses' },
     { label: "AI in Digital Marketing" },
-  ];
+    ];
 
   const scrollToCurriculum = () => {
     const element = document.getElementById("curriculum");

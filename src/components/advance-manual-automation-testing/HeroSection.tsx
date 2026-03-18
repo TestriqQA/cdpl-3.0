@@ -41,10 +41,12 @@ export default function HeroSection() {
   const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
 
   const breadcrumbs = [
-    { label: 'Home', href: '/' },
+        { label: 'Home', href: '/' },
+        { label: 'Courses', href: '/courses' },
+        { label: 'Software Testing', href: '/courses/software-testing-course' },
     { label: 'Software Testing', href: "#" },
     { label: 'Manual and Automation Testing' },
-  ];
+    ];
 
   return (
     <section id="hero-manual-automation" aria-labelledby="manual-automation-hero" className="relative overflow-hidden">

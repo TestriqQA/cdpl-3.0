@@ -323,7 +323,6 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                                     className: "!w-full !text-base !border-none !outline-none !ring-0",
                                                     "aria-label": "Phone Number"
                                                 }}
-                                                containerClass="w-full"
                                             />
                                         </div>
 

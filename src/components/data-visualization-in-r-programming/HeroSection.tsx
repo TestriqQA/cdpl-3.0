@@ -20,6 +20,7 @@ export const HeroSection: React.FC = () => {
     const breadcrumbs = [
         { label: "Home", href: "/" },
         { label: "Courses", href: "/courses" },
+        { label: 'Data Science & ML', href: '/courses/ds-ml-courses' },
         {
             label: course_title || "Advanced Data Analytics with R",
         },
