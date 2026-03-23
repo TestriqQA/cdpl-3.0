@@ -1,5 +1,7 @@
-import { generateAllCoursesPageSchema, generateHomePageSchema, generateSoftwareTestingCategoryPageSchema, generateDataScienceMachineLearningCategoryPageSchema, generateBusinessIntelligenceCategoryPageSchema, generateArtificialIntelligenceCategoryPageSchema, generateDigitalMarketingCategoryPageSchema } from './src/lib/schema-generators';
+import { generateAllCoursesPageSchema, generateHomePageSchema, generateSoftwareTestingCategoryPageSchema, generateDataScienceMachineLearningCategoryPageSchema, generateBusinessIntelligenceCategoryPageSchema, generateArtificialIntelligenceCategoryPageSchema, generateDigitalMarketingCategoryPageSchema, generateManualTestingCoursePageSchema, generateApiTestingCoursePageSchema } from './src/lib/schema-generators';
 import { softwareTestingFaqs } from "./src/components/software-testing-course/data/data";
+import { MANUAL_TESTING_FAQS } from "./src/data/manualTestingData";
+import { API_TESTING_FAQS } from "./src/data/apiTestingData";
 import fs from 'fs';
 
 const schemas = generateAllCoursesPageSchema();
@@ -61,6 +63,28 @@ const dmSchemas = generateDigitalMarketingCategoryPageSchema(
   [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Digital Marketing Courses", url: "/courses/digital-marketing-courses" }]
 );
 
+const mtSchemas = generateManualTestingCoursePageSchema(
+  {
+    name: "Manual Testing Course with 100% Placement Support",
+    description: "Comprehensive 12-week Manual Testing and QA training program.",
+    url: '/courses/software-testing-course/manual-testing-course',
+    slug: "manual-testing-course",
+  },
+  MANUAL_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+  [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Software Testing Course", url: "/courses/software-testing-course" }, { name: "Manual Testing", url: '/courses/software-testing-course/manual-testing-course' }]
+);
+
+const apiSchemas = generateApiTestingCoursePageSchema(
+  {
+    name: "API Testing Course with POSTMAN & RestAPIs",
+    description: "Master API testing in 15 hours with live projects, global certification, and placement support.",
+    url: '/courses/software-testing-course/api-testing',
+    slug: "api-testing",
+  },
+  API_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+  [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Software Testing Course", url: "/courses/software-testing-course" }, { name: "API Testing", url: '/courses/software-testing-course/api-testing' }]
+);
+
 // Output raw, unformatted JSON (no markdown wrappers) to raw .json file in project root
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/courses_schema.json', JSON.stringify(schemas, null, 2), 'utf-8');
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/home_schema.json', JSON.stringify(homeSchemas, null, 2), 'utf-8');
@@ -69,4 +93,6 @@ fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/ds_ml_schema.json', J
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/bi_schema.json', JSON.stringify(biSchemas, null, 2), 'utf-8');
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/ai_schema.json', JSON.stringify(aiSchemas, null, 2), 'utf-8');
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/dm_schema.json', JSON.stringify(dmSchemas, null, 2), 'utf-8');
-console.log('Successfully wrote raw JSON all 7 files!');
+fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/mt_schema.json', JSON.stringify(mtSchemas, null, 2), 'utf-8');
+fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/api_schema.json', JSON.stringify(apiSchemas, null, 2), 'utf-8');
+console.log('Successfully wrote raw JSON all 9 files!');

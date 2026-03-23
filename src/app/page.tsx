@@ -66,6 +66,7 @@ export const metadata: Metadata = generateMetadata({
     "technology courses"
   ],
   url: '/',
+  image: '/og-images/home-page-og.png',
 });
 
 // ============================================================================

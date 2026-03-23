@@ -78,11 +78,7 @@ const SectionLoader = ({ label }: { label: string }) => {
 };
 
 import JsonLd from "@/components/JsonLd";
-import {
-  generateCourseSchema,
-  generateBreadcrumbSchema,
-  generateFAQSchema
-} from "@/lib/schema-generators";
+import { generateApiTestingCoursePageSchema } from "@/lib/schema-generators";
 
 import { API_TESTING_FAQS, API_TESTING_REVIEW_DATA } from "@/data/apiTestingData";
 import { generateMetadata } from "@/lib/metadata-generator";
@@ -94,33 +90,33 @@ export const metadata = generateMetadata({
 });
 
 export default function Page() {
-  const courseSchema = generateCourseSchema({
-    name: "API Testing Course with POSTMAN & RestAPIs",
-    description:
-      "Master API testing in 15 hours with live projects, global certification, and placement support.",
-    url: '/courses/software-testing-course/api-testing',
-    slug: "api-testing",
-    instructor: "CDPL Expert Mentors",
-    duration: "PT15H",
-    rating: API_TESTING_REVIEW_DATA.ratingValue,
-    reviewCount: API_TESTING_REVIEW_DATA.reviewCount,
-    price: 5000,
-    currency: "INR"
-  });
+  const schemas = generateApiTestingCoursePageSchema(
+    {
+      name: "API Testing Course with POSTMAN & RestAPIs",
+      description: "Master API testing in 15 hours with live projects, global certification, and placement support.",
+      url: '/courses/software-testing-course/api-testing',
+      slug: "api-testing",
+      instructor: "CDPL Expert Mentors",
+      duration: "PT15H",
+      rating: API_TESTING_REVIEW_DATA.ratingValue,
+      reviewCount: API_TESTING_REVIEW_DATA.reviewCount,
+      price: 5000,
+      currency: "INR"
+    },
+    API_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "Software Testing Course", url: "/courses/software-testing-course" },
+      { name: "API Testing", url: '/courses/software-testing-course/api-testing' }
+    ]
+  );
 
   return (
     <>
-      <JsonLd id="course" schema={courseSchema} />
-      <JsonLd
-        id="breadcrumb"
-        schema={generateBreadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Courses", url: "/courses" },
-    { name: "Software Testing Course", url: "/courses/software-testing-course" },
-          { name: "API Testing", url: '/courses/software-testing-course/api-testing' }
-        ])}
-      />
-      <JsonLd id="faq" schema={generateFAQSchema(API_TESTING_FAQS)} />
+      {schemas.map((schema, index) => (
+        <JsonLd key={`api-schema-${index}`} id={`api-schema-${index}`} schema={schema} />
+      ))}
 
       <HeroSection />
 

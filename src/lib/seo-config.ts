@@ -34,7 +34,7 @@ export const SITE_CONFIG = {
   logo: '/cdpl-logo.png',
   logoWidth: 200,
   logoHeight: 60,
-  defaultOgImage: '/og-image-default.jpg',
+  defaultOgImage: '/home-page-og.png',
   defaultOgImageWidth: 1200,
   defaultOgImageHeight: 630,
   favicon: '/favicon.ico',
@@ -84,7 +84,7 @@ export const BUSINESS_INFO = {
   foundedYear: '2020',
 
   // Number of Employees
-  numberOfEmployees: '200',
+  numberOfEmployees: '50',
 } as const;
 
 // ============================================================================
@@ -93,7 +93,7 @@ export const BUSINESS_INFO = {
 
 export const SOCIAL_PROFILES = {
   facebook: 'https://www.facebook.com/cinutedigital',
-  linkedin: 'https://www.linkedin.com/company/cinutedigital',
+  linkedin: 'https://www.linkedin.com/company/cinute-digital/',
   twitter: 'https://twitter.com/cinutedigital',
   twitterHandle: '@cinutedigital',
   instagram: 'https://www.instagram.com/cinutedigital',
@@ -107,7 +107,7 @@ export const SOCIAL_PROFILES = {
 
 export const STATISTICS = {
   studentsPlaced: 5000,
-  rating: 4.9,
+  rating: 4.8,
   maxRating: 5,
   reviewCount: 5000,
   yearsOfExperience: 15,

@@ -1387,6 +1387,145 @@ export function generateDigitalMarketingCategoryPageSchema(
 }
 
 // ============================================================================
+// MANUAL TESTING SUB-COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateManualTestingCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  // 1. Core Foundational Schemas
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  // 2. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: 'Manual Testing Course with Placement | QA Training Mumbai',
+    description: courseInput.description || 'Master Manual Testing in 12 weeks. ISTQB prep, live projects, Jira & Agile training. 5,000+ placed.',
+    url: '/courses/software-testing-course/manual-testing-course',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // 3. Master Course Schema (contains Aggregate Rating)
+  const courseSchema = generateCourseSchema(courseInput);
+
+  // 4. ItemList Schema for Sub-Courses (Sibling Courses in Software Testing)
+  const stCourses: any[] = [];
+  const stCategory = courseCategories.find(c => c.slug === 'software-testing-course');
+  if (stCategory && stCategory.courses) {
+    stCategory.courses.forEach(c => {
+      stCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(stCourses, 'Software Testing Courses Directory');
+
+  // 5. Breadcrumb Schema
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  // 6. FAQPage Schema
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  // 7. HowTo Schema (Dummy Enrollment)
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Manual Testing Course',
+    description: 'A step-by-step guide to enrolling in our specialized QA Manual Testing program.',
+    steps: [
+      { name: 'Browse Courses', text: 'Select the Manual Testing specialized module.' },
+      { name: 'Review Syllabus', text: 'Check the ISTQB aligned syllabus, Jira, and Agile methodologies.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Attend live classes, perform bug hunting, and get certified!' },
+    ]
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// API TESTING SUB-COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateApiTestingCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'API Testing Course with POSTMAN & RestAPIs | CDPL',
+    description: courseInput.description || 'Master API testing in 15 hours with live projects, global certification, and placement support.',
+    url: '/courses/software-testing-course/api-testing',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const stCourses: any[] = [];
+  const stCategory = courseCategories.find(c => c.slug === 'software-testing-course');
+  if (stCategory && stCategory.courses) {
+    stCategory.courses.forEach(c => {
+      stCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(stCourses, 'Software Testing Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL API Testing Course',
+    description: 'A step-by-step guide to enrolling in our specialized API Testing program.',
+    steps: [
+      { name: 'Review Syllabus', text: 'Analyze the Postman, JSON structure, and automation framework curriculum.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master network requests, perform backend validations, and get certified!' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
 // CONTACT PAGE SCHEMA
 // ============================================================================
 

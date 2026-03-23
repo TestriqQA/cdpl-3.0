@@ -1,4 +1,4 @@
-import { type QA } from "@/types/faq";
+import { type QA } from "../types/faq";
 
 export const MANUAL_TESTING_FAQS: QA[] = [
     {
@@ -104,7 +104,7 @@ export const MANUAL_TESTING_FAQS: QA[] = [
 ];
 
 export const MANUAL_TESTING_REVIEW_DATA = {
-    ratingValue: 4.9,
+    ratingValue: 4.8,
     reviewCount: 1200,
     bestRating: 5,
     worstRating: 1,
