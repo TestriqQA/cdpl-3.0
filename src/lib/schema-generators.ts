@@ -24,6 +24,7 @@ import {
   getWebsiteId,
   SEO_DEFAULTS,
 } from './seo-config';
+import { courseCategories } from '@/data/headerData';
 
 // Type definitions for schema.org structured data
 type WithContext<T> = T & { '@context': string };
@@ -339,10 +340,11 @@ export function generateCourseSchema(course: CourseSchemaInput): WithContext<Rec
     // Add location if available, though not strictly required for all courses
   };
 
-  // Default Offer
+  // Default Offer using AggregateOffer to represent the 25,000 to 65,000 range
   const defaultOffer = {
-    '@type': 'Offer',
-    price: course.price ? String(course.price) : '0',
+    '@type': 'AggregateOffer',
+    lowPrice: '25000',
+    highPrice: '65000',
     priceCurrency: course.currency || 'INR',
     availability: 'https://schema.org/InStock',
     url: fullUrl,
@@ -749,6 +751,32 @@ export function generatePersonSchema(person: PersonSchemaInput): WithContext<Rec
   };
 }
 
+
+// ============================================================================
+// SITE NAVIGATION SCHEMA
+// ============================================================================
+
+export function generateSiteNavigationSchema(): WithContext<Record<string, unknown>>[] {
+  // These should map EXACTLY to your website's main global header/footer navigation buttons!
+  const links = [
+    { name: 'Home', url: '/' },
+    { name: 'All Courses', url: '/courses' },
+    { name: 'About Us', url: '/about-us' },
+    { name: 'Contact Us', url: '/contact-us' },
+    { name: 'Events & Webinars', url: '/events' },
+    { name: 'Services', url: '/services' },
+    { name: 'Mentors', url: '/mentors' },
+    { name: 'Mock Test', url: '/mock-test' },
+  ];
+  return links.map((link, index) => ({
+    '@context': 'https://schema.org',
+    '@type': 'SiteNavigationElement',
+    '@id': `${SITE_CONFIG.url}/#sitenav-${index + 1}`,
+    name: link.name,
+    url: getFullUrl(link.url),
+  }));
+}
+
 // ============================================================================
 // HOME PAGE SCHEMA CONSOLIDATION
 // ============================================================================
@@ -761,27 +789,41 @@ export function generateHomePageSchema(faqs?: { question: string; answer: string
   // 1. Local Business Schema
   const localBusinessSchema = generateLocalBusinessSchema();
 
-  // 2. ItemList Schema for Featured Courses
-  const featuredCoursesForSchema = FEATURED_COURSES.map(course => ({
-    name: course.name,
-    url: `/${course.slug}`,
-    description: course.description,
-    type: 'Course',
-    itemSchema: generateCourseSchema({
-      name: course.name,
-      description: course.description,
-      url: `/${course.slug}`,
-      slug: course.slug,
-      price: course.price,
-      currency: course.currency,
-      duration: course.duration,
-      level: course.level,
-      rating: course.rating,
-      reviewCount: 50, // Default review count for featured items if not in config
-      enrollmentCount: course.enrollmentCount,
-    })
-  }));
-  const itemListSchema = generateItemListSchema(featuredCoursesForSchema, 'Featured Courses');
+  // 2. ItemList Schema for All Individual Courses
+  const allCoursesForSchema: any[] = [];
+  const seenSlugs = new Set<string>();
+
+  courseCategories.forEach(category => {
+    if (category.courses) {
+      category.courses.forEach(course => {
+        if (course.slug && course.description && !seenSlugs.has(course.slug)) {
+          seenSlugs.add(course.slug);
+          allCoursesForSchema.push({
+            name: course.name,
+            url: `/${course.slug}`,
+            description: course.description,
+            type: 'Course',
+            itemSchema: generateCourseSchema({
+              name: course.name,
+              description: course.description,
+              url: `/${course.slug}`,
+              slug: course.slug,
+              // Apply safe defaults since headerData doesn't contain these detailed metadata fields
+              price: 25000,
+              currency: 'INR',
+              duration: 'P12W',
+              level: 'Beginner',
+              rating: 4.8,
+              reviewCount: 50, 
+              enrollmentCount: 1000,
+            })
+          });
+        }
+      });
+    }
+  });
+
+  const itemListSchema = generateItemListSchema(allCoursesForSchema, 'Individual Courses');
 
   // 3. FAQ Schema
   // Use passed FAQs or fallback to empty array (or default if we had one in config)
@@ -799,19 +841,550 @@ export function generateHomePageSchema(faqs?: { question: string; answer: string
     url: SITE_CONFIG.url, // Explicitly point to the watch page (Home Page)
   });
 
-  // 5. Website Schema - REMOVED TO AVOID DUPLICATION WITH LAYOUT
-  // const websiteSchema = generateWebsiteSchema();
+  // 5. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: 'Software Testing & Data Science Course Mumbai | CDPL',
+    description: 'Launch your tech career with CDPL\'s industry-leading courses in Software Testing, Data Science, and AI/ML. 100% Placement Support, Live Projects & Expert Mentors. Book a Free Demo!',
+    url: '/',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // 6. HowTo Schema (Placement Process)
+  const howToSchema = generateHowToSchema({
+    name: 'Our 5-Step Placement Process',
+    description: 'A structured 5-step process designed to make you industry-ready and land your dream job.',
+    steps: [
+      { name: 'Skill Building', text: 'Gain highly sought-after industry skills with live projects.' },
+      { name: 'Resume Preparation', text: 'Get resume polishing with expert reviews tailored for HRs.' },
+      { name: 'Mock Interviews', text: 'Practice rigorously with technical and HR mock interview rounds.' },
+      { name: 'Job Referrals', text: 'Gain direct exclusive referrals to over 50 hiring partners.' },
+      { name: 'Placement', text: 'Receive the final offer letter and embark on your tech career.' },
+    ]
+  });
+
+  // 7. Site Navigation Schema
+  const siteNavSchemas = generateSiteNavigationSchema();
+
+  // Core Foundational Schemas
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
 
   // Filter out undefined schemas
   return [
-    // websiteSchema, // Removed
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
     localBusinessSchema,
     itemListSchema,
     faqSchema,
-    videoSchema
+    videoSchema,
+    howToSchema,
+    ...siteNavSchemas
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
 
+// ============================================================================
+// ALL COURSES PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+/**
+ * Generate a consolidated array of schemas for the /courses page.
+ * This includes CollectionPage, ItemList (for all courses), BreadcrumbList, FAQPage, Organization, WebSite, and SiteNavigationElement.
+ */
+export function generateAllCoursesPageSchema(): WithContext<Record<string, unknown>>[] {
+  // 1. Core Foundational Schemas (Organization & WebSite)
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  // 2. Collection Page Schema (acts as WebPage schema)
+  const collectionPageSchema = generateCollectionPageSchema({
+    name: 'All Courses - Software Testing, Data Science, AI/ML | CDPL',
+    description: 'Explore our industry-leading courses in Software Testing, Data Science, AI/ML, and Full Stack Development. 100% placement support.',
+    url: '/courses'
+  });
+
+  // Explicit WebPage Schema (Requested)
+  const webPageSchema = generateWebPageSchema({
+    name: 'All Courses Directory | CDPL',
+    description: 'Explore our industry-leading courses in Software Testing, Data Science, AI/ML, and Full Stack Development. 100% placement support.',
+    url: '/courses',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // 3. ItemList Schema for All Individual Courses
+  const allCoursesForSchema: any[] = [];
+  const seenSlugs = new Set<string>();
+
+  courseCategories.forEach(category => {
+    if (category.courses) {
+      category.courses.forEach(course => {
+        if (course.slug && course.description && !seenSlugs.has(course.slug)) {
+          seenSlugs.add(course.slug);
+          allCoursesForSchema.push({
+            name: course.name,
+            url: `/${course.slug}`,
+            description: course.description,
+            type: 'Course',
+            itemSchema: generateCourseSchema({
+              name: course.name,
+              description: course.description,
+              url: `/${course.slug}`,
+              slug: course.slug,
+              // Apply safe defaults
+              price: 25000,
+              currency: 'INR',
+              duration: 'P12W',
+              level: 'Beginner',
+              rating: 4.8,
+              reviewCount: 50, 
+              enrollmentCount: 1000,
+            })
+          });
+        }
+      });
+    }
+  });
+
+  const itemListSchema = generateItemListSchema(allCoursesForSchema, 'All Courses Directory');
+
+  // 4. Breadcrumb Schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Courses', url: '/courses' },
+  ]);
+
+  // 5. FAQPage Schema (Matches exactly with frontend FAQSection.tsx)
+  const faqSchema = generateFAQSchema([
+    {
+      question: "What makes your courses different from other platforms?",
+      answer: "Our programs are designed by industry experts and emphasize practical, project-based learning with mentor support. You’ll work on real scenarios, follow an updated syllabus, earn certifications, and get career services for job-readiness."
+    },
+    {
+      question: "Do I need prior experience to enroll?",
+      answer: "No. We offer beginner, intermediate, and advanced tracks. Each course clearly lists prerequisites so you can choose the right difficulty and learn at your own pace."
+    },
+    {
+      question: "Will I receive a certificate upon completion?",
+      answer: "Yes. You’ll get an industry-recognized certificate you can add to your résumé and LinkedIn profile. Certificates highlight your skills and verified project work."
+    },
+    {
+      question: "What kind of career support do you provide?",
+      answer: "We offer résumé reviews, portfolio building, mock interviews, referral guidance, and job alerts. The goal is to translate your learning into interviews and offers."
+    },
+    {
+      question: "How long do I retain access to course content?",
+      answer: "You receive long-term access to recorded lessons, notes, and project resources. Live sessions and mentorship schedules are announced inside your dashboard."
+    },
+    {
+      question: "Is there a refund policy?",
+      answer: "Yes. We provide a transparent, time-bound refund window. Please review the refund policy on the course page for exact timelines and eligibility."
+    },
+    {
+      question: "What is the learning format?",
+      answer: "A blended format: live mentor sessions, self-paced videos, hands-on labs, and graded projects. Doubt-clearing and community forums ensure fast feedback."
+    }
+  ]);
+
+  // Explicit HowTo Schema (Requested)
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Courses',
+    description: 'A simple step-by-step guide to enrolling in our certification programs.',
+    steps: [
+      { name: 'Browse Courses', text: 'Explore our comprehensive list of Software Testing, Data Science, and AI/ML courses.' },
+      { name: 'Select a Program', text: 'Choose the training program that aligns with your career goals.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Attend live classes, complete hands-on projects, and get certified!' },
+    ]
+  });
+
+  // 6. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  // Return exactly the requested schemas
+  return [
+    organizationSchema,
+    websiteSchema,
+    collectionPageSchema,
+    webPageSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ];
+}
+
+// ============================================================================
+// SOFTWARE TESTING CATEGORY PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateSoftwareTestingCategoryPageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  // 1. Core Foundational Schemas
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  // 2. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: 'Software Testing Course in Mumbai & Thane with 100% Placement',
+    description: courseInput.description || 'Master Manual & Automation Testing.',
+    url: '/courses/software-testing-course',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // 3. Master Course Schema (contains Aggregate Rating)
+  const courseSchema = generateCourseSchema(courseInput);
+
+  // 4. ItemList Schema for Sub-Courses
+  const stCourses: any[] = [];
+  const stCategory = courseCategories.find(c => c.slug === 'software-testing-course');
+  if (stCategory && stCategory.courses) {
+    stCategory.courses.forEach(c => {
+      stCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(stCourses, 'Software Testing Courses Directory');
+
+  // 5. Breadcrumb Schema
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  // 6. FAQPage Schema
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  // 7. HowTo Schema (Dummy Enrollment)
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Software Testing Course',
+    description: 'A simple step-by-step guide to enrolling in our certification programs.',
+    steps: [
+      { name: 'Browse Courses', text: 'Explore our comprehensive list of Software Testing modules.' },
+      { name: 'Select a Program', text: 'Choose between Manual, Automation, API, or the Full Master program.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Attend live classes, complete hands-on projects, and get certified!' },
+    ]
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// DATA SCIENCE & ML CATEGORY PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateDataScienceMachineLearningCategoryPageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  // 1. Core Foundational Schemas
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  // 2. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: 'Data Science & Machine Learning Courses | CDPL',
+    description: courseInput.description || 'Master Data Science and Machine Learning with our comprehensive courses.',
+    url: '/courses/ds-ml-courses',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // 3. Master Course Schema (contains Aggregate Rating)
+  const courseSchema = generateCourseSchema(courseInput);
+
+  // 4. ItemList Schema for Sub-Courses
+  const dsCourses: any[] = [];
+  const dsCategory = courseCategories.find(c => c.slug === 'ds-ml-courses');
+  if (dsCategory && dsCategory.courses) {
+    dsCategory.courses.forEach(c => {
+      dsCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(dsCourses, 'Data Science & ML Courses Directory');
+
+  // 5. Breadcrumb Schema
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  // 6. FAQPage Schema
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  // 7. HowTo Schema (Dummy Enrollment)
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Data Science & ML Courses',
+    description: 'A simple step-by-step guide to enrolling in our Data Science certification programs.',
+    steps: [
+      { name: 'Browse Courses', text: 'Explore our comprehensive list of Data Science & ML modules.' },
+      { name: 'Select a Program', text: 'Choose between standard ML, Deep Learning, AI, or the Full Master program.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Attend live classes, complete hands-on projects, and get certified!' },
+    ]
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// BUSINESS INTELLIGENCE CATEGORY PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateBusinessIntelligenceCategoryPageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  // 1. Core Foundational Schemas
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  // 2. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: 'Business Intelligence Courses | Power BI, Tableau & Data Viz',
+    description: courseInput.description || 'Explore our top-rated Business Intelligence courses.',
+    url: '/courses/bi-courses',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // 3. Master Course Schema (contains Aggregate Rating)
+  const courseSchema = generateCourseSchema(courseInput);
+
+  // 4. ItemList Schema for Sub-Courses
+  const biCourses: any[] = [];
+  const biCategory = courseCategories.find(c => c.slug === 'bi-courses');
+  if (biCategory && biCategory.courses) {
+    biCategory.courses.forEach(c => {
+      biCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(biCourses, 'Business Intelligence Courses Directory');
+
+  // 5. Breadcrumb Schema
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  // 6. FAQPage Schema
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  // 7. HowTo Schema (Dummy Enrollment)
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Business Intelligence Courses',
+    description: 'A step-by-step guide to enrolling in our Data Visualization and BI programs.',
+    steps: [
+      { name: 'Browse Courses', text: 'Explore our comprehensive list of BI modules like Tableau and Power BI.' },
+      { name: 'Select a Program', text: 'Choose between standard data analytics or the high-impact Master program.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Attend live classes, complete hands-on projects, and get certified!' },
+    ]
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// ARTIFICIAL INTELLIGENCE CATEGORY PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateArtificialIntelligenceCategoryPageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  // 1. Core Foundational Schemas
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  // 2. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: 'Artificial Intelligence Courses | AI & Generative AI Training',
+    description: courseInput.description || 'Advance your career with our specialized Artificial Intelligence courses.',
+    url: '/courses/artificial-intelligence-courses',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // 3. Master Course Schema (contains Aggregate Rating)
+  const courseSchema = generateCourseSchema(courseInput);
+
+  // 4. ItemList Schema for Sub-Courses
+  const aiCourses: any[] = [];
+  const aiCategory = courseCategories.find(c => c.slug === 'artificial-intelligence-courses');
+  if (aiCategory && aiCategory.courses) {
+    aiCategory.courses.forEach(c => {
+      aiCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(aiCourses, 'Artificial Intelligence Courses Directory');
+
+  // 5. Breadcrumb Schema
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  // 6. FAQPage Schema
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  // 7. HowTo Schema (Dummy Enrollment)
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Artificial Intelligence Courses',
+    description: 'A step-by-step guide to enrolling in our AI and Prompt Engineering programs.',
+    steps: [
+      { name: 'Browse Courses', text: 'Explore our comprehensive list of AI modules like Stable Diffusion and LLMs.' },
+      { name: 'Select a Program', text: 'Choose between basic prompt engineering or the full-stack AI model training program.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Attend live classes, build AI applications, and get certified!' },
+    ]
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// DIGITAL MARKETING CATEGORY PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateDigitalMarketingCategoryPageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  // 1. Core Foundational Schemas
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  // 2. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: 'Digital Marketing Courses | SEO, SEM, SMM & More',
+    description: courseInput.description || 'Become a certified digital marketer with our industry-focused courses.',
+    url: '/courses/digital-marketing-courses',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // 3. Master Course Schema (contains Aggregate Rating)
+  const courseSchema = generateCourseSchema(courseInput);
+
+  // 4. ItemList Schema for Sub-Courses
+  const dmCourses: any[] = [];
+  const dmCategory = courseCategories.find(c => c.slug === 'digital-marketing-courses');
+  if (dmCategory && dmCategory.courses) {
+    dmCategory.courses.forEach(c => {
+      dmCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(dmCourses, 'Digital Marketing Courses Directory');
+
+  // 5. Breadcrumb Schema
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  // 6. FAQPage Schema
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  // 7. HowTo Schema (Dummy Enrollment)
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Digital Marketing Courses',
+    description: 'A step-by-step guide to enrolling in our SEO and PPC programs.',
+    steps: [
+      { name: 'Browse Courses', text: 'Explore our comprehensive list of marketing modules like SEO and SMM.' },
+      { name: 'Select a Program', text: 'Choose between standard SEO optimization or the 360 Full Stack Marketing.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Attend live classes, launch campaigns, and get certified!' },
+    ]
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
 
 // ============================================================================
 // CONTACT PAGE SCHEMA

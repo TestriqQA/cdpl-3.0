@@ -11,9 +11,8 @@ import FilterableCourseSections from "@/components/courses/FilterableCourseSecti
 // import FilterableCourseSections from "@/components/courses/FilterableCourseSections";
 
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
-import { generateItemListSchema, generateBreadcrumbSchema, generateCourseSchema } from "@/lib/schema-generators";
+import { generateAllCoursesPageSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
-import { FEATURED_COURSES } from "@/lib/seo-config";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generateStaticPageMetadata({
@@ -24,38 +23,13 @@ export const metadata: Metadata = generateStaticPageMetadata({
 });
 
 export default function CoursesPage() {
-    const itemListSchema = generateItemListSchema(
-        FEATURED_COURSES.map(course => ({
-            name: course.name,
-            url: `/${course.slug}`,
-            description: course.description,
-            type: "Course",
-            itemSchema: generateCourseSchema({
-                name: course.name,
-                description: course.description,
-                url: `/${course.slug}`,
-                slug: course.slug,
-                price: course.price,
-                currency: course.currency,
-                duration: course.duration,
-                level: course.level,
-                rating: course.rating,
-                reviewCount: 50, // Default review count
-                enrollmentCount: course.enrollmentCount,
-            })
-        })),
-        "All Courses"
-    );
-
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: "Courses", url: "/courses" },
-    ]);
+    const allCoursesSchemas = generateAllCoursesPageSchema();
 
     return (
         <div className="min-h-screen bg-white">
-            <JsonLd id="courses-list-schema" schema={itemListSchema} />
-            <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
+            {allCoursesSchemas.map((schema, index) => (
+                <JsonLd key={index} id={`courses-schema-${index}`} schema={schema} />
+            ))}
             <HeroSection />
             <FilterableCourseSections />
             <StatsSection />

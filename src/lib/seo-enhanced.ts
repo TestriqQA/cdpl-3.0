@@ -25,7 +25,7 @@ export function generateOrganizationSchema() {
     name: SITE_NAME,
     legalName: ORGANIZATION_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
+    logo: `${SITE_URL}/cdpl-logo.png`,
     description: 'Leading EdTech company providing industry-focused training in Software Testing, Data Science, AI/ML, and Digital Marketing with 100% placement support.',
     
     // Contact Information
@@ -318,7 +318,7 @@ export function generateArticleSchema(article: {
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/logo.png`,
+        url: `${SITE_URL}/cdpl-logo.png`,
       },
     },
     
@@ -603,7 +603,7 @@ export function generateVideoSchema(video: {
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/logo.png`,
+        url: `${SITE_URL}/cdpl-logo.png`,
       },
     },
   };

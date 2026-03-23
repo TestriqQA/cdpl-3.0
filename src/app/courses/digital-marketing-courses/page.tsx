@@ -8,9 +8,10 @@ import FinalCTASection from '@/components/Digital-Marketing/FinalCTASection';
 import ProjectsSection from '@/components/Digital-Marketing/ProjectsSection';
 import CareerPathSection from '@/components/Digital-Marketing/CareerPathSection';
 import { generateStaticPageMetadata } from '@/lib/metadata-generator';
-import { generateBreadcrumbSchema } from '@/lib/schema-generators';
+import { generateBreadcrumbSchema, generateDigitalMarketingCategoryPageSchema } from '@/lib/schema-generators';
 import JsonLd from '@/components/JsonLd';
 import { Metadata } from 'next';
+import { dmFaqs } from '@/components/Digital-Marketing/faqData';
 
 export const metadata: Metadata = generateStaticPageMetadata({
     title: 'Digital Marketing Courses | SEO, SEM, SMM & More',
@@ -20,15 +21,31 @@ export const metadata: Metadata = generateStaticPageMetadata({
 });
 
 export default function Home() {
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: "Courses", url: "/courses" },
-        { name: "Digital Marketing Courses", url: "/courses/digital-marketing-courses" },
-    ]);
+    const schemas = generateDigitalMarketingCategoryPageSchema(
+        {
+            name: "Digital Marketing Master Course",
+            description: "Become a certified digital marketer with our industry-focused courses. Learn SEO, PPC, social media marketing, and content strategy.",
+            url: "/courses/digital-marketing-courses",
+            slug: "digital-marketing-courses",
+            level: "Beginner to Advanced",
+            duration: "P3M", // 3 Months
+            rating: 4.8,
+            reviewCount: 3042,
+            instructor: "Industry Experts",
+        },
+        dmFaqs.map(f => ({ question: f.q, answer: f.a })),
+        [
+            { name: "Home", url: "/" },
+            { name: "Courses", url: "/courses" },
+            { name: "Digital Marketing Courses", url: "/courses/digital-marketing-courses" },
+        ]
+    );
 
     return (
         <>
-            <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
+            {schemas.map((schema, index) => (
+               <JsonLd key={`dm-schema-${index}`} id={`dm-schema-${index}`} schema={schema} />
+            ))}
             <HeroSection />
             <WhyChooseSection />
             <CoursesSection />

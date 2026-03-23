@@ -31,7 +31,7 @@ export const SITE_CONFIG = {
   themeColor: '#ff8c00',
 
   // Default Images
-  logo: '/logo.png',
+  logo: '/cdpl-logo.png',
   logoWidth: 200,
   logoHeight: 60,
   defaultOgImage: '/og-image-default.jpg',

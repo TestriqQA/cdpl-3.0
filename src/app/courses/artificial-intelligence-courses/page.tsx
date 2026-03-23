@@ -8,9 +8,10 @@ import CareerPathSection from '@/components/AI-Courses/CareerPathSection';
 import HeroSection from '@/components/AI-Courses/HeroSection';
 import WhyChooseSection from '@/components/AI-Courses/WhyChooseSection';
 import { generateStaticPageMetadata } from '@/lib/metadata-generator';
-import { generateBreadcrumbSchema } from '@/lib/schema-generators';
+import { generateBreadcrumbSchema, generateArtificialIntelligenceCategoryPageSchema } from '@/lib/schema-generators';
 import JsonLd from '@/components/JsonLd';
 import { Metadata } from 'next';
+import { aiFaqs } from '@/components/AI-Courses/faqData';
 
 export const metadata: Metadata = generateStaticPageMetadata({
     title: 'Artificial Intelligence Courses | AI & Generative AI Training',
@@ -20,15 +21,31 @@ export const metadata: Metadata = generateStaticPageMetadata({
 });
 
 export default function Home() {
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: "Courses", url: "/courses" },
-        { name: "Artificial Intelligence Courses", url: "/courses/artificial-intelligence-courses" },
-    ]);
+    const schemas = generateArtificialIntelligenceCategoryPageSchema(
+        {
+            name: "Artificial Intelligence Master Course",
+            description: "Advance your career with our specialized Artificial Intelligence courses. Learn Generative AI, NLP, Deep Learning, and more.",
+            url: "/courses/artificial-intelligence-courses",
+            slug: "artificial-intelligence-courses",
+            level: "Beginner to Advanced",
+            duration: "P4M", // 4 Months
+            rating: 4.8,
+            reviewCount: 3105,
+            instructor: "Industry Experts",
+        },
+        aiFaqs.map(f => ({ question: f.q, answer: f.a })),
+        [
+            { name: "Home", url: "/" },
+            { name: "Courses", url: "/courses" },
+            { name: "Artificial Intelligence Courses", url: "/courses/artificial-intelligence-courses" },
+        ]
+    );
 
     return (
         <>
-            <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
+            {schemas.map((schema, index) => (
+               <JsonLd key={`ai-schema-${index}`} id={`ai-schema-${index}`} schema={schema} />
+            ))}
             <HeroSection />
             <WhyChooseSection />
             <CoursesSection />
