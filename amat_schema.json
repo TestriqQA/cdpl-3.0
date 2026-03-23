@@ -180,10 +180,10 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://www.cinutedigital.com/courses/software-testing-course/api-testing#webpage",
-    "url": "https://www.cinutedigital.com/courses/software-testing-course/api-testing",
-    "name": "API Testing Course with POSTMAN & RestAPIs | CDPL",
-    "description": "Master API testing in 15 hours with live projects, global certification, and placement support.",
+    "@id": "https://www.cinutedigital.com/courses/software-testing-course/advance-manual-automation-testing#webpage",
+    "url": "https://www.cinutedigital.com/courses/software-testing-course/advance-manual-automation-testing",
+    "name": "What is Selenium Testing? Master Manual & Automation Testing | 100% Placement | CDPL",
+    "description": "Master ISTQB Manual Testing + Selenium, Cypress, API, Mobile. Get dual certified and placed in top QA roles.",
     "isPartOf": {
       "@id": "https://www.cinutedigital.com/#website"
     },
@@ -195,10 +195,10 @@
   {
     "@context": "https://schema.org",
     "@type": "Course",
-    "@id": "https://www.cinutedigital.com/courses/software-testing-course/api-testing#course",
-    "name": "API Testing Course with POSTMAN & RestAPIs",
-    "description": "Master API testing in 15 hours with live projects, global certification, and placement support.",
-    "url": "https://www.cinutedigital.com/courses/software-testing-course/api-testing",
+    "@id": "https://www.cinutedigital.com/courses/software-testing-course/advance-manual-automation-testing#course",
+    "name": "Advanced Manual & Automation Testing Master Program",
+    "description": "Master ISTQB Manual Testing + Selenium, Cypress, API, Mobile. Get dual certified and placed in top QA roles.",
+    "url": "https://www.cinutedigital.com/courses/software-testing-course/advance-manual-automation-testing",
     "provider": {
       "@type": "EducationalOrganization",
       "@id": "https://www.cinutedigital.com/#organization",
@@ -225,7 +225,7 @@
       "highPrice": "65000",
       "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
-      "url": "https://www.cinutedigital.com/courses/software-testing-course/api-testing",
+      "url": "https://www.cinutedigital.com/courses/software-testing-course/advance-manual-automation-testing",
       "category": "Paid"
     },
     "inLanguage": "en-IN",
@@ -262,8 +262,8 @@
       {
         "@type": "ListItem",
         "position": 4,
-        "name": "API Testing",
-        "item": "https://www.cinutedigital.com/courses/software-testing-course/api-testing"
+        "name": "Manual & Automation Testing",
+        "item": "https://www.cinutedigital.com/courses/software-testing-course/advance-manual-automation-testing"
       }
     ]
   },
@@ -273,66 +273,66 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is API testing and why is it important?",
+        "name": "What is selenium testing and what is it used for?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "**API testing** involves verifying APIs (Application Programming Interfaces) directly—checking their functionality, reliability, performance, and security. Unlike UI testing, **api testing means** validating the logic layer. It’s crucial because it catches bugs early (Shift-Left) and ensures different software systems communicate correctly."
+          "text": "What is selenium testing refers to using the Selenium WebDriver tool for automating web browsers to test web applications. What is selenium testing tool used for includes functional testing, regression testing, and cross-browser testing."
         }
       },
       {
         "@type": "Question",
-        "name": "How is this different from a manual testing course?",
+        "name": "What is UI testing and how does it differ from unit testing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "While we cover **manual API testing** using Postman, this course focuses heavily on **API automation** and technical validation (JSON/XML). It is an advanced module often taken after or alongside a **manual testing course with placement**."
+          "text": "What is ui testing (or user interface testing) validates the visual elements and interactions of an application. Unit testing tests individual code components in isolation. Our program covers both ui testing and automated ui testing approaches."
         }
       },
       {
         "@type": "Question",
-        "name": "Do you cover API automation testing tools?",
+        "name": "What is Cypress testing and how is it different from Selenium?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, we extensively cover **Postman** (for both manual and automated testing) and **Newman** for CLI execution. We also introduce concepts relevant to **Rest Assured** and other **API automation testing tools**."
+          "text": "What is cypress testing refers to using Cypress for modern JavaScript-based web testing. Unlike Selenium, Cypress runs directly in the browser with built-in waiting and debugging. We teach both in our web testing tools curriculum."
         }
       },
       {
         "@type": "Question",
-        "name": "Can I learn API testing without coding?",
+        "name": "Do I need any experience to join as a tester fresher?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes! Tools like **Postman** allow you to perform extensive testing with minimal coding. We teach you the necessary JavaScript snippets for validation, making it easy to **learn API testing** even if you are a beginner."
+          "text": "No — we start from the basics. Logical thinking helps, and we guide you step-by-step with selenium practice tasks on selenium practice websites. Perfect for tester fresher candidates."
         }
       },
       {
         "@type": "Question",
-        "name": "What are some API testing examples I will practice?",
+        "name": "Will I get an ISTQB certificate?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You will work on **REST API examples** like a Contact List app and an Employee Management system. You will verify **test api post request**, GET, PUT, DELETE methods, and Authorization headers using real **public api for testing**."
+          "text": "Yes. We include ISTQB Foundation prep along with Automation interview practice and exam tips. You'll also get an Automation certification."
         }
       },
       {
         "@type": "Question",
-        "name": "Do you provide placement support?",
+        "name": "What is the duration of this selenium testing course?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Absolutely. As a leading **software testing training** institute in Mumbai, we provide 100% placement support, including resume building (highlighting your **API test cases examples**), mock interviews, and referrals."
+          "text": "180 hours of live, mentor-led training + lifetime access to recordings, notes, and updates, spread over 6.5 months."
         }
       },
       {
         "@type": "Question",
-        "name": "How do I test API endpoints in this course?",
+        "name": "Is placement guaranteed after learning what is selenium testing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We use a hands-on approach. You will learn **how to test api** endpoints by sending requests, analyzing response codes (200 OK, 404 Not Found), validating JSON bodies, and checking response times."
+          "text": "We provide 100% job assistance: resume reviews, mock interviews for web testing interview questions, referrals, and portfolio projects on test website for automation."
         }
       },
       {
         "@type": "Question",
-        "name": "Is this course strictly for Mumbai residents?",
+        "name": "What automation testing projects with selenium will I work on?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No, while our offline campus is in Thane/Mumbai, our **online API testing** classes are available globally. You get the same **manual testing course with placement** benefits and mentor support online."
+          "text": "You'll work on E-commerce, CRM, Gaming, and API projects using sample web application for testing. All projects use real selenium practice sites."
         }
       }
     ]
@@ -340,14 +340,14 @@
   {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "How to Enroll in CDPL API Testing Course",
-    "description": "A step-by-step guide to enrolling in our specialized API Testing program.",
+    "name": "How to Enroll in CDPL Advance Manual & Automation Testing Program",
+    "description": "A step-by-step guide to enrolling in our specialized Selenium and API Automation Master Program.",
     "step": [
       {
         "@type": "HowToStep",
         "position": 1,
-        "name": "Review Syllabus",
-        "text": "Analyze the Postman, JSON structure, and automation framework curriculum."
+        "name": "Review Curriculum",
+        "text": "Evaluate the dual ISTQB Manual + Selenium/Cypress automation syllabus."
       },
       {
         "@type": "HowToStep",
@@ -359,7 +359,7 @@
         "@type": "HowToStep",
         "position": 3,
         "name": "Start Learning",
-        "text": "Master network requests, perform backend validations, and get certified!"
+        "text": "Master modern full-stack manual and automated QA methodologies for 100% placement!"
       }
     ]
   },

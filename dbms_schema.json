@@ -180,10 +180,10 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://www.cinutedigital.com/courses/software-testing-course/api-testing#webpage",
-    "url": "https://www.cinutedigital.com/courses/software-testing-course/api-testing",
-    "name": "API Testing Course with POSTMAN & RestAPIs | CDPL",
-    "description": "Master API testing in 15 hours with live projects, global certification, and placement support.",
+    "@id": "https://www.cinutedigital.com/courses/software-testing-course/dbms-course#webpage",
+    "url": "https://www.cinutedigital.com/courses/software-testing-course/dbms-course",
+    "name": "MySQL Database Course | 100% Job Placement | 20-Hour Training | CDPL",
+    "description": "Master MySQL, SQL queries, database design, and optimization. Build real projects. Get certified and placed in top companies.",
     "isPartOf": {
       "@id": "https://www.cinutedigital.com/#website"
     },
@@ -195,10 +195,10 @@
   {
     "@context": "https://schema.org",
     "@type": "Course",
-    "@id": "https://www.cinutedigital.com/courses/software-testing-course/api-testing#course",
-    "name": "API Testing Course with POSTMAN & RestAPIs",
-    "description": "Master API testing in 15 hours with live projects, global certification, and placement support.",
-    "url": "https://www.cinutedigital.com/courses/software-testing-course/api-testing",
+    "@id": "https://www.cinutedigital.com/courses/software-testing-course/dbms-course#course",
+    "name": "MySQL Database Management System Course",
+    "description": "Master MySQL, SQL queries, database design, and optimization. Build real projects. Get certified and placed in top companies.",
+    "url": "https://www.cinutedigital.com/courses/software-testing-course/dbms-course",
     "provider": {
       "@type": "EducationalOrganization",
       "@id": "https://www.cinutedigital.com/#organization",
@@ -225,7 +225,7 @@
       "highPrice": "65000",
       "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
-      "url": "https://www.cinutedigital.com/courses/software-testing-course/api-testing",
+      "url": "https://www.cinutedigital.com/courses/software-testing-course/dbms-course",
       "category": "Paid"
     },
     "inLanguage": "en-IN",
@@ -262,8 +262,8 @@
       {
         "@type": "ListItem",
         "position": 4,
-        "name": "API Testing",
-        "item": "https://www.cinutedigital.com/courses/software-testing-course/api-testing"
+        "name": "DBMS (MySQL)",
+        "item": "https://www.cinutedigital.com/courses/software-testing-course/dbms-course"
       }
     ]
   },
@@ -273,66 +273,34 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is API testing and why is it important?",
+        "name": "Do I need coding knowledge?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "**API testing** involves verifying APIs (Application Programming Interfaces) directly—checking their functionality, reliability, performance, and security. Unlike UI testing, **api testing means** validating the logic layer. It’s crucial because it catches bugs early (Shift-Left) and ensures different software systems communicate correctly."
+          "text": "No. We start from the basics with practical, step-by-step guidance. Logical thinking is enough to begin."
         }
       },
       {
         "@type": "Question",
-        "name": "How is this different from a manual testing course?",
+        "name": "Will I get a certificate?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "While we cover **manual API testing** using Postman, this course focuses heavily on **API automation** and technical validation (JSON/XML). It is an advanced module often taken after or alongside a **manual testing course with placement**."
+          "text": "Yes. You’ll receive a globally recognized MySQL + SQL certificate with secure QR verification."
         }
       },
       {
         "@type": "Question",
-        "name": "Do you cover API automation testing tools?",
+        "name": "What is the duration?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, we extensively cover **Postman** (for both manual and automated testing) and **Newman** for CLI execution. We also introduce concepts relevant to **Rest Assured** and other **API automation testing tools**."
+          "text": "20 hours of live, mentor-led training plus lifetime access to recordings and resources."
         }
       },
       {
         "@type": "Question",
-        "name": "Can I learn API testing without coding?",
+        "name": "Is placement guaranteed?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes! Tools like **Postman** allow you to perform extensive testing with minimal coding. We teach you the necessary JavaScript snippets for validation, making it easy to **learn API testing** even if you are a beginner."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What are some API testing examples I will practice?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You will work on **REST API examples** like a Contact List app and an Employee Management system. You will verify **test api post request**, GET, PUT, DELETE methods, and Authorization headers using real **public api for testing**."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you provide placement support?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Absolutely. As a leading **software testing training** institute in Mumbai, we provide 100% placement support, including resume building (highlighting your **API test cases examples**), mock interviews, and referrals."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I test API endpoints in this course?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We use a hands-on approach. You will learn **how to test api** endpoints by sending requests, analyzing response codes (200 OK, 404 Not Found), validating JSON bodies, and checking response times."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is this course strictly for Mumbai residents?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No, while our offline campus is in Thane/Mumbai, our **online API testing** classes are available globally. You get the same **manual testing course with placement** benefits and mentor support online."
+          "text": "We offer 100% job assistance: resume building, mock interviews, referrals, and interview prep."
         }
       }
     ]
@@ -340,14 +308,14 @@
   {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "How to Enroll in CDPL API Testing Course",
-    "description": "A step-by-step guide to enrolling in our specialized API Testing program.",
+    "name": "How to Enroll in CDPL MySQL DBMS Course",
+    "description": "A step-by-step guide to enrolling in our specialized Database Management program.",
     "step": [
       {
         "@type": "HowToStep",
         "position": 1,
-        "name": "Review Syllabus",
-        "text": "Analyze the Postman, JSON structure, and automation framework curriculum."
+        "name": "Review Curriculum",
+        "text": "Analyze the MySQL operations, database design, and query optimization structure."
       },
       {
         "@type": "HowToStep",
@@ -359,7 +327,7 @@
         "@type": "HowToStep",
         "position": 3,
         "name": "Start Learning",
-        "text": "Master network requests, perform backend validations, and get certified!"
+        "text": "Master relational data processing, build backend architectures, and get certified!"
       }
     ]
   },

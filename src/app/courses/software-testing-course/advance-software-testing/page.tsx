@@ -14,7 +14,7 @@ import {
 } from "@/app/courses/software-testing-course/advance-software-testing/server-sections";
 
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, generateAdvanceSoftwareTestingCoursePageSchema } from "@/lib/schema-generators";
 import { ADVANCED_TESTING_FAQS, ADVANCED_TESTING_REVIEW_DATA } from "@/data/advancedTestingData";
 
 export const metadata = generateMetadata({
@@ -42,34 +42,33 @@ export const metadata = generateMetadata({
 });
 
 export default function Home() {
-  const courseSchema = generateCourseSchema({
-    name: "Advanced Software Testing Course (SDET)",
-    description: "Master Selenium, Appium, API, Cypress, and Performance Testing. Become a full-stack SDET with real projects and ISTQB certification.",
-    url: '/courses/software-testing-course/advance-software-testing',
-    slug: "advance-software-testing",
-    instructor: "CDPL Expert Mentors",
-    duration: "PT25H", // 25 hours
-    rating: ADVANCED_TESTING_REVIEW_DATA.ratingValue,
-    reviewCount: ADVANCED_TESTING_REVIEW_DATA.reviewCount,
-    price: 8000, // Estimated price
-    currency: "INR",
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "Software Testing Course", url: "/courses/software-testing-course" },
-    { name: "Advanced Software Testing", url: '/courses/software-testing-course/advance-software-testing' },
-  ]);
-
-  const faqSchema = generateFAQSchema(ADVANCED_TESTING_FAQS);
+  const schemas = generateAdvanceSoftwareTestingCoursePageSchema(
+    {
+      name: "Advanced Software Testing Course (SDET)",
+      description: "Master Selenium, Appium, API, Cypress, and Performance Testing. Become a full-stack SDET with real projects and ISTQB certification.",
+      url: '/courses/software-testing-course/advance-software-testing',
+      slug: "advance-software-testing",
+      instructor: "CDPL Expert Mentors",
+      duration: "PT25H", // 25 hours
+      rating: ADVANCED_TESTING_REVIEW_DATA.ratingValue,
+      reviewCount: ADVANCED_TESTING_REVIEW_DATA.reviewCount,
+      price: 8000, // Estimated price
+      currency: "INR",
+    },
+    ADVANCED_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "Software Testing Course", url: "/courses/software-testing-course" },
+      { name: "Advanced Software Testing", url: '/courses/software-testing-course/advance-software-testing' }
+    ]
+  );
 
   return (
     <div className='overflow-hidden'>
-      <JsonLd id="course-schema" schema={courseSchema} />
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
-
+      {schemas.map((schema, index) => (
+        <JsonLd key={`ast-schema-${index}`} id={`ast-schema-${index}`} schema={schema} />
+      ))}
       <HeroSection />
 
       {/* Sticky nav must appear right after hero */}

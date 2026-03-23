@@ -11,7 +11,7 @@ const FaqSection = dynamic(() => import('@/components/dbms-course/FaqSection'), 
 import { TestimonialsSection } from '@/app/courses/software-testing-course/dbms-course/DbmsCourseClientContent';
 import { CtaSection } from '@/app/courses/software-testing-course/dbms-course/DbmsCourseClientContent';
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, generateDbmsCoursePageSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 import { DBMS_FAQS, DBMS_REVIEW_DATA } from "@/data/dbmsData";
 import dynamic from 'next/dynamic';
@@ -43,34 +43,33 @@ export const metadata = generateMetadata({
 });
 
 export default function Home() {
-  const courseSchema = generateCourseSchema({
-    name: "MySQL Database Management System Course",
-    description: "Master MySQL, SQL queries, database design, and optimization. Build real projects. Get certified and placed in top companies.",
-    url: '/courses/software-testing-course/dbms-course',
-    slug: "dbms-course",
-    instructor: "CDPL Expert Mentors",
-    duration: "PT20H", // 20 hours
-    rating: DBMS_REVIEW_DATA.ratingValue,
-    reviewCount: DBMS_REVIEW_DATA.reviewCount,
-    price: 6000, // Estimated price
-    currency: "INR",
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "Software Testing Course", url: "/courses/software-testing-course" },
-    { name: "DBMS (MySQL)", url: '/courses/software-testing-course/dbms-course' },
-  ]);
-
-  const faqSchema = generateFAQSchema(DBMS_FAQS);
+  const schemas = generateDbmsCoursePageSchema(
+    {
+      name: "MySQL Database Management System Course",
+      description: "Master MySQL, SQL queries, database design, and optimization. Build real projects. Get certified and placed in top companies.",
+      url: '/courses/software-testing-course/dbms-course',
+      slug: "dbms-course",
+      instructor: "CDPL Expert Mentors",
+      duration: "PT20H", // 20 hours
+      rating: DBMS_REVIEW_DATA.ratingValue,
+      reviewCount: DBMS_REVIEW_DATA.reviewCount,
+      price: 6000, // Estimated price
+      currency: "INR",
+    },
+    DBMS_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "Software Testing Course", url: "/courses/software-testing-course" },
+      { name: "DBMS (MySQL)", url: '/courses/software-testing-course/dbms-course' }
+    ]
+  );
 
   return (
     <>
-      <JsonLd id="course-schema" schema={courseSchema} />
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
-
+      {schemas.map((schema, index) => (
+        <JsonLd key={`dbms-schema-${index}`} id={`dbms-schema-${index}`} schema={schema} />
+      ))}
       <HeroSection />
       {/* Sticky nav must appear right after hero */}
       <div className="hidden md:block sticky top-0 z-20">

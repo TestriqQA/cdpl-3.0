@@ -1526,6 +1526,331 @@ export function generateApiTestingCoursePageSchema(
 }
 
 // ============================================================================
+// DBMS SUB-COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateDbmsCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'MySQL Database Course | 100% Job Placement | 20-Hour Training | CDPL',
+    description: courseInput.description || 'Master MySQL, SQL queries, database design, and optimization. Build real projects. Get certified and placed in top companies.',
+    url: '/courses/software-testing-course/dbms-course',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const stCourses: any[] = [];
+  const stCategory = courseCategories.find(c => c.slug === 'software-testing-course');
+  if (stCategory && stCategory.courses) {
+    stCategory.courses.forEach(c => {
+      stCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(stCourses, 'Software Testing Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL MySQL DBMS Course',
+    description: 'A step-by-step guide to enrolling in our specialized Database Management program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Analyze the MySQL operations, database design, and query optimization structure.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master relational data processing, build backend architectures, and get certified!' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// ETL TESTING SUB-COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateEtlTestingCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'ETL Testing Course with Placement | Master SQL, Data Validation & ETL Tools | CDPL',
+    description: courseInput.description || 'Learn what is ETL testing, master SQL queries for ETL testing, data validation, and real projects. Get certified and placed in top data companies in Mumbai/Thane.',
+    url: '/courses/software-testing-course/etl-testing',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const stCourses: any[] = [];
+  const stCategory = courseCategories.find(c => c.slug === 'software-testing-course');
+  if (stCategory && stCategory.courses) {
+    stCategory.courses.forEach(c => {
+      stCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(stCourses, 'Software Testing Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL ETL Testing Course',
+    description: 'A step-by-step guide to enrolling in our specialized Data Validation program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Analyze the ETL vs ELT operations, data pipelining, and query optimization structure.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master data reconciliation, build extraction architectures, and get certified!' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// ADVANCE SOFTWARE TESTING SUB-COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateAdvanceSoftwareTestingCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Advanced Software Testing Course in Mumbai | SDET & Selenium Training - 100% Placement | CDPL',
+    description: courseInput.description || 'Master Selenium, Cypress, Appium & API Testing with our Advanced Software Testing Course. Job-oriented SDET training in Mumbai/Thane with real projects & ISTQB certification.',
+    url: '/courses/software-testing-course/advance-software-testing',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const stCourses: any[] = [];
+  const stCategory = courseCategories.find(c => c.slug === 'software-testing-course');
+  if (stCategory && stCategory.courses) {
+    stCategory.courses.forEach(c => {
+      stCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(stCourses, 'Software Testing Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Advanced Software Testing Course',
+    description: 'A step-by-step guide to enrolling in our specialized SDET Automation program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Analyze the Selenium, Cypress, Appium, and performance testing architecture.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master modern full-stack web automation architectures and get certified!' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// AUTOMATION TESTING SUB-COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateAutomationTestingCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Advanced Automation Testing Course | SDET Training | 100% Placement | CDPL',
+    description: courseInput.description || 'Master Cypress, Playwright, AI Testing, CI/CD. Become a future-ready SDET with elite projects and FAANG placement.',
+    url: '/courses/software-testing-course/automation-testing-course',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const stCourses: any[] = [];
+  const stCategory = courseCategories.find(c => c.slug === 'software-testing-course');
+  if (stCategory && stCategory.courses) {
+    stCategory.courses.forEach(c => {
+      stCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(stCourses, 'Software Testing Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Automation Testing SDET Course',
+    description: 'A step-by-step guide to enrolling in our specialized Automation AI program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Evaluate Playwright, Cypress, Selenium, and AI automation test execution pipelines.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master modern full-stack automated operations testing and obtain placement!' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// ADVANCE MANUAL AUTOMATION TESTING SUB-COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateAdvanceManualAutomationTestingCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'What is Selenium Testing? Master Manual & Automation Testing | 100% Placement | CDPL',
+    description: courseInput.description || 'Learn what is selenium testing & UI testing in our 180-hour Master Program. Cover Selenium, Cypress, API & Mobile automation. 100% placement support in Mumbai/Thane.',
+    url: '/courses/software-testing-course/advance-manual-automation-testing',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const stCourses: any[] = [];
+  const stCategory = courseCategories.find(c => c.slug === 'software-testing-course');
+  if (stCategory && stCategory.courses) {
+    stCategory.courses.forEach(c => {
+      stCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(stCourses, 'Software Testing Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Advance Manual & Automation Testing Program',
+    description: 'A step-by-step guide to enrolling in our specialized Selenium and API Automation Master Program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Evaluate the dual ISTQB Manual + Selenium/Cypress automation syllabus.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master modern full-stack manual and automated QA methodologies for 100% placement!' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
 // CONTACT PAGE SCHEMA
 // ============================================================================
 

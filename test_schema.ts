@@ -1,4 +1,4 @@
-import { generateAllCoursesPageSchema, generateHomePageSchema, generateSoftwareTestingCategoryPageSchema, generateDataScienceMachineLearningCategoryPageSchema, generateBusinessIntelligenceCategoryPageSchema, generateArtificialIntelligenceCategoryPageSchema, generateDigitalMarketingCategoryPageSchema, generateManualTestingCoursePageSchema, generateApiTestingCoursePageSchema } from './src/lib/schema-generators';
+import { generateAllCoursesPageSchema, generateHomePageSchema, generateSoftwareTestingCategoryPageSchema, generateDataScienceMachineLearningCategoryPageSchema, generateBusinessIntelligenceCategoryPageSchema, generateArtificialIntelligenceCategoryPageSchema, generateDigitalMarketingCategoryPageSchema, generateManualTestingCoursePageSchema, generateApiTestingCoursePageSchema, generateDbmsCoursePageSchema, generateEtlTestingCoursePageSchema, generateAdvanceSoftwareTestingCoursePageSchema, generateAutomationTestingCoursePageSchema, generateAdvanceManualAutomationTestingCoursePageSchema } from './src/lib/schema-generators';
 import { softwareTestingFaqs } from "./src/components/software-testing-course/data/data";
 import { MANUAL_TESTING_FAQS } from "./src/data/manualTestingData";
 import { API_TESTING_FAQS } from "./src/data/apiTestingData";
@@ -85,6 +85,69 @@ const apiSchemas = generateApiTestingCoursePageSchema(
   [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Software Testing Course", url: "/courses/software-testing-course" }, { name: "API Testing", url: '/courses/software-testing-course/api-testing' }]
 );
 
+import { DBMS_FAQS } from "./src/data/dbmsData";
+const dbmsSchemas = generateDbmsCoursePageSchema(
+  {
+    name: "MySQL Database Management System Course",
+    description: "Master MySQL, SQL queries, database design, and optimization. Build real projects. Get certified and placed in top companies.",
+    url: '/courses/software-testing-course/dbms-course',
+    slug: "dbms-course",
+  },
+  DBMS_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+  [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Software Testing Course", url: "/courses/software-testing-course" }, { name: "DBMS (MySQL)", url: '/courses/software-testing-course/dbms-course' }]
+);
+
+import { ETL_TESTING_FAQS } from "./src/data/etlTestingData";
+const etlSchemas = generateEtlTestingCoursePageSchema(
+  {
+    name: "ETL Testing Course",
+    description: "Master ETL testing with SQL, data validation, and real projects. Get certified and placed in top data companies.",
+    url: '/courses/software-testing-course/etl-testing',
+    slug: "etl-testing",
+  },
+  ETL_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+  [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Software Testing Course", url: "/courses/software-testing-course" }, { name: "ETL Testing", url: '/courses/software-testing-course/etl-testing' }]
+);
+
+
+import { ADVANCED_TESTING_FAQS } from "./src/data/advancedTestingData";
+const astSchemas = generateAdvanceSoftwareTestingCoursePageSchema(
+  {
+    name: "Advanced Software Testing Course (SDET)",
+    description: "Master Selenium, Appium, API, Cypress, and Performance Testing. Become a full-stack SDET.",
+    url: '/courses/software-testing-course/advance-software-testing',
+    slug: "advance-software-testing",
+  },
+  ADVANCED_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+  [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Software Testing Course", url: "/courses/software-testing-course" }, { name: "Advanced Software Testing", url: '/courses/software-testing-course/advance-software-testing' }]
+);
+
+
+import { AUTOMATION_TESTING_FAQS } from "./src/data/automationTestingData";
+const automationSchemas = generateAutomationTestingCoursePageSchema(
+  {
+    name: "Advanced Automation Testing Course (SDET)",
+    description: "Master Cypress, Playwright, AI Testing, CI/CD. Become a future-ready SDET with elite projects and FAANG placement.",
+    url: '/courses/software-testing-course/automation-testing-course',
+    slug: "automation-testing-course",
+  },
+  AUTOMATION_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+  [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Software Testing Course", url: "/courses/software-testing-course" }, { name: "Automation Testing", url: '/courses/software-testing-course/automation-testing-course' }]
+);
+
+
+import { ADVANCE_MANUAL_AUTOMATION_FAQS } from "./src/data/advanceManualAutomationData";
+const amatSchemas = generateAdvanceManualAutomationTestingCoursePageSchema(
+  {
+    name: "Advanced Manual & Automation Testing Master Program",
+    description: "Master ISTQB Manual Testing + Selenium, Cypress, API, Mobile. Get dual certified and placed in top QA roles.",
+    url: '/courses/software-testing-course/advance-manual-automation-testing',
+    slug: "advance-manual-automation-testing",
+  },
+  ADVANCE_MANUAL_AUTOMATION_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+  [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Software Testing Course", url: "/courses/software-testing-course" }, { name: "Manual & Automation Testing", url: '/courses/software-testing-course/advance-manual-automation-testing' }]
+);
+
 // Output raw, unformatted JSON (no markdown wrappers) to raw .json file in project root
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/courses_schema.json', JSON.stringify(schemas, null, 2), 'utf-8');
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/home_schema.json', JSON.stringify(homeSchemas, null, 2), 'utf-8');
@@ -95,4 +158,9 @@ fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/ai_schema.json', JSON
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/dm_schema.json', JSON.stringify(dmSchemas, null, 2), 'utf-8');
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/mt_schema.json', JSON.stringify(mtSchemas, null, 2), 'utf-8');
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/api_schema.json', JSON.stringify(apiSchemas, null, 2), 'utf-8');
-console.log('Successfully wrote raw JSON all 9 files!');
+fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/dbms_schema.json', JSON.stringify(dbmsSchemas, null, 2), 'utf-8');
+fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/etl_schema.json', JSON.stringify(etlSchemas, null, 2), 'utf-8');
+fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/ast_schema.json', JSON.stringify(astSchemas, null, 2), 'utf-8');
+fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/automation_schema.json', JSON.stringify(automationSchemas, null, 2), 'utf-8');
+fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/amat_schema.json', JSON.stringify(amatSchemas, null, 2), 'utf-8');
+console.log('Successfully wrote raw JSON all 14 files!');

@@ -1,4 +1,4 @@
-import { type QA } from "@/types/faq";
+import { type QA } from "../types/faq";
 
 export const ADVANCE_MANUAL_AUTOMATION_FAQS: QA[] = [
     {
