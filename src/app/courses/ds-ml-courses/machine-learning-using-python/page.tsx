@@ -16,7 +16,7 @@ import {
 
 import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateMachineLearningUsingPythonCoursePageSchema } from "@/lib/schema-generators";
 import { ML_PYTHON_FAQS, ML_PYTHON_REVIEW_DATA } from "@/data/mlPythonData";
 
 export const metadata = generateMetadata({
@@ -35,35 +35,35 @@ export const metadata = generateMetadata({
 });
 
 export default function Home() {
-    const courseSchema = generateCourseSchema({
-        name: "Master Program in Machine Learning Algorithms using Python",
-        description: "45-Hour Master Program in Machine Learning Algorithms using Python. Hands-on projects, 100% job assistance, global certificates.",
-        url: '/courses/ds-ml-courses/machine-learning-using-python',
-        slug: "machine-learning-using-python",
-        price: 35000,
-        currency: "INR",
-        duration: "P1M2W", // ~6 weeks
-        instructor: "Expert ML & Python Mentors",
-        rating: ML_PYTHON_REVIEW_DATA.ratingValue,
-        reviewCount: ML_PYTHON_REVIEW_DATA.reviewCount,
-        image: "/og-images/machine-learning-using-python.jpg",
-    });
-
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: "Courses", url: "/courses" },
-    { name: "Data Science & ML Courses", url: "/courses/ds-ml-courses" },
-        { name: "Machine Learning with Python", url: '/courses/ds-ml-courses/machine-learning-using-python' },
-    ]);
-
-    const faqSchema = generateFAQSchema(ML_PYTHON_FAQS);
+    const schemas = generateMachineLearningUsingPythonCoursePageSchema(
+        {
+            name: "Master Program in Machine Learning Algorithms using Python",
+            description: "45-Hour Master Program in Machine Learning Algorithms using Python. Hands-on projects, 100% job assistance, global certificates.",
+            url: '/courses/ds-ml-courses/machine-learning-using-python',
+            slug: "machine-learning-using-python",
+            price: 35000,
+            currency: "INR",
+            duration: "P1M2W", // ~6 weeks
+            instructor: "Expert ML & Python Mentors",
+            rating: ML_PYTHON_REVIEW_DATA.ratingValue,
+            reviewCount: ML_PYTHON_REVIEW_DATA.reviewCount,
+            image: "/og-images/machine-learning-using-python.jpg",
+        },
+        ML_PYTHON_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+        [
+            { name: "Home", url: "/" },
+            { name: "Courses", url: "/courses" },
+            { name: "Data Science & ML Courses", url: "/courses/ds-ml-courses" },
+            { name: "Machine Learning with Python", url: '/courses/ds-ml-courses/machine-learning-using-python' },
+        ]
+    );
 
     return (
         <div className="min-h-screen flex flex-col bg-white">
             <main className="flex-1">
-                <JsonLd id="course-schema" schema={courseSchema} />
-                <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-                <JsonLd id="faq-schema" schema={faqSchema} />
+                {schemas.map((schema, index) => (
+                    <JsonLd key={`ml-python-schema-${index}`} id={`ml-python-schema-${index}`} schema={schema} />
+                ))}
                 {/* Hero Section */}
                 <HeroSection />
 

@@ -14,7 +14,7 @@ const FaqSection = dynamic(() => import("@/components/data-analytics-and-visuali
 const CtaSection = dynamic(() => import("@/components/data-analytics-and-visualization/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
 import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateDataAnalyticsVisualizationCoursePageSchema } from "@/lib/schema-generators";
 import { DATA_ANALYTICS_VIS_FAQS, DATA_ANALYTICS_VIS_REVIEW_DATA } from "@/data/dataAnalyticsVisData";
 import dynamic from 'next/dynamic';
 
@@ -43,34 +43,34 @@ export const metadata = generateMetadata({
 });
 
 export default function Home() {
-    const courseSchema = generateCourseSchema({
-        name: "Advanced Excel for Data Analytics & Visualization",
-        description: "Master Advanced Excel for Data Analytics & Visualization. 20-Hour comprehensive course with interactive dashboards, Power Query, and Power Pivot. 100% job assistance.",
-        url: '/courses/bi-courses/data-analytics-and-visualization',
-        slug: "data-analytics-and-visualization",
-        price: 15000,
-        currency: "INR",
-        duration: "P1M", // ~4 weeks
-        instructor: "Expert Excel Mentors",
-        rating: DATA_ANALYTICS_VIS_REVIEW_DATA.ratingValue,
-        reviewCount: DATA_ANALYTICS_VIS_REVIEW_DATA.reviewCount,
-        image: "/og-images/data-analytics-and-visualization.jpg",
-    });
-
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: "Courses", url: "/courses" },
-    { name: "BI Courses", url: "/courses/bi-courses" },
-        { name: "Data Analytics & Visualization", url: '/courses/bi-courses/data-analytics-and-visualization' },
-    ]);
-
-    const faqSchema = generateFAQSchema(DATA_ANALYTICS_VIS_FAQS);
+    const schemas = generateDataAnalyticsVisualizationCoursePageSchema(
+        {
+            name: "Advanced Excel for Data Analytics & Visualization",
+            description: "Master Advanced Excel for Data Analytics & Visualization. 20-Hour comprehensive course with interactive dashboards, Power Query, and Power Pivot. 100% job assistance.",
+            url: '/courses/bi-courses/data-analytics-and-visualization',
+            slug: "data-analytics-and-visualization",
+            price: 15000,
+            currency: "INR",
+            duration: "P1M",
+            instructor: "Expert Excel Mentors",
+            rating: DATA_ANALYTICS_VIS_REVIEW_DATA.ratingValue,
+            reviewCount: DATA_ANALYTICS_VIS_REVIEW_DATA.reviewCount,
+            image: "/og-images/data-analytics-and-visualization.jpg",
+        },
+        DATA_ANALYTICS_VIS_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+        [
+            { name: "Home", url: "/" },
+            { name: "Courses", url: "/courses" },
+            { name: "BI Courses", url: "/courses/bi-courses" },
+            { name: "Data Analytics & Visualization", url: '/courses/bi-courses/data-analytics-and-visualization' },
+        ]
+    );
 
     return (
         <div className="min-h-screen w-full bg-white">
-            <JsonLd id="course-schema" schema={courseSchema} />
-            <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-            <JsonLd id="faq-schema" schema={faqSchema} />
+            {schemas.map((schema, index) => (
+                <JsonLd key={`data-analytics-vis-schema-${index}`} id={`data-analytics-vis-schema-${index}`} schema={schema} />
+            ))}
 
             {/* Main content */}
             <main className="w-full">

@@ -17,7 +17,7 @@
     },
     "image": {
       "@type": "ImageObject",
-      "url": "https://www.cinutedigital.com/cinutedigital/og-images/home-page-og.png",
+      "url": "https://www.cinutedigital.com/og-images/home-page-og.png",
       "width": 1200,
       "height": 630
     },
@@ -82,13 +82,6 @@
       "https://www.instagram.com/cinutedigital",
       "https://www.youtube.com/@cinutedigital"
     ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": 4.8,
-      "reviewCount": 5000,
-      "bestRating": 5,
-      "worstRating": 1
-    },
     "foundingDate": "2020",
     "numberOfEmployees": {
       "@type": "QuantitativeValue",
@@ -167,15 +160,7 @@
     "publisher": {
       "@id": "https://www.cinutedigital.com/#organization"
     },
-    "inLanguage": "en-IN",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://www.cinutedigital.com/search?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
+    "inLanguage": "en-IN"
   },
   {
     "@context": "https://schema.org",

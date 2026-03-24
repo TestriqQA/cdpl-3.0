@@ -34,7 +34,7 @@ export const SITE_CONFIG = {
   logo: '/cdpl-logo.png',
   logoWidth: 200,
   logoHeight: 60,
-  defaultOgImage: '/cinutedigital/og-images/home-page-og.png',
+  defaultOgImage: '/og-images/home-page-og.png',
   defaultOgImageWidth: 1200,
   defaultOgImageHeight: 630,
   favicon: '/favicon.ico',

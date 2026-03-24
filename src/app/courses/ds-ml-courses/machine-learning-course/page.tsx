@@ -15,7 +15,7 @@ import {
 
 import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, generateMachineLearningCoursePageSchema } from "@/lib/schema-generators";
 import { MACHINE_LEARNING_FAQS, MACHINE_LEARNING_REVIEW_DATA } from "@/data/machineLearningData";
 
 export const metadata = generateMetadata({
@@ -35,35 +35,34 @@ export const metadata = generateMetadata({
 });
 
 export default function MachineLearningPage() {
-  const courseSchema = generateCourseSchema({
-    name: "Machine Learning & Data Science with Python Hero Program",
-    description: "95-Hour Hero Program in Machine Learning and Data Science with Python. Hands-on projects, 100% job assistance, global certificates.",
-    url: '/courses/ds-ml-courses/machine-learning-course',
-    slug: "machine-learning-course",
-    price: 35000,
-    currency: "INR",
-    duration: "P2M1W", // ~9-10 weeks
-    instructor: "Expert ML & Data Science Mentors",
-    rating: MACHINE_LEARNING_REVIEW_DATA.ratingValue,
-    reviewCount: MACHINE_LEARNING_REVIEW_DATA.reviewCount,
-    image: "/og-images/machine-learning-course.jpg",
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "Data Science & ML Courses", url: "/courses/ds-ml-courses" },
-    { name: "Machine Learning & Data Science", url: '/courses/ds-ml-courses/machine-learning-course' },
-  ]);
-
-  const faqSchema = generateFAQSchema(MACHINE_LEARNING_FAQS);
+  const schemas = generateMachineLearningCoursePageSchema(
+    {
+      name: "Machine Learning & Data Science with Python Hero Program",
+      description: "95-Hour Hero Program in Machine Learning and Data Science with Python. Hands-on projects, 100% job assistance, global certificates.",
+      url: '/courses/ds-ml-courses/machine-learning-course',
+      slug: "machine-learning-course",
+      price: 35000,
+      currency: "INR",
+      duration: "P2M1W", // ~9-10 weeks
+      instructor: "Expert ML & Data Science Mentors",
+      rating: MACHINE_LEARNING_REVIEW_DATA.ratingValue,
+      reviewCount: MACHINE_LEARNING_REVIEW_DATA.reviewCount,
+      image: "/og-images/machine-learning-course.jpg",
+    },
+    MACHINE_LEARNING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "Data Science & ML Courses", url: "/courses/ds-ml-courses" },
+      { name: "Machine Learning & Data Science", url: '/courses/ds-ml-courses/machine-learning-course' }
+    ]
+  );
 
   return (
     <>
-      <JsonLd id="course-schema" schema={courseSchema} />
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
-
+      {schemas.map((schema, index) => (
+        <JsonLd key={`ml-schema-${index}`} id={`ml-schema-${index}`} schema={schema} />
+      ))}
       <HeroSection />
 
       {/* Sticky nav must appear right after hero */}
@@ -84,4 +83,4 @@ export default function MachineLearningPage() {
       <section id='contact'><CtaClient /></section>
     </>
   );
-};
+}

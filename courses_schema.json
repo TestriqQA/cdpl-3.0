@@ -17,7 +17,7 @@
     },
     "image": {
       "@type": "ImageObject",
-      "url": "https://www.cinutedigital.com/cinutedigital/og-images/home-page-og.png",
+      "url": "https://www.cinutedigital.com/og-images/home-page-og.png",
       "width": 1200,
       "height": 630
     },
@@ -82,13 +82,6 @@
       "https://www.instagram.com/cinutedigital",
       "https://www.youtube.com/@cinutedigital"
     ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": 4.8,
-      "reviewCount": 5000,
-      "bestRating": 5,
-      "worstRating": 1
-    },
     "foundingDate": "2020",
     "numberOfEmployees": {
       "@type": "QuantitativeValue",
@@ -167,15 +160,7 @@
     "publisher": {
       "@id": "https://www.cinutedigital.com/#organization"
     },
-    "inLanguage": "en-IN",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://www.cinutedigital.com/search?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
+    "inLanguage": "en-IN"
   },
   {
     "@context": "https://schema.org",
@@ -248,13 +233,6 @@
             "url": "https://www.cinutedigital.com/courses/software-testing-course/manual-testing-course",
             "category": "Paid"
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
         }
@@ -297,13 +275,6 @@
             "availability": "https://schema.org/InStock",
             "url": "https://www.cinutedigital.com/courses/software-testing-course/api-testing",
             "category": "Paid"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
           },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
@@ -348,13 +319,6 @@
             "url": "https://www.cinutedigital.com/courses/software-testing-course/dbms-course",
             "category": "Paid"
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
         }
@@ -397,13 +361,6 @@
             "availability": "https://schema.org/InStock",
             "url": "https://www.cinutedigital.com/courses/software-testing-course/etl-testing",
             "category": "Paid"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
           },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
@@ -448,13 +405,6 @@
             "url": "https://www.cinutedigital.com/courses/software-testing-course/advance-software-testing",
             "category": "Paid"
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
         }
@@ -497,13 +447,6 @@
             "availability": "https://schema.org/InStock",
             "url": "https://www.cinutedigital.com/courses/software-testing-course/automation-testing-course",
             "category": "Paid"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
           },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
@@ -548,13 +491,6 @@
             "url": "https://www.cinutedigital.com/courses/software-testing-course/advance-manual-automation-testing",
             "category": "Paid"
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
         }
@@ -597,13 +533,6 @@
             "availability": "https://schema.org/InStock",
             "url": "https://www.cinutedigital.com/courses/software-testing-course/python-course",
             "category": "Paid"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
           },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
@@ -648,13 +577,6 @@
             "url": "https://www.cinutedigital.com/courses/software-testing-course/java-course",
             "category": "Paid"
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
         }
@@ -697,13 +619,6 @@
             "availability": "https://schema.org/InStock",
             "url": "https://www.cinutedigital.com/courses/ds-ml-courses/machine-learning-course",
             "category": "Paid"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
           },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
@@ -748,13 +663,6 @@
             "url": "https://www.cinutedigital.com/courses/ds-ml-courses/generative-ai-course",
             "category": "Paid"
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
         }
@@ -797,13 +705,6 @@
             "availability": "https://schema.org/InStock",
             "url": "https://www.cinutedigital.com/courses/ds-ml-courses/data-science-course",
             "category": "Paid"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
           },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
@@ -848,13 +749,6 @@
             "url": "https://www.cinutedigital.com/courses/ds-ml-courses/ai-course",
             "category": "Paid"
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
         }
@@ -897,13 +791,6 @@
             "availability": "https://schema.org/InStock",
             "url": "https://www.cinutedigital.com/courses/ds-ml-courses/machine-learning-using-python",
             "category": "Paid"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
           },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
@@ -948,13 +835,6 @@
             "url": "https://www.cinutedigital.com/courses/ds-ml-courses/data-visualization-in-r-programming",
             "category": "Paid"
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
         }
@@ -997,13 +877,6 @@
             "availability": "https://schema.org/InStock",
             "url": "https://www.cinutedigital.com/courses/bi-courses/data-analytics",
             "category": "Paid"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
           },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
@@ -1048,13 +921,6 @@
             "url": "https://www.cinutedigital.com/courses/bi-courses/data-analytics-python",
             "category": "Paid"
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
         }
@@ -1097,13 +963,6 @@
             "availability": "https://schema.org/InStock",
             "url": "https://www.cinutedigital.com/courses/bi-courses/data-analytics-and-visualization",
             "category": "Paid"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
           },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
@@ -1148,13 +1007,6 @@
             "url": "https://www.cinutedigital.com/courses/bi-courses/data-analytics-with-tableau",
             "category": "Paid"
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
         }
@@ -1197,13 +1049,6 @@
             "availability": "https://schema.org/InStock",
             "url": "https://www.cinutedigital.com/courses/bi-courses/power-bi-course",
             "category": "Paid"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
           },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
@@ -1248,13 +1093,6 @@
             "url": "https://www.cinutedigital.com/courses/bi-courses/masters-in-data-engineering",
             "category": "Paid"
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
         }
@@ -1297,13 +1135,6 @@
             "availability": "https://schema.org/InStock",
             "url": "https://www.cinutedigital.com/courses/artificial-intelligence-courses/prompt-engineering-course",
             "category": "Paid"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
           },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
@@ -1348,13 +1179,6 @@
             "url": "https://www.cinutedigital.com/courses/digital-marketing-courses/digital-marketing-course",
             "category": "Paid"
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
         }
@@ -1398,13 +1222,6 @@
             "url": "https://www.cinutedigital.com/courses/digital-marketing-courses/ai-in-digital-marketing",
             "category": "Paid"
           },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"
         }
@@ -1447,13 +1264,6 @@
             "availability": "https://schema.org/InStock",
             "url": "https://www.cinutedigital.com/courses/digital-marketing-courses/ai-bootcamp",
             "category": "Paid"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "50",
-            "bestRating": "5",
-            "worstRating": "1"
           },
           "inLanguage": "en-IN",
           "learningResourceType": "Professional Training"

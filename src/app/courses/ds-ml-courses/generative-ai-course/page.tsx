@@ -13,11 +13,10 @@ import {
   CareerRoadmapSection
 } from "@/app/courses/ds-ml-courses/generative-ai-course/server-sections";
 
-import dynamic from "next/dynamic";
-const JsonLd = dynamic(() => import('@/components/JsonLd'), { ssr: true });
+import JsonLd from "@/components/JsonLd";
 
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateGenerativeAICoursePageSchema } from "@/lib/schema-generators";
 import { GENERATIVE_AI_FAQS, GENERATIVE_AI_REVIEW_DATA } from "@/data/generativeAiData";
 
 export const metadata = generateMetadata({
@@ -37,35 +36,34 @@ export const metadata = generateMetadata({
 });
 
 export default function GenerativeAiPage() {
-  const courseSchema = generateCourseSchema({
-    name: "Master Program in Deep Learning, NLP & Generative AI",
-    description: "55-Hour Hero Program in Deep Learning, NLP, and Generative AI with Python. Hands-on projects, 100% job assistance, global certificates from AAA.",
-    url: '/courses/ds-ml-courses/generative-ai-course',
-    slug: "generative-ai-course",
-    price: 45000,
-    currency: "INR",
-    duration: "P1M2W", // ~6 weeks
-    instructor: "Expert AI & Generative AI Mentors",
-    rating: GENERATIVE_AI_REVIEW_DATA.ratingValue,
-    reviewCount: GENERATIVE_AI_REVIEW_DATA.reviewCount,
-    image: "/og-images/generative-ai-course.jpg",
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "Data Science & ML Courses", url: "/courses/ds-ml-courses" },
-    { name: "Generative AI Course", url: '/courses/ds-ml-courses/generative-ai-course' },
-  ]);
-
-  const faqSchema = generateFAQSchema(GENERATIVE_AI_FAQS);
+  const schemas = generateGenerativeAICoursePageSchema(
+    {
+      name: "Master Program in Deep Learning, NLP & Generative AI",
+      description: "55-Hour Hero Program in Deep Learning, NLP, and Generative AI with Python. Hands-on projects, 100% job assistance, global certificates from AAA.",
+      url: '/courses/ds-ml-courses/generative-ai-course',
+      slug: "generative-ai-course",
+      price: 45000,
+      currency: "INR",
+      duration: "P1M2W", // ~6 weeks
+      instructor: "Expert AI & Generative AI Mentors",
+      rating: GENERATIVE_AI_REVIEW_DATA.ratingValue,
+      reviewCount: GENERATIVE_AI_REVIEW_DATA.reviewCount,
+      image: "/og-images/generative-ai-course.jpg",
+    },
+    GENERATIVE_AI_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "Data Science & ML Courses", url: "/courses/ds-ml-courses" },
+      { name: "Generative AI Course", url: '/courses/ds-ml-courses/generative-ai-course' }
+    ]
+  );
 
   return (
     <>
-      <JsonLd id="course-schema" schema={courseSchema} />
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
-
+      {schemas.map((schema, index) => (
+        <JsonLd key={`genai-schema-${index}`} id={`genai-schema-${index}`} schema={schema} />
+      ))}
       <HeroSection />
 
       {/* Sticky nav must appear right after hero */}
@@ -86,4 +84,4 @@ export default function GenerativeAiPage() {
       <section id='contact'><CtaClient /></section>
     </>
   );
-};
+}

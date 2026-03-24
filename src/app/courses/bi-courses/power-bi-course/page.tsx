@@ -16,10 +16,10 @@ import {
 } from "@/app/courses/bi-courses/power-bi-course/server-sections";
 
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generatePowerBICoursePageSchema } from "@/lib/schema-generators";
 import { POWER_BI_FAQS, POWER_BI_REVIEW_DATA } from "@/data/powerBiData";
-const pageTitle = "Best Power BI Course in Mumbai & Thane | Master Data Analytics with 100% Placement";
 
+const pageTitle = "Best Power BI Course in Mumbai & Thane | Master Data Analytics with 100% Placement";
 const pageDescription = "Enroll in the best Power BI course in Mumbai & Thane. Master Power BI Desktop, DAX, and Service in 20 hours. Get 100% job placement assistance and become a certified Power BI Developer.";
 const pageKeywords = [
     "Power BI Course in Mumbai",
@@ -45,37 +45,35 @@ export const metadata = generateMetadata({
     image: "/og-images/power-bi-course.jpg",
 });
 
-
 const PowerBIPage: React.FC = () => {
-    const courseSchema = generateCourseSchema({
-        name: "Master Data Analytics & Visualization with Power BI",
-        description: "Enroll in the best Power BI course. Master DAX, Data Modeling, and Visualization in 20 hours. Get 100% job assistance and global certification.",
-        url: '/courses/bi-courses/power-bi-course',
-        slug: "power-bi-course",
-        price: 20000,
-        currency: "INR",
-        duration: "P1M",
-        instructor: "Expert Power BI Mentors",
-        rating: POWER_BI_REVIEW_DATA.ratingValue,
-        reviewCount: POWER_BI_REVIEW_DATA.reviewCount,
-        image: "/og-images/power-bi-course.jpg",
-    });
-
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: "Courses", url: "/courses" },
-    { name: "BI Courses", url: "/courses/bi-courses" },
-        { name: "Power BI Course", url: '/courses/bi-courses/power-bi-course' },
-    ]);
-
-    const faqSchema = generateFAQSchema(POWER_BI_FAQS);
-
+    const schemas = generatePowerBICoursePageSchema(
+        {
+            name: "Master Data Analytics & Visualization with Power BI",
+            description: "Enroll in the best Power BI course. Master DAX, Data Modeling, and Visualization in 20 hours. Get 100% job assistance and global certification.",
+            url: '/courses/bi-courses/power-bi-course',
+            slug: "power-bi-course",
+            price: 20000,
+            currency: "INR",
+            duration: "P1M",
+            instructor: "Expert Power BI Mentors",
+            rating: POWER_BI_REVIEW_DATA.ratingValue,
+            reviewCount: POWER_BI_REVIEW_DATA.reviewCount,
+            image: "/og-images/power-bi-course.jpg",
+        },
+        POWER_BI_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+        [
+            { name: "Home", url: "/" },
+            { name: "Courses", url: "/courses" },
+            { name: "BI Courses", url: "/courses/bi-courses" },
+            { name: "Power BI Course", url: '/courses/bi-courses/power-bi-course' },
+        ]
+    );
 
     return (
         <>
-            <JsonLd id="course-schema" schema={courseSchema} />
-            <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-            <JsonLd id="faq-schema" schema={faqSchema} />
+            {schemas.map((schema, index) => (
+                <JsonLd key={`power-bi-schema-${index}`} id={`power-bi-schema-${index}`} schema={schema} />
+            ))}
             <HeroSection />
             <div className="hidden md:block sticky top-0 z-20">
                 <StickyNav navItems={with_roadmap} />
@@ -91,8 +89,6 @@ const PowerBIPage: React.FC = () => {
             <section id="testimonials"><TestimonialsClient /></section>
             <section id="faqs"><FaqSection /></section>
             <section id="contact"><CtaClient /></section>
-
-            {/* Note: You would typically include a Footer component here */}
         </>
     );
 };

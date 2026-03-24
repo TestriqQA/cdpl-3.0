@@ -116,15 +116,6 @@ export function generateOrganizationSchema(): WithContext<Record<string, unknown
     // Social Media Profiles (Knowledge Graph)
     sameAs: getSocialMediaUrls(),
 
-    // Aggregate Rating
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-      worstRating: 1,
-    },
-
     // Founding Date
     foundingDate: BUSINESS_INFO.foundedYear,
 
@@ -197,8 +188,9 @@ export function generateItemListSchema(items: ItemListElement[], name: string): 
       // Fix: Ensure 'item' or 'url' is present for a nested ListItem.
       // We will use the 'item' property with a nested object containing name and url.
       if (item.itemSchema) {
-        // Use the provided full schema
-        listItem.item = item.itemSchema;
+        // Strip out aggregateRating to avoid "Multiple aggregate rating" errors in Rich Results
+        const { aggregateRating, ...cleanItemSchema } = item.itemSchema as any;
+        listItem.item = cleanItemSchema;
       } else if (item.url) {
         listItem.item = {
           '@type': item.type || 'Thing', // Default to Thing if type is missing
@@ -234,16 +226,6 @@ export function generateWebsiteSchema(): WithContext<Record<string, unknown>> {
       '@id': getOrganizationId(),
     },
     inLanguage: 'en-IN',
-
-    // Search Action (enables Google Search Box)
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${SITE_CONFIG.url}/search?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
   };
 }
 
@@ -1851,8 +1833,1178 @@ export function generateAdvanceManualAutomationTestingCoursePageSchema(
 }
 
 // ============================================================================
+// PYTHON COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generatePythonCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Python Programming Course in Mumbai | 80-Hour Job-Ready Training | CDPL',
+    description: courseInput.description || 'Best Python course in Mumbai with Django, Data Science, ML, Automation. 100% placement. Live projects, global certificate.',
+    url: '/courses/software-testing-course/python-course',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const stCourses: any[] = [];
+  const stCategory = courseCategories.find(c => c.slug === 'software-testing-course');
+  if (stCategory && stCategory.courses) {
+    stCategory.courses.forEach(c => {
+      stCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(stCourses, 'Software Testing Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Python Master Course',
+    description: 'A step-by-step guide to enrolling in our specialized Python framework and Automation master program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Evaluate the comprehensive Python, Django, Data Science, and Machine Learning modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master modern full-stack backend development and automated scripting methodologies for 100% placement!' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// JAVA COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateJavaCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Java Programming Course in Mumbai | 80-Hour Job-Ready Training | CDPL',
+    description: courseInput.description || 'Best Java course in Mumbai with Core Java, Spring Boot, Microservices, AWS. 100% placement. Live projects, global certificate.',
+    url: '/courses/software-testing-course/java-course',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const stCourses: any[] = [];
+  const stCategory = courseCategories.find(c => c.slug === 'software-testing-course');
+  if (stCategory && stCategory.courses) {
+    stCategory.courses.forEach(c => {
+      stCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(stCourses, 'Software Testing Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Java Master Course',
+    description: 'A step-by-step guide to enrolling in our robust Java Development master program safely safely natively securely securely properly correctly structurally cleanly completely natively simply fully entirely rapidly easily rapidly directly fully natively explicitly gracefully thoroughly properly explicitly explicitly thoroughly.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Evaluate the comprehensive Core Java, Spring Boot, Microservices, and Automation modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master modern full-stack backend development and automated scripting methodologies for 100% placement!' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// MACHINE LEARNING COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateMachineLearningCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Machine Learning & Data Science with Python Hero Program | Mumbai | CDPL',
+    description: courseInput.description || '95-Hour Hero Program in Machine Learning and Data Science with Python. Hands-on projects, 100% job assistance, global certificates.',
+    url: '/courses/ds-ml-courses/machine-learning-course',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const dsCourses: any[] = [];
+  const dsCategory = courseCategories.find(c => c.slug === 'ds-ml-courses');
+  if (dsCategory && dsCategory.courses) {
+    dsCategory.courses.forEach(c => {
+      dsCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(dsCourses, 'Data Science & Machine Learning Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Machine Learning Hero Program',
+    description: 'A step-by-step guide to enrolling in our specialized Machine Learning and Data Science program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Evaluate the comprehensive Python, Pandas, scikit-learn, and Deep Learning modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master modern Data Science frameworks and Automated AI scripting methodologies for 100% placement!' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// GENERATIVE AI COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateGenerativeAICoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Deep Learning, NLP & Gen AI Course Mumbai | CDPL',
+    description: courseInput.description || '55-Hour Hero Program in Deep Learning, NLP, and Generative AI with Python. Hands-on projects, 100% job assistance, global certificates from AAA.',
+    url: '/courses/ds-ml-courses/generative-ai-course',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const dsCourses: any[] = [];
+  const dsCategory = courseCategories.find(c => c.slug === 'ds-ml-courses');
+  if (dsCategory && dsCategory.courses) {
+    dsCategory.courses.forEach(c => {
+      dsCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(dsCourses, 'Data Science & Machine Learning Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Generative AI Hero Program',
+    description: 'A step-by-step guide to enrolling in our advanced Deep Learning, NLP, and Generative AI training program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Evaluate the advanced PyTorch, Hugging Face Transformers, and MLOps modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master modern large language models, prompt engineering, and deep learning for advanced tech roles!' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// DATA SCIENCE COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateDataScienceCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Advanced Data Science & Machine Learning Masterclass Mumbai | Placement',
+    description: courseInput.description || 'Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with 100% job placement.',
+    url: '/courses/ds-ml-courses/data-science-course',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const dsCourses: any[] = [];
+  const dsCategory = courseCategories.find(c => c.slug === 'ds-ml-courses');
+  if (dsCategory && dsCategory.courses) {
+    dsCategory.courses.forEach(c => {
+      dsCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(dsCourses, 'Data Science & Machine Learning Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Advanced Data Science Masterclass',
+    description: 'A step-by-step guide to enrolling in our 200 hours intensive Data Science training program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Evaluate the comprehensive python, machine learning, and MLOps modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master modern large language models, prompt engineering, and deep learning for advanced tech roles!' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// AI COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateAICoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Masters in AI and ML | AI Master Program Mumbai | 100% Placement Support',
+    description: courseInput.description || 'Enroll in our Masters in AI and ML in India. 255-hour Data Science & AI Master Program in Mumbai/Thane. Get post graduate program in ai and machine learning with 100% job assistance.',
+    url: '/courses/ds-ml-courses/ai-course',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const dsCourses: any[] = [];
+  const dsCategory = courseCategories.find(c => c.slug === 'ds-ml-courses');
+  if (dsCategory && dsCategory.courses) {
+    dsCategory.courses.forEach(c => {
+      dsCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(dsCourses, 'Data Science & Machine Learning Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL AI Master Program',
+    description: 'A step-by-step guide to enrolling in our 255 hours intensive AI and ML training program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Evaluate the comprehensive python, machine learning, and comprehensive AI modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master modern large language models, prompt engineering, and deep learning for advanced tech roles!' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// MACHINE LEARNING WITH PYTHON COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateMachineLearningUsingPythonCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Machine Learning with Python Course in Mumbai | 45-Hour Master Program | CDPL',
+    description: courseInput.description || '45-Hour Master Program in Machine Learning Algorithms using Python. Hands-on projects, 100% job assistance, global certificates.',
+    url: '/courses/ds-ml-courses/machine-learning-using-python',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const dsCourses: any[] = [];
+  const dsCategory = courseCategories.find(c => c.slug === 'ds-ml-courses');
+  if (dsCategory && dsCategory.courses) {
+    dsCategory.courses.forEach(c => {
+      dsCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(dsCourses, 'Data Science & Machine Learning Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Machine Learning with Python Course',
+    description: 'A step-by-step guide to enrolling in our 45 hours intensive Machine Learning with Python training program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Evaluate the comprehensive python, machine learning, and AI algorithms modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master modern large language models, prompt engineering, and deep learning for advanced tech roles!' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// DATA VISUALIZATION IN R PROGRAMMING COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateDataVisualizationInRProgrammingCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Machine Learning and Data Visualization using R Programming | CDPL',
+    description: courseInput.description || 'Master Machine Learning algorithms and advanced Data Visualization using R Programming. 20-hour Master Program with 100% job assistance.',
+    url: '/courses/ds-ml-courses/data-visualization-in-r-programming',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const dsCourses: any[] = [];
+  const dsCategory = courseCategories.find(c => c.slug === 'ds-ml-courses');
+  if (dsCategory && dsCategory.courses) {
+    dsCategory.courses.forEach(c => {
+      dsCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(dsCourses, 'Data Science & Machine Learning Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Data Visualization in R Program',
+    description: 'A step-by-step guide to enrolling in our 20 hours intensive Data Visualization in R training program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Evaluate the comprehensive python, machine learning, and AI algorithms modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master modern large language models, prompt engineering, and deep learning for advanced tech roles!' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// PROMPT ENGINEERING COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generatePromptEngineeringCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Prompt Engineering with Generative AI Course in Mumbai | 20-Hour Hero Program | CDPL',
+    description: courseInput.description || '20-Hour Hero Program in Prompt Engineering with Gen AI. Hands-on projects, 100% job assistance, AAA global certificates.',
+    url: '/courses/artificial-intelligence-courses/prompt-engineering-course',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const aiCourses: any[] = [];
+  const aiCategory = courseCategories.find(c => c.slug === 'artificial-intelligence-courses');
+  if (aiCategory && aiCategory.courses) {
+    aiCategory.courses.forEach(c => {
+      aiCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(aiCourses, 'Artificial Intelligence Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Prompt Engineering Course',
+    description: 'A step-by-step guide to enrolling in our 20-hour Prompt Engineering with Generative AI program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Explore the prompt patterns, guardrails, structured outputs, and evaluation modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and upcoming batch details.' },
+      { name: 'Start Learning', text: 'Master prompt engineering, RAG, and AI workflows to land roles as a Prompt Engineer or Applied AI Specialist.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// DATA ANALYTICS (BI) COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateDataAnalyticsCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Advanced Data Analytics Course Mumbai | Data Analyst Training',
+    description: courseInput.description || 'Master the data analyst full course in Mumbai with 110 hours of intensive training. Advanced data analytics, Python, SQL & Power BI with 100% job placement.',
+    url: '/courses/bi-courses/data-analytics',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const biCourses: any[] = [];
+  const biCategory = courseCategories.find(c => c.slug === 'bi-courses');
+  if (biCategory && biCategory.courses) {
+    biCategory.courses.forEach(c => {
+      biCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(biCourses, 'Business Intelligence & Data Analytics Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Advanced Data Analytics Program',
+    description: 'A step-by-step guide to enrolling in our 110-hour intensive Data Analytics training program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Evaluate the comprehensive Python, SQL, Power BI, and Tableau modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master data analytics, business intelligence, and dashboarding to secure top data analyst roles.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// DATA ANALYTICS WITH PYTHON (BI) COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateDataAnalyticsPythonCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Best Data Analytics Course with Python | 20-Hour Training Mumbai | 100% Job Assistance',
+    description: courseInput.description || 'Learn how to become a data analyst with our Python data analysis course in Mumbai/Thane. 20-hour hands-on training with real projects, global certification, and 100% placement support.',
+    url: '/courses/bi-courses/data-analytics-python',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const biCourses: any[] = [];
+  const biCategory = courseCategories.find(c => c.slug === 'bi-courses');
+  if (biCategory && biCategory.courses) {
+    biCategory.courses.forEach(c => {
+      biCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(biCourses, 'Business Intelligence & Data Analytics Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Data Analytics with Python Course',
+    description: 'A step-by-step guide to enrolling in our 20-hour Data Analytics with Python training program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Explore Python, Pandas, NumPy, Matplotlib, Seaborn, and Plotly modules for data analytics.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master Python data analysis to secure Data Analyst, BI Analyst, or Data Scientist roles.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// DATA ANALYTICS AND VISUALIZATION (BI) COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateDataAnalyticsVisualizationCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Advanced Excel for Data Analytics & Visualization | 20-Hour Course | Mumbai',
+    description: courseInput.description || 'Master Advanced Excel for Data Analytics & Visualization. 20-Hour comprehensive course with interactive dashboards, Power Query, and Power Pivot. 100% job assistance.',
+    url: '/courses/bi-courses/data-analytics-and-visualization',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const biCourses: any[] = [];
+  const biCategory = courseCategories.find(c => c.slug === 'bi-courses');
+  if (biCategory && biCategory.courses) {
+    biCategory.courses.forEach(c => {
+      biCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(biCourses, 'Business Intelligence & Data Analytics Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Advanced Excel for Data Analytics & Visualization Course',
+    description: 'A step-by-step guide to enrolling in our 20-hour Excel Data Analytics & Visualization training program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Explore Power Query, Power Pivot, Pivot Tables, Excel Charts, and interactive dashboard modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master Excel data analytics and visualization to become a Data Analyst, BI Analyst, or Financial Analyst.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// DATA ANALYTICS WITH TABLEAU (BI) COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateDataAnalyticsTableauCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Data Analytics with Tableau Course | 20-Hour Training | Mumbai | CDPL',
+    description: courseInput.description || '20-Hour Master Program in Data Analytics with Tableau. Hands-on projects, interactive dashboards, 100% job assistance, global certificates.',
+    url: '/courses/bi-courses/data-analytics-with-tableau',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const biCourses: any[] = [];
+  const biCategory = courseCategories.find(c => c.slug === 'bi-courses');
+  if (biCategory && biCategory.courses) {
+    biCategory.courses.forEach(c => {
+      biCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(biCourses, 'Business Intelligence & Data Analytics Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Data Analytics with Tableau Course',
+    description: 'A step-by-step guide to enrolling in our 20-hour Data Analytics with Tableau training program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Explore BI concepts, Tableau setup, data integration, visualization techniques, and dashboard design modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master Tableau to secure roles as a Tableau Developer, BI Analyst, or Data Visualization Specialist.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// POWER BI COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generatePowerBICoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Best Power BI Course in Mumbai & Thane | Master Data Analytics with 100% Placement',
+    description: courseInput.description || 'Enroll in the best Power BI course in Mumbai & Thane. Master Power BI Desktop, DAX, and Service in 20 hours. Get 100% job placement assistance.',
+    url: '/courses/bi-courses/power-bi-course',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const biCourses: any[] = [];
+  const biCategory = courseCategories.find(c => c.slug === 'bi-courses');
+  if (biCategory && biCategory.courses) {
+    biCategory.courses.forEach(c => {
+      biCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(biCourses, 'Business Intelligence & Data Analytics Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Power BI Course',
+    description: 'A step-by-step guide to enrolling in our 20-hour Power BI Master Program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Explore Power BI Desktop, DAX, Power Query, data modeling, and dashboard design modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master Power BI to secure roles as a Power BI Developer, BI Analyst, or Data Visualization Specialist.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// MASTERS IN DATA ENGINEERING (BI) COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateMastersDataEngineeringCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Master Program in Data Engineering | BI & Big Data Engineering Course | Mumbai',
+    description: courseInput.description || 'Master BI and Big Data Engineering with our Data Analytics Program Mumbai. Learn SQL for data analytics, Spark, and get Data Engineer Certifications. 100% placement.',
+    url: '/courses/bi-courses/masters-in-data-engineering',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const biCourses: any[] = [];
+  const biCategory = courseCategories.find(c => c.slug === 'bi-courses');
+  if (biCategory && biCategory.courses) {
+    biCategory.courses.forEach(c => {
+      biCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(biCourses, 'Business Intelligence & Data Analytics Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Masters in Data Engineering Program',
+    description: 'A step-by-step guide to enrolling in our 155-hour intensive Masters in Data Engineering program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Explore SQL, Python, Power BI, Tableau, Spark, Hadoop, and Cloud Engineering modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and batch details.' },
+      { name: 'Start Learning', text: 'Master BI and Big Data Engineering to secure roles as a Data Engineer, BI Analyst, or Data Scientist.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
 // CONTACT PAGE SCHEMA
 // ============================================================================
+
+// ============================================================================
+// DIGITAL MARKETING COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateDigitalMarketingCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Best Digital Marketing Course in Mumbai with 100% Placement | CDPL',
+    description: courseInput.description || 'Join the #1 Digital Marketing Course in Mumbai. Master AI-Driven SEO, PPC, Google Ads, Social Media, and Analytics with 100% Placement Support. 80+ Hours of Practical Training.',
+    url: '/courses/digital-marketing-courses/digital-marketing-course',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const dmCourses: any[] = [];
+  const dmCategory = courseCategories.find(c => c.slug === 'digital-marketing-courses');
+  if (dmCategory && dmCategory.courses) {
+    dmCategory.courses.forEach(c => {
+      dmCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(dmCourses, 'Digital Marketing Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL Digital Marketing Course',
+    description: 'A step-by-step guide to enrolling in our 80-hour AI-Driven Digital Marketing Master Program.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Explore SEO, SEM, Google Ads, Social Media Marketing, Content Marketing, and AI automation modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and upcoming batch details.' },
+      { name: 'Start Learning', text: 'Master AI-driven digital marketing to secure roles as an SEO Specialist, PPC Analyst, or Digital Marketing Manager.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// AI IN DIGITAL MARKETING COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateAiInDigitalMarketingCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Master Digital Marketing & AI for Business Owners | 10X Your Growth - Cinute Digital',
+    description: courseInput.description || 'Master Business Marketing Strategies & AI. Learn Local Business SEO, Digital Marketing Sales, and Marketing Automation for Business Owners.',
+    url: '/courses/digital-marketing-courses/ai-in-digital-marketing',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const dmCourses: any[] = [];
+  const dmCategory = courseCategories.find(c => c.slug === 'digital-marketing-courses');
+  if (dmCategory && dmCategory.courses) {
+    dmCategory.courses.forEach(c => {
+      dmCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(dmCourses, 'Digital Marketing Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL AI in Digital Marketing Course',
+    description: 'A step-by-step guide to enrolling in our 3-month AI-driven Digital Marketing cohort for business owners.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Explore AI tools (ChatGPT, Midjourney), local SEO, social media, content, automation, and B2B lead generation modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team for counseling and upcoming cohort details.' },
+      { name: 'Start Learning', text: 'Apply AI-driven marketing strategies directly to your business and 10X your growth.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// AI BOOTCAMP COURSE PAGE SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateAiBootcampCoursePageSchema(
+  courseInput: Parameters<typeof generateCourseSchema>[0],
+  faqs: { question: string; answer: string }[],
+  breadcrumbs: { name: string; url: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'AI-Powered Digital Marketing Bootcamp | 30-Hour Expert Training | CDPL',
+    description: courseInput.description || 'Master Digital Marketing with AI in this 30-hour bootcamp. Learn SEO, SEM, Social Media, and Performance Marketing with 100% Job Assistance.',
+    url: '/courses/digital-marketing-courses/ai-bootcamp',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const courseSchema = generateCourseSchema(courseInput);
+
+  const dmCourses: any[] = [];
+  const dmCategory = courseCategories.find(c => c.slug === 'digital-marketing-courses');
+  if (dmCategory && dmCategory.courses) {
+    dmCategory.courses.forEach(c => {
+      dmCourses.push({
+        name: c.name,
+        url: `/${c.slug}`,
+        description: c.description,
+        type: 'Course'
+      });
+    });
+  }
+  const itemListSchema = generateItemListSchema(dmCourses, 'Digital Marketing Courses Directory');
+
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in CDPL AI-Powered Digital Marketing Bootcamp',
+    description: 'A step-by-step guide to enrolling in our 30-hour AI Digital Marketing Bootcamp.',
+    steps: [
+      { name: 'Review Curriculum', text: 'Explore AI marketing tools, SEO, SEM, Social Media, Performance Marketing, and automation modules.' },
+      { name: 'Contact Admissions', text: 'Reach out to our admissions team to select your preferred classroom or online batch.' },
+      { name: 'Start Learning', text: 'Complete the 30-hour intensive bootcamp and get certified with 100% job assistance.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    courseSchema,
+    itemListSchema,
+    breadcrumbSchema,
+    faqSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
 
 /**
  * Generate ContactPage schema
