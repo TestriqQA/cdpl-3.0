@@ -210,17 +210,6 @@ export const teamData: TeamMember[] = [
         avatar: "/Team/elvita-gomes.webp",
         linkedin: "https://www.linkedin.com/in/elvita07/"
     },
-    {
-        id: "9",
-        name: "Neelam Chavan",
-        title: "Financial Controller",
-        role: "Financial Controller",
-        expertise: ["Student Success", "Placements", "Admissions"],
-        bio: "Oversees financial planning, analysis, and reporting to ensure accuracy, compliance, and strategic growth through effective fiscal management.",
-        location: "Mumbai, India",
-        avatar: "/Team/neelam-chavan.webp",
-        linkedin: "https://www.linkedin.com/in/neelamchavan9892/",
-    },
 
 ];
 

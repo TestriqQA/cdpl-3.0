@@ -1,0 +1,391 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": "https://www.cinutedigital.com/#organization",
+    "name": "CDPL - Cinute Digital",
+    "legalName": "Cinute Digital Private Limited",
+    "alternateName": "CDPL",
+    "url": "https://www.cinutedigital.com",
+    "logo": {
+      "@type": "ImageObject",
+      "@id": "https://www.cinutedigital.com/#logo",
+      "url": "https://www.cinutedigital.com/cdpl-logo.png",
+      "width": 200,
+      "height": 60,
+      "caption": "CDPL - Cinute Digital"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://www.cinutedigital.com/og-images/home-page-og.png",
+      "width": 1200,
+      "height": 630
+    },
+    "description": "Leading EdTech company providing industry-focused training in Software Testing, Data Science, AI/ML, and Digital Marketing with 100% placement support.",
+    "slogan": "Transform Your Career with Industry-Ready Skills",
+    "telephone": "+918488988984",
+    "email": "contact@cinutedigital.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road",
+      "addressLocality": "Mira Bhayandar, Mumbai",
+      "addressRegion": "Maharashtra",
+      "postalCode": "401107",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.29403967980817,
+      "longitude": 72.87115175396495
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "customer service",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ],
+        "contactOption": "TollFree"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "admissions",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ]
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "technical support",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ]
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/cinutedigital",
+      "https://www.linkedin.com/company/cinute-digital/",
+      "https://twitter.com/cinutedigital",
+      "@cinutedigital",
+      "https://www.instagram.com/cinutedigital",
+      "https://www.youtube.com/@cinutedigital"
+    ],
+    "foundingDate": "2020",
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "value": "50"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Monday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Tuesday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Wednesday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Thursday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "15:00"
+      }
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Training Partner",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "ISTQB"
+        },
+        "name": "ISTQB Certified Training Partner"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Educational Credential",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Various Industry Bodies"
+        },
+        "name": "Industry Recognized Certifications"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://www.cinutedigital.com/#website",
+    "url": "https://www.cinutedigital.com",
+    "name": "CDPL - Cinute Digital",
+    "description": "Professional training in Software Testing, Data Science, AI/ML with 100% placement support",
+    "publisher": {
+      "@id": "https://www.cinutedigital.com/#organization"
+    },
+    "inLanguage": "en-IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.cinutedigital.com/about-us#webpage",
+    "url": "https://www.cinutedigital.com/about-us",
+    "name": "About CDPL - Leading EdTech for Tech Training",
+    "description": "CDPL (Cinute Digital) is India's premier EdTech institute delivering industry-ready training in Software Testing, Automation, Data Science, and AI/ML. Founded in 2020, we've empowered 5000+ professionals with live projects, expert mentorship, and 100% placement support.",
+    "isPartOf": {
+      "@id": "https://www.cinutedigital.com/#website"
+    },
+    "about": {
+      "@id": "https://www.cinutedigital.com/#organization"
+    },
+    "inLanguage": "en-IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": "https://www.cinutedigital.com/about-us#aboutpage",
+    "url": "https://www.cinutedigital.com/about-us",
+    "name": "About CDPL - Cinute Digital",
+    "description": "Learn about CDPL's mission to empower professionals with industry-ready skills through hands-on training in Software Testing, Automation, Data Science, and AI/ML.",
+    "mainEntity": {
+      "@id": "https://www.cinutedigital.com/#organization"
+    },
+    "inLanguage": "en_IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you provide placement assistance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Our dedicated Career Services team offers resume reviews, portfolio polishing, mock interviews, and direct referrals through hiring partners."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are the programs beginner friendly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. Each program starts with fundamentals and hands-on guided labs. No prior coding experience is required for our beginner tracks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will I work on live projects?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You will build job-ready skills through live or sandbox projects mirroring real business scenarios."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What makes your curriculum industry-aligned?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our modules are co-designed with practitioners from QA, Data, and DevOps."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How are classes delivered—online or in-person?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We run live online cohorts with recordings and Q&A, plus weekend doubt-clearing sessions."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Flagship Training Programs at CDPL - Cinute Digital",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Course",
+          "name": "Software Testing Course",
+          "url": "/courses/software-testing-courses",
+          "description": "Comprehensive manual & automation testing training with ISTQB preparation."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Course",
+          "name": "Data Science Course",
+          "url": "/courses/ds-ml-courses/data-science-course",
+          "description": "Python, Machine Learning, and Data Science with 100% placement."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Course",
+          "name": "AI Course",
+          "url": "/courses/ds-ml-courses/ai-course",
+          "description": "Artificial Intelligence fundamentals to advanced real-world applications."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Course",
+          "name": "Power BI Course",
+          "url": "/courses/bi-courses/power-bi-course",
+          "description": "Business intelligence and data visualization with Power BI."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "Course",
+          "name": "Digital Marketing Course",
+          "url": "/courses/digital-marketing-courses/digital-marketing-course",
+          "description": "AI-driven SEO, SEM, Social Media, and Performance Marketing."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": "https://www.cinutedigital.com/about-us#org-rating",
+    "name": "CDPL - Cinute Digital",
+    "url": "https://www.cinutedigital.com",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "5000",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Enroll in a CDPL Training Program",
+    "description": "A simple guide to getting started with CDPL (Cinute Digital) and joining a career-transforming training program.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Explore Programs",
+        "text": "Visit the CDPL courses page and explore training programs in Software Testing, Data Science, AI, Business Intelligence, and Digital Marketing."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Talk to an Advisor",
+        "text": "Book a free 1:1 career counseling session with our expert advisors to find the right program for your goals."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Enroll & Start Learning",
+        "text": "Complete enrollment, join live online or classroom sessions, work on real projects, and get 100% placement support."
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-1",
+    "name": "Home",
+    "url": "https://www.cinutedigital.com"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-2",
+    "name": "All Courses",
+    "url": "https://www.cinutedigital.com/courses"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-3",
+    "name": "About Us",
+    "url": "https://www.cinutedigital.com/about-us"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-4",
+    "name": "Contact Us",
+    "url": "https://www.cinutedigital.com/contact-us"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-5",
+    "name": "Events & Webinars",
+    "url": "https://www.cinutedigital.com/events"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-6",
+    "name": "Services",
+    "url": "https://www.cinutedigital.com/services"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-7",
+    "name": "Mentors",
+    "url": "https://www.cinutedigital.com/mentors"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-8",
+    "name": "Mock Test",
+    "url": "https://www.cinutedigital.com/mock-test"
+  }
+]

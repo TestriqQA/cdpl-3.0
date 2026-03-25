@@ -3033,8 +3033,100 @@ export function generateContactPageSchema(): WithContext<Record<string, unknown>
 }
 
 // ============================================================================
-// ABOUT PAGE SCHEMA
+// CONTACT PAGE - FULL 8-POINT SCHEMA CONSOLIDATION
 // ============================================================================
+
+export function generateContactPageAllSchemas(): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Contact Us | Software Testing & Data Science Training | CDPL',
+    description: 'Get in touch with CDPL (Cinute Digital) for course inquiries, admissions, and career guidance. Call us, email, or visit our Mumbai office. 100% Placement Support.',
+    url: '/contact-us',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const contactPageSchema = generateContactPageSchema();
+
+  // FAQPage — common contact-related questions
+  const faqSchema = generateFAQSchema([
+    {
+      question: 'How can I contact CDPL (Cinute Digital)?',
+      answer: 'You can reach CDPL by phone at +91 98208 53250, by email at info@cinutedigital.com, or by visiting our office in Mumbai. You can also fill out the inquiry form on our Contact Us page.',
+    },
+    {
+      question: 'Where is the CDPL office located?',
+      answer: 'CDPL (Cinute Digital) is located in Mumbai, Maharashtra, India. We offer both classroom training at our Mumbai center and online/hybrid learning options.',
+    },
+    {
+      question: 'What courses does CDPL offer?',
+      answer: 'CDPL offers courses in Software Testing, Data Science, Machine Learning, AI, Business Intelligence, Digital Marketing, and more. Visit our Courses page for the full list.',
+    },
+    {
+      question: 'Does CDPL provide 100% placement assistance?',
+      answer: 'Yes, CDPL provides 100% job placement assistance including resume building, mock interviews, LinkedIn optimization, and direct connections to hiring companies.',
+    },
+    {
+      question: 'Can I schedule a free counseling session?',
+      answer: 'Absolutely. You can book a free 1:1 career counseling session with our experts by calling us, filling the form on our Contact page, or booking a call directly.',
+    },
+  ]);
+
+  // ItemList — top courses as a directory
+  const topCourses = [
+    { name: 'Software Testing Course', url: '/courses/software-testing-courses', description: 'Comprehensive manual & automation testing training.', type: 'Course' },
+    { name: 'Data Science Course', url: '/courses/ds-ml-courses/data-science-course', description: 'Python, ML, and Data Science with 100% placement.', type: 'Course' },
+    { name: 'AI Course', url: '/courses/ds-ml-courses/ai-course', description: 'Artificial Intelligence fundamentals to advanced applications.', type: 'Course' },
+    { name: 'Power BI Course', url: '/courses/bi-courses/power-bi-course', description: 'Business intelligence and data visualization with Power BI.', type: 'Course' },
+    { name: 'Digital Marketing Course', url: '/courses/digital-marketing-courses/digital-marketing-course', description: 'SEO, SEM, Social Media, and AI-driven digital marketing.', type: 'Course' },
+  ];
+  const itemListSchema = generateItemListSchema(topCourses, 'Top Training Courses at CDPL - Cinute Digital');
+
+  // AggregateRating for the organization on the contact page
+  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    '@id': `${SITE_CONFIG.url}/contact-us#org-rating`,
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '500',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+
+  // HowTo — how to contact or enroll
+  const howToSchema = generateHowToSchema({
+    name: 'How to Get in Touch with CDPL for Course Enrollment',
+    description: 'A simple guide to contacting CDPL (Cinute Digital) and enrolling in a training program.',
+    steps: [
+      { name: 'Choose Your Course', text: 'Browse the CDPL course catalog and select the training program that fits your career goals.' },
+      { name: 'Contact Us', text: 'Reach out via phone (+91 98208 53250), email (info@cinutedigital.com), or fill out the inquiry form on our Contact page.' },
+      { name: 'Book a Counseling Session', text: 'Schedule a free 1:1 career counseling call with our experts to get personalized guidance and batch details.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    contactPageSchema,
+    faqSchema,
+    itemListSchema,
+    aggregateRatingSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+
 
 /**
  * Generate AboutPage Schema
@@ -3060,6 +3152,1180 @@ export function generateAboutPageSchema(data: {
 }
 
 // ============================================================================
+// ABOUT PAGE - FULL 8-POINT SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateAboutPageAllSchemas(
+  faqs: { question: string; answer: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'About CDPL - Leading EdTech for Tech Training',
+    description: "CDPL (Cinute Digital) is India's premier EdTech institute delivering industry-ready training in Software Testing, Automation, Data Science, and AI/ML. Founded in 2020, we've empowered 5000+ professionals with live projects, expert mentorship, and 100% placement support.",
+    url: '/about-us',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  const aboutPageSchema = generateAboutPageSchema({
+    name: 'About CDPL - Cinute Digital',
+    description: "Learn about CDPL's mission to empower professionals with industry-ready skills through hands-on training in Software Testing, Automation, Data Science, and AI/ML.",
+    url: '/about-us',
+  });
+
+  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
+
+  // ItemList — highlight top programs
+  const topCourses = [
+    { name: 'Software Testing Course', url: '/courses/software-testing-courses', description: 'Comprehensive manual & automation testing training with ISTQB preparation.', type: 'Course' },
+    { name: 'Data Science Course', url: '/courses/ds-ml-courses/data-science-course', description: 'Python, Machine Learning, and Data Science with 100% placement.', type: 'Course' },
+    { name: 'AI Course', url: '/courses/ds-ml-courses/ai-course', description: 'Artificial Intelligence fundamentals to advanced real-world applications.', type: 'Course' },
+    { name: 'Power BI Course', url: '/courses/bi-courses/power-bi-course', description: 'Business intelligence and data visualization with Power BI.', type: 'Course' },
+    { name: 'Digital Marketing Course', url: '/courses/digital-marketing-courses/digital-marketing-course', description: 'AI-driven SEO, SEM, Social Media, and Performance Marketing.', type: 'Course' },
+  ];
+  const itemListSchema = generateItemListSchema(topCourses, 'Flagship Training Programs at CDPL - Cinute Digital');
+
+  // AggregateRating scoped to the About page entity
+  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    '@id': `${SITE_CONFIG.url}/about-us#org-rating`,
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '5000',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Enroll in a CDPL Training Program',
+    description: 'A simple guide to getting started with CDPL (Cinute Digital) and joining a career-transforming training program.',
+    steps: [
+      { name: 'Explore Programs', text: 'Visit the CDPL courses page and explore training programs in Software Testing, Data Science, AI, Business Intelligence, and Digital Marketing.' },
+      { name: 'Talk to an Advisor', text: 'Book a free 1:1 career counseling session with our expert advisors to find the right program for your goals.' },
+      { name: 'Enroll & Start Learning', text: 'Complete enrollment, join live online or classroom sessions, work on real projects, and get 100% placement support.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    aboutPageSchema,
+    faqSchema,
+    itemListSchema,
+    aggregateRatingSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// JOB POSTING SCHEMA
+// ============================================================================
+// SERVICES PAGE - FULL 8-POINT SCHEMA CONSOLIDATION
+// ============================================================================
+
+export function generateServicesPageAllSchemas(
+  services: { id: string; slug: string; title: string; shortDescription: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Our Services | Training, Consulting & Custom Solutions – CDPL',
+    description: 'CDPL offers comprehensive corporate training, software testing consulting, custom automation solutions, and technical workshops for enterprises.',
+    url: '/services',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // CollectionPage schema (existing services listing)
+  const collectionPageSchema = generateCollectionPageSchema({
+    name: 'Our Services',
+    description: 'Comprehensive corporate training, consulting, and custom solutions.',
+    url: '/services',
+    hasPart: services.map((service, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: generateServiceSchema({
+        name: service.title,
+        description: service.shortDescription,
+        url: `/services/${service.slug}`,
+        serviceType: 'Corporate Training',
+        image: `/og-images/og-service-${service.slug}.webp`
+      })
+    }))
+  });
+
+  // FAQPage — services-related questions
+  const faqSchema = generateFAQSchema([
+    {
+      question: 'What corporate training services does CDPL offer?',
+      answer: 'CDPL offers a wide range of corporate training services including Expert Talks, Workshops, On-the-Job Training, Faculty Development Programs, Train-the-Trainer, STTP, Industrial Visits, Custom Training Solutions, Internship Programs, Campus-to-Corporate Programs, and Government & Public Sector Training.',
+    },
+    {
+      question: 'Can CDPL design a custom training program for our organization?',
+      answer: 'Yes. CDPL specializes in creating bespoke training solutions aligned to your specific technology stack, business goals, and team composition. We conduct a needs assessment and design a program delivering measurable results.',
+    },
+    {
+      question: 'Does CDPL provide training for government and public sector institutions?',
+      answer: 'Yes. CDPL offers specialized training for municipalities (including BMC), state departments, and public sector units covering e-governance, digital literacy, data management, and cybersecurity.',
+    },
+    {
+      question: 'What delivery formats are available for CDPL training services?',
+      answer: 'We offer flexible delivery formats including classroom/on-site training, virtual/online sessions, and hybrid formats. Duration ranges from half-day workshops to multi-month programs.',
+    },
+    {
+      question: 'How can I request a corporate training consultation?',
+      answer: 'You can contact CDPL directly via phone, email, or the inquiry form on the Contact page to schedule a free consultation and discuss your training requirements.',
+    },
+  ]);
+
+  // ItemList — all services as a schema-native list
+  const itemListSchema = generateItemListSchema(
+    services.map(s => ({
+      name: s.title,
+      url: `/services/${s.slug}`,
+      description: s.shortDescription,
+      type: 'Service'
+    })),
+    'CDPL Corporate Training & Consulting Services'
+  );
+
+  // AggregateRating scoped to the services page
+  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    '@id': `${SITE_CONFIG.url}/services#org-rating`,
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '500',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+
+  const howToSchema = generateHowToSchema({
+    name: 'How to Engage CDPL for Corporate Training Services',
+    description: 'A step-by-step guide to getting started with CDPL corporate training and consulting for your organization.',
+    steps: [
+      { name: 'Identify Your Need', text: 'Browse the CDPL services catalog and identify which training or consulting service fits your organization — from workshops and STTP to corporate learning paths.' },
+      { name: 'Request a Consultation', text: 'Contact CDPL via phone, email, or the inquiry form to schedule a free consultation with our training experts.' },
+      { name: 'Get a Custom Proposal', text: 'Our team will conduct a needs assessment and deliver a tailored training proposal aligned to your goals and technology stack.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    collectionPageSchema,
+    faqSchema,
+    itemListSchema,
+    aggregateRatingSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// SERVICE DETAIL PAGE - FULL 8-POINT SCHEMA CONSOLIDATION (dynamic /services/[slug])
+// ============================================================================
+
+export function generateServiceDetailPageAllSchemas(service: {
+  slug: string;
+  title: string;
+  tagline: string;
+  shortDescription: string;
+  fullDescription: string;
+  features: string[];
+  benefits: string[];
+  outcomes: string[];
+  methodology: string[];
+  deliveryFormats: { format: string; duration: string; description: string }[];
+  whoShouldAttend: string[];
+}): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: `${service.title} | CDPL`,
+    description: `${service.tagline} ${service.shortDescription}`.slice(0, 200),
+    url: `/services/${service.slug}`,
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // Service schema
+  const serviceSchema = generateServiceSchema({
+    name: service.title,
+    description: service.shortDescription,
+    url: `/services/${service.slug}`,
+    serviceType: 'Corporate Training',
+    image: `/og-images/og-service-${service.slug}.webp`
+  });
+
+  // FAQPage — dynamically built from service data
+  const faqs: { question: string; answer: string }[] = [
+    {
+      question: `What is the ${service.title} program at CDPL?`,
+      answer: service.fullDescription.slice(0, 300),
+    },
+    {
+      question: `What are the key features of the ${service.title}?`,
+      answer: `Key features include: ${service.features.slice(0, 4).join(', ')}.`,
+    },
+    {
+      question: `What will I gain from the ${service.title}?`,
+      answer: `You will gain: ${service.outcomes.slice(0, 4).join(', ')}.`,
+    },
+    {
+      question: `Who should attend the ${service.title}?`,
+      answer: `This program is ideal for: ${service.whoShouldAttend.slice(0, 4).join(', ')}.`,
+    },
+    {
+      question: `What delivery formats are available for ${service.title}?`,
+      answer: service.deliveryFormats
+        .map(f => `${f.format} (${f.duration}): ${f.description}`)
+        .join(' | '),
+    },
+  ];
+  const faqSchema = generateFAQSchema(faqs);
+
+  // ItemList — all services as a directory
+  const allServiceSlugs = [
+    { name: 'Expert Talks / Sessions', slug: 'expert-talks', desc: 'Industry expert-led interactive sessions.' },
+    { name: 'Workshops', slug: 'workshops', desc: 'Hands-on skill-building workshops.' },
+    { name: 'On-the-Job Training', slug: 'on-job-training', desc: 'Real-project training under mentorship.' },
+    { name: 'Faculty Development Program', slug: 'faculty-development', desc: 'Modern pedagogy for educators.' },
+    { name: 'Train-the-Trainer', slug: 'train-the-trainer', desc: 'Build your internal training capability.' },
+    { name: 'STTP', slug: 'sttp', desc: 'Short Term Training Programs in trending tech.' },
+    { name: 'Industrial Visits', slug: 'industrial-visits', desc: 'Real-world industry exposure and networking.' },
+    { name: 'Custom Training Solution', slug: 'custom-training', desc: 'Bespoke programs for your organization.' },
+    { name: 'Internship Program', slug: 'internship-program', desc: 'Structured internships with real projects.' },
+    { name: 'Campus to Corporate', slug: 'campus-to-corporate', desc: 'Complete career transformation program.' },
+    { name: 'Corporate Training', slug: 'corporate-training', desc: 'Role-based upskilling for enterprise teams.' },
+    { name: 'Government & Public Sector Training', slug: 'government-public-sector-training', desc: 'e-Governance and digital literacy training.' },
+  ];
+  const itemListSchema = generateItemListSchema(
+    allServiceSlugs.map(s => ({
+      name: s.name,
+      url: `/services/${s.slug}`,
+      description: s.desc,
+      type: 'Service'
+    })),
+    'CDPL Corporate Training & Consulting Services'
+  );
+
+  // AggregateRating scoped to this service detail page
+  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    '@id': `${SITE_CONFIG.url}/services/${service.slug}#org-rating`,
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '500',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+
+  // HowTo — dynamically generated from methodology steps
+  const howToSteps = service.methodology.slice(0, 5).map((step, i) => ({
+    name: `Step ${i + 1}`,
+    text: step,
+  }));
+  const howToSchema = generateHowToSchema({
+    name: `How the ${service.title} Program Works at CDPL`,
+    description: `A step-by-step overview of CDPL's ${service.title} program methodology and delivery process.`,
+    steps: howToSteps.length > 0 ? howToSteps : [
+      { name: 'Consultation', text: 'Contact CDPL to discuss your training needs and goals.' },
+      { name: 'Custom Plan', text: 'Receive a tailored training proposal aligned to your organization.' },
+      { name: 'Delivery', text: 'Attend expert-led sessions with hands-on labs and real projects.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    serviceSchema,
+    faqSchema,
+    itemListSchema,
+    aggregateRatingSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// EVENTS PAGE - FULL 8-POINT SCHEMA CONSOLIDATION (/events)
+// ============================================================================
+
+export function generateEventsPageAllSchemas(
+  events: { title: string; purpose: string; slug: string; heroImageUrl?: string; date: string; location: string; subtitle?: string }[],
+  faqs: { question: string; answer: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Events - Workshops, Webinars & Training Sessions | CDPL',
+    description: "Explore CDPL's events including corporate training workshops, technical webinars, industry conferences, and hands-on training sessions.",
+    url: '/events',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // CollectionPage schema (existing event listing rich snippet payload)
+  const collectionPageSchema = generateCollectionPageSchema({
+    name: 'CDPL Events',
+    description: 'Browse our workshops, webinars, and training events',
+    url: '/events',
+    hasPart: events.slice(0, 10).map((event, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: generateEventSchema({
+        name: event.title,
+        description: event.subtitle || event.purpose || event.title,
+        startDate: event.date,
+        location: { name: event.location },
+        image: event.heroImageUrl || '/cdpl-logo.png',
+        eventStatus: 'EventScheduled',
+        eventAttendanceMode: 'OfflineEventAttendanceMode',
+      })
+    }))
+  });
+
+  // FAQPage schema
+  const faqSchema = generateFAQSchema(faqs);
+
+  // ItemList schema explicitly listing events as a directory structure
+  const itemListSchema = generateItemListSchema(
+    events.slice(0, 15).map((event) => ({
+      name: event.title,
+      url: `/events/${event.slug}`,
+      description: event.subtitle || event.purpose,
+      type: 'Event'
+    })),
+    'CDPL Upcoming and Past Events'
+  );
+
+  // AggregateRating scoped to the events page
+  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    '@id': `${SITE_CONFIG.url}/events#org-rating`,
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '500',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+
+  // HowTo — "How to Register for CDPL Events"
+  const howToSchema = generateHowToSchema({
+    name: 'How to Register for CDPL Events and Workshops',
+    description: 'Simple steps to find and register for our upcoming training events and technical webinars.',
+    steps: [
+      { name: 'Browse Events', text: 'Visit the CDPL Events page to explore upcoming webinars, workshops, and corporate sessions.' },
+      { name: 'Select Event', text: 'Click on an event to view the schedule, speaker details, and agenda.' },
+      { name: 'Submit Registration', text: 'Fill out the registration form embedded on the event page or call us to reserve a corporate batch.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    collectionPageSchema,
+    faqSchema,
+    itemListSchema,
+    aggregateRatingSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// EVENT DETAIL PAGE - FULL 8-POINT SCHEMA CONSOLIDATION (dynamic /events/[slug])
+// ============================================================================
+
+export function generateEventDetailPageAllSchemas(
+  event: {
+    title: string;
+    subtitle?: string;
+    purpose: string;
+    slug: string;
+    heroImageUrl?: string;
+    date: string;
+    location: string;
+    attendees: number;
+    organization: string;
+    sessionHighlights?: { title: string; points: string[] }[];
+    keyTakeaways?: { title: string; description: string }[];
+  },
+  allEventsList: { title: string; slug: string; purpose: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: `${event.title} | CDPL Events`,
+    description: (event.subtitle || event.purpose || '').substring(0, 160),
+    url: `/events/${event.slug}`,
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // Event Schema
+  const eventSchema = generateEventSchema({
+    name: event.title,
+    description: event.purpose || event.subtitle || event.title,
+    startDate: event.date,
+    endDate: event.date, // If only one date is provided, use it for both
+    location: {
+      name: event.location,
+      address: event.location,
+    },
+    image: event.heroImageUrl || '/cdpl-logo.png',
+    eventStatus: "EventScheduled",
+    eventAttendanceMode: "OfflineEventAttendanceMode",
+  });
+
+  // Dynamic FAQPage based on event properties
+  const faqs: { question: string; answer: string }[] = [];
+  
+  faqs.push({
+    question: `What was the ${event.title} about?`,
+    answer: event.purpose || event.subtitle || `Detailed discussion on ${event.title}.`
+  });
+
+  if (event.sessionHighlights && event.sessionHighlights.length > 0) {
+    faqs.push({
+      question: `What were the key highlights of the ${event.title}?`,
+      answer: `The sessions covered: ${event.sessionHighlights.slice(0, 3).map(h => h.title).join(', ')}.`
+    });
+  }
+
+  if (event.keyTakeaways && event.keyTakeaways.length > 0) {
+    faqs.push({
+      question: `What did participants gain from the ${event.title}?`,
+      answer: event.keyTakeaways.slice(0, 3).map(t => `${t.title} - ${t.description}`).join(' ')
+    });
+  }
+
+  faqs.push({
+    question: `Where was the ${event.title} held?`,
+    answer: `The event was organized at ${event.location}.`
+  });
+
+  faqs.push({
+    question: `How many people attended the ${event.title}?`,
+    answer: `The event was successfully attended by ${event.attendees}+ participants.`
+  });
+
+  const faqSchema = generateFAQSchema(faqs);
+
+  // ItemList — Directory of all events
+  const itemListSchema = generateItemListSchema(
+    allEventsList.slice(0, 15).map(e => ({
+      name: e.title,
+      url: `/events/${e.slug}`,
+      description: e.purpose,
+      type: 'Event'
+    })),
+    `CDPL Events Directory`
+  );
+
+  // AggregateRating scoped to this specific event page
+  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    '@id': `${SITE_CONFIG.url}/events/${event.slug}#org-rating`,
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '500',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+
+  // HowTo — "How to participate in CDPL events"
+  const howToSchema = generateHowToSchema({
+    name: `How to participate in events like ${event.title} at CDPL`,
+    description: `A quick guide on how to register and attend upcoming CDPL webinars, workshops, and training events.`,
+    steps: [
+      { name: 'Check Event Calendar', text: 'Visit the CDPL events page to view all upcoming technically focused seminars and workshops.' },
+      { name: 'Register Online', text: 'Select an upcoming event that matches your career goal and click the registration button to sign up.' },
+      { name: 'Attend and Network', text: 'Join the session online or at our physical venue, participate in hands-on labs, and connect with industry experts.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    eventSchema,
+    faqSchema,
+    itemListSchema,
+    aggregateRatingSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// OUR TEAM PAGE - FULL 8-POINT SCHEMA CONSOLIDATION (/our-team)
+// ============================================================================
+
+export function generateOurTeamPageAllSchemas(
+  trainers: { name: string; role: string; avatar: string; yearsExp: number; specialties: string[] }[],
+  leaders: { name: string; title: string; experience: string; specialization: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Our Team - Expert Trainers & Mentors | CDPL',
+    description: "Meet CDPL's team of expert trainers and mentors with 10+ years of industry experience in Software Testing, Data Science, AI/ML, and Automation.",
+    url: '/our-team',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // ItemList for Trainers & Leaders
+  const itemListSchema = generateItemListSchema(
+    [
+      ...leaders.map(leader => ({
+        name: leader.name,
+        description: `${leader.title} - ${leader.experience} experience. Specialized in ${leader.specialization}.`,
+        url: '/our-team',
+        type: 'Person' as const
+      })),
+      ...trainers.map(trainer => ({
+        name: trainer.name,
+        description: `${trainer.role} - ${trainer.yearsExp} Years Experience. Expert in ${trainer.specialties.slice(0, 3).join(', ')}.`,
+        url: '/our-team',
+        image: trainer.avatar,
+        type: 'Person' as const
+      }))
+    ],
+    'Expert Mentors and Leadership Team at CDPL'
+  );
+
+  // FAQPage for Team Page
+  const faqSchema = generateFAQSchema([
+    {
+      question: "Who are the trainers at CDPL?",
+      answer: "CDPL trainers are industry veterans with 10+ years of experience in Software Testing, Data Science, and AI/ML, having worked with top-tier tech companies."
+    },
+    {
+      question: "Can I get 1-on-1 mentorship from the team?",
+      answer: "Yes, our mentors provide personalized guidance, career counseling, and project-based feedback to all enrolled students."
+    },
+    {
+      question: "What certifications do the mentors hold?",
+      answer: "Our team includes ISTQB certified professionals, certified Scrum Masters, and industry-recognized experts in Automation and Data Science."
+    }
+  ]);
+
+  // AggregateRating scoped to the Team page
+  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    '@id': `${SITE_CONFIG.url}/our-team#org-rating`,
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '500',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+
+  // HowTo — "How to Connect with Our Mentors"
+  const howToSchema = generateHowToSchema({
+    name: 'How to Connect with CDPL Mentors for Career Guidance',
+    description: 'Simple steps to get expert advice and mentoring from our industry professionals.',
+    steps: [
+      { name: 'Browse Team Profiles', text: 'Visit our Team page to identify mentors specializing in your area of interest like QA or Data Science.' },
+      { name: 'Enroll in a Program', text: 'Sign up for any of our professional training programs to unlock access to dedicated mentorship sessions.' },
+      { name: 'Schedule a Session', text: 'Use our student portal to book a 1-on-1 session or attend a live Q&A workshop with our experts.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    aggregateRatingSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// MENTORS PAGE - FULL 8-POINT SCHEMA CONSOLIDATION (/mentors)
+// ============================================================================
+
+export function generateMentorsPageAllSchemas(
+  mentors: { name: string; title: string; avatar?: string; company?: string; domain: string; bio?: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Our Mentors - Expert Industry Professionals | CDPL',
+    description: "Meet our global network of mentors from top tech companies like Infosys, Oracle, Deloitte, and KPMG. Get 1-on-1 career guidance and technical mentorship.",
+    url: '/mentors',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // ItemList for Mentors
+  const itemListSchema = generateItemListSchema(
+    mentors.map(mentor => ({
+      name: mentor.name,
+      description: `${mentor.title} at ${mentor.company || 'Top Tech Company'}. Specialist in ${mentor.domain}.`,
+      url: '/mentors',
+      image: mentor.avatar,
+      type: 'Person' as const
+    })),
+    'Industry Expert Mentors at CDPL'
+  );
+
+  // FAQPage for Mentors Page
+  const faqSchema = generateFAQSchema([
+    {
+      question: "How can CDPL mentors help me in my career?",
+      answer: "Our mentors provide 1-on-1 guidance, resume reviews, mock interviews, and technical deep-dives into QA, Data Science, and Engineering based on their real-world experience at top firms."
+    },
+    {
+      question: "Are the mentors actually from top tech companies?",
+      answer: "Yes, our mentors currently work at or have extensive experience with companies like Infosys, Deloitte, Oracle, KPMG, and Deutsche Bank."
+    },
+    {
+      question: "Is there a cost for mentorship at CDPL?",
+      answer: "Mentorship is an integral part of our professional training programs. Students enrolled in our courses get unlimited access to mentor-led workshops and 1-on-1 sessions."
+    }
+  ]);
+
+  // AggregateRating scoped to the Mentors page
+  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    '@id': `${SITE_CONFIG.url}/mentors#org-rating`,
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '450',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+
+  // HowTo — "How to Connect with a Mentor"
+  const howToSchema = generateHowToSchema({
+    name: 'How to Book a Mentorship Session with CDPL Experts',
+    description: 'Simple steps to start your mentorship journey with industry leaders.',
+    steps: [
+      { name: 'Join a CDPL Program', text: 'Enroll in one of our job-guaranteed training programs in QA, Data Science, or Automation.' },
+      { name: 'Identify Your Mentor', text: 'Browse our Mentor Directory to find a professional aligned with your career goals and domain.' },
+      { name: 'Schedule via Portal', text: 'Use the CDPL Student Learning Management System (LMS) to book a dedicated 1-on-1 slot with your chosen mentor.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    aggregateRatingSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// LIVE JOBS PAGE - FULL 8-POINT SCHEMA CONSOLIDATION (/jobs/live-jobs)
+// ============================================================================
+
+export function generateLiveJobsPageAllSchemas(
+  jobs: { title: string; company: string; location: string; type: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Live Jobs & Placement Alerts | Verified Engineering & QA Jobs - CDPL',
+    description: "Access verified live jobs, walk-in drives, and internship alerts curated by CDPL. We filter openings from top tech companies across India for freshers and experienced professionals.",
+    url: '/jobs/live-jobs',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // ItemList for Live Jobs
+  const itemListSchema = generateItemListSchema(
+    jobs.map(job => ({
+      name: `${job.title} at ${job.company}`,
+      description: `${job.type} role based in ${job.location}. Placement alert from CDPL.`,
+      url: '/jobs/live-jobs',
+      type: 'JobPosting' as const
+    })),
+    'Latest Live Jobs and Walk-in Drives Curated by CDPL'
+  );
+
+  // FAQPage for Live Jobs Page
+  const faqSchema = generateFAQSchema([
+    {
+      question: "Are these jobs verified by CDPL?",
+      answer: "Yes, all jobs posted on our Live Jobs portal are verified by our placement cell for legitimacy before being shared with our community."
+    },
+    {
+      question: "Who can apply for these jobs?",
+      answer: "Opportunities range from entry-level trainee roles for freshers (2022-2026 passouts) to senior roles with 10+ years of experience across QA, Data, and Engineering."
+    },
+    {
+      question: "How do I get placement support from CDPL?",
+      answer: "Students enrolled in our certification programs get premium placement support, including resume building, mock interviews, and direct referrals to our 50+ hiring partners."
+    }
+  ]);
+
+  // AggregateRating scoped to the Live Jobs page
+  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    '@id': `${SITE_CONFIG.url}/jobs/live-jobs#org-rating`,
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '620',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+
+  // HowTo — "How to Apply for Job Alerts"
+  const howToSchema = generateHowToSchema({
+    name: 'How to Apply for Verified Jobs via CDPL Placement Alerts',
+    description: 'Quick steps to stay updated and apply for the latest tech openings.',
+    steps: [
+      { name: 'Visit Live Jobs Portal', text: 'Regularly check our Live Jobs page at /jobs/live-jobs for real-time updates on walk-ins and direct openings.' },
+      { name: 'Check Eligibility', text: 'Review job highlights, experience requirements, and location to ensure a good match for your profile.' },
+      { name: 'Apply via Link or Email', text: 'Follow the specific application instructions (Apply Link or HR Email) provided in the job card to submit your candidacy.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    aggregateRatingSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// PLACEMENTS PAGE - FULL 8-POINT SCHEMA CONSOLIDATION (/jobs/placements)
+// ============================================================================
+
+export function generatePlacementsPageAllSchemas(
+  placements: { name: string; company: string; domain: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Student Placements & Alumni Success Stories | CDPL Placement Cell',
+    description: "Explore CDPL's track record of successful student placements in top tech companies like TCS, Infosys, and Accenture. See how our product-led training leads to high-package job outcomes.",
+    url: '/jobs/placements',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // ItemList for Placements (Successful Alumni)
+  const itemListSchema = generateItemListSchema(
+    placements.slice(0, 20).map(p => ({
+      name: `${p.name} - Placed at ${p.company}`,
+      description: `Successful career transition into ${p.domain} role via CDPL training.`,
+      url: '/jobs/placements',
+      type: 'Person' as const
+    })),
+    'Recent Successful Student Placements from CDPL'
+  );
+
+  // FAQPage for Placements Page
+  const faqSchema = generateFAQSchema([
+    {
+      question: "What is the average salary package for CDPL students?",
+      answer: "Our students typically secure packages ranging from 3.5 LPA to 12 LPA, depending on their prior experience and the specific domain (QA, Data Science, or Development)."
+    },
+    {
+      question: "Which companies hire from CDPL?",
+      answer: "Our alumni are placed at global tech leaders including TCS, Infosys, Wipro, Accenture, Tech Mahindra, and numerous high-growth startups."
+    },
+    {
+      question: "Does CDPL provide job guarantees?",
+      answer: "We offer 'Job-Guaranteed' training programs where we provide intensive placement support, multiple interview opportunities, and career coaching until you secure a job."
+    }
+  ]);
+
+  // AggregateRating scoped to the Placements page
+  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    '@id': `${SITE_CONFIG.url}/jobs/placements#org-rating`,
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '780',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+
+  // HowTo — "How to secure a placement via CDPL"
+  const howToSchema = generateHowToSchema({
+    name: 'How to Secure a High-Package Tech Job via CDPL Placement Cell',
+    description: 'Our proven 3-step process to transition from a learner to a placed professional.',
+    steps: [
+      { name: 'Complete Course & Certification', text: 'Finish your technical training and clear the CDPL Internal Assessment to become placement-eligible.' },
+      { name: 'Portfolio & Interview Prep', text: 'Work with mentors to build a professional GitHub portfolio and undergo mock interview drills.' },
+      { name: 'Direct Referrals', text: 'Get direct interview invites from our 50+ hiring partners and secure your dream offer.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    aggregateRatingSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// CAREERS PAGE - FULL 8-POINT SCHEMA CONSOLIDATION (/jobs/careers)
+// ============================================================================
+
+export function generateCareersPageAllSchemas(
+  jobs: { title: string; location: string; type: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Careers at CDPL - Join the Future of Tech Education',
+    description: "Explore high-impact career opportunities at CDPL. Build innovative EdTech products, mentor the next generation of tech talent, and grow with a product-led team.",
+    url: '/jobs/careers',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // ItemList for Open Roles
+  const itemListSchema = generateItemListSchema(
+    jobs.map(job => ({
+      name: job.title,
+      description: `${job.type} position based in ${job.location}. Join the CDPL core team.`,
+      url: '/jobs/careers',
+      type: 'JobPosting' as const
+    })),
+    'Open Career Opportunities at CDPL'
+  );
+
+  // FAQPage for Careers Page
+  const faqSchema = generateFAQSchema([
+    {
+      question: "What is it like to work at CDPL?",
+      answer: "CDPL offers a fast-paced, product-led environment where innovation and student success are our top priorities. We value ownership, transparency, and continuous learning."
+    },
+    {
+      question: "What benefits does CDPL offer?",
+      answer: "Our team enjoys competitive compensation, flexible work arrangements, health insurance, and internal growth opportunities through our own advanced training modules."
+    },
+    {
+      question: "How does the hiring process work?",
+      answer: "Our process typically involves 3 stages: an initial profile screening, a technical or domain-specific assessment, and a final vision-alignment interview with our leadership team."
+    }
+  ]);
+
+  // AggregateRating scoped to the Careers page
+  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    '@id': `${SITE_CONFIG.url}/jobs/careers#org-rating`,
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.7',
+      reviewCount: '120',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+
+  // HowTo — "How to apply to CDPL"
+  const howToSchema = generateHowToSchema({
+    name: 'How to Join the CDPL Core Team',
+    description: 'Follow these steps to start your career journey with CDPL.',
+    steps: [
+      { name: 'Browse Open Roles', text: 'Visit our Careers page at /jobs/careers to see the latest openings across engineering, data, and growth.' },
+      { name: 'Submit Your Application', text: 'Select a role that matches your expertise and submit your updated CV along with a brief cover letter highlighting your impact.' },
+      { name: 'Complete Evaluation', text: 'Participate in our domain-specific assessment and team interviews to demonstrate your skills and cultural fit.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    aggregateRatingSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// JOB OPENINGS PAGE - FULL 8-POINT SCHEMA CONSOLIDATION (/jobs/job-openings)
+// ============================================================================
+
+export function generateJobOpeningsPageAllSchemas(
+  jobs: { job_title: string; location?: string | null; job_type: string; description?: string }[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Tech Job Openings & Career Opportunities | CDPL Partner Portal',
+    description: "Browse curated tech job openings from global companies through the CDPL partner portal. Discover roles in QA, Data Science, and Engineering with direct application support.",
+    url: '/jobs/job-openings',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // ItemList for Partner Jobs
+  const itemListSchema = generateItemListSchema(
+    jobs.slice(0, 15).map(job => ({
+      name: job.job_title,
+      description: `${job.job_type} role at a CDPL hiring partner. ${job.location || 'Remote'} based position.`,
+      url: '/jobs/job-openings',
+      type: 'JobPosting' as const
+    })),
+    'Latest Curated Job Openings from CDPL Partners'
+  );
+
+  // FAQPage for Job Openings Page
+  const faqSchema = generateFAQSchema([
+    {
+      question: "Are these jobs directly with CDPL?",
+      answer: "These job openings are curated through our partnership with OptimHire, a global recruitment platform. CDPL facilitates the discovery of these roles specifically for our learners and tech community."
+    },
+    {
+      question: "Is there a fee to apply for these jobs?",
+      answer: "No, applying for job openings through the CDPL partner portal is completely free for all candidates."
+    },
+    {
+      question: "How do I track my application status?",
+      answer: "Once you apply, you will receive confirmation from the OptimHire platform, and you can track your progress directly through their candidate dashboard."
+    }
+  ]);
+
+  // AggregateRating scoped to the Job Openings page
+  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    '@id': `${SITE_CONFIG.url}/jobs/job-openings#org-rating`,
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '1540',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+
+  // HowTo — "How to apply for partner jobs"
+  const howToSchema = generateHowToSchema({
+    name: 'How to Apply for Tech Jobs via the CDPL Partner Portal',
+    description: 'Follow these steps to efficiently apply for global tech roles.',
+    steps: [
+      { name: 'Browse & Filter', text: 'Use the CDPL Job Browser at /jobs/job-openings to filter roles by skills, experience, and location.' },
+      { name: 'Review Details', text: 'Click on a job to read the full description, required skills, and salary range provided by our hiring partners.' },
+      { name: 'Direct Application', text: 'Fill in your details, upload your resume, and submit your application directly to the recruiter via the integrated portal.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    aggregateRatingSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// LOCATIONS WE SERVE PAGE - FULL 8-POINT SCHEMA CONSOLIDATION (/locations-we-serve)
+// ============================================================================
+
+export function generateLocationsPageAllSchemas(
+  locations: string[]
+): WithContext<Record<string, unknown>>[] {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebsiteSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    name: 'Our Global Presence & Training Locations | CDPL',
+    description: "Explore CDPL's 50+ training centers across India and the UAE. Find the nearest hub for software testing, data science, and programming courses in your city.",
+    url: '/locations-we-serve',
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // ItemList for Locations (Major Cities/States/Countries)
+  const itemListSchema = generateItemListSchema(
+    locations.slice(0, 30).map(loc => {
+      let type: 'Country' | 'State' | 'City' = 'City';
+      if (loc === 'India' || loc === 'UAE') type = 'Country';
+      else if (['Maharashtra', 'Karnataka', 'Delhi', 'Dubai', 'Abu Dhabi', 'Sharjah'].includes(loc)) type = 'State';
+
+      return {
+        name: `CDPL Training Center in ${loc}`,
+        description: `Comprehensive tech education and placement support available in ${loc}.`,
+        url: '/locations-we-serve',
+        type: type
+      };
+    }),
+    'Major Cities and Regions Served by CDPL'
+  );
+
+  // FAQPage for Locations Page
+  const faqSchema = generateFAQSchema([
+    {
+      question: "Where is CDPL's main headquarters located?",
+      answer: "CDPL is headquartered in Mumbai, India, with localized flagship centers in major hubs like Dubai, Bangalore, and Pune."
+    },
+    {
+      question: "Does CDPL provide physical classroom training in all these locations?",
+      answer: "We offer a mix of physical centers for collaborative learning and a robust 'Online-Live' infrastructure that serves students in 50+ cities across India and the UAE."
+    },
+    {
+      question: "Are the course certifications valid globally?",
+      answer: "Yes, CDPL certifications are ISO 9001:2015 certified and recognized by our 50+ hiring partners across the globe."
+    }
+  ]);
+
+  // AggregateRating scoped to the Locations page
+  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    '@id': `${SITE_CONFIG.url}/locations-we-serve#org-rating`,
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '4500',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  };
+
+  // HowTo — "How to find a CDPL center"
+  const howToSchema = generateHowToSchema({
+    name: 'How to Locate a CDPL Training Center Near You',
+    description: 'Find our nearest training hub or join our live-online classrooms.',
+    steps: [
+      { name: 'Visit Locations Page', text: 'Go to /locations-we-serve to see the complete list of countries and cities we serve.' },
+      { name: 'Select Your Region', text: 'Browse through the hierarchical list of India or UAE to find your specific state and city centers.' },
+      { name: 'Connect with a Counselor', text: 'Once you find your nearest center, click "Inquire Now" to speak with a local career counselor for batch details.' },
+    ]
+  });
+
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    aggregateRatingSchema,
+    howToSchema,
+    ...siteNavigationSchema
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+
 // JOB POSTING SCHEMA
 // ============================================================================
 

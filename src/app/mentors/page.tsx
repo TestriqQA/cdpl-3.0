@@ -1,8 +1,7 @@
 import dynamic from "next/dynamic";
 import {
   generateBreadcrumbSchema,
-  generateCollectionPageSchema,
-  generatePersonSchema
+  generateMentorsPageAllSchemas
 } from "@/lib/schema-generators";
 import { MENTORS } from "@/lib/mentorShared";
 import JsonLd from "@/components/JsonLd";
@@ -70,22 +69,15 @@ export default function MentorsPage() {
     { name: "Mentors", url: "/mentors" },
   ]);
 
-  const collectionPageSchema = generateCollectionPageSchema({
-    name: "CDPL Mentors",
-    description: "Meet the mentors guiding learners across QA, Data, Product, and Engineering",
-    url: "/mentors",
-    hasPart: MENTORS.map(mentor => generatePersonSchema({
-      name: mentor.name,
-      jobTitle: mentor.title,
-      description: mentor.bio,
-      image: mentor.avatar,
-    }))
-  });
+  // Generate 8-point Schemas dynamically
+  const schemas = generateMentorsPageAllSchemas(MENTORS);
 
   return (
     <>
+      {schemas.map((schema: any, index: number) => (
+        <JsonLd key={`mentors-schema-${index}`} id={`mentors-schema-${index}`} schema={schema} />
+      ))}
       <JsonLd schema={breadcrumbSchema} id="mentors-breadcrumb" />
-      <JsonLd schema={collectionPageSchema} id="mentors-collection" />
 
       {/* Main Content - Semantic HTML Structure */}
       <main

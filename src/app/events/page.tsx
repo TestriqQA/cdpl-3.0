@@ -4,7 +4,7 @@ import type { ComponentProps } from "react";
 import { pastEvents } from "@/data/eventsData";
 import { PAST_EVENTS_FAQS } from "@/data/pastEventsData";
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateBreadcrumbSchema, generateFAQSchema, generateCollectionPageSchema, generateEventSchema } from "@/lib/schema-generators";
+import { generateEventsPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
 // Type-only imports so we can still infer props and event shape
@@ -30,53 +30,17 @@ const CATEGORY_STYLES: Record<
   string,
   { badgeBg: string; btnBg: string; text: string }
 > = {
-  "AI & Machine Learning": {
-    badgeBg: "bg-purple-600",
-    btnBg: "bg-purple-600",
-    text: "text-purple-600",
-  },
-  "Software Testing": {
-    badgeBg: "bg-green-600",
-    btnBg: "bg-green-600",
-    text: "text-green-600",
-  },
-  "Data Science": {
-    badgeBg: "bg-blue-600",
-    btnBg: "bg-blue-600",
-    text: "text-blue-600",
-  },
-  "Academic Training": {
-    badgeBg: "bg-brand",
-    btnBg: "bg-brand",
-    text: "text-brand",
-  },
-  "Web Development": {
-    badgeBg: "bg-cyan-600",
-    btnBg: "bg-cyan-600",
-    text: "text-cyan-600",
-  },
-  "Industrial Training": {
-    badgeBg: "bg-teal-600",
-    btnBg: "bg-teal-600",
-    text: "text-teal-600",
-  },
-  "Corporate Training": {
-    badgeBg: "bg-pink-600",
-    btnBg: "bg-pink-600",
-    text: "text-pink-600",
-  },
-  Technology: {
-    badgeBg: "bg-indigo-600",
-    btnBg: "bg-indigo-600",
-    text: "text-indigo-600",
-  },
+  "AI & Machine Learning": { badgeBg: "bg-purple-600", btnBg: "bg-purple-600", text: "text-purple-600" },
+  "Software Testing": { badgeBg: "bg-green-600", btnBg: "bg-green-600", text: "text-green-600" },
+  "Data Science": { badgeBg: "bg-blue-600", btnBg: "bg-blue-600", text: "text-blue-600" },
+  "Academic Training": { badgeBg: "bg-brand", btnBg: "bg-brand", text: "text-brand" },
+  "Web Development": { badgeBg: "bg-cyan-600", btnBg: "bg-cyan-600", text: "text-cyan-600" },
+  "Industrial Training": { badgeBg: "bg-teal-600", btnBg: "bg-teal-600", text: "text-teal-600" },
+  "Corporate Training": { badgeBg: "bg-pink-600", btnBg: "bg-pink-600", text: "text-pink-600" },
+  Technology: { badgeBg: "bg-indigo-600", btnBg: "bg-indigo-600", text: "text-indigo-600" },
 };
 
-const FALLBACK = {
-  badgeBg: "bg-slate-700",
-  btnBg: "bg-slate-700",
-  text: "text-slate-700",
-};
+const FALLBACK = { badgeBg: "bg-slate-700", btnBg: "bg-slate-700", text: "text-slate-700" };
 
 // ============================================================================
 // SEO METADATA - Consolidated for /events
@@ -145,41 +109,25 @@ export default function EventsPage() {
       heroImageUrl: e.heroImageUrl,
     }));
 
-  // Breadcrumb Schema
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Events", url: "/events" },
-  ]);
-
-  // CollectionPage Schema with Events
-  const collectionPageSchema = generateCollectionPageSchema({
-    name: "CDPL Events",
-    description: "Browse our workshops, webinars, and training events",
-    url: "/events",
-    hasPart: pastEvents.slice(0, 10).map((event, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      item: generateEventSchema({
-        name: event.title,
-        description: event.subtitle || event.purpose,
-        startDate: event.date,
-        location: { name: event.location },
-        image: event.heroImageUrl,
-        eventStatus: "EventScheduled",
-        eventAttendanceMode: "OfflineEventAttendanceMode",
-      })
-    }))
-  });
-
-  // FAQ Schema
-  const faqs = PAST_EVENTS_FAQS;
-  const faqSchema = generateFAQSchema(faqs);
+  // Generate the full 8-point schema array
+  const schemas = generateEventsPageAllSchemas(
+    pastEvents.map(e => ({
+      title: e.title,
+      subtitle: e.subtitle,
+      purpose: e.purpose,
+      slug: e.slug,
+      heroImageUrl: e.heroImageUrl,
+      date: e.date,
+      location: e.location
+    })),
+    PAST_EVENTS_FAQS
+  );
 
   return (
     <>
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="collection-page-schema" schema={collectionPageSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
+      {schemas.map((schema, index) => (
+        <JsonLd key={`events-schema-${index}`} id={`events-schema-${index}`} schema={schema} />
+      ))}
 
       <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50">
         <EventsPastEventsHeroSection />

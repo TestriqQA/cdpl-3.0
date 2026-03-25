@@ -1,4 +1,4 @@
-import { generateAllCoursesPageSchema, generateHomePageSchema, generateSoftwareTestingCategoryPageSchema, generateDataScienceMachineLearningCategoryPageSchema, generateBusinessIntelligenceCategoryPageSchema, generateArtificialIntelligenceCategoryPageSchema, generateDigitalMarketingCategoryPageSchema, generateManualTestingCoursePageSchema, generateApiTestingCoursePageSchema, generateDbmsCoursePageSchema, generateEtlTestingCoursePageSchema, generateAdvanceSoftwareTestingCoursePageSchema, generateAutomationTestingCoursePageSchema, generateAdvanceManualAutomationTestingCoursePageSchema, generatePythonCoursePageSchema, generateJavaCoursePageSchema, generateMachineLearningCoursePageSchema, generateGenerativeAICoursePageSchema, generateDataScienceCoursePageSchema, generateAICoursePageSchema, generateMachineLearningUsingPythonCoursePageSchema, generateDataVisualizationInRProgrammingCoursePageSchema, generatePromptEngineeringCoursePageSchema, generateDataAnalyticsCoursePageSchema, generateDataAnalyticsPythonCoursePageSchema, generateDataAnalyticsVisualizationCoursePageSchema, generateDataAnalyticsTableauCoursePageSchema, generatePowerBICoursePageSchema, generateMastersDataEngineeringCoursePageSchema, generateDigitalMarketingCoursePageSchema, generateAiInDigitalMarketingCoursePageSchema, generateAiBootcampCoursePageSchema } from './src/lib/schema-generators';
+import { generateAllCoursesPageSchema, generateHomePageSchema, generateSoftwareTestingCategoryPageSchema, generateDataScienceMachineLearningCategoryPageSchema, generateBusinessIntelligenceCategoryPageSchema, generateArtificialIntelligenceCategoryPageSchema, generateDigitalMarketingCategoryPageSchema, generateManualTestingCoursePageSchema, generateApiTestingCoursePageSchema, generateDbmsCoursePageSchema, generateEtlTestingCoursePageSchema, generateAdvanceSoftwareTestingCoursePageSchema, generateAutomationTestingCoursePageSchema, generateAdvanceManualAutomationTestingCoursePageSchema, generatePythonCoursePageSchema, generateJavaCoursePageSchema, generateMachineLearningCoursePageSchema, generateGenerativeAICoursePageSchema, generateDataScienceCoursePageSchema, generateAICoursePageSchema, generateMachineLearningUsingPythonCoursePageSchema, generateDataVisualizationInRProgrammingCoursePageSchema, generatePromptEngineeringCoursePageSchema, generateDataAnalyticsCoursePageSchema, generateDataAnalyticsPythonCoursePageSchema, generateDataAnalyticsVisualizationCoursePageSchema, generateDataAnalyticsTableauCoursePageSchema, generatePowerBICoursePageSchema, generateMastersDataEngineeringCoursePageSchema, generateDigitalMarketingCoursePageSchema, generateAiInDigitalMarketingCoursePageSchema, generateAiBootcampCoursePageSchema, generateContactPageAllSchemas, generateAboutPageAllSchemas } from './src/lib/schema-generators';
 import { softwareTestingFaqs } from "./src/components/software-testing-course/data/data";
 import { MANUAL_TESTING_FAQS } from "./src/data/manualTestingData";
 import { API_TESTING_FAQS } from "./src/data/apiTestingData";
@@ -382,6 +382,19 @@ const aiBootcampSchemas = generateAiBootcampCoursePageSchema(
   [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Digital Marketing Courses", url: "/courses/digital-marketing-courses" }, { name: "AI Bootcamp", url: '/courses/digital-marketing-courses/ai-bootcamp' }]
 );
 
+
+const contactPageSchemas = generateContactPageAllSchemas();
+
+
+const aboutFaqs = [
+  { question: "Do you provide placement assistance?", answer: "Yes. Our dedicated Career Services team offers resume reviews, portfolio polishing, mock interviews, and direct referrals through hiring partners." },
+  { question: "Are the programs beginner friendly?", answer: "Absolutely. Each program starts with fundamentals and hands-on guided labs. No prior coding experience is required for our beginner tracks." },
+  { question: "Will I work on live projects?", answer: "Yes. You will build job-ready skills through live or sandbox projects mirroring real business scenarios." },
+  { question: "What makes your curriculum industry-aligned?", answer: "Our modules are co-designed with practitioners from QA, Data, and DevOps." },
+  { question: "How are classes delivered—online or in-person?", answer: "We run live online cohorts with recordings and Q&A, plus weekend doubt-clearing sessions." },
+];
+const aboutPageSchemas = generateAboutPageAllSchemas(aboutFaqs);
+
 // Output raw, unformatted JSON (no markdown wrappers) to raw .json file in project root
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/courses_schema.json', JSON.stringify(schemas, null, 2), 'utf-8');
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/home_schema.json', JSON.stringify(homeSchemas, null, 2), 'utf-8');
@@ -415,4 +428,6 @@ fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/masters_data_engineer
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/digital_marketing_schema.json', JSON.stringify(digitalMarketingSchemas, null, 2), 'utf-8');
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/ai_in_digital_marketing_schema.json', JSON.stringify(aiDmSchemas, null, 2), 'utf-8');
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/ai_bootcamp_schema.json', JSON.stringify(aiBootcampSchemas, null, 2), 'utf-8');
-console.log('Successfully wrote raw JSON all 32 files!');
+fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/contact_us_schema.json', JSON.stringify(contactPageSchemas, null, 2), 'utf-8');
+fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/about_us_schema.json', JSON.stringify(aboutPageSchemas, null, 2), 'utf-8');
+console.log('Successfully wrote raw JSON all 34 files!');

@@ -2,7 +2,9 @@ import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 
 import { buildLocationsHierarchy } from "@/data/courseData/buildLocationsHierarchy";
+import { generateLocationsPageAllSchemas } from "@/lib/schema-generators";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
+import JsonLd from "@/components/JsonLd";
 
 // Types
 import type { CourseData } from "@/types/courseData";
@@ -99,14 +101,17 @@ export default function LocationsWeServePage() {
   });
 
 
-  // ============================================================================
-  // ENHANCED STRUCTURED DATA (JSON-LD)
-  // ============================================================================
-
-
+  // Generate 8-point Schemas dynamically
+  const uniqueCountries = countriesData.map(c => c.country);
+  const locationNames = Array.from(new Set([...uniqueCountries, ...Array.from(uniqueStates), ...Array.from(uniqueCities)]));
+  const schemas = generateLocationsPageAllSchemas(locationNames);
 
   return (
     <>
+      {/* Enhanced JSON-LD Structured Data */}
+      {schemas.map((schema: any, index: number) => (
+        <JsonLd key={`locations-schema-${index}`} id={`locations-schema-${index}`} schema={schema} />
+      ))}
 
 
       {/* Semantic HTML Structure */}

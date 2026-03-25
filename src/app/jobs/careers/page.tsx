@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import JobsCareersHeroSection from "@/components/sections/JobsCareersHeroSection";
 import type { Metadata } from "next";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
-import { generateCollectionPageSchema, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
+import { generateCareersPageAllSchemas, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 import { client } from "@/sanity/client";
 import { JOBS_QUERY } from "@/sanity/lib/queries";
@@ -96,12 +96,8 @@ export default async function Page() {
         { name: "Careers", url: "/jobs/careers" },
     ]);
 
-    // 2. CollectionPage Schema
-    const collectionPageSchema = generateCollectionPageSchema({
-        name: "Careers at CDPL - Join Our Team | CDPL",
-        description: "Explore career opportunities at Cinute Digital (CDPL).",
-        url: "/jobs/careers",
-    });
+    // Generate 8-point Schemas dynamically
+    const schemas = generateCareersPageAllSchemas(jobs);
 
     // 3. JobPosting Schemas
     const jobSchemas = jobs.map((job) => generateJobPostingSchema({
@@ -125,9 +121,11 @@ export default async function Page() {
         <>
             {/* Structured Data */}
             <JsonLd id="careers-breadcrumb" schema={breadcrumbSchema} />
-            <JsonLd id="careers-collection" schema={collectionPageSchema} />
+            {schemas.map((schema: any, index: number) => (
+                <JsonLd key={`careers-schema-${index}`} id={`careers-schema-${index}`} schema={schema} />
+            ))}
             {jobSchemas.map((schema, index) => (
-                <JsonLd key={index} id={`job-posting-${index}`} schema={schema} />
+                <JsonLd key={`job-posting-schema-${index}`} id={`job-posting-schema-${index}`} schema={schema} />
             ))}
 
             <main className="w-full bg-white text-neutral-900 dark:bg-white dark:text-neutral-900">
