@@ -852,6 +852,12 @@ export function generateHomePageSchema(faqs?: { question: string; answer: string
   const organizationSchema = generateOrganizationSchema();
   const websiteSchema = generateWebsiteSchema();
 
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
+
   // Filter out undefined schemas
   return [
     organizationSchema,
@@ -862,6 +868,7 @@ export function generateHomePageSchema(faqs?: { question: string; answer: string
     faqSchema,
     videoSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavSchemas
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -984,6 +991,12 @@ export function generateAllCoursesPageSchema(): WithContext<Record<string, unkno
   // 6. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   // Return exactly the requested schemas
   return [
     organizationSchema,
@@ -994,6 +1007,7 @@ export function generateAllCoursesPageSchema(): WithContext<Record<string, unkno
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ];
 }
@@ -1059,6 +1073,12 @@ export function generateSoftwareTestingCategoryPageSchema(
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -1068,6 +1088,7 @@ export function generateSoftwareTestingCategoryPageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -1133,6 +1154,12 @@ export function generateDataScienceMachineLearningCategoryPageSchema(
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -1142,6 +1169,7 @@ export function generateDataScienceMachineLearningCategoryPageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -1207,6 +1235,12 @@ export function generateBusinessIntelligenceCategoryPageSchema(
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -1216,6 +1250,7 @@ export function generateBusinessIntelligenceCategoryPageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -1281,6 +1316,12 @@ export function generateArtificialIntelligenceCategoryPageSchema(
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -1290,6 +1331,7 @@ export function generateArtificialIntelligenceCategoryPageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -1355,6 +1397,12 @@ export function generateDigitalMarketingCategoryPageSchema(
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -1364,6 +1412,7 @@ export function generateDigitalMarketingCategoryPageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -1429,6 +1478,12 @@ export function generateManualTestingCoursePageSchema(
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -1438,6 +1493,7 @@ export function generateManualTestingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -1494,6 +1550,12 @@ export function generateApiTestingCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -1503,6 +1565,7 @@ export function generateApiTestingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -1559,6 +1622,12 @@ export function generateDbmsCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -1568,6 +1637,7 @@ export function generateDbmsCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -1624,6 +1694,12 @@ export function generateEtlTestingCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -1633,6 +1709,7 @@ export function generateEtlTestingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -1689,6 +1766,12 @@ export function generateAdvanceSoftwareTestingCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -1698,6 +1781,7 @@ export function generateAdvanceSoftwareTestingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -1754,6 +1838,12 @@ export function generateAutomationTestingCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -1763,6 +1853,7 @@ export function generateAutomationTestingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -1819,6 +1910,12 @@ export function generateAdvanceManualAutomationTestingCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -1828,6 +1925,7 @@ export function generateAdvanceManualAutomationTestingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -1884,6 +1982,12 @@ export function generatePythonCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -1893,6 +1997,7 @@ export function generatePythonCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -1949,6 +2054,12 @@ export function generateJavaCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -1958,6 +2069,7 @@ export function generateJavaCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2014,6 +2126,12 @@ export function generateMachineLearningCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2023,6 +2141,7 @@ export function generateMachineLearningCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2079,6 +2198,12 @@ export function generateGenerativeAICoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2088,6 +2213,7 @@ export function generateGenerativeAICoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2144,6 +2270,12 @@ export function generateDataScienceCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2153,6 +2285,7 @@ export function generateDataScienceCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2209,6 +2342,12 @@ export function generateAICoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2218,6 +2357,7 @@ export function generateAICoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2274,6 +2414,12 @@ export function generateMachineLearningUsingPythonCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2283,6 +2429,7 @@ export function generateMachineLearningUsingPythonCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2339,6 +2486,12 @@ export function generateDataVisualizationInRProgrammingCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2348,6 +2501,7 @@ export function generateDataVisualizationInRProgrammingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2404,6 +2558,12 @@ export function generatePromptEngineeringCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2413,6 +2573,7 @@ export function generatePromptEngineeringCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2469,6 +2630,12 @@ export function generateDataAnalyticsCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2478,6 +2645,7 @@ export function generateDataAnalyticsCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2534,6 +2702,12 @@ export function generateDataAnalyticsPythonCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2543,6 +2717,7 @@ export function generateDataAnalyticsPythonCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2599,6 +2774,12 @@ export function generateDataAnalyticsVisualizationCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2608,6 +2789,7 @@ export function generateDataAnalyticsVisualizationCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2664,6 +2846,12 @@ export function generateDataAnalyticsTableauCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2673,6 +2861,7 @@ export function generateDataAnalyticsTableauCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2729,6 +2918,12 @@ export function generatePowerBICoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2738,6 +2933,7 @@ export function generatePowerBICoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2794,6 +2990,12 @@ export function generateMastersDataEngineeringCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2803,6 +3005,7 @@ export function generateMastersDataEngineeringCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2863,6 +3066,12 @@ export function generateDigitalMarketingCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2872,6 +3081,7 @@ export function generateDigitalMarketingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2928,6 +3138,12 @@ export function generateAiInDigitalMarketingCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -2937,6 +3153,7 @@ export function generateAiInDigitalMarketingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2993,6 +3210,12 @@ export function generateAiBootcampCoursePageSchema(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
   return [
     organizationSchema,
     websiteSchema,
@@ -3002,6 +3225,7 @@ export function generateAiBootcampCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
+    aggregateRatingSchema,
     ...siteNavigationSchema
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -3084,21 +3308,11 @@ export function generateContactPageAllSchemas(): WithContext<Record<string, unkn
   ];
   const itemListSchema = generateItemListSchema(topCourses, 'Top Training Courses at CDPL - Cinute Digital');
 
-  // AggregateRating for the organization on the contact page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/contact-us#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '500',
-      bestRating: '5',
-      worstRating: '1',
-    },
-  };
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
 
   // HowTo — how to contact or enroll
   const howToSchema = generateHowToSchema({
@@ -3187,21 +3401,11 @@ export function generateAboutPageAllSchemas(
   ];
   const itemListSchema = generateItemListSchema(topCourses, 'Flagship Training Programs at CDPL - Cinute Digital');
 
-  // AggregateRating scoped to the About page entity
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/about-us#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '5000',
-      bestRating: '5',
-      worstRating: '1',
-    },
-  };
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
 
   const howToSchema = generateHowToSchema({
     name: 'How to Enroll in a CDPL Training Program',
@@ -3301,21 +3505,11 @@ export function generateServicesPageAllSchemas(
     'CDPL Corporate Training & Consulting Services'
   );
 
-  // AggregateRating scoped to the services page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/services#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '500',
-      bestRating: '5',
-      worstRating: '1',
-    },
-  };
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
 
   const howToSchema = generateHowToSchema({
     name: 'How to Engage CDPL for Corporate Training Services',
@@ -3431,21 +3625,11 @@ export function generateServiceDetailPageAllSchemas(service: {
     'CDPL Corporate Training & Consulting Services'
   );
 
-  // AggregateRating scoped to this service detail page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/services/${service.slug}#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '500',
-      bestRating: '5',
-      worstRating: '1',
-    },
-  };
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
 
   // HowTo — dynamically generated from methodology steps
   const howToSteps = service.methodology.slice(0, 5).map((step, i) => ({
@@ -3530,21 +3714,11 @@ export function generateEventsPageAllSchemas(
     'CDPL Upcoming and Past Events'
   );
 
-  // AggregateRating scoped to the events page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/events#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '500',
-      bestRating: '5',
-      worstRating: '1',
-    },
-  };
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
 
   // HowTo — "How to Register for CDPL Events"
   const howToSchema = generateHowToSchema({
@@ -3663,21 +3837,11 @@ export function generateEventDetailPageAllSchemas(
     `CDPL Events Directory`
   );
 
-  // AggregateRating scoped to this specific event page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/events/${event.slug}#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '500',
-      bestRating: '5',
-      worstRating: '1',
-    },
-  };
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
 
   // HowTo — "How to participate in CDPL events"
   const howToSchema = generateHowToSchema({
@@ -3760,21 +3924,11 @@ export function generateOurTeamPageAllSchemas(
     }
   ]);
 
-  // AggregateRating scoped to the Team page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/our-team#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '500',
-      bestRating: '5',
-      worstRating: '1',
-    },
-  };
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
 
   // HowTo — "How to Connect with Our Mentors"
   const howToSchema = generateHowToSchema({
@@ -3847,21 +4001,11 @@ export function generateMentorsPageAllSchemas(
     }
   ]);
 
-  // AggregateRating scoped to the Mentors page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/mentors#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '450',
-      bestRating: '5',
-      worstRating: '1',
-    },
-  };
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
 
   // HowTo — "How to Connect with a Mentor"
   const howToSchema = generateHowToSchema({
@@ -3933,21 +4077,11 @@ export function generateLiveJobsPageAllSchemas(
     }
   ]);
 
-  // AggregateRating scoped to the Live Jobs page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/jobs/live-jobs#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '620',
-      bestRating: '5',
-      worstRating: '1',
-    },
-  };
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
 
   // HowTo — "How to Apply for Job Alerts"
   const howToSchema = generateHowToSchema({
@@ -4019,21 +4153,11 @@ export function generatePlacementsPageAllSchemas(
     }
   ]);
 
-  // AggregateRating scoped to the Placements page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/jobs/placements#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '780',
-      bestRating: '5',
-      worstRating: '1',
-    },
-  };
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
 
   // HowTo — "How to secure a placement via CDPL"
   const howToSchema = generateHowToSchema({
@@ -4105,21 +4229,11 @@ export function generateCareersPageAllSchemas(
     }
   ]);
 
-  // AggregateRating scoped to the Careers page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/jobs/careers#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.7',
-      reviewCount: '120',
-      bestRating: '5',
-      worstRating: '1',
-    },
-  };
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
 
   // HowTo — "How to apply to CDPL"
   const howToSchema = generateHowToSchema({
@@ -4191,21 +4305,11 @@ export function generateJobOpeningsPageAllSchemas(
     }
   ]);
 
-  // AggregateRating scoped to the Job Openings page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/jobs/job-openings#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '1540',
-      bestRating: '5',
-      worstRating: '1',
-    },
-  };
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
 
   // HowTo — "How to apply for partner jobs"
   const howToSchema = generateHowToSchema({
@@ -4283,21 +4387,11 @@ export function generateLocationsPageAllSchemas(
     }
   ]);
 
-  // AggregateRating scoped to the Locations page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/locations-we-serve#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '4500',
-      bestRating: '5',
-      worstRating: '1',
-    },
-  };
+  // AggregateRating — standardized via generateReviewSchema
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
 
   // HowTo — "How to find a CDPL center"
   const howToSchema = generateHowToSchema({
