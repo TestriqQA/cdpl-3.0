@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import JobOpeningsHeroSection from "@/components/sections/JobOpeningsHeroSection";
 import JobOpeningsJobBrowser from "@/components/sections/JobOpeningsJobBrowser";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
-import { generateCollectionPageSchema, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
+import { generateJobOpeningsPageAllSchemas, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
 // ---- Types ---------------------------------------------------------------
@@ -264,12 +264,8 @@ export default async function JobSharePage() {
     { name: "Job Openings", url: "/jobs/job-openings" },
   ]);
 
-  // 2. CollectionPage Schema
-  const collectionPageSchema = generateCollectionPageSchema({
-    name: "Job Openings - Apply to Latest Tech Jobs | CDPL",
-    description: "Browse and apply to latest job openings curated by CDPL through OptimHire.",
-    url: "/jobs/job-openings",
-  });
+  // Generate 8-point Schemas dynamically
+  const schemas = generateJobOpeningsPageAllSchemas(jobs);
 
   // 3. JobPosting Schemas
   const jobSchemas = jobs.map((job) => generateJobPostingSchema({
@@ -310,9 +306,11 @@ export default async function JobSharePage() {
 
       {/* Structured Data */}
       <JsonLd id="job-openings-breadcrumb" schema={breadcrumbSchema} />
-      <JsonLd id="job-openings-collection" schema={collectionPageSchema} />
+      {schemas.map((schema: any, index: number) => (
+        <JsonLd key={`job-openings-schema-${index}`} id={`job-openings-schema-${index}`} schema={schema} />
+      ))}
       {jobSchemas.map((schema, index) => (
-        <JsonLd key={index} id={`job-posting-${index}`} schema={schema} />
+        <JsonLd key={`job-posting-schema-${index}`} id={`job-posting-schema-${index}`} schema={schema} />
       ))}
 
       {/* Main Content - Semantic HTML Structure */}

@@ -31,8 +31,8 @@ const highlights = [
 
 const logos = [
   { src: "/images/Skill-India-Color.svg", alt: "Skill India", title: "Skill India" },
-  { src: "/images/ISO-9001.png", alt: "ISO Certified", title: "ISO Certified" },
-  { src: "/images/ISO-27001.png", alt: "ISO Certified", title: "ISO Certified" },
+  { src: "/images/ISO-9001.png", alt: "ISO 9001 Certified", title: "ISO 9001 Certified" },
+  { src: "/images/ISO-27001.png", alt: "ISO 27001 Certified", title: "ISO 27001 Certified" },
   { src: "/images/Testriq-Logo-1.webp", alt: "Testriq", title: "Testriq" },
 ];
 

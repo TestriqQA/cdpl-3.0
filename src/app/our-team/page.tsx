@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { teamData, trainers } from "@/app/our-team/data";
+import { teamData, trainers, teamLeaders } from "@/app/our-team/data";
 import TeamCultureSection from "@/components/sections/TeamCultureSection";
 import TeamDirectory from "@/components/sections/TeamDirectorySection";
 import TeamHeroSection from "@/components/sections/TeamHeroSection";
@@ -7,8 +7,7 @@ import TeamLeadershipSpotlight from "@/components/sections/TeamLeadershipSpotlig
 import TeamTrainersSection from "@/components/sections/TeamTrainersSection";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import {
-  generateAboutPageSchema,
-  generateItemListSchema,
+  generateOurTeamPageAllSchemas,
   generateBreadcrumbSchema
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
@@ -41,38 +40,30 @@ export const metadata: Metadata = generateStaticPageMetadata({
 // OUR TEAM PAGE COMPONENT
 // ============================================================================
 export default function Page() {
-
   // 1. Breadcrumb Schema
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Our Team", url: "/our-team" },
   ]);
 
-  // 2. AboutPage Schema (Contextualized for Team)
-  const aboutPageSchema = generateAboutPageSchema({
-    name: "Our Team - Expert Trainers & Mentors | CDPL",
-    description: "Meet the industry experts behind CDPL's success. Our team consists of seasoned professionals from top tech companies dedicated to transforming careers.",
-    url: "/our-team",
-  });
-
-  // 3. ItemList Schema for Trainers
-  const trainerListSchema = generateItemListSchema(
-    trainers.map(trainer => ({
-      name: trainer.name,
-      description: `${trainer.role} - ${trainer.yearsExp} Years Experience`,
-      url: `/our-team`, // Linking to the team page itself as individual profiles might not exist yet
-      image: trainer.avatar,
-      type: 'Person'
-    })),
-    'Expert Trainers at CDPL'
+  // Generate 8-point Schemas dynamically
+  const schemas = generateOurTeamPageAllSchemas(
+    trainers,
+    teamLeaders.map(leader => ({
+      name: leader.name,
+      title: leader.title,
+      experience: leader.experience,
+      specialization: leader.specialization
+    }))
   );
 
   return (
     <>
       {/* Enhanced JSON-LD Structured Data */}
+      {schemas.map((schema, index) => (
+        <JsonLd key={`team-schema-${index}`} id={`team-schema-${index}`} schema={schema} />
+      ))}
       <JsonLd id="team-breadcrumb" schema={breadcrumbSchema} />
-      <JsonLd id="team-about" schema={aboutPageSchema} />
-      <JsonLd id="team-trainers" schema={trainerListSchema} />
 
       {/* Main Content - Semantic HTML Structure */}
       <main className="bg-white">

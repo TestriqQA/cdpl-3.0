@@ -11,6 +11,14 @@ interface EventSidebarProps {
 
 export default function EventSidebar({ event }: EventSidebarProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [shareUrl, setShareUrl] = useState("");
+
+  React.useEffect(() => {
+    setShareUrl(window.location.href);
+  }, []);
+
+  const encodedUrl = encodeURIComponent(shareUrl);
+  const encodedTitle = encodeURIComponent(event.title);
 
   return (
     <div className="space-y-5 sticky top-24">
@@ -88,7 +96,7 @@ export default function EventSidebar({ event }: EventSidebarProps) {
 
         <div className="p-5 space-y-2">
           <a
-            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+            href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 text-sm text-slate-700 hover:text-blue-600 hover:bg-blue-50 transition-all py-2.5 px-3 rounded-lg group"
@@ -102,7 +110,7 @@ export default function EventSidebar({ event }: EventSidebarProps) {
           </a>
 
           <a
-            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}&text=${encodeURIComponent(event.title)}`}
+            href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 text-sm text-slate-700 hover:text-sky-500 hover:bg-sky-50 transition-all py-2.5 px-3 rounded-lg group"
@@ -116,7 +124,7 @@ export default function EventSidebar({ event }: EventSidebarProps) {
           </a>
 
           <a
-            href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}&title=${encodeURIComponent(event.title)}`}
+            href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 text-sm text-slate-700 hover:text-blue-700 hover:bg-blue-50 transition-all py-2.5 px-3 rounded-lg group"
@@ -130,7 +138,7 @@ export default function EventSidebar({ event }: EventSidebarProps) {
           </a>
 
           <a
-            href={`https://wa.me/?text=${encodeURIComponent(event.title + ' - ' + (typeof window !== 'undefined' ? window.location.href : ''))}`}
+            href={`https://wa.me/?text=${encodedTitle}%20-%20${encodedUrl}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 text-sm text-slate-700 hover:text-green-600 hover:bg-green-50 transition-all py-2.5 px-3 rounded-lg group"

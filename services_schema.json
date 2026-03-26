@@ -1,0 +1,751 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": "https://www.cinutedigital.com/#organization",
+    "name": "CDPL - Cinute Digital",
+    "legalName": "Cinute Digital Private Limited",
+    "alternateName": "CDPL",
+    "url": "https://www.cinutedigital.com",
+    "logo": {
+      "@type": "ImageObject",
+      "@id": "https://www.cinutedigital.com/#logo",
+      "url": "https://www.cinutedigital.com/cdpl-logo.png",
+      "width": 200,
+      "height": 60,
+      "caption": "CDPL - Cinute Digital"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://www.cinutedigital.com/og-images/home-page-og.png",
+      "width": 1200,
+      "height": 630
+    },
+    "description": "Leading EdTech company providing industry-focused training in Software Testing, Data Science, AI/ML, and Digital Marketing with 100% placement support.",
+    "slogan": "Transform Your Career with Industry-Ready Skills",
+    "telephone": "+918488988984",
+    "email": "contact@cinutedigital.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road",
+      "addressLocality": "Mira Bhayandar, Mumbai",
+      "addressRegion": "Maharashtra",
+      "postalCode": "401107",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.29403967980817,
+      "longitude": 72.87115175396495
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "customer service",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ],
+        "contactOption": "TollFree"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "admissions",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ]
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "technical support",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ]
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/cinutedigital",
+      "https://www.linkedin.com/company/cinute-digital/",
+      "https://twitter.com/cinutedigital",
+      "@cinutedigital",
+      "https://www.instagram.com/cinutedigital",
+      "https://www.youtube.com/@cinutedigital"
+    ],
+    "foundingDate": "2020",
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "value": "50"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Monday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Tuesday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Wednesday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Thursday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "15:00"
+      }
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Training Partner",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "ISTQB"
+        },
+        "name": "ISTQB Certified Training Partner"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Educational Credential",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Various Industry Bodies"
+        },
+        "name": "Industry Recognized Certifications"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://www.cinutedigital.com/#website",
+    "url": "https://www.cinutedigital.com",
+    "name": "CDPL - Cinute Digital",
+    "description": "Professional training in Software Testing, Data Science, AI/ML with 100% placement support",
+    "publisher": {
+      "@id": "https://www.cinutedigital.com/#organization"
+    },
+    "inLanguage": "en-IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.cinutedigital.com/services#webpage",
+    "url": "https://www.cinutedigital.com/services",
+    "name": "Our Services | Training, Consulting & Custom Solutions – CDPL",
+    "description": "CDPL offers comprehensive corporate training, software testing consulting, custom automation solutions, and technical workshops for enterprises.",
+    "isPartOf": {
+      "@id": "https://www.cinutedigital.com/#website"
+    },
+    "about": {
+      "@id": "https://www.cinutedigital.com/#organization"
+    },
+    "inLanguage": "en-IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://www.cinutedigital.com/services#collectionpage",
+    "url": "https://www.cinutedigital.com/services",
+    "name": "Our Services",
+    "description": "Comprehensive corporate training, consulting, and custom solutions.",
+    "isPartOf": {
+      "@id": "https://www.cinutedigital.com/#website"
+    },
+    "hasPart": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.cinutedigital.com/services/expert-talks#service",
+          "url": "https://www.cinutedigital.com/services/expert-talks",
+          "name": "Expert Talks / Sessions",
+          "description": "Bring domain experts to your organization. These interactive talks deliver fresh ideas, real-world lessons, and Q&A that transform thinking.",
+          "serviceType": "Corporate Training",
+          "provider": {
+            "@type": "Organization",
+            "@id": "https://www.cinutedigital.com/#organization",
+            "name": "CDPL - Cinute Digital"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "image": "https://www.cinutedigital.com/og-images/og-service-expert-talks.webp",
+          "inLanguage": "en-IN"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.cinutedigital.com/services/workshops#service",
+          "url": "https://www.cinutedigital.com/services/workshops",
+          "name": "Workshops",
+          "description": "Tailored sessions (half-day, full-day, 2-5 day, multi-day) to teach new tools, techniques, frameworks—participants leave doing, not just listening.",
+          "serviceType": "Corporate Training",
+          "provider": {
+            "@type": "Organization",
+            "@id": "https://www.cinutedigital.com/#organization",
+            "name": "CDPL - Cinute Digital"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "image": "https://www.cinutedigital.com/og-images/og-service-workshops.webp",
+          "inLanguage": "en-IN"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.cinutedigital.com/services/on-job-training#service",
+          "url": "https://www.cinutedigital.com/services/on-job-training",
+          "name": "On-the-Job Training Program",
+          "description": "Embed trainees in live work environments under mentorship. They learn daily in context, gain confidence, and contribute meaningfully.",
+          "serviceType": "Corporate Training",
+          "provider": {
+            "@type": "Organization",
+            "@id": "https://www.cinutedigital.com/#organization",
+            "name": "CDPL - Cinute Digital"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "image": "https://www.cinutedigital.com/og-images/og-service-on-job-training.webp",
+          "inLanguage": "en-IN"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.cinutedigital.com/services/faculty-development#service",
+          "url": "https://www.cinutedigital.com/services/faculty-development",
+          "name": "Faculty Development Program",
+          "description": "Workshops and modules tailored for teachers: new teaching methods, curriculum design, digital tools, student engagement strategies.",
+          "serviceType": "Corporate Training",
+          "provider": {
+            "@type": "Organization",
+            "@id": "https://www.cinutedigital.com/#organization",
+            "name": "CDPL - Cinute Digital"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "image": "https://www.cinutedigital.com/og-images/og-service-faculty-development.webp",
+          "inLanguage": "en-IN"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.cinutedigital.com/services/train-the-trainer#service",
+          "url": "https://www.cinutedigital.com/services/train-the-trainer",
+          "name": "Train-the-Trainer Program",
+          "description": "Train your in-house or external trainers in delivery, instructional design, feedback, assessment—so they replicate excellence.",
+          "serviceType": "Corporate Training",
+          "provider": {
+            "@type": "Organization",
+            "@id": "https://www.cinutedigital.com/#organization",
+            "name": "CDPL - Cinute Digital"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "image": "https://www.cinutedigital.com/og-images/og-service-train-the-trainer.webp",
+          "inLanguage": "en-IN"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.cinutedigital.com/services/sttp#service",
+          "url": "https://www.cinutedigital.com/services/sttp",
+          "name": "STTP (Short Term Training Program)",
+          "description": "1-5 day focused modules on niche skills (AI, data analytics, IoT etc.). Great for faculty, students, or professionals wanting rapid upskilling.",
+          "serviceType": "Corporate Training",
+          "provider": {
+            "@type": "Organization",
+            "@id": "https://www.cinutedigital.com/#organization",
+            "name": "CDPL - Cinute Digital"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "image": "https://www.cinutedigital.com/og-images/og-service-sttp.webp",
+          "inLanguage": "en-IN"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "item": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.cinutedigital.com/services/industrial-visits#service",
+          "url": "https://www.cinutedigital.com/services/industrial-visits",
+          "name": "Industrial Visits",
+          "description": "Take learners to companies, factories, labs. Observe processes, interact with professionals, and get inspiration and context beyond textbooks.",
+          "serviceType": "Corporate Training",
+          "provider": {
+            "@type": "Organization",
+            "@id": "https://www.cinutedigital.com/#organization",
+            "name": "CDPL - Cinute Digital"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "image": "https://www.cinutedigital.com/og-images/og-service-industrial-visits.webp",
+          "inLanguage": "en-IN"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "item": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.cinutedigital.com/services/custom-training#service",
+          "url": "https://www.cinutedigital.com/services/custom-training",
+          "name": "Custom Training Solution",
+          "description": "We design bespoke training programs aligned with your organization's specific goals, technology stack, and business objectives.",
+          "serviceType": "Corporate Training",
+          "provider": {
+            "@type": "Organization",
+            "@id": "https://www.cinutedigital.com/#organization",
+            "name": "CDPL - Cinute Digital"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "image": "https://www.cinutedigital.com/og-images/og-service-custom-training.webp",
+          "inLanguage": "en-IN"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 9,
+        "item": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.cinutedigital.com/services/internship-program#service",
+          "url": "https://www.cinutedigital.com/services/internship-program",
+          "name": "Internship Program",
+          "description": "Comprehensive internship programs that provide students with real-world experience, mentorship, and industry exposure.",
+          "serviceType": "Corporate Training",
+          "provider": {
+            "@type": "Organization",
+            "@id": "https://www.cinutedigital.com/#organization",
+            "name": "CDPL - Cinute Digital"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "image": "https://www.cinutedigital.com/og-images/og-service-internship-program.webp",
+          "inLanguage": "en-IN"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 10,
+        "item": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.cinutedigital.com/services/campus-to-corporate#service",
+          "url": "https://www.cinutedigital.com/services/campus-to-corporate",
+          "name": "Campus to Corporate Program",
+          "description": "End-to-end program that prepares students for corporate careers through technical training, soft skills, and placement support.",
+          "serviceType": "Corporate Training",
+          "provider": {
+            "@type": "Organization",
+            "@id": "https://www.cinutedigital.com/#organization",
+            "name": "CDPL - Cinute Digital"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "image": "https://www.cinutedigital.com/og-images/og-service-campus-to-corporate.webp",
+          "inLanguage": "en-IN"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 11,
+        "item": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.cinutedigital.com/services/corporate-training#service",
+          "url": "https://www.cinutedigital.com/services/corporate-training",
+          "name": "Corporate Training",
+          "description": "Role-based, project-driven upskilling programs for engineering, data, QA, product, and leadership teams—aligned to your tech stack and KPIs.",
+          "serviceType": "Corporate Training",
+          "provider": {
+            "@type": "Organization",
+            "@id": "https://www.cinutedigital.com/#organization",
+            "name": "CDPL - Cinute Digital"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "image": "https://www.cinutedigital.com/og-images/og-service-corporate-training.webp",
+          "inLanguage": "en-IN"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 12,
+        "item": {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "@id": "https://www.cinutedigital.com/services/government-public-sector-training#service",
+          "url": "https://www.cinutedigital.com/services/government-public-sector-training",
+          "name": "Government & Public Sector Training (BMC)",
+          "description": "Specialized upskilling for municipalities (including BMC), departments, and public sector units—covering e-governance systems, digital literacy, data management, and cybersecurity.",
+          "serviceType": "Corporate Training",
+          "provider": {
+            "@type": "Organization",
+            "@id": "https://www.cinutedigital.com/#organization",
+            "name": "CDPL - Cinute Digital"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "India"
+          },
+          "image": "https://www.cinutedigital.com/og-images/og-service-government-public-sector-training.webp",
+          "inLanguage": "en-IN"
+        }
+      }
+    ],
+    "inLanguage": "en-IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What corporate training services does CDPL offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CDPL offers a wide range of corporate training services including Expert Talks, Workshops, On-the-Job Training, Faculty Development Programs, Train-the-Trainer, STTP, Industrial Visits, Custom Training Solutions, Internship Programs, Campus-to-Corporate Programs, and Government & Public Sector Training."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can CDPL design a custom training program for our organization?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. CDPL specializes in creating bespoke training solutions aligned to your specific technology stack, business goals, and team composition. We conduct a needs assessment and design a program delivering measurable results."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does CDPL provide training for government and public sector institutions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. CDPL offers specialized training for municipalities (including BMC), state departments, and public sector units covering e-governance, digital literacy, data management, and cybersecurity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What delivery formats are available for CDPL training services?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer flexible delivery formats including classroom/on-site training, virtual/online sessions, and hybrid formats. Duration ranges from half-day workshops to multi-month programs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I request a corporate training consultation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can contact CDPL directly via phone, email, or the inquiry form on the Contact page to schedule a free consultation and discuss your training requirements."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "CDPL Corporate Training & Consulting Services",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Service",
+          "name": "Expert Talks / Sessions",
+          "url": "/services/expert-talks",
+          "description": "Bring domain experts to your organization. These interactive talks deliver fresh ideas, real-world lessons, and Q&A that transform thinking."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Service",
+          "name": "Workshops",
+          "url": "/services/workshops",
+          "description": "Tailored sessions (half-day, full-day, 2-5 day, multi-day) to teach new tools, techniques, frameworks—participants leave doing, not just listening."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Service",
+          "name": "On-the-Job Training Program",
+          "url": "/services/on-job-training",
+          "description": "Embed trainees in live work environments under mentorship. They learn daily in context, gain confidence, and contribute meaningfully."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Service",
+          "name": "Faculty Development Program",
+          "url": "/services/faculty-development",
+          "description": "Workshops and modules tailored for teachers: new teaching methods, curriculum design, digital tools, student engagement strategies."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "Service",
+          "name": "Train-the-Trainer Program",
+          "url": "/services/train-the-trainer",
+          "description": "Train your in-house or external trainers in delivery, instructional design, feedback, assessment—so they replicate excellence."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "Service",
+          "name": "STTP (Short Term Training Program)",
+          "url": "/services/sttp",
+          "description": "1-5 day focused modules on niche skills (AI, data analytics, IoT etc.). Great for faculty, students, or professionals wanting rapid upskilling."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "item": {
+          "@type": "Service",
+          "name": "Industrial Visits",
+          "url": "/services/industrial-visits",
+          "description": "Take learners to companies, factories, labs. Observe processes, interact with professionals, and get inspiration and context beyond textbooks."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "item": {
+          "@type": "Service",
+          "name": "Custom Training Solution",
+          "url": "/services/custom-training",
+          "description": "We design bespoke training programs aligned with your organization's specific goals, technology stack, and business objectives."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 9,
+        "item": {
+          "@type": "Service",
+          "name": "Internship Program",
+          "url": "/services/internship-program",
+          "description": "Comprehensive internship programs that provide students with real-world experience, mentorship, and industry exposure."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 10,
+        "item": {
+          "@type": "Service",
+          "name": "Campus to Corporate Program",
+          "url": "/services/campus-to-corporate",
+          "description": "End-to-end program that prepares students for corporate careers through technical training, soft skills, and placement support."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 11,
+        "item": {
+          "@type": "Service",
+          "name": "Corporate Training",
+          "url": "/services/corporate-training",
+          "description": "Role-based, project-driven upskilling programs for engineering, data, QA, product, and leadership teams—aligned to your tech stack and KPIs."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 12,
+        "item": {
+          "@type": "Service",
+          "name": "Government & Public Sector Training (BMC)",
+          "url": "/services/government-public-sector-training",
+          "description": "Specialized upskilling for municipalities (including BMC), departments, and public sector units—covering e-governance systems, digital literacy, data management, and cybersecurity."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": "https://www.cinutedigital.com/services#org-rating",
+    "name": "CDPL - Cinute Digital",
+    "url": "https://www.cinutedigital.com",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "500",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Engage CDPL for Corporate Training Services",
+    "description": "A step-by-step guide to getting started with CDPL corporate training and consulting for your organization.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Identify Your Need",
+        "text": "Browse the CDPL services catalog and identify which training or consulting service fits your organization — from workshops and STTP to corporate learning paths."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Request a Consultation",
+        "text": "Contact CDPL via phone, email, or the inquiry form to schedule a free consultation with our training experts."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Get a Custom Proposal",
+        "text": "Our team will conduct a needs assessment and deliver a tailored training proposal aligned to your goals and technology stack."
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-1",
+    "name": "Home",
+    "url": "https://www.cinutedigital.com"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-2",
+    "name": "All Courses",
+    "url": "https://www.cinutedigital.com/courses"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-3",
+    "name": "About Us",
+    "url": "https://www.cinutedigital.com/about-us"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-4",
+    "name": "Contact Us",
+    "url": "https://www.cinutedigital.com/contact-us"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-5",
+    "name": "Events & Webinars",
+    "url": "https://www.cinutedigital.com/events"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-6",
+    "name": "Services",
+    "url": "https://www.cinutedigital.com/services"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-7",
+    "name": "Mentors",
+    "url": "https://www.cinutedigital.com/mentors"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-8",
+    "name": "Mock Test",
+    "url": "https://www.cinutedigital.com/mock-test"
+  }
+]

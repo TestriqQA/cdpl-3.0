@@ -1,0 +1,373 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": "https://www.cinutedigital.com/#organization",
+    "name": "CDPL - Cinute Digital",
+    "legalName": "Cinute Digital Private Limited",
+    "alternateName": "CDPL",
+    "url": "https://www.cinutedigital.com",
+    "logo": {
+      "@type": "ImageObject",
+      "@id": "https://www.cinutedigital.com/#logo",
+      "url": "https://www.cinutedigital.com/cdpl-logo.png",
+      "width": 200,
+      "height": 60,
+      "caption": "CDPL - Cinute Digital"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://www.cinutedigital.com/og-images/home-page-og.png",
+      "width": 1200,
+      "height": 630
+    },
+    "description": "Leading EdTech company providing industry-focused training in Software Testing, Data Science, AI/ML, and Digital Marketing with 100% placement support.",
+    "slogan": "Transform Your Career with Industry-Ready Skills",
+    "telephone": "+918488988984",
+    "email": "contact@cinutedigital.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road",
+      "addressLocality": "Mira Bhayandar, Mumbai",
+      "addressRegion": "Maharashtra",
+      "postalCode": "401107",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.29403967980817,
+      "longitude": 72.87115175396495
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "customer service",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ],
+        "contactOption": "TollFree"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "admissions",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ]
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "technical support",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ]
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/cinutedigital",
+      "https://www.linkedin.com/company/cinute-digital/",
+      "https://twitter.com/cinutedigital",
+      "@cinutedigital",
+      "https://www.instagram.com/cinutedigital",
+      "https://www.youtube.com/@cinutedigital"
+    ],
+    "foundingDate": "2020",
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "value": "50"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Monday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Tuesday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Wednesday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Thursday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "15:00"
+      }
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Training Partner",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "ISTQB"
+        },
+        "name": "ISTQB Certified Training Partner"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Educational Credential",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Various Industry Bodies"
+        },
+        "name": "Industry Recognized Certifications"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://www.cinutedigital.com/#website",
+    "url": "https://www.cinutedigital.com",
+    "name": "CDPL - Cinute Digital",
+    "description": "Professional training in Software Testing, Data Science, AI/ML with 100% placement support",
+    "publisher": {
+      "@id": "https://www.cinutedigital.com/#organization"
+    },
+    "inLanguage": "en-IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.cinutedigital.com/locations-we-serve#webpage",
+    "url": "https://www.cinutedigital.com/locations-we-serve",
+    "name": "Our Global Presence & Training Locations | CDPL",
+    "description": "Explore CDPL's 50+ training centers across India and the UAE. Find the nearest hub for software testing, data science, and programming courses in your city.",
+    "isPartOf": {
+      "@id": "https://www.cinutedigital.com/#website"
+    },
+    "about": {
+      "@id": "https://www.cinutedigital.com/#organization"
+    },
+    "inLanguage": "en-IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is CDPL's main headquarters located?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CDPL is headquartered in Mumbai, India, with localized flagship centers in major hubs like Dubai, Bangalore, and Pune."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does CDPL provide physical classroom training in all these locations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer a mix of physical centers for collaborative learning and a robust 'Online-Live' infrastructure that serves students in 50+ cities across India and the UAE."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are the course certifications valid globally?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, CDPL certifications are ISO 9001:2015 certified and recognized by our 50+ hiring partners across the globe."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Major Cities and Regions Served by CDPL",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Country",
+          "name": "CDPL Training Center in India",
+          "url": "/locations-we-serve",
+          "description": "Comprehensive tech education and placement support available in India."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Country",
+          "name": "CDPL Training Center in UAE",
+          "url": "/locations-we-serve",
+          "description": "Comprehensive tech education and placement support available in UAE."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "State",
+          "name": "CDPL Training Center in Maharashtra",
+          "url": "/locations-we-serve",
+          "description": "Comprehensive tech education and placement support available in Maharashtra."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "State",
+          "name": "CDPL Training Center in Karnataka",
+          "url": "/locations-we-serve",
+          "description": "Comprehensive tech education and placement support available in Karnataka."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "City",
+          "name": "CDPL Training Center in Mumbai",
+          "url": "/locations-we-serve",
+          "description": "Comprehensive tech education and placement support available in Mumbai."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "City",
+          "name": "CDPL Training Center in Bangalore",
+          "url": "/locations-we-serve",
+          "description": "Comprehensive tech education and placement support available in Bangalore."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": "https://www.cinutedigital.com/locations-we-serve#org-rating",
+    "name": "CDPL - Cinute Digital",
+    "url": "https://www.cinutedigital.com",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "4500",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Locate a CDPL Training Center Near You",
+    "description": "Find our nearest training hub or join our live-online classrooms.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Visit Locations Page",
+        "text": "Go to /locations-we-serve to see the complete list of countries and cities we serve."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Select Your Region",
+        "text": "Browse through the hierarchical list of India or UAE to find your specific state and city centers."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Connect with a Counselor",
+        "text": "Once you find your nearest center, click \"Inquire Now\" to speak with a local career counselor for batch details."
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-1",
+    "name": "Home",
+    "url": "https://www.cinutedigital.com"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-2",
+    "name": "All Courses",
+    "url": "https://www.cinutedigital.com/courses"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-3",
+    "name": "About Us",
+    "url": "https://www.cinutedigital.com/about-us"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-4",
+    "name": "Contact Us",
+    "url": "https://www.cinutedigital.com/contact-us"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-5",
+    "name": "Events & Webinars",
+    "url": "https://www.cinutedigital.com/events"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-6",
+    "name": "Services",
+    "url": "https://www.cinutedigital.com/services"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-7",
+    "name": "Mentors",
+    "url": "https://www.cinutedigital.com/mentors"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-8",
+    "name": "Mock Test",
+    "url": "https://www.cinutedigital.com/mock-test"
+  }
+]

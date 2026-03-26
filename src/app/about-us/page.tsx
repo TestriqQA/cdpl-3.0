@@ -2,22 +2,13 @@
  * ============================================================================
  * ABOUT US PAGE - SEO IMPLEMENTATION
  * ============================================================================
- * 
- * This page follows the centralized SEO approach:
- * - Organization & Website schemas are in layout.tsx (global)
- * - This page only adds page-specific schemas: AboutPage, Breadcrumb, FAQ
- * - Metadata is generated using the centralized generator
  */
 
 import React from 'react';
 import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
-import {
-  generateBreadcrumbSchema,
-  generateFAQSchema,
-  generateAboutPageSchema,
-} from "@/lib/schema-generators";
+import { generateAboutPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
 // ============================================================================
@@ -109,25 +100,6 @@ const LightTheme: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 // ============================================================================
 
 export default function AboutPage(): React.ReactElement {
-  // ========================================
-  // PAGE-SPECIFIC SCHEMAS ONLY
-  // (Organization & Website are in layout.tsx)
-  // ========================================
-
-  // 1. Breadcrumb Schema
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "About Us", url: "/about-us" },
-  ]);
-
-  // 2. AboutPage Schema
-  const aboutPageSchema = generateAboutPageSchema({
-    name: "About CDPL - Cinute Digital",
-    description: "Learn about CDPL's mission to empower professionals with industry-ready skills through hands-on training in Software Testing, Automation, Data Science, and AI/ML.",
-    url: "/about-us",
-  });
-
-  // 3. FAQ Schema
   const faqs = [
     {
       question: "Do you provide placement assistance?",
@@ -141,7 +113,7 @@ export default function AboutPage(): React.ReactElement {
     },
     {
       question: "Will I work on live projects?",
-      answer: "Yes. You’ll build job-ready skills through live or sandbox projects mirroring real business scenarios, version control, code reviews, and CI/CD workflows.",
+      answer: "Yes. You'll build job-ready skills through live or sandbox projects mirroring real business scenarios, version control, code reviews, and CI/CD workflows.",
       tags: ["projects", "real-world", "portfolio"],
     },
     {
@@ -156,7 +128,7 @@ export default function AboutPage(): React.ReactElement {
     },
     {
       question: "Do you offer certifications?",
-      answer: "Yes. You’ll receive a Cinute Digital certificate on completion. We also guide you for global certifications like ISTQB (for Software Testing) and provide exam preparation resources.",
+      answer: "Yes. You'll receive a Cinute Digital certificate on completion. We also guide you for global certifications like ISTQB (for Software Testing) and provide exam preparation resources.",
       tags: ["certificate", "ISTQB", "credentials"],
     },
     {
@@ -191,23 +163,19 @@ export default function AboutPage(): React.ReactElement {
     },
   ];
 
-  const faqSchema = generateFAQSchema(faqs);
+  const schemas = generateAboutPageAllSchemas(
+    faqs.map(f => ({ question: f.question, answer: f.answer }))
+  );
 
   return (
     <LightTheme>
-      {/* ========================================
-          PAGE-SPECIFIC SCHEMAS ONLY
-          (No Organization/Website - already in layout)
-          ======================================== */}
-      <JsonLd id="about-page-schema" schema={aboutPageSchema} />
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
+      {/* Schema Injection */}
+      {schemas.map((schema, index) => (
+        <JsonLd key={`about-schema-${index}`} id={`about-schema-${index}`} schema={schema} />
+      ))}
 
-      {/* ========================================
-          MAIN CONTENT
-          ======================================== */}
+      {/* Main Content */}
       <main className="relative isolate">
-
         <AboutHeroSection />
         <AboutStatsSection />
         <AboutWhyJoinUs />
@@ -220,4 +188,4 @@ export default function AboutPage(): React.ReactElement {
       </main>
     </LightTheme>
   );
-} 
+}
