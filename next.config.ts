@@ -284,6 +284,11 @@ const nextConfig: NextConfig = {
         destination: '/events',
         permanent: true,
       },
+      {
+        source: '/digital-marketing-course-in-nerul',
+        destination: '/digital-marketing-courses-in-nerul',
+        permanent: true,
+      },
     ];
   },
 };

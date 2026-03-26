@@ -4,7 +4,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { ChevronDown, ChevronUp, BookOpen, Code, Search, Target } from "lucide-react";
+import { ChevronDown, ChevronUp, BookOpen, Code, Search, Target, Zap } from "lucide-react";
 
 type City = {
   name: string;
@@ -55,6 +55,11 @@ const COURSE_CONFIG: Record<
     label: "Web Development",
     icon: <Code className="w-3.5 h-3.5" />,
     color: "bg-orange-100 text-brand ring-orange-300",
+  },
+  "artificial-intelligence": {
+    label: "Artificial Intelligence",
+    icon: <Zap className="w-3.5 h-3.5" />,
+    color: "bg-amber-100 text-amber-700 ring-amber-300",
   },
 };
 
