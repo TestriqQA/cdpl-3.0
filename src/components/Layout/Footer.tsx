@@ -11,7 +11,7 @@ const Footer2 = dynamic(
     ssr: true,
     loading: () => (
       <div className="flex items-center justify-center h-screen bg-[theme(color.background)]">
-        <p className="text-gray-500">Loading...</p>
+        <p className="text-gray-300">Loading...</p>
       </div>
     ),
   }
@@ -23,7 +23,7 @@ const CityFooter = dynamic(
     ssr: true,
     loading: () => (
       <div className="flex items-center justify-center h-screen bg-[theme(color.background)]">
-        <p className="text-gray-500">Loading...</p>
+        <p className="text-gray-300">Loading...</p>
       </div>
     ),
   }
@@ -46,58 +46,356 @@ function XLogo(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+  return (
+    <Link
+      href={href}
+      className="hover:text-brand hover:translate-x-2 active:textColor-orange-500 active:text-orange-500 focus-visible:text-orange-500 active:translate-x-2 active:transition-none focus-visible:transition-none transition-all duration-300 ease-in-out text-sm outline-none text-gray-300 inline-block py-2 px-3"
+    >
+      {children}
+    </Link>
+  );
+};
+
+// Institute links without translate effect
+const InstituteLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+  return (
+    <Link
+      href={href}
+      className="hover:text-brand active:text-orange-500 focus-visible:text-orange-500 transition-colors duration-300 ease-in-out text-sm outline-none text-gray-300 inline-block py-2 px-3"
+    >
+      {children}
+    </Link>
+  );
+};
+
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 text-white" role="contentinfo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 lg:grid-rows-[auto_auto_auto] gap-8">
           {/* Data Science, AI - ML & BI Courses */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-orange-400">Data Science</h3>
-            <ul>
-              <li className='flex flex-col space-y-2'>
-                <Link href="/ai-course" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Comprehensive Data Science and AI - Master Program
-                </Link>
-
-                <Link href="/machine-learning-course" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Machine Learning and Data Science with Python
-                </Link>
-
-                <Link href="/generative-ai-course" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Deep Learning, NLP and Generative AI
-                </Link>
-
-                <Link href="/data-science-course" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Advanced Data Science &amp; Machine Learning Masterclass
-                </Link>
-
-                <Link href="/machine-learning-using-python" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Machine Learning Algorithms using python Programming
-                </Link>
-
-                <Link href="/data-visualization-in-r-programming" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Machine Learning and Data Visualization using R Programming
-                </Link>
-
-              </li>
-            </ul>
-
-            {/* Artificial Intelligence */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-orange-400">Artificial Intelligence(AI)</h3>
+          <div className="space-y-4 flex flex-col lg:contents">
+            <div className="space-y-4 lg:col-start-1 lg:row-start-1">
+              <h2 className="text-lg font-semibold text-brand">Data Science</h2>
               <ul>
                 <li className='flex flex-col space-y-2'>
-                  <Link href="/prompt-engineering-course" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                    Prompt Engineering with Gen AI
-                  </Link>
+                  <FooterLink href="/courses/ds-ml-courses">
+                    Data Science - Overview
+                  </FooterLink>
+
+                  <FooterLink href="/courses/ds-ml-courses/ai-course">
+                    Comprehensive Data Science and AI - Master Program
+                  </FooterLink>
+
+                  <FooterLink href="/courses/ds-ml-courses/machine-learning-course">
+                    Machine Learning and Data Science with Python
+                  </FooterLink>
+
+                  <FooterLink href="/courses/ds-ml-courses/generative-ai-course">
+                    Deep Learning, NLP and Generative AI
+                  </FooterLink>
+
+                  <FooterLink href="/courses/ds-ml-courses/data-science-course">
+                    Advanced Data Science &amp; Machine Learning Masterclass
+                  </FooterLink>
+
+                  <FooterLink href="/courses/ds-ml-courses/machine-learning-using-python">
+                    Machine Learning Algorithms using python Programming
+                  </FooterLink>
+
+                  <FooterLink href="/courses/ds-ml-courses/data-visualization-in-r-programming">
+                    Machine Learning and Data Visualization using R Programming
+                  </FooterLink>
+
+                  <FooterLink href="/courses/software-testing-course/python-course">
+                    Python Programming
+                  </FooterLink>
+
                 </li>
               </ul>
             </div>
 
-            {/* Follow Us (desktop) */}
-            <div className="space-y-4 hidden lg:block">
-              <h3 className="text-lg font-semibold text-orange-400">Follow Us On</h3>
+            {/* Artificial Intelligence */}
+            <div className="space-y-4 lg:col-start-1 lg:row-start-2">
+              <h2 className="text-lg font-semibold text-brand">Artificial Intelligence(AI)</h2>
+              <ul>
+                <li className='flex flex-col space-y-2'>
+                  <FooterLink href="/courses/artificial-intelligence-courses">
+                    Artificial Intelligence (AI) - Overview
+                  </FooterLink>
+
+                  <FooterLink href="/courses/artificial-intelligence-courses/prompt-engineering-course">
+                    Prompt Engineering with Gen AI
+                  </FooterLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Software Testing Courses */}
+          <div className="space-y-4 flex flex-col lg:contents">
+            <div className="space-y-4 lg:col-start-2 lg:row-start-1">
+              <h2 className="text-lg font-semibold text-brand">Software Testing Courses</h2>
+              <ul>
+                <li className='flex flex-col space-y-2'>
+                  <FooterLink href="/courses/software-testing-course">
+                    Software Testing - Overview
+                  </FooterLink>
+
+                  <FooterLink href="/courses/software-testing-course/manual-testing-course">
+                    Manual Software Testing
+                  </FooterLink>
+
+                  <FooterLink href="/courses/software-testing-course/api-testing">
+                    API Testing using POSTMAN and RestAPIs
+                  </FooterLink>
+
+                  <FooterLink href="/courses/software-testing-course/dbms-course">
+                    Database Management System using MySQL
+                  </FooterLink>
+
+                  <FooterLink href="/courses/software-testing-course/etl-testing">
+                    ETL Testing Course
+                  </FooterLink>
+
+                  <FooterLink href="/courses/software-testing-course/advance-software-testing">
+                    Advanced Software Testing
+                  </FooterLink>
+
+                  <FooterLink href="/courses/software-testing-course/automation-testing-course">
+                    Advanced Automation Testing
+                  </FooterLink>
+
+                  <FooterLink href="/courses/software-testing-course/advance-manual-automation-testing">
+                    Advanced Manual and Automation Testing
+                  </FooterLink>
+
+                  <FooterLink href="/courses/software-testing-course/advance-manual-automation-testing">
+                    Advanced Manual and Automation Testing
+                  </FooterLink>
+
+
+                  <FooterLink href="/courses/software-testing-course/java-course">
+                    Java Programming
+                  </FooterLink>
+                </li>
+              </ul>
+            </div>
+
+            {/* Digital Marketing */}
+            <div className="space-y-4 lg:col-start-2 lg:row-start-2">
+              <h2 className="text-lg font-semibold text-brand">Digital Marketing</h2>
+              <ul>
+                <li className='flex flex-col space-y-2'>
+                  <FooterLink href="/courses/digital-marketing-courses">
+                    Digital Marketing - Overview
+                  </FooterLink>
+
+                  <FooterLink href="/courses/digital-marketing-courses/digital-marketing-course">
+                    Digital Marketing and Analytics - Master Program
+                  </FooterLink>
+
+                  <FooterLink href="/courses/digital-marketing-courses/ai-in-digital-marketing">
+                    Digital Marketing and AI (For Business Owners)
+                  </FooterLink>
+
+                  <FooterLink href="/courses/digital-marketing-courses/ai-bootcamp">
+                    Digital Marketing With AI Bootcamp
+                  </FooterLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Digital Marketing (actually BI) */}
+          <div className="space-y-4 flex flex-col lg:contents">
+            <div className="space-y-4 lg:col-start-3 lg:row-start-1">
+              <h2 className="text-lg font-semibold text-brand">Business Development(BI)</h2>
+              <ul>
+                <li className='flex flex-col space-y-2'>
+                  <FooterLink href="/courses/bi-courses">
+                    Business Intelligence (BI) - Overview
+                  </FooterLink>
+
+                  <FooterLink href="/courses/bi-courses/data-analytics">
+                    Advanced Data Analytics - Hero Program
+                  </FooterLink>
+
+                  <FooterLink href="/courses/bi-courses/data-analytics-python">
+                    Advanced Data Analytics with Python Libraries
+                  </FooterLink>
+
+                  <FooterLink href="/courses/bi-courses/data-analytics-and-visualization">
+                    Excel for Data Analytics & Visualization
+                  </FooterLink>
+
+                  <FooterLink href="/courses/bi-courses/data-analytics-with-tableau">
+                    Data Analytics & Visualization with Tableau
+                  </FooterLink>
+
+                  <FooterLink href="/courses/bi-courses/power-bi-course">
+                    Data Analytics & Visualization with Power BI
+                  </FooterLink>
+
+                  <FooterLink href="/courses/bi-courses/masters-in-data-engineering">
+                    Data Analytics With BI And Big Data Engineering - Master Program
+                  </FooterLink>
+
+                </li>
+              </ul>
+            </div>
+
+            {/* Blogs and Categories */}
+            <div className="space-y-4 lg:col-start-3 lg:row-start-2">
+              <h2 className="text-lg font-semibold text-brand">Blogs</h2>
+              <ul>
+                <li className='flex flex-col space-y-2'>
+                  <FooterLink href="/blog">
+                    Blogs
+                  </FooterLink>
+
+                  <FooterLink href="/blog/category/software-testing">
+                    Software Testing
+                  </FooterLink>
+
+                  <FooterLink href="/blog/category/data-science">
+                    Data Science
+                  </FooterLink>
+
+                  <FooterLink href="/blog/category/web-development">
+                    Web Development
+                  </FooterLink>
+
+                  <FooterLink href="/blog/category/artificial-intelligence">
+                    AI &amp; Machine Learning
+                  </FooterLink>
+
+                  <FooterLink href="/blog/category/digital-marketing">
+                    Digital Marketing
+                  </FooterLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Services */}
+          <div className="space-y-4 lg:contents">
+            <div className="space-y-4 lg:col-start-4 lg:row-start-1">
+              <h2 className="text-lg font-semibold text-brand">Services</h2>
+              <ul>
+                <li className='flex flex-col space-y-2'>
+                  <FooterLink href="/services/campus-to-corporate">
+                    Campus to Corporate
+                  </FooterLink>
+
+                  <FooterLink href="/services/custom-training">
+                    Custom Training
+                  </FooterLink>
+
+                  <FooterLink href="/services/expert-talks">
+                    Expert Talks
+                  </FooterLink>
+
+                  <FooterLink href="/services/faculty-development">
+                    Faculty Development
+                  </FooterLink>
+
+                  <FooterLink href="/services/government-public-sector-training">
+                    Govt & Public Sector Training
+                  </FooterLink>
+
+                  <FooterLink href="/services/industrial-visits">
+                    Industrial Visits
+                  </FooterLink>
+
+                  <FooterLink href="/services/internship-program">
+                    Internship Program
+                  </FooterLink>
+
+                  <FooterLink href="/services/on-job-training">
+                    On Job Training
+                  </FooterLink>
+
+                  <FooterLink href="/services/sttp">
+                    Short Term Training Program (STTP)
+                  </FooterLink>
+
+                  <FooterLink href="/services/train-the-trainer">
+                    Train the Trainer
+                  </FooterLink>
+
+                  <FooterLink href="/services/workshops">
+                    Workshops
+                  </FooterLink>
+                </li>
+              </ul>
+            </div>
+
+            {/* Certifications and Accreditation */}
+            <div className="space-y-4 lg:col-start-4 lg:row-start-2">
+              <h2 className="text-lg font-semibold text-brand">Certifications and Accreditation</h2>
+              <ul>
+                <li className='flex flex-col space-y-2'>
+                  <FooterLink href="/aaa-certification">
+                    AAA Certification
+                  </FooterLink>
+
+                  <FooterLink href="/actd-certification">
+                    ACTD Certification
+                  </FooterLink>
+
+                  <FooterLink href="/cdpl-certificate-validation">
+                    Validate Your Certificate
+                  </FooterLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Events - Column 5 */}
+          <div className="space-y-4 flex flex-col lg:contents">
+            <div className="space-y-4 lg:col-start-5 lg:row-start-1">
+              <h2 className="text-lg font-semibold text-brand">Events</h2>
+              <ul>
+                <li className='flex flex-col space-y-2'>
+                  <FooterLink href="/events/business-analytics-course-at-aldel-institute-of-management">
+                    Business Analytics Course (Aldel Institute)
+                  </FooterLink>
+                  <FooterLink href="/events/mou-signing-between-st-francis-institute-of-technology-and-testriq-qa-lab">
+                    MoU Signing (St. Francis)
+                  </FooterLink>
+                  <FooterLink href="/events/job-fair">
+                    Job Fair (Nirmala Memorial)
+                  </FooterLink>
+                  <FooterLink href="/events/industrial-visit-viva-institute-of-technology">
+                    Industrial Visit (VIVA Institute)
+                  </FooterLink>
+                  <FooterLink href="/events/national-conference-on-applications-of-ai-promises-perils-and-sustainability-mkes-trust-nagindas-khandwala-college">
+                    National Conference on AI (MKES)
+                  </FooterLink>
+                  <FooterLink href="/events/faculty-development-program-fdp-on-power-bi-tableau-unlocking-future-ready-careers-bhavans-college-andheri">
+                    FDP on Power BI & Tableau (Bhavans College)
+                  </FooterLink>
+                  <FooterLink href="/events/internship-program-dj-sanghvi-college">
+                    Internship Program (DJ Sanghvi)
+                  </FooterLink>
+                  <FooterLink href="/events/techoutsav">
+                    Techoutsav
+                  </FooterLink>
+                  <FooterLink href="/events/industrial-visit-thakur-college-of-science-commerce">
+                    Industrial Visit (Thakur College)
+                  </FooterLink>
+                  <FooterLink href="/events/placement-drive-at-cinute-digital-pvt-ltd-for-tech-mahindra-and-transunion-cibil">
+                    Placement Drive (Tech Mahindra)
+                  </FooterLink>
+                </li>
+              </ul>
+            </div>
+
+            {/* Follow Us (desktop) - Column 5 Row 2 */}
+            <div className="space-y-4 hidden lg:block lg:col-start-5 lg:row-start-2">
+              <h2 className="text-lg font-semibold text-brand">Follow Us On</h2>
               <ul className="space-y-2">
                 <li className='flex items-center gap-5'>
                   <Link href="https://www.facebook.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
@@ -118,301 +416,6 @@ const Footer = () => {
 
                   <Link href="https://www.instagram.com/cinutedigital/" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Instagram">
                     <Instagram />
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Software Testing Courses */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-orange-400">Software Testing Courses</h3>
-            <ul>
-              <li className='flex flex-col space-y-2'>
-                <Link href="/manual-testing-course" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Manual Software Testing
-                </Link>
-
-                <Link href="/api-testing" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  API Testing using POSTMAN and RestAPIs
-                </Link>
-
-                <Link href="/dbms-course" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Database Management System using MySQL
-                </Link>
-
-                <Link href="/etl-testing" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  ETL Testing Course
-                </Link>
-
-                <Link href="/advance-software-testing" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Advanced Software Testing
-                </Link>
-
-                <Link href="/automation-testing-course" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Advanced Automation Testing
-                </Link>
-
-                <Link href="/advance-manual-automation-testing" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Advanced Manual and Automation Testing
-                </Link>
-
-                <Link href="/advance-manual-automation-testing" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Advanced Manual and Automation Testing
-                </Link>
-
-                <Link href="/python-course" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Python Programming
-                </Link>
-
-                <Link href="/java-course" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Java Programming
-                </Link>
-              </li>
-            </ul>
-
-            {/* Digital Marketing */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-orange-400">Digital Marketing</h3>
-              <ul>
-                <li className='flex flex-col space-y-2'>
-                  <Link href="/digital-marketing-course" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                    Digital Marketing and Analytics - Master Program
-                  </Link>
-
-                  <Link href="/ai-in-digital-marketing" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                    Digital Marketing and AI (For Business Owners)
-                  </Link>
-
-                  <Link href="/ai-bootcamp" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                    Digital Marketing With AI Bootcamp
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Programming Languages */}
-            {/* <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-orange-400">Programming Languages</h3>
-              <ul>
-                <li className='flex flex-col space-y-2'>
-
-                </li>
-              </ul>
-            </div> */}
-          </div>
-
-          {/* Digital Marketing */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-orange-400">Business Development(BI)</h3>
-            <ul>
-              <li className='flex flex-col space-y-2'>
-                <Link href="/data-analytics" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Advanced Data Analytics - Hero Program
-                </Link>
-
-                <Link href="/data-analytics-python" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Advanced Data Analytics with Python Libraries
-                </Link>
-
-                <Link href="/data-analytics-and-visualization" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Excel for Data Analytics & Visualization
-                </Link>
-
-                <Link href="/data-analytics-with-tableau" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Data Analytics & Visualization with Tableau
-                </Link>
-
-                <Link href="/power-bi-course" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Data Analytics & Visualization with Power BI
-                </Link>
-
-                <Link href="/masters-in-data-engineering" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Data Analytics With BI And Big Data Engineering - Master Program
-                </Link>
-
-              </li>
-            </ul>
-          </div>
-
-          {/* City Pages */}
-          {/* <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-orange-400">Cities</h3>
-            <ul>
-              <li className='flex flex-col space-y-2'>
-                <Link href="/software-testing-course-in-mumbai" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Mumbai
-                </Link>
-
-                <Link href="/software-testing-course-in-chennai" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Chennai
-                </Link>
-
-                <Link href="/software-testing-course-in-kolkata" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Kolkata
-                </Link>
-
-                <Link href="/software-testing-course-in-bengaluru" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Bengaluru
-                </Link>
-
-                <Link href="/software-testing-course-in-hyderabad" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Hyderabad
-                </Link>
-
-                <Link href="/software-testing-course-in-pune" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Pune
-                </Link>
-
-                <Link href="/software-testing-course-in-delhi" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Delhi
-                </Link>
-
-                <Link href="/software-testing-course-in-ahmedabad" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Ahmedabad
-                </Link>
-
-                <Link href="/software-testing-course-in-surat" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Surat
-                </Link>
-
-                <Link href="/software-testing-course-in-jodhpur" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Jodhpur
-                </Link>
-
-                <Link href="/software-testing-course-in-jaipur" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Jaipur
-                </Link>
-
-                <Link href="/software-testing-course-in-aurangabad" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Aurangabad
-                </Link>
-
-                <Link href="/software-testing-course-in-kochi" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Kochi
-                </Link>
-
-                <Link href="/software-testing-course-in-chandigarh" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Chandigarh
-                </Link>
-
-                <Link href="/software-testing-course-in-patna" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Patna
-                </Link>
-
-                <Link href="/software-testing-course-in-indore" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Indore
-                </Link>
-
-                <Link href="/software-testing-course-in-bhubaneswar" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Bhubaneswar
-                </Link>
-
-                <Link href="/locations-we-serve" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  View All Cities
-                </Link>
-              </li>
-            </ul>
-          </div> */}
-
-          {/* Blogs and Categories */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-orange-400">Blogs</h3>
-            <ul>
-              <li className='flex flex-col space-y-2'>
-                <Link href="/blog" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Blogs
-                </Link>
-
-                <Link href="/blog/category/software-testing" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Software Testing
-                </Link>
-
-                <Link href="/blog/category/data-science" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Data Science
-                </Link>
-
-                <Link href="/blog/category/web-development" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Web Development
-                </Link>
-
-                <Link href="/blog/category/ai-ml" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  AI &amp; Machine Learning
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Institute */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-orange-400">Institute</h3>
-            <ul>
-              <li className='flex flex-col space-y-2'>
-                <Link href="/services" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Services
-                </Link>
-
-                <Link href="/events/past-events" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Events
-                </Link>
-
-                <Link href="/mentors" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Mentors
-                </Link>
-
-                <Link href="/jobs/placements" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Placements
-                </Link>
-
-                <Link href="/jobs/live-jobs" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Live Jobs
-                </Link>
-
-                <Link href="/jobs/job-openings" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Job Openings
-                </Link>
-
-                <Link href="/jobs/careers" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Careers
-                </Link>
-
-                <Link href="/about-us" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  About CDPL
-                </Link>
-
-                <Link href="/our-team" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Our Team
-                </Link>
-
-                <Link href="/reviews" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Reviews
-                </Link>
-
-                <Link href="/cdpl-affiliate-program" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Affiliate Program
-                </Link>
-
-                <Link href="/contact-us" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-
-            {/* Certifications and Accreditation */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-orange-400">Certifications and Accreditation</h3>
-              <ul>
-                <li className='flex flex-col space-y-2'>
-                  <Link href="/aaa-certification" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                    AAA Certification
-                  </Link>
-
-                  <Link href="/actd-certification" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                    ACTD Certification
-                  </Link>
-
-                  <Link href="/cdpl-certificate-validation" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                    Validate Your Certificate
                   </Link>
                 </li>
               </ul>
@@ -420,7 +423,7 @@ const Footer = () => {
 
             {/* Follow Us (mobile) */}
             <div className="space-y-4 lg:hidden">
-              <h3 className="text-lg font-semibold text-orange-400">Follow Us On</h3>
+              <h2 className="text-lg font-semibold text-brand">Follow Us On</h2>
               <ul className="space-y-2">
                 <li className='flex items-center gap-5'>
                   <Link href="https://www.facebook.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
@@ -446,6 +449,31 @@ const Footer = () => {
               </ul>
             </div>
           </div>
+        </div>
+
+        {/* Institute - Separate Horizontal Row Below Grid */}
+        <div className="mt-8 pt-8 border-t border-gray-700/50">
+          <h2 className="text-lg font-semibold text-brand mb-4">Institute</h2>
+          <ul>
+            <li className='flex flex-wrap'>
+              <InstituteLink href="/">Home</InstituteLink>
+              <InstituteLink href="/cms">CMS Login</InstituteLink>
+              <InstituteLink href="/mock-test">Mock Test</InstituteLink>
+              <InstituteLink href="/istqb-registration">ISTQB Registration</InstituteLink>
+              <InstituteLink href="/services">Services</InstituteLink>
+              <InstituteLink href="/events">Events</InstituteLink>
+              <InstituteLink href="/mentors">Mentors</InstituteLink>
+              <InstituteLink href="/jobs/placements">Placements</InstituteLink>
+              <InstituteLink href="/jobs/live-jobs">Live Jobs</InstituteLink>
+              <InstituteLink href="/jobs/job-openings">Job Openings</InstituteLink>
+              <InstituteLink href="/jobs/careers">Careers</InstituteLink>
+              <InstituteLink href="/about-us">About CDPL</InstituteLink>
+              <InstituteLink href="/our-team">Our Team</InstituteLink>
+              <InstituteLink href="/reviews">Reviews</InstituteLink>
+              <InstituteLink href="/cdpl-affiliate-program">Affiliate Program</InstituteLink>
+              <InstituteLink href="/contact-us">Contact Us</InstituteLink>
+            </li>
+          </ul>
         </div>
       </div>
 

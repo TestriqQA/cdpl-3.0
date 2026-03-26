@@ -3,10 +3,13 @@
 import React, { useState } from "react";
 import { easeOut, motion } from "framer-motion";
 import { TrendingUp, Briefcase, ArrowRight, Sparkles, Target, Zap } from "lucide-react";
-import Link from "next/link";
+import EnrollModal from "@/components/EnrollModal"; // Fix import if it's named export, or default. 
+// Checking previous file view of EnrollModal.tsx: export default EnrollModal;
+// So import should be default.
 
 // Mock data for demonstration
 const mockData = {
+  courseName: "Tech Course",
   careerPathContent: {
     title: "Transform Your Future with In-Demand Skills",
     description: "Unlock lucrative career opportunities in the fastest-growing tech sectors",
@@ -71,6 +74,13 @@ const mockData = {
 const CareerPathSection = ({ data = mockData }) => {
   const { careerPathContent } = data;
   const [hoveredPath, setHoveredPath] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalSource, setModalSource] = useState("");
+
+  const handleOpenModal = (source: string) => {
+    setModalSource(source);
+    setIsModalOpen(true);
+  };
 
   // Marked as intentionally used without altering behavior:
   void hoveredPath;
@@ -263,13 +273,13 @@ const CareerPathSection = ({ data = mockData }) => {
                   </div>
 
                   {/* CTA */}
-                  <Link
-                    href="contact-us"
-                    className="w-full mt-4 md:mt-6 px-4 py-3 md:py-3.5 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 flex items-center justify-center gap-2 group/btn text-sm md:text-base"
+                  <button
+                    onClick={() => handleOpenModal(`(${(data as any).location || 'City'} ${(data as any).courseName || 'Course'}) - Career Path Section - Explore Career Path`)}
+                    className="w-full mt-4 md:mt-6 px-4 py-3 md:py-3.5 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 flex items-center justify-center gap-2 group/btn text-sm md:text-base cursor-pointer"
                   >
                     Explore Career Path
                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Link>
+                  </button>
                 </div>
               </div>
             </motion.div>
@@ -304,13 +314,8 @@ const CareerPathSection = ({ data = mockData }) => {
               Join our comprehensive program with expert mentorship, real-world projects, and dedicated job placement support. Your future starts now.
             </p>
 
-            <motion.button onClick={() => {
-              const section = document.getElementById('cta-section');
-
-              if (section) {
-                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
-            }}
+            <motion.button
+              onClick={() => handleOpenModal(`(${(data as any).location || 'City'} ${(data as any).courseName || 'Course'}) - Career Path Section - Enroll Now`)}
               className="px-6 md:px-10 py-3 md:py-4 cursor-pointer bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold rounded-xl hover:shadow-2xl hover:shadow-cyan-500/30 transition-all duration-300 inline-flex items-center gap-2 text-sm md:text-base group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -320,6 +325,13 @@ const CareerPathSection = ({ data = mockData }) => {
             </motion.button>
           </div>
         </motion.div>
+
+        <EnrollModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          source={modalSource}
+          courseName={(data as any).courseName || "Course"}
+        />
       </div>
     </section>
   );

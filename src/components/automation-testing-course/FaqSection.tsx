@@ -1,31 +1,7 @@
 'use client';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import { useEffect, useId, useMemo, useState } from 'react';
-
-type Faq = { q: string; a: string; tag?: string };
-
-const RAW_FAQS: Faq[] = [
-    {
-        q: 'Do I need coding?',
-        a: 'Basic JavaScript or Python helps, but we start from first principles with clear examples, labs, and mentor feedback.',
-        tag: 'Getting Started',
-    },
-    {
-        q: 'Will I get ISTQB?',
-        a: 'Yes. We include ISTQB Foundation & Advanced prep, exam strategy, and practice tests mapped to the official syllabus.',
-        tag: 'Certification',
-    },
-    {
-        q: 'Duration?',
-        a: '30 hours of live, mentor-led classes plus lifetime access to recordings, handouts, and code repositories.',
-        tag: 'Schedule',
-    },
-    {
-        q: 'Placement?',
-        a: '100% job assistance: resume revamp, interview drills, LinkedIn optimization, and FAANG-style problem practice.',
-        tag: 'Careers',
-    },
-];
+import { AUTOMATION_TESTING_FAQS } from '@/data/automationTestingData';
 
 export default function FaqSection() {
     const [open, setOpen] = useState<number | null>(0);
@@ -34,15 +10,15 @@ export default function FaqSection() {
 
     void setQuery;
 
-    // simple client-side search (title + answer + tag)
+    // simple client-side search (title + answer + category)
     const faqs = useMemo(() => {
         const q = query.trim().toLowerCase();
-        if (!q) return RAW_FAQS;
-        return RAW_FAQS.filter(
+        if (!q) return AUTOMATION_TESTING_FAQS;
+        return AUTOMATION_TESTING_FAQS.filter(
             f =>
-                f.q.toLowerCase().includes(q) ||
-                f.a.toLowerCase().includes(q) ||
-                (f.tag && f.tag.toLowerCase().includes(q))
+                f.question.toLowerCase().includes(q) ||
+                f.answer.toLowerCase().includes(q) ||
+                (f.category && f.category.toLowerCase().includes(q))
         );
     }, [query]);
 
@@ -64,7 +40,7 @@ export default function FaqSection() {
         <section
             id="faq"
             aria-labelledby={`${sectionId}-heading`}
-            className="relative py-8 md:py-14 bg-white"
+            className="relative py-10 bg-white"
         >
             {/* subtle frame */}
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -97,7 +73,7 @@ export default function FaqSection() {
 
                         return (
                             <div
-                                key={faq.q}
+                                key={faq.question}
                                 className={[
                                     'rounded-2xl border transition',
                                     a.wrap,
@@ -125,10 +101,10 @@ export default function FaqSection() {
                                         <div className="min-w-0">
                                             <div className="flex items-center gap-2">
                                                 <HelpCircle className={`h-5 w-5 flex-shrink-0 ${a.ink}`} />
-                                                <span className={`truncate font-semibold ${a.ink}`}>{faq.q}</span>
-                                                {faq.tag && (
+                                                <span className={`truncate font-semibold ${a.ink}`}>{faq.question}</span>
+                                                {faq.category && (
                                                     <span className={`ml-2 hidden sm:inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold ${a.chip}`}>
-                                                        {faq.tag}
+                                                        {faq.category}
                                                     </span>
                                                 )}
                                             </div>
@@ -157,7 +133,7 @@ export default function FaqSection() {
                                 >
                                     <div className="overflow-hidden">
                                         <div className="px-5 sm:px-6 pb-5 text-slate-700 text-sm leading-relaxed">
-                                            {faq.a}
+                                            {faq.answer}
                                         </div>
                                     </div>
                                 </div>

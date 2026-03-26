@@ -74,12 +74,12 @@ export default function ServicesGridSection() {
                     href={`/services/${service.slug}`}
                     className="block mt-auto"
                   >
-                    <button
+                    <span
                       className={[
                         "relative w-full overflow-hidden rounded-2xl",
                         "flex items-center justify-center gap-2",
                         `bg-gradient-to-r ${service.color} text-white`,
-                        "px-4 py-3 sm:px-6 sm:py-3 min-h[44px] sm:min-h-[44px]",
+                        "px-4 py-3 sm:px-6 sm:py-3 min-h-[44px] sm:min-h-[44px]",
                         "text-sm sm:text-base font-semibold leading-tight sm:leading-6",
                         "shadow-lg transition-all duration-300 hover:shadow-xl focus:outline-none",
                         "focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2",
@@ -97,7 +97,7 @@ export default function ServicesGridSection() {
                             "linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent)",
                         }}
                       />
-                    </button>
+                    </span>
                   </Link>
                 </div>
               </article>

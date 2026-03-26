@@ -1,10 +1,8 @@
-// components/sections/StatsSection.tsx
-// Client component — clean, modern, responsive stats with subtle futuristic accents
-// (Comprehensive DS & AI edition) + scroll-triggered count-up on first reveal.
-
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import { Download } from "lucide-react";
 
 /** ---------- Types ---------- */
 type Stat = {
@@ -112,6 +110,8 @@ export default function StatsSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [hasRevealed, setHasRevealed] = useState(false);
   const [values, setValues] = useState<number[]>(() => STATS.map(() => 0));
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Comprehensive Data Science and AI - Master Program";
 
   const seoKeywords =
     "comprehensive data science and ai course, machine learning training india, data science jobs, fresher salary ds ml, ai market growth, 255 hour data science program, mentor led projects";
@@ -166,7 +166,7 @@ export default function StatsSection() {
       ref={sectionRef}
       id="comprehensive-dsai-stats"
       aria-labelledby="dsai-stats-heading"
-      className="relative py-4 xl:py-12 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop (fine grid + soft indigo glow; no heavy gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -255,11 +255,27 @@ export default function StatsSection() {
             Build a <strong>recruiter-ready portfolio</strong> with dashboards, models, and pipelines-imed at{" "}
             <strong>Data Analyst</strong>, <strong>Data Scientist</strong>, and <strong>ML Engineer</strong> roles.
           </p>
+          <div className="mt-4 flex justify-center">
+            <button
+              onClick={() => setIsSyllabusOpen(true)}
+              className="inline-flex items-center justify-center cursor-pointer rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+            >
+              <Download className="mr-2 h-4 w-4" />
+              Download Syllabus (PDF)
+            </button>
+          </div>
           <p className="mt-2 text-[11px] text-slate-500">
             *Figures are indicative and vary by location, skills, and industry.
           </p>
         </div>
       </div>
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Comprehensive Data Science & AI - Stats Section - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 }

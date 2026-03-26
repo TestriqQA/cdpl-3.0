@@ -4,36 +4,12 @@ import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Briefcase, Building2, Calendar, MapPin } from "lucide-react";
 import { JobsCareersJobCardSection } from "./JobsCareersJobCardSection";
-
-// Define Job type locally to avoid import issues
-type Job = {
-  id: string;
-  title: string;
-  team:
-    | "Engineering"
-    | "Data"
-    | "Product"
-    | "Growth"
-    | "Student Success"
-    | "Operations";
-  location: "Bengaluru" | "Pune" | "Remote (India)" | "Hybrid (Bengaluru)";
-  type: "Full-time" | "Contract" | "Internship";
-  experience: "0–1 yrs" | "1–3 yrs" | "3–5 yrs" | "5–8 yrs" | "8+ yrs";
-  summary: string;
-  responsibilities: string[];
-  requirements: string[];
-  applyEmail?: string;
-  applyLink?: string;
-};
+import { SanityJob } from "@/sanity/types";
 
 
-function norm(s: string) { return s.toLowerCase(); }
-function formatLoc(iso?: string) {
-  return iso ? new Date(iso).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }) : "";
-}
-void norm; void formatLoc;
 
-export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
+
+export default function JobsCareersJobsGridSection({ jobs }: { jobs: SanityJob[] }) {
   const [isLg, setIsLg] = useState(false);
   useEffect(() => {
     const mql = window.matchMedia("(min-width: 1024px)");
@@ -67,7 +43,7 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
   const showDetail = isLg || !!selectedId;
 
   return (
-    <>
+    <div>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
         {/* LEFT: list */}
         {showList && (
@@ -88,9 +64,17 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
                       exit={{ opacity: 0, y: 6 }}
                       transition={{ duration: 0.2, ease: "easeOut" }}
                     >
-                      <button
+                      <div
+                        role="button"
+                        tabIndex={0}
                         onClick={() => setSelectedId(job.id)}
-                        className={`group grid w-full grid-cols-[auto,1fr] gap-3 p-4 text-left transition ${active ? "bg-orange-50/40" : "hover:bg-slate-50 focus:bg-slate-50"}`}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setSelectedId(job.id);
+                          }
+                        }}
+                        className={`group grid w-full grid-cols-[auto,1fr] gap-3 p-4 text-left transition cursor-pointer ${active ? "bg-orange-50/40" : "hover:bg-slate-50 focus:bg-slate-50"}`}
                       >
                         <div
                           className="grid h-10 w-10 shrink-0 place-items-center rounded-xl"
@@ -103,7 +87,7 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
                           <div className="flex items-start justify-between gap-2">
                             <h3 className="truncate text-[15px] font-extrabold leading-tight text-slate-900">{job.title}</h3>
                             {active && (
-                              <span className="shrink-0 rounded-full border border-orange-200 bg-orange-50 px-2 py-0.5 text-[10px] font-semibold text-orange-700">
+                              <span className="shrink-0 rounded-full border border-orange-200 bg-orange-50 px-2 py-0.5 text-[10px] font-semibold text-brand">
                                 Selected
                               </span>
                             )}
@@ -118,10 +102,10 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
                           </p>
 
                           {job.summary ? (
-                            <p className="mt-2 line-clamp-2 text-[12.5px] leading-relaxed text-slate-700">{job.summary}</p>
+                            <div className="mt-2 line-clamp-2 text-[12.5px] leading-relaxed text-slate-700">{job.summary}</div>
                           ) : null}
                         </div>
-                      </button>
+                      </div>
                     </motion.li>
                   );
                 })}
@@ -134,8 +118,8 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
               ) : canLoad ? (
                 <button
                   onClick={() => setVisible((v) => Math.min(v + 12, sorted.length))}
-                  className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-orange-300"
-                  style={{ backgroundColor: "var(--color-brand, #ff8c00)" }}
+                  className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#ff8c00]"
+                  style={{ backgroundColor: "#ff8c00" }}
                 >
                   Load more <ArrowRight className="h-4 w-4" />
                 </button>
@@ -202,6 +186,6 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: Job[] }) {
         .nice-scroll::-webkit-scrollbar-button { display: none !important; width:0 !important; height:0 !important; }
         .nice-scroll::-webkit-scrollbar-corner { background: transparent; }
       `}</style>
-    </>
+    </div>
   );
 }

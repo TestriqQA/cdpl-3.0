@@ -1,32 +1,23 @@
-// app/mentors/page.tsx
-import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { generateSEO } from "@/lib/seo";
+import {
+  generateBreadcrumbSchema,
+  generateCollectionPageSchema,
+  generatePersonSchema
+} from "@/lib/schema-generators";
+import { MENTORS } from "@/lib/mentorShared";
+import JsonLd from "@/components/JsonLd";
 
-// ============================================================================
-// SEO METADATA - Optimized for Mentors Page
-// ============================================================================
-export const metadata: Metadata = generateSEO({
-  title: "Mentors - 1:1 Career Mentorship & Guidance | CDPL",
-  description: "Get personalized 1:1 mentorship from industry experts at CDPL. Our mentors guide learners in QA, Data Science, Product Management, and Engineering with resume reviews, interview prep, and career support. 20+ years combined experience from top companies.",
-  keywords: [
-    "CDPL mentors",
-    "career mentorship",
-    "1:1 mentoring",
-    "QA mentors",
-    "data science mentors",
-    "product management mentors",
-    "engineering mentors",
-    "interview preparation",
-    "resume review",
-    "career guidance",
-    "industry expert mentors",
-    "tech career mentorship",
-  ],
+import { generateStaticPageMetadata } from "@/lib/metadata-generator";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = generateStaticPageMetadata({
+  title: "Our Mentors | Industry Experts from Top Tech Companies",
+  description: "Meet our mentors and industry experts who guide you through your learning journey. Learn from professionals working at top tech companies.",
   url: "/mentors",
-  image: "og-images/og-image-mentors.webp",
-  imageAlt: "CDPL Mentors - 1:1 Career Mentorship & Guidance",
+  keywords: ["mentors", "industry experts", "tech mentors", "career guidance", "placement support"],
 });
+
+// ... (metadata export remains same)
 
 // ---------- Small, reusable loading UI ----------
 function SectionLoader({ label = "Loading..." }: { label?: string }) {
@@ -38,14 +29,11 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 // ---------- Dynamic sections (SSR enabled like your example) ----------
-const MentorHeroSection = dynamic(
-  () => import("@/components/sections/MentorHeroSection"),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading hero..." />,
-  }
-);
+// ---------- Static sections (Critical for LCP/CLS) ----------
+import MentorHeroSection from "@/components/sections/MentorHeroSection";
+import MentorsImpactSection from "@/components/sections/MentorsImpactSection";
 
+// ---------- Dynamic sections (Below fold) ----------
 const MentorProcessFlowSection = dynamic(
   () => import("@/components/sections/MentorProcessFlowSection"),
   {
@@ -62,14 +50,6 @@ const MentorHelpCTASection = dynamic(
   }
 );
 
-const MentorsImpactSection = dynamic(
-  () => import("@/components/sections/MentorsImpactSection"),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading impact..." />,
-  }
-);
-
 const MentorOutcomesSection = dynamic(
   () => import("@/components/sections/MentorOutcomesSection"),
   {
@@ -80,28 +60,37 @@ const MentorOutcomesSection = dynamic(
 
 
 
-
 // ============================================================================
 // MENTORS PAGE COMPONENT
 // ============================================================================
 export default function MentorsPage() {
+  // Generate Schemas
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Mentors", url: "/mentors" },
+  ]);
 
+  const collectionPageSchema = generateCollectionPageSchema({
+    name: "CDPL Mentors",
+    description: "Meet the mentors guiding learners across QA, Data, Product, and Engineering",
+    url: "/mentors",
+    hasPart: MENTORS.map(mentor => generatePersonSchema({
+      name: mentor.name,
+      jobTitle: mentor.title,
+      description: mentor.bio,
+      image: mentor.avatar,
+    }))
+  });
 
   return (
     <>
-
+      <JsonLd schema={breadcrumbSchema} id="mentors-breadcrumb" />
+      <JsonLd schema={collectionPageSchema} id="mentors-collection" />
 
       {/* Main Content - Semantic HTML Structure */}
-      <main 
+      <main
         className="relative bg-white text-slate-900"
-        itemScope 
-        itemType="https://schema.org/CollectionPage"
       >
-        {/* Hidden metadata for schema.org */}
-        <meta itemProp="name" content="CDPL Mentors" />
-        <meta itemProp="description" content="Meet the mentors guiding learners across QA, Data, Product, and Engineering" />
-        <meta itemProp="url" content="https://www.cinutedigital.com/mentors" />
-
         <MentorHeroSection />
         <MentorsImpactSection />
         <MentorOutcomesSection />

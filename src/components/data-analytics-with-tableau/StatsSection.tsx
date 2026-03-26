@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import CareerSessionModal from "../CareerSessionModal";
 
 
 const statsData = [
@@ -8,7 +10,7 @@ const statsData = [
         description: "From 2020 to 2030",
         icon: "📈",
         bgColor: "bg-orange-100",
-        textColor: "text-orange-600",
+        textColor: "text-gray-950",
     },
     {
         value: "101,000+",
@@ -16,7 +18,7 @@ const statsData = [
         description: "In India",
         icon: "💼",
         bgColor: "bg-blue-100",
-        textColor: "text-blue-600",
+        textColor: "text-gray-950",
     },
     {
         value: "4 LPA",
@@ -24,7 +26,7 @@ const statsData = [
         description: "Tableau Developer Freshers",
         icon: "💰",
         bgColor: "bg-green-100",
-        textColor: "text-green-600",
+        textColor: "text-gray-950",
     },
     {
         value: "75%",
@@ -32,7 +34,7 @@ const statsData = [
         description: "Among professionals",
         icon: "😊",
         bgColor: "bg-purple-100",
-        textColor: "text-purple-600",
+        textColor: "text-gray-950",
     },
     {
         value: "32%",
@@ -40,15 +42,18 @@ const statsData = [
         description: "In global market",
         icon: "🌍",
         bgColor: "bg-pink-100",
-        textColor: "text-pink-600",
+        textColor: "text-gray-950",
     },
 ];
 
 
 
 export default function StatsSection() {
+    const [isCareerSessionOpen, setIsCareerSessionOpen] = useState(false);
+    const courseName = "Data Analytics & Visualization with Tableau";
+
     return (
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-50 to-white">
+        <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-50 to-white">
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-16">
@@ -95,13 +100,28 @@ export default function StatsSection() {
                     <p className="text-gray-600 text-lg mb-6">
                         These statistics show the incredible demand for Tableau professionals in today&apos;s job market.
                     </p>
-                    <div className="inline-block bg-orange-50 border-2 border-orange-200 rounded-lg p-6">
+                    <div className="inline-block bg-orange-50 border-2 border-orange-200 rounded-lg p-6 mb-6">
                         <p className="text-gray-700">
-                            <span className="font-bold text-orange-600">Join 500+ successful graduates</span> who have built rewarding careers in data analytics
+                            <span className="font-bold text-gray-950">Join 500+ successful graduates</span> who have built rewarding careers in data analytics
                         </p>
+                    </div>
+                    <div>
+                        <button
+                            onClick={() => setIsCareerSessionOpen(true)}
+                            className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        >
+                            Book a Free Career Session
+                        </button>
                     </div>
                 </div>
             </div>
+
+            <CareerSessionModal
+                isOpen={isCareerSessionOpen}
+                onClose={() => setIsCareerSessionOpen(false)}
+                source="Tableau Course Page - Stats Section - Career Session"
+                courseName={courseName}
+            />
         </section>
     );
 }

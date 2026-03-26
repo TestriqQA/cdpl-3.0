@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion } from 'framer-motion';
 import { CheckCircle2, User, Mail } from 'lucide-react';
 import dynamic from 'next/dynamic';
@@ -8,8 +9,12 @@ import dynamic from 'next/dynamic';
 // Import react-phone-number-input for professional phone input
 // Use dynamic import to ensure it's only loaded on the client side
 const PhoneInput = dynamic(() => import('react-phone-number-input'), { ssr: false });
-import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+
+import {
+  validateFullName as validateFullNameLib,
+  validateEmail as validateEmailLib,
+  validatePhone as validatePhoneLib
+} from '@/lib/formValidation';
 
 // Define the props for the ContactForm component
 interface ContactFormProps {
@@ -50,84 +55,36 @@ const ContactForm: React.FC<ContactFormProps> = ({
   const [emailError, setEmailError] = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
 
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useFormErrorReset(formRef, [
+    setFullNameError,
+    setEmailError,
+    setPhoneError
+  ]);
+
   // Loading and submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Validation functions
+  // Imported from formValidation.ts - simplified local usage
   const validateFullName = useCallback((name: string) => {
-    if (!name) {
-      setFullNameError('Full Name is required.');
-      return false;
-    }
-    if (name.trim().length < 3) {
-      setFullNameError('Full Name must be at least 3 characters.');
-      return false;
-    }
-    setFullNameError(null);
-    return true;
+    const error = validateFullNameLib(name);
+    setFullNameError(error);
+    return error === null;
   }, []);
 
   const validateEmail = useCallback((email: string) => {
-    if (!email) {
-      setEmailError('Email Address is required.');
-      return false;
-    }
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setEmailError('Invalid email format.');
-      return false;
-    }
-    setEmailError(null);
-    return true;
+    const error = validateEmailLib(email);
+    setEmailError(error);
+    return error === null;
   }, []);
 
   const validatePhoneNumber = useCallback((phone: string | undefined) => {
-    if (!phone) {
-      setPhoneError('Mobile Number is required.');
-      return false;
-    }
-    // Use libphonenumber-js for robust validation
-    if (!isValidPhoneNumber(phone)) {
-      setPhoneError('Invalid phone number format.');
-      return false;
-    }
-
-    const digits = phone.replace(/\D/g, '');
-
-    // Check for repeating digits
-    if (/^(\d)\1+$/.test(digits)) {
-      setPhoneError('Phone number cannot consist of repeating digits.');
-      return false;
-    }
-
-    // Check for sequential digits
-    const isSequential = (num: string) => {
-      for (let i = 0; i < num.length - 2; i++) {
-        const n1 = parseInt(num[i]);
-        const n2 = parseInt(num[i + 1]);
-        const n3 = parseInt(num[i + 2]);
-        if (
-          (n2 === n1 + 1 && n3 === n2 + 1) ||
-          (n2 === n1 - 1 && n3 === n2 - 1)
-        ) {
-          return true;
-        }
-      }
-      return false;
-    };
-    if (isSequential(digits)) {
-      setPhoneError('Phone number cannot consist of sequential digits.');
-      return false;
-    }
-
-    // Check for all zeros
-    if (/^0+$/.test(digits)) {
-      setPhoneError('Phone number cannot be all zeros.');
-      return false;
-    }
-
-    setPhoneError(null);
-    return true;
+    const error = validatePhoneLib(phone);
+    setPhoneError(error);
+    return error === null;
   }, []);
 
   // Handle input changes for text fields
@@ -138,7 +95,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       [name]: value
     }));
 
-    // Real-time validation (kept as per original Hero section logic)
+    // Real-time validation
     if (name === 'fullName') validateFullName(value);
     if (name === 'email') validateEmail(value);
   };
@@ -214,7 +171,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       </p>
       <button
         onClick={() => setIsSubmitted(false)}
-        className="inline-flex items-center px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-lg shadow-lg transition-all duration-300"
+        className="inline-flex items-center px-6 py-3 bg-brand hover:bg-brand text-white font-bold rounded-lg shadow-lg transition-all duration-300"
       >
         {successButtonText}
       </button>
@@ -226,21 +183,21 @@ const ContactForm: React.FC<ContactFormProps> = ({
     <form onSubmit={handleSubmit} className="space-y-4">
       {/* Full Name Input */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="block text-sm font-medium text-gray-700 mb-1 text-left">
           Full Name *
         </label>
         <div className="relative">
           <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <input
             type="text"
+            maxLength={35}
             name="fullName"
             value={formData.fullName}
             onChange={handleInputChange}
             onBlur={() => validateFullName(formData.fullName)}
             required
-            className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${
-              fullNameError ? 'border-red-500' : 'border-gray-300'
-            }`}
+            className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${fullNameError ? 'border-red-500' : 'border-gray-300'
+              }`}
             placeholder="Enter your full name"
             style={{ color: '#1e293b' }}
           />
@@ -252,7 +209,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
       {/* Email Input */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="block text-sm font-medium text-gray-700 mb-1 text-left">
           Email Address *
         </label>
         <div className="relative">
@@ -264,9 +221,8 @@ const ContactForm: React.FC<ContactFormProps> = ({
             onChange={handleInputChange}
             onBlur={() => validateEmail(formData.email)}
             required
-            className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${
-              emailError ? 'border-red-500' : 'border-gray-300'
-            }`}
+            className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${emailError ? 'border-red-500' : 'border-gray-300'
+              }`}
             placeholder="Enter your email address"
             style={{ color: '#1e293b' }}
           />
@@ -278,19 +234,19 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
       {/* Phone Input */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="block text-sm font-medium text-gray-700 mb-1 text-left">
           Mobile Number *
         </label>
         <div className="relative">
           <PhoneInput
             international
+            limitMaxLength={true}
             defaultCountry="IN"
             value={formData.phone}
             onChange={handlePhoneChange}
             onBlur={() => validatePhoneNumber(formData.phone)}
-            className={`phone-input-container ${
-              phoneError ? 'border-red-500' : ''
-            }`}
+            className={`phone-input-container ${phoneError ? 'border-red-500' : ''
+              }`}
             placeholder="Enter phone number"
           />
         </div>
@@ -318,7 +274,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
   );
 
   return (
-    <>
+    <div ref={formRef}>
       {/* Form Header - Catchy and Actionable */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">
@@ -329,7 +285,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             <span className="text-xs font-bold text-white">FREE</span>
           </div>
         </div>
-        <p className="text-sm font-semibold text-orange-600">
+        <p className="text-sm font-semibold text-brand">
           {isSubmitted ? successSubHeaderText : subHeaderText}
         </p>
         <p className="text-xs text-slate-600 mt-1">
@@ -338,7 +294,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       </div>
 
       {isSubmitted ? <SuccessMessage /> : <FormFields />}
-    </>
+    </div>
   );
 };
 

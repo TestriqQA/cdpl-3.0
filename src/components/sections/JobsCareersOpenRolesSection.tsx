@@ -3,28 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { ChevronsUpDown, Check, X } from "lucide-react";
+import { SanityJob } from "@/sanity/types";
 
-
-// Define Job type locally to avoid import issues
-type Job = {
-  id: string;
-  title: string;
-  team:
-    | "Engineering"
-    | "Data"
-    | "Product"
-    | "Growth"
-    | "Student Success"
-    | "Operations";
-  location: "Bengaluru" | "Pune" | "Remote (India)" | "Hybrid (Bengaluru)";
-  type: "Full-time" | "Contract" | "Internship";
-  experience: "0–1 yrs" | "1–3 yrs" | "3–5 yrs" | "5–8 yrs" | "8+ yrs";
-  summary: string;
-  responsibilities: string[];
-  requirements: string[];
-  applyEmail?: string;
-  applyLink?: string;
-};
 
 
 
@@ -212,7 +192,7 @@ function StyledSelect({
 
 /* --------------------------- Open Roles Section --------------------------- */
 
-export default function JobsCareersOpenRolesSection({ jobs }: { jobs: Job[] }) {
+export default function JobsCareersOpenRolesSection({ jobs }: { jobs: SanityJob[] }) {
   const teams = useMemo(
     () => ["All", ...Array.from(new Set(jobs.map((j) => j.team)))],
     [jobs]

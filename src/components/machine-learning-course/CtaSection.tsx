@@ -1,9 +1,12 @@
-// components/sections/CtaSection.tsx
-// Server component — clean, modern CTA with subtle futuristic accents and SEO.
+"use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import EnrollModal from "@/components/EnrollModal";
 
 export default function CtaSection() {
+  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+
   const seoKeywords =
     "enroll data science course, python machine learning certification, data analyst placement assistance, data science training india, job ready ml program, global certificates data science";
 
@@ -11,7 +14,7 @@ export default function CtaSection() {
     <section
       id="enroll-now"
       aria-labelledby="cta-heading"
-      className="relative py-8 md:py-14 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop: fine grid + soft glow */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -98,20 +101,22 @@ export default function CtaSection() {
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <path
                 d="m22 6-10 7L2 6"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
             Email Us
           </Link>
 
-          <Link
-            href="contact-us"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-600 bg-emerald-600 px-5 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.2)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-emerald-300 sm:w-auto"
+          <button
+            onClick={() => setIsEnrollModalOpen(true)}
+            className="inline-flex w-full items-center justify-center gap-2 cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-5 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.2)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-300 sm:w-auto"
             aria-label="Apply now for the Data Science program"
           >
             {/* Rocket icon */}
@@ -124,7 +129,7 @@ export default function CtaSection() {
               />
             </svg>
             Apply Now
-          </Link>
+          </button>
         </div>
 
         {/* Micro trust note */}
@@ -146,6 +151,13 @@ export default function CtaSection() {
           </Link>
         </address>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollModalOpen}
+        onClose={() => setIsEnrollModalOpen(false)}
+        courseName="Machine Learning and Data Science with Python"
+        source="Machine Learning Course Page - CTA Section - Apply Now"
+      />
 
     </section>
   );

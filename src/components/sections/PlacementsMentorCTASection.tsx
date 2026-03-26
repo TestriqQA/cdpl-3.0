@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { ArrowRight, ShieldCheck } from "lucide-react";
+import { useState } from "react";
+import AdvisorModal from "@/components/ui/AdvisorModal";
 
 type Props = {
     /**
@@ -14,6 +15,8 @@ type Props = {
 };
 
 export default function PlacementsMentorCTASection({ contained = false }: Props) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const Wrapper = ({ children }: { children: React.ReactNode }) =>
         contained ? (
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{children}</div>
@@ -52,17 +55,23 @@ export default function PlacementsMentorCTASection({ contained = false }: Props)
 
                             {/* Right */}
                             <div className="flex lg:justify-end">
-                                <Link
-                                    href="/contact-us"
-                                    className="inline-flex items-center gap-2 rounded-xl bg-[#ff8c00] px-5 py-3 text-white transition-transform duration-200 hover:opacity-95 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#ff8c00]"
+                                <button
+                                    onClick={() => setIsModalOpen(true)}
+                                    className="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 text-white transition-opacity duration-200 hover:opacity-95 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-400 cursor-pointer"
                                 >
                                     Apply Now <ArrowRight className="h-4 w-4" />
-                                </Link>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </Wrapper>
+
+            <AdvisorModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                source="Placements Page - Mentor CTA Section"
+            />
         </section>
     );
 }

@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, TrendingUp, CheckCircle2, Download } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+
+import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
 // --- Types ---
 export interface DownloadFormValues {
@@ -15,6 +16,8 @@ export interface DownloadFormValues {
 interface DownloadFormContentProps {
   courseTitle: string;
   syllabusLink?: string;
+  source?: string;
+  location?: string;
   onSubmit: (data: DownloadFormValues) => void;
   onClose: () => void;
 }
@@ -24,15 +27,15 @@ export interface DownloadFormButtonProps {
   syllabusLink?: string;
   buttonText: React.ReactNode;
   buttonClassName: string;
+  source?: string;
+  location?: string;
   onSubmit: (data: DownloadFormValues) => void;
 }
 
 // --- Validation Logic Extracted from HomeHeroSection.tsx ---
 
 const validateFullName = (name: string): string | null => {
-  if (!name) return 'Full Name is required.';
-  if (name.trim().length < 3) return 'Full Name must be at least 3 characters.';
-  return null;
+  return validateFullNameLib(name);
 };
 
 const validateEmail = (email: string): string | null => {
@@ -42,39 +45,11 @@ const validateEmail = (email: string): string | null => {
 };
 
 const validatePhoneNumber = (phone: string | undefined): string | null => {
-  if (!phone) return 'Mobile Number is required.';
-  if (!isValidPhoneNumber(phone)) return 'Invalid phone number format.';
-
-  const digits = phone.replace(/\D/g, '');
-
-  // Check for repeating digits
-  if (/^(\d)\1+$/.test(digits)) return 'Phone number cannot consist of repeating digits.';
-
-  // Check for sequential digits
-  const isSequential = (num: string) => {
-    for (let i = 0; i < num.length - 2; i++) {
-      const n1 = parseInt(num[i]);
-      const n2 = parseInt(num[i + 1]);
-      const n3 = parseInt(num[i + 2]);
-      if (
-        (n2 === n1 + 1 && n3 === n2 + 1) ||
-        (n2 === n1 - 1 && n3 === n2 - 1)
-      ) {
-        return true;
-      }
-    }
-    return false;
-  };
-  if (isSequential(digits)) return 'Phone number cannot consist of sequential digits.';
-
-  // Check for all zeros
-  if (/^0+$/.test(digits)) return 'Phone number cannot be all zeros.';
-
-  return null;
+  return validatePhone(phone);
 };
 
 // --- Reusable Form Component (Modal Content) ---
-const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, syllabusLink, onSubmit, onClose }) => {
+const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, syllabusLink, source, location, onSubmit, onClose }) => {
   const [formData, setFormData] = useState<DownloadFormValues>({
     fullName: '',
     email: '',
@@ -85,6 +60,12 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useFormErrorReset(formRef, [
+    () => setErrors({})
+  ]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -117,15 +98,18 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
       setSubmitError(null);
 
       try {
-        const response = await fetch('/api/download-brochure', {
+        const response = await fetch('/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             ...formData,
-            courseTitle,
+            type: 'syllabus',
+            source: source || `Home Page - ${courseTitle} - Download Syllabus Modal Form`,
+            courseName: courseTitle,
             syllabusLink,
+            location,
           }),
         });
 
@@ -145,7 +129,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
   };
 
   return (
-    <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8 w-full max-w-md mx-auto">
+    <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8 w-full max-w-md mx-auto" ref={formRef}>
       {/* Close Button */}
       <button
         onClick={onClose}
@@ -157,7 +141,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
 
       {/* Form Header */}
       <div className="mb-6 text-center">
-        <Download className="h-8 w-8 text-orange-600 mx-auto mb-2" />
+        <Download className="h-8 w-8 text-brand mx-auto mb-2" />
         <h3 className="text-xl font-bold text-slate-900">
           Download Syllabus for <span className="text-blue-600">{courseTitle}</span>
         </h3>
@@ -203,19 +187,20 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
 
           {/* Full Name Input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1 text-left">
               Full Name *
             </label>
             <div className="relative">
               <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <input
                 type="text"
+                maxLength={35}
                 name="fullName"
                 value={formData.fullName}
                 onChange={handleInputChange}
                 onBlur={(e) => setErrors(prev => ({ ...prev, fullName: validateFullName(e.target.value) }))}
                 required
-                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${errors.fullName ? 'border-red-500' : 'border-gray-300'
+                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand focus:outline-none transition-all duration-300 ${errors.fullName ? 'border-red-500' : 'border-gray-300'
                   }`}
                 placeholder="Enter your full name"
                 style={{ color: '#1e293b' }}
@@ -228,7 +213,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
 
           {/* Email Input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1 text-left">
               Email Address *
             </label>
             <div className="relative">
@@ -240,7 +225,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
                 onChange={handleInputChange}
                 onBlur={(e) => setErrors(prev => ({ ...prev, email: validateEmail(e.target.value) }))}
                 required
-                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${errors.email ? 'border-red-500' : 'border-gray-300'
+                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand focus:outline-none transition-all duration-300 ${errors.email ? 'border-red-500' : 'border-gray-300'
                   }`}
                 placeholder="Enter your email address"
                 style={{ color: '#1e293b' }}
@@ -253,12 +238,13 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
 
           {/* Phone Input - with react-phone-number-input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1 text-left">
               Mobile Number *
             </label>
             <div className="relative">
               <PhoneInput
                 international
+                limitMaxLength={true}
                 defaultCountry="IN"
                 value={formData.phone}
                 onChange={handlePhoneChange}
@@ -277,7 +263,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3 px-6 bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full py-3 px-6 bg-gradient-to-r from-brand to-brand text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isSubmitting ? (
               <>
@@ -321,6 +307,8 @@ export const DownloadFormButton: React.FC<DownloadFormButtonProps> = ({
   syllabusLink,
   buttonText,
   buttonClassName,
+  source,
+  location,
   onSubmit,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -373,23 +361,27 @@ export const DownloadFormButton: React.FC<DownloadFormButtonProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"
+            className="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm overflow-y-auto"
           >
-            <motion.div
-              ref={modalRef}
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="relative"
-            >
-              <DownloadFormContent
-                courseTitle={courseTitle}
-                syllabusLink={syllabusLink}
-                onSubmit={handleFormSubmit}
-                onClose={closeModal}
-              />
-            </motion.div>
+            <div className="flex min-h-full items-center justify-center p-4">
+              <motion.div
+                ref={modalRef}
+                initial={{ scale: 0.9, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.9, y: 20 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                className="relative w-full max-w-md"
+              >
+                <DownloadFormContent
+                  courseTitle={courseTitle}
+                  syllabusLink={syllabusLink}
+                  source={source}
+                  location={location}
+                  onSubmit={handleFormSubmit}
+                  onClose={closeModal}
+                />
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

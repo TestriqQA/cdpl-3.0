@@ -1,7 +1,18 @@
 'use client';
 import { CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+const SyllabusDownloadModal = dynamic(() => import('@/components/SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
+const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+    return (
+        <div className="flex items-center justify-center py-16">
+            <p className="text-gray-500">{label}</p>
+        </div>
+    );
+}
 
 type Module = { title: string; topics: string[] };
 
@@ -87,10 +98,11 @@ const accents = [
 ];
 
 export default function CurriculumSection() {
-
+    const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
+    const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
 
     return (
-        <section id="curriculum" className="relative py-4 md:py-10 bg-white">
+        <section id="curriculum" className="relative py-10 bg-white">
             {/* Subtle top/bottom separators for a futuristic frame */}
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -165,19 +177,33 @@ export default function CurriculumSection() {
 
                 {/* Bottom mini-CTAs */}
                 <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-                    <Link
-                        href="contact-us"
-                        className="inline-flex items-center justify-center rounded-xl bg-sky-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-800 focus:outline-none focus:ring-4 focus:ring-sky-200"
+                    <button
+                        onClick={() => setIsCareerModalOpen(true)}
+                        className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-sky-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-800 focus:outline-none focus:ring-4 focus:ring-sky-200"
                     >
                         Book a Free Demo
-                    </Link>
+                    </button>
                     <button
-                        className="inline-flex items-center justify-center rounded-xl border-2 border-emerald-700 bg-white px-4 py-2 text-sm font-semibold text-emerald-800 shadow-sm transition hover:bg-emerald-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-emerald-200"
+                        onClick={() => setIsSyllabusModalOpen(true)}
+                        className="cursor-pointer inline-flex items-center justify-center rounded-xl border-2 border-emerald-700 bg-white px-4 py-2 text-sm font-semibold text-emerald-800 shadow-sm transition hover:bg-emerald-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-emerald-200"
                     >
                         Get Syllabus PDF
                     </button>
                 </div>
             </div>
+
+            <SyllabusDownloadModal
+                isOpen={isSyllabusModalOpen}
+                onClose={() => setIsSyllabusModalOpen(false)}
+                courseName="Advanced Automation Testing"
+                source="Advanced Automation Testing Course Page - Curriculum Section - Advanced Automation Testing - Download Syllabus"
+            />
+
+            <CareerSessionModal
+                isOpen={isCareerModalOpen}
+                onClose={() => setIsCareerModalOpen(false)}
+                source="Advanced Automation Testing Course Page - Curriculum Section - Book Free Demo"
+            />
 
         </section>
     );

@@ -2,8 +2,10 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 type Stat = {
+  // ... (keep Stat type)
   valueLabel: string;
   label: string;
   hint?: string;
@@ -19,6 +21,7 @@ type Stat = {
   };
 };
 
+// ... (keep STATS array)
 const STATS: Stat[] = [
   {
     valueLabel: "25%",
@@ -97,6 +100,7 @@ const STATS: Stat[] = [
   },
 ];
 
+// ... (keep useInView, formatNumber, CountUpValue)
 /** ---------- FIXED: accept nullable, generic Element refs ---------- */
 function useInView<T extends Element>(
   ref: React.RefObject<T | null>,
@@ -171,6 +175,8 @@ export default function StatsSection() {
   /** ---------- FIXED: ref typed as HTMLElement | null ---------- */
   const sectionRef = useRef<HTMLElement | null>(null);
   const inView = useInView(sectionRef);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Advanced Data Science and Machine Learning Masterclass";
 
   const seoKeywords =
     "advanced data science course, machine learning training, data analyst salary India, data science jobs, python ml program, ai career growth, ml engineer placement assistance";
@@ -181,26 +187,25 @@ export default function StatsSection() {
       ref={sectionRef}
       id="dsml-stats"
       aria-labelledby="dsml-stats-heading"
-      className="relative py-4 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
-      {/* Backdrop */}
+      {/* ... (keep background) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.035)_1px,transparent_1px)] bg-[size:28px_28px]" />
         <div className="absolute inset-x-0 top-0 h-[110px] bg-[radial-gradient(700px_140px_at_50%_0%,rgba(147,51,234,0.10),transparent_60%)]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ... (keep header and grid) */}
         <header className="mx-auto max-w-3xl text-center">
           <h2
             id="dsml-stats-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Why <span className="text-DS">Advanced Data Science & ML</span>?
+            Why Choose Our <span className="text-DS">Advanced Data Science</span> Masterclass?
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
-            Data Science fuels <strong>products, operations, and strategy</strong>. Build
-            <strong> Python</strong>/<strong>SQL</strong>/<strong>ML</strong> skills with mentor-led projects and
-            recruiter-ready outcomes.
+            Join Mumbai&apos;s most intensive <strong>data science training</strong>. We don&apos;t just teach algorithms; we build careers. With a <strong>4.8/5 rating</strong> and a legacy of <strong>5,000+ placements</strong>, we are the <strong>best institute for data science</strong> in Mumbai and Thane.
           </p>
           <p className="sr-only">{seoKeywords}</p>
         </header>
@@ -264,18 +269,32 @@ export default function StatsSection() {
           ))}
         </div>
 
-        <div className="mx-auto mt-8 max-w-4xl rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm">
-          <p className="text-sm text-slate-700">
-            Master <strong>dashboards</strong>, <strong>experimentation</strong>, and{" "}
-            <strong>ML pipelines</strong>-target roles like <strong>Data Analyst</strong>,{" "}
-            <strong>Data Scientist</strong>, and <strong>ML Engineer</strong>.
-          </p>
-          <p className="mt-2 text-[11px] text-slate-500">
-            *Figures are indicative and vary by location, skills, and industry.
-          </p>
+        <div className="mx-auto mt-8 max-w-4xl rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+          <div className="text-left">
+            <p className="text-sm text-slate-700">
+              Master <strong>dashboards</strong>, <strong>experimentation</strong>, and{" "}
+              <strong>ML pipelines</strong>-target roles like <strong>Data Analyst</strong>,{" "}
+              <strong>Data Scientist</strong>, and <strong>ML Engineer</strong>.
+            </p>
+            <p className="mt-2 text-[11px] text-slate-500">
+              *Figures are indicative and vary by location, skills, and industry.
+            </p>
+          </div>
+          <button
+            onClick={() => setIsSyllabusOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer px-6 py-2.5 text-sm font-semibold rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 transition-all shadow-sm hover:shadow-indigo-200 whitespace-nowrap"
+          >
+            Download Syllabus (PDF)
+          </button>
         </div>
       </div>
 
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Data Science Course Page - Stats Section - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 }

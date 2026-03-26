@@ -1,36 +1,37 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { WhyEnrollItem } from "./types";
-import { Zap, Code, Users, TrendingUp } from "lucide-react";
+import { Zap, Code, Users, TrendingUp, ArrowRight } from "lucide-react";
+import EnrollModal from "../EnrollModal";
 
 const whyEnrollData: WhyEnrollItem[] = [
   {
     id: 1,
     title: "Dual Expertise: BI + Big Data",
     description:
-      "Gain a rare and highly sought-after skill set, mastering both front-end data visualization (BI) and back-end data infrastructure (Big Data Engineering).",
+      "Become a versatile SQL Data Analyst with mastery in BI dashboards and Big Data Engineering pipelines.",
     icon: "Zap",
   },
   {
     id: 2,
     title: "Industry-Relevant Curriculum",
     description:
-      "Designed by industry veterans, our curriculum focuses on the tools and techniques actively used by top tech companies today, ensuring job readiness.",
+      "Better than theoretical IIT data analytics courses. Learn practical SQL for data analytics, Spark, and Cloud.",
     icon: "Code",
   },
   {
     id: 3,
     title: "Hands-On Project Portfolio",
     description:
-      "Build a robust portfolio of 10+ projects, including an end-to-end data pipeline, to showcase your capabilities to potential employers.",
+      "Build 10+ real-world projects. Essential for clearing Data Engineering Certifications and interviews.",
     icon: "Users",
   },
   {
     id: 4,
     title: "Accelerated Career Growth",
     description:
-      "Position yourself for high-paying roles like BI Analyst, Data Analyst, and Data Engineer, accelerating your career trajectory significantly.",
+      "Qualify for high-paying Software Engineer Jobs in Mumbai. Target roles: BI Data Analyst, Data Engineer.",
     icon: "TrendingUp",
   },
 ];
@@ -89,27 +90,25 @@ const enrichedWhy: EnrichedWhy[] = whyEnrollData.map((item) => {
 });
 
 const WhyEngineerProgram: React.FC = () => {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Data Analytics with BI & Big Data Engineering Master Program";
+
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-10 bg-white">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header – content kept same, layout styled like reference */}
         <div className="mb-16 text-center md:mb-20">
-          <h2 className="text-sm font-semibold tracking-[0.2em] text-teal-600 uppercase">
-            The Competitive Edge
+          <h2 className="text-sm font-semibold tracking-[0.2em] text-[#0f766e] uppercase">
+            Why We Are The Best Institute for Data Analytics
           </h2>
           <h3 className="mt-2 text-3xl font-bold text-slate-900 md:text-4xl">
-            Why Choose This Master Program?
+            Master <span className="text-[#0f766e]">BI and Big Data Engineering</span> for 2026
           </h3>
           <p className="mx-auto mt-4 max-w-4xl text-lg text-slate-600">
-            We bridge the gap between data analysis and data engineering,
-            creating a full-stack data professional.
+            We bridge the gap between analysis and engineering. This Data Analytics Program Mumbai is ideal for those planning how to become a data analyst in India or a Big Data Engineer.
           </p>
           <p className="mx-auto mt-3 max-w-4xl text-sm text-slate-500">
-            This <strong>Data Analytics with BI and Big Data Engineering Master Program</strong>{" "}
-            is ideal for graduates, working professionals, and career switchers who want to
-            become <strong>job-ready BI Analysts, Data Analysts, and Data Engineers</strong> with
-            expertise in <strong>Business Intelligence tools, data pipelines, and scalable Big Data
-              platforms</strong>.
+            Whether you want IIT data analytics depth or practical data engineering certifications skills, our program covers it all. Perfect for aspiring SQL Data Analysts and BI Data Analysts.
           </p>
         </div>
 
@@ -124,7 +123,7 @@ const WhyEngineerProgram: React.FC = () => {
               >
                 {/* Icon Container */}
                 <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-lg bg-white/60 backdrop-blur-sm transition-transform group-hover:scale-110">
-                  <div className="text-teal-600">
+                  <div className="text-[#0f766e]">
                     <Icon className="h-8 w-8" aria-hidden="true" />
                   </div>
                 </div>
@@ -136,7 +135,7 @@ const WhyEngineerProgram: React.FC = () => {
 
                 {/* Highlight Badge (new SEO-friendly micro-copy) */}
                 <div className="mb-3 inline-block">
-                  <span className="rounded-full bg-teal-100/70 px-3 py-1 text-xs font-semibold text-teal-700">
+                  <span className="rounded-full bg-teal-100/70 px-3 py-1 text-xs font-semibold text-[#0f766e]">
                     {item.highlight}
                   </span>
                 </div>
@@ -157,15 +156,7 @@ const WhyEngineerProgram: React.FC = () => {
               Become a Full-Stack Data Professional in BI & Big Data
             </h3>
             <p className="mb-6 leading-relaxed text-slate-200">
-              Most courses focus only on{" "}
-              <strong>data analytics</strong> or only on{" "}
-              <strong>data engineering</strong>. This{" "}
-              <strong>Data Analytics with BI and Big Data Engineering Master Program</strong>{" "}
-              uniquely combines <strong>Business Intelligence dashboards, reporting, and data
-                visualization</strong> with <strong>Big Data infrastructure, ETL workflows, and
-                  scalable data pipelines</strong>. You don&apos;t just learn tools—you learn how to
-              design complete, end-to-end <strong>analytics solutions</strong> that employers need
-              today.
+              Most courses focus only on one aspect. This BI and Big Data Engineering program combines SQL for data analytics with ETL workflows. You don&apos;t just learn tools—you learn to design solutions.
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row">
@@ -176,9 +167,7 @@ const WhyEngineerProgram: React.FC = () => {
                     Full Career Stack: Analyst to Engineer
                   </p>
                   <p className="text-sm text-slate-300">
-                    Build capabilities for <strong>BI Analyst</strong>,{" "}
-                    <strong>Data Analyst</strong>, and <strong>Data Engineer</strong> roles with
-                    one integrated master program.
+                    Build capabilities for SQL Data Analyst and Data Engineer roles with one integrated master program.
                   </p>
                 </div>
               </div>
@@ -189,23 +178,36 @@ const WhyEngineerProgram: React.FC = () => {
                     Real Projects & Hiring-Focused Training
                   </p>
                   <p className="text-sm text-slate-300">
-                    Work on <strong>10+ hands-on projects</strong>, including end-to-end{" "}
-                    <strong>data pipelines, BI dashboards, and Big Data use cases</strong>, and
-                    showcase them in your portfolio for interviews.
+                    Work on 10+ hands-on projects, including end-to-end pipelines, matching the rigor of Data Analytics IIT courses.
                   </p>
                 </div>
               </div>
             </div>
 
             <p className="mt-5 text-xs text-slate-300 sm:text-sm">
-              Keywords: Data Analytics with BI and Big Data Engineering • Business Intelligence
-              and Data Engineering Master Program • BI Analyst and Data Engineer Course • End-to-End
-              Data Pipeline Training • Job-Oriented BI and Big Data Course • High-Paying Analytics
-              and Data Engineering Careers • Placement Support for BI & Big Data Roles.
+              Keywords: Data Analytics with BI and Big Data Engineering • Business Intelligence and Data Engineering Master Program • BI Analyst and Data Engineer Course • End-to-End Data Pipeline Training • Job-Oriented BI and Big Data Course • High-Paying Analytics and Data Engineering Careers • Placement Support for BI & Big Data Roles.
             </p>
           </div>
         </div>
+
+        {/* CTA */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0f766e] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-teal-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer"
+          >
+            Start Your Journey
+            <ArrowRight className="h-5 w-5" />
+          </button>
+        </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Data Engineering Course Page - Why Section - Start Journey"
+        courseName={courseName}
+      />
     </section>
   );
 };

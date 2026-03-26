@@ -10,7 +10,7 @@ export default function EventDetailsHighlightsSection({ event, fullWidth = false
   const ACCENTS = [
     { from: "#0ea5e9", to: "#06b6d4", ink: "#0c4a6e" }, // sky → cyan
     { from: "#10b981", to: "#22c55e", ink: "#065f46" }, // emerald → green
-    { from: "#f59e0b", to: "#f97316", ink: "#7c2d12" }, // amber → orange
+    { from: "#f59e0b", to: "#f97316", ink: "#ff8c00" }, // amber → orange
     { from: "#6366f1", to: "#8b5cf6", ink: "#3730a3" }, // indigo → violet
   ] as const;
 

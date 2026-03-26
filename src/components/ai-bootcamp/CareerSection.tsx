@@ -1,6 +1,8 @@
-import React, { ReactNode } from 'react';
-import { Briefcase, Users, TrendingUp, Award } from 'lucide-react';
-import Link from 'next/link';
+"use client";
+
+import React, { ReactNode, useState } from 'react';
+import { Briefcase, Users, TrendingUp, Award, ArrowRight } from 'lucide-react';
+import EnrollModal from "@/components/EnrollModal";
 
 interface CareerRole {
     title: string;
@@ -57,13 +59,16 @@ const hiringCompanies = [
 ];
 
 export default function CareerSection() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const courseName = "AI Bootcamp Course";
+
     return (
-        <section className="py-16 md:py-20 bg-white">
+        <section className="py-10 bg-white">
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-slate-900">
-                        Your <span className="text-orange-600">Digital Marketing Career Path</span>
+                        Your <span className="text-brand">Digital Marketing Career Path</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-3xl mx-auto">
                         Unlock high-demand careers in{" "}
@@ -74,8 +79,8 @@ export default function CareerSection() {
                     </p>
                     <p className="mt-3 text-sm md:text-base text-slate-500 max-w-3xl mx-auto">
                         This <strong>advanced digital marketing course</strong> helps you become job-ready for{" "}
-                        search engine optimization (SEO), Google Ads, Meta Ads, content marketing, email
-                        marketing, and marketing analytics roles across top brands and startups.
+                        <strong>search engine optimization (SEO), Google Ads, Meta Ads, content marketing, email
+                            marketing,</strong> and marketing analytics roles across top brands and startups.
                     </p>
                 </div>
 
@@ -192,11 +197,22 @@ export default function CareerSection() {
                         <strong>high-paying digital marketing career</strong> with hands-on projects, live campaigns,
                         and expert mentorship.
                     </p>
-                    <Link href="contact-us" className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-orange-600 text-white font-semibold text-base md:text-lg shadow-md hover:bg-orange-700 transition-colors">
+                    <button
+                        onClick={() => setIsEnrollOpen(true)}
+                        className="cursor-pointer inline-flex items-center justify-center px-8 py-3 rounded-full bg-brand text-white font-semibold text-base md:text-lg shadow-md hover:bg-brand transition-colors"
+                    >
                         Start Your Digital Marketing Career Journey
-                    </Link>
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                    </button>
                 </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="AI Bootcamp - Career Section"
+                courseName={courseName}
+            />
         </section>
     );
 }

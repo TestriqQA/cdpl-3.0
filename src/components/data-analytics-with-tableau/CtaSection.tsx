@@ -1,8 +1,16 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 export default function CtaSection() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+
+    const courseName = "Data Analytics & Visualization with Tableau";
+
     return (
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-slate-800 to-slate-900">
+        <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-slate-800 to-slate-900">
             <div className="max-w-4xl mx-auto text-center">
                 {/* Main Heading */}
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -18,24 +26,24 @@ export default function CtaSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
                     <div className="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
                         <div className="text-4xl mb-3">🎯</div>
-                        <h3 className="font-bold text-slate-900 mb-2">Industry-Ready Skills</h3>
-                        <p className="text-orange-500 text-sm">
+                        <h3 className="font-bold text-white mb-2">Industry-Ready Skills</h3>
+                        <p className="text-white text-sm">
                             Master in-demand Tableau skills valued by top companies
                         </p>
                     </div>
 
                     <div className="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
                         <div className="text-4xl mb-3">💼</div>
-                        <h3 className="font-bold text-slate-900 mb-2">Career Support</h3>
-                        <p className="text-orange-500 text-sm">
+                        <h3 className="font-bold text-white mb-2">Career Support</h3>
+                        <p className="text-white text-sm">
                             100% job assistance with placement in top companies
                         </p>
                     </div>
 
                     <div className="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
                         <div className="text-4xl mb-3">🏆</div>
-                        <h3 className="font-bold text-slate-900 mb-2">Global Certificate</h3>
-                        <p className="text-orange-500 text-sm">
+                        <h3 className="font-bold text-white mb-2">Global Certificate</h3>
+                        <p className="text-white text-sm">
                             Internationally recognized certification with QR validation
                         </p>
                     </div>
@@ -43,10 +51,16 @@ export default function CtaSection() {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                    <button className="bg-white cursor-pointer text-orange-600 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all text-lg">
+                    <button
+                        onClick={() => setIsEnrollOpen(true)}
+                        className="bg-white cursor-pointer text-brand font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all text-lg"
+                    >
                         Enroll Now & Get Started →
                     </button>
-                    <button className="border-2 border-white cursor-pointer text-white font-bold py-4 px-8 rounded-lg hover:bg-white hover:text-slate-900 hover:bg-opacity-10 transition-all text-lg">
+                    <button
+                        onClick={() => setIsSyllabusOpen(true)}
+                        className="border-2 border-white cursor-pointer text-white font-bold py-4 px-8 rounded-lg hover:bg-white hover:text-slate-900 hover:bg-opacity-10 transition-all text-lg"
+                    >
                         Download Free Syllabus
                     </button>
                 </div>
@@ -81,6 +95,19 @@ export default function CtaSection() {
                     </div>
                 </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Tableau Course Page - CTA Section - Enroll Now"
+                courseName={courseName}
+            />
+            <SyllabusDownloadModal
+                isOpen={isSyllabusOpen}
+                onClose={() => setIsSyllabusOpen(false)}
+                source="Tableau Course Page - CTA Section - Download Syllabus"
+                courseName={courseName}
+            />
         </section>
     );
 }

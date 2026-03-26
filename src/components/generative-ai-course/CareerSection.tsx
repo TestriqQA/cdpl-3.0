@@ -1,5 +1,8 @@
-// components/sections/CareerSection.tsx
-// Server component — clean, modern hiring brands section with subtle futuristic accents + SEO.
+"use client";
+
+import { useState } from "react";
+import EnrollModal from "@/components/EnrollModal";
+import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
 
 type Brand = {
   name: string;
@@ -8,14 +11,14 @@ type Brand = {
 };
 
 const BRANDS: Brand[] = [
-  { name: "TCS",        src: "/tcs-logo.png",        alt: "Tata Consultancy Services (TCS) logo" },
-  { name: "Infosys",    src: "/infosys-logo.png",    alt: "Infosys logo" },
-  { name: "Wipro",      src: "/wipro-logo.png",      alt: "Wipro logo" },
-  { name: "Cognizant",  src: "/cognizant-logo.png",  alt: "Cognizant logo" },
-  { name: "Accenture",  src: "/accenture-logo.png",  alt: "Accenture logo" },
-  { name: "Capgemini",  src: "/capgemini-logo.png",  alt: "Capgemini logo" },
-  { name: "HCLTech",    src: "/hcl-logo.png",        alt: "HCLTech logo" },
-  { name: "IBM",        src: "/ibm-logo.png",        alt: "IBM logo" },
+  { name: "TCS", src: "/tcs-logo.png", alt: "Tata Consultancy Services (TCS) logo" },
+  { name: "Infosys", src: "/infosys-logo.png", alt: "Infosys logo" },
+  { name: "Wipro", src: "/wipro-logo.png", alt: "Wipro logo" },
+  { name: "Cognizant", src: "/cognizant-logo.png", alt: "Cognizant logo" },
+  { name: "Accenture", src: "/accenture-logo.png", alt: "Accenture logo" },
+  { name: "Capgemini", src: "/capgemini-logo.png", alt: "Capgemini logo" },
+  { name: "HCLTech", src: "/hcl-logo.png", alt: "HCLTech logo" },
+  { name: "IBM", src: "/ibm-logo.png", alt: "IBM logo" },
 ];
 
 // Unique accent palette per card (no repeats)
@@ -31,6 +34,9 @@ const ACCENTS = [
 ];
 
 export default function CareerSection() {
+  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
+
   const seoKeywords =
     "ai jobs india, data science jobs, machine learning hiring companies, top companies hiring ai, fresher data analyst jobs, ml engineer roles india, analytics careers, generative ai jobs, python data science careers";
 
@@ -39,7 +45,7 @@ export default function CareerSection() {
     <section
       id="careers"
       aria-labelledby="career-heading"
-      className="relative py-4 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop (fine grid + soft glow; no loud gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -139,7 +145,37 @@ export default function CareerSection() {
         </div>
 
         <p className="mt-10 text-sm md:text-base text-slate-600">…and many more leading product & services companies.</p>
+
+        {/* CTA Buttons */}
+        <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <button
+            onClick={() => setIsEnrollModalOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-8 py-3 text-base font-semibold text-white shadow-lg transition hover:bg-[#6b21a8] hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-purple-200"
+          >
+            Apply for Placement Assistance
+          </button>
+          <button
+            onClick={() => setIsSyllabusModalOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-8 py-3 text-base font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-purple-200"
+          >
+            Download Syllabus
+          </button>
+        </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollModalOpen}
+        onClose={() => setIsEnrollModalOpen(false)}
+        courseName="Master Program in Deep Learning, NLP & Generative AI"
+        source="Generative AI Course Page - Career Section - Placement Assistance"
+      />
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusModalOpen}
+        onClose={() => setIsSyllabusModalOpen(false)}
+        courseName="Master Program in Deep Learning, NLP & Generative AI"
+        source="Generative AI Course Page - Career Section - Generative AI - Download Syllabus"
+      />
 
     </section>
   );

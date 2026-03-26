@@ -1,6 +1,5 @@
 // src/components/sections/LocationsServicesSection.tsx
 import { ShieldCheck, Database, BarChart3, Brain, Code2, Megaphone } from "lucide-react";
-import Link from "next/link";
 
 /**
  * LocationsServicesSection
@@ -31,7 +30,7 @@ const SERVICES: Service[] = [
         href: "/services/software-testing",
         colorFrom: "#FFE6BF",
         colorTo: "#FFF2DF",
-        ink: "#9a3412",
+        ink: "#ff8c00",
     },
     {
         id: "datascience",
@@ -185,34 +184,7 @@ export default function LocationsServicesSection() {
                                         </div>
                                     </div>
 
-                                    {/* Push CTA to bottom uniformly */}
-                                    <div className="mt-3 flex-1 sm:mt-4" />
 
-                                    <div className="pt-1.5 sm:pt-2">
-                                        {s.href ? (
-                                            <Link
-                                                href={s.href}
-                                                className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900 transition hover:opacity-80"
-                                                aria-label={`Explore ${s.title}`}
-                                            >
-                                                Explore {s.title}
-                                                <span
-                                                    className="inline-block h-1 w-1 rounded-full"
-                                                    style={{ background: BRAND }}
-                                                    aria-hidden="true"
-                                                />
-                                            </Link>
-                                        ) : (
-                                            <span className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900/80">
-                                                Learn more
-                                                <span
-                                                    className="inline-block h-1 w-1 rounded-full"
-                                                    style={{ background: BRAND }}
-                                                    aria-hidden="true"
-                                                />
-                                            </span>
-                                        )}
-                                    </div>
                                 </div>
                             </article>
                         );

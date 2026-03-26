@@ -131,7 +131,7 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-x-0 -top-10 mx-auto h-40 max-w-5xl blur-2xl"
                 style={{
-                    background: "radial-gradient(60% 60% at 50% 35%, rgba(255,140,0,0.12), rgba(255,140,0,0))",
+                    background: "radial-gradient(600px 300px at 50% 35%, rgba(194,65,12,0.12), rgba(194,65,12,0))",
                 }}
             />
 
@@ -293,7 +293,7 @@ function Avatar({ name, src }: { name: string; src?: string }) {
             <Image src={src} alt={`${name} avatar`} title={`${name} avatar`} width={160} height={120} className="object-cover rounded-full" />
         </div>
     ) : (
-        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-100 to-amber-100 text-sm font-semibold text-orange-700 ring-1 ring-slate-200">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-100 to-amber-100 text-sm font-semibold text-brand ring-1 ring-slate-200">
             {initials}
         </div>
     );

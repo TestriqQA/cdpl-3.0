@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 
 import { buildLocationsHierarchy } from "@/data/courseData/buildLocationsHierarchy";
-import { generateSEO } from "@/lib/seo";
+import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 
 // Types
 import type { CourseData } from "@/types/courseData";
@@ -41,7 +41,7 @@ const LocationsServicesSection = dynamic(
 // ============================================================================
 // ENHANCED METADATA FOR SEO
 // ============================================================================
-export const metadata: Metadata = generateSEO({
+export const metadata: Metadata = generateStaticPageMetadata({
   title: "Locations We Serve | Software Testing & Programming Courses in India & UAE - CDPL",
   description:
     "Explore CDPL training centers across India and the UAE. Find the nearest software testing, programming, and QA courses in Maharashtra, Karnataka, Delhi NCR, Dubai, Abu Dhabi, and more. 50+ cities served.",
@@ -67,7 +67,6 @@ export const metadata: Metadata = generateSEO({
   ],
   url: "/locations-we-serve",
   image: "/og-images/og-locations-we-serve.webp",
-  type: "website"
 });
 
 /* ------------------------------- Utilities ------------------------------- */
@@ -121,9 +120,9 @@ export default function LocationsWeServePage() {
         <meta itemProp="description" content="Explore CDPL training centers across India and the UAE in 50+ cities." />
 
         {/* SEO-friendly H1 - Hidden visually but available for SEO */}
-        <h1 className="sr-only">
+        <p className="sr-only">
           CDPL Locations We Serve - Software Testing & Programming Courses in India & UAE
-        </h1>
+        </p>
 
         {/* Page content */}
         <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">

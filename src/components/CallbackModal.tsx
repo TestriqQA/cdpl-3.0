@@ -8,9 +8,10 @@ import LeadForm from "./forms/ManualCourseLeadForm";
 interface CallbackModalProps {
     isOpen: boolean;
     onClose: () => void;
+    source?: string;
 }
 
-export default function CallbackModal({ isOpen, onClose }: CallbackModalProps) {
+export default function CallbackModal({ isOpen, onClose, source }: CallbackModalProps) {
     // Close on escape key
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
@@ -62,7 +63,7 @@ export default function CallbackModal({ isOpen, onClose }: CallbackModalProps) {
                             </button>
 
                             {/* Form Content */}
-                            <LeadForm variant="default" className="shadow-2xl border-0" />
+                            <LeadForm variant="default" className="shadow-2xl border-0" source={source} />
                         </motion.div>
                     </div>
                 </>

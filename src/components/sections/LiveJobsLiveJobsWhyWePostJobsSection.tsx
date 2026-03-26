@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { ShieldCheck, Users2, Rocket, Sparkles, ArrowRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 
@@ -80,11 +79,11 @@ const THEMES: Record<
     cardBg: "bg-orange-50",
     border: "border-orange-200",
     iconWrapBg: "bg-orange-100",
-    iconColor: "text-[#ff8c00]",
+    iconColor: "text-brand",
     titleColor: "text-slate-900",
     bodyColor: "text-slate-800",
     listBulletColor: "text-slate-800",
-    focusRing: "focus:ring-orange-300",
+    focusRing: "focus:ring-orange-400",
     detailsBtnBorder: "border-orange-200",
   },
   mentor: {
@@ -127,14 +126,14 @@ export default function JobsLiveJobsWhyWePostJobsSection() {
         />
         <div
           className="absolute left-1/2 top-[-12rem] h-[32rem] w-[32rem] -translate-x-1/2 rounded-full blur-3xl opacity-60"
-          style={{ background: "rgba(255,140,0,.12)" }}
+          style={{ background: "rgba(234,88,12,.12)" }}
         />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         {/* Eyebrow */}
         <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
-          <Sparkles className="h-3.5 w-3.5 text-orange-500" />
+          <Sparkles className="h-3.5 w-3.5 text-brand" />
           Why we post nearby jobs for CDPL students
         </p>
 
@@ -144,7 +143,7 @@ export default function JobsLiveJobsWhyWePostJobsSection() {
             id="why-cdpl-posts-jobs"
             className="text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl"
           >
-            Why CDPL posts <span className="text-[#ff8c00]">verified nearby jobs</span> for students
+            Why CDPL posts <span className="text-brand">verified nearby jobs</span> for students
           </h2>
           <p className="mt-3 text-lg text-slate-700">
             We make job search simpler: CDPL curates active roles across{" "}
@@ -159,7 +158,7 @@ export default function JobsLiveJobsWhyWePostJobsSection() {
         {/* KPIs (numbers have different colors per card) */}
         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {[
-            { v: "60+", l: "Expert mentors", cls: "text-orange-600" },
+            { v: "60+", l: "Expert mentors", cls: "text-brand" },
             { v: "5000+", l: "Learners guided", cls: "text-indigo-600" },
             { v: "50+", l: "Hiring partners", cls: "text-emerald-600" },
             { v: "4.9/5", l: "Avg. mentor rating", cls: "text-sky-600" },
@@ -168,7 +167,7 @@ export default function JobsLiveJobsWhyWePostJobsSection() {
               key={l}
               className="rounded-2xl border border-slate-200 bg-white p-4 text-center shadow-sm"
             >
-              <div className="mx-auto h-1 w-16 rounded-full bg-[#ff8c00]" />
+              <div className="mx-auto h-1 w-16 rounded-full bg-brand" />
               <p className={`mt-3 text-xl font-extrabold ${cls}`}>{v}</p>
               <p className="text-sm text-slate-600">{l}</p>
             </div>
@@ -176,19 +175,15 @@ export default function JobsLiveJobsWhyWePostJobsSection() {
         </div>
 
         {/* Pillars */}
-        <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 items-start">
           {PILLARS.map(({ key, title, desc, points, Icon }) => {
             const isOpen = !!open[key];
             const t = THEMES[key];
 
             return (
-              <motion.li
+              <div
                 key={key}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                className={`relative overflow-hidden rounded-2xl border ${t.border} ${t.cardBg} p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-within:-translate-y-0.5`}
+                className={`relative overflow-hidden rounded-2xl border ${t.border} ${t.cardBg} p-5 shadow-sm transition hover:-translate-y-0.5`}
               >
                 <div className="flex items-start gap-3">
                   <div className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ring-1 ring-black/5 ${t.iconWrapBg}`}>
@@ -203,37 +198,32 @@ export default function JobsLiveJobsWhyWePostJobsSection() {
                 <button
                   onClick={() => toggle(key)}
                   aria-expanded={isOpen}
-                  className={`mt-3 inline-flex items-center gap-1 rounded-full border ${t.detailsBtnBorder} bg-white px-3 py-1.5 text-xs font-semibold text-slate-900 transition hover:-translate-y-[1px] hover:shadow-sm focus:outline-none focus:ring-2 ${t.focusRing}`}
+                  className={`mt-3 inline-flex items-center gap-1 rounded-full border ${t.detailsBtnBorder} bg-white px-3 py-1.5 text-xs font-semibold text-slate-900 transition hover:shadow-sm`}
                 >
                   Details
                   <ChevronDown className={`h-3.5 w-3.5 transition-transform ${isOpen ? "rotate-180" : ""}`} />
                 </button>
 
-                <motion.ul
-                  initial={false}
-                  animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
-                  transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="overflow-hidden"
-                >
+                {isOpen && (
                   <div className="mt-3 border-t border-black/5 pt-3">
                     {points.map((p) => (
-                      <li key={p} className={`text-sm leading-relaxed ${t.listBulletColor}`}>
+                      <p key={p} className={`text-sm leading-relaxed ${t.listBulletColor}`}>
                         • {p}
-                      </li>
+                      </p>
                     ))}
                   </div>
-                </motion.ul>
-              </motion.li>
+                )}
+              </div>
             );
           })}
-        </ul>
+        </div>
 
         {/* CTA Row */}
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
             href="/jobs/live-jobs"
-            className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-orange-300"
-            style={{ backgroundColor: "var(--color-brand, #ff8c00)" }}
+            className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-orange-400"
+            style={{ backgroundColor: "#ff8c00" }}
           >
             Explore nearby jobs <ArrowRight className="h-4 w-4" />
           </Link>

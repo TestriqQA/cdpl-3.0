@@ -4,13 +4,7 @@ import Image from "next/image";
 import React, { useMemo, useState } from "react";
 import {
   Briefcase,
-  Building2,
-  MapPin,
-  Calendar,
-  Clock,
   ExternalLink,
-  Link as LinkIcon,
-  Tag,
   Mail,
   Share2,
   Copy,
@@ -34,11 +28,40 @@ type AnyJob = Job & {
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="rounded-full border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs font-semibold text-orange-800">
+    <span className="rounded-full border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs font-semibold text-brand">
       {children}
     </span>
   );
 }
+
+const TECH_DICT = [
+  "jmeter",
+  "selenium",
+  "postman",
+  "restassured",
+  "rest assured",
+  "cypress",
+  "playwright",
+  "appium",
+  "java",
+  "python",
+  "javascript",
+  "typescript",
+  "sql",
+  "mysql",
+  "postgres",
+  "mongodb",
+  "jenkins",
+  "docker",
+  "kubernetes",
+  "aws",
+  "azure",
+  "gcp",
+  "react",
+  "node",
+  "next.js",
+  "ci/cd",
+];
 
 export function JobsLiveJobsJobCardSection({
   job,
@@ -55,40 +78,13 @@ export function JobsLiveJobsJobCardSection({
       ? `Posted: ${formatDate(job.postedOn)}`
       : "";
 
-  const techFromText = (() => {
+  const techFromText = useMemo(() => {
     const hay = [job.title, ...(job.highlights || []), ...(job.responsibilities || [])]
       .join(" ")
       .toLowerCase();
-    const DICT = [
-      "jmeter",
-      "selenium",
-      "postman",
-      "restassured",
-      "rest assured",
-      "cypress",
-      "playwright",
-      "appium",
-      "java",
-      "python",
-      "javascript",
-      "typescript",
-      "sql",
-      "mysql",
-      "postgres",
-      "mongodb",
-      "jenkins",
-      "docker",
-      "kubernetes",
-      "aws",
-      "azure",
-      "gcp",
-      "react",
-      "node",
-      "next.js",
-      "ci/cd",
-    ];
+
     const found = new Set<string>();
-    for (const k of DICT) if (hay.includes(k)) found.add(k.replace(/\brest assured\b/, "Rest Assured"));
+    for (const k of TECH_DICT) if (hay.includes(k)) found.add(k.replace(/\brest assured\b/, "Rest Assured"));
     const title = (s: string) =>
       s
         .split(/[\s/]+/)
@@ -99,7 +95,7 @@ export function JobsLiveJobsJobCardSection({
       .map(title)
       .slice(0, 12)
       .sort();
-  })();
+  }, [job.title, job.highlights, job.responsibilities]);
 
   // --- IMAGE HANDLING ---
   // Only attempt to render an image if a bannerImage is explicitly provided.
@@ -124,7 +120,6 @@ export function JobsLiveJobsJobCardSection({
   const [imgIdx, setImgIdx] = useState(0);
   const [giveUp, setGiveUp] = useState(false);
   const currentSrc = candidateSrcs[imgIdx];
-  const isLocal = !!currentSrc && currentSrc.startsWith("/");
 
   const handleImgError = () => {
     if (imgIdx < candidateSrcs.length - 1) setImgIdx((i) => i + 1);
@@ -147,17 +142,19 @@ export function JobsLiveJobsJobCardSection({
             "
           >
             <Image
-              key={currentSrc}
               src={currentSrc}
               alt={job.bannerImageAlt || `${job.company} hiring`}
               title={job.bannerImageAlt || `${job.company} hiring`}
-              width={1600}
-              height={900}
+              width={600}
+              height={400}
+              sizes="(max-width: 768px) 320px, (max-width: 1200px) 50vw, 33vw"
               className="w-full h-auto rounded-2xl object-contain bg-white"
               priority={false}
-              unoptimized={isLocal}
+              decoding="async"
+              quality={60}
               onError={handleImgError}
-              onLoadingComplete={(img) => {
+              onLoad={(e) => {
+                const img = e.currentTarget;
                 if (!img?.naturalWidth) handleImgError();
               }}
             />
@@ -165,7 +162,7 @@ export function JobsLiveJobsJobCardSection({
             {/* Badge/label ONLY if image rendered */}
             {imageBadge && (
               <div className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-slate-700 ring-1 ring-slate-200 backdrop-blur-sm">
-                <Tag className="h-3.5 w-3.5 opacity-70" />
+                🏷️
                 <span className="truncate max-w-[240px] sm:max-w-[300px] md:max-w-[300px]">
                   {imageBadge}
                 </span>
@@ -213,46 +210,36 @@ export function JobsLiveJobsJobCardSection({
                 {job.title}
               </h3>
 
-              <p className="mt-0.5 flex flex-wrap items-center gap-2 text-sm text-slate-600">
+              <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-600">
                 <span className="inline-flex items-center">
-                  <Building2 className="mr-1 h-3.5 w-3.5" />
-                  {job.company}
+                  🏢 {job.company}
                 </span>
 
                 {job.companySite && (
-                  <>
-                    <span className="text-slate-300">•</span>
-                    <a
-                      href={job.companySite}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-slate-700 hover:text-slate-900"
-                      title="Company website"
-                    >
-                      <LinkIcon className="mr-1 h-3.5 w-3.5" />
-                      Visit site
-                    </a>
-                  </>
+                  <a
+                    href={job.companySite}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-slate-700 hover:text-slate-900 before:content-['•'] before:mr-2 before:text-slate-300"
+                    title="Company website"
+                  >
+                    🔗 Visit site
+                  </a>
                 )}
 
                 {job.location && (
-                  <>
-                    <span className="text-slate-300">•</span>
-                    <span className="inline-flex items-center">
-                      <MapPin className="mr-1 h-3.5 w-3.5" />
-                      {job.location}
-                    </span>
-                  </>
+                  <span className="inline-flex items-center before:content-['•'] before:mr-2 before:text-slate-300">
+                    📍 {job.location}
+                  </span>
                 )}
 
                 {dateText && (
-                  <>
-                    <span className="text-slate-300">•</span>
-                    <span className="inline-flex items-center">
-                      <Calendar className="mr-1 h-3.5 w-3.5" />
-                      {dateText}
-                    </span>
-                  </>
+                  <span
+                    className="inline-flex items-center before:content-['•'] before:mr-2 before:text-slate-300"
+                    suppressHydrationWarning
+                  >
+                    📅 {dateText}
+                  </span>
                 )}
               </p>
             </div>
@@ -279,13 +266,11 @@ export function JobsLiveJobsJobCardSection({
           {!!job.highlights?.length && (
             <div className="mt-3">
               <h4 className="mb-1 text-sm font-semibold text-slate-900">What we’re looking for</h4>
-              <ul className="grid gap-1.5">
-                {job.highlights.slice(0, 6).map((h) => (
-                  <li key={h} className="text-sm leading-relaxed text-slate-600">
-                    • {h}
-                  </li>
+              <div className="text-sm leading-relaxed text-slate-600">
+                {job.highlights.slice(0, 5).map((h, i) => (
+                  <span key={h}>{i > 0 && " • "} {h}</span>
                 ))}
-              </ul>
+              </div>
             </div>
           )}
 
@@ -293,28 +278,23 @@ export function JobsLiveJobsJobCardSection({
           {!!job.responsibilities?.length && (
             <div className="mt-4">
               <h4 className="mb-1 text-sm font-semibold text-slate-900">Roles & responsibilities</h4>
-              <ul className="grid gap-1.5">
-                {job.responsibilities.slice(0, 8).map((r, i) => (
-                  <li key={`${i}-${r}`} className="text-sm leading-relaxed text-slate-600">
-                    • {r}
-                  </li>
+              <div className="text-sm leading-relaxed text-slate-600">
+                {job.responsibilities.slice(0, 6).map((r, i) => (
+                  <span key={i}>{i > 0 && " • "} {r}</span>
                 ))}
-              </ul>
+              </div>
             </div>
           )}
 
           {/* Tech stack (derived) */}
           {!!techFromText.length && (
             <div className="mt-4">
-              <div className="mb-2 flex items-center gap-2">
-                <Tag className="h-4 w-4 text-slate-500" />
-                <h4 className="text-sm font-semibold text-slate-900">Tech stack</h4>
-              </div>
+              <h4 className="text-sm font-semibold text-slate-900">🏷️ Tech stack</h4>
               <div className="flex flex-wrap gap-2">
                 {techFromText.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs font-semibold text-orange-800"
+                    className="rounded-full border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs font-semibold text-brand"
                   >
                     {t}
                   </span>
@@ -327,23 +307,12 @@ export function JobsLiveJobsJobCardSection({
           {(job.venue || job.eventDate || job.timeWindow || job.location) && (
             <div className="mt-5 border-t border-slate-100 pt-3">
               <h4 className="text-sm font-semibold text-slate-900">Venue & schedule</h4>
-              <div className="mt-2 grid gap-1.5 text-sm leading-relaxed text-slate-600">
-                {job.venue && (
-                  <p className="inline-flex items-start">
-                    <MapPin className="mr-1 mt-[2px] h-3.5 w-3.5 text-slate-500" />
-                    <span>{job.venue}</span>
-                  </p>
-                )}
-                {job.eventDate && (
-                  <p className="inline-flex items-start">
-                    <Calendar className="mr-1 mt-[2px] h-3.5 w-3.5 text-slate-500" />
-                    <span>{formatDate(job.eventDate)}</span>
-                  </p>
-                )}
-                {job.timeWindow && (
-                  <p className="inline-flex items-start">
-                    <Clock className="mr-1 mt-[2px] h-3.5 w-3.5 text-slate-500" />
-                    <span>{job.timeWindow}</span>
+              <div className="mt-2 text-sm leading-relaxed text-slate-600">
+                {job.venue && <p>• {job.venue}</p>}
+                {(job.eventDate || job.timeWindow) && (
+                  <p suppressHydrationWarning>
+                    • {job.eventDate ? formatDate(job.eventDate) : ""}{" "}
+                    {job.timeWindow ? `(${job.timeWindow})` : ""}
                   </p>
                 )}
               </div>
@@ -352,15 +321,13 @@ export function JobsLiveJobsJobCardSection({
 
           {/* Contacts */}
           {Array.isArray(job.contacts) && job.contacts.length > 0 && (
-            <div className="mt-5 border-t border-slate-100 pt-3">
+            <div className="mt-4 border-t border-slate-100 pt-3">
               <h4 className="text-sm font-semibold text-slate-900">Contacts</h4>
-              <ul className="mt-2 grid gap-1.5">
-                {job.contacts.slice(0, 4).map((c, i) => (
-                  <li key={`${i}-${c}`} className="text-sm leading-relaxed text-slate-600">
-                    • {c}
-                  </li>
+              <div className="mt-2 text-sm text-slate-600">
+                {job.contacts.slice(0, 3).map((c, i) => (
+                  <span key={i}>{i > 0 && " • "} {c}</span>
                 ))}
-              </ul>
+              </div>
             </div>
           )}
 
@@ -369,8 +336,8 @@ export function JobsLiveJobsJobCardSection({
             {job.applyEmail && (
               <a
                 href={`mailto:${job.applyEmail}`}
-                className="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-orange-300"
-                style={{ backgroundColor: "var(--color-brand, #ff8c00)" }}
+                className="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-orange-400"
+                style={{ backgroundColor: "#ff8c00" }}
               >
                 <Mail className="mr-2 h-4 w-4" />
                 Apply via Email
@@ -388,8 +355,7 @@ export function JobsLiveJobsJobCardSection({
             )}
             {(job.timeWindow || job.eventDate) && (
               <span className="ml-auto inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-700">
-                <Clock className="h-3.5 w-3.5" />
-                {job.timeWindow ?? formatDate(job.eventDate)}
+                🕒 {job.timeWindow ?? formatDate(job.eventDate)}
               </span>
             )}
           </div>

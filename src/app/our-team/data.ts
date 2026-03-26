@@ -163,7 +163,7 @@ export const teamData: TeamMember[] = [
         expertise: ["QA Strategy", "Test Architecture", "Agile"],
         bio: "Advises on QA strategy, governance, and enterprise-grade testing practices to align outcomes with hiring partner expectations.",
         location: "Bengaluru, India",
-        avatar: "/images/",
+        avatar: "/Team/sujay-ambelkar.png",
         linkedin: "https://www.linkedin.com/in/sujay-ambelkar-ab2770145/",
     },
     {
@@ -174,7 +174,7 @@ export const teamData: TeamMember[] = [
         expertise: ["Student Success", "Placements", "Admissions"],
         bio: "Leads end-to-end testing processes, coordinating teams and strategies to ensure flawless, high-quality software delivery.",
         location: "Mumbai, India",
-        avatar: "/images/",
+        avatar: "/Team/dummy-image.avif",
         linkedin: "https://www.linkedin.com/in/pooja-katkar-737b3525a/",
     },
     {
@@ -185,7 +185,7 @@ export const teamData: TeamMember[] = [
         expertise: ["Student Success", "Placements", "Admissions"],
         bio: "Drives software development initiatives, leading teams to build robust, scalable, and high-performance solutions with a focus on quality and innovation.",
         location: "Mumbai, India",
-        avatar: "/images/",
+        avatar: "/Team/prakash-mishra.png",
         linkedin: "https://www.linkedin.com/in/prakashmmishra/",
     },
     {

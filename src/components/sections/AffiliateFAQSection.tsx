@@ -40,7 +40,7 @@ export default function AffiliateFAQSection() {
                         <div key={f.q} className="p-6">
                             <button
                                 onClick={() => setOpen(isOpen ? null : i)}
-                                className="flex w-full items-center justify-between text-left"
+                                className="flex w-full items-center justify-between text-left cursor-pointer"
                             >
                                 <span className="text-base font-semibold text-slate-900">{f.q}</span>
                                 <ChevronDown

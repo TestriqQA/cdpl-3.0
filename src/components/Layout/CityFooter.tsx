@@ -1,9 +1,24 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
+const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+    const pathname = usePathname();
+    const isActive = pathname === href;
+    return (
+        <Link
+            href={href}
+            className={`hover:text-orange-400 hover:translate-x-2 active:text-orange-400 active:translate-x-2 transition-all duration-300 ease-in-out text-sm inline-block py-2 px-3 ${isActive ? "text-orange-400 translate-x-2" : "text-gray-300"}`}
+        >
+            {children}
+        </Link>
+    );
+};
+
 const CityFooter = () => {
+    const pathname = usePathname();
     return (
         <footer className="bg-gray-800 text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -16,37 +31,37 @@ const CityFooter = () => {
                         <h3 className="text-lg font-semibold text-orange-400">Software Testing City Wise</h3>
                         <ul>
                             <li className='flex flex-col space-y-2'>
-                                <Link href="/software-testing-course-in-mumbai" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/software-testing-course-in-mumbai">
                                     Software Testing Course in Mumbai
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/software-testing-course-in-delhi" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/software-testing-course-in-delhi">
                                     Software Testing Course in Delhi
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/software-testing-course-in-ahmedabad" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/software-testing-course-in-ahmedabad">
                                     Software Testing Course in Ahmedabad
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/software-testing-course-in-chennai" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/software-testing-course-in-chennai">
                                     Software Testing Course in Chennai
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/software-testing-course-in-bengaluru" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/software-testing-course-in-bengaluru">
                                     Software Testing Course in Bengaluru
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/software-testing-course-in-pune" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/software-testing-course-in-pune">
                                     Software Testing Course in Pune
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/software-testing-course-in-kolkata" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/software-testing-course-in-kolkata">
                                     Software Testing Course in Kolkata
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/software-testing-course-in-hyderabad" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/software-testing-course-in-hyderabad">
                                     Software Testing Course in Hyderabad
-                                </Link>
+                                </FooterLink>
                             </li>
                         </ul>
                     </div>
@@ -56,37 +71,37 @@ const CityFooter = () => {
                         <h3 className="text-lg font-semibold text-orange-400">Data Science City Wise</h3>
                         <ul>
                             <li className='flex flex-col space-y-2'>
-                                <Link href="/data-science-course-in-mumbai" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/data-science-course-in-mumbai">
                                     Data Science Course in Mumbai
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/data-science-course-in-delhi" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/data-science-course-in-delhi">
                                     Data Science Course in Delhi
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/data-science-course-in-ahmedabad" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/data-science-course-in-ahmedabad">
                                     Data Science Course in Ahmedabad
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/data-science-course-in-chennai" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/data-science-course-in-chennai">
                                     Data Science Course in Chennai
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/data-science-course-in-bengaluru" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/data-science-course-in-bengaluru">
                                     Data Science Course in Bengaluru
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/data-science-course-in-pune" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/data-science-course-in-pune">
                                     Data Science Course in Pune
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/data-science-course-in-kolkata" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/data-science-course-in-kolkata">
                                     Data Science Course in Kolkata
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/data-science-course-in-hyderabad" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/data-science-course-in-hyderabad">
                                     Data Science Course in Hyderabad
-                                </Link>
+                                </FooterLink>
                             </li>
                         </ul>
                     </div>
@@ -96,37 +111,37 @@ const CityFooter = () => {
                         <h3 className="text-lg font-semibold text-orange-400">Business Intelligence City Wise</h3>
                         <ul>
                             <li className='flex flex-col space-y-2'>
-                                <Link href="/business-intelligence-course-in-mumbai" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/business-intelligence-course-in-mumbai">
                                     Business Intelligence Course in Mumbai
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/business-intelligence-course-in-delhi" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/business-intelligence-course-in-delhi">
                                     Business Intelligence Course in delhi
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/business-intelligence-course-in-ahmedabad" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/business-intelligence-course-in-ahmedabad">
                                     Business Intelligence Course in Ahmedabad
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/business-intelligence-course-in-chennai" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/business-intelligence-course-in-chennai">
                                     Business Intelligence Course in Chennai
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/business-intelligence-course-in-bengaluru" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/business-intelligence-course-in-bengaluru">
                                     Business Intelligence Course in Bengaluru
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/business-intelligence-course-in-pune" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/business-intelligence-course-in-pune">
                                     Business Intelligence Course in Pune
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/business-intelligence-course-in-kolkata" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/business-intelligence-course-in-kolkata">
                                     Business Intelligence Course in Kolkata
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/business-intelligence-course-in-hyderabad" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/business-intelligence-course-in-hyderabad">
                                     Business Intelligence Course in Hyderabad
-                                </Link>
+                                </FooterLink>
                             </li>
                         </ul>
                     </div>
@@ -136,37 +151,37 @@ const CityFooter = () => {
                         <h3 className="text-lg font-semibold text-orange-400">Artificial Intelligence City Wise</h3>
                         <ul>
                             <li className='flex flex-col space-y-2'>
-                                <Link href="/artificial-intelligence-course-in-mumbai" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/artificial-intelligence-course-in-mumbai">
                                     Artificial Intelligence Course in Mumbai
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/artificial-intelligence-course-in-delhi" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/artificial-intelligence-course-in-delhi">
                                     Artificial Intelligence Course in delhi
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/artificial-intelligence-course-in-ahmedabad" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/artificial-intelligence-course-in-ahmedabad">
                                     Artificial Intelligence Course in Ahmedabad
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/artificial-intelligence-course-in-chennai" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/artificial-intelligence-course-in-chennai">
                                     Artificial Intelligence Course in Chennai
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/artificial-intelligence-course-in-bengaluru" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/artificial-intelligence-course-in-bengaluru">
                                     Artificial Intelligence Course in Bengaluru
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/artificial-intelligence-course-in-pune" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/artificial-intelligence-course-in-pune">
                                     Artificial Intelligence Course in Pune
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/artificial-intelligence-course-in-kolkata" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/artificial-intelligence-course-in-kolkata">
                                     Artificial Intelligence Course in Kolkata
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/artificial-intelligence-course-in-hyderabad" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/artificial-intelligence-course-in-hyderabad">
                                     Artificial Intelligence Course in Hyderabad
-                                </Link>
+                                </FooterLink>
                             </li>
                         </ul>
                     </div>
@@ -176,44 +191,44 @@ const CityFooter = () => {
                         <h3 className="text-lg font-semibold text-orange-400">Digital Marketing City Wise</h3>
                         <ul>
                             <li className='flex flex-col space-y-2'>
-                                <Link href="/digital-marketing-courses-in-mumbai" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/digital-marketing-courses-in-mumbai">
                                     Digital Marketing Course in Mumbai
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/digital-marketing-courses-in-delhi" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/digital-marketing-course-in-delhi">
                                     Digital Marketing Course in delhi
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/digital-marketing-courses-in-ahmedabad" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/digital-marketing-course-in-ahmedabad">
                                     Digital Marketing Course in Ahmedabad
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/digital-marketing-courses-in-chennai" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/digital-marketing-course-in-chennai">
                                     Digital Marketing Course in Chennai
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/digital-marketing-courses-in-bengaluru" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/digital-marketing-course-in-bengaluru">
                                     Digital Marketing Course in Bengaluru
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/digital-marketing-courses-in-pune" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/digital-marketing-courses-in-pune">
                                     Digital Marketing Course in Pune
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/digital-marketing-courses-in-kolkata" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/digital-marketing-course-in-kolkata">
                                     Digital Marketing Course in Kolkata
-                                </Link>
+                                </FooterLink>
 
-                                <Link href="/digital-marketing-courses-in-hyderabad" className="text-gray-300 hover:text-brand hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                                <FooterLink href="/digital-marketing-course-in-hyderabad">
                                     Digital Marketing Course in Hyderabad
-                                </Link>
+                                </FooterLink>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <Link
-                    href="/location-we-serve"
-                    className="mt-2 inline-block px-6 py-2 border-2 border-orange-400 text-orange-400 rounded-md hover:bg-orange-400 hover:text-white transition-all duration-300 ease-in-out text-md font-semibold"
+                    href="/locations-we-serve"
+                    className={`mt-2 inline-block px-6 py-2 border-2 text-md font-semibold rounded-md transition-all duration-300 ease-in-out ${pathname === "/locations-we-serve" ? "bg-brand text-white border-brand" : "border-brand text-orange-400 hover:bg-brand hover:text-white"}`}
                 >
                     View All
                 </Link>

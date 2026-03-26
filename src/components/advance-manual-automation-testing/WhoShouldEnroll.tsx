@@ -1,9 +1,19 @@
 'use client';
-import { Users, GraduationCap, Briefcase, Target } from 'lucide-react';
+import { Users, GraduationCap, Briefcase, Target, ArrowRight } from 'lucide-react';
 import IconCard from '../ui/IconCard';
 import { motion } from 'framer-motion';
 import type { JSX } from 'react';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+const EnrollModal = dynamic(() => import('@/components/EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
 
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 type Audience = {
   icon: JSX.Element;
   title: string;
@@ -17,7 +27,7 @@ const audience: Audience[] = [
   {
     icon: <Users className="h-6 w-6" />,
     title: 'Career Switchers',
-    description: 'Transition from non-tech roles to QA with mentor-led projects.',
+    description: 'Transition from non-tech roles to QA with mentor-led projects. Learn what is selenium testing from basics.',
     bg: 'bg-sky-50',
     iconColor: 'text-sky-700',
     border: 'border-sky-200',
@@ -25,7 +35,7 @@ const audience: Audience[] = [
   {
     icon: <GraduationCap className="h-6 w-6" />,
     title: 'Fresh Graduates',
-    description: 'BTech • BCA • BCom — get job-ready QA skills fast.',
+    description: 'BTech • BCA • BCom — get job-ready skills fast. Perfect for tester fresher candidates.',
     bg: 'bg-emerald-50',
     iconColor: 'text-emerald-700',
     border: 'border-emerald-200',
@@ -33,7 +43,7 @@ const audience: Audience[] = [
   {
     icon: <Briefcase className="h-6 w-6" />,
     title: 'Manual Testers',
-    description: 'Level up to automation (UI • API • Mobile • CI/CD).',
+    description: 'Level up to automation (ui testing • API • Mobile • CI/CD). Master selenium methods.',
     bg: 'bg-amber-50',
     iconColor: 'text-amber-700',
     border: 'border-amber-200',
@@ -41,7 +51,7 @@ const audience: Audience[] = [
   {
     icon: <Target className="h-6 w-6" />,
     title: 'Developers',
-    description: 'Add reliable testing to your stack and ship with confidence.',
+    description: 'Add reliable testing to your stack. Use selenium practice sites and jest testing knowledge.',
     bg: 'bg-violet-50',
     iconColor: 'text-violet-700',
     border: 'border-violet-200',
@@ -49,13 +59,13 @@ const audience: Audience[] = [
 ];
 
 export default function WhoShouldEnroll() {
-
+  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
 
   return (
     <section
       id="who-should-enroll"
       aria-labelledby="who-heading"
-      className="relative py-12 md:py-12 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic frame + dots */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -80,11 +90,10 @@ export default function WhoShouldEnroll() {
             Who Should <span className="text-ST">Enroll</span>?
           </h2>
           <p className="mx-auto mt-3 max-w-3xl text-sm sm:text-base text-slate-600">
-            No prior experience required. Ideal for <strong>career switchers</strong>,{' '}
+            No prior experience required. Ideal for <strong>tester fresher</strong> candidates, <strong>career switchers</strong>,{' '}
             <strong>fresh graduates</strong>, <strong>manual testers</strong>, and{' '}
-            <strong>developers</strong> seeking <em>job-ready QA & SDET skills</em>-framework
-            design, <abbr title="Continuous Integration / Continuous Delivery">CI/CD</abbr>, and
-            real projects.
+            <strong>developers</strong> seeking <em>job-ready QA & SDET skills</em>—framework
+            design, <strong>ci testing</strong>, and real <strong>automation testing projects with selenium</strong>.
           </p>
 
           {/* Micro-badges with distinct colors */}
@@ -125,14 +134,33 @@ export default function WhoShouldEnroll() {
           ))}
         </div>
 
-        {/* Supporting SEO text */}
+        {/* SEO supportive copy */}
         <p className="mx-auto mt-8 max-w-4xl text-center text-sm sm:text-base text-slate-600">
           Gain hands-on experience with <strong>Selenium/Appium</strong>,{' '}
           <strong>REST Assured</strong>, <strong>Cypress/Playwright</strong>, Git, and{' '}
           <strong>CI/CD pipelines</strong>. Graduate with a portfolio that showcases
           <strong> real-world QA impact</strong>.
         </p>
+
+        {/* CTA */}
+        <div className="mt-10 text-center">
+          <button
+            onClick={() => setIsEnrollModalOpen(true)}
+            className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-8 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-indigo-700 hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+          >
+            Enroll Now
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
+
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollModalOpen}
+        onClose={() => setIsEnrollModalOpen(false)}
+        courseName="Advanced Manual and Automation Testing Master Program"
+        source="Master Program Course Page - Who Should Enroll Section - Enroll Now"
+      />
 
     </section>
   );

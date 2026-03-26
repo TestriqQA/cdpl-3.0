@@ -1,9 +1,9 @@
-// components/sections/CurriculumSection.tsx
-// Server component — sleek, SEO-optimized, slightly futuristic, fully responsive.
-// Unique accent colors per module (no repeats), minimal/non-distracting visuals.
+"use client";
 
-import Link from "next/link";
 import { CheckCircle } from 'lucide-react';
+import { useState } from "react";
+import EnrollModal from "@/components/EnrollModal";
+import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
 
 type Module = {
   num: string;
@@ -81,7 +81,7 @@ const MODULES: Module[] = [
     title: "Sampling, Hypothesis Tests & Regression",
     outcome:
       "Sampling & CLT, confidence intervals, z/t/chi-square/ANOVA, correlation (Pearson/Spearman), simple linear regression.",
-    accent: { bg: "bg-orange-50", text: "text-orange-900", border: "border-orange-200", ring: "focus:ring-orange-300" },
+    accent: { bg: "bg-orange-50", text: "text-brand", border: "border-orange-200", ring: "focus:ring-orange-300" },
   },
   {
     num: "11",
@@ -97,46 +97,34 @@ const MODULES: Module[] = [
       "Regression (linear/poly, ridge/lasso); classification (logistic, KNN, trees, RF, SVM); CV, metrics (MSE, R², AUC, F1).",
     accent: { bg: "bg-stone-50", text: "text-stone-900", border: "border-stone-200", ring: "focus:ring-stone-300" },
   },
-  // (Optional) Uncomment to expose unsupervised & capstone as separate blocks:
-  // {
-  //   num: "13",
-  //   title: "Unsupervised Learning",
-  //   outcome:
-  //     "K-Means & hierarchical clustering, PCA for dimensionality reduction, density-based clustering; EDA integration.",
-  //   accent: { bg: "bg-yellow-50", text: "text-yellow-900", border: "border-yellow-200", ring: "focus:ring-yellow-300" },
-  // },
-  // {
-  //   num: "14",
-  //   title: "Capstone: End-to-End ML Project",
-  //   outcome:
-  //     "Problem framing → data prep → EDA → modeling → tuning → dashboards/visuals → evaluation → lightweight deploy.",
-  //   accent: { bg: "bg-purple-50", text: "text-purple-900", border: "border-purple-200", ring: "focus:ring-purple-300" },
-  // },
 ];
 
 export default function CurriculumSection() {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
+
   const subtitle =
     "Industry-aligned syllabus spanning Python, NumPy/pandas, Matplotlib/Seaborn, Statistics, and Machine Learning with rigorous EDA and validation.";
   const keywords =
     "data science curriculum, Python programming syllabus, pandas course, NumPy training, Matplotlib Seaborn visualization, statistics and probability, sampling and hypothesis testing, linear regression, logistic regression, SVM, KNN, decision trees, random forest, cross-validation, ROC AUC, end-to-end ML project";
 
   const accents = [
-    { cardBg: 'bg-sky-50', cardBorder: 'border-sky-200', badgeBg: 'bg-sky-600', badgeText: 'text-white', ink: 'text-sky-800', icon: 'text-sky-700' },
-    { cardBg: 'bg-emerald-50', cardBorder: 'border-emerald-200', badgeBg: 'bg-emerald-600', badgeText: 'text-white', ink: 'text-emerald-800', icon: 'text-emerald-700' },
-    { cardBg: 'bg-amber-50', cardBorder: 'border-amber-200', badgeBg: 'bg-amber-600', badgeText: 'text-white', ink: 'text-amber-800', icon: 'text-amber-700' },
-    { cardBg: 'bg-rose-50', cardBorder: 'border-rose-200', badgeBg: 'bg-rose-600', badgeText: 'text-white', ink: 'text-rose-800', icon: 'text-rose-700' },
-    { cardBg: 'bg-indigo-50', cardBorder: 'border-indigo-200', badgeBg: 'bg-indigo-600', badgeText: 'text-white', ink: 'text-indigo-800', icon: 'text-indigo-700' },
-    { cardBg: 'bg-violet-50', cardBorder: 'border-violet-200', badgeBg: 'bg-violet-600', badgeText: 'text-white', ink: 'text-violet-800', icon: 'text-violet-700' },
-    { cardBg: 'bg-teal-50', cardBorder: 'border-teal-200', badgeBg: 'bg-teal-600', badgeText: 'text-white', ink: 'text-teal-800', icon: 'text-teal-700' },
-    { cardBg: 'bg-fuchsia-50', cardBorder: 'border-fuchsia-200', badgeBg: 'bg-fuchsia-600', badgeText: 'text-white', ink: 'text-fuchsia-800', icon: 'text-fuchsia-700' },
-    { cardBg: 'bg-lime-50', cardBorder: 'border-lime-200', badgeBg: 'bg-lime-600', badgeText: 'text-white', ink: 'text-lime-800', icon: 'text-lime-700' },
-    { cardBg: 'bg-orange-50', cardBorder: 'border-orange-200', badgeBg: 'bg-orange-600', badgeText: 'text-white', ink: 'text-orange-800', icon: 'text-orange-700' },
-    { cardBg: 'bg-cyan-50', cardBorder: 'border-cyan-200', badgeBg: 'bg-cyan-600', badgeText: 'text-white', ink: 'text-cyan-800', icon: 'text-cyan-700' },
-    { cardBg: 'bg-stone-50', cardBorder: 'border-stone-200', badgeBg: 'bg-stone-600', badgeText: 'text-white', ink: 'text-stone-800', icon: 'text-stone-700' },
+    { cardBg: 'bg-sky-50', cardBorder: 'border-sky-200', badgeBg: 'bg-sky-700', badgeText: 'text-white', ink: 'text-sky-800', icon: 'text-sky-700' },
+    { cardBg: 'bg-emerald-50', cardBorder: 'border-emerald-200', badgeBg: 'bg-emerald-700', badgeText: 'text-white', ink: 'text-emerald-800', icon: 'text-emerald-700' },
+    { cardBg: 'bg-amber-50', cardBorder: 'border-amber-200', badgeBg: 'bg-amber-700', badgeText: 'text-white', ink: 'text-amber-800', icon: 'text-amber-700' },
+    { cardBg: 'bg-rose-50', cardBorder: 'border-rose-200', badgeBg: 'bg-rose-700', badgeText: 'text-white', ink: 'text-rose-800', icon: 'text-rose-700' },
+    { cardBg: 'bg-indigo-50', cardBorder: 'border-indigo-200', badgeBg: 'bg-indigo-700', badgeText: 'text-white', ink: 'text-indigo-800', icon: 'text-indigo-700' },
+    { cardBg: 'bg-violet-50', cardBorder: 'border-violet-200', badgeBg: 'bg-violet-700', badgeText: 'text-white', ink: 'text-violet-800', icon: 'text-violet-700' },
+    { cardBg: 'bg-teal-50', cardBorder: 'border-teal-200', badgeBg: 'bg-teal-700', badgeText: 'text-white', ink: 'text-teal-800', icon: 'text-teal-700' },
+    { cardBg: 'bg-fuchsia-50', cardBorder: 'border-fuchsia-200', badgeBg: 'bg-fuchsia-700', badgeText: 'text-white', ink: 'text-fuchsia-800', icon: 'text-fuchsia-700' },
+    { cardBg: 'bg-lime-50', cardBorder: 'border-lime-200', badgeBg: 'bg-lime-700', badgeText: 'text-white', ink: 'text-lime-800', icon: 'text-lime-700' },
+    { cardBg: 'bg-orange-50', cardBorder: 'border-orange-200', badgeBg: 'bg-brand', badgeText: 'text-white', ink: 'text-brand', icon: 'text-brand' },
+    { cardBg: 'bg-cyan-50', cardBorder: 'border-cyan-200', badgeBg: 'bg-cyan-700', badgeText: 'text-white', ink: 'text-cyan-800', icon: 'text-cyan-700' },
+    { cardBg: 'bg-stone-50', cardBorder: 'border-stone-200', badgeBg: 'bg-stone-700', badgeText: 'text-white', ink: 'text-stone-800', icon: 'text-stone-700' },
   ];
 
   return (
-    <section id="curriculum" className="relative py-8 sm:py-20 bg-white">
+    <section id="curriculum" className="relative py-10 bg-white">
       {/* subtle separators */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -182,9 +170,9 @@ export default function CurriculumSection() {
                   {mod.num}
                 </div>
 
-                <h3 className={['mb-4 text-xl font-semibold leading-snug break-words', a.ink, 'pr-14 sm:pr-0'].join(' ')}>
+                <p className={['mb-4 text-xl font-semibold leading-snug break-words', a.ink, 'pr-14 sm:pr-0'].join(' ')}>
                   {mod.title}
-                </h3>
+                </p>
 
                 <ul className="grid gap-2.5 sm:grid-cols-2">
                   <li key={mod.outcome} className="flex items-start gap-2 text-slate-700">
@@ -193,7 +181,7 @@ export default function CurriculumSection() {
                   </li>
                 </ul>
 
-                <p className="mt-4 text-xs text-slate-500">
+                <p className="mt-4 text-xs text-slate-700">
                   Outcomes: hands-on labs, assessment checklists, and take-home exercises for mastery.
                 </p>
               </li>
@@ -204,18 +192,33 @@ export default function CurriculumSection() {
         {/* CTAs */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <button
+            onClick={() => setIsSyllabusModalOpen(true)}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border-2 border-green-700 bg-white px-4 py-2 text-sm font-semibold text-green-800 shadow-sm transition hover:bg-green-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-emerald-200"
           >
             Download Detailed Syllabus (PDF)
           </button>
-          <Link
-            href="contact-us"
-            className="inline-flex items-center justify-center rounded-xl bg-indigo-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-200"
+          <button
+            onClick={() => setIsPopupOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl bg-[#7E22CE] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#6b21a8] focus:outline-none focus:ring-4 focus:ring-purple-200"
           >
             Apply Now
-          </Link>
+          </button>
         </div>
       </div>
+
+      <EnrollModal
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        courseName="Machine Learning and Data Science with Python"
+        source="Machine Learning Course Page - Curriculum Section - Apply Now"
+      />
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusModalOpen}
+        onClose={() => setIsSyllabusModalOpen(false)}
+        courseName="Machine Learning and Data Science with Python"
+        source="Machine Learning Course Page - Curriculum Section - Download Syllabus"
+      />
 
     </section>
   );

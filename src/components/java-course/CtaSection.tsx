@@ -15,7 +15,7 @@ export default function CtaSection() {
     <section
       id="enroll-cta"
       aria-labelledby="cta-heading"
-      className="relative py-8 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop (grid + soft radial highlight) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -95,7 +95,7 @@ export default function CtaSection() {
       </div>
 
       {/* Accessibility helpers */}
-      <h1 className="sr-only">{title}</h1>
+      <p className="sr-only">{title}</p>
       <p className="sr-only">{subtitle}</p>
     </section>
   );

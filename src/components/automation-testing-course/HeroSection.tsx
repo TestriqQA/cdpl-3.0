@@ -1,40 +1,55 @@
 'use client';
 import {
-    Bot,
-    Users,
-    Award,
-    Briefcase,
-    ArrowRight,
-    Home,
-    ChevronRight,
-} from 'lucide-react';
-import { motion } from 'framer-motion';
+    FaRobot,
+    FaUsers,
+    FaAward,
+    FaBriefcase,
+    FaArrowRight,
+    FaHome,
+    FaChevronRight,
+    FaCloudDownloadAlt,
+    FaSortAmountDown,
+} from 'react-icons/fa';
 import IconCard from '../ui/IconCard';
-import LeadForm from '../CourseLeadForm';
+import LeadForm from '../forms/ApiCourseLeadForm';
 import Link from 'next/link';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+const EnrollModal = dynamic(() => import('@/components/EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
+const SyllabusDownloadModal = dynamic(() => import('@/components/SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+    return (
+        <div className="flex items-center justify-center py-16">
+            <p className="text-gray-500">{label}</p>
+        </div>
+    );
+}
 
 
 /* ---------------------------------------
    Feature cards (distinct, light accents)
 ---------------------------------------- */
 const features = [
-    { icon: <Bot />, title: '85% Hands-On', description: 'AI-powered test scripts & self-healing locators', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
-    { icon: <Users />, title: 'SDET Mentors', description: '10+ years, FAANG & product-based guidance', bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
-    { icon: <Award />, title: 'Global Cert', description: 'ISTQB Foundation + Advanced automation prep', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
-    { icon: <Briefcase />, title: '100% Placement', description: 'Resume clinic, mock interviews, referrals', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
+    { icon: <FaRobot />, title: '85% Hands-On', description: 'AI-powered test scripts & self-healing locators', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
+    { icon: <FaUsers />, title: 'SDET Mentors', description: '10+ years, FAANG & product-based guidance', bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
+    { icon: <FaAward />, title: 'Global Cert', description: 'ISTQB Foundation + Advanced automation prep', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
+    { icon: <FaBriefcase />, title: '100% Placement', description: 'Resume clinic, mock interviews, referrals', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
 ];
 
 /* ---------------------------------------
    HERO
 ---------------------------------------- */
 export default function HeroSection() {
-
+    const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+    const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
 
     const breadcrumbs = [
         { label: "Home", href: "/" },
-        { label: "Software Testing", href: "#" },
-        { label: "Advanced Automation Testing", href: "automation-testing-course" },
-    ]
+        { label: "Courses", href: "/courses" },
+        { label: 'Software Testing', href: '/courses/software-testing-course' },
+        { label: "Advanced Automation Testing" },
+    ];
 
     return (
         <section id="hero-automation" aria-labelledby="automation-hero" className="relative overflow-hidden">
@@ -44,31 +59,39 @@ export default function HeroSection() {
                 <div className="absolute inset-0 [mask-image:radial-gradient(80%_55%_at_50%_-4%,black,transparent)]" />
             </div>
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-14">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
 
                 {/* Breadcrumbs for SEO & UX */}
                 <nav aria-label="Breadcrumb" className="mb-8">
                     <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
-                        {breadcrumbs.map((c, i) => (
-                            <li key={i} className="flex items-center gap-2">
-                                {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-                                <Link
-                                    href={c.href}
-                                    className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
-                                >
-                                    {c.label}
-                                </Link>
-                            </li>
-                        ))}
+                        {breadcrumbs.map((c, i) => {
+                            const isLast = i === breadcrumbs.length - 1;
+                            return (
+                                <li key={i} className="flex items-center gap-2">
+                                    {i === 0 ? <FaHome className="h-4 w-4" /> : <FaChevronRight className="h-4 w-4" />}
+                                    {c.href ? (
+                                        <Link
+                                            href={c.href}
+                                            className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
+                                        >
+                                            {c.label}
+                                        </Link>
+                                    ) : (
+                                        <span
+                                            className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
+                                        >
+                                            {c.label}
+                                        </span>
+                                    )}
+                                </li>
+                            );
+                        })}
                     </ol>
                 </nav>
 
                 <div className="grid items-start gap-10 md:grid-cols-12">
                     {/* LEFT: Copy */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                    <div
                         className="md:col-span-7 lg:col-span-8"
                     >
                         {/* badges — each chip has its own color */}
@@ -98,7 +121,7 @@ export default function HeroSection() {
 
                         {/* FORM — mobile: directly under H1 */}
                         <div className="mt-6 block md:hidden">
-                            <LeadForm />
+                            <LeadForm variant="elevated" source="Advanced Automation Testing Course Page - Hero Section" />
                         </div>
 
                         <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
@@ -114,18 +137,37 @@ export default function HeroSection() {
                         {/* CTAs */}
                         <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                             <button
-                                className="group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                                onClick={() => setIsEnrollModalOpen(true)}
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                                aria-label="Enroll now in Advanced Automation Testing"
                             >
                                 Enroll Now
-                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                <FaArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </button>
 
-                            <Link
-                                href="#curriculum"
-                                className="inline-flex items-center justify-center rounded-xl border-2 border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
+                            <button
+                                onClick={() => setIsSyllabusModalOpen(true)}
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                                aria-label="Download Advanced Automation Testing Syllabus"
+                            >
+                                Download Syllabus
+                                <FaCloudDownloadAlt className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                            </button>
+
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    const el = document.getElementById('curriculum');
+                                    if (el) {
+                                        window.scrollTo({ top: el.offsetTop - 150, behavior: 'smooth' });
+                                    }
+                                }}
+                                className="cursor-pointer inline-flex items-center justify-center rounded-xl border-2 border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
+                                aria-label="View full Advanced Automation Testing curriculum"
                             >
                                 View Curriculum
-                            </Link>
+                                <FaSortAmountDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                            </button>
                         </div>
 
                         {/* Quick highlights — unique color markers per line */}
@@ -158,20 +200,31 @@ export default function HeroSection() {
                                 />
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* RIGHT: Desktop Form + Feature cards (if desired) */}
-                    <motion.aside
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.12, ease: 'easeOut' }}
+                    <aside
                         className="hidden md:col-span-5 lg:col-span-4 md:block"
                     >
-                        <LeadForm />
+                        <LeadForm variant="elevated" source="Advanced Automation Testing Course Page - Hero Section" />
 
-                    </motion.aside>
+                    </aside>
                 </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollModalOpen}
+                onClose={() => setIsEnrollModalOpen(false)}
+                courseName="Advanced Automation Testing"
+                source="Advanced Automation Testing Course Page - Hero Section - Enroll Now"
+            />
+
+            <SyllabusDownloadModal
+                isOpen={isSyllabusModalOpen}
+                onClose={() => setIsSyllabusModalOpen(false)}
+                courseName="Advanced Automation Testing"
+                source="Advanced Automation Testing Course Page - Hero Section - Advanced Automation Testing - Download Syllabus"
+            />
 
         </section>
     );

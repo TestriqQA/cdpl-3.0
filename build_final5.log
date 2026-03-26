@@ -1,0 +1,86 @@
+﻿
+> edtech-website@0.1.0 build
+> cross-env NODE_OPTIONS='--max-old-space-size=8192' next build
+
+   Γû▓ Next.js 15.5.12
+   - Experiments (use with caution):
+     ┬╖ optimizePackageImports
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 5.0min
+   Linting and checking validity of types ...
+node.exe :  Γ¿» ESLint: 
+Named export 'FlatCompat' 
+not found. The requested 
+module '@eslint/eslintrc' 
+is a CommonJS module, 
+which may not support all 
+module.exports as named 
+exports. CommonJS modules 
+can always be imported 
+via the default export, 
+for example using:  
+import pkg from 
+'@eslint/eslintrc'; const 
+{ FlatCompat } = pkg; 
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (   
+  Γ¿» ESLint: Na...ompa   
+ t } = pkg; :String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+   Collecting page data ...
+[Error: Failed to collect 
+configuration for 
+/blog/categories] {
+  [cause]: Error: Missing 
+environment variable: NEXT
+_PUBLIC_SANITY_PROJECT_ID
+      at h (C:\Users\user1
+\Documents\GitHub\cdpl-3.0
+\.next\server\chunks\5806.
+js:117:239)
+      at 102694 (C:\Users\
+user1\Documents\GitHub\cdp
+l-3.0\.next\server\chunks\
+5806.js:117:283)
+      at c (C:\Users\user1
+\Documents\GitHub\cdpl-3.0
+\.next\server\webpack-runt
+ime.js:1:143)
+      at 281638 (C:\Users\
+user1\Documents\GitHub\cdp
+l-3.0\.next\server\app\blo
+g\categories\page.js:2:770
+9)
+      at c (C:\Users\user1
+\Documents\GitHub\cdpl-3.0
+\.next\server\webpack-runt
+ime.js:1:143)
+      at 40084 (C:\Users\u
+ser1\Documents\GitHub\cdpl
+-3.0\.next\server\app\blog
+\categories\page.js:1:142)
+      at c (C:\Users\user1
+\Documents\GitHub\cdpl-3.0
+\.next\server\webpack-runt
+ime.js:1:143)
+}
+
+> Build error occurred
+[Error: Failed to collect 
+page data for 
+/blog/categories] {
+  type: 'Error'
+}

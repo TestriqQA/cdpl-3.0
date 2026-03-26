@@ -1,27 +1,25 @@
 "use client";
 
-import { TrendingUp, FolderOpen, Mail, ArrowRight } from "lucide-react";
+import { TrendingUp, FolderOpen, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { getAllCategories, getPostsByCategory, getAllPosts } from "@/data/BlogPostData";
+import { SanityPost } from "@/sanity/types";
 
-interface BlogSidebarCategoryProps {
-  categoryId: string;
-  categoryName: string;
+interface CategoryWithCount {
+  name: string;
+  slug: string;
+  count: number;
 }
 
-const BlogSidebarCategory = ({ categoryId, categoryName }: BlogSidebarCategoryProps) => {
-  // Get latest 5 posts from the current category
-  const categoryPosts = getPostsByCategory(categoryId).slice(0, 5);
+interface BlogSidebarCategoryProps {
+  categoryId?: string; // Optional now
+  categoryName: string;
+  categoryPosts: SanityPost[];
+  categories: CategoryWithCount[];
+}
 
-  // Get ALL categories
-  const allCategories = getAllCategories();
-  const allPosts = getAllPosts();
-
-  // Calculate post count for each category dynamically
-  const categoriesWithCounts = allCategories.map(category => ({
-    ...category,
-    postCount: allPosts.filter(post => post.categoryId === category.id).length
-  }));
+const BlogSidebarCategory = ({ categoryName, categoryPosts, categories }: BlogSidebarCategoryProps) => {
+  // Use passed categories which already have counts
+  const categoriesWithCounts = categories;
 
   return (
     <aside className="space-y-6">
@@ -31,12 +29,12 @@ const BlogSidebarCategory = ({ categoryId, categoryName }: BlogSidebarCategoryPr
           <TrendingUp className="w-5 h-5 text-indigo-600" />
           <h3 className="text-lg font-bold text-gray-900">Latest in {categoryName}</h3>
         </div>
-        
+
         {categoryPosts.length > 0 ? (
           <div className="space-y-4">
             {categoryPosts.map((post, index) => (
               <Link
-                key={post.id}
+                key={post._id}
                 href={`/blog/${post.slug}`}
                 className="group block"
               >
@@ -50,7 +48,7 @@ const BlogSidebarCategory = ({ categoryId, categoryName }: BlogSidebarCategoryPr
                     </h4>
                     <div className="flex items-center gap-2 mt-1.5 text-xs text-gray-600">
                       <span className="px-2 py-0.5 bg-white rounded-full font-medium">
-                        {post.category}
+                        {post.category?.name}
                       </span>
                       <span className="text-indigo-600 font-semibold">{post.readTime}</span>
                     </div>
@@ -76,28 +74,26 @@ const BlogSidebarCategory = ({ categoryId, categoryName }: BlogSidebarCategoryPr
         <div className="space-y-2">
           {categoriesWithCounts.map((category) => (
             <Link
-              key={category.id}
+              key={category.slug}
               href={`/blog/category/${category.slug}`}
-              className={`group flex items-center justify-between p-3 bg-white hover:bg-purple-50 rounded-lg transition-all duration-200 border ${
-                category.id === categoryId 
-                  ? 'border-purple-400 bg-purple-50' 
-                  : 'border-transparent hover:border-purple-200'
-              }`}
+              className={`group flex items-center justify-between p-3 bg-white hover:bg-purple-50 rounded-lg transition-all duration-200 border ${category.name === categoryName
+                ? 'border-purple-400 bg-purple-50'
+                : 'border-transparent hover:border-purple-200'
+                }`}
             >
-              <span className={`text-sm font-medium transition-colors ${
-                category.id === categoryId 
-                  ? 'text-purple-700 font-bold' 
-                  : 'text-gray-700 group-hover:text-purple-700'
-              }`}>
+              <span className={`text-sm font-medium transition-colors ${category.name === categoryName
+                ? 'text-purple-700 font-bold'
+                : 'text-gray-700 group-hover:text-purple-700'
+                }`}>
                 {category.name}
               </span>
               <span className="px-2.5 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full">
-                {category.postCount}
+                {category.count}
               </span>
             </Link>
           ))}
         </div>
-        
+
         {/* View All Categories Link */}
         <div className="mt-4 pt-4 border-t border-purple-200">
           <Link
@@ -111,9 +107,9 @@ const BlogSidebarCategory = ({ categoryId, categoryName }: BlogSidebarCategoryPr
       </div>
 
       {/* Newsletter Section */}
-      <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-6 shadow-sm border border-orange-100">
+      {/* <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-6 shadow-sm border border-orange-100">
         <div className="flex items-center gap-2 mb-4">
-          <Mail className="w-5 h-5 text-orange-600" />
+          <Mail className="w-5 h-5 text-brand" />
           <h3 className="text-lg font-bold text-gray-900">Newsletter</h3>
         </div>
         <p className="text-sm text-gray-700 mb-4 leading-relaxed">
@@ -127,7 +123,7 @@ const BlogSidebarCategory = ({ categoryId, categoryName }: BlogSidebarCategoryPr
           />
           <button
             type="submit"
-            className="cursor-pointer w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600  text-white font-semibold py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 text-sm"
+            className="cursor-pointer w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-brand hover:to-amber-600  text-white font-semibold py-2.5 px-4 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 text-sm"
           >
             Subscribe Now
           </button>
@@ -135,7 +131,7 @@ const BlogSidebarCategory = ({ categoryId, categoryName }: BlogSidebarCategoryPr
         <p className="text-xs text-gray-600 mt-3 text-center">
           No spam. Unsubscribe anytime.
         </p>
-      </div>
+      </div> */}
 
       {/* Popular Tags */}
       <div className="bg-gradient-to-br from-cyan-50 to-teal-50 rounded-xl p-6 shadow-sm border border-cyan-100">

@@ -1,6 +1,8 @@
 "use client";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Download, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 const modules = [
   {
@@ -86,9 +88,12 @@ const modules = [
 
 export default function CurriculumSection() {
   const [expandedModule, setExpandedModule] = useState<number | null>(0);
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Machine Learning Algorithms using python Programming";
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section id="curriculum" className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -173,7 +178,38 @@ export default function CurriculumSection() {
             ))}
           </div>
         </div>
+
+        {/* CTA Buttons */}
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-brand bg-brand px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-brand hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-200"
+          >
+            Apply Now
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </button>
+          <button
+            onClick={() => setIsSyllabusOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-brand focus:outline-none focus:ring-4 focus:ring-orange-200"
+          >
+            <Download className="mr-2 h-5 w-5" />
+            Download Detailed Syllabus (PDF)
+          </button>
+        </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Machine Learning Algorithms with Python Course Page - Curriculum Section - Apply Now"
+        courseName={courseName}
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Machine Learning Algorithms with Python Course Page - Curriculum Section - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 }

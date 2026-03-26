@@ -2,27 +2,22 @@
 
 // src/components/FaqSection.tsx
 import React, { useState } from "react";
-import Link from "next/link";
-import { content } from "@/components/data-visualization-in-r-programming/data/content";
-import { ChevronDown, HelpCircle } from "lucide-react";
-
-interface Faq {
-  q: string;
-  a: string;
-  category?: string; // optional – in case you add categories later in content
-}
+import { ChevronDown, HelpCircle, CloudDownload } from "lucide-react";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import { R_DATA_VIS_FAQS } from "@/data/rDataVisData";
 
 export const FaqSection: React.FC = () => {
-  const { faq_section } = content;
-  const faqs: Faq[] = faq_section.questions;
-
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Machine Learning and Data Visualization using R Programming";
 
   // If your FAQs include category, we'll group by it.
   // If not, everything will appear under one SEO-friendly heading.
   const categories = Array.from(
     new Set(
-      faqs
+      R_DATA_VIS_FAQS
         .map((faq) => faq.category)
         .filter((cat): cat is string => Boolean(cat)
         )
@@ -34,13 +29,13 @@ export const FaqSection: React.FC = () => {
     : ["R Programming Master Program FAQs"];
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-10 bg-gradient-to-b from-white to-slate-50">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-44">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
             R Programming Course{" "}
-            <span className="text-orange-600">Frequently Asked Questions</span>
+            <span className="text-brand">Frequently Asked Questions</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             Find clear answers about our{" "}
@@ -64,12 +59,12 @@ export const FaqSection: React.FC = () => {
 
             {/* FAQs List */}
             <div className="space-y-4">
-              {faqs
+              {R_DATA_VIS_FAQS
                 .filter((faq) =>
                   hasCategories ? faq.category === categoryLabel : true
                 )
                 .map((faq) => {
-                  const globalIdx = faqs.indexOf(faq);
+                  const globalIdx = R_DATA_VIS_FAQS.indexOf(faq);
 
                   return (
                     <div
@@ -86,15 +81,15 @@ export const FaqSection: React.FC = () => {
                         className="w-full px-6 py-5 flex items-center justify-between cursor-pointer hover:bg-slate-50 transition-colors gap-4"
                       >
                         <div className="flex items-center gap-3 text-left">
-                          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-50 text-orange-600">
+                          <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-orange-50 text-brand">
                             <HelpCircle className="w-4 h-4" />
                           </span>
                           <h4 className="text-lg font-semibold text-slate-900">
-                            {faq.q}
+                            {faq.question}
                           </h4>
                         </div>
                         <ChevronDown
-                          className={`w-6 h-6 text-orange-600 transition-transform duration-300 flex-shrink-0 ${expandedFAQ === globalIdx ? "rotate-180" : ""
+                          className={`w-6 h-6 text-brand transition-transform duration-300 flex-shrink-0 ${expandedFAQ === globalIdx ? "rotate-180" : ""
                             }`}
                         />
                       </button>
@@ -103,7 +98,7 @@ export const FaqSection: React.FC = () => {
                       {expandedFAQ === globalIdx && (
                         <div className="px-6 pb-5 border-t border-slate-200 bg-slate-50">
                           <p className="text-slate-600 leading-relaxed">
-                            {faq.a}
+                            {faq.answer}
                           </p>
                         </div>
                       )}
@@ -128,18 +123,19 @@ export const FaqSection: React.FC = () => {
             pricing, live online classes, and placement support.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href="tel:+917888383788"
-              className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors"
+            <button
+              onClick={() => setIsEnrollOpen(true)}
+              className="px-6 py-3 bg-brand hover:bg-brand text-white font-semibold rounded-lg transition-colors cursor-pointer"
             >
               📞 Talk to a Career Expert
-            </Link>
-            <Link
-              href="mailto:contact@cinutedigital.com"
-              className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors"
+            </button>
+            <button
+              onClick={() => setIsSyllabusOpen(true)}
+              className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors cursor-pointer flex items-center"
             >
-              ✉️ Get Full R Course Details on Email
-            </Link>
+              <CloudDownload className="w-5 h-5 mr-2" />
+              Get Full R Course Details on Email
+            </button>
           </div>
           <p className="mt-6 text-sm text-slate-500 max-w-3xl mx-auto">
             Popular searches: <strong>R programming course with placement</strong>,{" "}
@@ -149,6 +145,19 @@ export const FaqSection: React.FC = () => {
           </p>
         </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="R Programming Course Page - FAQ Section - Talk to Expert"
+        courseName={courseName}
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="R Programming Course Page - FAQ Section - Get Details"
+        courseName={courseName}
+      />
     </section>
   );
 };

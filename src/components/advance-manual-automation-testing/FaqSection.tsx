@@ -3,14 +3,7 @@ import { useId, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
-type Faq = { q: string; a: string };
-
-const faqs: Faq[] = [
-  { q: 'Do I need any experience?', a: 'No - we start from the basics. Logical thinking helps, and we guide you step-by-step with practice tasks.' },
-  { q: 'Will I get an ISTQB certificate?', a: 'Yes. We include ISTQB Foundation prep along with Automation interview practice and exam tips.' },
-  { q: 'What is the duration?', a: '40 hours of live, mentor-led training + lifetime access to recordings, notes, and updates.' },
-  { q: 'Is placement guaranteed?', a: 'We provide 100% job assistance: resume reviews, mock interviews, referrals, and portfolio projects.' },
-];
+import { ADVANCE_MANUAL_AUTOMATION_FAQS } from '@/data/advanceManualAutomationData';
 
 const accentRing = [
   'ring-blue-200 border-blue-200',
@@ -23,9 +16,8 @@ export default function FaqSection() {
   const [open, setOpen] = useState<number | null>(null);
   const baseId = useId();
 
-
   return (
-    <section id="faqs" className="relative py-8 md:py-10 bg-white">
+    <section id="faqs" className="relative py-10 bg-white">
       {/* subtle frame lines */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -56,7 +48,7 @@ export default function FaqSection() {
 
         {/* FAQ list */}
         <div className="mt-8 space-y-4">
-          {faqs.map((faq, i) => {
+          {ADVANCE_MANUAL_AUTOMATION_FAQS.map((faq, i) => {
             const isOpen = open === i;
             const panelId = `${baseId}-faq-panel-${i}`;
             const btnId = `${baseId}-faq-button-${i}`;
@@ -64,7 +56,7 @@ export default function FaqSection() {
 
             return (
               <motion.div
-                key={faq.q}
+                key={faq.question}
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -79,7 +71,7 @@ export default function FaqSection() {
                   className="group flex w-full items-center justify-between gap-4 rounded-xl px-5 py-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-300"
                 >
                   <span className="text-sm sm:text-base font-semibold tracking-tight text-slate-900">
-                    {faq.q}
+                    {faq.question}
                   </span>
                   <ChevronDown
                     className={`h-5 w-5 flex-shrink-0 text-slate-500 transition-transform duration-300 group-hover:text-slate-700 ${isOpen ? 'rotate-180' : ''
@@ -98,7 +90,7 @@ export default function FaqSection() {
                   className="overflow-hidden border-t border-slate-100"
                 >
                   <div className="px-5 py-4 text-sm sm:text-base leading-relaxed text-slate-700">
-                    {faq.a}
+                    {faq.answer}
                   </div>
                 </motion.div>
               </motion.div>

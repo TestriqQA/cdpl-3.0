@@ -22,7 +22,7 @@ const STATS: Stat[] = [
     accent: {
       bar: "bg-orange-500",
       border: "border-orange-200",
-      text: "text-orange-700",
+      text: "text-brand",
       chip: "bg-orange-50",
       ring: "focus:ring-orange-300",
     },
@@ -98,7 +98,7 @@ export default function StatsSection() {
     <section
       id="ada-stats"
       aria-labelledby="ada-stats-heading"
-      className="relative py-4 md:py-6 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop (fine grid + soft top glow; no heavy gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -112,12 +112,10 @@ export default function StatsSection() {
             id="ada-stats-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Why <span className="text-DS">Advanced Data Analytics</span>?
+            Why Choose Our <span className="text-DS">Advanced Data Analytics</span> Hero Program?
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
-            Data analytics drives <strong>profitability, forecasting, and decisions</strong> in 2025. Join our mentor-led{" "}
-            <strong>Advanced Data Analytics</strong> program to build <strong>Python, SQL, BI, and ML</strong> skills with
-            <strong> real projects</strong> and placement support.
+            Join Mumbai&apos;s most intensive <strong>data analytics training</strong>. We don&apos;t just teach tools; we build careers. With a <strong>4.8/5 rating</strong> and a legacy of <strong>5,000+ placements</strong>, we are the <strong>best institute for data analytics</strong> in Mumbai and Thane.
           </p>
           {/* SEO helper (visually hidden) */}
           <p className="sr-only">{seoKeywords}</p>

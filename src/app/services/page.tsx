@@ -1,12 +1,14 @@
-// app/services/page.tsx
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { generateSEO } from "@/lib/seo";
+import { generateStaticPageMetadata } from "@/lib/metadata-generator";
+import { generateCollectionPageSchema, generateBreadcrumbSchema, generateServiceSchema } from "@/lib/schema-generators";
+import JsonLd from "@/components/JsonLd";
+import { trainingServices } from "@/data/servicesData";
 
 // ============================================================================
 // SEO METADATA - Optimized for Services Page
 // ============================================================================
-export const metadata: Metadata = generateSEO({
+export const metadata: Metadata = generateStaticPageMetadata({
   title: "Our Services | Training, Consulting & Custom Solutions – CDPL",
   description: "CDPL offers comprehensive corporate training, software testing consulting, custom automation solutions, and technical workshops for enterprises. Upskill your team with industry-expert trainers in Software Testing, Data Science, AI/ML, and DevOps.",
   keywords: [
@@ -26,7 +28,6 @@ export const metadata: Metadata = generateSEO({
   ],
   url: "/services",
   image: "/og-images/og-image-services.webp",
-  imageAlt: "CDPL Services - Corporate Training, Consulting & Custom Solutions",
 });
 
 // Simple loading UI used by all sections
@@ -38,11 +39,14 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
   );
 }
 
+// ---------- Static Import for Hero (LCP Optimization) ----------
+import ServicesHeroSection from "@/components/sections/ServicesHeroSection";
+
 // ---------- Dynamic sections (SSR enabled) ----------
-const ServicesHeroSection = dynamic(
-  () => import("@/components/sections/ServicesHeroSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
-);
+// const ServicesHeroSection = dynamic(
+//   () => import("@/components/sections/ServicesHeroSection"),
+//   { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
+// );
 
 const ServicesGridSection = dynamic(
   () => import("@/components/sections/ServicesGridSection"),
@@ -64,26 +68,44 @@ const ServicesCTASection = dynamic(
 // ============================================================================
 export default function TrainingServicesPage() {
 
+  // 1. Breadcrumb Schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Services", url: "/services" },
+  ]);
+
+  // 2. CollectionPage Schema (Listing all services)
+  const collectionPageSchema = generateCollectionPageSchema({
+    name: "Our Services",
+    description: "Comprehensive corporate training, consulting, and custom solutions.",
+    url: "/services",
+    hasPart: trainingServices.map((service) => ({
+      '@type': 'ListItem',
+      position: Number(service.id),
+      item: generateServiceSchema({
+        name: service.title,
+        description: service.shortDescription,
+        url: `/services/${service.slug}`,
+        serviceType: "Corporate Training",
+        image: `/og-images/og-service-${service.slug}.webp`
+      })
+    }))
+  });
+
   return (
     <>
-  
+      <JsonLd id="services-breadcrumb" schema={breadcrumbSchema} />
+      <JsonLd id="services-collection" schema={collectionPageSchema} />
 
       {/* Main Content - Semantic HTML Structure */}
-      <div 
+      <main
         className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50"
-        itemScope 
-        itemType="https://schema.org/CollectionPage"
       >
-        {/* Hidden metadata for schema.org */}
-        <meta itemProp="name" content="CDPL Services - Corporate Training & Consulting" />
-        <meta itemProp="description" content="Comprehensive corporate training, consulting, and custom solutions" />
-        <meta itemProp="url" content="https://www.cinutedigital.com/services" />
-
         <ServicesHeroSection />
         <ServicesGridSection />
         <ServicesWhyChooseUsSection />
         <ServicesCTASection />
-      </div>
+      </main>
     </>
   );
 }

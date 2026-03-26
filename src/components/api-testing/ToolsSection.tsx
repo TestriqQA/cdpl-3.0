@@ -29,9 +29,9 @@ const tools: Tool[] = [
         icon: <MessageSquare className="w-6 h-6" />,
         bg: 'bg-orange-50',
         border: 'border-orange-200',
-        ink: 'text-orange-900',
-        iconTint: 'text-orange-700',
-        chip: 'bg-orange-100 text-orange-800 border-orange-200',
+        ink: 'text-brand',
+        iconTint: 'text-brand',
+        chip: 'bg-orange-100 text-brand border-orange-200',
     },
     {
         name: 'REST APIs',
@@ -102,7 +102,7 @@ export default function ToolsSection() {
 
 
     return (
-        <section id="tools" aria-labelledby="tools-heading" className="relative py-8 sm:py-10 bg-white">
+        <section id="tools" aria-labelledby="tools-heading" className="relative py-10 bg-white">
             {/* subtle separators for a clean, futuristic frame */}
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -122,8 +122,7 @@ export default function ToolsSection() {
                         <span className='text-ST'>Tools</span> You’ll Master
                     </h2>
                     <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-                        Practice with industry-standard tools used by <strong>Fortune 500</strong> teams—perfect for{' '}
-                        <strong>API Testing</strong>, <strong>Automation</strong>, and <strong>Security</strong> workflows.
+                        Get hands-on with top <strong>free API testing tools</strong> and enterprise platforms. Learn <strong>how to test api</strong> effectively using industry-standard <strong>API testing tools</strong>.
                     </p>
                 </motion.header>
 

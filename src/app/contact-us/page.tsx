@@ -1,18 +1,23 @@
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { ContactHeroSection } from '@/components/sections/ContactHeroSection';
 import { ContactMethodsSection } from '@/components/sections/ContactMethodSection';
-import { ContactOfficeMapSection } from '@/components/sections/ContactOfficeMapSection';
-import { ContactBookCallSection } from '@/components/sections/ContactBookCall';
-import { ContactFAQSection } from '@/components/sections/ContactFAQSection';
-import ContactReviewSection from '@/components/sections/ContactReviewSection';
-import { generateSEO} from '@/lib/seo';
+
+const ContactOfficeMapSection = dynamic(() => import('@/components/sections/ContactOfficeMapSection').then(mod => mod.ContactOfficeMapSection), { ssr: true });
+const ContactBookCallSection = dynamic(() => import('@/components/sections/ContactBookCall').then(mod => mod.ContactBookCallSection), { ssr: true });
+const ContactFAQSection = dynamic(() => import('@/components/sections/ContactFAQSection').then(mod => mod.ContactFAQSection), { ssr: true });
+const ContactReviewSection = dynamic(() => import('@/components/sections/ContactReviewSection'), { ssr: true });
+
+import { generateStaticPageMetadata } from "@/lib/metadata-generator";
+import { generateContactPageSchema } from "@/lib/schema-generators";
+import JsonLd from "@/components/JsonLd";
 
 // ============================================================================
 // SEO METADATA - Optimized for Contact Page
 // ============================================================================
-export const metadata: Metadata = generateSEO({
-  title: 'Contact us Cinute Digital | Get in Touch Today',
-  description: 'Contact CDPL (Cinute Digital) for course inquiries, admissions support, and career guidance. Reach us via phone, email, WhatsApp, or visit our office in Mumbai. Expert advisors available to help with Software Testing, Data Science, and AI/ML courses.',
+export const metadata: Metadata = generateStaticPageMetadata({
+  title: 'Contact Us | Software Testing & Data Science Training',
+  description: 'Get in touch with CDPL (Cinute Digital) for course inquiries, admissions, and career guidance. Call us, email, or visit our Mumbai office. 100% Placement Support.',
   keywords: [
     'contact CDPL',
     'Cinute Digital contact',
@@ -26,24 +31,28 @@ export const metadata: Metadata = generateSEO({
     'admissions support',
     'career guidance',
     'training institute contact',
+    'software testing institute mumbai',
+    'data science course mumbai'
   ],
   url: '/contact-us',
   image: '/og-images/cdpl-og-image-contact.webp',
-  imageAlt: 'Contact CDPL - Cinute Digital for Course Inquiries and Admissions Support',
 });
 
 // ============================================================================
 // CONTACT PAGE COMPONENT
 // ============================================================================
 export default function ContactPage() {
+  // Generate Schema
+  const contactSchema = generateContactPageSchema();
 
   return (
     <>
-
+      {/* Schema Injection */}
+      <JsonLd id="contact-page-schema" schema={contactSchema} />
 
       {/* Main Content - Semantic HTML Structure */}
       <main className="relative min-h-[220vh]" >
-       
+
 
         <ContactHeroSection />
         <ContactMethodsSection />

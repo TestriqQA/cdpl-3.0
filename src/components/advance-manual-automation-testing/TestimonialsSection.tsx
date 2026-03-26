@@ -1,5 +1,14 @@
 'use client';
-import ReviewsMarquee from '../sections/ReviewMarque';
+import dynamic from 'next/dynamic';
+const ReviewsMarquee = dynamic(() => import('../sections/ReviewMarque'), { ssr: false, loading: () => <SectionLoader label="Loading reviews marquee..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 
 
 export default function TestimonialsSection() {
@@ -7,7 +16,7 @@ export default function TestimonialsSection() {
 
 
   return (
-    <section id='testimonials' className="relative py-8 md:py-10 bg-white">
+    <section id='testimonials' className="relative py-10 bg-white">
       {/* subtle framework lines */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -32,7 +41,7 @@ export default function TestimonialsSection() {
       </div>
 
       {/* JSON-LD for search engines */}
-   
+
     </section>
   );
 }

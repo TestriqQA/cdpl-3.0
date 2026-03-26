@@ -1,19 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { User, Mail, CheckCircle2, TrendingUp } from "lucide-react";
 
 // Import react-phone-number-input for professional phone input
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+
+import { validateFullName as validateFullNameLib, validatePhone } from '@/lib/formValidation';
 
 export default function LeadForm({
   className = '',
   variant = 'elevated',
+  source = 'API Testing Course Page - Hero Section',
+
 }: {
   className?: string;
   variant?: 'default' | 'elevated';
+  source?: string;
+  courseName?: string;
 }) {
   // Form state
   const [formData, setFormData] = useState({
@@ -27,26 +32,23 @@ export default function LeadForm({
   const [emailError, setEmailError] = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
 
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useFormErrorReset(formRef, [
+    setFullNameError,
+    setEmailError,
+    setPhoneError
+  ]);
+
   // Submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Validation functions (same as home page)
   const validateFullName = (name: string): boolean => {
-    if (!name.trim()) {
-      setFullNameError('Full name is required.');
-      return false;
-    }
-    if (name.trim().length < 3) {
-      setFullNameError('Full name must be at least 3 characters.');
-      return false;
-    }
-    if (!/^[a-zA-Z\s]+$/.test(name)) {
-      setFullNameError('Full name can only contain letters and spaces.');
-      return false;
-    }
-    setFullNameError(null);
-    return true;
+    const error = validateFullNameLib(name);
+    setFullNameError(error);
+    return error === null;
   };
 
   const validateEmail = (email: string): boolean => {
@@ -64,24 +66,9 @@ export default function LeadForm({
   };
 
   const validatePhoneNumber = (phone: string): boolean => {
-    if (!phone || phone.trim() === '') {
-      setPhoneError('Phone number is required.');
-      return false;
-    }
-
-    if (!isValidPhoneNumber(phone)) {
-      setPhoneError('Please enter a valid phone number.');
-      return false;
-    }
-
-    // Check for all zeros
-    if (/^[+\s0()-]+$/.test(phone)) {
-      setPhoneError('Phone number cannot be all zeros.');
-      return false;
-    }
-
-    setPhoneError(null);
-    return true;
+    const error = validatePhone(phone);
+    setPhoneError(error);
+    return error === null;
   };
 
   // Handle input changes
@@ -122,7 +109,10 @@ export default function LeadForm({
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({
+            ...formData,
+            source: source
+          }),
         });
 
         if (response.ok) {
@@ -164,6 +154,12 @@ export default function LeadForm({
           transition: all 0.3s;
         }
 
+        .phone-input-container {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
         .phone-input-container .PhoneInputInput:focus {
           border-color: #ff8c00;
           ring: 2px;
@@ -175,7 +171,7 @@ export default function LeadForm({
         }
 
         .phone-input-container .PhoneInputCountrySelect {
-          margin-right: 0.5rem;
+          margin-right: 0;
           padding: 0.5rem;
           border: 1px solid #d1d5db;
           border-radius: 0.5rem;
@@ -190,6 +186,7 @@ export default function LeadForm({
       `}</style>
 
       <form
+        ref={formRef}
         onSubmit={handleSubmit}
         aria-label="Quick enrollment form"
         className={[
@@ -202,9 +199,9 @@ export default function LeadForm({
         {/* Form Header - Same as home page */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="text-xl font-bold text-slate-900">
+            <h2 className="text-xl font-bold text-slate-900">
               Request a Callback
-            </h3>
+            </h2>
 
           </div>
           <p className="text-xs text-slate-600 mt-1">
@@ -233,21 +230,21 @@ export default function LeadForm({
         <div className="space-y-4">
           {/* Full Name Input - Same as home page */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1 text-left">
               Full Name *
             </label>
             <div className="relative">
               <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <input
                 type="text"
+                maxLength={35}
                 name="fullName"
                 value={formData.fullName}
                 onChange={handleInputChange}
                 onBlur={() => validateFullName(formData.fullName)}
                 required
-                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${
-                  fullNameError ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${fullNameError ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 placeholder="Enter your full name"
                 style={{ color: '#1e293b' }}
               />
@@ -259,7 +256,7 @@ export default function LeadForm({
 
           {/* Email Input - Same as home page */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1 text-left">
               Email Address *
             </label>
             <div className="relative">
@@ -271,9 +268,8 @@ export default function LeadForm({
                 onChange={handleInputChange}
                 onBlur={() => validateEmail(formData.email)}
                 required
-                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${
-                  emailError ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${emailError ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 placeholder="Enter your email address"
                 style={{ color: '#1e293b' }}
               />
@@ -285,19 +281,19 @@ export default function LeadForm({
 
           {/* Phone Input - Same as home page with react-phone-number-input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-1 text-left">
               Mobile Number *
             </label>
             <div className="relative">
               <PhoneInput
                 international
+                limitMaxLength={true}
                 defaultCountry="IN"
                 value={formData.phone}
                 onChange={handlePhoneChange}
                 onBlur={() => validatePhoneNumber(formData.phone)}
-                className={`phone-input-container ${
-                  phoneError ? 'border-red-500' : ''
-                }`}
+                className={`phone-input-container ${phoneError ? 'border-red-500' : ''
+                  }`}
                 placeholder="Enter phone number"
               />
             </div>
@@ -325,10 +321,10 @@ export default function LeadForm({
             )}
           </button>
 
-<p className="text-xs text-slate-500">
-          By submitting, you agree to our <a href="https://cinutedigital.com/privacy-policy">Privacy Policy</a>.
-        </p>
-         
+          <p className="text-xs text-slate-500">
+            By submitting, you agree to our <a href="https://cinutedigital.com/privacy-policy">Privacy Policy</a>.
+          </p>
+
         </div>
       </form>
     </>

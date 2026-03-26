@@ -13,6 +13,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import AdvisorModal from "@/components/ui/AdvisorModal";
 
 /** Palette keys supported by your data */
 type Tone =
@@ -39,7 +41,7 @@ export const PALETTE: Record<
   blue: { cardBg: "bg-blue-50", cardBorder: "border-blue-300", iconWrap: "bg-blue-500", iconColor: "text-blue-600", hoverShadow: "hover:shadow-blue-200" },
   green: { cardBg: "bg-green-50", cardBorder: "border-green-300", iconWrap: "bg-green-500", iconColor: "text-green-600", hoverShadow: "hover:shadow-green-200" },
   purple: { cardBg: "bg-purple-50", cardBorder: "border-purple-300", iconWrap: "bg-purple-500", iconColor: "text-purple-600", hoverShadow: "hover:shadow-purple-200" },
-  orange: { cardBg: "bg-orange-50", cardBorder: "border-orange-300", iconWrap: "bg-orange-500", iconColor: "text-orange-600", hoverShadow: "hover:shadow-orange-200" },
+  orange: { cardBg: "bg-orange-50", cardBorder: "border-orange-300", iconWrap: "bg-orange-500", iconColor: "text-brand", hoverShadow: "hover:shadow-orange-200" },
   teal: { cardBg: "bg-teal-50", cardBorder: "border-teal-300", iconWrap: "bg-teal-500", iconColor: "text-teal-600", hoverShadow: "hover:shadow-teal-200" },
   yellow: { cardBg: "bg-yellow-50", cardBorder: "border-yellow-300", iconWrap: "bg-yellow-500", iconColor: "text-yellow-600", hoverShadow: "hover:shadow-yellow-200" },
   pink: { cardBg: "bg-pink-50", cardBorder: "border-pink-300", iconWrap: "bg-pink-500", iconColor: "text-pink-600", hoverShadow: "hover:shadow-pink-200" },
@@ -53,6 +55,7 @@ function toneFrom(token?: string): Tone {
 }
 
 export default function AboutWhyJoinUs() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const features = [
     {
       title: "Training",
@@ -87,7 +90,7 @@ export default function AboutWhyJoinUs() {
         "A decade of building QA teams. Learn in-demand tools, frameworks, and best practices used by top companies.",
       icon: Rocket,
       seo: ["QA best practices", "modern test frameworks"],
-      bgIcon: "orange-600",
+      bgIcon: "brand",
       bgColor: "orange-50",
     },
     {
@@ -142,9 +145,9 @@ export default function AboutWhyJoinUs() {
         <h2 id="why-join-heading" className="mt-3 text-4xl font-bold tracking-tight">
           Why join{" "}
           <span className="bg-clip-text text-transparent bg-brand">
-            Cinute Digital{" "}
+            Cinute Digital
           </span>
-          ?
+          {'\u00A0'}?
         </h2>
         <p className="mx-auto mt-6 max-w-5xl leading-6 text-slate-600 md:text-lg sm:text-base">
           Industry-aligned curriculum, <strong>mentor-led learning</strong>,{" "}
@@ -209,7 +212,7 @@ export default function AboutWhyJoinUs() {
                 {/* SEO micro-tags */}
                 <p className="mt-6 flex flex-wrap gap-2 text-xs leading-4 text-slate-500">
                   {seo.map((s) => (
-                    <span key={s} className="w-fit rounded-md bg-green-100 p-0.5 px-1.5">
+                    <span key={s} className="w-fit rounded-md bg-green-100 p-0.5 px-1.5 text-emerald-800">
                       {s}
                     </span>
                   ))}
@@ -231,12 +234,12 @@ export default function AboutWhyJoinUs() {
             Explore Courses
             <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
           </Link>
-          <Link
-            href="contact-us"
-            className="inline-flex items-center justify-center rounded-2xl bg-white/90 px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-brand transition hover:bg-brand hover:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2"
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="inline-flex items-center justify-center rounded-2xl bg-white/90 px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-[#ff8c00] transition hover:bg-brand hover:text-white focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2 cursor-pointer"
           >
             Talk to an Advisor
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -244,6 +247,8 @@ export default function AboutWhyJoinUs() {
         Why join Cinute Digital: mentor-led training, live projects, certifications, and placement
         assistance for career-ready skills in software testing, automation, data science, and AI/ML.
       </span>
+
+      <AdvisorModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 }

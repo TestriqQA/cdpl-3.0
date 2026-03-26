@@ -143,7 +143,7 @@ export function ContactFAQSection() {
           </div>
 
           {/* FAQs */}
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
             {filtered.map((item) => (
               <details
                 key={item.q}
@@ -157,7 +157,7 @@ export function ContactFAQSection() {
                     <h3 className="mt-2 text-lg text-slate-900 font-semibold">{item.q}</h3>
                   </div>
                   <span
-                    className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full border border-slate-300 text-slate-600 transition group-open:rotate-45"
+                    className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-slate-300 text-slate-600 transition group-open:rotate-45"
                     aria-hidden
                     title="Toggle"
                   >
@@ -183,7 +183,7 @@ export function ContactFAQSection() {
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="https://wa.me/9152929342"
-                className="inline-flex items-center justify-center rounded-full bg-green-600 px-5 py-2.5 text-white text-sm font-medium shadow-md transition hover:bg-sky-700"
+                className="inline-flex items-center justify-center rounded-full bg-green-700 px-5 py-2.5 text-white text-sm font-medium shadow-md transition hover:bg-sky-700"
               >
                 WhatsApp Us
               </Link>

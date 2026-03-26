@@ -48,13 +48,13 @@ const COURSE_CONFIG: Record<
   "web-development": {
     label: "Web Development",
     icon: <Code className="w-3.5 h-3.5" />,
-    color: "bg-orange-100 text-orange-700 ring-orange-300",
+    color: "bg-orange-100 text-brand ring-orange-300",
   },
   // (Optional) Backward-compat alias for any legacy data still using "programming"
   programming: {
     label: "Web Development",
     icon: <Code className="w-3.5 h-3.5" />,
-    color: "bg-orange-100 text-orange-700 ring-orange-300",
+    color: "bg-orange-100 text-brand ring-orange-300",
   },
 };
 
@@ -225,7 +225,7 @@ export default function LocationsHierarchicalLocationsSection({
   };
 
   return (
-    <section className={`w-full bg-white ${sectionClassName}`}>
+    <section id="locations-directory" className={`w-full bg-white ${sectionClassName}`}>
       <div className={`mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 ${containerClassName}`}>
         <div className="space-y-8">
           {/* Title */}

@@ -1,5 +1,9 @@
-import { Users, GraduationCap, Briefcase, TrendingUp, BarChart3, Target } from "lucide-react";
-import Link from "next/link";
+"use client";
+import { useState } from "react";
+import { Users, GraduationCap, Briefcase, TrendingUp, BarChart3, Target, ArrowRight, Download } from "lucide-react";
+
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 
 const whoShouldEnroll = [
@@ -30,17 +34,22 @@ const whoShouldEnroll = [
 ];
 
 const colorClasses = [
-    { bg: "bg-blue-100", text: "text-blue-600", border: "border-blue-200", gradient: "from-blue-500 to-blue-600" },
-    { bg: "bg-indigo-100", text: "text-indigo-600", border: "border-indigo-200", gradient: "from-indigo-500 to-indigo-600" },
-    { bg: "bg-cyan-100", text: "text-cyan-600", border: "border-cyan-200", gradient: "from-cyan-500 to-cyan-600" },
-    { bg: "bg-purple-100", text: "text-purple-600", border: "border-purple-200", gradient: "from-purple-500 to-purple-600" },
-    { bg: "bg-pink-100", text: "text-pink-600", border: "border-pink-200", gradient: "from-pink-500 to-pink-600" },
-    { bg: "bg-green-100", text: "text-green-600", border: "border-green-200", gradient: "from-green-500 to-green-600" },
+    { bg: "bg-blue-100", text: "text-[#1d4ed8]", border: "border-blue-200", gradient: "from-[#1d4ed8] to-[#1e40af]" },
+    { bg: "bg-indigo-100", text: "text-[#4338ca]", border: "border-indigo-200", gradient: "from-[#4338ca] to-[#3730a3]" },
+    { bg: "bg-cyan-100", text: "text-[#0e7490]", border: "border-cyan-200", gradient: "from-[#0891b2] to-[#0e7490]" },
+    { bg: "bg-purple-100", text: "text-[#7e22ce]", border: "border-purple-200", gradient: "from-[#7e22ce] to-[#6b21a8]" },
+    { bg: "bg-pink-100", text: "text-[#be185d]", border: "border-pink-200", gradient: "from-[#be185d] to-[#9d174d]" },
+    { bg: "bg-green-100", text: "text-[#15803d]", border: "border-green-200", gradient: "from-[#15803d] to-[#166534]" },
 ];
 
 export default function WhoShouldEnroll() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+
+    const courseName = "Advanced Excel for Data Analytics & Visualization";
+
     return (
-        <section className="relative py-10 md:py-20 bg-white overflow-hidden">
+        <section className="relative py-10 bg-white overflow-hidden">
             {/* Decorative background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
@@ -51,7 +60,7 @@ export default function WhoShouldEnroll() {
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        Who Should <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">Enroll</span>?
+                        Who Should <span className="bg-gradient-to-r from-[#ff8c00] via-[#ff8c00] to-[#ff8c00] bg-clip-text text-transparent">Enroll</span>?
                     </h2>
                     <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                         This course is designed for anyone looking to master data analytics. Whether you&apos;re a beginner or professional, there&apos;s something for you.
@@ -195,28 +204,38 @@ export default function WhoShouldEnroll() {
                     <p className="text-lg text-slate-700 mb-6">
                         Ready to start your Excel mastery journey?
                     </p>
-                    <Link
-                        href="/contact-us"
-                        className="
-    inline-flex items-center justify-center
-    w-full sm:w-auto
-    px-4 py-3 sm:px-6 sm:py-3 md:px-10 md:py-4
-    text-sm sm:text-base md:text-lg
-    bg-gradient-to-r from-blue-600 to-indigo-600
-    hover:from-blue-700 hover:to-indigo-700
-    text-white font-semibold
-    rounded-lg
-    text-center
-    shadow-lg hover:shadow-xl
-    transition-all duration-300
-    break-words
-  "
-                    >
-                        Enroll Now and Transform Your Career
-                    </Link>
-
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button
+                            onClick={() => setIsEnrollOpen(true)}
+                            className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-300 cursor-pointer"
+                        >
+                            Enroll Now
+                            <ArrowRight className="h-5 w-5" />
+                        </button>
+                        <button
+                            onClick={() => setIsSyllabusOpen(true)}
+                            className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-slate-200 bg-white px-8 py-4 text-lg font-semibold text-slate-700 shadow-sm transition-all hover:border-blue-300 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-200 cursor-pointer"
+                        >
+                            <Download className="h-5 w-5" />
+                            Download Syllabus
+                        </button>
+                    </div>
                 </div>
             </div>
+
+            {/* Modals */}
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Data Analytics & Visualization Course Page - Who Should Enroll - Enroll Now"
+                courseName={courseName}
+            />
+            <SyllabusDownloadModal
+                isOpen={isSyllabusOpen}
+                onClose={() => setIsSyllabusOpen(false)}
+                source="Data Analytics & Visualization Course Page - Who Should Enroll - Download Syllabus"
+                courseName={courseName}
+            />
         </section>
     );
 }

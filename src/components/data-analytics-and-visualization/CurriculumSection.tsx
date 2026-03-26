@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
-import { ChevronDown, BookOpen } from "lucide-react";
+import { ChevronDown, BookOpen, Download, Phone } from "lucide-react";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import CareerSessionModal from "../CareerSessionModal";
 
 
 export const curriculum = [
@@ -133,9 +135,13 @@ export const curriculum = [
 
 export default function CurriculumSection() {
     const [expandedModule, setExpandedModule] = useState<number | null>(0);
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+    const [isCareerSessionOpen, setIsCareerSessionOpen] = useState(false);
+
+    const courseName = "Advanced Excel for Data Analytics & Visualization";
 
     return (
-        <section className="relative py-20 bg-white overflow-hidden">
+        <section id="curriculum" className="relative py-10 bg-white overflow-hidden">
             {/* Decorative elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
@@ -146,7 +152,7 @@ export default function CurriculumSection() {
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        Comprehensive <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">Curriculum</span>
+                        Comprehensive <span className="bg-gradient-to-r from-[#ff8c00] via-[#ff8c00] to-[#ff8c00] bg-clip-text text-transparent">Curriculum</span>
                     </h2>
                     <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                         Master 13 comprehensive modules covering everything from Excel basics to advanced dashboards and real-world projects.
@@ -281,7 +287,39 @@ export default function CurriculumSection() {
                         </div>
                     </div>
                 </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
+                    <button
+                        onClick={() => setIsSyllabusOpen(true)}
+                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-base font-semibold text-white shadow-lg transition-all hover:bg-brand hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
+                    >
+                        <Download className="h-5 w-5" />
+                        Download Full Syllabus
+                    </button>
+                    <button
+                        onClick={() => setIsCareerSessionOpen(true)}
+                        className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-orange-200 bg-white px-6 py-3 text-base font-semibold text-brand shadow-sm transition-all hover:border-orange-300 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-200 cursor-pointer"
+                    >
+                        <Phone className="h-5 w-5" />
+                        Book a Career Session
+                    </button>
+                </div>
             </div>
+
+            {/* Modals */}
+            <SyllabusDownloadModal
+                isOpen={isSyllabusOpen}
+                onClose={() => setIsSyllabusOpen(false)}
+                source="Data Analytics & Visualization Course Page - Curriculum Section - Download Syllabus"
+                courseName={courseName}
+            />
+            <CareerSessionModal
+                isOpen={isCareerSessionOpen}
+                onClose={() => setIsCareerSessionOpen(false)}
+                source="Data Analytics & Visualization Course Page - Curriculum Section - Career Session"
+                courseName={courseName}
+            />
         </section>
     );
 }

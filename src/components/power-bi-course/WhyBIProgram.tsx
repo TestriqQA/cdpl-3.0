@@ -1,5 +1,6 @@
+"use client";
 // components/powerbi/WhyBIProgram.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Target,
   UserCheck,
@@ -9,6 +10,7 @@ import {
   Zap,
   type LucideIcon,
 } from 'lucide-react';
+import EnrollModal from "../EnrollModal";
 
 type ColorVariant = 'blue' | 'orange' | 'green' | 'purple' | 'pink' | 'indigo';
 
@@ -24,7 +26,7 @@ const colorClasses: Record<
   { bg: string; text: string; ring: string; grad: string; glow: string }
 > = {
   blue: { bg: 'bg-blue-100', text: 'text-blue-600', ring: 'ring-blue-200', grad: 'from-blue-500/20 to-cyan-500/20', glow: 'group-hover:shadow-blue-200' },
-  orange: { bg: 'bg-orange-100', text: 'text-orange-600', ring: 'ring-orange-200', grad: 'from-orange-500/20 to-amber-500/20', glow: 'group-hover:shadow-orange-200' },
+  orange: { bg: 'bg-orange-100', text: 'text-brand', ring: 'ring-orange-200', grad: 'from-orange-500/20 to-amber-500/20', glow: 'group-hover:shadow-orange-200' },
   green: { bg: 'bg-green-100', text: 'text-green-600', ring: 'ring-green-200', grad: 'from-emerald-500/20 to-lime-500/20', glow: 'group-hover:shadow-green-200' },
   purple: { bg: 'bg-purple-100', text: 'text-purple-600', ring: 'ring-purple-200', grad: 'from-purple-500/20 to-fuchsia-500/20', glow: 'group-hover:shadow-purple-200' },
   pink: { bg: 'bg-pink-100', text: 'text-pink-600', ring: 'ring-pink-200', grad: 'from-pink-500/20 to-rose-500/20', glow: 'group-hover:shadow-pink-200' },
@@ -93,6 +95,9 @@ const AdvantageCard: React.FC<AdvantageCardProps> = ({ Icon, title, description,
 };
 
 const WhyBIProgram: React.FC = () => {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Data Analytics & Visualization with Power BI";
+
   // Assign DISTINCT colors per card (no repeats)
   const advantages: AdvantageCardProps[] = [
     {
@@ -140,18 +145,19 @@ const WhyBIProgram: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-10 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">
-          <span className="text-sm md:text-base font-semibold tracking-wider text-orange-600 uppercase">
+          <span className="text-sm md:text-base font-semibold tracking-wider text-brand uppercase">
             Program Advantages
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
-            Why Choose Our Power BI Certification Program?
+            Is Power BI worth learning? Discover the Top Reasons to Join!
           </h2>
-          <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
-            We bridge the gap between academic learning and industry demands with a focus on practical, high-quality training.
+          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
+            As data-driven decision-making becomes critical, <strong>Power BI is highly in demand</strong> globally. Our <strong>Power BI course</strong> bridge the gap between academic learning and industry demands with a focus on practical, high-quality training in Mumbai & Thane.
           </p>
+
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -159,7 +165,24 @@ const WhyBIProgram: React.FC = () => {
             <AdvantageCard key={adv.title} {...adv} />
           ))}
         </div>
+
+        {/* CTA */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="w-full sm:w-auto bg-brand hover:bg-brand text-white font-bold py-5 px-8 my-4 rounded-lg transition-all flex sm:inline-flex min-h-[60px] justify-center items-center cursor-pointer shadow-none"
+          >
+            Start Your Journey Today
+          </button>
+        </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Power BI Course Page - Why BI Program - Start Journey"
+        courseName={courseName}
+      />
     </section>
   );
 };

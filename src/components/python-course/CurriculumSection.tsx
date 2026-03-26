@@ -2,6 +2,20 @@
 // Sleek, slightly futuristic curriculum with distinct non-repeating accents, SEO JSON-LD, fully responsive.
 // Source: “Copy of Course 4P Python Programming .pdf” (Modules on pp.16–19; Capstone on p.19)
 
+'use client';
+import dynamic from "next/dynamic";
+import { useState } from "react";
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+      <span className="ml-2 text-gray-900">{label}</span>
+    </div>
+  );
+};
+
 type Module = {
   num: string;
   title: string;
@@ -134,10 +148,10 @@ const ACCENTS = [
 ];
 
 export default function CurriculumSection() {
-
+  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
 
   return (
-    <section id="curriculum" aria-labelledby="curriculum-heading" className="relative py-12 sm:py-16 md:py-20 bg-gray-50">
+    <section id="curriculum" aria-labelledby="curriculum-heading" className="relative py-10 bg-gray-50">
       {/* subtle futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.03)_1px,transparent_1px)] bg-[size:26px_26px]" />
@@ -216,6 +230,7 @@ export default function CurriculumSection() {
         {/* CTA */}
         <div className="mt-10 text-center">
           <button
+            onClick={() => setIsSyllabusModalOpen(true)}
             className="inline-flex items-center gap-2 rounded-xl cursor-pointer border border-slate-900 bg-slate-900 px-4 md:px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="Download detailed Python curriculum"
           >
@@ -227,6 +242,13 @@ export default function CurriculumSection() {
           <p className="mt-3 text-xs sm:text-sm text-slate-600">Includes topics, outcomes, tools, and project checklist.</p>
         </div>
       </div>
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusModalOpen}
+        onClose={() => setIsSyllabusModalOpen(false)}
+        courseName="Python Programming"
+        source="Python Course Page - Curriculum Section - Python Programming - Download Detailed Syllabus"
+      />
 
     </section>
   );

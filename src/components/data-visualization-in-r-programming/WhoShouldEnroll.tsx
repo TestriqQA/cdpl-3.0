@@ -1,7 +1,11 @@
+"use client";
+
 // src/components/WhoShouldEnroll.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { content } from "@/components/data-visualization-in-r-programming/data/content";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, CloudDownload } from "lucide-react";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 interface AudienceSegment {
   title: string;
@@ -23,6 +27,9 @@ interface SuccessFactor {
 
 export const WhoShouldEnroll: React.FC = () => {
   const { who_should_enroll_section } = content;
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Machine Learning and Data Visualization using R Programming";
 
   const audiences: AudienceSegment[] = [
     {
@@ -123,13 +130,13 @@ export const WhoShouldEnroll: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
+    <section className="py-10 bg-gradient-to-b from-white to-slate-50">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
             {who_should_enroll_section.title}{" "}
-            <span className="text-orange-600">for R Data Visualization</span>
+            <span className="text-brand">for R Data Visualization</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             {/* original line preserved */}
@@ -253,7 +260,37 @@ export const WhoShouldEnroll: React.FC = () => {
             </p>
           </div>
         </div>
+
+        {/* CTA Buttons */}
+        <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4">
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-lg bg-brand px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-brand hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-200"
+          >
+            Check Eligibility & Apply
+          </button>
+          <button
+            onClick={() => setIsSyllabusOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-lg border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-700 shadow-sm transition-all hover:border-orange-400 hover:text-brand hover:shadow-md focus:outline-none focus:ring-4 focus:ring-orange-100"
+          >
+            <CloudDownload className="mr-2 h-5 w-5" />
+            Download Detailed Syllabus (PDF)
+          </button>
+        </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="R Programming Course Page - Who Should Enroll Section - Check Eligibility"
+        courseName={courseName}
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="R Programming Course Page - Who Should Enroll Section - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 };

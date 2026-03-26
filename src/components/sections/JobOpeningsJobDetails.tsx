@@ -152,7 +152,13 @@ export default function JobOpeningsJobDetails({
         }
     }
 
-    return (
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+        return () => setMounted(false);
+    }, []);
+
+    const modalContent = (
         <AnimatePresence>
             {open && (
                 <motion.div
@@ -160,14 +166,14 @@ export default function JobOpeningsJobDetails({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm"
+                    className="fixed inset-0 z-[100] bg-black/20 backdrop-blur-sm flex items-center justify-center"
                 >
                     <motion.div
                         initial={{ y: 24, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: 24, opacity: 0 }}
                         transition={{ type: "spring", stiffness: 140, damping: 18 }}
-                        className="container mx-auto my-6 max-w-6xl px-4"
+                        className="container mx-auto my-6 max-w-6xl px-4 h-full max-h-[90vh]"
                     >
                         <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-2xl">
                             <div className="flex flex-col items-start justify-between gap-3 border-b border-slate-200 p-4 sm:flex-row sm:items-center">
@@ -355,4 +361,11 @@ export default function JobOpeningsJobDetails({
             )}
         </AnimatePresence>
     );
+
+    if (!mounted) return null;
+
+    // Use createPortal to break out of any stacking contexts (transforms/filters)
+    return typeof document !== "undefined"
+        ? require("react-dom").createPortal(modalContent, document.body)
+        : null;
 }

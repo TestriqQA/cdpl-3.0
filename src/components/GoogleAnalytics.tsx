@@ -14,7 +14,7 @@ function GoogleAnalyticsTracker() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (GA_MEASUREMENT_ID) {
+    if (GA_MEASUREMENT_ID && typeof window !== 'undefined' && (window as any).gtag) {
       const url = pathname + searchParams.toString();
 
       (window as any).gtag("config", GA_MEASUREMENT_ID, {
@@ -36,8 +36,17 @@ const GoogleAnalytics = () => {
 
   return (
     <>
+      {/* Using 'afterInteractive' or 'lazyOnload' is good, but for maximum performance 
+          we can use 'worker' strategy if Partytown is set up. 
+          However, 'lazyOnload' is safer for general use to avoid blocking LCP. */}
+      {/* 
+        STRATEGY: Mixed
+        1. External Script (Heavy): 'lazyOnload' to avoid TBT on mobile.
+        2. Init Script (Light): 'afterInteractive' to define window.gtag shim immediately.
+           This prevents ReferenceErrors if other components call gtag before the heavy script loads.
+      */}
       <Script
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
       />
       <Script
@@ -48,7 +57,9 @@ const GoogleAnalytics = () => {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}');
+            gtag('config', '${GA_MEASUREMENT_ID}', {
+              page_path: window.location.pathname,
+            });
           `,
         }}
       />

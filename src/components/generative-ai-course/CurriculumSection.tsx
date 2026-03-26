@@ -1,7 +1,9 @@
 "use client";
 import { ChevronDown, BookOpen } from "lucide-react";
 import { useState } from "react";
-import Link from "next/link";
+
+import EnrollModal from "@/components/EnrollModal";
+import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
 
 interface Module {
   id: number;
@@ -15,6 +17,8 @@ interface Module {
 
 export default function CurriculumSection() {
   const [expandedModule, setExpandedModule] = useState<number | null>(null);
+  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
 
   const subtitle =
     "A 110+ hour, industry-aligned path across SQL/MySQL, Excel, Power BI, Tableau, and Python libraries—culminating in real projects and job-ready skills.";
@@ -135,24 +139,18 @@ export default function CurriculumSection() {
   ];
 
   return (
-    <section id="curriculum" className="py-16 md:py-20 bg-gradient-to-b from-slate-50 to-white">
+    <section id="curriculum" className="py-10 bg-gradient-to-b from-slate-50 to-white">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            5-Core <span className="text-orange-600">Curriculum Modules</span>
+            5-Core <span className="text-brand">Curriculum Modules</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-4xl mx-auto">
             {subtitle}
           </p>
           <p className="sr-only">{keywords}</p>
-          {/* Micro badges (distinct accents, no repeats) */}
-          <div className="mt-5 grid grid-cols-2 gap-2 text-[11px] font-semibold text-slate-700 sm:grid-cols-4">
-            <span className="rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-orange-900">SQL & Schema Design</span>
-            <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-900">Excel + Power Query</span>
-            <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sky-900">Power BI (DAX)</span>
-            <span className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-rose-900">Tableau Stories</span>
-          </div>
+
         </div>
 
         {/* Modules List */}
@@ -179,7 +177,7 @@ export default function CurriculumSection() {
                   </div>
                 </div>
                 <ChevronDown
-                  className={`w-6 h-6 text-orange-600 transition-transform duration-300 ${expandedModule === module.id ? "rotate-180" : ""
+                  className={`w-6 h-6 text-brand transition-transform duration-300 ${expandedModule === module.id ? "rotate-180" : ""
                     }`}
                 />
               </button>
@@ -190,7 +188,7 @@ export default function CurriculumSection() {
                   {/* Topics */}
                   <div className="mb-6">
                     <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                      <BookOpen className="w-5 h-5 text-orange-600" />
+                      <BookOpen className="w-5 h-5 text-brand" />
                       Topics Covered
                     </h4>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -216,7 +214,7 @@ export default function CurriculumSection() {
                             key={idx}
                             className="flex items-start gap-3 bg-orange-50 p-3 rounded-lg border border-orange-200"
                           >
-                            <span className="text-orange-600 font-bold">→</span>
+                            <span className="text-brand font-bold">→</span>
                             <span className="text-slate-700">{project}</span>
                           </li>
                         ))}
@@ -234,18 +232,19 @@ export default function CurriculumSection() {
           <div className="flex flex-col items-center justify-center gap-3 text-center">
             <div className="flex flex-col items-center gap-3 sm:flex-row">
               <button
-                className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+                onClick={() => setIsSyllabusModalOpen(true)}
+                className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-orange-200"
                 aria-label="Download the detailed Advanced Data Analytics syllabus"
               >
                 Download Detailed Syllabus (PDF)
               </button>
-              <Link
-                href="contact-us"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-orange-200"
+              <button
+                onClick={() => setIsEnrollModalOpen(true)}
+                className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-300"
                 aria-label="Apply for the Advanced Data Analytics program"
               >
                 Apply Now
-              </Link>
+              </button>
             </div>
             <p className="mx-auto mt-3 max-w-3xl text-center text-[11px] text-slate-500">
               *Module order may vary slightly based on cohort needs and instructor discretion.
@@ -253,6 +252,18 @@ export default function CurriculumSection() {
           </div>
         </div>
       </div>
+      <EnrollModal
+        isOpen={isEnrollModalOpen}
+        onClose={() => setIsEnrollModalOpen(false)}
+        courseName="Master Program in Deep Learning, NLP & Generative AI"
+        source="Generative AI Course Page - Curriculum Section - Apply Now"
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusModalOpen}
+        onClose={() => setIsSyllabusModalOpen(false)}
+        courseName="Master Program in Deep Learning, NLP & Generative AI"
+        source="Generative AI Course Page - Curriculum Section - Generative AI - Download Syllabus"
+      />
     </section>
   );
 }

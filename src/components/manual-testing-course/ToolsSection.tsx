@@ -44,7 +44,7 @@ const COLOR_MAP: Record<
 > = {
     indigo: { iconBg: "bg-indigo-600", cardBg: "bg-indigo-50", border: "border-indigo-200", accentBorder: "border-indigo-600", ring: "ring-indigo-200" },
     cyan: { iconBg: "bg-cyan-600", cardBg: "bg-cyan-50", border: "border-cyan-200", accentBorder: "border-cyan-600", ring: "ring-cyan-200" },
-    emerald: { iconBg: "bg-emerald-600", cardBg: "bg-emerald-50", border: "border-emerald-200", accentBorder: "border-emerald-600", ring: "ring-emerald-200" },
+    emerald: { iconBg: "bg-emerald-700", cardBg: "bg-emerald-50", border: "border-emerald-200", accentBorder: "border-emerald-700", ring: "ring-emerald-200" },
     amber: { iconBg: "bg-amber-600", cardBg: "bg-amber-50", border: "border-amber-200", accentBorder: "border-amber-600", ring: "ring-amber-200" },
     rose: { iconBg: "bg-rose-600", cardBg: "bg-rose-50", border: "border-rose-200", accentBorder: "border-rose-600", ring: "ring-rose-200" },
     violet: { iconBg: "bg-violet-600", cardBg: "bg-violet-50", border: "border-violet-200", accentBorder: "border-violet-600", ring: "ring-violet-200" },
@@ -150,7 +150,7 @@ const ToolsSection: FC = () => {
     }, [active]);
 
     return (
-        <section id="tools" aria-labelledby="tools-heading" className="py-2 md:py-5 bg-white">
+        <section aria-labelledby="tools-heading" className="py-10 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Headline */}
                 <div className="text-center mb-12 md:mb-16">

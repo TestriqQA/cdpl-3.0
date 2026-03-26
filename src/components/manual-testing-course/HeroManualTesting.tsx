@@ -1,26 +1,45 @@
 "use client";
 
 import {
-    CheckCircle2,
-    ChevronRight,
-    Star,
-    ShieldCheck,
-    Sparkles,
-    Home,
-    ArrowRight,
-    CloudDownload,
-    ArrowDownNarrowWide,
-} from "lucide-react";
-
-import React, { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
+    LuBadgeCheck,
+    LuChevronRight,
+    LuStar,
+    LuShieldCheck,
+    LuSparkles,
+    LuArrowRight,
+    LuCloudDownload,
+    LuArrowDownNarrowWide,
+} from "react-icons/lu";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
-import Modal from "@/components/Modal";
-import BrochureDownloadForm from "@/components/BrochureDownloadForm";
-import LeadForm from '../forms/ManualCourseLeadForm';
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
-import EnrollModal from "@/components/EnrollModal";
+const Modal = dynamic(() => import("@/components/Modal"), { ssr: false });
+const BrochureDownloadForm = dynamic(() => import("@/components/BrochureDownloadForm"), { ssr: false });
+
+function LeadFormSkeleton() {
+    return (
+        <div className="rounded-2xl border bg-white/92 backdrop-blur-xl p-6 sm:p-8 shadow-2xl border-slate-200 h-[520px] animate-pulse">
+            <div className="h-8 bg-slate-200 rounded w-3/4 mb-2"></div>
+            <div className="h-4 bg-slate-200 rounded w-full mb-6"></div>
+            <div className="space-y-4">
+                <div className="h-12 bg-slate-200 rounded"></div>
+                <div className="h-12 bg-slate-200 rounded"></div>
+                <div className="h-12 bg-slate-200 rounded"></div>
+                <div className="h-12 bg-slate-300 rounded"></div>
+            </div>
+        </div>
+    )
+}
+
+const LeadForm = dynamic(() => import('../forms/ManualCourseLeadForm'), {
+    ssr: false,
+    loading: () => <LeadFormSkeleton />
+});
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false });
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
+import dynamic from "next/dynamic";
+import { Home } from "lucide-react";
 
 
 /* ----------------------- NEW: Count-up + Stats ----------------------- */
@@ -54,7 +73,7 @@ type StatColor = {
 /** 8 unique color schemes — no repeats */
 const STAT_COLORS: StatColor[] = [
     { bg: "bg-indigo-50", border: "border-indigo-200", text: "text-indigo-800", chip: "text-indigo-700/80" },
-    { bg: "bg-emerald-50", border: "border-emerald-200", text: "text-emerald-800", chip: "text-emerald-700/80" },
+    { bg: "bg-emerald-50", border: "border-emerald-200", text: "text-emerald-800", chip: "text-emerald-800" },
     { bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-800", chip: "text-amber-700/80" },
     { bg: "bg-sky-50", border: "border-sky-200", text: "text-sky-800", chip: "text-sky-700/80" },
     { bg: "bg-rose-50", border: "border-rose-200", text: "text-rose-800", chip: "text-rose-700/80" },
@@ -135,14 +154,14 @@ const StatsBar: React.FC = () => {
     return (
         <div ref={wrapRef} className="mt-8">
             {/* Primary big cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-3">
                 {primary.map((s) => (
                     <div
                         key={s.label}
-                        className={`rounded-2xl border ${s.color.border} ${s.color.bg} p-4 shadow-sm hover:shadow-md transition`}
+                        className={`rounded-2xl border ${s.color.border} ${s.color.bg} p-3 md:p-4 shadow-sm hover:shadow-md transition`}
                     >
-                        <div className={`text-xs font-semibold uppercase tracking-wide ${s.color.chip}`}>{s.label}</div>
-                        <div className={`mt-1 text-3xl font-extrabold ${s.color.text}`}>
+                        <div className={`text-[10px] md:text-xs font-semibold uppercase tracking-wide ${s.color.chip}`}>{s.label}</div>
+                        <div className={`mt-1 text-xl md:text-3xl font-extrabold ${s.color.text}`}>
                             {s.prefix ?? ""}
                             {visible ? <CountUp value={s.value} /> : 0}
                             {s.suffix ?? ""}
@@ -156,11 +175,11 @@ const StatsBar: React.FC = () => {
                 {secondary.map((s) => (
                     <div
                         key={s.label}
-                        className={`flex items-center justify-between rounded-2xl border ${s.color.border} bg-white px-4 py-3 shadow-sm`}
+                        className={`flex flex-col md:flex-row items-start md:items-center justify-between rounded-2xl border ${s.color.border} bg-white p-3 md:px-4 md:py-3 shadow-sm`}
                         title={s.label}
                     >
-                        <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">{s.label}</span>
-                        <span className={`text-lg font-bold ${s.color.text}`}>
+                        <span className="text-[10px] md:text-[11px] font-semibold uppercase tracking-wide text-slate-500">{s.label}</span>
+                        <span className={`text-base md:text-lg font-bold ${s.color.text}`}>
                             {s.prefix ?? ""}
                             {visible ? <CountUp value={s.value} /> : 0}
                             {s.suffix ?? ""}
@@ -178,8 +197,9 @@ const StatsBar: React.FC = () => {
 
 const breadcrumbs = [
     { label: "Home", href: "/" },
-    { label: "Software Testing", href: "#" },
-    { label: "Manual Testing", href: "/about-us" },
+    { label: "Courses", href: "/courses" },
+    { label: "Software Testing", href: "/courses/software-testing-course" },
+    { label: "Manual Testing" },
 ];
 
 export default function HeroManualTesting() {
@@ -188,7 +208,7 @@ export default function HeroManualTesting() {
     const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
 
     return (
-        <section className="relative py-10 md:py-12 bg-white" aria-labelledby="manual-testing-hero">
+        <section className="relative py-10 bg-white" aria-labelledby="manual-testing-hero">
             {/* Background (no color gradients) */}
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,#e5e7eb_1px,transparent_1px)] [background-size:26px_26px]" />
@@ -198,21 +218,31 @@ export default function HeroManualTesting() {
 
             <div className="relative overflow-hidden mx-auto max-w-full xl:max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Breadcrumbs for SEO & UX */}
-                <nav aria-label="Breadcrumb" className="mb-4 -mx-4 px-4 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                <nav aria-label="Breadcrumb" className="mb-4 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                     <ol className="flex items-center gap-2 text-sm text-slate-600 whitespace-nowrap">
                         {breadcrumbs.map((c, i) => {
                             const isLast = i === breadcrumbs.length - 1;
                             return (
                                 <li key={i} className="flex items-center gap-2">
-                                    {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-                                    <Link
-                                        href={c.href}
-                                        className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
-                                        aria-current={isLast ? "page" : undefined}
-                                        title={c.label}
-                                    >
-                                        {c.label}
-                                    </Link>
+                                    {i === 0 ? <Home className="h-4 w-4" /> : <LuChevronRight className="h-4 w-4" />}
+                                    {c.href ? (
+                                        <Link
+                                            href={c.href}
+                                            className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
+                                            aria-current={isLast ? "page" : undefined}
+                                            title={c.label}
+                                        >
+                                            {c.label}
+                                        </Link>
+                                    ) : (
+                                        <span
+                                            className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
+                                            aria-current={isLast ? "page" : undefined}
+                                            title={c.label}
+                                        >
+                                            {c.label}
+                                        </span>
+                                    )}
                                 </li>
                             );
                         })}
@@ -222,98 +252,45 @@ export default function HeroManualTesting() {
                 <div className="grid items-start gap-10 lg:gap-16 lg:grid-cols-12 grid-cols-1">
                     {/* LEFT */}
                     <div className="lg:col-span-8">
-                        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-0.5 md:py-1.5 text-xs font-semibold text-slate-700 shadow-sm">
-                            <Sparkles className="h-4 w-4 text-amber-500" />
+                        <div className="hidden md:inline-flex mb-4 items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-0.5 md:py-1.5 text-xs font-semibold text-slate-700 shadow-sm">
+                            <LuSparkles className="h-4 w-4 text-amber-500" />
                             <span>ISTQB Foundation Aligned • Job-Oriented</span>
                         </div>
 
                         <h1
                             id="manual-testing-hero"
-                            className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
+                            className="mt-3 md:mt-0 text-2xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
                         >
-                            Best <span className='text-ST'>Manual Testing Course</span>{" "}
-                            with 100% Placement <br className="md:hidden" /> Support
+                            <span className='text-ST'>Manual Testing Course</span> with 100% Placement –{" "}
+                            <br className="hidden md:block" />Launch Your QA Career in 12 Weeks
                         </h1>
 
                         <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Upgrade your QA career with hands-on <strong>Software Testing Training</strong>, <strong>ISTQB Prep</strong>, and real-world{" "}
-                            <strong>Manual Testing</strong> projects. Live classes, mentor support, interview preparation, and a curated job pipeline.
+                            Break into software quality assurance with Cinute Digital's comprehensive manual testing course—no coding background needed. Master test case design, defect tracking, <strong>ISTQB preparation</strong>, and real-world{" "}
+                            <strong>QA workflows</strong> to land your first testing role in Mumbai, Pune, or across India.
                         </p>
 
                         {/* Lead Form For Mobile Screens and Tab Screens */}
-                        <div className="lg:hidden border mt-10 border-slate-300 p-5 shadow-md shadow-purple-300 rounded-2xl">
-                            <h2 className="text-slate-800 text-2xl font-bold">
-                                Start Your <span className="text-brand">QA</span> Journey
-                            </h2>
-
-                            {/* Lead Form */}
-                            <form id="apply" className="mt-6 space-y-3" aria-label="Apply for Manual Testing course">
-                                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                                    <Field label="Full Name">
-                                        <input
-                                            type="text"
-                                            name="fullName"
-                                            required
-                                            placeholder="Enter your name"
-                                            className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none ring-0 transition placeholder:text-slate-400 focus:ring-2 focus:ring-indigo-600"
-                                        />
-                                    </Field>
-                                    <Field label="Mobile Number">
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            required
-                                            placeholder="+91-XXXXXXXXXX"
-                                            className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none ring-0 transition placeholder:text-slate-400 focus:ring-2 focus:ring-emerald-600"
-                                        />
-                                    </Field>
-                                </div>
-                                <Field label="Email">
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        required
-                                        placeholder="you@example.com"
-                                        className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none ring-0 transition placeholder:text-slate-400 focus:ring-2 focus:ring-sky-600"
-                                    />
-                                </Field>
-
-                                <button
-                                    type="submit"
-                                    className="group mt-2 inline-flex w-full items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-green-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600"
-                                >
-                                    Get Call Back
-                                    <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-                                </button>
-                                <p className="mt-2 text-center text-xs text-slate-500">
-                                    By submitting, you agree to our{" "}
-                                    <Link href="/terms-of-service" className="underline underline-offset-2 text-slate-700">
-                                        Terms
-                                    </Link>{" "}
-                                    and{" "}
-                                    <Link href="/privacy-policy" className="underline underline-offset-2 text-slate-700">
-                                        Privacy Policy
-                                    </Link>
-                                    .
-                                </p>
-                            </form>
+                        {/* Lead Form For Mobile Screens */}
+                        <div className="lg:hidden mt-8">
+                            <LeadForm variant="elevated" source="Manual Testing Course Page - Hero Section (Mobile) - Get Started Now" />
                         </div>
 
                         {/* Trust Bar */}
                         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
                             <div className="flex items-center gap-1 text-slate-800">
-                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
                                 <span className="ml-2 font-semibold">4.9/5</span>
                                 <span className="ml-1 text-slate-500">from 1,200+ reviews</span>
                             </div>
                             <span className="hidden h-3 w-px bg-slate-300 md:inline-block" />
                             <div className="flex items-center gap-2 text-slate-800">
-                                <ShieldCheck className="h-5 w-5 text-emerald-600" />
-                                <span>Trusted by 5000+ learners</span>
+                                <LuShieldCheck className="h-5 w-5 text-emerald-600" />
+                                <span>5,000+ Alumni Placed</span>
                             </div>
                         </div>
 
@@ -327,7 +304,7 @@ export default function HeroManualTesting() {
                                 Enroll Now
                                 <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
                             </button>
-
+ 
                             <button
                                 onClick={() => setIsDownloadOpen(true)}
                                 className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-2 py-4 text-base font-semibold text-slate-900 shadow-sm transition hover:shadow-md hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
@@ -336,7 +313,7 @@ export default function HeroManualTesting() {
                                 <Download className="mr-2 h-5 w-5 text-slate-700" />
                                 Download Syllabus (PDF)
                             </button>
-
+ 
                             <button
                                 className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-sky-700 px-3 py-4 text-base font-semibold text-white shadow-sm transition hover:bg-sky-800 hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 sm:ml-1"
                                 aria-label="Book a free demo class"
@@ -354,7 +331,7 @@ export default function HeroManualTesting() {
                                 aria-label="Enroll now in Manual Testing program"
                             >
                                 Enroll Now
-                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                <LuArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </button>
 
                             <button
@@ -363,7 +340,7 @@ export default function HeroManualTesting() {
                                 aria-label="Download Manual Testing Syllabus"
                             >
                                 Download Syllabus
-                                <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                <LuCloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </button>
 
                             <Link
@@ -372,7 +349,7 @@ export default function HeroManualTesting() {
                                 aria-label="View full Manual testing curriculum"
                             >
                                 View Curriculum
-                                <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                <LuArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </Link>
 
                         </div>
@@ -380,13 +357,13 @@ export default function HeroManualTesting() {
                         {/* Feature bullets */}
                         <ul className="mt-8 grid grid-cols-1 gap-3 text-slate-700 sm:grid-cols-2">
                             {[
-                                { color: "text-emerald-600", text: "12-Week Live Program" },
-                                { color: "text-indigo-700", text: "ISTQB Foundation Preparation" },
-                                { color: "text-sky-700", text: "Manual + Agile + SDLC/STLC" },
-                                { color: "text-rose-700", text: "Resume, Mock Interviews & Referrals" },
+                                { color: "text-emerald-600", text: "12-Week Live Instructor-Led Program" },
+                                { color: "text-indigo-700", text: "ISTQB Foundation Certification Prep" },
+                                { color: "text-sky-700", text: "90+ Hands-On Projects" },
+                                { color: "text-rose-700", text: "100% Placement Support" },
                             ].map((item, i) => (
                                 <li className="flex items-center gap-2" key={i}>
-                                    <CheckCircle2 className={`h-5 w-5 ${item.color}`} />
+                                    <LuBadgeCheck className={`h-5 w-5 ${item.color}`} />
                                     <span>{item.text}</span>
                                 </li>
                             ))}
@@ -395,11 +372,43 @@ export default function HeroManualTesting() {
                         {/* Company logos + Stats */}
                         <div className="mt-10">
                             <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Alumni work at</p>
-                            <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 items-center gap-x-8 gap-y-3 opacity-90">
-                                <Image src="/company_images/Testriq-Logo-Black.webp" alt="Testriq" title="Testriq" width={150} height={24} />
-                                <Image src="/company_images/axiom.webp" alt="Pixelwave" title="Pixelwave" width={150} height={24} />
-                                <Image src="/company_images/credility.webp" alt="Groundwork Systems" title="Groundwork Systems" width={150} height={24} />
-                                <Image src="/company_images/marqetrix.webp" alt="Nitrosoft" title="Nitrosoft" width={150} height={24} />
+                            <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 items-center gap-x-8 gap-y-3">
+                                <Image
+                                    src="/company_images/Testriq-Logo-Black.webp"
+                                    alt="Testriq"
+                                    title="Testriq"
+                                    width={150}
+                                    height={24}
+                                    className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                    priority={true}
+                                />
+                                <Image
+                                    src="/company_images/axiom.webp"
+                                    alt="Pixelwave"
+                                    title="Pixelwave"
+                                    width={150}
+                                    height={24}
+                                    className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                    priority={true}
+                                />
+                                <Image
+                                    src="/company_images/credility.webp"
+                                    alt="Groundwork Systems"
+                                    title="Groundwork Systems"
+                                    width={150}
+                                    height={24}
+                                    className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                    priority={true}
+                                />
+                                <Image
+                                    src="/company_images/marqetrix.webp"
+                                    alt="Nitrosoft"
+                                    title="Nitrosoft"
+                                    width={150}
+                                    height={24}
+                                    className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                    priority={true}
+                                />
                             </div>
 
                             {/* NEW: PDF Stats with animated counters */}
@@ -408,11 +417,8 @@ export default function HeroManualTesting() {
                     </div>
 
                     {/* RIGHT */}
-                    <div className="relative lg:col-span-4">
-
-                        <LeadForm variant="elevated" />
-
-
+                    <div className="relative lg:col-span-4 min-h-[520px] hidden lg:block">
+                        <LeadForm variant="elevated" source="Manual Testing Course Page - Hero Section (Desktop) - Get Started Now" />
                     </div>
                 </div>
 
@@ -421,25 +427,26 @@ export default function HeroManualTesting() {
                     isOpen={isPopupOpen}
                     onClose={() => setIsPopupOpen(false)}
                     courseName="Manual Testing"
+                    source="Manual Testing Course Page - Hero Section - Enroll Now"
                 />
 
                 <Modal isOpen={isDownloadOpen} onClose={() => setIsDownloadOpen(false)} title="Download Manual Testing Syllabus">
                     <BrochureDownloadForm onClose={() => setIsDownloadOpen(false)} />
                 </Modal>
 
-                {/* Syllabus Download Modal */}
                 <SyllabusDownloadModal
                     isOpen={isSyllabusModalOpen}
                     onClose={() => setIsSyllabusModalOpen(false)}
                     courseName="Manual Testing"
+                    source="Manual Testing Course Page - Hero Section - Download Syllabus"
                 />
 
                 {/* SEO helper text */}
                 <div className="mx-auto mt-10 max-w-4xl text-center">
                     <p className="text-sm leading-relaxed text-slate-600">
-                        Join India’s leading <strong>Manual Testing Course</strong> for freshers and working professionals. Master{" "}
-                        <strong>software testing fundamentals, test cases, bug reporting</strong>, <strong>Agile &amp; Scrum</strong>, and interview skills.
-                        Available in <strong>online</strong> and <strong>classroom</strong> modes with <strong>placement assistance</strong> across Mumbai • Pune • Bengaluru.
+                        Join India's leading <strong>Manual Testing Course</strong> with 5,000+ successful alumni. Master{" "}
+                        <strong>test case design, defect tracking, Jira, Agile workflows</strong>, and <strong>ISTQB Foundation preparation</strong>.
+                        Available in <strong>online</strong> and <strong>classroom modes</strong> (Mumbai, Thane) with <strong>100% placement support</strong>.
                     </p>
                 </div>
             </div>
@@ -448,14 +455,3 @@ export default function HeroManualTesting() {
         </section>
     );
 }
-
-/* ---------- Reusable components in the same file ---------- */
-function Field({ label, children }: { label: string; children: ReactNode }) {
-    return (
-        <div>
-            <label className="mb-1 block text-sm font-medium text-slate-700">{label}</label>
-            {children}
-        </div>
-    );
-}
-

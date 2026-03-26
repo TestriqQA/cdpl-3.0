@@ -1,5 +1,7 @@
+"use client";
+
 // src/components/ToolsSection.tsx
-import React, { JSX } from 'react';
+import React, { JSX, useState } from 'react';
 import { content } from "@/components/data-visualization-in-r-programming/data/content";
 import {
   Rss,
@@ -11,6 +13,7 @@ import {
   Terminal,
   Code2,
 } from 'lucide-react';
+import CareerSessionModal from "../CareerSessionModal";
 
 interface Tool {
   name: string;
@@ -75,7 +78,7 @@ const ToolCard: React.FC<{ tool: Tool; index: number }> = ({ tool, index }) => {
       </h3>
 
       {/* Category */}
-      <p className="text-xs font-semibold text-orange-600 mb-3 uppercase tracking-wide">
+      <p className="text-xs font-semibold text-brand mb-3 uppercase tracking-wide">
         {tool.category}
       </p>
 
@@ -89,6 +92,8 @@ const ToolCard: React.FC<{ tool: Tool; index: number }> = ({ tool, index }) => {
 
 export const ToolsSection: React.FC = () => {
   const { tools_section } = content;
+  const [isCareerOpen, setIsCareerOpen] = useState(false);
+  const courseName = "Machine Learning and Data Visualization using R Programming";
 
   // SEO-friendly technology categories (static, R-focused)
   const categories: Category[] = [
@@ -138,13 +143,13 @@ export const ToolsSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-10 bg-white">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
             {tools_section.title}{" "}
-            <span className="text-orange-600">in R Programming</span>
+            <span className="text-brand">in R Programming</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             Become job-ready in{" "}
@@ -231,7 +236,24 @@ export const ToolsSection: React.FC = () => {
             <strong>data-driven business recommendations</strong> with confidence.
           </p>
         </div>
+
+        {/* Book a Free Demo Button */}
+        <div className="flex justify-center mt-12">
+          <button
+            onClick={() => setIsCareerOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-lg bg-brand px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-brand hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-200"
+          >
+            Book a Free Demo
+          </button>
+        </div>
       </div>
+
+      <CareerSessionModal
+        isOpen={isCareerOpen}
+        onClose={() => setIsCareerOpen(false)}
+        source="R Programming Course Page - Tools Section - Book Demo"
+        courseName={courseName}
+      />
     </section>
   );
 };

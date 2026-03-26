@@ -2,26 +2,43 @@
 // Server component: matches the same layout pattern as your API-Testing hero
 // – left copy + right LeadForm, badges, CTAs, highlights, and a small feature grid.
 
+'use client';
 import {
-    Code2,
-    Users,
-    Award,
-    Briefcase,
-    ArrowRight,
-    Star,
-    Globe2,
-    CheckCircle2,
-    Cpu,
-    Home,
-    ChevronRight,
-} from "lucide-react";
+    FaCode,
+    FaUsers,
+    FaAward,
+    FaBriefcase,
+    FaArrowRight,
+    FaStar,
+    FaGlobe,
+    FaCheckCircle,
+    FaMicrochip,
+    FaHome,
+    FaChevronRight,
+    FaCloudDownloadAlt,
+    FaSortAmountDown,
+} from "react-icons/fa";
 import IconCard from "@/components/ui/IconCard";
-import LeadForm from "../CourseLeadForm";
+import LeadForm from "../forms/ApiCourseLeadForm";
 import Link from "next/link";
+import { useState } from "react";
+import dynamic from "next/dynamic";
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+    return (
+        <div className="flex items-center justify-center h-full">
+            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+            <span className="ml-2 text-gray-900">{label}</span>
+        </div>
+    );
+};
+
 
 const features = [
     {
-        icon: <Code2 />,
+        icon: <FaCode />,
         title: "80% Hands-On",
         description: "Real Python labs & reviews",
         bg: "bg-emerald-50",
@@ -29,7 +46,7 @@ const features = [
         border: "border-emerald-200",
     },
     {
-        icon: <Users />,
+        icon: <FaUsers />,
         title: "Expert Faculty",
         description: "10+ yrs industry mentors",
         bg: "bg-indigo-50",
@@ -37,7 +54,7 @@ const features = [
         border: "border-indigo-200",
     },
     {
-        icon: <Award />,
+        icon: <FaAward />,
         title: "Global Certificate",
         description: "QR-verified completion",
         bg: "bg-amber-50",
@@ -45,7 +62,7 @@ const features = [
         border: "border-amber-200",
     },
     {
-        icon: <Briefcase />,
+        icon: <FaBriefcase />,
         title: "100% Placement",
         description: "Resume + mock interviews",
         bg: "bg-rose-50",
@@ -55,11 +72,15 @@ const features = [
 ];
 
 export default function HeroSection() {
+    const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+    const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
+
 
     const breadcrumbs = [
         { label: "Home", href: "/" },
-        { label: "Programming", href: "#" },
-        { label: "Python Master Program", href: "/python-course" },
+        { label: "Courses", href: "/courses" },
+        { label: 'Software Testing', href: '/courses/software-testing-course' },
+        { label: "Python Master Program" },
     ];
 
     return (
@@ -70,39 +91,52 @@ export default function HeroSection() {
                 <div className="absolute inset-0 [mask-image:radial-gradient(1200px_600px_at_50%_-10%,black,transparent)]" />
             </div>
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-14">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
                 {/* Breadcrumbs */}
                 <nav aria-label="Breadcrumb" className="mb-8">
                     <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
-                        {breadcrumbs.map((c, i) => (
-                            <li key={i} className="flex items-center gap-2">
-                                {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-                                <Link
-                                    href={c.href}
-                                    className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? 'font-semibold text-slate-900' : ''}`}
-                                >
-                                    {c.label}
-                                </Link>
-                            </li>
-                        ))}
+                        {breadcrumbs.map((c, i) => {
+                            const isLast = i === breadcrumbs.length - 1;
+                            return (
+                                <li key={i} className="flex items-center gap-2">
+                                    {i === 0 ? <FaHome className="h-4 w-4" /> : <FaChevronRight className="h-4 w-4" />}
+                                    {c.href ? (
+                                        <Link
+                                            href={c.href}
+                                            className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
+                                        >
+                                            {c.label}
+                                        </Link>
+                                    ) : (
+                                        <span
+                                            className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
+                                        >
+                                            {c.label}
+                                        </span>
+                                    )}
+                                </li>
+                            );
+                        })}
                     </ol>
                 </nav>
 
                 <div className="grid items-start gap-10 md:grid-cols-12">
                     {/* Left column: copy (mirrors your API-Testing hero layout) */}
-                    <div className="md:col-span-7 lg:col-span-8">
+                    <div
+                        className="md:col-span-7 lg:col-span-8"
+                    >
                         {/* Top identity strip + micro-badges */}
                         <div className="mb-5 hidden lg:flex flex-wrap items-center gap-2">
                             <span className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-900">
-                                <Star className="h-4 w-4 fill-current text-amber-500" />
+                                <FaStar className="h-4 w-4 fill-current text-amber-500" />
                                 4.9/5 Rated
                             </span>
                             <span className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3 py-1.5 text-xs font-semibold text-sky-800">
-                                <Globe2 className="h-4 w-4" />
+                                <FaGlobe className="h-4 w-4" />
                                 Live Online & Classroom
                             </span>
                             <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-800">
-                                <Cpu className="h-4 w-4" />
+                                <FaMicrochip className="h-4 w-4" />
                                 Project-Based
                             </span>
                         </div>
@@ -117,7 +151,7 @@ export default function HeroSection() {
 
                         {/* Mobile form just under H1 (like API-Testing) */}
                         <div className="mt-6 block md:hidden">
-                            <LeadForm variant="elevated" />
+                            <LeadForm variant="elevated" source="Python Course Page - Hero Section" />
                         </div>
 
                         <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
@@ -135,37 +169,55 @@ export default function HeroSection() {
                         {/* CTAs (same structure) */}
                         <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                             <button
-                                className="group inline-flex items-center justify-center rounded-xl border border-teal-600 bg-teal-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-teal-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-teal-200"
+                                onClick={() => setIsEnrollModalOpen(true)}
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-teal-700 bg-teal-700 px-6 py-3 text-base font-semibold text-white transition hover:bg-teal-800 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-teal-200"
                                 aria-label="Enroll now in Python program"
                             >
                                 Enroll Now
-                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                <FaArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </button>
-                            <Link
-                                href="#curriculum"
-                                className="inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
+
+                            <button
+                                onClick={() => setIsSyllabusModalOpen(true)}
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-teal-700 bg-teal-700 px-6 py-3 text-base font-semibold text-white transition hover:bg-teal-800 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-teal-200"
+                                aria-label="Download Python Syllabus"
+                            >
+                                Download Syllabus
+                                <FaCloudDownloadAlt className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                            </button>
+
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    const el = document.getElementById('curriculum');
+                                    if (el) {
+                                        window.scrollTo({ top: el.offsetTop - 150, behavior: 'smooth' });
+                                    }
+                                }}
+                                className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
                                 aria-label="View full Python curriculum"
                             >
                                 View Curriculum
-                            </Link>
+                                <FaSortAmountDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                            </button>
                         </div>
 
                         {/* Highlights (two columns on sm+, distinct dot colors) */}
                         <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
                             <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-600" />
+                                <FaCheckCircle className="mt-0.5 h-5 w-5 text-emerald-600" />
                                 80% practical labs with capstone reviews
                             </li>
                             <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-sky-600" />
+                                <FaCheckCircle className="mt-0.5 h-5 w-5 text-sky-600" />
                                 API, automation & testing fundamentals
                             </li>
                             <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-rose-600" />
+                                <FaCheckCircle className="mt-0.5 h-5 w-5 text-rose-600" />
                                 Interview prep & portfolio guidance
                             </li>
                             <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-amber-600" />
+                                <FaCheckCircle className="mt-0.5 h-5 w-5 text-amber-600" />
                                 QR-verified certificate + placement
                             </li>
                         </ul>
@@ -183,10 +235,10 @@ export default function HeroSection() {
                     </div>
 
                     {/* Right column: Desktop form (sticky) */}
-                    <aside className="hidden md:col-span-5 lg:col-span-4 md:block">
-                        <div className="sticky top-20">
-                            <LeadForm variant="elevated" />
-                        </div>
+                    <aside
+                        className="hidden md:col-span-5 lg:col-span-4 md:block"
+                    >
+                        <LeadForm variant="elevated" source="Python Course Page - Hero Section" />
                     </aside>
                 </div>
 
@@ -200,6 +252,20 @@ export default function HeroSection() {
                     </div>
                 </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollModalOpen}
+                onClose={() => setIsEnrollModalOpen(false)}
+                courseName="Python Programming"
+                source="Python Course Page - Hero Section - Enroll Now"
+            />
+
+            <SyllabusDownloadModal
+                isOpen={isSyllabusModalOpen}
+                onClose={() => setIsSyllabusModalOpen(false)}
+                courseName="Python Programming"
+                source="Python Course Page - Hero Section - Python Programming - Download Syllabus"
+            />
 
         </section>
     );

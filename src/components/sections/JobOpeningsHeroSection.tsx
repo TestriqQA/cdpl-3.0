@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { Home, ChevronRight } from "lucide-react";
 
@@ -11,7 +8,7 @@ type HeroProps = {
   scrollToId?: string;
 };
 
-const BRAND_ORANGE = "rgb(255, 140, 0)";
+const BRAND_ORANGE = "#ff8c00";
 const BRAND_BLUE = "#0069A8";
 
 export default function JobOpeningsHeroSection({
@@ -52,19 +49,14 @@ export default function JobOpeningsHeroSection({
             </li>
             <li className="flex items-center gap-2">
               <ChevronRight className="h-4 w-4" aria-hidden="true" />
-              <span className="font-semibold text-slate-900">Job openings</span>
+              <Link href="/jobs/job-openings" className="font-semibold text-slate-900">Job openings</Link>
             </li>
           </ol>
         </nav>
 
         {/* Hero content */}
         <header>
-          <motion.h1
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mx-auto max-w-4xl text-center text-3xl font-semibold sm:text-4xl"
-          >
+          <h1 className="mx-auto max-w-4xl text-center text-3xl font-semibold sm:text-4xl">
             <span style={{ color: BRAND_BLUE }}>{firstPart}</span>
             {secondPart ? (
               <>
@@ -72,28 +64,18 @@ export default function JobOpeningsHeroSection({
                 <span style={{ color: BRAND_ORANGE }}>{secondPart}</span>
               </>
             ) : null}
-          </motion.h1>
+          </h1>
 
           {subtitle && (
-            <motion.p
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.4 }}
-              className="mx-auto mt-3 max-w-2xl text-center text-slate-600"
-            >
+            <p className="mx-auto mt-3 max-w-2xl text-center text-slate-600">
               {subtitle}
-            </motion.p>
+            </p>
           )}
 
-          <motion.div
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.35 }}
-            className="mt-5 flex justify-center"
-          >
+          <div className="mt-5 flex justify-center">
             <a
               href={`#${scrollToId ?? ""}`}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 via-orange-500 to-amber-500 px-5 py-2.5 text-sm font-semibold text-white shadow hover:opacity-95"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow hover:opacity-95"
             >
               {ctaLabel}
               <svg
@@ -111,7 +93,7 @@ export default function JobOpeningsHeroSection({
                 />
               </svg>
             </a>
-          </motion.div>
+          </div>
         </header>
       </div>
     </section>

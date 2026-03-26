@@ -2,8 +2,6 @@
 // Sleek, responsive, SEO-friendly curriculum section with subtle futuristic accents.
 // Updated from the PDF: Modules 1–15 + Capstone (pages 16–19). No repeated colors.
 
-"use client";
-
 import {
   BookOpenCheck,
   Database,
@@ -17,8 +15,8 @@ import {
   Briefcase,
   ChevronRight,
 } from "lucide-react";
-import Link from "next/link";
 import React from "react";
+import { EnrollButton, SyllabusButton } from "./common/ActionButtons";
 
 type Module = {
   num: string;
@@ -150,7 +148,7 @@ const MODULES: Module[] = [
       "public/private/protected/default, static/final; overview + use of the Decorator pattern.",
     icon: Database,
     bg: "bg-orange-50",
-    text: "text-orange-900",
+    text: "text-brand",
     ring: "ring-orange-200",
     badge: "Access",
   },
@@ -222,7 +220,7 @@ export default function CurriculumSection() {
     <section
       id="java-curriculum"
       aria-labelledby="curriculum-heading"
-      className="relative py-8 md:py-14 bg-gray-50"
+      className="relative py-10 bg-gray-50"
     >
       {/* subtle futuristic grid accent (sleek, non-intrusive) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -321,14 +319,14 @@ export default function CurriculumSection() {
                   <span className={["text-xs font-semibold", m.text].join(" ")}>
                     Outcome-Focused
                   </span>
-                  <Link
-                    href="contact-us"
+                  <SyllabusButton
                     className="inline-flex items-center text-sm font-semibold text-gray-900 hover:opacity-80"
                     aria-label={`See topics in Module ${m.num}`}
+                    source={`Java Programming Course Page - Curriculum Section - Module ${m.num} - See Topics`}
                   >
                     See topics
                     <ChevronRight className="ml-1 h-4 w-4" />
-                  </Link>
+                  </SyllabusButton>
                 </div>
               </article>
 
@@ -361,25 +359,25 @@ export default function CurriculumSection() {
 
         {/* Actions */}
         <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-4">
-          <Link
-            href="contact-us"
+          <EnrollButton
             className="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
             aria-label="Apply to the Java curriculum"
+            source="Java Programming Course Page - Curriculum Section - Apply Now"
           >
             Apply Now
-          </Link>
-          <button
+          </EnrollButton>
+          <SyllabusButton
             className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
             aria-label="Download full Java syllabus PDF"
+            source="Java Programming Course Page - Curriculum Section - Download Syllabus"
           >
             Download Syllabus (PDF)
-          </button>
+          </SyllabusButton>
         </div>
       </div>
 
-
       {/* Assist crawlers & screen readers */}
-      <h1 className="sr-only">{title}</h1>
+      <p className="sr-only">{title}</p>
       <p className="sr-only">
         {subtitle}. Keywords: {keywords}.
       </p>

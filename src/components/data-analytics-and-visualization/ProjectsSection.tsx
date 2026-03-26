@@ -1,4 +1,7 @@
+"use client";
+import { useState } from "react";
 import { TrendingUp, PieChart, Users } from "lucide-react";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 
 const projects = [
@@ -26,8 +29,11 @@ const projects = [
 ];
 
 export default function ProjectsSection() {
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+    const courseName = "Advanced Excel for Data Analytics & Visualization";
+
     return (
-        <section className="relative py-20 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+        <section className="relative py-10 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
             {/* Decorative background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-1/3 right-0 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
@@ -38,7 +44,7 @@ export default function ProjectsSection() {
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        Real-World <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">Projects</span>
+                        Real-World <span className="bg-gradient-to-r from-[#ff8c00] via-[#ff8c00] to-[#ff8c00] bg-clip-text text-transparent">Projects</span>
                     </h2>
                     <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                         Work on industry-relevant projects that mirror real business scenarios. Build a portfolio that impresses employers.
@@ -55,9 +61,9 @@ export default function ProjectsSection() {
                         };
                         const Icon = iconMap[project.icon as keyof typeof iconMap] || TrendingUp;
                         const colors = [
-                            { bg: "bg-blue-100", text: "text-blue-600", border: "border-blue-200" },
-                            { bg: "bg-indigo-100", text: "text-indigo-600", border: "border-indigo-200" },
-                            { bg: "bg-purple-100", text: "text-purple-600", border: "border-purple-200" },
+                            { bg: "bg-blue-100", text: "text-[#1d4ed8]", border: "border-blue-200" },
+                            { bg: "bg-indigo-100", text: "text-[#4338ca]", border: "border-indigo-200" },
+                            { bg: "bg-purple-100", text: "text-[#7e22ce]", border: "border-purple-200" },
                         ];
                         const color = colors[index % colors.length];
 
@@ -116,7 +122,7 @@ export default function ProjectsSection() {
                 </div>
 
                 {/* Project methodology */}
-                <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-12 text-white">
+                <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl px-6 py-8 md:p-12 text-white">
                     <h3 className="text-3xl font-bold mb-8">Our Project Methodology</h3>
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         {[
@@ -143,7 +149,7 @@ export default function ProjectsSection() {
                         ].map((item, index) => (
                             <div key={index} className="relative">
                                 <div className="flex items-start gap-4">
-                                    <div className="flex-shrink-0 md:w-8 xl:w-12 h-12 rounded-lg bg-gradient-to-br from-blue-400 to-indigo-600 text-white flex items-center justify-center font-bold text-lg">
+                                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-blue-400 to-indigo-600 text-white flex items-center justify-center font-bold text-lg">
                                         {item.step}
                                     </div>
                                     <div>
@@ -158,7 +164,24 @@ export default function ProjectsSection() {
                         ))}
                     </div>
                 </div>
+
+                {/* CTA */}
+                <div className="mt-16 text-center">
+                    <button
+                        onClick={() => setIsSyllabusOpen(true)}
+                        className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                    >
+                        Download Project Guide
+                    </button>
+                </div>
             </div>
+
+            <SyllabusDownloadModal
+                isOpen={isSyllabusOpen}
+                onClose={() => setIsSyllabusOpen(false)}
+                source="Data Analytics & Visualization Course Page - Projects Section - Download Guide"
+                courseName={courseName}
+            />
         </section>
     );
 }

@@ -1,6 +1,15 @@
 'use client';
 import { Star } from 'lucide-react';
-import ReviewsMarquee from '../sections/ReviewMarque';
+import dynamic from 'next/dynamic';
+const ReviewsMarquee = dynamic(() => import('@/components/sections/ReviewMarque'), { ssr: false, loading: () => <SectionLoader label="Loading reviews..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+    return (
+        <div className="flex items-center justify-center py-16">
+            <p className="text-gray-500">{label}</p>
+        </div>
+    );
+}
 
 type Testimonial = {
     name: string;
@@ -20,10 +29,8 @@ export default function TestimonialsSection() {
     const avgRating =
         testimonials.reduce((s, t) => s + (t.rating || 0), 0) / (testimonials.length || 1);
 
-
-
     return (
-        <section id="testimonials" aria-labelledby="testimonials-heading" className="relative py-6 md:py-10 bg-white">
+        <section id="testimonials" aria-labelledby="testimonials-heading" className="relative py-10 bg-white">
             {/* subtle top/bottom separators for a sleek frame */}
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />

@@ -1,16 +1,21 @@
-// app/services/[slug]/page.tsx
-import { getServiceBySlug } from '@/data/servicesData';
-import { getEventsByService } from '@/data/eventsData';
+import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import type { ServiceClient } from '@/types/service';
-import { generateSEO} from '@/lib/seo';
+import { trainingServices, type TrainingService } from '@/data/servicesData';
+import { pastEvents } from '@/data/eventsData';
+import { type ServiceClient } from '@/types/service';
+import { generateMetadata as generateSEOMetadata, generateMetaDescription } from '@/lib/metadata-generator';
+import { generateServiceSchema, generateBreadcrumbSchema } from '@/lib/schema-generators';
+import JsonLd from '@/components/JsonLd';
 
-// --- infer the concrete service type from your data function ---
-type TrainingService = ReturnType<typeof getServiceBySlug> extends infer T
-  ? NonNullable<T>
-  : never;
+// Helper functions
+function getServiceBySlug(slug: string): TrainingService | undefined {
+  return trainingServices.find(s => s.slug === slug);
+}
+
+function getEventsByService(slug: string) {
+  return pastEvents.filter(e => e.serviceType === slug);
+}
 
 // --- map server model -> serializable client model (no React components) ---
 function toClientService(s: TrainingService): ServiceClient {
@@ -50,11 +55,14 @@ function SectionLoader({ label = 'Loading...' }: { label?: string }) {
   );
 }
 
+// ---------- Static Import for Hero (LCP Optimization) ----------
+import ServiceDetailHeroSection from '@/components/sections/ServiceDetailHeroSection';
+
 // ---------- Dynamic sections (SSR enabled) ----------
-const ServiceDetailHeroSection = dynamic(
-  () => import('@/components/sections/ServiceDetailHeroSection'),
-  { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
-);
+// const ServiceDetailHeroSection = dynamic(
+//   () => import('@/components/sections/ServiceDetailHeroSection'),
+//   { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
+// );
 const ServiceDetailAboutSection = dynamic(
   () => import('@/components/sections/ServiceDetailAboutSection'),
   { ssr: true, loading: () => <SectionLoader label="Loading about..." /> }
@@ -96,14 +104,14 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { slug } = await params;
   const service = getServiceBySlug(slug);
-  
+
   if (!service) {
-    return { 
+    return {
       title: 'Service Not Found | 404 - CDPL',
       description: 'The requested service page could not be found. Browse our available training services and corporate programs.',
-      robots: { 
+      robots: {
         index: false,
-        follow: true 
+        follow: true
       }
     };
   }
@@ -132,10 +140,20 @@ export async function generateMetadata(
     'Cinute Digital training'
   ];
 
+  // Optimize description: Combine tagline and short description, then clean/truncate
+  // Use generateMetaDescription helper to ensure optimal length (approx 160 chars)
+  const rawDescription = `${service.tagline} ${service.shortDescription}`;
+  const generatedDesc = generateMetaDescription(rawDescription, 160);
+
+  // FALLBACK SAFEGUARD: Ensure strictly non-empty string
+  const finalDescription = (generatedDesc && generatedDesc.length > 10)
+    ? generatedDesc
+    : `Join CDPL's ${service.title} training program. Industry-expert led courses with 100% placement support. Master usage with real-world projects.`;
+
   // Generate enhanced metadata using SEO utility
-  return generateSEO({
-    title: `${service.title} Training & Corporate Programs | CDPL`,
-    description: `${service.tagline} — ${service.shortDescription} Learn ${service.title} with industry projects, mentor-led classes, and job-ready skills at CDPL.`,
+  return generateSEOMetadata({
+    title: `${service.title} | CDPL`,
+    description: finalDescription,
     keywords,
     url: `/services/${slug}`,
     image: `/og-images/og-service-${slug}.webp`,
@@ -155,15 +173,30 @@ export default async function ServiceDetailPage(
   // map to client-safe shape (no Record<string, unknown> cast; no destructuring of icon)
   const serviceForClient = toClientService(service);
 
-;
+  // 1. Breadcrumb Schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Services", url: "/services" },
+    { name: service.title, url: `/services/${service.slug}` },
+  ]);
 
+  // 2. Service Schema
+  const serviceSchema = generateServiceSchema({
+    name: service.title,
+    description: service.shortDescription,
+    url: `/services/${service.slug}`,
+    serviceType: "Corporate Training",
+    image: `/og-images/og-service-${service.slug}.webp`
+  });
 
   return (
     <>
+      <JsonLd id={`service-${slug}-breadcrumb`} schema={breadcrumbSchema} />
+      <JsonLd id={`service-${slug}-schema`} schema={serviceSchema} />
 
       {/* Semantic HTML Structure */}
-      <main 
-        className="overflow-hidden" 
+      <main
+        className="overflow-hidden"
       >
 
         <ServiceDetailHeroSection service={serviceForClient} />

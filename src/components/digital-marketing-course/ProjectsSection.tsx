@@ -1,7 +1,9 @@
-// components/sections/ProjectsSection.tsx
-// Server component – no client JS required
+"use client";
 
-import Link from "next/link";
+
+import { useState } from "react";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import EnrollModal from "../EnrollModal";
 
 type Project = { title: string; blurb?: string };
 
@@ -31,12 +33,15 @@ const ACCENTS = [
     { edge: 'bg-fuchsia-500', chip: 'bg-fuchsia-50 text-fuchsia-800 border-fuchsia-200', glow: 'shadow-fuchsia-100' },
     { edge: 'bg-lime-500', chip: 'bg-lime-50 text-lime-800 border-lime-200', glow: 'shadow-lime-100' },
     { edge: 'bg-cyan-500', chip: 'bg-cyan-50 text-cyan-800 border-cyan-200', glow: 'shadow-cyan-100' },
-    { edge: 'bg-orange-500', chip: 'bg-orange-50 text-orange-800 border-orange-200', glow: 'shadow-orange-100' },
+    { edge: 'bg-orange-500', chip: 'bg-orange-50 text-brand border-orange-200', glow: 'shadow-orange-100' },
 ];
 
 export default function ProjectsSection() {
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const courseName = "Digital Marketing & Analytics Master Program";
     return (
-        <section id="projects" aria-labelledby="projects-heading" className="relative py-8 md:py-10 bg-white">
+        <section id="projects" aria-labelledby="projects-heading" className="relative py-10 bg-white">
             {/* subtle futuristic scaffold */}
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute inset-x-0 top-0 h-px bg-slate-200" />
@@ -47,10 +52,10 @@ export default function ProjectsSection() {
             <div className="mx-auto max-w-7xl px-4 xl:px-10">
                 <header className="text-center">
                     <h2 id="projects-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-                        Hands-On <span className="text-green-700">Projects</span> You’ll Work On
+                        Top <span className="text-green-700">Digital Marketing Projects</span> for Your Portfolio
                     </h2>
                     <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-                        Real briefs. Real deliverables. <strong>Portfolio-ready work</strong> that proves your skills to hiring managers.
+                        Work on real-world briefs from Mumbai's top brands. Our <strong>project-first training</strong> ensures you are job-ready with a professional portfolio in SEO, Ads, and Analytics.
                     </p>
                 </header>
 
@@ -118,18 +123,32 @@ export default function ProjectsSection() {
                 {/* CTA row */}
                 <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3">
                     <button
-                        className="rounded-xl border border-orange-500 bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-200"
+                        onClick={() => setIsSyllabusOpen(true)}
+                        className="cursor-pointer rounded-xl border border-brand bg-brand px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand focus:outline-none focus:ring-4 focus:ring-orange-200"
                     >
                         See Sample Portfolios
                     </button>
-                    <Link
-                        href="contact-us"
-                        className="rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
+                    <button
+                        onClick={() => setIsEnrollOpen(true)}
+                        className="cursor-pointer rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
                     >
                         Book a Free Demo
-                    </Link>
+                    </button>
                 </div>
             </div>
+
+            <SyllabusDownloadModal
+                isOpen={isSyllabusOpen}
+                onClose={() => setIsSyllabusOpen(false)}
+                source="Digital Marketing Course Page - Projects Section - Digital Marketing - Sample Portfolios"
+                courseName={courseName}
+            />
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Digital Marketing Course Page - Projects Section - Book Demo"
+                courseName={courseName}
+            />
 
         </section>
     );

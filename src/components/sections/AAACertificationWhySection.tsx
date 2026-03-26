@@ -59,7 +59,7 @@ export default function AAACertificationWhySection() {
           <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
             Why AAA with <span style={{ color: "#ff8c00" }}>CDPL</span>
           </h2>
-          <p className="mt-2 max-w-3xl text-[15px] text-slate-700 sm:text-base">
+          <p className="mt-2 max-w-3xl text-[15px] text-slate-800 sm:text-base">
             Cinute Digital Pvt. Ltd. blends instructor expertise, labs, and structured assessment for employability.
           </p>
         </header>
@@ -105,7 +105,7 @@ export default function AAACertificationWhySection() {
                 {/* Content */}
                 <div className="relative">
                   <h3 className="text-sm font-extrabold text-slate-900">{f.t}</h3>
-                  <p className="mt-2 text-sm text-slate-700">{f.d}</p>
+                  <p className="mt-2 text-sm text-slate-800">{f.d}</p>
                 </div>
               </li>
             );

@@ -18,9 +18,9 @@ type Project = {
 const projects: Project[] = [
   {
     icon: <ShoppingCart className="w-7 h-7" />,
-    title: 'E-Commerce Full-Stack Testing',
+    title: 'E-Commerce Automation Framework',
     description:
-      'Automate end-to-end user journeys: auth, cart, checkout, payments, and order lifecycle with robust reporting.',
+      'Automate end-to-end user journeys: login, cart, payment, and checkout using Selenium Java & TestNG.',
     features: ['POM + TestNG', 'API + DB Validation', 'Cross-Browser', 'Jenkins CI'],
     cardBg: 'bg-sky-50',
     cardBorder: 'border-sky-200',
@@ -29,9 +29,9 @@ const projects: Project[] = [
   },
   {
     icon: <Smartphone className="w-7 h-7" />,
-    title: 'Banking Mobile App',
+    title: 'Banking Mobile App Testing',
     description:
-      'Build reliable Appium test suites for Android/iOS on real devices and cloud farms to validate critical flows.',
+      'Build reliable Appium test suites for Android/iOS. Validate secure logins, transactions, and gestures.',
     features: ['Gestures', 'OTP Handling', 'Biometric Login', 'Cloud Device Farm'],
     cardBg: 'bg-emerald-50',
     cardBorder: 'border-emerald-200',
@@ -40,9 +40,9 @@ const projects: Project[] = [
   },
   {
     icon: <Shield className="w-7 h-7" />,
-    title: 'Security & Performance Suite',
+    title: 'API & Performance Suite',
     description:
-      'Establish quality gates with load tests and automated OWASP scans to prevent regressions before release.',
+      'Validate REST APIs using Rest Assured and load test endpoints with JMeter for scalability.',
     features: ['JMeter Scripts', 'ZAP Automation', 'SSL Testing', 'Report Dashboard'],
     cardBg: 'bg-amber-50',
     cardBorder: 'border-amber-200',
@@ -55,7 +55,7 @@ export default function ProjectsSection() {
 
 
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="relative py-8 md:py-10 bg-white">
+    <section id="projects" aria-labelledby="projects-heading" className="relative py-10 bg-white">
       {/* subtle top/bottom separators for a sleek, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -72,7 +72,7 @@ export default function ProjectsSection() {
           className="text-center"
         >
           <h2 id="projects-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            Build Your <span className="text-ST">SDET Portfolio</span>
+            Live Projects in our <span className="text-ST">Application Tester Course</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
             Production-style projects that showcase <strong>UI, API, Mobile</strong>, and <strong>Performance</strong> automation skills. Perfect
@@ -97,7 +97,7 @@ export default function ProjectsSection() {
               ].join(' ')}
             >
               {/* Header row */}
-              <div className="flex items-start justify-between p-6 pb-0">
+              <div className="flex items-start justify-between pl-6 py-6 pb-0 pr-28">
                 <div className="flex items-center gap-3">
                   <div className="grid h-12 w-12 place-items-center rounded-xl bg-white text-slate-800 shadow-sm">
                     {p.icon}
@@ -106,7 +106,7 @@ export default function ProjectsSection() {
                     {p.title}
                   </h3>
                 </div>
-                <span className={`ml-3 rounded-full px-2.5 py-1 text-[11px] font-semibold ${p.chipBg} ${p.chipText}`}>
+                <span className={`absolute top-6 right-6 rounded-full px-2.5 py-1 text-[11px] font-semibold whitespace-nowrap ${p.chipBg} ${p.chipText}`}>
                   Hands-On
                 </span>
               </div>
@@ -125,7 +125,7 @@ export default function ProjectsSection() {
                 </ul>
 
                 {/* micro-footnote for SEO & clarity */}
-                <p className="mt-4 text-[11px] leading-5 text-slate-500">
+                <p className="mt-4 text-[11px] leading-5 text-slate-700">
                   Deliverables: test plans, evidence-rich reports, CI results, and a public repo link.
                 </p>
               </div>

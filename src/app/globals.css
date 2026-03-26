@@ -1,14 +1,36 @@
 @import "tailwindcss";
-@import "./phone-input.css";
+@config "../../tailwind.config.ts";
 
-@theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-brand: #ff8c00;
-  --color-ST: #1D4ED8;
-  --color-DS: #7E22CE;
-  --color-FS: #15803D;
+::selection {
+  background-color: #ff8d01;
+  color: white;
 }
+
+.nav-link-bold {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link-bold::after {
+  content: attr(data-text);
+  height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: none;
+  font-weight: 600;
+  /* Semibold to match active state */
+}
+
+/* Trigger bold when the parent link/button is hovered to ensure consistent hitbox */
+:is(a, button):hover .nav-link-bold,
+.nav-link-bold:hover {
+  font-weight: 600;
+}
+
+
 
 :root {
   --background: #ffffff;
@@ -22,87 +44,109 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  /* Offset for fixed navbar (~72px) + sticky nav (~56px) + padding (22px) */
+  scroll-padding-top: 150px;
+}
+
 body {
-  color: var(--foreground);
-  background: #f8fafc; /* Equivalent to bg-gray-50 from reference page */
+  /* color: var(--foreground); */
+  background: #f8fafc;
+  /* Equivalent to bg-gray-50 from reference page */
   font-family: Arial, Helvetica, sans-serif;
+  color: #1e293b;
+  /* Enforce dark text (slate-800) for visibility in all modes */
+  -webkit-font-smoothing: antialiased;
 }
 
-/* vertical marquee desktop/tablet */
-@keyframes homeTestimonialScrollUp {
-  0% { transform: translateY(0%); }
-  100% { transform: translateY(-50%); }
+input,
+button,
+select,
+textarea {
+  -webkit-appearance: none;
+  appearance: none;
 }
-@keyframes homeTestimonialScrollDown {
-  0% { transform: translateY(-50%); }
-  100% { transform: translateY(0%); }
-}
-.animate-scroll-up { animation: homeTestimonialScrollUp 20s linear infinite; }
-.animate-scroll-down { animation: homeTestimonialScrollDown 20s linear infinite; }
-.group:hover .animate-scroll-up,
-.group:hover .animate-scroll-down { animation-play-state: paused; }
-
-/* hide scrollbar for mobile carousel */
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-.no-scrollbar::-webkit-scrollbar { display: none; }
-
-/* Mobile horizontal infinite marquee */
-@keyframes testimonialMarqueeX {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.marquee-x {
-  animation: testimonialMarqueeX 22s linear infinite;
-}
-
-/* Fade mask for smooth edges */
-.fade-x {
-  -webkit-mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%);
-          mask-image: linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%);
-}
-
-/* Desktop/tablet vertical marquee */
-@keyframes homeTestimonialScrollUp {
-  0% { transform: translateY(0%); }
-  100% { transform: translateY(-50%); }
-}
-@keyframes homeTestimonialScrollDown {
-  0% { transform: translateY(-50%); }
-  100% { transform: translateY(0%); }
-}
-.animate-scroll-up { animation: homeTestimonialScrollUp 20s linear infinite; }
-.animate-scroll-down { animation: homeTestimonialScrollDown 20s linear infinite; }
-.group:hover .animate-scroll-up,
-.group:hover .animate-scroll-down { animation-play-state: paused; }
 
 
 /* better tap targets on mobile */
-button,[role="button"],a[role="button"]{ -webkit-tap-highlight-color: transparent; }
+button,
+[role="button"],
+a[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
 
 /* Custom styles from design */
 .gradient-bg {
-    background: linear-gradient(135deg, #f6e5be 0%, #f9e6bc 50%, #eee2c8 100%);
+  background: linear-gradient(135deg, #f6e5be 0%, #f9e6bc 50%, #eee2c8 100%);
 }
 
 .gradient-btn {
-    background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
 }
 
 .gradient-btn:hover {
-    background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);
 }
 
 .badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 1.5rem;
-    height: 1.5rem;
-    padding: 0 0.5rem;
-    border-radius: 0.375rem;
-    font-size: 0.75rem;
-    font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 
+/* Dropdown panel (Chrome/Edge/Opera/Safari) */
+.country-select::-webkit-scrollbar {
+  width: 6px;
+}
+
+.country-select option {
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: white;
+  font-weight: 500;
+  color: #1e293b;
+  /* slate-800 */
+}
+
+/* Hover (Chrome doesn't allow true hover, this is closest) */
+.country-select option:checked {
+  background: #e0f7f3;
+  /* light teal */
+}
+
+/* Firefox custom dropdown styling */
+.country-select {
+  border-radius: 8px;
+}
+
+.country-select option:hover {
+  background: #f0fdfa !important;
+  /* teal-50 */
+  color: #0f766e !important;
+  /* teal-700 */
+}
+
+/* Performance optimization */
+.contains-strict {
+  contain: strict;
+}
+
+/* Fix placeholder visibility for all inputs */
+input::placeholder {
+  color: #64748b !important;
+  opacity: 1 !important;
+}
+
+/* Optimization: Defer rendering of off-screen sections */
+main>section:not(:first-child) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}

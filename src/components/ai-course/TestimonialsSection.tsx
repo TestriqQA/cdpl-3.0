@@ -1,17 +1,20 @@
 // components/sections/TestimonialsSection.tsx
 "use client";
 
-import { ShieldCheck, Sparkles, Trophy } from "lucide-react";
+import { ShieldCheck, Sparkles, Trophy, Download } from "lucide-react";
 import ReviewsMarquee from "../sections/ReviewMarque";
+import { useState } from "react";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 
 export default function TestimonialsSection() {
-
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Comprehensive Data Science and AI - Master Program";
 
 
   return (
     <section
-      className="relative py-14 md:py-20 bg-white"
+      className="relative py-10 bg-white"
       aria-labelledby="testimonials-heading"
     >
       {/* Sleek top accent (thin gradient line only) */}
@@ -51,6 +54,16 @@ export default function TestimonialsSection() {
 
         <ReviewsMarquee />
 
+        <div className="mt-10 flex justify-center">
+          <button
+            onClick={() => setIsSyllabusOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+          >
+            <Download className="mr-2 h-4 w-4" />
+            Download Syllabus (PDF)
+          </button>
+        </div>
+
         {/* Screen-reader SEO hint */}
         <p className="sr-only">
           Read independent reviews of our Data Science & AI master program. Alumni highlight
@@ -58,6 +71,12 @@ export default function TestimonialsSection() {
         </p>
       </div>
 
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Comprehensive Data Science & AI - Testimonials Section - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 }

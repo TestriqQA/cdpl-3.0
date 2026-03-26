@@ -1,11 +1,19 @@
+"use client";
+
 // src/components/CtaSection.tsx
-import React from "react";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import React, { useState } from "react";
+import { ArrowRight, CheckCircle, CloudDownload } from "lucide-react";
 import Link from "next/link";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 export const CtaSection: React.FC = () => {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Machine Learning and Data Visualization using R Programming";
+
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-900 relative overflow-hidden">
+    <section className="py-10 bg-gradient-to-r from-slate-900 via-indigo-900 to-slate-900 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 right-10 w-72 h-72 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
@@ -72,11 +80,18 @@ export const CtaSection: React.FC = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-center mb-10">
-            <button className="flex items-center justify-center cursor-pointer bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all">
+            <button
+              onClick={() => setIsEnrollOpen(true)}
+              className="flex items-center justify-center cursor-pointer bg-brand hover:bg-brand text-white font-semibold px-8 py-4 text-base rounded-lg shadow-lg hover:shadow-xl transition-all"
+            >
               Enroll Now
               <ArrowRight className="w-5 h-5 ml-2" />
             </button>
-            <button className="flex items-center justify-center cursor-pointer border-2 border-white text-white hover:bg-white/10 font-semibold px-8 py-6 text-base rounded-lg transition-all">
+            <button
+              onClick={() => setIsSyllabusOpen(true)}
+              className="flex items-center justify-center cursor-pointer border-2 border-white text-white hover:bg-white/10 font-semibold px-8 py-4 text-base rounded-lg transition-all"
+            >
+              <CloudDownload className="w-5 h-5 mr-2" />
               Download Free Syllabus
             </button>
           </div>
@@ -154,6 +169,19 @@ export const CtaSection: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="R Programming Course Page - CTA Section - Enroll Now"
+        courseName={courseName}
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="R Programming Course Page - CTA Section - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 };

@@ -1,37 +1,37 @@
-// src/components/data-analytics-bi-bigdata/WhoShouldEnroll.tsx
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { WhoShouldEnrollItem } from "./types";
-import { User, GraduationCap, RefreshCw, Briefcase, CheckCircle } from "lucide-react";
+import { User, GraduationCap, RefreshCw, Briefcase, CheckCircle, ArrowRight } from "lucide-react";
+import EnrollModal from "../EnrollModal";
 
 const enrollmentCriteria: WhoShouldEnrollItem[] = [
   {
     id: 1,
     title: "IT Professionals",
     description:
-      "Looking to transition from traditional IT roles (e.g., QA, Support) into high-demand, future-proof data engineering and analytics positions.",
+      "Transition from support to Software Engineer Jobs in Mumbai. Master BI and Big Data Engineering.",
     icon: "Briefcase",
   },
   {
     id: 2,
     title: "Recent Graduates",
     description:
-      "Seeking a comprehensive, job-ready skill set right out of college to secure a high-paying entry-level role in the data domain.",
+      "Kickstart your career as a SQL Data Analyst. Learn SQL for Data Analytics from scratch.",
     icon: "GraduationCap",
   },
   {
     id: 3,
     title: "BI Analysts & Data Analysts",
     description:
-      "Wanting to upgrade their skills to include Big Data Engineering tools (Spark, Hadoop) to handle massive datasets and advance their careers.",
+      "Upgrade to Big Data. Move beyond basic reporting to Data Engineering Certifications roles.",
     icon: "RefreshCw",
   },
   {
     id: 4,
     title: "Career Changers",
     description:
-      "Anyone with a basic understanding of programming or databases who is eager to enter the lucrative and rapidly growing field of data.",
+      "Non-tech background? Our Data Analytics Program Mumbai makes you a Certified Data Engineer.",
     icon: "User",
   },
 ];
@@ -98,51 +98,53 @@ const successFactors = [
   {
     title: "Regular Practice",
     description:
-      "Allocate consistent weekly time for coding exercises, SQL queries, BI dashboards, and Big Data labs.",
+      "Allocate consistent time for SQL Analytics and Big Data Engineering labs.",
     icon: "⏰",
   },
   {
     title: "Active Participation",
     description:
-      "Engage in doubt-solving, peer discussions, and mentor sessions to accelerate your learning.",
+      "Engage in discussions for Data Analytics Program Mumbai topics.",
     icon: "🤝",
   },
   {
     title: "Project-First Mindset",
     description:
-      "Complete all real-world projects to build a strong portfolio in BI, Data Analytics, and Big Data Engineering.",
+      "Complete all real-world projects to build a strong portfolio in BI and Big Data Engineering.",
     icon: "🎯",
   },
   {
     title: "Continuous Learning",
     description:
-      "Stay updated with new tools, cloud services, and industry use cases in the data ecosystem.",
+      "Stay updated with new tools and Certifications for Data Engineers.",
     icon: "📚",
   },
 ];
 
 const WhoShouldEnroll: React.FC = () => {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Data Analytics with BI & Big Data Engineering Master Program";
+
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
+    <section className="py-10 bg-gradient-to-b from-white to-slate-50">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header – text kept same, styling upgraded */}
         <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-sm font-semibold tracking-[0.25em] text-teal-600 uppercase">
-            Target Audience
+          <h2 className="text-sm font-semibold tracking-[0.25em] text-[#0f766e] uppercase">
+            Eligibility & Prerequisites
           </h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Who Is This Master Program For?
+            Who Needs This <span className="text-[#0f766e]">Data Engineer Certification</span>?
           </h3>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            This program is designed for ambitious individuals ready to take on
-            the most challenging and rewarding roles in the data industry.
+            Wondering how to become a data analyst in India or transition to Big Data? This is your path.
           </p>
-          <p className="mt-3 text-sm text-slate-500 max-w-3xl mx-auto">
-            Whether you&apos;re an <strong>IT professional</strong>,{" "}
-            <strong>recent graduate</strong>,{" "}
-            <strong>BI / Data Analyst</strong>, or{" "}
-            <strong>career changer</strong>, this{" "}
-            <strong>Data Analytics with BI and Big Data Engineering Master Program</strong>{" "}
+          <p className="mt-3 text-sm text-slate-700 max-w-3xl mx-auto">
+            Whether you&apos;re an IT professional,{" "}
+            recent graduate,{" "}
+            BI / Data Analyst, or{" "}
+            career changer, this{" "}
+            Data Analytics with BI and Big Data Engineering Master Program{" "}
             gives you a structured path toward{" "}
             <em>high-paying data analytics, BI, and data engineering jobs</em>.
           </p>
@@ -159,7 +161,7 @@ const WhoShouldEnroll: React.FC = () => {
                 className="bg-white rounded-xl p-8 border-2 border-slate-200 hover:border-teal-300 hover:shadow-lg transition-all duration-300"
               >
                 {/* Icon */}
-                <div className="mb-4 inline-flex items-center justify-center rounded-full bg-teal-50 border border-teal-200 p-4 text-teal-600">
+                <div className="mb-4 inline-flex items-center justify-center rounded-full bg-teal-50 border border-teal-200 p-4 text-[#0f766e]">
                   <Icon className="h-8 w-8" aria-hidden="true" />
                 </div>
 
@@ -219,9 +221,9 @@ const WhoShouldEnroll: React.FC = () => {
           </div>
           <p className="mt-6 text-xs text-slate-300 sm:text-sm">
             Ideal for learners aiming for{" "}
-            <strong>Business Intelligence, Data Analytics, and Big Data Engineering</strong>{" "}
+            Business Intelligence, Data Analytics, and Big Data Engineering{" "}
             careers with technologies like <em>SQL, Python, Power BI, Tableau,
-            Hadoop, Spark, Databricks, and cloud platforms</em>.
+              Hadoop, Spark, Databricks, and cloud platforms</em>.
           </p>
         </div>
 
@@ -252,7 +254,25 @@ const WhoShouldEnroll: React.FC = () => {
             changers entering the data field.
           </p>
         </div>
+
+        {/* CTA */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0f766e] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-teal-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer"
+          >
+            Check Your Eligibility
+            <ArrowRight className="h-5 w-5" />
+          </button>
+        </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Data Engineering Course Page - Who Should Enroll - Check Eligibility"
+        courseName={courseName}
+      />
     </section>
   );
 };

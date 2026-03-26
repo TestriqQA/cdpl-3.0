@@ -1,38 +1,48 @@
 'use client';
 import { Briefcase, Building2, ArrowRight, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 
 type Role = { label: string; bg: string; text: string; border: string };
 type Company = { label: string; bg: string; text: string; border: string };
 
 const ROLES: Role[] = [
-  { label: 'SDET',                bg: 'bg-sky-50',     text: 'text-sky-800',     border: 'border-sky-200' },
-  { label: 'Automation Architect',bg: 'bg-emerald-50', text: 'text-emerald-800', border: 'border-emerald-200' },
-  { label: 'Test AI Engineer',    bg: 'bg-amber-50',   text: 'text-amber-800',   border: 'border-amber-200' },
-  { label: 'DevOps Tester',       bg: 'bg-violet-50',  text: 'text-violet-800',  border: 'border-violet-200' },
-  { label: 'Performance SDET',    bg: 'bg-rose-50',    text: 'text-rose-800',    border: 'border-rose-200' },
-  { label: 'Cypress Expert',      bg: 'bg-indigo-50',  text: 'text-indigo-800',  border: 'border-indigo-200' },
-  { label: 'Playwright Lead',     bg: 'bg-teal-50',    text: 'text-teal-800',    border: 'border-teal-200' },
-  { label: 'CI/CD Engineer',      bg: 'bg-fuchsia-50', text: 'text-fuchsia-800', border: 'border-fuchsia-200' },
+  { label: 'SDET', bg: 'bg-sky-50', text: 'text-sky-800', border: 'border-sky-200' },
+  { label: 'Automation Architect', bg: 'bg-emerald-50', text: 'text-emerald-800', border: 'border-emerald-200' },
+  { label: 'Test AI Engineer', bg: 'bg-amber-50', text: 'text-amber-800', border: 'border-amber-200' },
+  { label: 'DevOps Tester', bg: 'bg-violet-50', text: 'text-violet-800', border: 'border-violet-200' },
+  { label: 'Performance SDET', bg: 'bg-rose-50', text: 'text-rose-800', border: 'border-rose-200' },
+  { label: 'Cypress Expert', bg: 'bg-indigo-50', text: 'text-indigo-800', border: 'border-indigo-200' },
+  { label: 'Playwright Lead', bg: 'bg-teal-50', text: 'text-teal-800', border: 'border-teal-200' },
+  { label: 'CI/CD Engineer', bg: 'bg-fuchsia-50', text: 'text-fuchsia-800', border: 'border-fuchsia-200' },
 ];
 
 const COMPANIES: Company[] = [
-  { label: 'Google',     bg: 'bg-slate-50',   text: 'text-slate-800',   border: 'border-slate-200' },
-  { label: 'Amazon',     bg: 'bg-orange-50',  text: 'text-orange-800',  border: 'border-orange-200' },
-  { label: 'Microsoft',  bg: 'bg-blue-50',    text: 'text-blue-800',    border: 'border-blue-200' },
-  { label: 'Meta',       bg: 'bg-cyan-50',    text: 'text-cyan-800',    border: 'border-cyan-200' },
-  { label: 'Netflix',    bg: 'bg-red-50',     text: 'text-red-800',     border: 'border-red-200' },
-  { label: 'Adobe',      bg: 'bg-rose-50',    text: 'text-rose-800',    border: 'border-rose-200' },
-  { label: 'Atlassian',  bg: 'bg-indigo-50',  text: 'text-indigo-800',  border: 'border-indigo-200' },
-  { label: 'PayPal',     bg: 'bg-emerald-50', text: 'text-emerald-800', border: 'border-emerald-200' },
+  { label: 'Google', bg: 'bg-slate-50', text: 'text-slate-800', border: 'border-slate-200' },
+  { label: 'Amazon', bg: 'bg-orange-50', text: 'text-brand', border: 'border-orange-200' },
+  { label: 'Microsoft', bg: 'bg-blue-50', text: 'text-blue-800', border: 'border-blue-200' },
+  { label: 'Meta', bg: 'bg-cyan-50', text: 'text-cyan-800', border: 'border-cyan-200' },
+  { label: 'Netflix', bg: 'bg-red-50', text: 'text-red-800', border: 'border-red-200' },
+  { label: 'Adobe', bg: 'bg-rose-50', text: 'text-rose-800', border: 'border-rose-200' },
+  { label: 'Atlassian', bg: 'bg-indigo-50', text: 'text-indigo-800', border: 'border-indigo-200' },
+  { label: 'PayPal', bg: 'bg-emerald-50', text: 'text-emerald-800', border: 'border-emerald-200' },
 ];
 
 export default function CareerSection() {
-
+  const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
 
   return (
-    <section id="career" aria-labelledby="career-heading" className="relative py-8 md:py-10 bg-white">
+    <section id="career" aria-labelledby="career-heading" className="relative py-10 bg-white">
       {/* Subtle rails for a clean, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -150,20 +160,26 @@ export default function CareerSection() {
           transition={{ duration: 0.45, ease: 'easeOut' }}
           className="mt-10 text-center"
         >
-          <Link
-            href="contact-us"
-            className="inline-flex items-center gap-2 rounded-xl border border-indigo-600 bg-indigo-600 px-7 py-3 text-sm sm:text-base font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-200"
+          <button
+            onClick={() => setIsCareerModalOpen(true)}
+            className="cursor-pointer inline-flex items-center gap-2 rounded-xl border border-indigo-600 bg-indigo-600 px-7 py-3 text-sm sm:text-base font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-200"
             aria-label="Talk to a mentor and join the program"
           >
             <Sparkles className="h-5 w-5" />
             Join the Top 1%
             <ArrowRight className="h-5 w-5" />
-          </Link>
+          </button>
           <p className="mt-3 text-xs text-slate-500">
             Speak to a mentor about roadmap, interview prep, and portfolio projects.
           </p>
         </motion.div>
       </div>
+
+      <CareerSessionModal
+        isOpen={isCareerModalOpen}
+        onClose={() => setIsCareerModalOpen(false)}
+        source="Advanced Automation Testing Course Page - Career Section - Join the Top 1%"
+      />
 
     </section>
   );

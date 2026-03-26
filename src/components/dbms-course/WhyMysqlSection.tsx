@@ -14,19 +14,19 @@ type Benefit = {
 };
 
 const benefits: Benefit[] = [
-  { icon: <Database />,    title: 'Powers Modern Platforms',   description: 'Run product catalogs, user data & analytics on proven MySQL engines.', bg: 'bg-sky-50',     iconColor: 'text-sky-700',     border: 'border-sky-200' },
-  { icon: <Zap />,         title: 'Optimized Query Speed',     description: 'Master indexing, EXPLAIN plans, caching, and query optimization.',     bg: 'bg-amber-50',   iconColor: 'text-amber-700',   border: 'border-amber-200' },
-  { icon: <Shield />,      title: 'Secure & Compliant',        description: 'Built-in encryption, RBAC, auditing—supports GDPR & HIPAA controls.',  bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
-  { icon: <Globe />,       title: 'Scales to Millions',        description: 'Replication, clustering, and sharding for high-traffic apps.',         bg: 'bg-violet-50',  iconColor: 'text-violet-700',  border: 'border-violet-200' },
-  { icon: <Lock />,        title: 'ACID Transactions',         description: 'Guarantee data integrity with InnoDB isolation & recovery.',           bg: 'bg-indigo-50',  iconColor: 'text-indigo-700',  border: 'border-indigo-200' },
-  { icon: <TrendingUp />,  title: 'High-Demand Skill',         description: 'Top hiring keyword across QA, Data, Backend & DevOps roles.',          bg: 'bg-rose-50',    iconColor: 'text-rose-700',    border: 'border-rose-200' },
+  { icon: <Database />, title: 'Powers Modern Platforms', description: 'Run product catalogs, user data & analytics on proven MySQL engines.', bg: 'bg-sky-50', iconColor: 'text-sky-700', border: 'border-sky-200' },
+  { icon: <Zap />, title: 'Optimized Query Speed', description: 'Master indexing, EXPLAIN plans, caching, and query optimization.', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
+  { icon: <Shield />, title: 'Secure & Compliant', description: 'Built-in encryption, RBAC, auditing—supports GDPR & HIPAA controls.', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
+  { icon: <Globe />, title: 'Scales to Millions', description: 'Replication, clustering, and sharding for high-traffic apps.', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
+  { icon: <Lock />, title: 'ACID Transactions', description: 'Guarantee data integrity with InnoDB isolation & recovery.', bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
+  { icon: <TrendingUp />, title: 'High-Demand Skill', description: 'Top hiring keyword across QA, Data, Backend & DevOps roles.', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
 ];
 
 export default function WhyMysqlSection() {
 
 
   return (
-    <section id="why-mysql" aria-labelledby="why-mysql-heading" className="relative py-8 md:py-10 bg-white">
+    <section id="why-mysql" aria-labelledby="why-mysql-heading" className="relative py-10 bg-white">
       {/* subtle separators for a clean, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />

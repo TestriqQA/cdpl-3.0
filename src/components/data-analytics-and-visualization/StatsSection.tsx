@@ -1,5 +1,7 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { BarChart3, TrendingUp, Users, Award, Zap, Target } from "lucide-react";
+import CareerSessionModal from "../CareerSessionModal";
 
 /**
  * Enhanced, accessible, and fully responsive StatsSection.
@@ -10,12 +12,12 @@ import { BarChart3, TrendingUp, Users, Award, Zap, Target } from "lucide-react";
  */
 
 const colorClasses = [
-    "from-blue-500 to-blue-600",
-    "from-indigo-500 to-indigo-600",
-    "from-cyan-500 to-cyan-600",
-    "from-purple-500 to-purple-600",
-    "from-pink-500 to-pink-600",
-    "from-green-500 to-green-600",
+    "from-[#1d4ed8] to-[#1e40af]",
+    "from-[#4338ca] to-[#3730a3]",
+    "from-[#0891b2] to-[#0e7490]",
+    "from-[#7e22ce] to-[#6b21a8]",
+    "from-[#be185d] to-[#9d174d]",
+    "from-[#15803d] to-[#166534]",
 ];
 
 export const stats = [
@@ -52,14 +54,15 @@ export const stats = [
 ];
 
 export default function StatsSection() {
-
+    const [isCareerSessionOpen, setIsCareerSessionOpen] = useState(false);
+    const courseName = "Advanced Excel for Data Analytics & Visualization";
 
     const icons = [BarChart3, TrendingUp, Users, Award, Zap, Target];
 
     return (
         <section
             aria-labelledby="why-course-heading"
-            className="relative py-20 bg-white overflow-hidden"
+            className="relative py-10 bg-white overflow-hidden"
         >
             {/* Subtle background accents */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
@@ -239,7 +242,23 @@ export default function StatsSection() {
                     </div>
                 </div>
 
+                {/* CTA */}
+                <div className="mt-16 text-center">
+                    <button
+                        onClick={() => setIsCareerSessionOpen(true)}
+                        className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                    >
+                        Book a Free Career Session
+                    </button>
+                </div>
             </div>
+
+            <CareerSessionModal
+                isOpen={isCareerSessionOpen}
+                onClose={() => setIsCareerSessionOpen(false)}
+                source="Data Analytics & Visualization Course Page - Stats Section - Career Session"
+                courseName={courseName}
+            />
         </section>
     );
 }

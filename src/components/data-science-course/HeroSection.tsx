@@ -2,18 +2,39 @@
 // Server component — sleek, SEO-optimized, slightly futuristic, fully responsive.
 // Assumes you have a client LeadForm at "../CourseLeadForm" (same API-testing style).
 
+"use client";
+
 import Link from "next/link";
-import LeadForm from "../CourseLeadForm";
-import { ChevronRight, Home } from "lucide-react";
+import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
+import dynamic from "next/dynamic";
+
+const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
+const CareerSessionModal = dynamic(() => import("../CareerSessionModal"), { ssr: false });
+import { ChevronRight, Home, ArrowRight, CloudDownload, ArrowDownNarrowWide } from "lucide-react";
+import { useState } from "react";
 
 export default function HeroSection() {
-
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const [isCareerSessionOpen, setIsCareerSessionOpen] = useState(false);
 
   const breadcrumbs = [
-    { label: "Home", href: "/" },
-    { label: "Data • AI", href: "#" },
+        { label: "Home", href: "/" },
+    { label: "Courses", href: "/courses" },
+        { label: 'Data Science & ML', href: '/courses/ds-ml-courses' },
     { label: "Advanced DS & ML Masterclass", href: "/data-science-course" },
-  ];
+    ];
+
+  const courseName = "Advanced Data Science and Machine Learning Masterclass";
+
+  const handleScrollToCurriculum = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById('curriculum');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section id="hero" aria-labelledby="dsml-hero" className="relative overflow-hidden">
@@ -23,10 +44,10 @@ export default function HeroSection() {
         <div className="absolute inset-0 [mask-image:radial-gradient(1200px_600px_at_50%_-12%,black,transparent)]" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-12 md:pt-12 md:pb-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
         {/* Breadcrumbs */}
-        <nav aria-label="Breadcrumb" className="mb-8">
-          <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
+        <nav aria-label="Breadcrumb" className="mb-8 overflow-x-auto">
+          <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600 min-w-max">
             {breadcrumbs.map((c, i) => (
               <li key={i} className="flex items-center gap-2">
                 {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
@@ -56,50 +77,51 @@ export default function HeroSection() {
               id="dsml-hero"
               className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
             >
-              Master Program in{" "}
-              <span className="text-DS">Advanced Data Science</span> &{" "}
-              <span className="text-DS">Machine Learning</span>
+              Advanced <span className="text-DS">Data Science</span> and{" "}
+              <span className="text-DS">Machine Learning</span> Masterclass: Full Course in Mumbai
             </h1>
 
             {/* Mobile form directly under headline (FORM 1) */}
-            <div className="mt-5 block md:hidden">
-              <LeadForm variant="elevated" />
+            <div className="mt-5 block md:hidden min-h-[500px]">
+              <ApiCourseLeadForm source="Data Science Course Page - Hero Section" courseName={courseName} />
             </div>
 
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-              Become industry-ready with <strong>Statistics</strong>, <strong>Supervised & Unsupervised ML</strong>,{" "}
-              <strong>Feature Engineering</strong>, <strong>Model Evaluation</strong>, and <strong>Deployments</strong>.
-              Build portfolio projects and earn a <strong>QR-verified certificate</strong>.
+              Master the <strong>data science full course</strong> in Mumbai with 200 hours of intensive training. From <strong>advanced data science</strong> to cutting-edge <strong>machine learning</strong>, we prepare you for high-paying roles with <strong>Guaranteed Interviews</strong> and 10+ real-time projects.
             </p>
             <p className="mt-2 max-w-3xl text-sm text-slate-600">
-              Curriculum includes Python (Pandas/NumPy), EDA & Data Visualization, Scikit-learn, XGBoost, basic Deep Learning,
-              ML pipelines, <abbr title="Machine Learning Operations">MLOps</abbr> fundamentals, and CI/CD best practices.
+              Become a <strong>certified data scientist</strong> with mastery in Python, SQL, Statistics, Deep Learning, and AI. Our <strong>data science training</strong> in Mumbai/Thane focuses on 80% practical labs and industry-ready Model Deployments.
             </p>
 
             {/* CTAs */}
             <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
               <button
-                className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-purple-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-purple-200"
+                onClick={() => setIsEnrollOpen(true)}
+                className="inline-flex items-center justify-center cursor-pointer rounded-xl bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
                 aria-label="Enroll now in Advanced Data Science & Machine Learning course"
               >
                 Enroll Now
-                <svg className="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-                  <path d="M12.293 4.293a1 1 0 011.414 0l4 4a1 1 0 01.083 1.32l-.083.094-4 4a1 1 0 01-1.497-1.32l.083-.094L14.585 10H3a1 1 0 01-.117-1.993L3 8h11.585l-2.292-2.293a1 1 0 010-1.414z" />
-                </svg>
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </button>
-              <Link
+
+              <button
+                onClick={() => setIsSyllabusOpen(true)}
+                className="inline-flex items-center justify-center cursor-pointer rounded-xl bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                aria-label="Download Data Science Syllabus"
+              >
+                Download Syllabus
+                <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+              </button>
+
+              <a
                 href="#curriculum"
+                onClick={handleScrollToCurriculum}
                 className="inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
                 aria-label="View full Data Science & Machine Learning curriculum"
               >
                 View Curriculum
-              </Link>
-              <button
-                className="inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
-                aria-label="Book a free demo for Data Science & ML"
-              >
-                Free Demo
-              </button>
+                <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+              </a>
             </div>
 
             {/* Quick highlights (distinct accent bullets; no repeats) */}
@@ -132,16 +154,32 @@ export default function HeroSection() {
           {/* Right column: Desktop form & visual (FORM 2) */}
           <aside className="md:col-span-5 lg:col-span-4 hidden md:block">
             <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
-              
               <div className="p-4 sm:p-5">
-                <LeadForm variant="elevated" />
+                <ApiCourseLeadForm source="Data Science Course Page - Hero Section" courseName={courseName} />
               </div>
             </div>
           </aside>
         </div>
       </div>
 
-
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Data Science Course Page - Enroll Now - Hero Section"
+        courseName={courseName}
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Data Science Course Page - Hero Section - Syllabus Download"
+        courseName={courseName}
+      />
+      <CareerSessionModal
+        isOpen={isCareerSessionOpen}
+        onClose={() => setIsCareerSessionOpen(false)}
+        source="Data Science Course Page - Hero Section - Free Demo"
+        courseName={courseName}
+      />
     </section>
   );
 }

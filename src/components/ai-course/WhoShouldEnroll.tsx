@@ -1,5 +1,8 @@
-// components/sections/WhoShouldEnroll.tsx
-// Server component — modern audience grid with subtle futuristic accents + SEO (DS & AI edition).
+"use client";
+import { useState } from "react";
+import { Download } from "lucide-react";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 type Persona = {
   title: string;
@@ -46,16 +49,18 @@ const PERSONAS: Persona[] = [
 ];
 
 export default function WhoShouldEnroll() {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Comprehensive Data Science and AI - Master Program";
+
   const seoKeywords =
     "who should enroll data science course, ai ml audience, career switch to data science, working professional upskilling, data analyst to data scientist, mlops deployment skills";
-
-
 
   return (
     <section
       id="who-should-enroll"
       aria-labelledby="wse-heading"
-      className="relative py-12 md:py-10 lg:py-18 xl:py-12 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop: fine grid + soft indigo glow (no heavy gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -69,12 +74,12 @@ export default function WhoShouldEnroll() {
             id="wse-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Who Is This <span className="text-DS">Course For</span>
+            Who Is This <span className="text-DS">Course For</span> – Masters in AI and ML in India
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
-            Whether you’re a <strong>beginner</strong>, <strong>analyst</strong>, or an experienced{" "}
-            <strong>professional</strong>, this program helps you build a recruiter-ready portfolio in{" "}
-            <strong>Data Science</strong> & <strong>AI</strong>.
+            Whether you're a <strong>beginner</strong>, <strong>analyst</strong>, or an experienced{" "}
+            <strong>professional</strong>, this <strong>post graduate program in ai and ml</strong> helps you build a recruiter-ready portfolio in{" "}
+            <strong>Data Science</strong> & <strong>AI</strong>. Perfect for those seeking <strong>ms in artificial intelligence in india</strong>.
           </p>
           {/* SEO helper (visually hidden) */}
           <p className="sr-only">{seoKeywords}</p>
@@ -105,10 +110,10 @@ export default function WhoShouldEnroll() {
                 {/* top accent bar */}
                 <div className={["absolute left-0 right-0 top-0 h-1 rounded-t-2xl", p.accent.bar].join(" ")} aria-hidden />
 
-                <h3 id={id} className="text-lg md:text-xl font-bold text-slate-900">
+                <h2 id={id} className="text-lg md:text-xl font-bold text-slate-900">
                   <span className={p.accent.text}># </span>
                   {p.title}
-                </h3>
+                </h2>
 
                 <p className="mt-2 text-sm md:text-base text-slate-700">{p.blurb}</p>
 
@@ -144,8 +149,37 @@ export default function WhoShouldEnroll() {
             <strong>Data Scientist</strong>, <strong>ML Engineer</strong>, and <strong>Applied AI</strong>.
           </p>
         </div>
+
+        {/* CTA Buttons */}
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-blue-600 bg-blue-600 px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-200"
+          >
+            Check Eligibility & Apply
+          </button>
+          <button
+            onClick={() => setIsSyllabusOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-900 shadow-sm transition-all hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
+          >
+            <Download className="mr-2 h-5 w-5" />
+            Download Detailed Syllabus
+          </button>
+        </div>
       </div>
 
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Data Science & AI - Who Should Enroll - Check Eligibility"
+        courseName={courseName}
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Data Science & AI - Who Should Enroll - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 }

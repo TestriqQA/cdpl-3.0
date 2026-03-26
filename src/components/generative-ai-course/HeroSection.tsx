@@ -1,18 +1,25 @@
-// components/sections/HeroSection.tsx
-// Server component — sleek, SEO-optimized, slightly futuristic, fully responsive.
-// Assumes you have a client LeadForm at "../CourseLeadForm" (same API-testing style).
+"use client";
 
 import Link from "next/link";
-import LeadForm from "../CourseLeadForm";
-import { ChevronRight, Home } from "lucide-react";
+import { useState } from "react";
+import GenerativeAICourseLeadForm from "@/components/forms/GenerativeAICourseLeadForm";
+import { ChevronRight, Home, ArrowRight, CloudDownload, ArrowDownNarrowWide } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
+const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false });
 
 export default function HeroSection() {
-
+    const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+    const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
+    const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
 
     const breadcrumbs = [
         { label: "Home", href: "/" },
-        { label: "AI & ML", href: "#" },
-        { label: "Deep Learning • NLP • GenAI", href: "/generative-ai-course" },
+        { label: "Courses", href: "/courses" },
+        { label: 'Data Science & ML', href: '/courses/ds-ml-courses' },
+        { label: "Deep Learning • NLP • GenAI" },
     ];
 
     return (
@@ -23,21 +30,32 @@ export default function HeroSection() {
                 <div className="absolute inset-0 [mask-image:radial-gradient(1200px_600px_at_50%_-10%,black,transparent)]" />
             </div>
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-12 md:pt-12 md:pb-16">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
                 {/* Breadcrumbs */}
                 <nav aria-label="Breadcrumb" className="mb-8">
                     <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
-                        {breadcrumbs.map((c, i) => (
-                            <li key={i} className="flex items-center gap-2">
-                                {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-                                <Link
-                                    href={c.href}
-                                    className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
-                                >
-                                    {c.label}
-                                </Link>
-                            </li>
-                        ))}
+                        {breadcrumbs.map((c, i) => {
+                            const isLast = i === breadcrumbs.length - 1;
+                            return (
+                                <li key={i} className="flex items-center gap-2">
+                                    {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+                                    {c.href ? (
+                                        <Link
+                                            href={c.href}
+                                            className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
+                                        >
+                                            {c.label}
+                                        </Link>
+                                    ) : (
+                                        <span
+                                            className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
+                                        >
+                                            {c.label}
+                                        </span>
+                                    )}
+                                </li>
+                            );
+                        })}
                     </ol>
                 </nav>
 
@@ -61,7 +79,7 @@ export default function HeroSection() {
 
                         {/* Mobile form directly under headline */}
                         <div className="mt-5 block md:hidden">
-                            <LeadForm variant="elevated" />
+                            <GenerativeAICourseLeadForm variant="elevated" />
                         </div>
 
                         <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
@@ -76,27 +94,31 @@ export default function HeroSection() {
                         {/* CTAs */}
                         <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                             <button
-                                className="inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                                onClick={() => setIsEnrollModalOpen(true)}
+                                className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#6b21a8] hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-purple-200"
                                 aria-label="Enroll now in Generative AI course"
                             >
                                 Enroll Now
-                                <svg className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-                                    <path d="M12.293 4.293a1 1 0 011.414 0l4 4a1 1 0 01.083 1.32l-.083.094-4 4a1 1 0 01-1.497-1.32l.083-.094L14.585 10H3a1 1 0 01-.117-1.993L3 8h11.585l-2.292-2.293a1 1 0 010-1.414z" />
-                                </svg>
+                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </button>
+
+                            <button
+                                onClick={() => setIsSyllabusModalOpen(true)}
+                                className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#6b21a8] hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-purple-200"
+                                aria-label="Download Generative AI Syllabus"
+                            >
+                                Download Syllabus
+                                <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                            </button>
+
                             <Link
                                 href="#curriculum"
                                 className="inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
                                 aria-label="View full Generative AI curriculum"
                             >
                                 View Curriculum
+                                <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </Link>
-                            <button
-                                className="inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
-                                aria-label="Book a free demo for Generative AI"
-                            >
-                                Free Demo
-                            </button>
                         </div>
 
                         {/* Highlights */}
@@ -127,16 +149,31 @@ export default function HeroSection() {
                     </div>
 
                     {/* Right column: Desktop form */}
-                    <aside className="md:col-span-5 lg:col-span-4 hidden md:block">
-                        <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
-
-                            <div className="p-4 sm:p-5">
-                                <LeadForm variant="elevated" />
-                            </div>
-                        </div>
-                    </aside>
+                    <div className="relative lg:col-span-4 hidden md:block">
+                        <GenerativeAICourseLeadForm variant="elevated" className="hidden lg:block" source="Generative AI Course Page - Hero Section" />
+                    </div>
                 </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollModalOpen}
+                onClose={() => setIsEnrollModalOpen(false)}
+                courseName="Master Program in Deep Learning, NLP & Generative AI"
+                source="Generative AI Course Page - Hero Section - Enroll Now"
+            />
+
+            <CareerSessionModal
+                isOpen={isCareerModalOpen}
+                onClose={() => setIsCareerModalOpen(false)}
+                source="Generative AI Course Page - Hero Section - Free Demo"
+            />
+
+            <SyllabusDownloadModal
+                isOpen={isSyllabusModalOpen}
+                onClose={() => setIsSyllabusModalOpen(false)}
+                courseName="Master Program in Deep Learning, NLP & Generative AI"
+                source="Generative AI Course Page - Hero Section - Generative AI - Download Syllabus"
+            />
 
         </section>
     );

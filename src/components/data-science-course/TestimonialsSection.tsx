@@ -1,25 +1,24 @@
-// components/sections/TestimonialsSection.tsx
 "use client";
 
-import { ShieldCheck, Sparkles, Trophy } from "lucide-react";
+import { useState } from "react";
+import { ShieldCheck, Sparkles, Trophy, Rocket } from "lucide-react";
 import ReviewsMarquee from "../sections/ReviewMarque";
-
-
+import EnrollModal from "../EnrollModal";
 
 export default function TestimonialsSection() {
-
-
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Advanced Data Science and Machine Learning Masterclass";
 
   return (
     <section
-      className="relative py-14 md:py-24 bg-white"
+      className="relative py-10 bg-white"
       aria-labelledby="testimonials-heading"
     >
-      {/* Sleek top accent (thin gradient line only) */}
+      {/* ... (keep background) */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-purple-500 via-indigo-500 to-emerald-500 opacity-80" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        {/* ... (keep header) */}
         <header className="text-center mb-10 md:mb-12">
           <h2
             id="testimonials-heading"
@@ -53,6 +52,18 @@ export default function TestimonialsSection() {
 
         <ReviewsMarquee />
 
+        {/* CTA */}
+        <div className="mt-12 text-center">
+          <p className="text-slate-600 mb-4">Ready to join them?</p>
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer px-8 py-3 text-base font-semibold rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 transition-all shadow-lg hover:shadow-indigo-200"
+          >
+            Apply Now
+            <Rocket className="ml-2 w-4 h-4" />
+          </button>
+        </div>
+
         {/* Screen-reader SEO hint */}
         <p className="sr-only">
           Read independent reviews of our Data Science and ML masterclass. Alumni highlight MLOps,
@@ -60,6 +71,12 @@ export default function TestimonialsSection() {
         </p>
       </div>
 
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Data Science Course Page - Testimonials Section - Apply Now"
+        courseName={courseName}
+      />
     </section>
   );
 }

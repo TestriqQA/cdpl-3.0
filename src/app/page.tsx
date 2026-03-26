@@ -16,12 +16,13 @@ import type { Metadata } from "next";
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateHomePageSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
+import { HOME_FAQS } from "@/components/home/HomeFAQSection";
 
 // ============================================================================
 // DYNAMIC IMPORTS (for performance)
 // ============================================================================
 
-const HomeHeroSection = dynamic(() => import('@/components/home/HomeHeroSection'), { ssr: true });
+import HomeHeroSection from '@/components/home/HomeHeroSection';
 const HomeTrustBarSection = dynamic(() => import('@/components/home/HomeTrustBarSection'), { ssr: true });
 const HomeFeaturedCoursesSection = dynamic(() => import('@/components/home/HomeFeaturedCoursesSection'), { ssr: true });
 const HomeLearningExperienceSection = dynamic(() => import('@/components/home/HomeLearningExperienceSection'), { ssr: true });
@@ -32,13 +33,17 @@ const HomeLatestBlogSection = dynamic(() => import('@/components/home/HomeLatest
 const HomeFAQSection = dynamic(() => import('@/components/home/HomeFAQSection'), { ssr: true });
 const HomeFinalCTASection = dynamic(() => import('@/components/home/HomeFinalCTASection'), { ssr: true });
 
+import { client } from "@/sanity/client";
+import { LATEST_POSTS_QUERY } from "@/sanity/lib/queries";
+import { SanityPost } from "@/sanity/types";
+
 // ============================================================================
 // HOME PAGE METADATA
 // ============================================================================
 
 export const metadata: Metadata = generateMetadata({
-  title: "Best Software Testing, Data Science & AI/ML Courses | CDPL - Cinute Digital",
-  description: "CDPL offers industry-leading training in Software Testing, Data Science, and AI/ML with 100% placement support. Start your high-paying tech career with expert-led courses and hands-on projects.",
+  title: "Software Testing & Data Science Course Mumbai | CDPL",
+  description: "Launch your tech career with CDPL's industry-leading courses in Software Testing, Data Science, and AI/ML. 100% Placement Support, Live Projects & Expert Mentors. Book a Free Demo!",
   keywords: [
     "software testing course",
     "data science course",
@@ -53,22 +58,36 @@ export const metadata: Metadata = generateMetadata({
     "job guarantee",
     "automation testing",
     "machine learning training",
+    "software testing course in Mumbai",
+    "data science course in Mumbai",
+    "IT courses with placement",
+    "best software testing institute",
+    "CDPL blog",
+    "technology courses"
   ],
   url: '/',
+  image: '/og-images/home-page-og.png',
 });
 
 // ============================================================================
 // HOME PAGE COMPONENT
 // ============================================================================
 
-export default function HomePage(): React.ReactElement {
+export default async function HomePage(): Promise<React.ReactElement> {
+  // ========================================
+  // DATA FETCHING
+  // ========================================
+  const latestPosts: SanityPost[] = await client.fetch(LATEST_POSTS_QUERY, {}, {
+    next: { revalidate: 3600 } // Revalidate every hour
+  });
+
   // ========================================
   // SCHEMA DATA
   // ========================================
 
   // The generateHomePageSchema function combines LocalBusiness, ItemList, FAQPage, and VideoObject
   // into a single, optimized array of schemas for the Home Page.
-  const homePageSchemas = generateHomePageSchema();
+  const homePageSchemas = generateHomePageSchema(HOME_FAQS);
 
   return (
     <>
@@ -97,7 +116,7 @@ export default function HomePage(): React.ReactElement {
           </div>
         </section>
         <HomeWhyChooseSection />
-        <HomeLatestBlogSection />
+        <HomeLatestBlogSection posts={latestPosts} />
         <HomeFAQSection />
         <HomeFinalCTASection />
       </main>

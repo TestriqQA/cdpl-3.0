@@ -1,22 +1,40 @@
 "use client";
 
 import React from "react";
-import { courseData } from "@/components/ai-in-digital-marketing/courseData";
-
-interface Stat {
-  icon: React.ReactNode;
-  value: string;
-  label: string;
-  description: string;
-}
 
 export default function StatsSection() {
-  const { stats } = courseData as { stats: Stat[] };
+  interface Stat {
+    icon: React.ReactNode;
+    value: string;
+    label: string;
+    description: string;
+  }
+
+  const stats: Stat[] = [
+    {
+      icon: "📈",
+      value: "10X",
+      label: "Revenue Growth Potential",
+      description: "Learn strategies to scale your business revenue.",
+    },
+    {
+      icon: "💼",
+      value: "100%",
+      label: "Practical Business Application",
+      description: "Apply concepts directly to your business model.",
+    },
+    {
+      icon: "⏳",
+      value: "3 Months",
+      label: "Intensive Cohort",
+      description: "Comprehensive fast-track learning program.",
+    },
+  ];
 
 
   return (
     <section
-      className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50"
+      className="py-10 bg-gradient-to-b from-white to-slate-50"
       aria-labelledby="stats-heading"
     >
 
@@ -28,21 +46,19 @@ export default function StatsSection() {
             id="stats-heading"
             className="text-3xl md:text-4xl font-bold mb-4 text-slate-900"
           >
-            Why Choose <span className="text-orange-600">Our Program?</span>
+            Why Choose This <span className="text-brand">AI Digital Marketing Course?</span>
           </h2>
           <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto">
-            Proven results from thousands of successful students who have
-            transformed their businesses.
+            Unlock the power of <strong>Digital Marketing with AI</strong> to scale smarter, not harder.
           </p>
           {/* Extra SEO line */}
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-4xl mx-auto">
             Our AI-powered digital marketing course helps{" "}
-            <strong>students, entrepreneurs, freelancers, and working professionals</strong>{" "}
-            master performance marketing, social media marketing, SEO, content
-            marketing, and marketing automation. Learn to use{" "}
-            <strong>AI tools for ads, funnels, copywriting, and analytics</strong> so you
-            can increase ROI, generate high-quality leads, and scale online
-            visibility across Google, Meta, Instagram, and YouTube.
+            <strong>business owners, entrepreneurs, freelancers, and students</strong>{" "}
+            master <strong>business marketing strategies</strong>, <strong>local business SEO</strong>, and
+            <strong> marketing automation</strong>. Learn to use{" "}
+            <strong>AI tools for business</strong> to increase ROI, generate high-quality leads, and scale your
+            <strong> online marketing business</strong>.
           </p>
         </header>
 
@@ -107,13 +123,12 @@ export default function StatsSection() {
 
         {/* Short keyword-rich line under stats */}
         <p className="mt-4 text-sm text-center sm:text-base text-slate-600 max-w-4xl mx-auto">
-          <em>AI in Digital Marketing Course</em>,{" "}
-          <em>Performance Marketing Training</em>,{" "}
-          <em>Social Media Marketing with AI</em>,{" "}
-          <em>Lead Generation Funnels</em>,{" "}
-          <em>Marketing Automation</em>,{" "}
-          <em>Job-Oriented Digital Marketing Program</em>,{" "}
-          <em>Mumbai Digital Marketing Institute</em>.
+          <em>Business Marketing Strategies</em>,{" "}
+          <em>Local Business SEO</em>,{" "}
+          <em>Marketing Automation for Business Owners</em>,{" "}
+          <em>AI for Business Owners</em>,{" "}
+          <em>Small Business SEO</em>,{" "}
+          <em>Grow Your Business with Digital Marketing</em>.
         </p>
 
         {/* Bottom Insight */}
@@ -130,12 +145,12 @@ export default function StatsSection() {
 
             <div>
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 mb-3">
-                Build an Industry-Recognized, Career-Ready Digital Marketing Profile
+                Lifetime Access to AI Tools Library
               </h3>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base mb-4">
                 This program is structured to help you earn{" "}
                 <strong>globally recognized digital marketing credentials</strong> while
-                becoming truly <strong>job and business ready</strong>. Combine AI tools,
+                transforming your business. Combine <strong>AI tools</strong>,
                 strategy, and implementation to design campaigns that deliver
                 measurable results for brands and businesses in any niche.
               </p>
@@ -151,8 +166,7 @@ export default function StatsSection() {
                     </p>
                     <p className="text-gray-700">
                       Receive internationally recognized certifications in Digital
-                      Marketing, Digital Analytics, and Social Media Specialist upon
-                      completion.
+                      Marketing, Digital Analytics, and Social Media Specialist.
                     </p>
                   </div>
                 </li>
@@ -162,21 +176,20 @@ export default function StatsSection() {
                   </span>
                   <div>
                     <p className="text-base font-bold text-gray-900 mb-1">
-                      Career Ready
+                      Business Ready
                     </p>
                     <p className="text-gray-700">
-                      Become job-ready with hands-on experience, real-world projects,
-                      and the latest tools used by top companies in the industry.
+                      Become business-ready with hands-on experience, real-world projects,
+                      and the latest tools used by successful entrepreneurs.
                     </p>
                   </div>
                 </li>
               </ul>
 
               <p className="mt-4 text-slate-600 text-xs sm:text-sm">
-                Keywords: AI digital marketing certification • Social media marketing
-                course with AI • Performance marketing and analytics • Google Ads & Meta
-                Ads training • Digital marketing course in Mumbai with placement
-                support • Business growth using AI tools and automation.
+                Keywords: Digital marketing application • Social media marketing business
+                • AI digital marketing • How to start digital marketing business
+                • Digital marketing course for business owners • Business automation software.
               </p>
             </div>
           </div>

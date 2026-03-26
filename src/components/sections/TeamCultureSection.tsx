@@ -5,7 +5,7 @@
 // =============================
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import type { ElementType } from "react";
 import { motion } from "framer-motion";
 import {
@@ -20,6 +20,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
+import AdvisorModal from "@/components/ui/AdvisorModal";
 
 const BRAND = "#ff8c00"; // Cinute Digital brand
 
@@ -117,6 +118,7 @@ const specialties: Array<{
 // Component
 // =============================
 export default function TeamCultureSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const marquee = useMemo(
     () => ["Skill India", "ISO 9001", "Hiring Partners", "Industry Projects", "Interview Prep"],
     []
@@ -139,7 +141,7 @@ export default function TeamCultureSection() {
             className="text-4xl font-bold tracking-tight text-slate-900 text-center"
           >
             The People Behind{" "}
-            <span style={{ color: BRAND }}>Job-Ready</span> Careers
+            <span style={{ color: "#ff8c00" }}>Job-Ready</span> Careers
           </h2>
 
           <p className="mt-8 max-w-5xl text-lg leading-6 text-slate-700 text-center">
@@ -277,12 +279,12 @@ export default function TeamCultureSection() {
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="/contact-us"
-              className="flex items-center rounded-xl bg-orange-500 p-3 text-white shadow-lg transition-all hover:translate-y-1 hover:bg-orange-600"
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="flex items-center rounded-xl bg-orange-500 p-3 text-white shadow-lg transition-all hover:translate-y-1 hover:bg-brand cursor-pointer"
             >
               Talk to a mentor <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
+            </button>
             <Link
               href="/courses"
               className="flex items-center rounded-xl border-2 bg-white p-3 text-slate-900 transition-all ease-in-out"
@@ -303,6 +305,12 @@ export default function TeamCultureSection() {
           </div>
         </div>
       </div>
+
+      <AdvisorModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        source="Team Page - Mentor Section"
+      />
     </section>
   );
 }

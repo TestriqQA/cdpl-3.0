@@ -1,9 +1,18 @@
 'use client';
-import { Users, GraduationCap, Briefcase, Target } from 'lucide-react';
+import { Users, GraduationCap, Briefcase, Target, ArrowRight } from 'lucide-react';
 import IconCard from '../ui/IconCard';
 import { motion } from 'framer-motion';
-import type { JSX } from 'react';
+import { JSX, useState } from 'react';
+import dynamic from 'next/dynamic';
+const EnrollModal = dynamic(() => import('@/components/EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
 
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 type Audience = {
   icon: JSX.Element;
   title: string;
@@ -14,20 +23,20 @@ type Audience = {
 };
 
 const audience: Audience[] = [
-  { icon: <Users className="w-6 h-6" />,         title: 'Manual Testers',  description: 'Upgrade to SDET (UI • API • Mobile)',   bg: 'bg-sky-50',     iconColor: 'text-sky-700',     border: 'border-sky-200' },
-  { icon: <GraduationCap className="w-6 h-6" />, title: 'Freshers',        description: 'BTech • MCA • BCA — job-ready skills',  bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
-  { icon: <Briefcase className="w-6 h-6" />,     title: 'Developers',      description: 'Add automation & CI/CD to your stack',  bg: 'bg-amber-50',   iconColor: 'text-amber-700',   border: 'border-amber-200' },
-  { icon: <Target className="w-6 h-6" />,        title: 'QA Leads',        description: 'Level-up teams with SDET practices',     bg: 'bg-violet-50',  iconColor: 'text-violet-700',  border: 'border-violet-200' },
+  { icon: <Users className="w-6 h-6" />, title: 'Manual Testers', description: 'Upgrade to SDET (UI • API • Mobile)', bg: 'bg-sky-50', iconColor: 'text-sky-700', border: 'border-sky-200' },
+  { icon: <GraduationCap className="w-6 h-6" />, title: 'Freshers', description: 'BTech • MCA • BCA — job-ready skills', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
+  { icon: <Briefcase className="w-6 h-6" />, title: 'Developers', description: 'Add automation & CI/CD to your stack', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
+  { icon: <Target className="w-6 h-6" />, title: 'QA Leads', description: 'Level-up teams with SDET practices', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
 ];
 
 export default function WhoShouldEnroll() {
-
+  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
 
   return (
     <section
       id="who-should-enroll"
       aria-labelledby="who-should-enroll-heading"
-      className="relative py-8 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle rails for a clean, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -99,7 +108,26 @@ export default function WhoShouldEnroll() {
           as an industry-ready <strong>SDET</strong>. Learn test design, data-driven automation,
           contract testing, and best practices used by top tech teams.
         </p>
+
+        {/* CTA */}
+        <div className="mt-10 text-center">
+          <button
+            onClick={() => setIsEnrollModalOpen(true)}
+            className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-8 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-indigo-700 hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+          >
+            Enroll Now
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
+
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollModalOpen}
+        onClose={() => setIsEnrollModalOpen(false)}
+        courseName="Advanced Automation Testing"
+        source="Advanced Automation Testing Course Page - Who Should Enroll Section - Enroll Now"
+      />
 
     </section>
   );

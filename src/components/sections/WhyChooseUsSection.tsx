@@ -79,7 +79,7 @@ const WhyChooseUsSection = () => {
       icon: <Users className="w-8 h-8" />,
       title: "Live Interactive Classes",
       description: "Engage in live sessions with doubt-clearing, peer learning, and personalized attention in small batches.",
-      color: "from-orange-500 to-orange-600",
+      color: "from-orange-500 to-brand",
       bgColor: "bg-orange-50",
     },
     {

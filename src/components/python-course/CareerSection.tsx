@@ -2,7 +2,19 @@
 // Sleek, slightly futuristic, fully responsive careers section with distinct color chips and SEO JSON-LD.
 // No client-only libs needed.
 
-import Link from "next/link";
+'use client';
+import dynamic from "next/dynamic";
+import { useState } from "react";
+const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+      <span className="ml-2 text-gray-900">{label}</span>
+    </div>
+  );
+};
 
 type Job = string;
 
@@ -29,12 +41,13 @@ const ACCENTS = [
 ];
 
 export default function CareerSection() {
+  const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
 
   return (
     <section
       id="careers"
       aria-labelledby="careers-heading"
-      className="relative py-4 md:py-8 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop (no harsh gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -117,21 +130,27 @@ export default function CareerSection() {
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <Link
-            href="contact-us"
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+          <button
+            onClick={() => setIsCareerModalOpen(true)}
+            className="cursor-pointer inline-flex items-center gap-2 rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="Talk to a program advisor"
           >
             Talk to a Program Advisor
             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
               <path d="M12.293 4.293a1 1 0 011.414 0l4 4c.39.39.39 1.024 0 1.414l-4 4a1 1 0 01-1.497-1.32l.083-.094L14.585 10H4a1 1 0 110-2h10.585l-2.292-2.293a1 1 0 010-1.414z" />
             </svg>
-          </Link>
+          </button>
           <p className="mt-3 text-xs sm:text-sm text-slate-600">
             Learn from anywhere. <span className="font-semibold text-slate-800">If you want to be the best, CDPL is your place.</span>
           </p>
         </div>
       </div>
+
+      <CareerSessionModal
+        isOpen={isCareerModalOpen}
+        onClose={() => setIsCareerModalOpen(false)}
+        source="Python Course Page - Career Section - Talk to Advisor"
+      />
 
     </section>
   );

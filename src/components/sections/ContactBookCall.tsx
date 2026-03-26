@@ -38,10 +38,10 @@ export function ContactBookCallSection() {
 
               <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
                 {[
-                  {title: "15–20 mins on Zoom/Phone", bgColor: "bg-purple-50", textColor: "text-purple-500"},
-                  {title: "Free advisory call", bgColor: "bg-orange-50", textColor: "text-orange-500"},
-                  {title: "Live mentor-led courses", bgColor: "bg-indigo-50", textColor: "text-indigo-500"},
-                  {title: "Placement assistance", bgColor: "bg-emerald-50", textColor: "text-emerald-600"}
+                  { title: "15–20 mins on Zoom/Phone", bgColor: "bg-purple-50", textColor: "text-purple-700" },
+                  { title: "Free advisory call", bgColor: "bg-orange-50", textColor: "text-brand" },
+                  { title: "Live mentor-led courses", bgColor: "bg-indigo-50", textColor: "text-indigo-700" },
+                  { title: "Placement assistance", bgColor: "bg-emerald-50", textColor: "text-emerald-700" }
                 ].map((t) => (
                   <span key={t.title} className={`rounded-full border border-slate-200 ${t.bgColor} px-3 py-1 text-xs font-medium ${t.textColor} shadow-sm`}>
                     {t.title}
@@ -52,7 +52,8 @@ export function ContactBookCallSection() {
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
                 <Link
                   href="https://calendar.app.google/tvh9dsXZsX9BujRR8"
-                  className="group relative inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 font-semibold text-white shadow-md transition hover:brightness-110"
+                  target="_blank"
+                  className="group relative inline-flex items-center justify-center rounded-full bg-blue-700 px-6 py-3 font-semibold text-white shadow-md transition hover:brightness-110"
                   aria-label="Schedule a counseling call"
                 >
                   <span className="relative z-[1]">Schedule a Call</span>
@@ -98,7 +99,7 @@ export function ContactBookCallSection() {
             actionPlatform: ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"],
             inLanguage: "en-IN",
           },
-          result: { "@type": "Event", name: "1:1 Career Counseling Call", eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode" },
+
         })}
       </Script>
     </section>

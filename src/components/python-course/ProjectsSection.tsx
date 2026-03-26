@@ -1,7 +1,20 @@
 // components/sections/ProjectsSection.tsx
 // Futuristic, colorful, and fully responsive projects grid with per-card accents + SEO JSON-LD.
 
-import Link from "next/link";
+'use client';
+
+import { useState } from "react";
+import dynamic from "next/dynamic";
+const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+      <span className="ml-2 text-gray-900">{label}</span>
+    </div>
+  );
+};
 
 type Project = {
   title: string;
@@ -56,50 +69,50 @@ const PROJECTS: Project[] = [
 const ACCENTS = [
   {
     line: "bg-sky-400/80",
-    ring: "focus:ring-sky-300",
+    ring: "focus:ring-sky-500",
     chip: "bg-sky-50 text-sky-800 border-sky-200",
     halo: "shadow-[0_10px_30px_-12px_rgba(2,132,199,0.45)]",
   },
   {
     line: "bg-emerald-400/80",
-    ring: "focus:ring-emerald-300",
+    ring: "focus:ring-emerald-500",
     chip: "bg-emerald-50 text-emerald-800 border-emerald-200",
     halo: "shadow-[0_10px_30px_-12px_rgba(16,185,129,0.45)]",
   },
   {
     line: "bg-amber-400/80",
-    ring: "focus:ring-amber-300",
+    ring: "focus:ring-amber-500",
     chip: "bg-amber-50 text-amber-900 border-amber-200",
     halo: "shadow-[0_10px_30px_-12px_rgba(245,158,11,0.45)]",
   },
   {
     line: "bg-violet-400/80",
-    ring: "focus:ring-violet-300",
+    ring: "focus:ring-violet-500",
     chip: "bg-violet-50 text-violet-800 border-violet-200",
     halo: "shadow-[0_10px_30px_-12px_rgba(139,92,246,0.45)]",
   },
   {
     line: "bg-rose-400/80",
-    ring: "focus:ring-rose-300",
+    ring: "focus:ring-rose-500",
     chip: "bg-rose-50 text-rose-800 border-rose-200",
     halo: "shadow-[0_10px_30px_-12px_rgba(244,63,94,0.45)]",
   },
   {
     line: "bg-indigo-400/80",
-    ring: "focus:ring-indigo-300",
+    ring: "focus:ring-indigo-500",
     chip: "bg-indigo-50 text-indigo-800 border-indigo-200",
     halo: "shadow-[0_10px_30px_-12px_rgba(99,102,241,0.45)]",
   },
 ];
 
 export default function ProjectsSection() {
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="relative py-12 sm:py-16 md:py-20 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -193,21 +206,30 @@ export default function ProjectsSection() {
 
         {/* CTA */}
         <div className="mt-10 text-center">
-          <Link
-            href="contact-us"
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="cursor-pointer inline-flex items-center gap-2 rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="View sample portfolios"
           >
             View Sample Portfolios
             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
               <path d="M12.293 4.293a1 1 0 011.414 0l4 4c.39.39.39 1.024 0 1.414l-4 4a1 1 0 01-1.497-1.32l.083-.094L14.585 10H4a1 1 0 110-2h10.585l-2.292-2.293a1 1 0 010-1.414z" />
             </svg>
-          </Link>
+          </button>
           <p className="mt-3 text-xs sm:text-sm text-slate-600">
             Every project ships with README, tests, and deployment notes.
           </p>
         </div>
       </div>
+
+      <CareerSessionModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        courseName="Python Programming"
+        source="Python Course Page - Projects Section"
+        title="Get Access to Sample Portfolios"
+        subtitle="Enter your details to view our student portfolio showcase."
+      />
 
     </section>
   );

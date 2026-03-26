@@ -11,6 +11,15 @@ export default function LocationsCTASection({
   sectionClassName?: string;
   containerClassName?: string;
 }) {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const id = "locations-directory";
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <section className={`w-full ${sectionClassName}`}>
       <div className={`mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 ${containerClassName}`}>
@@ -113,7 +122,8 @@ export default function LocationsCTASection({
                 </Link>
 
                 <Link
-                  href="/locations-we-serve"
+                  href="#locations-directory"
+                  onClick={handleScroll}
                   className={[
                     "relative inline-flex items-center justify-center gap-2",
                     "rounded-xl bg-white",

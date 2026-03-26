@@ -1,5 +1,8 @@
-// components/sections/ProjectsSection.tsx
-// Server component — modern, accessible projects grid with subtle futuristic accents (DS & AI edition).
+"use client";
+
+import { useState } from "react";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import { Download } from "lucide-react";
 
 type Project = {
   title: string;
@@ -61,12 +64,15 @@ const PROJECTS: Project[] = [
 ];
 
 export default function ProjectsSection() {
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Comprehensive Data Science and AI - Master Program";
+
   const seoKeywords =
     "data science projects, ai portfolio projects, healthcare ai diagnostic, fraud detection ml, recommendation engine, mlops pipeline deployment, rag question answering, time series forecasting";
 
 
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="relative py-12 md:py-20 bg-white">
+    <section id="projects" aria-labelledby="projects-heading" className="relative py-10 bg-white">
       {/* Subtle futuristic backdrop (fine grid + soft indigo glow; no heavy gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.035)_1px,transparent_1px)] bg-[size:28px_28px]" />
@@ -107,10 +113,10 @@ export default function ProjectsSection() {
                 {/* top accent bar */}
                 <div className={["absolute left-0 right-0 top-0 h-1 rounded-t-2xl", p.accent.bar].join(" ")} aria-hidden />
 
-                <h3 id={id} className="text-lg md:text-xl font-bold text-slate-900">
+                <h2 id={id} className="text-lg md:text-xl font-bold text-slate-900">
                   <span className={p.accent.text}># </span>
                   {p.title}
-                </h3>
+                </h2>
                 <p className="mt-3 text-sm md:text-base text-slate-700">{p.desc}</p>
 
                 {/* outcomes */}
@@ -152,10 +158,25 @@ export default function ProjectsSection() {
             These <strong>industry-aligned projects</strong> emphasize reproducibility, evaluation, and clean architecture-ideal for{" "}
             <strong>Data Scientist</strong>, <strong>ML Engineer</strong>, and <strong>Applied AI</strong> roles.
           </p>
+          <div className="mt-4 flex justify-center">
+            <button
+              onClick={() => setIsSyllabusOpen(true)}
+              className="inline-flex items-center justify-center cursor-pointer rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+            >
+              <Download className="mr-2 h-4 w-4" />
+              Download Full Project List
+            </button>
+          </div>
           <p className="mt-2 text-[11px] text-slate-500">*Scope varies by dataset, domain, and pace.</p>
         </div>
       </div>
 
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Comprehensive Data Science & AI - Projects Section - Download Project List"
+        courseName={courseName}
+      />
     </section>
   );
 }

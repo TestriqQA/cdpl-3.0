@@ -1,6 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import AdvisorModal from "@/components/ui/AdvisorModal";
+import { ArrowRight, Shield, Sparkle } from "lucide-react";
 
 const BRAND = "#ff8c00";
 
@@ -21,6 +24,8 @@ export default function MentorHelpCTASection({
   bgImageSrc?: string;
   className?: string;
 }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleAnchorClick = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
@@ -123,12 +128,12 @@ export default function MentorHelpCTASection({
 
             {/* CTA rail */}
             <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-              <Link
-                href="contact-us"
+              <button
+                onClick={() => setIsModalOpen(true)}
                 className="group inline-flex items-center gap-2 rounded-full text-white transition-transform active:translate-y-[1px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-500
                            whitespace-nowrap overflow-hidden text-ellipsis
                            text-[13px] leading-none px-4 py-2 min-h-[40px]
-                           sm:text-sm sm:leading-normal sm:px-5 sm:py-2"
+                           sm:text-sm sm:leading-normal sm:px-5 sm:py-2 cursor-pointer"
                 style={{
                   fontSize: ".74rem",
                   background:
@@ -139,7 +144,7 @@ export default function MentorHelpCTASection({
               >
                 {ctaText}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </Link>
+              </button>
 
               <Link
                 href="#mentors-impact"
@@ -190,6 +195,11 @@ export default function MentorHelpCTASection({
         </div>
       </div>
 
+      <AdvisorModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        source="Mentors Page - Help CTA Section"
+      />
     </section>
   );
 }
@@ -216,7 +226,7 @@ function BrandHighlighted({ text }: { text: string }) {
 function Ribbon({ children }: { children: React.ReactNode }) {
   return (
     <div
-      className="inline-flex select-none items-center rounded-full border border-neutral-200 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#ff8c00] shadow-sm"
+      className="inline-flex select-none items-center rounded-full border border-neutral-200 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-brand shadow-sm"
       style={{
         background:
           "linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9))",
@@ -255,7 +265,7 @@ function Ticker() {
   return (
     <div className="relative overflow-hidden">
       <div
-        className="animate-[marquee_20s_linear_infinite] whitespace-nowrap py-2 text-[12px] text-neutral-700"
+        className="animate-[marquee_2s_linear_infinite] sm:animate-[marquee_20s_linear_infinite] whitespace-nowrap py-2 text-[12px] text-neutral-700"
         style={{
           maskImage:
             "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
@@ -294,29 +304,5 @@ function Ticker() {
         }}
       />
     </div>
-  );
-}
-
-/* ------------------------------ Icons ------------------------------ */
-
-function Sparkle(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg aria-hidden viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M12 2l1.7 4.6L18 8.4l-4.3 1.8L12 15l-1.7-4.8L6 8.4l4.3-1.8L12 2z" />
-    </svg>
-  );
-}
-function ArrowRight(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg aria-hidden viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M13 5l7 7-7 7-1.4-1.4L16.2 13H4v-2h12.2L11.6 6.4 13 5z" />
-    </svg>
-  );
-}
-function Shield(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg aria-hidden viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M12 2l7 3v6c0 5-3.6 9.4-7 11-3.4-1.6-7-6-7-11V5l7-3z" />
-    </svg>
   );
 }

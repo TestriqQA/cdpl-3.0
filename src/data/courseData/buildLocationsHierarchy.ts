@@ -80,7 +80,7 @@ const COUNTRY_BY_STATE: Record<string, "India" | "UAE"> = {
 /** Extract course type from slug */
 function getCourseType(slug: string): string | undefined {
   const lower = slug.toLowerCase();
-  if (lower.includes("data-science") || lower.includes("ai-ml-bi")) return "data-science";
+  if (lower.includes("data-science") || lower.includes("ai-ml-bi") || lower.includes("business-intelligence") || lower.includes("data-analytics")) return "data-science";
   if (lower.includes("software-testing")) return "software-testing";
   if (lower.includes("digital-marketing") || lower.includes("general")) return "digital-marketing";
   // Changed: map new "web-development" slug, and keep legacy "programming" slugs compatible
@@ -103,8 +103,17 @@ export function buildLocationsHierarchy(courses: CourseData[]): Country[] {
 
   for (const c of courses) {
     const state = c.state?.trim();
-    const city = c.location?.trim();
+    let city = c.location?.trim();
     if (!state || !city) continue;
+
+    // Normalize city name: remove " Station, Mumbai" suffix, ", Mumbai" suffix, and parentheticals
+    city = city.replace(/ Station, Mumbai$/i, "")
+      .replace(/, Mumbai$/i, "")
+      .replace(/\s*\(.*?\)\s*/g, "") // Remove (Text)
+      .trim();
+
+    // Filter out invalid city names
+    if (city === "Station" || city.includes("Stations")) continue;
 
     const country = COUNTRY_BY_STATE[norm(state)];
     if (!country) continue; // Unknown state — add to map above if needed

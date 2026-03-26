@@ -1,5 +1,7 @@
+"use client";
+
 // src/components/WhyEnrollSection.tsx
-import React from "react";
+import React, { useState } from "react";
 import { content } from "@/components/data-visualization-in-r-programming/data/content";
 import {
   Code,
@@ -8,7 +10,11 @@ import {
   Globe,
   Briefcase,
   MessageSquare,
+  ArrowRight,
+  CloudDownload,
 } from "lucide-react";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 const iconMap = {
   Code,
@@ -67,7 +73,7 @@ const HighlightCard: React.FC<HighlightCardProps> = ({ point, index }) => {
     >
       {/* Icon Container */}
       <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-white/60 backdrop-blur-sm group-hover:scale-110 transition-transform">
-        <IconComponent className="w-8 h-8 text-orange-600" />
+        <IconComponent className="w-8 h-8 text-brand" />
       </div>
 
       {/* Title */}
@@ -77,7 +83,7 @@ const HighlightCard: React.FC<HighlightCardProps> = ({ point, index }) => {
 
       {/* Highlight Badge – generic, does not alter original content */}
       <div className="inline-block mb-3">
-        <span className="text-xs font-semibold text-orange-600 bg-orange-100/60 px-3 py-1 rounded-full">
+        <span className="text-xs font-semibold text-brand bg-orange-100/60 px-3 py-1 rounded-full">
           R Data Visualization Advantage
         </span>
       </div>
@@ -92,9 +98,12 @@ const HighlightCard: React.FC<HighlightCardProps> = ({ point, index }) => {
 
 export const WhyRSection: React.FC = () => {
   const { why_enroll_section } = content;
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Machine Learning and Data Visualization using R Programming";
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-10 bg-white">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
@@ -181,7 +190,38 @@ export const WhyRSection: React.FC = () => {
             </p>
           </div>
         </div>
+
+        {/* CTA Buttons */}
+        <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4">
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-lg bg-brand px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-brand hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-200"
+          >
+            Apply Now
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </button>
+          <button
+            onClick={() => setIsSyllabusOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-lg border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-700 shadow-sm transition-all hover:border-orange-400 hover:text-brand hover:shadow-md focus:outline-none focus:ring-4 focus:ring-orange-100"
+          >
+            <CloudDownload className="mr-2 h-5 w-5" />
+            Download Syllabus (PDF)
+          </button>
+        </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="R Programming Course Page - Why R Section - Apply Now"
+        courseName={courseName}
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="R Programming Course Page - Why R Section - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 };

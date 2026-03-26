@@ -2,7 +2,10 @@
 // Server component — sleek, SEO-optimized, slightly futuristic, fully responsive.
 // Distinct accent colors per company (no repeats). Accessible, keyboard-friendly, and mobile-first.
 
-import Link from "next/link";
+"use client";
+import { useState } from "react";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 type Company = {
   name: string;
@@ -72,16 +75,18 @@ const COMPANIES: Company[] = [
 ];
 
 export default function CareerSection() {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Comprehensive Data Science and AI - Master Program";
 
   const jobs = "101,000+ Job Vacancies in India";
-  const sub =
-    "High-growth careers across Data Science, Machine Learning Engineering, MLOps, and Applied AI in product & services companies.";
+
   const keywords =
     "data science jobs India, machine learning engineer hiring, AI careers, analytics roles, data scientist vacancies, MLOps jobs, DS AI placements";
 
 
   return (
-    <section id="careers" aria-labelledby="careers-heading" className="relative overflow-hidden py-6 md:py-2 xl:py-16 bg-white">
+    <section id="careers" aria-labelledby="careers-heading" className="relative overflow-hidden py-10 bg-white">
       {/* Subtle futuristic backdrop (thin grid) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.035)_1px,transparent_1px)] bg-[size:28px_28px]" />
@@ -93,7 +98,8 @@ export default function CareerSection() {
           Top Companies Hiring{" "}
           <span className="text-DS">
             DS &amp; AI Professionals
-          </span>
+          </span>{" "}
+          After Masters in AI and ML
         </h2>
 
         {/* KPI pill */}
@@ -104,7 +110,9 @@ export default function CareerSection() {
           <span>Product • Services • Startups • Enterprises</span>
         </div>
 
-        <p className="mt-3 text-base md:text-lg text-slate-700">{sub}</p>
+        <p className="mt-3 text-base md:text-lg text-slate-700">
+          High-growth careers across Data Science, Machine Learning Engineering, MLOps, and Applied AI in product & services companies. Our <strong>ai master program mumbai</strong> prepares you for <strong>masters in artificial intelligence india</strong> roles.
+        </p>
         {/* Hidden SEO keywords for crawlers */}
         <p className="sr-only">{keywords}</p>
 
@@ -121,13 +129,13 @@ export default function CareerSection() {
                 aria-label={c.name}
                 className={[
                   "group block w-full rounded-2xl border p-4 shadow-sm transition-all duration-200 backdrop-blur",
-                  "hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:-translate-y-0.5",
+                  "hover:-translate-y-0.5 hover:shadow-md focus-visible:-translate-y-0.5",
                   c.accent.bg,
                   c.accent.border,
                   c.accent.ring,
                 ].join(" ")}
               >
-                
+
                 {/* <Image
                   src={c.logo}
                   alt={c.alt}
@@ -151,14 +159,15 @@ export default function CareerSection() {
 
         {/* CTA row */}
         <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link
-            href="contact-us"
-            className="inline-flex items-center justify-center rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="Apply for placement assistance in DS & AI roles"
           >
             Apply for Placement Assistance
-          </Link>
+          </button>
           <button
+            onClick={() => setIsSyllabusOpen(true)}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-indigo-200"
             aria-label="Download the DS & AI portfolio guide"
           >
@@ -172,6 +181,18 @@ export default function CareerSection() {
         </p>
       </div>
 
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Comprehensive Data Science & AI - Career Section - Apply Now"
+        courseName={courseName}
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Comprehensive Data Science & AI - Career Section - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 }

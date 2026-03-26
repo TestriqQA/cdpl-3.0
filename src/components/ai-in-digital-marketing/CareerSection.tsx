@@ -1,9 +1,13 @@
 "use client";
 
 import { Briefcase, TrendingUp, Users } from "lucide-react";
-import Link from "next/link";
+
+import { useState } from "react";
+import CareerSessionModal from "@/components/CareerSessionModal";
 
 export default function CareerSection() {
+  const [isCareerOpen, setIsCareerOpen] = useState(false);
+  const courseName = "Master Digital Marketing & AI for Business Owners";
   const careerPaths = [
     {
       title: "Digital Marketing Manager",
@@ -85,12 +89,12 @@ export default function CareerSection() {
   };
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-10 bg-white">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header – reference layout + SEO-rich copy */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Career <span className="text-orange-600">Opportunities</span>
+            Career Highs & <span className="text-brand">Business Growth Opportunities</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Multiple career paths and growth opportunities after completing the
@@ -99,7 +103,7 @@ export default function CareerSection() {
               high-demand digital marketing, performance marketing, and AI-driven
               marketing roles
             </strong>{" "}
-            across agencies, brands, startups, and global companies.
+            or launch your own <strong>online marketing business</strong>.
           </p>
         </div>
 
@@ -145,7 +149,7 @@ export default function CareerSection() {
               {/* Salary – styled like reference “Expected Salary” */}
               <div className="pt-4 border-t border-slate-300">
                 <p className="text-xs text-slate-600 mb-1">Expected Salary</p>
-                <p className="text-lg font-bold text-orange-600">
+                <p className="text-lg font-bold text-brand">
                   {path.salary}
                 </p>
               </div>
@@ -177,7 +181,7 @@ export default function CareerSection() {
                 icon: <Users className="w-8 h-8" />,
                 title: "Global & Remote Opportunities",
                 description:
-                  "Work with top companies, agencies, and global clients in remote, hybrid, or on-site roles across industries.",
+                  "Work with top companies, agencies, and global clients in remote, hybrid, or on-site roles across industries. Or start your freelance consulting.",
               },
             ].map((item, idx) => (
               <div key={idx} className="text-center">
@@ -198,7 +202,7 @@ export default function CareerSection() {
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="w-16 h-16 bg-brand text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 1
               </div>
               <h5 className="font-bold text-white mb-2">Learn Skills</h5>
@@ -207,7 +211,7 @@ export default function CareerSection() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="w-16 h-16 bg-brand text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 2
               </div>
               <h5 className="font-bold text-white mb-2">Build Portfolio</h5>
@@ -239,17 +243,16 @@ export default function CareerSection() {
             Keywords:{" "}
             <em>digital marketing career opportunities</em>,{" "}
             <em>performance marketing jobs</em>,{" "}
-            <em>SEO specialist salary in India</em>,{" "}
+            <em>start digital marketing agency</em>,{" "}
             <em>freelance digital marketer income</em>,{" "}
-            <em>AI in digital marketing careers</em>,{" "}
-            <em>job-oriented digital marketing course with placement</em>.
+            <em>AI in digital marketing careers</em>.
           </p>
         </div>
 
         {/* Top Hiring Companies – adapted to digital marketing */}
         <div className="bg-gradient-to-r from-orange-50 to-blue-50 rounded-2xl p-8 md:p-12 border-2 border-orange-200 mb-12">
           <h3 className="text-2xl font-bold text-slate-900 mb-8 text-center">
-            Top Companies Hiring Digital Marketing & Performance Marketers
+            Top Companies Hiring Digital Marketing & AI Professionals
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {hiringCompanies.map((company, idx) => (
@@ -268,30 +271,37 @@ export default function CareerSection() {
         <div className="text-center">
           <div className="inline-block p-8 bg-gradient-to-r from-orange-100 to-indigo-100 rounded-2xl border-2 border-orange-300">
             <p className="text-lg text-gray-900 font-semibold mb-4">
-              Ready to launch your digital marketing career?
+              Ready to launch your digital marketing career or business?
             </p>
-            <Link
-              href="/contact-us"
+            <button
+              onClick={() => setIsCareerOpen(true)}
               className="
     inline-flex items-center justify-center
     w-full sm:w-auto
     px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3
     text-sm sm:text-base md:text-lg
-    bg-orange-600 hover:bg-orange-700
+    bg-brand hover:bg-brand
     text-white font-bold
     rounded-xl
     text-center
     shadow-lg hover:shadow-xl
     transition-all duration-300
+    cursor-pointer
     break-words
   "
             >
               Start Your Career Transformation
-            </Link>
+            </button>
 
           </div>
         </div>
       </div>
+      <CareerSessionModal
+        isOpen={isCareerOpen}
+        onClose={() => setIsCareerOpen(false)}
+        source="AI Digital Marketing - Career Section - Start Transformation"
+        courseName={courseName}
+      />
     </section>
   );
 }

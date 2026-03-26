@@ -2,17 +2,39 @@
 // Server component — sleek, SEO-optimized, slightly futuristic, fully responsive.
 // Assumes you have a client LeadForm at "../CourseLeadForm" (same API-testing style).
 
+"use client";
+
 import Link from "next/link";
-import LeadForm from "../CourseLeadForm";
-import { ChevronRight, Home } from "lucide-react";
+import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
+import dynamic from "next/dynamic";
+
+const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
+const CareerSessionModal = dynamic(() => import("../CareerSessionModal"), { ssr: false });
+
+import { ChevronRight, Home, ArrowRight, CloudDownload, ArrowDownNarrowWide } from "lucide-react";
+import { useState } from "react";
 
 export default function HeroSection() {
-
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+    const [isCareerSessionOpen, setIsCareerSessionOpen] = useState(false);
 
     const breadcrumbs = [
         { label: "Home", href: "/" },
+        { label: 'Courses', href: '/courses' },
+        { label: 'BI Courses', href: '/courses/bi-courses' },
+        { label: "Business Intelligence", href: null },
         { label: "Advanced Data Analytics", href: "/data-analytics" },
     ];
+
+    const handleScrollToCurriculum = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        const element = document.getElementById('curriculum');
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     return (
         <section id="hero" aria-labelledby="analytics-hero" className="relative overflow-hidden">
@@ -22,19 +44,25 @@ export default function HeroSection() {
                 <div className="absolute inset-0 [mask-image:radial-gradient(1200px_600px_at_50%_-12%,black,transparent)]" />
             </div>
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-12 md:pt-12 md:pb-16">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
                 {/* Breadcrumbs */}
-                <nav aria-label="Breadcrumb" className="mb-8">
-                    <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
+                <nav aria-label="Breadcrumb" className="mb-8 overflow-x-auto">
+                    <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600 min-w-max">
                         {breadcrumbs.map((c, i) => (
                             <li key={i} className="flex items-center gap-2">
                                 {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-                                <Link
-                                    href={c.href}
-                                    className={`hover:text-orange-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
-                                >
-                                    {c.label}
-                                </Link>
+                                {c.href ? (
+                                    <Link
+                                        href={c.href}
+                                        className={`hover:text-brand ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
+                                    >
+                                        {c.label}
+                                    </Link>
+                                ) : (
+                                    <span className="text-slate-700 font-medium cursor-default">
+                                        {c.label}
+                                    </span>
+                                )}
                             </li>
                         ))}
                     </ol>
@@ -45,7 +73,7 @@ export default function HeroSection() {
                     <div className="md:col-span-7 lg:col-span-8">
                         {/* Micro-badges (distinct colors, no repeats) */}
                         <div className="mb-4 hidden lg:flex w-fit items-center gap-2 text-[11px] font-semibold text-slate-700">
-                            <span className="rounded-full bg-orange-50 px-2 py-0.5 text-orange-700 border border-orange-200">Live Online + Classroom</span>
+                            <span className="rounded-full bg-orange-50 px-2 py-0.5 text-brand border border-orange-200">Live Online + Classroom</span>
                             <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-emerald-800 border border-emerald-200">110 Hours</span>
                             <span className="rounded-full bg-sky-50 px-2 py-0.5 text-sky-700 border border-sky-200">Project-based</span>
                             <span className="rounded-full bg-rose-50 px-2 py-0.5 text-rose-800 border border-rose-200">Placement Support</span>
@@ -55,42 +83,48 @@ export default function HeroSection() {
                             id="analytics-hero"
                             className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
                         >
-                            Master Program in{" "}
-                            <span className="text-DS">Advanced Data Analytics</span>
+                            Advanced <span className="text-DS">Data Analytics</span> Hero Program: Full Course in Mumbai
                         </h1>
 
                         {/* Mobile form directly under headline */}
-                        <div className="mt-5 block md:hidden">
-                            <LeadForm variant="elevated" />
+                        <div className="mt-5 block md:hidden min-h-[500px]">
+                            <ApiCourseLeadForm source="Data Analytics Course Page - Hero Section" />
                         </div>
 
                         <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Become a job-ready <strong>Data Analyst</strong> with <strong>Excel-to-ETL</strong>, <strong>SQL</strong>,{" "}
-                            <strong>Python (Pandas/NumPy)</strong>, <strong>Statistics</strong>, <strong>Power BI / Tableau</strong>,{" "}
-                            A/B testing and storytelling dashboards. Ship portfolio projects and earn a <strong>QR-verified certificate</strong>.
+                            Master the <strong>data analyst full course</strong> in Mumbai with 110 hours of intensive training. From <strong>advanced data analytics</strong> to business intelligence, we prepare you for high-impact roles with <strong>Guaranteed Interviews</strong> and 5+ real-time projects.
                         </p>
                         <p className="mt-2 max-w-3xl text-sm text-slate-600">
-                            Curriculum includes data modeling, DAX, joins/window functions, EDA, feature prep, automation, and lightweight ML for forecasting & classification.
+                            Become a <strong>certified data analyst</strong> with mastery in Python, SQL, Power BI, and Tableau. Our <strong>data analytics training</strong> in Mumbai/Thane focuses on 80% practical labs and industry-ready dashboard deployments.
                         </p>
 
                         {/* CTAs */}
-                        <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+                        <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                             <button
-                                className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-orange-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                                onClick={() => setIsEnrollOpen(true)}
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
                                 aria-label="Enroll now in Advanced Data Analytics course"
                             >
                                 Enroll Now
-                                <svg className="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-                                    <path d="M12.293 4.293a1 1 0 011.414 0l4 4a1 1 0 01.083 1.32l-.083.094-4 4a1 1 0 01-1.497-1.32l.083-.094L14.585 10H3a1 1 0 01-.117-1.993L3 8h11.585l-2.292-2.293a1 1 0 010-1.414z" />
-                                </svg>
+                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </button>
-                            <Link
+                            <button
+                                onClick={() => setIsSyllabusOpen(true)}
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                                aria-label="Download Advanced Data Analytics Syllabus"
+                            >
+                                Download Syllabus
+                                <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                            </button>
+                            <a
                                 href="#curriculum"
-                                className="inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
+                                onClick={handleScrollToCurriculum}
+                                className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
                                 aria-label="View full analytics curriculum"
                             >
                                 View Curriculum
-                            </Link>
+                                <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                            </a>
                         </div>
 
                         {/* Quick highlights (distinct accent colors) */}
@@ -101,7 +135,7 @@ export default function HeroSection() {
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-sky-600" />
-                                BI dashboards (Power BI / Tableau) & storytelling
+                                90+ Case Studies & 5+ Real-time Projects
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-rose-600" />
@@ -109,7 +143,7 @@ export default function HeroSection() {
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-indigo-600" />
-                                Statistics, experimentation & insights for business
+                                Guaranteed Interviews & 100% Placement Support
                             </li>
                         </ul>
 
@@ -121,17 +155,30 @@ export default function HeroSection() {
                     </div>
 
                     {/* Right column: Desktop form & visual */}
-                    <aside className="md:col-span-5 lg:col-span-4 hidden md:block">
-                        <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
-
-                            <div className="p-4 sm:p-5">
-                                <LeadForm variant="elevated" />
-                            </div>
-                        </div>
-                    </aside>
+                    <div className="relative lg:col-span-4 hidden md:block min-h-[600px]">
+                        <ApiCourseLeadForm source="Data Analytics Course Page - Hero Section" />
+                    </div>
                 </div>
             </div>
 
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Data Analytics Course Page - Enroll Now - Hero Section"
+                courseName="Advanced Data Analytics Hero Program"
+            />
+            <SyllabusDownloadModal
+                isOpen={isSyllabusOpen}
+                onClose={() => setIsSyllabusOpen(false)}
+                source="Data Analytics Course Page - Hero Section - Syllabus Download"
+                courseName="Advanced Data Analytics Hero Program"
+            />
+            <CareerSessionModal
+                isOpen={isCareerSessionOpen}
+                onClose={() => setIsCareerSessionOpen(false)}
+                source="Data Analytics Course Page - Hero Section - Career Session"
+                courseName="Advanced Data Analytics Hero Program"
+            />
         </section>
     );
 }

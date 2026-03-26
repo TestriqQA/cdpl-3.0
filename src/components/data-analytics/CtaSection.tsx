@@ -2,15 +2,18 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 export default function CtaSection() {
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
 
 
   return (
     <section
       id="cta"
       aria-labelledby="cta-heading"
-      className="relative py-16 md:py-20 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* sleek, subtle accent (thin gradient line only) */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-orange-500 via-amber-500 to-emerald-500 opacity-80" />
@@ -27,19 +30,10 @@ export default function CtaSection() {
             id="cta-heading"
             className="text-3xl md:text-4xl font-bold leading-tight text-slate-900"
           >
-            Ready to Master{" "}
-            <span className="DS">
-              Advanced Data Analytics
-            </span>
-            ?
+            Ready to Master <span className="text-DS">Advanced Data Analytics?</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-700">
-            Enroll now for a project-first program with{" "}
-            <strong>global certification</strong>,{" "}
-            <strong>110+ guided hours</strong>, and{" "}
-            <strong>100% job assistance</strong>-covering{" "}
-            <strong>Power BI</strong>, <strong>Tableau</strong>,{" "}
-            <strong>SQL</strong>, and <strong>Python</strong>.
+            Don't get left behind in the data revolution. Join the <strong>Hero Program</strong> today and secure your future with <strong>100% placement assistance</strong> and hands-on tool mastery covering <strong>Power BI</strong>, <strong>Tableau</strong>, <strong>SQL</strong>, and <strong>Python</strong>.
           </p>
         </header>
 
@@ -50,11 +44,12 @@ export default function CtaSection() {
           <KPI label="Outcome" value="Job-Ready Portfolio" note="Dashboards & Notebooks" accent="text-rose-700 bg-rose-50" />
         </div>
 
+
         {/* CTAs */}
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="tel:+917888383788"
-            className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(16,185,129,0.5)] transition hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300"
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-[#047857] px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(16,185,129,0.5)] transition hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300"
             aria-label="Call admissions at +91 7888383788"
           >
             Call: +91 788-83-83-788
@@ -62,14 +57,15 @@ export default function CtaSection() {
 
           <Link
             href="mailto:contact@cinutedigital.com"
-            className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(79,70,229,0.45)] transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300"
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(79,70,229,0.45)] transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300"
             aria-label="Email admissions at contact@cinutedigital.com"
           >
             Email Us
           </Link>
 
           <button
-            className="inline-flex items-center justify-center rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+            onClick={() => setIsSyllabusOpen(true)}
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="Download the Advanced Data Analytics syllabus"
           >
             Download Syllabus
@@ -83,6 +79,12 @@ export default function CtaSection() {
         </p>
       </div>
 
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Data Analytics Course Page - CTA Section - Download Syllabus"
+        courseName="Advanced Data Analytics Hero Program"
+      />
     </section>
   );
 }

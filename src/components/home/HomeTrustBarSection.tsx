@@ -32,7 +32,7 @@ export default function HomeTrustBarSection() {
   };
 
   return (
-    <section className="mt-4 py-4 bg-gray-50 border-y border-gray-200">
+    <section className="mt-4 py-4 bg-gray-50 border-y border-gray-200" aria-label="Our Partners">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -58,22 +58,22 @@ export default function HomeTrustBarSection() {
               whileHover={{ scale: 1.05 }}
               className="flex items-center justify-center h-16 p-2" // Reduced padding and height
             >
-              <Image 
+              <Image
                 src={getLogoPath(partner)}
                 alt={`${partner} Logo`}
                 title={`${partner} Logo`}
-                width={180} // Increased width for better visibility
-                height={60}
+                width={100}
+                height={40}
                 className="object-contain w-full h-full grayscale hover:grayscale-0 transition-all duration-300"
-                // Added sizes and priority for better Next.js Image optimization and SEO
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                priority={index < 5} // Prioritize loading for the first few logos
+                sizes="(max-width: 768px) 100px, 100px"
+                priority={index < 2}
+                quality={60}
               />
             </motion.div>
           ))}
         </div>
 
-      
+
       </div>
     </section>
   );

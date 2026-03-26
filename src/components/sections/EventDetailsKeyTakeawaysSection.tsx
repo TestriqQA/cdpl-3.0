@@ -1,5 +1,10 @@
 // src/components/sections/EventDetailsKeyTakeawaysSection.tsx
-type Props = { takeaways: string[]; fullWidth?: boolean };
+type Takeaway = {
+  title: string;
+  description: string;
+};
+
+type Props = { takeaways: Takeaway[]; fullWidth?: boolean };
 
 export default function EventDetailsKeyTakeawaysSection({ takeaways, fullWidth = false }: Props) {
   const wrap = fullWidth ? "max-w-none px-0" : "max-w-7xl px-4 sm:px-6 lg:px-8";
@@ -19,9 +24,12 @@ export default function EventDetailsKeyTakeawaysSection({ takeaways, fullWidth =
             <h2 className="text-2xl font-bold text-slate-900">Key Takeaways</h2>
             <ul className="mt-4 grid gap-3 md:grid-cols-2">
               {takeaways.map((t, i) => (
-                <li key={t + i} className="flex items-start gap-3">
+                <li key={i} className="flex items-start gap-3">
                   <span className="mt-0.5 text-emerald-700">✓</span>
-                  <span className="text-slate-900/90">{t}</span>
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-slate-900">{t.title}</span>
+                    <span className="text-slate-900/90 text-sm">{t.description}</span>
+                  </div>
                 </li>
               ))}
             </ul>

@@ -15,20 +15,20 @@ type Tool = {
 };
 
 const tools: Tool[] = [
-  { name: 'JIRA',      icon: <Bug className="h-7 w-7" />,        accentBg: 'bg-sky-50',     accentText: 'text-sky-700',     accentRing: 'ring-sky-200',     keywords: 'JIRA issue tracking, agile boards, bug tracking, sprint planning' },
-  { name: 'Selenium',  icon: <Globe className="h-7 w-7" />,      accentBg: 'bg-emerald-50', accentText: 'text-emerald-700', accentRing: 'ring-emerald-200', keywords: 'Selenium WebDriver, UI automation testing, cross browser testing' },
-  { name: 'Appium',    icon: <Smartphone className="h-7 w-7" />, accentBg: 'bg-fuchsia-50', accentText: 'text-fuchsia-700', accentRing: 'ring-fuchsia-200', keywords: 'Appium mobile automation, Android iOS testing, real device cloud' },
-  { name: 'Postman',   icon: <Terminal className="h-7 w-7" />,   accentBg: 'bg-orange-50',  accentText: 'text-orange-700',  accentRing: 'ring-orange-200',  keywords: 'Postman API testing, REST, collections, monitors, newman CI' },
-  { name: 'Cypress',   icon: <FileText className="h-7 w-7" />,   accentBg: 'bg-indigo-50',  accentText: 'text-indigo-700',  accentRing: 'ring-indigo-200',  keywords: 'Cypress e2e testing, component testing, flake detection, dashboards' },
-  { name: 'Jenkins',   icon: <GitBranch className="h-7 w-7" />,  accentBg: 'bg-amber-50',   accentText: 'text-amber-700',   accentRing: 'ring-amber-200',   keywords: 'Jenkins CI/CD pipelines, GitHub actions, build automation' },
-  { name: 'TestRail',  icon: <CheckSquare className="h-7 w-7" />,accentBg: 'bg-rose-50',    accentText: 'text-rose-700',    accentRing: 'ring-rose-200',    keywords: 'TestRail test case management, test runs, traceability, coverage' },
-  { name: 'Git',       icon: <Shield className="h-7 w-7" />,     accentBg: 'bg-slate-50',   accentText: 'text-slate-700',   accentRing: 'ring-slate-200',   keywords: 'Git version control, branching strategy, code reviews, PRs' },
+  { name: 'JIRA', icon: <Bug className="h-7 w-7" />, accentBg: 'bg-sky-50', accentText: 'text-sky-700', accentRing: 'ring-sky-200', keywords: 'JIRA issue tracking, agile boards, bug tracking, sprint planning' },
+  { name: 'Selenium', icon: <Globe className="h-7 w-7" />, accentBg: 'bg-emerald-50', accentText: 'text-emerald-700', accentRing: 'ring-emerald-200', keywords: 'Selenium WebDriver, UI automation testing, cross browser testing' },
+  { name: 'Appium', icon: <Smartphone className="h-7 w-7" />, accentBg: 'bg-fuchsia-50', accentText: 'text-fuchsia-700', accentRing: 'ring-fuchsia-200', keywords: 'Appium mobile automation, Android iOS testing, real device cloud' },
+  { name: 'Postman', icon: <Terminal className="h-7 w-7" />, accentBg: 'bg-orange-50', accentText: 'text-brand', accentRing: 'ring-orange-200', keywords: 'Postman API testing, REST, collections, monitors, newman CI' },
+  { name: 'Cypress', icon: <FileText className="h-7 w-7" />, accentBg: 'bg-indigo-50', accentText: 'text-indigo-700', accentRing: 'ring-indigo-200', keywords: 'Cypress e2e testing, component testing, flake detection, dashboards' },
+  { name: 'Jenkins', icon: <GitBranch className="h-7 w-7" />, accentBg: 'bg-amber-50', accentText: 'text-amber-700', accentRing: 'ring-amber-200', keywords: 'Jenkins CI/CD pipelines, GitHub actions, build automation' },
+  { name: 'TestRail', icon: <CheckSquare className="h-7 w-7" />, accentBg: 'bg-rose-50', accentText: 'text-rose-700', accentRing: 'ring-rose-200', keywords: 'TestRail test case management, test runs, traceability, coverage' },
+  { name: 'Git', icon: <Shield className="h-7 w-7" />, accentBg: 'bg-slate-50', accentText: 'text-slate-700', accentRing: 'ring-slate-200', keywords: 'Git version control, branching strategy, code reviews, PRs' },
 ];
 
 export default function ToolsSection() {
 
   return (
-    <section id="tools" aria-labelledby="tools-heading" className="relative bg-white py-4 md:py-10">
+    <section id="tools" aria-labelledby="tools-heading" className="relative bg-white py-10">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
         <div className="absolute inset-x-0 bottom-0 mx-auto h-px max-w-7xl bg-slate-100" />

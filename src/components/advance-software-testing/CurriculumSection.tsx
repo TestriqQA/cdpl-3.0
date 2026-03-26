@@ -1,68 +1,79 @@
 'use client';
 import { CheckCircle, Clock, Award, Layers } from 'lucide-react';
-import Link from 'next/link';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+const SyllabusDownloadModal = dynamic(() => import('@/components/SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
+const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+    return (
+        <div className="flex items-center justify-center py-16">
+            <p className="text-gray-500">{label}</p>
+        </div>
+    );
+}
 
 type Module = { title: string; topics: string[] };
 
 const curriculum: Module[] = [
     // From “Course Curriculum – Manual Software Testing” spread
     {
-        title: 'Manual Software Testing',
+        title: 'Manual Software Testing Fundamentals',
         topics: [
-            'SDLC & STLC fundamentals',
+            'SDLC, STLC & Bug Life Cycle',
             'Black/White/Grey Box testing',
-            'Functional, Integration, System, Acceptance',
+            'Functional, Integration, System, UAT',
             'Regression, Smoke & Sanity suites',
         ],
     },
     // From Test Management / Agile / Defect Tracking pages
     {
-        title: 'Test Management & Agile',
+        title: 'Test Management & Agile Methodology',
         topics: [
             'Test Plans, Test Cases & RTM',
-            'Agile process & ceremonies',
+            'Agile Scrum process & ceremonies',
             'Jira, TestRail, Mantis BT usage',
-            'DTLC with Severity/Priority & Reporting',
+            'Defect Tracking & Priority/Severity',
         ],
     },
     // From API Testing using POSTMAN & RestAPIs pages
     {
-        title: 'API Testing using POSTMAN & RestAPIs',
+        title: 'API Testing using POSTMAN & RestAssured',
         topics: [
             'GET/POST/PUT/PATCH/DELETE requests',
-            'Status, headers, cookies, response time',
-            'JSON Schema & response body validation',
-            'Collections, Workspaces, Environments & Auth',
+            'Status, headers, cookies, payload',
+            'JSON Schema & response validation',
+            'Chaining requests & Environment variables',
         ],
     },
     // From DBMS using MySQL pages
     {
-        title: 'DBMS using MySQL',
+        title: 'DBMS using MySQL for Testers',
         topics: [
-            'SELECT/WHERE/GROUP BY/HAVING clauses',
-            'INNER/OUTER/SELF/NATURAL/CROSS joins',
-            'DDL, DML, TCL, DCL',
-            'Views, Procedures, Functions, Triggers',
+            'SELECT/WHERE/Joins for data validation',
+            'DDL, DML operations for test data',
+            'Views, Stored Procedures basics',
+            'Validating backend data integrity',
         ],
     },
     // From Real-Time Projects / Domain Knowledge pages
     {
-        title: 'Real-Time Projects & Domains',
+        title: 'Selenium Automation with Java',
         topics: [
-            'E-commerce testing scenarios',
-            'CRM workflows & validations',
-            'Gaming: UX, performance & stability',
-            'Phone Book app: data integrity & security',
+            'WebDriver setup & Locators (XPath)',
+            'Handling Popups, Frames, Windows',
+            'TestNG Framework & Annotations',
+            'Page Object Model (POM) Design Pattern',
         ],
     },
     // From Course Highlights + Certification pages
     {
-        title: 'Course Highlights & Certification',
+        title: 'Advanced Automation & Mobile Testing',
         topics: [
-            '95 hours • 3.5 months',
-            '6+ assignments • 5 projects',
-            'AAA-validated certification',
-            'Hybrid: Classroom + Online',
+            'Cypress testing course fundamentals',
+            'Appium testing course for Mobile Apps',
+            'CI/CD with Jenkins & Git',
+            'Intro to Performance Testing (JMeter)',
         ],
     },
 ];
@@ -78,10 +89,11 @@ const accents = [
 ];
 
 export default function CurriculumSection() {
-
+    const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
+    const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
 
     return (
-        <section id="curriculum" className="relative py-8 md:py-10 bg-white">
+        <section id="curriculum" className="relative py-10 bg-white">
             {/* Subtle frame for futuristic feel */}
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -90,19 +102,19 @@ export default function CurriculumSection() {
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <h2 className="text-3xl md:text-4xl text-slate-900 text-center font-bold mb-4">
-                    Industry-Ready <span className="text-ST">Advanced Software Testing</span> Curriculum
+                    Comprehensive <span className="text-ST">Selenium & SDET Training</span> Curriculum
                 </h2>
 
                 {/* SEO-supportive intro row (updated to match brochure) */}
                 <div className="mx-auto mt-6 mb-8 grid max-w-4xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-3">
                     <p className="flex items-center gap-2">
-                        <Layers className="h-4 w-4 text-slate-500" /> Framework design & best practices
+                        <Layers className="h-4 w-4 text-slate-700" /> Framework design & best practices
                     </p>
                     <p className="flex items-center gap-2">
-                        <Award className="h-4 w-4 text-slate-500" /> Portfolio-ready real-time projects
+                        <Award className="h-4 w-4 text-slate-700" /> Portfolio-ready real-time projects
                     </p>
                     <p className="flex items-center gap-2">
-                        <Clock className="h-4 w-4 text-slate-500" /> 95 hours • 3.5 months • mentor-led
+                        <Clock className="h-4 w-4 text-slate-700" /> 95 hours • 3.5 months • mentor-led
                     </p>
                 </div>
 
@@ -143,8 +155,8 @@ export default function CurriculumSection() {
                                     ))}
                                 </ul>
 
-                                <p className="mt-4 text-xs text-slate-500">
-                                    Outcomes: hands-on labs, assessment checklists, CI/CD integration, and evidence-based reporting.
+                                <p className="mt-4 text-xs text-slate-700">
+                                    Outcomes: Build a robust <strong>hybrid framework</strong>, perform <strong>cross-browser testing</strong>, and execute <strong>mobile automation</strong> on real devices.
                                 </p>
                             </li>
                         );
@@ -153,19 +165,33 @@ export default function CurriculumSection() {
 
                 {/* Inline CTA */}
                 <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-                    <Link
-                        href="contact-us"
-                        className="inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                    <button
+                        onClick={() => setIsCareerModalOpen(true)}
+                        className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-200"
                     >
                         Book a Free Demo
-                    </Link>
+                    </button>
                     <button
-                        className="inline-flex items-center justify-center rounded-xl border-2 border-emerald-600 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
+                        onClick={() => setIsSyllabusModalOpen(true)}
+                        className="cursor-pointer inline-flex items-center justify-center rounded-xl border-2 border-emerald-600 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
                     >
                         Download Syllabus PDF
                     </button>
                 </div>
             </div>
+
+            <SyllabusDownloadModal
+                isOpen={isSyllabusModalOpen}
+                onClose={() => setIsSyllabusModalOpen(false)}
+                courseName="Advanced Software Testing"
+                source="Advanced Software Testing Course Page - Curriculum Section - Syllabus Download"
+            />
+
+            <CareerSessionModal
+                isOpen={isCareerModalOpen}
+                onClose={() => setIsCareerModalOpen(false)}
+                source="Advanced Software Testing Course Page - Curriculum Section - Book Free Demo"
+            />
 
         </section>
     );

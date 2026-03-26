@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>New Event Inquiry</title>
+</head>
+
+<body
+    style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333333; margin: 0; padding: 0;">
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb;">
+        <div
+            style="background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <h1 style="color: #0069A8; margin: 0; font-size: 24px;">New Event Page Inquiry</h1>
+                <p style="color: #64748b; margin-top: 5px;">A request has been submitted from an Event Details Sidebar
+                </p>
+            </div>
+
+            <div
+                style="margin-bottom: 25px; padding: 15px; background-color: #f0f9ff; border-left: 4px solid #0069A8; border-radius: 4px;">
+                <p style="margin: 0;"><strong>Source Event:</strong> {{source}}</p>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <h2
+                    style="font-size: 18px; color: #1e293b; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
+                    Contact Details</h2>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td style="padding: 8px 0; color: #64748b; width: 120px;">Full Name:</td>
+                        <td style="padding: 8px 0; font-weight: 500; color: #1e293b;">{{fullName}}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px 0; color: #64748b;">Email:</td>
+                        <td style="padding: 8px 0; font-weight: 500; color: #1e293b;">
+                            <a href="mailto:{{email}}" style="color: #0069A8; text-decoration: none;">{{email}}</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px 0; color: #64748b;">Phone:</td>
+                        <td style="padding: 8px 0; font-weight: 500; color: #1e293b;">
+                            <a href="tel:{{phone}}" style="color: #0069A8; text-decoration: none;">{{phone}}</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            {{#if message}}
+            <div style="margin-bottom: 25px;">
+                <h2
+                    style="font-size: 18px; color: #1e293b; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
+                    Message</h2>
+                <div style="background-color: #f8fafc; padding: 15px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                    <p style="margin: 0; white-space: pre-wrap;">{{message}}</p>
+                </div>
+            </div>
+            {{/if}}
+
+            <div
+                style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; text-align: center; color: #94a3b8; font-size: 12px;">
+                <p>&copy; {{currentYear}} Cinute Digital Pvt Ltd. All rights reserved.</p>
+                <p>This is an automated notification from the CDPL website.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

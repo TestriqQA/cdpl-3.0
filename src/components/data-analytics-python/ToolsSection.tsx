@@ -87,15 +87,15 @@ export default function ToolsSection() {
     ];
 
     return (
-        <section className="py-16 md:py-20 bg-white">
+        <section className="py-10 bg-white">
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Tools & <span className="text-orange-600">Technologies</span>
+                        <span className="text-brand">Tools</span> You&apos;ll Master in This Python Data Analysis Course
                     </h2>
                     <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-                        Master industry-standard tools and libraries used by data professionals worldwide.
+                        Learn the exact tools used by top data analysts. Our <strong>data analytics courses</strong> cover everything you need to know about <strong>how to use python in data analysis</strong>.
                     </p>
                 </div>
 
@@ -117,7 +117,7 @@ export default function ToolsSection() {
                             </h3>
 
                             {/* Category */}
-                            <p className="text-xs font-semibold text-orange-600 mb-3">
+                            <p className="text-xs font-semibold text-brand mb-3">
                                 {tool.category}
                             </p>
 
@@ -136,13 +136,13 @@ export default function ToolsSection() {
                         {categories.map((category, idx) => (
                             <div key={idx}>
                                 <div className="flex items-center gap-3 mb-4">
-                                    <div className="text-orange-400">{category.icon}</div>
+                                    <div className="text-brand">{category.icon}</div>
                                     <h4 className="text-lg font-bold">{category.name}</h4>
                                 </div>
                                 <ul className="space-y-2">
                                     {category.tools.map((tool, tidx) => (
                                         <li key={tidx} className="flex items-center gap-2 text-slate-200">
-                                            <span className="text-orange-400">→</span>
+                                            <span className="text-brand">→</span>
                                             {tool}
                                         </li>
                                     ))}
@@ -182,14 +182,14 @@ export default function ToolsSection() {
                         ].map((phase, idx) => (
                             <div key={idx} className="relative">
                                 <div className="bg-white rounded-lg p-6 border-2 border-orange-200 text-center">
-                                    <div className="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold mx-auto mb-3">
+                                    <div className="w-10 h-10 rounded-full bg-brand text-white flex items-center justify-center font-bold mx-auto mb-3">
                                         {phase.step}
                                     </div>
                                     <h4 className="font-bold text-slate-900 mb-2">{phase.title}</h4>
                                     <p className="text-sm text-slate-600">{phase.description}</p>
                                 </div>
                                 {idx < 3 && (
-                                    <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-0.5 bg-orange-400 transform -translate-y-1/2"></div>
+                                    <div className="hidden md:block absolute top-1/2 -right-2 w-4 h-0.5 bg-brand transform -translate-y-1/2"></div>
                                 )}
                             </div>
                         ))}

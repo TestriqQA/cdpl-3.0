@@ -1,18 +1,17 @@
-"use client";
-
-
+import { getGoogleReviews } from "@/lib/reviews";
 import ReviewsMarquee from "../sections/ReviewMarque";
 
 
-export default function TestimonialsSection() {
+export default async function TestimonialsSection() {
+    const { reviews, totalReviewCount, averageRating } = await getGoogleReviews();
 
     return (
-        <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
+        <section className="py-10 bg-gradient-to-b from-white to-slate-50">
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header (layout + style like reference) */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Student <span className="text-orange-600">Testimonials</span>
+                        Student <span className="text-brand">Testimonials</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
                         Hear from our successful graduates who have transformed their careers
@@ -23,7 +22,11 @@ export default function TestimonialsSection() {
                     </p>
                 </div>
 
-                <ReviewsMarquee />
+                <ReviewsMarquee
+                    initialReviews={reviews}
+                    initialTotal={totalReviewCount.toString()}
+                    initialRating={averageRating.toString()}
+                />
 
                 {/* Trust Indicators (like reference, with SEO focus) */}
                 <div className="mt-4 bg-gradient-to-r from-orange-50 to-blue-50 rounded-2xl p-8 md:p-12 border-2 border-orange-200">
@@ -97,7 +100,7 @@ export default function TestimonialsSection() {
                         className="animate-fadeInUp"
                         style={{ animationDelay: "200ms" }}
                     >
-                        <div className="text-4xl font-bold text-orange-600 mb-2">100%</div>
+                        <div className="text-4xl font-bold text-brand mb-2">100%</div>
                         <p className="text-gray-600">Satisfaction Rate</p>
                     </div>
                 </div>

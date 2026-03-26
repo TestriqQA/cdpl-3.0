@@ -1,9 +1,8 @@
-// components/sections/ToolsSection.tsx
-// Server component — sleek, SEO-optimized, slightly futuristic, fully responsive.
-// Unique accent colors per tool (no repeats), minimal/non-distracting visuals.
-// Includes accessible keyboard focus states and JSON-LD (ItemList) for search engines.
+"use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import CareerSessionModal from "@/components/CareerSessionModal";
 
 type Tool = {
   name: string;
@@ -103,6 +102,8 @@ const TOOLS: Tool[] = [
 ];
 
 export default function ToolsSection() {
+  const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
+
   const subtitle =
     "Master the essential Python data stack for analytics and machine learning — from data wrangling to model training and visualization.";
   const keywords =
@@ -110,7 +111,7 @@ export default function ToolsSection() {
 
 
   return (
-    <section id="tools" aria-labelledby="tools-heading" className="relative overflow-hidden py-8 md:py-10 bg-white">
+    <section id="tools" aria-labelledby="tools-heading" className="relative overflow-hidden py-10 bg-white">
       {/* Subtle futuristic backdrop (thin grid + mask; no heavy gradient) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.035)_1px,transparent_1px)] bg-[size:28px_28px]" />
@@ -161,7 +162,7 @@ export default function ToolsSection() {
                 {/* name + dot */}
                 <div className="flex items-center gap-2">
                   <span className={`inline-block h-2.5 w-2.5 rounded-full ${t.accent.dot}`} aria-hidden />
-                  <h3 className={`truncate text-sm md:text-base font-bold ${t.accent.text}`}>{t.name}</h3>
+                  <p className={`truncate text-sm md:text-base font-bold ${t.accent.text}`}>{t.name}</p>
                 </div>
                 <p className="mt-1 line-clamp-2 text-xs md:text-sm text-slate-700">{t.desc}</p>
 
@@ -183,13 +184,13 @@ export default function ToolsSection() {
           >
             See Modules Using These Tools
           </Link>
-          <Link
-            href="contact-us"
-            className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-purple-200"
+          <button
+            onClick={() => setIsCareerModalOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-purple-200"
             aria-label="Book a free demo to experience the toolchain"
           >
             Book a Free Demo
-          </Link>
+          </button>
         </div>
 
         {/* Footnote */}
@@ -197,6 +198,12 @@ export default function ToolsSection() {
           *Tooling may be extended with Plotly, FastAPI, Docker, or cloud notebooks based on cohort needs.
         </p>
       </div>
+
+      <CareerSessionModal
+        isOpen={isCareerModalOpen}
+        onClose={() => setIsCareerModalOpen(false)}
+        source="Machine Learning Course Page - Tools Section - Book Free Demo"
+      />
 
     </section>
   );

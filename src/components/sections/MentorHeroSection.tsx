@@ -1,15 +1,14 @@
-"use client";
-
+import BrowseMentorsButton from "./BrowseMentorsButton";
 import Link from "next/link";
 import Image from "next/image";
+import { ChevronRight, Home } from "lucide-react";
 
 export default function MentorHeroSection() {
-  // Smooth scroll for "Browse mentors"
-  const handleBrowseClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const el = document.querySelector("#mentors-impact"); // ⬅️ target
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Mentors", href: "/mentors" },
+  ];
 
   return (
     <section className="relative isolate overflow-hidden bg-white text-slate-900">
@@ -88,19 +87,26 @@ export default function MentorHeroSection() {
       </div>
 
       {/* ===== Content container — matches About section spacing & breadcrumb placement ===== */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        {/* Breadcrumbs (same placement & spacing as About) */}
-        <nav aria-label="Breadcrumb" className="mb-3">
-          <ol className="flex items-center gap-2 text-sm text-slate-500">
-            <li>
-              <Link href="/" className="hover:text-slate-700">Home</Link>
-            </li>
-            <li aria-hidden="true" className="text-slate-400">/</li>
-            <li>
-              <Link href="/mentors" className="font-medium text-slate-700 hover:text-slate-900">
-                Mentors
-              </Link>
-            </li>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
+        {/* Breadcrumbs for SEO & UX */}
+        <nav aria-label="Breadcrumb" className="mb-4 -mx-4 px-4 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <ol className="flex items-center gap-2 text-sm text-slate-600 whitespace-nowrap">
+            {breadcrumbs.map((c, i) => {
+              const isLast = i === breadcrumbs.length - 1;
+              return (
+                <li key={i} className="flex items-center gap-2">
+                  {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+                  <Link
+                    href={c.href}
+                    className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
+                    aria-current={isLast ? "page" : undefined}
+                    title={c.label}
+                  >
+                    {c.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ol>
         </nav>
 
@@ -118,7 +124,7 @@ export default function MentorHeroSection() {
 
             <h1 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl text-[#0069A8]">
               Meet CDPL’s industry{" "}
-              <span style={{ color: "var(--color-brand, #ff8c00)" }}>mentors</span>
+              <span className="text-brand">mentors</span>
             </h1>
 
             <p className="mt-4 mx-auto lg:mx-0 max-w-3xl text-base sm:text-lg text-slate-600">
@@ -137,21 +143,14 @@ export default function MentorHeroSection() {
             {/* CTAs */}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:justify-start">
               <Link
-                href="/contact-us"
-                className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
-                style={{ backgroundColor: "var(--color-brand, #ff8c00)" }}
+                href="https://calendar.app.google/tvh9dsXZsX9BujRR8"
+                target="_blank"
+                className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:opacity-90 cursor-pointer bg-brand"
                 aria-label="Book a free mentorship session"
               >
                 Book a free session
               </Link>
-              <Link
-                href="#mentors-impact"                 /* ⬅️ updated href */
-                onClick={handleBrowseClick}
-                className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 ring-1 ring-slate-200 transition hover:bg-slate-50"
-                aria-label="Browse mentors"
-              >
-                Browse mentors
-              </Link>
+              <BrowseMentorsButton />
             </div>
 
             {/* trust row */}
@@ -179,11 +178,12 @@ export default function MentorHeroSection() {
           {/* RIGHT — image (lifted up to align with content start; content unchanged) */}
           <div className="order-2 lg:order-2 relative flex items-start justify-center lg:justify-end mt-6 lg:mt-0 -translate-y-2 sm:-translate-y-3 lg:-translate-y-10 xl:-translate-y-12">
             <Image
-              src="/mentors_images/mentors-hero2.png"
+              src="/mentors_images/mentors-hero2.webp"
               alt="CDPL Mentors"
               title="CDPL Mentors"
-              width={1280}
-              height={960}
+              width={640}
+              height={480}
+              sizes="(max-width: 640px) 85vw, (max-width: 1024px) 50vw, 640px"
               className="
                 w-full h-auto
                 max-w-[28rem] sm:max-w-[34rem]
@@ -191,6 +191,8 @@ export default function MentorHeroSection() {
                 rounded-2xl
               "
               priority
+              fetchPriority="high"
+              quality={60}
             />
           </div>
         </div>
@@ -204,7 +206,7 @@ function FloatingBadge({ className = "", children }: { className?: string; child
   return (
     <div
       className={`grid place-items-center h-14 w-14 rounded-full bg-white ring-2 ring-white shadow-sm ${className}`}
-      aria-hidden="true"
+      aria-hidden={true}
       style={{ boxShadow: "0 8px 30px rgba(2, 6, 23, 0.07)" }}
     >
       {children}

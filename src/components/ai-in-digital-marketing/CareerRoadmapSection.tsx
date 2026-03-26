@@ -1,29 +1,33 @@
 "use client";
 
 import { courseData } from "@/components/ai-in-digital-marketing/courseData";
-import Link from "next/link";
+
+import { useState } from "react";
+import EnrollModal from "@/components/EnrollModal";
 
 export default function CareerRoadmapSection() {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Master Digital Marketing & AI for Business Owners";
   const { learningPath } = courseData;
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Your Learning <span className="text-orange-600">Journey</span>
+            Your Learning <span className="text-brand">Journey</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             An 8-step structured learning path designed to transform you into a
-            digital marketing expert
+            digital marketing expert and business leader.
           </p>
         </div>
 
         {/* Learning Path Timeline */}
         <div className="relative">
           {/* Vertical Line */}
-          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-orange-600 to-indigo-700"></div>
+          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-brand to-indigo-700"></div>
 
           {/* Steps */}
           <div className="space-y-12">
@@ -37,8 +41,8 @@ export default function CareerRoadmapSection() {
                 <div className="flex-1">
                   <div
                     className={`p-8 rounded-2xl border-2 transition-all hover:shadow-xl ${idx % 2 === 0
-                        ? "bg-orange-50 border-orange-200 hover:border-orange-400"
-                        : "bg-indigo-50 border-indigo-200 hover:border-indigo-400"
+                      ? "bg-orange-50 border-orange-200 hover:border-orange-400"
+                      : "bg-indigo-50 border-indigo-200 hover:border-indigo-400"
                       }`}
                   >
                     <h3 className="text-2xl font-bold text-gray-900 mb-3">
@@ -54,8 +58,8 @@ export default function CareerRoadmapSection() {
                 <div className="flex-shrink-0 z-10">
                   <div
                     className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold text-white border-4 border-white shadow-lg ${idx % 2 === 0
-                        ? "bg-orange-600"
-                        : "bg-indigo-700"
+                      ? "bg-brand"
+                      : "bg-indigo-700"
                       }`}
                   >
                     {step.step}
@@ -80,7 +84,7 @@ export default function CareerRoadmapSection() {
             >
               {/* Step Circle */}
               <div className="flex-shrink-0">
-                <div className="w-16 h-16 rounded-full bg-orange-600 text-white flex items-center justify-center text-2xl font-bold border-4 border-white shadow-lg">
+                <div className="w-16 h-16 rounded-full bg-brand text-white flex items-center justify-center text-2xl font-bold border-4 border-white shadow-lg">
                   {step.step}
                 </div>
               </div>
@@ -137,28 +141,36 @@ export default function CareerRoadmapSection() {
             <p className="text-lg text-gray-900 font-semibold mb-4">
               Ready to start your 8-step transformation journey?
             </p>
-            <Link
-              href="/contact-us"
+            <button
+              onClick={() => setIsEnrollOpen(true)}
               className="
     inline-flex items-center justify-center
     w-full sm:w-auto
     px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3
     text-sm sm:text-base md:text-lg
-    bg-orange-600 hover:bg-orange-700
+    bg-brand hover:bg-brand
     text-white font-bold
     rounded-xl
     text-center
     shadow-lg hover:shadow-xl
     transition-all duration-300
+    cursor-pointer
     break-words
   "
             >
               Begin Your Journey Now
-            </Link>
+            </button>
 
           </div>
         </div>
       </div>
-    </section>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="AI Digital Marketing - Career Roadmap - Begin Journey"
+        courseName={courseName}
+      />
+    </section >
   );
 }

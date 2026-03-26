@@ -3,20 +3,15 @@
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { courseData } from "@/components/ai-in-digital-marketing/courseData";
-
-interface FAQItem {
-  id: number;
-  question: string;
-  answer: string;
-  category?: string; // optional so it won't break existing data
-}
+import CareerSessionModal from "@/components/CareerSessionModal";
+import { AI_IN_DIGITAL_MARKETING_FAQS } from "@/data/aiInDigitalMarketingData";
 
 export default function FaqSection() {
-  const { faqs } = courseData;
-  const faqList = (faqs || []) as FAQItem[];
+  const faqList = AI_IN_DIGITAL_MARKETING_FAQS;
 
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
+  const [isCareerOpen, setIsCareerOpen] = useState(false);
+  const courseName = "Master Digital Marketing & AI for Business Owners";
 
   // Group by category if available, else everything under "General"
   const categories = Array.from(
@@ -24,21 +19,19 @@ export default function FaqSection() {
   );
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-10 bg-gradient-to-b from-white to-slate-50">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-48">
         {/* Section Header – reference layout + SEO-enhanced copy */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Frequently Asked <span className="text-orange-600">Questions</span>
+            Frequently Asked <span className="text-brand">Questions</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Find answers to common questions about our{" "}
-            <strong>AI in Digital Marketing program</strong>, from{" "}
-            <em>course fees, duration, eligibility, certification</em> to{" "}
-            <em>placement support and career outcomes</em>. This FAQ helps you
-            decide if this is the right{" "}
-            <strong>job-oriented digital marketing course with AI</strong> for
-            you.
+            <strong>AI Digital Marketing for Business Owners program</strong>, from{" "}
+            <em>course fees, schedule, business applicability</em> to{" "}
+            <em>ROI and support</em>. This FAQ helps you decide if this is the{" "}
+            <strong>best digital marketing course for your business growth</strong>.
           </p>
         </div>
 
@@ -56,10 +49,10 @@ export default function FaqSection() {
               {faqList
                 .filter((faq) => (faq.category || "General") === category)
                 .map((faq) => {
-                  const globalIdx = faqList.findIndex((f) => f.id === faq.id);
+                  const globalIdx = faqList.indexOf(faq);
                   return (
                     <div
-                      key={faq.id}
+                      key={faq.question}
                       className="bg-white rounded-xl border-2 border-slate-200 hover:border-orange-300 transition-all duration-300 overflow-hidden"
                     >
                       {/* Question */}
@@ -75,7 +68,7 @@ export default function FaqSection() {
                           {faq.question}
                         </h4>
                         <ChevronDown
-                          className={`w-6 h-6 text-orange-600 transition-transform duration-300 flex-shrink-0 ${expandedFAQ === globalIdx ? "rotate-180" : ""
+                          className={`w-6 h-6 text-brand transition-transform duration-300 flex-shrink-0 ${expandedFAQ === globalIdx ? "rotate-180" : ""
                             }`}
                         />
                       </button>
@@ -109,12 +102,15 @@ export default function FaqSection() {
             <em>AI-powered digital marketing course</em> fits your career goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="https://calendar.app.google/tvh9dsXZsX9BujRR8" className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl">
+            <Link href="https://calendar.app.google/tvh9dsXZsX9BujRR8" className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl">
               Schedule a Free Consultation
             </Link>
-            <Link href="contact-us" className="border-2 border-orange-600 text-orange-600 hover:bg-orange-50 font-bold py-3 px-8 rounded-xl transition-all">
+            <button
+              onClick={() => setIsCareerOpen(true)}
+              className="border-2 border-brand text-brand hover:bg-orange-50 font-bold py-3 px-8 rounded-xl transition-all cursor-pointer"
+            >
               Contact Us
-            </Link>
+            </button>
           </div>
 
           {/* Direct contact links like reference */}
@@ -123,7 +119,7 @@ export default function FaqSection() {
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
                 href="tel:+917888383788"
-                className="px-4 py-2 bg-white hover:bg-slate-50 border border-orange-300 rounded-lg font-semibold text-orange-600 transition-colors"
+                className="px-4 py-2 bg-white hover:bg-slate-50 border border-orange-300 rounded-lg font-semibold text-brand transition-colors"
               >
                 📞 Call Us
               </Link>
@@ -139,13 +135,18 @@ export default function FaqSection() {
           <p className="mt-4 text-xs sm:text-sm text-slate-500 max-w-3xl mx-auto">
             Keywords: <em>digital marketing course FAQ</em>,{" "}
             <em>AI in digital marketing training questions</em>,{" "}
-            <em>online digital marketing course with placement support</em>,{" "}
-            <em>best digital marketing institute in Mumbai</em>,{" "}
-            <em>course duration, fees, eligibility, certification</em>,{" "}
-            <em>job-oriented digital marketing program</em>.
+            <em>business marketing course details</em>,{" "}
+            <em>best digital marketing institute for business owners</em>,{" "}
+            <em>course duration, fees, business support</em>.
           </p>
         </div>
       </div>
+      <CareerSessionModal
+        isOpen={isCareerOpen}
+        onClose={() => setIsCareerOpen(false)}
+        source="AI Digital Marketing - Faq Section - Contact Us"
+        courseName={courseName}
+      />
     </section>
   );
 }

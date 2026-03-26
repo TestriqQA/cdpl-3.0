@@ -38,7 +38,7 @@ export default function PlacementsJobTitlesRow({ chips, speed = 60 }: Props) {
             <div className="group flex items-center gap-3 min-w-0 max-[425px]:flex-col max-[425px]:items-start">
                 {/* Left label pill */}
                 <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1 text-sm font-medium text-slate-800 shrink-0">
-                    <Briefcase className="h-4 w-4 text-[#ff8c00]" />
+                    <Briefcase className="h-4 w-4 text-brand" />
                     Job Titles
                 </span>
 

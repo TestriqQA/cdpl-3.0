@@ -20,14 +20,14 @@ type Tool = {
 };
 
 const tools: Tool[] = [
-  { name: 'Selenium',      icon: <Globe />,      color: 'from-blue-500 to-cyan-500',     accent: 'bg-sky-50 border-sky-200' },
-  { name: 'Appium',        icon: <Smartphone />, color: 'from-green-500 to-emerald-500', accent: 'bg-emerald-50 border-emerald-200' },
-  { name: 'REST Assured',  icon: <Terminal />,   color: 'from-purple-500 to-pink-500',   accent: 'bg-fuchsia-50 border-fuchsia-200' },
-  { name: 'Cypress',       icon: <Zap />,        color: 'from-amber-500 to-yellow-500',  accent: 'bg-amber-50 border-amber-200' },
-  { name: 'JMeter',        icon: <Shield />,     color: 'from-rose-600 to-red-500',      accent: 'bg-rose-50 border-rose-200' },
-  { name: 'Jenkins',       icon: <GitBranch />,  color: 'from-indigo-500 to-blue-600',   accent: 'bg-indigo-50 border-indigo-200' },
-  { name: 'Postman',       icon: <FileText />,   color: 'from-orange-500 to-red-500',    accent: 'bg-orange-50 border-orange-200' },
-  { name: 'Git',           icon: <Database />,   color: 'from-slate-500 to-gray-600',    accent: 'bg-slate-50 border-slate-200' },
+  { name: 'Selenium', icon: <Globe />, color: 'from-blue-500 to-cyan-500', accent: 'bg-sky-50 border-sky-200' },
+  { name: 'Appium', icon: <Smartphone />, color: 'from-green-500 to-emerald-500', accent: 'bg-emerald-50 border-emerald-200' },
+  { name: 'REST Assured', icon: <Terminal />, color: 'from-purple-500 to-pink-500', accent: 'bg-fuchsia-50 border-fuchsia-200' },
+  { name: 'Cypress', icon: <Zap />, color: 'from-amber-500 to-yellow-500', accent: 'bg-amber-50 border-amber-200' },
+  { name: 'JMeter', icon: <Shield />, color: 'from-rose-600 to-red-500', accent: 'bg-rose-50 border-rose-200' },
+  { name: 'Jenkins', icon: <GitBranch />, color: 'from-indigo-500 to-blue-600', accent: 'bg-indigo-50 border-indigo-200' },
+  { name: 'Postman', icon: <FileText />, color: 'from-orange-500 to-red-500', accent: 'bg-orange-50 border-orange-200' },
+  { name: 'Git', icon: <Database />, color: 'from-slate-500 to-gray-600', accent: 'bg-slate-50 border-slate-200' },
 ];
 
 export default function ToolsSection() {
@@ -37,7 +37,7 @@ export default function ToolsSection() {
     <section
       id="tools"
       aria-labelledby="tools-heading"
-      className="relative py-8 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* subtle rails for a clean, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -58,7 +58,7 @@ export default function ToolsSection() {
             id="tools-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            <span className='text-ST'>Tools</span> You’ll Master
+            <span className='text-ST'>Tools</span> in this Selenium Java Course
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
             Master an industry-proven <strong>SDET toolchain</strong> — build stable frameworks, integrate with{' '}
@@ -120,7 +120,7 @@ export default function ToolsSection() {
                   </h3>
 
                   {/* tiny helper copy for SEO & clarity */}
-                  <p className="mt-2 text-center text-xs text-slate-500">
+                  <p className="mt-2 text-center text-xs text-slate-700">
                     Widely used in automation pipelines for scalable, maintainable testing.
                   </p>
                 </div>

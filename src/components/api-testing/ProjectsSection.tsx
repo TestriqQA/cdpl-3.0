@@ -59,7 +59,7 @@ export default function ProjectsSection() {
 
 
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="relative py-8 sm:py-10 bg-white">
+    <section id="projects" aria-labelledby="projects-heading" className="relative py-10 bg-white">
       {/* subtle frame lines for a futuristic feel */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -79,8 +79,7 @@ export default function ProjectsSection() {
             Build Your <span className='text-ST'>Portfolio</span> with <span className='text-ST'>Real Projects</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            Practice <strong>API testing</strong>, <strong>automation</strong>, and <strong>security</strong> on realistic services.
-            Publish to <strong>GitHub</strong> and showcase outcomes on your resume and LinkedIn.
+            Don't just <strong>learn API testing</strong> theory. Execute <strong>API testing examples</strong> on live apps. Practice <strong>api testing means</strong> delivering bug-free code with these capstones.
           </p>
         </motion.header>
 

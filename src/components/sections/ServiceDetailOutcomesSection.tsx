@@ -47,7 +47,7 @@ export default function ServiceDetailOutcomesSection({ service }: { service: Ser
     '#881337', // rose-900
     '#14532d', // green-900
     '#701a75', // fuchsia-900
-    '#7c2d12', // orange-900
+    '#ff8c00', // brand
     '#134e4a', // teal-900
   ] as const;
 

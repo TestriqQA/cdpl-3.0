@@ -1,3 +1,9 @@
+"use client";
+
+import React, { useState } from "react";
+import EnrollModal from "@/components/EnrollModal";
+import { ArrowRight } from "lucide-react";
+
 // components/sections/WhoShouldEnroll.tsx
 // Server component — clean, modern audience section with subtle futuristic accents + SEO (Prompt Engineering edition).
 
@@ -67,9 +73,26 @@ const PERSONAS: Persona[] = [
       chip: "bg-amber-50",
     },
   },
+  {
+    title: "Entrepreneurs & Freelancers",
+    blurb:
+      "Launch AI-powered agencies or products. Learn to build MVPs, automate operations, and scale with GenAI.",
+    bullets: ["Rapid prototyping", "AI agency roadblocks"],
+    accent: {
+      bar: "bg-rose-500",
+      border: "border-rose-200",
+      text: "text-rose-700",
+      ring: "focus:ring-rose-300",
+      chip: "bg-rose-50",
+    }
+  }
 ];
 
 export default function WhoShouldEnroll() {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Prompt Engineering Course";
+  const source = "Prompt Engineering Course Page - Who Should Enroll Section";
+
   const seoKeywords =
     "who should enroll prompt engineering course, generative ai training audience, content marketing ai automation, developer llm prompting, career switch to ai, structured outputs json, rag evaluation guardrails";
 
@@ -78,7 +101,7 @@ export default function WhoShouldEnroll() {
     <section
       id="who-should-enroll"
       aria-labelledby="wse-heading"
-      className="relative py-8 md:py-14 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop: fine grid + soft emerald/blue glow (no heavy gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -165,6 +188,17 @@ export default function WhoShouldEnroll() {
           })}
         </div>
 
+        {/* CTA Button */}
+        <div className="mt-10 flex justify-center">
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-slate-900 px-8 py-3.5 text-base font-semibold text-white shadow-lg transition-all hover:bg-slate-800 hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-slate-200"
+          >
+            Start Your Journey
+            <ArrowRight className="ml-2 w-4 h-4" />
+          </button>
+        </div>
+
         {/* Trust strip */}
         <div className="mx-auto mt-10 max-w-4xl rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm">
           <p className="text-sm text-slate-700">
@@ -175,6 +209,13 @@ export default function WhoShouldEnroll() {
           </p>
           <p className="mt-2 text-[11px] text-slate-500">*Learning paths adapt by background and pace.</p>
         </div>
+
+        <EnrollModal
+          isOpen={isEnrollOpen}
+          onClose={() => setIsEnrollOpen(false)}
+          source={`${source} - Enroll Now`}
+          courseName={courseName}
+        />
       </div>
 
     </section>

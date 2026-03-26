@@ -2,49 +2,19 @@
 import { useState } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import Link from "next/link";
+import EnrollModal from "../EnrollModal";
 
 
-const faqs = [
-    {
-        question: "What are the prerequisites for this course?",
-        answer: "Basic Excel knowledge (simple formulas, basic charts) is recommended but not mandatory. The course is designed for both beginners and those with some Excel experience.",
-    },
-    {
-        question: "What is the course duration?",
-        answer: "The course is 20 hours long, combining both theoretical knowledge and practical hands-on experience.",
-    },
-    {
-        question: "What is the learning mode?",
-        answer: "Cinute Digital offers a hybrid (Classroom + Online) training pattern. You can attend sessions in the classroom or online, with live streaming and recorded sessions available.",
-    },
-    {
-        question: "Will I get a certificate?",
-        answer: "Yes, you will receive an internationally recognized certificate from Cinute Digital with a unique QR code for validation after completing all assessments and mock interviews.",
-    },
-    {
-        question: "What job roles can I apply for after this course?",
-        answer: "You can apply for roles like Data Analyst, Business Intelligence Analyst, Financial Analyst, Marketing Analyst, Operations Analyst, Sales Analyst, and more.",
-    },
-    {
-        question: "Is job assistance provided?",
-        answer: "Yes, Cinute Digital provides 100% job assistance including resume building, interview preparation, and placement support.",
-    },
-    {
-        question: "What tools will I learn?",
-        answer: "You'll master Microsoft Excel, Power Query, Power Pivot, Pivot Tables, Excel Charts, Data Analysis ToolPak, and various visualization techniques.",
-    },
-    {
-        question: "Are there real-world projects?",
-        answer: "Yes, the course includes hands-on projects like Sales Performance Analysis, Budget Variance Analysis, and Customer Insights Dashboard.",
-    },
-];
+import { DATA_ANALYTICS_VIS_FAQS } from "@/data/dataAnalyticsVisData";
 
 
 export default function FaqSection() {
     const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const courseName = "Advanced Excel for Data Analytics & Visualization";
 
     return (
-        <section className="relative py-10 md:py-20 bg-white overflow-hidden">
+        <section className="relative py-10 bg-white overflow-hidden">
             {/* Decorative background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
@@ -55,7 +25,7 @@ export default function FaqSection() {
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">Frequently Asked Questions</span>
+                        <span className="bg-gradient-to-r from-[#ff8c00] via-[#ff8c00] to-[#ff8c00] bg-clip-text text-transparent">Frequently Asked Questions</span>
                     </h2>
                     <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                         Find answers to common questions about our course, learning approach, and career support.
@@ -64,7 +34,7 @@ export default function FaqSection() {
 
                 {/* FAQ items */}
                 <div className="max-w-3xl mx-auto space-y-4">
-                    {faqs.map((faq, index) => (
+                    {DATA_ANALYTICS_VIS_FAQS.map((faq, index) => (
                         <div
                             key={index}
                             className="border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 bg-white"
@@ -77,7 +47,7 @@ export default function FaqSection() {
                                 className="w-full px-6 py-5 flex items-center justify-between cursor-pointer bg-gradient-to-r from-slate-50 to-white hover:from-blue-50 hover:to-indigo-50 transition-all duration-300"
                             >
                                 <div className="flex items-center gap-4 text-left">
-                                    <HelpCircle className="w-6 h-6 text-blue-600 flex-shrink-0" />
+                                    <HelpCircle className="w-6 h-6 text-[#1d4ed8] flex-shrink-0" />
                                     <h3 className="text-lg font-semibold text-slate-900">
                                         {faq.question}
                                     </h3>
@@ -107,15 +77,25 @@ export default function FaqSection() {
                         Our team is here to help! Reach out to us and we&apos;ll provide personalized guidance for your learning journey.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="contact-us" className="bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg hover:bg-blue-50 transition-all duration-300">
+                        <button
+                            onClick={() => setIsEnrollOpen(true)}
+                            className="bg-white text-blue-600 font-semibold py-3 px-8 rounded-lg hover:bg-blue-50 transition-all duration-300 cursor-pointer"
+                        >
                             Contact Us
-                        </Link>
+                        </button>
                         <Link href="https://calendar.app.google/tvh9dsXZsX9BujRR8" className="border-2 border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white/10 transition-all duration-300">
                             Schedule a Call
                         </Link>
                     </div>
                 </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Data Analytics & Visualization Course Page - Faq Section - Contact Us"
+                courseName={courseName}
+            />
         </section>
     );
 }

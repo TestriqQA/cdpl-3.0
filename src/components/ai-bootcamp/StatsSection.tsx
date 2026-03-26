@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { TrendingUp, Award, Users, Zap } from "lucide-react";
-import Link from "next/link";
+import EnrollModal from "@/components/EnrollModal";
 
 interface Stat {
     value: string;
@@ -41,7 +41,7 @@ const stats: Stat[] = [
         label: "Most In-Demand Skill",
         description: "According to Michael Page 2023",
         icon: <Zap className="w-6 h-6" aria-hidden="true" />,
-        color: "text-orange-600",
+        color: "text-brand",
         bgGradient: "from-orange-50 to-orange-100",
         iconBg: "bg-orange-500",
         ariaLabel: "Rank three most in demand skill according to Michael Page 2023",
@@ -59,9 +59,12 @@ const stats: Stat[] = [
 ];
 
 export default function StatsSection() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const courseName = "AI Bootcamp Course";
+
     return (
         <section
-            className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50"
+            className="py-10 bg-gradient-to-b from-white to-slate-50"
             aria-labelledby="stats-heading"
         >
 
@@ -216,14 +219,24 @@ export default function StatsSection() {
                                     Ready to be part of this booming industry? Our bootcamp prepares you
                                     for high-paying roles in just 30 hours.
                                 </p>
-                                <Link href="contact-us" className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300">
+                                <button
+                                    onClick={() => setIsEnrollOpen(true)}
+                                    className="cursor-pointer inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-orange-500 to-brand px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:from-brand hover:to-brand hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
+                                >
                                     Start Your Journey Today
-                                </Link>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="AI Bootcamp - Stats Section"
+                courseName={courseName}
+            />
         </section>
     );
 }

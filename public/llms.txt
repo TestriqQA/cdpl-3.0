@@ -1,0 +1,51 @@
+# Cinute Digital Pvt. Ltd. (CDPL)
+
+> The Premier Destination for Industry-Ready IT Training & Certification in Mumbai.
+
+## About Cinute Digital
+Cinute Digital Pvt. Ltd. (CDPL) is a leading EdTech institute bridging the gap between academic education and industry demands. We specialize in providing comprehensive, hands-on training in cutting-edge technologies. Our curriculum is designed by industry experts to ensure students and professionals acquire practical skills that are immediately applicable in the workforce. We offer 100% placement assistance and work with top corporate partners.
+
+## Core Course Categories
+
+### 1. Software Testing
+Master the art of Quality Assurance with our extensive testing curriculum. We cover the entire testing lifecycle from fundamental concepts to advanced automation frameworks.
+- **[Manual Testing Course](https://www.cinutedigital.com/manual-testing-course)**: Learn functional testing, bug tracking with JIRA, and test case management.
+- **[Automation Testing Course](https://www.cinutedigital.com/automation-testing-course)**: Proficiency in Selenium WebDriver, Java/Python, and TestNG/JUnit frameworks.
+- **[API Testing](https://www.cinutedigital.com/api-testing)**: Master REST Assured and Postman for backend validation.
+- **[ETL Testing](https://www.cinutedigital.com/etl-testing)**: Data warehouse testing and validation techniques.
+- **[Advanced Software Testing](https://www.cinutedigital.com/advance-software-testing)**: Full-stack QA training including CI/CD integration.
+
+### 2. Data Science
+Transform data into actionable insights. Our Data Science programs are tailored for beginners and professionals looking to dominate the data revolution.
+- **[Data Science Course](https://www.cinutedigital.com/data-science-course)**: Comprehensive curriculum covering Python, Statistics, and Exploratory Data Analysis (EDA).
+- **[Machine Learning](https://www.cinutedigital.com/machine-learning-course)**: Supervised and unsupervised learning, regression, classification, and clustering algorithms.
+- **[Masters in Data Engineering](https://www.cinutedigital.com/masters-in-data-engineering)**: Big Data technologies including Hadoop, Spark, and Cloud Data Engineering.
+
+### 3. Business Intelligence (BI)
+Empower decision-making with advanced Business Intelligence tools. Learn to visualize and analyze complex business data.
+- **[Power BI Course](https://www.cinutedigital.com/power-bi-course)**: Create interactive dashboards and reports using Microsoft Power BI.
+- **[Data Analytics with Tableau](https://www.cinutedigital.com/data-analytics-with-tableau)**: Master visual analytics and storytelling with data.
+- **[Data Analytics & Visualization](https://www.cinutedigital.com/data-analytics-and-visualization)**: End-to-end analytics training for business professionals.
+
+### 4. Artificial Intelligence (AI)
+Stay ahead of the curve with our future-ready AI courses. From Generative AI to tailored industry applications, we cover it all.
+- **[Artificial Intelligence Course](https://www.cinutedigital.com/ai-course)**: Foundations of AI, neural networks, and deep learning.
+- **[Generative AI Course](https://www.cinutedigital.com/generative-ai-course)**: Master LLMs, RAG pipelines, and building AI-powered applications.
+- **[Prompt Engineering](https://www.cinutedigital.com/prompt-engineering-course)**: The art of communicating with AI models effectively.
+- **[AI Bootcamp](https://www.cinutedigital.com/ai-bootcamp)**: Intensive, fast-track program for rapid upskilling.
+
+### 5. Digital Marketing
+Dominate the digital landscape. Our courses blend traditional marketing principles with modern AI tools.
+- **[Digital Marketing Course](https://www.cinutedigital.com/digital-marketing-course)**: SEO, SEM, Social Media Marketing, and Content Strategy.
+- **[AI in Digital Marketing](https://www.cinutedigital.com/ai-in-digital-marketing)**: Leverage AI tools for content creation, ad optimization, and customer analytics.
+
+## Why Choose CDPL?
+- **Expert Mentors**: Learn from professionals with 10+ years of experience.
+- **Live Projects**: Work on real-world industry case studies.
+- **Certification**: Globally recognized certifications (ISTQB, etc.).
+- **Placement Support**: Dedicated team for resume building, mock interviews, and job referrals.
+
+## Resources & Links
+- **[Blog & Insights](https://www.cinutedigital.com/blog)**: Latest trends in Tech and EdTech.
+- **[Events & Workshops](https://www.cinutedigital.com/events)**: Webinars, industrial visits, and seminars.
+- **[Placement Records](https://www.cinutedigital.com/jobs/placements)**: See our students working in top MNCs.

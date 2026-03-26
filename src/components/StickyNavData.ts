@@ -38,3 +38,14 @@ export const with_roadmap = [
   { id: "faqs", label: "FAQs", color: "from-indigo-600 to-cyan-600" },
   { id: "contact", label: "Contact", color: "from-indigo-600 to-cyan-600" },
 ]
+
+export const general_course = [
+  { id: "features", label: "Program Highlights", color: "from-indigo-600 to-cyan-600" },
+  { id: "courses", label: "Courses", color: "from-indigo-600 to-cyan-600" },
+  { id: "curriculum", label: "Curriculum", color: "from-indigo-600 to-cyan-600" },
+  { id: "testimonials", label: "Testimonials", color: "from-indigo-600 to-cyan-600" },
+  { id: "projects", label: "Projects", color: "from-indigo-600 to-cyan-600" },
+  { id: "career", label: "Career Path", color: "from-indigo-600 to-cyan-600" },
+  { id: "faqs", label: "FAQs", color: "from-indigo-600 to-cyan-600" },
+  { id: "contact", label: "Contact", color: "from-indigo-600 to-cyan-600" },
+]

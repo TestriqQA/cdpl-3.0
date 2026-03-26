@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9fafb;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .content {
+            padding: 30px 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ff8c00;
+            color: #ffffff !important;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #f3f4f6;
+            padding: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .info-list {
+            margin: 20px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-list li:before {
+            content: "✓";
+            color: #10b981;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Thank You for Your Interest!</h1>
+        </div>
+        <div class="content">
+            <p>Hi {{fullName}},</p>
+            <p>Thanks for enquiring about our <strong>{{courseName}}</strong> course in <strong>{{location}}</strong>.
+            </p>
+
+            <p>We have received your details and our career advisor will get in touch with you shortly to discuss the
+                program details, curriculum, and upcoming batches.</p>
+
+            <h3>Why CDPL?</h3>
+            <ul class="info-list">
+                <li>100% Placement Support</li>
+                <li>Live Interactive Classes</li>
+                <li>Real-world Projects</li>
+                <li>Industry Recognized Certification</li>
+            </ul>
+
+            <p style="text-align: center;">
+                <a href="https://cdpl.in" class="cta-button">Visit Our Website</a>
+            </p>
+        </div>
+        <div class="footer">
+            <p><strong>Contact Us:</strong><br>
+                Email: contact@cinutedigital.com<br>
+                Phone: +91 84-889-889-84</p>
+            <p>&copy; {{year}} CDPL. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+
+</html>

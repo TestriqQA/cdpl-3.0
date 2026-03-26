@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight, User } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getLatestPosts, BlogPost } from '@/data/BlogPostData';
+import { SanityPost } from '@/sanity/types';
 
-// --- Blog Card Component (Extracted for cleaner rendering) ---
-const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({ post, index }) => {
-  // Helper to format the date string from the data source
+// --- Blog Card Component ---
+const BlogCard: React.FC<{ post: SanityPost; index: number }> = ({ post, index }) => {
+  // Helper to format the date string
   const formattedDate = new Date(post.publishDate).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -29,21 +29,28 @@ const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({ post, index }) 
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
           {/* Featured Image */}
           <div className="relative h-48 bg-gradient-to-br from-indigo-300 to-indigo-600 overflow-hidden">
-            {/* Using Next/Image with the featuredImage from the data source */}
-            <Image
-              src={post.featuredImage}
-              alt={post.title}
-              title={post.title}
-              fill
-              className="object-cover group-hover:scale-110 transition-transform duration-300"
-            />
-            
-            {/* Category Badge */}
-            <div className="absolute top-4 left-4">
-              <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-indigo-600 text-xs font-bold rounded-full">
-                {post.category}
-              </span>
-            </div>
+            {post.featuredImage ? (
+              <Image
+                src={post.featuredImage}
+                alt={post.title}
+                title={post.title}
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+            ) : (
+              <div className="absolute inset-0 bg-indigo-100 flex items-center justify-center">
+                <span className="text-indigo-400 font-bold">CDPL Blog</span>
+              </div>
+            )}
+
+            {/* Category Badge - post.category is now an object { name: string } */}
+            {post.category?.name && (
+              <div className="absolute top-4 left-4">
+                <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-indigo-600 text-xs font-bold rounded-full">
+                  {post.category.name}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Content */}
@@ -62,12 +69,14 @@ const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({ post, index }) 
             <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
               <div className="flex items-center gap-1">
                 <User className="w-4 h-4" />
-                <span>{post.author}</span>
+                <span>{post.author?.name}</span>
               </div>
-              <div className="flex items-center gap-1">
-                <Clock className="w-4 h-4" />
-                <span>{post.readTime}</span>
-              </div>
+              {post.readTime && (
+                <div className="flex items-center gap-1">
+                  <Clock className="w-4 h-4" />
+                  <span>{post.readTime}</span>
+                </div>
+              )}
             </div>
 
             {/* Date & CTA */}
@@ -92,15 +101,15 @@ const BlogCard: React.FC<{ post: BlogPost; index: number }> = ({ post, index }) 
 /**
  * HomeLatestBlogSection - Recent Articles
  * 
- * Fetches and shows the latest 3 blog posts from the application's data source.
+ * Shows the latest 3 blog posts passed as props.
  */
-export default function HomeLatestBlogSection() {
-  // Fetch the latest 3 posts using the helper function from the data file
-  // This is a synchronous call since the data is local and pre-sorted
-  const latestPosts = getLatestPosts(3);
+interface HomeLatestBlogSectionProps {
+  posts?: SanityPost[];
+}
 
+export default function HomeLatestBlogSection({ posts = [] }: HomeLatestBlogSectionProps) {
   // Fallback for when no posts are available
-  if (latestPosts.length === 0) {
+  if (!posts || posts.length === 0) {
     return null;
   }
 
@@ -127,8 +136,8 @@ export default function HomeLatestBlogSection() {
 
         {/* Blog Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {latestPosts.map((post, index) => (
-            <BlogCard key={post.id} post={post} index={index} />
+          {posts.map((post, index) => (
+            <BlogCard key={post._id} post={post} index={index} />
           ))}
         </div>
 

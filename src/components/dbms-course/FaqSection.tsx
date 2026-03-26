@@ -2,15 +2,7 @@
 import { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
-
-type FAQ = { q: string; a: string };
-
-const faqs: FAQ[] = [
-  { q: 'Do I need coding knowledge?', a: 'No. We start from the basics with practical, step-by-step guidance. Logical thinking is enough to begin.' },
-  { q: 'Will I get a certificate?', a: 'Yes. You’ll receive a globally recognized MySQL + SQL certificate with secure QR verification.' },
-  { q: 'What is the duration?', a: '20 hours of live, mentor-led training plus lifetime access to recordings and resources.' },
-  { q: 'Is placement guaranteed?', a: 'We offer 100% job assistance: resume building, mock interviews, referrals, and interview prep.' },
-];
+import { DBMS_FAQS } from '@/data/dbmsData';
 
 // Distinct, non-repeating accent rails (no heavy gradients)
 const accents = ['border-sky-300', 'border-emerald-300', 'border-amber-300', 'border-violet-300'];
@@ -20,7 +12,7 @@ export default function FaqSection() {
 
 
   return (
-    <section id="faq" aria-labelledby="faq-heading" className="relative py-8 md:py-10 bg-white">
+    <section id="faq" aria-labelledby="faq-heading" className="relative py-10 bg-white">
       {/* subtle frame lines for a clean, slightly futuristic look */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-4xl bg-slate-100" />
@@ -29,8 +21,8 @@ export default function FaqSection() {
 
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl text-ST text-center font-bold mb-4">
-        Frequently Asked Questions
-      </h2>
+          Frequently Asked Questions
+        </h2>
 
         {/* small SEO/supportive line */}
         <p className="mx-auto -mt-2 mb-6 max-w-2xl text-center text-sm sm:text-base text-slate-600">
@@ -38,7 +30,7 @@ export default function FaqSection() {
         </p>
 
         <div className="space-y-3 sm:space-y-4" role="list">
-          {faqs.map((faq, i) => {
+          {DBMS_FAQS.map((faq, i) => {
             const isOpen = open === i;
             const panelId = `faq-panel-${i}`;
             const buttonId = `faq-trigger-${i}`;
@@ -46,7 +38,7 @@ export default function FaqSection() {
 
             return (
               <div
-                key={faq.q}
+                key={faq.question}
                 role="listitem"
                 className={[
                   'rounded-2xl border bg-white shadow-[0_1px_0_0_rgba(15,23,42,0.05)] transition',
@@ -69,7 +61,7 @@ export default function FaqSection() {
                       <HelpCircle className="h-4 w-4" />
                     </span>
                     <span className="font-semibold text-slate-900 leading-snug">
-                      {faq.q}
+                      {faq.question}
                     </span>
                   </div>
                   <ChevronDown
@@ -91,7 +83,7 @@ export default function FaqSection() {
                     isOpen ? 'block opacity-100' : 'hidden opacity-0',
                   ].join(' ')}
                 >
-                  {faq.a}
+                  {faq.answer}
                 </div>
               </div>
             );

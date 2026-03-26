@@ -98,7 +98,7 @@ export default function StatsSection() {
     <section
       id="dm-stats"
       aria-labelledby="dm-stats-heading"
-      className="relative py-4 md:py-10 bg-gradient-to-b from-white to-blue-50"
+      className="relative py-10 bg-gradient-to-b from-white to-blue-50"
     >
       {/* Subtle futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -112,10 +112,10 @@ export default function StatsSection() {
             id="dm-stats-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Why Is <span className="text-green-700">Digital Marketing</span> a Smart Career Choice?
+            Why Pursue a <span className="text-green-700">Digital Marketing Career</span> in Mumbai?
           </h2>
           <p className="mt-3 text-base sm:text-lg text-slate-700">
-            The field evolves fast—<strong>grow with the latest AI, analytics, and performance skills</strong>.
+            Digital Marketing is the fast-track to a high-growth career. Master <strong>AI-Driven SEO, Performance Ads, and Data Analytics</strong> with the best Digital Marketing course in Mumbai.
           </p>
         </header>
 
@@ -129,7 +129,6 @@ export default function StatsSection() {
         >
           {/* Card 1 — $671.86B by 2028 (PDF p.4) */}
           <div
-            role="listitem"
             className="
               group relative rounded-2xl border p-7 sm:p-8 text-center shadow-sm
               bg-white border-orange-100
@@ -148,7 +147,7 @@ export default function StatsSection() {
               "
             />
             <dt className="sr-only">Market Size</dt>
-            <div className="text-3xl sm:text-4xl font-extrabold tracking-tight text-orange-600">
+            <dd className="text-3xl sm:text-4xl font-extrabold tracking-tight text-brand">
               <CountUp
                 end={671.86}
                 decimals={2}
@@ -157,18 +156,17 @@ export default function StatsSection() {
                 ariaLabel="Six hundred seventy one point eight six billion dollars"
                 formatter={formatBillion}
               />
-            </div>
+            </dd>
             <dd className="mt-2 text-slate-700">
               Global digital marketing market by <span className="font-medium">2028</span>
             </dd>
-            <p className="mt-3 text-xs text-slate-500">
+            <dd className="mt-3 text-xs text-slate-500">
               Source highlighted in the program brochure
-            </p>
+            </dd>
           </div>
 
           {/* Card 2 — 4th Most High-Income Skill (PDF p.4) */}
           <div
-            role="listitem"
             className="
               group relative rounded-2xl border p-7 sm:p-8 text-center shadow-sm
               bg-white border-yellow-100
@@ -187,21 +185,20 @@ export default function StatsSection() {
               "
             />
             <dt className="sr-only">High-Income Skill Rank</dt>
-            <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-yellow-600">
+            <dd className="text-2xl sm:text-3xl font-extrabold tracking-tight text-yellow-700">
               {/* animate number then append ordinal text */}
               <CountUp end={4} ariaLabel="Fourth" />th Most High-Income Skill
-            </div>
+            </dd>
             <dd className="mt-2 text-slate-700">
               Recommended to learn in <span className="font-medium">2024</span> (Forbes)
             </dd>
-            <p className="mt-3 text-xs text-slate-500">
+            <dd className="mt-3 text-xs text-slate-500">
               Recognition for lucrative, future-proof upskilling
-            </p>
+            </dd>
           </div>
 
           {/* Card 3 — #3 Most In-Demand Skill (PDF p.4) */}
           <div
-            role="listitem"
             className="
               group relative rounded-2xl border p-7 sm:p-8 text-center shadow-sm
               bg-white border-emerald-100
@@ -220,15 +217,15 @@ export default function StatsSection() {
               "
             />
             <dt className="sr-only">Demand Ranking</dt>
-            <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-emerald-600">
+            <dd className="text-2xl sm:text-3xl font-extrabold tracking-tight text-emerald-700">
               #<CountUp end={3} ariaLabel="Three" /> Most In-Demand Skill
-            </div>
+            </dd>
             <dd className="mt-2 text-slate-700">
               Cited in <span className="font-medium">Michael Page Salary Guide 2023</span>
             </dd>
-            <p className="mt-3 text-xs text-slate-500">
+            <dd className="mt-3 text-xs text-slate-500">
               Consistent hiring demand across industries
-            </p>
+            </dd>
           </div>
         </dl>
 

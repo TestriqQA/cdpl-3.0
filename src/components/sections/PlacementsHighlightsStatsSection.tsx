@@ -85,7 +85,7 @@ export default function PlacementsHighlightsStatsSection({ contained = false }: 
                 <div className="flex h-full flex-col p-4 sm:p-5">
                   <div className="flex items-center gap-2.5 sm:gap-3">
                     <motion.span variants={icon} className="inline-flex h-6 w-6 items-center justify-center">
-                      <s.icon className="h-5 w-5 text-[#ff8c00]" />
+                      <s.icon className="h-5 w-5 text-brand" />
                     </motion.span>
                     <div className="text-sm sm:text-base font-medium text-slate-900">{s.label}</div>
                   </div>

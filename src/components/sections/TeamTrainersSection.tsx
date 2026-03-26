@@ -155,7 +155,7 @@ export default function TeamTrainersSection({
                 </h3>
                 <p className="truncate text-md text-center md:text-start text-slate-600">{t.role}</p>
                 <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2 py-0.5 font-medium text-orange-700 ring-1 ring-inset ring-orange-200">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2 py-0.5 font-medium text-brand ring-1 ring-inset ring-orange-200">
                     <GraduationCap className="h-3.5 w-3.5" />
                     {t.yearsExp}+ yrs exp
                   </span>

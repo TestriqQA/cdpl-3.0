@@ -1,12 +1,18 @@
 // =============================
 // components/our-team/TeamCTA.tsx
 // =============================
+"use client";
+
 import Link from "next/link";
 import Script from "next/script";
 import { Check, ShieldCheck, Clock, Star } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import AdvisorModal from "@/components/ui/AdvisorModal";
 
 export default function TeamCTASection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section
       aria-labelledby="team-cta-heading"
@@ -37,7 +43,7 @@ export default function TeamCTASection() {
         <div className="grid items-center gap-10 md:grid-cols-2">
           {/* LEFT */}
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/80 px-3 py-1 text-xs font-medium text-orange-700 shadow-sm backdrop-blur">
+            <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/80 px-3 py-1 text-xs font-medium text-brand shadow-sm backdrop-blur">
               <ShieldCheck className="h-3.5 w-3.5" />
               Mentor-Led, Job-Ready Learning
             </div>
@@ -47,7 +53,7 @@ export default function TeamCTASection() {
               className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
             >
               Learn with mentors who build{" "}
-              <span className="text-[--brand]">careers</span>—not just courses
+              <span className="text-brand">careers</span>—not just courses
             </h2>
 
             <p className="mt-3 text-sm leading-6 text-slate-700 sm:text-base">
@@ -70,7 +76,7 @@ export default function TeamCTASection() {
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-0.5 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full bg-orange-100 ring-1 ring-orange-200">
-                    <Check className="h-3.5 w-3.5 text-[--brand]" />
+                    <Check className="h-3.5 w-3.5 text-brand" />
                   </span>
                   <span className="text-sm text-slate-800">{item}</span>
                 </li>
@@ -81,8 +87,8 @@ export default function TeamCTASection() {
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 href="courses"
-                className="inline-flex items-center justify-center rounded-2xl bg-[--brand] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:translate-y-0"
-                style={{ backgroundColor: "var(--brand)" }}
+                className="inline-flex items-center justify-center rounded-2xl bg-brand px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:translate-y-0"
+                style={{ backgroundColor: "#ff8c00" }}
                 aria-label="Explore programs and view curriculum"
               >
                 Explore Programs
@@ -94,13 +100,13 @@ export default function TeamCTASection() {
               >
                 Talk to Admissions
               </Link>
-              <Link
-                href="/mentors"
-                className="inline-flex items-center justify-center rounded-2xl border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-semibold text-orange-700 ring-1 ring-inset ring-orange-200 transition hover:-translate-y-0.5 hover:bg-orange-100 active:translate-y-0"
-                aria-label="Meet our mentors"
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="inline-flex items-center justify-center rounded-2xl border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-semibold text-brand ring-1 ring-inset ring-orange-200 transition hover:-translate-y-0.5 hover:bg-orange-100 active:translate-y-0 cursor-pointer"
+                aria-label="Talk to a mentor"
               >
-                Meet the Mentors
-              </Link>
+                Talk to a mentor
+              </button>
             </div>
 
             {/* Social proof mini */}
@@ -202,6 +208,12 @@ export default function TeamCTASection() {
           ],
         })}
       </Script>
+
+      <AdvisorModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        source="Team Page - Mentor Section"
+      />
     </section>
   );
 }

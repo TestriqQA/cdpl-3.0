@@ -215,7 +215,7 @@ const WhyChooseSection: React.FC<WhyChooseSectionProps> = ({ data = mockData }) 
             >
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/0 to-teal-50/0 group-hover:from-emerald-50 group-hover:to-teal-50 transition-all duration-500" />
               <div className="relative z-10">
-                <p className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 bg-clip-text text-transparent mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300">
+                <p className="text-2xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 bg-clip-text text-transparent mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300">
                   {stat.number}
                 </p>
                 <p className="text-gray-600 font-semibold text-xs sm:text-sm lg:text-base">

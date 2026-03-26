@@ -1,17 +1,21 @@
-// components/sections/TestimonialsSection.tsx
-// Server component (no client-side JS) – sleek, responsive, slightly futuristic
+"use client";
 
-import Link from "next/link";
+
 import ReviewsMarquee from "../sections/ReviewMarque";
+import { useState } from "react";
+import EnrollModal from "../EnrollModal";
+import CareerSessionModal from "../CareerSessionModal";
 
 export default function TestimonialsSection() {
-
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isCareerOpen, setIsCareerOpen] = useState(false);
+  const courseName = "Digital Marketing & Analytics Master Program";
 
   return (
     <section
       id="testimonials"
       aria-labelledby="testimonials-heading"
-      className="relative py-12 sm:py-16 md:py-20"
+      className="relative py-10"
     >
       {/* Subtle futuristic backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -41,21 +45,32 @@ export default function TestimonialsSection() {
         {/* CTA */}
         <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3">
           <button
-            className="rounded-xl border border-orange-500 bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-200"
+            onClick={() => setIsEnrollOpen(true)}
+            className="cursor-pointer rounded-xl border border-brand bg-brand px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand focus:outline-none focus:ring-4 focus:ring-orange-200"
           >
             Join the next cohort
           </button>
-          <Link
-            href="contact-us"
-            className="rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
+          <button
+            onClick={() => setIsCareerOpen(true)}
+            className="cursor-pointer rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
           >
             Book a free demo
-          </Link>
+          </button>
         </div>
       </div>
 
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Digital Marketing Course Page - Testimonials Section - Join Cohort"
+        courseName={courseName}
+      />
+      <CareerSessionModal
+        isOpen={isCareerOpen}
+        onClose={() => setIsCareerOpen(false)}
+        source="Digital Marketing Course Page - Testimonials Section - Book Demo"
+        courseName={courseName}
+      />
     </section>
   );
 }
-
-

@@ -1,9 +1,11 @@
-// /app/testimonials/page.tsx
-
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { generateSEO } from "@/lib/seo";
-import { generateReviewSchema } from "@/lib/schema-generators";
+import { generateStaticPageMetadata } from "@/lib/metadata-generator";
+import {
+  generateReviewSchema,
+  generateBreadcrumbSchema,
+  generateWebPageSchema
+} from "@/lib/schema-generators";
 import { STATISTICS } from "@/lib/seo-config";
 import { getAllReviews } from "src/data/reviews/reviewsData";
 import JsonLd from "@/components/JsonLd";
@@ -47,7 +49,7 @@ const ReviewsCTAJoinSection = dynamic(
 );
 
 // ---------- SEO Metadata ----------
-export const metadata: Metadata = generateSEO({
+export const metadata: Metadata = generateStaticPageMetadata({
   title: "Authentic Student Reviews & Testimonials | CDPL - Cinute Digital",
   description:
     "Read 5000+ authentic student reviews and success stories for CDPL's Software Testing, Data Science, and AI/ML courses. See why we are rated 4.9/5 for career transformation and placement support.",
@@ -64,7 +66,6 @@ export const metadata: Metadata = generateSEO({
   ],
   url: "/reviews",
   image: "/og-images/og-image-testimonials.webp",
-  type: "website",
 });
 
 export default function Page() {
@@ -84,13 +85,29 @@ export default function Page() {
     })),
   };
 
-  // 3. Generate the schema
+  // 3. Generate the schemas
   const reviewSchema = generateReviewSchema(reviewSchemaData);
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Reviews", url: "/reviews" },
+  ]);
+
+  const webPageSchema = generateWebPageSchema({
+    name: "Authentic Student Reviews & Testimonials | CDPL",
+    description: "Read 5000+ authentic student reviews and success stories for CDPL's Software Testing, Data Science, and AI/ML courses.",
+    url: "/reviews",
+    isPartOf: {
+      "@id": "https://www.cinutedigital.com/#website"
+    }
+  });
 
   return (
     <div className="bg-white text-neutral-900">
       {/* JSON-LD SCHEMA INJECTION */}
-       <JsonLd id="review-schema" schema={reviewSchema} />
+      <JsonLd id="review-schema" schema={reviewSchema} />
+      <JsonLd id="reviews-breadcrumb" schema={breadcrumbSchema} />
+      <JsonLd id="reviews-webpage" schema={webPageSchema} />
 
       {/* Sections (unchanged) */}
       <ReviewsHeroSection />

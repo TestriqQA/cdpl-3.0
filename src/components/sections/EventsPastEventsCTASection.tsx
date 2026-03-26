@@ -1,9 +1,11 @@
 // components/sections/EventsPastEventsCTASection.tsx
 "use client";
 
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useState } from "react";
 import { Check, Building2, Sparkles, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+const WorkshopRequestModal = dynamic(() => import("@/components/WorkshopRequestModal"), { ssr: false });
 
 type Bullet = { label: string; sub?: string };
 
@@ -17,7 +19,7 @@ const EDGE_RINGS = ["ring-sky-200", "ring-rose-200", "ring-violet-200"] as const
 
 const STAT_NUMBER_GRADS = [
   "from-sky-600 via-cyan-600 to-emerald-600",
-  "from-amber-600 via-orange-600 to-rose-600",
+  "from-amber-600 via-brand to-rose-600",
   "from-indigo-600 via-violet-600 to-fuchsia-600",
 ] as const;
 
@@ -30,12 +32,41 @@ export default function EventsPastEventsCTASection({
     { label: "Reporting & outcomes", sub: "Pre/post assessments with skill deltas" },
   ],
   badges = ["On-site", "Virtual", "Hybrid"],
+  children,
 }: PropsWithChildren<{
   title?: string;
   subtitle?: string;
   bullets?: Bullet[];
   badges?: string[];
 }>) {
+  const [modalConfig, setModalConfig] = useState<{
+    isOpen: boolean;
+    variant: 'workshop' | 'service' | 'general' | 'consultation';
+    title: string;
+    subtitle: string;
+    source: string;
+  }>({
+    isOpen: false,
+    variant: 'workshop',
+    title: '',
+    subtitle: '',
+    source: '',
+  });
+
+  const openModal = (variant: 'workshop' | 'consultation', title: string, subtitle: string, source: string) => {
+    setModalConfig({
+      isOpen: true,
+      variant,
+      title,
+      subtitle,
+      source,
+    });
+  };
+
+  const closeModal = () => {
+    setModalConfig(prev => ({ ...prev, isOpen: false }));
+  };
+
   return (
     <section className="w-full overflow-x-hidden">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -97,24 +128,27 @@ export default function EventsPastEventsCTASection({
 
                 {/* Actions */}
                 <div className="mt-6 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-                  <Link
-                    href="/contact-us"
-                    className="group inline-flex w-full max-w-full items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white shadow-md ring-1 ring-black/5 transition hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 sm:w-auto sm:px-5 sm:py-2.5"
+                  <button
+                    onClick={() => openModal('workshop', 'Corporate Training Request', 'Tailored training programs for your team.', 'CTA - Request Training')}
+                    className="cursor-pointer group inline-flex w-full max-w-full items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold text-white shadow-md ring-1 ring-black/5 transition hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 sm:w-auto sm:px-5 sm:py-2.5"
                     style={{ backgroundColor: "#0069A8" }}
                   >
                     <span className="text-center leading-tight whitespace-normal sm:whitespace-nowrap">
                       Request Training for Your Organization
                     </span>
                     <ArrowRight className="h-4 w-4 flex-shrink-0 transition group-hover:translate-x-0.5" />
-                  </Link>
+                  </button>
 
                   <Link
                     href="/mentors"
                     className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 sm:w-auto sm:py-2.5"
                   >
-                    Learn more
+                    Meet our Mentors
                     <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                   </Link>
+
+                  {/* Render children here, typically for extra buttons or custom actions */}
+                  {children}
                 </div>
               </div>
 
@@ -177,38 +211,50 @@ export default function EventsPastEventsCTASection({
                       Share timelines & goals, we’ll reply with a crisp plan.
                     </p>
                     <div className="mt-3 flex flex-col gap-2 sm:flex-row">
-                      <Link
-                        href="/contact-us"
-                        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-sm transition hover:opacity-95 sm:w-auto sm:py-2.5"
+                      <button
+                        onClick={() => openModal('consultation', 'Schedule a Consultation', 'Discuss your training needs.', 'CTA - Book a Call')}
+                        className="cursor-pointer inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-sm transition hover:opacity-95 sm:w-auto sm:py-2.5"
                       >
                         Book a call
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>
               </aside>
             </div>
+
+            {/* Background decor for the main card */}
+            <div className="pointer-events-none absolute -left-24 -top-24 h-64 w-64 rounded-full bg-[radial-gradient(closest-side,theme(colors.sky.200/.6),transparent)] blur-2xl sm:h-72 sm:w-72" />
+            <div className="pointer-events-none absolute -right-16 top-12 h-56 w-56 rounded-full bg-[radial-gradient(closest-side,theme(colors.emerald.200/.6),transparent)] blur-2xl sm:h-64 sm:w-64" />
+            <div
+              className="pointer-events-none absolute inset-0 opacity-[0.2] mix-blend-multiply"
+              style={{
+                backgroundImage:
+                  "url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 32 32\\' width=\\'32\\' height=\\'32\\'><path d=\\'M0 31.5H32M31.5 0V32\\' stroke=\\'%23cbd5e1\\' stroke-width=\\'1\\' opacity=\\'0.65\\'/></svg>')",
+              }}
+            />
+            <div className="pointer-events-none absolute inset-x-0 -top-6 h-16 bg-gradient-to-b from-white/80 to-transparent sm:h-24" />
+            <div className="pointer-events-none absolute inset-x-0 -bottom-6 h-16 bg-gradient-to-t from-white to-transparent sm:h-24" />
           </div>
         </div>
       </div>
+      <WorkshopRequestModal
+        isOpen={modalConfig.isOpen}
+        onClose={closeModal}
+        source={modalConfig.source}
+        title={modalConfig.title}
+        subtitle={modalConfig.subtitle}
+        variant={modalConfig.variant}
+      />
     </section>
   );
 }
 
+// Helper component for background decoration
 function BackgroundDecor() {
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0">
-      <div className="absolute -left-24 -top-24 h-64 w-64 rounded-full bg-[radial-gradient(closest-side,theme(colors.sky.200/.6),transparent)] blur-2xl sm:h-72 sm:w-72" />
-      <div className="absolute -right-16 top-12 h-56 w-56 rounded-full bg-[radial-gradient(closest-side,theme(colors.emerald.200/.6),transparent)] blur-2xl sm:h-64 sm:w-64" />
-      <div
-        className="absolute inset-0 opacity-[0.2] mix-blend-multiply"
-        style={{
-          backgroundImage:
-            "url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 32 32\\' width=\\'32\\' height=\\'32\\'><path d=\\'M0 31.5H32M31.5 0V32\\' stroke=\\'%23cbd5e1\\' stroke-width=\\'1\\' opacity=\\'0.65\\'/></svg>')",
-        }}
-      />
-      <div className="absolute inset-x-0 -top-6 h-16 bg-gradient-to-b from-white/80 to-transparent sm:h-24" />
-      <div className="absolute inset-x-0 -bottom-6 h-16 bg-gradient-to-t from-white to-transparent sm:h-24" />
-    </div>
+    <>
+      {/* Add any specific background decorations here if needed */}
+    </>
   );
 }

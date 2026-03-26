@@ -1,9 +1,9 @@
-// src/components/data-analytics-bi-bigdata/ToolsSection.tsx
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ToolItem } from "./types";
-import { Database, Code, BarChart, Server } from "lucide-react";
+import { Database, Code, BarChart, Server, ArrowRight } from "lucide-react";
+import EnrollModal from "../EnrollModal";
 
 const toolsData: ToolItem[] = [
   { id: 1, name: "Tableau", icon: "Tableau", category: "BI & Visualization" },
@@ -33,7 +33,7 @@ interface EnrichedTool extends ToolItem {
   color: string;
 }
 
-// Enrich tools with gradient colors + short descriptions (content: names/categories remain same)
+// Enrich tools with gradient colors + short descriptions
 const enrichedTools: EnrichedTool[] = toolsData.map((tool) => {
   switch (tool.name) {
     case "Tableau":
@@ -41,56 +41,56 @@ const enrichedTools: EnrichedTool[] = toolsData.map((tool) => {
         ...tool,
         color: "from-blue-50 to-blue-100",
         description:
-          "Enterprise-grade BI platform for interactive dashboards, visual analytics, and business storytelling.",
+          "Leading BI tool for SQL Data Analyst roles. Visualize SQL analytics data effortlessly.",
       };
     case "Power BI":
       return {
         ...tool,
         color: "from-yellow-50 to-amber-100",
         description:
-          "Microsoft’s flagship Business Intelligence tool for self-service analytics, KPI dashboards, and reporting.",
+          "Essential for Business Intelligence. Learn to build dashboards for data analytics programs.",
       };
     case "Microsoft Excel":
       return {
         ...tool,
         color: "from-green-50 to-emerald-100",
         description:
-          "The most widely used spreadsheet tool for data analysis, reporting, and quick visualization.",
+          "The foundation of data analysis. Master advanced functions for quick insights.",
       };
     case "MySQL":
       return {
         ...tool,
         color: "from-sky-50 to-sky-100",
         description:
-          "Relational database engine used to store, manage, and query structured data for analytics workloads.",
+          "Master SQL for data analytics. Design schemas and query robust databases.",
       };
     case "Python":
       return {
         ...tool,
         color: "from-indigo-50 to-indigo-100",
         description:
-          "Versatile programming language for data engineering, automation, analytics, and scripting.",
+          "Automate ETL with Python. A must-have skill for Data Engineering Certifications.",
       };
     case "Apache Spark":
       return {
         ...tool,
         color: "from-orange-50 to-orange-100",
         description:
-          "Distributed Big Data processing engine optimized for large-scale data pipelines and real-time analytics.",
+          "High-speed processing for Big Data Engineering. Handle massive datasets.",
       };
     case "Databricks":
       return {
         ...tool,
         color: "from-rose-50 to-rose-100",
         description:
-          "Unified analytics and lakehouse platform for collaborative data engineering and machine learning.",
+          "Unified analytics platform. Learn modern cloud data engineering workflows.",
       };
     case "Apache Hadoop":
       return {
         ...tool,
         color: "from-slate-50 to-slate-100",
         description:
-          "Big Data framework for distributed storage and batch processing across large clusters.",
+          "Understanding distributed storage (HDFS) is key for any Big Data Engineer.",
       };
     default:
       return {
@@ -121,31 +121,25 @@ const stackCategories = [
 ];
 
 const ToolsSection: React.FC = () => {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Data Analytics with BI & Big Data Engineering Master Program";
+
   return (
-    <section className="bg-white py-16 md:py-20">
+    <section className="bg-white py-10">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header (content preserved, layout updated) */}
         <div className="mb-16 text-center md:mb-20">
-          <h2 className="text-sm font-semibold tracking-[0.2em] text-teal-600 uppercase">
-            Technology Stack
+          <h2 className="text-sm font-semibold tracking-[0.2em] text-[#0f766e] uppercase">
+            Industry-Standard Stack
           </h2>
           <h3 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Master the Industry&apos;s Leading Data Stack
+            Tools in our <span className="text-[#0f766e]">Data Analytics Program Mumbai</span>
           </h3>
           <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
-            Our program covers the essential tools required for both Business
-            Intelligence and Big Data Engineering roles.
+            Master the stack preferred by top MNCs for BI and Big Data Engineering.
           </p>
-          <p className="mx-auto mt-3 max-w-4xl text-sm text-slate-500">
-            Learn how to combine <strong>Tableau</strong>,{" "}
-            <strong>Power BI</strong>, <strong>Excel</strong>,{" "}
-            <strong>MySQL</strong>, <strong>Python</strong>,{" "}
-            <strong>Apache Spark</strong>, <strong>Databricks</strong>, and{" "}
-            <strong>Hadoop</strong> to build end-to-end{" "}
-            <strong>data pipelines, BI dashboards, and scalable Big Data
-              solutions</strong>-skills that are highly demanded for{" "}
-            <strong>BI Analyst, Data Engineer, and Analytics Engineer</strong>{" "}
-            roles.
+          <p className="mx-auto mt-3 max-w-4xl text-sm text-slate-700">
+            From SQL in data analytics to Certifications for Data Engineers tools like Spark and Tableau, we cover it all.
           </p>
         </div>
 
@@ -157,7 +151,7 @@ const ToolsSection: React.FC = () => {
               className={`group rounded-xl border-2 border-slate-200 bg-gradient-to-br ${tool.color} p-6 transition-all duration-300 hover:border-teal-300 hover:shadow-lg`}
             >
               {/* Icon (using first letter as placeholder logo) */}
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-white/70 text-2xl font-bold text-teal-600 shadow-sm group-hover:scale-110 transition-transform">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-white/70 text-2xl font-bold text-[#0f766e] shadow-sm group-hover:scale-110 transition-transform">
                 {tool.name.charAt(0)}
               </div>
 
@@ -269,14 +263,32 @@ const ToolsSection: React.FC = () => {
           </div>
           <p className="mt-6 text-center text-xs text-slate-600 sm:text-sm">
             This structured learning roadmap ensures you grow from{" "}
-            <strong>BI fundamentals</strong> to{" "}
-            <strong>full-fledged Big Data Engineering</strong>, making you
-            highly competitive for <strong>data analytics</strong>,{" "}
-            <strong>BI developer</strong>, and{" "}
-            <strong>data engineer</strong> job roles.
+            BI fundamentals to{" "}
+            full-fledged Big Data Engineering, making you
+            highly competitive for data analytics,{" "}
+            BI developer, and{" "}
+            data engineer job roles.
           </p>
         </div>
+
+        {/* CTA */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0f766e] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-teal-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-teal-300 cursor-pointer"
+          >
+            Start Learning These Tools
+            <ArrowRight className="h-5 w-5" />
+          </button>
+        </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Data Engineering Course Page - Tools Section - Start Learning"
+        courseName={courseName}
+      />
     </section>
   );
 };

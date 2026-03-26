@@ -1,8 +1,18 @@
 'use client';
-import { Users, GraduationCap, Briefcase, Target } from 'lucide-react';
+import { Users, GraduationCap, Briefcase, Target, ArrowRight } from 'lucide-react';
 import IconCard from '../ui/IconCard';
 import { motion } from 'framer-motion';
-import { JSX } from 'react';
+import { JSX, useState } from 'react';
+import dynamic from 'next/dynamic';
+const EnrollModal = dynamic(() => import('@/components/EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 
 type Audience = {
   icon: JSX.Element;
@@ -14,20 +24,20 @@ type Audience = {
 };
 
 const audience: Audience[] = [
-  { icon: <Users className="w-6 h-6" />, title: 'Manual Testers',     description: 'Upgrade to automation (UI + API + Mobile)', bg: 'bg-sky-50',    iconColor: 'text-sky-700',    border: 'border-sky-200' },
-  { icon: <GraduationCap className="w-6 h-6" />, title: 'Fresh Graduates',  description: 'BTech • BCA • MCA — job-ready in weeks',  bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
-  { icon: <Briefcase className="w-6 h-6" />, title: 'Career Switchers', description: 'Non-tech to SDET with mentor-led projects', bg: 'bg-amber-50',  iconColor: 'text-amber-700',  border: 'border-amber-200' },
-  { icon: <Target className="w-6 h-6" />, title: 'Developers',         description: 'Add reliable testing to your skillset',      bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
+  { icon: <Users className="w-6 h-6" />, title: 'Manual Testers', description: 'Upgrade to automation (UI + API + Mobile). Learn selenium to advance your career.', bg: 'bg-sky-50', iconColor: 'text-sky-700', border: 'border-sky-200' },
+  { icon: <GraduationCap className="w-6 h-6" />, title: 'Fresh Graduates', description: 'BTech • BCA • MCA — job-ready with selenium training in weeks.', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
+  { icon: <Briefcase className="w-6 h-6" />, title: 'Career Switchers', description: 'Non-tech to SDET with mentor-led projects. Selenium online classes for flexibility.', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
+  { icon: <Target className="w-6 h-6" />, title: 'Developers', description: 'Add reliable testing to your skillset. Selenium java course integration.', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
 ];
 
 export default function WhoShouldEnroll() {
-
+  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
 
   return (
     <section
       id="who-should-enroll"
       aria-labelledby="enroll-heading"
-      className="relative py-8 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle frame for a sleek, slightly futuristic feel */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -48,12 +58,11 @@ export default function WhoShouldEnroll() {
             id="enroll-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900"
           >
-            Who Should <span className="text-ST">Join</span>?
+            Who Should Enroll in this <span className="text-ST">Selenium Testing Course</span>?
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            Perfect for <strong>manual testers</strong>, <strong>fresh graduates</strong>,{' '}
-            <strong>career switchers</strong>, and <strong>developers</strong> who want industry-ready
-            <em> Automation Testing</em> & <em> SDET</em> skills-framework design, CI/CD, and real projects.
+            Looking for a <strong>selenium course near me</strong>? Perfect for <strong>manual testers</strong>, <strong>fresh graduates</strong>,{' '}
+            <strong>career switchers</strong> looking for an <strong>application tester course</strong>, and developers wanting <strong>SDET training</strong>.
           </p>
           {/* micro badges row */}
           <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold">
@@ -94,7 +103,26 @@ export default function WhoShouldEnroll() {
           version control, and <strong>CI/CD</strong>-everything required to stand out as an industry-ready{' '}
           <strong>SDET</strong>.
         </p>
+
+        {/* CTA */}
+        <div className="mt-10 text-center">
+          <button
+            onClick={() => setIsEnrollModalOpen(true)}
+            className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-8 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-indigo-700 hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+          >
+            Enroll Now
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
+
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollModalOpen}
+        onClose={() => setIsEnrollModalOpen(false)}
+        courseName="Advanced Software Testing"
+        source="Advanced Software Testing Course Page - Who Should Enroll Section - Enroll Now"
+      />
 
     </section>
   );

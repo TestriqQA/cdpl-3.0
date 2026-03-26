@@ -61,7 +61,7 @@ export default function WhyMasterProgram() {
     <section
       id="why-master-program"
       aria-labelledby="why-master-heading"
-      className="relative overflow-hidden py-10 md:py-14 bg-white"
+      className="relative overflow-hidden py-10 bg-white"
     >
       {/* Subtle, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -76,12 +76,10 @@ export default function WhyMasterProgram() {
             id="why-master-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Your Path to the <span className="text-green-700">Top&nbsp;1% Digital Marketer</span>
+            Why Choose CDPL for <span className="text-green-700">Digital Marketing Training</span>?
           </h2>
           <p className="mt-3 text-base sm:text-lg text-slate-700">
-            A mentor-led, AI-powered program that blends{' '}
-            <strong>performance marketing</strong>, <strong>SEO</strong>, <strong>GA4 analytics</strong>, and{' '}
-            <strong>creative strategy</strong>-so you can launch campaigns that scale with measurable ROI.
+            Our mentor-led program is recognized as the best Digital Marketing course in Mumbai. Master <strong>SEO, Performance Marketing, GA4, and AI Tools</strong> with 100% placement support to launch your career.
           </p>
         </header>
 

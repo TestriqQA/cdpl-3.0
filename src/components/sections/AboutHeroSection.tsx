@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { motion, type Transition } from "framer-motion";
 import Image from "next/image";
 import { Sparkles, Star, ShieldCheck, ArrowRight, Check, Home, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import AdvisorModal from "@/components/ui/AdvisorModal";
 
 const gradientText =
     "bg-clip-text text-transparent bg-[linear-gradient(90deg,#0ea5e9,#2563eb,#22c55e)]";
@@ -22,6 +24,8 @@ const breadcrumbs = [
 
 
 export default function AboutHeroSection() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <section
             aria-labelledby="about-heading"
@@ -81,10 +85,9 @@ export default function AboutHeroSection() {
                         About <span className="text-brand">Cinute Digital</span>
                     </motion.h1>
 
-                    <motion.p
-                        {...fadeUp}
-                        transition={{ ...(fadeUp.transition as Transition), delay: 0.12 }}
+                    <p
                         className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-700 sm:text-base md:text-lg"
+                        style={{ fontSizeAdjust: '0.5' }}
                     >
                         Cinute Digital is a premier <strong>EdTech institute</strong> delivering{" "}
                         <strong>industry-ready training</strong> in <strong>Software Testing</strong>,{" "}
@@ -94,7 +97,7 @@ export default function AboutHeroSection() {
                         <strong> high-growth tech jobs</strong>. Our <strong>job-oriented courses</strong> blend hands-on
                         labs, interview prep, and real business case studies—built to boost your{" "}
                         <strong>skills, employability, and salary growth</strong>.
-                    </motion.p>
+                    </p>
 
                     <motion.ul
                         {...fadeUp}
@@ -124,20 +127,12 @@ export default function AboutHeroSection() {
                         >
                             Explore Courses <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                         </Link>
-                        <Link
-                            href="contact-us"
-                            className="inline-flex w-full items-center justify-center rounded-2xl border border-slate-300 bg-white/90 px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2 dark:border-slate-200/70 dark:bg-white/90 sm:w-auto"
+                        <button
+                            onClick={() => setIsModalOpen(true)}
+                            className="inline-flex w-full items-center justify-center rounded-2xl border border-slate-300 bg-white/90 px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2 dark:border-slate-200/70 dark:bg-white/90 sm:w-auto cursor-pointer"
                         >
                             Talk to an Advisor
-                        </Link>
-                        {/* <button
-                            type="button"
-                            className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white/90 px-4 py-2.5 text-sm font-medium text-slate-900 shadow-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-200 focus:ring-offset-2 dark:border-slate-200/70 dark:bg-white/90 sm:w-auto"
-                            aria-label="Watch 60-second overview video"
-                        >
-                            <Play className="h-4 w-4 transition group-hover:scale-110" aria-hidden="true" />
-                            60-sec Overview
-                        </button> */}
+                        </button>
                     </motion.div>
 
                     <motion.div
@@ -146,8 +141,8 @@ export default function AboutHeroSection() {
                         className="mt-7 flex flex-wrap items-center gap-3 text-sm"
                     >
                         <div className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white/85 px-3 py-2 shadow-sm dark:border-slate-200/60 dark:bg-white/85">
-                            <Star className="h-4 w-4 text-amber-500" aria-hidden="true" />
-                            <span className="font-semibold text-amber-500">4.8/5</span>
+                            <Star className="h-4 w-4 text-[#b45309]" aria-hidden="true" />
+                            <span className="font-semibold text-[#b45309]">4.8/5</span>
                             <span className="text-slate-500">&nbsp;avg learner rating</span>
                         </div>
                         <div className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white/85 px-3 py-2 text-slate-800 shadow-sm dark:border-slate-200/60 dark:bg-white/85">
@@ -189,7 +184,7 @@ export default function AboutHeroSection() {
                     Trusted by learners & teams from
                 </p>
 
-                <div className="mt-3 grid grid-cols-2 items-center gap-3 opacity-80 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6">
+                <div className="mt-3 grid grid-cols-2 items-center gap-3 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-6">
                     {[
                         "/images/Testriq-Logo-1.webp",
                         "/company_images/axiom.webp",
@@ -198,7 +193,7 @@ export default function AboutHeroSection() {
                         "/company_images/raw_engineering.webp",
                         "/company_images/vistaar.webp",
                     ].map((src, i) => (
-                        <div key={i} className="relative mt-1 h-7 w-full grayscale sm:h-8 md:h-9 lg:h-10">
+                        <div key={i} className="relative mt-1 h-7 w-full grayscale hover:grayscale-0 transition-all duration-300 sm:h-8 md:h-9 lg:h-10">
                             <Image src={src} alt="Brand logo" title="Brand logo" fill sizes="(max-width: 768px) 33vw, 16vw" className="object-contain" />
                         </div>
                     ))}
@@ -209,6 +204,8 @@ export default function AboutHeroSection() {
             <span className="sr-only">
                 Cinute Digital — industry-ready courses, live projects, mentorship, and career support.
             </span>
+
+            <AdvisorModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </section>
     );
 }

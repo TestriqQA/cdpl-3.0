@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+
 import {
     Shuffle,
     Users,
@@ -10,10 +10,26 @@ import {
     CheckCircle2,
     Home,
     ChevronRight,
+    CloudDownload,
+    ArrowDownNarrowWide,
 } from 'lucide-react';
 import IconCard from '../ui/IconCard';
-import LeadForm from '../CourseLeadForm';
+import LeadForm from '../forms/ApiCourseLeadForm';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import { useState } from 'react';
+
+const SectionLoader = ({ label }: { label: string }) => {
+    return (
+        <div className="flex items-center justify-center h-full">
+            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+            <span className="ml-2 text-gray-900">{label}</span>
+        </div>
+    );
+};
+
+const EnrollModal = dynamic(() => import('@/components/EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
+const SyllabusDownloadModal = dynamic(() => import('@/components/SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus modal..." /> });
 
 
 /* -----------------------------
@@ -58,12 +74,14 @@ const features = [
  * Hero Section
  * ----------------------------- */
 export default function HeroSection() {
-
+    const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+    const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
 
     const breadcrumbs = [
         { label: 'Home', href: '/' },
-        { label: 'Software Testing', href: "#" },
-        { label: 'ETL Testing', href: '/etl-testing' },
+        { label: 'Courses', href: "/courses" },
+        { label: 'Software Testing', href: '/courses/software-testing-course' },
+        { label: 'ETL Testing' },
     ];
 
     return (
@@ -74,29 +92,37 @@ export default function HeroSection() {
                 <div className="absolute inset-0 [mask-image:radial-gradient(1100px_520px_at_50%_-10%,black,transparent)]" />
             </div>
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-14">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
                 {/* Breadcrumbs */}
                 <nav aria-label="Breadcrumb" className="mb-8">
                     <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
-                        {breadcrumbs.map((c, i) => (
-                            <li key={i} className="flex items-center gap-2">
-                                {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-                                <Link
-                                    href={c.href}
-                                    className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? 'font-semibold text-slate-900' : ''}`}
-                                >
-                                    {c.label}
-                                </Link>
-                            </li>
-                        ))}
+                        {breadcrumbs.map((c, i) => {
+                            const isLast = i === breadcrumbs.length - 1;
+                            return (
+                                <li key={i} className="flex items-center gap-2">
+                                    {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+                                    {c.href ? (
+                                        <Link
+                                            href={c.href}
+                                            className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
+                                        >
+                                            {c.label}
+                                        </Link>
+                                    ) : (
+                                        <span
+                                            className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
+                                        >
+                                            {c.label}
+                                        </span>
+                                    )}
+                                </li>
+                            );
+                        })}
                     </ol>
                 </nav>
                 <div className="grid items-start gap-10 md:grid-cols-12">
                     {/* Left copy */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                    <div
                         className="md:col-span-7 lg:col-span-8"
                     >
                         {/* Badge */}
@@ -109,59 +135,74 @@ export default function HeroSection() {
                             id="etl-hero"
                             className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
                         >
-                            <span className='text-ST'>ETL Testing</span> using SQL & Enterprise Tools
+                            Master <span className='text-ST'>ETL Testing</span> with SQL & Enterprise Tools – 100% Placement Support
                         </h1>
 
                         {/* Mobile form under H1 */}
                         <div className="mt-6 block md:hidden">
-                            <LeadForm variant="elevated" />
+                            <LeadForm variant="elevated" source="ETL Testing Course Page - Hero Section" />
                         </div>
 
                         {/* Sub copy */}
                         <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Validate data at every stage-<strong>extract</strong>,{' '}
-                            <strong>transform</strong>, and <strong>load</strong>. Learn{' '}
-                            <em>dataset profiling, schema checks, reconciliation, automation,
-                                and reporting</em> to ensure accurate BI & analytics.
+                            Understand <strong>what is ETL testing</strong> and validate data at every stage—<strong>extract</strong>,{' '}
+                            <strong>transform</strong>, and <strong>load</strong>. Learn practical skills in{' '}
+                            <em>dataset profiling, schema checks, reconciliation, and automation</em> to ensure accurate BI & analytics. This <strong>ETL testing course</strong> is your gateway to becoming an <strong>ETL developer</strong>.
                         </p>
                         <p className="mt-3 max-w-3xl text-sm text-slate-600">
-                            Topics: test design for ETL/ELT, SQL data quality rules, SCD types,
-                            partitioning, orchestration basics, CI/CD integration, and evidence-based
-                            reporting for audits.
+                            Topics: <strong>ETL vs ELT</strong>, <strong>what is ETL in data warehouse</strong>, SQL data quality rules, SCD types,
+                            partitioning, orchestration basics, CI/CD integration, and audit-ready reporting. Master <strong>ETL testing tools</strong> like Informatica and Talend.
                         </p>
 
                         {/* CTAs */}
                         <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                             <button
-                                className="group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                                onClick={() => setIsEnrollModalOpen(true)}
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
                                 aria-label="Enroll now in ETL Testing program"
                             >
                                 Enroll Now
                                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </button>
 
-                            <Link
-                                href="#curriculum"
-                                className="inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
+                            <button
+                                onClick={() => setIsSyllabusModalOpen(true)}
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                                aria-label="Download ETL Testing Syllabus"
+                            >
+                                Download Syllabus
+                                <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                            </button>
+
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    const el = document.getElementById('curriculum');
+                                    if (el) {
+                                        window.scrollTo({ top: el.offsetTop - 150, behavior: 'smooth' });
+                                    }
+                                }}
+                                className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
                                 aria-label="View full ETL curriculum"
                             >
                                 View Curriculum
-                            </Link>
+                                <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                            </button>
                         </div>
 
                         {/* Quick highlights */}
                         <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
                             <li className="flex items-start gap-2">
                                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-600" />
-                                80% practical labs with real datasets
+                                80% practical labs with real <strong>ETL pipeline</strong> datasets
                             </li>
                             <li className="flex items-start gap-2">
                                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-indigo-600" />
-                                Data quality rules & reconciliation tests
+                                Data quality rules & <strong>SQL reconciliation</strong> tests
                             </li>
                             <li className="flex items-start gap-2">
                                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-rose-600" />
-                                Interview prep & portfolio guidance
+                                Interview prep & <strong>ETL testing interview questions</strong> portfolio
                             </li>
                             <li className="flex items-start gap-2">
                                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-amber-600" />
@@ -178,19 +219,30 @@ export default function HeroSection() {
                                 />
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Right: Desktop Form + Feature cards */}
-                    <motion.aside
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.12, ease: 'easeOut' }}
+                    <aside
                         className="hidden md:col-span-5 lg:col-span-4 md:block"
                     >
-                        <LeadForm variant="elevated" />
-                    </motion.aside>
+                        <LeadForm variant="elevated" source="ETL Testing Course Page - Hero Section" />
+                    </aside>
                 </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollModalOpen}
+                onClose={() => setIsEnrollModalOpen(false)}
+                courseName="ETL Testing"
+                source="ETL Testing Course Page - Hero Section - Enroll Now"
+            />
+
+            <SyllabusDownloadModal
+                isOpen={isSyllabusModalOpen}
+                onClose={() => setIsSyllabusModalOpen(false)}
+                courseName="ETL Testing"
+                source="ETL Testing Course Page - Hero Section - ETL Testing - Download Syllabus"
+            />
 
         </section>
     );

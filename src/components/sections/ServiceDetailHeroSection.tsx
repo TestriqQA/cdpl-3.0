@@ -47,26 +47,13 @@ export default function ServiceDetailHeroSection({ service }: { service: Service
         }}
       />
 
-      {/* --- Minimal dot grid via SVG pattern (blended) --- */}
+      {/* --- Minimal background pattern (CSS optimization) --- */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-20 opacity-40"
+        className="pointer-events-none absolute inset-0 -z-20 opacity-20"
         style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml;utf8,\
-            <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'>\
-              <defs>\
-                <radialGradient id='g' cx='0' cy='0' r='1'>\
-                  <stop offset='0' stop-color='rgba(15,118,110,0.28)'/>\
-                  <stop offset='1' stop-color='rgba(15,118,110,0)'/>\
-                </radialGradient>\
-              </defs>\
-              <circle cx='1.5' cy='1.5' r='1.5' fill='rgba(2,132,199,0.14)'/>\
-              <circle cx='24' cy='12' r='10' fill='url(%23g)' opacity='0.08'/>\
-            </svg>\")",
-          backgroundSize: '32px 32px',
-          maskImage: 'radial-gradient(90% 70% at 50% 10%, black 40%, transparent 100%)',
-          WebkitMaskImage: 'radial-gradient(90% 70% at 50% 10%, black 40%, transparent 100%)',
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(15,118,110,0.15) 1px, transparent 0)',
+          backgroundSize: '24px 24px',
         }}
       />
 
@@ -104,7 +91,7 @@ export default function ServiceDetailHeroSection({ service }: { service: Service
           {/* Left: Title + copy */}
           <div className="md:col-span-7 lg:col-span-7">
             {/* compact chip */}
-            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/70 bg-white/80 px-3 py-1 text-[11px] font-medium text-cyan-700 shadow-sm backdrop-blur">
+            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/70 bg-white/90 px-3 py-1 text-[11px] font-medium text-cyan-700 shadow-sm">
               🚀 Mentor-led • 🎯 Job-ready curriculum
             </span>
 
@@ -143,7 +130,7 @@ export default function ServiceDetailHeroSection({ service }: { service: Service
           {/* Right: Overview card – blended with section */}
           <div className="md:col-span-5 lg:col-span-5">
             <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-sky-100/80 via-cyan-100/70 to-sky-100/80 shadow-2xl">
-              <div className="relative rounded-[calc(1.5rem-1px)] backdrop-blur bg-white/85 p-8 ring-1 ring-white/60">
+              <div className="relative rounded-[calc(1.5rem-1px)] bg-white/95 p-8 ring-1 ring-white/60">
                 {/* interior subtle pattern */}
                 <div
                   aria-hidden

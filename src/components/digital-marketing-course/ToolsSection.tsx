@@ -75,7 +75,7 @@ export default function ToolsSection() {
 
 
   return (
-    <section id="tools" aria-labelledby="tools-heading" className="relative py-8 md:py-14 bg-white">
+    <section id="tools" aria-labelledby="tools-heading" className="relative py-10 bg-white">
       {/* Subtle futuristic backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.035)_1px,transparent_1px)] bg-[size:28px_28px]" />
@@ -85,12 +85,10 @@ export default function ToolsSection() {
       <div className="container mx-auto max-w-7xl px-4 xl:p-10">
         <header className="text-center max-w-4xl mx-auto">
           <h2 id="tools-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            <span className='text-green-700'>Tools</span> & <span className='text-green-700'>Technologies</span> You Will Learn
+            Master the Best <span className='text-green-700'>Digital Marketing Tools</span> & AI Tech
           </h2>
           <p className="mt-4 text-sm sm:text-base text-slate-600">
-            Practice on a modern <strong>AI + SEO + Ads</strong> stack - from <strong>ChatGPT</strong> ideation and{' '}
-            <strong>Meta Ads</strong> execution to <strong>Ahrefs</strong>/<strong>SEMrush</strong> audits and{' '}
-            <strong>Google Insights</strong> performance tuning. Everything is <em>job-ready and portfolio-ready</em>.
+            Our course provides hands-on training with 15+ industry tools. Learn <strong>AI-Driven SEO (Ahrefs, SEMrush)</strong>, <strong>Performance Marketing (Meta Ads, Google Ads)</strong>, and <strong>GA4 Analytics</strong>. This is the most practical Digital Marketing tool training in Mumbai designed for career success.
           </p>
         </header>
 

@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
-import { TrendingUp, Briefcase, DollarSign, Award } from "lucide-react";
+import React, { useState } from "react";
+import { TrendingUp, Briefcase, DollarSign, Award, Download } from "lucide-react";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 interface StatCard {
   icon: React.ReactNode;
@@ -14,6 +15,9 @@ interface StatCard {
 }
 
 export default function StatsSection() {
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Machine Learning Algorithms using python Programming";
+
   // ---- ORIGINAL STATS CONTENT (values/labels/subtext preserved) ----
   const stats: StatCard[] = [
     {
@@ -82,7 +86,7 @@ export default function StatsSection() {
 
   return (
     <section
-      className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50"
+      className="py-10 bg-gradient-to-b from-white to-slate-50"
       aria-labelledby="stats-heading"
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -93,7 +97,7 @@ export default function StatsSection() {
             className="text-3xl md:text-4xl font-bold mb-4 text-slate-900"
           >
             Why Invest in{" "}
-            <span className="text-orange-600">Machine Learning</span>?
+            <span className="text-brand">Machine Learning</span>?
           </h2>
 
           {/* Original content kept, then expanded for SEO */}
@@ -247,7 +251,25 @@ export default function StatsSection() {
             </div>
           </div>
         </div>
+
+        {/* Download Syllabus Button */}
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={() => setIsSyllabusOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-full border border-slate-200 bg-white px-8 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-brand focus:outline-none focus:ring-4 focus:ring-orange-200"
+          >
+            <Download className="mr-2 h-4 w-4" />
+            Download Syllabus (PDF)
+          </button>
+        </div>
       </div>
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Machine Learning Algorithms with Python Course Page - Stats Section - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 }

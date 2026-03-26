@@ -1,5 +1,6 @@
-import Link from "next/link";
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import EnrollModal from "../EnrollModal";
 
 const targetAudience = [
     {
@@ -39,8 +40,11 @@ const targetAudience = [
 
 
 export default function WhoShouldEnroll() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const courseName = "Data Analytics & Visualization with Tableau";
+
     return (
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-blue-50 to-white">
+        <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-blue-50 to-white">
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-16">
@@ -68,7 +72,7 @@ export default function WhoShouldEnroll() {
                             </h3>
 
                             {/* Description */}
-                            <p className="text-gray-700 leading-relaxed mb-6">
+                            <p className="text-gray-900 leading-relaxed mb-6">
                                 {audience.description}
                             </p>
 
@@ -77,16 +81,16 @@ export default function WhoShouldEnroll() {
                                 <p className="font-semibold text-gray-900 text-sm">You will learn:</p>
                                 <ul className="space-y-2 text-sm">
                                     <li className="flex items-start gap-2">
-                                        <span className="text-orange-600 font-bold flex-shrink-0">✓</span>
-                                        <span className="text-gray-700">Core Tableau concepts and best practices</span>
+                                        <span className="text-gray-950 font-bold flex-shrink-0">✓</span>
+                                        <span className="text-gray-900">Core Tableau concepts and best practices</span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                        <span className="text-orange-600 font-bold flex-shrink-0">✓</span>
-                                        <span className="text-gray-700">Advanced visualization techniques</span>
+                                        <span className="text-gray-950 font-bold flex-shrink-0">✓</span>
+                                        <span className="text-gray-900">Advanced visualization techniques</span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                        <span className="text-orange-600 font-bold flex-shrink-0">✓</span>
-                                        <span className="text-gray-700">Real-world project experience</span>
+                                        <span className="text-gray-950 font-bold flex-shrink-0">✓</span>
+                                        <span className="text-gray-900">Real-world project experience</span>
                                     </li>
                                 </ul>
                             </div>
@@ -107,20 +111,20 @@ export default function WhoShouldEnroll() {
                             </h4>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">
-                                    <span className="text-green-600 font-bold flex-shrink-0">•</span>
-                                    <span className="text-gray-700">
+                                    <span className="text-gray-950 font-bold flex-shrink-0">•</span>
+                                    <span className="text-gray-900">
                                         <span className="font-semibold">Basic Computer Literacy:</span> Comfortable using computers and software
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="text-green-600 font-bold flex-shrink-0">•</span>
-                                    <span className="text-gray-700">
+                                    <span className="text-gray-950 font-bold flex-shrink-0">•</span>
+                                    <span className="text-gray-900">
                                         <span className="font-semibold">Internet Connection:</span> Reliable internet for online sessions
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="text-green-600 font-bold flex-shrink-0">•</span>
-                                    <span className="text-gray-700">
+                                    <span className="text-gray-950 font-bold flex-shrink-0">•</span>
+                                    <span className="text-gray-900">
                                         <span className="font-semibold">Commitment:</span> Willingness to learn and practice
                                     </span>
                                 </li>
@@ -133,20 +137,20 @@ export default function WhoShouldEnroll() {
                             </h4>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">
-                                    <span className="text-blue-600 font-bold flex-shrink-0">•</span>
-                                    <span className="text-gray-700">
+                                    <span className="text-gray-950 font-bold flex-shrink-0">•</span>
+                                    <span className="text-gray-900">
                                         <span className="font-semibold">Data Familiarity:</span> Basic understanding of data concepts
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="text-blue-600 font-bold flex-shrink-0">•</span>
-                                    <span className="text-gray-700">
+                                    <span className="text-gray-950 font-bold flex-shrink-0">•</span>
+                                    <span className="text-gray-900">
                                         <span className="font-semibold">Business Knowledge:</span> Understanding of business analytics
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="text-blue-600 font-bold flex-shrink-0">•</span>
-                                    <span className="text-gray-700">
+                                    <span className="text-gray-950 font-bold flex-shrink-0">•</span>
+                                    <span className="text-gray-900">
                                         <span className="font-semibold">SQL Knowledge:</span> Helpful but not required
                                     </span>
                                 </li>
@@ -165,7 +169,7 @@ export default function WhoShouldEnroll() {
                         <div className="p-6 bg-orange-50 rounded-xl border-2 border-orange-200 text-center">
                             <div className="text-4xl mb-3">📚</div>
                             <h4 className="font-bold text-gray-900 mb-2">Comprehensive Content</h4>
-                            <p className="text-sm text-gray-700">
+                            <p className="text-sm text-gray-900">
                                 12 modules with detailed curriculum and learning materials
                             </p>
                         </div>
@@ -173,7 +177,7 @@ export default function WhoShouldEnroll() {
                         <div className="p-6 bg-blue-50 rounded-xl border-2 border-blue-200 text-center">
                             <div className="text-4xl mb-3">👨‍🏫</div>
                             <h4 className="font-bold text-gray-900 mb-2">Expert Guidance</h4>
-                            <p className="text-sm text-gray-700">
+                            <p className="text-sm text-gray-900">
                                 1:1 support from industry experts and experienced instructors
                             </p>
                         </div>
@@ -181,7 +185,7 @@ export default function WhoShouldEnroll() {
                         <div className="p-6 bg-green-50 rounded-xl border-2 border-green-200 text-center">
                             <div className="text-4xl mb-3">🎯</div>
                             <h4 className="font-bold text-gray-900 mb-2">Real Projects</h4>
-                            <p className="text-sm text-gray-700">
+                            <p className="text-sm text-gray-900">
                                 Work on industry-relevant projects for portfolio building
                             </p>
                         </div>
@@ -189,7 +193,7 @@ export default function WhoShouldEnroll() {
                         <div className="p-6 bg-purple-50 rounded-xl border-2 border-purple-200 text-center">
                             <div className="text-4xl mb-3">🏆</div>
                             <h4 className="font-bold text-gray-900 mb-2">Certification</h4>
-                            <p className="text-sm text-gray-700">
+                            <p className="text-sm text-gray-900">
                                 Globally recognized certificate with QR code validation
                             </p>
                         </div>
@@ -207,7 +211,7 @@ export default function WhoShouldEnroll() {
                             <div className="text-4xl flex-shrink-0">🌟</div>
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-2">Industry-Aligned Curriculum</h4>
-                                <p className="text-gray-700 text-sm">
+                                <p className="text-gray-900 text-sm">
                                     Our curriculum is designed based on current industry demands and market trends
                                 </p>
                             </div>
@@ -217,7 +221,7 @@ export default function WhoShouldEnroll() {
                             <div className="text-4xl flex-shrink-0">💡</div>
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-2">Practical Learning Approach</h4>
-                                <p className="text-gray-700 text-sm">
+                                <p className="text-gray-900 text-sm">
                                     80% practical exercises and 20% theory for hands-on experience
                                 </p>
                             </div>
@@ -227,7 +231,7 @@ export default function WhoShouldEnroll() {
                             <div className="text-4xl flex-shrink-0">🚀</div>
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-2">Career Acceleration</h4>
-                                <p className="text-gray-700 text-sm">
+                                <p className="text-gray-900 text-sm">
                                     100% job assistance with resume building and interview preparation
                                 </p>
                             </div>
@@ -237,7 +241,7 @@ export default function WhoShouldEnroll() {
                             <div className="text-4xl flex-shrink-0">🎓</div>
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-2">Flexible Learning</h4>
-                                <p className="text-gray-700 text-sm">
+                                <p className="text-gray-900 text-sm">
                                     Hybrid model with online and classroom options to fit your schedule
                                 </p>
                             </div>
@@ -250,11 +254,21 @@ export default function WhoShouldEnroll() {
                     <p className="text-gray-600 text-lg mb-6">
                         If you match any of the above profiles, this course is perfect for you!
                     </p>
-                    <Link href="contact-us" className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition-all inline-block">
+                    <button
+                        onClick={() => setIsEnrollOpen(true)}
+                        className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                    >
                         Check Your Eligibility and Enroll
-                    </Link>
+                    </button>
                 </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Tableau Course Page - Who Should Enroll Section - Enroll Now"
+                courseName={courseName}
+            />
         </section>
     );
 }

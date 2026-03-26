@@ -1,9 +1,18 @@
 'use client';
 
-import { Briefcase, Building2, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
-import React, { } from 'react';
+import { Briefcase, Building2, ArrowRight, Sparkles } from 'lucide-react';
+import dynamic from 'next/dynamic';
+import React, { useState } from 'react';
 import type { JSX } from 'react';
+const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 
 /* ---------- Motion typing & lazy loader (safe fallback) ---------- */
 type MotionOnlyProps = {
@@ -26,6 +35,15 @@ function useMotionDiv(): MotionDivLike {
   const Fallback: MotionDivLike = (props: MotionDivProps) => {
     const safe = (props ?? {}) as MotionDivProps;
     const {
+      initial,
+      animate,
+      whileInView,
+      whileHover,
+      whileTap,
+      exit,
+      transition,
+      variants,
+      viewport,
       ...rest
     } = safe;
     return <div {...rest} />;
@@ -81,10 +99,11 @@ type CompanyItem = (typeof COMPANIES)[number];
 /* ---------- Component ---------- */
 export default function CareerSection(): JSX.Element {
   const MotionDiv = useMotionDiv();
+  const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
 
 
   return (
-    <section id="career" className="relative py-4 md:py-10 bg-white">
+    <section id="career" className="relative py-10 bg-white">
       {/* subtle rails */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -100,10 +119,10 @@ export default function CareerSection(): JSX.Element {
           className="text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            High-Paying <span className='text-ST'>QA Careers</span>
+            High-Paying <span className='text-ST'>QA Careers</span> After Selenium Training
           </h2>
           <p className="mt-5 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            <strong>4,00,000+ open roles</strong> across India • Typical salary band <strong>₹5–20 LPA</strong>.
+            Master <strong>what is selenium testing</strong>, <strong>ui testing</strong>, and <strong>mobile automation testing</strong> to unlock top QA roles. Prepare for <strong>web testing interview questions</strong> and pass the <strong>selenium quiz</strong> with confidence. <strong>4,00,000+ QA openings</strong> • Typical salary <strong>₹5–20 LPA</strong>.
           </p>
         </MotionDiv>
 
@@ -184,15 +203,23 @@ export default function CareerSection(): JSX.Element {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="mt-12 text-center"
         >
-          <Link
-            href="contact-us"
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+          <button
+            onClick={() => setIsCareerModalOpen(true)}
+            className="cursor-pointer inline-flex items-center gap-2 rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
           >
+            <Sparkles className="h-5 w-5" />
             Start Your QA Career
             <ArrowRight className="h-5 w-5" />
-          </Link>
+          </button>
         </MotionDiv>
       </div>
+
+      <CareerSessionModal
+        isOpen={isCareerModalOpen}
+        onClose={() => setIsCareerModalOpen(false)}
+        source="Master Program Course Page - Career Section - Start Your QA Career"
+      />
+
     </section>
   );
 }

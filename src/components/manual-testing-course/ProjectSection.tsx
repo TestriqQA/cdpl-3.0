@@ -1,19 +1,19 @@
 /* ==================== PROJECTS ==================== */
 "use client";
 import {
-    CheckCircle2,
-    Clock3,
-    Laptop,
-    ShieldCheck,
-    Building2,
-    HeartPulse,
-    ShoppingBag,
-    Network,
-    GraduationCap,
-} from "lucide-react";
+    LuBadgeCheck,
+    LuClock,
+    LuLaptop,
+    LuShieldCheck,
+    LuBuilding,
+    LuHeartPulse,
+    LuShoppingBag,
+    LuNetwork,
+    LuGraduationCap,
+} from "react-icons/lu";
 import { useState, type JSX } from "react";
-import EnrollModal from "@/components/EnrollModal";
-
+import dynamic from "next/dynamic";
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
 
 type AccentColor = "indigo" | "emerald" | "sky" | "amber" | "rose" | "violet";
 
@@ -39,7 +39,7 @@ const accentClasses: Record<AccentColor, string> = {
     indigo:
         "border-indigo-200 hover:shadow-indigo-100 [&_.chip]:bg-indigo-50 [&_.chip]:text-indigo-700 [&_.dot]:bg-indigo-500",
     emerald:
-        "border-emerald-200 hover:shadow-emerald-100 [&_.chip]:bg-emerald-50 [&_.chip]:text-emerald-700 [&_.dot]:bg-emerald-500",
+        "border-emerald-200 hover:shadow-emerald-100 [&_.chip]:bg-emerald-50 [&_.chip]:text-emerald-800 [&_.dot]:bg-emerald-600",
     sky:
         "border-sky-200 hover:shadow-sky-100 [&_.chip]:bg-sky-50 [&_.chip]:text-sky-700 [&_.dot]:bg-sky-500",
     amber:
@@ -57,7 +57,7 @@ const ProjectCard = ({ project, onEnroll }: ProjectCardProps) => {
         <article
 
             aria-label={`${project.title} QA project`}
-            className={`group relative rounded-2xl border-2 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg ${colorClass}`}
+            className={`group relative flex flex-col h-full rounded-2xl border-2 bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg ${colorClass}`}
         >
             {/* Slim top bar accent */}
             <div className="absolute left-0 right-0 top-0 h-1 rounded-t-2xl bg-gradient-to-r from-black/0 via-black/5 to-black/0" />
@@ -79,15 +79,15 @@ const ProjectCard = ({ project, onEnroll }: ProjectCardProps) => {
 
             <div className="mb-4 flex flex-wrap gap-2">
                 <span className="chip inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium">
-                    <ShieldCheck className="mr-1 h-3.5 w-3.5" />
+                    <LuShieldCheck className="mr-1 h-3.5 w-3.5" />
                     {project.difficulty}
                 </span>
                 <span className="chip inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium">
-                    <Clock3 className="mr-1 h-3.5 w-3.5" />
+                    <LuClock className="mr-1 h-3.5 w-3.5" />
                     {project.duration}
                 </span>
                 <span className="chip inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium">
-                    <Laptop className="mr-1 h-3.5 w-3.5" />
+                    <LuLaptop className="mr-1 h-3.5 w-3.5" />
                     Tools: {project.tools.join(" · ")}
                 </span>
             </div>
@@ -95,7 +95,7 @@ const ProjectCard = ({ project, onEnroll }: ProjectCardProps) => {
             <ul className="mb-5 grid grid-cols-2 gap-2" itemProp="about">
                 {project.features.map((f, i) => (
                     <li key={`${project.title}-feature-${i}`} className="flex items-center gap-2 text-sm text-gray-700">
-                        <CheckCircle2 className="h-4 w-4 opacity-80" aria-hidden="true" />
+                        <LuBadgeCheck className="h-4 w-4 opacity-80" aria-hidden="true" />
                         <span>{f}</span>
                     </li>
                 ))}
@@ -240,12 +240,12 @@ export default function ProjectsSection(): JSX.Element {
 
 
     return (
-        <section className="py-16 md:py-5 bg-white" id="projects" aria-labelledby="projects-heading">
+        <section className="py-10 bg-white" aria-labelledby="projects-heading">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="mb-14 text-center">
                     <div className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-3 py-2 text-[13px] shadow-md font-semibold text-gray-700">
-                        <GraduationCap className="h-4 w-4" />
+                        <LuGraduationCap className="h-4 w-4" />
                         Job-Ready QA Portfolio
                     </div>
                     <h2
@@ -263,19 +263,19 @@ export default function ProjectsSection(): JSX.Element {
                     {/* Trust mini row */}
                     <div className="mx-auto mt-6 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4">
                         <div className="rounded-lg border-2 border-blue-300 bg-blue-50 px-3 py-2 text-center text-sm text-gray-700">
-                            <ShoppingBag className="mx-auto mb-1 h-5 w-5 text-blue-800" />
+                            <LuShoppingBag className="mx-auto mb-1 h-5 w-5 text-blue-800" />
                             E-Commerce
                         </div>
                         <div className="rounded-lg border-2 border-green-300 bg-green-50 px-3 py-2 text-center text-sm text-gray-700">
-                            <Building2 className="mx-auto mb-1 h-5 w-5 text-green-800" />
+                            <LuBuilding className="mx-auto mb-1 h-5 w-5 text-green-800" />
                             Banking
                         </div>
                         <div className="rounded-lg border-2 border-red-300 bg-red-50 px-3 py-2 text-center text-sm text-gray-700">
-                            <HeartPulse className="mx-auto mb-1 h-5 w-5 text-red-800" />
+                            <LuHeartPulse className="mx-auto mb-1 h-5 w-5 text-red-800" />
                             Healthcare
                         </div>
                         <div className="rounded-lg border-2 border-purple-300 bg-purple-50 px-3 py-2 text-center text-sm text-gray-700">
-                            <Network className="mx-auto mb-1 h-5 w-5 text-purple-800" />
+                            <LuNetwork className="mx-auto mb-1 h-5 w-5 text-purple-800" />
                             Telecom
                         </div>
                     </div>
@@ -298,6 +298,7 @@ export default function ProjectsSection(): JSX.Element {
                 isOpen={isEnrollModalOpen}
                 onClose={() => setIsEnrollModalOpen(false)}
                 courseName="Manual Testing Projects"
+                source="Manual Testing Course Page - Projects Section - Start Project"
             />
         </section >
     );

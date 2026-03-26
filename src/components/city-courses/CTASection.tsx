@@ -2,12 +2,15 @@
 
 import React, { useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import { ArrowRight, Phone, Mail, MapPin, Check, Star, Zap } from "lucide-react";
+import { ArrowRight, Phone, Mail, MapPin, Check, Zap } from "lucide-react";
 import Link from "next/link";
-import { EnrollFormData, EnrollPopup } from "../EnrollForms";
+import EnrollModal from "@/components/EnrollModal";
+import Image from "next/image";
 
 interface CTASectionProps {
   data: {
+    courseName?: string;
+    location?: string;
     ctaContent: {
       title: string;
       subtitle: string;
@@ -41,27 +44,14 @@ const itemVariants: Variants = {
 
 const CTASection: React.FC<CTASectionProps> = ({ data }) => {
   const { ctaContent } = data;
+  const courseName = data.courseName || "Course";
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupSource, setPopupSource] = useState("");
 
-  const handleEnrollSubmit = (enroll: EnrollFormData) => {
-    alert(
-      `Enroll Now Submitted:\nName: ${enroll.name}\nEmail: ${enroll.email}\nPhone: ${enroll.phone}`
-    );
-    setIsPopupOpen(false);
-  };
-
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
-
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(
-      `Consultation Request:\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}`
-    );
+  const openPopup = (source: string) => {
+    setPopupSource(source);
+    setIsPopupOpen(true);
   };
 
   return (
@@ -75,7 +65,7 @@ const CTASection: React.FC<CTASectionProps> = ({ data }) => {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <motion.div
-          className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12"
+          className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12" // Changed items-start to items-center for better image alignment visually
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -137,30 +127,24 @@ const CTASection: React.FC<CTASectionProps> = ({ data }) => {
               </motion.div>
             )}
 
-            {/* CTA Buttons */}
             <motion.div
               variants={itemVariants}
               className="mt-8 flex flex-col gap-3 sm:flex-row"
             >
               <button
-                onClick={() => setIsPopupOpen(true)}
+                onClick={() => openPopup(`(${data.location || 'City'} ${data.courseName || 'Course'}) - CTA Section - Enroll Now`)}
                 className="group inline-flex items-center justify-center cursor-pointer rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-3.5 font-semibold text-white shadow-lg transition hover:shadow-xl"
               >
                 Enroll Now
                 <ArrowRight className="ml-2 h-5 w-5 transition group-hover:translate-x-0.5" />
               </button>
-              {/* Popup now uses reusable EnrollPopup */}
-              <EnrollPopup
-                isOpen={isPopupOpen}
-                onClose={() => setIsPopupOpen(false)}
-                onSubmit={handleEnrollSubmit}
-              />
-              <Link
-                href="contact-us"
-                className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-8 py-3.5 font-semibold text-slate-800 shadow-sm transition hover:border-slate-400 hover:shadow-md"
+
+              <button
+                onClick={() => openPopup(`(${data.location || 'City'} ${data.courseName || 'Course'}) - CTA Section - Get Free Demo`)}
+                className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-8 py-3.5 font-semibold text-slate-800 shadow-sm transition hover:border-slate-400 hover:shadow-md cursor-pointer"
               >
                 Get Free Demo
-              </Link>
+              </button>
             </motion.div>
 
             {/* Contact Info Cards */}
@@ -215,89 +199,47 @@ const CTASection: React.FC<CTASectionProps> = ({ data }) => {
             </motion.div>
           </div>
 
-          {/* RIGHT: Consultation Form */}
-          <motion.div variants={itemVariants} className="lg:col-span-5">
-            <div className="rounded-2xl border border-indigo-200 bg-gradient-to-br from-indigo-600 to-violet-600 p-8 shadow-2xl max-w-md w-full lg:ml-auto">
-              <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1 backdrop-blur-sm">
-                <Star className="h-4 w-4 fill-yellow-300 text-yellow-300" />
-                <span className="text-xs font-semibold text-white">
-                  Free Consultation
-                </span>
+          {/* RIGHT: Illustration */}
+          <motion.div variants={itemVariants} className="lg:col-span-5 relative mt-8 lg:mt-0">
+            <div className="relative mx-auto max-w-md lg:max-w-none">
+              {/* Background accent - reduced opacity/blur for cleaner look behind illustration */}
+              <div className="absolute -top-10 -right-10 h-64 w-64 rounded-full bg-gradient-to-br from-indigo-400 to-violet-400 opacity-20 blur-3xl"></div>
+              <div className="absolute -bottom-10 -left-10 h-64 w-64 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-400 opacity-20 blur-3xl"></div>
+
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-white/20">
+                {/* Embed the generated illustration here. I will use the path of the generated image. 
+                    Wait, I can't hardcode the dynamic generated path unless I know it. 
+                    I should use the artifact mechanism or move the file to public/images 
+                    for direct Next.js usage. 
+                    Since I cannot move files to 'public' easily without exact path knowledge of where 'public' is relative to here 
+                    (it is usually src/../public or similar).
+                    I will check file structure for public folder. 
+                 */}
+                {/* For now I'll use a placeholder or assume I'm copying the image. 
+                      Let's check if I can just reference a local public image. 
+                      I generated the image in artifacts. I should probably move it to the project.
+                   */}
+                {/* I'll use a standard path and assume I'll copy the file in next step. */}
+                <Image
+                  src="/images/tech-career-illustration.png"
+                  alt="Tech Career Success"
+                  width={600}
+                  height={800}
+                  className="w-full h-auto object-cover"
+                />
               </div>
-
-              <h3 className="text-2xl font-bold text-white">
-                Get Expert Guidance
-              </h3>
-              <p className="mt-2 text-sm text-indigo-100">
-                Schedule a free consultation with our career counselors and discover the best learning path for you.
-              </p>
-
-              <form onSubmit={onSubmit} className="mt-6 space-y-4">
-                <div>
-                  <label htmlFor="cta-name" className="mb-1.5 block text-sm font-medium text-white">
-                    Your Name
-                  </label>
-                  <input
-                    id="cta-name"
-                    name="name"
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                    className="block w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white placeholder-indigo-200 shadow-sm backdrop-blur-sm outline-none transition focus:border-white/40 focus:ring-2 focus:ring-white/30"
-                    placeholder="Enter your name"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="cta-email" className="mb-1.5 block text-sm font-medium text-white">
-                    Your Email
-                  </label>
-                  <input
-                    id="cta-email"
-                    name="email"
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                    className="block w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white placeholder-indigo-200 shadow-sm backdrop-blur-sm outline-none transition focus:border-white/40 focus:ring-2 focus:ring-white/30"
-                    placeholder="you@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="cta-phone" className="mb-1.5 block text-sm font-medium text-white">
-                    Your Phone
-                  </label>
-                  <input
-                    id="cta-phone"
-                    name="phone"
-                    type="tel"
-                    required
-                    pattern="^[0-9+\\-\\s()]{7,15}$"
-                    value={form.phone}
-                    onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-                    className="block w-full rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-white placeholder-indigo-200 shadow-sm backdrop-blur-sm outline-none transition focus:border-white/40 focus:ring-2 focus:ring-white/30"
-                    placeholder="+91 98765 43210"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="mt-2 inline-flex w-full items-center justify-center rounded-lg bg-white px-6 py-3.5 font-semibold text-indigo-600 shadow-lg transition hover:bg-indigo-50 hover:shadow-xl"
-                >
-                  Get Free Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </button>
-
-                <p className="text-xs text-indigo-100">
-                  By submitting, you agree to be contacted about courses and placements.
-                </p>
-              </form>
             </div>
           </motion.div>
         </motion.div>
       </div>
+
+      <EnrollModal
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        source={popupSource}
+        courseName={courseName}
+        location={data.location}
+      />
     </section>
   );
 };

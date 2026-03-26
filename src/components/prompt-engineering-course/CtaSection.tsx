@@ -2,15 +2,22 @@
 "use client";
 
 import Link from "next/link";
+import React, { useState } from "react";
+import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+import EnrollModal from "@/components/EnrollModal";
 
 export default function CtaSection() {
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Prompt Engineering Course";
+  const source = "Prompt Engineering Course Page - CTA Section";
 
 
   return (
     <section
       id="cta"
       aria-labelledby="cta-heading"
-      className="relative py-14 md:py-20 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* sleek accent (thin gradient line only; no heavy fills) */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-emerald-500 via-sky-500 to-violet-500 opacity-80" />
@@ -51,22 +58,23 @@ export default function CtaSection() {
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="tel:+917888383788"
-            className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(16,185,129,0.5)] transition hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300"
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-emerald-700 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(16,185,129,0.5)] transition hover:bg-emerald-800 focus:outline-none focus:ring-4 focus:ring-emerald-300"
             aria-label="Call admissions at +91 7888383788"
           >
             Call: +91 788-83-83-788
           </Link>
 
-          <Link
-            href="mailto:contact@cinutedigital.com"
-            className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(79,70,229,0.45)] transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300"
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-indigo-700 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(79,70,229,0.45)] transition hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-300"
             aria-label="Email admissions at contact@cinutedigital.com"
           >
-            Email Us
-          </Link>
+            Enroll Now
+          </button>
 
           <button
-            className="inline-flex items-center justify-center rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+            onClick={() => setIsSyllabusOpen(true)}
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="Download the Prompt Engineering syllabus"
           >
             Download Syllabus
@@ -77,6 +85,20 @@ export default function CtaSection() {
           Flexible schedules • Mentor support •{" "}
           <span className="font-semibold text-slate-800">Seats are limited-secure yours today.</span>
         </p>
+
+        <SyllabusDownloadModal
+          isOpen={isSyllabusOpen}
+          onClose={() => setIsSyllabusOpen(false)}
+          source="Prompt Engineering Course Page - CTA Section - Prompt Engineering - Download Syllabus"
+          courseName={courseName}
+        />
+
+        <EnrollModal
+          isOpen={isEnrollOpen}
+          onClose={() => setIsEnrollOpen(false)}
+          source={`${source} - Enroll Now`}
+          courseName={courseName}
+        />
       </div>
 
     </section>

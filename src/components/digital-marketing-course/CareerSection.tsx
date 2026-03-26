@@ -1,7 +1,7 @@
-// components/sections/CareerSection.tsx
-// Server component (no client JS). Sleek, slightly futuristic, fully responsive.
+"use client";
 
-import Link from "next/link";
+import { useState } from "react";
+import CareerSessionModal from "../CareerSessionModal";
 
 type Job = string;
 
@@ -37,10 +37,12 @@ const ACCENTS = [
 ];
 
 export default function CareerSection() {
- 
+  const [isCareerOpen, setIsCareerOpen] = useState(false);
+  const courseName = "Digital Marketing & Analytics Master Program";
+
 
   return (
-    <section id="careers" aria-labelledby="careers-heading" className="relative py-12 sm:py-16 md:py-20 bg-white">
+    <section id="careers" aria-labelledby="careers-heading" className="relative py-10 bg-white">
       {/* Subtle futuristic backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.035)_1px,transparent_1px)] bg-[size:28px_28px]" />
@@ -51,11 +53,10 @@ export default function CareerSection() {
         {/* Heading */}
         <header className="text-center max-w-4xl mx-auto">
           <h2 id="careers-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            Know Your Future as a{' '}
-            <span className="text-green-700">Digital Marketing & Analytics Professional</span>
+            Secure a High-Paying <span className="text-green-700">Digital Marketing Job</span> in Mumbai
           </h2>
 
-        {/* KPI band */}
+          {/* KPI band */}
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
             <Stat badge="Global Openings" value="141,000+" note="LinkedIn & job boards worldwide" />
             <Stat badge="Avg Salary (IN)" value="₹6–18 LPA" note="Role & location dependent" />
@@ -63,9 +64,7 @@ export default function CareerSection() {
           </div>
 
           <p className="mt-6 text-sm sm:text-base text-slate-600">
-            High-growth roles across <strong>SEO</strong>, <strong>Performance Marketing (PPC)</strong>,{' '}
-            <strong>Social Media</strong>, <strong>Content</strong>, <strong>Analytics/Attribution</strong> and{' '}
-            <strong>CRM/Lifecycle</strong>. Build a portfolio recruiters love.
+            Demand for Digital Marketing professionals in Mumbai is at an all-time high. Master <strong>SEO, Performance Ads (PPC), and Analytics</strong> with the best institute to secure 100% placement in top MNCs and Agencies.
           </p>
         </header>
 
@@ -76,7 +75,6 @@ export default function CareerSection() {
             return (
               <span
                 key={job}
-                role="listitem"
                 tabIndex={0}
                 className={[
                   'inline-flex items-center justify-center rounded-xl border px-4 py-3 text-sm font-semibold shadow-[0_1px_0_0_rgba(15,23,42,0.05)]',
@@ -116,21 +114,28 @@ export default function CareerSection() {
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <Link
-            href="contact-us"
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+          <button
+            onClick={() => setIsCareerOpen(true)}
+            className="cursor-pointer inline-flex items-center gap-2 rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="Talk to a program advisor"
           >
             Talk to a Program Advisor
             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
               <path d="M12.293 4.293a1 1 0 011.414 0l4 4a1 1 0 01.083 1.32l-.083.094-4 4a1 1 0 01-1.497-1.32l.083-.094L14.585 10H3a1 1 0 01-.117-1.993L3 8h11.585l-2.292-2.293a1 1 0 010-1.414z" />
             </svg>
-          </Link>
+          </button>
           <p className="mt-3 text-xs sm:text-sm text-slate-600">
             Learn from anywhere. <span className="font-semibold text-slate-800">If you want to be the best, CDPL is your place.</span>
           </p>
         </div>
       </div>
+
+      <CareerSessionModal
+        isOpen={isCareerOpen}
+        onClose={() => setIsCareerOpen(false)}
+        source="Digital Marketing Course Page - Career Section - Talk to Advisor"
+        courseName={courseName}
+      />
 
     </section>
   );

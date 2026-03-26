@@ -11,16 +11,16 @@ type Pill = {
 };
 
 const PILLS: Pill[] = [
-  { label: "80 Hours", sub: "Live + Labs", bg: "bg-sky-50",     text: "text-sky-900",     border: "border-sky-200",     ring: "focus:ring-sky-300" },
+  { label: "80 Hours", sub: "Live + Labs", bg: "bg-sky-50", text: "text-sky-900", border: "border-sky-200", ring: "focus:ring-sky-300" },
   { label: "40+ Projects", sub: "Portfolio Ready", bg: "bg-emerald-50", text: "text-emerald-900", border: "border-emerald-200", ring: "focus:ring-emerald-300" },
-  { label: "6 hrs / week", sub: "Flexible Cohort", bg: "bg-amber-50",  text: "text-amber-900",  border: "border-amber-200",  ring: "focus:ring-amber-300" },
-  { label: "No Coding Exp.", sub: "Beginner Friendly", bg: "bg-violet-50",  text: "text-violet-900",  border: "border-violet-200",  ring: "focus:ring-violet-300" },
-  { label: "9.8/10 Rating", sub: "Learner Reviews", bg: "bg-rose-50",    text: "text-rose-900",    border: "border-rose-200",    ring: "focus:ring-rose-300" },
+  { label: "6 hrs / week", sub: "Flexible Cohort", bg: "bg-amber-50", text: "text-amber-900", border: "border-amber-200", ring: "focus:ring-amber-300" },
+  { label: "No Coding Exp.", sub: "Beginner Friendly", bg: "bg-violet-50", text: "text-violet-900", border: "border-violet-200", ring: "focus:ring-violet-300" },
+  { label: "9.8/10 Rating", sub: "Learner Reviews", bg: "bg-rose-50", text: "text-rose-900", border: "border-rose-200", ring: "focus:ring-rose-300" },
 ];
 
 const HIGHLIGHTS = [
   { title: "AI + Data Science", desc: "NumPy, Pandas, Matplotlib, scikit-learn, prompt engineering" },
-  { title: "Web Development",  desc: "FastAPI / Django APIs, authentication, deployment, Docker" },
+  { title: "Web Development", desc: "FastAPI / Django APIs, authentication, deployment, Docker" },
   { title: "Automation & Scripting", desc: "ETL, file ops, schedulers, CLI tools, Selenium basics" },
   { title: "Clean Code & DevOps", desc: "OOP, testing (pytest), Git/GitHub, CI/CD fundamentals" },
 ];
@@ -29,7 +29,7 @@ export default function WhyPythonProgram() {
 
 
   return (
-    <section id="why-python" aria-labelledby="why-python-heading" className="relative py-8 md:py-12 bg-white">
+    <section id="why-python" aria-labelledby="why-python-heading" className="relative py-10 bg-white">
       {/* Subtle futuristic backdrop (no heavy gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.035)_1px,transparent_1px)] bg-[size:26px_26px]" />
@@ -77,8 +77,8 @@ export default function WhyPythonProgram() {
               "border-amber-200 bg-amber-50",
               "border-violet-200 bg-violet-50",
             ];
-            const ring = ["focus:ring-sky-300","focus:ring-emerald-300","focus:ring-amber-300","focus:ring-violet-300"][idx % 4];
-            const badge = ["text-sky-700","text-emerald-700","text-amber-700","text-violet-700"][idx % 4];
+            const ring = ["focus:ring-sky-500", "focus:ring-emerald-500", "focus:ring-amber-500", "focus:ring-violet-500"][idx % 4];
+            const badge = ["text-sky-700", "text-emerald-700", "text-amber-700", "text-violet-700"][idx % 4];
 
             return (
               <article

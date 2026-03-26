@@ -1,9 +1,16 @@
+"use client";
+import { useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
-import Link from "next/link";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 export default function CtaSection() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+    const courseName = "Advanced Excel for Data Analytics & Visualization";
+
     return (
-        <section className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">
+        <section className="relative py-10 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">
             {/* Decorative background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -16,7 +23,7 @@ export default function CtaSection() {
                     <div className="text-white space-y-8 lg:col-span-8">
                         <div className="space-y-4">
                             <h2 className="text-3xl md:text-4xl font-bold leading-tight">
-                                Ready to <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">Master</span> Excel?
+                                Ready to <span className="bg-gradient-to-r from-[#ff8c00] via-[#ff8c00] to-[#ff8c00] bg-clip-text text-transparent">Master</span> Excel?
                             </h2>
                             <p className="text-xl text-blue-100 leading-relaxed">
                                 Join thousands of successful professionals who have transformed their careers with our comprehensive Excel training program.
@@ -42,11 +49,17 @@ export default function CtaSection() {
 
                         {/* CTA Buttons */}
                         <div className="flex flex-col md:flex-row gap-4 pt-4">
-                            <button className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 cursor-pointer text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                            <button
+                                onClick={() => setIsEnrollOpen(true)}
+                                className="bg-gradient-to-r from-[#1d4ed8] to-[#4338ca] hover:from-[#1e40af] hover:to-[#3730a3] cursor-pointer text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                            >
                                 Enroll Now
                                 <ArrowRight className="w-5 h-5" />
                             </button>
-                            <button className="border-2 border-white text-white cursor-pointer font-semibold py-4 px-8 rounded-lg hover:bg-white/10 transition-all duration-300">
+                            <button
+                                onClick={() => setIsSyllabusOpen(true)}
+                                className="border-2 border-white text-white cursor-pointer font-semibold py-4 px-8 rounded-lg hover:bg-white/10 transition-all duration-300"
+                            >
                                 Download Brochure
                             </button>
                         </div>
@@ -108,28 +121,42 @@ export default function CtaSection() {
                     <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
                         This exclusive offer is available for a limited time only. Don&apos;t miss out on your chance to master Excel and transform your career!
                     </p>
-                    <Link
-                        href="/contact-us"
+                    <button
+                        onClick={() => setIsEnrollOpen(true)}
                         className="
     inline-flex items-center justify-center
     w-full sm:w-auto
     px-4 py-3 sm:px-6 sm:py-3 md:px-10 md:py-4
     text-sm sm:text-base md:text-lg
     bg-gradient-to-r from-yellow-400 to-orange-500
-    hover:from-yellow-500 hover:to-orange-600
+    hover:from-yellow-500 hover:to-brand
     text-slate-900 font-bold
     rounded-lg
     text-center
     shadow-lg hover:shadow-xl
     transition-all duration-300
     break-words
+    cursor-pointer
   "
                     >
                         Claim Your Offer Now
-                    </Link>
+                    </button>
 
                 </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Data Analytics & Visualization Course Page - CTA Section - Enroll Now"
+                courseName={courseName}
+            />
+            <SyllabusDownloadModal
+                isOpen={isSyllabusOpen}
+                onClose={() => setIsSyllabusOpen(false)}
+                source="Data Analytics & Visualization Course Page - CTA Section - Download Brochure"
+                courseName={courseName}
+            />
         </section>
     );
 }

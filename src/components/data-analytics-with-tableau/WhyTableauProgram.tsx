@@ -1,5 +1,6 @@
-import React from "react";
-
+"use client";
+import React, { useState } from "react";
+import EnrollModal from "../EnrollModal";
 
 const whyProgramData = [
     {
@@ -49,8 +50,11 @@ const whyProgramData = [
 
 
 export default function WhyTableauProgram() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const courseName = "Data Analytics & Visualization with Tableau";
+
     return (
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-10 px-4 sm:px-6 lg:px-8 bg-white">
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-16">
@@ -129,7 +133,7 @@ export default function WhyTableauProgram() {
                 {/* Stats Highlight */}
                 <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div className="text-center p-8 bg-blue-50 rounded-xl border-2 border-blue-200">
-                        <div className="text-5xl font-bold text-blue-600 mb-2">500+</div>
+                        <div className="text-5xl font-bold text-gray-950 mb-2">500+</div>
                         <p className="text-gray-700 font-semibold">Successful Graduates</p>
                         <p className="text-sm text-gray-600 mt-2">
                             Placed in top companies worldwide
@@ -137,7 +141,7 @@ export default function WhyTableauProgram() {
                     </div>
 
                     <div className="text-center p-8 bg-orange-50 rounded-xl border-2 border-orange-200">
-                        <div className="text-5xl font-bold text-orange-600 mb-2">4.8/5</div>
+                        <div className="text-5xl font-bold text-gray-950 mb-2">4.8/5</div>
                         <p className="text-gray-700 font-semibold">Student Rating</p>
                         <p className="text-sm text-gray-600 mt-2">
                             Consistently excellent feedback
@@ -145,14 +149,31 @@ export default function WhyTableauProgram() {
                     </div>
 
                     <div className="text-center p-8 bg-green-50 rounded-xl border-2 border-green-200">
-                        <div className="text-5xl font-bold text-green-600 mb-2">14+</div>
+                        <div className="text-5xl font-bold text-gray-950 mb-2">14+</div>
                         <p className="text-gray-700 font-semibold">Years Experience</p>
                         <p className="text-sm text-gray-600 mt-2">
                             Proven track record in training
                         </p>
                     </div>
                 </div>
+
+                {/* CTA */}
+                <div className="mt-16 text-center">
+                    <button
+                        onClick={() => setIsEnrollOpen(true)}
+                        className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                    >
+                        Enroll Now
+                    </button>
+                </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Tableau Course Page - Why Program Section - Enroll Now"
+                courseName={courseName}
+            />
         </section>
     );
 }

@@ -1,5 +1,8 @@
-// components/sections/WhoShouldEnroll.tsx
-// Server component — clean, modern audience section with subtle futuristic accents + SEO.
+"use client";
+
+import { useState } from "react";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 type Persona = {
   title: string;
@@ -23,7 +26,7 @@ const PERSONAS: Persona[] = [
     accent: {
       bar: "bg-orange-500",
       border: "border-orange-200",
-      text: "text-orange-700",
+      text: "text-brand",
       ring: "focus:ring-orange-300",
       chip: "bg-orange-50",
     },
@@ -70,6 +73,9 @@ const PERSONAS: Persona[] = [
 ];
 
 export default function WhoShouldEnroll() {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+
   const seoKeywords =
     "who should enroll advanced data analytics course, analytics for students, working professionals upskill, business analyst training, career switch to data analytics, python sql power bi course, job ready analytics program";
 
@@ -78,7 +84,7 @@ export default function WhoShouldEnroll() {
     <section
       id="who-should-enroll"
       aria-labelledby="wse-heading"
-      className="relative py-8 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop: fine grid + soft top glow (no heavy gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -92,7 +98,7 @@ export default function WhoShouldEnroll() {
             id="wse-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Who Is This <span className="text-DS">Course For</span>
+            Is This Data Analyst Full Course Right for You?
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
             Whether you’re starting out or leveling up, this{" "}
@@ -172,8 +178,36 @@ export default function WhoShouldEnroll() {
           </p>
           <p className="mt-2 text-[11px] text-slate-500">*Learning paths adapt by background and pace.</p>
         </div>
+
+        {/* CTA Buttons */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-indigo-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-200"
+          >
+            Enroll Now
+          </button>
+          <button
+            onClick={() => setIsSyllabusOpen(true)}
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-8 py-3 text-base font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
+          >
+            Download Syllabus
+          </button>
+        </div>
       </div>
 
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Data Analytics Course Page - Who Should Enroll Section - Enroll Now"
+        courseName="Advanced Data Analytics Hero Program"
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Data Analytics Course Page - Who Should Enroll Section - Syllabus Download"
+        courseName="Advanced Data Analytics Hero Program"
+      />
     </section>
   );
 }

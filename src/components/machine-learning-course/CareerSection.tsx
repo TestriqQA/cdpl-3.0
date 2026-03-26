@@ -1,9 +1,7 @@
-// components/sections/CareerSection.tsx
-// Server component — sleek, SEO-optimized, slightly futuristic, fully responsive.
-// Unique accent colors per logo card (no repeats), minimal/non-distracting visuals.
-// Includes accessible labels, keyboard focus states, and JSON-LD for rich results.
-
-import Link from "next/link";
+"use client";
+import { useState } from "react";
+import CareerSessionModal from "@/components/CareerSessionModal";
+import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
 
 type Company = {
   name: string;
@@ -73,16 +71,17 @@ const COMPANIES: Company[] = [
 ];
 
 export default function CareerSection() {
+  const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
+  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
+
   const subtitle = "101,000+ Job Vacancies in India";
   const context =
     "Join the ranks of Data Scientists, ML Engineers, and Analytics Professionals at India’s leading product and services companies.";
   const keywords =
     "data science jobs India, machine learning hiring companies, analytics careers, Python ML roles, fresher data scientist openings, placement assistance";
 
-
-
   return (
-    <section id="careers" aria-labelledby="career-heading" className="relative overflow-hidden py-8 md:py-10 bg-white">
+    <section id="careers" aria-labelledby="career-heading" className="relative overflow-hidden py-10 bg-white">
       {/* Subtle futuristic grid line */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.035)_1px,transparent_1px)] bg-[size:28px_28px]" />
@@ -124,15 +123,6 @@ export default function CareerSection() {
                   c.accent.ring,
                 ].join(" ")}
               >
-                {/* logo */}
-
-                {/* <Image
-                  src={c.logo}
-                  alt={c.alt}
-                  title={c.alt}
-                  className="mx-auto h-10 w-auto select-none grayscale opacity-80 transition-all duration-200 group-hover:grayscale-0 group-hover:opacity-100"
-                  loading="lazy"
-                /> */}
                 {/* label */}
                 <p className={["mt-3 text-md font-semibold", c.accent.text].join(" ")}>{c.name}</p>
               </div>
@@ -151,14 +141,15 @@ export default function CareerSection() {
 
         {/* CTA row */}
         <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link
-            href="contact-us"
-            className="inline-flex items-center justify-center rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+          <button
+            onClick={() => setIsCareerModalOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-200"
             aria-label="Apply for data science roles via our placement cell"
           >
             Apply for Placement Assistance
-          </Link>
+          </button>
           <button
+            onClick={() => setIsSyllabusModalOpen(true)}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-purple-200"
             aria-label="Download the syllabus to see job-ready skills"
           >
@@ -171,6 +162,19 @@ export default function CareerSection() {
           *Logos are for illustration of hiring potential. Roles and openings vary by location, skills, and experience.
         </p>
       </div>
+
+      <CareerSessionModal
+        isOpen={isCareerModalOpen}
+        onClose={() => setIsCareerModalOpen(false)}
+        source="Machine Learning Course Page - Career Section - Placement Assistance"
+      />
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusModalOpen}
+        onClose={() => setIsSyllabusModalOpen(false)}
+        courseName="Machine Learning and Data Science with Python"
+        source="Machine Learning Course Page - Career Section - Download Syllabus"
+      />
 
     </section>
   );

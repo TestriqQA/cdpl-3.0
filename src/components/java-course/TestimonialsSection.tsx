@@ -1,8 +1,14 @@
 // components/sections/JavaTestimonialsSection.tsx
-// Server component (no client-side JS) – sleek, simple, and unique
+// Client component (no client-side JS) – sleek, simple, and unique
 
-import Link from "next/link";
-import ReviewsMarquee from "../sections/ReviewMarque";
+'use client';
+
+
+const ReviewsMarquee = dynamic(() => import("../sections/ReviewMarque"), { ssr: false, loading: () => <div>Loading...</div> });
+import { useState } from "react";
+import dynamic from "next/dynamic";
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false, loading: () => <div>Loading...</div> });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <div>Loading...</div> });
 
 // ---------- Types ----------
 type Testimonial = {
@@ -30,10 +36,11 @@ export default function TestimonialsSection({
   id = "testimonials",
   title = DEFAULT_TITLE,
 }: Props) {
-
+  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
 
   return (
-    <section id={id} aria-labelledby={`${id}-heading`} className="relative py-12 sm:py-16 md:py-20">
+    <section id={id} aria-labelledby={`${id}-heading`} className="relative py-10">
       {/* Subtle grid backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.04)_1px,transparent_1px)] bg-[size:28px_28px]" />
@@ -63,24 +70,36 @@ export default function TestimonialsSection({
 
         {/* CTAs */}
         <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3">
-          <Link
-            href="contact-us"
-            className="rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
+          <button
+            onClick={() => setIsEnrollModalOpen(true)}
+            className="cursor-pointer rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
           >
             Enroll now
-          </Link>
+          </button>
 
           <button
-            className="rounded-xl border border-slate-300 bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition focus:outline-none focus:ring-4 focus:ring-slate-200"
+            onClick={() => setIsSyllabusModalOpen(true)}
+            className="cursor-pointer rounded-xl border border-slate-300 bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition focus:outline-none focus:ring-4 focus:ring-slate-200"
           >
             Download Syllabus
           </button>
         </div>
       </div>
 
+      <EnrollModal
+        isOpen={isEnrollModalOpen}
+        onClose={() => setIsEnrollModalOpen(false)}
+        courseName="Java Programming"
+        source="Java Programming Course Page - Testimonials Section - Enroll Now"
+      />
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusModalOpen}
+        onClose={() => setIsSyllabusModalOpen(false)}
+        courseName="Java Programming"
+        source="Java Programming Course Page - Testimonials Section - Download Syllabus"
+      />
+
     </section>
   );
 }
-
-
-

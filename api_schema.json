@@ -1,0 +1,407 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": "https://www.cinutedigital.com/#organization",
+    "name": "CDPL - Cinute Digital",
+    "legalName": "Cinute Digital Private Limited",
+    "alternateName": "CDPL",
+    "url": "https://www.cinutedigital.com",
+    "logo": {
+      "@type": "ImageObject",
+      "@id": "https://www.cinutedigital.com/#logo",
+      "url": "https://www.cinutedigital.com/cdpl-logo.png",
+      "width": 200,
+      "height": 60,
+      "caption": "CDPL - Cinute Digital"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://www.cinutedigital.com/og-images/home-page-og.png",
+      "width": 1200,
+      "height": 630
+    },
+    "description": "Leading EdTech company providing industry-focused training in Software Testing, Data Science, AI/ML, and Digital Marketing with 100% placement support.",
+    "slogan": "Transform Your Career with Industry-Ready Skills",
+    "telephone": "+918488988984",
+    "email": "contact@cinutedigital.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road",
+      "addressLocality": "Mira Bhayandar, Mumbai",
+      "addressRegion": "Maharashtra",
+      "postalCode": "401107",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.29403967980817,
+      "longitude": 72.87115175396495
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "customer service",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ],
+        "contactOption": "TollFree"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "admissions",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ]
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "technical support",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ]
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/cinutedigital",
+      "https://www.linkedin.com/company/cinute-digital/",
+      "https://twitter.com/cinutedigital",
+      "@cinutedigital",
+      "https://www.instagram.com/cinutedigital",
+      "https://www.youtube.com/@cinutedigital"
+    ],
+    "foundingDate": "2020",
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "value": "50"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Monday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Tuesday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Wednesday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Thursday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "15:00"
+      }
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Training Partner",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "ISTQB"
+        },
+        "name": "ISTQB Certified Training Partner"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Educational Credential",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Various Industry Bodies"
+        },
+        "name": "Industry Recognized Certifications"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://www.cinutedigital.com/#website",
+    "url": "https://www.cinutedigital.com",
+    "name": "CDPL - Cinute Digital",
+    "description": "Professional training in Software Testing, Data Science, AI/ML with 100% placement support",
+    "publisher": {
+      "@id": "https://www.cinutedigital.com/#organization"
+    },
+    "inLanguage": "en-IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.cinutedigital.com/courses/software-testing-course/api-testing#webpage",
+    "url": "https://www.cinutedigital.com/courses/software-testing-course/api-testing",
+    "name": "API Testing Course with POSTMAN & RestAPIs | CDPL",
+    "description": "Master API testing in 15 hours with live projects, global certification, and placement support.",
+    "isPartOf": {
+      "@id": "https://www.cinutedigital.com/#website"
+    },
+    "about": {
+      "@id": "https://www.cinutedigital.com/#organization"
+    },
+    "inLanguage": "en-IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "@id": "https://www.cinutedigital.com/courses/software-testing-course/api-testing#course",
+    "name": "API Testing Course with POSTMAN & RestAPIs",
+    "description": "Master API testing in 15 hours with live projects, global certification, and placement support.",
+    "url": "https://www.cinutedigital.com/courses/software-testing-course/api-testing",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "@id": "https://www.cinutedigital.com/#organization",
+      "name": "CDPL - Cinute Digital",
+      "url": "https://www.cinutedigital.com"
+    },
+    "hasCourseInstance": [
+      {
+        "@type": "CourseInstance",
+        "courseMode": [
+          "online",
+          "onsite"
+        ],
+        "courseWorkload": "P3M",
+        "instructor": {
+          "@type": "Person",
+          "name": "Expert Mentors"
+        }
+      }
+    ],
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "25000",
+      "highPrice": "65000",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.cinutedigital.com/courses/software-testing-course/api-testing",
+      "category": "Paid"
+    },
+    "inLanguage": "en-IN",
+    "learningResourceType": "Professional Training"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Software Testing Courses Directory",
+    "itemListElement": []
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.cinutedigital.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Courses",
+        "item": "https://www.cinutedigital.com/courses"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Software Testing Course",
+        "item": "https://www.cinutedigital.com/courses/software-testing-course"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "API Testing",
+        "item": "https://www.cinutedigital.com/courses/software-testing-course/api-testing"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is API testing and why is it important?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "**API testing** involves verifying APIs (Application Programming Interfaces) directly—checking their functionality, reliability, performance, and security. Unlike UI testing, **api testing means** validating the logic layer. It’s crucial because it catches bugs early (Shift-Left) and ensures different software systems communicate correctly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from a manual testing course?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "While we cover **manual API testing** using Postman, this course focuses heavily on **API automation** and technical validation (JSON/XML). It is an advanced module often taken after or alongside a **manual testing course with placement**."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you cover API automation testing tools?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we extensively cover **Postman** (for both manual and automated testing) and **Newman** for CLI execution. We also introduce concepts relevant to **Rest Assured** and other **API automation testing tools**."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I learn API testing without coding?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Tools like **Postman** allow you to perform extensive testing with minimal coding. We teach you the necessary JavaScript snippets for validation, making it easy to **learn API testing** even if you are a beginner."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are some API testing examples I will practice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You will work on **REST API examples** like a Contact List app and an Employee Management system. You will verify **test api post request**, GET, PUT, DELETE methods, and Authorization headers using real **public api for testing**."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide placement support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. As a leading **software testing training** institute in Mumbai, we provide 100% placement support, including resume building (highlighting your **API test cases examples**), mock interviews, and referrals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I test API endpoints in this course?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We use a hands-on approach. You will learn **how to test api** endpoints by sending requests, analyzing response codes (200 OK, 404 Not Found), validating JSON bodies, and checking response times."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this course strictly for Mumbai residents?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, while our offline campus is in Thane/Mumbai, our **online API testing** classes are available globally. You get the same **manual testing course with placement** benefits and mentor support online."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Enroll in CDPL API Testing Course",
+    "description": "A step-by-step guide to enrolling in our specialized API Testing program.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Review Syllabus",
+        "text": "Analyze the Postman, JSON structure, and automation framework curriculum."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Contact Admissions",
+        "text": "Reach out to our admissions team for counseling and batch details."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Start Learning",
+        "text": "Master network requests, perform backend validations, and get certified!"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-1",
+    "name": "Home",
+    "url": "https://www.cinutedigital.com"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-2",
+    "name": "All Courses",
+    "url": "https://www.cinutedigital.com/courses"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-3",
+    "name": "About Us",
+    "url": "https://www.cinutedigital.com/about-us"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-4",
+    "name": "Contact Us",
+    "url": "https://www.cinutedigital.com/contact-us"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-5",
+    "name": "Events & Webinars",
+    "url": "https://www.cinutedigital.com/events"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-6",
+    "name": "Services",
+    "url": "https://www.cinutedigital.com/services"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-7",
+    "name": "Mentors",
+    "url": "https://www.cinutedigital.com/mentors"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-8",
+    "name": "Mock Test",
+    "url": "https://www.cinutedigital.com/mock-test"
+  }
+]

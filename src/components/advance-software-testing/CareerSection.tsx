@@ -1,7 +1,17 @@
 'use client';
 import { Briefcase, Building2, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
 
 const ROLES = [
   'SDET',
@@ -24,7 +34,7 @@ const roleAccents = [
   'bg-violet-50 border-violet-200 text-violet-900',
   'bg-rose-50 border-rose-200 text-rose-900',
   'bg-indigo-50 border-indigo-200 text-indigo-900',
-  'bg-orange-50 border-orange-200 text-orange-900',
+  'bg-orange-50 border-orange-200 text-brand',
   'bg-teal-50 border-teal-200 text-teal-900',
 ];
 
@@ -40,10 +50,10 @@ const companyAccents = [
 ];
 
 export default function CareerSection() {
-
+  const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
 
   return (
-    <section id="career" aria-labelledby="career-heading" className="relative py-8 md:py-10 bg-white">
+    <section id="career" aria-labelledby="career-heading" className="relative py-10 bg-white">
       {/* Subtle separators for a sleek, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -60,12 +70,10 @@ export default function CareerSection() {
           className="text-center mb-10 sm:mb-12"
         >
           <h2 id="career-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            High-Paying <span className="text-ST">SDET</span> Careers
+            Unlock High-Paying <span className="text-ST">SDET & Automation</span> Careers
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            <strong>2,50,000+ QA openings</strong> across India with fast-growing demand for{' '}
-            <strong>Automation Engineers</strong> and <strong>SDETs</strong>. Average fresher salary:{' '}
-            <strong>₹6–18 LPA</strong> depending on stack, location, and interview performance.
+            <strong>SDET training</strong> opens doors to premium roles. With expertise in <strong>selenium</strong>, <strong>API</strong>, and <strong>mobile testing</strong>, you can demand higher salaries. Average fresher package: <strong>₹4–8 LPA</strong>.
           </p>
         </motion.div>
 
@@ -145,19 +153,25 @@ export default function CareerSection() {
           transition={{ duration: 0.45, ease: 'easeOut' }}
           className="mt-12 text-center"
         >
-          <Link
-            href="contact-us"
-            className="inline-flex items-center gap-2 rounded-xl border border-[#00758F] bg-[#00758F] px-7 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#016a82] focus:outline-none focus:ring-4 focus:ring-cyan-200"
-            aria-label="Become SDET in 30 Days"
+          <button
+            onClick={() => setIsCareerModalOpen(true)}
+            className="cursor-pointer inline-flex items-center gap-2 rounded-xl border border-[#00758F] bg-[#00758F] px-7 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#016a82] focus:outline-none focus:ring-4 focus:ring-cyan-200"
+            aria-label="Become SDET"
           >
-            Become SDET in 30 Days
+            Become SDET
             <ArrowRight className="h-5 w-5" />
-          </Link>
+          </button>
           <p className="mt-3 text-xs text-slate-500">
             Mentor-led, project-based training with resume building and mock interviews.
           </p>
         </motion.div>
       </div>
+
+      <CareerSessionModal
+        isOpen={isCareerModalOpen}
+        onClose={() => setIsCareerModalOpen(false)}
+        source="Advanced Software Testing Course Page - Career Section - Become SDET"
+      />
 
     </section>
   );

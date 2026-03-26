@@ -1,7 +1,7 @@
-// components/sections/CurriculumSection.tsx
-// Server component – no client JS needed
-
-import Link from "next/link";
+"use client";
+import { useState } from "react";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import EnrollModal from "../EnrollModal";
 
 type Module = {
   num: string;
@@ -109,17 +109,20 @@ const ACCENTS = [
   { ring: "ring-fuchsia-300", soft: "bg-fuchsia-50", badge: "text-fuchsia-800 bg-fuchsia-100", text: "text-fuchsia-900" },
   { ring: "ring-lime-300", soft: "bg-lime-50", badge: "text-lime-800 bg-lime-100", text: "text-lime-900" },
   { ring: "ring-cyan-300", soft: "bg-cyan-50", badge: "text-cyan-800 bg-cyan-100", text: "text-cyan-900" },
-  { ring: "ring-orange-300", soft: "bg-orange-50", badge: "text-orange-800 bg-orange-100", text: "text-orange-900" },
+  { ring: "ring-orange-300", soft: "bg-orange-50", badge: "text-brand bg-orange-100", text: "text-brand" },
   { ring: "ring-stone-300", soft: "bg-stone-50", badge: "text-stone-800 bg-stone-100", text: "text-stone-900" },
   { ring: "ring-blue-300", soft: "bg-blue-50", badge: "text-blue-800 bg-blue-100", text: "text-blue-900" },
   { ring: "ring-purple-300", soft: "bg-purple-50", badge: "text-purple-800 bg-purple-100", text: "text-purple-900" },
 ];
 
 export default function CurriculumSection() {
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Digital Marketing & Analytics Master Program";
 
 
   return (
-    <section id="curriculum" aria-labelledby="curriculum-heading" className="relative py-8 md:py-8 bg-white">
+    <section id="curriculum" aria-labelledby="curriculum-heading" className="relative py-10 bg-white">
       {/* Scaffold */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 [background:radial-gradient(600px_240px_at_50%_0%,rgba(2,132,199,0.06),transparent_60%)]" />
@@ -130,11 +133,10 @@ export default function CurriculumSection() {
       <div className="mx-auto max-w-7xl px-4 xl:px-6">
         <header className="text-center">
           <h2 id="curriculum-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            Course Curriculum - <span className="text-green-700">14 Modules</span>
+            Advanced <span className="text-green-700">Digital Marketing Course</span> Modules
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            A <strong>portfolio-first</strong>, <strong>job-ready</strong> roadmap: master SEO, performance ads, GA4/GTM,
-            CRO, media planning, dashboards, attribution, and lifecycle automation.
+            Our comprehensive <strong>14-module curriculum</strong> is designed for the 2025-2026 job market. Learn from the best Digital Marketing institute in Mumbai with placement focus on SEO, SEM, SMM, and Analytics.
           </p>
         </header>
 
@@ -203,17 +205,33 @@ export default function CurriculumSection() {
 
         {/* Footer CTA */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <button className="rounded-xl border border-orange-500 bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-200">
+          <button
+            onClick={() => setIsSyllabusOpen(true)}
+            className="cursor-pointer rounded-xl border border-brand bg-brand px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand focus:outline-none focus:ring-4 focus:ring-orange-200"
+          >
             Get Full Syllabus PDF
           </button>
-          <Link
-            href="contact-us"
-            className="rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="cursor-pointer rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
           >
             Book a Free Demo
-          </Link>
+          </button>
         </div>
       </div>
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Digital Marketing Course Page - Curriculum Section - Digital Marketing - Download Syllabus"
+        courseName={courseName}
+      />
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Digital Marketing Course Page - Curriculum Section - Book Demo"
+        courseName={courseName}
+      />
 
     </section>
   );

@@ -1,9 +1,12 @@
+"use client";
 // components/sections/CtaSection.tsx
-// Server component — clean, modern CTA with subtle futuristic accents + SEO.
+// Client component — clean, modern CTA with subtle futuristic accents + SEO.
 
-import type React from "react";
-import { Phone, Mail, FileText, MessageCircle } from "lucide-react";
+import { useState } from "react";
+import { Phone, FileText, MessageCircle, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import EnrollModal from "../EnrollModal";
 
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
@@ -15,26 +18,26 @@ function ActionButton({
   className,
   ring,
   aria,
+  onClick,
 }: {
-  href: string;
+  href?: string;
   label: string;
   sublabel?: string;
   icon: IconType;
   className: string;
   ring: string;
   aria: string;
+  onClick?: () => void;
 }) {
-  return (
-    <Link
-      href={href}
-      aria-label={aria}
-      className={[
-        "group inline-flex items-center justify-center gap-3 rounded-xl px-5 py-3 md:px-6 md:py-4 font-semibold shadow-sm transition-all",
-        "hover:-translate-y-0.5 hover:shadow-md focus-visible:-translate-y-0.5 focus:outline-none focus:ring-2",
-        className,
-        ring,
-      ].join(" ")}
-    >
+  const commonClasses = [
+    "group inline-flex items-center justify-center gap-3 rounded-xl px-5 py-3 md:px-6 md:py-4 font-semibold shadow-sm transition-all cursor-pointer",
+    "hover:-translate-y-0.5 hover:shadow-md focus-visible:-translate-y-0.5 focus:outline-none focus:ring-2",
+    className,
+    ring,
+  ].join(" ");
+
+  const content = (
+    <>
       <span className="rounded-lg border border-white/20 bg-white/10 p-1.5">
         <Icon className="h-5 w-5" aria-hidden />
       </span>
@@ -51,11 +54,29 @@ function ActionButton({
       >
         →
       </span>
+    </>
+  );
+
+  if (onClick) {
+    return (
+      <button onClick={onClick} aria-label={aria} className={commonClasses}>
+        {content}
+      </button>
+    );
+  }
+
+  return (
+    <Link href={href || "#"} aria-label={aria} className={commonClasses}>
+      {content}
     </Link>
   );
 }
 
 export default function CtaSection() {
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Advanced Data Science and Machine Learning Masterclass";
+
   const seoKeywords =
     "enroll data science machine learning course india, ds ml certification, job assistance placement support, contact training institute, download syllabus brochure";
 
@@ -64,9 +85,9 @@ export default function CtaSection() {
     <section
       id="cta"
       aria-labelledby="cta-heading"
-      className="relative py-6 md:py-8 lg:py-2 bg-white"
+      className="relative py-10 bg-white"
     >
-      {/* Subtle futuristic backdrop (fine grid + soft violet glow; no heavy gradient) */}
+      {/* ... (keep background) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.05)_1px,transparent_1px)] bg-[size:28px_28px]" />
         <div className="absolute inset-x-0 top-0 h-[130px] bg-[radial-gradient(700px_150px_at_50%_0%,rgba(124,58,237,0.10),transparent_60%)]" />
@@ -78,11 +99,7 @@ export default function CtaSection() {
             id="cta-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Ready to Master{" "}
-            <span className="text-DS">
-              Data Science & ML
-            </span>
-            ?
+            Ready to Master <span className="text-DS">Advanced Data Science?</span>
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
             Enroll today and get <strong>100% job assistance</strong>,{" "}
@@ -122,29 +139,29 @@ export default function CtaSection() {
               aria="Call admissions at +91 788-83-83-788"
             />
             <ActionButton
-              href="mailto:contact@cinutedigital.com"
-              label="Email Us"
-              sublabel="contact@cinutedigital.com"
-              icon={Mail}
-              className="bg-white text-slate-900 border border-slate-200"
-              ring="focus:ring-purple-300"
-              aria="Email contact at cinutedigital dot com"
-            />
-            <ActionButton
-              href="#syllabus"
-              label="Get Syllabus"
-              sublabel="PDF • Curriculum Overview"
-              icon={FileText}
+              onClick={() => setIsEnrollOpen(true)}
+              label="Apply Now"
+              sublabel="Start your journey"
+              icon={CheckCircle}
               className="bg-indigo-600 text-white"
               ring="focus:ring-indigo-300"
-              aria="View or download the course syllabus"
+              aria="Apply for the Data Science course"
+            />
+            <ActionButton
+              onClick={() => setIsSyllabusOpen(true)}
+              label="Download Syllabus"
+              sublabel="PDF • Curriculum"
+              icon={FileText}
+              className="bg-white text-slate-900 border border-slate-200"
+              ring="focus:ring-purple-300"
+              aria="Download the course syllabus"
             />
             <ActionButton
               href="https://wa.me/917888383788"
               label="Chat on WhatsApp"
               sublabel="Quick questions answered"
               icon={MessageCircle}
-              className="bg-emerald-600 text-white"
+              className="bg-emerald-700 text-white"
               ring="focus:ring-emerald-300"
               aria="Open WhatsApp chat with admissions"
             />
@@ -164,6 +181,18 @@ export default function CtaSection() {
         </div>
       </div>
 
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Data Science Course Page - CTA Section - Download Syllabus"
+        courseName={courseName}
+      />
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Data Science Course Page - CTA Section - Apply Now"
+        courseName={courseName}
+      />
     </section>
   );
 }

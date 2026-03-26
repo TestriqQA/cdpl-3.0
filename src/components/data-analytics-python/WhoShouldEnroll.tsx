@@ -1,4 +1,8 @@
-import { CheckCircle} from "lucide-react";
+"use client";
+import { CheckCircle, ArrowRight, Download } from "lucide-react";
+import { useState } from "react";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 interface AudienceSegment {
     title: string;
@@ -8,10 +12,15 @@ interface AudienceSegment {
 }
 
 export default function WhoShouldEnroll() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+
+    const courseName = "Advanced Data Analytics with Python";
+
     const audiences: AudienceSegment[] = [
         {
             title: "Beginners with Basic Python",
-            description: "If you have basic Python knowledge and want to dive into data analytics, this course is perfect for you.",
+            description: "If you're asking **how to become a data analyst**, this **data analyst courses for beginners** is perfect. Learn **what is data analysis in python** from scratch.",
             icon: "🎯",
             requirements: [
                 "Basic understanding of Python variables and loops",
@@ -21,7 +30,7 @@ export default function WhoShouldEnroll() {
         },
         {
             title: "Intermediate Users",
-            description: "Enhance your analytics and visualization expertise with advanced Python libraries and techniques.",
+            description: "Enhance your **python data analysis course** expertise with advanced techniques. Master **how to use python data analysis** for complex scenarios.",
             icon: "📈",
             requirements: [
                 "Intermediate Python programming skills",
@@ -31,7 +40,7 @@ export default function WhoShouldEnroll() {
         },
         {
             title: "Professionals Seeking Career Change",
-            description: "Professionals from finance, healthcare, retail, technology, marketing, or research looking to transition into data analytics.",
+            description: "From finance, healthcare, retail, or marketing—learn **what skills are required for data analyst** roles and transition into a **career in data analytics**.",
             icon: "💼",
             requirements: [
                 "Basic Python knowledge (recommended)",
@@ -41,7 +50,7 @@ export default function WhoShouldEnroll() {
         },
         {
             title: "Students & Graduates",
-            description: "Recent graduates or students looking to build practical skills for job readiness in the data analytics field.",
+            description: "Recent graduates or students looking to build practical skills. Answer **what to study to become a data analyst** with hands-on projects and **data analytics certification**.",
             icon: "🎓",
             requirements: [
                 "Basic Python knowledge or willingness to learn",
@@ -79,15 +88,15 @@ export default function WhoShouldEnroll() {
     ];
 
     return (
-        <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
+        <section className="py-10 bg-gradient-to-b from-white to-slate-50">
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Who Should <span className="text-orange-600">Enroll</span>?
+                        Who Should <span className="text-brand">Enroll</span>? – Data Analyst Course Eligibility
                     </h2>
                     <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-                        This course is designed for diverse learners. Whether you&apos;re a beginner or a professional seeking to advance your skills, we have the right program for you.
+                        Wondering <strong>who can do data analyst course</strong>? This course is designed for diverse learners asking <strong>what to learn to become data analyst</strong>. Whether you&apos;re a beginner or a professional seeking to advance your skills, we have the right program for you.
                     </p>
                 </div>
 
@@ -122,7 +131,7 @@ export default function WhoShouldEnroll() {
                                             key={ridx}
                                             className="flex items-start gap-2 text-sm text-slate-600"
                                         >
-                                            <CheckCircle className="w-4 h-4 text-orange-500 flex-shrink-0 mt-0.5" />
+                                            <CheckCircle className="w-4 h-4 text-brand flex-shrink-0 mt-0.5" />
                                             <span>{req}</span>
                                         </li>
                                     ))}
@@ -138,13 +147,13 @@ export default function WhoShouldEnroll() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {prerequisites.map((prereq, idx) => (
                             <div key={idx}>
-                                <h4 className="text-lg font-bold text-orange-400 mb-4">
+                                <h4 className="text-lg font-bold text-brand mb-4">
                                     {prereq.category}
                                 </h4>
                                 <ul className="space-y-3">
                                     {prereq.items.map((item, iidx) => (
                                         <li key={iidx} className="flex items-start gap-3">
-                                            <span className="text-orange-400 mt-1">✓</span>
+                                            <span className="text-brand mt-1">✓</span>
                                             <span className="text-slate-200 text-sm">{item}</span>
                                         </li>
                                     ))}
@@ -155,7 +164,7 @@ export default function WhoShouldEnroll() {
                 </div>
 
                 {/* Success Factors */}
-                <div className="bg-gradient-to-r from-orange-50 to-blue-50 rounded-2xl p-8 md:p-12 border-2 border-orange-200">
+                <div className="bg-gradient-to-r from-orange-50 to-blue-50 rounded-2xl p-8 md:p-12 border-2 border-orange-200 mb-12">
                     <h3 className="text-2xl font-bold text-slate-900 mb-6">Keys to Success</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {[
@@ -188,7 +197,39 @@ export default function WhoShouldEnroll() {
                         ))}
                     </div>
                 </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button
+                        onClick={() => setIsEnrollOpen(true)}
+                        className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:bg-brand hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
+                    >
+                        Enroll Now
+                        <ArrowRight className="h-5 w-5" />
+                    </button>
+                    <button
+                        onClick={() => setIsSyllabusOpen(true)}
+                        className="cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl border-2 border-orange-200 bg-white px-8 py-4 text-base font-semibold text-brand shadow-sm transition-all hover:border-orange-300 hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-200"
+                    >
+                        <Download className="h-5 w-5" />
+                        Download Syllabus
+                    </button>
+                </div>
             </div>
+
+            {/* Modals */}
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Data Analytics Python Course Page - Who Should Enroll - Enroll Now"
+                courseName={courseName}
+            />
+            <SyllabusDownloadModal
+                isOpen={isSyllabusOpen}
+                onClose={() => setIsSyllabusOpen(false)}
+                source="Data Analytics Python Course Page - Who Should Enroll - Download Syllabus"
+                courseName={courseName}
+            />
         </section>
     );
 }

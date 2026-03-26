@@ -1,0 +1,9 @@
+﻿
+> edtech-website@0.1.0 build
+> cross-env NODE_OPTIONS='--max-old-space-size=8192' next build
+
+   Γû▓ Next.js 15.5.12
+   - Experiments (use with caution):
+     ┬╖ optimizePackageImports
+
+   Creating an optimized production build ...

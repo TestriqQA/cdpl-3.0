@@ -1,6 +1,18 @@
 'use client';
 import { CheckCircle } from 'lucide-react';
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import { useState } from 'react';
+const SyllabusDownloadModal = dynamic(() => import('@/components/SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus modal..." /> });
+const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career modal..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+      <span className="ml-2 text-gray-900">{label}</span>
+    </div>
+  );
+};
 
 type Module = {
   title: string;
@@ -126,10 +138,11 @@ const accents = [
 ];
 
 export default function CurriculumSection() {
-
+  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
+  const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
 
   return (
-    <section id="curriculum" aria-labelledby="curriculum-heading" className="relative py-6 md:py-10 bg-white">
+    <section id="curriculum" aria-labelledby="curriculum-heading" className="relative py-10 bg-white">
       {/* subtle top/bottom separators for a sleek frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -143,9 +156,8 @@ export default function CurriculumSection() {
 
         {/* SEO supportive line */}
         <p className="mx-auto mt-4 mb-6 max-w-3xl text-center text-sm sm:text-base text-slate-600">
-          Learn <strong>DW architecture</strong>, <strong>SQL-based ETL validation</strong>, <strong>manual & automated testing</strong>, and
-          development with <strong>Talend</strong> and <strong>Informatica</strong>. Wrap up with <strong>capstone projects</strong> integrating
-          Snowflake, SnapLogic, and Power BI.
+          From <strong>what is ETL</strong> basics to advanced <strong>ETL automation testing</strong>. Learn <strong>DW architecture</strong>, <strong>SQL-based ETL validation</strong>, <strong>manual & automated testing</strong>, and
+          development with <strong>Talend</strong> and <strong>Informatica</strong>. Wrap up with <strong>capstone projects</strong> integrating Snowflake, SnapLogic, and Power BI. This <strong>ETL testing training</strong> prepares you for real <strong>ETL testing interview questions</strong>.
         </p>
 
         {/* Responsive grid */}
@@ -188,7 +200,7 @@ export default function CurriculumSection() {
                 </ul>
 
                 {/* outcome microcopy */}
-                <p className="mt-4 text-xs text-slate-500">
+                <p className="mt-4 text-xs text-slate-700">
                   Outcomes: hands-on labs, checklists, and review rubrics to validate every ETL stage (extract → transform → load).
                 </p>
               </li>
@@ -198,19 +210,33 @@ export default function CurriculumSection() {
 
         {/* Optional CTA row */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link
-            href="contact-us"
-            className="inline-flex items-center justify-center rounded-xl bg-indigo-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-200"
+          <button
+            onClick={() => setIsCareerModalOpen(true)}
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-indigo-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-200"
           >
             Book a Free Demo
-          </Link>
+          </button>
           <button
-            className="inline-flex items-center justify-center rounded-xl border-2 border-emerald-700 bg-white px-4 py-2 text-sm font-semibold text-emerald-800 shadow-sm transition hover:bg-emerald-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-emerald-200"
+            onClick={() => setIsSyllabusModalOpen(true)}
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl border-2 border-emerald-700 bg-white px-4 py-2 text-sm font-semibold text-emerald-800 shadow-sm transition hover:bg-emerald-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-emerald-200"
           >
             Get Syllabus PDF
           </button>
         </div>
       </div>
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusModalOpen}
+        onClose={() => setIsSyllabusModalOpen(false)}
+        courseName="ETL Testing"
+        source="ETL Testing Course Page - Curriculum Section - Syllabus Download"
+      />
+
+      <CareerSessionModal
+        isOpen={isCareerModalOpen}
+        onClose={() => setIsCareerModalOpen(false)}
+        source="ETL Testing Course Page - Curriculum Section - Book Free Demo"
+      />
 
     </section>
   );

@@ -1,12 +1,22 @@
 'use client';
 import { BadgeCheck } from 'lucide-react';
-import ReviewsMarquee from '../sections/ReviewMarque';
+import dynamic from 'next/dynamic';
+const ReviewsMarquee = dynamic(() => import('../sections/ReviewMarque'), { ssr: false, loading: () => <SectionLoader label="Loading reviews marquee..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+    return (
+        <div className="flex items-center justify-center h-full">
+            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+            <span className="ml-2 text-gray-900">{label}</span>
+        </div>
+    );
+};
 
 export default function TestimonialsSection() {
 
 
     return (
-        <section id="testimonials" aria-labelledby="testimonials-heading" className="relative py-8 md:py-10 bg-white">
+        <section id="testimonials" aria-labelledby="testimonials-heading" className="relative py-10 bg-white">
             {/* subtle separators for a clean, slightly futuristic frame */}
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />

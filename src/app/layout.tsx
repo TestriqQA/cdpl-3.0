@@ -10,10 +10,11 @@
  * @version 2.0.0
  * @updated 2025-11-12
  */
-
+import MetaPixel from '@/components/MetaPixel'
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import 'react-phone-number-input/style.css';
 import dynamic from "next/dynamic";
 import {
   generateOrganizationSchema,
@@ -24,14 +25,23 @@ import { SITE_CONFIG, SEO_DEFAULTS } from "@/lib/seo-config";
 import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = localFont({
+  src: './fonts/inter-variable.woff2',
+  display: 'swap',
+  variable: '--font-inter',
+  preload: true,
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Arial', 'sans-serif'],
+  weight: '100 900',
+});
 
 // ============================================================================
 // DYNAMIC IMPORTS (for performance)
 // ============================================================================
 
+// import Header from "@/components/Layout/Header";
 const Header = dynamic(() => import("@/components/Layout/Header"), { ssr: true });
 const Footer = dynamic(() => import("@/components/Layout/Footer"), { ssr: true });
+const SpecialOfferBanner = dynamic(() => import("@/components/SpecialOfferBanner"), { ssr: true });
 
 // ============================================================================
 // GLOBAL METADATA (using the new generator)
@@ -64,7 +74,7 @@ export default function RootLayout({
   const aiMetaTags = generateAIMetaTags();
 
   return (
-    <html lang="en" dir="ltr">
+    <html lang="en" dir="ltr" data-scroll-behavior="smooth">
       <head>
         {/* ========================================
             STRUCTURED DATA (Schema.org)
@@ -86,15 +96,20 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href={SITE_CONFIG.appleTouchIcon} />
         <link rel="icon" href={SITE_CONFIG.favicon} />
 
-        {/* Preconnect to external domains for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        {/* Resource hints for performance - only for actually used origins */}
+
+
+
       </head>
 
-      <body className={`${inter.className} antialiased`}>
-        <Header />
-        {children}
+      <body className={`${inter.variable} font-sans antialiased`}>
+        <MetaPixel />
+
+        <div className="sticky top-0 z-[100] w-full">
+          <SpecialOfferBanner />
+          <Header />
+        </div>
+        <main>{children}</main>
         <Footer />
         <GoogleAnalytics />
       </body>

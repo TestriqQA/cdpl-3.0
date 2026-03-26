@@ -1,5 +1,7 @@
-import Link from "next/link";
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 const careerRoles = [
     {
@@ -7,56 +9,56 @@ const careerRoles = [
         title: "HR Analyst",
         icon: "👥",
         bgColor: "bg-blue-100",
-        textColor: "text-blue-600",
+        textColor: "text-gray-950",
     },
     {
         id: 2,
         title: "Supply Chain Analyst",
         icon: "📦",
         bgColor: "bg-green-100",
-        textColor: "text-green-600",
+        textColor: "text-gray-950",
     },
     {
         id: 3,
         title: "Sales Analyst",
         icon: "📊",
         bgColor: "bg-orange-100",
-        textColor: "text-orange-600",
+        textColor: "text-gray-950",
     },
     {
         id: 4,
         title: "Reporting Specialist",
         icon: "📈",
         bgColor: "bg-purple-100",
-        textColor: "text-purple-600",
+        textColor: "text-gray-950",
     },
     {
         id: 5,
         title: "Operations Analyst",
         icon: "⚙️",
         bgColor: "bg-yellow-100",
-        textColor: "text-yellow-600",
+        textColor: "text-gray-950",
     },
     {
         id: 6,
         title: "Business Intelligence Analyst",
         icon: "💡",
         bgColor: "bg-pink-100",
-        textColor: "text-pink-600",
+        textColor: "text-gray-950",
     },
     {
         id: 7,
         title: "Financial Analyst",
         icon: "💰",
         bgColor: "bg-red-100",
-        textColor: "text-red-600",
+        textColor: "text-gray-950",
     },
     {
         id: 8,
         title: "Tableau Developer",
         icon: "💻",
         bgColor: "bg-indigo-100",
-        textColor: "text-indigo-600",
+        textColor: "text-gray-950",
     },
 ];
 
@@ -81,8 +83,13 @@ const hiringCompanies = [
 
 
 export default function CareerSection() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+
+    const courseName = "Data Analytics & Visualization with Tableau";
+
     return (
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-10 px-4 sm:px-6 lg:px-8 bg-white">
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-16">
@@ -123,8 +130,8 @@ export default function CareerSection() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="text-center">
-                            <div className="text-5xl font-bold text-blue-600 mb-3">4 LPA</div>
-                            <p className="text-gray-700 font-semibold mb-2">
+                            <div className="text-5xl font-bold text-gray-950 mb-3">4 LPA</div>
+                            <p className="text-gray-900 font-semibold mb-2">
                                 Average Freshers Salary
                             </p>
                             <p className="text-sm text-gray-600">
@@ -133,8 +140,8 @@ export default function CareerSection() {
                         </div>
 
                         <div className="text-center">
-                            <div className="text-5xl font-bold text-purple-600 mb-3">8-12 LPA</div>
-                            <p className="text-gray-700 font-semibold mb-2">
+                            <div className="text-5xl font-bold text-gray-950 mb-3">8-12 LPA</div>
+                            <p className="text-gray-900 font-semibold mb-2">
                                 Mid-Level Salary
                             </p>
                             <p className="text-sm text-gray-600">
@@ -143,8 +150,8 @@ export default function CareerSection() {
                         </div>
 
                         <div className="text-center">
-                            <div className="text-5xl font-bold text-orange-600 mb-3">15+ LPA</div>
-                            <p className="text-gray-700 font-semibold mb-2">
+                            <div className="text-5xl font-bold text-gray-950 mb-3">15+ LPA</div>
+                            <p className="text-gray-900 font-semibold mb-2">
                                 Senior Level Salary
                             </p>
                             <p className="text-sm text-gray-600">
@@ -211,16 +218,16 @@ export default function CareerSection() {
                         ].map((item, index) => (
                             <div key={index} className="flex gap-6 items-start">
                                 <div className="flex-shrink-0">
-                                    <div className="flex items-center justify-center h-12 w-11 rounded-lg bg-orange-600 text-white font-bold">
+                                    <div className="flex items-center justify-center h-12 w-11 rounded-lg bg-brand text-white font-bold">
                                         {index + 1}
                                     </div>
                                 </div>
-                                <div className="flex-1 bg-white rounded-lg p-6 border-l-4 border-orange-600">
+                                <div className="flex-1 bg-white rounded-lg p-6 border-l-4 border-[#ff8c00]">
                                     <div className="font-bold text-gray-900 mb-1">{item.stage}</div>
-                                    <div className="text-lg font-semibold text-orange-600 mb-2">
+                                    <div className="text-lg font-semibold text-gray-950 mb-2">
                                         {item.role}
                                     </div>
-                                    <p className="text-gray-700 text-sm">{item.responsibilities}</p>
+                                    <p className="text-gray-900 text-sm">{item.responsibilities}</p>
                                 </div>
                             </div>
                         ))}
@@ -234,8 +241,8 @@ export default function CareerSection() {
                         <h4 className="text-xl font-bold text-gray-900 mb-3">
                             Market Growth
                         </h4>
-                        <p className="text-gray-700 mb-4">
-                            The data analytics market is growing at <span className="font-bold text-blue-600">25% annually</span> from 2020 to 2030, creating abundant job opportunities.
+                        <p className="text-gray-900 mb-4">
+                            The data analytics market is growing at <span className="font-bold text-gray-950">25% annually</span> from 2020 to 2030, creating abundant job opportunities.
                         </p>
                         <p className="text-sm text-gray-600">
                             This growth is driven by increasing demand for data-driven decision making across all industries.
@@ -247,8 +254,8 @@ export default function CareerSection() {
                         <h4 className="text-xl font-bold text-gray-900 mb-3">
                             Job Vacancies
                         </h4>
-                        <p className="text-gray-700 mb-4">
-                            There are over <span className="font-bold text-green-600">101,000+ job vacancies</span> for Tableau professionals in India alone.
+                        <p className="text-gray-900 mb-4">
+                            There are over <span className="font-bold text-gray-950">101,000+ job vacancies</span> for Tableau professionals in India alone.
                         </p>
                         <p className="text-sm text-gray-600">
                             This creates excellent opportunities for skilled professionals to secure high-paying positions.
@@ -261,11 +268,35 @@ export default function CareerSection() {
                     <p className="text-gray-600 text-lg mb-6">
                         Ready to launch your career as a Tableau professional? Start your journey today!
                     </p>
-                    <Link href="contact-us" className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition-all inline-block">
-                        Enroll Now & Secure Your Future →
-                    </Link>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button
+                            onClick={() => setIsEnrollOpen(true)}
+                            className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        >
+                            Enroll Now & Secure Your Future →
+                        </button>
+                        <button
+                            onClick={() => setIsSyllabusOpen(true)}
+                            className="bg-white border-2 border-[#ff8c00] text-brand hover:bg-orange-50 font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                        >
+                            Download Syllabus
+                        </button>
+                    </div>
                 </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Tableau Course Page - Career Section - Enroll Now"
+                courseName={courseName}
+            />
+            <SyllabusDownloadModal
+                isOpen={isSyllabusOpen}
+                onClose={() => setIsSyllabusOpen(false)}
+                source="Tableau Course Page - Career Section - Download Syllabus"
+                courseName={courseName}
+            />
         </section>
     );
 }

@@ -1,9 +1,12 @@
-// components/sections/CtaSection.tsx
-// Server component — clean, modern CTA with subtle futuristic accents and SEO.
+"use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import EnrollModal from "@/components/EnrollModal";
 
 export default function CtaSection() {
+  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+
   const seoKeywords =
     "enroll deep learning course, generative ai certification, nlp training india, machine learning jobs assistance, python ai program, data science placement support, llm course with projects";
 
@@ -11,7 +14,7 @@ export default function CtaSection() {
     <section
       id="enroll-ai"
       aria-labelledby="cta-heading"
-      className="relative py-6 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop: fine grid + soft glow (no heavy gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -99,9 +102,9 @@ export default function CtaSection() {
             Email Us
           </Link>
 
-          <Link
-            href="contact-us"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-600 bg-emerald-600 px-5 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.2)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-emerald-300 sm:w-auto"
+          <button
+            onClick={() => setIsEnrollModalOpen(true)}
+            className="inline-flex w-full items-center justify-center cursor-pointer gap-2 rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-5 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.2)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-300 sm:w-auto"
             aria-label="Apply now for the Deep Learning & AI program"
           >
             {/* Rocket icon */}
@@ -114,7 +117,7 @@ export default function CtaSection() {
               />
             </svg>
             Apply Now
-          </Link>
+          </button>
         </div>
 
         {/* Micro trust note + WhatsApp */}
@@ -132,7 +135,13 @@ export default function CtaSection() {
         </address>
       </div>
 
-      
+      <EnrollModal
+        isOpen={isEnrollModalOpen}
+        onClose={() => setIsEnrollModalOpen(false)}
+        courseName="Master Program in Deep Learning, NLP & Generative AI"
+        source="Generative AI Course Page - CTA Section - Apply Now"
+      />
+
     </section>
   );
 }

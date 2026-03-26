@@ -1,5 +1,7 @@
+"use client";
+import { useState } from "react";
 import { CheckCircle, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import EnrollModal from "../EnrollModal";
 
 const learningPath = [
     {
@@ -36,8 +38,11 @@ const learningPath = [
 
 
 export default function CareerRoadmapSection() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const courseName = "Advanced Excel for Data Analytics & Visualization";
+
     return (
-        <section className="relative py-20 bg-gradient-to-b from-white to-slate-50 overflow-hidden">
+        <section className="relative py-10 bg-gradient-to-b from-white to-slate-50 overflow-hidden">
             {/* Decorative background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-1/3 right-0 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
@@ -48,7 +53,7 @@ export default function CareerRoadmapSection() {
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        Your Learning <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">Journey</span>
+                        Your Learning <span className="bg-gradient-to-r from-[#ff8c00] via-[#ff8c00] to-[#ff8c00] bg-clip-text text-transparent">Journey</span>
                     </h2>
                     <p className="text-xl text-slate-600 max-w-3xl mx-auto">
                         Follow our proven 6-step learning path to become a market-ready Excel expert and secure your dream job.
@@ -61,7 +66,7 @@ export default function CareerRoadmapSection() {
                     <div className="hidden md:block">
                         <div className="relative">
                             {/* Vertical line */}
-                            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-indigo-600 transform -translate-x-1/2"></div>
+                            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#1d4ed8] to-[#4338ca] transform -translate-x-1/2"></div>
 
                             {/* Timeline items */}
                             <div className="space-y-12">
@@ -86,7 +91,7 @@ export default function CareerRoadmapSection() {
 
                                         {/* Center dot */}
                                         <div className="w-0 flex justify-center">
-                                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 border-4 border-white flex items-center justify-center text-white font-bold shadow-lg">
+                                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1d4ed8] to-[#4338ca] border-4 border-white flex items-center justify-center text-white font-bold shadow-lg">
                                                 {item.step}
                                             </div>
                                         </div>
@@ -107,7 +112,7 @@ export default function CareerRoadmapSection() {
                                 className="bg-white rounded-xl border border-slate-200 p-6 hover:shadow-lg transition-all duration-300"
                             >
                                 <div className="flex items-start gap-4">
-                                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white flex items-center justify-center font-bold">
+                                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#1d4ed8] to-[#4338ca] text-white flex items-center justify-center font-bold">
                                         {item.step}
                                     </div>
                                     <div className="flex-1">
@@ -244,27 +249,35 @@ export default function CareerRoadmapSection() {
                     <p className="text-lg text-slate-700 mb-6">
                         Ready to start your transformation journey?
                     </p>
-                    <Link
-                        href="/contact-us"
+                    <button
+                        onClick={() => setIsEnrollOpen(true)}
                         className="
     inline-flex items-center justify-center
     w-full sm:w-auto
     px-4 py-3 sm:px-6 sm:py-3 md:px-10 md:py-4
     text-sm sm:text-base md:text-lg
-    bg-gradient-to-r from-blue-600 to-indigo-600
-    hover:from-blue-700 hover:to-indigo-700
+    bg-gradient-to-r from-[#1d4ed8] to-[#4338ca]
+    hover:from-[#1e40af] hover:to-[#3730a3]
     text-white font-semibold
     rounded-lg
     text-center
     shadow-lg hover:shadow-xl
     transition-all duration-300
+    cursor-pointer
   "
                     >
                         Begin Your Learning Path Now
-                    </Link>
+                    </button>
 
                 </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Data Analytics & Visualization Course Page - Career Roadmap Section - Enroll Now"
+                courseName={courseName}
+            />
         </section>
     );
 }

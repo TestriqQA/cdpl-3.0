@@ -1,19 +1,20 @@
 "use client";
-
-import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
-import type React from "react";
+import React, { useState } from "react";
+import WorkshopRequestModal from "../WorkshopRequestModal";
 
 // Strongly-typed CSS variable helper
 type CSSVarStyles<T extends string> = React.CSSProperties & Record<T, string>;
 
 export default function AffiliateCTASection() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     // Provide typed CSS vars (fixes no-explicit-any)
     const vars: CSSVarStyles<
         "--labelBg" | "--labelText" | "--titleColor" | "--btnBg" | "--btnText"
     > = {
         // Distinct solids (no gradients)
-        "--labelBg": "rgb(255, 140, 0)",   // label/tag: vivid orange
+        "--labelBg": "#ff8c00",   // label/tag: dark orange for contrast
         "--labelText": "rgb(255, 255, 255)",
         "--titleColor": "rgb(0, 105, 168)", // title: deep blue
         "--btnBg": "rgb(222, 247, 236)",    // button: light (not white) mint
@@ -50,15 +51,23 @@ export default function AffiliateCTASection() {
 
             {/* Solid button (light, non-white, different from label & title) */}
             <div className="mt-6">
-                <Link
-                    href="/apply-affiliate"
-                    className="group inline-flex items-center justify-center rounded-xl px-6 py-3 transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="group inline-flex items-center justify-center rounded-xl px-6 py-3 transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
                     style={{ backgroundColor: "var(--btnBg)", color: "var(--btnText)" }}
                 >
                     Apply now
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-                </Link>
+                </button>
             </div>
+            <WorkshopRequestModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                variant="affiliate"
+                title="Apply for Affiliate Program"
+                subtitle="Join our partner ecosystem today"
+                source="Affiliate Program Page - CTA Section - Apply Now Button"
+            />
         </div>
     );
 }

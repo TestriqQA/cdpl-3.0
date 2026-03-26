@@ -192,7 +192,7 @@ export default function StatsSection() {
       ref={sectionRef}
       id="ml-stats"
       aria-labelledby="ml-stats-heading"
-      className="relative py-8 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic accent */}
       <div aria-hidden className="pointer-events-none absolute inset-0">

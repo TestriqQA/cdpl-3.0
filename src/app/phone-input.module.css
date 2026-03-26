@@ -1,0 +1,143 @@
+/*
+ * Custom styles for react-phone-number-input to match Tailwind/project design
+ * Based on the input styles in BrochureDownloadForm.tsx and HomeHeroSection.tsx
+ */
+
+.phone-input-container {
+  /* Mimic the input container style */
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #d1d5db;
+  /* border-gray-300 */
+  border-radius: 0.5rem;
+  /* rounded-lg */
+  /* transition removed for performance - eliminates forced reflows */
+  padding: 0;
+  /* Remove default padding */
+}
+
+.phone-input-container:focus-within {
+  border-color: #f97316;
+  /* focus:ring-orange-500 */
+  box-shadow: 0 0 0 2px #ffedd5;
+  /* focus:ring-2 focus:ring-orange-500/50 */
+}
+
+.phone-input-container.border-red-500 {
+  border-color: #ef4444;
+  /* border-red-500 */
+}
+
+/* Style for the country select dropdown */
+.phone-input-container .PhoneInputCountry {
+  /* Remove default margin/padding */
+  margin: 0;
+  padding: 0;
+  border-right: 1px solid #d1d5db;
+  /* Separator */
+  background-color: #f9fafb;
+  /* bg-gray-50 */
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+/* Style for the flag icon */
+.phone-input-container .PhoneInputCountryIcon {
+  width: 1.5rem;
+  /* Adjust size */
+  height: 1.5rem;
+  margin-left: 0.5rem;
+  box-shadow: none;
+  /* Remove default shadow */
+  border-radius: 0;
+  /* Remove default border-radius */
+}
+
+/* Style for the dropdown arrow */
+.phone-input-container .PhoneInputCountrySelectArrow {
+  color: #6b7280;
+  /* text-gray-500 */
+  margin-right: 0.5rem;
+}
+
+/* Style for the phone number input field */
+.phone-input-container .PhoneInputInput {
+  /* Match the text input style */
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  /* py-3 px-4 */
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #1e293b;
+  /* style={{ color: '#1e293b' }} */
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+/* Remove the default border and shadow from the PhoneInput wrapper */
+.PhoneInput {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Ensure the country select itself is styled correctly */
+.phone-input-container .PhoneInputCountrySelect {
+  /* Make it visually integrated */
+  padding: 0.75rem 0.5rem;
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #1e293b;
+}
+
+/* Adjust the container for the icon */
+.phone-input-container .PhoneInputCountry {
+  padding: 0.5rem 0;
+}
+
+/* Ensure the input field takes up the remaining space */
+.phone-input-container .PhoneInputInput {
+  padding-left: 0.5rem;
+}
+
+/* Additional phone input styling from HomeHeroSection */
+.phone-input-container .PhoneInputInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: #1e293b;
+  /* transition removed for performance */
+}
+
+.phone-input-container .PhoneInputInput::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+.phone-input-container .PhoneInputInput:focus {
+  border-color: #ff8c00;
+  box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.2);
+}
+
+.phone-input-container.border-red-500 .PhoneInputInput {
+  border-color: #ef4444;
+}
+
+.phone-input-container .PhoneInputCountry {
+  margin-right: 0.5rem;
+}
+
+/* Country dropdown styling */
+.phone-input-container .PhoneInputCountrySelect {
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.phone-input-container .PhoneInputCountrySelectArrow {
+  color: #64748b;
+}

@@ -1,7 +1,8 @@
 "use client";
 // components/powerbi/CurriculumSection.tsx
 import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Download } from 'lucide-react';
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 type ColorVariant =
   | 'blue' | 'orange' | 'green' | 'purple' | 'pink'
@@ -16,7 +17,7 @@ interface Module {
 
 const colorClasses: Record<ColorVariant, { bg: string; text: string }> = {
   blue: { bg: 'bg-blue-100', text: 'text-blue-600' },
-  orange: { bg: 'bg-orange-100', text: 'text-orange-600' },
+  orange: { bg: 'bg-orange-100', text: 'text-brand' },
   green: { bg: 'bg-green-100', text: 'text-green-600' },
   purple: { bg: 'bg-purple-100', text: 'text-purple-600' },
   pink: { bg: 'bg-pink-100', text: 'text-pink-600' },
@@ -147,24 +148,27 @@ const modules: Module[] = [
 
 const CurriculumSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Data Analytics & Visualization with Power BI";
 
   const toggleModule = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section id="curriculum" className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-base font-semibold tracking-wider text-blue-600 uppercase">
             Comprehensive Learning Path
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
-            10 Modules to Master Power BI from Zero to Expert
+            Latest Power BI Course Syllabus 2025-26: From Zero to Expert
           </h2>
-          <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
-            Our meticulously designed curriculum covers every aspect of Power BI, focusing on practical application and industry best practices.
+          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
+            Our meticulously designed <strong>Power BI syllabus</strong> covers everything from <strong>Power BI Desktop</strong> setup to <strong>Power BI Service</strong> publishing. Master <strong>Power BI visualizations</strong> and DAX with industry-led modules.
           </p>
+
         </div>
 
         <div className="max-w-4xl mx-auto space-y-4">
@@ -188,7 +192,7 @@ const CurriculumSection: React.FC = () => {
                   </div>
                   <ChevronDown
                     size={24}
-                    className={`text-gray-500 transition-transform duration-300 ${activeIndex === index ? 'rotate-180' : 'rotate-0'}`}
+                    className={`text-gray-700 transition-transform duration-300 ${activeIndex === index ? 'rotate-180' : 'rotate-0'}`}
                   />
                 </button>
 
@@ -207,7 +211,25 @@ const CurriculumSection: React.FC = () => {
             );
           })}
         </div>
+
+        {/* CTA */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => setIsSyllabusOpen(true)}
+            className="w-full sm:w-auto flex sm:inline-flex min-h-[60px] items-center justify-center gap-2 rounded-xl bg-brand px-6 py-5 my-4 text-base font-semibold text-white shadow-none transition-all hover:bg-brand focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
+          >
+            <Download className="h-5 w-5" />
+            Download Full Syllabus
+          </button>
+        </div>
       </div>
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Power BI Course Page - Curriculum Section - Power BI - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 };

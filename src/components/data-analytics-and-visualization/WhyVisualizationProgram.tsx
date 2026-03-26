@@ -1,3 +1,4 @@
+"use client";
 import {
     BarChart3,
     Briefcase,
@@ -8,8 +9,8 @@ import {
     Target,
     Handshake,
 } from "lucide-react";
-import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import EnrollModal from "../EnrollModal";
 
 const iconMap = {
     BarChart3,
@@ -23,14 +24,14 @@ const iconMap = {
 };
 
 const colorClasses = [
-    { bg: "bg-blue-100", text: "text-blue-600", border: "border-blue-200" },
-    { bg: "bg-indigo-100", text: "text-indigo-600", border: "border-indigo-200" },
-    { bg: "bg-cyan-100", text: "text-cyan-600", border: "border-cyan-200" },
-    { bg: "bg-purple-100", text: "text-purple-600", border: "border-purple-200" },
-    { bg: "bg-pink-100", text: "text-pink-600", border: "border-pink-200" },
-    { bg: "bg-green-100", text: "text-green-600", border: "border-green-200" },
-    { bg: "bg-orange-100", text: "text-orange-600", border: "border-orange-200" },
-    { bg: "bg-red-100", text: "text-red-600", border: "border-red-200" },
+    { bg: "bg-blue-100", text: "text-[#1d4ed8]", border: "border-blue-200" },
+    { bg: "bg-indigo-100", text: "text-[#4338ca]", border: "border-indigo-200" },
+    { bg: "bg-cyan-100", text: "text-[#0e7490]", border: "border-cyan-200" },
+    { bg: "bg-purple-100", text: "text-[#7e22ce]", border: "border-purple-200" },
+    { bg: "bg-pink-100", text: "text-[#be185d]", border: "border-pink-200" },
+    { bg: "bg-green-100", text: "text-[#047857]", border: "border-green-200" },
+    { bg: "bg-orange-100", text: "text-brand", border: "border-orange-200" },
+    { bg: "bg-red-100", text: "text-[#b91c1c]", border: "border-red-200" },
 ];
 
 export const advantages = [
@@ -77,11 +78,11 @@ export const advantages = [
 ];
 
 export default function WhyVisualizationProgram() {
-    // --- SEO: FAQPage structured data for rich results (non-visual, no functionality change) ---
-
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const courseName = "Advanced Excel for Data Analytics & Visualization";
 
     return (
-        <section className="relative py-20 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+        <section className="relative py-10 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
             {/* Decorative background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-1/4 -right-96 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
@@ -92,7 +93,7 @@ export default function WhyVisualizationProgram() {
                 {/* Section header */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        Why Choose <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">Cinute Digital</span>?
+                        Why Choose <span className="bg-gradient-to-r from-orange-500 via-brand to-orange-500 bg-clip-text text-transparent">Cinute Digital</span>?
                     </h2>
                     <p className="text-xl text-slate-600 max-w-4xl mx-auto">
                         We combine industry expertise with hands-on learning to transform you into a market-ready Excel professional.
@@ -230,8 +231,8 @@ export default function WhyVisualizationProgram() {
                         <strong>MIS Executive</strong>, and <strong>Business Analyst</strong> roles.
                     </p>
 
-                    <Link
-                        href="contact-us"
+                    <button
+                        onClick={() => setIsEnrollOpen(true)}
                         className="inline-flex items-center justify-center w-full sm:w-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 lg:py-4 text-sm sm:text-base lg:text-lg
     text-center font-semibold
     bg-gradient-to-r from-blue-500 to-indigo-600
@@ -241,14 +242,21 @@ export default function WhyVisualizationProgram() {
     shadow-lg hover:shadow-xl
     transition-all duration-300
     focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500
+    cursor-pointer
   "
                     >
                         Start Your Journey Today
-                    </Link>
+                    </button>
 
                 </div>
-
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Data Analytics & Visualization Course Page - Why Section - Start Journey"
+                courseName={courseName}
+            />
         </section>
     );
 }

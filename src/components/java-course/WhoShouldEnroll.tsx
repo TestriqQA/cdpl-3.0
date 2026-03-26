@@ -12,8 +12,10 @@ import {
   Rocket,
   Users,
 } from "lucide-react";
-import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false, loading: () => <div>Loading...</div> });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <div>Loading...</div> });
 
 type Audience = {
   title: string;
@@ -70,6 +72,9 @@ const AUDIENCES: Audience[] = [
 ];
 
 export default function WhoShouldEnroll() {
+  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
+
   const title = "Who is this Java course for?";
   const subtitle =
     "Beginner-friendly yet industry-focused: whether you’re starting out or upskilling, our Java program gets you job-ready with Spring Boot, REST APIs, Microservices, and Cloud fundamentals.";
@@ -80,7 +85,7 @@ export default function WhoShouldEnroll() {
     <section
       id="who-should-enroll"
       aria-labelledby="enroll-heading"
-      className="relative py-8 md:py-14 bg-gray-50"
+      className="relative py-10 bg-gray-50"
     >
       {/* Subtle futuristic accent (sleek, non-intrusive) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -175,23 +180,37 @@ export default function WhoShouldEnroll() {
 
         {/* CTA */}
         <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-4">
-          <Link
-            href="contact-us"
-            className="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
+          <button
+            onClick={() => setIsEnrollModalOpen(true)}
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
           >
             Check Your Eligibility
-          </Link>
+          </button>
           <button
-            className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
+            onClick={() => setIsSyllabusModalOpen(true)}
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
           >
             Download Syllabus (PDF)
           </button>
         </div>
       </div>
 
+      <EnrollModal
+        isOpen={isEnrollModalOpen}
+        onClose={() => setIsEnrollModalOpen(false)}
+        courseName="Java Programming"
+        source="Java Programming Course Page - Who Should Enroll Section - Check Eligibility"
+      />
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusModalOpen}
+        onClose={() => setIsSyllabusModalOpen(false)}
+        courseName="Java Programming"
+        source="Java Programming Course Page - Who Should Enroll Section - Download Syllabus"
+      />
 
       {/* Accessible helpers */}
-      <h1 className="sr-only">{title}</h1>
+      <p className="sr-only">{title}</p>
       <p className="sr-only">{subtitle}. Keywords: {keywords}.</p>
     </section>
   );

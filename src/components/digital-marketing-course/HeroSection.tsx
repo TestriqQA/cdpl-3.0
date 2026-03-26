@@ -12,11 +12,17 @@ import {
   Home,
   ChevronRight,
   CheckCircle2,
+  CloudDownload,
+  ArrowDownNarrowWide
 } from 'lucide-react';
-import { motion } from 'framer-motion';
 import IconCard from '@/components/ui/IconCard';
-import LeadForm from '../CourseLeadForm';
+import ApiCourseLeadForm from '../forms/ApiCourseLeadForm';
 import Link from 'next/link';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const EnrollModal = dynamic(() => import('../EnrollModal'), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import('../SyllabusDownloadModal'), { ssr: false });
 
 /** -----------------------------
  * Feature tiles (distinct colors, no repeats)
@@ -57,11 +63,16 @@ const features = [
 ];
 
 export default function HeroSection() {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Digital Marketing & Analytics Master Program";
 
 
   const breadcrumbs = [
     { label: 'Home', href: '/' },
-    { label: 'AI Digital Marketing', href: '/digital-marketing-course' },
+    { label: 'Courses', href: '/courses' },
+    { label: 'Digital Marketing', href: '/courses/digital-marketing-courses' },
+    { label: 'Digital Marketing Course in Mumbai', href: '/digital-marketing-course' },
   ];
 
   return (
@@ -72,19 +83,25 @@ export default function HeroSection() {
         <div className="absolute inset-0 [mask-image:radial-gradient(1200px_600px_at_50%_-10%,black,transparent)]" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-14">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
         {/* Breadcrumbs */}
         <nav aria-label="Breadcrumb" className="mb-8">
           <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
             {breadcrumbs.map((c, i) => (
               <li key={i} className="flex items-center gap-2">
                 {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-                <Link
-                  href={c.href}
-                  className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? 'font-semibold text-slate-900' : ''}`}
-                >
-                  {c.label}
-                </Link>
+                {c.href ? (
+                  <Link
+                    href={c.href}
+                    className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? 'font-semibold text-slate-900' : ''}`}
+                  >
+                    {c.label}
+                  </Link>
+                ) : (
+                  <span className="text-slate-700 font-medium cursor-default">
+                    {c.label}
+                  </span>
+                )}
               </li>
             ))}
           </ol>
@@ -92,27 +109,24 @@ export default function HeroSection() {
 
         <div className="grid items-start gap-10 md:grid-cols-12">
           {/* Left column: copy */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+          <div
             className="md:col-span-7 lg:col-span-8"
           >
             {/* badges */}
             <div className="hidden mb-5 lg:inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1.5 text-xs font-medium text-slate-700 backdrop-blur">
               <span className="inline-flex items-center gap-1">
                 <Star className="h-4 w-4 fill-current text-yellow-500" />
-                4.9/5 Rated
+                4.9/5 Rating (Top Rated)
               </span>
               <span className="h-3 w-px bg-slate-300" />
               <span className="inline-flex items-center gap-1">
                 <Users className="h-4 w-4 text-rose-600" />
-                5,000+ Learners
+                5,000+ Careers Launched
               </span>
               <span className="h-3 w-px bg-slate-300" />
               <span className="inline-flex items-center gap-1">
                 <Globe2 className="h-4 w-4 text-emerald-600" />
-                Live Online & Classroom (Mumbai)
+                #1 Training in Mumbai & Thane
               </span>
             </div>
 
@@ -121,67 +135,68 @@ export default function HeroSection() {
               id="dm-hero"
               className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
             >
-              <span className="text-green-700">Digital Marketing</span> &{' '}
-              <span className="text-green-700">Analytics</span> Master Program
+              Best <span className="text-green-700">Digital Marketing Course</span> in Mumbai with{' '}
+              <span className="text-green-700">100% Placement</span>
             </h1>
 
             {/* Mobile form just below H1 */}
-            <div className="mt-6 block md:hidden">
-              <LeadForm variant="elevated" />
+            <div className="mt-6 block md:hidden min-h-[500px]">
+              <ApiCourseLeadForm source="Digital Marketing Course Page - Hero Section (Mobile)" />
             </div>
 
             {/* Supporting copy */}
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-              Learn <strong>Performance Marketing</strong>, <strong>SEO</strong>, <strong>Content & Automation</strong>,{' '}
-              <strong>GA4 + Tag Manager</strong>, and <strong>Looker Studio</strong> dashboards. Build portfolio-ready
-              campaigns with AI tools and job-ready analytics skills.
+              Master <strong>AI-Driven SEO</strong>, <strong>Performance Marketing (Google Ads)</strong>, <strong>SMM</strong>, and <strong>GA4 Analytics</strong>. Launch your career with the most practical Digital Marketing training in Mumbai designed for 2025-2026 job market growth.
             </p>
             <p className="mt-3 max-w-3xl text-sm text-slate-600">
-              Master buyer journeys, attribution, conversion rate optimization, email & WhatsApp automation, and growth
-              frameworks used by modern brands.
+              Get hands-on experience with real budgets, live audits, and 15+ industry tools. 100% Job Assistance for freshers, professionals, and entrepreneurs seeking digital growth.
             </p>
 
             {/* CTAs */}
-            <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+            {/* CTAs */}
+            <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row md:justify-start items-center">
               <button
-                className="group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
-                aria-label="Enroll now in AI Digital Marketing course"
+                onClick={() => setIsEnrollOpen(true)}
+                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-brand bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
               >
-                Enroll Now
+                Enroll & Get Placement
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </button>
+
+              <button
+                onClick={() => setIsSyllabusOpen(true)}
+                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-brand bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+              >
+                Download Course Modules
+                <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+              </button>
+
               <Link
                 href="#curriculum"
-                className="inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
-                aria-label="View full AI Digital Marketing curriculum"
+                className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-base font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
               >
-                View Curriculum
+                Course Syllabus
+                <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
               </Link>
-              <button
-                className="inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
-                aria-label="Book a free demo for AI Digital Marketing"
-              >
-                Free Demo
-              </button>
             </div>
 
             {/* Quick highlights */}
             <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-600" />
-                80% practical labs with live ad budgets (safe sandbox)
+                Guaranteed Placement Assistance & Interview Prep
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-sky-600" />
-                GA4 + GTM events & e-commerce tracking
+                Hands-on Training with GA4 & Meta Ads Sandbox
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-rose-600" />
-                Interview prep & portfolio case studies
+                Live Case Studies & AI-Driven Marketing Workflows
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-amber-600" />
-                QR-verified global certification
+                Industry-Recognized Certification & Global Credibility
               </li>
             </ul>
 
@@ -195,19 +210,28 @@ export default function HeroSection() {
                 />
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Right column: Desktop Form */}
-          <motion.aside
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.12, ease: 'easeOut' }}
-            className="hidden md:col-span-5 lg:col-span-4 md:block"
-          >
-            <LeadForm variant="elevated" />
-          </motion.aside>
+          {/* Right column: Desktop Form (Sticky) */}
+          <div className="hidden md:block md:col-span-5 lg:col-span-4 md:top-8 sticky min-h-[600px]">
+            <ApiCourseLeadForm source="Digital Marketing Course Page - Hero Section (Desktop)" />
+          </div>
         </div>
+
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Digital Marketing Course Page - Hero Section - Enroll Now"
+        courseName={courseName}
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Digital Marketing Course Page - Hero Section - Digital Marketing - Download Syllabus"
+        courseName={courseName}
+      />
 
     </section>
   );

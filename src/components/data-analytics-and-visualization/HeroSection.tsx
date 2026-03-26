@@ -1,130 +1,21 @@
 "use client";
 
-import { ArrowRight, ChevronRight, Home, Play } from "lucide-react";
+import { ArrowRight, ChevronRight, Home, CloudDownload, ArrowDownNarrowWide } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
+import dynamic from "next/dynamic";
 
-/** --- Reusable Form (unchanged) --- */
-function LeadForm({ className = "" }: { className?: string }) {
-    const countries = [
-        { code: "IN", dial: "+91", label: "India", flag: "🇮🇳" },
-        { code: "US", dial: "+1", label: "United States", flag: "🇺🇸" },
-        { code: "GB", dial: "+44", label: "United Kingdom", flag: "🇬🇧" },
-        { code: "AE", dial: "+971", label: "United Arab Emirates", flag: "🇦🇪" },
-        { code: "SG", dial: "+65", label: "Singapore", flag: "🇸🇬" },
-        { code: "AU", dial: "+61", label: "Australia", flag: "🇦🇺" },
-    ];
-
-    return (
-        <form
-            className={[
-                "w-full rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-lg",
-                "p-5 sm:p-6",
-                className,
-            ].join(" ")}
-            onSubmit={(e) => {
-                e.preventDefault();
-                // handle submit
-            }}
-            aria-label="Request Syllabus & Free Consultation"
-        >
-            <h2 className="text-xl font-semibold text-slate-900">
-                Request Syllabus & Free Consultation
-            </h2>
-            <p className="mt-1 text-sm text-slate-600">
-                Get the detailed curriculum, career guidance, and upcoming batch info.
-            </p>
-
-            <div className="mt-4 grid grid-cols-1 gap-4">
-                {/* Name */}
-                <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-slate-700">
-                        Full Name
-                    </label>
-                    <input
-                        id="name"
-                        name="name"
-                        required
-                        autoComplete="name"
-                        placeholder="Your full name"
-                        className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-300"
-                    />
-                </div>
-
-                {/* Email */}
-                <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-slate-700">
-                        Email
-                    </label>
-                    <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        autoComplete="email"
-                        placeholder="you@example.com"
-                        className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-300"
-                    />
-                </div>
-
-                {/* Phone */}
-                <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-slate-700">
-                        Mobile Number
-                    </label>
-                    <div className="mt-1 flex items-stretch gap-2">
-                        <div className="flex min-w-[7.5rem] items-center rounded-lg border border-slate-300 bg-white px-2">
-                            <select
-                                name="country"
-                                aria-label="Country code"
-                                defaultValue="IN"
-                                className="w-full bg-transparent py-2 text-slate-900 focus:outline-none"
-                            >
-                                {countries.map((c) => (
-                                    <option key={c.code} value={c.code}>
-                                        {c.flag} {c.label} ({c.dial})
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <input
-                            id="phone"
-                            name="phone"
-                            type="tel"
-                            inputMode="tel"
-                            required
-                            placeholder="98765 43210"
-                            pattern="^[0-9\\s\\-()+]{7,20}$"
-                            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-300"
-                        />
-                    </div>
-                    <p className="mt-1 text-xs text-slate-500">
-                        We’ll never share your number. Standard rates may apply.
-                    </p>
-                </div>
-
-                <button
-                    type="submit"
-                    className="group inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 px-5 py-3 font-semibold text-white shadow-lg transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
-                >
-                    Get Syllabus & Pricing
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-                </button>
-
-                <p className="text-xs text-slate-500">
-                    By submitting, you agree to our{" "}
-                    <Link href="/privacy" className="underline hover:text-slate-700">
-                        Privacy Policy
-                    </Link>
-                    .
-                </p>
-            </div>
-        </form>
-    );
-}
+const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
+const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
 
 /** --- Updated SEO-optimized Hero --- */
 export default function HeroSection() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+
+    const courseName = "Advanced Excel for Data Analytics & Visualization";
+
     const courseInfo = {
         title: "Advanced Excel for Data Analytics & Visualization",
         duration: "20 Hours",
@@ -139,11 +30,12 @@ export default function HeroSection() {
     const breadcrumbs = [
         { label: "Home", href: "/" },
         { label: "Courses", href: "/courses" },
+        { label: 'BI Courses', href: '/courses/bi-courses' },
         { label: "Advanced Excel for Data Analytics & Visualization", href: "/data-analytics-and-visualization" },
     ];
 
     return (
-        <section className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 pt-10 pb-20">
+        <section className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-10">
             {/* Decorative background elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-20 right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -161,7 +53,7 @@ export default function HeroSection() {
                                 {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
                                 <Link
                                     href={c.href}
-                                    className={`hover:text-orange-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
+                                    className={`hover:text-brand ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
                                 >
                                     {c.label}
                                 </Link>
@@ -184,7 +76,7 @@ export default function HeroSection() {
                             {/* Heading styled like the second hero */}
                             <h1 className="mt-1 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
                                 <span>Master </span>
-                                <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
+                                <span className="bg-gradient-to-r from-[#ff8c00] via-[#ff8c00] to-[#ff8c00] bg-clip-text text-transparent">
                                     Advanced Excel
                                 </span>
                                 <span> for </span>
@@ -193,7 +85,9 @@ export default function HeroSection() {
                                 </span>
                             </h1>
 
-                            <LeadForm className="md:hidden" />
+                            <div className="md:hidden min-h-[500px]">
+                                <ApiCourseLeadForm source="Data Analytics & Visualization Course Page - Hero Section (Mobile)" courseName={courseName} />
+                            </div>
 
                             {/* SEO-optimized description */}
                             <p className="mt-2 max-w-3xl text-base leading-relaxed text-slate-600 md:text-lg">
@@ -203,10 +97,35 @@ export default function HeroSection() {
                                 <strong>Mumbai, Maharashtra (India)</strong> seeking a career upgrade in analytics, MIS, or reporting.
                             </p>
 
-                            {/* Byline */}
-                            <p className="text-sm text-slate-500">
-                                {courseInfo.institute} • {courseInfo.duration}
-                            </p>
+                            {/* CTAs */}
+                            <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+                                <button
+                                    onClick={() => setIsEnrollOpen(true)}
+                                    className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#ff8c00] bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-300"
+                                    aria-label="Enroll now in Data Analytics program"
+                                >
+                                    Enroll Now
+                                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                </button>
+
+                                <button
+                                    onClick={() => setIsSyllabusOpen(true)}
+                                    className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#ff8c00] bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-300"
+                                    aria-label="Download Syllabus"
+                                >
+                                    Download Syllabus
+                                    <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                </button>
+
+                                <Link
+                                    href="#curriculum"
+                                    className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-base font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
+                                    aria-label="View Curriculum"
+                                >
+                                    View Curriculum
+                                    <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                </Link>
+                            </div>
 
                             {/* Topics/keywords (scan-friendly) */}
                             <div className="mt-2 grid w-full max-w-3xl grid-cols-2 gap-2 sm:grid-cols-3">
@@ -239,17 +158,7 @@ export default function HeroSection() {
                             </p>
                         </div>
 
-                        {/* CTAs */}
-                        <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                            <button className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                                Enroll Now
-                                <ArrowRight className="w-5 h-5" />
-                            </button>
-                            <button className="inline-flex items-center gap-2 px-5 py-3 border-2 border-slate-300 hover:border-blue-600 text-slate-900 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-300">
-                                <Play className="w-5 h-5" />
-                                Watch Demo
-                            </button>
-                        </div>
+
 
                         {/* Trust indicators */}
                         <div className="flex items-center gap-6 pt-2">
@@ -280,46 +189,27 @@ export default function HeroSection() {
                         </div>
                     </div>
 
-                    {/* Right section: form + floating cards kept */}
-                    <div className="relative hidden md:block md:col-span-5 lg:col-span-4 mt-5">
-                        <div className="relative w-full">
-                            <div className="absolute inset-0 rounded-3xl" />
-                            {/* Form card */}
-                            <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100">
-                                <div className="w-full bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
-                                    <LeadForm />
-                                </div>
-                            </div>
-
-                            {/* Floating cards (KEPT as requested) */}
-                            <div className="absolute hidden xl:block -bottom-18 -left-30 bg-white rounded-2xl shadow-xl p-4 border border-slate-100 max-w-xs animate-[bounce_5s_ease-in-out_infinite] motion-reduce:animate-none">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-white font-bold">
-                                        ✓
-                                    </div>
-                                    <div>
-                                        <p className="font-semibold text-slate-900 text-sm">100% Job Assistance</p>
-                                        <p className="text-xs text-slate-600">Career support included</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="absolute hidden xl:block -top-15 -right-20 bg-white rounded-2xl shadow-xl p-4 border border-slate-100 max-w-xs animate-[bounce_5s_ease-in-out_infinite] motion-reduce:animate-none">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center text-white font-bold">
-                                        ★
-                                    </div>
-                                    <div>
-                                        <p className="font-semibold text-slate-900 text-sm">Global Certification</p>
-                                        <p className="text-xs text-slate-600">Internationally recognized</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    {/* Right: Desktop form (top-aligned & sticky) */}
+                    <div className="hidden md:block md:col-span-5 lg:col-span-4 md:top-8 sticky min-h-[600px]">
+                        <ApiCourseLeadForm source="Data Analytics & Visualization Course Page - Hero Section (Desktop)" courseName={courseName} />
                     </div>
                     {/* /Right section */}
                 </div>
             </div>
+
+            {/* Modals */}
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Data Analytics & Visualization Course Page - Hero Section - Enroll Now"
+                courseName={courseName}
+            />
+            <SyllabusDownloadModal
+                isOpen={isSyllabusOpen}
+                onClose={() => setIsSyllabusOpen(false)}
+                source="Data Analytics & Visualization Course Page - Hero Section - Download Syllabus"
+                courseName={courseName}
+            />
         </section>
     );
 }

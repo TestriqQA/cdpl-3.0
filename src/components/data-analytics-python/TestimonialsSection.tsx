@@ -4,15 +4,15 @@ import ReviewsMarquee from "../sections/ReviewMarque";
 export default function TestimonialsSection() {
 
     return (
-        <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
+        <section className="py-10 bg-gradient-to-b from-white to-slate-50">
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-                        Student <span className="text-orange-600">Testimonials</span>
+                        Success <span className="text-brand">Stories</span> from Our Data Analytics Course
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Hear from our successful graduates who have transformed their careers through our comprehensive data analytics program.
+                        Hear from students who completed our <strong>best data analytics courses</strong> and landed top roles at leading companies.
                     </p>
                 </div>
 

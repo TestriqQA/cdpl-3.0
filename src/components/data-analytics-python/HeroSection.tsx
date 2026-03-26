@@ -1,135 +1,32 @@
 "use client";
 
-import { ArrowRight, ChevronRight, Clock, Home } from "lucide-react";
+import {
+    ArrowRight,
+    ChevronRight,
+    Clock,
+    Home,
+    CloudDownload,
+    ArrowDownNarrowWide
+} from "lucide-react";
 import Link from "next/link";
-import React from "react";
-
-/** --- Reusable Form --- */
-function LeadForm({ className = "" }: { className?: string }) {
-    const countries = [
-        { code: "IN", dial: "+91", label: "India", flag: "🇮🇳" },
-        { code: "US", dial: "+1", label: "United States", flag: "🇺🇸" },
-        { code: "GB", dial: "+44", label: "United Kingdom", flag: "🇬🇧" },
-        { code: "AE", dial: "+971", label: "United Arab Emirates", flag: "🇦🇪" },
-        { code: "SG", dial: "+65", label: "Singapore", flag: "🇸🇬" },
-        { code: "AU", dial: "+61", label: "Australia", flag: "🇦🇺" },
-    ];
-
-    return (
-        <form
-            className={[
-                "w-full rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-sm shadow-lg",
-                "p-5 sm:p-6",
-                className,
-            ].join(" ")}
-            onSubmit={(e) => {
-                e.preventDefault();
-                // submit handling here
-            }}
-            aria-label="Enroll for Advanced Data Analytics with Python"
-        >
-            <h2 className="text-xl font-semibold text-slate-900">
-                Request Syllabus & Free Consultation
-            </h2>
-            <p className="mt-1 text-sm text-slate-600">
-                Get the detailed curriculum, career guidance, and upcoming batch info.
-            </p>
-
-            <div className="mt-4 grid grid-cols-1 gap-4">
-                {/* Name */}
-                <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-slate-700">
-                        Full Name
-                    </label>
-                    <input
-                        id="name"
-                        name="name"
-                        required
-                        autoComplete="name"
-                        placeholder="Your full name"
-                        className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-300"
-                    />
-                </div>
-
-                {/* Email */}
-                <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-slate-700">
-                        Email
-                    </label>
-                    <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        autoComplete="email"
-                        placeholder="you@example.com"
-                        className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-300"
-                    />
-                </div>
-
-                {/* Phone with country code + flag */}
-                <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-slate-700">
-                        Mobile Number
-                    </label>
-                    <div className="mt-1 flex items-stretch gap-2">
-                        <div className="flex min-w-[7.5rem] items-center rounded-lg border border-slate-300 bg-white px-2">
-                            <select
-                                name="country"
-                                aria-label="Country code"
-                                defaultValue="IN"
-                                className="w-full bg-transparent py-2 text-slate-900 focus:outline-none"
-                            >
-                                {countries.map((c) => (
-                                    <option key={c.code} value={c.code}>
-                                        {c.flag} {c.label} ({c.dial})
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <input
-                            id="phone"
-                            name="phone"
-                            type="tel"
-                            inputMode="tel"
-                            required
-                            placeholder="98765 43210"
-                            pattern="^[0-9\\s\\-()+]{7,20}$"
-                            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-300"
-                        />
-                    </div>
-                    <p className="mt-1 text-xs text-slate-500">
-                        We’ll never share your number. Standard rates may apply.
-                    </p>
-                </div>
-
-                <button
-                    type="submit"
-                    className="group inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 px-5 py-3 font-semibold text-white shadow-lg transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
-                >
-                    Get Syllabus & Pricing
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-                </button>
-
-                <p className="text-xs text-slate-500">
-                    By submitting, you agree to our{" "}
-                    <Link href="/privacy" className="underline hover:text-slate-700">
-                        Privacy Policy
-                    </Link>
-                    .
-                </p>
-            </div>
-        </form>
-    );
-}
+import React, { useState } from "react";
+import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 export default function HeroSection() {
-
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
 
     const breadcrumbs = [
         { label: "Home", href: "/" },
+        { label: 'Courses', href: '/courses' },
+        { label: 'BI Courses', href: '/courses/bi-courses' },
+        { label: "Business Intelligence", href: null },
         { label: "Advanced Data Analytics with Python", href: "/data-analytics-python" },
     ];
+
+    const courseName = "Advanced Data Analytics with Python";
 
     return (
         <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-orange-50">
@@ -140,19 +37,25 @@ export default function HeroSection() {
                 <div className="animate-blob animation-delay-4000 absolute -bottom-8 left-20 h-72 w-72 rounded-full bg-indigo-200 opacity-20 mix-blend-multiply blur-3xl" />
             </div>
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-12 md:pt-6 md:pb-16">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
                 {/* Breadcrumbs */}
                 <nav aria-label="Breadcrumb" className="mb-5">
                     <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
                         {breadcrumbs.map((c, i) => (
                             <li key={i} className="flex items-center gap-2">
                                 {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-                                <Link
-                                    href={c.href}
-                                    className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
-                                >
-                                    {c.label}
-                                </Link>
+                                {c.href ? (
+                                    <Link
+                                        href={c.href}
+                                        className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
+                                    >
+                                        {c.label}
+                                    </Link>
+                                ) : (
+                                    <span className="text-slate-700 font-medium cursor-default">
+                                        {c.label}
+                                    </span>
+                                )}
                             </li>
                         ))}
                     </ol>
@@ -163,70 +66,67 @@ export default function HeroSection() {
                     <div className="flex flex-col md:col-span-7 lg:col-span-8">
                         {/* Duration Badge */}
                         <div className="mb-4 w-fit inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/80 px-4 py-2 shadow-sm backdrop-blur-sm transition-shadow hover:shadow-md">
-                            <Clock className="h-4 w-4 text-orange-500" />
+                            <Clock className="h-4 w-4 text-brand" />
                             <span className="text-sm font-semibold text-slate-700">
-                                Duration: <span className="text-orange-600">20 Hours</span>
+                                Duration: <span className="text-brand">20 Hours</span>
                             </span>
                         </div>
 
                         {/* H1 */}
                         <h1 className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900">
-                            <span>Master </span>
-                            <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">
-                                Advanced Data Analytics
+                            <span className="bg-gradient-to-r from-orange-500 via-brand to-red-500 bg-clip-text text-transparent">
+                                Best Data Analytics Course
                             </span>
                             <span> with </span>
                             <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                                Python Libraries
+                                Python
                             </span>
+                            <span> – 20 Hours to a Data Analyst Career</span>
                         </h1>
 
                         {/* Mobile form (under H1) */}
-                        <LeadForm className="mt-3 md:hidden" />
+                        <div className="mt-6 md:hidden">
+                            <ApiCourseLeadForm source="Data Analytics Python Course Page - Hero Section (Mobile)" />
+                        </div>
 
                         {/* Subheading */}
                         <p className="mt-4 max-w-3xl text-center text-base leading-relaxed text-slate-600 md:text-left md:text-lg">
-                            Transform raw data into powerful, insight-driven visualizations. Learn from
-                            industry experts and master Python libraries for data science, analytics, and
-                            interactive dashboards in just 20 hours.
+                            Wondering <strong>what is data analytics course</strong> and <strong>how to become a data analyst</strong>? Our <strong>python data analysis course</strong> in Mumbai/Thane transforms beginners into job-ready professionals. Learn <strong>how to analyse data using python</strong> with Pandas, NumPy, Matplotlib, Seaborn, and Plotly—all in just 20 intensive hours with <strong>100% placement support</strong>.
                         </p>
 
                         {/* SEO keywords line */}
                         <p className="mt-3 max-w-3xl text-center text-sm text-slate-600 md:text-left">
-                            Topics: Pandas, NumPy, Matplotlib, Seaborn, Plotly, Streamlit, EDA, data
-                            visualization, dashboard design, real-world analytics projects, business
-                            intelligence, KPI tracking, reporting automation.
+                            Topics: <strong>what is data analysis in python</strong>, <strong>data analytics subjects</strong>, EDA & visualization, dashboard design, real-world projects, business intelligence, KPI tracking, reporting automation. Ideal for those asking <strong>how to use python in data analysis</strong>.
                         </p>
 
-                        {/* Highlights */}
-                        <div className="mt-8 grid w-full max-w-2xl grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
-                            {[
-                                { icon: "📊", label: "Real Projects" },
-                                { icon: "👨‍🏫", label: "Expert Trainers" },
-                                { icon: "🎓", label: "Certification" },
-                                { icon: "💼", label: "Job Ready" },
-                            ].map((item, idx) => (
-                                <div
-                                    key={idx}
-                                    className="flex flex-col items-center gap-2 rounded-lg border border-slate-200 bg-white/60 p-4 backdrop-blur-sm transition-colors hover:border-orange-300"
-                                >
-                                    <span className="text-2xl">{item.icon}</span>
-                                    <span className="text-center text-xs font-semibold text-slate-700 md:text-sm">
-                                        {item.label}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
-
                         {/* CTAs */}
-                        <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row md:justify-start">
-                            <button className="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-orange-500 to-orange-600 px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:from-orange-600 hover:to-orange-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300">
+                        <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+                            <button
+                                onClick={() => setIsEnrollOpen(true)}
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#ff8c00] bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                                aria-label="Enroll now in Data Analytics program"
+                            >
                                 Enroll Now
-                                <ArrowRight className="ml-2 h-5 w-5" />
+                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </button>
-                            <button className="rounded-lg border-2 border-slate-300 px-8 py-4 text-base font-semibold text-slate-700 transition-all hover:border-orange-400 hover:text-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300">
+
+                            <button
+                                onClick={() => setIsSyllabusOpen(true)}
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#ff8c00] bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
+                                aria-label="Download Syllabus"
+                            >
                                 Download Syllabus
+                                <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </button>
+
+                            <Link
+                                href="#curriculum"
+                                className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-base font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
+                                aria-label="View Curriculum"
+                            >
+                                View Curriculum
+                                <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                            </Link>
                         </div>
 
                         {/* Trust Indicators */}
@@ -253,21 +153,52 @@ export default function HeroSection() {
                             </div>
                         </div>
 
+                        {/* Highlights */}
+                        <div className="mt-8 grid w-full max-w-2xl grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
+                            {[
+                                { icon: "📊", label: "Real Projects" },
+                                { icon: "👨‍🏫", label: "Expert Trainers" },
+                                { icon: "🎓", label: "Certification" },
+                                { icon: "💼", label: "Job Ready" },
+                            ].map((item, idx) => (
+                                <div
+                                    key={idx}
+                                    className="flex flex-col items-center gap-2 rounded-lg border border-slate-200 bg-white/60 p-4 backdrop-blur-sm transition-colors hover:border-orange-300"
+                                >
+                                    <span className="text-2xl">{item.icon}</span>
+                                    <span className="text-center text-xs font-semibold text-slate-700 md:text-sm">
+                                        {item.label}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+
                         {/* Extra SEO copy */}
                         <div className="mt-8 max-w-3xl text-center text-xs leading-relaxed text-slate-500 md:text-left">
-                            This data analytics course is designed to help students and
-                            working professionals transition into analytics roles with Python. Build a
-                            job-ready portfolio using real datasets, learn best practices for EDA,
-                            visualization, dashboarding, and communicate insights for business impact.
+                            This <strong>data analytics course</strong> is designed for students and working professionals seeking a <strong>career in data analytics</strong>. Build a job-ready portfolio, learn <strong>what skills are required for data analyst</strong> roles, and get <strong>best data analytics courses</strong> experience with hands-on projects.
                         </div>
                     </div>
 
                     {/* Right: Desktop form (top-aligned & sticky) */}
-                    <div className="hidden md:block md:col-span-5 lg:col-span-4 md:top-8">
-                        <LeadForm />
+                    <div className="hidden md:block md:col-span-5 lg:col-span-4 md:top-8 sticky">
+                        <ApiCourseLeadForm source="Data Analytics Python Course Page - Hero Section (Desktop)" />
                     </div>
                 </div>
             </div>
+
+            {/* Modals */}
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Data Analytics Python Course Page - Hero Section - Enroll Now"
+                courseName={courseName}
+            />
+            <SyllabusDownloadModal
+                isOpen={isSyllabusOpen}
+                onClose={() => setIsSyllabusOpen(false)}
+                source="Data Analytics Python Course Page - Hero Section - Download Syllabus"
+                courseName={courseName}
+            />
         </section >
     );
 }

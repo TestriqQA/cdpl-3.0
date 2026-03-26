@@ -1,8 +1,7 @@
-// src/components/sections/EventsPastEventsFeaturedEventsSliderSection.tsx
 "use client";
-
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { useInView } from "react-intersection-observer";
 import {
   Calendar,
   MapPin,
@@ -13,6 +12,7 @@ import {
   Crown,
 } from "lucide-react";
 import type React from "react";
+import Image from "next/image";
 
 export type FeaturedEvent = {
   id: string | number;
@@ -23,11 +23,12 @@ export type FeaturedEvent = {
   location: string;
   attendees: string | number;
   organization: string;
-  purpose: string;        // not shown
-  highlights: string[];   // not shown
+  purpose?: string;        // not shown
+  highlights?: string[];   // not shown
   category: string;
   categoryColor: string;
   featured?: boolean;
+  heroImageUrl?: string;
 };
 
 type StyleWithVars = React.CSSProperties & Record<string, string | number>;
@@ -39,7 +40,7 @@ const CATEGORY_STYLES: Record<
   "AI & Machine Learning": { badgeBg: "bg-purple-600", btnBg: "bg-purple-600", text: "text-purple-600" },
   "Software Testing": { badgeBg: "bg-green-600", btnBg: "bg-green-600", text: "text-green-600" },
   "Data Science": { badgeBg: "bg-blue-600", btnBg: "bg-blue-600", text: "text-blue-600" },
-  "Academic Training": { badgeBg: "bg-orange-600", btnBg: "bg-orange-600", text: "text-orange-600" },
+  "Academic Training": { badgeBg: "bg-brand", btnBg: "bg-brand", text: "text-brand" },
   "Web Development": { badgeBg: "bg-cyan-600", btnBg: "bg-cyan-600", text: "text-cyan-600" },
   "Industrial Training": { badgeBg: "bg-teal-600", btnBg: "bg-teal-600", text: "text-teal-600" },
   "Corporate Training": { badgeBg: "bg-pink-600", btnBg: "bg-pink-600", text: "text-pink-600" },
@@ -57,19 +58,12 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
   cardHClass?: string;
 }) {
   const trackRef = useRef<HTMLDivElement | null>(null);
+  const { ref: inViewRef, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: false, // Resume when back in view
+  });
 
-  const [perView, setPerView] = useState(3);
-  useEffect(() => {
-    const update = () => {
-      if (typeof window === "undefined") return;
-      if (window.matchMedia("(min-width: 1024px)").matches) setPerView(3);
-      else if (window.matchMedia("(min-width: 768px)").matches) setPerView(2);
-      else setPerView(1);
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
+  // Removed JS-based perView state to fix CLS
 
   const base = useMemo<FeaturedEvent[]>(() => events ?? [], [events]);
   const looped = useMemo(() => (base.length ? [...base, ...base, ...base] : []), [base]);
@@ -80,36 +74,72 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
 
   const GAP_PX = 24;
 
-  const getSlideWidth = () => {
+  /* -------------------------------------------------------------------------- */
+  /* PERFORMANCE OPTIMIZATION: Prevent Forced Reflows                            */
+  /* -------------------------------------------------------------------------- */
+  // We cache the slide width to avoid querying the DOM (offsetWidth) 
+  // on every single tick or index change, which causes synchronous layout thrashing.
+  const slideWidthRef = useRef<number>(0);
+
+  const updateDimensions = () => {
     const el = trackRef.current;
-    if (!el) return 0;
+    if (!el) return;
     const slide = el.querySelector<HTMLElement>("[data-slide]");
-    return slide ? slide.offsetWidth + GAP_PX : el.clientWidth / Math.max(1, perView);
+    if (slide) {
+      slideWidthRef.current = slide.offsetWidth + GAP_PX;
+    } else {
+      slideWidthRef.current = el.clientWidth;
+    }
   };
+
+  // Update on mount and resize
+  useEffect(() => {
+    // Initial measure with a small delay to ensure DOM is ready
+    const timer = setTimeout(updateDimensions, 100);
+
+    const handleResize = () => {
+      // Debounce slightly if needed, but simple rAF or direct call is usually fine for resize
+      requestAnimationFrame(updateDimensions);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timer);
+    };
+  }, []);
 
   const scrollToIndex = (i: number, behavior: ScrollBehavior = "smooth") => {
     const el = trackRef.current;
     if (!el || !base.length) return;
-    const w = getSlideWidth();
+
+    // Safety check: if width is 0 (first run), calculate it once
+    if (slideWidthRef.current === 0) updateDimensions();
+
+    const w = slideWidthRef.current;
     el.scrollTo({ left: i * w, behavior });
   };
 
   useEffect(() => {
-    if (!base.length) return;
+    if (!base.length || !inView) return; // Wait for inView
+
+    // Measure before initial scroll
+    updateDimensions();
+
     const id = requestAnimationFrame(() => {
       setIndex(middleStart);
       scrollToIndex(middleStart, "auto");
     });
     return () => cancelAnimationFrame(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [perView, base.length]);
+  }, [base.length, inView]);
 
   useEffect(() => {
-    if (!base.length || paused) return;
+    if (!base.length || paused || !inView) return; // Check inView
     const id = setInterval(() => next(), autoplayMs);
     return () => clearInterval(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [paused, autoplayMs, base.length, perView, index]);
+  }, [paused, autoplayMs, base.length, index, inView]);
 
   useEffect(() => {
     if (!base.length) return;
@@ -127,7 +157,7 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
       scrollToIndex(ni, "auto");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index, base.length, perView]);
+  }, [index, base.length]);
 
   const next = () => {
     if (!base.length) return;
@@ -148,6 +178,7 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
 
   return (
     <div
+      ref={inViewRef}
       className="relative"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -164,97 +195,126 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
           {(() => {
             const styleVars: StyleWithVars = {
               "--gap": `${GAP_PX}px`,
-              "--pv": perView,
               gap: "var(--gap)",
             };
             return (
-              <div className="flex" style={styleVars}>
-                {looped.map((event, i) => {
-                  const cs = CATEGORY_STYLES[event.category] ?? FALLBACK;
+              <>
+                <style jsx>{`
+                  .slider-container {
+                    --pv: 1;
+                  }
+                  @media (min-width: 768px) {
+                    .slider-container {
+                      --pv: 2;
+                    }
+                  }
+                  @media (min-width: 1024px) {
+                    .slider-container {
+                      --pv: 3;
+                    }
+                  }
+                `}</style>
+                <div className="flex slider-container" style={styleVars}>
+                  {looped.map((event, i) => {
+                    const cs = CATEGORY_STYLES[event.category] ?? FALLBACK;
 
-                  return (
-                    <div
-                      key={`${event.id}-${i}`}
-                      data-slide
-                      className="box-border shrink-0 grow-0"
-                      style={{
-                        flex: "0 0 calc((100% - (var(--gap) * (var(--pv) - 1))) / var(--pv))",
-                      }}
-                    >
-                      <article
-                        className={`relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 ${cardHClass} flex flex-col`}
+                    return (
+                      <div
+                        key={`${event.id}-${i}`}
+                        data-slide
+                        className="box-border shrink-0 grow-0"
+                        style={{
+                          flex: "0 0 calc((100% - (var(--gap) * (var(--pv) - 1))) / var(--pv))",
+                        }}
                       >
-                        {/* === FEATURED INDICATORS === */}
-                        {event.featured && (
-                          <>
-                            <span className="sr-only">Featured</span>
-                            <div className="absolute inset-x-0 top-0 h-[3px] bg-[#FF8C00] shadow-[0_0_6px_rgba(255,140,0,0.5)] z-10" />
-                            <div className="absolute right-3 top-3 z-10">
-                              <span className="inline-flex items-center gap-1 rounded-full bg-[#FF8C00] px-3 py-1 text-[11px] font-black uppercase tracking-wide text-white shadow-md ring-1 ring-white/60">
-                                <Crown className="h-3.5 w-3.5" />
-                                Featured
-                              </span>
-                            </div>
-                          </>
-                        )}
-
-                        {/* Header */}
-                        <div className="relative h-48 bg-gradient-to-br from-purple-100 to-blue-100 pt-10 md:pt-0">
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <Calendar className="h-16 w-16 text-purple-300" />
-                          </div>
-                          <div className="absolute left-3 top-3 z-10">
-                            <span className={`${cs.badgeBg} text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md`}>
-                              {event.category}
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Body */}
-                        <div className="p-6 flex flex-col h-[calc(100%-12rem)] min-h-0">
-                          <h3 className="text-xl font-bold text-gray-900 mb-1 line-clamp-2">
-                            {event.title}
-                          </h3>
-
-                          {event.subtitle && (
-                            <p className={`${cs.text} text-sm font-semibold mb-3 line-clamp-1`}>
-                              {event.subtitle}
-                            </p>
+                        <article
+                          className={`relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 ${cardHClass} flex flex-col`}
+                        >
+                          {/* === FEATURED INDICATORS === */}
+                          {event.featured && (
+                            <>
+                              <span className="sr-only">Featured</span>
+                              <div className="absolute inset-x-0 top-0 h-[3px] bg-brand shadow-[0_0_6px_rgba(194,65,12,0.5)] z-10" />
+                              <div className="absolute right-3 top-3 z-10">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-brand px-3 py-1 text-[11px] font-black uppercase tracking-wide text-white shadow-md ring-1 ring-white/60">
+                                  <Crown className="h-3.5 w-3.5" />
+                                  Featured
+                                </span>
+                              </div>
+                            </>
                           )}
 
-                          <div className="space-y-2 mb-4 text-sm text-gray-600">
-                            <div className="flex items-center gap-2">
-                              <Calendar className="w-4 h-4 text-purple-600" />
-                              <span className="line-clamp-1">{event.date}</span>
+                          {/* Header */}
+                          <div className="relative h-48 bg-gradient-to-br from-purple-100 to-blue-100 pt-10 md:pt-0">
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              {event.heroImageUrl ? (
+                                <Image
+                                  src={event.heroImageUrl}
+                                  alt={event.title}
+                                  width={500}
+                                  height={500}
+                                  sizes="(max-width: 640px) 384px, (max-width: 1024px) 45vw, 30vw"
+                                  quality={60}
+                                  className="w-full h-full object-cover"
+                                  loading="lazy"
+                                />
+                              ) : (
+                                <Calendar className="h-16 w-16 text-purple-300" />
+                              )}
                             </div>
-                            <div className="flex items-center gap-2">
-                              <MapPin className="w-4 h-4" />
-                              <span className="line-clamp-1">{event.location}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Users className="w-4 h-4 text-blue-600" />
-                              <span className="line-clamp-1">
-                                {event.attendees} participants • {event.organization}
+                            <div className="absolute left-3 top-3 z-10">
+                              <span className={`${cs.badgeBg} text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md`}>
+                                {event.category}
                               </span>
                             </div>
                           </div>
 
-                          <div className="mt-auto shrink-0">
-                            <Link href={`/events/${event.slug}`}>
-                              <button
-                                className={`w-full text-white px-4 py-2.5 rounded-xl font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 text-sm ${cs.btnBg}`}
-                              >
-                                View Details
-                                <ArrowRight className="w-4 h-4" />
-                              </button>
-                            </Link>
+                          {/* Body */}
+                          <div className="p-6 flex flex-col h-[calc(100%-12rem)] min-h-0">
+                            <h3 className="text-xl font-bold text-gray-900 mb-1 line-clamp-2">
+                              {event.title}
+                            </h3>
+
+                            {event.subtitle && (
+                              <p className={`${cs.text} text-sm font-semibold mb-3 line-clamp-1`}>
+                                {event.subtitle}
+                              </p>
+                            )}
+
+                            <div className="space-y-2 mb-4 text-sm text-gray-600">
+                              <div className="flex items-center gap-2">
+                                <Calendar className="w-4 h-4 text-purple-600" />
+                                <span className="line-clamp-1">{event.date}</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <MapPin className="w-4 h-4" />
+                                <span className="line-clamp-1">{event.location}</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <Users className="w-4 h-4 text-blue-600" />
+                                <span className="line-clamp-1">
+                                  {event.attendees} participants • {event.organization}
+                                </span>
+                              </div>
+                            </div>
+
+                            <div className="mt-auto shrink-0">
+                              <Link href={`/events/${event.slug}`} aria-label={`View details about ${event.title}`}>
+                                <button
+                                  className={`w-full text-white px-4 py-2.5 rounded-xl font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 text-sm cursor-pointer ${cs.btnBg}`}
+                                >
+                                  View Details
+                                  <ArrowRight className="w-4 h-4" />
+                                </button>
+                              </Link>
+                            </div>
                           </div>
-                        </div>
-                      </article>
-                    </div>
-                  );
-                })}
-              </div>
+                        </article>
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
             );
           })()}
         </div>
@@ -302,7 +362,7 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
 
       {/* Dots */}
       {base.length > 1 && (
-        <div className="mt-4 flex items-center justify-center gap-2">
+        <div className="mt-4 flex items-center justify-center gap-5">
           {base.map((_, i) => (
             <button
               key={i}
@@ -313,7 +373,7 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
               }}
               aria-label={`Go to slide ${i + 1}`}
               className={[
-                "h-2.5 rounded-full transition-all",
+                "relative h-2.5 rounded-full transition-all after:absolute after:-inset-4 after:content-['']",
                 i === activeDot ? "w-6 bg-gray-900" : "w-2.5 bg-gray-300",
               ].join(" ")}
             />

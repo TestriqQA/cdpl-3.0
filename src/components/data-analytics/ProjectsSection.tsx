@@ -24,7 +24,7 @@ const PROJECTS: Project[] = [
     desc: "Predict weekly/monthly sales and visualize KPIs for regions, categories, and channels.",
     outcomes: ["ARIMA/Prophet vs. ML regressors", "Backtesting & seasonality analysis", "Executive-ready KPI views"],
     tools: ["Python", "Pandas", "Prophet", "Plotly"],
-    accent: { bar: "bg-orange-500", border: "border-orange-200", text: "text-orange-700", chip: "bg-orange-50", ring: "focus:ring-orange-300" },
+    accent: { bar: "bg-orange-500", border: "border-orange-200", text: "text-brand", chip: "bg-orange-50", ring: "focus:ring-orange-300" },
     icon: LineChart,
   },
   {
@@ -75,7 +75,7 @@ export default function ProjectsSection() {
 
 
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="relative py-10 md:py-12 bg-white">
+    <section id="projects" aria-labelledby="projects-heading" className="relative py-10 bg-white">
       {/* Subtle futuristic backdrop (fine grid + soft radial glow; no heavy gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.035)_1px,transparent_1px)] bg-[size:28px_28px]" />
@@ -85,7 +85,7 @@ export default function ProjectsSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="mx-auto max-w-3xl text-center">
           <h2 id="projects-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-            Real-World <span className="text-DS">Projects You’ll Build</span>
+            Real-Time Industry Projects & Capstones
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
             Apply <strong>Advanced Analytics</strong> to real business challenges. Build a{" "}

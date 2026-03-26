@@ -6,10 +6,10 @@
 export const courseData = {
   // Basic Course Information
   basic: {
-    title: "Master Digital Marketing & AI for Business Owners",
-    subtitle: "The 3-Month Cohort Program to 10X Your Business Growth",
+    title: "Master AI in Digital Marketing for Business Owners",
+    subtitle: "The #1 AI Digital Marketing Course for Business Owners in Mumbai & Thane to 10X Growth.",
     description:
-      "Transform your business with cutting-edge digital marketing strategies and AI tools. Learn from industry experts and implement real-world solutions tailored to your business niche.",
+      "Stop relying on agencies. Learn business marketing strategies, local business SEO, and marketing automation for business owners in this 3-month comprehensive program. Master AI digital marketing tools to generate leads, automate sales, and build a profitable online marketing business system yourself.",
     duration: "3 Months Cohort Program",
     weeklyCommitment: "6 hours/week",
     totalHours: "40-50 hours",
@@ -868,7 +868,7 @@ export const courseData = {
     website: "www.cinutedigital.com",
     address: {
       headOffice:
-        "1, 2 & 3, 2nd Floor, Ashley Towers, Kanakia Rd, Vagad Nagar, Beverly Park, Mira Road East, Mira Bhayandar, Maharashtra 401107",
+        "Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road, Mira Bhayandar, Mumbai, Maharashtra 401107",
       studyCenter:
         "SHOP NO 7, Laxmi palace, opposite Vidhyavardhini Degree Engineering College, Gurunanak Nagar, Vasai West, Maharashtra 401202",
     },

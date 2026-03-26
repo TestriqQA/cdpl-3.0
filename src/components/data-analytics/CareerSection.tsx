@@ -1,8 +1,8 @@
-// components/sections/CareerSection.tsx
-// Server component — sleek, SEO-optimized, slightly futuristic, fully responsive.
-// Unique accent colors per logo card (no repeats). Accessible labels & JSON-LD.
+"use client";
 
-import Link from "next/link";
+import { useState } from "react";
+import CareerSessionModal from "../CareerSessionModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 type Company = {
   name: string;
@@ -18,7 +18,7 @@ const COMPANIES: Company[] = [
     logo: "/tcs-logo.png",
     alt: "TCS logo",
     href: "https://www.tcs.com/",
-    accent: { bg: "bg-orange-50", text: "text-orange-900", border: "border-orange-200", ring: "focus:ring-orange-300" },
+    accent: { bg: "bg-orange-50", text: "text-brand", border: "border-orange-200", ring: "focus:ring-orange-300" },
   },
   {
     name: "Infosys",
@@ -72,6 +72,8 @@ const COMPANIES: Company[] = [
 ];
 
 export default function CareerSection() {
+  const [isSessionOpen, setIsSessionOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
 
   const subKpi = "101,000+ Job Vacancies in India";
   const subtext =
@@ -79,9 +81,8 @@ export default function CareerSection() {
   const keywords =
     "data analytics jobs India, business intelligence hiring companies, data analyst roles, SQL Python Power BI recruitment, analytics careers Mumbai";
 
-
   return (
-    <section id="careers" aria-labelledby="careers-heading" className="relative overflow-hidden py-8 md:py-12 bg-white">
+    <section id="careers" aria-labelledby="careers-heading" className="relative overflow-hidden py-10 bg-white">
       {/* Subtle futuristic grid */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.035)_1px,transparent_1px)] bg-[size:28px_28px]" />
@@ -90,15 +91,12 @@ export default function CareerSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
         {/* Heading */}
         <h2 id="careers-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
-          Top Companies Hiring{" "}
-          <span className="text-DS">
-            Data Analytics Professionals
-          </span>
+          Placement Partners & Career Opportunities in Mumbai
         </h2>
 
         {/* KPI / subtitle strip */}
         <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-[11px] font-semibold text-slate-700 backdrop-blur">
-          <span className="text-orange-700">•</span>
+          <span className="text-brand">•</span>
           <span className="text-slate-900">{subKpi}</span>
           <span className="text-indigo-700">•</span>
           <span>Pan-India • Product & Services • Startup & Enterprise</span>
@@ -119,20 +117,13 @@ export default function CareerSection() {
               <button
                 aria-label={c.name}
                 className={[
-                  "group block w-full rounded-2xl border p-4 shadow-sm transition-all duration-200 backdrop-blur",
+                  "cursor-pointer group block w-full rounded-2xl border p-4 shadow-sm transition-all duration-200 backdrop-blur",
                   "hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:-translate-y-0.5",
                   c.accent.bg,
                   c.accent.border,
                   c.accent.ring,
                 ].join(" ")}
               >
-                
-                {/* <Image
-                  src={c.logo}
-                  alt={c.alt}
-                  className="mx-auto h-10 w-auto select-none grayscale opacity-80 transition-all duration-200 group-hover:grayscale-0 group-hover:opacity-100"
-                  loading="lazy"
-                /> */}
                 <p className={["mt-3 text-xs font-semibold", c.accent.text].join(" ")}>{c.name}</p>
               </button>
             </li>
@@ -141,7 +132,7 @@ export default function CareerSection() {
 
         {/* Role chips (distinct colors, no repeats) */}
         <div className="mx-auto mt-8 flex max-w-3xl flex-wrap items-center justify-center gap-2 text-[11px] font-semibold text-slate-700">
-          <span className="rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-orange-900">Data Analyst</span>
+          <span className="rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-brand">Data Analyst</span>
           <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-900">BI Analyst</span>
           <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sky-900">Analytics Engineer</span>
           <span className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-rose-900">Product Analyst</span>
@@ -150,15 +141,16 @@ export default function CareerSection() {
 
         {/* CTA row */}
         <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link
-            href="contact-us"
-            className="inline-flex items-center justify-center rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+          <button
+            onClick={() => setIsSessionOpen(true)}
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="Apply for placement assistance in analytics roles"
           >
             Apply for Placement Assistance
-          </Link>
+          </button>
           <button
-            className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-orange-200"
+            onClick={() => setIsSyllabusOpen(true)}
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-orange-200"
             aria-label="Download the job-ready analytics syllabus"
           >
             Download Job-Ready Syllabus (PDF)
@@ -171,6 +163,18 @@ export default function CareerSection() {
         </p>
       </div>
 
-    </section>
+      <CareerSessionModal
+        isOpen={isSessionOpen}
+        onClose={() => setIsSessionOpen(false)}
+        source="Data Analytics Course Page - Career Section - Placement Assistance"
+        courseName="Advanced Data Analytics Hero Program"
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Data Analytics Course Page - Career Section - Syllabus Download"
+        courseName="Advanced Data Analytics Hero Program"
+      />
+    </section >
   );
 }

@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { content } from "@/components/data-visualization-in-r-programming/data/content";
-import { Star, Users, Trophy, DollarSign, Briefcase } from "lucide-react";
+import { Star, Users, Trophy, DollarSign, Briefcase, CloudDownload } from "lucide-react";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 interface StatCardData {
   icon: React.ReactNode;
@@ -16,6 +17,8 @@ interface StatCardData {
 
 export const StatsSection: React.FC = () => {
   const { stats_section } = content;
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Machine Learning and Data Visualization using R Programming";
 
   // --- ORIGINAL CONTENT (unchanged: values, labels, icon choices) ---
   const combinedStatsBase = [
@@ -94,10 +97,10 @@ export const StatsSection: React.FC = () => {
 
   return (
     <section
-      className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50"
+      className="py-10 bg-gradient-to-b from-white to-slate-50"
       aria-labelledby="stats-heading"
     >
-      
+
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header (SEO-optimized) */}
@@ -107,7 +110,7 @@ export const StatsSection: React.FC = () => {
             className="text-3xl md:text-4xl font-bold mb-4 text-slate-900"
           >
             Why Learners Trust Our{" "}
-            <span className="text-orange-600">
+            <span className="text-brand">
               R Data Visualization & Machine Learning Program
             </span>
             ?
@@ -245,7 +248,25 @@ export const StatsSection: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Download Syllabus Button */}
+        <div className="flex justify-center mt-12">
+          <button
+            onClick={() => setIsSyllabusOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-lg border-2 border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-700 shadow-sm transition-all hover:border-orange-400 hover:text-brand hover:shadow-md focus:outline-none focus:ring-4 focus:ring-orange-100"
+          >
+            <CloudDownload className="mr-2 h-5 w-5" />
+            Download Syllabus (PDF)
+          </button>
+        </div>
       </div>
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="R Programming Course Page - Stats Section - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 };

@@ -2,25 +2,28 @@
 
 import { CheckCircle } from "lucide-react";
 import { courseData } from "@/components/ai-in-digital-marketing/courseData";
-import Link from "next/link";
+import { useState } from "react";
+import EnrollModal from "@/components/EnrollModal";
 
 export default function WhoShouldEnroll() {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Master Digital Marketing & AI for Business Owners";
   const { targetAudience, industryApplications } = courseData;
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
+    <section className="py-10 bg-gradient-to-b from-white to-slate-50">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header – layout like reference, SEO boosted */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Who Should <span className="text-orange-600">Enroll</span>?
+            Who Should Enroll in This <span className="text-brand">AI Marketing Course?</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             This AI-powered digital marketing program is designed for{" "}
-            <strong>students, working professionals, entrepreneurs, freelancers, and career switchers</strong>{" "}
-            across multiple industries who want to master{" "}
-            <strong>SEO, performance marketing, social media marketing, automation, and AI tools</strong>{" "}
-            to accelerate their growth.
+            <strong>Business Owners, Entrepreneurs, Freelancers, and Working Professionals</strong>{" "}
+            who want to master{" "}
+            <strong>business marketing strategies, local SEO, marketing automation, and AI for business</strong>{" "}
+            to scale their revenue.
           </p>
         </div>
 
@@ -76,7 +79,9 @@ export default function WhoShouldEnroll() {
             <strong>AI in digital marketing</strong> drives impact in{" "}
             <strong>e-commerce, education, healthcare, real estate, SaaS, B2B, local businesses</strong>{" "}
             and more—so your skills translate directly into{" "}
-            <strong>job-ready, practical outcomes</strong>.
+            <strong>job-ready, practical outcomes</strong>. Whether you run a{" "}
+            <strong>clinic, real estate firm, coaching business, or e-commerce store</strong>,
+            you&apos;ll learn strategies that work for your niche.
           </p>
 
           <div className="grid grid-cols-1 gap-4">
@@ -119,11 +124,10 @@ export default function WhoShouldEnroll() {
 
           <p className="mt-6 text-xs sm:text-sm text-slate-300 max-w-4xl">
             Keywords: <em>AI in digital marketing course</em>,{" "}
-            <em>digital marketing for e-commerce</em>,{" "}
-            <em>performance marketing for startups</em>,{" "}
-            <em>social media marketing for brands</em>,{" "}
-            <em>marketing automation and AI tools</em>,{" "}
-            <em>job-oriented digital marketing program</em>.
+            <em>digital marketing for business owners</em>,{" "}
+            <em>marketing automation for small business</em>,{" "}
+            <em>business and marketing strategy course</em>,{" "}
+            <em>how to do digital marketing for business</em>.
           </p>
         </div>
 
@@ -176,12 +180,21 @@ export default function WhoShouldEnroll() {
             <p className="text-lg text-gray-900 font-semibold mb-4">
               No matter your industry, this program can help you grow!
             </p>
-            <Link href="contact-us" className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl">
+            <button
+              onClick={() => setIsEnrollOpen(true)}
+              className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl cursor-pointer"
+            >
               Check Your Fit
-            </Link>
+            </button>
           </div>
         </div>
       </div>
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="AI Digital Marketing - Who Should Enroll - Check Fit"
+        courseName={courseName}
+      />
     </section>
   );
 }

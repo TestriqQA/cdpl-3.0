@@ -10,7 +10,7 @@ export default function CtaSection() {
     <section
       id="contact"
       aria-labelledby="cta-heading"
-      className="relative overflow-hidden py-16 sm:py-20 text-white"
+      className="relative overflow-hidden py-10 text-white"
     >
       {/* Soft angular sheen for a subtle futuristic vibe (no heavy gradients) */}
       <div aria-hidden className="absolute inset-0 -z-10">
@@ -29,11 +29,10 @@ export default function CtaSection() {
           className="text-center"
         >
           <h2 id="cta-heading" className="text-3xl md:text-4xl font-bold tracking-tight">
-            Become a <span className="text-cyan-300">Complete QA Engineer</span>
+            Become a <span className="text-cyan-300">Complete QA Engineer</span> – Master Selenium & UI Testing
           </h2>
           <p className="mt-3 text-base sm:text-lg md:text-xl text-slate-200">
-            Next cohort starts in <strong className="text-white">2 days</strong> — limited seats, high-impact
-            mentorship, and placement support.
+            Learn <strong className="text-white">what is selenium testing</strong>, <strong className="text-white">what is ui testing</strong>, and <strong className="text-white">mobile automation testing</strong> in our 180-hour Master Program. Next cohort starts in <strong className="text-white">2 days</strong>. Limited seats in Mumbai/Thane.
           </p>
 
           {/* Primary Actions */}
@@ -62,7 +61,7 @@ export default function CtaSection() {
               <div className="flex items-start gap-3">
                 <Clock className="h-6 w-6 text-cyan-300" />
                 <div>
-                  <div className="font-semibold">40-Hour Live Training</div>
+                  <div className="font-semibold">180-Hour Live Training</div>
                   <div className="text-sm text-slate-200/80">Weekend Batches • Mentor-led</div>
                 </div>
               </div>

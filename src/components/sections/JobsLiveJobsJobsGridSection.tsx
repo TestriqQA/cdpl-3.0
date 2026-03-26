@@ -1,27 +1,13 @@
+// CLIENT COMPONENT — Live Jobs (CDPL)
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import dynamic from "next/dynamic";
+import { AnimatePresence, m, LazyMotion, domAnimation } from "framer-motion";
 
+// CRITICAL: Static import for JobCard to eliminate client-side render delay
+import { JobsLiveJobsJobCardSection } from "./JobsLiveJobsJobCardSection";
 import type { JobsFilters } from "./JobsLiveJobsListingSection";
 import type { Job } from "@/lib/jobsData";
-
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-16">
-      <p className="text-slate-500">{label}</p> {/* match About color scale */}
-    </div>
-  );
-}
-
-const JobsLiveJobsJobCardSection = dynamic(
-  () =>
-    import("./JobsLiveJobsJobCardSection").then(
-      (m) => m.JobsLiveJobsJobCardSection
-    ),
-  { ssr: false, loading: () => <SectionLoader label="Loading job..." /> }
-);
 
 function norm(s: string) {
   return (s || "").toLowerCase();
@@ -43,7 +29,7 @@ function matchesFilters(job: Job, f: JobsFilters) {
   return qOk && locOk && typeOk;
 }
 
-const CHUNK_SIZE = 10;
+const CHUNK_SIZE = 6;
 
 export function JobsLiveJobsJobsGridSection({
   jobs,
@@ -52,12 +38,17 @@ export function JobsLiveJobsJobsGridSection({
   jobs: Job[];
   filters: JobsFilters;
 }) {
-  // Build base URL once (client-only) for share links
-  const baseUrl = useMemo(() => {
+  const buildShareUrl = (id: string) => {
     if (typeof window === "undefined") return "";
-    return `${window.location.origin}${window.location.pathname}${window.location.search}`;
-  }, []);
-  const buildShareUrl = (id: string) => `${baseUrl}#${encodeURIComponent(id)}`;
+    const url = new URL(window.location.pathname, window.location.origin);
+    // Ensure we strip existing search params to avoid duplicates, but keep path
+    // If we want to be strict about /jobs/live-jobs, we could force it, 
+    // but using current pathname is safer if this component is used elsewhere.
+    // However, the user specifically asked for "detail page url".
+    // Since this section is likely only on live-jobs, current path is fine.
+    url.searchParams.set("jobId", id);
+    return url.toString();
+  };
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
@@ -68,7 +59,7 @@ export function JobsLiveJobsJobsGridSection({
         await navigator.share({ title: job.title, text: `${job.title} @ ${job.company}`, url });
         return;
       }
-    } catch {}
+    } catch { }
     try {
       await navigator.clipboard.writeText(url);
       setCopiedId(job.id);
@@ -85,7 +76,6 @@ export function JobsLiveJobsJobsGridSection({
     }
   };
 
-  // Sort newest event/post first
   const sorted = useMemo(() => {
     return [...jobs].sort((a, b) => {
       const da = new Date(a.eventDate || a.postedOn).getTime();
@@ -101,7 +91,6 @@ export function JobsLiveJobsJobsGridSection({
 
   const [visibleCount, setVisibleCount] = useState<number>(CHUNK_SIZE);
 
-  // Reset chunks on filter changes; reveal enough if deep-linked
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -110,12 +99,12 @@ export function JobsLiveJobsJobsGridSection({
       let targetId = hash?.replace(/^#/, "") || "";
       if (!targetId) {
         const params = new URLSearchParams(search);
-        const qId = params.get("id");
+        const qId = params.get("id") || params.get("jobId");
         if (qId) targetId = qId;
       }
       try {
         targetId = decodeURIComponent(targetId);
-      } catch {}
+      } catch { }
       return targetId;
     };
 
@@ -131,7 +120,6 @@ export function JobsLiveJobsJobsGridSection({
     setVisibleCount(Math.min(CHUNK_SIZE, filtered.length));
   }, [filters, filtered.length, filtered]);
 
-  // Scroll to deep link after chunks are revealed
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -140,12 +128,12 @@ export function JobsLiveJobsJobsGridSection({
       let targetId = hash?.replace(/^#/, "") || "";
       if (!targetId) {
         const params = new URLSearchParams(search);
-        const qId = params.get("id");
+        const qId = params.get("id") || params.get("jobId");
         if (qId) targetId = qId;
       }
       try {
         targetId = decodeURIComponent(targetId);
-      } catch {}
+      } catch { }
       return targetId;
     };
 
@@ -167,8 +155,7 @@ export function JobsLiveJobsJobsGridSection({
   const canLoadMore = visibleCount < filtered.length;
 
   return (
-    <>
-      {/* Results meta */}
+    <LazyMotion features={domAnimation}>
       <div className="mb-3 mt-2 flex items-center justify-between text-sm text-slate-600 font-sans">
         <span>
           Showing{" "}
@@ -179,18 +166,17 @@ export function JobsLiveJobsJobsGridSection({
           {filtered.length === 1 ? "role" : "roles"}
         </span>
         {filters.q || filters.loc || filters.type ? (
-          <span className="rounded-full border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs text-orange-700">
+          <span className="rounded-full border border-orange-200 bg-orange-50 px-2.5 py-1 text-xs text-brand">
             Filters active
           </span>
         ) : null}
       </div>
 
-      {/* Details-only list */}
       <section aria-label="Job details" className="font-sans">
         <ul className="grid grid-cols-1 gap-y-6 md:gap-y-8">
           <AnimatePresence mode="popLayout">
             {visibleItems.map((job) => (
-              <motion.li
+              <m.li
                 key={job.id}
                 id={job.id}
                 className="scroll-mt-24"
@@ -207,7 +193,7 @@ export function JobsLiveJobsJobsGridSection({
                     isCopied={copiedId === job.id}
                   />
                 </div>
-              </motion.li>
+              </m.li>
             ))}
           </AnimatePresence>
 
@@ -218,7 +204,6 @@ export function JobsLiveJobsJobsGridSection({
           )}
         </ul>
 
-        {/* Button to load more */}
         {canLoadMore ? (
           <div className="mt-4 flex justify-center">
             <button
@@ -239,10 +224,9 @@ export function JobsLiveJobsJobsGridSection({
         )}
       </section>
 
-      {/* Global scroll target spacing */}
       <style jsx global>{`
         :target { scroll-margin-top: 96px; }
       `}</style>
-    </>
+    </LazyMotion>
   );
 }

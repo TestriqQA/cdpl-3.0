@@ -1,40 +1,62 @@
 // components/sections/HeroSection.tsx
 // Server component — sleek, SEO-optimized, slightly futuristic, fully responsive.
-// Assumes you have a client LeadForm at "../CourseLeadForm" (same API-testing style).
+"use client";
 
 import Link from "next/link";
-import LeadForm from "../CourseLeadForm";
-import { ChevronRight, Home } from "lucide-react";
+import { ChevronRight, Home, CheckCircle2, Star, Users, Globe2, ArrowRight } from "lucide-react";
+import React, { useState } from "react";
+import ApiCourseLeadForm from "@/components/forms/ApiCourseLeadForm";
+import EnrollModal from "@/components/EnrollModal";
+import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
 
 export default function HeroSection() {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Prompt Engineering Course";
+  const source = "Prompt Engineering Course Page - Hero Section";
 
+  const handleScrollToCurriculum = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const curriculumSection = document.getElementById("curriculum");
+    if (curriculumSection) {
+      curriculumSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
+    { label: 'Courses', href: '/courses' },
+    { label: 'Artificial Intelligence', href: '/courses/artificial-intelligence-courses' },
     { label: "Prompt Engineering with Generative AI", href: "/prompt-engineering-course" },
   ];
 
   return (
-    <section id="hero" aria-labelledby="pe-hero" className="relative overflow-hidden">
+    <section id="hero" aria-labelledby="pe-hero" className="relative overflow-hidden bg-white">
       {/* Subtle futuristic frame (thin grid + soft radial glow; minimal gradient) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 [background-image:radial-gradient(700px_220px_at_18%_0%,rgba(22,163,74,0.10),transparent_60%),radial-gradient(800px_260px_at_92%_0%,rgba(34,197,94,0.10),transparent_60%),linear-gradient(180deg,#fafafa,white)]" />
         <div className="absolute inset-0 [mask-image:radial-gradient(1200px_600px_at_50%_-12%,black,transparent)]" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-12 md:pt-12 md:pb-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
         {/* Breadcrumbs */}
         <nav aria-label="Breadcrumb" className="mb-8">
           <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
             {breadcrumbs.map((c, i) => (
               <li key={i} className="flex items-center gap-2">
                 {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-                <Link
-                  href={c.href}
-                  className={`hover:text-green-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
-                >
-                  {c.label}
-                </Link>
+                {c.href ? (
+                  <Link
+                    href={c.href}
+                    className={`hover:text-green-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
+                  >
+                    {c.label}
+                  </Link>
+                ) : (
+                  <span className="text-slate-700 font-medium cursor-default">
+                    {c.label}
+                  </span>
+                )}
               </li>
             ))}
           </ol>
@@ -55,13 +77,13 @@ export default function HeroSection() {
               id="pe-hero"
               className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
             >
-              Master Program in <span className="text-DS">Prompt Engineering</span> with{" "}
-              <span className="text-DS">Generative AI</span>
+              Master Program in <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">Prompt Engineering</span> with{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">Generative AI</span>
             </h1>
 
             {/* Mobile form directly under headline */}
-            <div className="mt-5 block md:hidden">
-              <LeadForm variant="elevated" />
+            <div className="mt-8 block md:hidden">
+              <ApiCourseLeadForm source={source} courseName={courseName} />
             </div>
 
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
@@ -74,34 +96,30 @@ export default function HeroSection() {
             </p>
 
             {/* CTAs */}
-            <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-              <Link
-                href="contact-us"
-                className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-green-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-green-200"
-                aria-label="Enroll now in Prompt Engineering course"
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <button
+                className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-green-700 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-green-200 transition-all hover:bg-green-800 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-4 focus:ring-green-100"
               >
                 Enroll Now
-                <svg className="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-                  <path d="M12.293 4.293a1 1 0 011.414 0l4 4a1 1 0 01.083 1.32l-.083.094-4 4a1 1 0 01-1.497-1.32l.083-.094L14.585 10H3a1 1 0 01-.117-1.993L3 8h11.585l-2.292-2.293a1 1 0 010-1.414z" />
-                </svg>
-              </Link>
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </button>
+              <button
+                onClick={() => setIsSyllabusOpen(true)}
+                className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-white border-2 border-slate-200 px-8 py-3.5 text-base font-semibold text-slate-700 hover:border-green-200 hover:bg-green-50/50 transition-all active:scale-[0.98]"
+              >
+                Download Syllabus
+              </button>
               <Link
                 href="#curriculum"
-                className="inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
-                aria-label="View full Prompt Engineering curriculum"
+                onClick={handleScrollToCurriculum}
+                className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-white border-2 border-slate-200 px-8 py-3.5 text-base font-semibold text-slate-700 hover:border-green-200 hover:bg-green-50/50 transition-all active:scale-[0.98]"
               >
                 View Curriculum
               </Link>
-              <button
-                className="inline-flex items-center justify-center rounded-xl border border-amber-300 bg-white px-6 py-3 text-base font-semibold text-amber-800 shadow-sm transition hover:bg-amber-50 focus:outline-none focus:ring-4 focus:ring-amber-200"
-                aria-label="Book a free demo for Prompt Engineering"
-              >
-                Free Demo
-              </button>
             </div>
 
             {/* Quick highlights (distinct accent colors, no repeats) */}
-            <ul className="mt-6 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
+            <ul className="mt-8 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
               <li className="flex items-start gap-2">
                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-green-600" />
                 Prompt patterns, structure & guardrails (safety-first design)
@@ -121,24 +139,55 @@ export default function HeroSection() {
             </ul>
 
             {/* Trust strip */}
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-[11px] font-semibold text-slate-700 backdrop-blur">
-              <span className="text-yellow-600">★★★★★</span>
-              <span>#1 Mumbai’s Premium Training Institute</span>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-slate-600">
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-green-600" />
+                <span>User-friendly No-Code AI tools</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Users className="w-4 h-4 text-blue-600" />
+                <span>200+ Learners</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Globe2 className="w-4 h-4 text-purple-600" />
+                <span>Online/Offline Classes</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="flex text-yellow-500">
+                  <Star className="w-4 h-4 fill-current" />
+                  <Star className="w-4 h-4 fill-current" />
+                  <Star className="w-4 h-4 fill-current" />
+                  <Star className="w-4 h-4 fill-current" />
+                  <Star className="w-4 h-4 fill-current" />
+                </div>
+                <span className="font-medium text-slate-900">4.8/5</span>
+                <span className="text-slate-500">(120+ reviews)</span>
+              </div>
             </div>
           </div>
 
           {/* Right column: Desktop form & visual */}
-          <aside className="md:col-span-5 lg:col-span-4 hidden md:block">
-            <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
-              
-              <div className="p-4 sm:p-5">
-                <LeadForm variant="elevated" />
-              </div>
+          <aside className="md:col-span-5 lg:col-span-4 hidden md:block relative z-10">
+            <div className="sticky top-24">
+              <ApiCourseLeadForm source={source} courseName={courseName} />
             </div>
           </aside>
         </div>
       </div>
 
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source={`${source} - Enroll Now`}
+        courseName={courseName}
+      />
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Prompt Engineering Course Page - Hero Section - Prompt Engineering - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 }

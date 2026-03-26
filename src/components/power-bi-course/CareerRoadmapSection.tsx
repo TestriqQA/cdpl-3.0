@@ -1,5 +1,6 @@
+"use client";
 // components/powerbi/CareerRoadmapSection.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import {
   UserPlus,
   BookOpen,
@@ -8,7 +9,9 @@ import {
   Briefcase,
   TrendingUp,
   type LucideIcon,
+  ArrowRight,
 } from 'lucide-react';
+import EnrollModal from "../EnrollModal";
 
 type ColorVariant = 'blue' | 'orange' | 'green' | 'purple' | 'pink' | 'indigo';
 
@@ -25,7 +28,7 @@ const palette: Record<
   { bg: string; text: string; ring: string; grad: string; dot: string }
 > = {
   blue: { bg: 'bg-blue-100', text: 'text-blue-600', ring: 'ring-blue-200', grad: 'from-blue-500/20 to-cyan-500/20', dot: 'bg-blue-600' },
-  orange: { bg: 'bg-orange-100', text: 'text-orange-600', ring: 'ring-orange-200', grad: 'from-orange-500/20 to-amber-500/20', dot: 'bg-orange-600' },
+  orange: { bg: 'bg-orange-100', text: 'text-brand', ring: 'ring-orange-200', grad: 'from-orange-500/20 to-amber-500/20', dot: 'bg-brand' },
   green: { bg: 'bg-green-100', text: 'text-green-600', ring: 'ring-green-200', grad: 'from-emerald-500/20 to-lime-500/20', dot: 'bg-green-600' },
   purple: { bg: 'bg-purple-100', text: 'text-purple-600', ring: 'ring-purple-200', grad: 'from-purple-500/20 to-fuchsia-500/20', dot: 'bg-purple-600' },
   pink: { bg: 'bg-pink-100', text: 'text-pink-600', ring: 'ring-pink-200', grad: 'from-pink-500/20 to-rose-500/20', dot: 'bg-pink-600' },
@@ -87,8 +90,11 @@ const roadmapSteps: Step[] = [
 ];
 
 const CareerRoadmapSection: React.FC = () => {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Data Analytics & Visualization with Power BI";
+
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-base font-semibold tracking-wider text-blue-600 uppercase">
@@ -97,7 +103,7 @@ const CareerRoadmapSection: React.FC = () => {
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
             The 6-Step Career Roadmap to Power BI Mastery
           </h2>
-          <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
+          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
             Follow our proven learning path designed to take you from beginner to a market-ready professional in just 20 hours.
           </p>
         </div>
@@ -173,7 +179,25 @@ const CareerRoadmapSection: React.FC = () => {
             );
           })}
         </div>
+
+        {/* CTA */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="w-full sm:w-auto flex sm:inline-flex min-h-[60px] items-center justify-center gap-2 rounded-xl bg-brand px-8 py-5 my-4 text-lg font-semibold text-white shadow-none transition-all hover:bg-brand focus:outline-none focus:ring-2 focus:ring-orange-300 cursor-pointer"
+          >
+            Start Your Roadmap
+            <ArrowRight className="h-5 w-5" />
+          </button>
+        </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Power BI Course Page - Career Roadmap - Start Roadmap"
+        courseName={courseName}
+      />
     </section>
   );
 };

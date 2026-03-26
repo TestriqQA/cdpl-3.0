@@ -2,22 +2,23 @@
 "use client";
 
 import {
-    TrendingUp,
-    Target,
-    Zap,
-    Award,
-    BookOpen,
-    Shield,
-    Users,
-    Briefcase,
-    Clock,
-    CheckCircle2,
-    ArrowRight,
-} from "lucide-react";
+    LuTrendingUp,
+    LuTarget,
+    LuZap,
+    LuAward,
+    LuBookOpen,
+    LuShield,
+    LuUsers,
+    LuBriefcase,
+    LuClock,
+    LuBadgeCheck,
+    LuArrowRight,
+} from "react-icons/lu";
 
 import Link from "next/link";
 import { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
+import dynamic from "next/dynamic";
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
 
 type BenefitCardProps = {
     icon: React.ReactNode;
@@ -65,7 +66,7 @@ function BenefitCard({
                 <ul className="mt-4 space-y-2 text-sm">
                     {highlights.map((h, i) => (
                         <li key={i} className="flex items-start gap-2 text-gray-700">
-                            <CheckCircle2 className="mt-0.5 h-4 w-4 text-gray-400" />
+                            <LuBadgeCheck className="mt-0.5 h-4 w-4 text-gray-400" />
                             <span>{h}</span>
                         </li>
                     ))}
@@ -80,15 +81,14 @@ export default function WhyLearnSection() {
 
     return (
         <section
-            className="py-5 md:py-10 bg-gradient-to-b from-white to-indigo-50"
-            id="why-learn"
+            className="py-10 bg-gradient-to-b from-white to-indigo-50"
             aria-labelledby="why-learn-title"
         >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="text-center mb-14">
                     <p className="inline-flex items-center gap-2 rounded-full border border-slate-300 shadow-md bg-white px-3 py-2 text-[13px] font-medium text-indigo-700">
-                        <Shield className="h-4 w-4" />
+                        <LuShield className="h-4 w-4" />
                         Industry-aligned QA career path
                     </p>
                     <h2
@@ -106,34 +106,34 @@ export default function WhyLearnSection() {
                 </div>
 
                 {/* KPI Row */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-10">
-                    <div className="rounded-xl border-2 border-emerald-600 bg-white p-4 text-center">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-10">
+                    <div className="rounded-xl border-2 border-emerald-600 bg-white p-3 md:p-4 text-center">
                         <div className="flex items-center justify-center gap-2 text-gray-800">
-                            <TrendingUp className="h-5 w-5 text-emerald-600" />
+                            <LuTrendingUp className="h-5 w-5 text-emerald-600" />
                             <span className="text-sm font-semibold">Hiring Demand</span>
                         </div>
                         <p className="mt-1 text-2xl font-bold text-gray-900">10k+/mo</p>
                         <p className="text-xs text-gray-500">QA/Test Engineer roles</p>
                     </div>
-                    <div className="rounded-xl border-2 border-indigo-600 bg-white p-4 text-center">
+                    <div className="rounded-xl border-2 border-indigo-600 bg-white p-3 md:p-4 text-center">
                         <div className="flex items-center justify-center gap-2 text-gray-800">
-                            <Clock className="h-5 w-5 text-indigo-600" />
+                            <LuClock className="h-5 w-5 text-indigo-600" />
                             <span className="text-sm font-semibold">Time to Job</span>
                         </div>
                         <p className="mt-1 text-2xl font-bold text-gray-900">8–12 weeks</p>
                         <p className="text-xs text-gray-500">structured learning track</p>
                     </div>
-                    <div className="rounded-xl border-2 border-amber-600 bg-white p-4 text-center">
+                    <div className="rounded-xl border-2 border-amber-600 bg-white p-3 md:p-4 text-center">
                         <div className="flex items-center justify-center gap-2 text-gray-800">
-                            <Briefcase className="h-5 w-5 text-amber-600" />
+                            <LuBriefcase className="h-5 w-5 text-amber-600" />
                             <span className="text-sm font-semibold">Starter CTC</span>
                         </div>
                         <p className="mt-1 text-2xl font-bold text-gray-900">₹3.5–6 LPA</p>
                         <p className="text-xs text-gray-500">India, fresher QA roles</p>
                     </div>
-                    <div className="rounded-xl border-2 border-rose-600 bg-white p-4 text-center">
+                    <div className="rounded-xl border-2 border-rose-600 bg-white p-3 md:p-4 text-center">
                         <div className="flex items-center justify-center gap-2 text-gray-800">
-                            <Users className="h-5 w-5 text-rose-600" />
+                            <LuUsers className="h-5 w-5 text-rose-600" />
                             <span className="text-sm font-semibold">Beginner-Friendly</span>
                         </div>
                         <p className="mt-1 text-2xl font-bold text-gray-900">No Coding</p>
@@ -143,12 +143,12 @@ export default function WhyLearnSection() {
 
                 {/* Benefits Grid */}
                 <div
-                    className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8"
                     role="list"
                     aria-label="Key benefits of learning Manual Testing"
                 >
                     <BenefitCard
-                        icon={<TrendingUp className="h-6 w-6" />}
+                        icon={<LuTrendingUp className="h-6 w-6" />}
                         title="Consistent Hiring Across Industries"
                         description="Every product-fintech, e-commerce, healthcare, SaaS-needs reliable QA to ship confidently."
                         highlights={[
@@ -159,7 +159,7 @@ export default function WhyLearnSection() {
                         accent="emerald"
                     />
                     <BenefitCard
-                        icon={<Target className="h-6 w-6" />}
+                        icon={<LuTarget className="h-6 w-6" />}
                         title="No Coding Prerequisite"
                         description="Manual testing builds analytical thinking, test design, and defect reporting-no prior programming needed."
                         highlights={[
@@ -170,7 +170,7 @@ export default function WhyLearnSection() {
                         accent="indigo"
                     />
                     <BenefitCard
-                        icon={<Zap className="h-6 w-6" />}
+                        icon={<LuZap className="h-6 w-6" />}
                         title="Fast Career Launch"
                         description="Master core QA skills quickly with hands-on projects, interviews, and portfolio-ready case studies."
                         highlights={[
@@ -181,7 +181,7 @@ export default function WhyLearnSection() {
                         accent="amber"
                     />
                     <BenefitCard
-                        icon={<Award className="h-6 w-6" />}
+                        icon={<LuAward className="h-6 w-6" />}
                         title="ISTQB/Global Certification"
                         description="Stand out with internationally recognized QA credentials and standardized testing knowledge."
                         highlights={[
@@ -192,7 +192,7 @@ export default function WhyLearnSection() {
                         accent="violet"
                     />
                     <BenefitCard
-                        icon={<BookOpen className="h-6 w-6" />}
+                        icon={<LuBookOpen className="h-6 w-6" />}
                         title="Gateway to Automation"
                         description="Manual first, automation next-transition smoothly to Selenium, Cypress, and API test frameworks."
                         highlights={[
@@ -203,7 +203,7 @@ export default function WhyLearnSection() {
                         accent="sky"
                     />
                     <BenefitCard
-                        icon={<Shield className="h-6 w-6" />}
+                        icon={<LuShield className="h-6 w-6" />}
                         title="Recession-Resilient Skill"
                         description="Quality is non-negotiable: companies prioritize user experience, security, and reliability-always."
                         highlights={[
@@ -234,7 +234,7 @@ export default function WhyLearnSection() {
                                 href="#curriculum"
                                 className="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50"
                             >
-                                View curriculum <ArrowRight className="h-4 w-4" />
+                                View curriculum <LuArrowRight className="h-4 w-4" />
                             </Link>
                             <button
                                 onClick={() => setIsEnrollModalOpen(true)}
@@ -281,7 +281,7 @@ export default function WhyLearnSection() {
                                 <ul className="mt-2 space-y-1 text-sm text-gray-700">
                                     {item.points.map((p, i) => (
                                         <li key={i} className="flex items-center gap-2">
-                                            <CheckCircle2 className="h-4 w-4 text-gray-400" />
+                                            <LuBadgeCheck className="h-4 w-4 text-gray-400" />
                                             <span>{p}</span>
                                         </li>
                                     ))}
@@ -306,6 +306,7 @@ export default function WhyLearnSection() {
                 isOpen={isEnrollModalOpen}
                 onClose={() => setIsEnrollModalOpen(false)}
                 courseName="Manual Testing"
+                source="Manual Testing Course Page - Why Learn Section - Apply Now"
             />
         </section >
     );

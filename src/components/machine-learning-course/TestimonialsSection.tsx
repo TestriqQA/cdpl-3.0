@@ -82,7 +82,7 @@ export default function TestimonialsSection() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-heading"
-      className="relative overflow-hidden py-8 md:py-10 bg-white"
+      className="relative overflow-hidden py-10 bg-white"
     >
       {/* Subtle futuristic grid + mask */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

@@ -68,105 +68,19 @@ const METRIC_CARD_BACKGROUNDS = [
   },
 ];
 
+import { MENTORS } from "@/lib/mentorShared";
+
 type MentorCardTweak = Record<string, string>;
 const IMG_TWEAKS: MentorCardTweak = {
   "Dnyaneshwar Bhabad": "object-[50%_30%] scale-[1.06]",
 };
 
-const MENTORS = [
-  {
-    name: "Pravin Mhaske",
-    role: "Data Science Manager",
-    company: "Infosys (India)",
-    domain: "Data Science",
-    rating: 4.9,
-    sessions: 1200,
-    tags: ["Leadership", "Analytics", "Machine Learning", "Strategy"],
-    img: "/mentors_images/Pravin-Maske.jpg",
-    keywords:
-      "pravin mhaske data science manager infosys analytics machine learning leadership india",
-  },
-  {
-    name: "Piyali Mondal",
-    role: "Program Leader · M.Sc (Data Science AI & ML)",
-    company: "Exeed College (UAE)",
-    domain: "Data Science",
-    rating: 4.8,
-    sessions: 980,
-    tags: ["Academia", "Curriculum Design", "Research", "Python"],
-    img: "/mentors_images/Piyali-Mondal.jpg",
-    keywords:
-      "piyali mondal program leader exeed college uae academia data science ai ml curriculum professor",
-  },
-  {
-    name: "Revathi Soundarrajan",
-    role: "Data Scientist (PhD)",
-    company: "Electra Vehicles (USA)",
-    domain: "Data Science",
-    rating: 5.0,
-    sessions: 860,
-    tags: ["ML Research", "Time Series", "AutoML", "Python"],
-    img: "/mentors_images/Revathi-Soundarrajan.jpg",
-    keywords:
-      "revathi soundarrajan dr s revathi data scientist phd electra vehicles machine learning research usa",
-  },
-  {
-    name: "Dnyaneshwar Bhabad",
-    role: "Assistant Manager – Technology",
-    company: "Deloitte – Technology Academy (India)",
-    domain: "Full-Stack",
-    rating: 4.7,
-    sessions: 740,
-    tags: ["JavaScript", "Training", "Backend", "System Design"],
-    img: "/mentors_images/Dnyaneshwar-Bhabad.jpg",
-    keywords:
-      "dnyaneshwar bhabad assistant manager technology deloitte training software development full-stack india",
-  },
-  {
-    name: "Abhirupa Manna",
-    role: "Consultant",
-    company: "KPMG (India)",
-    domain: "Data Science",
-    rating: 4.8,
-    sessions: 690,
-    tags: ["SQL", "Tableau", "Power BI", "ETL", "Python"],
-    img: "/mentors_images/Abhirupa-Manna.jpg",
-    keywords:
-      "abhirupa manna consultant kpmg data analytics bi sql tableau power bi qlikview etl python india",
-  },
-  {
-    name: "Urvi Verma",
-    role: "AVP – Data Engineering",
-    company: "Deutsche Bank (Germany)",
-    domain: "Cloud & DevOps",
-    rating: 4.9,
-    sessions: 820,
-    tags: ["Big Data", "AWS", "GCP", "Python", "SQL"],
-    img: "/mentors_images/Urvi-Verma.jpg",
-    keywords:
-      "urvi verma avp data engineering deutsche bank germany big data aws gcp cloud services python sql",
-  },
-  {
-    name: "Eshita Gangwar",
-    role: "Application Engineer",
-    company: "Oracle (USA)",
-    domain: "Full-Stack",
-    rating: 4.8,
-    sessions: 610,
-    tags: ["Java", "Python", "Genomic Data", "Software Development"],
-    img: "/mentors_images/Ishita.jpg",
-    keywords:
-      "eshita gangwar application engineer oracle usa masters computer science usc genomic data analysis software development",
-  },
-];
-
 const DOMAINS = [
-  "AI / Machine Learning",
+  "Software Testing",
   "Data Science",
-  "Full-Stack",
-  "Cloud & DevOps",
-  "Product Management",
-  "UI/UX Design",
+  "Business Intelligence",
+  "Artificial Intelligence",
+  "Digital Marketing",
 ];
 
 export default function MentorsImpactSection() {
@@ -195,7 +109,7 @@ export default function MentorsImpactSection() {
         style={{ background: CDPL_GLOW }}
       />
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6 pb-12 sm:pt-8 sm:pb-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6 pb-12 md:pt-4 lg:pt-16 xl:pt-0 md:pb-16">
         {/* Header */}
         <header className="mb-5 sm:mb-6">
           <div className="flex flex-wrap items-center gap-2">
@@ -249,7 +163,7 @@ export default function MentorsImpactSection() {
         </header>
 
         {/* Metrics */}
-        <div className="mb-6 grid gap-3 sm:grid-cols-4">
+        <div className="mb-6 grid grid-cols-1 min-[286px]:grid-cols-2 gap-3 sm:grid-cols-4">
           {[
             { num: "2,400+", label: "1:1 Sessions / month" },
             { num: "96%", label: "Interview-ready in 8 weeks" },
@@ -291,7 +205,7 @@ export default function MentorsImpactSection() {
               <article
                 key={m.name}
                 className="relative rounded-3xl border border-zinc-200 p-5 pt-7 pr-6 pb-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-                aria-label={`${m.name} — ${m.role}, ${m.company}`}
+                aria-label={`${m.name} — ${m.title}, ${m.company}`}
                 style={{
                   backgroundImage: [
                     `linear-gradient(135deg, hsla(${hue}, 90%, 94%, .95) 0%, hsla(${hue}, 98%, 90%, .85) 55%, hsla(${hue}, 98%, 88%, .70) 100%)`,
@@ -305,11 +219,10 @@ export default function MentorsImpactSection() {
                 {/* Avatar overlapping */}
                 <div className="absolute -top-3 -left-3">
                   <div className="h-[108px] w-[108px] rounded-2xl bg-zinc-100 shadow-lg ring-1 ring-black/5 overflow-hidden">
-
                     <img
-                      src={m.img}
-                      alt={`Mentor portrait — ${m.domain} ${m.company}`}
-                      title={`Mentor portrait — ${m.domain} ${m.company}`}
+                      src={m.avatar}
+                      alt={`${m.name} - ${m.domain} mentor at ${m.company}`}
+                      title={`${m.name} - ${m.domain} mentor at ${m.company}`}
                       width={108}
                       height={108}
                       loading="lazy"
@@ -322,7 +235,7 @@ export default function MentorsImpactSection() {
                 <div className="min-w-0 pl-24 md:pl-24">
                   <h3 className="truncate text-[16px] font-extrabold leading-tight">{m.name}</h3>
                   <p className="mt-1 text-[13px] text-zinc-700 line-clamp-2">
-                    {m.role} · {m.company}
+                    {m.title} · {m.company}
                   </p>
 
                   <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white/90 backdrop-blur px-2.5 py-1 text-[11px] font-semibold text-zinc-700">
@@ -331,7 +244,7 @@ export default function MentorsImpactSection() {
                   </div>
 
                   <div className="mt-3 flex flex-wrap gap-1.5">
-                    {m.tags.slice(0, 4).map((t) => (
+                    {m.highlights?.slice(0, 4).map((t) => (
                       <span
                         key={t}
                         className="rounded-full border border-zinc-200 bg-white/90 backdrop-blur px-2 py-1 text-[11px] text-zinc-700"

@@ -1,5 +1,4 @@
-// components/sections/WhoShouldEnrollSection.tsx
-// Server component (no client JS). Sleek, slightly futuristic, fully responsive.
+"use client";
 
 import {
     Users,
@@ -11,7 +10,9 @@ import {
     Sparkles,
     LineChart,
 } from 'lucide-react';
-import Link from 'next/link';
+
+import { useState } from 'react';
+import EnrollModal from '../EnrollModal';
 
 type Audience = {
     title: string;
@@ -88,13 +89,15 @@ const AUDIENCE: Audience[] = [
 ];
 
 export default function WhoShouldEnrollSection() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const courseName = "Digital Marketing & Analytics Master Program";
 
 
     return (
         <section
             id="who-should-enroll"
             aria-labelledby="who-heading"
-            className="relative py-8 md:py-8 bg-white"
+            className="relative py-10 bg-white"
         >
             {/* Subtle futuristic frame */}
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -109,12 +112,10 @@ export default function WhoShouldEnrollSection() {
                         id="who-heading"
                         className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
                     >
-                        Who Should <span className="text-green-700">Enroll</span>?
+                        Who Should Join Our <span className="text-green-700">Digital Marketing Course</span>?
                     </h2>
                     <p className="mt-4 text-sm sm:text-base text-slate-600">
-                        Beginner-friendly yet <strong>career-accelerating</strong>. Ideal for{' '}
-                        <strong>switchers, students, professionals</strong> and <strong>founders</strong> who want
-                        practical <em>Digital Marketing</em> & <em>Analytics</em> skills - SEO, PPC, Social, GA4, CRO and Automation.
+                        Our program is the best <strong>Digital Marketing training in Mumbai</strong> for anyone looking to scale their career. Ideal for <strong>freshers, working professionals, and entrepreneurs</strong> who want to master SEO, SEM, and Analytics.
                     </p>
 
                     <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold">
@@ -128,7 +129,7 @@ export default function WhoShouldEnrollSection() {
                 <ul className="mt-10 grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-4">
                     {AUDIENCE.map((a, i) => (
                         <li key={a.title}>
-                            <PersonaCard {...a} index={i} />
+                            <PersonaCard {...a} index={i} onEnroll={() => setIsEnrollOpen(true)} />
                         </li>
                     ))}
                 </ul>
@@ -142,6 +143,12 @@ export default function WhoShouldEnrollSection() {
                 </p>
             </div>
 
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Digital Marketing Course Page - Who Should Enroll - I fit this profile"
+                courseName={courseName}
+            />
         </section>
     );
 }
@@ -162,7 +169,8 @@ function PersonaCard({
     icon,
     accent,
     index,
-}: Audience & { index: number }) {
+    onEnroll,
+}: Audience & { index: number; onEnroll: () => void }) {
     // alternate border animation classes for a subtle futuristic feel
     const edge = index % 2 === 0 ? 'before:left-0 after:right-0' : 'before:right-0 after:left-0';
 
@@ -223,16 +231,16 @@ function PersonaCard({
             </div>
 
             {/* CTA */}
-            <Link
-                href="contact-us"
+            <button
+                onClick={onEnroll}
                 className={[
                     'mt-5 inline-flex items-center justify-center rounded-lg border px-3 py-2 text-sm font-semibold transition',
-                    'border-slate-900 bg-slate-900 text-white hover:translate-y-[-1px] hover:shadow',
+                    'border-slate-900 bg-slate-900 text-white hover:translate-y-[-1px] hover:shadow cursor-pointer',
                 ].join(' ')}
                 aria-label={`Talk to advisor about ${title}`}
             >
                 I fit this profile
-            </Link>
+            </button>
         </article>
     );
 }

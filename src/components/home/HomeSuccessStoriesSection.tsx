@@ -79,11 +79,11 @@ export default function HomeSuccessStoriesSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-2 bg-orange-100 text-brand rounded-full text-sm font-semibold mb-4">
             Success Stories
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Our Students <span className="text-orange-600">Love Us</span>
+            Our Students <span className="text-brand">Love Us</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Hear from our alumni who transformed their careers with CDPL&apos;s industry-ready training and placement support.
@@ -103,7 +103,7 @@ export default function HomeSuccessStoriesSection() {
             >
               {/* Quote Icon */}
               <div className="flex justify-center mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-brand rounded-full flex items-center justify-center">
                   <Quote className="w-8 h-8 text-white" />
                 </div>
               </div>
@@ -125,7 +125,7 @@ export default function HomeSuccessStoriesSection() {
                 {/* Student Info */}
                 <div className="flex flex-col items-center gap-4">
                   {/* Avatar */}
-                  <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                  <div className="w-20 h-20 bg-gradient-to-br from-orange-400 to-brand rounded-full flex items-center justify-center text-white text-2xl font-bold">
                     {testimonials[currentIndex].name.charAt(0)}
                   </div>
 
@@ -138,7 +138,7 @@ export default function HomeSuccessStoriesSection() {
                       <Briefcase className="w-4 h-4" />
                       <span>{testimonials[currentIndex].role} at {testimonials[currentIndex].company}</span>
                     </p>
-                    <p className="text-orange-600 font-bold mt-1">
+                    <p className="text-brand font-bold mt-1">
                       Package: {testimonials[currentIndex].package}
                     </p>
                   </div>
@@ -151,7 +151,7 @@ export default function HomeSuccessStoriesSection() {
           <div className="flex justify-center gap-4 mt-8">
             <button
               onClick={prevTestimonial}
-              className="w-12 h-12 bg-white hover:bg-orange-600 text-gray-800 hover:text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 border border-gray-200"
+              className="w-12 h-12 bg-white hover:bg-brand text-gray-800 hover:text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 border border-gray-200"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -163,11 +163,10 @@ export default function HomeSuccessStoriesSection() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`h-3 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? 'w-8 bg-orange-600'
+                  className={`h-3 rounded-full transition-all duration-300 ${index === currentIndex
+                      ? 'w-8 bg-brand'
                       : 'w-3 bg-gray-300 hover:bg-gray-400'
-                  }`}
+                    }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}
@@ -175,7 +174,7 @@ export default function HomeSuccessStoriesSection() {
 
             <button
               onClick={nextTestimonial}
-              className="w-12 h-12 bg-white hover:bg-orange-600 text-gray-800 hover:text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 border border-gray-200"
+              className="w-12 h-12 bg-white hover:bg-brand text-gray-800 hover:text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 border border-gray-200"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-6 h-6" />
@@ -197,7 +196,7 @@ export default function HomeSuccessStoriesSection() {
             { number: '4.8/5', label: 'Average Rating' },
           ].map((stat, index) => (
             <div key={index} className="text-center p-6 bg-white rounded-xl shadow-md border border-gray-100">
-              <div className="text-3xl md:text-4xl font-bold text-orange-600 mb-2">
+              <div className="text-3xl md:text-4xl font-bold text-brand mb-2">
                 {stat.number}
               </div>
               <div className="text-gray-600 font-medium">{stat.label}</div>

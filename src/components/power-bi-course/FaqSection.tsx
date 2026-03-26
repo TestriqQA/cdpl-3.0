@@ -1,69 +1,30 @@
 "use client";
-
 // components/powerbi/FaqSection.tsx
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import EnrollModal from "../EnrollModal";
+
+import { POWER_BI_FAQS } from "@/data/powerBiData";
 
 type ColorVariant = "blue" | "orange" | "green" | "purple" | "pink";
 
+// Define the interface locally to match the data structure and usage in FaqRow
 interface FaqItem {
   question: string;
   answer: string;
-  details?: string[];       // optional enhancement bullets
-  emoji: string;            // exact, relevant emoji
-  color: ColorVariant;      // distinct badge color
+  details?: string[];
+  emoji: string;
+  color: ColorVariant;
+  category?: string;
 }
 
 const palette: Record<ColorVariant, { bg: string; text: string; ring: string; grad: string }> = {
   blue: { bg: "bg-blue-100", text: "text-blue-700", ring: "ring-blue-200", grad: "from-blue-500/20 to-cyan-500/20" },
-  orange: { bg: "bg-orange-100", text: "text-orange-700", ring: "ring-orange-200", grad: "from-orange-500/20 to-amber-500/20" },
+  orange: { bg: "bg-orange-100", text: "text-brand", ring: "ring-orange-200", grad: "from-orange-500/20 to-amber-500/20" },
   green: { bg: "bg-green-100", text: "text-green-700", ring: "ring-green-200", grad: "from-emerald-500/20 to-lime-500/20" },
   purple: { bg: "bg-purple-100", text: "text-purple-700", ring: "ring-purple-200", grad: "from-purple-500/20 to-fuchsia-500/20" },
   pink: { bg: "bg-pink-100", text: "text-pink-700", ring: "ring-pink-200", grad: "from-pink-500/20 to-rose-500/20" },
 };
-
-const faqData: FaqItem[] = [
-  {
-    question: "What is the duration of the Power BI course?",
-    answer:
-      "The program is a 20-Hour Master Program, structured to provide comprehensive, hands-on training in a condensed, efficient format.",
-    details: ["Weekend & weekday batches available", "Includes projects + recorded sessions"],
-    emoji: "⏱️",
-    color: "blue",
-  },
-  {
-    question: "Do I need prior programming experience to enroll?",
-    answer:
-      "No, the course is designed for both technical and non-technical learners. We start with foundational concepts, making it accessible for beginners.",
-    details: ["No coding prerequisites", "Excel familiarity helps but isn’t mandatory"],
-    emoji: "🧭",
-    color: "orange",
-  },
-  {
-    question: "What kind of certification will I receive?",
-    answer:
-      "You will receive a globally recognized certificate from our training partner, which is validated with a unique QR code for authenticity.",
-    details: ["Shareable on LinkedIn", "Verifiable by employers via QR code"],
-    emoji: "🎓",
-    color: "green",
-  },
-  {
-    question: "Is job placement assistance provided?",
-    answer:
-      "Yes, we offer 100% dedicated job assistance, including resume building, profile optimization on job portals (LinkedIn, Naukri), and tailored interview preparation.",
-    details: ["Mock interviews & feedback", "Portfolio review & guidance"],
-    emoji: "💼",
-    color: "purple",
-  },
-  {
-    question: "What is the learning format (online/offline)?",
-    answer:
-      "We offer a Hybrid (CLASSROOM + ONLINE) model. You can attend live sessions in the classroom or stream them online, with access to all recorded lectures.",
-    details: ["Miss a session? Watch the recording", "Access materials on web & mobile"],
-    emoji: "🎥",
-    color: "pink",
-  },
-];
 
 function FaqRow({
   item,
@@ -129,7 +90,7 @@ function FaqRow({
             <p>{item.answer}</p>
             {item.details && item.details.length > 0 && (
               <ul className="mt-3 list-disc pl-5 space-y-1 text-gray-600">
-                {item.details.map((d, i) => (
+                {item.details.map((d: string, i: number) => (
                   <li key={i}>{d}</li>
                 ))}
               </ul>
@@ -143,29 +104,49 @@ function FaqRow({
 
 const FaqSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Data Analytics & Visualization with Power BI";
 
   const toggleFaq = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14 md:mb-16">
-          <span className="text-base font-semibold tracking-wider text-orange-600 uppercase">
+          <span className="text-base font-semibold tracking-wider text-brand uppercase">
             Frequently Asked Questions
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
-            Everything You Need to Know Before Enrolling
+            Power BI Course Mumbai & Thane: Frequently Asked Questions
           </h2>
+
         </div>
 
         <div className="max-w-3xl mx-auto space-y-2.5">
-          {faqData.map((item, index) => (
+          {(POWER_BI_FAQS as unknown as FaqItem[]).map((item, index) => (
             <FaqRow key={item.question} item={item} isOpen={activeIndex === index} toggle={() => toggleFaq(index)} idx={index} />
           ))}
         </div>
+
+        {/* CTA */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="w-full sm:w-auto bg-brand hover:bg-brand text-white font-bold py-5 px-8 my-4 rounded-lg transition-all flex sm:inline-flex min-h-[60px] justify-center items-center cursor-pointer shadow-none"
+          >
+            Still have questions? Contact Us
+          </button>
+        </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Power BI Course Page - FAQ Section - Contact Us"
+        courseName={courseName}
+      />
     </section>
   );
 };

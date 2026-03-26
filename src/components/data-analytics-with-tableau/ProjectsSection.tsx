@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 const projectsData = [
     {
@@ -40,7 +42,7 @@ const projectsData = [
 const domainKnowledge = [
     { icon: "✈️", label: "Aviation" },
     { icon: "🏥", label: "Healthcare" },
-    { icon: "📱", label: <>Telecommu<br className="md:hidden"/>nication</> },
+    { icon: "📱", label: <>Telecommu<br className="md:hidden" />nication</> },
     { icon: "🏦", label: "BFSI" },
     { icon: "📱", label: "Social Media" },
     { icon: "🚗", label: "Automobile" },
@@ -52,8 +54,11 @@ const domainKnowledge = [
 
 
 export default function ProjectsSection() {
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+    const courseName = "Data Analytics & Visualization with Tableau";
+
     return (
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-10 px-4 sm:px-6 lg:px-8 bg-white">
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-16">
@@ -73,7 +78,7 @@ export default function ProjectsSection() {
                             className="bg-gradient-to-br from-white to-gray-50 rounded-2xl border-2 border-gray-200 overflow-hidden hover:shadow-xl transition-all hover:-translate-y-1"
                         >
                             {/* Header with Icon */}
-                            <div className="bg-gradient-to-r from-orange-500 to-orange-600 p-6 text-white">
+                            <div className="bg-gradient-to-r from-[#ff8c00] to-[#ff8c00] p-6 text-white">
                                 <div className="flex items-start justify-between">
                                     <div>
                                         <div className="text-4xl mb-3">{project.icon}</div>
@@ -177,7 +182,24 @@ export default function ProjectsSection() {
                         </p>
                     </div>
                 </div>
+
+                {/* CTA */}
+                <div className="mt-16 text-center">
+                    <button
+                        onClick={() => setIsSyllabusOpen(true)}
+                        className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                    >
+                        Download Project Details
+                    </button>
+                </div>
             </div>
+
+            <SyllabusDownloadModal
+                isOpen={isSyllabusOpen}
+                onClose={() => setIsSyllabusOpen(false)}
+                source="Tableau Course Page - Projects Section - Download Details"
+                courseName={courseName}
+            />
         </section>
     );
 }

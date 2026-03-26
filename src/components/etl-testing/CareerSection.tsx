@@ -1,7 +1,19 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Briefcase, Building2, ArrowRight, BadgeCheck, TrendingUp } from 'lucide-react';
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+import { useState } from 'react';
+const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career modal..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+      <span className="ml-2 text-gray-900">{label}</span>
+    </div>
+  );
+};
 
 const roles = [
   'ETL Tester',
@@ -25,7 +37,7 @@ const roleAccents = [
   'bg-rose-50 border-rose-200 text-rose-900',
   'bg-indigo-50 border-indigo-200 text-indigo-900',
   'bg-teal-50 border-teal-200 text-teal-900',
-  'bg-orange-50 border-orange-200 text-orange-900',
+  'bg-orange-50 border-orange-200 text-brand',
 ];
 
 const companyAccents = [
@@ -40,13 +52,13 @@ const companyAccents = [
 ];
 
 export default function CareerSection() {
-
+  const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
 
   return (
     <section
       id="career"
       aria-labelledby="career-heading"
-      className="relative py-8 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* subtle top/bottom separators for a clean, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -74,8 +86,7 @@ export default function CareerSection() {
             High-Paying <span className="text-ST">ETL Testing</span> Careers
           </h2>
           <p className="mt-8 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            Break into <strong>Data QA</strong>, <strong>DWH Testing</strong>, and <strong>BI Quality</strong> roles with
-            hands-on projects, interview prep, and portfolio-driven learning.
+            Break into <strong>Data QA</strong>, <strong>DWH Testing</strong>, and <strong>BI Quality</strong> roles. The average <strong>ETL developer</strong> salary is attractive. Learn the <strong>ETL tester roles and responsibilities</strong> that hiring managers seek. We prepare you for common <strong>ETL testing interview questions</strong>.
           </p>
         </motion.div>
 
@@ -163,16 +174,22 @@ export default function CareerSection() {
           transition={{ duration: 0.45, ease: 'easeOut' }}
           className="mt-10 sm:mt-12 text-center"
         >
-          <Link
-            href="contact-us"
-            className="inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-7 py-3 text-sm sm:text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+          <button
+            onClick={() => setIsCareerModalOpen(true)}
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-7 py-3 text-sm sm:text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
             aria-label="Get placed in 30 days"
           >
-            Get Placed in 30 Days
+            Get Placement Support
             <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
+          </button>
         </motion.div>
       </div>
+
+      <CareerSessionModal
+        isOpen={isCareerModalOpen}
+        onClose={() => setIsCareerModalOpen(false)}
+        source="ETL Testing Course Page - Career Section - Get Placement Support"
+      />
 
     </section>
   );

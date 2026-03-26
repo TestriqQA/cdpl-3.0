@@ -1,8 +1,19 @@
-// components/sections/PythonTestimonialsSection.tsx
-// Server component (no client-side JS) – sleek, simple, and unique
+"use client";
 
-import Link from "next/link";
-import ReviewsMarquee from "../sections/ReviewMarque";
+import { useState } from "react";
+import dynamic from "next/dynamic";
+const ReviewsMarquee = dynamic(() => import("../sections/ReviewMarque"), { ssr: false, loading: () => <SectionLoader label="Loading reviews marquee..." /> });
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
+const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+      <span className="ml-2 text-gray-900">{label}</span>
+    </div>
+  );
+};
 
 // ---------- Types ----------
 type Testimonial = {
@@ -33,10 +44,11 @@ export default function TestimonialsSection({
   id = "testimonials",
   title = DEFAULT_TITLE,
 }: Props) {
-
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
 
   return (
-    <section id={id} aria-labelledby={`${id}-heading`} className="relative py-12 sm:py-16 md:py-20">
+    <section id={id} aria-labelledby={`${id}-heading`} className="relative py-10">
       {/* Subtle grid backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.04)_1px,transparent_1px)] bg-[size:28px_28px]" />
@@ -66,22 +78,34 @@ export default function TestimonialsSection({
 
         {/* CTAs */}
         <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3">
-          <Link
-            href="contact-us"
-            className="rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-slate-200"
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="cursor-pointer rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-slate-200"
           >
             Enroll now
-          </Link>
+          </button>
 
           <button
+            onClick={() => setIsSyllabusOpen(true)}
             className="rounded-xl bg-white cursor-pointer border-2 border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-emerald-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-emerald-200"
           >
             Download syllabus
           </button>
-
         </div>
       </div>
 
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        courseName="Python Programming"
+        source="Python Course Page - Testimonials Section - Enroll Now"
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        courseName="Python Programming"
+        source="Python Course Page - Testimonials Section - Python Programming - Download Syllabus"
+      />
     </section>
   );
 }

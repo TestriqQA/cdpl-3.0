@@ -1,4 +1,7 @@
-import { Briefcase, Code, Database } from "lucide-react";
+"use client";
+import { Briefcase, Code, Database, Download } from "lucide-react";
+import { useState } from "react";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 const projects = [
   {
@@ -70,8 +73,11 @@ const domains = [
 ];
 
 export default function ProjectsSection() {
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Machine Learning Algorithms using python Programming";
+
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-white to-slate-50">
+    <section className="py-10 bg-gradient-to-b from-white to-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -171,7 +177,25 @@ export default function ProjectsSection() {
             <p className="text-slate-600">Create impressive portfolio pieces to showcase to potential employers.</p>
           </div>
         </div>
+
+        {/* Trust strip */}
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={() => setIsSyllabusOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-full border border-slate-200 bg-white px-8 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-brand focus:outline-none focus:ring-4 focus:ring-orange-200"
+          >
+            <Download className="mr-2 h-4 w-4" />
+            Download Full Project List
+          </button>
+        </div>
       </div>
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Machine Learning Algorithms with Python Course Page - Projects Section - Download Full Project List"
+        courseName={courseName}
+      />
     </section>
   );
 }

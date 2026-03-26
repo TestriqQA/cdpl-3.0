@@ -27,9 +27,9 @@ type Case = {
   avatar: string;
 };
 
-const BRAND = "#ff8c00";
+const BRAND = "#b45309"; // Darker orange for WCAG AA constrast
 const GRADIENT_BRAND =
-  "linear-gradient(90deg, #ff8c00 0%, #ffb558 55%, #ffd19e 100%)";
+  "linear-gradient(90deg, #b45309 0%, #ff8c00 55%, #ffd19e 100%)";
 const GRADIENT_ACCENT = "linear-gradient(90deg,#e0f2ff 0%,#efe9ff 100%)";
 
 const DOMAINS = ["All", "QA", "Full-Stack", "Cloud & DevOps"];
@@ -141,12 +141,12 @@ export default function MentorOutcomesSection() {
         </div>
 
         {/* KPIs */}
-        <div className="mb-8 grid gap-3 sm:grid-cols-4">
+        <div className="mb-8 grid grid-cols-1 min-[286px]:grid-cols-2 gap-3 sm:grid-cols-4">
           {[
             {
               num: "92%",
               label: "Offer rate post mock rounds",
-              cls: "text-orange-600",
+              cls: "text-brand",
               card:
                 "relative overflow-hidden rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-amber-100 p-4 text-center shadow-sm",
               deco:
@@ -162,7 +162,7 @@ export default function MentorOutcomesSection() {
                 "absolute -left-6 -bottom-6 h-24 w-24 rounded-full bg-indigo-200/40",
             },
             {
-              num: "30–90d",
+              num: "30–90 days",
               label: "Typical time-to-offer",
               cls: "text-emerald-600",
               card:

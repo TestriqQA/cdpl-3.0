@@ -1,7 +1,20 @@
 // components/sections/CareerRoadmapSection.tsx
-// Server component — sleek, slightly futuristic, responsive, and SEO-friendly.
+// Client component — sleek, slightly futuristic, responsive, and SEO-friendly.
 
-import Link from "next/link";
+'use client';
+
+import dynamic from "next/dynamic";
+import { useState } from "react";
+const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+  return (
+    <div className="flex items-center justify-center h-full">
+      <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+      <span className="ml-2 text-gray-900">{label}</span>
+    </div>
+  );
+};
 
 type Step = {
   n: number;
@@ -21,7 +34,7 @@ const STEPS: Step[] = [
       bg: "bg-emerald-50",
       text: "text-emerald-900",
       border: "border-emerald-200",
-      ring: "focus:ring-emerald-300",
+      ring: "focus:ring-emerald-500",
     },
   },
   {
@@ -33,7 +46,7 @@ const STEPS: Step[] = [
       bg: "bg-sky-50",
       text: "text-sky-900",
       border: "border-sky-200",
-      ring: "focus:ring-sky-300",
+      ring: "focus:ring-sky-500",
     },
   },
   {
@@ -45,7 +58,7 @@ const STEPS: Step[] = [
       bg: "bg-amber-50",
       text: "text-amber-900",
       border: "border-amber-200",
-      ring: "focus:ring-amber-300",
+      ring: "focus:ring-amber-500",
     },
   },
   {
@@ -57,19 +70,19 @@ const STEPS: Step[] = [
       bg: "bg-violet-50",
       text: "text-violet-900",
       border: "border-violet-200",
-      ring: "focus:ring-violet-300",
+      ring: "focus:ring-violet-500",
     },
   },
 ];
 
 export default function CareerRoadmapSection() {
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <section
       id="career-roadmap"
       aria-labelledby="career-roadmap-heading"
-      className="relative py-8 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Futuristic, subtle backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -99,13 +112,14 @@ export default function CareerRoadmapSection() {
         </header>
 
         {/* Timeline */}
-        <ol className="relative mx-auto mt-10 max-w-4xl">
+        {/* Timeline */}
+        <div className="relative mx-auto mt-10 max-w-4xl">
           {/* Center spine */}
           <div
             aria-hidden
             className="pointer-events-none absolute left-4 top-0 h-full w-px bg-slate-200 sm:left-1/2"
           />
-          <div className="space-y-6">
+          <ol className="space-y-6">
             {STEPS.map((s, i) => (
               <li
                 key={s.n}
@@ -149,8 +163,16 @@ export default function CareerRoadmapSection() {
                     s.accent.ring,
                     // Zig-zag layout on desktop
                     i % 2 === 0 ? "sm:col-start-3" : "sm:col-start-1 sm:row-start-1",
+                    "relative overflow-hidden" // Ensure relative positioning for absolute child
                   ].join(" ")}
                 >
+                  {/* Subtle Watermark Number */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute -top-1 right-3 text-6xl font-extrabold text-slate-100 select-none pointer-events-none"
+                  >
+                    {s.n.toString().padStart(2, '0')}
+                  </div>
                   <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold">
                     <span
                       className={[
@@ -169,26 +191,35 @@ export default function CareerRoadmapSection() {
                 </article>
               </li>
             ))}
-          </div>
-        </ol>
+          </ol>
+        </div>
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <Link
-            href="contact-us"
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="cursor-pointer inline-flex items-center gap-2 rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="Get personalized roadmap guidance"
           >
             Get Personalized Roadmap
             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
               <path d="M12.293 4.293a1 1 0 011.414 0l4 4a1 1 0 01.083 1.32l-.083.094-4 4a1 1 0 01-1.497-1.32l.083-.094L14.585 10H3a1 1 0 01-.117-1.993L3 8h11.585l-2.292-2.293a1 1 0 010-1.414z" />
             </svg>
-          </Link>
+          </button>
           <p className="mt-3 text-xs sm:text-sm text-slate-600">
             Learn from anywhere. <span className="font-semibold text-slate-800">Your journey to a Python career starts here.</span>
           </p>
         </div>
       </div>
+
+      <CareerSessionModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        courseName="Python Programming"
+        source="Python Course Page - Career Roadmap Section"
+        title="Get Your Personalized Roadmap"
+        subtitle="Speak with our career mentors to build your custom Python learning path."
+      />
 
     </section>
   );

@@ -1,10 +1,14 @@
-// components/sections/WhyPythonProgram.tsx
-// Server component — sleek, SEO-optimized, slightly futuristic, fully responsive.
-// Unique accent colors per chip (no repeats), minimal/non-distracting visuals.
+"use client";
 
-import Link from "next/link";
+import { useState } from "react";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 export default function WhyMLPythonProgram() {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Machine Learning Algorithms using python Programming";
+
   const subtitle =
     "A mentor-led, job-ready journey through Python, Data Visualization, Statistics & Probability, and Machine Learning - built around hands-on labs and real portfolio projects.";
   const keywords =
@@ -35,7 +39,7 @@ export default function WhyMLPythonProgram() {
   ];
 
   return (
-    <section id="why-ml" aria-labelledby="why-ml-heading" className="relative overflow-hidden py-8 md:py-14 bg-white">
+    <section id="why-ml" aria-labelledby="why-ml-heading" className="relative overflow-hidden py-10 bg-white">
       {/* Subtle futuristic frame (thin grid + soft mask; not a heavy gradient) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(2,6,23,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(2,6,23,0.035)_1px,transparent_1px)] bg-[size:28px_28px]" />
@@ -120,15 +124,16 @@ export default function WhyMLPythonProgram() {
 
         {/* CTA row */}
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link
-            href="contact-us"
-            className="inline-flex items-center justify-center rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="Apply to the Machine Learning & Data Science program"
           >
             Apply Now
-          </Link>
+          </button>
           <button
-            className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-purple-200"
+            onClick={() => setIsSyllabusOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-purple-200"
             aria-label="Download the full program syllabus"
           >
             Download Syllabus (PDF)
@@ -141,6 +146,18 @@ export default function WhyMLPythonProgram() {
         </p>
       </div>
 
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Machine Learning Algorithms with Python Course Page - Why ML Section - Apply Now"
+        courseName={courseName}
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Machine Learning Algorithms with Python Course Page - Why ML Section - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 }

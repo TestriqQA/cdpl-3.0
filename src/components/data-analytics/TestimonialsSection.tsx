@@ -10,7 +10,7 @@ export default function TestimonialsSection() {
 
   return (
     <section
-      className="relative py-12 md:py-16 bg-white"
+      className="relative py-10 bg-white"
       aria-labelledby="testimonials-heading"
     >
       {/* Sleek top accent (subtle gradient line only) */}
@@ -23,7 +23,7 @@ export default function TestimonialsSection() {
             id="testimonials-heading"
             className="text-3xl md:text-4xl font-bold text-gray-900"
           >
-            What Our <span className="text-DS">Students Say</span>
+            What Our <span className="text-DS">5,000+ Placed Students Say</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
             Real feedback from graduates of our{" "}
@@ -36,7 +36,7 @@ export default function TestimonialsSection() {
           {/* Trust strip */}
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
             <span className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-3 py-1 text-sm font-medium text-gray-800">
-              <Sparkles className="w-4 h-4 text-orange-600" />
+              <Sparkles className="w-4 h-4 text-brand" />
               4.9/5 Average Rating
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-3 py-1 text-sm font-medium text-gray-800">

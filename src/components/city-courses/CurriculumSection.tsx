@@ -44,12 +44,12 @@ type Variant = {
 };
 
 const VARIANTS: Variant[] = [
-  { activeBg: "bg-cyan-500", activeText: "text-white", hoverBorder: "hover:border-cyan-300", accentColor: "text-cyan-500" },
-  { activeBg: "bg-fuchsia-500", activeText: "text-white", hoverBorder: "hover:border-fuchsia-300", accentColor: "text-fuchsia-500" },
-  { activeBg: "bg-lime-500", activeText: "text-slate-900", hoverBorder: "hover:border-lime-300", accentColor: "text-lime-500" },
-  { activeBg: "bg-orange-500", activeText: "text-white", hoverBorder: "hover:border-orange-300", accentColor: "text-orange-500" },
-  { activeBg: "bg-indigo-500", activeText: "text-white", hoverBorder: "hover:border-indigo-300", accentColor: "text-indigo-500" },
-  { activeBg: "bg-red-500", activeText: "text-white", hoverBorder: "hover:border-red-300", accentColor: "text-red-500" },
+  { activeBg: "bg-cyan-700", activeText: "text-white", hoverBorder: "hover:border-cyan-600", accentColor: "text-cyan-700" },
+  { activeBg: "bg-fuchsia-700", activeText: "text-white", hoverBorder: "hover:border-fuchsia-600", accentColor: "text-fuchsia-700" },
+  { activeBg: "bg-lime-500", activeText: "text-slate-900", hoverBorder: "hover:border-lime-300", accentColor: "text-lime-600" },
+  { activeBg: "bg-brand", activeText: "text-white", hoverBorder: "hover:border-brand", accentColor: "text-brand" },
+  { activeBg: "bg-indigo-700", activeText: "text-white", hoverBorder: "hover:border-indigo-600", accentColor: "text-indigo-700" },
+  { activeBg: "bg-red-700", activeText: "text-white", hoverBorder: "hover:border-red-600", accentColor: "text-red-700" },
 ];
 
 function pickVariant(i: number): Variant {
@@ -94,7 +94,7 @@ const CurriculumSection: React.FC<CurriculumSectionProps> = ({ data }) => {
           <motion.h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-slate-900" variants={itemVariants}>
             {curriculumContent.title}
           </motion.h2>
-          {curriculumContent.subtitle && (
+          {curriculumContent.subtitle && tracks.length > 1 && (
             <motion.p className="mx-auto mt-6 max-w-3xl text-lg text-slate-600" variants={itemVariants}>
               {curriculumContent.subtitle}
             </motion.p>
@@ -176,45 +176,56 @@ const CurriculumSection: React.FC<CurriculumSectionProps> = ({ data }) => {
                   {current.weeks.map((w: Week, idx: number) => (
                     <div
                       key={idx}
-                      className="p-4 sm:p-6 rounded-xl bg-white border border-slate-100 hover:border-slate-300 transition-all duration-300 shadow-md overflow-hidden"
+                      className="rounded-xl bg-white border border-slate-100 hover:border-slate-300 transition-all duration-300 shadow-md overflow-hidden"
                     >
-                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
-                        {/* Week/Module Number */}
-                        <div className="flex-shrink-0">
-                          <span
-                            className={`inline-flex items-center justify-center h-13 w-13 rounded-full text-base font-bold ${currentVariant.activeBg} ${currentVariant.activeText}`}
-                          >
-                            {w.number || String(idx + 1)}
-                          </span>
-                        </div>
-
-                        {/* Module Title and Description – Fixed overflow */}
-                        <div className="flex-grow min-w-0"> {/* min-w-0 is critical */}
-                          <h3 className="text-xl font-semibold text-slate-900 break-words">
-                            {w.title}
-                          </h3>
-                          <p className="mt-2 text-base text-slate-700 break-words">
-                            {w.description}
-                          </p>
-                        </div>
-
-                        {/* Deliverables – Fixed overflow */}
-                        <div className="flex-shrink-0 min-w-0"> {/* min-w-0 added */}
-                          <div className="text-sm font-semibold uppercase text-slate-500 mb-2 border-b border-slate-100 pb-1">
-                            Key Deliverables
+                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 p-4 sm:p-6">
+                        {/* LEFT COLUMN: Module Info (Number + Title/Desc) */}
+                        <div className="lg:col-span-8 flex gap-4 sm:gap-6">
+                          {/* Week/Module Number */}
+                          <div className="flex-shrink-0">
+                            <span
+                              className={`inline-flex items-center justify-center h-12 w-12 sm:h-16 sm:w-16 rounded-full text-lg font-bold shadow-sm ${currentVariant.activeBg} ${currentVariant.activeText}`}
+                            >
+                              {w.number || String(idx + 1)}
+                            </span>
                           </div>
-                          {Array.isArray(w.deliverables) && w.deliverables.length > 0 ? (
-                            <ul className="space-y-2">
-                              {w.deliverables.map((d: string, i: number) => (
-                                <li key={i} className="flex items-start gap-2 text-sm text-slate-800">
-                                  <CheckCircle2 className={`mt-0.5 h-4 w-4 flex-shrink-0 ${currentVariant.accentColor}`} />
-                                  <span className="break-words min-w-0">{d}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          ) : (
-                            <span className="text-sm text-slate-500">— No deliverables listed —</span>
-                          )}
+
+                          {/* Module Title and Description */}
+                          <div className="flex-grow min-w-0 pt-1">
+                            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-tight mb-3">
+                              {w.title}
+                            </h3>
+                            <p className="text-base text-slate-600 leading-relaxed">
+                              {w.description}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* RIGHT COLUMN: Deliverables */}
+                        <div className="lg:col-span-4">
+                          <div className="h-full bg-slate-50/80 rounded-xl border border-slate-100 p-4 sm:p-5">
+                            <div className="flex items-center gap-2 mb-3 pb-2 border-b border-slate-200/60">
+                              <CheckCircle2 className="h-4 w-4 text-slate-400" />
+                              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                                Key Takeaways
+                              </span>
+                            </div>
+
+                            {Array.isArray(w.deliverables) && w.deliverables.length > 0 ? (
+                              <ul className="space-y-3">
+                                {w.deliverables.map((d: string, i: number) => (
+                                  <li key={i} className="flex items-start gap-2.5 text-sm font-medium text-slate-700">
+                                    <div className={`mt-1.5 h-1.5 w-1.5 rounded-full flex-shrink-0 ${currentVariant.activeBg}`} />
+                                    <span className="leading-snug">{d}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            ) : (
+                              <p className="text-sm italic text-slate-400 py-2">
+                                No specific deliverables listed.
+                              </p>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>

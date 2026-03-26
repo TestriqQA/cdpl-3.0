@@ -7,7 +7,7 @@ export default function CtaSection() {
 
 
   return (
-    <section id="contact" aria-labelledby="cta-heading" className="relative py-8 sm:py-10 bg-white">
+    <section id="contact" aria-labelledby="cta-heading" className="relative py-10 bg-white">
       {/* subtle top/bottom separators for a sleek, futuristic frame */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-5xl bg-slate-100" />
@@ -32,8 +32,7 @@ export default function CtaSection() {
           </h2>
 
           <p className="mt-3 text-sm sm:text-base text-slate-600">
-            Live <strong>15-hour</strong> mentor-led training • <strong>Postman</strong>, <strong>REST/GraphQL</strong>,{' '}
-            <strong>JSON Schema</strong>, <strong>OWASP API security</strong>, and <strong>CI/CD</strong>.
+            Master <strong>what is API testing</strong>, <strong>Postman</strong>, and <strong>Automation</strong> in 15 hours.
           </p>
 
           {/* Primary actions */}

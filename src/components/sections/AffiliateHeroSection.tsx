@@ -18,9 +18,11 @@ import {
   BarChart3,
   Crown,
 } from "lucide-react";
+import { useState } from "react";
+import WorkshopRequestModal from "../WorkshopRequestModal";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-const BRAND_COLOR = "var(--color-brand, #ff8c00)";
+const BRAND_COLOR = "#ff8c00";
 
 // Tiny floating icon chip (background layer)
 function FloatingIcon({
@@ -65,6 +67,8 @@ function FloatingIcon({
 }
 
 export default function AffiliateHeroSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section
       className="
@@ -128,12 +132,16 @@ export default function AffiliateHeroSection() {
           <ol className="flex items-center gap-1 text-sm text-slate-500">
             <li className="flex items-center gap-1">
               <Home className="h-4 w-4" />
-              <Link href="/" className="hover:underline">Home</Link>
+              <Link href="/" className="hover:text-indigo-700">Home</Link>
             </li>
             <li aria-hidden className="mx-1 text-slate-400">
               <ChevronRight className="h-4 w-4" />
             </li>
-            <li className="text-slate-700 font-medium">Affiliate Program</li>
+            <li>
+              <Link href="/cdpl-affiliate-program" className="font-semibold text-slate-900 hover:text-indigo-700">
+                Affiliate Program
+              </Link>
+            </li>
           </ol>
         </nav>
 
@@ -198,19 +206,19 @@ export default function AffiliateHeroSection() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2, ease }}
-              className="mt-6 flex items-center gap-3"
+              className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center"
             >
-              <Link
-                href="#apply"
-                className="group inline-flex items-center gap-2 rounded-xl px-5 py-3 font-semibold text-white shadow-sm ring-1 ring-black/5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-500 active:translate-y-[1px]"
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-white shadow-sm ring-1 ring-black/5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-500 active:translate-y-[1px] cursor-pointer sm:w-auto sm:justify-start"
                 style={{ backgroundColor: BRAND_COLOR }}
               >
                 Apply Now
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-              </Link>
+              </button>
               <Link
                 href="#how-it-works"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-slate-700 hover:bg-slate-50"
+                className="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-slate-700 hover:bg-slate-50 cursor-pointer sm:w-auto"
               >
                 How it works
               </Link>
@@ -230,6 +238,7 @@ export default function AffiliateHeroSection() {
                 priority
                 sizes="(max-width: 640px) 92vw, (max-width: 1024px) 48vw, 600px"
                 className="h-auto w-full select-none"
+                quality={50}
                 style={{
                   WebkitMaskImage:
                     "radial-gradient(130% 130% at 60% 40%, black 72%, transparent 100%)",
@@ -241,6 +250,14 @@ export default function AffiliateHeroSection() {
           </div>
         </div>
       </div>
-    </section>
+      <WorkshopRequestModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        variant="affiliate"
+        title="Apply for Affiliate Program"
+        subtitle="Join our partner ecosystem today"
+        source="Affiliate Program Page - Hero Section - Apply Now Button"
+      />
+    </section >
   );
 }

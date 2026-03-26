@@ -1,4 +1,3 @@
-// components/sections/WhyAnalyticsProgram.tsx
 "use client";
 
 import {
@@ -13,14 +12,16 @@ import {
     Layers,
     ClipboardList,
 } from "lucide-react";
-import Link from "next/link";
+
+import { useState } from "react";
+import EnrollModal from "../EnrollModal";
 
 export default function WhyAnalyticsProgram() {
-
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
 
     const featureChips = [
         { label: "110 Hours", color: "bg-indigo-600 text-white" },
-        { label: "Hands-On Projects", color: "bg-emerald-600 text-white" },
+        { label: "Hands-On Projects", color: "bg-[#047857] text-white" },
         { label: "Expert Faculty", color: "bg-amber-500 text-gray-900" },
         { label: "Beginner Friendly", color: "bg-sky-600 text-white" },
         { label: "100% Job-Ready", color: "bg-rose-600 text-white" },
@@ -112,7 +113,7 @@ export default function WhyAnalyticsProgram() {
 
     return (
         <section
-            className="relative py-14 md:py-16 bg-white"
+            className="relative py-10 bg-white"
             aria-labelledby="why-analytics-heading"
         >
             {/* subtle futuristic accent (sleek gradient line only) */}
@@ -121,18 +122,14 @@ export default function WhyAnalyticsProgram() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <header className="text-center mb-10 md:mb-12">
-                    <h1
+                    <h2
                         id="why-analytics-heading"
                         className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900"
                     >
-                        Advanced Data Analytics - <span className="text-DS">A Complete Overview</span>
-                    </h1>
+                        Advanced Data Analytics - <span className="text-DS">A Complete Career Overview</span>
+                    </h2>
                     <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
-                        Learn to <strong>analyze complex datasets</strong>, build{" "}
-                        <strong>insightful dashboards</strong>, apply <strong>statistics</strong> and{" "}
-                        <strong>predictive modeling</strong>, and turn data into business decisions using{" "}
-                        <strong>Power BI</strong>, <strong>Tableau</strong>, <strong>SQL</strong>, and{" "}
-                        <strong>Python</strong>.
+                        In 2025-2026, the demand for <strong>certified data analysts</strong> is at an all-time high. Our <strong>data analyst full course</strong> covers every aspect of the data lifecycle, from SQL modeling to advanced BI storytelling.
                     </p>
                 </header>
 
@@ -221,15 +218,15 @@ export default function WhyAnalyticsProgram() {
                         </dl>
 
                         <div className="mt-6 border-t border-gray-200 pt-6">
-                            <Link
-                                href="contact-us"
-                                className="inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold shadow-sm
+                            <button
+                                onClick={() => setIsEnrollOpen(true)}
+                                className="cursor-pointer inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold shadow-sm
                            bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                 aria-label="Apply now for Advanced Data Analytics Hero Program"
                             >
                                 Apply Now
                                 <BadgeCheck className="w-4 h-4" />
-                            </Link>
+                            </button>
                             <p className="mt-3 text-xs text-gray-600">
                                 Get the full syllabus and a skill-gap checklist to personalize your learning path.
                             </p>
@@ -237,7 +234,12 @@ export default function WhyAnalyticsProgram() {
                     </aside>
                 </div>
 
-
+                <EnrollModal
+                    isOpen={isEnrollOpen}
+                    onClose={() => setIsEnrollOpen(false)}
+                    source="Data Analytics Course Page - Why Analytics Section - Apply Now"
+                    courseName="Advanced Data Analytics Hero Program"
+                />
             </div>
 
         </section>

@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { Home } from "lucide-react";
 
-const BRAND_ORANGE = "rgb(255, 140, 0)";
+const BRAND_ORANGE = "#ff8c00";
 const BRAND_BLUE = "#0069A8";
 
 export default function ACTDCertificationHeroSection() {
@@ -12,11 +13,12 @@ export default function ACTDCertificationHeroSection() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-slate-50 to-white" />
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <nav aria-label="Breadcrumb" className="mb-3">
-          <ol className="flex items-center gap-2 text-sm text-slate-500">
-            <li>
-              <Link href="/" className="hover:text-slate-700">Home</Link>
+          <ol className="flex items-center gap-2 text-sm text-slate-600">
+            <li className="flex items-center gap-2">
+              <Home className="h-4 w-4" />
+              <Link href="/" className="hover:text-indigo-700">Home</Link>
             </li>
-            <li aria-hidden className="text-slate-400">/</li>
+            <li aria-hidden className="text-slate-500">/</li>
             <li className="font-medium text-slate-700">ACTD Certification</li>
           </ol>
         </nav>
@@ -39,7 +41,7 @@ export default function ACTDCertificationHeroSection() {
               <span style={{ color: BRAND_ORANGE }}> by CDPL</span>
             </h1>
 
-            <p className="mt-4 mx-auto max-w-2xl text-base sm:text-lg text-slate-600 lg:mx-0">
+            <p className="mt-4 mx-auto max-w-2xl text-base sm:text-lg text-slate-800 lg:mx-0">
               Learn through sprints, labs, mentor reviews, and a capstone that proves your skills to recruiters.
             </p>
 
@@ -52,7 +54,8 @@ export default function ACTDCertificationHeroSection() {
                 Explore tracks
               </Link>
               <Link
-                href="/cdpl-certificate-validation"
+                href="https://www.actd.us/verify-certificate/"
+                target="_blank"
                 className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
                 style={{ border: "1px solid #e2e8f0" }}
               >
@@ -69,6 +72,8 @@ export default function ACTDCertificationHeroSection() {
               width={1280}
               height={960}
               className="h-auto w-full max-w-[36rem] rounded-2xl"
+              sizes="(max-width: 640px) 95vw, (max-width: 1024px) 50vw, 600px"
+              quality={50}
               priority
             />
           </div>

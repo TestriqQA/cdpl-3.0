@@ -141,7 +141,7 @@ export default function ProjectsSection() {
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="relative py-8 md:py-14 bg-gradient-to-b from-slate-50 to-white"
+      className="relative py-10 bg-gradient-to-b from-slate-50 to-white"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="mx-auto h-full w-full max-w-7xl opacity-50">

@@ -1,14 +1,14 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import ReviewsMarquee from "../sections/ReviewMarque";
-import Link from "next/link";
-
-
-
+import EnrollModal from "../EnrollModal";
 
 export default function TestimonialsSection() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const courseName = "Data Analytics & Visualization with Tableau";
 
     return (
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
+        <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-16">
@@ -26,7 +26,7 @@ export default function TestimonialsSection() {
                 {/* Student Success Stats */}
                 <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div className="text-center p-8 bg-blue-50 rounded-xl border-2 border-blue-200">
-                        <div className="text-5xl font-bold text-blue-600 mb-2">500+</div>
+                        <div className="text-5xl font-bold text-gray-950 mb-2">500+</div>
                         <p className="text-gray-700 font-semibold">Successful Graduates</p>
                         <p className="text-sm text-gray-600 mt-2">
                             Placed in top companies
@@ -34,7 +34,7 @@ export default function TestimonialsSection() {
                     </div>
 
                     <div className="text-center p-8 bg-orange-50 rounded-xl border-2 border-orange-200">
-                        <div className="text-5xl font-bold text-orange-600 mb-2">4.8/5</div>
+                        <div className="text-5xl font-bold text-gray-950 mb-2">4.8/5</div>
                         <p className="text-gray-700 font-semibold">Average Rating</p>
                         <p className="text-sm text-gray-600 mt-2">
                             Across all platforms
@@ -42,7 +42,7 @@ export default function TestimonialsSection() {
                     </div>
 
                     <div className="text-center p-8 bg-green-50 rounded-xl border-2 border-green-200">
-                        <div className="text-5xl font-bold text-green-600 mb-2">75%</div>
+                        <div className="text-5xl font-bold text-gray-950 mb-2">75%</div>
                         <p className="text-gray-700 font-semibold">Job Satisfaction</p>
                         <p className="text-sm text-gray-600 mt-2">
                             Among professionals
@@ -50,7 +50,7 @@ export default function TestimonialsSection() {
                     </div>
 
                     <div className="text-center p-8 bg-purple-50 rounded-xl border-2 border-purple-200">
-                        <div className="text-5xl font-bold text-purple-600 mb-2">4 LPA</div>
+                        <div className="text-5xl font-bold text-gray-950 mb-2">4 LPA</div>
                         <p className="text-gray-700 font-semibold">Average Salary</p>
                         <p className="text-sm text-gray-600 mt-2">
                             Fresher&apos;s starting salary
@@ -63,11 +63,21 @@ export default function TestimonialsSection() {
                     <p className="text-gray-600 text-lg mb-6">
                         Join hundreds of successful students who have transformed their careers with our Tableau training
                     </p>
-                    <Link href="contact-us" className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition-all inline-block">
+                    <button
+                        onClick={() => setIsEnrollOpen(true)}
+                        className="bg-[#431407] hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+                    >
                         Start Your Success Story →
-                    </Link>
+                    </button>
                 </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Tableau Course Page - Testimonials Section - Enroll Now"
+                courseName={courseName}
+            />
         </section>
     );
 }

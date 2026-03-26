@@ -10,7 +10,7 @@ export default function CtaSection() {
     <section
       id="contact"
       aria-labelledby="cta-heading"
-      className="relative py-8 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle separators for a sleek, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -40,8 +40,7 @@ export default function CtaSection() {
           </h2>
 
           <p className="mt-6 text-sm sm:text-base text-slate-600">
-            Next cohort starts in <strong>3 days</strong>. Limited seats—talk to our admissions team or email us for the
-            detailed syllabus, fees, and batch timings.
+            Master <strong>what is ETL testing</strong>, <strong>SQL for data validation</strong>, and <strong>ETL tools</strong> in 18 hours. Next cohort starts in <strong>3 days</strong>. Limited seats. Join our <strong>ETL testing training</strong> in Mumbai/Thane.
           </p>
 
           {/* actions */}
@@ -65,7 +64,8 @@ export default function CtaSection() {
             </Link>
 
             <Link
-            href="contact-us"
+              href="https://calendar.app.google/tvh9dsXZsX9BujRR8"
+              target="_blank"
               className="inline-flex items-center justify-center rounded-xl border-2 border-amber-600 bg-white px-7 py-3 text-sm sm:text-base font-semibold text-amber-800 shadow-sm transition hover:bg-amber-50 focus:outline-none focus:ring-4 focus:ring-amber-200"
               aria-label="Book a free demo session"
             >

@@ -21,20 +21,20 @@ export const SITE_CONFIG = {
   legalName: 'Cinute Digital Private Limited',
   shortName: 'CDPL',
   tagline: 'Transform Your Career with Industry-Ready Skills',
-  
+
   // URLs
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.cinutedigital.com',
   domain: 'cinutedigital.com',
-  
+
   // Brand Colors
   brandColor: '#ff8c00', // Orange
   themeColor: '#ff8c00',
-  
+
   // Default Images
-  logo: '/logo.png',
+  logo: '/cdpl-logo.png',
   logoWidth: 200,
   logoHeight: 60,
-  defaultOgImage: '/og-image-default.jpg',
+  defaultOgImage: '/og-images/home-page-og.png',
   defaultOgImageWidth: 1200,
   defaultOgImageHeight: 630,
   favicon: '/favicon.ico',
@@ -51,22 +51,22 @@ export const BUSINESS_INFO = {
   email: 'contact@cinutedigital.com',
   supportEmail: 'contact@cinutedigital.com',
   admissionsEmail: 'contact@cinutedigital.com',
-  
+
   // Physical Address
   address: {
-    streetAddress: 'Office Number 2 & 3, 2nd Floor, Ashley Towers, Kanakia Rd, Vagad Nagar, Beverly Park, Mira Road East',
+    streetAddress: 'Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road',
     addressLocality: 'Mira Bhayandar, Mumbai',
     addressRegion: 'Maharashtra',
     postalCode: '401107',
     addressCountry: 'IN',
   },
-  
+
   // Geo Coordinates (for LocalBusiness schema)
   geo: {
     latitude: 19.29403967980817,
     longitude: 72.87115175396495,
   },
-  
+
   // Business Hours
   openingHours: [
     'Monday 09:00-18:00',
@@ -76,15 +76,15 @@ export const BUSINESS_INFO = {
     'Friday 09:00-18:00',
     'Saturday 09:00-15:00',
   ],
-  
+
   // Price Range
   priceRange: '₹₹',
-  
+
   // Founded Year
   foundedYear: '2020',
-  
+
   // Number of Employees
-  numberOfEmployees: '200',
+  numberOfEmployees: '50',
 } as const;
 
 // ============================================================================
@@ -93,7 +93,7 @@ export const BUSINESS_INFO = {
 
 export const SOCIAL_PROFILES = {
   facebook: 'https://www.facebook.com/cinutedigital',
-  linkedin: 'https://www.linkedin.com/company/cinutedigital',
+  linkedin: 'https://www.linkedin.com/company/cinute-digital/',
   twitter: 'https://twitter.com/cinutedigital',
   twitterHandle: '@cinutedigital',
   instagram: 'https://www.instagram.com/cinutedigital',
@@ -107,7 +107,7 @@ export const SOCIAL_PROFILES = {
 
 export const STATISTICS = {
   studentsPlaced: 5000,
-  rating: 4.9,
+  rating: 4.8,
   maxRating: 5,
   reviewCount: 5000,
   yearsOfExperience: 15,
@@ -124,10 +124,10 @@ export const SEO_DEFAULTS = {
   // Default Title Template
   titleTemplate: '%s | CDPL - Cinute Digital',
   defaultTitle: 'CDPL - Best Software Testing, Data Science & AI/ML Training Institute in India',
-  
+
   // Default Description
   defaultDescription: 'Leading EdTech company providing industry-focused training in Software Testing, Data Science, AI/ML, and Digital Marketing with 100% placement support. Transform your career with expert-led courses.',
-  
+
   // Default Keywords
   defaultKeywords: [
     'software testing course',
@@ -148,11 +148,11 @@ export const SEO_DEFAULTS = {
     'ISTQB certification',
     'job guarantee program',
   ] as string[],
-  
+
   // Locale
   locale: 'en_IN',
   alternateLocales: ['en_US', 'en_GB'] as string[],
-  
+
   // Robots
   robots: {
     index: true,
@@ -229,7 +229,7 @@ export const COURSE_CATEGORIES = [
 export const FEATURED_COURSES = [
   {
     name: 'Manual Software Testing',
-    slug: 'manual-testing-course',
+    slug: 'courses/software-testing-course/manual-testing-course',
     description: 'Learn to facilitate Scrum teams and drive Agile projects effectively with comprehensive manual testing training.',
     duration: 'P12W', // 12 weeks in ISO 8601 format
     level: 'Beginner',
@@ -241,7 +241,7 @@ export const FEATURED_COURSES = [
   },
   {
     name: 'Advanced Automation Testing',
-    slug: 'automation-testing-course',
+    slug: 'courses/software-testing-course/automation-testing-course',
     description: 'Drive product vision and delivery in SAFe settings with advanced automation testing skills.',
     duration: 'P16W',
     level: 'Intermediate',
@@ -253,7 +253,7 @@ export const FEATURED_COURSES = [
   },
   {
     name: 'Advanced Data Science and Machine Learning Masterclass',
-    slug: 'data-science-course',
+    slug: 'courses/ds-ml-courses/data-science-course',
     description: 'Master coding challenges and technical questions with comprehensive data science training.',
     duration: 'P20W',
     level: 'Advanced',
@@ -335,6 +335,9 @@ export const AI_OPTIMIZATION = {
  * Get full URL for a path
  */
 export function getFullUrl(path: string = ''): string {
+  if (path === '/' || path === '') {
+    return SITE_CONFIG.url;
+  }
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
   return `${SITE_CONFIG.url}${cleanPath}`;
 }

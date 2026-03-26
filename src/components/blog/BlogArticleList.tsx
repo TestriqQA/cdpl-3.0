@@ -4,13 +4,14 @@ import { useState } from "react";
 import { Calendar, Clock, ArrowRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { getLatestPosts, getCategoryById, getAuthorById } from "@/data/BlogPostData";
+import { SanityPost } from "@/sanity/types";
 
-const BlogArticleList = () => {
+interface BlogArticleListProps {
+  posts: SanityPost[];
+}
+
+const BlogArticleList: React.FC<BlogArticleListProps> = ({ posts = [] }) => {
   const [visibleArticles, setVisibleArticles] = useState(6);
-
-  // Get latest posts excluding the featured one
-  const latestPosts = getLatestPosts(20); // Get more than we need for load more
 
   const loadMoreArticles = () => {
     setVisibleArticles((prev) => prev + 3);
@@ -27,6 +28,14 @@ const BlogArticleList = () => {
     };
     return fallbacks[categoryId] || '/images/blog/fallback/default.webp';
   };
+
+  if (!posts || posts.length === 0) {
+    return (
+      <div className="text-center py-20">
+        <p className="text-gray-500 text-lg">No articles found.</p>
+      </div>
+    )
+  }
 
   return (
     <section className="bg-gradient-to-b from-white to-gray-50 py-12">
@@ -50,11 +59,13 @@ const BlogArticleList = () => {
 
             {/* Article Cards */}
             <div className="space-y-6">
-              {latestPosts.slice(0, visibleArticles).map((post) => {
-                const category = getCategoryById(post.categoryId);
-                const author = getAuthorById(post.authorId);
+              {posts.slice(0, visibleArticles).map((post) => {
+                // Sanity data comes with expanded objects
+                const category = post.category;
+                const author = post.author;
 
-                if (!category || !author) return null;
+                // Fallback for missing data
+                if (!category) return null;
 
                 // Format date
                 const formattedDate = new Date(post.publishDate).toLocaleDateString('en-US', {
@@ -63,13 +74,16 @@ const BlogArticleList = () => {
                   day: 'numeric'
                 });
 
+                // Calculate read time if missing (simple estimation)
+                const readTime = post.readTime || "5 min read";
+
                 return (
                   <article
-                    key={post.id}
+                    key={post._id || post.slug}
                     className="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
                   >
                     <div className="md:flex">
-                      {/* Article Image - ENHANCED: Better aspect ratio and fallback */}
+                      {/* Article Image */}
                       <div className="md:w-80 md:flex-shrink-0 relative overflow-hidden bg-gradient-to-br from-indigo-50 to-blue-50">
                         <div className="relative w-full h-48 md:h-full md:min-h-[240px]">
                           {post.featuredImage ? (
@@ -77,13 +91,13 @@ const BlogArticleList = () => {
                               src={post.featuredImage}
                               alt={post.title}
                               fill
-                              className="group-hover:scale-105 transition-transform duration-500"
-                              sizes="(max-width: 768px) 100vw, 320px"
-                              quality={85}
+                              className="group-hover:scale-105 transition-transform duration-500 object-cover"
+                              sizes="(max-width: 768px) calc(100vw - 2rem), 320px"
+                              quality={60}
                             />
                           ) : (
                             <Image
-                              src={getFallbackImage(post.categoryId)}
+                              src={getFallbackImage(category.slug)}
                               alt={post.title}
                               fill
                               className=""
@@ -97,38 +111,44 @@ const BlogArticleList = () => {
                       <div className="p-6 flex-1 flex flex-col">
                         {/* Category Badge */}
                         <span
-                          className={`inline-block w-fit px-3 py-1 ${category.color.bg} ${category.color.text} text-xs font-semibold rounded-full mb-3`}
+                          className={`inline-block w-fit px-3 py-1 ${category.color?.bg || 'bg-gray-100'} ${category.color?.text || 'text-gray-800'} text-xs font-semibold rounded-full mb-3`}
                         >
                           {category.name}
                         </span>
 
-                        {/* Title - Optimized color on hover */}
+                        {/* Title */}
                         <Link href={`/blog/${post.slug}`}>
                           <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors duration-300 line-clamp-2">
                             {post.title}
                           </h3>
                         </Link>
 
-                        {/* Description - Optimal reading color */}
+                        {/* Description/Excerpt */}
                         <p className="text-gray-700 mb-4 text-base leading-relaxed line-clamp-2 flex-grow">
-                          {post.description}
+                          {post.excerpt}
                         </p>
 
-                        {/* Meta Information - Subtle but readable */}
+                        {/* Meta Information */}
                         <div className="flex flex-wrap items-center gap-4 text-xs text-gray-600 pt-4 border-t border-gray-100">
-                          <div className="flex items-center gap-1.5">
-                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center text-white font-semibold text-[10px]">
-                              {author.name.charAt(0)}
+                          {author && author.name && (
+                            <div className="flex items-center gap-1.5">
+                              {author.avatar ? (
+                                <Image src={author.avatar} alt={author.name} width={24} height={24} className="rounded-full" />
+                              ) : (
+                                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center text-white font-semibold text-[10px]">
+                                  {author.name.charAt(0)}
+                                </div>
+                              )}
+                              <span className="font-medium text-gray-700">{author.name}</span>
                             </div>
-                            <span className="font-medium text-gray-700">{author.name}</span>
-                          </div>
+                          )}
                           <div className="flex items-center gap-1.5">
                             <Calendar className="w-3.5 h-3.5 text-indigo-600" />
                             <span>{formattedDate}</span>
                           </div>
                           <div className="flex items-center gap-1.5">
                             <Clock className="w-3.5 h-3.5 text-indigo-600" />
-                            <span>{post.readTime}</span>
+                            <span>{readTime}</span>
                           </div>
                         </div>
                       </div>
@@ -139,7 +159,7 @@ const BlogArticleList = () => {
             </div>
 
             {/* Load More Button */}
-            {visibleArticles < latestPosts.length && (
+            {visibleArticles < posts.length && (
               <div className="flex justify-center mt-10">
                 <button
                   onClick={loadMoreArticles}

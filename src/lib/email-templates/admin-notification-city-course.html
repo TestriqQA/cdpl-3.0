@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .header {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .field {
+            margin-bottom: 10px;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        .footer {
+            font-size: 12px;
+            color: #777;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>New Enquiry from City Course Page</h2>
+        </div>
+        <div class="content">
+            <p>Dear Team,</p>
+            <p>You have received a new enquiry from the <strong>{{source}}</strong> form.</p>
+
+            <div class="field">
+                <span class="label">Full Name:</span> {{fullName}}
+            </div>
+            <div class="field">
+                <span class="label">Email:</span> {{email}}
+            </div>
+            <div class="field">
+                <span class="label">Phone:</span> {{phone}}
+            </div>
+            <div class="field">
+                <span class="label">Form Source:</span> {{source}}
+            </div>
+            <div class="field">
+                <span class="label">City/Location:</span> {{location}}
+            </div>
+
+
+            <p>Please connect with the lead shortly.</p>
+        </div>
+        <div class="footer">
+            <p>&copy; {{year}} CDPL. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+
+</html>

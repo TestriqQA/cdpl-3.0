@@ -1,7 +1,7 @@
-// components/powerbi/CareerSection.tsx
 "use client";
-
-import React from "react";
+// components/powerbi/CareerSection.tsx
+import React, { useState } from "react";
+import CareerSessionModal from "../CareerSessionModal";
 
 type ColorVariant =
   | "blue"
@@ -24,7 +24,7 @@ const palette: Record<
   { bg: string; text: string; ring: string; grad: string }
 > = {
   blue: { bg: "bg-blue-100", text: "text-blue-700", ring: "ring-blue-200", grad: "from-blue-500/20 to-cyan-500/20" },
-  orange: { bg: "bg-orange-100", text: "text-orange-700", ring: "ring-orange-200", grad: "from-orange-500/20 to-amber-500/20" },
+  orange: { bg: "bg-orange-100", text: "text-brand", ring: "ring-orange-200", grad: "from-orange-500/20 to-amber-500/20" },
   green: { bg: "bg-green-100", text: "text-green-700", ring: "ring-green-200", grad: "from-emerald-500/20 to-lime-500/20" },
   purple: { bg: "bg-purple-100", text: "text-purple-700", ring: "ring-purple-200", grad: "from-purple-500/20 to-fuchsia-500/20" },
   pink: { bg: "bg-pink-100", text: "text-pink-700", ring: "ring-pink-200", grad: "from-pink-500/20 to-rose-500/20" },
@@ -66,6 +66,9 @@ const RoleCard: React.FC<RoleCardProps> = ({ title, emoji, color }) => {
 };
 
 const CareerSection: React.FC = () => {
+  const [isCareerSessionOpen, setIsCareerSessionOpen] = useState(false);
+  const courseName = "Data Analytics & Visualization with Power BI";
+
   const jobRoles: RoleCardProps[] = [
     { title: "Power BI Analyst", emoji: "📊", color: "blue" },
     { title: "Business Intelligence Analyst", emoji: "📈", color: "orange" },
@@ -78,18 +81,19 @@ const CareerSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-10 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="text-base font-semibold tracking-wider text-orange-600 uppercase">
+          <span className="text-base font-semibold tracking-wider text-brand uppercase">
             Career Opportunities
           </span>
           <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-gray-900">
-            Know Your Future: Job Roles After Certification
+            Lucrative Power BI Developer Jobs in Mumbai & Thane
           </h2>
-          <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
-            Become a market-ready Power BI expert qualified for high-demand roles across various industries.
+          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
+            Become a market-ready <strong>Power BI Developer</strong> qualified for high-demand <strong>data analyst</strong> roles across Mumbai's top IT and finance sectors.
           </p>
+
         </div>
 
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-4">
@@ -97,7 +101,24 @@ const CareerSection: React.FC = () => {
             <RoleCard key={role.title} {...role} />
           ))}
         </div>
+
+        {/* CTA */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => setIsCareerSessionOpen(true)}
+            className="w-full sm:w-auto bg-brand hover:bg-brand text-white font-bold py-5 px-8 my-4 rounded-lg transition-all flex sm:inline-flex min-h-[60px] justify-center items-center cursor-pointer shadow-none"
+          >
+            Book a Free Career Session
+          </button>
+        </div>
       </div>
+
+      <CareerSessionModal
+        isOpen={isCareerSessionOpen}
+        onClose={() => setIsCareerSessionOpen(false)}
+        source="Power BI Course Page - Career Section - Career Session"
+        courseName={courseName}
+      />
     </section>
   );
 };

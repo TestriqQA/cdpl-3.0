@@ -141,7 +141,7 @@ const BlogPageNewUI: React.FC = () => {
             <section className="gradient-bg rounded-2xl shadow-lg p-8 md:p-12 mb-12">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div>
-                        <span className="inline-block px-3 py-1 bg-orange-200 text-orange-600 text-xs font-medium rounded-md mb-4">
+                        <span className="inline-block px-3 py-1 bg-orange-200 text-brand text-xs font-medium rounded-md mb-4">
                             AI & Machine Learning
                         </span>
                         <h1 className="text-4xl md:text-4xl font-bold text-gray-950 mb-4 leading-tight">
@@ -165,7 +165,7 @@ const BlogPageNewUI: React.FC = () => {
                             </div>
                         </div>
                         <Link href="#">
-                        <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-primary-foreground shadow-xs hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3 w-fit bg-[theme(color.brand)] hover:bg-orange-600 interactive-scale glow">
+                        <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-primary-foreground shadow-xs hover:bg-primary/90 h-9 px-4 py-2 has-[>svg]:px-3 w-fit bg-[theme(color.brand)] hover:bg-brand interactive-scale glow">
                             Read Full Article
                             <i className="fas fa-arrow-right ml-2"></i>
                         </button>
@@ -185,7 +185,7 @@ const BlogPageNewUI: React.FC = () => {
                 <div className="lg:col-span-2">
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="text-3xl font-bold text-gray-950">Latest Articles</h2>
-                        <Link href="#" className="px-4 py-2 border-2 border-orange-500 text-orange-600 rounded-lg font-medium hover:bg-orange-50 transition-all duration-200 flex items-center">
+                        <Link href="#" className="px-4 py-2 border-2 border-orange-500 text-brand rounded-lg font-medium hover:bg-orange-50 transition-all duration-200 flex items-center">
                             View All Posts
                             <i className="fas fa-arrow-right ml-2"></i>
                         </Link>

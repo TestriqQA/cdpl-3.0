@@ -71,7 +71,7 @@ function TestimonialCard({ name, role, rating, content, image }: Testimonial) {
     >
       <div className="p-6">
         <div className="flex items-center mb-2">
-          <Star className="h-4 w-4 text-[#ff8c00] fill-[#ff8c00] mr-1" />
+          <Star className="h-4 w-4 text-brand fill-[#ff8c00] mr-1" />
           <span className="text-sm font-medium">{rating}</span>
         </div>
         <p className="text-sm mb-4">{content}</p>
@@ -170,6 +170,22 @@ function ColumnMarquee({ direction, children }: ColumnMarqueeProps) {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
+      <style jsx>{`
+        @keyframes homeTestimonialScrollUp {
+          0% { transform: translateY(0%); }
+          100% { transform: translateY(-50%); }
+        }
+        @keyframes homeTestimonialScrollDown {
+          0% { transform: translateY(-50%); }
+          100% { transform: translateY(0%); }
+        }
+        .animate-scroll-up {
+          animation: homeTestimonialScrollUp 20s linear infinite;
+        }
+        .animate-scroll-down {
+          animation: homeTestimonialScrollDown 20s linear infinite;
+        }
+      `}</style>
       <div
         className={`flex flex-col ${direction === 'up' ? 'animate-scroll-up' : 'animate-scroll-down'}`}
         style={{ animationPlayState: paused ? 'paused' : 'running' }}

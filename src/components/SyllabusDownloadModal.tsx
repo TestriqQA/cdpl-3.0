@@ -1,23 +1,39 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, CheckCircle2, Loader2, FileDown } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+
+import {
+  validateFullName as validateFullNameLib,
+  validateEmail as validateEmailLib,
+  validatePhone as validatePhoneLib
+} from '@/lib/formValidation';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
+import { useRef } from 'react';
 
 interface SyllabusDownloadModalProps {
   isOpen: boolean;
   onClose: () => void;
   courseName?: string;
+  source?: string;
 }
 
 const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
   isOpen,
   onClose,
-  courseName = "Course"
+  courseName = "Course",
+  source
 }) => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
   // Form state
   const [formData, setFormData] = useState({
     fullName: '',
@@ -30,85 +46,35 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
   const [emailError, setEmailError] = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
 
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useFormErrorReset(formRef, [
+    setFullNameError,
+    setEmailError,
+    setPhoneError
+  ]);
+
   // Loading and submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Validation functions
   const validateFullName = (name: string) => {
-    if (!name) {
-      setFullNameError('Full Name is required.');
-      return false;
-    }
-    if (name.trim().length < 3) {
-      setFullNameError('Full Name must be at least 3 characters.');
-      return false;
-    }
-    setFullNameError(null);
-    return true;
+    const error = validateFullNameLib(name);
+    setFullNameError(error);
+    return error === null;
   };
 
   const validateEmail = (email: string) => {
-    if (!email) {
-      setEmailError('Email Address is required.');
-      return false;
-    }
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setEmailError('Invalid email format.');
-      return false;
-    }
-    setEmailError(null);
-    return true;
+    const error = validateEmailLib(email);
+    setEmailError(error);
+    return error === null;
   };
 
   const validatePhoneNumber = (phone: string | undefined) => {
-    // Phone is now mandatory for syllabus download
-    if (!phone || phone.trim() === '') {
-      setPhoneError('Mobile Number is required.');
-      return false;
-    }
-
-    if (!isValidPhoneNumber(phone)) {
-      setPhoneError('Invalid phone number format.');
-      return false;
-    }
-
-    const digits = phone.replace(/\D/g, '');
-
-    // Check for repeating digits
-    if (/^(\d)\1+$/.test(digits)) {
-      setPhoneError('Phone number cannot consist of repeating digits.');
-      return false;
-    }
-
-    // Check for sequential digits
-    const isSequential = (num: string) => {
-      for (let i = 0; i < num.length - 2; i++) {
-        const n1 = parseInt(num[i]);
-        const n2 = parseInt(num[i + 1]);
-        const n3 = parseInt(num[i + 2]);
-        if (
-          (n2 === n1 + 1 && n3 === n2 + 1) ||
-          (n2 === n1 - 1 && n3 === n2 - 1)
-        ) {
-          return true;
-        }
-      }
-      return false;
-    };
-    if (isSequential(digits)) {
-      setPhoneError('Phone number cannot consist of sequential digits.');
-      return false;
-    }
-
-    // Check for all zeros
-    if (/^0+$/.test(digits)) {
-      setPhoneError('Phone number cannot be all zeros.');
-      return false;
-    }
-
-    setPhoneError(null);
-    return true;
+    const error = validatePhoneLib(phone);
+    setPhoneError(error);
+    return error === null;
   };
 
   // Handle input changes
@@ -153,7 +119,8 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
             ...formData,
             phone: formData.phone || 'Not provided',
             type: 'syllabus',
-            courseName
+            courseName,
+            source
           }),
         });
 
@@ -217,9 +184,9 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
     };
   }, [isOpen, isSubmitting, handleClose]);
 
-  return (
+  if (!mounted) return null;
 
-
+  return createPortal(
     <>
       {/* Custom CSS for phone input */}
       <style jsx global>{`
@@ -250,6 +217,7 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
               transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] as const }}
               className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
               onClick={(e) => e.stopPropagation()}
+              ref={formRef}
             >
               {/* Modal Header */}
               <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 px-6 py-5 relative">
@@ -295,21 +263,22 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
                   <form onSubmit={handleSubmit} className="space-y-5">
                     {/* Full Name Field */}
                     <div>
-                      <label htmlFor="syllabus-fullName" className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="syllabus-fullName" className="block text-sm font-semibold text-gray-700 mb-2 text-left">
                         Full Name <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
                         <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
                         <input
                           type="text"
+                          maxLength={35}
                           id="syllabus-fullName"
                           name="fullName"
                           value={formData.fullName}
                           onChange={handleInputChange}
                           placeholder="Enter your full name"
                           className={`w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${fullNameError
-                              ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
-                              : 'border-gray-200 focus:border-indigo-600 focus:ring-indigo-100'
+                            ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
+                            : 'border-gray-200 focus:border-indigo-600 focus:ring-indigo-100'
                             }`}
                           disabled={isSubmitting}
                         />
@@ -321,7 +290,7 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
 
                     {/* Email Field */}
                     <div>
-                      <label htmlFor="syllabus-email" className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="syllabus-email" className="block text-sm font-semibold text-gray-700 mb-2 text-left">
                         Email Address <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
@@ -334,8 +303,8 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
                           onChange={handleInputChange}
                           placeholder="Enter your email address"
                           className={`w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${emailError
-                              ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
-                              : 'border-gray-200 focus:border-indigo-600 focus:ring-indigo-100'
+                            ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
+                            : 'border-gray-200 focus:border-indigo-600 focus:ring-indigo-100'
                             }`}
                           disabled={isSubmitting}
                         />
@@ -347,20 +316,21 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
 
                     {/* Phone Field (Mandatory) */}
                     <div>
-                      <label htmlFor="syllabus-phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label htmlFor="syllabus-phone" className="block text-sm font-semibold text-gray-700 mb-2 text-left">
                         Mobile Number <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
                         <PhoneInput
                           id="syllabus-phone"
                           international
+                          limitMaxLength={true}
                           defaultCountry="IN"
                           value={formData.phone}
                           onChange={handlePhoneChange}
                           placeholder="Enter your mobile number (e.g., 98765 43210)"
                           className={`w-full [&>input]:pl-4 [&>input]:pr-4 [&>input]:py-3 [&>input]:border-2 [&>input]:rounded-lg [&>input]:text-gray-900 [&>input]:placeholder:text-gray-400 [&>input]:focus:outline-none [&>input]:focus:ring-2 [&>input]:transition-all [&>input]:placeholder-opacity-100 [&>input]:placeholder-shown:text-gray-400 ${phoneError
-                              ? '[&>input]:border-red-300 [&>input]:focus:border-red-500 [&>input]:focus:ring-red-200'
-                              : '[&>input]:border-gray-200 [&>input]:focus:border-indigo-600 [&>input]:focus:ring-indigo-100'
+                            ? '[&>input]:border-red-300 [&>input]:focus:border-red-500 [&>input]:focus:ring-red-200'
+                            : '[&>input]:border-gray-200 [&>input]:focus:border-indigo-600 [&>input]:focus:ring-indigo-100'
                             }`}
                           disabled={isSubmitting}
                         />
@@ -402,7 +372,8 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </>,
+    document.body
   );
 };
 

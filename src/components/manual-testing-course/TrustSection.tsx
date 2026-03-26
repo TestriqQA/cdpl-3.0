@@ -1,5 +1,5 @@
 
-import { Users2, Star, Building2, Briefcase, Award, ShieldCheck, Clock, BookOpenCheck } from "lucide-react";
+import { LuUsers, LuStar, LuBuilding, LuBriefcase, LuAward, LuShieldCheck, LuClock, LuBookOpenCheck } from "react-icons/lu";
 import React from "react";
 
 /*
@@ -73,7 +73,7 @@ export default function TrustSection() {
         >
             <div className="absolute inset-0 pointer-events-none [mask-image:radial-gradient(75%_60%_at_50%_0%,black,transparent)]" />
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
                 {/* Header copy with SEO keywords */}
                 <div className="mx-auto max-w-3xl text-center">
                     <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
@@ -91,42 +91,42 @@ export default function TrustSection() {
                 {/* Stats grid */}
                 <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3">
                     <StatCard
-                        icon={Users2}
+                        icon={LuUsers}
                         value="5,000+"
                         label="Students Trained"
                         caption="Alumni across India & overseas"
                         accent="indigo"
                     />
                     <StatCard
-                        icon={Briefcase}
+                        icon={LuBriefcase}
                         value="92%"
                         label="Placement Rate"
                         caption="Dedicated Career Services & referrals"
                         accent="emerald"
                     />
                     <StatCard
-                        icon={Star}
+                        icon={LuStar}
                         value="4.8/5"
                         label="Average Rating"
                         caption="3,200+ verified learner reviews"
                         accent="amber"
                     />
                     <StatCard
-                        icon={Building2}
+                        icon={LuBuilding}
                         value="50+"
                         label="Hiring Companies"
                         caption="Top MNCs & high‑growth startups"
                         accent="violet"
                     />
                     <StatCard
-                        icon={BookOpenCheck}
+                        icon={LuBookOpenCheck}
                         value="80+"
                         label="Live Projects"
                         caption="Real tools: Jira, Postman, Git, Selenium"
                         accent="cyan"
                     />
                     <StatCard
-                        icon={Award}
+                        icon={LuAward}
                         value="ISO 9001:2015"
                         label="Quality Certified"
                         caption="Process‑driven training & assessments"
@@ -148,7 +148,7 @@ export default function TrustSection() {
                 <div className="mt-8 grid gap-4 sm:grid-cols-2">
                     <div className="rounded-2xl border border-gray-200 bg-white p-5">
                         <div className="flex items-center gap-2 text-gray-900">
-                            <ShieldCheck className="h-5 w-5 text-emerald-600" />
+                            <LuShieldCheck className="h-5 w-5 text-emerald-600" />
                             <p className="text-sm font-semibold">Job‑focused & outcome‑driven</p>
                         </div>
                         <p className="mt-2 text-sm text-gray-600">
@@ -159,7 +159,7 @@ export default function TrustSection() {
                     </div>
                     <div className="rounded-2xl border border-gray-200 bg-white p-5">
                         <div className="flex items-center gap-2 text-gray-900">
-                            <Clock className="h-5 w-5 text-indigo-600" />
+                            <LuClock className="h-5 w-5 text-indigo-600" />
                             <p className="text-sm font-semibold">Flexible schedules & blended learning</p>
                         </div>
                         <p className="mt-2 text-sm text-gray-600">

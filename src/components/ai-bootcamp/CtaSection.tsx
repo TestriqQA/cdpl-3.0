@@ -2,10 +2,17 @@
 
 import { ArrowRight, Download, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import EnrollModal from "@/components/EnrollModal";
+import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
 
 export default function CtaSection() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+    const courseName = "AI Bootcamp Course";
+
     return (
-        <section className="py-16 md:py-20 bg-gradient-to-r from-slate-900 via-orange-900 to-slate-900 relative overflow-hidden">
+        <section className="py-10 bg-gradient-to-r from-slate-900 via-brand to-slate-900 relative overflow-hidden">
             {/* Background decoration (same style as reference) */}
             <div className="absolute inset-0 opacity-10">
                 <div className="absolute top-20 right-10 w-72 h-72 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
@@ -58,15 +65,36 @@ export default function CtaSection() {
 
                     {/* CTA Buttons – keeps Enroll + Download, styled like reference */}
                     <div className="flex flex-col md:flex-row gap-4 justify-center mb-10">
-                        <button className="flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all">
+                        <button
+                            onClick={() => setIsEnrollOpen(true)}
+                            className="cursor-pointer flex items-center justify-center bg-brand hover:bg-brand text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all"
+                        >
                             Enroll Now
                             <ArrowRight className="w-5 h-5 ml-2" />
                         </button>
-                        <button className="flex items-center justify-center border-2 border-white text-white hover:bg-white/10 font-semibold px-8 py-6 text-base rounded-lg transition-all">
+                        <button
+                            onClick={() => setIsSyllabusOpen(true)}
+                            className="cursor-pointer flex items-center justify-center border-2 border-white text-white hover:bg-white/10 font-semibold px-8 py-6 text-base rounded-lg transition-all"
+                        >
                             <Download className="w-5 h-5 mr-2" />
                             Download Free Curriculum
                         </button>
                     </div>
+
+                    {/* Modals */}
+                    <EnrollModal
+                        isOpen={isEnrollOpen}
+                        onClose={() => setIsEnrollOpen(false)}
+                        source="AI Bootcamp - CTA Section"
+                        courseName={courseName}
+                    />
+                    <SyllabusDownloadModal
+                        isOpen={isSyllabusOpen}
+                        onClose={() => setIsSyllabusOpen(false)}
+                        source="AI Bootcamp - CTA Section"
+                        courseName={courseName}
+                    />
+
 
                     {/* Limited Time Offer – original offer + small SEO boost */}
                     <div className="bg-orange-500/20 border-2 border-orange-400 rounded-lg p-6 mb-10">

@@ -22,7 +22,7 @@ export default function HomeLearningExperienceSection() {
       icon: Code,
       title: 'Hands-On Projects',
       description: '90+ real-world projects across different domains to build your portfolio and gain practical experience.',
-      color: 'from-orange-500 to-orange-600',
+      color: 'from-orange-500 to-brand',
     },
     {
       icon: FileText,
@@ -60,7 +60,7 @@ export default function HomeLearningExperienceSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-2 bg-orange-100 text-brand rounded-full text-sm font-semibold mb-4">
             Learning Experience
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">

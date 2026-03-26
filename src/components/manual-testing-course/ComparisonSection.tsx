@@ -4,7 +4,8 @@
 import Link from "next/link";
 import * as React from "react";
 import { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
+import dynamic from "next/dynamic";
+const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
 
 type Badge = { label: string; colorClasses: string };
 
@@ -94,7 +95,7 @@ const CheckIcon = () => (
     aria-hidden="true"
     className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100"
   >
-    <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 text-emerald-600">
+    <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 text-emerald-800">
       <path
         fillRule="evenodd"
         d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3-3a1 1 0 111.414-1.414l2.293 2.293 6.793-6.793a1 1 0 011.414 0z"
@@ -125,7 +126,7 @@ export default function ComparisonSection({
   const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
 
   return (
-    <section className={`py-10 md:py-20 bg-white ${className}`} id="comparison" aria-labelledby="comparison-heading">
+    <section className={`py-10 bg-white ${className}`} id="comparison" aria-labelledby="comparison-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-12">
@@ -301,6 +302,7 @@ export default function ComparisonSection({
         isOpen={isEnrollModalOpen}
         onClose={() => setIsEnrollModalOpen(false)}
         courseName="Manual Testing"
+        source="Manual Testing Course Page - Comparison Section - Enroll Now"
       />
     </section>
   );

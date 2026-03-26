@@ -104,13 +104,23 @@ export default function JobOpeningsJobBrowser({
     pageSize,
     className,
     emptyState,
-    getJobsAction,
     getJobByIdAction,
     verifyCandidateAction,
     createCandidateAction,
 }: Props) {
-    const [jobs, setJobs] = React.useState<JobSummary[]>(initialJobs);
-    const [count, setCount] = React.useState<number>(totalCount);
+    const [jobs] = React.useState<JobSummary[]>(initialJobs);
+    // count is not used in state, only initial value is used for pagination logic if needed, but here it seems we can just use totalCount prop directly or keep it if needed for future.
+    // Actually, looking at the code, 'count' state is never used, only 'setCount'. 'totalCount' prop is used.
+    // Let's remove 'count' state if it's truly unused.
+    // Wait, 'page * pageSize >= count' is used in the Next button.
+    // But 'count' is initialized to 'totalCount'.
+    // If 'setCount' is never used, 'count' will always be 'totalCount'.
+    // So we can just use 'totalCount' prop directly?
+    // Let's check if 'count' is used.
+    // Yes, line 250: disabled={page * pageSize >= count}
+    // So we need 'count'. But we don't need 'setCount'.
+    // React.useState returns [value, setValue]. We can omit the setter.
+    const [count] = React.useState<number>(totalCount);
     const [page, setPage] = React.useState(1);
 
     // UI filters
@@ -136,13 +146,23 @@ export default function JobOpeningsJobBrowser({
         }
     }, []);
 
-    async function loadPage(newPage: number) {
-        const res = await getJobsAction({ page: newPage, size: pageSize });
-        setJobs(res?.data?.job ?? []);
-        setCount(res?.data?.total_count ?? 0);
+    function loadPage(newPage: number) {
         setPage(newPage);
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
+
+    // Debounce search and reset page
+    React.useEffect(() => {
+        const timer = setTimeout(() => {
+            setPage(1);
+        }, 500);
+        return () => clearTimeout(timer);
+    }, [q]);
+
+    // Reset page on other filters
+    React.useEffect(() => {
+        setPage(1);
+    }, [locType, exp]);
 
     const decodeAndStrip = (raw?: string) => {
         if (!raw) return "";
@@ -171,7 +191,8 @@ export default function JobOpeningsJobBrowser({
         return list;
     }, [jobs, q, locType, exp]);
 
-    const totalPages = Math.max(1, Math.ceil(count / pageSize));
+    const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+    const paginatedJobs = filtered.slice((page - 1) * pageSize, page * pageSize);
 
     const Chip = ({ children }: { children: React.ReactNode }) => (
         <span className="rounded-md bg-slate-50 px-2 py-1 text-[11px] text-slate-700 ring-1 ring-slate-200">
@@ -222,8 +243,8 @@ export default function JobOpeningsJobBrowser({
                 {/* toolbar */}
                 <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
                     <p className="text-sm text-slate-600">
-                        Showing <span className="font-medium text-slate-900">{filtered.length}</span> of{" "}
-                        <span className="font-medium text-slate-900">{count}</span> jobs
+                        Showing <span className="font-medium text-slate-900">{(page - 1) * pageSize + 1}-{Math.min(page * pageSize, filtered.length)}</span> of{" "}
+                        <span className="font-medium text-slate-900">{filtered.length}</span> jobs
                     </p>
                     <div className="flex flex-wrap items-center gap-2 text-xs">
                         <button
@@ -282,7 +303,7 @@ export default function JobOpeningsJobBrowser({
                                                     key={key}
                                                     onClick={() => setLocType(key)}
                                                     className={`rounded-md px-3 py-1 text-xs transition ${active
-                                                        ? "bg-orange-500 text-white shadow-sm"
+                                                        ? "bg-brand text-white shadow-sm"
                                                         : "bg-white text-slate-700 ring-1 ring-slate-300 hover:bg-slate-50"
                                                         }`}
                                                 >
@@ -303,6 +324,7 @@ export default function JobOpeningsJobBrowser({
                                             value={exp[0]}
                                             onChange={(e) => setExp([Number(e.target.value), exp[1]])}
                                             className="w-24 rounded-md border border-slate-300 bg-white px-2 py-1 text-sm"
+                                            aria-label="Minimum experience in years"
                                         />
                                         <span className="text-slate-400">—</span>
                                         <input
@@ -312,6 +334,7 @@ export default function JobOpeningsJobBrowser({
                                             value={exp[1]}
                                             onChange={(e) => setExp([exp[0], Number(e.target.value)])}
                                             className="w-24 rounded-md border border-slate-300 bg-white px-2 py-1 text-sm"
+                                            aria-label="Maximum experience in years"
                                         />
                                     </div>
                                 </div>
@@ -323,7 +346,7 @@ export default function JobOpeningsJobBrowser({
                     <section className="min-w-0 flex-1">
                         <ul className="space-y-4">
                             <AnimatePresence mode="popLayout">
-                                {filtered.map((job) => {
+                                {paginatedJobs.map((job) => {
                                     const desc = decodeAndStrip(job.description).slice(0, 350);
                                     return (
                                         <motion.li
@@ -340,7 +363,7 @@ export default function JobOpeningsJobBrowser({
                                                 </div>
 
                                                 <div className="min-w-0">
-                                                    <h3 className="truncate text-[15px] font-semibold text-slate-900">{job.job_title}</h3>
+                                                    <h2 className="truncate text-[15px] font-semibold text-slate-900">{job.job_title}</h2>
                                                     <div className="mt-1 flex flex-wrap items-center gap-x-5 gap-y-1 text-xs text-slate-600">
                                                         <span className="flex items-center gap-1">
                                                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
@@ -374,9 +397,9 @@ export default function JobOpeningsJobBrowser({
                                                     <button
                                                         onClick={() => {
                                                             setSelected(job.job_id);
-                                                            requestAnimationFrame(() => setDrawerOpen(true));
+                                                            setDrawerOpen(true);
                                                         }}
-                                                        className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-orange-500 via-orange-500 to-amber-500 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-95"
+                                                        className="inline-flex items-center justify-center rounded-md bg-brand px-4 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-95"
                                                     >
                                                         View »
                                                     </button>
@@ -416,7 +439,7 @@ export default function JobOpeningsJobBrowser({
                                 {page} / {totalPages}
                             </span>
                             <button
-                                disabled={page * pageSize >= count}
+                                disabled={page * pageSize >= filtered.length}
                                 onClick={() => loadPage(page + 1)}
                                 className="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-slate-700 disabled:opacity-50"
                             >
@@ -428,7 +451,8 @@ export default function JobOpeningsJobBrowser({
             </div>
 
             {/* details overlay — NO key prop (prevents remount/fetch loops) */}
-            {drawerOpen && selected && (
+            {/* details overlay — Keep mounted to allow AnimatePresence to handle exit animations */}
+            {selected && (
                 <JobOpeningsJobDetails
                     jobId={selected}
                     open={drawerOpen}

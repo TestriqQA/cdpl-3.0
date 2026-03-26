@@ -1,5 +1,6 @@
+"use client";
 // components/powerbi/StatsSection.tsx
-import React from "react";
+import React, { useState } from "react";
 import {
   DollarSign,
   Briefcase,
@@ -7,6 +8,7 @@ import {
   Zap,
   type LucideIcon,
 } from "lucide-react";
+import CareerSessionModal from "../CareerSessionModal";
 
 interface StatCardProps {
   value: string;
@@ -36,12 +38,15 @@ const StatCard: React.FC<StatCardProps> = ({ value, label, icon: Icon, color }) 
         <Icon size={32} style={{ color }} />
       </div>
       <p className="text-4xl font-extrabold text-gray-900 mb-2">{value}</p>
-      <p className="text-lg font-medium text-gray-500 text-center">{label}</p>
+      <p className="text-lg font-medium text-gray-700 text-center">{label}</p>
     </div>
   );
 };
 
 const StatsSection: React.FC = () => {
+  const [isCareerSessionOpen, setIsCareerSessionOpen] = useState(false);
+  const courseName = "Data Analytics & Visualization with Power BI";
+
   const statsData: StatCardProps[] = [
     {
       value: "101,000+",
@@ -70,19 +75,19 @@ const StatsSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-base font-semibold tracking-wider text-blue-600 uppercase">
             Career Potential
           </span>
           <h2 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
-            Unlock Your Future: Key Statistics Driving the Power BI Market
+            Is Power BI in Demand? Explore the Career Growth Stats
           </h2>
-          <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
-            The demand for skilled Power BI professionals is soaring. Invest in a
-            skill that guarantees career growth and high returns.
+          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
+            The demand for skilled <strong>Power BI Developers</strong> is soaring across Mumbai's corporate landscape. Invest in the best <strong>Power BI training</strong> that guarantees career growth and high returns.
           </p>
+
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -90,7 +95,24 @@ const StatsSection: React.FC = () => {
             <StatCard key={index} {...stat} />
           ))}
         </div>
+
+        {/* CTA */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => setIsCareerSessionOpen(true)}
+            className="w-full sm:w-auto bg-brand hover:bg-brand text-white font-bold py-5 px-8 my-4 rounded-lg transition-all flex sm:inline-flex min-h-[60px] justify-center items-center cursor-pointer shadow-none"
+          >
+            Book a Free Career Session
+          </button>
+        </div>
       </div>
+
+      <CareerSessionModal
+        isOpen={isCareerSessionOpen}
+        onClose={() => setIsCareerSessionOpen(false)}
+        source="Power BI Course Page - Stats Section - Career Session"
+        courseName={courseName}
+      />
     </section>
   );
 };

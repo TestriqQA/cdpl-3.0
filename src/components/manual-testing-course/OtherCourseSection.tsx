@@ -1,26 +1,25 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import {
-  Clock,
-  Star,
-  Zap,
-  ArrowRight,
-  CheckCircle,
-  Users,
-  Code,
-  Shield,
-  BarChart3,
-  Settings,
-  Trophy,
-  BookOpen,
-  ShieldCheck,
-  BadgeCheck,
-  TrendingUp,
-} from "lucide-react";
-import CareerSessionModal from "@/components/CareerSessionModal";
+  LuClock,
+  LuStar,
+  LuZap,
+  LuArrowRight,
+  LuUsers,
+  LuCode,
+  LuShield,
+  LuSettings,
+  LuTrophy,
+  LuBookOpen,
+  LuShieldCheck,
+  LuBadgeCheck,
+  LuTrendingUp,
+} from "react-icons/lu";
+import dynamic from "next/dynamic";
+import { BarChart, CheckCircle } from "lucide-react";
+const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false });
 
 type Course = {
   id: number;
@@ -38,12 +37,12 @@ type Course = {
 };
 
 const iconMap = {
-  Code: <Code className="w-6 h-6" aria-hidden="true" />,
-  Zap: <Zap className="w-6 h-6" aria-hidden="true" />,
-  Shield: <Shield className="w-6 h-6" aria-hidden="true" />,
-  BarChart3: <BarChart3 className="w-6 h-6" aria-hidden="true" />,
-  Settings: <Settings className="w-6 h-6" aria-hidden="true" />,
-  Trophy: <Trophy className="w-6 h-6" aria-hidden="true" />,
+  Code: <LuCode className="w-6 h-6" aria-hidden="true" />,
+  Zap: <LuZap className="w-6 h-6" aria-hidden="true" />,
+  Shield: <LuShield className="w-6 h-6" aria-hidden="true" />,
+  BarChart3: <BarChart className="w-6 h-6" aria-hidden="true" />,
+  Settings: <LuSettings className="w-6 h-6" aria-hidden="true" />,
+  Trophy: <LuTrophy className="w-6 h-6" aria-hidden="true" />,
 } as const;
 
 type IconName = keyof typeof iconMap;
@@ -143,8 +142,8 @@ function pickVariant(index: number) {
       hoverBorder: "hover:border-indigo-300",
     },
     {
-      header: "bg-gradient-to-br from-emerald-600 to-teal-700",
-      button: "bg-emerald-600 hover:bg-emerald-700",
+      header: "bg-gradient-to-br from-emerald-700 to-teal-800",
+      button: "bg-emerald-700 hover:bg-emerald-800",
       hoverBorder: "hover:border-emerald-300",
     },
     {
@@ -153,7 +152,7 @@ function pickVariant(index: number) {
       hoverBorder: "hover:border-rose-300",
     },
     {
-      header: "bg-gradient-to-br from-amber-600 to-orange-700",
+      header: "bg-gradient-to-br from-amber-600 to-brand",
       button: "bg-amber-600 hover:bg-amber-700",
       hoverBorder: "hover:border-amber-300",
     },
@@ -173,19 +172,9 @@ function pickVariant(index: number) {
 
 const CourseCard = ({ course, index }: { course: Course; index: number }) => {
   const variant = pickVariant(index);
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 18 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
 
   return (
-    <motion.article
-      variants={itemVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      whileHover={{ y: -10 }}
+    <article
       className={`relative group bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/20 ${variant.hoverBorder} transform hover:-translate-y-2 flex flex-col h-full`}
     >
       <div className={`${variant.header} p-6 relative overflow-hidden`}>
@@ -208,7 +197,7 @@ const CourseCard = ({ course, index }: { course: Course; index: number }) => {
               className="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-lg"
               aria-label={`Rating ${course.rating.toFixed(1)} out of 5`}
             >
-              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+              <LuStar className="w-4 h-4 text-yellow-500 fill-yellow-500" />
               <span className="text-sm font-semibold text-gray-800">
                 {course.rating.toFixed(1)}
               </span>
@@ -217,7 +206,7 @@ const CourseCard = ({ course, index }: { course: Course; index: number }) => {
 
           {course.popular && (
             <span className="inline-flex items-center gap-1 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold mb-3 shadow-lg">
-              <Zap className="w-3 h-3" />
+              <LuZap className="w-3 h-3" />
               POPULAR
             </span>
           )}
@@ -235,7 +224,7 @@ const CourseCard = ({ course, index }: { course: Course; index: number }) => {
       <div className="p-6 flex-grow flex flex-col space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
           <div className="flex items-center space-x-2 text-slate-700">
-            <Clock className="w-4 h-4 text-blue-500" />
+            <LuClock className="w-4 h-4 text-blue-500" />
             <span className="font-medium">{course.duration}</span>
           </div>
 
@@ -247,7 +236,7 @@ const CourseCard = ({ course, index }: { course: Course; index: number }) => {
         </div>
 
         <div className="flex items-center space-x-2 text-sm text-slate-700 bg-slate-50 rounded-lg p-3">
-          <Users className="w-4 h-4 text-purple-500" />
+          <LuUsers className="w-4 h-4 text-purple-500" />
           <span className="font-medium">
             {course.students} students enrolled
           </span>
@@ -271,14 +260,14 @@ const CourseCard = ({ course, index }: { course: Course; index: number }) => {
             className={`flex items-center justify-center gap-2 w-full ${variant.button} text-white font-semibold py-3 rounded-xl hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300`}
           >
             <span>View Course Details</span>
-            <ArrowRight className="w-4 h-4" />
+            <LuArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>
 
       {/* Subtle overlay like ModuleCard */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/0 to-black/0 group-hover:from-black/0 group-hover:to-black/0 transition-all duration-500 pointer-events-none" />
-    </motion.article>
+    </article>
   );
 };
 
@@ -286,7 +275,7 @@ export default function OtherCoursesSection() {
   const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
 
   return (
-    <section className="py-10 md:py-10 bg-white" id="other-courses" aria-label="Other professional software testing courses">
+    <section className="py-10 bg-white" id="other-courses" aria-label="Other professional software testing courses">
       {/* Invisible SEO keywords */}
       <p className="sr-only">
         Best software testing courses, automation testing with Selenium Java, full-stack QA training, API testing with
@@ -307,14 +296,14 @@ export default function OtherCoursesSection() {
 
           {/* Trust strip */}
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm">
-            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 font-medium text-emerald-700 ring-1 ring-emerald-200">
-              <Star className="h-4 w-4" aria-hidden="true" /> 4.8/5 Learner Rating
+            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 font-medium text-emerald-800 ring-1 ring-emerald-200">
+              <LuStar className="h-4 w-4" aria-hidden="true" /> 4.8/5 Learner Rating
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1 font-medium text-indigo-700 ring-1 ring-indigo-200">
-              <TrendingUp className="h-4 w-4" aria-hidden="true" /> Job-Ready Curriculum
+              <LuTrendingUp className="h-4 w-4" aria-hidden="true" /> Job-Ready Curriculum
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-cyan-50 px-3 py-1 font-medium text-cyan-700 ring-1 ring-cyan-200">
-              <Zap className="h-4 w-4" aria-hidden="true" /> Live Projects & Labs
+              <LuZap className="h-4 w-4" aria-hidden="true" /> Live Projects & Labs
             </span>
           </div>
         </div>
@@ -330,7 +319,7 @@ export default function OtherCoursesSection() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm ring-1 ring-neutral-100">
             <h3 className="mb-2 flex items-center gap-2 text-lg font-semibold text-neutral-900">
-              <BadgeCheck className="h-5 w-5 text-indigo-600" aria-hidden="true" /> Industry-Validated Syllabus
+              <LuBadgeCheck className="h-5 w-5 text-indigo-600" aria-hidden="true" /> Industry-Validated Syllabus
             </h3>
             <p className="text-neutral-700 text-sm">
               Designed with input from hiring managers to help you master **Selenium, API testing, CI/CD, JMeter, and
@@ -339,7 +328,7 @@ export default function OtherCoursesSection() {
           </div>
           <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm ring-1 ring-neutral-100">
             <h3 className="mb-2 flex items-center gap-2 text-lg font-semibold text-neutral-900">
-              <ShieldCheck className="h-5 w-5 text-emerald-600" aria-hidden="true" /> Placement Assistance
+              <LuShieldCheck className="h-5 w-5 text-emerald-600" aria-hidden="true" /> Placement Assistance
             </h3>
             <p className="text-neutral-700 text-sm">
               Resume reviews, mock interviews, and referrals to **QA Analyst**, **Automation Engineer**, and **SDET**
@@ -348,7 +337,7 @@ export default function OtherCoursesSection() {
           </div>
           <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm ring-1 ring-neutral-100">
             <h3 className="mb-2 flex items-center gap-2 text-lg font-semibold text-neutral-900">
-              <BookOpen className="h-5 w-5 text-rose-600" aria-hidden="true" /> Lifetime Learning Access
+              <LuBookOpen className="h-5 w-5 text-rose-600" aria-hidden="true" /> Lifetime Learning Access
             </h3>
             <p className="text-neutral-700 text-sm">
               Get recordings, templates, and updates—stay current with **test automation frameworks** and **DevOps** trends.
@@ -369,11 +358,15 @@ export default function OtherCoursesSection() {
             className="cursor-pointer mt-4 inline-flex items-center gap-2 rounded-xl bg-neutral-900 px-5 py-3 text-sm font-semibold text-white hover:bg-neutral-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-700 focus-visible:ring-offset-2"
           >
             Get Free Counselling
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <LuArrowRight className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
       </div>
-      <CareerSessionModal isOpen={isCareerModalOpen} onClose={() => setIsCareerModalOpen(false)} />
+      <CareerSessionModal
+        isOpen={isCareerModalOpen}
+        onClose={() => setIsCareerModalOpen(false)}
+        source="Manual Testing Course Page - Other Courses Section - Get Free Counselling"
+      />
     </section>
   );
 }

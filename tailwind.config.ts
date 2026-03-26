@@ -2,25 +2,29 @@
 module.exports = {
   darkMode: "class",
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  plugins: [],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+      },
       colors: {
         brand: {
-          DEFAULT: "#2563eb",
-          50: "#eff6ff", 100: "#dbeafe", 200: "#bfdbfe", 300: "#93c5fd",
-          400: "#60a5fa", 500: "#3b82f6", 600: "#2563eb", 700: "#1d4ed8",
-          800: "#1e40af", 900: "#1e3a8a",
+          DEFAULT: "#ff8c00",
+          50: "#fff7ed", 100: "#ffedd5", 200: "#fed7aa", 300: "#fdba74",
+          400: "#fb923c", 500: "#f97316", 600: "#ff8c00", 700: "#ff8c00",
+          800: "#ff8c00", 900: "#ff8c00",
         },
-        sky: require('tailwindcss/colors').sky, // Add sky palette
+        ST: "#1D4ED8",
+        DS: "#7E22CE",
+        FS: "#15803D",
       },
       boxShadow: {
         brand: "0 10px 25px -10px rgba(37,99,235,0.35)",
       },
     },
   },
-  plugins: [require("@tailwindcss/forms")],
 };
+

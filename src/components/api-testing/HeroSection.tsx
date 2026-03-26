@@ -13,12 +13,27 @@ import {
     Globe2,
     Home,
     ChevronRight,
+    CloudDownload,
+    ArrowDownNarrowWide,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import IconCard from '@/components/ui/IconCard';
 // import LeadForm from '../CourseLeadForm';
-import LeadForm from '../forms/ApiCourseLeadForm';
+import dynamic from 'next/dynamic';
+import LeadForm from '../forms/ApiCourseLeadForm'
 import Link from 'next/link';
+import { useState } from 'react';
+const EnrollModal = dynamic(() => import('../EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
+const SyllabusDownloadModal = dynamic(() => import('../SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
+
+const SectionLoader = ({ label }: { label: string }) => {
+    return (
+        <div className="flex items-center justify-center h-full">
+            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
+            <span className="ml-2 text-gray-900">{label}</span>
+        </div>
+    );
+};
 
 /** -----------------------------
  *  Feature cards (unchanged data)
@@ -34,13 +49,15 @@ const features = [
 ];
 
 export default function HeroSection() {
-
+    const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+    const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
 
     const breadcrumbs = [
         { label: "Home", href: "/" },
-        { label: "Software Testing", href: "#" },
-        { label: "API Testing with Postman, REST & GraphQL", href: "api-testing" },
-    ]
+        { label: "Courses", href: "/courses" },
+        { label: 'Software Testing', href: '/courses/software-testing-course' },
+        { label: "API Testing with Postman, REST & GraphQL" },
+    ];
 
     return (
         <section id="hero" aria-labelledby="api-testing-hero" className="relative overflow-hidden">
@@ -50,34 +67,39 @@ export default function HeroSection() {
                 <div className="absolute inset-0 [mask-image:radial-gradient(1200px_600px_at_50%_-10%,black,transparent)]" />
             </div>
 
-
-
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-14">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
                 {/* Breadcrumbs for SEO & UX */}
                 <nav aria-label="Breadcrumb" className="mb-8">
                     <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
-                        {breadcrumbs.map((c, i) => (
-                            <li key={i} className="flex items-center gap-2">
-                                {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-                                <Link
-                                    href={c.href}
-                                    className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
-                                >
-                                    {c.label}
-                                </Link>
-                            </li>
-                        ))}
+                        {breadcrumbs.map((c, i) => {
+                            const isLast = i === breadcrumbs.length - 1;
+                            return (
+                                <li key={i} className="flex items-center gap-2">
+                                    {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+                                    {c.href ? (
+                                        <Link
+                                            href={c.href}
+                                            className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
+                                        >
+                                            {c.label}
+                                        </Link>
+                                    ) : (
+                                        <span
+                                            className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
+                                        >
+                                            {c.label}
+                                        </span>
+                                    )}
+                                </li>
+                            );
+                        })}
                     </ol>
                 </nav>
                 <div className="grid items-start gap-10 md:grid-cols-12">
                     {/* Left: copy */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: 'easeOut' }}
-                        className="md:col-span-7 lg:col-span-8"
-                    >
-                        {/* badges */}
+                    {/* Left: copy */}
+                    <div className="md:col-span-7 lg:col-span-8">
+                        {/* badges - STATIC LCP */}
                         <div className="hidden mb-5 lg:inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1.5 text-xs font-medium text-slate-700 backdrop-blur">
                             <span className="inline-flex items-center gap-1">
                                 <Star className="h-4 w-4 fill-current text-yellow-500" />
@@ -95,92 +117,115 @@ export default function HeroSection() {
                             </span>
                         </div>
 
-                        {/* H1 */}
+                        {/* H1 - STATIC LCP */}
                         <h1
                             id="api-testing-hero"
                             className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
                         >
-                            Master <span className='text-ST'>API Testing with Postman, REST & GraphQL</span>
-
+                            Master <span className='text-ST'>API Testing</span> & <span className='text-ST'>Automation</span> with Postman, REST & GraphQL
                         </h1>
 
 
                         {/* FORM — mobile : shown right below H1 */}
                         <div className="mt-6 block md:hidden">
-                            <LeadForm variant="elevated" />
+                            <LeadForm variant="elevated" source="API Testing Course Page - Hero Section" />
                         </div>
 
-                        {/* Supporting copy */}
-                        <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Build job-ready skills in <strong>API testing, automation frameworks</strong>, <strong>CI/CD</strong>, and <strong>API security</strong>. Practice with real-world
-                            projects, learn best practices for <em>contract testing, schema validation, mocking, and performance checks</em>, and earn a verified certificate.
-                        </p>
-                        <p className="mt-3 max-w-3xl text-sm text-slate-600">
-                            Topics include Postman Collections & Newman, REST principles, GraphQL queries & mutations, Swagger/OpenAPI, OAuth2 & JWT, data-driven tests, Jenkins/GitHub Actions,
-                            and reporting with evidence for enterprise-grade QA.
-                        </p>
+                        {/* Supporting copy - ANIMATED */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 18 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+                        >
+                            <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
+                                Build high-demand skills in <strong>API automation testing</strong>, <strong>REST API examples</strong>, and <strong>security validation</strong>. Learn <strong>how to test API</strong> endpoints efficiently with <strong>Postman</strong>, ensure robust backend performance, and secure your career with our <strong>100% placement support</strong>.
+                            </p>
+                            <p className="mt-3 max-w-3xl text-sm text-slate-600">
+                                Topics include Postman Collections & Newman, REST principles, GraphQL queries & mutations, Swagger/OpenAPI, OAuth2 & JWT, data-driven tests, Jenkins/GitHub Actions,
+                                and reporting with evidence for enterprise-grade QA.
+                            </p>
 
-                        {/* CTAs */}
-                        <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-                            <button
-                                className="group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
-                                aria-label="Enroll now in API Testing program"
-                            >
-                                Enroll Now
-                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                            </button>
+                            {/* CTAs */}
 
-                            <Link
-                                href="#curriculum"
-                                className="inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
-                                aria-label="View full API testing curriculum"
-                            >
-                                View Curriculum
-                            </Link>
-                        </div>
+                            <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+                                <button
+                                    onClick={() => setIsEnrollModalOpen(true)}
+                                    className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                                    aria-label="Enroll now in API Testing program"
+                                >
+                                    Enroll Now
+                                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                </button>
 
-                        {/* Quick highlights */}
-                        <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
-                            <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-600" />
-                                80% practical labs with project reviews
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-indigo-600" />
-                                CI/CD integration (Jenkins, GitHub Actions)
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-rose-600" />
-                                Interview prep & portfolio guidance
-                            </li>
-                            <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-amber-600" />
-                                QR-verified global certification
-                            </li>
-                        </ul>
+                                <button
+                                    onClick={() => setIsSyllabusModalOpen(true)}
+                                    className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                                    aria-label="Download API Testing Syllabus"
+                                >
+                                    Download Syllabus
+                                    <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                </button>
 
-                        {/* Feature cards can stay below the form on desktop if desired */}
-                        <div className="mt-6 grid md:hidden lg:grid-cols-4 gap-3">
-                            {features.slice(0, 4).map((f, i) => (
-                                <IconCard
-                                    key={i}
-                                    {...f}
-                                    className="hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
-                                />
-                            ))}
-                        </div>
+                                <button
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' });
+                                    }}
+                                    className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
+                                    aria-label="View full API testing curriculum"
+                                >
+                                    View Curriculum
+                                    <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                </button>
 
-                        {/* Optional: feature cards can remain below on mobile/tablet */}
-                        <div className="mt-8 md:hidden grid grid-cols-1 gap-3 sm:grid-cols-2 lg:hidden">
-                            {features.map((f, i) => (
-                                <IconCard
-                                    key={i}
-                                    {...f}
-                                    className="hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
-                                />
-                            ))}
-                        </div>
-                    </motion.div>
+                            </div>
+
+
+                            {/* Quick highlights */}
+                            <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
+                                <li className="flex items-start gap-2">
+                                    <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-600" />
+                                    80% practical labs with <strong>API testing examples</strong>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <CheckCircle2 className="mt-0.5 h-5 w-5 text-indigo-600" />
+                                    CI/CD integration (Jenkins, GitHub Actions) for <strong>API automation</strong>
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <CheckCircle2 className="mt-0.5 h-5 w-5 text-rose-600" />
+                                    Interview prep & <strong>API test cases examples</strong> portfolio
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <CheckCircle2 className="mt-0.5 h-5 w-5 text-amber-600" />
+                                    QR-verified global certification
+                                </li>
+                            </ul>
+
+                            <h2 className="sr-only">Course Highlights</h2>
+
+                            {/* Feature cards can stay below the form on desktop if desired */}
+                            <div className="mt-6 grid md:hidden lg:grid-cols-4 gap-3">
+                                {features.slice(0, 4).map((f, i) => (
+                                    <IconCard
+                                        key={i}
+                                        {...f}
+                                        className="hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
+                                    />
+                                ))}
+                            </div>
+
+                            {/* Optional: feature cards can remain below on mobile/tablet */}
+                            <div className="mt-8 md:hidden grid grid-cols-1 gap-3 sm:grid-cols-2 lg:hidden">
+                                {features.map((f, i) => (
+                                    <IconCard
+                                        key={i}
+                                        {...f}
+                                        className="hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
+                                    />
+                                ))}
+                            </div>
+                        </motion.div>
+                    </div>
 
                     {/* Right: Desktop Form */}
                     <motion.aside
@@ -189,12 +234,25 @@ export default function HeroSection() {
                         transition={{ duration: 0.6, delay: 0.12, ease: 'easeOut' }}
                         className="hidden md:col-span-5 lg:col-span-4 md:block"
                     >
-                        <LeadForm variant="elevated" />
+                        <LeadForm variant="elevated" source="API Testing Course Page - Hero Section" />
 
                     </motion.aside>
                 </div>
             </div>
 
+            <EnrollModal
+                isOpen={isEnrollModalOpen}
+                onClose={() => setIsEnrollModalOpen(false)}
+                courseName="API Testing"
+                source="API Testing Course Page - Enroll Now- Hero Section"
+            />
+
+            <SyllabusDownloadModal
+                isOpen={isSyllabusModalOpen}
+                onClose={() => setIsSyllabusModalOpen(false)}
+                courseName="API Testing"
+                source="API Testing Course Page - Hero Section - Syllabus Download"
+            />
         </section>
     );
 }

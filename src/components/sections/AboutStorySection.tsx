@@ -182,7 +182,7 @@ const AboutStorySection = memo(function AboutStorySection() {
           <div className="mt-4 grid gap-6 sm:grid-cols-3">
             {[
               { icon: <Users className="h-5 w-5" aria-hidden="true" />, h: "5k+ Learners", p: "Building a global community", bgColor: "purple-500", iconColor: "lime-600" },
-              { icon: <Rocket className="h-5 w-5" aria-hidden="true" />, h: "Job-Ready Skills", p: "Hands-on projects & mentorship", bgColor: "orange-500", iconColor: "orange-600" },
+              { icon: <Rocket className="h-5 w-5" aria-hidden="true" />, h: "Job-Ready Skills", p: "Hands-on projects & mentorship", bgColor: "orange-500", iconColor: "brand" },
               { icon: <Sparkles className="h-5 w-5" aria-hidden="true" />, h: "Innovative Pathways", p: "Tailored for tech’s future", bgColor: "yellow-500", iconColor: "teal-600" },
             ].map(({ icon, h, p, bgColor }) => (
               <div

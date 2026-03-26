@@ -99,7 +99,9 @@ const ModuleCard: React.FC<{
   };
   variant: Variant;
   itemVariants: Variants;
-}> = ({ nowMs, category, variant, itemVariants }) => {
+  location?: string;
+  courseName?: string;
+}> = ({ nowMs, category, variant, itemVariants, location, courseName }) => {
   const fallbackDeadlineRef = React.useRef<Date | null>(null);
   if (!category.offerEndsAt && !fallbackDeadlineRef.current) {
     fallbackDeadlineRef.current = new Date(Date.now() + 48 * 3600 * 1000);
@@ -255,13 +257,15 @@ const ModuleCard: React.FC<{
             <DownloadFormButton
               courseTitle={category.title}
               buttonText={
-                <span className="flex items-center justify-center gap-2">
+                <span className="flex items-center justify-center cursor-pointer gap-2">
                   <Download className="w-5 h-5" />
                   <span>Download Brochure</span>
                 </span> as unknown as string
               }
               // keep existing button styling for a perfect drop-in look
               buttonClassName="w-full flex items-center justify-center space-x-2 text-slate-700 font-semibold py-3 rounded-xl border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all duration-300"
+              location={location}
+              source={`${location ? location + ' City ' : ''}${courseName || 'Course'} Page - ${category.title} - Course Overview Section - Download Brochure Button`}
               onSubmit={(values) => {
                 // your custom submit logic (API call, analytics, start file download, etc.)
                 console.log("Download form submitted:", { ...values, course: category.title });
@@ -378,6 +382,8 @@ const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ data }) =
                 category={category}
                 variant={variant}
                 itemVariants={itemVariants}
+                location={data.location} // Pass location to the card
+                courseName={data.courseName} // Pass courseName for source construction
               />
             );
           })}

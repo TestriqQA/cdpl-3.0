@@ -1,7 +1,17 @@
 'use client';
 import { Briefcase, ArrowRight, Building2, TrendingUp, BadgeCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+    return (
+        <div className="flex items-center justify-center py-16">
+            <p className="text-gray-500">{label}</p>
+        </div>
+    );
+}
 
 const roles = [
     'API Tester', 'QA Engineer', 'Automation Tester', 'Security Tester',
@@ -15,10 +25,10 @@ const roleAccents = ['sky', 'amber', 'emerald', 'violet', 'rose', 'cyan', 'lime'
 const companyAccents = ['slate', 'sky', 'amber', 'emerald', 'violet', 'rose', 'cyan', 'lime', 'indigo', 'orange'] as const;
 
 export default function CareerSection() {
-
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <section id="career" aria-labelledby="career-heading" className="relative py-8 sm:py-10 bg-white">
+        <section id="career" aria-labelledby="career-heading" className="relative py-10 bg-white">
             {/* subtle separators for a clean, futuristic frame */}
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -42,8 +52,7 @@ export default function CareerSection() {
                         Launch Your <span className="text-ST">API Testing</span> Career
                     </h2>
                     <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-                        Average fresher salary: <strong>₹4–8 LPA</strong>. Build job-ready skills in <strong>Postman</strong>, <strong>REST/GraphQL</strong>,{' '}
-                        <strong>automation</strong>, and <strong>OWASP API security</strong> to unlock high-growth roles.
+                        Average salary: <strong>₹4–8 LPA</strong>. With skills in <strong>API automation testing</strong> and <strong>Postman</strong>, you become eligible for roles like <strong>API Tester</strong> and <strong>SDET</strong>. Companies need experts who know <strong>how to test api</strong> thoroughly.
                     </p>
                 </motion.header>
 
@@ -61,19 +70,28 @@ export default function CareerSection() {
                             High-Paying Job Roles
                         </h3>
 
-                        <ul className="grid grid-cols-2 gap-3 sm:gap-4">
+                        <ul role="list" className="grid grid-cols-2 gap-3 sm:gap-4">
                             {roles.map((role, i) => {
                                 const hue = roleAccents[i % roleAccents.length];
+                                const colorClasses: Record<string, string> = {
+                                    slate: 'border-slate-200 hover:bg-slate-50 text-slate-800',
+                                    sky: 'border-sky-200 hover:bg-sky-50 text-sky-800',
+                                    amber: 'border-amber-200 hover:bg-amber-50 text-amber-800',
+                                    emerald: 'border-emerald-200 hover:bg-emerald-50 text-emerald-800',
+                                    violet: 'border-violet-200 hover:bg-violet-50 text-violet-800',
+                                    rose: 'border-rose-200 hover:bg-rose-50 text-rose-800',
+                                    cyan: 'border-cyan-200 hover:bg-cyan-50 text-cyan-800',
+                                    lime: 'border-lime-200 hover:bg-lime-50 text-lime-800',
+                                    indigo: 'border-indigo-200 hover:bg-indigo-50 text-indigo-800',
+                                    orange: 'border-orange-200 hover:bg-orange-50 text-brand',
+                                };
                                 return (
-                                    <li key={role}>
+                                    <li key={role} role="listitem">
                                         <div
                                             className={[
                                                 'rounded-xl border bg-white px-4 py-3 text-center text-sm font-medium shadow-sm transition',
-                                                `border-${hue}-200`,
-                                                `hover:bg-${hue}-50`,
-                                                `text-${hue}-800`,
+                                                colorClasses[hue] || colorClasses.sky,
                                             ].join(' ')}
-                                            role="listitem"
                                         >
                                             {role}
                                         </div>
@@ -106,17 +124,27 @@ export default function CareerSection() {
                             Top Hiring Companies
                         </h3>
 
-                        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+                        <ul role="list" className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
                             {companies.map((c, i) => {
                                 const hue = companyAccents[i % companyAccents.length];
+                                const colorClasses: Record<string, string> = {
+                                    slate: 'border-slate-200 hover:bg-slate-50 text-slate-800',
+                                    sky: 'border-sky-200 hover:bg-sky-50 text-sky-800',
+                                    amber: 'border-amber-200 hover:bg-amber-50 text-amber-800',
+                                    emerald: 'border-emerald-200 hover:bg-emerald-50 text-emerald-800',
+                                    violet: 'border-violet-200 hover:bg-violet-50 text-violet-800',
+                                    rose: 'border-rose-200 hover:bg-rose-50 text-rose-800',
+                                    cyan: 'border-cyan-200 hover:bg-cyan-50 text-cyan-800',
+                                    lime: 'border-lime-200 hover:bg-lime-50 text-lime-800',
+                                    indigo: 'border-indigo-200 hover:bg-indigo-50 text-indigo-800',
+                                    orange: 'border-orange-200 hover:bg-orange-50 text-brand',
+                                };
                                 return (
-                                    <li key={c}>
+                                    <li key={c} role="listitem">
                                         <div
                                             className={[
                                                 'rounded-xl border bg-white px-4 py-3 text-center text-sm font-semibold shadow-sm transition',
-                                                `border-${hue}-200`,
-                                                `hover:bg-${hue}-50`,
-                                                `text-${hue}-800`,
+                                                colorClasses[hue] || colorClasses.slate,
                                             ].join(' ')}
                                         >
                                             {c}
@@ -138,15 +166,21 @@ export default function CareerSection() {
                     transition={{ duration: 0.45, ease: 'easeOut' }}
                     className="mt-12 text-center"
                 >
-                    <Link
-                        href="contact-us"
-                        className="inline-flex items-center gap-2 rounded-xl border border-indigo-600 bg-indigo-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
-                        aria-label="Get placed in 30 days"
+                    <button
+                        onClick={() => setIsModalOpen(true)}
+                        className="cursor-pointer inline-flex items-center gap-2 rounded-xl border border-indigo-600 bg-indigo-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                        aria-label="Start Your QA Journey"
                     >
-                        Get Placed in 30 Days <ArrowRight className="h-5 w-5" />
-                    </Link>
+                        Start Your QA Journey <ArrowRight className="h-5 w-5" />
+                    </button>
                 </motion.div>
             </div>
+
+            <CareerSessionModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                source="API Testing Course Page - Career Section - Start Your QA Journey"
+            />
         </section>
     );
 }

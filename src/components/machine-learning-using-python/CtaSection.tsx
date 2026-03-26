@@ -1,12 +1,18 @@
+"use client";
 
 import { CheckCircle2, Clock, Users, Award } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import EnrollModal from "../EnrollModal";
+import CareerSessionModal from "../CareerSessionModal";
 
 export default function CtaSection() {
-  
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isCareerOpen, setIsCareerOpen] = useState(false);
+  const courseName = "Machine Learning Algorithms using python Programming";
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-r from-blue-600 to-indigo-600 relative overflow-hidden">
+    <section className="py-10 bg-gradient-to-r from-blue-600 to-indigo-600 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
@@ -74,16 +80,17 @@ export default function CtaSection() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <button
+              onClick={() => setIsEnrollOpen(true)}
               className="bg-white text-blue-600 cursor-pointer hover:bg-blue-50 font-bold rounded-lg text-lg px-8 py-3"
             >
               Enroll Now & Get Started
             </button>
-            <Link
-            href="https://calendar.app.google/tvh9dsXZsX9BujRR8"
-              className="border-white text-white bg-orange-500 hover:bg-orange-700 transition-all font-bold rounded-lg text-lg px-8 py-3"
+            <button
+              onClick={() => setIsCareerOpen(true)}
+              className="border-white text-white bg-brand hover:bg-brand transition-all font-bold rounded-lg text-lg px-8 py-3"
             >
               Schedule Free Demo
-            </Link>
+            </button>
           </div>
 
           {/* Trust Indicators */}
@@ -125,6 +132,19 @@ export default function CtaSection() {
           </div>
         </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Machine Learning Algorithms with Python Course Page - CTA Section - Enroll Now"
+        courseName={courseName}
+      />
+      <CareerSessionModal
+        isOpen={isCareerOpen}
+        onClose={() => setIsCareerOpen(false)}
+        source="Machine Learning Algorithms with Python Course Page - CTA Section - Free Demo"
+        courseName={courseName}
+      />
     </section>
   );
 }

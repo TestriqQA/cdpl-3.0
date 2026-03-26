@@ -37,7 +37,7 @@ const projects: Project[] = [
 // Distinct, non-repeating card accents (no heavy gradients on cards)
 const accents = [
   { card: 'bg-sky-50 border-sky-200', ink: 'text-sky-900', iconTile: 'from-sky-500 to-blue-600', check: 'text-sky-700' },
-  { card: 'bg-amber-50 border-amber-200', ink: 'text-amber-900', iconTile: 'from-amber-500 to-orange-600', check: 'text-amber-700' },
+  { card: 'bg-amber-50 border-amber-200', ink: 'text-amber-900', iconTile: 'from-amber-500 to-brand', check: 'text-amber-700' },
   { card: 'bg-emerald-50 border-emerald-200', ink: 'text-emerald-900', iconTile: 'from-emerald-500 to-green-600', check: 'text-emerald-700' },
 ];
 
@@ -45,7 +45,7 @@ export default function ProjectsSection() {
 
 
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="relative py-6 md:py-10 bg-white">
+    <section id="projects" aria-labelledby="projects-heading" className="relative py-10 bg-white">
       {/* subtle frame lines for a sleek, slightly futuristic vibe */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-slate-100" />
@@ -109,7 +109,7 @@ export default function ProjectsSection() {
                   Deliverables: test design, SQL evidence, reconciliation logs, and audit-ready reports.
                 </p>
                 {/* focus helper */}
-                <span className="absolute inset-0 rounded-2xl" tabIndex={0} aria-hidden="true" />
+                <span className="absolute inset-0 rounded-2xl" tabIndex={0} />
               </motion.article>
             );
           })}

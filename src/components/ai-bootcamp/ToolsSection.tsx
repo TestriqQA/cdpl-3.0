@@ -1,6 +1,8 @@
+"use client";
+
 import { Zap, BarChart3, Mail, Smartphone } from "lucide-react";
-import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import EnrollModal from "@/components/EnrollModal";
 
 interface ToolCategory {
     title: string;
@@ -190,14 +192,17 @@ const tools: ToolCard[] = [
 ];
 
 export default function ToolsSection() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const courseName = "AI Bootcamp Course";
+
     return (
-        <section className="py-5 md:py-8 bg-white">
+        <section className="py-10 bg-white">
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-16 md:mb-20">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
                         Your AI & Digital Marketing{" "}
-                        <span className="text-orange-600">Arsenal of Tools</span>
+                        <span className="text-brand">Arsenal of Tools</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-3xl mx-auto">
                         Go beyond theory and get hands-on with{" "}
@@ -226,7 +231,7 @@ export default function ToolsSection() {
                             </h3>
 
                             {/* Category */}
-                            <p className="text-xs font-semibold text-orange-600 mb-3">
+                            <p className="text-xs font-semibold text-brand mb-3">
                                 {tool.category}
                             </p>
 
@@ -329,12 +334,23 @@ export default function ToolsSection() {
                             <strong>AI, SEO, analytics, email marketing, and paid media tools</strong> that
                             top digital marketing professionals rely on daily.
                         </p>
-                        <Link href="contact-us" className="inline-flex items-center justify-center px-8 py-3 rounded-xl bg-orange-600 text-white font-semibold shadow-md hover:bg-orange-700 transition-colors">
+                        <button
+                            onClick={() => setIsEnrollOpen(true)}
+                            className="cursor-pointer inline-flex items-center justify-center px-8 py-3 rounded-xl bg-brand text-white font-semibold shadow-md hover:bg-brand transition-colors"
+                        >
                             Master These Tools Today
-                        </Link>
+                        </button>
                     </div>
                 </div>
+
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="AI Bootcamp - Tools Section"
+                courseName={courseName}
+            />
         </section>
     );
 }

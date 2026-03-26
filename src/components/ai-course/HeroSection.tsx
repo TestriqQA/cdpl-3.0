@@ -1,18 +1,23 @@
-// components/sections/HeroSection.tsx
-// Server component — sleek, SEO-optimized, slightly futuristic, fully responsive.
-// Assumes you have a client LeadForm at "../CourseLeadForm" (same API-testing style).
+"use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import LeadForm from "../CourseLeadForm";
-import { ChevronRight, Home } from "lucide-react";
+import AiCourseLeadForm from "../forms/AiCourseLeadForm";
+import { ChevronRight, Home, ArrowRight, CloudDownload, ArrowDownNarrowWide } from "lucide-react";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 export default function HeroSection() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
 
+    const courseName = "Comprehensive Data Science and AI - Master Program";
 
     const breadcrumbs = [
         { label: "Home", href: "/" },
-        { label: "Data • AI", href: "#" },
-        { label: "Comprehensive DS & AI", href: "/ai-course" },
+        { label: "Courses", href: "/courses" },
+        { label: 'Data Science & ML', href: '/courses/ds-ml-courses' },
+        { label: "Comprehensive DS & AI" },
     ];
 
     return (
@@ -23,21 +28,32 @@ export default function HeroSection() {
                 <div className="absolute inset-0 [mask-image:radial-gradient(1200px_600px_at_50%_-12%,black,transparent)]" />
             </div>
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-12 md:pt-12 md:pb-16">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
                 {/* Breadcrumbs */}
                 <nav aria-label="Breadcrumb" className="mb-8">
                     <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
-                        {breadcrumbs.map((c, i) => (
-                            <li key={i} className="flex items-center gap-2">
-                                {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-                                <Link
-                                    href={c.href}
-                                    className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
-                                >
-                                    {c.label}
-                                </Link>
-                            </li>
-                        ))}
+                        {breadcrumbs.map((c, i) => {
+                            const isLast = i === breadcrumbs.length - 1;
+                            return (
+                                <li key={i} className="flex items-center gap-2">
+                                    {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+                                    {c.href ? (
+                                        <Link
+                                            href={c.href}
+                                            className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
+                                        >
+                                            {c.label}
+                                        </Link>
+                                    ) : (
+                                        <span
+                                            className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
+                                        >
+                                            {c.label}
+                                        </span>
+                                    )}
+                                </li>
+                            );
+                        })}
                     </ol>
                 </nav>
 
@@ -56,58 +72,61 @@ export default function HeroSection() {
                             id="dsai-hero"
                             className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
                         >
-                            Master Program in{" "}
-                            <span className="text-DS">Comprehensive Data Science</span> &{" "}
-                            <span className="text-DS">AI</span>
+                            <span className="text-DS">Masters in AI and ML</span> –{" "}
+                            Data Science Master Program Mumbai with 100% Placement
                         </h1>
 
                         {/* Mobile form directly under headline (FORM 1) */}
                         <div className="mt-5 block md:hidden">
-                            <LeadForm variant="elevated" />
+                            <AiCourseLeadForm variant="elevated" source="Comprehensive Data Science & AI - Hero Section (Mobile)" />
                         </div>
 
                         <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Become industry-ready with <strong>Python</strong>, <strong>Statistics</strong>,{" "}
+                            Pursuing a <strong>masters in ai and ml</strong> in India? Our <strong>ai master program mumbai</strong> makes you industry-ready with <strong>Python</strong>, <strong>Statistics</strong>,{" "}
                             <strong>Machine Learning</strong>, <strong>Deep Learning</strong>, <strong>NLP</strong>,{" "}
                             <strong>Time Series</strong>, <strong>Big Data (Spark)</strong>, and <strong>MLOps</strong>. Build portfolio
-                            projects and earn a <strong>QR-verified certificate</strong>.
+                            projects and earn a <strong>QR-verified certificate</strong>. Ideal for those seeking <strong>ms in artificial intelligence in india</strong>.
                         </p>
                         <p className="mt-2 max-w-3xl text-sm text-slate-600">
-                            Curriculum includes Pandas/NumPy, EDA & visualization, model evaluation, feature engineering, pipelines, basic
-                            Transformers, cloud deployments, and CI/CD best practices.
+                            This <strong>post graduate program in ai and machine learning</strong> covers Pandas/NumPy, EDA & visualization, model evaluation, feature engineering, pipelines, basic
+                            Transformers, cloud deployments, and CI/CD best practices. Perfect for <strong>masters in data science and artificial intelligence in india</strong>.
                         </p>
 
                         {/* CTAs */}
                         <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                             <button
-                                className="inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                                onClick={() => setIsEnrollOpen(true)}
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#6b21a8] hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-purple-200"
                                 aria-label="Enroll now in Comprehensive Data Science & AI master program"
                             >
                                 Enroll Now
-                                <svg className="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-                                    <path d="M12.293 4.293a1 1 0 011.414 0l4 4a1 1 0 01.083 1.32l-.083.094-4 4a1 1 0 01-1.497-1.32l.083-.094L14.585 10H3a1 1 0 01-.117-1.993L3 8h11.585l-2.292-2.293a1 1 0 010-1.414z" />
-                                </svg>
+                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </button>
+
+                            <button
+                                onClick={() => setIsSyllabusOpen(true)}
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#6b21a8] hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-purple-200"
+                                aria-label="Download the full Data Science & AI syllabus"
+                            >
+                                Download Syllabus
+                                <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                            </button>
+
                             <Link
                                 href="#curriculum"
-                                className="inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
-                                aria-label="View the full Data Science & AI curriculum"
+                                className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
+                                aria-label="View full DS & AI curriculum"
                             >
                                 View Curriculum
+                                <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </Link>
-                            <button
-                                className="inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
-                                aria-label="Book a free demo for DS & AI"
-                            >
-                                Free Demo
-                            </button>
                         </div>
 
                         {/* Quick highlights (distinct accent bullets; no repeats) */}
                         <ul className="mt-6 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-emerald-600" />
-                                80% practical labs with mentor feedback
+                                80% practical labs with mentor feedback for <strong>masters in ai in india</strong>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-indigo-600" />
@@ -115,7 +134,7 @@ export default function HeroSection() {
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-rose-600" />
-                                Model evaluation, tracking, and reporting
+                                Model evaluation, tracking for <strong>data science master program mumbai</strong>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-amber-600" />
@@ -130,18 +149,25 @@ export default function HeroSection() {
                         </div>
                     </div>
 
-                    {/* Right column: Desktop form & visual (FORM 2) */}
-                    <aside className="md:col-span-5 lg:col-span-4 hidden md:block">
-                        <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">
-
-                            <div className="p-4 sm:p-5">
-                                <LeadForm variant="elevated" />
-                            </div>
-                        </div>
-                    </aside>
+                    {/* Right column: Desktop form */}
+                    <div className="relative lg:col-span-4 hidden md:block">
+                        <AiCourseLeadForm variant="elevated" className="hidden lg:block" source="Comprehensive Data Science & AI - Hero Section" />
+                    </div>
                 </div>
             </div>
 
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Comprehensive Data Science & AI - Hero Section - Enroll Now"
+                courseName={courseName}
+            />
+            <SyllabusDownloadModal
+                isOpen={isSyllabusOpen}
+                onClose={() => setIsSyllabusOpen(false)}
+                source="Comprehensive Data Science & AI - Hero Section - Download Syllabus"
+                courseName={courseName}
+            />
         </section>
     );
 }

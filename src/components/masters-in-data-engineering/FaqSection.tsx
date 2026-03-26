@@ -3,68 +3,30 @@
 // src/components/data-analytics-bi-bigdata/FaqSection.tsx
 import React, { useState } from "react";
 import Link from "next/link";
-import { FaqItem } from "./types";
 import { ChevronDown } from "lucide-react";
+import EnrollModal from "../EnrollModal";
+import { DATA_ENGINEERING_MASTERS_FAQS } from "@/data/dataEngineeringMastersData";
 
-const faqData: FaqItem[] = [
-  {
-    id: 1,
-    question: "What is the eligibility for this program?",
-    answer:
-      "A bachelor's degree in any discipline is generally required. Basic knowledge of programming or databases is beneficial but not mandatory, as the program starts with foundational concepts.",
-  },
-  {
-    id: 2,
-    question: "Is this program suitable for beginners?",
-    answer:
-      "Yes, the curriculum is structured to take beginners through foundational concepts in SQL and Python before moving to advanced topics like Big Data Engineering and BI tools.",
-  },
-  {
-    id: 3,
-    question: "What is the difference between a Data Analyst and a Data Engineer?",
-    answer:
-      "A Data Analyst focuses on analyzing data to extract insights and create reports (using BI tools). A Data Engineer focuses on building and maintaining the robust infrastructure (pipelines, databases) that makes the data available for the analyst.",
-  },
-  {
-    id: 4,
-    question: "What kind of job assistance is provided?",
-    answer:
-      "We provide comprehensive job assistance including resume building, mock interviews, portfolio review, and connections to our network of hiring partners. We are committed to helping you secure a role.",
-  },
-  {
-    id: 5,
-    question: "Are the certifications globally recognized?",
-    answer:
-      "Yes, the program includes preparation for and certification in industry-standard tools and technologies like Tableau, Power BI, and Big Data concepts, which are globally recognized.",
-  },
-];
-
-// Map each FAQ to a category for grouped layout (no change in Q/A content)
-const faqCategoryMap: Record<number, string> = {
-  1: "Eligibility & Basics",
-  2: "Learning Format & Suitability",
-  3: "Roles & Career Clarity",
-  4: "Placement & Job Assistance",
-  5: "Certification & Recognition",
-};
-
+// Categories are already in the data
 const categories = Array.from(
-  new Set(faqData.map((item) => faqCategoryMap[item.id]))
+  new Set(DATA_ENGINEERING_MASTERS_FAQS.map((item) => item.category || "General"))
 );
 
 const FaqSection: React.FC = () => {
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Data Analytics with BI & Big Data Engineering Master Program";
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
+    <section className="py-10 bg-gradient-to-b from-white to-slate-50">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
-          <h2 className="text-sm font-semibold tracking-[0.25em] text-teal-600 uppercase">
+          <h2 className="text-sm font-semibold tracking-[0.25em] text-[#0f766e] uppercase">
             Quick Answers
           </h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Frequently Asked <span className="text-teal-600">Questions</span>
+            FAQ: <span className="text-[#0f766e]">Data Analytics & Big Data Engineering Program</span>
           </h3>
           <p className="text-lg text-slate-600">
             Everything you need to know about the program, eligibility, and
@@ -72,10 +34,10 @@ const FaqSection: React.FC = () => {
           </p>
           <p className="mt-3 text-sm text-slate-500">
             Get clarity on how this{" "}
-            <strong>Data Analytics with BI and Big Data Engineering Master Program</strong>{" "}
+            Data Analytics Program Mumbai{" "}
             helps you transition into{" "}
-            <em>Business Intelligence, Data Analyst, and Big Data Engineer</em>{" "}
-            roles using tools like <strong>SQL, Python, Tableau, Power BI, Hadoop, and Spark</strong>.
+            <em>Business Intelligence, SQL Data Analyst, and Big Data Engineer</em>{" "}
+            roles.
           </p>
         </div>
 
@@ -90,18 +52,18 @@ const FaqSection: React.FC = () => {
 
             {/* FAQs List */}
             <div className="space-y-4">
-              {faqData
-                .filter((item) => faqCategoryMap[item.id] === category)
-                .map((item) => (
+              {DATA_ENGINEERING_MASTERS_FAQS
+                .filter((item) => (item.category || "General") === category)
+                .map((item, index) => (
                   <div
-                    key={item.id}
+                    key={index}
                     className="bg-white rounded-xl border-2 border-slate-200 hover:border-teal-300 transition-all duration-300 overflow-hidden"
                   >
                     {/* Question */}
                     <button
                       onClick={() =>
                         setExpandedFAQ(
-                          expandedFAQ === item.id ? null : item.id
+                          expandedFAQ === index ? null : index
                         )
                       }
                       className="w-full px-6 py-5 flex items-center justify-between cursor-pointer hover:bg-slate-50 transition-colors text-left"
@@ -110,13 +72,13 @@ const FaqSection: React.FC = () => {
                         {item.question}
                       </h4>
                       <ChevronDown
-                        className={`w-6 h-6 text-teal-600 transition-transform duration-300 flex-shrink-0 ${expandedFAQ === item.id ? "rotate-180" : ""
+                        className={`w-6 h-6 text-[#0f766e] transition-transform duration-300 flex-shrink-0 ${expandedFAQ === index ? "rotate-180" : ""
                           }`}
                       />
                     </button>
 
                     {/* Answer */}
-                    {expandedFAQ === item.id && (
+                    {expandedFAQ === index && (
                       <div className="px-6 pb-5 border-t border-slate-200 bg-slate-50">
                         <p className="text-slate-600 leading-relaxed">
                           {item.answer}
@@ -136,16 +98,22 @@ const FaqSection: React.FC = () => {
           </h3>
           <p className="text-slate-600 mb-6 max-w-2xl mx-auto">
             Our counseling team can guide you on whether this{" "}
-            <strong>BI & Big Data Engineering master program</strong> is the
+            BI & Big Data Engineering master program is the
             right fit for your goals—whether you&apos;re an{" "}
             <em>IT professional, fresher, BI analyst, or career changer</em>.
             Reach out for personalized guidance on{" "}
-            <strong>career paths, placements, and curriculum details</strong>.
+            career paths, placements, and curriculum details.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button
+              onClick={() => setIsEnrollOpen(true)}
+              className="px-6 py-3 bg-[#0f766e] hover:bg-teal-700 text-white font-semibold rounded-lg transition-colors cursor-pointer"
+            >
+              Enroll Now
+            </button>
             <Link
               href="tel:+917888383788"
-              className="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors"
+              className="px-6 py-3 bg-brand hover:bg-brand text-white font-bold rounded-lg transition-colors"
             >
               📞 Call Us
             </Link>
@@ -157,14 +125,18 @@ const FaqSection: React.FC = () => {
             </Link>
           </div>
           <p className="mt-4 text-xs text-slate-600 sm:text-sm">
-            Keywords: Data Analytics with BI and Big Data Engineering FAQ •
-            eligibility for data engineering course • job assistance and
-            placement support • globally recognized Tableau and Power BI
-            certifications • difference between Data Analyst and Data Engineer.
+            Keywords: Best Institute for Data Analytics, SQL Data Analyst, Bi and Big Data Engineering, IIM Business Analytics, Data Analytics Program Mumbai, Data Engineering Certifications, How to Become Data Analyst in India.
           </p>
         </div>
       </div>
-    </section>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Data Engineering Course Page - FAQ Section - Enroll Now"
+        courseName={courseName}
+      />
+    </section >
   );
 };
 

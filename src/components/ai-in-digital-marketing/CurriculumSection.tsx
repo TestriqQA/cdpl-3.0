@@ -3,11 +3,16 @@
 import { useState } from "react";
 import { courseData } from "@/components/ai-in-digital-marketing/courseData";
 import { ChevronDown, BookOpen } from "lucide-react";
-import Link from "next/link";
+
+import EnrollModal from "@/components/EnrollModal";
+import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
 
 export default function CurriculumSection() {
   const { curriculum } = courseData;
   const [expandedModule, setExpandedModule] = useState<number | null>(null);
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Master Digital Marketing & AI for Business Owners";
 
   // Reusable gradient colors for modules (cycled through)
   const colorClasses = [
@@ -21,29 +26,20 @@ export default function CurriculumSection() {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-b from-slate-50 to-white">
+    <section id="curriculum" className="py-10 bg-gradient-to-b from-slate-50 to-white">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Comprehensive{" "}
-            <span className="text-orange-600">AI Marketing Curriculum</span>
+            Comprehensive <span className="text-brand">AI Digital Marketing Course for Business Owners</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-4xl mx-auto">
-            Master <strong>AI in Digital Marketing</strong> with{" "}
-            <strong>13 in-depth modules</strong> covering{" "}
-            performance marketing, social media advertising, marketing
-            automation, AI tools, analytics, and ROI-driven growth strategies.
-            This <strong>job-ready AI digital marketing course</strong> is
-            designed for students, professionals, entrepreneurs, and business
-            owners who want to build <strong>high-converting campaigns</strong>{" "}
-            and <strong>scale revenue using AI</strong>.
+            From <strong>Local SEO for Businesses</strong> to Advanced AI Automation—A Complete Roadmap.
           </p>
           <p className="mt-4 text-sm md:text-base text-slate-500 max-w-3xl mx-auto">
-            Learn how to apply <strong>ChatGPT, automation, data-driven
-              decision-making, performance tracking, and conversion optimization</strong>{" "}
-            to real-world marketing funnels, lead generation systems, and
-            eCommerce or service-based businesses.
+            Master <strong>AI in Digital Marketing</strong> with modules designed for real-world impact.
+            Learn <strong>search engine optimization for local business</strong>, <strong>social media marketing business</strong> tactics,
+            and advanced AI integration to build <strong>high-converting campaigns</strong>.
           </p>
         </div>
 
@@ -80,7 +76,7 @@ export default function CurriculumSection() {
                     </div>
                   </div>
                   <ChevronDown
-                    className={`w-6 h-6 text-orange-600 transition-transform duration-300 ${expandedModule === module.id ? "rotate-180" : ""
+                    className={`w-6 h-6 text-brand transition-transform duration-300 ${expandedModule === module.id ? "rotate-180" : ""
                       }`}
                   />
                 </button>
@@ -91,7 +87,7 @@ export default function CurriculumSection() {
                     {/* Topics */}
                     <div className="mb-6 pt-4 border-t border-slate-200/60">
                       <h4 className="font-semibold text-slate-900 mb-3 mt-4 flex items-center gap-2">
-                        <BookOpen className="w-5 h-5 text-orange-600" />
+                        <BookOpen className="w-5 h-5 text-brand" />
                         Key Topics & Practical Concepts
                       </h4>
                       <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -145,7 +141,7 @@ export default function CurriculumSection() {
                                 key={idx}
                                 className="flex items-start gap-3 bg-orange-50 p-3 rounded-lg border border-orange-200"
                               >
-                                <span className="text-orange-600 font-bold">
+                                <span className="text-brand font-bold">
                                   →
                                 </span>
                                 <span className="text-slate-700">
@@ -233,28 +229,61 @@ export default function CurriculumSection() {
                 implementation-focused mentoring</strong> to become an
               in-demand digital marketing professional.
             </p>
-            <Link
-              href="/contact-us"
-              className="
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <button
+                onClick={() => setIsSyllabusOpen(true)}
+                className="
     inline-flex items-center justify-center
     w-full sm:w-auto
     px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3
     text-sm sm:text-base md:text-lg
-    bg-orange-600 hover:bg-orange-700
+    bg-white hover:bg-slate-50
+    text-brand font-bold
+    rounded-xl border-2 border-brand
+    text-center
+    shadow-lg hover:shadow-xl
+    transition-all duration-300
+    cursor-pointer
+  "
+              >
+                Get Full Syllabus PDF
+              </button>
+              <button
+                onClick={() => setIsEnrollOpen(true)}
+                className="
+    inline-flex items-center justify-center
+    w-full sm:w-auto
+    px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3
+    text-sm sm:text-base md:text-lg
+    bg-brand hover:bg-brand
     text-white font-bold
     rounded-xl
     text-center
     shadow-lg hover:shadow-xl
     transition-all duration-300
-    break-words
+    cursor-pointer
   "
-            >
-              Enroll in the Program
-            </Link>
+              >
+                Enroll in the Program
+              </button>
+            </div>
 
           </div>
         </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="AI Digital Marketing - Curriculum Section - Enroll"
+        courseName={courseName}
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="AI Digital Marketing - Curriculum Section - Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 }

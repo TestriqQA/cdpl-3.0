@@ -1,9 +1,16 @@
+"use client";
 import ReviewsMarquee from "../sections/ReviewMarque";
+import { useState } from "react";
+import { Download } from "lucide-react";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 
 export default function TestimonialsSection() {
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const courseName = "Machine Learning Algorithms using python Programming";
+
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white">
+    <section className="py-10 bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -65,7 +72,25 @@ export default function TestimonialsSection() {
             </div>
           </div>
         </div>
+
+        {/* CTA Button */}
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={() => setIsSyllabusOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-full border border-slate-200 bg-white px-8 py-3 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-brand focus:outline-none focus:ring-4 focus:ring-orange-200"
+          >
+            <Download className="mr-2 h-4 w-4" />
+            Download Syllabus (PDF)
+          </button>
+        </div>
       </div>
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Machine Learning Course Page - Testimonials Section - Machine Learning - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 }

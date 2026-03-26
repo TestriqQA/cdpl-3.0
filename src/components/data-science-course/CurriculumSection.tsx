@@ -1,7 +1,9 @@
 "use client";
 import { ChevronDown, BookOpen } from "lucide-react";
 import { useState } from "react";
-import Link from "next/link";
+
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import EnrollModal from "../EnrollModal";
 
 interface Module {
   id: number;
@@ -15,6 +17,10 @@ interface Module {
 
 export default function CurriculumSection() {
   const [expandedModule, setExpandedModule] = useState<number | null>(null);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+
+  const courseName = "Advanced Data Science and Machine Learning Masterclass";
 
   const subtitle =
     "A 200+ hour, industry-aligned journey from SQL and Excel to BI (Power BI/Tableau), Python foundations, Statistics, ML with Python, R, and domain projects.";
@@ -207,12 +213,12 @@ export default function CurriculumSection() {
   ];
 
   return (
-    <section id="curriculum" className="py-16 md:py-20 bg-gradient-to-b from-slate-50 to-white">
+    <section id="curriculum" className="py-10 bg-gradient-to-b from-slate-50 to-white">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            9-Module <span className="text-orange-600">Curriculum</span>
+            6-Core Curriculum Modules: Your Data Science Roadmap
           </h2>
           <p className="text-lg text-slate-600 max-w-4xl mx-auto">
             {subtitle}
@@ -251,7 +257,7 @@ export default function CurriculumSection() {
                   </div>
                 </div>
                 <ChevronDown
-                  className={`w-6 h-6 text-orange-600 transition-transform duration-300 ${expandedModule === module.id ? "rotate-180" : ""
+                  className={`w-6 h-6 text-brand transition-transform duration-300 ${expandedModule === module.id ? "rotate-180" : ""
                     }`}
                 />
               </button>
@@ -262,7 +268,7 @@ export default function CurriculumSection() {
                   {/* Topics */}
                   <div className="mb-6">
                     <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                      <BookOpen className="w-5 h-5 text-orange-600" />
+                      <BookOpen className="w-5 h-5 text-brand" />
                       Topics Covered
                     </h4>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -288,7 +294,7 @@ export default function CurriculumSection() {
                             key={idx}
                             className="flex items-start gap-3 bg-orange-50 p-3 rounded-lg border border-orange-200"
                           >
-                            <span className="text-orange-600 font-bold">→</span>
+                            <span className="text-brand font-bold">→</span>
                             <span className="text-slate-700">{project}</span>
                           </li>
                         ))}
@@ -306,18 +312,19 @@ export default function CurriculumSection() {
           <div className="flex flex-col items-center justify-center gap-3 text-center">
             <div className="flex flex-col items-center gap-3 sm:flex-row">
               <button
+                onClick={() => setIsEnrollOpen(true)}
                 className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+                aria-label="Apply for the Advanced Data Science & Machine Learning program"
+              >
+                Apply Now
+              </button>
+              <button
+                onClick={() => setIsSyllabusOpen(true)}
+                className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-orange-200"
                 aria-label="Download the detailed Advanced Data Science & Machine Learning syllabus"
               >
                 Download Detailed Syllabus (PDF)
               </button>
-              <Link
-                href="contact-us"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-orange-200"
-                aria-label="Apply for the Advanced Data Science & Machine Learning program"
-              >
-                Apply Now
-              </Link>
             </div>
             <p className="mx-auto mt-3 max-w-3xl text-center text-[11px] text-slate-500">
               *Module order may vary slightly by cohort and instructor discretion to maximize learning outcomes.
@@ -325,6 +332,19 @@ export default function CurriculumSection() {
           </div>
         </div>
       </div>
+
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Data Science Course Page - Curriculum Section - Syllabus Download"
+        courseName={courseName}
+      />
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Data Science Course Page - Curriculum Section - Apply Now"
+        courseName={courseName}
+      />
     </section>
   );
 }

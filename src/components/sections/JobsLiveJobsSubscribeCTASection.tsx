@@ -100,11 +100,11 @@ export function JobsLiveJobsSubscribeCTASection() {
 
             {/* RIGHT CTA */}
             <div className="sm:col-span-4 flex flex-col items-stretch justify-center sm:items-end">
-              <a
+              <Link
                 href="https://whatsapp.com/channel/0029VadXpsi3gvWWrDLReF3N"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center whitespace-nowrap gap-2 rounded-xl px-4 py-2.5 text-sm sm:text-base font-semibold text-white shadow-sm transition-transform hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#77E39A]"
+                className="inline-flex items-center justify-center whitespace-nowrap gap-2 rounded-xl px-4 md:px-2 lg:px-4 py-2.5 text-sm sm:text-base font-semibold text-white shadow-sm transition-transform hover:-translate-y-[1px] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#77E39A]"
                 // WhatsApp brand color
                 style={{ backgroundColor: "#25D366" }}
                 aria-label="Join CDPL WhatsApp Channel (opens in WhatsApp)"
@@ -120,7 +120,7 @@ export function JobsLiveJobsSubscribeCTASection() {
                   <path d="M20.52 3.48A11.9 11.9 0 0 0 12.06 0C5.49 0 .16 5.33.16 11.9c0 2.1.55 4.12 1.6 5.92L0 24l6.38-1.67a11.86 11.86 0 0 0 5.68 1.45h.01c6.57 0 11.9-5.33 11.9-11.9 0-3.18-1.24-6.17-3.45-8.4Z" />
                 </svg>
                 Join WhatsApp Channel
-              </a>
+              </Link>
               <span className="mt-1 text-xs text-slate-500">Opens in WhatsApp</span>
             </div>
           </div>

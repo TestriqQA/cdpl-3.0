@@ -44,7 +44,7 @@ export default function ACTDCertificationTracksSection() {
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <header className="mb-6 sm:mb-8">
           <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">Training tracks</h2>
-          <p className="mt-2 max-w-3xl text-[15px] text-slate-700 sm:text-base">
+          <p className="mt-2 max-w-3xl text-[15px] text-slate-800 sm:text-base">
             Progress with short sprints, hands-on labs, and structured reviews. Each track culminates in a capstone.
           </p>
         </header>
@@ -79,7 +79,7 @@ export default function ACTDCertificationTracksSection() {
                 {/* Content */}
                 <div className="relative">
                   <h3 className="text-sm font-extrabold text-slate-900">{t.name}</h3>
-                  <ul className="mt-2 space-y-1 text-sm text-slate-700">
+                  <ul className="mt-2 space-y-1 text-sm text-slate-800">
                     {t.points.map((p) => (
                       <li key={p}>• {p}</li>
                     ))}

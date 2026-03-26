@@ -1,7 +1,7 @@
-// components/powerbi/WhoShouldEnroll.tsx
 "use client";
-
-import React from "react";
+// components/powerbi/WhoShouldEnroll.tsx
+import React, { useState } from "react";
+import EnrollModal from "../EnrollModal";
 
 type ColorVariant = "blue" | "orange" | "green" | "purple";
 
@@ -17,7 +17,7 @@ const palette: Record<
   { bg: string; text: string; ring: string; grad: string }
 > = {
   blue: { bg: "bg-blue-100", text: "text-blue-700", ring: "ring-blue-200", grad: "from-blue-500/20 to-cyan-500/20" },
-  orange: { bg: "bg-orange-100", text: "text-orange-700", ring: "ring-orange-200", grad: "from-orange-500/20 to-amber-500/20" },
+  orange: { bg: "bg-orange-100", text: "text-brand", ring: "ring-orange-200", grad: "from-orange-500/20 to-amber-500/20" },
   green: { bg: "bg-green-100", text: "text-green-700", ring: "ring-green-200", grad: "from-emerald-500/20 to-lime-500/20" },
   purple: { bg: "bg-purple-100", text: "text-purple-700", ring: "ring-purple-200", grad: "from-purple-500/20 to-fuchsia-500/20" },
 };
@@ -53,6 +53,9 @@ const AudienceCard: React.FC<AudienceCardProps> = ({ title, description, emoji, 
 };
 
 const WhoShouldEnroll: React.FC = () => {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Data Analytics & Visualization with Power BI";
+
   const audience: AudienceCardProps[] = [
     {
       title: "Beginners & Career Changers",
@@ -85,18 +88,19 @@ const WhoShouldEnroll: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-10 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-base font-semibold tracking-wider text-blue-600 uppercase">
             Target Audience
           </span>
           <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-gray-900">
-            Who Will Benefit Most from This Course?
+            Who Should Enroll in Our Power BI Training in Mumbai?
           </h2>
-          <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">
-            This program is designed for both technical and non-technical learners across various professional backgrounds.
+          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
+            <strong>Does Power BI require coding?</strong> Not at all! This course is designed for both technical and non-technical learners across Mumbai & Thane who want to master <strong>business intelligence</strong>.
           </p>
+
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -104,7 +108,24 @@ const WhoShouldEnroll: React.FC = () => {
             <AudienceCard key={item.title} {...item} />
           ))}
         </div>
+
+        {/* CTA */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => setIsEnrollOpen(true)}
+            className="w-full sm:w-auto bg-brand hover:bg-brand text-white font-bold py-5 px-8 my-4 rounded-lg transition-all flex sm:inline-flex min-h-[60px] justify-center items-center cursor-pointer shadow-none"
+          >
+            Enroll Now
+          </button>
+        </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Power BI Course Page - Who Should Enroll - Enroll Now"
+        courseName={courseName}
+      />
     </section>
   );
 };

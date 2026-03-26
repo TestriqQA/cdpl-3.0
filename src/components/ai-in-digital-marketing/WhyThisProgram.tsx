@@ -1,5 +1,8 @@
+"use client";
+
 import { courseData } from "@/components/ai-in-digital-marketing/courseData";
-import Link from "next/link";
+import { useState } from "react";
+import EnrollModal from "@/components/EnrollModal";
 
 interface Advantage {
   id: number | string;
@@ -12,27 +15,26 @@ interface Advantage {
 }
 
 export default function WhyThisProgram() {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Master Digital Marketing & AI for Business Owners";
   const { advantages } = courseData as { advantages: Advantage[] };
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-10 bg-white">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Why <span className="text-orange-600">This Program?</span>
+            Why <span className="text-brand">Digital Marketing & AI</span> is Critical for Business Growth?
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            Unique advantages that set us apart from other digital marketing
-            courses.
+            Unlock the power of <strong>Digital Marketing with AI</strong> to scale smarter, not harder.
           </p>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-4xl mx-auto">
-            Our AI-powered digital marketing program is designed for{" "}
-            <strong>students, working professionals, business owners, freelancers, and agency founders</strong>{" "}
-            who want to master performance marketing, social media marketing, SEO, content marketing, and
-            <strong> AI marketing automation</strong>. Learn how to use AI tools for{" "}
-            <strong>Google Ads, Meta Ads, Instagram Reels, YouTube marketing, sales funnels, lead generation, and marketing analytics</strong>,
-            so you can scale your brand and career in India and globally.
+            Focus on the 20% of <strong>digital marketing sales</strong> strategies that bring 80% of the results.
+            No fluff, just actionable <strong>business and marketing strategy</strong>.
+            Whether you want to learn <strong>how to start digital marketing business</strong> services or scale your existing company,
+            this course bridges the gap between traditional methods and future-tech efficiency.
           </p>
         </div>
 
@@ -45,7 +47,7 @@ export default function WhyThisProgram() {
             >
               {/* Icon Container */}
               <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-white/60 backdrop-blur-sm group-hover:scale-110 transition-transform">
-                <div className="text-orange-600 text-4xl">
+                <div className="text-brand text-4xl">
                   {advantage.icon}
                 </div>
               </div>
@@ -58,7 +60,7 @@ export default function WhyThisProgram() {
               {/* Optional highlight badge if present in data */}
               {advantage.highlight && (
                 <div className="inline-block mb-3">
-                  <span className="text-xs font-semibold text-orange-600 bg-orange-100/60 px-3 py-1 rounded-full">
+                  <span className="text-xs font-semibold text-brand bg-orange-100/60 px-3 py-1 rounded-full">
                     {advantage.highlight}
                   </span>
                 </div>
@@ -93,13 +95,10 @@ export default function WhyThisProgram() {
                 <span className="text-orange-400 text-2xl mt-1">✓</span>
                 <div>
                   <p className="font-semibold text-white">
-                    AI-First Digital Marketing Skills
+                    Secret Strategies
                   </p>
                   <p className="text-sm text-slate-300">
-                    Learn how to use AI for keyword research, ad copy, social
-                    media content, email campaigns, automation workflows, and
-                    marketing analytics across Google, Meta, Instagram, and
-                    YouTube.
+                    Access proprietary <strong>digital marketing applications</strong> and <strong>business automation software</strong> workflows that top agencies charge retained fees for.
                   </p>
                 </div>
               </div>
@@ -107,13 +106,10 @@ export default function WhyThisProgram() {
                 <span className="text-orange-400 text-2xl mt-1">✓</span>
                 <div>
                   <p className="font-semibold text-white">
-                    Business & Career Growth Focused
+                    Expert Instructors
                   </p>
                   <p className="text-sm text-slate-300">
-                    Perfect for business owners, freelancers, and job seekers
-                    aiming to become <strong>AI-powered digital marketers</strong>, growth
-                    marketers, social media strategists, and performance
-                    marketers with in-demand skills.
+                    Learn from successful entrepreneurs and <strong>AI for business owners</strong> experts who have scaled multiple 7-figure businesses using these exact methods.
                   </p>
                 </div>
               </div>
@@ -123,36 +119,42 @@ export default function WhyThisProgram() {
               <p className="text-lg text-slate-100 mb-4">
                 Ready to transform your business with digital marketing and AI?
               </p>
-              <Link
-                href="/contact-us"
+              <button
+                onClick={() => setIsEnrollOpen(true)}
                 className="
     inline-flex items-center justify-center
     w-full sm:w-auto
     px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3
     text-sm sm:text-base md:text-lg
-    bg-orange-600 hover:bg-orange-700
+    bg-brand hover:bg-brand
     text-white font-bold
     rounded-xl
     text-center
     shadow-lg hover:shadow-xl
     transition-all duration-300
+    cursor-pointer
     break-words
   "
               >
                 Start Your Journey Today
-              </Link>
+              </button>
 
             </div>
 
             <p className="mt-6 text-xs sm:text-sm text-slate-400">
-              Keywords: AI in digital marketing course • digital marketing course with
-              AI tools • performance marketing and automation • social media marketing training
-              in Mumbai • Google Ads & Meta Ads course • lead generation & sales funnel strategy •
-              job-oriented digital marketing certification with AI.
+              Keywords: Business Marketing Strategies • AI in Digital Marketing •
+              Local Business SEO • Digital Marketing for Business Owners •
+              Grow Your Business with Digital Marketing.
             </p>
           </div>
         </div>
       </div>
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="AI Digital Marketing - Why This Program - Start Journey"
+        courseName={courseName}
+      />
     </section>
   );
 }

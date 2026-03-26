@@ -1,7 +1,14 @@
 'use client';
+import { useRef } from 'react';
+import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 
 import React, { useState, useCallback } from 'react';
 import PhoneInput from 'react-phone-number-input';
+
+import {
+  validatePhone,
+  validateFullName as validateFullNameLib
+} from '@/lib/formValidation';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Mail, User } from 'lucide-react';
 
@@ -25,11 +32,21 @@ export default function HomeFinalCTASection() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useFormErrorReset(formRef, [
+    (val) => setErrors(prev => ({ ...prev, fullName: val || '' })),
+    (val) => setErrors(prev => ({ ...prev, email: val || '' })),
+    (val) => setErrors(prev => ({ ...prev, phone: val || '' })),
+  ]);
 
   // Validation functions from HomeHeroSection
   const validateFullName = useCallback((fullName: string) => {
-    if (!fullName.trim()) {
-      setErrors(prev => ({ ...prev, fullName: 'Full Name is required' }));
+    const error = validateFullNameLib(fullName);
+    if (error) {
+      setErrors(prev => ({ ...prev, fullName: error }));
       return false;
     }
     setErrors(prev => ({ ...prev, fullName: '' }));
@@ -49,18 +66,9 @@ export default function HomeFinalCTASection() {
   }, []);
 
   const validatePhoneNumber = useCallback((phone: string) => {
-    if (!phone) {
-      setErrors(prev => ({ ...prev, phone: 'Mobile Number is required' }));
-      return false;
-    } else if (phone.length < 10 || phone.length > 15) {
-      setErrors(prev => ({ ...prev, phone: 'Mobile Number is invalid' }));
-      return false;
-    } else if (/(.)\1{3}/.test(phone) || /(123|234|345|456|567|678|789|890|098|987|876|765|654|543|432|321|210)/.test(phone)) {
-      setErrors(prev => ({ ...prev, phone: 'Mobile Number cannot contain repeating or sequential digits' }));
-      return false;
-    }
-    setErrors(prev => ({ ...prev, phone: '' }));
-    return true;
+    const error = validatePhone(phone);
+    setErrors(prev => ({ ...prev, phone: error || '' }));
+    return error === null;
   }, []);
 
   const validateForm = useCallback(() => {
@@ -77,33 +85,38 @@ export default function HomeFinalCTASection() {
     }
 
     setIsSubmitting(true);
-    
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          source: 'Home Page - Get Started Section',
+        }),
       });
 
       if (response.ok) {
         console.log('Form submitted successfully, emails sent.');
-        alert('Thank you! Your inquiry has been sent. We will contact you shortly.');
+        setIsSubmitted(true);
         // Reset form after successful submission
         setFormData({
           fullName: '',
           email: '',
           phone: ''
         });
+        // Hide success message after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000);
       } else {
         const errorData = await response.json();
         console.error('Form submission failed:', errorData.message);
-        alert(`Submission failed: ${errorData.message || 'An unknown error occurred.'}`);
+        // You might want to set an error state here to show inline error
       }
     } catch (error) {
       console.error('Network error during form submission:', error);
-      alert('Network error. Please check your connection and try again.');
+      // You might want to set an error state here to show inline error
     } finally {
       setIsSubmitting(false);
     }
@@ -159,8 +172,8 @@ export default function HomeFinalCTASection() {
                 '100% placement support guaranteed',
                 'Flexible payment options available',
               ].map((benefit, index) => (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   className="flex items-center gap-3"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -175,7 +188,7 @@ export default function HomeFinalCTASection() {
               ))}
             </div>
 
-           
+
           </motion.div>
 
           {/* Right Column - Lead Form - Enhanced UI */}
@@ -186,7 +199,7 @@ export default function HomeFinalCTASection() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="relative"
           >
-            <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-10 transform hover:shadow-3xl transition-shadow duration-300">
+            <div ref={formRef} className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-10 transform hover:shadow-3xl transition-shadow duration-300">
               {/* Form Header */}
               <div className="text-center mb-8">
                 <h3 className="text-3xl font-bold text-gray-900 mb-2">
@@ -196,6 +209,23 @@ export default function HomeFinalCTASection() {
                   Fill the form below and our team will contact you within 24 hours.
                 </p>
               </div>
+
+              {/* Success Message */}
+              {isSubmitted && (
+                <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-green-600" />
+                    <div>
+                      <div className="text-sm font-semibold text-green-900">
+                        Thank You!
+                      </div>
+                      <div className="text-xs text-green-700">
+                        We'll contact you within 2 hours.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-5">
@@ -208,14 +238,14 @@ export default function HomeFinalCTASection() {
                     <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                     <input
                       type="text"
+                      maxLength={35}
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleChange}
                       onBlur={() => validateFullName(formData.fullName)}
                       required
-                      className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all duration-300 ${
-                        errors.fullName ? 'border-red-500' : 'border-gray-300'
-                      }`}
+                      className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all duration-300 ${errors.fullName ? 'border-red-500' : 'border-gray-300'
+                        }`}
                       placeholder="Enter your full name"
                       style={{ color: '#1e293b' }}
                     />
@@ -239,9 +269,8 @@ export default function HomeFinalCTASection() {
                       onChange={handleChange}
                       onBlur={() => validateEmail(formData.email)}
                       required
-                      className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all duration-300 ${
-                        errors.email ? 'border-red-500' : 'border-gray-300'
-                      }`}
+                      className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none transition-all duration-300 ${errors.email ? 'border-red-500' : 'border-gray-300'
+                        }`}
                       placeholder="Enter your email address"
                       style={{ color: '#1e293b' }}
                     />
@@ -259,13 +288,12 @@ export default function HomeFinalCTASection() {
                   <div className="relative">
                     <PhoneInput
                       international
+                      limitMaxLength={true}
                       defaultCountry="IN"
                       value={formData.phone}
                       onChange={handlePhoneChange}
                       onBlur={() => validatePhoneNumber(formData.phone)}
-                      className={`phone-input-container ${
-                        errors.phone ? 'border-red-500' : ''
-                      }`}
+                      className={`phone-input-container ${errors.phone ? 'error' : ''}`}
                       placeholder="Enter phone number"
                     />
                   </div>
@@ -286,8 +314,8 @@ export default function HomeFinalCTASection() {
                     </>
                   ) : (
                     <>
-                  <span>Get Started Now</span>
-                  <ArrowRight className="w-5 h-5" />
+                      <span>Get Started Now</span>
+                      <ArrowRight className="w-5 h-5" />
                     </>
                   )}
                 </button>
@@ -314,30 +342,71 @@ export default function HomeFinalCTASection() {
             </div>
           </motion.div>
         </div>
+
+        <style jsx global>{`
+          @keyframes blob {
+            0% {
+              transform: translate(0px, 0px) scale(1);
+            }
+            33% {
+              transform: translate(30px, -50px) scale(1.1);
+            }
+            66% {
+              transform: translate(-20px, 20px) scale(0.9);
+            }
+            100% {
+              transform: translate(0px, 0px) scale(1);
+            }
+          }
+          .animate-blob {
+            animation: blob 7s infinite;
+          }
+          .animation-delay-4000 {
+            animation-delay: 4s;
+          }
+
+          /* Phone Input Styling - Separate Boxes Style */
+          .phone-input-container {
+            display: flex;
+            align-items: stretch;
+            width: 100%;
+            gap: 0.5rem;
+            background: transparent;
+          }
+
+          .phone-input-container .PhoneInputCountry {
+            display: flex !important;
+            align-items: center !important;
+            padding: 0 0.5rem !important;
+            border: 1px solid #d1d5db !important;
+            border-radius: 0.5rem !important;
+            background-color: white !important;
+            transition: all 0.3s ease !important;
+          }
+
+          .phone-input-container .PhoneInputInput {
+            flex-grow: 1 !important;
+            padding: 0.75rem 1rem !important;
+            border: 1px solid #d1d5db !important;
+            border-radius: 0.5rem !important;
+            outline: none !important;
+            background-color: white !important;
+            color: #1e293b !important;
+            font-size: 0.875rem !important;
+            transition: all 0.3s ease !important;
+          }
+
+          .phone-input-container .PhoneInputInput:focus {
+            border-color: #f97316 !important;
+            box-shadow: 0 0 0 2px #ffedd5 !important;
+          }
+
+          .phone-input-container.error .PhoneInputCountry,
+          .phone-input-container.error .PhoneInputInput {
+            border-color: #ef4444 !important;
+          }
+        `}</style>
       </div>
     </section>
   );
 }
-
-<style jsx global>{`
-  @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-  }
-  .animate-blob {
-    animation: blob 7s infinite;
-  }
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
-`}</style>

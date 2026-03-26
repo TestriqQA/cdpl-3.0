@@ -153,6 +153,7 @@ export default function EventDetailsOrganizerSection({ }: Props) {
                   className="group inline-flex items-center gap-2 rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm ring-1 ring-sky-700/20 transition hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600"
                 >
                   More Info
+                  <span className="sr-only"> about {name}</span>
                   <span className="transition-transform group-hover:translate-x-0.5">→</span>
                 </Link>
               </div>

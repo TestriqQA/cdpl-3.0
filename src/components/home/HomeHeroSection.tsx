@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+
 import {
   Award,
   TrendingUp,
@@ -20,14 +21,15 @@ import {
 
 // Import react-phone-number-input for professional phone input
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
+
+import styles from '../ui/phone-input.module.css';
+import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
 // Import BrochureDownloadModal
-import BrochureDownloadModal from './BrochureDownloadModal';
+const BrochureDownloadModal = dynamic(() => import('./BrochureDownloadModal'), { ssr: false });
 
 // Import YouTubeVideoModal
-import YouTubeVideoModal from './YouTubeVideoModal';
+const YouTubeVideoModal = dynamic(() => import('./YouTubeVideoModal'), { ssr: false });
 
 // Component for the list of features/stats (for mobile)
 interface MobileFeatureListProps {
@@ -82,7 +84,7 @@ const MobileFeatureList: React.FC<MobileFeatureListProps> = ({ onOpenBrochure, o
     <div className="flex flex-col sm:flex-row gap-4">
       <button
         onClick={onOpenBrochure}
-        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto cursor-pointer"
+        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-brand to-brand text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto cursor-pointer"
       >
         <Download className="h-5 w-5" />
         Download Brochure
@@ -105,12 +107,7 @@ const MobileFeatureList: React.FC<MobileFeatureListProps> = ({ onOpenBrochure, o
   </div>
 );
 
-// Animation variants
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const }
-};
+
 
 // Component for desktop hero content
 interface DesktopHeroContentProps {
@@ -121,41 +118,35 @@ interface DesktopHeroContentProps {
 const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure, onOpenVideo }) => (
   <>
     {/* Top Badge */}
-    <motion.div
-      {...fadeUp}
+    {/* Top Badge - ANIMATION REMOVED FOR LCP */}
+    <div
       className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-200 rounded-full px-4 py-2 mb-5"
     >
       <Sparkles className="h-3.5 w-3.5 text-indigo-500" aria-hidden="true" />
       <span className="text-[11px] sm:text-xs font-semibold text-indigo-700">
         🏆 India&apos;s #1 Software Testing & Data Science Training Institute
       </span>
-    </motion.div>
+    </div>
 
     {/* Main Headline - Updated Copy */}
-    <motion.h1
+    {/* Main Headline - Updated Copy - ANIMATION REMOVED FOR LCP */}
+    <h1
       id="home-heading"
-      {...fadeUp}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.06 }}
       className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
     >
-      Transform Your Career with{' '}
-      <span className="block lg:mt-2 md:mt-2 mt-1 text-brand">Industry-Ready Skills</span>
-    </motion.h1>
+      Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span> with <span className="text-brand">100% Placement</span>
+    </h1>
 
     {/* Enhanced Subheadline */}
-    <motion.p
-      {...fadeUp}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.12 }}
+    {/* Enhanced Subheadline - ANIMATION REMOVED FOR LCP */}
+    <p
       className="mt-5 text-[15px] sm:text-base md:text-lg leading-7 text-slate-700"
     >
-      Master Software Testing, Data Science, AI/ML, and Full Stack Development through expert-led
-      classroom and online live training programs.
-    </motion.p>
+      Launch your tech career with industry-leading courses, live projects, and guaranteed job interviews. Join 5000+ successful graduates today.
+    </p>
 
     {/* Trust Indicators - 3 Cards */}
-    <motion.div
-      {...fadeUp}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.18 }}
+    <div
       className="mt-7 grid grid-cols-1 sm:grid-cols-3 gap-4"
     >
       {/* Card 1 - Students Placed */}
@@ -171,7 +162,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
 
       {/* Card 2 - Rating */}
       <div className="flex items-center gap-3 p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-        <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
+        <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-amber-500 to-brand rounded-lg flex items-center justify-center">
           <Star className="h-5 w-5 text-white fill-white" />
         </div>
         <div>
@@ -190,12 +181,10 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
           <div className="text-xs text-slate-600">Industry Experience</div>
         </div>
       </div>
-    </motion.div>
+    </div>
 
     {/* Key Features - 6 Benefits */}
-    <motion.div
-      {...fadeUp}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.24 }}
+    <div
       className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3"
     >
       {[
@@ -203,7 +192,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
         { icon: CheckCircle2, text: '90+ Real-World Projects', color: 'text-blue-600' },
         { icon: CheckCircle2, text: 'ISTQB & Industry Certifications', color: 'text-purple-600' },
         { icon: CheckCircle2, text: '100% Job Support with Interview Guarantee', color: 'text-indigo-600' },
-        { icon: CheckCircle2, text: 'Flexible Weekend & Weekday Batches', color: 'text-orange-600' },
+        { icon: CheckCircle2, text: 'Flexible Weekend & Weekday Batches', color: 'text-brand' },
         { icon: CheckCircle2, text: 'Lifetime Access to Course Materials', color: 'text-teal-600' },
       ].map((feature, index) => (
         <div key={index} className="flex items-start gap-2">
@@ -211,19 +200,17 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
           <span className="text-sm text-slate-700">{feature.text}</span>
         </div>
       ))}
-    </motion.div>
+    </div>
 
 
     {/* CTA Buttons */}
-    <motion.div
-      {...fadeUp}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.36 }}
+    <div
       className="mt-7 flex flex-col sm:flex-row gap-4"
     >
       {/* Primary CTA - Download Brochure */}
       <button
         onClick={onOpenBrochure}
-        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
+        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-brand to-brand text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
       >
         <Download className="h-5 w-5" />
         Download Brochure
@@ -246,11 +233,14 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
         <Play className="h-5 w-5" />
         Watch CDPL
       </button>
-    </motion.div>
+    </div>
   </>
 );
 
 const HomeHeroSection: React.FC = () => {
+  // Ref for the form container to handle click-outside
+  const formRef = useRef<HTMLDivElement>(null);
+
   // Form state
   const [formData, setFormData] = useState({
     fullName: '',
@@ -262,6 +252,27 @@ const HomeHeroSection: React.FC = () => {
   const [fullNameError, setFullNameError] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
   const [phoneError, setPhoneError] = useState<string | null>(null);
+
+  // Handle click outside to blur inputs and clear errors
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (formRef.current && !formRef.current.contains(event.target as Node)) {
+        // If clicking outside the form, blur any active input inside the form
+        if (document.activeElement instanceof HTMLElement && formRef.current.contains(document.activeElement)) {
+          document.activeElement.blur();
+        }
+        // Clear all validation errors
+        setFullNameError(null);
+        setEmailError(null);
+        setPhoneError(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   // Loading and submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -278,16 +289,9 @@ const HomeHeroSection: React.FC = () => {
 
   // Validation functions
   const validateFullName = (name: string) => {
-    if (!name) {
-      setFullNameError('Full Name is required.');
-      return false;
-    }
-    if (name.trim().length < 3) {
-      setFullNameError('Full Name must be at least 3 characters.');
-      return false;
-    }
-    setFullNameError(null);
-    return true;
+    const error = validateFullNameLib(name);
+    setFullNameError(error);
+    return error === null;
   };
 
   const validateEmail = (email: string) => {
@@ -304,51 +308,9 @@ const HomeHeroSection: React.FC = () => {
   };
 
   const validatePhoneNumber = (phone: string | undefined) => {
-    if (!phone) {
-      setPhoneError('Mobile Number is required.');
-      return false;
-    }
-    if (!isValidPhoneNumber(phone)) {
-      setPhoneError('Invalid phone number format.');
-      return false;
-    }
-
-    const digits = phone.replace(/\D/g, '');
-
-    // Check for repeating digits
-    if (/^(\d)\1+$/.test(digits)) {
-      setPhoneError('Phone number cannot consist of repeating digits.');
-      return false;
-    }
-
-    // Check for sequential digits
-    const isSequential = (num: string) => {
-      for (let i = 0; i < num.length - 2; i++) {
-        const n1 = parseInt(num[i]);
-        const n2 = parseInt(num[i + 1]);
-        const n3 = parseInt(num[i + 2]);
-        if (
-          (n2 === n1 + 1 && n3 === n2 + 1) ||
-          (n2 === n1 - 1 && n3 === n2 - 1)
-        ) {
-          return true;
-        }
-      }
-      return false;
-    };
-    if (isSequential(digits)) {
-      setPhoneError('Phone number cannot consist of sequential digits.');
-      return false;
-    }
-
-    // Check for all zeros
-    if (/^0+$/.test(digits)) {
-      setPhoneError('Phone number cannot be all zeros.');
-      return false;
-    }
-
-    setPhoneError(null);
-    return true;
+    const error = validatePhone(phone);
+    setPhoneError(error);
+    return error === null;
   };
 
   // Handle input changes
@@ -389,7 +351,10 @@ const HomeHeroSection: React.FC = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({
+            ...formData,
+            source: 'Enquiry Form - Home Hero Section'
+          }),
         });
 
         if (response.ok) {
@@ -434,25 +399,22 @@ const HomeHeroSection: React.FC = () => {
 
   // The original Lead Form block (Right side of the grid)
   const LeadForm = (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.985 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.55, ease: [0.25, 0.1, 0.25, 1.0] as const }}
+    <div
       className="order-2 lg:order-2 lg:col-span-5"
     >
-      <div className="sticky top-4 max-w-sm ml-auto">
-        <div className="bg-white/92 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8">
+      <div className="sticky top-4 max-w-sm mx-auto lg:ml-auto lg:mr-0">
+        <div ref={formRef} className="bg-white/92 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8">
           {/* Form Header - Catchy and Actionable */}
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-xl font-bold text-slate-900">
+              <h2 className="text-xl font-bold text-slate-900">
                 Talk to an Advisor
-              </h3>
+              </h2>
               <div className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full">
                 <span className="text-xs font-bold text-white">FREE</span>
               </div>
             </div>
-            <p className="text-sm font-semibold text-orange-600">
+            <p className="text-sm font-semibold text-brand">
               Get FREE Demo Class Instantly!
             </p>
             <p className="text-xs text-slate-600 mt-1">
@@ -489,12 +451,13 @@ const HomeHeroSection: React.FC = () => {
                 <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                 <input
                   type="text"
+                  maxLength={35}
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleInputChange}
                   onBlur={() => validateFullName(formData.fullName)}
                   required
-                  className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${fullNameError ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand focus:outline-none transition-all duration-300 ${fullNameError ? 'border-red-500' : 'border-gray-300'
                     }`}
                   placeholder="Enter your full name"
                   style={{ color: '#1e293b' }}
@@ -519,7 +482,7 @@ const HomeHeroSection: React.FC = () => {
                   onChange={handleInputChange}
                   onBlur={() => validateEmail(formData.email)}
                   required
-                  className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#ff8c00] focus:outline-none transition-all duration-300 ${emailError ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand focus:outline-none transition-all duration-300 ${emailError ? 'border-red-500' : 'border-gray-300'
                     }`}
                   placeholder="Enter your email address"
                   style={{ color: '#1e293b' }}
@@ -538,11 +501,12 @@ const HomeHeroSection: React.FC = () => {
               <div className="relative">
                 <PhoneInput
                   international
+                  limitMaxLength={true}
                   defaultCountry="IN"
                   value={formData.phone}
                   onChange={handlePhoneChange}
                   onBlur={() => validatePhoneNumber(formData.phone)}
-                  className={`phone-input-container ${phoneError ? 'border-red-500' : ''
+                  className={`${styles['phone-input-container']} ${phoneError ? 'border-red-500' : ''
                     }`}
                   placeholder="Enter phone number"
                 />
@@ -556,7 +520,7 @@ const HomeHeroSection: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 px-6 bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full py-3 px-6 bg-gradient-to-r from-brand to-brand text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
@@ -591,94 +555,25 @@ const HomeHeroSection: React.FC = () => {
           </form>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 
   return (
     <>
-      {/* Custom CSS for phone input */}
-      <style jsx global>{`
-        /* Phone input styling */
-        .phone-input-container .PhoneInputInput {
-          width: 100%;
-          padding: 0.75rem 1rem;
-          border: 1px solid #d1d5db;
-          border-radius: 0.5rem;
-          font-size: 0.875rem;
-          color: #1e293b;
-          outline: none;
-          transition: all 0.3s;
-        }
-
-        .phone-input-container .PhoneInputInput::placeholder {
-          color: #64748b;
-          opacity: 1;
-        }
-
-        .phone-input-container .PhoneInputInput:focus {
-          border-color: #ff8c00;
-          ring: 2px;
-          ring-color: #ff8c00;
-          box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.2);
-        }
-
-        .phone-input-container.border-red-500 .PhoneInputInput {
-          border-color: #ef4444;
-        }
-
-        .phone-input-container .PhoneInputCountry {
-          margin-right: 0.5rem;
-        }
-
-        /* Country dropdown styling */
-        .phone-input-container .PhoneInputCountrySelect {
-          color: #1e293b;
-          font-weight: 500;
-        }
-
-        .phone-input-container .PhoneInputCountrySelectArrow {
-          color: #64748b;
-        }
-
-        /* Fix placeholder visibility for all inputs */
-        input::placeholder {
-          color: #64748b !important;
-          opacity: 1 !important;
-        }
-      `}</style>
-
-      <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50 lg:py-4 py-4 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50 lg:py-4 py-4 overflow-hidden" aria-labelledby="home-heading">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Animated gradient orbs */}
-          <motion.div
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-orange-200 to-orange-100 rounded-full blur-3xl"
+          {/* Static gradient orbs (Optimized for Main Thread) */}
+          <div
+            className="absolute top-20 right-10 w-96 h-96 bg-gradient-to-br from-orange-200 to-orange-100 rounded-full blur-3xl opacity-30 contains-strict"
           />
-          <motion.div
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.2, 0.4, 0.2],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-tr from-blue-200 to-blue-100 rounded-full blur-3xl"
+          <div
+            className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-tr from-blue-200 to-blue-100 rounded-full blur-3xl opacity-20 contains-strict"
           />
         </div>
 
         {/* Main Container */}
-        <div className="relative max-w-7xl mx-auto">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* --- Mobile Layout (lg:hidden) --- */}
           <div className="lg:hidden">
@@ -686,30 +581,26 @@ const HomeHeroSection: React.FC = () => {
             {Breadcrumb}
 
             {/* 2. Headline */}
-            <motion.h1
+            {/* 2. Headline - ANIMATION REMOVED FOR LCP */}
+            <h2
               id="home-heading-mobile"
-              {...fadeUp}
-              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.06 }}
               className="mt-2 py-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
             >
-              Transform Your Career with{' '}
-              <span className="block mt-1 text-brand">Industry-Ready Skills</span>
-            </motion.h1>
+              Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span>
+            </h2>
 
             {/* 3. Description */}
-            <motion.p
-              {...fadeUp}
-              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.12 }}
+            {/* 3. Description - ANIMATION REMOVED FOR LCP */}
+            <p
               className="mt-1 mb-1.5 text-[15px] sm:text-base leading-7 text-slate-700"
             >
-              Master Software Testing, Data Science, AI/ML, and Full Stack Development through expert-led
-              classroom and online live training programs.
-            </motion.p>
+              Launch your tech career with industry-leading courses, live projects, and guaranteed job interviews. Join 5000+ successful graduates today.
+            </p>
 
             {/* 4. Form Card */}
             {LeadForm}
 
-            {/* 5. Mobile Feature List (The long list of stats/CTAs) */}
+            {/* 5. Mobile Feature List */}
             <MobileFeatureList
               onOpenBrochure={openBrochure}
               onOpenVideo={openVideo}
@@ -730,7 +621,9 @@ const HomeHeroSection: React.FC = () => {
               </div>
 
               {/* Right Form - 4 columns (33.33% width) */}
-              {LeadForm}
+              <div className="order-2 lg:order-2 lg:col-span-5">
+                {LeadForm}
+              </div>
             </div>
           </div>
         </div>
@@ -740,6 +633,7 @@ const HomeHeroSection: React.FC = () => {
       <BrochureDownloadModal
         isOpen={isBrochureModalOpen}
         onClose={() => setIsBrochureModalOpen(false)}
+        source="Home Page - Hero Section - Download Brochure Button"
       />
 
       {/* YouTube Video Modal */}

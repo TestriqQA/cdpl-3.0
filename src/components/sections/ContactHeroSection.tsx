@@ -1,201 +1,17 @@
 // hero section
 "use client";
 
-import React, { useState } from "react";
-import { Phone, Mail, CalendarDays, Home, ChevronRight, User, CheckCircle2 } from "lucide-react";
+import dynamic from 'next/dynamic';
+import { Phone, Mail, CalendarDays, Home, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
-// Import react-phone-number-input for professional phone input
-import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
-import { isValidPhoneNumber } from 'libphonenumber-js';
-
-type FormState = {
-  fullName: string;
-  email: string;
-  phone: string;
-  interest: string;
-  message: string;
-};
+const ContactHeroForm = dynamic(() => import('@/components/forms/ContactHeroForm').then(mod => mod.ContactHeroForm), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] w-full flex items-center justify-center text-slate-400">Loading Form...</div>
+});
 
 export function ContactHeroSection() {
-  const [formData, setFormData] = useState<FormState>({
-    fullName: "",
-    email: "",
-    phone: "",
-    interest: "",
-    message: "",
-  });
 
-  // Error states
-  const [fullNameError, setFullNameError] = useState<string | null>(null);
-  const [emailError, setEmailError] = useState<string | null>(null);
-  const [phoneError, setPhoneError] = useState<string | null>(null);
-  const [messageError, setMessageError] = useState<string | null>(null);
-
-  // Loading and submission states
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // Validation functions
-  const validateFullName = (name: string) => {
-    if (!name) {
-      setFullNameError('Full Name is required.');
-      return false;
-    }
-    if (name.trim().length < 3) {
-      setFullNameError('Full Name must be at least 3 characters.');
-      return false;
-    }
-    setFullNameError(null);
-    return true;
-  };
-
-  const validateEmail = (email: string) => {
-    if (!email) {
-      setEmailError('Email Address is required.');
-      return false;
-    }
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setEmailError('Invalid email format.');
-      return false;
-    }
-    setEmailError(null);
-    return true;
-  };
-
-  const validatePhoneNumber = (phone: string | undefined) => {
-    if (!phone) {
-      setPhoneError('Mobile Number is required.');
-      return false;
-    }
-    if (!isValidPhoneNumber(phone)) {
-      setPhoneError('Invalid phone number format.');
-      return false;
-    }
-
-    const digits = phone.replace(/\D/g, '');
-
-    // Check for repeating digits
-    if (/^(\d)\1+$/.test(digits)) {
-      setPhoneError('Phone number cannot consist of repeating digits.');
-      return false;
-    }
-
-    // Check for sequential digits
-    const isSequential = (num: string) => {
-      for (let i = 0; i < num.length - 2; i++) {
-        const n1 = parseInt(num[i]);
-        const n2 = parseInt(num[i + 1]);
-        const n3 = parseInt(num[i + 2]);
-        if (
-          (n2 === n1 + 1 && n3 === n2 + 1) ||
-          (n2 === n1 - 1 && n3 === n2 - 1)
-        ) {
-          return true;
-        }
-      }
-      return false;
-    };
-    if (isSequential(digits)) {
-      setPhoneError('Phone number cannot consist of sequential digits.');
-      return false;
-    }
-
-    // Check for all zeros
-    if (/^0+$/.test(digits)) {
-      setPhoneError('Phone number cannot be all zeros.');
-      return false;
-    }
-
-    setPhoneError(null);
-    return true;
-  };
-
-  const validateMessage = (message: string) => {
-    if (message.trim().length < 10) {
-      setMessageError('Message should be at least 10 characters.');
-      return false;
-    }
-    setMessageError(null);
-    return true;
-  };
-
-  // Handle input changes
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-
-    // Real-time validation
-    if (name === 'fullName') validateFullName(value);
-    if (name === 'email') validateEmail(value);
-    if (name === 'message') validateMessage(value);
-  };
-
-  // Handle phone change
-  const handlePhoneChange = (phone: string | undefined) => {
-    setFormData(prev => ({
-      ...prev,
-      phone: phone || ''
-    }));
-    if (phone) validatePhoneNumber(phone);
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const isFullNameValid = validateFullName(formData.fullName);
-    const isEmailValid = validateEmail(formData.email);
-    const isPhoneValid = validatePhoneNumber(formData.phone);
-    const isMessageValid = validateMessage(formData.message);
-
-    if (isFullNameValid && isEmailValid && isPhoneValid && isMessageValid) {
-      setIsSubmitting(true);
-      try {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            fullName: formData.fullName,
-            email: formData.email,
-            phone: formData.phone,
-            type: 'contact',
-            source: 'Contact Page - Hero Section Form',
-            interest: formData.interest,
-            message: formData.message
-          }),
-        });
-
-        if (response.ok) {
-          console.log('Form submitted successfully');
-          setIsSubmitted(true);
-          setTimeout(() => setIsSubmitted(false), 5000);
-
-          // Reset form
-          setFormData({
-            fullName: '',
-            email: '',
-            phone: '',
-            interest: '',
-            message: ''
-          });
-        } else {
-          alert('Form submission failed. Please try again.');
-        }
-      } catch (error) {
-        console.error('Network error:', error);
-        alert('Network error. Please check your connection and try again.');
-      } finally {
-        setIsSubmitting(false);
-      }
-    }
-  };
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -204,99 +20,7 @@ export function ContactHeroSection() {
 
   return (
     <>
-      {/* Custom CSS for phone input */}
-      <style jsx global>{`
-        /* Phone input styling */
-        .phone-input-container .PhoneInputInput {
-          width: 100%;
-          padding: 0.75rem 1rem;
-          padding-left: 1rem;
-          border: 2px solid #d1d5db;
-          border-radius: 0.5rem;
-          font-size: 0.875rem;
-          color: #1e293b;
-          outline: none;
-          transition: all 0.3s;
-        }
 
-        .phone-input-container .PhoneInputInput::placeholder {
-          color: #9ca3af;
-          opacity: 1;
-        }
-
-        .phone-input-container .PhoneInputInput:focus {
-          border-color: #ff8c00;
-          ring: 2px;
-          ring-color: #ff8c00;
-        }
-
-        .phone-input-container .PhoneInputInput {
-          border: none;
-          padding: 0;
-          flex: 1;
-          font-size: 0.875rem;
-          color: #111827;
-          background-color: transparent;
-          outline: none;
-        }
-
-        .phone-input-container .PhoneInputInput::placeholder {
-          color: #9ca3af;
-        }
-
-        .phone-input-container .PhoneInputInput:focus {
-          outline: none;
-          border: none;
-          ring: 0;
-        }
-
-        .phone-input-container .PhoneInputCountry {
-          margin-right: 0.5rem;
-        }
-
-        .phone-input-container {
-          position: relative;
-          display: flex;
-          align-items: center;
-          width: 100%;
-          border: 2px solid #e5e7eb;
-          border-radius: 0.5rem;
-          padding: 0.30rem 1rem;
-          padding-left: 0.875rem;
-          padding-right: 1rem;
-          transition: all 0.3s;
-          background-color: transparent;
-        }
-
-        .phone-input-container:focus-within {
-          border-color: #ff8c00;
-          outline: none;
-          box-shadow: 0 0 0 2px rgba(255, 140, 0, 0.1);
-        }
-
-        .phone-input-container.border-red-500 {
-          border-color: #fca5a5;
-        }
-
-        .phone-input-container.border-red-500:focus-within {
-          border-color: #ef4444;
-          box-shadow: 0 0 0 2px rgba(254, 202, 202, 1);
-        }
-
-        .phone-input-container .phone-icon {
-          flex-shrink: 0;
-          width: 1.25rem;
-          height: 1.25rem;
-          color: #9ca3af;
-          margin-right: 0.625rem;
-        }
-
-        .phone-input-container .PhoneInput {
-          flex: 1;
-          display: flex;
-          align-items: center;
-        }
-      `}</style>
 
       <section className="relative isolate overflow-hidden bg-white" id="contact-hero">
         {/* themed blobs ABOVE the white background */}
@@ -306,6 +30,7 @@ export function ContactHeroSection() {
           style={{
             background:
               "radial-gradient(60% 50% at 10% 10%, rgba(56,189,248,0.18), transparent 60%), radial-gradient(50% 40% at 90% 10%, rgba(167,139,250,0.18), transparent 60%)",
+            willChange: "transform",
           }}
         />
         {/* subtle grid overlay ABOVE white, BELOW content */}
@@ -350,7 +75,7 @@ export function ContactHeroSection() {
               </span>
 
               <h1 className="mt-4 text-4xl md:text-5xl font-extrabold leading-tight text-slate-700">
-                Contact <span className="text-brand">Cinute Digital</span>
+                Contact <span className="text-brand">CDPL (Cinute Digital)</span> - Start Your Tech Career
               </h1>
 
               {/* Form: Display below h1 on mobile only */}
@@ -361,158 +86,10 @@ export function ContactHeroSection() {
                   <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8">
                     <h2 className="text-2xl font-bold text-slate-900">Get in Touch</h2>
                     <p className="mt-1.5 text-slate-600">
-                      Share your goals — we&apos;ll help you find the perfect course or training plan.
+                      Have questions about our courses or placements? Our expert counselors are here to help you.
                     </p>
 
-                    {/* Success Message */}
-                    {isSubmitted && (
-                      <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                        <div className="flex items-center gap-2">
-                          <CheckCircle2 className="h-5 w-5 text-green-600" />
-                          <div>
-                            <div className="text-sm font-semibold text-green-900">
-                              Thank You!
-                            </div>
-                            <div className="text-xs text-green-700">
-                              We&apos;ll get back to you soon.
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-                      {/* Full Name Input - TestRiq Style */}
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Full Name *
-                        </label>
-                        <div className="relative">
-                          <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
-                          <input
-                            type="text"
-                            name="fullName"
-                            value={formData.fullName}
-                            onChange={handleInputChange}
-                            placeholder="Enter your full name"
-                            className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${
-                              fullNameError
-                                ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
-                                : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
-                            }`}
-                          />
-                        </div>
-                        {fullNameError && (
-                          <p className="mt-1.5 text-sm text-red-600">{fullNameError}</p>
-                        )}
-                      </div>
-
-                      {/* Email Input - TestRiq Style */}
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Email Address *
-                        </label>
-                        <div className="relative">
-                          <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
-                          <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            placeholder="Enter your email address"
-                            className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${
-                              emailError
-                                ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
-                                : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
-                            }`}
-                          />
-                        </div>
-                        {emailError && (
-                          <p className="mt-1.5 text-sm text-red-600">{emailError}</p>
-                        )}
-                      </div>
-
-                      {/* Phone Input - TestRiq Style with react-phone-number-input */}
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Mobile Number *
-                        </label>
-                        <div className="bg-white relative">
-                          <div className={`phone-input-container ${
-                              phoneError ? 'border-red-500' : ''
-                            }`}>
-                            <Phone className="phone-icon h-5 w-5" />
-                            <PhoneInput
-                              international
-                              defaultCountry="IN"
-                              value={formData.phone}
-                              onChange={handlePhoneChange}
-                              placeholder="Enter your mobile number"
-                            />
-                          </div>
-                        </div>
-                        {phoneError && (
-                          <p className="mt-1.5 text-sm text-red-600">{phoneError}</p>
-                        )}
-                      </div>
-
-                      {/* Area of Interest */}
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Area of Interest
-                        </label>
-                        <select
-                          name="interest"
-                          value={formData.interest}
-                          onChange={handleInputChange}
-                          className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-all"
-                        >
-                          <option value="">Select…</option>
-                          <option value="Software Testing">Software Testing</option>
-                          <option value="Data Science & AI">Data Science & AI</option>
-                          <option value="Full Stack Development">Full Stack Development</option>
-                          <option value="Corporate Training">Corporate Training</option>
-                        </select>
-                      </div>
-
-                      {/* Message */}
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Message *
-                        </label>
-                        <textarea
-                          name="message"
-                          value={formData.message}
-                          onChange={handleInputChange}
-                          rows={3}
-                          placeholder="Tell us how we can help..."
-                          className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${
-                            messageError
-                              ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
-                              : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
-                          }`}
-                        />
-                        {messageError && (
-                          <p className="mt-1.5 text-sm text-red-600">{messageError}</p>
-                        )}
-                      </div>
-
-                      {/* Submit Button */}
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] text-white font-semibold py-3.5 px-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                            Sending...
-                          </>
-                        ) : (
-                          'Submit Message'
-                        )}
-                      </button>
-                    </form>
+                    <ContactHeroForm />
 
                     <p className="mt-4 text-[12px] text-slate-500">
                       By submitting, you agree to be contacted about admissions and courses. We respect your privacy.
@@ -593,6 +170,7 @@ export function ContactHeroSection() {
                   {/* Schedule Meeting */}
                   <Link
                     href="https://calendar.app.google/tvh9dsXZsX9BujRR8"
+                    target="_blank"
                     aria-label="Schedule a Meeting"
                     className="group inline-flex w-full items-center gap-4 lg:gap-3 xl:gap-4 rounded-2xl border border-slate-200 bg-white/90 px-4 py-3 shadow-sm transition hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400 overflow-hidden"
                   >
@@ -633,155 +211,7 @@ export function ContactHeroSection() {
                     Share your goals — we&apos;ll help you find the perfect course or training plan.
                   </p>
 
-                  {/* Success Message */}
-                  {isSubmitted && (
-                    <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="h-5 w-5 text-green-600" />
-                        <div>
-                          <div className="text-sm font-semibold text-green-900">
-                            Thank You!
-                          </div>
-                          <div className="text-xs text-green-700">
-                            We&apos;ll get back to you soon.
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-                    {/* Full Name Input - TestRiq Style */}
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Full Name *
-                      </label>
-                      <div className="relative">
-                        <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
-                        <input
-                          type="text"
-                          name="fullName"
-                          value={formData.fullName}
-                          onChange={handleInputChange}
-                          placeholder="Enter your full name"
-                          className={`w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all bg-white ${
-                            fullNameError
-                              ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
-                              : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
-                          }`}
-                        />
-                      </div>
-                      {fullNameError && (
-                        <p className="mt-1.5 text-sm text-red-600">{fullNameError}</p>
-                      )}
-                    </div>
-
-                    {/* Email Input - TestRiq Style */}
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Email Address *
-                      </label>
-                      <div className="relative">
-                        <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          placeholder="Enter your email address"
-                          className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${
-                            emailError
-                              ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
-                              : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
-                          }`}
-                        />
-                      </div>
-                      {emailError && (
-                        <p className="mt-1.5 text-sm text-red-600">{emailError}</p>
-                      )}
-                    </div>
-
-                    {/* Phone Input - TestRiq Style with react-phone-number-input */}
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Mobile Number *
-                      </label>
-                      <div className="relative bg-white">
-                        <div className={`phone-input-container bg-white ${
-                            phoneError ? 'border-red-500' : ''
-                          }`}>
-                          <Phone className="bg-white phone-icon h-5 w-5" />
-                          <PhoneInput
-                            international
-                            defaultCountry="IN"
-                            value={formData.phone}
-                            onChange={handlePhoneChange}
-                            placeholder="Enter your mobile number"
-                          />
-                        </div>
-                      </div>
-                      {phoneError && (
-                        <p className="mt-1.5 text-sm text-red-600">{phoneError}</p>
-                      )}
-                    </div>
-
-                    {/* Area of Interest */}
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Area of Interest
-                      </label>
-                      <select
-                        name="interest"
-                        value={formData.interest}
-                        onChange={handleInputChange}
-                        className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-all"
-                      >
-                        <option value="">Select…</option>
-                        <option value="Software Testing">Software Testing</option>
-                        <option value="Data Science & AI">Data Science & AI</option>
-                        <option value="Full Stack Development">Full Stack Development</option>
-                        <option value="Corporate Training">Corporate Training</option>
-                      </select>
-                    </div>
-
-                    {/* Message */}
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Message *
-                      </label>
-                      <textarea
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        rows={3}
-                        placeholder="Tell us how we can help..."
-                        className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${
-                          messageError
-                            ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
-                            : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
-                        }`}
-                      />
-                      {messageError && (
-                        <p className="mt-1.5 text-sm text-red-600">{messageError}</p>
-                      )}
-                    </div>
-
-                    {/* Submit Button */}
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] text-white font-semibold py-3.5 px-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                          Sending...
-                        </>
-                      ) : (
-                        'Submit Message'
-                      )}
-                    </button>
-                  </form>
+                  <ContactHeroForm idPrefix="desktop_" />
 
                   <p className="mt-4 text-[12px] text-slate-500">
                     By submitting, you agree to be contacted about admissions and courses. We respect your privacy.

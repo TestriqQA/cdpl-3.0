@@ -54,7 +54,6 @@ type CSSVarStyle = CSSProperties & { ["--cdplDur"]: string };
 
 /** Typed style for the marquee duration custom property */
 const trackStyle: CSSVarStyle = {
-  animation: "cdpl-marquee var(--cdplDur) linear infinite",
   "--cdplDur": "180s",
 };
 
@@ -62,7 +61,7 @@ export default function PlacementsSuccessStoriesCarousel({ contained = false }: 
   const SLIDES = [...STORIES, ...STORIES]; // seamless loop
 
   const trackClasses =
-    "flex gap-5 w-max [animation-play-state:running] group-hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]";
+    "flex gap-5 w-max [animation:cdpl-marquee_var(--cdplDur)_linear_infinite] hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]";
 
   const cardClasses =
     "relative shrink-0 w-[260px] sm:w-[300px] lg:w-[340px] rounded-2xl border border-slate-200 bg-white shadow-[0_1px_0_rgba(0,0,0,0.03)] transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-md overflow-hidden";
@@ -86,7 +85,7 @@ export default function PlacementsSuccessStoriesCarousel({ contained = false }: 
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-white/90 to-transparent" />
 
           {/* Marquee track — SLOWER via CSS var */}
-          <div className="group">
+          <div>
             <div className={trackClasses} style={trackStyle}>
               {SLIDES.map((s, i) => {
                 const skin = CARD_SKINS[i % CARD_SKINS.length];
@@ -110,7 +109,7 @@ export default function PlacementsSuccessStoriesCarousel({ contained = false }: 
                           <Image
                             src={s.src}
                             alt={`${s.name} — CDPL success story`}
-                             title={`${s.name} — CDPL success story`}
+                            title={`${s.name} — CDPL success story`}
                             fill
                             sizes="48px"
                             className="object-cover"
@@ -140,7 +139,6 @@ export default function PlacementsSuccessStoriesCarousel({ contained = false }: 
           </div>
         </div>
 
-        <p className="mt-3 text-center text-xs text-slate-500">Hover to pause • Drag or swipe to explore</p>
       </Wrapper>
 
       {/* Keyframes */}

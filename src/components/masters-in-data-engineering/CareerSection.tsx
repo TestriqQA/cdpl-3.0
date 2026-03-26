@@ -1,30 +1,30 @@
-// src/components/data-analytics-bi-bigdata/CareerSection.tsx
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { CareerRole, HiringCompany } from "./types";
-import { Briefcase, DollarSign, Target, TrendingUp, Users } from "lucide-react";
+import { Briefcase, Target, TrendingUp, Users } from "lucide-react";
+import CareerSessionModal from "../CareerSessionModal";
 
 const careerRoles: CareerRole[] = [
   {
     id: 1,
     title: "Business Intelligence Analyst",
-    description: "Focus on reporting, dashboards, and data-driven strategy.",
-    salaryRange: "₹ 6L - ₹ 15L",
+    description: "Build dashboards and strategic reports. Use SQL Analytics and Power BI.",
+    salaryRange: "₹6 L - ₹15 L",
   },
   {
     id: 2,
     title: "Data Analyst",
     description:
-      "Focus on statistical analysis, insight generation, and data storytelling.",
-    salaryRange: "₹ 5L - ₹ 12L",
+      "Analyze trends with Python and SQL. A perfect entry point for Software Engineer Jobs in Mumbai.",
+    salaryRange: "₹5 L - ₹12 L",
   },
   {
     id: 3,
     title: "Big Data Engineer",
     description:
-      "Focus on building and maintaining scalable data pipelines and infrastructure.",
-    salaryRange: "₹ 8L - ₹ 25L+",
+      "Design scalable pipelines using Spark/Hadoop. The peak of BI and Big Data Engineering.",
+    salaryRange: "₹8 L - ₹25 L+",
   },
 ];
 
@@ -38,35 +38,32 @@ const hiringCompanies: HiringCompany[] = [
 ];
 
 const CareerSection: React.FC = () => {
+  const [isCareerSessionOpen, setIsCareerSessionOpen] = useState(false);
+  const courseName = "Data Analytics with BI & Big Data Engineering Master Program";
+
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-10 bg-white">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
-          <h2 className="text-sm font-semibold tracking-[0.25em] text-teal-600 uppercase">
+          <h2 className="text-sm font-semibold tracking-[0.25em] text-[#0f766e] uppercase">
             Career Advancement
           </h2>
           <h3 className="mt-2 text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            High-Impact <span className="text-teal-600">Career Opportunities</span>
+            Land High-Paying <span className="text-[#0f766e]">Software Engineer Jobs in Mumbai</span>
           </h3>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Our graduates are prepared for the most in-demand roles in the data
-            industry, commanding competitive salaries.
+            Master SQL Analytics and BI Data Analyst skills to command top salaries.
           </p>
-          <p className="mt-3 text-sm text-slate-500 max-w-3xl mx-auto">
-            This <strong>Data Analytics with BI and Big Data Engineering Master Program</strong>{" "}
-            opens doors to high-growth roles like{" "}
-            <strong>Business Intelligence Analyst</strong>,{" "}
-            <strong>Data Analyst</strong>, and <strong>Big Data Engineer</strong>{" "}
-            across top <em>IT, consulting, product, and cloud companies</em> in
-            India and global markets.
+          <p className="mt-3 text-sm text-slate-700 max-w-3xl mx-auto">
+            This Masters in Data Engineering opens doors to roles like BI Data Analyst, SQL Data Analyst, and Big Data Engineer. Better placement outcomes than many IIT data analytics short courses.
           </p>
         </div>
 
         {/* Target Roles / Job Roles Grid */}
         <div className="mb-12">
           <h4 className="text-2xl font-bold text-slate-900 text-center mb-8 flex items-center justify-center">
-            <Target className="h-6 w-6 text-teal-600 mr-2" /> Target Roles
+            <Target className="h-6 w-6 text-[#0f766e] mr-2" /> Target Roles
           </h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {careerRoles.map((role) => (
@@ -75,7 +72,7 @@ const CareerSection: React.FC = () => {
                 className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-6 border-2 border-slate-200 hover:border-teal-300 hover:shadow-lg transition-all duration-300 group text-left"
               >
                 {/* Icon */}
-                <div className="flex justify-center mb-4 text-teal-600 group-hover:scale-110 transition-transform">
+                <div className="flex justify-center mb-4 text-[#0f766e] group-hover:scale-110 transition-transform">
                   <Briefcase className="w-8 h-8" />
                 </div>
 
@@ -94,8 +91,7 @@ const CareerSection: React.FC = () => {
                   <p className="text-xs text-slate-600 mb-1">
                     Expected Salary Range (India)
                   </p>
-                  <p className="text-lg font-bold text-teal-600 inline-flex items-center justify-center gap-1">
-                    <DollarSign className="h-4 w-4" />
+                  <p className="text-lg font-bold text-[#0f766e] inline-flex items-center justify-center gap-1">
                     {role.salaryRange}
                   </p>
                 </div>
@@ -115,19 +111,19 @@ const CareerSection: React.FC = () => {
                 icon: <TrendingUp className="w-8 h-8" />,
                 title: "Rapid Career Growth",
                 description:
-                  "Data professionals see 40–50% salary growth within 2–3 years of experience in analytics, BI, and Big Data roles.",
+                  "Data Engineers see 40–50% salary growth within 2–3 years.",
               },
               {
                 icon: <Briefcase className="w-8 h-8" />,
                 title: "Multiple Career Paths",
                 description:
-                  "Start as a Data Analyst or BI Analyst and move into specialized roles such as Big Data Engineer, Analytics Engineer, or Data Architect.",
+                  "Start as a SQL Data Analyst and move into specialized roles suck as Big Data Engineer.",
               },
               {
                 icon: <Users className="w-8 h-8" />,
                 title: "Global Opportunities",
                 description:
-                  "Work with top MNCs and tech giants worldwide, with options for remote and on-site positions in data-driven teams.",
+                  "Work in Software Engineer Jobs in Mumbai and global markets.",
               },
             ].map((item, idx) => (
               <div key={idx} className="text-center">
@@ -154,7 +150,7 @@ const CareerSection: React.FC = () => {
             Our Graduates Work At
           </h3>
           <p className="text-sm text-slate-600 mb-8 text-center max-w-3xl mx-auto">
-            Alumni from this <strong>Data Analytics with BI and Big Data Engineering</strong>{" "}
+            Alumni from this Data Analytics with BI and Big Data Engineering{" "}
             program have the skills to apply for roles at leading{" "}
             <em>product companies, IT service firms, consulting giants, and cloud providers</em>.
           </p>
@@ -167,20 +163,37 @@ const CareerSection: React.FC = () => {
                 {/* Placeholder for Company Logo (using name for now) */}
                 <div>
                   <p className="font-bold text-slate-900">{company.name}</p>
-                  <p className="text-xs text-slate-500 mt-1">Active Hiring</p>
+                  {/* <p className="text-xs text-slate-500 mt-1">Active Hiring</p> */}
                 </div>
               </div>
             ))}
           </div>
           <p className="mt-6 text-xs text-slate-600 sm:text-sm text-center">
             Top recruiters include{" "}
-            <strong>Amazon, Accenture, TCS, Wipro, Google, Microsoft</strong> and many more
-            organizations building <strong>data platforms, BI dashboards, and Big Data
-              solutions</strong>.
+            Amazon, Accenture, TCS, Wipro, Google, Microsoft and many more
+            organizations building data platforms, BI dashboards, and Big Data
+            solutions.
           </p>
         </div>
+
+        {/* CTA */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => setIsCareerSessionOpen(true)}
+            className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
+          >
+            Book a Free Career Session
+          </button>
+        </div>
       </div>
-    </section>
+
+      <CareerSessionModal
+        isOpen={isCareerSessionOpen}
+        onClose={() => setIsCareerSessionOpen(false)}
+        source="Data Engineering Course Page - Career Section - Career Session"
+        courseName={courseName}
+      />
+    </section >
   );
 };
 

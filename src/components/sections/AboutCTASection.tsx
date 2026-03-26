@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { ShieldCheck, Phone, Mail, Calendar, MessageCircle, Star, Check } from "lucide-react";
 import Link from "next/link";
+import AdvisorModal from "@/components/ui/AdvisorModal";
 
 /**
  * CTA-only section — light, sleek, slightly futuristic
@@ -11,6 +13,8 @@ import Link from "next/link";
  */
 
 export default function AboutCTASection() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <section
             className="mx-auto max-w-7xl px-4 py-8 md:py-14 sm:px-6 lg:px-8"
@@ -38,7 +42,7 @@ export default function AboutCTASection() {
                                 id="cta-heading"
                                 className="text-xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
                             >
-                                Build a <span className="text-[#ff8c00]">job-ready</span> tech career with
+                                Build a <span className="text-brand">job-ready</span> tech career with
                                 Cinute Digital
                             </h3>
                             <p className="mt-5 max-w-2xl text-lg leading-6 text-slate-700">
@@ -53,27 +57,27 @@ export default function AboutCTASection() {
                             {/* Trust signals */}
                             <ul className="mt-6 grid gap-2 text-md text-slate-800 sm:grid-cols-2">
                                 <li className="flex items-start gap-2">
-                                    <ShieldCheck className="mt-0.5 h-4 w-4 text-[#ff8c00]" aria-hidden />
+                                    <ShieldCheck className="mt-0.5 h-4 w-4 text-brand" aria-hidden />
                                     <span>
                                         <strong>Outcome-focused curriculum</strong> with Selenium, Playwright,
                                         Postman, REST APIs, SQL, Git & CI/CD.
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-2">
-                                    <Star className="mt-0.5 h-4 w-4 text-[#ff8c00]" aria-hidden />
+                                    <Star className="mt-0.5 h-4 w-4 text-brand" aria-hidden />
                                     <span>
                                         <strong>Mentor-led learning</strong> + <strong>daily doubt support</strong>{" "}
                                         via community channels.
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-2">
-                                    <Check className="mt-0.5 h-4 w-4 text-[#ff8c00]" aria-hidden />
+                                    <Check className="mt-0.5 h-4 w-4 text-brand" aria-hidden />
                                     <span>
                                         <strong>Placement guidance</strong>: resume, mock interviews, referrals.
                                     </span>
                                 </li>
                                 <li className="flex items-start gap-2">
-                                    <Calendar className="mt-0.5 h-4 w-4 text-[#ff8c00]" aria-hidden />
+                                    <Calendar className="mt-0.5 h-4 w-4 text-brand" aria-hidden />
                                     <span>
                                         Flexible cohorts, <strong>recordings</strong>, and{" "}
                                         <strong>weekend doubt-clearing</strong>.
@@ -108,7 +112,7 @@ export default function AboutCTASection() {
                         <div className="rounded-2xl border border-slate-200 bg-white/95 p-5 shadow-sm backdrop-blur">
                             <p className="text-xl font-bold text-slate-900">
                                 Talk to{" "}
-                                <span className="text-[#ff8c00]">Admissions & Career Experts</span>
+                                <span className="text-brand">Admissions & Career Experts</span>
                             </p>
                             <p className="mt-1 text-xs leading-5 text-slate-600">
                                 Get a free skills assessment, course recommendations, and an ROI-driven
@@ -116,12 +120,12 @@ export default function AboutCTASection() {
                             </p>
 
                             <div className="mt-4 grid gap-3">
-                                <Link
-                                    href="/contact-us"
-                                    className="inline-flex w-full items-center justify-center rounded-xl bg-orange-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-90 focus:outline-none focus:ring-2 focus:ring-[#ff8c00]/40"
+                                <button
+                                    onClick={() => setIsModalOpen(true)}
+                                    className="inline-flex w-full items-center justify-center rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-90 focus:outline-none focus:ring-2 focus:ring-[#ff8c00]/40 cursor-pointer"
                                 >
                                     Get Counseling
-                                </Link>
+                                </button>
 
                                 <Link
                                     href="tel:++91 84-889-889-84"
@@ -165,11 +169,11 @@ export default function AboutCTASection() {
                             {/* EMI + badge row */}
                             <div className="mt-4 flex flex-col gap-2 rounded-xl border border-slate-200 bg-white p-3">
                                 <div className="flex items-center gap-2 text-xs text-slate-700">
-                                    <ShieldCheck className="h-4 w-4 text-[#ff8c00]" aria-hidden />
+                                    <ShieldCheck className="h-4 w-4 text-brand" aria-hidden />
                                     EMI & milestone-based payment plans available
                                 </div>
                                 <div className="flex items-center gap-2 text-xs text-slate-700">
-                                    <Star className="h-4 w-4 text-[#ff8c00]" aria-hidden />
+                                    <Star className="h-4 w-4 text-brand" aria-hidden />
                                     Scholarship options for deserving candidates
                                 </div>
                             </div>
@@ -178,6 +182,12 @@ export default function AboutCTASection() {
                 </div>
                 {/* End CTA */}
             </div>
+
+            <AdvisorModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                source="About Us - CTA Section"
+            />
         </section>
     );
 }

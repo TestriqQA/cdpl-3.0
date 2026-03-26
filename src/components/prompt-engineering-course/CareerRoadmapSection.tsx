@@ -1,8 +1,11 @@
 // components/sections/CareerRoadmapSection.tsx
 // Server component — sleek, SEO-optimized, slightly futuristic, fully responsive.
 // Distinct accent colors per step (no repeats). Accessible timeline + JSON-LD (HowTo).
+"use client";
 
-import Link from "next/link";
+import React, { useState } from "react";
+import CareerSessionModal from "@/components/CareerSessionModal";
+
 
 type Step = {
   n: number;
@@ -76,7 +79,9 @@ const STEPS: Step[] = [
 ];
 
 export default function CareerRoadmapSection() {
-
+  const [isSessionOpen, setIsSessionOpen] = useState(false);
+  const courseName = "Prompt Engineering Course";
+  const source = "Prompt Engineering Course Page - Career Roadmap Section";
 
   const subtitle =
     "Follow these four proven steps to go from beginner to job-ready Prompt/GenAI professional with portfolio projects recruiters trust.";
@@ -116,7 +121,7 @@ export default function CareerRoadmapSection() {
         </header>
 
         {/* Timeline */}
-        <ol className="relative mx-auto mt-10 max-w-4xl">
+        <div role="list" className="relative mx-auto mt-10 max-w-4xl">
           {/* Center spine */}
           <div
             aria-hidden
@@ -124,7 +129,8 @@ export default function CareerRoadmapSection() {
           />
           <div className="space-y-6">
             {STEPS.map((s, i) => (
-              <li
+              <div
+                role="listitem"
                 key={s.n}
                 className="relative grid grid-cols-[28px_1fr] items-start gap-4 sm:grid-cols-[1fr_28px_1fr]"
               >
@@ -187,32 +193,40 @@ export default function CareerRoadmapSection() {
                     <div className={["h-1 w-3/4 rounded-full", s.accent.bar].join(" ")} />
                   </div>
                 </article>
-              </li>
+              </div>
             ))}
           </div>
-        </ol>
+        </div>
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <Link
-            href="contact-us"
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+          <button
+            onClick={() => setIsSessionOpen(true)}
+            className="cursor-pointer inline-flex items-center gap-2 rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="Get personalized GenAI roadmap guidance"
           >
             Get Personalized Roadmap
             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
               <path d="M12.293 4.293a1 1 0 011.414 0l4 4a1 1 0 01.083 1.32l-.083.094-4 4a1 1 0 01-1.497-1.32l.083-.094L14.585 10H3a1 1 0 01-.117-1.993L3 8h11.585l-2.292-2.293a1 1 0 010-1.414z" />
             </svg>
-          </Link>
+          </button>
           <p className="mt-3 text-xs sm:text-sm text-slate-600">
             Learn from anywhere. <span className="font-semibold text-slate-800">Your GenAI journey starts here.</span>
           </p>
         </div>
+
+        <CareerSessionModal
+          isOpen={isSessionOpen}
+          onClose={() => setIsSessionOpen(false)}
+          source={`${source} - Get Roadmap`}
+          courseName={courseName}
+        />
       </div>
 
     </section>
   );
 }
+
 
 /* ---------- Subcomponent ---------- */
 function KPI({ label, value, note }: { label: string; value: string; note: string }) {

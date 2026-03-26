@@ -1,5 +1,7 @@
-// components/sections/ToolsSection.tsx
-// Server component — clean, modern tool chips with subtle futuristic accents + SEO.
+"use client";
+
+import { useState } from "react";
+import CareerSessionModal from "@/components/CareerSessionModal";
 
 type Tool = { name: string };
 
@@ -20,21 +22,23 @@ const TOOLS: Tool[] = [
 
 // 12 distinct, eye-catching (but soft) accents — reused only if you add more tools.
 const ACCENTS = [
-  { border: "border-violet-200",  text: "text-violet-800",  bg: "bg-violet-50",  ring: "focus:ring-violet-300"  },
+  { border: "border-violet-200", text: "text-violet-800", bg: "bg-violet-50", ring: "focus:ring-violet-300" },
   { border: "border-emerald-200", text: "text-emerald-800", bg: "bg-emerald-50", ring: "focus:ring-emerald-300" },
-  { border: "border-amber-200",   text: "text-amber-800",   bg: "bg-amber-50",   ring: "focus:ring-amber-300"   },
-  { border: "border-sky-200",     text: "text-sky-800",     bg: "bg-sky-50",     ring: "focus:ring-sky-300"     },
-  { border: "border-rose-200",    text: "text-rose-800",    bg: "bg-rose-50",    ring: "focus:ring-rose-300"    },
-  { border: "border-indigo-200",  text: "text-indigo-800",  bg: "bg-indigo-50",  ring: "focus:ring-indigo-300"  },
-  { border: "border-teal-200",    text: "text-teal-800",    bg: "bg-teal-50",    ring: "focus:ring-teal-300"    },
+  { border: "border-amber-200", text: "text-amber-800", bg: "bg-amber-50", ring: "focus:ring-amber-300" },
+  { border: "border-sky-200", text: "text-sky-800", bg: "bg-sky-50", ring: "focus:ring-sky-300" },
+  { border: "border-rose-200", text: "text-rose-800", bg: "bg-rose-50", ring: "focus:ring-rose-300" },
+  { border: "border-indigo-200", text: "text-indigo-800", bg: "bg-indigo-50", ring: "focus:ring-indigo-300" },
+  { border: "border-teal-200", text: "text-teal-800", bg: "bg-teal-50", ring: "focus:ring-teal-300" },
   { border: "border-fuchsia-200", text: "text-fuchsia-800", bg: "bg-fuchsia-50", ring: "focus:ring-fuchsia-300" },
-  { border: "border-orange-200",  text: "text-orange-800",  bg: "bg-orange-50",  ring: "focus:ring-orange-300"  },
-  { border: "border-cyan-200",    text: "text-cyan-800",    bg: "bg-cyan-50",    ring: "focus:ring-cyan-300"    },
-  { border: "border-lime-200",    text: "text-lime-800",    bg: "bg-lime-50",    ring: "focus:ring-lime-300"    },
-  { border: "border-pink-200",    text: "text-pink-800",    bg: "bg-pink-50",    ring: "focus:ring-pink-300"    },
+  { border: "border-orange-200", text: "text-brand", bg: "bg-orange-50", ring: "focus:ring-orange-300" },
+  { border: "border-cyan-200", text: "text-cyan-800", bg: "bg-cyan-50", ring: "focus:ring-cyan-300" },
+  { border: "border-lime-200", text: "text-lime-800", bg: "bg-lime-50", ring: "focus:ring-lime-300" },
+  { border: "border-pink-200", text: "text-pink-800", bg: "bg-pink-50", ring: "focus:ring-pink-300" },
 ];
 
 export default function ToolsSection() {
+  const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
+
   const seoKeywords =
     "python, tensorflow, pytorch, keras, nltk, spacy, hugging face, docker, numpy, pandas, scikit-learn, fastapi, ai tools, machine learning libraries, data science stack, generative ai framework";
 
@@ -43,7 +47,7 @@ export default function ToolsSection() {
     <section
       id="tools"
       aria-labelledby="tools-heading"
-      className="relative py-8 md:py-16 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop: fine grid + soft top glow (no heavy gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -107,7 +111,23 @@ export default function ToolsSection() {
           </p>
           <p className="mt-2 text-[11px] text-slate-500">*Tooling may vary by project and track.</p>
         </div>
+
+        {/* CTA Button */}
+        <div className="mt-8 flex justify-center">
+          <button
+            onClick={() => setIsCareerModalOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-base font-semibold text-white shadow-lg transition hover:bg-[#6b21a8] hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-purple-200"
+          >
+            Book a Free Demo
+          </button>
+        </div>
       </div>
+
+      <CareerSessionModal
+        isOpen={isCareerModalOpen}
+        onClose={() => setIsCareerModalOpen(false)}
+        source="Generative AI Course Page - Tools Section - Book Free Demo"
+      />
 
     </section>
   );

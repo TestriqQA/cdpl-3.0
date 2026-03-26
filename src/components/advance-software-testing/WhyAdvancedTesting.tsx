@@ -22,12 +22,12 @@ type Benefit = {
 };
 
 const benefits: Benefit[] = [
-  { icon: <Zap />,         title: '90% Faster Testing',    description: 'Automate UI, API, and mobile flows with reliable assertions', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
-  { icon: <Shield />,      title: 'Zero Critical Bugs',    description: 'Shift-left with CI/CD gates, flaky test control, & quality bars', bg: 'bg-amber-50',  iconColor: 'text-amber-700',  border: 'border-amber-200' },
-  { icon: <Globe />,       title: 'Test on Real Devices',  description: 'Cloud device farms + local emulators for true user coverage',   bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
-  { icon: <TrendingUp />,  title: 'Higher QA Salaries',    description: 'SDETs command 30–40% more with automation & DevOps skills',     bg: 'bg-blue-50',   iconColor: 'text-blue-700',   border: 'border-blue-200' },
-  { icon: <Cpu />,         title: 'AI-Powered Testing',    description: 'Self-healing locators, smart retries, & insights from reports', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
-  { icon: <Bug />,         title: 'Full-Stack QA',         description: 'UI + API + DB + Mobile, performance & security touchpoints',    bg: 'bg-rose-50',   iconColor: 'text-rose-700',   border: 'border-rose-200' },
+  { icon: <Zap />, title: '90% Faster Testing', description: 'Automate UI, API, and mobile flows with reliable assertions. Master selenium automation testing for speed.', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
+  { icon: <Shield />, title: 'Zero Critical Bugs', description: 'Shift-left with CI/CD gates, flaky test control, & quality bars. Learn selenium best practices.', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
+  { icon: <Globe />, title: 'Test on Real Devices', description: 'Cloud device farms + local emulators for true user coverage. Appium testing course integration.', bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
+  { icon: <TrendingUp />, title: 'Higher QA Salaries', description: 'SDETs earn 40% more. This selenium certification course boosts your CTC through automation skills.', bg: 'bg-blue-50', iconColor: 'text-blue-700', border: 'border-blue-200' },
+  { icon: <Cpu />, title: 'AI-Powered Testing', description: 'Self-healing locators, smart retries, & insights from reports. Modern selenium online course approach.', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
+  { icon: <Bug />, title: 'Full-Stack QA', description: 'UI + API + DB + Mobile + Performance. Complete automation testing coverage.', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
 ];
 
 export default function WhyAdvancedTesting() {
@@ -37,7 +37,7 @@ export default function WhyAdvancedTesting() {
     <section
       id="why-advanced-testing"
       aria-labelledby="why-advanced-heading"
-      className="relative py-10 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle separators for a sleek, light, slightly futuristic frame */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -63,12 +63,11 @@ export default function WhyAdvancedTesting() {
             id="why-advanced-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Why Master <span className="text-ST">Advanced Software Testing</span> in 2025?
+            Why Choose This <span className="text-ST">Selenium Automation Course</span>?
           </h2>
 
           <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-600 max-w-3xl mx-auto">
-            Automation is now a core engineering skill. Build expertise across <strong>UI, API, Mobile</strong>, and
-            <strong> DevOps</strong> workflows to become a <strong>job-ready SDET</strong> with measurable quality impact.
+            <strong>Selenium training</strong> is the gateway to high-paying QA roles. Move beyond manual testing and build expertise in <strong>UI, API, Mobile</strong> with our <strong>advanced software testing course</strong> designed for 2026.
           </p>
         </motion.header>
 
@@ -92,9 +91,8 @@ export default function WhyAdvancedTesting() {
 
         {/* SEO supportive microcopy */}
         <p className="mx-auto mt-8 max-w-4xl text-center text-sm sm:text-base text-slate-600">
-          Learn <strong>framework design</strong>, <strong>self-healing tests</strong>, <strong>parallel execution</strong>,{' '}
-          <strong>reporting & metrics</strong>, and <strong>release quality gates</strong>-skills hiring managers expect
-          in modern <strong>SDET</strong> roles.
+          Learn <strong>framework design</strong>, <strong>parallel execution</strong>, <strong>reporting</strong>,{' '}
+          and <strong>release quality gates</strong>. This <strong>expert-led selenium training</strong> ensures you are ready for top MNCs and startups.
         </p>
       </div>
 

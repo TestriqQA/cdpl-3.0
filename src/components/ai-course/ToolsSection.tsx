@@ -12,7 +12,9 @@ import {
   CloudCog,     // AWS SageMaker
   Rocket,
 } from "lucide-react";
-import Link from "next/link";
+import { useState } from "react";
+import EnrollModal from "../EnrollModal";
+import CareerSessionModal from "../CareerSessionModal";
 
 type Tool = {
   name: string;
@@ -118,11 +120,14 @@ const TOOLS: Tool[] = [
 ];
 
 export default function ToolsSection() {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isCareerOpen, setIsCareerOpen] = useState(false);
+  const courseName = "Comprehensive Data Science and AI - Master Program";
 
 
   return (
     <section
-      className="relative py-14 md:py-24 bg-white"
+      className="relative py-10 bg-white"
       aria-labelledby="tools-heading"
     >
       {/* Sleek futuristic accent (thin gradient line only) */}
@@ -156,10 +161,20 @@ export default function ToolsSection() {
         <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
           {TOOLS.map((t) => (
             <li key={t.name}>
-              <ToolCard tool={t} />
+              <ToolCard tool={t} onEnroll={() => setIsEnrollOpen(true)} />
             </li>
           ))}
         </ul>
+
+        <div className="mt-12 flex justify-center">
+          <button
+            onClick={() => setIsCareerOpen(true)}
+            className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-900 bg-slate-900 px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:translate-y-[-2px] hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-slate-300"
+          >
+            Book a Free Demo
+            <Rocket className="ml-2 h-5 w-5" />
+          </button>
+        </div>
 
         {/* sr-only helper for SEO */}
         <p className="sr-only">
@@ -168,7 +183,18 @@ export default function ToolsSection() {
         </p>
       </div>
 
-
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Comprehensive Data Science & AI - Tools Section - Learn with Projects"
+        courseName={courseName}
+      />
+      <CareerSessionModal
+        isOpen={isCareerOpen}
+        onClose={() => setIsCareerOpen(false)}
+        source="Comprehensive Data Science & AI - Tools Section - Book Demo"
+        courseName={courseName}
+      />
     </section>
   );
 }
@@ -185,7 +211,7 @@ function KPI({ label, value, note }: { label: string; value: string; note: strin
   );
 }
 
-function ToolCard({ tool }: { tool: Tool }) {
+function ToolCard({ tool, onEnroll }: { tool: Tool; onEnroll: () => void }) {
   const Icon = tool.icon;
   return (
     <article
@@ -219,14 +245,14 @@ function ToolCard({ tool }: { tool: Tool }) {
       <p className="mt-2 text-sm text-slate-700">{tool.desc}</p>
 
       <div className="mt-3">
-        <Link
-          href="contact-us"
-          className="inline-flex items-center gap-1 rounded-lg border border-slate-900 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white shadow-[0_1px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-300"
+        <button
+          onClick={onEnroll}
+          className="inline-flex items-center gap-1 rounded-lg border border-slate-900 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white shadow-[0_1px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-300 cursor-pointer"
           aria-label={`Learn ${tool.name} in the DS & AI Master Program`}
         >
           Learn with Projects
           <Rocket className="h-3.5 w-3.5" />
-        </Link>
+        </button>
       </div>
     </article>
   );

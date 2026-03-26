@@ -1,7 +1,8 @@
 "use client";
 import { ChevronDown, BookOpen } from "lucide-react";
 import { useState } from "react";
-import Link from "next/link";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 interface Module {
   id: number;
@@ -15,6 +16,10 @@ interface Module {
 
 export default function CurriculumSection() {
   const [expandedModule, setExpandedModule] = useState<number | null>(null);
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+
+  const courseName = "Comprehensive Data Science and AI - Master Program";
 
   const subtitle =
     "An industry-aligned path spanning SQL & BI to Python, Statistics, ML, R, and modern GenAI-with real projects that recruiters can run and trust.";
@@ -30,18 +35,18 @@ export default function CurriculumSection() {
       color: "from-indigo-50 to-indigo-100",
       topics: [
         "ER modeling",
-        "normalization (1NF–BCNF)",
+        "Normalization (1NF–BCNF)",
         "SQL (joins, subqueries, windows)",
-        "indexing & EXPLAIN",
-        "backup/restore",
+        "Indexing & EXPLAIN",
+        "Backup/restore",
         "DDL/DML/TCL/DCL",
-        "views",
-        "procs",
-        "triggers",
+        "Views",
+        "Procs",
+        "Triggers",
         "CTEs",
       ],
       projects: [
-        "a capstone database design.",
+        "A capstone database design.",
       ],
     },
     {
@@ -52,16 +57,16 @@ export default function CurriculumSection() {
       color: "from-emerald-50 to-emerald-100",
       topics: [
         "Data types/cleaning",
-        "formulas (IF/XLOOKUP)",
-        "conditional formatting",
+        "Formulas (IF/XLOOKUP)",
+        "Conditional formatting",
         "PivotTables/Charts",
         "ToolPak stats",
-        "forecasting",
+        "Forecasting",
         "Power Query",
-        "interactive dashboards",
+        "Interactive dashboards",
       ],
       projects: [
-        "hands-on projects.",
+        "Hands-on projects.",
       ],
     },
     {
@@ -72,15 +77,15 @@ export default function CurriculumSection() {
       color: "from-amber-50 to-amber-100",
       topics: [
         "Power Query transforms",
-        "schema modeling (star/snowflake)",
+        "Schema modeling (star/snowflake)",
         "DAX measures",
-        "core & advanced visuals",
-        "drill/focus interactivity",
-        "dashboards",
-        "publishing",
+        "Core & advanced visuals",
+        "Drill/focus interactivity",
+        "Dashboards",
+        "Publishing",
       ],
       projects: [
-        "end-to-end projects.",
+        "End-to-end projects.",
       ],
     },
     {
@@ -91,12 +96,12 @@ export default function CurriculumSection() {
       color: "from-sky-50 to-sky-100",
       topics: [
         "Data integration (joins/unions/relationships)",
-        "logical vs physical layers",
-        "dimensions/measures",
-        "specialized/geospatial charts",
-        "table calcs",
-        "parameters/sets",
-        "dashboards & stories.",
+        "Logical vs physical layers",
+        "Dimensions/measures",
+        "Specialized/geospatial charts",
+        "Table calcs",
+        "Parameters/sets",
+        "Dashboards & stories.",
       ],
     },
     {
@@ -107,12 +112,12 @@ export default function CurriculumSection() {
       color: "from-violet-50 to-violet-100",
       topics: [
         "Syntax",
-        "data structures (lists/tuples/sets/dicts)",
-        "control flow",
-        "functions & recursion",
-        "file I/O",
+        "Data structures (lists/tuples/sets/dicts)",
+        "Control flow",
+        "Functions & recursion",
+        "File I/O",
         "OOP (inheritance/encapsulation)",
-        "modules/packages",
+        "Modules/packages",
         "Jupyter workflows.",
       ],
     },
@@ -124,10 +129,10 @@ export default function CurriculumSection() {
       color: "from-rose-50 to-rose-100",
       topics: [
         "EDA/cleaning with pandas",
-        "plot customization & annotations",
-        "interactive/animated plots",
-        "seaborn statistical & categorical charts",
-        "heatmaps/grids",
+        "Plot customization & annotations",
+        "Interactive/animated plots",
+        "Seaborn statistical & categorical charts",
+        "Heatmaps/grids",
         "NumPy arrays/broadcasting.",
       ],
     },
@@ -139,11 +144,11 @@ export default function CurriculumSection() {
       color: "from-orange-50 to-orange-100",
       topics: [
         "Descriptive stats",
-        "probability & Bayes",
-        "discrete/continuous distributions",
-        "sampling & CLT",
-        "hypothesis tests (z/t/χ²/ANOVA)",
-        "correlation/regression",
+        "Probability & Bayes",
+        "Discrete/continuous distributions",
+        "Sampling & CLT",
+        "Hypothesis tests (z/t/χ²/ANOVA)",
+        "Correlation/regression",
         "ML-centric metrics.",
       ],
     },
@@ -155,13 +160,13 @@ export default function CurriculumSection() {
       color: "from-teal-50 to-teal-100",
       topics: [
         "Preprocessing (imputation/encoding/scaling)",
-        "regression & regularization",
-        "classifiers (LR/KNN/DT/RF/SVM)",
-        "model validation (CV, metrics, ROC-AUC)",
+        "Regression & regularization",
+        "Classifiers (LR/KNN/DT/RF/SVM)",
+        "Model validation (CV, metrics, ROC-AUC)",
         "PCA & clustering",
       ],
       projects: [
-        "a capstone.",
+        "A capstone.",
       ],
     },
     {
@@ -172,9 +177,9 @@ export default function CurriculumSection() {
       color: "from-fuchsia-50 to-fuchsia-100",
       topics: [
         "RStudio workflow",
-        "vectors/lists/factors/matrices/DFs",
+        "Vectors/lists/factors/matrices/DFs",
         "CSV/Excel I/O",
-        "ggplot2 visuals",
+        "Ggplot2 visuals",
         "ML projects using lm() and glm().",
       ],
     },
@@ -202,9 +207,9 @@ export default function CurriculumSection() {
         "AI foundations & ML ecosystem",
         "GenAI basics & technicals (GANs, transfer learning)",
         "LLM evolution",
-        "computer vision tie-ins",
-        "hands-on prompting patterns",
-        "responsible AI.",
+        "Computer vision tie-ins",
+        "Hands-on prompting patterns",
+        "Responsible AI.",
       ],
     },
     {
@@ -215,22 +220,22 @@ export default function CurriculumSection() {
       color: "from-stone-50 to-stone-100",
       topics: [
         "Domain projects: credit risk",
-        "customer segmentation",
-        "sales forecasting",
-        "fraud detection",
-        "hospital resource forecasting",
+        "Customer segmentation",
+        "Sales forecasting",
+        "Fraud detection",
+        "Hospital resource forecasting",
         "HR attrition analytics—plus portfolio-ready deliverables.",
       ],
     },
   ];
 
   return (
-    <section id="curriculum" className="py-16 md:py-20 bg-gradient-to-b from-slate-50 to-white">
+    <section id="curriculum" className="py-10 bg-gradient-to-b from-slate-50 to-white">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            12-Module <span className="text-orange-600">Curriculum</span>
+            12-Module <span className="text-brand">Curriculum</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-4xl mx-auto">
             {subtitle}
@@ -271,7 +276,7 @@ export default function CurriculumSection() {
                   </div>
                 </div>
                 <ChevronDown
-                  className={`w-6 h-6 text-orange-600 transition-transform duration-300 ${expandedModule === module.id ? "rotate-180" : ""
+                  className={`w-6 h-6 text-brand transition-transform duration-300 ${expandedModule === module.id ? "rotate-180" : ""
                     }`}
                 />
               </button>
@@ -282,7 +287,7 @@ export default function CurriculumSection() {
                   {/* Topics */}
                   <div className="mb-6">
                     <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                      <BookOpen className="w-5 h-5 text-orange-600" />
+                      <BookOpen className="w-5 h-5 text-brand" />
                       Topics Covered
                     </h4>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -308,7 +313,7 @@ export default function CurriculumSection() {
                             key={idx}
                             className="flex items-start gap-3 bg-orange-50 p-3 rounded-lg border border-orange-200"
                           >
-                            <span className="text-orange-600 font-bold">→</span>
+                            <span className="text-brand font-bold">→</span>
                             <span className="text-slate-700">{project}</span>
                           </li>
                         ))}
@@ -326,18 +331,19 @@ export default function CurriculumSection() {
           <div className="flex flex-col items-center justify-center gap-3 text-center">
             <div className="flex flex-col items-center gap-3 sm:flex-row">
               <button
+                onClick={() => setIsEnrollOpen(true)}
                 className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
+                aria-label="Apply for the Comprehensive DS & AI program"
+              >
+                Apply Now
+              </button>
+              <button
+                onClick={() => setIsSyllabusOpen(true)}
+                className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-orange-200"
                 aria-label="Download detailed DS & AI syllabus"
               >
                 Download Detailed Syllabus (PDF)
               </button>
-              <Link
-                href="contact-us"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-orange-200"
-                aria-label="Apply for the Comprehensive DS & AI program"
-              >
-                Apply Now
-              </Link>
             </div>
             <p className="mx-auto mt-3 max-w-3xl text-center text-[11px] text-slate-500">
               *Module order may vary slightly by cohort to maximize outcomes.
@@ -345,6 +351,19 @@ export default function CurriculumSection() {
           </div>
         </div>
       </div>
+
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="Comprehensive Data Science & AI - Curriculum Section - Apply Now"
+        courseName={courseName}
+      />
+      <SyllabusDownloadModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+        source="Comprehensive Data Science & AI - Curriculum Section - Download Syllabus"
+        courseName={courseName}
+      />
     </section>
   );
 }

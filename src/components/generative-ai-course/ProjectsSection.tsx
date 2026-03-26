@@ -144,7 +144,7 @@ export default function ProjectsSection() {
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="relative py-8 md:py-10 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* Subtle futuristic backdrop (fine grid + soft radial glow; no heavy gradients) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -202,10 +202,10 @@ export default function ProjectsSection() {
                   <div className={["rounded-xl p-2 shrink-0 border", p.accent.border, p.accent.text].join(" ")} aria-hidden>
                     <Icon className="w-6 h-6" strokeWidth={2} />
                   </div>
-                  <h3 id={id} className="text-lg md:text-xl font-bold text-slate-900">
+                  <h2 id={id} className="text-lg md:text-xl font-bold text-slate-900">
                     <span className={p.accent.text}># </span>
                     {p.title}
-                  </h3>
+                  </h2>
                 </div>
 
                 <p className="mt-3 text-sm md:text-base text-slate-700">{p.desc}</p>

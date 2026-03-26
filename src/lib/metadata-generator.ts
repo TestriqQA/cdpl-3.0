@@ -6,11 +6,12 @@
  * This file provides a unified function to generate Next.js metadata objects
  * for all pages, ensuring consistency and following Next.js 15 best practices.
  * 
- * @version 2.0.0
- * @updated 2025-11-12
+ * @version 2.0.1
+ * @updated 2025-12-02
  */
 
 import type { Metadata } from 'next';
+import type { TemplateString } from 'next/dist/lib/metadata/types/metadata-types';
 import {
   SITE_CONFIG,
   SEO_DEFAULTS,
@@ -21,62 +22,83 @@ import {
   getImageUrl,
 } from './seo-config';
 
-// ============================================================================
-// METADATA GENERATOR INTERFACE
-// ============================================================================
+// Helper to abbreviate titles to max 60 chars smartly
+function abbreviateTitle(title: string): string {
+  const MAX_LENGTH = 60;
+  if (title.length <= MAX_LENGTH) return title;
+
+  // 1. Try removing "Best " prefix
+  let newTitle = title.replace(/^Best /, '');
+  if (newTitle.length <= MAX_LENGTH) return newTitle;
+
+  // 2. Try removing " | CDPL - Cinute Digital" suffix if present and replacing with " | CDPL"
+  newTitle = newTitle.replace(/ \| CDPL - Cinute Digital$/, ' | CDPL');
+  // Also handle " | CDPL Blog" -> " | CDPL" if that helps, or just allow it to be truncated properly.
+  // Ideally, we want to KEEP " | CDPL" or " | CDPL Blog" but shorten the rest.
+
+  // Normalization: If it ends with " | CDPL Blog", treat that as the suffix to preserve (or shorten to | CDPL)
+  let suffix = ' | CDPL';
+  if (newTitle.endsWith(' | CDPL Blog')) {
+    suffix = ' | CDPL Blog';
+  } else if (newTitle.endsWith(' - CDPL')) {
+    suffix = ' - CDPL';
+  }
+
+  if (newTitle.length <= MAX_LENGTH) return newTitle;
+
+  // 3. Try removing suffix, shortening content, then re-adding
+  const targetLength = MAX_LENGTH - suffix.length;
+
+  // Split into words and reconstruct
+  const words = newTitle.replace(suffix, '').split(' ');
+  let reduced = '';
+  for (const word of words) {
+    if ((reduced + (reduced ? ' ' : '') + word).length <= targetLength) {
+      reduced += (reduced ? ' ' : '') + word;
+    } else {
+      break;
+    }
+  }
+
+  // If we couldn't even fit one word + suffix (rare), just return truncated title
+  if (reduced.length === 0) return newTitle.substring(0, MAX_LENGTH - 3) + '...';
+
+  return reduced + suffix;
+}
 
 export interface MetadataGeneratorInput {
   // Basic SEO
-  title: string;
+  title: string | TemplateString;
   description: string;
   keywords?: string[];
-  
+
   // URL & Canonical
   url?: string;
   canonical?: string;
-  
+
   // Open Graph
   type?: 'website' | 'article';
   image?: string;
   imageAlt?: string;
   imageWidth?: number;
   imageHeight?: number;
-  
+
   // Article-specific (for blog posts)
   publishedTime?: string;
   modifiedTime?: string;
   author?: string;
   section?: string;
   tags?: string[];
-  
+
   // Robots
   noindex?: boolean;
   nofollow?: boolean;
-  
+
   // Additional
   locale?: string;
   alternateLocales?: string[];
 }
 
-// ============================================================================
-// MAIN METADATA GENERATOR
-// ============================================================================
-
-/**
- * Generate comprehensive Next.js metadata for any page
- * 
- * @param input - Metadata configuration
- * @returns Next.js Metadata object
- * 
- * @example
- * ```ts
- * export const metadata = generateMetadata({
- *   title: 'Software Testing Course',
- *   description: 'Learn software testing...',
- *   url: '/software-testing-course',
- * });
- * ```
- */
 export function generateMetadata(input: MetadataGeneratorInput): Metadata {
   const {
     title,
@@ -104,41 +126,47 @@ export function generateMetadata(input: MetadataGeneratorInput): Metadata {
   const fullUrl = getFullUrl(url);
   const canonicalUrl = canonical ? getFullUrl(canonical) : fullUrl;
   const ogImage = image ? getImageUrl(image) : getImageUrl(SITE_CONFIG.defaultOgImage);
-  const ogImageAlt = imageAlt || title;
-  
+
+  // Helper to get string title for OG/Twitter
+  let titleString = typeof title === 'string'
+    ? title
+    : (title as { absolute: string }).absolute || (title as { default: string }).default || '';
+
+  // Enforce 60 char limit
+  titleString = abbreviateTitle(titleString);
+
+  // Update the title object if it's a string, or just use the optimized string
+  const finalTitle = typeof title === 'string' ? titleString : title;
+
+  const ogImageAlt = imageAlt || titleString;
+
   // Merge keywords with defaults
   const allKeywords = [...new Set([...keywords, ...SEO_DEFAULTS.defaultKeywords])];
 
   return {
     // Basic Metadata
-    title,
+    title: finalTitle,
     description,
     keywords: allKeywords,
-    
+
     // Authors
     ...(author && {
       authors: [{ name: author }],
     }),
-    
+
     // Creator & Publisher
     creator: SITE_CONFIG.name,
     publisher: SITE_CONFIG.name,
-    
+
     // Category
     category: 'education',
-    
+
     // Canonical URL & Hreflang
+    // Removed explicit hreflang to avoid conflicts. Canonical is sufficient for single-language site.
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        'x-default': fullUrl,
-        'en': fullUrl,
-        'en-IN': fullUrl,
-        'en-US': fullUrl,
-        'en-GB': fullUrl,
-      },
     },
-    
+
     // Open Graph
     openGraph: {
       type,
@@ -146,7 +174,7 @@ export function generateMetadata(input: MetadataGeneratorInput): Metadata {
       alternateLocale: alternateLocales,
       url: fullUrl,
       siteName: SITE_CONFIG.name,
-      title,
+      title: titleString,
       description,
       images: [
         {
@@ -156,7 +184,7 @@ export function generateMetadata(input: MetadataGeneratorInput): Metadata {
           alt: ogImageAlt,
         },
       ],
-      
+
       // Article-specific fields
       ...(type === 'article' && {
         publishedTime,
@@ -166,17 +194,17 @@ export function generateMetadata(input: MetadataGeneratorInput): Metadata {
         authors: author ? [author] : undefined,
       }),
     },
-    
+
     // Twitter Card
     twitter: {
       card: 'summary_large_image',
       site: SOCIAL_PROFILES.twitterHandle,
       creator: SOCIAL_PROFILES.twitterHandle,
-      title,
+      title: titleString,
       description,
       images: [ogImage],
     },
-    
+
     // Robots
     robots: {
       index: !noindex,
@@ -189,14 +217,14 @@ export function generateMetadata(input: MetadataGeneratorInput): Metadata {
         'max-snippet': -1,
       },
     },
-    
+
     // Format Detection
     formatDetection: {
       email: false,
       address: false,
       telephone: false,
     },
-    
+
     // Verification
     verification: {
       google: VERIFICATION.google,
@@ -206,93 +234,22 @@ export function generateMetadata(input: MetadataGeneratorInput): Metadata {
 }
 
 // ============================================================================
-// SPECIALIZED METADATA GENERATORS
+// CONVENIENCE WRAPPERS
 // ============================================================================
 
-/**
- * Generate metadata for course pages
- */
-export function generateCourseMetadata(input: {
-  courseName: string;
-  description: string;
-  slug: string;
-  price?: number;
-  duration?: string;
-  image?: string;
-  rating?: number;
-  enrollmentCount?: number;
-}): Metadata {
-  const title = `${input.courseName} - Online Training Course | CDPL`;
-  const description = input.description;
-  
-  const keywords = [
-    input.courseName.toLowerCase(),
-    `${input.courseName.toLowerCase()} course`,
-    `${input.courseName.toLowerCase()} training`,
-    `${input.courseName.toLowerCase()} online`,
-    'placement support',
-    'industry experts',
-    'hands-on projects',
-  ];
-
-  return generateMetadata({
-    title,
-    description,
-    keywords,
-    url: `/${input.slug}`,
-    image: input.image,
-    type: 'website',
-  });
-}
-
-/**
- * Generate metadata for blog posts
- */
-export function generateBlogMetadata(input: {
-  title: string;
-  description: string;
-  slug: string;
-  author: string;
-  publishedDate: string;
-  modifiedDate?: string;
-  category?: string;
-  tags?: string[];
-  image?: string;
-}): Metadata {
-  const keywords = [
-    ...(input.tags || []),
-    input.category || 'blog',
-    'tech blog',
-    'career advice',
-  ];
-
-  return generateMetadata({
-    title: `${input.title} | CDPL Blog`,
-    description: input.description,
-    keywords,
-    url: `/blog/${input.slug}`,
-    type: 'article',
-    image: input.image,
-    author: input.author,
-    publishedTime: input.publishedDate,
-    modifiedTime: input.modifiedDate,
-    section: input.category,
-    tags: input.tags,
-  });
-}
-
-/**
- * Generate metadata for static pages (About, Contact, etc.)
- */
 export function generateStaticPageMetadata(input: {
-  title: string;
+  title: string | { absolute: string };
   description: string;
   url: string;
   keywords?: string[];
   image?: string;
 }): Metadata {
+  const title = typeof input.title === 'string'
+    ? `${input.title} | CDPL`
+    : input.title;
+
   return generateMetadata({
-    title: `${input.title} | CDPL`,
+    title,
     description: input.description,
     keywords: input.keywords,
     url: input.url,
@@ -301,17 +258,14 @@ export function generateStaticPageMetadata(input: {
   });
 }
 
-/**
- * Generate metadata for category/listing pages
- */
 export function generateCategoryMetadata(input: {
   categoryName: string;
   description: string;
   slug: string;
   itemCount?: number;
 }): Metadata {
-  const title = `${input.categoryName} Courses - ${input.itemCount ? `${input.itemCount}+ ` : ''}Training Programs | CDPL`;
-  
+  const title = `${input.categoryName} Courses - ${input.itemCount ? `${input.itemCount}+ ` : ''}Programs | CDPL`;
+
   const keywords = [
     `${input.categoryName.toLowerCase()} courses`,
     `${input.categoryName.toLowerCase()} training`,
@@ -329,14 +283,73 @@ export function generateCategoryMetadata(input: {
   });
 }
 
+export function generateEventMetadata(input: {
+  title: string;
+  description: string;
+  slug: string;
+  category: string;
+  organizer?: string;
+  location?: string;
+  image?: string;
+  keywords?: string[];
+}): Metadata {
+
+  const keywords = [
+    ...(input.keywords || []),
+    input.category,
+    input.title,
+    "CDPL event",
+    "corporate training",
+    "workshop",
+    input.organizer || "CDPL",
+    input.location || "",
+    "technical training",
+    "professional development",
+    "industry event",
+  ];
+
+  return generateMetadata({
+    title: `${input.title} - ${input.category} | CDPL`,
+    description: input.description,
+    keywords: keywords.filter(Boolean),
+    url: `/events/${input.slug}`,
+    image: input.image,
+    type: 'website',
+  });
+}
+
+export function generateBlogMetadata(input: {
+  title: string;
+  description: string;
+  slug: string;
+  author?: string;
+  publishedDate?: string;
+  modifiedDate?: string;
+  category?: string;
+  tags?: string[];
+  image?: string;
+}): Metadata {
+  const title = `${input.title} | CDPL Blog`;
+
+  return generateMetadata({
+    title,
+    description: input.description,
+    keywords: input.tags,
+    url: `/blog/${input.slug}`,
+    image: input.image,
+    type: 'article',
+    author: input.author,
+    publishedTime: input.publishedDate,
+    modifiedTime: input.modifiedDate,
+    section: input.category,
+    tags: input.tags,
+  });
+}
+
 // ============================================================================
 // AI CRAWLER META TAGS
 // ============================================================================
 
-/**
- * Generate AI-specific meta tags for better AI crawler understanding
- * These should be added to the <head> section
- */
 export function generateAIMetaTags(customSummary?: string, customKeyPoints?: string[]): Record<string, string> {
   return {
     'ai:summary': customSummary || AI_OPTIMIZATION.summary,
@@ -350,11 +363,7 @@ export function generateAIMetaTags(customSummary?: string, customKeyPoints?: str
 // HELPER FUNCTIONS
 // ============================================================================
 
-/**
- * Extract keywords from text content
- */
 export function extractKeywords(text: string, maxKeywords: number = 10): string[] {
-  // Remove common stop words
   const stopWords = new Set([
     'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for',
     'of', 'with', 'by', 'from', 'as', 'is', 'was', 'are', 'were', 'be',
@@ -363,38 +372,28 @@ export function extractKeywords(text: string, maxKeywords: number = 10): string[
     'that', 'these', 'those', 'i', 'you', 'he', 'she', 'it', 'we', 'they',
   ]);
 
-  // Extract words
   const words = text
     .toLowerCase()
     .replace(/[^\w\s]/g, ' ')
     .split(/\s+/)
     .filter(word => word.length > 3 && !stopWords.has(word));
 
-  // Count frequency
   const frequency: Record<string, number> = {};
   words.forEach(word => {
     frequency[word] = (frequency[word] || 0) + 1;
   });
 
-  // Sort by frequency and return top keywords
   return Object.entries(frequency)
     .sort((a, b) => b[1] - a[1])
     .slice(0, maxKeywords)
     .map(([word]) => word);
 }
 
-/**
- * Generate meta description from content
- */
 export function generateMetaDescription(content: string, maxLength: number = 160): string {
-  // Remove HTML tags if any
   const cleanContent = content.replace(/<[^>]*>/g, ' ');
-  
-  // Get first sentence or paragraph
   const sentences = cleanContent.split(/[.!?]+/);
   let description = sentences[0].trim();
-  
-  // If too short, add more sentences
+
   let i = 1;
   while (description.length < maxLength && i < sentences.length) {
     const nextSentence = sentences[i].trim();
@@ -405,50 +404,53 @@ export function generateMetaDescription(content: string, maxLength: number = 160
       break;
     }
   }
-  
-  // Truncate if too long
+
   if (description.length > maxLength) {
     description = description.substring(0, maxLength - 3) + '...';
   }
-  
+
   return description;
 }
 
-/**
- * Validate metadata for SEO best practices
- */
 export function validateMetadata(metadata: MetadataGeneratorInput): {
   isValid: boolean;
   warnings: string[];
 } {
   const warnings: string[] = [];
-  
-  // Title length check (50-60 characters is ideal)
-  if (metadata.title.length < 30) {
-    warnings.push('Title is too short. Aim for 50-60 characters.');
-  } else if (metadata.title.length > 60) {
-    warnings.push('Title is too long. Keep it under 60 characters.');
-  }
-  
-  // Description length check (150-160 characters is ideal)
-  if (metadata.description.length < 120) {
-    warnings.push('Description is too short. Aim for 150-160 characters.');
-  } else if (metadata.description.length > 160) {
-    warnings.push('Description is too long. Keep it under 160 characters.');
-  }
-  
-  // Keywords check
+
+  const titleLength = typeof metadata.title === 'string'
+    ? metadata.title.length
+    : (metadata.title as { absolute: string }).absolute?.length || 0;
+
+  if (titleLength < 30) warnings.push('Title is too short. Aim for 50-60 characters.');
+  else if (titleLength > 60) warnings.push('Title is too long. Keep it under 60 characters.');
+
+  if (metadata.description.length < 120) warnings.push('Description is too short. Aim for 150-160 characters.');
+  else if (metadata.description.length > 160) warnings.push('Description is too long. Keep it under 160 characters.');
+
   if (!metadata.keywords || metadata.keywords.length === 0) {
     warnings.push('No keywords provided. Add relevant keywords for better SEO.');
   }
-  
-  // Image check
+
   if (!metadata.image) {
     warnings.push('No custom image provided. Using default OG image.');
   }
-  
+
   return {
     isValid: warnings.length === 0,
     warnings,
   };
 }
+
+// ============================================================================
+// LEGACY / BACKWARD-COMPATIBILITY ALIASES
+// ============================================================================
+
+/**
+ * LEGACY ALIAS — DO NOT REMOVE
+ * 
+ * Used by 50+ existing course pages (e.g. manual-testing-course, selenium, python, etc.)
+ * All new pages should use `generateMetadata` directly.
+ * This alias ensures zero breaking changes during migration.
+ */
+export const generateCourseMetadata = generateMetadata;

@@ -1,17 +1,25 @@
-// src/app/blog/categories/page.tsx
 import { Metadata } from "next";
 import { BlogCategoryMenu } from "@/components/blog";
-import { getAllCategories, getAllPosts } from "@/data/BlogPostData";
 import Link from "next/link";
 import { FolderOpen, ArrowRight, FileText, TrendingUp } from "lucide-react";
 import BlogCategoriesClient from "./BlogCategoriesClient";
+import {
+  generateCollectionPageSchema,
+  generateItemListSchema,
+  generateBreadcrumbSchema
+} from "@/lib/schema-generators";
+import JsonLd from "@/components/JsonLd";
+import { client } from "@/sanity/client";
+import { CATEGORIES_WITH_COUNTS_QUERY, POSTS_QUERY } from "@/sanity/lib/queries";
+import { SanityCategory, SanityPost } from "@/sanity/types";
 
 // ============================================================================
 // SEO METADATA - ENHANCED
 // ============================================================================
 export const metadata: Metadata = {
-  title:
-    "Blog Categories | Software Testing, Web Development, AI & Machine Learning - Expert Tech Resources",
+  title: {
+    absolute: "Blog Categories - Explore Tech Topics | CDPL",
+  },
   description:
     "Browse our comprehensive blog by category. Discover 100+ expert articles organized by topic: software testing, web development, AI & machine learning, data science, DevOps, cloud computing, and more. Find the perfect resource for your learning journey.",
   keywords: [
@@ -84,120 +92,55 @@ export const metadata: Metadata = {
 // ============================================================================
 // CATEGORIES PAGE COMPONENT
 // ============================================================================
-export default function CategoriesPage() {
-  const categories = getAllCategories();
-  const allPosts = getAllPosts();
+export default async function CategoriesPage() {
+  // Fetch categories with counts and latest post from Sanity
+  // We also fetch all posts to calculate total count efficiently if needed, or rely on individual calls
+  // The query `CATEGORIES_WITH_COUNTS_QUERY` now includes 'count' and 'latestPost'
 
-  // Calculate posts per category
-  const categoriesWithCounts = categories
-    .map((category) => ({
-      ...category,
-      postCount: allPosts.filter((post) => post.categoryId === category.id).length,
-      latestPost: allPosts
-        .filter((post) => post.categoryId === category.id)
-        .sort(
-          (a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
-        )[0],
-    }))
-    .filter((cat) => cat.postCount > 0);
+  const categories = await client.fetch<(SanityCategory & { count: number, latestPost?: any })[]>(CATEGORIES_WITH_COUNTS_QUERY);
+  const allPosts = await client.fetch<SanityPost[]>(POSTS_QUERY); // Needed for total calculations/SEO
+
+  const categoriesWithCounts = categories.filter((cat) => cat.count > 0);
 
   const totalPosts = allPosts.length;
   const totalCategories = categoriesWithCounts.length;
 
   // ============================================================================
-  // ENHANCED STRUCTURED DATA (JSON-LD) – FULLY CLOSED
+  // ENHANCED STRUCTURED DATA (JSON-LD)
   // ============================================================================
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      // CollectionPage Schema
-      {
-        "@type": "CollectionPage",
-        "@id": "https://www.cinutedigital.com/blog/categories#collectionpage",
-        url: "https://www.cinutedigital.com/blog/categories",
-        name: "Blog Categories - Technology Topics",
-        description:
-          "Browse expert articles by category across software testing, web development, AI, data science, and more",
-        isPartOf: {
-          "@id": "https://www.cinutedigital.com/blog#blog",
-        },
-        mainEntity: {
-          "@id": "https://www.cinutedigital.com/blog/categories#itemlist",
-        },
-        breadcrumb: {
-          "@id": "https://www.cinutedigital.com/blog/categories#breadcrumb",
-        },
-      },
-      // ItemList Schema - All Categories
-      {
-        "@type": "ItemList",
-        "@id": "https://www.cinutedigital.com/blog/categories#itemlist",
-        name: "Blog Categories",
-        description: `${totalCategories} categories with ${totalPosts} articles`,
-        numberOfItems: totalCategories,
-        itemListElement: categoriesWithCounts.map((category, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          item: {
-            "@type": "Thing",
-            "@id": `https://www.cinutedigital.com/blog/category/${category.slug}`,
-            name: category.name,
-            description: category.description,
-            url: `https://www.cinutedigital.com/blog/category/${category.slug}`,
-            image: category.latestPost?.featuredImage,
-          },
-        })),
-      },
-      // BreadcrumbList Schema
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://www.cinutedigital.com/blog/categories#breadcrumb",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: "https://www.cinutedigital.com",
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Blog",
-            item: "https://www.cinutedigital.com/blog",
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: "Categories",
-            item: "https://www.cinutedigital.com/blog/categories",
-          },
-        ],
-      },
-      // WebPage Schema
-      {
-        "@type": "WebPage",
-        "@id": "https://www.cinutedigital.com/blog/categories",
-        url: "https://www.cinutedigital.com/blog/categories",
-        name: "Blog Categories",
-        description: "Browse articles by category",
-        isPartOf: {
-          "@id": "https://www.cinutedigital.com/#website",
-        },
-        breadcrumb: {
-          "@id": "https://www.cinutedigital.com/blog/categories#breadcrumb",
-        },
-        inLanguage: "en-US",
-      },
-    ],
-  };
+
+  // ItemList Schema
+  const itemListSchema = generateItemListSchema(
+    categoriesWithCounts.map((category) => ({
+      name: category.name,
+      url: `/blog/category/${category.slug}`,
+      description: category.description,
+      image: category.latestPost?.featuredImage,
+      type: 'Thing'
+    })),
+    'Blog Categories'
+  );
+
+  // CollectionPage Schema
+  const collectionPageSchema = generateCollectionPageSchema({
+    name: 'Blog Categories - Technology Topics',
+    description: 'Browse expert articles by category across software testing, web development, AI, data science, and more',
+    url: '/blog/categories',
+  });
+
+  // Breadcrumb Schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: 'Categories', url: '/blog/categories' },
+  ]);
 
   return (
     <>
       {/* Enhanced JSON-LD Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd id="categories-breadcrumb" schema={breadcrumbSchema} />
+      <JsonLd id="categories-collection" schema={collectionPageSchema} />
+      <JsonLd id="categories-itemlist" schema={itemListSchema} />
 
       {/* Semantic HTML Structure */}
       <div itemScope itemType="https://schema.org/CollectionPage">
@@ -286,18 +229,18 @@ export default function CategoriesPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {categoriesWithCounts.map((category) => (
                 <article
-                  key={category.id}
+                  key={category.slug}
                   className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group"
                   itemScope
                   itemType="https://schema.org/Thing"
                 >
                   <Link href={`/blog/category/${category.slug}`} className="block">
                     <div
-                      className={`p-6 ${category.color.bg} ${category.color.text} border-b-4 border-opacity-50`}
+                      className={`p-6 ${category.color?.bg || 'bg-gray-100'} ${category.color?.text || 'text-gray-800'} border-b-4 border-opacity-50`}
                     >
                       <div className="flex items-center justify-between mb-3">
                         <FolderOpen className="w-8 h-8" aria-hidden="true" />
-                        <span className="text-2xl font-bold">{category.postCount}</span>
+                        <span className="text-2xl font-bold">{category.count}</span>
                       </div>
                       <h3
                         className="text-2xl font-bold mb-2 group-hover:underline"
@@ -305,7 +248,7 @@ export default function CategoriesPage() {
                       >
                         {category.name}
                       </h3>
-                      <p className="text-sm opacity-90" itemProp="description">
+                      <p className="text-sm" itemProp="description">
                         {category.description}
                       </p>
                     </div>
@@ -330,8 +273,8 @@ export default function CategoriesPage() {
                         <div className="flex items-center gap-2 text-sm text-gray-600">
                           <FileText className="w-4 h-4" />
                           <span>
-                            {category.postCount}{" "}
-                            {category.postCount === 1 ? "Article" : "Articles"}
+                            {category.count}{" "}
+                            {category.count === 1 ? "Article" : "Articles"}
                           </span>
                         </div>
                         <span className="text-purple-600 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
@@ -397,3 +340,8 @@ export default function CategoriesPage() {
     </>
   );
 }
+
+// ============================================================================
+// SEO METADATA - ENHANCED
+// ============================================================================
+

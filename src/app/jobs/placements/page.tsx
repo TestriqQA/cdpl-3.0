@@ -2,13 +2,17 @@
 import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 import Script from "next/script";
-import { generateSEO } from "@/lib/seo";
+import { generateStaticPageMetadata } from "@/lib/metadata-generator";
+import { generateCollectionPageSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
+import JsonLd from "@/components/JsonLd";
 
 // ============================================================================
 // SEO METADATA - Enhanced for Placements Page
 // ============================================================================
-export const metadata: Metadata = generateSEO({
-    title: "Student Placements & Success Stories|Real Hiring Outcomes|CDPL",
+export const metadata: Metadata = generateStaticPageMetadata({
+    title: {
+        absolute: "Student Placements & Success Stories | CDPL",
+    },
     description: "Explore CDPL student placements across top companies like TCS, Infosys, Wipro, Accenture, and startups. See roles, packages (3-12 LPA), locations, partner companies, and success stories driven by our product-led, mentor-first training in QA, Data Science, Full-Stack, and DevOps.",
     keywords: [
         "CDPL placements",
@@ -27,7 +31,6 @@ export const metadata: Metadata = generateSEO({
     ],
     url: "/jobs/placements",
     image: "/og-images/our-placements-image.webp",
-    imageAlt: "CDPL Student Placements & Hiring Partners",
 });
 
 /** =====================================
@@ -44,10 +47,7 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 /** =========================
  * Dynamic Imports (Client)
  * ========================= */
-const PlacementsHeroSection = dynamic(
-    () => import("@/components/sections/PlacementsHeroSection"),
-    { ssr: true, loading: () => <SectionLoader label="Preparing hero…" /> }
-);
+import PlacementsHeroSection from "@/components/sections/PlacementsHeroSection";
 const PlacementsHighlightsStatsSection = dynamic(
     () => import("@/components/sections/PlacementsHighlightsStatsSection"),
     { ssr: true, loading: () => <SectionLoader label="Loading highlights…" /> }
@@ -77,28 +77,37 @@ const PlacementsFAQSection = dynamic(
     () => import("@/components/sections/PlacementsFAQSection"),
     { ssr: true, loading: () => <SectionLoader label="Loading FAQs…" /> }
 );
-const PlacementsNewsletterCTASection = dynamic(
-    () => import("@/components/sections/PlacementsNewsletterCTASection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading updates…" /> }
-);
+// const PlacementsNewsletterCTASection = dynamic(
+//     () => import("@/components/sections/PlacementsNewsletterCTASection"),
+//     { ssr: true, loading: () => <SectionLoader label="Loading updates…" /> }
+// );
 
 export default function PlacementsPage() {
 
+    // 1. Breadcrumb Schema
+    const breadcrumbSchema = generateBreadcrumbSchema([
+        { name: "Home", url: "/" },
+        { name: "Jobs", url: "/jobs" },
+        { name: "Placements", url: "/jobs/placements" },
+    ]);
+
+    // 2. CollectionPage Schema
+    const collectionPageSchema = generateCollectionPageSchema({
+        name: "Student Placements & Success Stories | CDPL",
+        description: "Explore CDPL student placements across top companies like TCS, Infosys, Wipro, Accenture, and startups.",
+        url: "/jobs/placements",
+    });
 
     return (
         <>
+            {/* Enhanced JSON-LD Structured Data */}
+            <JsonLd id="placements-breadcrumb" schema={breadcrumbSchema} />
+            <JsonLd id="placements-collection" schema={collectionPageSchema} />
 
             {/* Main Content - Semantic HTML Structure */}
-            <main 
+            <main
                 className="relative min-h-screen overflow-hidden"
-                itemScope 
-                itemType="https://schema.org/CollectionPage"
             >
-                {/* Hidden metadata for schema.org */}
-                <meta itemProp="name" content="CDPL Student Placements" />
-                <meta itemProp="description" content="Browse verified student placements, hiring partners, and success stories" />
-                <meta itemProp="url" content="https://www.cinutedigital.com/jobs/placements" />
-
                 {/* Soft, moving CDPL gradients */}
                 <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
                     <div className="absolute -top-24 left-1/2 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full blur-3xl opacity-30 mix-blend-soft-light bg-[conic-gradient(at_50%_50%,#ff8c00_0deg,#ffb558_90deg,#ffd19e_180deg,#7ee7ff_270deg,#9d7bff_360deg)] animate-[spin_30s_linear_infinite]" />
@@ -124,6 +133,9 @@ export default function PlacementsPage() {
                     data-scroll-target="placements-offers"
                 >
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <h2 className="mb-8 text-center text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl">
+                            Placed <span className="text-brand">Students</span>
+                        </h2>
                         <PlacementsOffersTickerSection />
                     </div>
                 </section>
@@ -177,9 +189,9 @@ export default function PlacementsPage() {
                     className="w-full pb-8 scroll-mt-[96px] md:scroll-mt-[104px] lg:scroll-mt-[112px]"
                     data-scroll-target="placements-newsletter"
                 >
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    {/* <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                         <PlacementsNewsletterCTASection />
-                    </div>
+                    </div> */}
                 </section>
 
                 {/* Data-attribute scroll manager (hash clicks + hash on load) */}

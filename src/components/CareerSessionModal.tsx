@@ -2,15 +2,34 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import LeadForm from "./forms/ManualCourseLeadForm";
 
 interface CareerSessionModalProps {
     isOpen: boolean;
     onClose: () => void;
+    source?: string;
+    courseName?: string;
+    title?: string;
+    subtitle?: string;
 }
 
-export default function CareerSessionModal({ isOpen, onClose }: CareerSessionModalProps) {
+export default function CareerSessionModal({
+    isOpen,
+    onClose,
+    source,
+    courseName = "QA",
+    title = "Get a Free Career Session",
+    subtitle
+}: CareerSessionModalProps) {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        return () => setMounted(false);
+    }, []);
+
     // Close on escape key
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
@@ -26,7 +45,9 @@ export default function CareerSessionModal({ isOpen, onClose }: CareerSessionMod
         };
     }, [isOpen, onClose]);
 
-    return (
+    if (!mounted) return null;
+
+    return createPortal(
         <AnimatePresence>
             {isOpen && (
                 <>
@@ -65,13 +86,15 @@ export default function CareerSessionModal({ isOpen, onClose }: CareerSessionMod
                             <LeadForm
                                 variant="default"
                                 className="shadow-2xl border-0"
-                                title="Get a Free Career Session"
-                                subtitle="Speak with our career counselors to plan your QA journey."
+                                title={title}
+                                subtitle={subtitle || `Speak with our career counselors to plan your ${courseName} journey.`}
+                                source={source}
                             />
                         </motion.div>
                     </div>
                 </>
             )}
-        </AnimatePresence>
+        </AnimatePresence>,
+        document.body
     );
 }

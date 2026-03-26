@@ -10,7 +10,7 @@ export default function CtaSection() {
         <section
             id="contact"
             aria-labelledby="cta-heading"
-            className="relative py-14 sm:py-16 md:py-20 overflow-hidden"
+            className="relative py-10 overflow-hidden"
         >
             {/* Futuristic, subtle backdrop (no heavy gradients) */}
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -28,11 +28,10 @@ export default function CtaSection() {
                         id="cta-heading"
                         className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
                     >
-                        Ready to become a <span className="text-green-700">Top&nbsp;1% Digital Marketer</span>?
+                        Enroll in the Best <span className="text-green-700">Digital Marketing Course</span> in Mumbai
                     </h2>
                     <p className="mt-3 text-sm sm:text-base text-slate-600">
-                        Enroll now for <strong>job-ready, AI-powered</strong> training with{' '}
-                        <strong>100% placement assistance</strong>, portfolio projects, and interview prep.
+                        Join 5,000+ successful learners at the #1 Digital Marketing institute in Mumbai. Get <strong>100% placement assistance</strong> and master AI-driven marketing today.
                     </p>
 
                     {/* trust badges — each with a different, simple color */}
@@ -56,7 +55,7 @@ export default function CtaSection() {
                 <div className="mx-auto mt-8 max-w-4xl rounded-2xl border border-slate-200 bg-white/80 p-6 shadow-[0_1px_0_0_rgba(15,23,42,0.06)] backdrop-blur">
                     {/* highlight row */}
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 text-left">
-                        <Highlight title="Next Cohort" value="Starts Soon" color="text-orange-600" />
+                        <Highlight title="Next Cohort" value="Starts Soon" color="text-brand" />
                         <Highlight title="Learning Hours" value="~80 hrs" color="text-sky-700" />
                         <Highlight title="Placement" value="100% Assistance" color="text-emerald-700" />
                     </div>
@@ -65,7 +64,7 @@ export default function CtaSection() {
                     <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center">
                         <Link
                             href="tel:+917888383788"
-                            className="group inline-flex w-full items-center justify-center rounded-xl border border-orange-600 bg-orange-600 px-4 py-3 text-base font-semibold text-white transition hover:bg-orange-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200 sm:w-auto"
+                            className="group inline-flex w-full items-center justify-center rounded-xl border border-brand bg-brand px-4 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200 sm:w-auto"
                             aria-label="Call Cinute Digital to enroll"
                         >
                             Call Now: +91&nbsp;788-83-83-788

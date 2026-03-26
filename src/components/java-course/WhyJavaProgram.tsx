@@ -2,8 +2,6 @@
 // Sleek, responsive, SEO-friendly "Why Java Program" section.
 // No repeated colors, minimal/futuristic accents, fully self-contained.
 
-"use client";
-
 import {
   Timer,
   FolderGit2,
@@ -13,7 +11,8 @@ import {
   ShieldCheck,
   Rocket,
 } from "lucide-react";
-import Link from "next/link";
+
+import { EnrollButton, SyllabusButton } from "./common/ActionButtons";
 
 type Pill = {
   icon: React.ComponentType<{ className?: string }>;
@@ -84,7 +83,7 @@ export default function WhyJavaProgram() {
     <section
       id="why-java-program"
       aria-labelledby="why-java-heading"
-      className="relative py-8 md:py-14 bg-white"
+      className="relative py-10 bg-white"
     >
       {/* subtle futuristic grid accent */}
       <div
@@ -169,24 +168,24 @@ export default function WhyJavaProgram() {
 
         {/* Micro-CTA row */}
         <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-4">
-          <Link
-            href="contact-us"
-            className="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
+          <EnrollButton
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
+            source="Java Programming Course Page - Why Java Program Section - Apply for Program"
           >
             Apply for the Program
             <Rocket className="ml-2 h-4 w-4" />
-          </Link>
-          <button
-            className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
+          </EnrollButton>
+          <SyllabusButton
+            className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
+            source="Java Programming Course Page - Why Java Program Section - Download Syllabus"
           >
             Download Syllabus (PDF)
-          </button>
+          </SyllabusButton>
         </div>
       </div>
 
-    
       {/* Assist crawlers that read visible content */}
-      <h1 className="sr-only">{title}</h1>
+      <p className="sr-only">{title}</p>
     </section>
   );
 }

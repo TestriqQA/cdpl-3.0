@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 import {
     Accordion,
@@ -6,7 +7,9 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/data-analytics-with-tableau/ui/accordion";
-import Link from "next/link";
+import EnrollModal from "../EnrollModal";
+import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import CareerSessionModal from "../CareerSessionModal";
 
 
 const curriculumModules = [
@@ -192,8 +195,14 @@ const curriculumModules = [
 
 
 export default function CurriculumSection() {
+    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
+    const [isCareerSessionOpen, setIsCareerSessionOpen] = useState(false);
+
+    const courseName = "Data Analytics & Visualization with Tableau";
+
     return (
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <section id="curriculum" className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-white to-purple-50">
             <div className="max-w-5xl mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-16">
@@ -204,7 +213,7 @@ export default function CurriculumSection() {
                         Master 12 modules covering everything from Tableau basics to advanced analytics and dashboard design
                     </p>
                     <div className="mt-6 inline-block bg-orange-100 px-6 py-3 rounded-full">
-                        <span className="text-orange-700 font-semibold">
+                        <span className="text-brand font-semibold">
                             Total Duration: 20 Hours
                         </span>
                     </div>
@@ -226,10 +235,10 @@ export default function CurriculumSection() {
                                     {/* Module Info */}
                                     <div className="flex-1">
                                         <div className="flex items-center gap-3 mb-1">
-                                            <span className="inline-block bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-bold">
+                                            <span className="inline-block bg-orange-100 text-gray-950 px-3 py-1 rounded-full text-xs font-bold">
                                                 Module {module.id}
                                             </span>
-                                            <span className="text-sm font-semibold text-gray-500">
+                                            <span className="text-sm font-semibold text-gray-900">
                                                 {module.duration}
                                             </span>
                                         </div>
@@ -240,7 +249,7 @@ export default function CurriculumSection() {
 
                                     {/* Topics Count */}
                                     <div className="text-right flex-shrink-0">
-                                        <div className="text-sm text-gray-500">
+                                        <div className="text-sm text-gray-900">
                                             {module.topics.length} topics
                                         </div>
                                     </div>
@@ -266,7 +275,7 @@ export default function CurriculumSection() {
                                                     key={topicIndex}
                                                     className="flex items-start gap-3 p-3 bg-white rounded-lg border border-gray-200"
                                                 >
-                                                    <span className="text-orange-600 font-bold flex-shrink-0">
+                                                    <span className="text-gray-950 font-bold flex-shrink-0">
                                                         ✓
                                                     </span>
                                                     <span className="text-gray-700 text-sm">{topic}</span>
@@ -333,15 +342,46 @@ export default function CurriculumSection() {
                 </div>
 
                 {/* CTA */}
-                <div className="mt-12 text-center">
-                    <p className="text-gray-600 mb-6">
-                        Ready to master Tableau? Enroll now and get started with our comprehensive curriculum.
-                    </p>
-                    <Link href="contact-us" className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-lg transition-all inline-block">
+                <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
+                    <button
+                        onClick={() => setIsSyllabusOpen(true)}
+                        className="inline-flex items-center justify-center rounded-xl border-2 border-[#ff8c00] bg-white px-6 py-3 text-base font-semibold text-brand shadow-sm transition hover:bg-orange-50 focus:outline-none focus:ring-4 focus:ring-orange-200 cursor-pointer"
+                    >
+                        Download Detailed Syllabus (PDF)
+                    </button>
+                    <button
+                        onClick={() => setIsCareerSessionOpen(true)}
+                        className="inline-flex items-center justify-center rounded-xl border-2 border-purple-600 bg-white px-6 py-3 text-base font-semibold text-purple-700 shadow-sm transition hover:bg-purple-50 focus:outline-none focus:ring-4 focus:ring-purple-200 cursor-pointer"
+                    >
+                        Book a Career Session
+                    </button>
+                    <button
+                        onClick={() => setIsEnrollOpen(true)}
+                        className="inline-flex items-center justify-center rounded-xl bg-brand px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-brand focus:outline-none focus:ring-4 focus:ring-orange-200 cursor-pointer"
+                    >
                         Enroll Now & Start Learning →
-                    </Link>
+                    </button>
                 </div>
             </div>
+
+            <EnrollModal
+                isOpen={isEnrollOpen}
+                onClose={() => setIsEnrollOpen(false)}
+                source="Tableau Course Page - Curriculum Section - Enroll Now"
+                courseName={courseName}
+            />
+            <SyllabusDownloadModal
+                isOpen={isSyllabusOpen}
+                onClose={() => setIsSyllabusOpen(false)}
+                source="Tableau Course Page - Curriculum Section - Download Syllabus"
+                courseName={courseName}
+            />
+            <CareerSessionModal
+                isOpen={isCareerSessionOpen}
+                onClose={() => setIsCareerSessionOpen(false)}
+                source="Tableau Course Page - Curriculum Section - Career Session"
+                courseName={courseName}
+            />
         </section>
     );
 }

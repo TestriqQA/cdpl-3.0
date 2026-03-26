@@ -1,11 +1,13 @@
 // src/components/sections/ServicesCTASection.tsx
 "use client";
 
-import { useCallback } from "react";
-import Link from "next/link";
+import { useCallback, useState } from "react";
+
 import { Sparkles, ArrowRight, CalendarCheck2, Building2, Star } from "lucide-react";
+import WorkshopRequestModal from "../WorkshopRequestModal";
 
 export default function ServicesCTASection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const scrollToGrid = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     document.getElementById("services-grid")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -95,17 +97,17 @@ export default function ServicesCTASection() {
 
             {/* CTAs */}
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link
-                href="/contact-us"
-                className="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-slate-900/30"
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="cursor-pointer inline-flex items-center justify-center rounded-2xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-slate-900/30"
               >
                 Schedule a Consultation
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </button>
 
               <button
                 onClick={scrollToGrid}
-                className="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-slate-300/50"
+                className="cursor-pointer inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-slate-300/50"
               >
                 Explore Programs
               </button>
@@ -113,6 +115,13 @@ export default function ServicesCTASection() {
           </div>
         </div>
       </div>
+      <WorkshopRequestModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        source="Services Page - CTA Section"
+        title="Schedule a Consultation"
+        subtitle="Tailored guidance for your organization"
+      />
     </section>
   );
 }

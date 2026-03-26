@@ -2,7 +2,8 @@
 
 import { Code2, Database, BarChart3 } from "lucide-react";
 import { courseData } from "@/components/ai-in-digital-marketing/courseData";
-import Link from "next/link";
+import { useState } from "react";
+import EnrollModal from "@/components/EnrollModal";
 
 interface ToolItem {
   name: string;
@@ -15,6 +16,8 @@ interface ToolCategory {
 }
 
 export default function ToolsSection() {
+  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
+  const courseName = "Master Digital Marketing & AI for Business Owners";
   const { tools } = courseData as { tools: ToolCategory[] };
 
   // Flatten tools
@@ -34,20 +37,17 @@ export default function ToolsSection() {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-10 bg-white">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900">
-            Tools & <span className="text-orange-600">Technologies</span>
+            Master <span className="text-brand">AI Tools & Technologies</span> for Business Automation
           </h2>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            Master industry-standard tools used by top digital marketers and
-            businesses worldwide. From <strong>AI tools</strong> to{" "}
-            <strong>analytics, automation, SEO, social media, and CRM
-              platforms</strong>, you&apos;ll work hands-on with the exact
-            marketing stack used in high-performing{" "}
-            <em>agencies, brands, and performance marketing teams</em>.
+            Master the <strong>business automation software</strong> and <strong>AI digital marketing</strong> tools that sustain
+            high-growth companies. From <strong>CRM integrations</strong> to <strong>chatbots</strong> and <strong>ad platforms</strong>,
+            learn the exact tech stack needed to run a lean, profitable marketing operation.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export default function ToolsSection() {
               </h3>
 
               {/* Category */}
-              <p className="text-xs font-semibold text-orange-600 mb-3">
+              <p className="text-xs font-semibold text-brand mb-3">
                 {tool.category}
               </p>
 
@@ -94,10 +94,7 @@ export default function ToolsSection() {
             <strong>AI + Digital Marketing tool stack</strong> that covers{" "}
             <strong>SEO, performance marketing, email automation, analytics,
               social media, and AI content generation</strong>. This ensures you
-            are job-ready for roles like{" "}
-            <em>Digital Marketing Specialist, Performance Marketer, SEO
-              Executive, Social Media Manager, Growth Marketer</em>, and{" "}
-            <em>Freelance Digital Marketer</em>.
+            can build <strong>marketing automation for business owners</strong> systems that work 24/7.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -229,35 +226,41 @@ export default function ToolsSection() {
             <p className="text-lg text-gray-900 font-semibold mb-4">
               Master all these tools and become a digital marketing expert
             </p>
-            <Link
-              href="/contact-us"
+            <button
+              onClick={() => setIsEnrollOpen(true)}
               className="
     inline-flex items-center justify-center
     w-full sm:w-auto
     px-4 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-3
     text-sm sm:text-base md:text-lg
-    bg-orange-600 hover:bg-orange-700
+    bg-brand hover:bg-brand
     text-white font-bold
     rounded-xl
     text-center
     shadow-lg hover:shadow-xl
     transition-all duration-300
+    cursor-pointer
     break-words
   "
             >
               Start Learning Today
-            </Link>
+            </button>
 
             <p className="mt-5 text-xs sm:text-sm text-slate-600 max-w-3xl mx-auto">
               Perfect for anyone looking for a{" "}
-              <em>job-oriented digital marketing course with tools</em>,{" "}
-              <em>AI marketing training</em>, or{" "}
-              <em>hands-on performance marketing program</em> that mirrors real
-              agency workflows.
+              <em>digital marketing course for business owners</em>,{" "}
+              <em>marketing automation training</em>, or{" "}
+              <em>hands-on AI marketing program</em> that solves real business problems.
             </p>
           </div>
         </div>
       </div>
+      <EnrollModal
+        isOpen={isEnrollOpen}
+        onClose={() => setIsEnrollOpen(false)}
+        source="AI Digital Marketing - Tools Section - Start Learning"
+        courseName={courseName}
+      />
     </section>
   );
 }

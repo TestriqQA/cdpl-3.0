@@ -28,9 +28,9 @@ export default function FixedOfferBar() {
           className="fixed top-0 left-0 right-0 z-40 hidden lg:block"
           style={{ marginTop: '64px' }} // Adjust based on your main nav height
         >
-          <div className="relative bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 px-4 py-3 shadow-lg">
+          <div className="relative bg-gradient-to-r from-brand via-orange-500 to-brand px-4 py-3 shadow-lg">
             {/* Animated gradient overlay */}
-            <div 
+            <div
               className="absolute inset-0 opacity-30"
               style={{
                 background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)',
@@ -42,11 +42,11 @@ export default function FixedOfferBar() {
               {/* Left Icon */}
               <div className="flex-shrink-0">
                 <motion.div
-                  animate={{ 
+                  animate={{
                     scale: [1, 1.1, 1],
                     rotate: [0, 5, -5, 0]
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 2,
                     repeat: Infinity,
                     ease: "easeInOut"
@@ -70,7 +70,7 @@ export default function FixedOfferBar() {
               <div className="flex-shrink-0">
                 <Link
                   href="/courses"
-                  className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-bold text-orange-600 shadow-md transition hover:bg-orange-50 hover:shadow-lg"
+                  className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-bold text-brand shadow-md transition hover:bg-orange-50 hover:shadow-lg"
                 >
                   Enroll Now
                   <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

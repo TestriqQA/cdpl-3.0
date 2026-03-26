@@ -1,16 +1,30 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Award, CheckCircle } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
+const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
+
+function SectionLoader({ label = "Loading..." }: { label?: string }) {
+  return (
+    <div className="flex items-center justify-center py-16">
+      <p className="text-gray-500">{label}</p>
+    </div>
+  );
+}
+
+import { useState } from 'react';
+
 export default function CtaSection() {
+  const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
 
 
   return (
     <section
       id="contact"
       aria-labelledby="cta-heading"
-      className="relative py-14 md:py-10"
+      className="relative py-10"
     >
       {/* Clean, light backdrop with subtle accents (no heavy/dark gradient) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -33,11 +47,10 @@ export default function CtaSection() {
             id="cta-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Become a <span className="text-ST">Full-Stack SDET</span>
+            Enroll in the Best <span className="text-ST">Selenium Course Near Me</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600">
-            Next cohort starts in <strong>2 days</strong>. Limited seats—mentor-led, project-driven learning with
-            <strong> 100% job assistance</strong>.
+            Master <strong>Selenium</strong>, <strong>Appium</strong>, and <strong>Cypress</strong> in our comprehensive <strong>SDET training</strong>. Next batch starts soon. Enroll now for <strong>100% placement support</strong>.
           </p>
 
           {/* Primary actions */}
@@ -58,12 +71,12 @@ export default function CtaSection() {
               <Mail className="mr-2 h-5 w-5" />
               Email Us
             </Link>
-            <Link
-              href="contact-us"
-              className="inline-flex items-center justify-center rounded-xl border-2 border-emerald-600 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
+            <button
+              onClick={() => setIsCareerModalOpen(true)}
+              className="cursor-pointer inline-flex items-center justify-center rounded-xl border-2 border-emerald-600 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
             >
               Book Free Demo
-            </Link>
+            </button>
           </div>
         </motion.div>
 
@@ -117,6 +130,12 @@ export default function CtaSection() {
           </div>
         </div>
       </div>
+
+      <CareerSessionModal
+        isOpen={isCareerModalOpen}
+        onClose={() => setIsCareerModalOpen(false)}
+        source="Advanced Software Testing Course Page - CTA Section - Book Free Demo"
+      />
 
     </section>
   );
