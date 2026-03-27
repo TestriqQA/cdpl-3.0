@@ -4336,6 +4336,384 @@ export function generateJobOpeningsPageAllSchemas(
 }
 
 // ============================================================================
+// AFFILIATE PROGRAM PAGE SCHEMA CONSOLIDATION (/cdpl-affiliate-program)
+// ============================================================================
+
+/**
+ * Generate a complete 8-point schema set for the Affiliate Program page.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ */
+export function generateAffiliateProgram8PointSchema(
+  data: {
+    faqs: { question: string; answer: string }[];
+    howToSteps: { name: string; text: string; url?: string }[];
+    benefits: string[];
+  }
+): WithContext<Record<string, unknown>>[] {
+  // 1. Organization Schema
+  const organizationSchema = generateOrganizationSchema();
+
+  // 2. WebSite Schema
+  const websiteSchema = generateWebsiteSchema();
+
+  // 3. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: "CDPL Affiliate Program: Earn 25% Commission",
+    description: "Join the CDPL Affiliate Program and earn recurring commissions by promoting tech training and services.",
+    url: "/cdpl-affiliate-program",
+    isPartOf: { "@id": getWebsiteId() },
+    about: { "@id": getOrganizationId() }
+  });
+
+  // 4. FAQPage Schema
+  const faqSchema = generateFAQSchema(data.faqs);
+
+  // 5. ItemList Schema (Program Benefits)
+  const itemListSchema = generateItemListSchema(
+    data.benefits.map(benefit => ({
+      name: benefit,
+      url: "/cdpl-affiliate-program",
+      type: "Thing"
+    })),
+    "CDPL Affiliate Program Benefits"
+  );
+
+  // 6. Review / Aggregate Rating Schema
+  const reviewAggregateSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
+
+  // 7. HowTo Schema (How to join)
+  const howToSchema = generateHowToSchema({
+    name: "How to Join CDPL Affiliate Program",
+    description: "Step-by-step guide to becoming a CDPL affiliate partner.",
+    steps: data.howToSteps
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    reviewAggregateSchema,
+    howToSchema,
+    generateSingleReviewSchema(),
+    siteNavigationSchema,
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// ISTQB REGISTRATION PAGE SCHEMA CONSOLIDATION (/istqb-registration)
+// ============================================================================
+
+/**
+ * Generate a complete 8-point schema set for the ISTQB Registration page.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ */
+export function generateIstqbRegistrationPageAllSchemas(
+  data: {
+    faqs: { question: string; answer: string }[];
+    howToSteps: { name: string; text: string; url?: string }[];
+    levels: string[];
+  }
+): WithContext<Record<string, unknown>>[] {
+  // 1. Organization Schema
+  const organizationSchema = generateOrganizationSchema();
+
+  // 2. WebSite Schema
+  const websiteSchema = generateWebsiteSchema();
+
+  // 3. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: "ISTQB Certification Registration | Testriq",
+    description: "Register for ISTQB Certification exams with Testriq. Comprehensive training and exam booking for Foundation, Advanced, and Agile levels.",
+    url: "/istqb-registration",
+    isPartOf: { "@id": getWebsiteId() },
+    about: { "@id": getOrganizationId() }
+  });
+
+  // 4. FAQPage Schema
+  const faqSchema = generateFAQSchema(data.faqs);
+
+  // 5. ItemList Schema (Certification Levels)
+  const itemListSchema = generateItemListSchema(
+    data.levels.map(level => ({
+      name: level,
+      url: "/istqb-registration",
+      type: "Thing"
+    })),
+    "Available ISTQB Certification Levels"
+  );
+
+  // 6. Review / Aggregate Rating Schema
+  const reviewAggregateSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
+
+  // 7. HowTo Schema (How to Register)
+  const howToSchema = generateHowToSchema({
+    name: "How to register for ISTQB Certification",
+    description: "Step-by-step process to book your ISTQB exam and start preparation.",
+    steps: data.howToSteps
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    reviewAggregateSchema,
+    howToSchema,
+    generateSingleReviewSchema(),
+    siteNavigationSchema,
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// MOCK TEST PAGE SCHEMA CONSOLIDATION (/mock-test)
+// ============================================================================
+
+/**
+ * Generate a complete 8-point schema set for the Mock Test landing page.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ */
+export function generateMockTestPageAllSchemas(
+  data: {
+    faqs: { question: string; answer: string }[];
+    howToSteps: { name: string; text: string; url?: string }[];
+    categories: string[];
+  }
+): WithContext<Record<string, unknown>>[] {
+  // 1. Organization Schema
+  const organizationSchema = generateOrganizationSchema();
+
+  // 2. WebSite Schema
+  const websiteSchema = generateWebsiteSchema();
+
+  // 3. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: "Free Online Mock Tests & Premium Assessments | Testriq",
+    description: "Validate your expertise with precision. Industry-standard simulation environments for Software Testing, Cloud, Security, and more.",
+    url: "/mock-test",
+    isPartOf: { "@id": getWebsiteId() },
+    about: { "@id": getOrganizationId() }
+  });
+
+  // 4. FAQPage Schema
+  const faqSchema = generateFAQSchema(data.faqs);
+
+  // 5. ItemList Schema (Mock Categories)
+  const itemListSchema = generateItemListSchema(
+    data.categories.map(cat => ({
+      name: cat,
+      url: "/mock-test",
+      type: "Thing"
+    })),
+    "Available Mock Test Domains"
+  );
+
+  // 6. Review / Aggregate Rating Schema
+  const reviewAggregateSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
+
+  // 7. HowTo Schema (How to start a test)
+  const howToSchema = generateHowToSchema({
+    name: "How to begin your mock assessment",
+    description: "Follow these simple steps to start your technical evaluation and get instant results.",
+    steps: data.howToSteps
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    reviewAggregateSchema,
+    howToSchema,
+    generateSingleReviewSchema(),
+    siteNavigationSchema,
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// REVIEWS PAGE SCHEMA CONSOLIDATION (/reviews)
+// ============================================================================
+
+/**
+ * Generate a complete 8-point schema set for the Reviews & Testimonials page.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ */
+export function generateReviewsPageAllSchemas(
+  reviews: { author: string; rating: number; text: string; role?: string }[]
+): WithContext<Record<string, unknown>>[] {
+  // 1. Organization Schema
+  const organizationSchema = generateOrganizationSchema();
+
+  // 2. WebSite Schema
+  const websiteSchema = generateWebsiteSchema();
+
+  // 3. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: "Authentic Student Reviews & Testimonials | CDPL",
+    description: "Read 5000+ authentic student reviews and success stories for CDPL's software testing, data science, and AI/ML courses.",
+    url: "/reviews",
+    isPartOf: { "@id": getWebsiteId() },
+    about: { "@id": getOrganizationId() }
+  });
+
+  // 4. FAQPage Schema
+  const faqSchema = generateFAQSchema([
+    {
+      question: "Are CDPL student reviews authentic?",
+      answer: "Yes, 100% of our reviews come from verified students who have completed our training programs and achieved career breakthroughs."
+    },
+    {
+      question: "How are CDPL reviews collected?",
+      answer: "We collect feedback through post-course surveys, placement success interviews, and direct student submissions to ensure transparency."
+    },
+    {
+      question: "What is CDPL's overall student rating?",
+      answer: `CDPL is proudly rated ${STATISTICS.rating}/5 based on ${STATISTICS.reviewCount} verified student reviews.`
+    }
+  ]);
+
+  // 5. ItemList Schema (Featured Success Stories)
+  const itemListSchema = generateItemListSchema(
+    reviews.slice(0, 15).map(r => ({
+      name: `Success Story: ${r.author} (${r.role || 'Student'})`,
+      description: r.text.substring(0, 150) + "...",
+      url: "/reviews",
+      type: "Review"
+    })),
+    "Top Student Success Stories and Testimonials"
+  );
+
+  // 6. Review / Aggregate Rating Schema
+  const reviewAggregateSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+    reviews: reviews.slice(0, 10).map(r => ({
+      author: r.author,
+      rating: r.rating,
+      text: r.text
+    }))
+  });
+
+  // 7. HowTo Schema (How to share your experience)
+  const howToSchema = generateHowToSchema({
+    name: "How to Share Your CDPL Success Story",
+    description: "Follow these simple steps to inspire others with your learning journey.",
+    steps: [
+      { name: "Complete Your Course", text: "Successfully finish your training modules and capstone projects." },
+      { name: "Submit Feedback", text: "Fill out the graduation survey sent to your registered email." },
+      { name: "Get Featured", text: "Selected testimonials are featured on our website to help future students." },
+    ]
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    reviewAggregateSchema,
+    howToSchema,
+    generateSingleReviewSchema(),
+    siteNavigationSchema,
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// CITY COURSE PAGE SCHEMA CONSOLIDATION (/{courses}-in-{city})
+// ============================================================================
+
+/**
+ * Generate a complete 8-point schema set for city-specific course pages.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Course (AggregateRating), HowTo, and SiteNavigation.
+ */
+export function generateCityCoursePageSchema(
+  courseInput: CourseSchemaInput,
+  faqs: { question: string; answer: string }[],
+  city: string
+): WithContext<Record<string, unknown>>[] {
+  // 1. Organization Schema
+  const organizationSchema = generateOrganizationSchema();
+
+  // 2. WebSite Schema
+  const websiteSchema = generateWebsiteSchema();
+
+  // 3. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: courseInput.name,
+    description: courseInput.description,
+    url: courseInput.url,
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() }
+  });
+
+  // 4. FAQPage Schema
+  const faqSchema = generateFAQSchema(faqs);
+
+  // 5. ItemList Schema (Course Features/Outcomes)
+  const itemListSchema = generateItemListSchema(
+    (courseInput.learningOutcomes || []).slice(0, 8).map(outcome => ({
+      name: outcome,
+      url: courseInput.url,
+      type: 'Course'
+    })),
+    `${courseInput.name} Key Features & Learning Outcomes`
+  );
+
+  // 6. Course Schema (contains Aggregate Rating)
+  const courseSchema = generateCourseSchema(courseInput);
+
+  // 7. HowTo Schema (Enrollment Steps)
+  const howToSchema = generateHowToSchema({
+    name: `How to Enroll for ${courseInput.name} in ${city}`,
+    description: `Follow these simple steps to start your ${courseInput.name} training in ${city}.`,
+    steps: [
+      { name: 'Inquire Now', text: 'Fill out the lead form on this page or call our counselor for course details and batch timings.' },
+      { name: 'Free Counseling', text: 'Speak with our expert career mentors to understand the curriculum and placement support.' },
+      { name: 'Enroll & Start', text: 'Secure your seat, access the learning portal, and begin your journey towards a high-paying tech career.' },
+    ]
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    courseSchema,
+    howToSchema,
+    generateSingleReviewSchema(),
+    siteNavigationSchema,
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
 // LOCATIONS WE SERVE PAGE - FULL 8-POINT SCHEMA CONSOLIDATION (/locations-we-serve)
 // ============================================================================
 

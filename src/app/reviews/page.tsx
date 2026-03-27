@@ -4,7 +4,8 @@ import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import {
   generateReviewSchema,
   generateBreadcrumbSchema,
-  generateWebPageSchema
+  generateWebPageSchema,
+  generateReviewsPageAllSchemas
 } from "@/lib/schema-generators";
 import { STATISTICS } from "@/lib/seo-config";
 import { getAllReviews } from "src/data/reviews/reviewsData";
@@ -72,42 +73,28 @@ export default function Page() {
   // 1. Get all reviews data
   const allReviews = getAllReviews();
 
-  // 2. Prepare data for schema
-  const reviewSchemaData = {
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-    reviews: allReviews.slice(0, 10).map(review => ({
-      author: review.name,
-      rating: review.rating,
-      text: review.quote,
-      // datePublished is optional, but good to include if available in data
-      // For now, we'll omit it as it's not in the source data
-    })),
-  };
+  // 2. Prepare data for schema consolidation
+  const reviewSchemaInput = allReviews.map(review => ({
+    author: review.name,
+    rating: review.rating,
+    text: review.quote,
+    role: review.role
+  }));
 
-  // 3. Generate the schemas
-  const reviewSchema = generateReviewSchema(reviewSchemaData);
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
+  const breadcrumbItems = [
     { name: "Home", url: "/" },
     { name: "Reviews", url: "/reviews" },
-  ]);
+  ];
 
-  const webPageSchema = generateWebPageSchema({
-    name: "Authentic Student Reviews & Testimonials | CDPL",
-    description: "Read 5000+ authentic student reviews and success stories for CDPL's Software Testing, Data Science, and AI/ML courses.",
-    url: "/reviews",
-    isPartOf: {
-      "@id": "https://www.cinutedigital.com/#website"
-    }
-  });
+  const consolidatedSchemas = generateReviewsPageAllSchemas(reviewSchemaInput);
 
   return (
     <div className="bg-white text-neutral-900">
       {/* JSON-LD SCHEMA INJECTION */}
-      <JsonLd id="review-schema" schema={reviewSchema} />
-      <JsonLd id="reviews-breadcrumb" schema={breadcrumbSchema} />
-      <JsonLd id="reviews-webpage" schema={webPageSchema} />
+      <JsonLd id="reviews-breadcrumb" schema={generateBreadcrumbSchema(breadcrumbItems)} />
+      {consolidatedSchemas.map((schema, index) => (
+        <JsonLd key={`reviews-schema-${index}`} id={`reviews-schema-${index}`} schema={schema} />
+      ))}
 
       {/* Sections (unchanged) */}
       <ReviewsHeroSection />

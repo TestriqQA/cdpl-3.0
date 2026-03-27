@@ -80,6 +80,17 @@ const COUNTRY_BY_STATE: Record<string, "India" | "UAE"> = {
 /** Extract course type from slug */
 function getCourseType(slug: string): string | undefined {
   const lower = slug.toLowerCase();
+
+  // AI-specific patterns (prioritize over general data-science)
+  if (
+    lower.includes("artificial-intelligence") ||
+    lower.includes("machine-learning") ||
+    lower.includes("genai") ||
+    lower.includes("generative-ai")
+  ) {
+    return "ai";
+  }
+
   if (lower.includes("data-science") || lower.includes("ai-ml-bi") || lower.includes("business-intelligence") || lower.includes("data-analytics")) return "data-science";
   if (lower.includes("software-testing")) return "software-testing";
   if (lower.includes("digital-marketing") || lower.includes("general")) return "digital-marketing";

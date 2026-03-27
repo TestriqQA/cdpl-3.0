@@ -4,7 +4,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { ChevronDown, ChevronUp, BookOpen, Code, Search, Target } from "lucide-react";
+import { ChevronDown, ChevronUp, BookOpen, Code, Search, Target, Brain } from "lucide-react";
 
 type City = {
   name: string;
@@ -29,6 +29,11 @@ const COURSE_CONFIG: Record<
   string,
   { label: string; icon: ReactNode; color: string }
 > = {
+  ai: {
+    label: "Artificial Intelligence",
+    icon: <Brain className="w-3.5 h-3.5" />,
+    color: "bg-rose-100 text-rose-700 ring-rose-300",
+  },
   "data-science": {
     label: "Data Science",
     icon: <BookOpen className="w-3.5 h-3.5" />,

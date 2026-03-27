@@ -31,7 +31,7 @@ const ISTQB_LEVELS = [
     "ISTQB Certified Tester Advanced Level Technical Test Analyst (CTAL-TTA)"
 ];
 
-const CustomInput = React.forwardRef(({ ...props }: any, ref) => (
+const CustomInput = React.forwardRef(({ controlStyle, ...props }: any, ref) => (
     <input {...props} ref={ref} className="w-full py-3 px-3 outline-none bg-transparent" required aria-label="Phone Number" />
 ));
 CustomInput.displayName = 'CustomInput';

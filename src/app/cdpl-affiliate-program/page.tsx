@@ -3,10 +3,7 @@ import dynamic from "next/dynamic";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import {
   generateBreadcrumbSchema,
-  generateOrganizationSchema,
-  generateWebPageSchema,
-  generateHowToSchema,
-  generateFAQSchema
+  generateAffiliateProgram8PointSchema
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
@@ -97,75 +94,7 @@ export default async function AffiliateProgramPage() {
     { name: "Affiliate Program", url: "/cdpl-affiliate-program" },
   ]);
 
-  // Note: generateOrganizationSchema returns a full schema object. 
-  // We can use it directly or if we want to customize it for this page we might need to adjust.
-  // For now, using the standard one is good for consistency.
-  const organizationSchema = generateOrganizationSchema();
-
-  // We need a specific WebPage schema generator or construct it manually if not available.
-  // Checking schema-generators.ts, we have generateWebsiteSchema but not generateWebPageSchema.
-  // Let's construct it manually using the pattern or add generateWebPageSchema if needed.
-  // Wait, I saw generateWebPageSchema in the imports I added above. 
-  // Let me check if I actually added it to schema-generators.ts. 
-  // I did NOT add generateWebPageSchema in the previous steps. I only added generateHowToSchema.
-  // So I should construct it manually here or use a generic one.
-  // The existing code had a manual webPageSchema. I will keep it but clean it up or use a helper if possible.
-  // Actually, I'll stick to the manual construction for WebPage to keep it simple for now, 
-  // but use the generators for others.
-
-  const webPageSchema = generateWebPageSchema({
-    name: "CDPL Affiliate Program",
-    url: "/cdpl-affiliate-program",
-    description:
-      "Join the CDPL Affiliate Program to earn commissions by promoting CDPL training, developer events, and services with transparent tracking and fast payouts.",
-    isPartOf: {
-      "@id": "https://www.cinutedigital.com/#website"
-    },
-    about: {
-      "@type": "Offer",
-      name: "CDPL Affiliate Commission",
-      description:
-        "Performance-based affiliate commissions across training, events, and services.",
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        priceCurrency: "INR",
-        price: "15–25% commission by tier",
-      },
-      availabilityStarts: "2020-01-01",
-      eligibleRegion: "Worldwide",
-    },
-  });
-
-  const howToSchema = generateHowToSchema({
-    name: "How to Join CDPL Affiliate Program",
-    description: "Step-by-step guide to becoming a CDPL affiliate partner and earning commissions",
-    totalTime: "PT10M",
-    steps: [
-      {
-        name: "Sign Up",
-        text: "Complete the affiliate application form with your details and promotional channels",
-        url: "/cdpl-affiliate-program#apply",
-      },
-      {
-        name: "Get Approved",
-        text: "Our team reviews your application and approves qualified partners within 2-3 business days",
-      },
-      {
-        name: "Promote CDPL",
-        text: "Use your unique affiliate links to promote CDPL courses, events, and services on your platforms",
-      },
-      {
-        name: "Earn Commissions",
-        text: "Earn 15-25% recurring commissions on every successful referral with transparent tracking",
-      },
-      {
-        name: "Get Paid",
-        text: "Receive fast payouts monthly via bank transfer or preferred payment method",
-      },
-    ]
-  });
-
-  const faqSchema = generateFAQSchema([
+  const affiliateFaqs = [
     {
       question: "How much commission can I earn as a CDPL affiliate?",
       answer: "CDPL affiliates earn between 15-25% commission based on their tier level. Commission rates increase as you refer more students and generate higher revenue.",
@@ -186,7 +115,46 @@ export default async function AffiliateProgramPage() {
       question: "Do I need a website to become an affiliate?",
       answer: "While having a website helps, it's not mandatory. You can promote CDPL through social media, YouTube, email lists, or other digital channels.",
     },
-  ]);
+  ];
+
+  const affiliateHowToSteps = [
+    {
+      name: "Sign Up",
+      text: "Complete the affiliate application form with your details and promotional channels",
+      url: "/cdpl-affiliate-program#apply",
+    },
+    {
+      name: "Get Approved",
+      text: "Our team reviews your application and approves qualified partners within 2-3 business days",
+    },
+    {
+      name: "Promote CDPL",
+      text: "Use your unique affiliate links to promote CDPL courses, events, and services on your platforms",
+    },
+    {
+      name: "Earn Commissions",
+      text: "Earn 15-25% recurring commissions on every successful referral with transparent tracking",
+    },
+    {
+      name: "Get Paid",
+      text: "Receive fast payouts monthly via bank transfer or preferred payment method",
+    },
+  ];
+
+  const affiliateBenefits = [
+    "Recurring Commissions (15-25%)",
+    "Transparent Real-time Tracking",
+    "Dedicated Partner Support",
+    "Marketing Collateral & Assets",
+    "Early Access to New Courses",
+    "Networking with Tech Industry Leaders"
+  ];
+
+  const consolidatedSchemas = generateAffiliateProgram8PointSchema({
+    faqs: affiliateFaqs,
+    howToSteps: affiliateHowToSteps,
+    benefits: affiliateBenefits
+  });
 
   return (
     <main
@@ -194,10 +162,9 @@ export default async function AffiliateProgramPage() {
     >
       {/* Structured data for SEO */}
       <JsonLd schema={breadcrumbSchema} id="affiliate-breadcrumb" />
-      <JsonLd schema={organizationSchema} id="affiliate-org" />
-      <JsonLd schema={webPageSchema} id="affiliate-webpage" />
-      <JsonLd schema={howToSchema} id="affiliate-howto" />
-      <JsonLd schema={faqSchema} id="affiliate-faq" />
+      {consolidatedSchemas.map((schema, index) => (
+        <JsonLd key={`affiliate-schema-${index}`} id={`affiliate-schema-${index}`} schema={schema} />
+      ))}
 
       {/* Page background accents */}
       <div

@@ -2,15 +2,48 @@
 import { Home, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import IstqbRegistrationContainer from '@/components/istqb-registration/IstqbRegistrationContainer';
+import { generateIstqbRegistrationPageAllSchemas } from '@/lib/schema-generators';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata = {
     title: 'ISTQB Registration | Testriq',
-    description: 'Register for ISTQB Certification with Testriq.',
+    description: 'Register for ISTQB Certification with Testriq. Global recognition, lifetime validity, and expert guidance.',
 };
 
 export default function IstqbRegistrationPage() {
+    const istqbSchemas = generateIstqbRegistrationPageAllSchemas({
+        faqs: [
+            {
+                question: "Why is ISTQB the best testing certification?",
+                answer: "ISTQB is recognized in 130+ countries, aligns with international best practices, and is considered the gold standard by top companies worldwide."
+            },
+            {
+                question: "Does ISTQB certification expire?",
+                answer: "No, ISTQB certification has lifetime validity and never expires, meaning no renewal fees or re-certification is required."
+            },
+            {
+                question: "What levels of ISTQB certification are available?",
+                answer: "CDPL offers Foundation Level, Advanced Level, and Agile Foundation Extension certifications to support your career growth at every stage."
+            }
+        ],
+        howToSteps: [
+            { name: "Registration", text: "Fill out the simple registration form with your basic details." },
+            { name: "Consultation", text: "Book a free 3:30 PM consultation to get expert guidance on your certification path." },
+            { name: "Exam Selection", text: "Choose your certification level and preferred exam date." },
+            { name: "Preparation", text: "Access industry-aligned training materials and start your certification journey." }
+        ],
+        levels: [
+            "ISTQB Foundation Level",
+            "ISTQB Advanced Level",
+            "ISTQB Agile Foundation Extension"
+        ]
+    });
+
     return (
         <main className="min-h-screen bg-slate-50 relative font-sans">
+            {istqbSchemas.map((schema, index) => (
+                <JsonLd key={`istqb-schema-${index}`} id={`istqb-schema-${index}`} schema={schema} />
+            ))}
             {/* Background Ambience - Static Server Render */}
             <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
                 <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-orange-200/20 rounded-full blur-[120px]" />

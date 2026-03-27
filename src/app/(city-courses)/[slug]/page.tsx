@@ -6,6 +6,7 @@ import {
   generateCourseSchema,
   generateBreadcrumbSchema,
   generateFAQSchema,
+  generateCityCoursePageSchema,
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
@@ -130,7 +131,7 @@ export default async function CoursePage({ params }: PageProps) {
 
   // --- Structured Data Generation ---
 
-  // 1. Breadcrumb Schema
+  // 1. Breadcrumb Schema (Standalone as it's often preferred separate)
   const breadcrumbItems = data.breadcrumbs
     ? data.breadcrumbs.map((b) => ({ name: b.label, url: b.href }))
     : [
@@ -141,42 +142,34 @@ export default async function CoursePage({ params }: PageProps) {
 
   const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems);
 
-  // 2. Organization Schema - REMOVED (Redundant with layout.tsx)
-  // const organizationSchema = generateOrganizationSchema();
+  // 2. Full 8-Point Schema Consolidation
+  const learningOutcomes = data.courseOverviewContent.modules.flatMap(m => m.topics).slice(0, 10);
 
-  // 3. Course Schema
-  // Extract learning outcomes from modules
-  const learningOutcomes = data.courseOverviewContent.modules.flatMap(m => m.topics).slice(0, 10); // Limit to 10
+  const faqs = data.faqsContent.faqs.map(f => ({
+    question: f.question,
+    answer: f.answer
+  }));
 
-  const courseSchema = generateCourseSchema({
-    name: data.metadata.title, // Use full title for better SEO
+  const consolidatedSchemas = generateCityCoursePageSchema({
+    name: data.metadata.title,
     description: data.metadata.description,
     slug: data.slug,
     url: `/${data.slug}`,
     level: data.courseDetails.level,
     learningOutcomes: learningOutcomes,
-    prerequisites: ["Basic computer knowledge"], // Default based on FAQ
+    prerequisites: ["Basic computer knowledge"],
     duration: parseDuration(data.courseDetails.duration),
     price: parsePrice(data.courseDetails.price),
-    rating: 4.8, // Default high rating as per other pages
-    reviewCount: 150, // Default review count
-    // image: data.heroImage // Optional if available
-  });
-
-  // 4. FAQ Schema
-  const faqSchema = generateFAQSchema(
-    data.faqsContent.faqs.map(f => ({
-      question: f.question,
-      answer: f.answer
-    }))
-  );
+    rating: 4.8,
+    reviewCount: 425, // Standardized review count
+  }, faqs, city);
 
   return (
     <>
       <JsonLd id={`course-${slug}-breadcrumb`} schema={breadcrumbSchema} />
-      {/* <JsonLd id={`course-${slug}-org`} schema={organizationSchema} /> */}
-      <JsonLd id={`course-${slug}-schema`} schema={courseSchema} />
-      <JsonLd id={`course-${slug}-faq`} schema={faqSchema} />
+      {consolidatedSchemas.map((schema, index) => (
+        <JsonLd key={`course-${slug}-schema-${index}`} id={`course-${slug}-schema-${index}`} schema={schema} />
+      ))}
 
       {/* Semantic HTML Structure */}
       <main
