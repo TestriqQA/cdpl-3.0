@@ -266,7 +266,6 @@ export function generateEnhancedCourseSchema(course: {
         ratingValue: course.rating,
         reviewCount: course.reviewCount,
         bestRating: 5,
-        worstRating: 1,
       },
     }),
   };

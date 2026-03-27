@@ -107,9 +107,9 @@ export const SOCIAL_PROFILES = {
 
 export const STATISTICS = {
   studentsPlaced: 5000,
-  rating: 4.8,
+  rating: 4.9,
   maxRating: 5,
-  reviewCount: 5000,
+  reviewCount: 425,
   yearsOfExperience: 15,
   realWorldProjects: 90,
   hiringPartners: 50,
