@@ -14,7 +14,7 @@ const FaqSection = dynamic(() => import('@/components/data-visualization-in-r-pr
 const CtaSection = dynamic(() => import('@/components/data-visualization-in-r-programming/CtaSection').then(mod => mod.CtaSection), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
 import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateDataVisualizationInRProgrammingCoursePageSchema } from "@/lib/schema-generators";
 import { R_DATA_VIS_FAQS, R_DATA_VIS_REVIEW_DATA } from "@/data/rDataVisData";
 import dynamic from "next/dynamic";
 
@@ -46,36 +46,35 @@ export const metadata = generateMetadata({
 });
 
 export default function Home() {
-    const courseSchema = generateCourseSchema({
-        name: "Machine Learning and Data Visualization using R Programming",
-        description: "Master Machine Learning algorithms and advanced Data Visualization using R Programming. 20-hour Master Program with 100% job assistance.",
-        url: '/courses/ds-ml-courses/data-visualization-in-r-programming',
-        slug: "data-visualization-in-r-programming",
-        price: 25000,
-        currency: "INR",
-        duration: "P1M", // ~4 weeks
-        instructor: "Expert R Data Scientists",
-        rating: R_DATA_VIS_REVIEW_DATA.ratingValue,
-        reviewCount: R_DATA_VIS_REVIEW_DATA.reviewCount,
-        image: "/og-images/data-visualization-in-r-programming.jpg",
-    });
-
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: "Courses", url: "/courses" },
-    { name: "Data Science & ML Courses", url: "/courses/ds-ml-courses" },
-        { name: "R Programming Master Program", url: '/courses/ds-ml-courses/data-visualization-in-r-programming' },
-    ]);
-
-    const faqSchema = generateFAQSchema(R_DATA_VIS_FAQS);
+    const schemas = generateDataVisualizationInRProgrammingCoursePageSchema(
+        {
+            name: "Machine Learning and Data Visualization using R Programming",
+            description: "Master Machine Learning algorithms and advanced Data Visualization using R Programming. 20-hour Master Program with 100% job assistance.",
+            url: '/courses/ds-ml-courses/data-visualization-in-r-programming',
+            slug: "data-visualization-in-r-programming",
+            price: 25000,
+            currency: "INR",
+            duration: "P1M", // ~4 weeks
+            instructor: "Expert R Data Scientists",
+            rating: R_DATA_VIS_REVIEW_DATA.ratingValue,
+            reviewCount: R_DATA_VIS_REVIEW_DATA.reviewCount,
+            image: "/og-images/data-visualization-in-r-programming.jpg",
+        },
+        R_DATA_VIS_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+        [
+            { name: "Home", url: "/" },
+            { name: "Courses", url: "/courses" },
+            { name: "Data Science & ML Courses", url: "/courses/ds-ml-courses" },
+            { name: "R Programming Master Program", url: '/courses/ds-ml-courses/data-visualization-in-r-programming' },
+        ]
+    );
 
     return (
         <div className="min-h-screen bg-gray-50 text-gray-800 antialiased">
-
             <main>
-                <JsonLd id="course-schema" schema={courseSchema} />
-                <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-                <JsonLd id="faq-schema" schema={faqSchema} />
+                {schemas.map((schema, index) => (
+                    <JsonLd key={`data-vis-r-schema-${index}`} id={`data-vis-r-schema-${index}`} schema={schema} />
+                ))}
                 {/* Section 1: Hero and Form (Layout replication) */}
                 <HeroSection />
 
@@ -116,7 +115,6 @@ export default function Home() {
                 {/* Section 12: Final Call to Action */}
                 <section id="contact"><CtaSection /></section>
             </main>
-
         </div>
     );
 }

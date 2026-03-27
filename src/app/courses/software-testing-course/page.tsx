@@ -11,7 +11,7 @@ import {
   FAQSection
 } from "@/app/courses/software-testing-course/server-sections";
 import JsonLd from "@/components/JsonLd";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateSoftwareTestingCategoryPageSchema } from "@/lib/schema-generators";
 import { softwareTestingFaqs } from "@/components/software-testing-course/data/data";
 import { generateMetadata } from '@/lib/metadata-generator';
 import { Metadata } from 'next';
@@ -41,34 +41,31 @@ export const metadata: Metadata = generateMetadata({
 
 
 export default function SoftwareTestingPage() {
-  const courseSchema = generateCourseSchema({
-    name: "Software Testing Full Course (Manual + Automation)",
-    description: pageDescription,
-    url: '/courses/software-testing-course',
-    slug: "software-testing-course",
-    level: "Beginner to Advanced",
-    duration: "P4M", // 4 Months
-    rating: 4.9,
-    reviewCount: 1250,
-    instructor: "Industry Experts",
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "Software Testing Course", url: '/courses/software-testing-course' },
-  ]);
-
-  const faqSchema = generateFAQSchema(softwareTestingFaqs.map(f => ({
-    question: f.question,
-    answer: f.answer
-  })));
+  const schemas = generateSoftwareTestingCategoryPageSchema(
+    {
+      name: "Software Testing Full Course (Manual + Automation)",
+      description: pageDescription,
+      url: '/courses/software-testing-course',
+      slug: "software-testing-course",
+      level: "Beginner to Advanced",
+      duration: "P4M", // 4 Months
+      rating: 4.9,
+      reviewCount: 1250,
+      instructor: "Industry Experts",
+    },
+    softwareTestingFaqs.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "Software Testing Course", url: '/courses/software-testing-course' },
+    ]
+  );
 
   return (
     <main className="bg-white min-h-screen">
-      <JsonLd id="software-testing-course-schema" schema={courseSchema} />
-      <JsonLd id="software-testing-breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="software-testing-faq-schema" schema={faqSchema} />
+      {schemas.map((schema, index) => (
+        <JsonLd key={index} id={`software-testing-schema-${index}`} schema={schema} />
+      ))}
 
 
       <HeroSection />

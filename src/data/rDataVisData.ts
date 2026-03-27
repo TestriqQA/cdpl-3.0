@@ -1,4 +1,4 @@
-import { type QA } from "@/types/faq";
+import { type QA } from "../types/faq";
 
 export const R_DATA_VIS_FAQS: QA[] = [
     {

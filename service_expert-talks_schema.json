@@ -1,0 +1,481 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": "https://www.cinutedigital.com/#organization",
+    "name": "CDPL - Cinute Digital",
+    "legalName": "Cinute Digital Private Limited",
+    "alternateName": "CDPL",
+    "url": "https://www.cinutedigital.com",
+    "logo": {
+      "@type": "ImageObject",
+      "@id": "https://www.cinutedigital.com/#logo",
+      "url": "https://www.cinutedigital.com/cdpl-logo.png",
+      "width": 200,
+      "height": 60,
+      "caption": "CDPL - Cinute Digital"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://www.cinutedigital.com/og-images/home-page-og.png",
+      "width": 1200,
+      "height": 630
+    },
+    "description": "Leading EdTech company providing industry-focused training in Software Testing, Data Science, AI/ML, and Digital Marketing with 100% placement support.",
+    "slogan": "Transform Your Career with Industry-Ready Skills",
+    "telephone": "+918488988984",
+    "email": "contact@cinutedigital.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road",
+      "addressLocality": "Mira Bhayandar, Mumbai",
+      "addressRegion": "Maharashtra",
+      "postalCode": "401107",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.29403967980817,
+      "longitude": 72.87115175396495
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "customer service",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ],
+        "contactOption": "TollFree"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "admissions",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ]
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "technical support",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ]
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/cinutedigital",
+      "https://www.linkedin.com/company/cinute-digital/",
+      "https://twitter.com/cinutedigital",
+      "@cinutedigital",
+      "https://www.instagram.com/cinutedigital",
+      "https://www.youtube.com/@cinutedigital"
+    ],
+    "foundingDate": "2020",
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "value": "50"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Monday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Tuesday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Wednesday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Thursday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "15:00"
+      }
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Training Partner",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "ISTQB"
+        },
+        "name": "ISTQB Certified Training Partner"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Educational Credential",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Various Industry Bodies"
+        },
+        "name": "Industry Recognized Certifications"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://www.cinutedigital.com/#website",
+    "url": "https://www.cinutedigital.com",
+    "name": "CDPL - Cinute Digital",
+    "description": "Professional training in Software Testing, Data Science, AI/ML with 100% placement support",
+    "publisher": {
+      "@id": "https://www.cinutedigital.com/#organization"
+    },
+    "inLanguage": "en-IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.cinutedigital.com/services/expert-talks#webpage",
+    "url": "https://www.cinutedigital.com/services/expert-talks",
+    "name": "Expert Talks / Sessions | CDPL",
+    "description": "Live insights from industry titans to spark your team's next breakthrough Bring domain experts to your organization. These interactive talks deliver fresh ideas, real-world lessons, and Q&A that trans",
+    "isPartOf": {
+      "@id": "https://www.cinutedigital.com/#website"
+    },
+    "about": {
+      "@id": "https://www.cinutedigital.com/#organization"
+    },
+    "inLanguage": "en-IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://www.cinutedigital.com/services/expert-talks#service",
+    "url": "https://www.cinutedigital.com/services/expert-talks",
+    "name": "Expert Talks / Sessions",
+    "description": "Bring domain experts to your organization. These interactive talks deliver fresh ideas, real-world lessons, and Q&A that transform thinking.",
+    "serviceType": "Corporate Training",
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://www.cinutedigital.com/#organization",
+      "name": "CDPL - Cinute Digital"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "image": "https://www.cinutedigital.com/og-images/og-service-expert-talks.webp",
+    "inLanguage": "en-IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the Expert Talks / Sessions program at CDPL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our Expert Talk sessions bring industry leaders and domain experts directly to your organization. These aren't just presentations—they're interactive knowledge-sharing experiences designed to inspire, educate, and transform the way your team thinks about technology, business, and innovation. Each se"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the key features of the Expert Talks / Sessions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Key features include: Industry leaders and domain experts, Interactive Q&A sessions, Real-world case studies, Customized topics for your team."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What will I gain from the Expert Talks / Sessions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You will gain: Enhanced understanding of industry trends, Actionable insights for business growth, Inspired and motivated team members, New perspectives on solving challenges."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who should attend the Expert Talks / Sessions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This program is ideal for: Senior management and leadership teams, Technical teams and developers, Product managers and strategists, Innovation and R&D teams."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What delivery formats are available for Expert Talks / Sessions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Keynote Session (1-2 hours): High-impact presentation with Q&A | Panel Discussion (1.5-2 hours): Multiple experts discussing industry trends | Fireside Chat (1 hour): Intimate conversation with industry leader | Masterclass (2-3 hours): Deep-dive session with hands-on elements"
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "CDPL Corporate Training & Consulting Services",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Service",
+          "name": "Expert Talks / Sessions",
+          "url": "/services/expert-talks",
+          "description": "Industry expert-led interactive sessions."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Service",
+          "name": "Workshops",
+          "url": "/services/workshops",
+          "description": "Hands-on skill-building workshops."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Service",
+          "name": "On-the-Job Training",
+          "url": "/services/on-job-training",
+          "description": "Real-project training under mentorship."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Service",
+          "name": "Faculty Development Program",
+          "url": "/services/faculty-development",
+          "description": "Modern pedagogy for educators."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "Service",
+          "name": "Train-the-Trainer",
+          "url": "/services/train-the-trainer",
+          "description": "Build your internal training capability."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "Service",
+          "name": "STTP",
+          "url": "/services/sttp",
+          "description": "Short Term Training Programs in trending tech."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 7,
+        "item": {
+          "@type": "Service",
+          "name": "Industrial Visits",
+          "url": "/services/industrial-visits",
+          "description": "Real-world industry exposure and networking."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 8,
+        "item": {
+          "@type": "Service",
+          "name": "Custom Training Solution",
+          "url": "/services/custom-training",
+          "description": "Bespoke programs for your organization."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 9,
+        "item": {
+          "@type": "Service",
+          "name": "Internship Program",
+          "url": "/services/internship-program",
+          "description": "Structured internships with real projects."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 10,
+        "item": {
+          "@type": "Service",
+          "name": "Campus to Corporate",
+          "url": "/services/campus-to-corporate",
+          "description": "Complete career transformation program."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 11,
+        "item": {
+          "@type": "Service",
+          "name": "Corporate Training",
+          "url": "/services/corporate-training",
+          "description": "Role-based upskilling for enterprise teams."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 12,
+        "item": {
+          "@type": "Service",
+          "name": "Government & Public Sector Training",
+          "url": "/services/government-public-sector-training",
+          "description": "e-Governance and digital literacy training."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": "https://www.cinutedigital.com/services/expert-talks#org-rating",
+    "name": "CDPL - Cinute Digital",
+    "url": "https://www.cinutedigital.com",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "500",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How the Expert Talks / Sessions Program Works at CDPL",
+    "description": "A step-by-step overview of CDPL's Expert Talks / Sessions program methodology and delivery process.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Step 1",
+        "text": "Pre-session consultation to understand needs"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Step 2",
+        "text": "Customized content development"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Step 3",
+        "text": "Interactive presentation delivery"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Step 4",
+        "text": "Live Q&A and discussion"
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Step 5",
+        "text": "Post-session resource sharing"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-1",
+    "name": "Home",
+    "url": "https://www.cinutedigital.com"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-2",
+    "name": "All Courses",
+    "url": "https://www.cinutedigital.com/courses"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-3",
+    "name": "About Us",
+    "url": "https://www.cinutedigital.com/about-us"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-4",
+    "name": "Contact Us",
+    "url": "https://www.cinutedigital.com/contact-us"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-5",
+    "name": "Events & Webinars",
+    "url": "https://www.cinutedigital.com/events"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-6",
+    "name": "Services",
+    "url": "https://www.cinutedigital.com/services"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-7",
+    "name": "Mentors",
+    "url": "https://www.cinutedigital.com/mentors"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-8",
+    "name": "Mock Test",
+    "url": "https://www.cinutedigital.com/mock-test"
+  }
+]

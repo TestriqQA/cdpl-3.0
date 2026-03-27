@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { JOBS } from "@/lib/jobsData";
 import type { Job } from "@/lib/jobsData";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
-import { generateCollectionPageSchema, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
+import { generateLiveJobsPageAllSchemas, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
 // CRITICAL: Static imports for above-the-fold content to eliminate LCP/FCP delay
@@ -112,11 +112,8 @@ export default async function Page({ searchParams }: Props) {
     ...(selectedJob ? [{ name: selectedJob.title, url: `/jobs/live-jobs?jobId=${selectedJob.id}` }] : []),
   ]);
 
-  const collectionPageSchema = generateCollectionPageSchema({
-    name: "Live Jobs & Placement Alerts | CDPL",
-    description: "Verified live jobs and walk-in drives curated by CDPL.",
-    url: "/jobs/live-jobs",
-  });
+  // Generate 8-point Schemas dynamically
+  const schemas = generateLiveJobsPageAllSchemas(JOBS);
 
   const jobSchemas = JOBS.map((job) => generateJobPostingSchema({
     title: job.title,
@@ -155,8 +152,10 @@ export default async function Page({ searchParams }: Props) {
 
   return (
     <main className="bg-white text-slate-900 relative">
+      {schemas.map((schema: any, index: number) => (
+        <JsonLd key={`jobs-schema-${index}`} id={`jobs-schema-${index}`} schema={schema} />
+      ))}
       <JsonLd id="live-jobs-breadcrumb" schema={breadcrumbSchema} />
-      <JsonLd id="live-jobs-collection" schema={collectionPageSchema} />
       <JsonLd id="job-postings-list" schema={jobSchemas} />
 
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">

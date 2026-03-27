@@ -35,6 +35,15 @@ function useMotionDiv(): MotionDivLike {
   const Fallback: MotionDivLike = (props: MotionDivProps) => {
     const safe = (props ?? {}) as MotionDivProps;
     const {
+      initial,
+      animate,
+      whileInView,
+      whileHover,
+      whileTap,
+      exit,
+      transition,
+      variants,
+      viewport,
       ...rest
     } = safe;
     return <div {...rest} />;

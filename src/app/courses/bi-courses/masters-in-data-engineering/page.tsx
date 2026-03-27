@@ -17,7 +17,7 @@ import {
 } from "@/app/courses/bi-courses/masters-in-data-engineering/server-sections";
 
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateMastersDataEngineeringCoursePageSchema } from "@/lib/schema-generators";
 import { DATA_ENGINEERING_MASTERS_FAQS, DATA_ENGINEERING_MASTERS_REVIEW_DATA } from "@/data/dataEngineeringMastersData";
 
 export const metadata = generateMetadata({
@@ -46,34 +46,34 @@ export const metadata = generateMetadata({
 });
 
 const DataAnalyticsMasterProgramPage: React.FC = () => {
-    const courseSchema = generateCourseSchema({
-        name: "Master Program in Data Engineering: BI & Big Data Engineering Course",
-        description: "155-hour intensive master program in Mumbai covering SQL for data analytics, BI tools, and Big Data engineering with Spark and Hadoop. 100% placement.",
-        url: '/courses/bi-courses/masters-in-data-engineering',
-        slug: "masters-in-data-engineering",
-        price: 45000,
-        currency: "INR",
-        duration: "P3M", // ~3 months
-        instructor: "Expert Data Engineers",
-        rating: DATA_ENGINEERING_MASTERS_REVIEW_DATA.ratingValue,
-        reviewCount: DATA_ENGINEERING_MASTERS_REVIEW_DATA.reviewCount,
-        image: "/og-images/masters-in-data-engineering.jpg",
-    });
+    const schemas = generateMastersDataEngineeringCoursePageSchema(
+        {
+            name: "Master Program in Data Engineering: BI & Big Data Engineering Course",
+            description: "155-hour intensive master program in Mumbai covering SQL for data analytics, BI tools, and Big Data engineering with Spark and Hadoop. 100% placement.",
+            url: '/courses/bi-courses/masters-in-data-engineering',
+            slug: "masters-in-data-engineering",
+            price: 45000,
+            currency: "INR",
+            duration: "P3M",
+            instructor: "Expert Data Engineers",
+            rating: DATA_ENGINEERING_MASTERS_REVIEW_DATA.ratingValue,
+            reviewCount: DATA_ENGINEERING_MASTERS_REVIEW_DATA.reviewCount,
+            image: "/og-images/masters-in-data-engineering.jpg",
+        },
+        DATA_ENGINEERING_MASTERS_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+        [
+            { name: "Home", url: "/" },
+            { name: "Courses", url: "/courses" },
+            { name: "BI Courses", url: "/courses/bi-courses" },
+            { name: "Master in Data Engineering", url: '/courses/bi-courses/masters-in-data-engineering' },
+        ]
+    );
 
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: "Courses", url: "/courses" },
-    { name: "BI Courses", url: "/courses/bi-courses" },
-        { name: "Master in Data Engineering", url: '/courses/bi-courses/masters-in-data-engineering' },
-    ]);
-
-    const faqSchema = generateFAQSchema(DATA_ENGINEERING_MASTERS_FAQS);
     return (
         <div className="min-h-screen bg-white font-sans antialiased">
-            <JsonLd id="course-schema" schema={courseSchema} />
-            <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-            <JsonLd id="faq-schema" schema={faqSchema} />
-            {/* Optional: Add a simple Header/Navbar component here if needed */}
+            {schemas.map((schema, index) => (
+                <JsonLd key={`data-eng-schema-${index}`} id={`data-eng-schema-${index}`} schema={schema} />
+            ))}
 
             <main>
                 <HeroSection />
@@ -92,8 +92,6 @@ const DataAnalyticsMasterProgramPage: React.FC = () => {
                 <section id="faqs"><FaqSection /></section>
                 <section id="contact"><CtaClient /></section>
             </main>
-
-            {/* Optional: Add a simple Footer component here if needed */}
         </div>
     );
 };

@@ -14,7 +14,7 @@ import {
 } from "@/app/courses/digital-marketing-courses/digital-marketing-course/server-sections";
 
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateDigitalMarketingCoursePageSchema } from "@/lib/schema-generators";
 import { DIGITAL_MARKETING_FAQS, DIGITAL_MARKETING_REVIEW_DATA } from "@/data/digitalMarketingData";
 
 export const metadata = generateMetadata({
@@ -35,34 +35,34 @@ export const metadata = generateMetadata({
 });
 
 export default function DigitalMarketingPage() {
-  const courseSchema = generateCourseSchema({
-    name: "Advanced AI-Driven Digital Marketing & Analytics Master Program",
-    description: "A comprehensive 80-hour digital marketing mastery program in Mumbai covering SEO, SEM, SMM, Content Marketing, and AI Tools with guaranteed placement assistance.",
-    url: '/courses/digital-marketing-courses/digital-marketing-course',
-    slug: "digital-marketing-course",
-    price: 35000,
-    currency: "INR",
-    duration: "P3M", // ~3 months
-    instructor: "Industry Expert Digital Marketing Practitioners",
-    rating: DIGITAL_MARKETING_REVIEW_DATA.ratingValue,
-    reviewCount: DIGITAL_MARKETING_REVIEW_DATA.reviewCount,
-    image: "/og-images/digital-marketing-course.jpg",
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "Digital Marketing Courses", url: "/courses/digital-marketing-courses" },
-    { name: "Digital Marketing Course in Mumbai", url: '/courses/digital-marketing-courses/digital-marketing-course' },
-  ]);
-
-  const faqSchema = generateFAQSchema(DIGITAL_MARKETING_FAQS);
+  const schemas = generateDigitalMarketingCoursePageSchema(
+    {
+      name: "Advanced AI-Driven Digital Marketing & Analytics Master Program",
+      description: "A comprehensive 80-hour digital marketing mastery program in Mumbai covering SEO, SEM, SMM, Content Marketing, and AI Tools with guaranteed placement assistance.",
+      url: '/courses/digital-marketing-courses/digital-marketing-course',
+      slug: "digital-marketing-course",
+      price: 35000,
+      currency: "INR",
+      duration: "P3M",
+      instructor: "Industry Expert Digital Marketing Practitioners",
+      rating: DIGITAL_MARKETING_REVIEW_DATA.ratingValue,
+      reviewCount: DIGITAL_MARKETING_REVIEW_DATA.reviewCount,
+      image: "/og-images/digital-marketing-course.jpg",
+    },
+    DIGITAL_MARKETING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "Digital Marketing Courses", url: "/courses/digital-marketing-courses" },
+      { name: "Digital Marketing Course in Mumbai", url: '/courses/digital-marketing-courses/digital-marketing-course' },
+    ]
+  );
 
   return (
     <div className="min-h-screen bg-white">
-      <JsonLd id="course-schema" schema={courseSchema} />
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
+      {schemas.map((schema, index) => (
+        <JsonLd key={`dm-schema-${index}`} id={`dm-schema-${index}`} schema={schema} />
+      ))}
 
       <HeroSection />
 

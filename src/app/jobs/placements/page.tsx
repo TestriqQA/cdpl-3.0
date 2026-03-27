@@ -3,7 +3,8 @@ import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 import Script from "next/script";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
-import { generateCollectionPageSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
+import { generatePlacementsPageAllSchemas, generateBreadcrumbSchema } from "@/lib/schema-generators";
+import { PLACEMENTS } from "@/lib/placementShared";
 import JsonLd from "@/components/JsonLd";
 
 // ============================================================================
@@ -91,18 +92,16 @@ export default function PlacementsPage() {
         { name: "Placements", url: "/jobs/placements" },
     ]);
 
-    // 2. CollectionPage Schema
-    const collectionPageSchema = generateCollectionPageSchema({
-        name: "Student Placements & Success Stories | CDPL",
-        description: "Explore CDPL student placements across top companies like TCS, Infosys, Wipro, Accenture, and startups.",
-        url: "/jobs/placements",
-    });
+    // Generate 8-point Schemas dynamically
+    const schemas = generatePlacementsPageAllSchemas(PLACEMENTS);
 
     return (
         <>
             {/* Enhanced JSON-LD Structured Data */}
             <JsonLd id="placements-breadcrumb" schema={breadcrumbSchema} />
-            <JsonLd id="placements-collection" schema={collectionPageSchema} />
+            {schemas.map((schema: any, index: number) => (
+                <JsonLd key={`placements-schema-${index}`} id={`placements-schema-${index}`} schema={schema} />
+            ))}
 
             {/* Main Content - Semantic HTML Structure */}
             <main

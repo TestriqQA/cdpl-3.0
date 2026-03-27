@@ -15,7 +15,7 @@ import {
 } from "@/app/courses/artificial-intelligence-courses/prompt-engineering-course/server-sections";
 
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generatePromptEngineeringCoursePageSchema } from "@/lib/schema-generators";
 import { PROMPT_ENGINEERING_FAQS, PROMPT_ENGINEERING_REVIEW_DATA } from "@/data/promptEngineeringData";
 
 export const metadata = generateMetadata({
@@ -33,34 +33,34 @@ export const metadata = generateMetadata({
 });
 
 export default function PromptGenPage() {
-  const courseSchema = generateCourseSchema({
-    name: "Prompt Engineering with Generative AI Course",
-    description: "20-Hour Hero Program in Prompt Engineering with Gen AI. Hands-on projects, 100% job assistance, AAA global certificates.",
-    url: '/courses/artificial-intelligence-courses/prompt-engineering-course',
-    slug: "prompt-engineering-course",
-    price: 25000, // Estimated price, adjust if needed
-    currency: "INR",
-    duration: "P1M", // ~4 weeks
-    instructor: "Expert AI Engineers",
-    rating: PROMPT_ENGINEERING_REVIEW_DATA.ratingValue,
-    reviewCount: PROMPT_ENGINEERING_REVIEW_DATA.reviewCount,
-    image: "/og-images/prompt-engineering-course.jpg",
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "Artificial Intelligence Courses", url: "/courses/artificial-intelligence-courses" },
-    { name: "Prompt Engineering", url: '/courses/artificial-intelligence-courses/prompt-engineering-course' },
-  ]);
-
-  const faqSchema = generateFAQSchema(PROMPT_ENGINEERING_FAQS);
+  const schemas = generatePromptEngineeringCoursePageSchema(
+    {
+      name: "Prompt Engineering with Generative AI Course",
+      description: "20-Hour Hero Program in Prompt Engineering with Gen AI. Hands-on projects, 100% job assistance, AAA global certificates.",
+      url: '/courses/artificial-intelligence-courses/prompt-engineering-course',
+      slug: "prompt-engineering-course",
+      price: 25000,
+      currency: "INR",
+      duration: "P1M",
+      instructor: "Expert AI Engineers",
+      rating: PROMPT_ENGINEERING_REVIEW_DATA.ratingValue,
+      reviewCount: PROMPT_ENGINEERING_REVIEW_DATA.reviewCount,
+      image: "/og-images/prompt-engineering-course.jpg",
+    },
+    PROMPT_ENGINEERING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "Artificial Intelligence Courses", url: "/courses/artificial-intelligence-courses" },
+      { name: "Prompt Engineering", url: '/courses/artificial-intelligence-courses/prompt-engineering-course' },
+    ]
+  );
 
   return (
     <div className="min-h-screen bg-white">
-      <JsonLd id="course-schema" schema={courseSchema} />
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
+      {schemas.map((schema, index) => (
+        <JsonLd key={`prompt-eng-schema-${index}`} id={`prompt-eng-schema-${index}`} schema={schema} />
+      ))}
 
       <HeroSection />
 

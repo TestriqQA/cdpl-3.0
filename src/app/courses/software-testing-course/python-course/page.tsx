@@ -14,7 +14,7 @@ import {
 } from "@/app/courses/software-testing-course/python-course/server-sections";
 
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, generatePythonCoursePageSchema } from "@/lib/schema-generators";
 import { PYTHON_FAQS, PYTHON_REVIEW_DATA } from "@/data/pythonData";
 
 export const metadata = generateMetadata({
@@ -35,35 +35,34 @@ export const metadata = generateMetadata({
 });
 
 export default function PythonPage() {
-  const courseSchema = generateCourseSchema({
-    name: "Python Programming Master Course",
-    description: "Best Python course in Mumbai with Django, Data Science, ML, Automation. 100% placement. Live projects, global certificate.",
-    url: '/courses/software-testing-course/python-course',
-    slug: "python-course",
-    price: 18000,
-    currency: "INR",
-    duration: "P2M2W", // ~10 weeks
-    instructor: "Expert Python Mentors",
-    rating: PYTHON_REVIEW_DATA.ratingValue,
-    reviewCount: PYTHON_REVIEW_DATA.reviewCount,
-    image: "/og-images/python-course.jpg",
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "Software Testing Course", url: "/courses/software-testing-course" },
-    { name: "Python Programming", url: '/courses/software-testing-course/python-course' },
-  ]);
-
-  const faqSchema = generateFAQSchema(PYTHON_FAQS);
+  const schemas = generatePythonCoursePageSchema(
+    {
+      name: "Python Programming Master Course",
+      description: "Best Python course in Mumbai with Django, Data Science, ML, Automation. 100% placement. Live projects, global certificate.",
+      url: '/courses/software-testing-course/python-course',
+      slug: "python-course",
+      price: 18000,
+      currency: "INR",
+      duration: "P2M2W", // ~10 weeks
+      instructor: "Expert Python Mentors",
+      rating: PYTHON_REVIEW_DATA.ratingValue,
+      reviewCount: PYTHON_REVIEW_DATA.reviewCount,
+      image: "/og-images/python-course.jpg",
+    },
+    PYTHON_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "Software Testing Course", url: "/courses/software-testing-course" },
+      { name: "Python Programming", url: '/courses/software-testing-course/python-course' }
+    ]
+  );
 
   return (
     <>
-      <JsonLd id="course-schema" schema={courseSchema} />
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
-
+      {schemas.map((schema, index) => (
+        <JsonLd key={`python-schema-${index}`} id={`python-schema-${index}`} schema={schema} />
+      ))}
       <HeroSection />
 
       {/* Sticky nav must appear right after hero */}
@@ -84,5 +83,4 @@ export default function PythonPage() {
       <section id='contact'><CtaClient /></section>
     </>
   );
-};
-
+}

@@ -14,7 +14,7 @@ const CtaSection = dynamic(() => import("@/components/data-analytics-with-tablea
 const CareerRoadmapSection = dynamic(() => import("@/components/data-analytics-with-tableau/CareerRoadmapSection"), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
 import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateDataAnalyticsTableauCoursePageSchema } from "@/lib/schema-generators";
 import { DATA_ANALYTICS_TABLEAU_FAQS, DATA_ANALYTICS_TABLEAU_REVIEW_DATA } from "@/data/dataAnalyticsTableauData";
 import dynamic from "next/dynamic";
 
@@ -42,34 +42,34 @@ export const metadata = generateMetadata({
 });
 
 export default function Home() {
-    const courseSchema = generateCourseSchema({
-        name: "Master Program in Data Analytics using Tableau",
-        description: "20-Hour Master Program in Data Analytics with Tableau. Hands-on projects, interactive dashboards, 100% job assistance, global certificates.",
-        url: '/courses/bi-courses/data-analytics-with-tableau',
-        slug: "data-analytics-with-tableau",
-        price: 30000,
-        currency: "INR",
-        duration: "P1M", // ~4 weeks
-        instructor: "Expert Tableau Mentors",
-        rating: DATA_ANALYTICS_TABLEAU_REVIEW_DATA.ratingValue,
-        reviewCount: DATA_ANALYTICS_TABLEAU_REVIEW_DATA.reviewCount,
-        image: "/og-images/data-analytics-with-tableau.jpg",
-    });
-
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: "Courses", url: "/courses" },
-    { name: "BI Courses", url: "/courses/bi-courses" },
-        { name: "Data Analytics with Tableau", url: '/courses/bi-courses/data-analytics-with-tableau' },
-    ]);
-
-    const faqSchema = generateFAQSchema(DATA_ANALYTICS_TABLEAU_FAQS);
+    const schemas = generateDataAnalyticsTableauCoursePageSchema(
+        {
+            name: "Master Program in Data Analytics using Tableau",
+            description: "20-Hour Master Program in Data Analytics with Tableau. Hands-on projects, interactive dashboards, 100% job assistance, global certificates.",
+            url: '/courses/bi-courses/data-analytics-with-tableau',
+            slug: "data-analytics-with-tableau",
+            price: 30000,
+            currency: "INR",
+            duration: "P1M",
+            instructor: "Expert Tableau Mentors",
+            rating: DATA_ANALYTICS_TABLEAU_REVIEW_DATA.ratingValue,
+            reviewCount: DATA_ANALYTICS_TABLEAU_REVIEW_DATA.reviewCount,
+            image: "/og-images/data-analytics-with-tableau.jpg",
+        },
+        DATA_ANALYTICS_TABLEAU_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+        [
+            { name: "Home", url: "/" },
+            { name: "Courses", url: "/courses" },
+            { name: "BI Courses", url: "/courses/bi-courses" },
+            { name: "Data Analytics with Tableau", url: '/courses/bi-courses/data-analytics-with-tableau' },
+        ]
+    );
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-50">
-            <JsonLd id="course-schema" schema={courseSchema} />
-            <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-            <JsonLd id="faq-schema" schema={faqSchema} />
+            {schemas.map((schema, index) => (
+                <JsonLd key={`tableau-schema-${index}`} id={`tableau-schema-${index}`} schema={schema} />
+            ))}
             <div className="flex-1">
                 {/* Hero Section */}
                 <HeroSection />

@@ -12,9 +12,9 @@ const CareerRoadmapSection = dynamic(() => import("@/components/data-analytics-p
 const FaqSection = dynamic(() => import("@/components/data-analytics-python/FaqSection"), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
 const CtaSection = dynamic(() => import("@/components/data-analytics-python/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
 const WhyAnalyticsPythonProgram = dynamic(() => import("@/components/data-analytics-python/WhyAnalyticsPythonProgram"), { ssr: true, loading: () => <SectionLoader label="Loading why analytics python program section..." /> });
-const JsonLd = dynamic(() => import("@/components/JsonLd"), { ssr: true, loading: () => <SectionLoader label="Loading json ld..." /> });
+import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateDataAnalyticsPythonCoursePageSchema } from "@/lib/schema-generators";
 import { DATA_ANALYTICS_PYTHON_FAQS, DATA_ANALYTICS_PYTHON_REVIEW_DATA } from "@/data/dataAnalyticsPythonData";
 import dynamic from 'next/dynamic';
 
@@ -50,34 +50,34 @@ export const metadata = generateMetadata({
 });
 
 export default function Home() {
-    const courseSchema = generateCourseSchema({
-        name: "Best Data Analytics Course with Python | 20-Hour Training Mumbai",
-        description: "20-hour python data analysis course with hands-on projects, global certification, and 100% job assistance. Learn how to become a data analyst in Mumbai/Thane.",
-        url: '/courses/bi-courses/data-analytics-python',
-        slug: "data-analytics-python",
-        price: 25000,
-        currency: "INR",
-        duration: "P1M", // ~4 weeks
-        instructor: "Expert Data Analysts",
-        rating: DATA_ANALYTICS_PYTHON_REVIEW_DATA.ratingValue,
-        reviewCount: DATA_ANALYTICS_PYTHON_REVIEW_DATA.reviewCount,
-        image: "/og-images/data-analytics-python.jpg",
-    });
-
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: "Courses", url: "/courses" },
-    { name: "BI Courses", url: "/courses/bi-courses" },
-        { name: "Data Analytics with Python", url: '/courses/bi-courses/data-analytics-python' },
-    ]);
-
-    const faqSchema = generateFAQSchema(DATA_ANALYTICS_PYTHON_FAQS);
+    const schemas = generateDataAnalyticsPythonCoursePageSchema(
+        {
+            name: "Best Data Analytics Course with Python | 20-Hour Training Mumbai",
+            description: "20-hour python data analysis course with hands-on projects, global certification, and 100% job assistance. Learn how to become a data analyst in Mumbai/Thane.",
+            url: '/courses/bi-courses/data-analytics-python',
+            slug: "data-analytics-python",
+            price: 25000,
+            currency: "INR",
+            duration: "P1M",
+            instructor: "Expert Data Analysts",
+            rating: DATA_ANALYTICS_PYTHON_REVIEW_DATA.ratingValue,
+            reviewCount: DATA_ANALYTICS_PYTHON_REVIEW_DATA.reviewCount,
+            image: "/og-images/data-analytics-python.jpg",
+        },
+        DATA_ANALYTICS_PYTHON_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+        [
+            { name: "Home", url: "/" },
+            { name: "Courses", url: "/courses" },
+            { name: "BI Courses", url: "/courses/bi-courses" },
+            { name: "Data Analytics with Python", url: '/courses/bi-courses/data-analytics-python' },
+        ]
+    );
 
     return (
         <div className="min-h-screen bg-white">
-            <JsonLd id="course-schema" schema={courseSchema} />
-            <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-            <JsonLd id="faq-schema" schema={faqSchema} />
+            {schemas.map((schema, index) => (
+                <JsonLd key={`data-analytics-python-schema-${index}`} id={`data-analytics-python-schema-${index}`} schema={schema} />
+            ))}
             {/* Hero Section */}
             <HeroSection />
 

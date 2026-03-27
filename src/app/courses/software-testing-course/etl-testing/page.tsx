@@ -78,7 +78,7 @@ const FaqSection = dynamic(
 
 
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, generateEtlTestingCoursePageSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 import { ETL_TESTING_FAQS, ETL_TESTING_REVIEW_DATA } from "@/data/etlTestingData";
 
@@ -109,34 +109,33 @@ export const metadata = generateMetadata({
 });
 
 export default function Home() {
-  const courseSchema = generateCourseSchema({
-    name: "ETL Testing Course",
-    description: "Master ETL testing with SQL, data validation, and real projects. Get certified and placed in top data companies.",
-    url: '/courses/software-testing-course/etl-testing',
-    slug: "etl-testing",
-    instructor: "CDPL Expert Mentors",
-    duration: "PT18H", // 18 hours
-    rating: ETL_TESTING_REVIEW_DATA.ratingValue,
-    reviewCount: ETL_TESTING_REVIEW_DATA.reviewCount,
-    price: 5500, // Estimated price
-    currency: "INR",
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "Software Testing Course", url: "/courses/software-testing-course" },
-    { name: "ETL Testing", url: '/courses/software-testing-course/etl-testing' },
-  ]);
-
-  const faqSchema = generateFAQSchema(ETL_TESTING_FAQS);
+  const schemas = generateEtlTestingCoursePageSchema(
+    {
+      name: "ETL Testing Course",
+      description: "Master ETL testing with SQL, data validation, and real projects. Get certified and placed in top data companies.",
+      url: '/courses/software-testing-course/etl-testing',
+      slug: "etl-testing",
+      instructor: "CDPL Expert Mentors",
+      duration: "PT18H", // 18 hours
+      rating: ETL_TESTING_REVIEW_DATA.ratingValue,
+      reviewCount: ETL_TESTING_REVIEW_DATA.reviewCount,
+      price: 5500, // Estimated price
+      currency: "INR",
+    },
+    ETL_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "Software Testing Course", url: "/courses/software-testing-course" },
+      { name: "ETL Testing", url: '/courses/software-testing-course/etl-testing' }
+    ]
+  );
 
   return (
     <>
-      <JsonLd id="course-schema" schema={courseSchema} />
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
-
+      {schemas.map((schema, index) => (
+        <JsonLd key={`etl-schema-${index}`} id={`etl-schema-${index}`} schema={schema} />
+      ))}
       <HeroSection />
 
       {/* Sticky nav must appear right after hero */}

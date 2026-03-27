@@ -14,7 +14,7 @@ const FaqSection = dynamic(() => import("@/components/ai-bootcamp/FaqSection"), 
 const CtaSection = dynamic(() => import("@/components/ai-bootcamp/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
 const CareerRoadmapSection = dynamic(() => import("@/components/ai-bootcamp/CareerRoadmapSection"), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateAiBootcampCoursePageSchema } from "@/lib/schema-generators";
 import { AI_BOOTCAMP_FAQS, AI_BOOTCAMP_REVIEW_DATA } from "@/data/aiBootcampData";
 import dynamic from 'next/dynamic';
 
@@ -42,34 +42,34 @@ export const metadata = generateMetadata({
 });
 
 export default function AiBootcampPage() {
-    const courseSchema = generateCourseSchema({
-        name: "AI-Powered Digital Marketing Bootcamp",
-        description: "Master Digital Marketing with AI in this 30-hour bootcamp. Learn SEO, SEM, Social Media, and Performance Marketing with 100% Job Assistance.",
-        url: '/courses/digital-marketing-courses/ai-bootcamp',
-        slug: "ai-bootcamp",
-        price: 15000,
-        currency: "INR",
-        duration: "P1M", // ~1 month / 30 hours
-        instructor: "Expert Digital Marketers",
-        rating: AI_BOOTCAMP_REVIEW_DATA.ratingValue,
-        reviewCount: AI_BOOTCAMP_REVIEW_DATA.reviewCount,
-        image: "/og-images/ai-bootcamp.jpg",
-    });
-
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: "Courses", url: "/courses" },
-        { name: "Digital Marketing Courses", url: "/courses/digital-marketing-courses" },
-        { name: "AI Bootcamp", url: '/courses/digital-marketing-courses/ai-bootcamp' },
-    ]);
-
-    const faqSchema = generateFAQSchema(AI_BOOTCAMP_FAQS);
+    const schemas = generateAiBootcampCoursePageSchema(
+        {
+            name: "AI-Powered Digital Marketing Bootcamp",
+            description: "Master Digital Marketing with AI in this 30-hour bootcamp. Learn SEO, SEM, Social Media, and Performance Marketing with 100% Job Assistance.",
+            url: '/courses/digital-marketing-courses/ai-bootcamp',
+            slug: "ai-bootcamp",
+            price: 15000,
+            currency: "INR",
+            duration: "P1M",
+            instructor: "Expert Digital Marketers",
+            rating: AI_BOOTCAMP_REVIEW_DATA.ratingValue,
+            reviewCount: AI_BOOTCAMP_REVIEW_DATA.reviewCount,
+            image: "/og-images/ai-bootcamp.jpg",
+        },
+        AI_BOOTCAMP_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+        [
+            { name: "Home", url: "/" },
+            { name: "Courses", url: "/courses" },
+            { name: "Digital Marketing Courses", url: "/courses/digital-marketing-courses" },
+            { name: "AI Bootcamp", url: '/courses/digital-marketing-courses/ai-bootcamp' },
+        ]
+    );
 
     return (
         <div className="min-h-screen flex flex-col">
-            <JsonLd id="course-schema" schema={courseSchema} />
-            <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-            <JsonLd id="faq-schema" schema={faqSchema} />
+            {schemas.map((schema, index) => (
+                <JsonLd key={`ai-bootcamp-schema-${index}`} id={`ai-bootcamp-schema-${index}`} schema={schema} />
+            ))}
 
             <main>
                 <HeroSection />

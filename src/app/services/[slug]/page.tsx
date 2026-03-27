@@ -5,7 +5,7 @@ import { trainingServices, type TrainingService } from '@/data/servicesData';
 import { pastEvents } from '@/data/eventsData';
 import { type ServiceClient } from '@/types/service';
 import { generateMetadata as generateSEOMetadata, generateMetaDescription } from '@/lib/metadata-generator';
-import { generateServiceSchema, generateBreadcrumbSchema } from '@/lib/schema-generators';
+import { generateServiceDetailPageAllSchemas } from '@/lib/schema-generators';
 import JsonLd from '@/components/JsonLd';
 
 // Helper functions
@@ -19,7 +19,6 @@ function getEventsByService(slug: string) {
 
 // --- map server model -> serializable client model (no React components) ---
 function toClientService(s: TrainingService): ServiceClient {
-  // some datasets may not declare these extras in the TS type
   const extras = s as unknown as {
     iconName?: string;
     stats?: ServiceClient['stats'];
@@ -29,7 +28,7 @@ function toClientService(s: TrainingService): ServiceClient {
   return {
     id: s.id,
     slug: s.slug,
-    iconName: extras.iconName ?? 'GraduationCap', // send only a string, never a component
+    iconName: extras.iconName ?? 'GraduationCap',
     title: s.title,
     tagline: s.tagline,
     shortDescription: s.shortDescription,
@@ -59,10 +58,6 @@ function SectionLoader({ label = 'Loading...' }: { label?: string }) {
 import ServiceDetailHeroSection from '@/components/sections/ServiceDetailHeroSection';
 
 // ---------- Dynamic sections (SSR enabled) ----------
-// const ServiceDetailHeroSection = dynamic(
-//   () => import('@/components/sections/ServiceDetailHeroSection'),
-//   { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
-// );
 const ServiceDetailAboutSection = dynamic(
   () => import('@/components/sections/ServiceDetailAboutSection'),
   { ssr: true, loading: () => <SectionLoader label="Loading about..." /> }
@@ -109,18 +104,12 @@ export async function generateMetadata(
     return {
       title: 'Service Not Found | 404 - CDPL',
       description: 'The requested service page could not be found. Browse our available training services and corporate programs.',
-      robots: {
-        index: false,
-        follow: true
-      }
+      robots: { index: false, follow: true }
     };
   }
 
-  // Extract keywords from service data
   const extras = service as unknown as { keywords?: string[] };
   const serviceKeywords = extras.keywords || [];
-
-  // Build comprehensive keywords array
   const keywords = [
     service.title,
     `${service.title} training`,
@@ -140,17 +129,12 @@ export async function generateMetadata(
     'Cinute Digital training'
   ];
 
-  // Optimize description: Combine tagline and short description, then clean/truncate
-  // Use generateMetaDescription helper to ensure optimal length (approx 160 chars)
   const rawDescription = `${service.tagline} ${service.shortDescription}`;
   const generatedDesc = generateMetaDescription(rawDescription, 160);
-
-  // FALLBACK SAFEGUARD: Ensure strictly non-empty string
   const finalDescription = (generatedDesc && generatedDesc.length > 10)
     ? generatedDesc
     : `Join CDPL's ${service.title} training program. Industry-expert led courses with 100% placement support. Master usage with real-world projects.`;
 
-  // Generate enhanced metadata using SEO utility
   return generateSEOMetadata({
     title: `${service.title} | CDPL`,
     description: finalDescription,
@@ -168,37 +152,32 @@ export default async function ServiceDetailPage(
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
-  const pastEvents = getEventsByService(slug);
-
-  // map to client-safe shape (no Record<string, unknown> cast; no destructuring of icon)
+  const events = getEventsByService(slug);
   const serviceForClient = toClientService(service);
 
-  // 1. Breadcrumb Schema
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Services", url: "/services" },
-    { name: service.title, url: `/services/${service.slug}` },
-  ]);
-
-  // 2. Service Schema
-  const serviceSchema = generateServiceSchema({
-    name: service.title,
-    description: service.shortDescription,
-    url: `/services/${service.slug}`,
-    serviceType: "Corporate Training",
-    image: `/og-images/og-service-${service.slug}.webp`
+  // Generate all 8 schemas dynamically from real service data
+  const schemas = generateServiceDetailPageAllSchemas({
+    slug: service.slug,
+    title: service.title,
+    tagline: service.tagline,
+    shortDescription: service.shortDescription,
+    fullDescription: service.fullDescription,
+    features: service.features,
+    benefits: service.benefits,
+    outcomes: service.outcomes,
+    methodology: service.methodology,
+    deliveryFormats: service.deliveryFormats,
+    whoShouldAttend: service.whoShouldAttend,
   });
 
   return (
     <>
-      <JsonLd id={`service-${slug}-breadcrumb`} schema={breadcrumbSchema} />
-      <JsonLd id={`service-${slug}-schema`} schema={serviceSchema} />
+      {schemas.map((schema, index) => (
+        <JsonLd key={`service-${slug}-schema-${index}`} id={`service-${slug}-schema-${index}`} schema={schema} />
+      ))}
 
       {/* Semantic HTML Structure */}
-      <main
-        className="overflow-hidden"
-      >
-
+      <main className="overflow-hidden">
         <ServiceDetailHeroSection service={serviceForClient} />
         <ServiceDetailAboutSection service={serviceForClient} />
         <ServiceDetailStatsSection service={serviceForClient} />
@@ -206,7 +185,7 @@ export default async function ServiceDetailPage(
         <ServiceDetailAudienceSection service={serviceForClient} />
         <ServiceDetailOutcomesSection service={serviceForClient} />
         <ServiceDetailMethodologySection service={serviceForClient} />
-        {pastEvents?.length > 0 && <ServiceDetailPastEventsSection events={pastEvents} />}
+        {events?.length > 0 && <ServiceDetailPastEventsSection events={events} />}
         <ServiceDetailCTASection service={serviceForClient} />
       </main>
     </>

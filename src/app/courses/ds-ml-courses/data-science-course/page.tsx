@@ -11,11 +11,11 @@ import {
   ToolsSection,
   FaqSection,
   CareerRoadmapSection,
-  JsonLd
 } from "@/app/courses/ds-ml-courses/data-science-course/server-sections";
 
+import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateDataScienceCoursePageSchema } from "@/lib/schema-generators";
 import { DATA_SCIENCE_FAQS, DATA_SCIENCE_REVIEW_DATA } from "@/data/dataScienceData";
 
 export const metadata = generateMetadata({
@@ -36,35 +36,34 @@ export const metadata = generateMetadata({
 });
 
 export default function AdvancedDSMLPage() {
-  const courseSchema = generateCourseSchema({
-    name: "Advanced Data Science and Machine Learning Masterclass: Full Course in Mumbai",
-    description: "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with 100% job placement.",
-    url: '/courses/ds-ml-courses/data-science-course',
-    slug: "data-science-course",
-    price: 50000,
-    currency: "INR",
-    duration: "P4M", // ~16-20 weeks
-    instructor: "Expert Data Science & AI Mentors",
-    rating: DATA_SCIENCE_REVIEW_DATA.ratingValue,
-    reviewCount: DATA_SCIENCE_REVIEW_DATA.reviewCount,
-    image: "/og-images/data-science-course.jpg",
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "Data Science & ML Courses", url: "/courses/ds-ml-courses" },
-    { name: "Data Science & ML Masterclass", url: '/courses/ds-ml-courses/data-science-course' },
-  ]);
-
-  const faqSchema = generateFAQSchema(DATA_SCIENCE_FAQS);
+  const schemas = generateDataScienceCoursePageSchema(
+    {
+      name: "Advanced Data Science and Machine Learning Masterclass: Full Course in Mumbai",
+      description: "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with 100% job placement.",
+      url: '/courses/ds-ml-courses/data-science-course',
+      slug: "data-science-course",
+      price: 50000,
+      currency: "INR",
+      duration: "P4M", // ~16-20 weeks
+      instructor: "Expert Data Science & AI Mentors",
+      rating: DATA_SCIENCE_REVIEW_DATA.ratingValue,
+      reviewCount: DATA_SCIENCE_REVIEW_DATA.reviewCount,
+      image: "/og-images/data-science-course.jpg",
+    },
+    DATA_SCIENCE_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "Data Science & ML Courses", url: "/courses/ds-ml-courses" },
+      { name: "Data Science & ML Masterclass", url: '/courses/ds-ml-courses/data-science-course' }
+    ]
+  );
 
   return (
     <>
-      <JsonLd id="course-schema" schema={courseSchema} />
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
-
+      {schemas.map((schema, index) => (
+        <JsonLd key={`ds-schema-${index}`} id={`ds-schema-${index}`} schema={schema} />
+      ))}
       <HeroSection />
 
       {/* Sticky nav must appear right after hero */}
@@ -85,4 +84,4 @@ export default function AdvancedDSMLPage() {
       <section id='contact'><CtaClient /></section>
     </>
   );
-};
+}

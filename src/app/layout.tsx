@@ -12,7 +12,7 @@
  */
 import MetaPixel from '@/components/MetaPixel'
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import 'react-phone-number-input/style.css';
 import dynamic from "next/dynamic";
@@ -25,13 +25,13 @@ import { SITE_CONFIG, SEO_DEFAULTS } from "@/lib/seo-config";
 import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: './fonts/inter-variable.woff2',
   display: 'swap',
   variable: '--font-inter',
   preload: true,
-  adjustFontFallback: true,
   fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Arial', 'sans-serif'],
+  weight: '100 900',
 });
 
 // ============================================================================

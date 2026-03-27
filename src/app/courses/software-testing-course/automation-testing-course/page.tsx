@@ -9,7 +9,7 @@ import { StatsSection, WhyAutomation, CurriculumSection, ProjectsSection, Career
 
 
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, generateAutomationTestingCoursePageSchema } from "@/lib/schema-generators";
 import { AUTOMATION_TESTING_FAQS, AUTOMATION_TESTING_REVIEW_DATA } from "@/data/automationTestingData";
 
 
@@ -33,33 +33,33 @@ export const metadata = generateMetadata({
 });
 
 export default function Home() {
-  const courseSchema = generateCourseSchema({
-    name: "Advanced Automation Testing Course (SDET)",
-    description: "Master Cypress, Playwright, AI Testing, CI/CD. Become a future-ready SDET with elite projects and FAANG placement.",
-    url: '/courses/software-testing-course/automation-testing-course',
-    slug: "automation-testing-course",
-    instructor: "CDPL Expert Mentors",
-    duration: "PT30H", // 30 hours
-    rating: AUTOMATION_TESTING_REVIEW_DATA.ratingValue,
-    reviewCount: AUTOMATION_TESTING_REVIEW_DATA.reviewCount,
-    price: 10000, // Estimated price
-    currency: "INR",
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "Software Testing Course", url: "/courses/software-testing-course" },
-    { name: "Automation Testing", url: '/courses/software-testing-course/automation-testing-course' },
-  ]);
-
-  const faqSchema = generateFAQSchema(AUTOMATION_TESTING_FAQS);
+  const schemas = generateAutomationTestingCoursePageSchema(
+    {
+      name: "Advanced Automation Testing Course (SDET)",
+      description: "Master Cypress, Playwright, AI Testing, CI/CD. Become a future-ready SDET with elite projects and FAANG placement.",
+      url: '/courses/software-testing-course/automation-testing-course',
+      slug: "automation-testing-course",
+      instructor: "CDPL Expert Mentors",
+      duration: "PT30H", // 30 hours
+      rating: AUTOMATION_TESTING_REVIEW_DATA.ratingValue,
+      reviewCount: AUTOMATION_TESTING_REVIEW_DATA.reviewCount,
+      price: 10000, // Estimated price
+      currency: "INR",
+    },
+    AUTOMATION_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "Software Testing Course", url: "/courses/software-testing-course" },
+      { name: "Automation Testing", url: '/courses/software-testing-course/automation-testing-course' }
+    ]
+  );
 
   return (
     <>
-      <JsonLd id="course-schema" schema={courseSchema} />
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
+      {schemas.map((schema, index) => (
+        <JsonLd key={`automation-schema-${index}`} id={`automation-schema-${index}`} schema={schema} />
+      ))}
 
       <HeroSection />
 

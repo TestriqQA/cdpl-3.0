@@ -2,7 +2,7 @@ import { getEventBySlug, pastEvents } from "@/data/eventsData";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { generateEventMetadata } from "@/lib/metadata-generator";
-import { generateEventSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
+import { generateEventDetailPageAllSchemas, generateBreadcrumbSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 import EventHero from "@/components/events/EventHero";
 import EventContent from "@/components/events/EventContent";
@@ -46,20 +46,23 @@ export default async function EventDetailPage({ params }: PageProps) {
   const event = getEventBySlug(slug as string);
   if (!event) notFound();
 
-  // Generate Schemas
-  const eventSchema = generateEventSchema({
-    name: event.title,
-    description: event.purpose || event.subtitle || "",
-    startDate: event.date,
-    endDate: event.date,
-    location: {
-      name: event.location,
-      address: event.venueAddress || event.location,
+  // Generate 8-point Schemas dynamically
+  const schemas = generateEventDetailPageAllSchemas(
+    {
+      title: event.title,
+      subtitle: event.subtitle,
+      purpose: event.purpose,
+      slug: event.slug,
+      heroImageUrl: event.heroImageUrl,
+      date: event.date,
+      location: event.location,
+      attendees: event.attendees,
+      organization: event.organization,
+      sessionHighlights: event.sessionHighlights,
+      keyTakeaways: event.keyTakeaways,
     },
-    image: event.heroImageUrl,
-    eventStatus: "EventScheduled",
-    eventAttendanceMode: "OfflineEventAttendanceMode",
-  });
+    pastEvents.map(e => ({ title: e.title, slug: e.slug, purpose: e.purpose }))
+  );
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
@@ -70,7 +73,9 @@ export default async function EventDetailPage({ params }: PageProps) {
   return (
     <div className="bg-slate-50 min-h-screen">
       {/* JSON-LD Schemas */}
-      <JsonLd id="event-schema" schema={eventSchema} />
+      {schemas.map((schema, index) => (
+        <JsonLd key={`event-schema-${index}`} id={`event-schema-${index}`} schema={schema} />
+      ))}
       <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
 
       {/* Main Content Area - Contained */}

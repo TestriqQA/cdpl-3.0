@@ -14,7 +14,7 @@ import {
 } from "@/app/courses/software-testing-course/advance-manual-automation-testing/server-sections";
 
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, generateAdvanceManualAutomationTestingCoursePageSchema } from "@/lib/schema-generators";
 import { ADVANCE_MANUAL_AUTOMATION_FAQS, ADVANCE_MANUAL_AUTOMATION_REVIEW_DATA } from "@/data/advanceManualAutomationData";
 
 export const metadata = generateMetadata({
@@ -50,34 +50,34 @@ export const metadata = generateMetadata({
 });
 
 export default function Home() {
-  const courseSchema = generateCourseSchema({
-    name: "Advanced Manual & Automation Testing Master Program",
-    description: "Master ISTQB Manual Testing + Selenium, Cypress, API, Mobile. Get dual certified and placed in top QA roles.",
-    url: '/courses/software-testing-course/advance-manual-automation-testing',
-    slug: "advance-manual-automation-testing",
-    price: 25000,
-    currency: "INR",
-    duration: "P4M",
-    instructor: "Expert QA Mentors",
-    rating: ADVANCE_MANUAL_AUTOMATION_REVIEW_DATA.ratingValue,
-    reviewCount: ADVANCE_MANUAL_AUTOMATION_REVIEW_DATA.reviewCount,
-    image: "/og-images/advance-manual-automation-testing.jpg",
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "Software Testing Course", url: "/courses/software-testing-course" },
-    { name: "Manual & Automation Testing", url: '/courses/software-testing-course/advance-manual-automation-testing' },
-  ]);
-
-  const faqSchema = generateFAQSchema(ADVANCE_MANUAL_AUTOMATION_FAQS);
+  const schemas = generateAdvanceManualAutomationTestingCoursePageSchema(
+    {
+      name: "Advanced Manual & Automation Testing Master Program",
+      description: "Master ISTQB Manual Testing + Selenium, Cypress, API, Mobile. Get dual certified and placed in top QA roles.",
+      url: '/courses/software-testing-course/advance-manual-automation-testing',
+      slug: "advance-manual-automation-testing",
+      price: 25000, // Estimated price
+      currency: "INR",
+      duration: "P4M", // 4 Months
+      instructor: "Expert QA Mentors",
+      rating: ADVANCE_MANUAL_AUTOMATION_REVIEW_DATA.ratingValue,
+      reviewCount: ADVANCE_MANUAL_AUTOMATION_REVIEW_DATA.reviewCount,
+      image: "/og-images/advance-manual-automation-testing.jpg",
+    },
+    ADVANCE_MANUAL_AUTOMATION_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "Software Testing Course", url: "/courses/software-testing-course" },
+      { name: "Manual & Automation Testing", url: '/courses/software-testing-course/advance-manual-automation-testing' }
+    ]
+  );
 
   return (
     <>
-      <JsonLd id="course-schema" schema={courseSchema} />
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
+      {schemas.map((schema, index) => (
+        <JsonLd key={`amat-schema-${index}`} id={`amat-schema-${index}`} schema={schema} />
+      ))}
 
       <HeroSection />
 

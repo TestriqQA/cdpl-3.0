@@ -15,7 +15,7 @@ import {
 
 import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, generateJavaCoursePageSchema } from "@/lib/schema-generators";
 import { JAVA_FAQS, JAVA_REVIEW_DATA } from "@/data/javaData";
 
 export const metadata = generateMetadata({
@@ -35,35 +35,34 @@ export const metadata = generateMetadata({
 });
 
 export default function JavaPage() {
-  const courseSchema = generateCourseSchema({
-    name: "Java Programming Master Course",
-    description: "Best Java course in Mumbai with Core Java, Spring Boot, Microservices, AWS. 100% placement. Live projects, global certificate.",
-    url: '/courses/software-testing-course/java-course',
-    slug: "java-course",
-    price: 20000,
-    currency: "INR",
-    duration: "P2M2W", // ~10 weeks
-    instructor: "Expert Java Mentors",
-    rating: JAVA_REVIEW_DATA.ratingValue,
-    reviewCount: JAVA_REVIEW_DATA.reviewCount,
-    image: "/og-images/java-course.jpg",
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "Software Testing Course", url: "/courses/software-testing-course" },
-    { name: "Java Programming", url: '/courses/software-testing-course/java-course' },
-  ]);
-
-  const faqSchema = generateFAQSchema(JAVA_FAQS);
+  const schemas = generateJavaCoursePageSchema(
+    {
+      name: "Java Programming Master Course",
+      description: "Best Java course in Mumbai with Core Java, Spring Boot, Microservices, AWS. 100% placement. Live projects, global certificate.",
+      url: '/courses/software-testing-course/java-course',
+      slug: "java-course",
+      price: 20000,
+      currency: "INR",
+      duration: "P2M2W", // ~10 weeks
+      instructor: "Expert Java Mentors",
+      rating: JAVA_REVIEW_DATA.ratingValue,
+      reviewCount: JAVA_REVIEW_DATA.reviewCount,
+      image: "/og-images/java-course.jpg",
+    },
+    JAVA_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "Software Testing Course", url: "/courses/software-testing-course" },
+      { name: "Java Programming", url: '/courses/software-testing-course/java-course' }
+    ]
+  );
 
   return (
     <>
-      <JsonLd id="course-schema" schema={courseSchema} />
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
-
+      {schemas.map((schema, index) => (
+        <JsonLd key={`java-schema-${index}`} id={`java-schema-${index}`} schema={schema} />
+      ))}
       <HeroSection />
 
       {/* Sticky nav must appear right after hero */}
@@ -84,4 +83,4 @@ export default function JavaPage() {
       <section id='contact'><CtaClient /></section>
     </>
   );
-};
+}

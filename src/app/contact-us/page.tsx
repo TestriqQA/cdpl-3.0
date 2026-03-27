@@ -9,7 +9,7 @@ const ContactFAQSection = dynamic(() => import('@/components/sections/ContactFAQ
 const ContactReviewSection = dynamic(() => import('@/components/sections/ContactReviewSection'), { ssr: true });
 
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
-import { generateContactPageSchema } from "@/lib/schema-generators";
+import { generateContactPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
 // ============================================================================
@@ -42,18 +42,17 @@ export const metadata: Metadata = generateStaticPageMetadata({
 // CONTACT PAGE COMPONENT
 // ============================================================================
 export default function ContactPage() {
-  // Generate Schema
-  const contactSchema = generateContactPageSchema();
+  const schemas = generateContactPageAllSchemas();
 
   return (
     <>
       {/* Schema Injection */}
-      <JsonLd id="contact-page-schema" schema={contactSchema} />
+      {schemas.map((schema, index) => (
+        <JsonLd key={`contact-schema-${index}`} id={`contact-schema-${index}`} schema={schema} />
+      ))}
 
       {/* Main Content - Semantic HTML Structure */}
-      <main className="relative min-h-[220vh]" >
-
-
+      <main className="relative min-h-[220vh]">
         <ContactHeroSection />
         <ContactMethodsSection />
         <ContactOfficeMapSection />

@@ -8,9 +8,10 @@ import CareerPathSection from '@/components/BI-Courses/CareerPathSection';
 import HeroSection from '@/components/BI-Courses/HeroSection';
 import WhyChooseSection from '@/components/BI-Courses/WhyChooseSection';
 import { generateStaticPageMetadata } from '@/lib/metadata-generator';
-import { generateBreadcrumbSchema } from '@/lib/schema-generators';
+import { generateBreadcrumbSchema, generateBusinessIntelligenceCategoryPageSchema } from '@/lib/schema-generators';
 import JsonLd from '@/components/JsonLd';
 import { Metadata } from 'next';
+import { biFaqs } from '@/components/BI-Courses/faqData';
 
 export const metadata: Metadata = generateStaticPageMetadata({
     title: 'Business Intelligence Courses | Power BI, Tableau & Data Viz',
@@ -20,15 +21,31 @@ export const metadata: Metadata = generateStaticPageMetadata({
 });
 
 export default function Home() {
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: "Courses", url: "/courses" },
-        { name: "BI Courses", url: "/courses/bi-courses" },
-    ]);
+    const schemas = generateBusinessIntelligenceCategoryPageSchema(
+        {
+            name: "Business Intelligence Master Course",
+            description: "Master Data Analytics & Visualization with Power BI, Tableau, and Big Data Engineering. Comprehensive hands-on projects and placement support.",
+            url: "/courses/bi-courses",
+            slug: "bi-courses",
+            level: "Beginner to Advanced",
+            duration: "P4M", // 4 Months
+            rating: 4.8,
+            reviewCount: 2285,
+            instructor: "Industry Experts",
+        },
+        biFaqs.map(f => ({ question: f.q, answer: f.a })),
+        [
+            { name: "Home", url: "/" },
+            { name: "Courses", url: "/courses" },
+            { name: "BI Courses", url: "/courses/bi-courses" },
+        ]
+    );
 
     return (
         <>
-            <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
+            {schemas.map((schema, index) => (
+               <JsonLd key={`bi-schema-${index}`} id={`bi-schema-${index}`} schema={schema} />
+            ))}
             <HeroSection />
             <WhyChooseSection />
             <CoursesSection />

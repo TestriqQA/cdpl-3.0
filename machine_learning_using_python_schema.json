@@ -1,0 +1,439 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": "https://www.cinutedigital.com/#organization",
+    "name": "CDPL - Cinute Digital",
+    "legalName": "Cinute Digital Private Limited",
+    "alternateName": "CDPL",
+    "url": "https://www.cinutedigital.com",
+    "logo": {
+      "@type": "ImageObject",
+      "@id": "https://www.cinutedigital.com/#logo",
+      "url": "https://www.cinutedigital.com/cdpl-logo.png",
+      "width": 200,
+      "height": 60,
+      "caption": "CDPL - Cinute Digital"
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://www.cinutedigital.com/og-images/home-page-og.png",
+      "width": 1200,
+      "height": 630
+    },
+    "description": "Leading EdTech company providing industry-focused training in Software Testing, Data Science, AI/ML, and Digital Marketing with 100% placement support.",
+    "slogan": "Transform Your Career with Industry-Ready Skills",
+    "telephone": "+918488988984",
+    "email": "contact@cinutedigital.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road",
+      "addressLocality": "Mira Bhayandar, Mumbai",
+      "addressRegion": "Maharashtra",
+      "postalCode": "401107",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.29403967980817,
+      "longitude": 72.87115175396495
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "customer service",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ],
+        "contactOption": "TollFree"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "admissions",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ]
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+918488988984",
+        "contactType": "technical support",
+        "email": "contact@cinutedigital.com",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ]
+      }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/cinutedigital",
+      "https://www.linkedin.com/company/cinute-digital/",
+      "https://twitter.com/cinutedigital",
+      "@cinutedigital",
+      "https://www.instagram.com/cinutedigital",
+      "https://www.youtube.com/@cinutedigital"
+    ],
+    "foundingDate": "2020",
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "value": "50"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Monday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Tuesday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Wednesday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Thursday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "15:00"
+      }
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Training Partner",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "ISTQB"
+        },
+        "name": "ISTQB Certified Training Partner"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Educational Credential",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "Various Industry Bodies"
+        },
+        "name": "Industry Recognized Certifications"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://www.cinutedigital.com/#website",
+    "url": "https://www.cinutedigital.com",
+    "name": "CDPL - Cinute Digital",
+    "description": "Professional training in Software Testing, Data Science, AI/ML with 100% placement support",
+    "publisher": {
+      "@id": "https://www.cinutedigital.com/#organization"
+    },
+    "inLanguage": "en-IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.cinutedigital.com/courses/ds-ml-courses/machine-learning-using-python#webpage",
+    "url": "https://www.cinutedigital.com/courses/ds-ml-courses/machine-learning-using-python",
+    "name": "Machine Learning with Python Course in Mumbai | 45-Hour Master Program | CDPL",
+    "description": "45-Hour Master Program in Machine Learning Algorithms using Python. Hands-on projects, 100% job assistance, global certificates.",
+    "isPartOf": {
+      "@id": "https://www.cinutedigital.com/#website"
+    },
+    "about": {
+      "@id": "https://www.cinutedigital.com/#organization"
+    },
+    "inLanguage": "en-IN"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "@id": "https://www.cinutedigital.com/courses/ds-ml-courses/machine-learning-using-python#course",
+    "name": "Master Program in Machine Learning Algorithms using Python",
+    "description": "45-Hour Master Program in Machine Learning Algorithms using Python. Hands-on projects, 100% job assistance, global certificates.",
+    "url": "https://www.cinutedigital.com/courses/ds-ml-courses/machine-learning-using-python",
+    "provider": {
+      "@type": "EducationalOrganization",
+      "@id": "https://www.cinutedigital.com/#organization",
+      "name": "CDPL - Cinute Digital",
+      "url": "https://www.cinutedigital.com"
+    },
+    "hasCourseInstance": [
+      {
+        "@type": "CourseInstance",
+        "courseMode": [
+          "online",
+          "onsite"
+        ],
+        "courseWorkload": "P3M",
+        "instructor": {
+          "@type": "Person",
+          "name": "Expert Mentors"
+        }
+      }
+    ],
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "25000",
+      "highPrice": "65000",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.cinutedigital.com/courses/ds-ml-courses/machine-learning-using-python",
+      "category": "Paid"
+    },
+    "inLanguage": "en-IN",
+    "learningResourceType": "Professional Training"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Data Science & Machine Learning Courses Directory",
+    "itemListElement": []
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.cinutedigital.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Courses",
+        "item": "https://www.cinutedigital.com/courses"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Data Science & ML Courses",
+        "item": "https://www.cinutedigital.com/courses/ds-ml-courses"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Machine Learning with Python",
+        "item": "https://www.cinutedigital.com/courses/ds-ml-courses/machine-learning-using-python"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the duration of the course?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Master Program in Machine Learning Algorithms using Python Programming is a comprehensive 45-hour course. The training is structured across 7 modules with a mix of lectures, hands-on projects, and assessments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need prior programming experience?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Basic understanding of Python programming concepts is recommended to ensure you can keep up with the pace of the ML algorithms and implementation modules. However, we include foundational modules to help you catch up if needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What topics are covered in the curriculum?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The curriculum covers 7 comprehensive modules: Introduction to Python & ML Foundations, Data Preprocessing, Supervised Learning (Regression), Supervised Learning (Classification), Model Evaluation & Validation, Unsupervised Learning, and Capstone Projects with real-world applications."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the learning format?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CDPL offers a Hybrid (CLASSROOM + ONLINE) training pattern. Students can attend live sessions in the classroom or online. All sessions are live streamed, and recordings are provided for flexibility and asynchronous learning."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I attend classes online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, absolutely! We offer a hybrid learning model where you can attend live sessions either in-classroom or online. All sessions are live streamed, and recordings are available for students who cannot attend live."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What certification will I receive?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You will receive an internationally recognized certificate from Cinute Digital, validated with a unique authorization QR code. The certificate is issued upon completion of all assessments and mock interview processes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the certificate globally recognized?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, our certificate is globally recognized and validated with a unique QR code. It's accepted by leading companies worldwide and adds significant value to your professional profile."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide job placement assistance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we provide 100% job assistance including resume optimization, LinkedIn profile building, interview preparation, and direct connections with top employers. Our placement team works with you from Day 1."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the average salary after the course?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Freshers typically start with an average salary of 9 LPA as ML Engineers. With experience and specialization, salaries can range from 10-18 LPA depending on the role, company, and location."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I face technical issues during the course?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We have a dedicated support team available to help with technical issues. You can reach out through email, phone, or our support portal. We also provide 1:1 doubt-solving sessions to clarify any technical concepts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the system requirements?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You'll need a computer with Python 3.8+, Jupyter Notebook, and libraries like NumPy, Pandas, Scikit-learn, and TensorFlow installed. We provide detailed setup guides and support for installation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I enroll in the course?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can enroll through our website by filling out the enrollment form. You'll need to provide your basic information, and our team will contact you with batch details, pricing, and next steps."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Enroll in CDPL Machine Learning with Python Course",
+    "description": "A step-by-step guide to enrolling in our 45 hours intensive Machine Learning with Python training program.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Review Curriculum",
+        "text": "Evaluate the comprehensive python, machine learning, and AI algorithms modules."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Contact Admissions",
+        "text": "Reach out to our admissions team for counseling and batch details."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Start Learning",
+        "text": "Master modern large language models, prompt engineering, and deep learning for advanced tech roles!"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-1",
+    "name": "Home",
+    "url": "https://www.cinutedigital.com"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-2",
+    "name": "All Courses",
+    "url": "https://www.cinutedigital.com/courses"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-3",
+    "name": "About Us",
+    "url": "https://www.cinutedigital.com/about-us"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-4",
+    "name": "Contact Us",
+    "url": "https://www.cinutedigital.com/contact-us"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-5",
+    "name": "Events & Webinars",
+    "url": "https://www.cinutedigital.com/events"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-6",
+    "name": "Services",
+    "url": "https://www.cinutedigital.com/services"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-7",
+    "name": "Mentors",
+    "url": "https://www.cinutedigital.com/mentors"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": "https://www.cinutedigital.com/#sitenav-8",
+    "name": "Mock Test",
+    "url": "https://www.cinutedigital.com/mock-test"
+  }
+]

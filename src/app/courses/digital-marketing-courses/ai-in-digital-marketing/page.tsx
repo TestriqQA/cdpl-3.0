@@ -14,11 +14,10 @@ const CareerRoadmapSection = dynamic(() => import("@/components/ai-in-digital-ma
 const FaqSection = dynamic(() => import("@/components/ai-in-digital-marketing/FaqSection"), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
 const CtaSection = dynamic(() => import("@/components/ai-in-digital-marketing/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateAiInDigitalMarketingCoursePageSchema } from "@/lib/schema-generators";
 import { AI_IN_DIGITAL_MARKETING_FAQS, AI_IN_DIGITAL_MARKETING_REVIEW_DATA } from "@/data/aiInDigitalMarketingData";
 import { getGoogleReviews } from "@/lib/reviews";
 import dynamic from 'next/dynamic';
-
 
 function SectionLoader({ label = "Loading..." }: { label?: string }) {
     return (
@@ -52,34 +51,34 @@ export const metadata = generateMetadata({
 export default async function AiInDigitalMarketingPage() {
     const reviewsData = await getGoogleReviews();
 
-    const courseSchema = generateCourseSchema({
-        name: "Master Digital Marketing & AI for Business Owners",
-        description: "A 3-month cohort program to master digital marketing and AI strategies tailored for business owners.",
-        url: '/courses/digital-marketing-courses/ai-in-digital-marketing',
-        slug: "ai-in-digital-marketing",
-        price: 45000,
-        currency: "INR",
-        duration: "P3M",
-        instructor: "Expert Digital Marketers",
-        rating: AI_IN_DIGITAL_MARKETING_REVIEW_DATA.ratingValue,
-        reviewCount: AI_IN_DIGITAL_MARKETING_REVIEW_DATA.reviewCount,
-        image: "/og-images/ai-in-digital-marketing.jpg",
-    });
-
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "/" },
-        { name: "Courses", url: "/courses" },
-    { name: "Digital Marketing Courses", url: "/courses/digital-marketing-courses" },
-        { name: "AI in Digital Marketing", url: '/courses/digital-marketing-courses/ai-in-digital-marketing' },
-    ]);
-
-    const faqSchema = generateFAQSchema(AI_IN_DIGITAL_MARKETING_FAQS);
+    const schemas = generateAiInDigitalMarketingCoursePageSchema(
+        {
+            name: "Master Digital Marketing & AI for Business Owners",
+            description: "A 3-month cohort program to master digital marketing and AI strategies tailored for business owners.",
+            url: '/courses/digital-marketing-courses/ai-in-digital-marketing',
+            slug: "ai-in-digital-marketing",
+            price: 45000,
+            currency: "INR",
+            duration: "P3M",
+            instructor: "Expert Digital Marketers",
+            rating: AI_IN_DIGITAL_MARKETING_REVIEW_DATA.ratingValue,
+            reviewCount: AI_IN_DIGITAL_MARKETING_REVIEW_DATA.reviewCount,
+            image: "/og-images/ai-in-digital-marketing.jpg",
+        },
+        AI_IN_DIGITAL_MARKETING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+        [
+            { name: "Home", url: "/" },
+            { name: "Courses", url: "/courses" },
+            { name: "Digital Marketing Courses", url: "/courses/digital-marketing-courses" },
+            { name: "AI in Digital Marketing", url: '/courses/digital-marketing-courses/ai-in-digital-marketing' },
+        ]
+    );
 
     return (
         <div className="min-h-screen flex flex-col bg-white">
-            <JsonLd id="course-schema" schema={courseSchema} />
-            <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-            <JsonLd id="faq-schema" schema={faqSchema} />
+            {schemas.map((schema, index) => (
+                <JsonLd key={`ai-dm-schema-${index}`} id={`ai-dm-schema-${index}`} schema={schema} />
+            ))}
 
             <main>
                 <HeroSection />

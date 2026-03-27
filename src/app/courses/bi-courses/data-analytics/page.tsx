@@ -14,7 +14,7 @@ const CareerRoadmapSection = dynamic(() => import('@/components/data-analytics/C
 import StickyNav3 from "@/components/StickyNav2/StickyNav3";
 import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
-import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema-generators";
+import { generateDataAnalyticsCoursePageSchema } from "@/lib/schema-generators";
 import { DATA_ANALYTICS_FAQS, DATA_ANALYTICS_REVIEW_DATA } from "@/data/dataAnalyticsData";
 import dynamic from "next/dynamic";
 
@@ -25,6 +25,7 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
     </div>
   );
 }
+
 export const metadata = generateMetadata({
   title: "Advanced Data Analytics Course Mumbai | Data Analyst Training",
   description: "Master the data analyst full course in Mumbai with 110 hours of intensive training. Advanced data analytics, Python, SQL & Power BI with 100% job placement.",
@@ -43,35 +44,34 @@ export const metadata = generateMetadata({
 });
 
 export default function AdvancedDataAnalyticsPage() {
-  const courseSchema = generateCourseSchema({
-    name: "Advanced Data Analytics Hero Program: Full Course in Mumbai",
-    description: "Master the data analyst full course in Mumbai with 110 hours of intensive training. Advanced data analytics, Python, SQL & Power BI with 100% job placement.",
-    url: '/courses/bi-courses/data-analytics',
-    slug: "data-analytics",
-    price: 45000,
-    currency: "INR",
-    duration: "P3M", // ~12 weeks
-    instructor: "Expert Data Analysts",
-    rating: DATA_ANALYTICS_REVIEW_DATA.ratingValue,
-    reviewCount: DATA_ANALYTICS_REVIEW_DATA.reviewCount,
-    image: "/og-images/data-analytics.jpg",
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "BI Courses", url: "/courses/bi-courses" },
-    { name: "Advanced Data Analytics", url: '/courses/bi-courses/data-analytics' },
-  ]);
-
-  const faqSchema = generateFAQSchema(DATA_ANALYTICS_FAQS);
-
+  const schemas = generateDataAnalyticsCoursePageSchema(
+    {
+      name: "Advanced Data Analytics Hero Program: Full Course in Mumbai",
+      description: "Master the data analyst full course in Mumbai with 110 hours of intensive training. Advanced data analytics, Python, SQL & Power BI with 100% job placement.",
+      url: '/courses/bi-courses/data-analytics',
+      slug: "data-analytics",
+      price: 45000,
+      currency: "INR",
+      duration: "P3M",
+      instructor: "Expert Data Analysts",
+      rating: DATA_ANALYTICS_REVIEW_DATA.ratingValue,
+      reviewCount: DATA_ANALYTICS_REVIEW_DATA.reviewCount,
+      image: "/og-images/data-analytics.jpg",
+    },
+    DATA_ANALYTICS_FAQS.map(f => ({ question: f.question, answer: f.answer })),
+    [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+      { name: "BI Courses", url: "/courses/bi-courses" },
+      { name: "Advanced Data Analytics", url: '/courses/bi-courses/data-analytics' },
+    ]
+  );
 
   return (
     <>
-      <JsonLd id="course-schema" schema={courseSchema} />
-      <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
-      <JsonLd id="faq-schema" schema={faqSchema} />
+      {schemas.map((schema, index) => (
+        <JsonLd key={`data-analytics-schema-${index}`} id={`data-analytics-schema-${index}`} schema={schema} />
+      ))}
 
       <HeroSection />
 

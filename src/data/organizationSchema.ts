@@ -9,7 +9,7 @@ export const organizationSchema = {
   "@type": "EducationalOrganization",
   "name": SITE_CONFIG.name,
   "url": SITE_CONFIG.url,
-  "logo": `${SITE_CONFIG.url}/logo.png`, // Assuming the logo is at the root of the public folder
+  "logo": `${SITE_CONFIG.url}/cdpl-logo.png`, // Assuming the logo is at the root of the public folder
   "description": "CDPL - Cinute Digital is a leading training institute in India offering industry-focused courses in Software Testing, Data Science, and AI/ML with 100% placement support.",
   "sameAs": [
     "https://www.facebook.com/cinutedigital",
