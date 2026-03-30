@@ -1,73 +1,11 @@
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/api-testing/HeroSection";
 import StickyNav from "@/components/StickyNav2/StickyNav2";
-
-import { TestimonialsClient } from "@/app/courses/software-testing-course/api-testing/client-section";
-import { CtaClient } from "@/app/courses/software-testing-course/api-testing/client-section";
-
-const StatsSection = dynamic(
-  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.StatsSection),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading stats..." />
-  }
-);
-
-const WhyApiTesting = dynamic(
-  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.WhyApiTesting),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading why..." />
-  }
-);
-
-const CurriculumSection = dynamic(
-  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.CurriculumSection),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading curriculum..." />
-  }
-);
-
-const ProjectsSection = dynamic(
-  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.ProjectsSection),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading projects..." />
-  }
-);
-
-const CareerSection = dynamic(
-  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.CareerSection),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading career..." />
-  }
-);
-
-const WhoShouldEnroll = dynamic(
-  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.WhoShouldEnroll),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading enrollment info..." />
-  }
-);
-
-const ToolsSection = dynamic(
-  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.ToolsSection),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading tools..." />
-  }
-);
-
-const FaqSection = dynamic(
-  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.FaqSection),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading FAQs..." />
-  }
-);
+import JsonLd from "@/components/JsonLd";
+import { generateApiTestingCoursePageSchema } from "@/lib/schema-generators";
+import { API_TESTING_FAQS, API_TESTING_REVIEW_DATA } from "@/data/apiTestingData";
+import { generateMetadata } from "@/lib/metadata-generator";
+import { TestimonialsClient, CtaClient } from "@/app/courses/software-testing-course/api-testing/client-section";
 
 const SectionLoader = ({ label }: { label: string }) => {
   return (
@@ -77,16 +15,50 @@ const SectionLoader = ({ label }: { label: string }) => {
   );
 };
 
-import JsonLd from "@/components/JsonLd";
-import { generateApiTestingCoursePageSchema } from "@/lib/schema-generators";
+const StatsSection = dynamic(
+  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.StatsSection),
+  { ssr: true, loading: () => <SectionLoader label="Loading stats..." /> }
+);
 
-import { API_TESTING_FAQS, API_TESTING_REVIEW_DATA } from "@/data/apiTestingData";
-import { generateMetadata } from "@/lib/metadata-generator";
+const WhyApiTesting = dynamic(
+  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.WhyApiTesting),
+  { ssr: true, loading: () => <SectionLoader label="Loading why..." /> }
+);
+
+const CurriculumSection = dynamic(
+  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.CurriculumSection),
+  { ssr: true, loading: () => <SectionLoader label="Loading curriculum..." /> }
+);
+
+const ProjectsSection = dynamic(
+  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.ProjectsSection),
+  { ssr: true, loading: () => <SectionLoader label="Loading projects..." /> }
+);
+
+const CareerSection = dynamic(
+  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.CareerSection),
+  { ssr: true, loading: () => <SectionLoader label="Loading career..." /> }
+);
+
+const WhoShouldEnroll = dynamic(
+  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.WhoShouldEnroll),
+  { ssr: true, loading: () => <SectionLoader label="Loading enrollment info..." /> }
+);
+
+const ToolsSection = dynamic(
+  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.ToolsSection),
+  { ssr: true, loading: () => <SectionLoader label="Loading tools..." /> }
+);
+
+const FaqSection = dynamic(
+  () => import("@/app/courses/software-testing-course/api-testing/server-sections").then((mod) => mod.FaqSection),
+  { ssr: true, loading: () => <SectionLoader label="Loading FAQs..." /> }
+);
 
 export const metadata = generateMetadata({
   title: "API Testing Course with POSTMAN & RestAPIs",
   description: "Master API testing in 15 hours with live projects, global certification, and placement support.",
-  url: '/courses/software-testing-course/api-testing',
+  url: "/courses/software-testing-course/api-testing",
 });
 
 export default function Page() {
@@ -94,7 +66,7 @@ export default function Page() {
     {
       name: "API Testing Course with POSTMAN & RestAPIs",
       description: "Master API testing in 15 hours with live projects, global certification, and placement support.",
-      url: '/courses/software-testing-course/api-testing',
+      url: "/courses/software-testing-course/api-testing",
       slug: "api-testing",
       instructor: "CDPL Expert Mentors",
       duration: "PT15H",
@@ -108,7 +80,7 @@ export default function Page() {
       { name: "Home", url: "/" },
       { name: "Courses", url: "/courses" },
       { name: "Software Testing Course", url: "/courses/software-testing-course" },
-      { name: "API Testing", url: '/courses/software-testing-course/api-testing' }
+      { name: "API Testing", url: "/courses/software-testing-course/api-testing" }
     ]
   );
 
@@ -137,3 +109,4 @@ export default function Page() {
     </>
   );
 }
+

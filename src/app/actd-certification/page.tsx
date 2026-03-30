@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import {
-  generateBreadcrumbSchema,
   generateCourseSchema,
-  generateFAQSchema
+  generateActdCertificationPageAllSchemas
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
@@ -66,13 +65,38 @@ export const metadata: Metadata = generateStaticPageMetadata({
 /* ---------- Page (server component) ---------- */
 export default function ACTDCertificationTrainingPage() {
   /* ---------- JSON-LD ---------- */
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "ACTD Certification", url: "/actd-certification-training" },
-  ]);
-
-  // const organizationSchema = generateOrganizationSchema(); // REMOVED (Redundant)
+  const consolidatedSchemas = generateActdCertificationPageAllSchemas({
+    faqs: [
+      {
+        question: "What does ACTD stand for?",
+        answer: "ACTD stands for Agile, Cloud, and Test-Driven Development. It's a comprehensive certification that covers modern testing practices in agile and cloud environments.",
+      },
+      {
+        question: "How long is the ACTD certification program?",
+        answer: "The ACTD Certification program is a 10-week intensive course with approximately 15 hours of learning per week, including live sessions, practical labs, and project work.",
+      },
+      {
+        question: "Do I need prior cloud experience for ACTD?",
+        answer: "Prior cloud experience is helpful but not mandatory. The course covers cloud fundamentals and gradually progresses to advanced cloud testing strategies.",
+      },
+      {
+        question: "What are the career opportunities after ACTD certification?",
+        answer: "ACTD certification opens doors to roles like Agile QA Engineer, Cloud Test Engineer, DevOps Tester, Test Automation Specialist, and Senior QA positions in companies adopting agile and cloud practices.",
+      },
+    ],
+    howToSteps: [
+      { name: "Track Selection", text: "Choose your specialization in Agile, Cloud, or Test-Driven Development." },
+      { name: "Hands-on Labs", text: "Complete the 10-week intensive curriculum with practical scenario tasks." },
+      { name: "Portfolio Building", text: "Develop a comprehensive project portfolio reviewed by industry mentors." },
+      { name: "Milestone Assessment", text: "Pass the readiness metrics and assessment patterns." },
+      { name: "Certification", text: "Successfully complete the proctored exam to earn your ACTD certification." }
+    ],
+    tracks: [
+      "Core Concepts",
+      "Practical Skills",
+      "Capstone + Interview"
+    ]
+  });
 
   const courseSchema = generateCourseSchema({
     name: "ACTD Certification Training - Agile, Cloud & Test-Driven Development",
@@ -96,33 +120,14 @@ export default function ACTDCertificationTrainingPage() {
     reviewCount: 120,
   });
 
-  const faqSchema = generateFAQSchema([
-    {
-      question: "What does ACTD stand for?",
-      answer: "ACTD stands for Agile, Cloud, and Test-Driven Development. It's a comprehensive certification that covers modern testing practices in agile and cloud environments.",
-    },
-    {
-      question: "How long is the ACTD certification program?",
-      answer: "The ACTD Certification program is a 10-week intensive course with approximately 15 hours of learning per week, including live sessions, practical labs, and project work.",
-    },
-    {
-      question: "Do I need prior cloud experience for ACTD?",
-      answer: "Prior cloud experience is helpful but not mandatory. The course covers cloud fundamentals and gradually progresses to advanced cloud testing strategies.",
-    },
-    {
-      question: "What are the career opportunities after ACTD certification?",
-      answer: "ACTD certification opens doors to roles like Agile QA Engineer, Cloud Test Engineer, DevOps Tester, Test Automation Specialist, and Senior QA positions in companies adopting agile and cloud practices.",
-    },
-  ]);
-
   return (
     <main
       className="bg-white text-slate-900"
     >
-      <JsonLd id="actd-breadcrumb" schema={breadcrumbSchema} />
-      {/* <JsonLd id="actd-org" schema={organizationSchema} /> */}
+      {consolidatedSchemas.map((schema, index) => (
+        <JsonLd key={`actd-schema-${index}`} id={`actd-schema-${index}`} schema={schema} />
+      ))}
       <JsonLd id="actd-course" schema={courseSchema} />
-      <JsonLd id="actd-faq" schema={faqSchema} />
 
       <ACTDCertificationHeroSection />
       <ACTDCertificationTracksSection />

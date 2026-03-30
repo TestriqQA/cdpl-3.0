@@ -1,15 +1,18 @@
 // /app/cancellation-refund-policy/page.tsx
 import type { Metadata } from "next";
+import { generateCancellationRefundPolicyPageAllSchemas } from "@/lib/schema-generators";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Cancellation/Refund Policy | Cinute Digital Pvt. Ltd.",
-  description:
-    "Cancellation/Refund Policy for Cinute Digital Pvt. Ltd. courses.",
+  description: "Read the Cancellation and Refund Policy for Cinute Digital (CDPL). Learn about full refunds before batch starts, 50% partial refunds during demo, and batch change flexibility.",
   alternates: { canonical: "/cancellation-refund-policy" },
   robots: { index: true, follow: true },
 };
 
 export default function CancellationRefundPolicyPage() {
+  const consolidatedSchemas = generateCancellationRefundPolicyPageAllSchemas();
+
   const H1 = "text-3xl font-bold tracking-tight text-slate-900";
   const H2 = "text-2xl font-semibold tracking-tight text-slate-900";
   const P = "text-base leading-7 text-slate-700";
@@ -17,6 +20,9 @@ export default function CancellationRefundPolicyPage() {
 
   return (
     <div className="[color-scheme:light] bg-white">
+      {consolidatedSchemas.map((schema, index) => (
+        <JsonLd key={`refund-schema-${index}`} id={`refund-schema-${index}`} schema={schema} />
+      ))}
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900">
         <h1 className={H1}>Cancellation/Refund Policy</h1>
 

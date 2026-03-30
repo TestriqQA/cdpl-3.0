@@ -1,5 +1,7 @@
 // /app/privacy-policy/page.tsx
 import type { Metadata } from "next";
+import { generatePrivacyPolicyPageAllSchemas } from "@/lib/schema-generators";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Cinute Digital Pvt. Ltd.",
@@ -10,6 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPolicyPage() {
+  const consolidatedSchemas = generatePrivacyPolicyPageAllSchemas();
+
   const H1 = "text-3xl font-bold tracking-tight text-slate-900";
   const H2 = "text-2xl font-semibold tracking-tight text-slate-900";
   const H3 = "text-xl font-semibold tracking-tight text-slate-900";
@@ -18,6 +22,9 @@ export default function PrivacyPolicyPage() {
 
   return (
     <div className="[color-scheme:light] bg-white">
+      {consolidatedSchemas.map((schema, index) => (
+        <JsonLd key={`privacy-schema-${index}`} id={`privacy-schema-${index}`} schema={schema} />
+      ))}
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900 break-words">
         <h1 className={H1}>Privacy Policy</h1>
 

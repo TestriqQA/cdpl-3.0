@@ -4552,6 +4552,758 @@ export function generateMockTestPageAllSchemas(
 }
 
 // ============================================================================
+// AAA CERTIFICATION PAGE SCHEMA CONSOLIDATION (/aaa-certification)
+// ============================================================================
+
+/**
+ * Generate a complete 8-point schema set for the AAA Certification page.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ */
+export function generateAaaCertificationPageAllSchemas(
+  data: {
+    faqs: { question: string; answer: string }[];
+    howToSteps: { name: string; text: string; url?: string }[];
+    curriculum: string[];
+  }
+): WithContext<Record<string, unknown>>[] {
+  // 1. Organization Schema
+  const organizationSchema = generateOrganizationSchema();
+
+  // 2. WebSite Schema
+  const websiteSchema = generateWebsiteSchema();
+
+  // 3. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: "AAA Certification Course | Advanced Automation Architecture",
+    description: "Master Advanced Automation Architecture with CDPL's 12-week certification program. CI/CD integration, cloud testing, and expert-led labs.",
+    url: "/aaa-certification",
+    isPartOf: { "@id": getWebsiteId() },
+    about: { "@id": getOrganizationId() }
+  });
+
+  // 4. FAQPage Schema
+  const faqSchema = generateFAQSchema(data.faqs);
+
+  // 5. ItemList Schema (Curriculum Modules)
+  const itemListSchema = generateItemListSchema(
+    data.curriculum.map(module => ({
+      name: module,
+      url: "/aaa-certification",
+      type: "Thing"
+    })),
+    "AAA Certification Curriculum Modules"
+  );
+
+  // 6. Review / Aggregate Rating Schema
+  const reviewAggregateSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
+
+  // 7. HowTo Schema (Certification Journey)
+  const howToSchema = generateHowToSchema({
+    name: "How to achieve AAA Certification",
+    description: "Step-by-step roadmap from enrollment to proctored assessment and professional certification.",
+    steps: data.howToSteps
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    reviewAggregateSchema,
+    howToSchema,
+    generateSingleReviewSchema(),
+    siteNavigationSchema,
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// ACTD CERTIFICATION PAGE SCHEMA CONSOLIDATION (/actd-certification)
+// ============================================================================
+
+/**
+ * Generate a complete 8-point schema set for the ACTD Certification page.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ */
+export function generateActdCertificationPageAllSchemas(
+  data: {
+    faqs: { question: string; answer: string }[];
+    howToSteps: { name: string; text: string; url?: string }[];
+    tracks: string[];
+  }
+): WithContext<Record<string, unknown>>[] {
+  // 1. Organization Schema
+  const organizationSchema = generateOrganizationSchema();
+
+  // 2. WebSite Schema
+  const websiteSchema = generateWebsiteSchema();
+
+  // 3. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: "ACTD Certification Training | Agile, Cloud & Test-Driven Development",
+    description: "Master modern testing with CDPL's ACTD program. Intensive 10-week tracks in Agile methodologies, Cloud testing, and TDD with mentor support.",
+    url: "/actd-certification",
+    isPartOf: { "@id": getWebsiteId() },
+    about: { "@id": getOrganizationId() }
+  });
+
+  // 4. FAQPage Schema
+  const faqSchema = generateFAQSchema(data.faqs);
+
+  // 5. ItemList Schema (Training Tracks)
+  const itemListSchema = generateItemListSchema(
+    data.tracks.map(track => ({
+      name: track,
+      url: "/actd-certification",
+      type: "Thing"
+    })),
+    "ACTD Certification Training Tracks"
+  );
+
+  // 6. Review / Aggregate Rating Schema
+  const reviewAggregateSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
+
+  // 7. HowTo Schema (Certification Roadmap)
+  const howToSchema = generateHowToSchema({
+    name: "How to achieve ACTD Certification",
+    description: "Your comprehensive roadmap from track selection to portfolio building and professional certification.",
+    steps: data.howToSteps
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    reviewAggregateSchema,
+    howToSchema,
+    generateSingleReviewSchema(),
+    siteNavigationSchema,
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// CERTIFICATE VALIDATION PAGE SCHEMA CONSOLIDATION (/cdpl-certificate-validation)
+// ============================================================================
+
+/**
+ * Generate a complete 8-point schema set for the Certificate Validation page.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ */
+export function generateCertificateValidationPageAllSchemas(
+  data: {
+    faqs: { question: string; answer: string }[];
+    howToSteps: { name: string; text: string; url?: string }[];
+    features: string[];
+  }
+): WithContext<Record<string, unknown>>[] {
+  // 1. Organization Schema
+  const organizationSchema = generateOrganizationSchema();
+
+  // 2. WebSite Schema
+  const websiteSchema = generateWebsiteSchema();
+
+  // 3. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: "CDPL Certificate Validation - Verify AAA & ACTD Certificates Online",
+    description: "Instantly validate and verify CDPL, AAA, and ACTD certificates online. Professional certificate authenticity verification tool.",
+    url: "/cdpl-certificate-validation",
+    isPartOf: { "@id": getWebsiteId() },
+    about: { "@id": getOrganizationId() }
+  });
+
+  // 4. FAQPage Schema
+  const faqSchema = generateFAQSchema(data.faqs);
+
+  // 5. ItemList Schema (Validation Features)
+  const itemListSchema = generateItemListSchema(
+    data.features.map(feature => ({
+      name: feature,
+      url: "/cdpl-certificate-validation",
+      type: "Thing"
+    })),
+    "CDPL Certificate Validation Key Features"
+  );
+
+  // 6. Review / Aggregate Rating Schema
+  const reviewAggregateSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
+
+  // 7. HowTo Schema (Validation Process)
+  const howToSchema = generateHowToSchema({
+    name: "How to verify a CDPL Certificate",
+    description: "Follow these simple steps to instantly verify the authenticity of any CDPL, AAA, or ACTD certification.",
+    steps: data.howToSteps
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    reviewAggregateSchema,
+    howToSchema,
+    generateSingleReviewSchema(),
+    siteNavigationSchema,
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// CMS PAGE SCHEMA CONSOLIDATION (/cms)
+// ============================================================================
+
+/**
+ * Generate a complete 8-point schema set for the CMS Page.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ */
+export function generateCmsPageAllSchemas(
+  data: {
+    faqs: { question: string; answer: string }[];
+    howToSteps: { name: string; text: string; url?: string }[];
+    features: string[];
+  }
+): WithContext<Record<string, unknown>>[] {
+  // 1. Organization Schema
+  const organizationSchema = generateOrganizationSchema();
+
+  // 2. WebSite Schema
+  const websiteSchema = generateWebsiteSchema();
+
+  // 3. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: "Course Management System - Cinute Digital Studio",
+    description: "Manage course content, SEO metadata, and digital assets via the Cinute Digital CMS. Secure administrative portal for content management.",
+    url: "/cms",
+    isPartOf: { "@id": getWebsiteId() },
+    about: { "@id": getOrganizationId() }
+  });
+
+  // 4. FAQPage Schema
+  const faqSchema = generateFAQSchema(data.faqs);
+
+  // 5. ItemList Schema (CMS Features)
+  const itemListSchema = generateItemListSchema(
+    data.features.map(feature => ({
+      name: feature,
+      url: "/cms",
+      type: "Thing"
+    })),
+    "Cinute Digital CMS Administrative Features"
+  );
+
+  // 6. Review / Aggregate Rating Schema
+  const reviewAggregateSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
+
+  // 7. HowTo Schema (Content Management Process)
+  const howToSchema = generateHowToSchema({
+    name: "How to manage course content via CMS",
+    description: "Follow these steps to efficiently update and publish course content using our customized Sanity Studio.",
+    steps: data.howToSteps
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    reviewAggregateSchema,
+    howToSchema,
+    generateSingleReviewSchema(),
+    siteNavigationSchema,
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// PRIVACY POLICY PAGE SCHEMA CONSOLIDATION (/privacy-policy)
+// ============================================================================
+
+/**
+ * Generate a complete 8-point schema set for the Privacy Policy page.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ * Consolidates legal information to ensure 100% compliance and accuracy.
+ */
+export function generatePrivacyPolicyPageAllSchemas(): WithContext<Record<string, unknown>>[] {
+  // 1. Organization Schema (Correct Legal Address)
+  const organizationSchema = generateOrganizationSchema();
+
+  // 2. WebSite Schema
+  const websiteSchema = generateWebsiteSchema();
+
+  // 3. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: "Privacy Policy | Cinute Digital Pvt. Ltd.",
+    description: "Our policies and procedures on the collection, use and disclosure of Your information when You use the Service. Learn about Your privacy rights and how the law protects You.",
+    url: "/privacy-policy",
+    isPartOf: { "@id": getWebsiteId() },
+    about: { "@id": getOrganizationId() }
+  });
+
+  // 4. FAQPage Schema (Extracted from Legal Text)
+  const faqSchema = generateFAQSchema([
+    {
+      question: "What personal data does Cinute Digital collect?",
+      answer: "We collect email addresses, names, phone numbers, addresses, and usage data to provide and improve our services."
+    },
+    {
+      question: "What are my rights under GDPR?",
+      answer: "Under GDPR, you have the right to access, correct, object to processing, request erasure, and transfer your personal data."
+    },
+    {
+      question: "What are my rights under CCPA?",
+      answer: "Under CCPA, California residents have the right to notice, to request disclosure of data collected, to opt-out of data sales, and to delete personal data."
+    },
+    {
+      question: "How can I contact the Data Controller?",
+      answer: "You can contact Cinute Digital Pvt. Ltd. at contact@cinutedigital.com or +91 788-83-83-788 for any privacy-related inquiries."
+    }
+  ]);
+
+  // 5. ItemList Schema (Data Protection Rights)
+  const itemListSchema = generateItemListSchema(
+    [
+      "Right to Access",
+      "Right to Rectification",
+      "Right to Erasure (Forgetfulness)",
+      "Right to Restrict Processing",
+      "Right to Data Portability",
+      "Right to Object"
+    ].map(right => ({
+      name: right,
+      url: "/privacy-policy",
+      type: "Thing"
+    })),
+    "Cinute Digital Data Protection Rights & Categories"
+  );
+
+  // 6. Review / Aggregate Rating Schema
+  const reviewAggregateSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
+
+  // 7. HowTo Schema (How to exercise privacy rights)
+  const howToSchema = generateHowToSchema({
+    name: "How to exercise your privacy and data rights",
+    description: "Follow these legal steps to request access, correction, or deletion of your personal data.",
+    steps: [
+      { name: "Submission", text: "Submit a verifiable request via email to contact@cinutedigital.com or through our contact page." },
+      { name: "Verification", text: "We will verify your identity to ensure the security of your personal information." },
+      { name: "Processing", text: "Your request will be processed within the legally mandated timeframes (45 days for CCPA, 30 days for GDPR)." },
+      { name: "Confirmation", text: "You will receive a formal confirmation once your request has been fulfilled." }
+    ]
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    reviewAggregateSchema,
+    howToSchema,
+    generateSingleReviewSchema(),
+    siteNavigationSchema,
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// COOKIES POLICY PAGE SCHEMA CONSOLIDATION (/cookies-policy)
+// ============================================================================
+
+/**
+ * Generate a complete 8-point schema set for the Cookies Policy page.
+ * Includes: Organization (TESTRIQ QA Lab), WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ * Consolidates legal information to ensure 100% compliance and accuracy.
+ */
+export function generateCookiesPolicyPageAllSchemas(): WithContext<Record<string, unknown>>[] {
+  // 1. Organization Schema (Specific to Cookies Policy)
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": `${getWebsiteId()}#organization`,
+    "name": "TESTRIQ QA Lab, LLP",
+    "url": getWebsiteId(),
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${getWebsiteId()}/logo.png`,
+      "width": 600,
+      "height": 60
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "215, A Wing, Main Frame Premises, Goregaon East",
+      "addressLocality": "Mumbai",
+      "postalCode": "400065",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91 788-83-83-788",
+      "contactType": "customer service",
+      "email": "contact@cinutedigital.com"
+    }
+  } as WithContext<Record<string, unknown>>;
+
+  // 2. WebSite Schema
+  const websiteSchema = generateWebsiteSchema();
+
+  // 3. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: "Cookies Policy | Cinute Digital Pvt. Ltd.",
+    description: "Read the Cookies Policy of Cinute Digital (CDPL). Understand how we use cookies to improve your browsing experience and how you can manage them.",
+    url: "/cookies-policy",
+    isPartOf: { "@id": getWebsiteId() },
+    about: { "@id": `${getWebsiteId()}#organization` }
+  });
+
+  // 4. FAQPage Schema (Extracted from Legal Text)
+  const faqSchema = generateFAQSchema([
+    {
+      question: "What are Cookies?",
+      answer: "Cookies are small files placed on your device by a website to track your browsing history and improve your experience."
+    },
+    {
+      question: "Why does Cinute Digital use cookies?",
+      answer: "We use cookies for essential site functions, remembering your preferences, and analyzing traffic to improve our services."
+    },
+    {
+      question: "Can I browse Cinute Digital without cookies?",
+      answer: "Yes, you can disable cookies in your browser, but some features of the website may not function correctly."
+    },
+    {
+      question: "How can I delete cookies?",
+      answer: "You can delete cookies through your browser's settings. Popular browsers like Chrome, Firefox, and Safari provide specific privacy controls for this."
+    }
+  ]);
+
+  // 5. ItemList Schema (Cookie Categories)
+  const itemListSchema = generateItemListSchema(
+    [
+      "Necessary / Essential Cookies",
+      "Functionality Cookies",
+      "Tracking and Performance Cookies"
+    ].map(category => ({
+      name: category,
+      url: "/cookies-policy",
+      type: "Thing"
+    })),
+    "Cinute Digital Cookie Categories"
+  );
+
+  // 6. Review / Aggregate Rating Schema
+  const reviewAggregateSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
+
+  // 7. HowTo Schema (How to manage/delete cookies)
+  const howToSchema = generateHowToSchema({
+    name: "How to manage and delete cookies in your browser",
+    description: "Follow these steps to clear or disable cookies for Cinute Digital in your web browser.",
+    steps: [
+      { name: "Settings", text: "Open your web browser's settings or preferences menu." },
+      { name: "Privacy & Security", text: "Locate the Privacy, Security, or Content settings section." },
+      { name: "Manage Cookies", text: "Find the 'Cookies and other site data' option." },
+      { name: "Clear/Disable", text: "Select the option to clear all cookies or disable them for specific sites." }
+    ]
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    reviewAggregateSchema,
+    howToSchema,
+    generateSingleReviewSchema(),
+    siteNavigationSchema,
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// TERMS OF SERVICE PAGE SCHEMA CONSOLIDATION (/terms-of-service)
+// ============================================================================
+
+/**
+ * Generate a complete 8-point schema set for the Terms of Service page.
+ * Includes: Organization, WebSite, WebPage, FAQPage (Placement), ItemList, Review/AggregateRating, HowTo (Enrollment/Job Assist), and SiteNavigation.
+ * Ensures 100% legal accuracy for Job Assistance policies.
+ */
+export function generateTermsOfServicePageAllSchemas(): WithContext<Record<string, unknown>>[] {
+  // 1. Organization Schema (Standard Legal Identity)
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": `${getWebsiteId()}#organization`,
+    "name": "Cinute Digital Pvt. Ltd.",
+    "url": getWebsiteId(),
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${getWebsiteId()}/logo.png`,
+      "width": 600,
+      "height": 60
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road, Mira Bhayandar",
+      "addressLocality": "Mumbai",
+      "postalCode": "401107",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91 788-83-83-788",
+      "contactType": "customer service",
+      "email": "contact@cinutedigital.com"
+    }
+  } as WithContext<Record<string, unknown>>;
+
+  // 2. WebSite Schema
+  const websiteSchema = generateWebsiteSchema();
+
+  // 3. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: "Terms & Conditions | Cinute Digital Pvt. Ltd.",
+    description: "Read the Terms of Service for Cinute Digital (CDPL). Understand our enrollment policies, intellectual property terms, and comprehensive Job Assistance services.",
+    url: "/terms-of-service",
+    isPartOf: { "@id": getWebsiteId() },
+    about: { "@id": `${getWebsiteId()}#organization` }
+  });
+
+  // 4. FAQPage Schema (Placement Assistance specific)
+  const faqSchema = generateFAQSchema([
+    {
+      question: "What are the eligibility parameters for placement assistance?",
+      answer: "To be eligible, you must be a graduate of a paid masterclass program, maintain at least 90% attendance, complete all fees, and participate in mock interviews."
+    },
+    {
+      question: "How many interview calls will I receive?",
+      answer: "The number of interview calls depends on your skills, experience, and industry demand. We strive to connect you with relevant domestic opportunities."
+    },
+    {
+      question: "Am I eligible for job assistance if I am placed through a third party?",
+      answer: "Yes, you remain eligible for our Job Assistance services even if you secure a job through a third-party recruiter, though fee refunds are not applicable."
+    },
+    {
+      question: "Can I share my job preference with CDPL?",
+      answer: "Yes, we encourage you to share your desired roles and companies so our placement officers can prioritize relevant opportunities for you."
+    },
+    {
+      question: "Does CDPL take responsibility for issues with an employer placement?",
+      answer: "While we research potential employers, we cannot guarantee company culture. We offer ongoing support and guidance should any issues arise."
+    }
+  ]);
+
+  // 5. ItemList Schema (Key Policy Sections)
+  const itemListSchema = generateItemListSchema(
+    [
+      "Registration and Enrollment Eligibility",
+      "Intellectual Property and Ownership",
+      "100% Job Assistance Commitment",
+      "Placement Assistance Parameters"
+    ].map(section => ({
+      name: section,
+      url: "/terms-of-service",
+      type: "Thing"
+    })),
+    "CDPL Policy & Assistance Framework"
+  );
+
+  // 6. Review / Aggregate Rating Schema
+  const reviewAggregateSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
+
+  // 7. HowTo Schema (Enrollment to Career Placement)
+  const howToSchema = generateHowToSchema({
+    name: "The CDPL Enrollment and Job Assistance Journey",
+    description: "Our structured path from registration to professional job placement support.",
+    steps: [
+      { name: "Registration", text: "Provide accurate personal information and enroll in your selected masterclass." },
+      { name: "Mastery", text: "Complete the training program with at least 90% attendance and achieve graduation status." },
+      { name: "Certification", text: "Successfully complete your final assessment and receive your industry-recognized certification." },
+      { name: "Preparation", text: "Work with experts to build a standout resume and optimize your professional online presence." },
+      { name: "Support", text: "Access personalized mock interviews, career coaching, and placement assistance calls." }
+    ]
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    reviewAggregateSchema,
+    howToSchema,
+    generateSingleReviewSchema(),
+    siteNavigationSchema,
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
+// CANCELLATION & REFUND POLICY PAGE SCHEMA CONSOLIDATION (/cancellation-refund-policy)
+// ============================================================================
+
+/**
+ * Generate a complete 8-point schema set for the Cancellation & Refund Policy page.
+ * Includes: Organization, WebSite, WebPage, FAQPage (Refunds), ItemList, Review/AggregateRating, HowTo (Refund Request), and SiteNavigation.
+ * Ensures 100% legal accuracy for Refund and Batch Change policies.
+ */
+export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<Record<string, unknown>>[] {
+  // 1. Organization Schema (Standard Legal Identity)
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": `${getWebsiteId()}#organization`,
+    "name": "Cinute Digital Pvt. Ltd.",
+    "url": getWebsiteId(),
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${getWebsiteId()}/logo.png`,
+      "width": 600,
+      "height": 60
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road, Mira Bhayandar",
+      "addressLocality": "Mumbai",
+      "postalCode": "401107",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91 788-83-83-788",
+      "contactType": "customer service",
+      "email": "contact@cinutedigital.com"
+    }
+  } as WithContext<Record<string, unknown>>;
+
+  // 2. WebSite Schema
+  const websiteSchema = generateWebsiteSchema();
+
+  // 3. WebPage Schema
+  const webPageSchema = generateWebPageSchema({
+    name: "Cancellation/Refund Policy | Cinute Digital Pvt. Ltd.",
+    description: "Read the Cancellation and Refund Policy for Cinute Digital (CDPL). Learn about full refunds before batch starts, 50% partial refunds during demo, and batch change flexibility.",
+    url: "/cancellation-refund-policy",
+    isPartOf: { "@id": getWebsiteId() },
+    about: { "@id": `${getWebsiteId()}#organization` }
+  });
+
+  // 4. FAQPage Schema (Refund/Cancellation specific)
+  const faqSchema = generateFAQSchema([
+    {
+      question: "What is the policy for a full refund?",
+      answer: "A full refund, including applicable fees, is issued for cancellations made in advance before the batch start date."
+    },
+    {
+      question: "Is there a partial refund during the demo sessions?",
+      answer: "Yes, cancellations made during the first 2 demo sessions are eligible for a 50% refund, excluding certificate exam booking fees."
+    },
+    {
+      question: "Which fees are non-refundable?",
+      answer: "Certificate exam booking fees are non-refundable and non-transferable."
+    },
+    {
+      question: "How long does it take to process a refund?",
+      answer: "Refunds are typically processed within 15 business days after receiving your formal cancellation request."
+    },
+    {
+      question: "Can I change my batch after the course starts?",
+      answer: "You can change your batch for free if you notify us before reaching 50% completion. After 50%, a batch change fee applies (Rs. 5,000 to Rs. 10,000 depending on the course)."
+    }
+  ]);
+
+  // 5. ItemList Schema (Key Policy Milestones)
+  const itemListSchema = generateItemListSchema(
+    [
+      "Full Refund: Before Batch Start",
+      "50% Partial Refund: During Demo Sessions",
+      "No Refund: After Demo Completion",
+      "15-Day Refund Processing Timeframe",
+      "Batch Change Flexibility Window"
+    ].map(section => ({
+      name: section,
+      url: "/cancellation-refund-policy",
+      type: "Thing"
+    })),
+    "CDPL Cancellation & Refund Tiers"
+  );
+
+  // 6. Review / Aggregate Rating Schema
+  const reviewAggregateSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+  });
+
+  // 7. HowTo Schema (How to Request a Refund)
+  const howToSchema = generateHowToSchema({
+    name: "How to Request a Refund or Batch Change",
+    description: "The official process for notifying CDPL about cancellation or batch transition requests.",
+    steps: [
+      { name: "Initiate Request", text: "Contact us via email or phone with your enrollment details before the relevant deadline (batch start or demo completion)." },
+      { name: "Documentation", text: "Provide your course name, batch ID, and payment receipt for verification." },
+      { name: "Verification", text: "Wait for our team to verify your attendance status and eligibility based on the 1/2 demo or 50% completion rules." },
+      { name: "Processing", text: "Your refund will be processed via the original payment method within 15 business days." }
+    ]
+  });
+
+  // 8. Site Navigation Schema
+  const siteNavigationSchema = generateSiteNavigationSchema();
+
+  return [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    faqSchema,
+    itemListSchema,
+    reviewAggregateSchema,
+    howToSchema,
+    generateSingleReviewSchema(),
+    siteNavigationSchema,
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
 // REVIEWS PAGE SCHEMA CONSOLIDATION (/reviews)
 // ============================================================================
 

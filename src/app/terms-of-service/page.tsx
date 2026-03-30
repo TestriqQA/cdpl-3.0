@@ -1,13 +1,18 @@
 // /app/terms-of-service/page.tsx
 import type { Metadata } from "next";
+import { generateTermsOfServicePageAllSchemas } from "@/lib/schema-generators";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions | Cinute Digital Pvt. Ltd.",
+  description: "Read the Terms of Service for Cinute Digital (CDPL). Understand our enrollment policies, intellectual property terms, and comprehensive Job Assistance services.",
   alternates: { canonical: "/terms-of-service" },
   robots: { index: true, follow: true },
 };
 
 export default function TermsOfServicePage() {
+  const consolidatedSchemas = generateTermsOfServicePageAllSchemas();
+
   const H1 = "text-3xl font-bold tracking-tight text-slate-900";
   const H2 = "text-2xl font-semibold tracking-tight text-slate-900";
   const H3 = "text-xl font-semibold tracking-tight text-slate-900";
@@ -16,6 +21,9 @@ export default function TermsOfServicePage() {
 
   return (
     <div className="[color-scheme:light] bg-white">
+      {consolidatedSchemas.map((schema, index) => (
+        <JsonLd key={`terms-schema-${index}`} id={`terms-schema-${index}`} schema={schema} />
+      ))}
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900">
         <h1 className={H1}>Cinute Digital Pvt. Ltd. (CDPL) - Terms and Conditions</h1>
 

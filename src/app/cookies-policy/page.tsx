@@ -1,5 +1,7 @@
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import type { Metadata } from "next";
+import { generateCookiesPolicyPageAllSchemas } from "@/lib/schema-generators";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = generateStaticPageMetadata({
   title: "Cookies Policy",
@@ -8,6 +10,8 @@ export const metadata: Metadata = generateStaticPageMetadata({
 });
 
 export default function CookiesPolicyPage() {
+  const consolidatedSchemas = generateCookiesPolicyPageAllSchemas();
+
   const H1 = "text-3xl font-bold tracking-tight text-slate-900";
   const H2 = "text-2xl font-semibold tracking-tight text-slate-900";
   const H3 = "text-xl font-semibold tracking-tight text-slate-900";
@@ -16,6 +20,9 @@ export default function CookiesPolicyPage() {
 
   return (
     <div className="[color-scheme:light] bg-white">
+      {consolidatedSchemas.map((schema, index) => (
+        <JsonLd key={`cookies-schema-${index}`} id={`cookies-schema-${index}`} schema={schema} />
+      ))}
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900">
         <h1 className={H1}>Cookies Policy</h1>
 

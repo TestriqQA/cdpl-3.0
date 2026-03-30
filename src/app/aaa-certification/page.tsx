@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import {
-  generateBreadcrumbSchema,
-  generateOrganizationSchema,
   generateCourseSchema,
-  generateFAQSchema
+  generateAaaCertificationPageAllSchemas
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
@@ -71,13 +69,38 @@ export const metadata: Metadata = generateStaticPageMetadata({
 /* ---------- Page (server component) ---------- */
 export default function AAACertificationCoursePage() {
   /* ---------- JSON-LD ---------- */
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Courses", url: "/courses" },
-    { name: "AAA Certification", url: "/aaa-certification-course" },
-  ]);
-
-  const organizationSchema = generateOrganizationSchema();
+  const consolidatedSchemas = generateAaaCertificationPageAllSchemas({
+    faqs: [
+      {
+        question: "What is AAA Certification?",
+        answer: "AAA (Advanced Automation Architecture) Certification is an industry-recognized credential that validates your expertise in designing and implementing advanced test automation frameworks, CI/CD integration, and cloud-based testing strategies.",
+      },
+      {
+        question: "How long does the AAA course take?",
+        answer: "The AAA Certification course is a 12-week program with approximately 20 hours of learning per week, including live sessions, hands-on labs, and project work.",
+      },
+      {
+        question: "Is the AAA certificate recognized by employers?",
+        answer: "Yes, the AAA Certification from CDPL is recognized by leading tech companies and demonstrates your advanced skills in test automation architecture.",
+      },
+      {
+        question: "What are the prerequisites for AAA certification?",
+        answer: "Basic programming knowledge and understanding of software testing fundamentals are required. Prior experience with test automation tools is helpful but not mandatory.",
+      },
+    ],
+    howToSteps: [
+      { name: "Enrollment", text: "Sign up for the AAA Certification course on the CDPL platform." },
+      { name: "Learning & Labs", text: "Complete the 12-week curriculum including live sessions and hands-on labs." },
+      { name: "Capstone Project", text: "Develop and submit an end-to-end automation architecture project for review." },
+      { name: "Proctored Exam", text: "Successfully pass the official AAA-aligned proctored assessment." },
+      { name: "Certification", text: "Receive your verifiable digital certificate with a unique ID." }
+    ],
+    curriculum: [
+      "Module 1 - Foundations & Blueprint",
+      "Module 2 - Practical Labs",
+      "Module 3 - Capstone & Review"
+    ]
+  });
 
   const courseSchema = generateCourseSchema({
     name: "AAA Certification Course - Advanced Automation Architecture",
@@ -101,33 +124,14 @@ export default function AAACertificationCoursePage() {
     reviewCount: 150,
   });
 
-  const faqSchema = generateFAQSchema([
-    {
-      question: "What is AAA Certification?",
-      answer: "AAA (Advanced Automation Architecture) Certification is an industry-recognized credential that validates your expertise in designing and implementing advanced test automation frameworks, CI/CD integration, and cloud-based testing strategies.",
-    },
-    {
-      question: "How long does the AAA course take?",
-      answer: "The AAA Certification course is a 12-week program with approximately 20 hours of learning per week, including live sessions, hands-on labs, and project work.",
-    },
-    {
-      question: "Is the AAA certificate recognized by employers?",
-      answer: "Yes, the AAA Certification from CDPL is recognized by leading tech companies and demonstrates your advanced skills in test automation architecture.",
-    },
-    {
-      question: "What are the prerequisites for AAA certification?",
-      answer: "Basic programming knowledge and understanding of software testing fundamentals are required. Prior experience with test automation tools is helpful but not mandatory.",
-    },
-  ]);
-
   return (
     <main
       className="bg-white text-slate-900"
     >
-      <JsonLd id="aaa-breadcrumb" schema={breadcrumbSchema} />
-      <JsonLd id="aaa-org" schema={organizationSchema} />
+      {consolidatedSchemas.map((schema, index) => (
+        <JsonLd key={`aaa-schema-${index}`} id={`aaa-schema-${index}`} schema={schema} />
+      ))}
       <JsonLd id="aaa-course" schema={courseSchema} />
-      <JsonLd id="aaa-faq" schema={faqSchema} />
 
       <AAACerticationHeroSection />
       <AAACertificationWhySection />
