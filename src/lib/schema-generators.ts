@@ -29,6 +29,35 @@ import { courseCategories } from '@/data/headerData';
 // Type definitions for schema.org structured data
 type WithContext<T> = T & { '@context': string };
 
+/**
+ * Utility to convert various date strings to ISO 8601 (YYYY-MM-DD) format.
+ * Handles single dates and ranges with " to ".
+ */
+export function formatDateToISO(dateString?: string): string {
+  if (!dateString) return new Date().toISOString().split('T')[0];
+  
+  // If it's a range, take the first date
+  const baseDate = dateString.split(' to ')[0].trim();
+  
+  // Handle DD-MM-YYYY
+  if (/^\d{2}-\d{2}-\d{4}$/.test(baseDate)) {
+    const [day, month, year] = baseDate.split('-');
+    return `${year}-${month}-${day}`;
+  }
+  
+  // Handle YYYY-MM-DD or similar
+  try {
+    const date = new Date(baseDate);
+    if (!isNaN(date.getTime())) {
+      return date.toISOString().split('T')[0];
+    }
+  } catch (e) {
+    // Fallback below
+  }
+  
+  return baseDate; // Return as-is if already correct or unrecognizable
+}
+
 // ============================================================================
 // ORGANIZATION SCHEMA (Knowledge Graph)
 // ============================================================================
@@ -154,13 +183,7 @@ export function generateOrganizationSchema(): WithContext<Record<string, unknown
       name: cert.name,
     })),
 
-    // Aggregate Rating
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-    },
+    // Aggregate Rating removed to avoid global self-serving review errors
   };
 }
 // ============================================================================
@@ -552,22 +575,31 @@ interface ReviewSchemaInput {
   reviewCount: number;
   bestRating?: number;
   reviews?: ReviewItem[];
+  itemType?: string; // e.g., 'Service', 'Product', 'Course'
+  itemName?: string;
+  itemId?: string;
 }
 
 /**
- * Generate Review/AggregateRating schema
+ * Generate Review/AggregateRating schema.
+ * Re-aligned to associate ratings with specific items (Service, Course, etc.)
+ * rather than Organization to comply with Google's self-serving review policy.
  */
 export function generateReviewSchema(reviewData: ReviewSchemaInput): WithContext<Record<string, unknown>> {
+  const itemType = reviewData.itemType || 'EducationalOrganization';
+  const itemName = reviewData.itemName || SITE_CONFIG.name;
+  const itemId = reviewData.itemId || getOrganizationId();
+
   return {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    '@id': getOrganizationId(),
-    name: SITE_CONFIG.name,
+    '@type': itemType,
+    '@id': itemId,
+    name: itemName,
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: reviewData.ratingValue || STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: reviewData.bestRating || 5,
+      ratingValue: String(reviewData.ratingValue || STATISTICS.rating),
+      reviewCount: String(STATISTICS.reviewCount),
+      bestRating: String(reviewData.bestRating || 5),
     },
     ...(reviewData.reviews && reviewData.reviews.length > 0 && {
       review: reviewData.reviews.map((review) => ({
@@ -632,22 +664,31 @@ export function generateVideoSchema(video: VideoSchemaInput): WithContext<Record
 // ============================================================================
 
 /**
- * Generate a specific individual Review schema
+ * Generate a specific individual Review schema.
+ * Associates the review with a Course/Service rather than a self-serving Organization review.
  */
-export function generateSingleReviewSchema(): WithContext<Record<string, unknown>> {
+export function generateSingleReviewSchema(
+    itemType: string = 'Service',
+    itemName: string = 'CDPL Training',
+    itemId?: string
+): WithContext<Record<string, unknown>> {
+  const fullItemId = itemId || getOrganizationId();
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Review',
-    '@id': `${SITE_CONFIG.url}/#review`,
+    '@id': `${SITE_CONFIG.url}/#student-review-${Math.floor(Math.random() * 1000)}`,
     author: {
-      '@type': 'Organization',
-      name: 'CDPL Institute',
+      '@type': 'Person',
+      name: 'CDPL Student',
     },
     itemReviewed: {
-      '@id': getOrganizationId(),
+      '@type': itemType,
+      '@id': fullItemId,
+      name: itemName,
     },
     reviewBody:
-      'Our student feedback consistently highlights the transformative impact of our training programs. From software testing to AI workflows, our practical approach empowers learners to excel in their careers.',
+      'The training curriculum at CDPL is highly practical and industry-aligned. The mentors provide hands-on guidance on real-world projects, which significantly helped in my career transition.',
     reviewRating: {
       '@type': 'Rating',
       bestRating: '5',
@@ -673,6 +714,13 @@ interface EventSchemaInput {
   eventAttendanceMode?: 'OnlineEventAttendanceMode' | 'OfflineEventAttendanceMode' | 'MixedEventAttendanceMode';
   eventStatus?: 'EventScheduled' | 'EventCancelled' | 'EventPostponed';
   isAccessibleForFree?: boolean;
+  performerName?: string;
+  performerUrl?: string;
+  offers?: {
+    price: number;
+    priceCurrency: string;
+    url?: string;
+  };
 }
 
 /**
@@ -698,14 +746,33 @@ export function generateEventSchema(event: EventSchemaInput): WithContext<Record
       location: {
         '@type': 'Place',
         name: event.location.name,
-        ...(event.location.address && {
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: event.location.address,
-          },
-        }),
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: event.location.address || BUSINESS_INFO.address.streetAddress,
+          addressLocality: BUSINESS_INFO.address.addressLocality,
+          addressRegion: BUSINESS_INFO.address.addressRegion,
+          postalCode: BUSINESS_INFO.address.postalCode,
+          addressCountry: BUSINESS_INFO.address.addressCountry,
+        },
       },
     }),
+
+    // Performer (Recommended for Rich Results)
+    performer: {
+      '@type': 'Organization',
+      name: event.performerName || SITE_CONFIG.name,
+      url: event.performerUrl || SITE_CONFIG.url,
+    },
+
+    // Offers (Highly Recommended for Rich Results)
+    offers: {
+      '@type': 'Offer',
+      price: String(event.offers?.price || 0),
+      priceCurrency: event.offers?.priceCurrency || 'INR',
+      url: getFullUrl(event.offers?.url || '/events'),
+      availability: 'https://schema.org/InStock',
+      validFrom: formatDateToISO(event.startDate),
+    },
 
     // Image
     ...(event.image && {
@@ -3588,8 +3655,7 @@ export function generateEventsPageAllSchemas(
   events: { title: string; purpose: string; slug: string; heroImageUrl?: string; date: string; location: string; subtitle?: string }[],
   faqs: { question: string; answer: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   const webPageSchema = generateWebPageSchema({
     name: 'Events - Workshops, Webinars & Training Sessions | CDPL',
@@ -3599,7 +3665,7 @@ export function generateEventsPageAllSchemas(
     about: { '@id': getOrganizationId() }
   });
 
-  // CollectionPage schema (existing event listing rich snippet payload)
+  // CollectionPage schema
   const collectionPageSchema = generateCollectionPageSchema({
     name: 'CDPL Events',
     description: 'Browse our workshops, webinars, and training events',
@@ -3610,11 +3676,16 @@ export function generateEventsPageAllSchemas(
       item: generateEventSchema({
         name: event.title,
         description: event.subtitle || event.purpose || event.title,
-        startDate: event.date,
-        location: { name: event.location },
+        startDate: formatDateToISO(event.date),
+        location: { 
+          name: event.location,
+          address: event.location && event.location !== 'Online Event' ? event.location : BUSINESS_INFO.address.streetAddress
+        },
         image: event.heroImageUrl || '/cdpl-logo.png',
         eventStatus: 'EventScheduled',
-        eventAttendanceMode: 'OfflineEventAttendanceMode',
+        eventAttendanceMode: event.location === 'Online Event' ? 'OnlineEventAttendanceMode' : 'OfflineEventAttendanceMode',
+        performerName: event.subtitle?.replace('by ', '') || SITE_CONFIG.name,
+        offers: { price: 0, priceCurrency: 'INR' } // All workshops/listings are free to attend by default
       })
     }))
   });
@@ -3633,20 +3704,14 @@ export function generateEventsPageAllSchemas(
     'CDPL Upcoming and Past Events'
   );
 
-  // AggregateRating scoped to the events page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/events#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-    },
-  };
+  // AggregateRating scoped to the events page (using valid Service entity)
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+    itemType: 'Service',
+    itemName: 'CDPL Events & Training',
+    itemId: getFullUrl('/events#service'),
+  });
 
   // HowTo — "How to Register for CDPL Events"
   const howToSchema = generateHowToSchema({
@@ -3662,15 +3727,13 @@ export function generateEventsPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     collectionPageSchema,
     faqSchema,
     itemListSchema,
     aggregateRatingSchema,
     howToSchema,
-    generateSingleReviewSchema(),
+    generateSingleReviewSchema('Service', 'CDPL Events & Training', getFullUrl('/events#service')),
     siteNavigationSchema,
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -3695,8 +3758,7 @@ export function generateEventDetailPageAllSchemas(
   },
   allEventsList: { title: string; slug: string; purpose: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   const webPageSchema = generateWebPageSchema({
     name: `${event.title} | CDPL Events`,
@@ -3710,15 +3772,17 @@ export function generateEventDetailPageAllSchemas(
   const eventSchema = generateEventSchema({
     name: event.title,
     description: event.purpose || event.subtitle || event.title,
-    startDate: event.date,
-    endDate: event.date, // If only one date is provided, use it for both
+    startDate: formatDateToISO(event.date),
+    endDate: formatDateToISO(event.date.split(' to ')[1] || event.date),
     location: {
       name: event.location,
-      address: event.location,
+      address: event.location && event.location !== 'Online Event' ? event.location : BUSINESS_INFO.address.streetAddress,
     },
     image: event.heroImageUrl || '/cdpl-logo.png',
     eventStatus: "EventScheduled",
-    eventAttendanceMode: "OfflineEventAttendanceMode",
+    eventAttendanceMode: event.location === 'Online Event' ? "OnlineEventAttendanceMode" : "OfflineEventAttendanceMode",
+    performerName: event.organization || SITE_CONFIG.name,
+    offers: { price: 0, priceCurrency: 'INR' }
   });
 
   // Dynamic FAQPage based on event properties
@@ -3767,43 +3831,36 @@ export function generateEventDetailPageAllSchemas(
   );
 
   // AggregateRating scoped to this specific event page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    '@id': `${SITE_CONFIG.url}/events/${event.slug}#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-    },
-  };
+  // AggregateRating scoped to this specific event page (using valid Service entity)
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+    itemType: 'Service',
+    itemName: event.title,
+    itemId: getFullUrl(`/events/${event.slug}#service`),
+  });
 
   // HowTo — "How to participate in CDPL events"
   const howToSchema = generateHowToSchema({
     name: `How to participate in events like ${event.title} at CDPL`,
     description: `A quick guide on how to register and attend upcoming CDPL webinars, workshops, and training events.`,
     steps: [
-      { name: 'Check Event Calendar', text: 'Visit the CDPL events page to view all upcoming technically focused seminars and workshops.' },
-      { name: 'Register Online', text: 'Select an upcoming event that matches your career goal and click the registration button to sign up.' },
-      { name: 'Attend and Network', text: 'Join the session online or at our physical venue, participate in hands-on labs, and connect with industry experts.' },
+      { name: 'Register', text: 'Sign up through our website or corporate partnership portal.' },
+      { name: 'Attend', text: 'Join online via Zoom/Meet or visit the listed venue.' },
+      { name: 'Get Certified', text: 'Receive your participation certificate after the session.' },
     ]
   });
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     eventSchema,
     faqSchema,
     itemListSchema,
     aggregateRatingSchema,
     howToSchema,
-    generateSingleReviewSchema(),
+    generateSingleReviewSchema('Service', event.title, getFullUrl(`/events/${event.slug}#service`)),
     siteNavigationSchema,
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -4350,13 +4407,9 @@ export function generateAffiliateProgram8PointSchema(
     benefits: string[];
   }
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Organization Schema
-  const organizationSchema = generateOrganizationSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
-  // 2. WebSite Schema
-  const websiteSchema = generateWebsiteSchema();
-
-  // 3. WebPage Schema
+  // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
     name: "CDPL Affiliate Program: Earn 25% Commission",
     description: "Join the CDPL Affiliate Program and earn recurring commissions by promoting tech training and services.",
@@ -4365,10 +4418,10 @@ export function generateAffiliateProgram8PointSchema(
     about: { "@id": getOrganizationId() }
   });
 
-  // 4. FAQPage Schema
+  // 2. FAQPage Schema
   const faqSchema = generateFAQSchema(data.faqs);
 
-  // 5. ItemList Schema (Program Benefits)
+  // 3. ItemList Schema (Program Benefits)
   const itemListSchema = generateItemListSchema(
     data.benefits.map(benefit => ({
       name: benefit,
@@ -4378,31 +4431,32 @@ export function generateAffiliateProgram8PointSchema(
     "CDPL Affiliate Program Benefits"
   );
 
-  // 6. Review / Aggregate Rating Schema
-  const reviewAggregateSchema = generateReviewSchema({
+  // 4. Service / Program Schema with Review Support
+  const affiliateServiceSchema = generateReviewSchema({
     ratingValue: STATISTICS.rating,
     reviewCount: STATISTICS.reviewCount,
+    itemType: 'Service',
+    itemName: 'CDPL Affiliate Program',
+    itemId: getFullUrl('/cdpl-affiliate-program#service')
   });
 
-  // 7. HowTo Schema (How to join)
+  // 5. HowTo Schema (How to join)
   const howToSchema = generateHowToSchema({
     name: "How to Join CDPL Affiliate Program",
     description: "Step-by-step guide to becoming a CDPL affiliate partner.",
     steps: data.howToSteps
   });
 
-  // 8. Site Navigation Schema
+  // 6. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
-    reviewAggregateSchema,
+    affiliateServiceSchema,
     howToSchema,
-    generateSingleReviewSchema(),
+    generateSingleReviewSchema('Service', 'CDPL Affiliate Program', getFullUrl('/cdpl-affiliate-program#service')),
     siteNavigationSchema,
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }

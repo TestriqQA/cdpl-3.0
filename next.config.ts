@@ -280,6 +280,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/events/ai-conference-nagindas-khandwala',
+        destination: '/events',
+        permanent: true,
+      },
+      {
         source: '/events/6-days-workshop-on-machine-learning-with-hands-on-training-on-industry-projects-2',
         destination: '/events',
         permanent: true,
