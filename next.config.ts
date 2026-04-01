@@ -59,6 +59,18 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // SEO Redirect: Clear legacy pagination URLs that cause "Alternate page with proper canonical tag"
+      {
+        source: '/blog',
+        has: [
+          {
+            type: 'query',
+            key: 'page',
+          },
+        ],
+        destination: '/blog?',
+        permanent: true,
+      },
       {
         source: '/software-testing-course',
         destination: '/courses/software-testing-course',
