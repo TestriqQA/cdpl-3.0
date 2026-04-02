@@ -458,10 +458,11 @@ interface BreadcrumbItem {
 /**
  * Generate BreadcrumbList schema
  */
-export function generateBreadcrumbSchema(items: BreadcrumbItem[]): WithContext<Record<string, unknown>> {
+export function generateBreadcrumbSchema(items: BreadcrumbItem[], id?: string): WithContext<Record<string, unknown>> {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
+    ...(id && { '@id': id }),
     itemListElement: items.map((item, index) => ({
       '@type': 'ListItem',
       position: index + 1,
@@ -632,21 +633,32 @@ interface VideoSchemaInput {
 }
 
 /**
- * Generate VideoObject schema
+ * Generate VideoObject schema.
+ * Consolidation of contentUrl and embedUrl to avoid "Multiple video URLs" error in Search Console.
+ * We prioritize embedUrl for YouTube to ensure consistency.
  */
 export function generateVideoSchema(video: VideoSchemaInput): WithContext<Record<string, unknown>> {
+  const isYouTube = video.contentUrl?.includes('youtube.com') || video.embedUrl?.includes('youtube.com');
+  const videoId = isYouTube ? (video.contentUrl?.split('v=')[1] || video.embedUrl?.split('/embed/')[1]) : null;
+
+  // Use high-res YouTube thumbnail if possible
+  const finalThumbnail = isYouTube && videoId 
+    ? `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg` 
+    : getImageUrl(video.thumbnailUrl);
+
   return {
     '@context': 'https://schema.org',
     '@type': 'VideoObject',
     name: video.name,
     description: video.description,
-    thumbnailUrl: getImageUrl(video.thumbnailUrl),
+    thumbnailUrl: finalThumbnail,
     uploadDate: video.uploadDate,
-    // Ensure URL is present for "Video is on a watch page" validation
-    url: video.url ? getFullUrl(video.url) : SITE_CONFIG.url,
+    // Google recommendation: url of the page where the video is the primary focus
+    url: getFullUrl(video.url || '/'),
     ...(video.duration && { duration: video.duration }),
-    ...(video.contentUrl && { contentUrl: video.contentUrl }),
+    // To resolve "Multiple video URLs", we provide only embedUrl for YouTube
     ...(video.embedUrl && { embedUrl: video.embedUrl }),
+    ...(!isYouTube && video.contentUrl && { contentUrl: video.contentUrl }),
     publisher: {
       '@type': 'Organization',
       '@id': getOrganizationId(),
@@ -950,15 +962,13 @@ export function generateHomePageSchema(faqs?: { question: string; answer: string
   const faqSchema = faqs && faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
 
   // 4. VideoObject Schema (for the "Watch CDPL" video)
-  // This is a placeholder/example. Ideally, pass this data dynamically too.
   const videoSchema = generateVideoSchema({
     name: 'Transform Your Career with CDPL',
     description: 'Discover how CDPL helps you master Software Testing, Data Science, and AI/ML with 100% placement support.',
-    thumbnailUrl: '/images/video-thumbnail.jpg', // Ensure this image exists or use a valid URL
-    uploadDate: '2024-01-01T08:00:00+08:00', // Update with actual upload date
-    contentUrl: 'https://www.youtube.com/watch?v=8kB2wESj1n8',
+    thumbnailUrl: '/images/video-thumbnail.jpg',
+    uploadDate: '2024-01-01T08:00:00+08:00',
     embedUrl: 'https://www.youtube.com/embed/8kB2wESj1n8',
-    url: SITE_CONFIG.url, // Explicitly point to the watch page (Home Page)
+    url: '/', // Primary focus page for this video
   });
 
   // 5. WebPage Schema
@@ -984,23 +994,30 @@ export function generateHomePageSchema(faqs?: { question: string; answer: string
   });
 
   // 7. Site Navigation Schema
+  // 7. Site Navigation Schema
   const siteNavSchemas = generateSiteNavigationSchema();
 
-  // Core Foundational Schemas
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // 8. Consolidated AggregateRating (using valid Service entity)
+  const aggregateRatingSchema = generateReviewSchema({
+    ratingValue: STATISTICS.rating,
+    reviewCount: STATISTICS.reviewCount,
+    itemType: 'Service',
+    itemName: 'Professional Training & Placement Services',
+    itemId: getFullUrl('/#service'),
+  });
+
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   // Filter out undefined schemas
   return [
-    organizationSchema,
-    websiteSchema,
-    webPageSchema,
     localBusinessSchema,
     itemListSchema,
     faqSchema,
     videoSchema,
+    webPageSchema,
     howToSchema,
-    generateSingleReviewSchema(),
+    aggregateRatingSchema,
+    generateSingleReviewSchema('Service', 'Professional Training & Placement Services', getFullUrl('/#service')),
     siteNavSchemas,
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -3347,15 +3364,24 @@ export function generateAboutPageAllSchemas(
 
   const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
 
-  // ItemList — highlight top programs
-  const topCourses = [
-    { name: 'Software Testing Course', url: '/courses/software-testing-courses', description: 'Comprehensive manual & automation testing training with ISTQB preparation.', type: 'Course' },
-    { name: 'Data Science Course', url: '/courses/ds-ml-courses/data-science-course', description: 'Python, Machine Learning, and Data Science with 100% placement.', type: 'Course' },
-    { name: 'AI Course', url: '/courses/ds-ml-courses/ai-course', description: 'Artificial Intelligence fundamentals to advanced real-world applications.', type: 'Course' },
-    { name: 'Power BI Course', url: '/courses/bi-courses/power-bi-course', description: 'Business intelligence and data visualization with Power BI.', type: 'Course' },
-    { name: 'Digital Marketing Course', url: '/courses/digital-marketing-courses/digital-marketing-course', description: 'AI-driven SEO, SEM, Social Media, and Performance Marketing.', type: 'Course' },
-  ];
-  const itemListSchema = generateItemListSchema(topCourses, 'Flagship Training Programs at CDPL - Cinute Digital');
+  // ItemList — flagship programs with complete course schema
+  const flagshipPrograms = [
+    { name: 'Software Testing Course', url: '/courses/software-testing-courses', slug: 'software-testing-courses', description: 'Comprehensive manual & automation testing training with ISTQB preparation.', type: 'Course' },
+    { name: 'Data Science Course', url: '/courses/ds-ml-courses/data-science-course', slug: 'data-science-course', description: 'Python, Machine Learning, and Data Science with 100% placement.', type: 'Course' },
+    { name: 'AI Course', url: '/courses/ds-ml-courses/ai-course', slug: 'ai-course', description: 'Artificial Intelligence fundamentals to advanced real-world applications.', type: 'Course' },
+    { name: 'Power BI Course', url: '/courses/bi-courses/power-bi-course', slug: 'power-bi-course', description: 'Business intelligence and data visualization with Power BI.', type: 'Course' },
+    { name: 'Digital Marketing Course', url: '/courses/digital-marketing-courses/digital-marketing-course', slug: 'digital-marketing-course', description: 'AI-driven SEO, SEM, Social Media, and Performance Marketing.', type: 'Course' },
+  ].map(p => ({
+    ...p,
+    itemSchema: generateCourseSchema({
+      name: p.name,
+      description: p.description,
+      url: p.url,
+      slug: p.slug,
+    })
+  }));
+
+  const itemListSchema = generateItemListSchema(flagshipPrograms, 'Flagship Training Programs at CDPL - Cinute Digital');
 
   // AggregateRating scoped to the About page entity
   const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
@@ -5484,7 +5510,7 @@ export function generateCityCoursePageSchema(
     (courseInput.learningOutcomes || []).slice(0, 8).map(outcome => ({
       name: outcome,
       url: courseInput.url,
-      type: 'Course'
+      type: 'Thing'
     })),
     `${courseInput.name} Key Features & Learning Outcomes`
   );

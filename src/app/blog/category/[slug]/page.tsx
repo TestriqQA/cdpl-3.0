@@ -7,8 +7,17 @@ import CategoryArticleList from '@/components/blog/CategoryArticleList';
 import {
     generateCollectionPageSchema,
     generateItemListSchema,
-    generateBreadcrumbSchema
+    generateBreadcrumbSchema,
+    generateReviewSchema,
+    generateSingleReviewSchema,
+    generateWebPageSchema
 } from "@/lib/schema-generators";
+import { 
+    getWebsiteId, 
+    getOrganizationId, 
+    getFullUrl,
+    STATISTICS 
+} from "@/lib/seo-config";
 import JsonLd from "@/components/JsonLd";
 import { client } from '@/sanity/client';
 import { CATEGORIES_WITH_COUNTS_QUERY, CATEGORY_POSTS_QUERY, CATEGORY_QUERY } from '@/sanity/lib/queries';
@@ -211,31 +220,44 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         url: `/blog/category/${category.slug}`,
     });
 
+    // WebPage Schema (Standard consolidated SEO)
+    const webPageSchema = generateWebPageSchema({
+        name: `${category.name} Articles & Tutorials | CDPL Blog`,
+        description: `${category.description || ''} Explore tutorials and best practices on ${category.name.toLowerCase()}.`,
+        url: `/blog/category/${category.slug}`,
+        isPartOf: { '@id': getWebsiteId() },
+        about: { '@id': getOrganizationId() }
+    });
+
+    // Consolidated AggregateRating (using valid Service entity)
+    const aggregateRatingSchema = generateReviewSchema({
+        itemType: 'Service',
+        itemName: `CDPL ${category.name} Training & Resources`,
+        itemId: getFullUrl(`/blog/category/${category.slug}#service`),
+        ratingValue: STATISTICS.rating,
+        reviewCount: STATISTICS.reviewCount,
+    });
+
     // Breadcrumb Schema
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: 'Home', url: '/' },
         { name: 'Blog', url: '/blog' },
         { name: 'Categories', url: '/blog/categories' },
         { name: category.name, url: `/blog/category/${category.slug}` },
-    ]);
+    ], getFullUrl(`/blog/category/${category.slug}#breadcrumb`));
 
     return (
         <>
             {/* Enhanced JSON-LD Structured Data */}
             <JsonLd id="category-breadcrumb" schema={breadcrumbSchema} />
+            <JsonLd id="category-webpage" schema={webPageSchema} />
             <JsonLd id="category-collection" schema={collectionPageSchema} />
             <JsonLd id="category-itemlist" schema={itemListSchema} />
+            <JsonLd id="category-rating" schema={aggregateRatingSchema} />
+            <JsonLd id="category-review" schema={generateSingleReviewSchema('Service', `CDPL ${category.name} Training & Resources`, getFullUrl(`/blog/category/${category.slug}#service`))} />
 
-            {/* Semantic HTML Structure */}
-            <div
-                itemScope
-                itemType="https://schema.org/CollectionPage"
-                className="category-page"
-            >
-                {/* Hidden metadata for schema.org */}
-                <meta itemProp="name" content={`${category.name} Articles - CDPL Blog`} />
-                <meta itemProp="description" content={category.description || ''} />
-                <meta itemProp="url" content={`https://www.cinutedigital.com/blog/category/${category.slug}`} />
+            {/* Semantic HTML structure with proper structure */}
+            <div className="category-page">
 
                 {/* Category Navigation Menu */}
                 <nav aria-label="Blog categories">

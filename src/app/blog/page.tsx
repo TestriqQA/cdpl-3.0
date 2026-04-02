@@ -5,10 +5,18 @@ import type { Metadata } from 'next';
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import {
     generateBreadcrumbSchema,
-    generateWebsiteSchema,
     generateBlogSchema,
-    generateFAQSchema
+    generateFAQSchema,
+    generateReviewSchema,
+    generateSingleReviewSchema,
+    generateWebPageSchema,
 } from "@/lib/schema-generators";
+import {
+    getWebsiteId,
+    getOrganizationId,
+    getFullUrl,
+    STATISTICS
+} from "@/lib/seo-config";
 import JsonLd from "@/components/JsonLd";
 import { client } from '@/sanity/client';
 import { POSTS_QUERY } from '@/sanity/lib/queries';
@@ -61,14 +69,29 @@ export default async function BlogPage() {
         { name: 'Blog', url: '/blog' },
     ]);
 
-    // Website Schema
-    const websiteSchema = generateWebsiteSchema();
+    // WebPage Schema (Standard consolidated SEO)
+    const webPageSchema = generateWebPageSchema({
+        name: 'Tech Blog - Insights, Tutorials & Trends | CDPL',
+        description: 'Discover expert-written articles on AI/ML, web development, React, Next.js, software testing, and DevOps.',
+        url: '/blog',
+        isPartOf: { '@id': getWebsiteId() },
+        about: { '@id': getOrganizationId() }
+    });
 
     // Blog Schema
     const blogSchema = generateBlogSchema({
         name: 'CDPL Tech Blog',
         description: 'Expert articles on AI/ML, web development, React, Next.js, DevOps, software testing, and modern technology from CDPL industry experts',
         url: '/blog',
+    });
+
+    // Consolidated AggregateRating (using valid Service entity)
+    const aggregateRatingSchema = generateReviewSchema({
+        itemType: 'Service',
+        itemName: 'CDPL Tech Blog & Knowledge Hub',
+        itemId: getFullUrl('/blog#service'),
+        ratingValue: STATISTICS.rating,
+        reviewCount: STATISTICS.reviewCount,
     });
 
     // FAQ Schema
@@ -100,12 +123,14 @@ export default async function BlogPage() {
         <>
             {/* Structured Data (JSON-LD) - Multiple Schemas */}
             <JsonLd id="blog-breadcrumb" schema={breadcrumbSchema} />
-            <JsonLd id="blog-website" schema={websiteSchema} />
+            <JsonLd id="blog-webpage" schema={webPageSchema} />
             <JsonLd id="blog-main" schema={blogSchema} />
+            <JsonLd id="blog-rating" schema={aggregateRatingSchema} />
             <JsonLd id="blog-faq" schema={faqSchema} />
+            <JsonLd id="blog-review" schema={generateSingleReviewSchema('Service', 'CDPL Tech Blog & Knowledge Hub', getFullUrl('/blog#service'))} />
 
             {/* Semantic HTML with proper structure */}
-            <article itemScope itemType="https://schema.org/Blog">
+            <article>
                 {/* Hidden metadata for schema.org */}
                 <meta itemProp="name" content="CDPL Tech Blog" />
                 <meta itemProp="description" content="Expert articles on technology, development, and testing" />

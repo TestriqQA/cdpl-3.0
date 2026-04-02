@@ -61,7 +61,7 @@ export const metadata = generateMetadata({
   url: "/courses/software-testing-course/api-testing",
 });
 
-export default function Page() {
+export default async function Page() {
   const schemas = generateApiTestingCoursePageSchema(
     {
       name: "API Testing Course with POSTMAN & RestAPIs",

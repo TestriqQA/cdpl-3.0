@@ -8,6 +8,8 @@ import { generateBreadcrumbSchema } from "@/lib/schema-generators";
 import { client } from "@/sanity/client";
 import { CATEGORIES_WITH_COUNTS_QUERY, POSTS_QUERY } from "@/sanity/lib/queries";
 import { SanityPost, SanityCategory } from "@/sanity/types";
+import JsonLd from "@/components/JsonLd";
+import { getFullUrl } from "@/lib/seo-config";
 
 // ============================================================================
 // SEO METADATA - ENHANCED
@@ -63,35 +65,36 @@ export default async function AllPostsPage() {
     { name: "Home", url: "/" },
     { name: "Blog", url: "/blog" },
     { name: "All Posts", url: "/blog/all-posts" }
-  ]);
+  ], getFullUrl('/blog/all-posts#breadcrumb'));
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      // BreadcrumbList Schema
-      breadcrumbSchema,
-      // CollectionPage Schema
-      {
+
+  return (
+    <>
+      {/* Enhanced JSON-LD Structured Data */}
+      <JsonLd id="all-posts-breadcrumb" schema={breadcrumbSchema} />
+      
+      <JsonLd id="all-posts-collection" schema={{
+        "@context": "https://schema.org",
         "@type": "CollectionPage",
-        "@id": "https://www.cinutedigital.com/blog/all-posts#collectionpage",
-        "url": "https://www.cinutedigital.com/blog/all-posts",
+        "@id": getFullUrl("/blog/all-posts#collectionpage"),
+        "url": getFullUrl("/blog/all-posts"),
         "name": "All Blog Posts - Software Testing & Development Resources | CDPL",
         "description": "Comprehensive collection of expert articles on software testing, web development, AI, data science, and modern development practices from CDPL",
         "isPartOf": {
-          "@id": "https://www.cinutedigital.com/blog#blog"
+          "@id": getFullUrl("/blog#blog")
         },
         "mainEntity": {
-          "@id": "https://www.cinutedigital.com/blog/all-posts#itemlist"
+          "@id": getFullUrl("/blog/all-posts#itemlist")
         },
         "breadcrumb": {
-          "@id": "https://www.cinutedigital.com/blog/all-posts#breadcrumb"
-        },
-        "inLanguage": "en-IN"
-      },
-      // ItemList Schema - All Posts
-      {
+          "@id": getFullUrl("/blog/all-posts#breadcrumb")
+        }
+      }} />
+
+      <JsonLd id="all-posts-itemlist" schema={{
+        "@context": "https://schema.org",
         "@type": "ItemList",
-        "@id": "https://www.cinutedigital.com/blog/all-posts#itemlist",
+        "@id": getFullUrl("/blog/all-posts#itemlist"),
         "name": "All Blog Posts - CDPL",
         "description": `Collection of ${allPosts.length} expert articles from CDPL`,
         "numberOfItems": allPosts.length,
@@ -100,11 +103,11 @@ export default async function AllPostsPage() {
           "position": index + 1,
           "item": {
             "@type": "BlogPosting",
-            "@id": `https://www.cinutedigital.com/blog/${post.slug}#article`,
+            "@id": getFullUrl(`/blog/${post.slug}#article`),
             "headline": post.title,
             "description": post.excerpt,
             "image": post.featuredImage,
-            "url": `https://www.cinutedigital.com/blog/${post.slug}`,
+            "url": getFullUrl(`/blog/${post.slug}`),
             "datePublished": new Date(post.publishDate).toISOString(),
             "dateModified": new Date(post.publishDate).toISOString(),
             "author": {
@@ -116,42 +119,26 @@ export default async function AllPostsPage() {
               "name": "CDPL - Cinute Digital Pvt. Ltd.",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://www.cinutedigital.com/logo.png",
+                "url": getFullUrl("/logo.png"),
                 "width": 250,
                 "height": 60
               }
-            },
-            "articleSection": post.category?.name,
-            "keywords": post.tags?.join(', '),
-            "inLanguage": "en-IN"
+            }
           }
         }))
-      },
-      // WebPage Schema
-      {
+      }} />
+
+      <JsonLd id="all-posts-webpage" schema={{
+        "@context": "https://schema.org",
         "@type": "WebPage",
-        "@id": "https://www.cinutedigital.com/blog/all-posts",
-        "url": "https://www.cinutedigital.com/blog/all-posts",
+        "@id": getFullUrl("/blog/all-posts"),
+        "url": getFullUrl("/blog/all-posts"),
         "name": "All Blog Posts - CDPL",
         "description": "Complete collection of expert articles on software development and testing from CDPL",
         "isPartOf": {
-          "@id": "https://www.cinutedigital.com/#website"
-        },
-        "breadcrumb": {
-          "@id": "https://www.cinutedigital.com/blog/all-posts#breadcrumb"
-        },
-        "inLanguage": "en-IN"
-      }
-    ]
-  };
-
-  return (
-    <>
-      {/* Enhanced JSON-LD Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+          "@id": getFullUrl("/#website")
+        }
+      }} />
 
       {/* Semantic HTML Structure */}
       <div itemScope itemType="https://schema.org/CollectionPage">

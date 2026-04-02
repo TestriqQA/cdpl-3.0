@@ -289,6 +289,31 @@ const nextConfig: NextConfig = {
         destination: '/events',
         permanent: true,
       },
+      {
+        source: '/manual-qa',
+        destination: '/courses/software-testing-course/manual-testing-course',
+        permanent: true,
+      },
+      {
+        source: '/java-programming',
+        destination: '/courses/software-testing-course/java-course',
+        permanent: true,
+      },
+      {
+        source: '/software-testing-courses',
+        destination: '/courses/software-testing-course',
+        permanent: true,
+      },
+      {
+        source: '/data-science-courses',
+        destination: '/courses/ds-ml-courses/data-science-course',
+        permanent: true,
+      },
+      {
+        source: '/business-intelligence-courses',
+        destination: '/courses/bi-courses',
+        permanent: true,
+      },
     ];
   },
 };

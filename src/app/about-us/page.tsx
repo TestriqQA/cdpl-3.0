@@ -99,7 +99,7 @@ const LightTheme: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 // PAGE COMPONENT
 // ============================================================================
 
-export default function AboutPage(): React.ReactElement {
+export default function AboutPage(): React.ReactNode {
   const faqs = [
     {
       question: "Do you provide placement assistance?",

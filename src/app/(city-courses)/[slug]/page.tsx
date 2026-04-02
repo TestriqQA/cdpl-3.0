@@ -9,6 +9,7 @@ import {
   generateCityCoursePageSchema,
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
+import { redirect, notFound } from "next/navigation";
 
 import HeroSection from "@/components/city-courses/HeroSection";
 import dynamic from "next/dynamic";
@@ -30,6 +31,7 @@ import NotFoundPage from "@/components/NotFoundPage";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 // Helper: fetch by the object's internal `slug`
@@ -59,18 +61,27 @@ function parseDuration(durationStr: string): string {
 }
 
 // SEO metadata from the matched course - Enhanced
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const data = getByInternalSlug(slug);
+  let data = getByInternalSlug(slug);
+
+  // Fallback check for alternative singular/plural slugs
+  if (!data) {
+    let altSlug = '';
+    if (slug.includes("-courses-in-")) {
+      altSlug = slug.replace("-courses-in-", "-course-in-");
+    } else if (slug.includes("-course-in-")) {
+      altSlug = slug.replace("-course-in-", "-courses-in-");
+    }
+    if (altSlug) {
+      data = getByInternalSlug(altSlug);
+    }
+  }
 
   if (!data) {
     return {
-      title: "Course Not Found | 404 - CDPL",
+      title: "Course Not Found | CDPL",
       description: "The requested course page could not be found. Browse our available courses in software testing, automation, and development.",
-      robots: {
-        index: false,
-        follow: true,
-      },
     };
   }
 
@@ -118,13 +129,29 @@ export async function generateStaticParams() {
 // Optional hard lock:
 // export const dynamicParams = false;
 
-export default async function CoursePage({ params }: PageProps) {
+export default async function CoursePage({ params, searchParams }: PageProps): Promise<React.ReactNode> {
   const { slug } = await params;
-  const data = getByInternalSlug(slug);
+  let data = getByInternalSlug(slug);
 
-  // Show custom 404 page if course not found
+  // If not found, try the singular/plural version and redirect if it exists
   if (!data) {
-    return <NotFoundPage />;
+    let altSlug = '';
+    if (slug.includes("-courses-in-")) {
+      altSlug = slug.replace("-courses-in-", "-course-in-");
+    } else if (slug.includes("-course-in-")) {
+      altSlug = slug.replace("-course-in-", "-courses-in-");
+    }
+
+    if (altSlug) {
+      const altData = getByInternalSlug(altSlug);
+      if (altData) {
+        // Perform 301 redirect to the correct canonical version
+        redirect(`/${altSlug}`);
+      }
+    }
+    
+    // Still not found after alternative check? Return proper 404
+    notFound();
   }
 
   const city = data.location || "";
