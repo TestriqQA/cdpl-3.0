@@ -4,6 +4,7 @@ import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { X, User, Mail, CheckCircle2, Loader2, Building2, Briefcase, Calendar, Users, MessageSquare, BookOpen, ChevronDown } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
+import CustomFlag from './ui/CustomFlag';
 import 'react-phone-number-input/style.css';
 
 import ReactDOM from 'react-dom';
@@ -323,6 +324,7 @@ const WorkshopRequestModal = ({
                                                     international
                                                     limitMaxLength={true}
                                                     defaultCountry="IN"
+                                                    flagComponent={CustomFlag}
                                                     value={formData.phone}
                                                     onChange={handlePhoneChange}
                                                     placeholder="Enter number"

@@ -23,6 +23,7 @@ import {
 import PhoneInput from 'react-phone-number-input';
 
 import styles from '../ui/phone-input.module.css';
+import CustomFlag from '../ui/CustomFlag';
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
 // Import BrochureDownloadModal
@@ -503,6 +504,7 @@ const HomeHeroSection: React.FC = () => {
                   international
                   limitMaxLength={true}
                   defaultCountry="IN"
+                  flagComponent={CustomFlag}
                   value={formData.phone}
                   onChange={handlePhoneChange}
                   onBlur={() => validatePhoneNumber(formData.phone)}

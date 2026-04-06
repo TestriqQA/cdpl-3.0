@@ -6,6 +6,7 @@ import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, Download, CheckCircle2, Loader2 } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
+import CustomFlag from '../ui/CustomFlag';
 
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
@@ -320,6 +321,7 @@ const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ isOpen, o
                           international
                           limitMaxLength={true}
                           defaultCountry="IN"
+                          flagComponent={CustomFlag}
                           value={formData.phone}
                           onChange={handlePhoneChange}
                           placeholder="Enter your mobile number (e.g., 98765 43210)"

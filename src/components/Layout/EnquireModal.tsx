@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { X, User, Mail, TrendingUp, CheckCircle2 } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
+import CustomFlag from '../ui/CustomFlag';
 import 'react-phone-number-input/style.css';
 
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
@@ -266,6 +267,7 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
                                         international
                                         limitMaxLength={true}
                                         defaultCountry="IN"
+                                        flagComponent={CustomFlag}
                                         country={country}
                                         onCountryChange={setCountry}
                                         value={formData.phone}

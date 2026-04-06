@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, CheckCircle2, Loader2, FileDown } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
+import CustomFlag from './ui/CustomFlag';
 
 import {
   validateFullName as validateFullNameLib,
@@ -325,6 +326,7 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
                           international
                           limitMaxLength={true}
                           defaultCountry="IN"
+                          flagComponent={CustomFlag}
                           value={formData.phone}
                           onChange={handlePhoneChange}
                           placeholder="Enter your mobile number (e.g., 98765 43210)"

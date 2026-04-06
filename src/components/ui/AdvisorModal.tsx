@@ -8,6 +8,7 @@ import { X, User, Mail, TrendingUp, CheckCircle2, Loader2 } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
 
 import styles from './phone-input.module.css';
+import CustomFlag from './CustomFlag';
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
 interface AdvisorModalProps {
@@ -310,6 +311,7 @@ const AdvisorModal: React.FC<AdvisorModalProps> = ({
                                                     international
                                                     limitMaxLength={true}
                                                     defaultCountry="IN"
+                                                    flagComponent={CustomFlag}
                                                     value={formData.phone}
                                                     onChange={handlePhoneChange}
                                                     placeholder="Enter your mobile number"

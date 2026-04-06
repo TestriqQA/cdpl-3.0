@@ -3,6 +3,7 @@ import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, TrendingUp, CheckCircle2, Download } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
+import CustomFlag from './ui/CustomFlag';
 
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
@@ -246,6 +247,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
                 international
                 limitMaxLength={true}
                 defaultCountry="IN"
+                flagComponent={CustomFlag}
                 value={formData.phone}
                 onChange={handlePhoneChange}
                 onBlur={() => setErrors(prev => ({ ...prev, phone: validatePhoneNumber(formData.phone) }))}

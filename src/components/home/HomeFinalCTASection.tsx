@@ -4,6 +4,7 @@ import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 
 import React, { useState, useCallback } from 'react';
 import PhoneInput from 'react-phone-number-input';
+import CustomFlag from '../ui/CustomFlag';
 
 import {
   validatePhone,
@@ -290,6 +291,7 @@ export default function HomeFinalCTASection() {
                       international
                       limitMaxLength={true}
                       defaultCountry="IN"
+                      flagComponent={CustomFlag}
                       value={formData.phone}
                       onChange={handlePhoneChange}
                       onBlur={() => validatePhoneNumber(formData.phone)}
