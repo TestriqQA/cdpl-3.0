@@ -38,7 +38,7 @@ export const metadata = generateMetadata({
         "learn tableau benefits"
     ],
     url: '/courses/bi-courses/data-analytics-with-tableau',
-    image: "/og-images/data-analytics-with-tableau.jpg",
+    image: "/og-images/data-analytics-with-tableau-og.webp",
 });
 
 export default function Home() {
@@ -54,7 +54,7 @@ export default function Home() {
             instructor: "Expert Tableau Mentors",
             rating: DATA_ANALYTICS_TABLEAU_REVIEW_DATA.ratingValue,
             reviewCount: DATA_ANALYTICS_TABLEAU_REVIEW_DATA.reviewCount,
-            image: "/og-images/data-analytics-with-tableau.jpg",
+            image: "/og-images/data-analytics-with-tableau-og.webp",
         },
         DATA_ANALYTICS_TABLEAU_FAQS.map(f => ({ question: f.question, answer: f.answer })),
         [

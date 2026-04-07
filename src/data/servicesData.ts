@@ -36,6 +36,7 @@ export interface TrainingService {
   outcomes: string[];
   methodology: string[];
   imageUrl?: string;
+  ogImage?: string;
 }
 
 export const trainingServices: TrainingService[] = [
@@ -107,6 +108,7 @@ export const trainingServices: TrainingService[] = [
       "Live Q&A and discussion",
       "Post-session resource sharing"
     ],
+    ogImage: "/og-images/services-expert-talks-og.webp",
   },
   {
     id: "2",
@@ -178,6 +180,7 @@ export const trainingServices: TrainingService[] = [
       "Code reviews and feedback",
       "Post-workshop support"
     ],
+    ogImage: "/og-images/services-workshops-og.webp",
   },
   {
     id: "3",
@@ -245,6 +248,7 @@ export const trainingServices: TrainingService[] = [
       "Monthly progress evaluations",
       "Final project presentation"
     ],
+    ogImage: "/og-images/services-on-job-training-og.webp",
   },
   {
     id: "4",
@@ -312,6 +316,7 @@ export const trainingServices: TrainingService[] = [
       "Teaching practice sessions",
       "Feedback and improvement cycles"
     ],
+    ogImage: "/og-images/services-faculty-development-og.webp",
   },
   {
     id: "5",
@@ -379,6 +384,7 @@ export const trainingServices: TrainingService[] = [
       "Video recording and analysis",
       "Continuous improvement planning"
     ],
+    ogImage: "/og-images/services-train-the-trainer-og.webp",
   },
   {
     id: "6",
@@ -446,6 +452,7 @@ export const trainingServices: TrainingService[] = [
       "Expert guest sessions",
       "Assessment and certification"
     ],
+    ogImage: "/og-images/services-sttp-og.webp",
   },
   {
     id: "7",
@@ -513,6 +520,7 @@ export const trainingServices: TrainingService[] = [
       "Hands-on demonstrations",
       "Post-visit reflection sessions"
     ],
+    ogImage: "/og-images/services-industrial-visits-og.webp",
   },
   {
     id: "8",
@@ -580,6 +588,7 @@ export const trainingServices: TrainingService[] = [
       "Full-scale implementation",
       "Impact measurement"
     ],
+    ogImage: "/og-images/services-custom-training-og.webp",
   },
   {
     id: "9",
@@ -647,6 +656,7 @@ export const trainingServices: TrainingService[] = [
       "Final project presentation",
       "Performance evaluation"
     ],
+    ogImage: "/og-images/services-internship-program-og.webp",
   },
   {
     id: "10",
@@ -714,6 +724,7 @@ export const trainingServices: TrainingService[] = [
       "Company tie-ups for placement",
       "Post-placement support"
     ],
+    ogImage: "/og-images/services-campus-to-corporate-og.webp",
   },
   /** --------------------------
    *  UPDATED / NEW ENTRIES
@@ -862,6 +873,7 @@ export const trainingServices: TrainingService[] = [
       "Periodic assessment & certifications",
       "Impact measurement & reporting"
     ],
+    ogImage: "/og-images/services-government-public-sector-training-og.webp",
   },
 ];
 

@@ -42,7 +42,7 @@ export const metadata = generateMetadata({
         "sql in data analytics"
     ],
     url: '/courses/bi-courses/masters-in-data-engineering',
-    image: "/og-images/masters-in-data-engineering.jpg",
+    image: "/og-images/masters-in-data-engineering-og.webp",
 });
 
 const DataAnalyticsMasterProgramPage: React.FC = () => {
@@ -58,7 +58,7 @@ const DataAnalyticsMasterProgramPage: React.FC = () => {
             instructor: "Expert Data Engineers",
             rating: DATA_ENGINEERING_MASTERS_REVIEW_DATA.ratingValue,
             reviewCount: DATA_ENGINEERING_MASTERS_REVIEW_DATA.reviewCount,
-            image: "/og-images/masters-in-data-engineering.jpg",
+            image: "/og-images/masters-in-data-engineering-og.webp",
         },
         DATA_ENGINEERING_MASTERS_FAQS.map(f => ({ question: f.question, answer: f.answer })),
         [

@@ -108,8 +108,9 @@ export async function generateMetadata(
     };
   }
 
-  const extras = service as unknown as { keywords?: string[] };
+  const extras = service as unknown as { keywords?: string[]; ogImage?: string };
   const serviceKeywords = extras.keywords || [];
+  const customOgImage = extras.ogImage;
   const keywords = [
     service.title,
     `${service.title} training`,
@@ -140,7 +141,7 @@ export async function generateMetadata(
     description: finalDescription,
     keywords,
     url: `/services/${slug}`,
-    image: `/og-images/og-service-${slug}.webp`,
+    image: customOgImage || `/og-images/og-service-${slug}.webp`,
     type: 'article'
   });
 }

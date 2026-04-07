@@ -27,7 +27,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     "team upskilling",
   ],
   url: "/services",
-  image: "/og-images/og-image-services.webp",
+  image: "/og-images/services-og.webp",
 });
 
 // Simple loading UI used by all sections

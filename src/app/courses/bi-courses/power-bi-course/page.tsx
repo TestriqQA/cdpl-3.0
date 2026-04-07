@@ -42,7 +42,7 @@ export const metadata = generateMetadata({
     description: pageDescription,
     keywords: pageKeywords,
     url: '/courses/bi-courses/power-bi-course',
-    image: "/og-images/power-bi-course.jpg",
+    image: "/og-images/power-bi-course-og.webp",
 });
 
 const PowerBIPage: React.FC = () => {
@@ -58,7 +58,7 @@ const PowerBIPage: React.FC = () => {
             instructor: "Expert Power BI Mentors",
             rating: POWER_BI_REVIEW_DATA.ratingValue,
             reviewCount: POWER_BI_REVIEW_DATA.reviewCount,
-            image: "/og-images/power-bi-course.jpg",
+            image: "/og-images/power-bi-course-og.webp",
         },
         POWER_BI_FAQS.map(f => ({ question: f.question, answer: f.answer })),
         [

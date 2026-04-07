@@ -30,7 +30,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
         "work at CDPL",
     ],
     url: "/jobs/careers",
-    image: "/og-images/cdpl-careers-images.webp",
+    image: "/og-images/careers-og.webp",
 });
 
 
