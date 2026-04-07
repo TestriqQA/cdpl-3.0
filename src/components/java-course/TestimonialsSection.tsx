@@ -72,6 +72,7 @@ export default function TestimonialsSection({
         <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3">
           <button
             onClick={() => setIsEnrollModalOpen(true)}
+            title="Enroll Now"
             className="cursor-pointer rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
           >
             Enroll now
@@ -79,6 +80,7 @@ export default function TestimonialsSection({
 
           <button
             onClick={() => setIsSyllabusModalOpen(true)}
+            title="Download Syllabus"
             className="cursor-pointer rounded-xl border border-slate-300 bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition focus:outline-none focus:ring-4 focus:ring-slate-200"
           >
             Download Syllabus

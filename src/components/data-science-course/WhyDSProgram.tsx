@@ -119,6 +119,7 @@ export default function WhyDSProgram() {
                                 className="inline-flex w-full items-center justify-center cursor-pointer gap-2 rounded-xl px-5 py-3 text-sm font-semibold shadow-sm
                            bg-slate-900 text-white hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
                                 aria-label="Apply now for the Advanced Data Science & ML Masterclass"
+                                title="Apply Now"
                             >
                                 Apply Now
                                 <Rocket className="w-4 h-4" />
@@ -128,6 +129,7 @@ export default function WhyDSProgram() {
                                 className="mt-3 inline-flex w-full items-center justify-center cursor-pointer gap-2 rounded-xl px-5 py-3 text-sm font-semibold shadow-sm
                            bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 hover:translate-y-[-1px] focus:outline-none focus:ring-4 focus:ring-slate-200"
                                 aria-label="Download Syllabus"
+                                title="Download Syllabus"
                             >
                                 Download Syllabus (PDF)
                             </button>

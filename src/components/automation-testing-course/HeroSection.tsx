@@ -72,6 +72,7 @@ export default function HeroSection() {
                                     {c.href ? (
                                         <Link
                                             href={c.href}
+                                            title={c.label}
                                             className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
                                         >
                                             {c.label}
@@ -140,6 +141,7 @@ export default function HeroSection() {
                                 onClick={() => setIsEnrollModalOpen(true)}
                                 className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
                                 aria-label="Enroll now in Advanced Automation Testing"
+                                title="Enroll Now"
                             >
                                 Enroll Now
                                 <FaArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -149,6 +151,7 @@ export default function HeroSection() {
                                 onClick={() => setIsSyllabusModalOpen(true)}
                                 className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
                                 aria-label="Download Advanced Automation Testing Syllabus"
+                                title="Download Syllabus"
                             >
                                 Download Syllabus
                                 <FaCloudDownloadAlt className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
@@ -164,6 +167,7 @@ export default function HeroSection() {
                                 }}
                                 className="cursor-pointer inline-flex items-center justify-center rounded-xl border-2 border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
                                 aria-label="View full Advanced Automation Testing curriculum"
+                                title="View Curriculum"
                             >
                                 View Curriculum
                                 <FaSortAmountDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />

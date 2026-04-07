@@ -52,6 +52,7 @@ export default function CtaSection() {
             href="tel:+917888383788"
             className="inline-flex items-center justify-center rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="Call CDPL admissions"
+            title="Call Us"
           >
             Call Admissions: +91 788-83-83-788
           </Link>
@@ -59,6 +60,7 @@ export default function CtaSection() {
             href="mailto:contact@cinutedigital.com"
             className="inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
             aria-label="Email CDPL"
+            title="Email Us"
           >
             Email Us
           </Link>

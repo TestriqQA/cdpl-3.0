@@ -14,6 +14,18 @@ import {
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { useRef } from 'react';
 
+const CustomFlag = ({ country, countryName, flagUrl }: any) => {
+  if (!country || !flagUrl) return <></>;
+  return (
+    <img
+      alt={countryName}
+      title={countryName}
+      src={flagUrl.replace('{XX}', country).replace('{xx}', country.toLowerCase())}
+      className="PhoneInputCountryIconImg"
+    />
+  );
+};
+
 interface SyllabusDownloadModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -327,6 +339,7 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
                           defaultCountry="IN"
                           value={formData.phone}
                           onChange={handlePhoneChange}
+                          flagComponent={CustomFlag}
                           placeholder="Enter your mobile number (e.g., 98765 43210)"
                           className={`w-full [&>input]:pl-4 [&>input]:pr-4 [&>input]:py-3 [&>input]:border-2 [&>input]:rounded-lg [&>input]:text-gray-900 [&>input]:placeholder:text-gray-400 [&>input]:focus:outline-none [&>input]:focus:ring-2 [&>input]:transition-all [&>input]:placeholder-opacity-100 [&>input]:placeholder-shown:text-gray-400 ${phoneError
                             ? '[&>input]:border-red-300 [&>input]:focus:border-red-500 [&>input]:focus:ring-red-200'

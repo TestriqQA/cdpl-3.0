@@ -104,6 +104,7 @@ export default function FaqSection() {
             Didn’t find what you’re looking for?{' '}
             <a
               href="contact-us"
+              title="Contact Us"
               className="font-semibold text-indigo-700 underline decoration-indigo-200 underline-offset-4 hover:text-indigo-800 hover:decoration-indigo-300"
             >
               Talk to an advisor

@@ -58,7 +58,7 @@ const Footer: React.FC = () => {
                   <p className="font-bold">Head Office (<span className="text-blue-700">CDPL</span>)</p>
                   <div className="flex items-start mt-1 gap-3">
                     <MapPin className="h-5 w-5 text-brand mt-0.5" aria-hidden="true" />
-                    <Link className="hover:text-blue-700 transition" href="https://www.google.com/maps/place/Cinute+Digital+Pvt.+Ltd.+A+Premier+Software+Training+Institute+(CDPL)/@19.29342,72.8685471,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b1af2b2c5fed:0x7104f80b9fec8b9d!8m2!3d19.293415!4d72.871122!16s%2Fg%2F11t5q_mt87?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D">
+                    <Link className="hover:text-blue-700 transition" title="Cinute Digital Head Office - View on Google Maps" href="https://www.google.com/maps/place/Cinute+Digital+Pvt.+Ltd.+A+Premier+Software+Training+Institute+(CDPL)/@19.29342,72.8685471,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b1af2b2c5fed:0x7104f80b9fec8b9d!8m2!3d19.293415!4d72.871122!16s%2Fg%2F11t5q_mt87?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D">
                       Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road, Mira Bhayandar, Mumbai, Maharashtra 401107
                     </Link>
                   </div>
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
                   <p className="font-bold">Study Center <span className="text-red-800">MeghMehul Classes</span> (<span className="text-blue-700">Vasai</span>)</p>
                   <div className="flex items-start mt-1 gap-3">
                     <MapPin className="h-5 w-5 text-brand mt-0.5" aria-hidden="true" />
-                    <Link className="hover:text-blue-700 transition" href="https://maps.app.goo.gl/SACPou6JCdRZh5j98">
+                    <Link className="hover:text-blue-700 transition" title="Cinute Digital Vasai Study Center - View on Google Maps" href="https://maps.app.goo.gl/SACPou6JCdRZh5j98">
                       Shop No 7, Laxmi Palace, Opposite Vidhyavardhini Degree Engineering College, Gurunanak Nagar, Vasai West, Mumbai, Maharashtra - 401202
                     </Link>
                   </div>
@@ -78,6 +78,7 @@ const Footer: React.FC = () => {
                   <Mail className="h-5 w-5 text-brand" aria-hidden="true" />
                   <Link
                     href="mailto:contact@cinutedigital.com"
+                    title="Email Cinute Digital"
                     className="hover:text-brand transition-colors"
                   >
                     contact@cinutedigital.com
@@ -89,6 +90,7 @@ const Footer: React.FC = () => {
                   <div className="flex flex-row flex-wrap items-center gap-2">
                     <Link
                       href="tel:+917888383788"
+                      title="Call Cinute Digital at +91 78-883-837-88"
                       className="hover:text-brand transition-colors whitespace-nowrap"
                     >
                       +91 78-883-837-88
@@ -96,6 +98,7 @@ const Footer: React.FC = () => {
                     <span className="text-slate-300 whitespace-nowrap">|</span>
                     <Link
                       href="tel:+918488988984"
+                      title="Call Cinute Digital at +91 84-889-889-84"
                       className="hover:text-brand transition-colors whitespace-nowrap"
                     >
                       +91 84-889-889-84
@@ -105,23 +108,23 @@ const Footer: React.FC = () => {
 
                 {/* Social Media Icons */}
                 <div className="flex items-center gap-5 mt-4">
-                  <Link href="https://www.facebook.com/cinutedigital" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="Facebook">
+                  <Link href="https://www.facebook.com/cinutedigital" title="Visit Cinute Digital on Facebook" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="Facebook">
                     <Facebook className="h-5 w-5" />
                   </Link>
 
-                  <Link href="https://x.com/cinutedigital" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="X">
+                  <Link href="https://x.com/cinutedigital" title="Follow Cinute Digital on X" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="X">
                     <XLogo className="h-5 w-5" />
                   </Link>
 
-                  <Link href="https://www.youtube.com/@cinutedigital" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="YouTube">
+                  <Link href="https://www.youtube.com/@cinutedigital" title="Subscribe to Cinute Digital on YouTube" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="YouTube">
                     <Youtube className="h-5 w-5" />
                   </Link>
 
-                  <Link href="https://www.linkedin.com/company/cinute-digital/" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="LinkedIn">
+                  <Link href="https://www.linkedin.com/company/cinute-digital/" title="Connect with Cinute Digital on LinkedIn" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="LinkedIn">
                     <Linkedin className="h-5 w-5" />
                   </Link>
 
-                  <Link href="https://www.instagram.com/cinutedigital/" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="Instagram">
+                  <Link href="https://www.instagram.com/cinutedigital/" title="Follow Cinute Digital on Instagram" className="text-slate-400 hover:text-blue-700 transition-all duration-300 ease-in-out" aria-label="Instagram">
                     <Instagram className="h-5 w-5" />
                   </Link>
                 </div>
@@ -189,24 +192,28 @@ const Footer: React.FC = () => {
               <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
                 <Link
                   href="/privacy-policy"
+                  title="Privacy Policy"
                   className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/privacy-policy" ? "border-orange-300 text-brand" : "border-slate-200 hover:border-orange-300 hover:text-brand"}`}
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/cookies-policy"
+                  title="Cookies Policy"
                   className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/cookies-policy" ? "border-orange-300 text-brand" : "border-slate-200 hover:border-orange-300 hover:text-brand"}`}
                 >
                   Cookies Policy
                 </Link>
                 <Link
                   href="/terms-of-service"
+                  title="Terms and Conditions"
                   className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/terms-of-service" ? "border-orange-300 text-brand" : "border-slate-200 hover:border-orange-300 hover:text-brand"}`}
                 >
                   Terms and Conditions
                 </Link>
                 <Link
                   href="/cancellation-refund-policy"
+                  title="Cancellation and Refund Policy"
                   className={`rounded-full border px-3 py-1.5 transition-colors ${pathname === "/cancellation-refund-policy" ? "border-orange-300 text-brand" : "border-slate-200 hover:border-orange-300 hover:text-brand"}`}
                 >
                   Cancellation/Refund Policy
@@ -231,7 +238,7 @@ const Footer: React.FC = () => {
               {/* Powered By */}
               <div className="flex gap-4 space-y-4">
                 <h3 className="text-xl font-semibold text-brand">Powered By</h3>
-                <Link href="https://www.testriq.com/" className="text-gray-300 hover:text-blue-400 hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
+                <Link href="https://www.testriq.com/" title="Visit Testriq QA Lab" className="text-gray-300 hover:text-blue-400 hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
                   <Image src={'/images/Testriq-Logo-1.webp'} alt='Testriq_logo' title="Testriq-Logo" width={100} height={100} style={{ width: "auto", height: "auto" }} />
                 </Link>
               </div>

@@ -105,7 +105,7 @@ export default function FaqSection() {
         {/* Extra SEO/help text */}
         <p className="mt-8 text-center text-sm sm:text-base text-slate-600">
           Still have questions?{" "}
-          <Link href="contact-us" className="font-semibold text-FS underline-offset-4 hover:underline">
+          <Link href="contact-us" title="Contact Us" className="font-semibold text-FS underline-offset-4 hover:underline">
             Talk to a program advisor
           </Link>{" "}
           for a personalized walkthrough.

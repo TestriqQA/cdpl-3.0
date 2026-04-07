@@ -59,6 +59,7 @@ export default function CtaSection() {
             onClick={() => setIsEnrollOpen(true)}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl bg-indigo-600 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(79,70,229,0.45)] transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300"
             aria-label="Apply Now"
+            title="Apply Now"
           >
             Apply Now
           </button>
@@ -67,6 +68,7 @@ export default function CtaSection() {
             onClick={() => setIsSyllabusOpen(true)}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="Download the Data Science & AI syllabus"
+            title="Download Syllabus"
           >
             Download Syllabus
           </button>
@@ -75,6 +77,7 @@ export default function CtaSection() {
             href="tel:+917888383788"
             className="inline-flex items-center justify-center rounded-xl bg-emerald-700 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(16,185,129,0.5)] transition hover:bg-emerald-800 focus:outline-none focus:ring-4 focus:ring-emerald-300"
             aria-label="Call admissions at +91 7888383788"
+            title="Call Admissions"
           >
             Call: +91 788-83-83-788
           </Link>

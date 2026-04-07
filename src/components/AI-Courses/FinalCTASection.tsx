@@ -1,5 +1,5 @@
-// FinalCTASection.tsx
 'use client';
+import { useEffect } from 'react';
 
 import React, { useState } from "react";
 import { motion, type Variants } from "framer-motion";
@@ -10,6 +10,18 @@ import BrochureDownloadModal from '@/components/home/BrochureDownloadModal';
 import PhoneInput from 'react-phone-number-input';
 
 import { validatePhone } from '@/lib/formValidation';
+
+const CustomFlag = ({ country, countryName, flagUrl }: any) => {
+    if (!country || !flagUrl) return <></>;
+    return (
+        <img
+            alt={countryName}
+            title={countryName}
+            src={flagUrl.replace('{XX}', country).replace('{xx}', country.toLowerCase())}
+            className="PhoneInputCountryIconImg"
+        />
+    );
+};
 
 /**
  * Integrated CTA content (from your data)
@@ -65,6 +77,21 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
     const [isBrochureOpen, setIsBrochureOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    // Fix for missing flag titles in PhoneInput for SEO
+    useEffect(() => {
+        const fixFlagTitles = () => {
+            const flags = document.querySelectorAll('.PhoneInputCountryIconImg');
+            flags.forEach(flag => {
+                if (flag.getAttribute('src')?.includes('IN.svg') || flag.getAttribute('alt') === 'India') {
+                    flag.setAttribute('title', 'India');
+                }
+            });
+        };
+        fixFlagTitles();
+        const timer = setTimeout(fixFlagTitles, 1000);
+        return () => clearTimeout(timer);
+    }, []);
 
     const handleEnrollSubmit = (enroll: EnrollFormData) => {
         // Replace with real submit logic as needed
@@ -216,6 +243,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                     <p className="text-xs font-bold uppercase tracking-wider text-white/80">Call Us</p>
                                     <Link
                                         href={`tel:${content.contactInfo.phone}`}
+                                        title={`Call us at ${content.contactInfo.phone}`}
                                         className="mt-1 block text-sm font-bold text-white"
                                     >
                                         {content.contactInfo.phone}
@@ -234,6 +262,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                     <p className="text-xs font-bold uppercase tracking-wider text-white/80">Email Us</p>
                                     <Link
                                         href={`mailto:${content.contactInfo.email}`}
+                                        title={`Email us at ${content.contactInfo.email}`}
                                         className="mt-1 block text-xs font-bold text-white break-words"
                                     >
                                         {content.contactInfo.email}
@@ -332,6 +361,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                                 countryCallingCodeEditable={false}
                                                 value={form.phone}
                                                 onChange={(e) => setForm((f) => ({ ...f, phone: e || '' }))}
+                                                flagComponent={CustomFlag}
                                                 className="w-full [&>input]:w-full [&>input]:border-none [&>input]:outline-none [&>input]:py-3 [&>input]:px-3 [&>input]:rounded-lg [&>input]:bg-white backdrop-blur-sm overflow-hidden"
                                                 numberInputProps={{
                                                     className: "!w-full !text-base !border-none !outline-none !ring-0",

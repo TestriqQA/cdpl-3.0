@@ -174,6 +174,7 @@ const ProjectCard = ({ project, index, onEnroll }: { project: typeof projectsCon
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={onEnroll}
+                            title={`View details for project: ${project.name}`}
                             className={`flex-1 bg-gradient-to-r ${theme.accent} text-white font-bold px-3 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2`}
                         >
                             <Eye className="w-5 h-5" />
@@ -289,12 +290,22 @@ const ProjectsSection = () => {
                         </div>
 
                         <div className="flex flex-wrap gap-4 justify-center">
-                            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => setIsPopupOpen(true)} className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2">
+                            <motion.button 
+                                whileHover={{ scale: 1.05 }} 
+                                whileTap={{ scale: 0.95 }} 
+                                onClick={() => setIsPopupOpen(true)} 
+                                title="Enroll in our top-rated Digital Marketing Course"
+                                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
+                            >
                                 Enroll in Digital Marketing Course
                                 <ArrowRight className="w-5 h-5" />
                             </motion.button>
 
-                            <Link href="/contact-us" className="px-8 py-4 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-300 hover:border-gray-400 transition-all duration-300">
+                            <Link 
+                                href="/contact-us" 
+                                title="Talk to our course advisor for guidance"
+                                className="px-8 py-4 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-300 hover:border-gray-400 transition-all duration-300"
+                            >
                                 Talk to Course Advisor
                             </Link>
                         </div>

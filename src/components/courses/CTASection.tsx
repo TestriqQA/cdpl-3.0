@@ -57,6 +57,7 @@ export default function CTASection() {
                 <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                     <Link
                         href="/courses"
+                        title="Browse All Courses"
                         className={[
                             "inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 md:px-8 md:py-4",
                             "bg-emerald-500 text-slate-950 font-semibold",
@@ -71,6 +72,7 @@ export default function CTASection() {
 
                     <Link
                         href="contact-us"
+                        title="Talk to a Career Advisor"
                         className={[
                             "inline-flex items-center justify-center rounded-xl px-6 py-3 md:px-8 md:py-4",
                             "border border-violet-300/60 text-violet-200 font-semibold",

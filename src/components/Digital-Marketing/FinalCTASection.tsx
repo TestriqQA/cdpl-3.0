@@ -74,6 +74,21 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
         setIsPopupOpen(false);
     };
 
+    React.useEffect(() => {
+        const injectFlagTitles = () => {
+            const flags = document.querySelectorAll('.PhoneInputCountryIcon--border img');
+            flags.forEach(img => {
+                if (!img.hasAttribute('title')) {
+                    img.setAttribute('title', 'India');
+                }
+            });
+        };
+        injectFlagTitles();
+        const observer = new MutationObserver(injectFlagTitles);
+        observer.observe(document.body, { childList: true, subtree: true });
+        return () => observer.disconnect();
+    }, []);
+
     const [form, setForm] = useState({
         name: "",
         email: "",
@@ -210,6 +225,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                 <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Phone</p>
                                 <Link
                                     href={`tel:${content.contactInfo.phone}`}
+                                    title={`Call Cinute Digital at ${content.contactInfo.phone}`}
                                     className="mt-1 block text-sm font-semibold text-slate-900 transition group-hover:text-brand"
                                 >
                                     {content.contactInfo.phone}
@@ -224,6 +240,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                 <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Email</p>
                                 <Link
                                     href={`mailto:${content.contactInfo.email}`}
+                                    title={`Email Cinute Digital at ${content.contactInfo.email}`}
                                     className="mt-1 block text-sm lg:text-xs xl:text-sm font-semibold text-slate-900 transition group-hover:text-brand"
                                 >
                                     {content.contactInfo.email}

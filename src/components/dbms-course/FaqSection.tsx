@@ -26,7 +26,7 @@ export default function FaqSection() {
 
         {/* small SEO/supportive line */}
         <p className="mx-auto -mt-2 mb-6 max-w-2xl text-center text-sm sm:text-base text-slate-600">
-          Can’t find an answer? <Link href="contact-us" className="font-medium text-sky-700 hover:underline">Contact our team</Link> for personalized guidance.
+          Can’t find an answer? <Link href="contact-us" title="Contact Us" className="font-medium text-sky-700 hover:underline">Contact our team</Link> for personalized guidance.
         </p>
 
         <div className="space-y-3 sm:space-y-4" role="list">

@@ -63,6 +63,7 @@ const HeroSection: React.FC = () => {
                                     {c.href ? (
                                         <Link
                                             href={c.href}
+                                            title={c.label}
                                             className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
                                         >
                                             {c.label}
@@ -122,6 +123,7 @@ const HeroSection: React.FC = () => {
                             </button>
                             <Link
                                 href="#curriculum"
+                                title="View Curriculum"
                                 className="flex items-center justify-center px-6 py-3 text-base font-semibold text-gray-700 bg-white border-2 border-gray-300 rounded-xl shadow-md hover:bg-gray-100 transition-all duration-300 cursor-pointer"
                             >
                                 View Curriculum <ArrowDownNarrowWide size={20} className="ml-2" />

@@ -27,7 +27,7 @@ export default function HeroSection() {
     { label: "Home", href: "/" },
     { label: 'Courses', href: '/courses' },
     { label: 'Artificial Intelligence', href: '/courses/artificial-intelligence-courses' },
-    { label: "Prompt Engineering with Generative AI", href: "/prompt-engineering-course" },
+    { label: "Prompt Engineering with Generative AI", href: "/courses/artificial-intelligence-courses/prompt-engineering-course" },
   ];
 
   return (
@@ -48,6 +48,7 @@ export default function HeroSection() {
                 {c.href ? (
                   <Link
                     href={c.href}
+                    title={c.label}
                     className={`hover:text-green-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
                   >
                     {c.label}
@@ -111,6 +112,7 @@ export default function HeroSection() {
               </button>
               <Link
                 href="#curriculum"
+                title="View Curriculum"
                 onClick={handleScrollToCurriculum}
                 className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-white border-2 border-slate-200 px-8 py-3.5 text-base font-semibold text-slate-700 hover:border-green-200 hover:bg-green-50/50 transition-all active:scale-[0.98]"
               >

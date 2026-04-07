@@ -179,6 +179,7 @@ export default function CareerRoadmapSection() {
             onClick={() => setIsCareerModalOpen(true)}
             className="inline-flex items-center cursor-pointer gap-2 rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-4 md:px-6 py-2 md:py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-300"
             aria-label="Get personalized AI roadmap guidance"
+            title="Get Personalized Roadmap"
           >
             Get Personalized Roadmap
             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>

@@ -58,6 +58,7 @@ export default function CtaSection() {
             <Link
               href="tel:+917888383788"
               aria-label="Call admission helpdesk"
+              title="Call Us"
               className="inline-flex items-center justify-center rounded-xl border border-cyan-600 bg-cyan-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-cyan-700 focus:outline-none focus:ring-4 focus:ring-cyan-200"
             >
               <Phone className="mr-2 h-5 w-5" />
@@ -66,6 +67,7 @@ export default function CtaSection() {
             <Link
               href="mailto:contact@cinutedigital.com"
               aria-label="Email admission team"
+              title="Email Us"
               className="inline-flex items-center justify-center rounded-xl border-2 border-indigo-600 bg-white px-6 py-3 text-base font-semibold text-indigo-700 shadow-sm transition hover:bg-indigo-50 focus:outline-none focus:ring-4 focus:ring-indigo-200"
             >
               <Mail className="mr-2 h-5 w-5" />

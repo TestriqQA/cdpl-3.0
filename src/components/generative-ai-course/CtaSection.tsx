@@ -75,6 +75,7 @@ export default function CtaSection() {
             href="tel:+917888383788"
             className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-indigo-700 bg-indigo-700 px-5 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.25)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-300 sm:w-auto"
             aria-label="Call to enroll in the Deep Learning & AI course"
+            title="Call Us"
           >
             {/* Phone icon */}
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -93,6 +94,7 @@ export default function CtaSection() {
             href="mailto:contact@cinutedigital.com"
             className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-900 bg-white px-5 py-3 text-base font-semibold text-slate-900 shadow-[0_2px_0_0_rgba(15,23,42,0.15)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300 sm:w-auto"
             aria-label="Email to request the Deep Learning & AI brochure"
+            title="Email Us"
           >
             {/* Mail icon */}
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -106,6 +108,7 @@ export default function CtaSection() {
             onClick={() => setIsEnrollModalOpen(true)}
             className="inline-flex w-full items-center justify-center cursor-pointer gap-2 rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-5 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.2)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-300 sm:w-auto"
             aria-label="Apply now for the Deep Learning & AI program"
+            title="Apply Now"
           >
             {/* Rocket icon */}
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -129,6 +132,7 @@ export default function CtaSection() {
           <Link
             href="https://wa.me/917888383788"
             className="font-medium text-sky-700 underline-offset-2 hover:underline focus:outline-none focus:ring-2 focus:ring-sky-300 rounded"
+            title="Chat on WhatsApp"
           >
             +91 788-83-83-788
           </Link>

@@ -94,7 +94,7 @@ export default function FaqSection() {
               <path d="M12.293 4.293a1 1 0 011.414 0l4 4a1 1 0 01.083 1.32l-.083.094-4 4a1 1 0 01-1.497-1.32l.083-.094L14.585 10H3a1 1 0 01-.117-1.993L3 8h11.585l-2.292-2.293a1 1 0 010-1.414z" />
             </svg>
           </button>
-          <Link href="mailto:contact@cinutedigital.com" className="mt-3 text-xs sm:text-sm text-slate-600">
+          <Link href="mailto:contact@cinutedigital.com" title="Email us at contact@cinutedigital.com" className="mt-3 text-xs sm:text-sm text-slate-600">
             Or write to us at <span className="font-medium text-slate-800">contact@cinutedigital.com</span>
           </Link>
         </div>

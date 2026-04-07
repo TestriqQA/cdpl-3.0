@@ -61,6 +61,7 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
                                 {c.href ? (
                                     <Link
                                         href={c.href}
+                                        title={c.label}
                                         className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
                                     >
                                         {c.label}
@@ -121,14 +122,16 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
                     <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.24 }} className="mt-6 flex items-center gap-3">
                         <button
                             onClick={onOpenBrochure}
+                            title="Download Digital Marketing Course Brochure"
                             className="inline-flex items-center gap-2 px-5 py-4 bg-brand text-white rounded-lg text-md font-semibold shadow hover:bg-brand hover:translate-y-[-1px] transition-all"
                         >
                             <Download className="h-4 w-4" />
                             Download Brochure
                         </button>
-
+ 
                         <button
                             onClick={onOpenVideo}
+                            title="Watch CDPL Intro Video"
                             className="inline-flex items-center gap-2 px-5 py-4 bg-white border border-slate-300 text-slate-800 rounded-lg text-md font-semibold shadow-sm hover:bg-slate-50 transition"
                         >
                             <Play className="h-4 w-4" />
@@ -257,6 +260,21 @@ export default function HeroSection(): React.JSX.Element {
     const openVideo = useCallback(() => setIsVideoOpen(true), []);
     const openEnrollPopup = useCallback(() => setIsEnrollOpen(true), []);
 
+    React.useEffect(() => {
+        const injectFlagTitles = () => {
+            const flags = document.querySelectorAll('.PhoneInputCountryIcon--border img');
+            flags.forEach(img => {
+                if (!img.hasAttribute('title')) {
+                    img.setAttribute('title', 'India');
+                }
+            });
+        };
+        injectFlagTitles();
+        const observer = new MutationObserver(injectFlagTitles);
+        observer.observe(document.body, { childList: true, subtree: true });
+        return () => observer.disconnect();
+    }, []);
+
     const breadcrumbs = [
         { label: 'Home', href: '/' },
         { label: 'Courses', href: '/courses' },
@@ -281,6 +299,7 @@ export default function HeroSection(): React.JSX.Element {
                                     {c.href ? (
                                         <Link
                                             href={c.href}
+                                            title={c.label}
                                             className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
                                         >
                                             {c.label}

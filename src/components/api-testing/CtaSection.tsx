@@ -41,6 +41,7 @@ export default function CtaSection() {
               href="tel:+917888383788"
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-indigo-600 bg-indigo-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
               aria-label="Call us to enroll"
+              title="Call us to enroll"
             >
               <Phone className="h-5 w-5" />
               Call: +91 788-83-83-788
@@ -50,6 +51,7 @@ export default function CtaSection() {
               href="mailto:contact@cinutedigital.com"
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-300 bg-white px-7 py-3 text-sm font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
               aria-label="Email us for course details"
+              title="Email us for course details"
             >
               <Mail className="h-5 w-5" />
               Email Us

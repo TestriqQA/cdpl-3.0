@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Award, Users, Star, Home, ChevronRight, CheckCircle2, User, Mail } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import EnrollModal from "@/components/EnrollModal";
 import dynamic from 'next/dynamic';
 import PhoneInput from 'react-phone-number-input';
@@ -100,6 +100,16 @@ export default function HeroSection() {
         }
     };
 
+    // Fix PhoneInput flag image titles for SEO
+    useEffect(() => {
+        const flagImgs = document.querySelectorAll('.phone-input-container .PhoneInputCountryIcon img');
+        flagImgs.forEach((img) => {
+            if (!img.getAttribute('title') || img.getAttribute('title') === '/') {
+                img.setAttribute('title', img.getAttribute('alt') || 'Country flag');
+            }
+        });
+    });
+
     const breadcrumbs = [
         { label: "Home", href: "/" },
         { label: "Courses" },
@@ -165,6 +175,7 @@ export default function HeroSection() {
                                         {c.href ? (
                                             <Link
                                                 href={c.href}
+                                                title={c.label}
                                                 className={`hover:text-indigo-700 transition-colors ${isLast ? "font-semibold text-slate-900" : ""}`}
                                             >
                                                 {c.label}
@@ -332,6 +343,7 @@ export default function HeroSection() {
 
                                 <Link
                                     href="contact-us"
+                                    title="Request a Free Demo Class"
                                     className="group inline-flex items-center justify-center rounded-2xl border-2 border-emerald-200 bg-gradient-to-br from-emerald-50 to-teal-50 px-7 py-3.5 text-base font-semibold text-emerald-700 shadow-md shadow-emerald-200/50 transition-all hover:border-emerald-300 hover:shadow-lg hover:from-emerald-100 hover:to-teal-100"
                                     aria-label="Free Demo"
                                 >

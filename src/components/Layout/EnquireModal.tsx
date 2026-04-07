@@ -53,6 +53,17 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
         }
     }, [isOpen]);
 
+    // Fix PhoneInput flag image titles for SEO
+    useEffect(() => {
+        if (!isVisible) return;
+        const flagImgs = document.querySelectorAll('.phone-input-container .PhoneInputCountryIcon img');
+        flagImgs.forEach((img) => {
+            if (!img.getAttribute('title') || img.getAttribute('title') === '/') {
+                img.setAttribute('title', img.getAttribute('alt') || 'Country flag');
+            }
+        });
+    });
+
     // Validation functions
     const validateFullName = (name: string) => {
         const error = validateFullNameLib(name);

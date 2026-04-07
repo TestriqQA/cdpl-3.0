@@ -127,7 +127,11 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, index, nowMs }) => {
 
                 <div className="relative z-10">
                     <div className="flex items-start justify-between mb-4">
-                        <div className="text-5xl transform group-hover:scale-110 transition-transform duration-300 text-white">
+                        <div 
+                            className="text-5xl transform group-hover:scale-110 transition-transform duration-300 text-white"
+                            title={course.title}
+                            aria-label={course.title}
+                        >
                             {IconComponent}
                         </div>
                         <div
@@ -240,6 +244,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, index, nowMs }) => {
                 <div className="pt-4 space-y-3 mt-auto">
                     <Link
                         href={course.href || course.link || '#'}
+                        title={`View ${course.title} Course Details`}
                         className={`flex items-center justify-center gap-2 w-full ${variant.button} text-white font-semibold py-3 rounded-xl hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300`}
                     >
                         <span>View Course Details</span>

@@ -150,6 +150,7 @@ export default function ProjectsSection() {
                       p.ink,
                     ].join(' ')}
                     aria-label={`View ${p.title} on GitHub`}
+                    title="View GitHub Sample"
                   >
                     <Github className="h-4 w-4" />
                     GitHub Sample

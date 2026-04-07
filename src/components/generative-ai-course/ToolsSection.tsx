@@ -117,6 +117,7 @@ export default function ToolsSection() {
           <button
             onClick={() => setIsCareerModalOpen(true)}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-base font-semibold text-white shadow-lg transition hover:bg-[#6b21a8] hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-purple-200"
+            title="Book a Free Demo"
           >
             Book a Free Demo
           </button>

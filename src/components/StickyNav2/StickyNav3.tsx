@@ -64,6 +64,7 @@ export default function StickyNav3() {
                   ? 'bg-indigo-600 text-white shadow-md'
                   : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                 }`}
+              title={sec.label}
             >
               {/* Subtle shimmer on hover (non-active only) */}
               {!activeSection && (
@@ -102,6 +103,7 @@ export default function StickyNav3() {
                       ? 'bg-gray-900 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
+                  title={sec.label}
                 >
                   <span className="flex items-center gap-1.5">
                     {sec.label}

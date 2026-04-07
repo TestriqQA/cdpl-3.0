@@ -127,6 +127,7 @@ export default function CareerSection() {
               <button
                 rel="noopener noreferrer"
                 aria-label={c.name}
+                title={c.name}
                 className={[
                   "group block w-full rounded-2xl border p-4 shadow-sm transition-all duration-200 backdrop-blur",
                   "hover:-translate-y-0.5 hover:shadow-md focus-visible:-translate-y-0.5",
@@ -163,6 +164,7 @@ export default function CareerSection() {
             onClick={() => setIsEnrollOpen(true)}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="Apply for placement assistance in DS & AI roles"
+            title="Apply for Placement Assistance"
           >
             Apply for Placement Assistance
           </button>
@@ -170,6 +172,7 @@ export default function CareerSection() {
             onClick={() => setIsSyllabusOpen(true)}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-indigo-200"
             aria-label="Download the DS & AI portfolio guide"
+            title="Download Portfolio Guide"
           >
             Download Portfolio Guide (PDF)
           </button>

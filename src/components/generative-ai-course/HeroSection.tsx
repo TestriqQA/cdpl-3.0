@@ -42,6 +42,7 @@ export default function HeroSection() {
                                     {c.href ? (
                                         <Link
                                             href={c.href}
+                                            title={c.label}
                                             className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
                                         >
                                             {c.label}
@@ -93,28 +94,31 @@ export default function HeroSection() {
 
                         {/* CTAs */}
                         <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-                            <button
+                             <button
                                 onClick={() => setIsEnrollModalOpen(true)}
                                 className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#6b21a8] hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-purple-200"
                                 aria-label="Enroll now in Generative AI course"
+                                title="Enroll Now"
                             >
                                 Enroll Now
                                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </button>
 
-                            <button
+                             <button
                                 onClick={() => setIsSyllabusModalOpen(true)}
                                 className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#6b21a8] hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-purple-200"
                                 aria-label="Download Generative AI Syllabus"
+                                title="Download Syllabus"
                             >
                                 Download Syllabus
                                 <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </button>
 
-                            <Link
+                             <Link
                                 href="#curriculum"
                                 className="inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
                                 aria-label="View full Generative AI curriculum"
+                                title="View Curriculum"
                             >
                                 View Curriculum
                                 <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />

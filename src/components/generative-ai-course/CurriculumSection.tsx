@@ -235,13 +235,15 @@ export default function CurriculumSection() {
                 onClick={() => setIsSyllabusModalOpen(true)}
                 className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-orange-200"
                 aria-label="Download the detailed Advanced Data Analytics syllabus"
+                title="Download Syllabus"
               >
                 Download Detailed Syllabus (PDF)
               </button>
-              <button
+               <button
                 onClick={() => setIsEnrollModalOpen(true)}
                 className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-300"
                 aria-label="Apply for the Advanced Data Analytics program"
+                title="Apply Now"
               >
                 Apply Now
               </button>

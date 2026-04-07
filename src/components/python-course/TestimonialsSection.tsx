@@ -81,6 +81,7 @@ export default function TestimonialsSection({
           <button
             onClick={() => setIsEnrollOpen(true)}
             className="cursor-pointer rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-slate-200"
+            title="Enroll Now"
           >
             Enroll now
           </button>
@@ -88,6 +89,7 @@ export default function TestimonialsSection({
           <button
             onClick={() => setIsSyllabusOpen(true)}
             className="rounded-xl bg-white cursor-pointer border-2 border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-emerald-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-emerald-200"
+            title="Download Syllabus"
           >
             Download syllabus
           </button>

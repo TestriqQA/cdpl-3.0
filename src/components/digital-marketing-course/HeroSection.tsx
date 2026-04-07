@@ -72,7 +72,7 @@ export default function HeroSection() {
     { label: 'Home', href: '/' },
     { label: 'Courses', href: '/courses' },
     { label: 'Digital Marketing', href: '/courses/digital-marketing-courses' },
-    { label: 'Digital Marketing Course in Mumbai', href: '/digital-marketing-course' },
+    { label: 'Digital Marketing Course in Mumbai', href: '/courses/digital-marketing-courses/digital-marketing-course' },
   ];
 
   return (
@@ -93,6 +93,7 @@ export default function HeroSection() {
                 {c.href ? (
                   <Link
                     href={c.href}
+                    title={c.label}
                     className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? 'font-semibold text-slate-900' : ''}`}
                   >
                     {c.label}
@@ -173,6 +174,7 @@ export default function HeroSection() {
 
               <Link
                 href="#curriculum"
+                title="View Curriculum"
                 className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-base font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
               >
                 Course Syllabus

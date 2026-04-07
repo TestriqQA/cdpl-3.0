@@ -66,6 +66,7 @@ export default function CtaSection() {
               href="tel:+917888383788"
               className="inline-flex w-full items-center justify-center rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300 sm:w-auto"
               aria-label="Call admissions at +91 788-83-83-788"
+              title="Call Us"
             >
               Call: +91 788-83-83-788
               <svg className="ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
@@ -77,6 +78,7 @@ export default function CtaSection() {
               href="mailto:contact@cinutedigital.com"
               className="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-base font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-purple-200 sm:w-auto"
               aria-label="Visit Cinute Digital website"
+              title="Email Us"
               target="_blank"
               rel="noopener noreferrer"
             >

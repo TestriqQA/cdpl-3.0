@@ -26,8 +26,8 @@ export default function HeroSection() {
 
     const breadcrumbs = [
         { label: "Home", href: "/" },
-        { label: "Digital Marketing", href: null },
-        { label: "AI Bootcamp", href: "/ai-bootcamp" },
+        { label: "Digital Marketing", href: "/courses/digital-marketing-courses" },
+        { label: "AI Bootcamp", href: "/courses/digital-marketing-courses/ai-bootcamp" },
     ];
 
     const scrollToCurriculum = () => {
@@ -63,6 +63,7 @@ export default function HeroSection() {
                                 {c.href ? (
                                     <Link
                                         href={c.href}
+                                        title={c.label}
                                         className={`hover:text-brand ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""
                                             }`}
                                     >
@@ -146,6 +147,7 @@ export default function HeroSection() {
 
                             <button
                                 onClick={scrollToCurriculum}
+                                title="View Curriculum"
                                 className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-base font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
                             >
                                 View Curriculum

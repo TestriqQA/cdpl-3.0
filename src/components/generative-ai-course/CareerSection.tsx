@@ -116,6 +116,7 @@ export default function CareerSection() {
                 role="listitem"
                 tabIndex={0}
                 aria-label={b.name}
+                title={b.name}
                 className={[
                   "group relative rounded-2xl border bg-white p-4 sm:p-5 shadow-sm transition-all duration-200",
                   "hover:-translate-y-0.5 hover:shadow-md focus-visible:-translate-y-0.5",
@@ -151,12 +152,14 @@ export default function CareerSection() {
           <button
             onClick={() => setIsEnrollModalOpen(true)}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-8 py-3 text-base font-semibold text-white shadow-lg transition hover:bg-[#6b21a8] hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-purple-200"
+            title="Apply for Placement Assistance"
           >
             Apply for Placement Assistance
           </button>
           <button
             onClick={() => setIsSyllabusModalOpen(true)}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-8 py-3 text-base font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-purple-200"
+            title="Download Syllabus"
           >
             Download Syllabus
           </button>

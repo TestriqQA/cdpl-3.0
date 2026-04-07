@@ -174,6 +174,7 @@ export default function InstructorSection() {
                 <Link
                   href="contact-us"
                   className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold ring-1 ring-slate-300 text-slate-800 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300"
+                  title="Book a Free Demo"
                 >
                   Book a Free Demo
                 </Link>

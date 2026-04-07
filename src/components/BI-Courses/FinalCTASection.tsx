@@ -1,7 +1,7 @@
 // FinalCTASection.tsx
 'use client';
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Phone, Mail, MapPin, Check, Star, Zap } from "lucide-react";
 import Link from "next/link";
@@ -65,6 +65,16 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
     const [isBrochureOpen, setIsBrochureOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    // Fix PhoneInput flag image titles for SEO
+    useEffect(() => {
+        const flagImgs = document.querySelectorAll('.PhoneInputCountryIcon img');
+        flagImgs.forEach((img) => {
+            if (!img.getAttribute('title') || img.getAttribute('title') === '/') {
+                img.setAttribute('title', img.getAttribute('alt') || 'Country flag');
+            }
+        });
+    });
 
     const handleEnrollSubmit = (enroll: EnrollFormData) => {
         // Replace with real submit logic as needed
@@ -218,6 +228,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                     <p className="text-xs font-bold uppercase tracking-wider text-white/80">Call Us</p>
                                     <Link
                                         href={`tel:${content.contactInfo.phone}`}
+                                        title={`Call Cinute Digital at ${content.contactInfo.phone}`}
                                         className="mt-1 block text-sm font-bold text-white"
                                     >
                                         {content.contactInfo.phone}
@@ -236,6 +247,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                     <p className="text-xs font-bold uppercase tracking-wider text-white/80">Email Us</p>
                                     <Link
                                         href={`mailto:${content.contactInfo.email}`}
+                                        title={`Email Cinute Digital at ${content.contactInfo.email}`}
                                         className="mt-1 block text-xs font-bold text-white break-words"
                                     >
                                         {content.contactInfo.email}

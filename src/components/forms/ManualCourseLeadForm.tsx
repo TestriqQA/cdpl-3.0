@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { User, Mail, CheckCircle2, TrendingUp } from "lucide-react";
 
@@ -13,16 +13,56 @@ export default function LeadForm({
   className = '',
   variant = 'elevated',
   title = 'Request a Callback',
-  subtitle = 'Want to know exactly how much it costs & when the next batch starts? Tell us where to call you!',
-  source = 'Manual Software Testing Course Page - Hero Section'
+    subtitle = 'Want to know exactly how much it costs & when the next batch starts? Tell us where to call you!',
+    source = 'Manual Software Testing Course Page - Hero Section'
 }: {
-  className?: string;
-  variant?: 'default' | 'elevated';
-  title?: string;
-  subtitle?: string;
-  source?: string;
+    className?: string;
+    variant?: 'default' | 'elevated';
+    title?: string;
+    subtitle?: string;
+    source?: string;
 }) {
-  // Form state
+    // Add title attribute to the India flag icon in react-phone-number-input for SEO
+    useEffect(() => {
+        const fixFlagTitles = () => {
+            const flags = document.querySelectorAll('.PhoneInputCountryIconImg');
+            flags.forEach(flag => {
+                const src = flag.getAttribute('src');
+                const alt = flag.getAttribute('alt');
+                if (src?.includes('IN.svg') || alt === 'India' || alt === 'IN') {
+                    if (!flag.hasAttribute('title')) {
+                        flag.setAttribute('title', 'India');
+                    }
+                }
+            });
+        };
+
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList') {
+                    fixFlagTitles();
+                }
+            });
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        // Initial check
+        fixFlagTitles();
+
+        // Also run once after 1s for any delayed rendering
+        const timer = setTimeout(fixFlagTitles, 1000);
+
+        return () => {
+            observer.disconnect();
+            clearTimeout(timer);
+        };
+    }, []);
+
+    // Form state
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -317,9 +357,9 @@ export default function LeadForm({
             )}
           </button>
 
-          <p className="text-xs text-slate-500">
-            By submitting, you agree to our <a href="https://cinutedigital.com/privacy-policy">Privacy Policy</a>.
-          </p>
+                    <p className="text-xs text-slate-500">
+                        By submitting, you agree to our <a href="https://cinutedigital.com/privacy-policy" title="Privacy Policy">Privacy Policy</a>.
+                    </p>
 
         </div>
       </form>

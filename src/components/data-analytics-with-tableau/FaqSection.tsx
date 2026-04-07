@@ -75,6 +75,7 @@ export default function FaqSection() {
                             </p>
                             <Link
                                 href="tel:+917888383788"
+                                title="Call us at +91 788-83-83-788"
                                 className="text-gray-950 text-xs md:text-base font-semibold hover:underline inline-block p-2"
                             >
                                 +91 788-83-83-788
@@ -89,6 +90,7 @@ export default function FaqSection() {
                             </p>
                             <Link
                                 href="mailto:contact@cinutedigital.com"
+                                title="Email us at contact@cinutedigital.com"
                                 className="text-gray-950 text-xs lg:text-base font-semibold hover:underline inline-block p-2"
                             >
                                 contact@cinutedigital.com
@@ -101,7 +103,7 @@ export default function FaqSection() {
                             <p className="text-gray-900 mb-3">
                                 Chat with our support team in real-time
                             </p>
-                            <Link href="https://wa.me/9152929342" className="text-gray-950 text-xs md:text-base font-semibold hover:underline inline-block p-2">
+                            <Link href="https://wa.me/9152929342" title="Chat with us on WhatsApp" className="text-gray-950 text-xs md:text-base font-semibold hover:underline inline-block p-2">
                                 Start Chat
                             </Link>
                         </div>

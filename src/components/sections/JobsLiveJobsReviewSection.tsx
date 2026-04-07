@@ -271,7 +271,7 @@ export default function JobsLiveJobsReviewSection() {
         {/* Header Section */}
         <div className="text-center max-w-7xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
-            <Image src={GOOGLE_LOGO} alt="Google" width={60} height={60} />
+            <Image src={GOOGLE_LOGO} alt="Google" title="Verified Google Reviews" width={60} height={60} />
             <span className="text-sm font-medium text-slate-700">
               Rated <span className="font-bold text-slate-900">{stats.rating}/5</span> based on <span className="font-bold text-slate-900">{stats.total}+</span> reviews
             </span>

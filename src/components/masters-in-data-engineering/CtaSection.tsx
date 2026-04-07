@@ -146,6 +146,7 @@ const CtaSection: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-white">
             <Link
               href="tel:+917888383788"
+              title="Call us at +91 788-83-83-788"
               className="flex items-center gap-2 hover:text-teal-300 transition-colors"
             >
               <span>📞</span> +91 788-83-83-788
@@ -153,6 +154,7 @@ const CtaSection: React.FC = () => {
             <div className="hidden sm:block w-px h-6 bg-white/20" />
             <Link
               href="mailto:contact@cinutedigital.com"
+              title="Email us at contact@cinutedigital.com"
               className="flex items-center gap-2 hover:text-teal-300 transition-colors"
             >
               <span>✉️</span> contact@cinutedigital.com

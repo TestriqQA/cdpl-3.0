@@ -6,6 +6,18 @@ import PhoneInput from 'react-phone-number-input';
 
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 
+const CustomFlag = ({ country, countryName, flagUrl }: any) => {
+  if (!country || !flagUrl) return <></>;
+  return (
+    <img
+      alt={countryName}
+      title={countryName}
+      src={flagUrl.replace('{XX}', country).replace('{xx}', country.toLowerCase())}
+      className="PhoneInputCountryIconImg"
+    />
+  );
+};
+
 // --- Types ---
 export interface DownloadFormValues {
   fullName: string;
@@ -66,6 +78,43 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
   useFormErrorReset(formRef, [
     () => setErrors({})
   ]);
+
+  // Add title attribute to the India flag icon in react-phone-number-input for SEO
+  useEffect(() => {
+    const fixFlagTitles = () => {
+      const flags = document.querySelectorAll('.PhoneInputCountryIconImg');
+      flags.forEach(flag => {
+        const src = flag.getAttribute('src');
+        const alt = flag.getAttribute('alt');
+        if (src?.includes('IN.svg') || alt === 'India' || alt === 'IN') {
+          if (!flag.hasAttribute('title')) {
+            flag.setAttribute('title', 'India');
+          }
+        }
+      });
+    };
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'childList') {
+          fixFlagTitles();
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    fixFlagTitles();
+    const timer = setTimeout(fixFlagTitles, 1000);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(timer);
+    };
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -249,6 +298,7 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
                 value={formData.phone}
                 onChange={handlePhoneChange}
                 onBlur={() => setErrors(prev => ({ ...prev, phone: validatePhoneNumber(formData.phone) }))}
+                flagComponent={CustomFlag}
                 className={`phone-input-container ${errors.phone ? 'border-red-500' : ''
                   }`}
                 placeholder="Enter phone number"

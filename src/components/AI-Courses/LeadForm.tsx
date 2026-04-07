@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -13,6 +13,18 @@ import {
     validateEmail as validateEmailLib,
     validatePhone as validatePhoneLib
 } from '@/lib/formValidation';
+
+const CustomFlag = ({ country, countryName, flagUrl }: any) => {
+  if (!country || !flagUrl) return <></>;
+  return (
+    <img
+      alt={countryName}
+      title={countryName}
+      src={flagUrl.replace('{XX}', country).replace('{xx}', country.toLowerCase())}
+      className="PhoneInputCountryIconImg"
+    />
+  );
+};
 
 const schema = z.object({
     name: z.string().superRefine((val, ctx) => {
@@ -63,6 +75,22 @@ export default function LeadForm({
     source = "Course Category - Hero Section (Default)"
 }: LeadFormProps) {
     const [isSuccess, setIsSuccess] = useState(false);
+    
+    // Fix for missing flag titles in PhoneInput for SEO
+    useEffect(() => {
+        const fixFlagTitles = () => {
+            const flags = document.querySelectorAll('.PhoneInputCountryIconImg');
+            flags.forEach(flag => {
+                if (flag.getAttribute('src')?.includes('IN.svg') || flag.getAttribute('alt') === 'India') {
+                    flag.setAttribute('title', 'India');
+                }
+            });
+        };
+        fixFlagTitles();
+        // Also run once after 1s for any delayed rendering
+        const timer = setTimeout(fixFlagTitles, 1000);
+        return () => clearTimeout(timer);
+    }, []);
 
     const form = useForm<FormData>({
         resolver: zodResolver(schema),
@@ -170,6 +198,7 @@ export default function LeadForm({
                         countryCallingCodeEditable={false}
                         value={form.watch('phone')}
                         onChange={(v) => form.setValue('phone', v || '')}
+                        flagComponent={CustomFlag}
                         className="w-full [&>input]:w-full [&>input]:border-none [&>input]:outline-none [&>input]:bg-transparent overflow-hidden"
                         numberInputProps={{
                             className: "!w-full !text-base !border-none !outline-none !ring-0",

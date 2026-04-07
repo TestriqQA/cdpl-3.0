@@ -18,6 +18,7 @@ function ActionButton({
   className,
   ring,
   aria,
+  title,
   onClick,
 }: {
   href?: string;
@@ -27,6 +28,7 @@ function ActionButton({
   className: string;
   ring: string;
   aria: string;
+  title: string;
   onClick?: () => void;
 }) {
   const commonClasses = [
@@ -59,14 +61,14 @@ function ActionButton({
 
   if (onClick) {
     return (
-      <button onClick={onClick} aria-label={aria} className={commonClasses}>
+      <button onClick={onClick} aria-label={aria} title={title} className={commonClasses}>
         {content}
       </button>
     );
   }
 
   return (
-    <Link href={href || "#"} aria-label={aria} className={commonClasses}>
+    <Link href={href || "#"} aria-label={aria} title={title} className={commonClasses}>
       {content}
     </Link>
   );
@@ -137,6 +139,7 @@ export default function CtaSection() {
               className="bg-slate-900 text-white"
               ring="focus:ring-slate-300"
               aria="Call admissions at +91 788-83-83-788"
+              title="Call Us"
             />
             <ActionButton
               onClick={() => setIsEnrollOpen(true)}
@@ -146,6 +149,7 @@ export default function CtaSection() {
               className="bg-indigo-600 text-white"
               ring="focus:ring-indigo-300"
               aria="Apply for the Data Science course"
+              title="Apply Now"
             />
             <ActionButton
               onClick={() => setIsSyllabusOpen(true)}
@@ -155,6 +159,7 @@ export default function CtaSection() {
               className="bg-white text-slate-900 border border-slate-200"
               ring="focus:ring-purple-300"
               aria="Download the course syllabus"
+              title="Download Syllabus"
             />
             <ActionButton
               href="https://wa.me/917888383788"
@@ -164,6 +169,7 @@ export default function CtaSection() {
               className="bg-emerald-700 text-white"
               ring="focus:ring-emerald-300"
               aria="Open WhatsApp chat with admissions"
+              title="Chat on WhatsApp"
             />
           </div>
 

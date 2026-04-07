@@ -83,7 +83,7 @@ export default function FaqSection() {
                         >
                             Contact Us
                         </button>
-                        <Link href="https://calendar.app.google/tvh9dsXZsX9BujRR8" className="border-2 border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white/10 transition-all duration-300">
+                        <Link href="https://calendar.app.google/tvh9dsXZsX9BujRR8" title="Schedule a Call with Cinute Digital" className="border-2 border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white/10 transition-all duration-300">
                             Schedule a Call
                         </Link>
                     </div>

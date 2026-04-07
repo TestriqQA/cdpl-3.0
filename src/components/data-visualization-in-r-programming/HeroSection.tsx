@@ -49,6 +49,7 @@ export const HeroSection: React.FC = () => {
                                     {c.href ? (
                                         <Link
                                             href={c.href}
+                                            title={c.label}
                                             className={`hover:text-brand ${isLast ? "font-semibold text-slate-900" : ""}`}
                                         >
                                             {c.label}

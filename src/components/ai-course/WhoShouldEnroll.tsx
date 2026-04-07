@@ -155,12 +155,14 @@ export default function WhoShouldEnroll() {
           <button
             onClick={() => setIsEnrollOpen(true)}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-blue-600 bg-blue-600 px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-200"
+            title="Check Eligibility & Apply"
           >
             Check Eligibility & Apply
           </button>
           <button
             onClick={() => setIsSyllabusOpen(true)}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-900 shadow-sm transition-all hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
+            title="Download Detailed Syllabus"
           >
             <Download className="mr-2 h-5 w-5" />
             Download Detailed Syllabus

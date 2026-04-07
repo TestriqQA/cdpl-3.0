@@ -232,6 +232,7 @@ export default function WhyLearnSection() {
                         <div className="mt-4 md:mt-0 flex gap-3">
                             <Link
                                 href="#curriculum"
+                                title="View detailed curriculum"
                                 className="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-50"
                             >
                                 View curriculum <LuArrowRight className="h-4 w-4" />

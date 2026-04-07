@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { User, Mail, CheckCircle2, TrendingUp } from "lucide-react";
 
@@ -8,6 +8,18 @@ import { User, Mail, CheckCircle2, TrendingUp } from "lucide-react";
 import PhoneInput from 'react-phone-number-input';
 
 import { validateFullName as validateFullNameLib, validatePhone } from '@/lib/formValidation';
+
+const CustomFlag = ({ country, countryName, flagUrl }: any) => {
+  if (!country || !flagUrl) return <></>;
+  return (
+    <img
+      alt={countryName}
+      title={countryName}
+      src={flagUrl.replace('{XX}', country).replace('{xx}', country.toLowerCase())}
+      className="PhoneInputCountryIconImg"
+    />
+  );
+};
 
 export default function LeadForm({
   className = '',
@@ -39,6 +51,38 @@ export default function LeadForm({
     setEmailError,
     setPhoneError
   ]);
+
+  // Programmatically add title to PhoneInput flag
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node instanceof HTMLElement) {
+            const flags = node.querySelectorAll('.PhoneInputCountryIconImg');
+            flags.forEach(flag => {
+              if (!flag.hasAttribute('title')) {
+                flag.setAttribute('title', 'India');
+              }
+            });
+          }
+        });
+      });
+    });
+
+    if (formRef.current) {
+      observer.observe(formRef.current, { childList: true, subtree: true });
+
+      // Initial check
+      const flags = formRef.current.querySelectorAll('.PhoneInputCountryIconImg');
+      flags.forEach(flag => {
+        if (!flag.hasAttribute('title')) {
+          flag.setAttribute('title', 'India');
+        }
+      });
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   // Submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -292,6 +336,7 @@ export default function LeadForm({
                 value={formData.phone}
                 onChange={handlePhoneChange}
                 onBlur={() => validatePhoneNumber(formData.phone)}
+                flagComponent={CustomFlag}
                 className={`phone-input-container ${phoneError ? 'border-red-500' : ''
                   }`}
                 placeholder="Enter phone number"
@@ -322,7 +367,7 @@ export default function LeadForm({
           </button>
 
           <p className="text-xs text-slate-500">
-            By submitting, you agree to our <a href="https://cinutedigital.com/privacy-policy">Privacy Policy</a>.
+            By submitting, you agree to our <a href="https://cinutedigital.com/privacy-policy" title="Privacy Policy">Privacy Policy</a>.
           </p>
 
         </div>

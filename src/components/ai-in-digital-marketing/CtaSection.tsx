@@ -67,7 +67,7 @@ export default function CtaSection() {
               Enroll Now &amp; Get 20% OFF
               <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
             </button>
-            <Link href="https://calendar.app.google/tvh9dsXZsX9BujRR8" className="border-2 border-white text-white hover:bg-white/10 font-semibold px-8 py-6 text-base rounded-lg transition-all flex items-center justify-center">
+            <Link href="https://calendar.app.google/tvh9dsXZsX9BujRR8" title="Schedule Free Consultation" className="border-2 border-white text-white hover:bg-white/10 font-semibold px-8 py-6 text-base rounded-lg transition-all flex items-center justify-center">
               Schedule Free Consultation
             </Link>
           </div>
@@ -126,6 +126,7 @@ export default function CtaSection() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-white">
             <Link
               href="tel:+917888383788"
+              title="Call us at +91 788-83-83-788"
               className="flex items-center gap-2 hover:text-orange-400 transition-colors"
             >
               <span>📞</span> +91 788-83-83-788
@@ -133,6 +134,7 @@ export default function CtaSection() {
             <div className="hidden sm:block w-px h-6 bg-white/20" />
             <Link
               href="mailto:contact@cinutedigital.com"
+              title="Email us at contact@cinutedigital.com"
               className="flex items-center gap-2 hover:text-orange-400 transition-colors"
             >
               <span>✉️</span> contact@cinutedigital.com

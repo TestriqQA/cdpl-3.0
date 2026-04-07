@@ -259,7 +259,7 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
                         </button>
 
                         <p className="text-xs text-center text-gray-400">
-                            By continuing, you agree to our <Link href="/terms-of-service">Terms</Link> & <Link href="/privacy-policy">Privacy Policy</Link>.
+                            By continuing, you agree to our <Link href="/terms-of-service" title="Terms of Service">Terms</Link> & <Link href="/privacy-policy" title="Privacy Policy">Privacy Policy</Link>.
                         </p>
                     </form>
                 </div>

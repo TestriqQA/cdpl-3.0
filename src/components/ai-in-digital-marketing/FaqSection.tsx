@@ -102,7 +102,7 @@ export default function FaqSection() {
             <em>AI-powered digital marketing course</em> fits your career goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="https://calendar.app.google/tvh9dsXZsX9BujRR8" className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl">
+            <Link href="https://calendar.app.google/tvh9dsXZsX9BujRR8" title="Schedule a Free Consultation" className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl">
               Schedule a Free Consultation
             </Link>
             <button
@@ -119,12 +119,14 @@ export default function FaqSection() {
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
                 href="tel:+917888383788"
+                title="Call us at +91 788-83-83-788"
                 className="px-4 py-2 bg-white hover:bg-slate-50 border border-orange-300 rounded-lg font-semibold text-brand transition-colors"
               >
                 📞 Call Us
               </Link>
               <Link
                 href="mailto:contact@cinutedigital.com"
+                title="Email us at contact@cinutedigital.com"
                 className="px-4 py-2 bg-white hover:bg-slate-50 border border-blue-300 rounded-lg font-semibold text-blue-600 transition-colors"
               >
                 ✉️ Email Us

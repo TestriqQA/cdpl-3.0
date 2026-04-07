@@ -46,10 +46,12 @@ function XLogo(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+const FooterLink = ({ href, children, title }: { href: string; children: React.ReactNode; title?: string }) => {
+  const derivedTitle = title || (typeof children === 'string' ? children : undefined);
   return (
     <Link
       href={href}
+      title={derivedTitle}
       className="hover:text-brand hover:translate-x-2 active:textColor-orange-500 active:text-orange-500 focus-visible:text-orange-500 active:translate-x-2 active:transition-none focus-visible:transition-none transition-all duration-300 ease-in-out text-sm outline-none text-gray-300 inline-block py-2 px-3"
     >
       {children}
@@ -58,10 +60,12 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
 };
 
 // Institute links without translate effect
-const InstituteLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+const InstituteLink = ({ href, children, title }: { href: string; children: React.ReactNode; title?: string }) => {
+  const derivedTitle = title || (typeof children === 'string' ? children : undefined);
   return (
     <Link
       href={href}
+      title={derivedTitle}
       className="hover:text-brand active:text-orange-500 focus-visible:text-orange-500 transition-colors duration-300 ease-in-out text-sm outline-none text-gray-300 inline-block py-2 px-3"
     >
       {children}
@@ -398,23 +402,23 @@ const Footer = () => {
               <h2 className="text-lg font-semibold text-brand">Follow Us On</h2>
               <ul className="space-y-2">
                 <li className='flex items-center gap-5'>
-                  <Link href="https://www.facebook.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
+                  <Link href="https://www.facebook.com/cinutedigital" title="Visit Cinute Digital on Facebook" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
                     <Facebook />
                   </Link>
 
-                  <Link href="https://x.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="X">
+                  <Link href="https://x.com/cinutedigital" title="Follow Cinute Digital on X" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="X">
                     <XLogo />
                   </Link>
 
-                  <Link href="https://www.youtube.com/@cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="YouTube">
+                  <Link href="https://www.youtube.com/@cinutedigital" title="Subscribe to Cinute Digital on YouTube" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="YouTube">
                     <Youtube />
                   </Link>
 
-                  <Link href="https://www.linkedin.com/company/cinute-digital/" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="LinkedIn">
+                  <Link href="https://www.linkedin.com/company/cinute-digital/" title="Connect with Cinute Digital on LinkedIn" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="LinkedIn">
                     <Linkedin />
                   </Link>
 
-                  <Link href="https://www.instagram.com/cinutedigital/" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Instagram">
+                  <Link href="https://www.instagram.com/cinutedigital/" title="Follow Cinute Digital on Instagram" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Instagram">
                     <Instagram />
                   </Link>
                 </li>
@@ -426,23 +430,23 @@ const Footer = () => {
               <h2 className="text-lg font-semibold text-brand">Follow Us On</h2>
               <ul className="space-y-2">
                 <li className='flex items-center gap-5'>
-                  <Link href="https://www.facebook.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
+                  <Link href="https://www.facebook.com/cinutedigital" title="Visit Cinute Digital on Facebook" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
                     <Facebook />
                   </Link>
 
-                  <Link href="https://x.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="X">
+                  <Link href="https://x.com/cinutedigital" title="Follow Cinute Digital on X" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="X">
                     <XLogo />
                   </Link>
 
-                  <Link href="https://www.youtube.com/@cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="YouTube">
+                  <Link href="https://www.youtube.com/@cinutedigital" title="Subscribe to Cinute Digital on YouTube" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="YouTube">
                     <Youtube />
                   </Link>
 
-                  <Link href="https://www.linkedin.com/company/cinute-digital/" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="LinkedIn">
+                  <Link href="https://www.linkedin.com/company/cinute-digital/" title="Connect with Cinute Digital on LinkedIn" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="LinkedIn">
                     <Linkedin />
                   </Link>
 
-                  <Link href="https://www.instagram.com/cinutedigital/" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Instagram">
+                  <Link href="https://www.instagram.com/cinutedigital/" title="Follow Cinute Digital on Instagram" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Instagram">
                     <Instagram />
                   </Link>
                 </li>
@@ -464,7 +468,7 @@ const Footer = () => {
               <InstituteLink href="/events">Events</InstituteLink>
               <InstituteLink href="/mentors">Mentors</InstituteLink>
               <InstituteLink href="/jobs/placements">Placements</InstituteLink>
-              <InstituteLink href="/jobs/live-jobs">Live Jobs</InstituteLink>
+              <InstituteLink href="/jobs/live-jobs" title="View Recent Live Job Openings">Live Jobs</InstituteLink>
               <InstituteLink href="/jobs/job-openings">Job Openings</InstituteLink>
               <InstituteLink href="/jobs/careers">Careers</InstituteLink>
               <InstituteLink href="/about-us">About CDPL</InstituteLink>

@@ -49,6 +49,7 @@ export default function CtaSection() {
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="tel:+917888383788"
+            title="Call us at +91 788-83-83-788"
             className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-[#047857] px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(16,185,129,0.5)] transition hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-300"
             aria-label="Call admissions at +91 7888383788"
           >
@@ -57,6 +58,7 @@ export default function CtaSection() {
 
           <Link
             href="mailto:contact@cinutedigital.com"
+            title="Email us at contact@cinutedigital.com"
             className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(79,70,229,0.45)] transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300"
             aria-label="Email admissions at contact@cinutedigital.com"
           >

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
     Play,
@@ -64,7 +64,11 @@ const DesktopHeroContent: React.FC<{
                             <li key={i} className="flex items-center gap-2">
                                 {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
                                 {c.href ? (
-                                    <Link href={c.href} className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}>
+                                    <Link 
+                                        href={c.href} 
+                                        title={`Go to ${c.label}`}
+                                        className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
+                                    >
                                         {c.label}
                                     </Link>
                                 ) : (
@@ -262,6 +266,21 @@ export default function HeroSection(): React.JSX.Element {
     const [isBrochureOpen, setIsBrochureOpen] = useState(false);
     const [isVideoOpen, setIsVideoOpen] = useState(false);
 
+    // Fix for missing flag titles in PhoneInput for SEO
+    useEffect(() => {
+        const fixFlagTitles = () => {
+            const flags = document.querySelectorAll('.PhoneInputCountryIconImg');
+            flags.forEach(flag => {
+                if (flag.getAttribute('src')?.includes('IN.svg') || flag.getAttribute('alt') === 'India') {
+                    flag.setAttribute('title', 'India');
+                }
+            });
+        };
+        fixFlagTitles();
+        const timer = setTimeout(fixFlagTitles, 1000);
+        return () => clearTimeout(timer);
+    }, []);
+
     const videoUrl = 'https://www.youtube.com/watch?v=8kB2wESj1n8';
 
     const openBrochure = useCallback(() => setIsBrochureOpen(true), []);
@@ -293,7 +312,11 @@ export default function HeroSection(): React.JSX.Element {
                                     <li key={i} className="flex items-center gap-2">
                                         {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
                                         {c.href ? (
-                                            <Link href={c.href} className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}>
+                                            <Link 
+                                                href={c.href} 
+                                                title={`Go to ${c.label}`}
+                                                className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
+                                            >
                                                 {c.label}
                                             </Link>
                                         ) : (

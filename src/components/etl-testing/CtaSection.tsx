@@ -49,6 +49,7 @@ export default function CtaSection() {
               href="tel:+917888383788"
               className="group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-7 py-3 text-sm sm:text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
               aria-label="Call admissions"
+              title="Call Us"
             >
               <Phone className="mr-2 h-5 w-5" />
               Call Admissions
@@ -58,6 +59,7 @@ export default function CtaSection() {
               href="mailto:contact@cinutedigital.com"
               className="inline-flex items-center justify-center rounded-xl border-2 border-emerald-600 bg-white px-7 py-3 text-sm sm:text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
               aria-label="Email admissions"
+              title="Email Us"
             >
               <Mail className="mr-2 h-5 w-5" />
               Email Us
@@ -68,6 +70,7 @@ export default function CtaSection() {
               target="_blank"
               className="inline-flex items-center justify-center rounded-xl border-2 border-amber-600 bg-white px-7 py-3 text-sm sm:text-base font-semibold text-amber-800 shadow-sm transition hover:bg-amber-50 focus:outline-none focus:ring-4 focus:ring-amber-200"
               aria-label="Book a free demo session"
+              title="Book Free Demo"
             >
               <Clock className="mr-2 h-5 w-5" />
               Book Free Demo

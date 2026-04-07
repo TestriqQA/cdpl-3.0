@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -63,6 +63,16 @@ export default function LeadForm({
     source = "Course Category - Hero Section (Default)"
 }: LeadFormProps) {
     const [isSuccess, setIsSuccess] = useState(false);
+
+    // Fix PhoneInput flag image titles for SEO
+    useEffect(() => {
+        const flagImgs = document.querySelectorAll('.PhoneInputCountryIcon img');
+        flagImgs.forEach((img) => {
+            if (!img.getAttribute('title') || img.getAttribute('title') === '/') {
+                img.setAttribute('title', img.getAttribute('alt') || 'Country flag');
+            }
+        });
+    });
 
     const form = useForm<FormData>({
         resolver: zodResolver(schema),

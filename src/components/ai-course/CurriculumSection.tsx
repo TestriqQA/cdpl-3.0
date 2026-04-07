@@ -334,6 +334,7 @@ export default function CurriculumSection() {
                 onClick={() => setIsEnrollOpen(true)}
                 className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
                 aria-label="Apply for the Comprehensive DS & AI program"
+                title="Apply Now"
               >
                 Apply Now
               </button>
@@ -341,6 +342,7 @@ export default function CurriculumSection() {
                 onClick={() => setIsSyllabusOpen(true)}
                 className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-orange-200"
                 aria-label="Download detailed DS & AI syllabus"
+                title="Download Detailed Syllabus"
               >
                 Download Detailed Syllabus (PDF)
               </button>

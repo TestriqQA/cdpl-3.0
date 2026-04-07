@@ -188,6 +188,7 @@ export default function WhoShouldEnroll() {
           <button
             onClick={() => setIsEnrollModalOpen(true)}
             className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-8 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-indigo-700 hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+            title="Enroll Now"
           >
             Enroll Now
             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />

@@ -7,9 +7,11 @@ import React from 'react';
 const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
     const pathname = usePathname();
     const isActive = pathname === href;
+    const derivedTitle = typeof children === 'string' ? children : undefined;
     return (
         <Link
             href={href}
+            title={derivedTitle}
             className={`hover:text-orange-400 hover:translate-x-2 active:text-orange-400 active:translate-x-2 transition-all duration-300 ease-in-out text-sm inline-block py-2 px-3 ${isActive ? "text-orange-400 translate-x-2" : "text-gray-300"}`}
         >
             {children}
@@ -228,6 +230,7 @@ const CityFooter = () => {
                 </div>
                 <Link
                     href="/locations-we-serve"
+                    title="View All Locations We Serve"
                     className={`mt-2 inline-block px-6 py-2 border-2 text-md font-semibold rounded-md transition-all duration-300 ease-in-out ${pathname === "/locations-we-serve" ? "bg-brand text-white border-brand" : "border-brand text-orange-400 hover:bg-brand hover:text-white"}`}
                 >
                     View All

@@ -113,12 +113,14 @@ const FaqSection: React.FC = () => {
             </button>
             <Link
               href="tel:+917888383788"
+              title="Call us at +91 788-83-83-788"
               className="px-6 py-3 bg-brand hover:bg-brand text-white font-bold rounded-lg transition-colors"
             >
               📞 Call Us
             </Link>
             <Link
               href="mailto:contact@cinutedigital.com"
+              title="Email us at contact@cinutedigital.com"
               className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors"
             >
               ✉️ Email Us

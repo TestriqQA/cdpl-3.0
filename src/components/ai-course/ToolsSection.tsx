@@ -170,6 +170,7 @@ export default function ToolsSection() {
           <button
             onClick={() => setIsCareerOpen(true)}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-900 bg-slate-900 px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:translate-y-[-2px] hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-slate-300"
+            title="Book a Free Demo"
           >
             Book a Free Demo
             <Rocket className="ml-2 h-5 w-5" />
@@ -249,6 +250,7 @@ function ToolCard({ tool, onEnroll }: { tool: Tool; onEnroll: () => void }) {
           onClick={onEnroll}
           className="inline-flex items-center gap-1 rounded-lg border border-slate-900 bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white shadow-[0_1px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-300 cursor-pointer"
           aria-label={`Learn ${tool.name} in the DS & AI Master Program`}
+          title="Learn with Projects"
         >
           Learn with Projects
           <Rocket className="h-3.5 w-3.5" />

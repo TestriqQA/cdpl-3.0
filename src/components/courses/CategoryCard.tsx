@@ -65,7 +65,8 @@ export default function CategoryCard({ category }: { category: UICategory }) {
                         category.color ?? "text-slate-700",
                         "shadow-inner",
                     ].join(" ")}
-                    aria-hidden
+                    title={displayName}
+                    aria-label={displayName}
                 >
                     {category.icon}
                 </div>
@@ -104,6 +105,7 @@ export default function CategoryCard({ category }: { category: UICategory }) {
                 {hasLink && !category.comingSoon && (
                     <Link
                         href={href!}
+                        title={`View All ${displayName} Courses`}
                         className={[
                             "inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors",
                             "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900",

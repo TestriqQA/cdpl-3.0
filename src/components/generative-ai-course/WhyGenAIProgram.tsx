@@ -231,6 +231,7 @@ export default function WhyGenAIProgram() {
                 className="inline-flex w-full items-center justify-center cursor-pointer gap-2 rounded-xl px-5 py-3 text-sm font-semibold shadow-sm
                            bg-[#7E22CE] text-white hover:bg-[#6b21a8] focus:outline-none focus:ring-2 focus:ring-purple-500"
                 aria-label="Apply now for Deep Learning, NLP & Generative AI with Python"
+                title="Apply Now"
               >
                 Apply Now
                 <Rocket className="w-4 h-4 text-white" aria-hidden="true" />
@@ -239,6 +240,7 @@ export default function WhyGenAIProgram() {
                 onClick={() => setIsSyllabusModalOpen(true)}
                 className="inline-flex w-full items-center justify-center cursor-pointer gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-indigo-200"
                 aria-label="Download detailed syllabus"
+                title="Download Syllabus"
               >
                 Download Syllabus (PDF)
               </button>

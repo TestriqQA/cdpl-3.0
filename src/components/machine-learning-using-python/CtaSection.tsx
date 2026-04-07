@@ -118,6 +118,7 @@ export default function CtaSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center text-white">
             <Link
               href="tel:+917888383788"
+              title="Call us at +91 788-83-83-788"
               className="flex items-center justify-center gap-2 hover:text-blue-200 transition-colors"
             >
               <span>📞</span> +91 788-83-83-788
@@ -125,6 +126,7 @@ export default function CtaSection() {
             <span className="hidden sm:block text-blue-300">•</span>
             <Link
               href="mailto:contact@cinutedigital.com"
+              title="Email us at contact@cinutedigital.com"
               className="flex items-center justify-center gap-2 hover:text-blue-200 transition-colors"
             >
               <span>✉️</span> contact@cinutedigital.com

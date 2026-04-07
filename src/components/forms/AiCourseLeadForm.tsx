@@ -324,7 +324,7 @@ export default function AiCourseLeadForm({
                     </button>
 
                     <p className="text-xs text-slate-500">
-                        By submitting, you agree to our <a href="https://cinutedigital.com/privacy-policy">Privacy Policy</a>.
+                        By submitting, you agree to our <a href="https://cinutedigital.com/privacy-policy" title="Privacy Policy">Privacy Policy</a>.
                     </p>
 
                 </div>

@@ -25,7 +25,7 @@ export default function HeroSection() {
         { label: 'Courses', href: '/courses' },
         { label: 'BI Courses', href: '/courses/bi-courses' },
         { label: "Business Intelligence", href: null },
-        { label: "Advanced Data Analytics", href: "/data-analytics" },
+        { label: "Advanced Data Analytics", href: "/courses/bi-courses/data-analytics" },
     ];
 
     const handleScrollToCurriculum = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -54,6 +54,7 @@ export default function HeroSection() {
                                 {c.href ? (
                                     <Link
                                         href={c.href}
+                                        title={c.label}
                                         className={`hover:text-brand ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
                                     >
                                         {c.label}
@@ -118,6 +119,7 @@ export default function HeroSection() {
                             </button>
                             <a
                                 href="#curriculum"
+                                title="View Curriculum"
                                 onClick={handleScrollToCurriculum}
                                 className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
                                 aria-label="View full analytics curriculum"

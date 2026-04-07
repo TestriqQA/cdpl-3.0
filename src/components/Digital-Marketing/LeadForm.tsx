@@ -1,5 +1,7 @@
 'use client';
 
+import React from 'react';
+
 import { useState, useRef } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { useForm } from 'react-hook-form';
@@ -68,6 +70,21 @@ export default function LeadForm({
         resolver: zodResolver(schema),
         defaultValues: { name: '', email: '', phone: '', course: '' },
     });
+
+    React.useEffect(() => {
+        const injectFlagTitles = () => {
+            const flags = document.querySelectorAll('.PhoneInputCountryIcon--border img');
+            flags.forEach(img => {
+                if (!img.hasAttribute('title')) {
+                    img.setAttribute('title', 'India');
+                }
+            });
+        };
+        injectFlagTitles();
+        const observer = new MutationObserver(injectFlagTitles);
+        observer.observe(document.body, { childList: true, subtree: true });
+        return () => observer.disconnect();
+    }, []);
 
     const formRef = useRef<HTMLDivElement>(null);
 

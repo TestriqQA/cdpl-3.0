@@ -26,7 +26,7 @@ export default function HeroSection() {
         { label: 'Courses', href: '/courses' },
         { label: 'BI Courses', href: '/courses/bi-courses' },
     { label: "Business Intelligence", href: null }, // non-clickable middle breadcrumb
-    { label: "Data Analytics with BI & Big Data Engineering", href: "/masters-in-data-engineering" },
+    { label: "Data Analytics with BI & Big Data Engineering", href: "/courses/bi-courses/masters-in-data-engineering" },
     ];
 
   return (
@@ -48,6 +48,7 @@ export default function HeroSection() {
                 {c.href ? (
                   <Link
                     href={c.href}
+                    title={c.label}
                     className={`hover:text-brand ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
                   >
                     {c.label}
@@ -121,6 +122,7 @@ export default function HeroSection() {
 
               <Link
                 href="#curriculum"
+                title="View Curriculum"
                 className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-base font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
               >
                 View Curriculum

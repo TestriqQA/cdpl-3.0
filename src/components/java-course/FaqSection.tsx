@@ -138,12 +138,14 @@ export default function FaqSection() {
           <button
             onClick={() => setIsCareerModalOpen(true)}
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
+            title="Talk to a Mentor"
           >
             Still have questions? Talk to a Mentor
           </button>
           <button
             onClick={() => setIsSyllabusModalOpen(true)}
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
+            title="Download Syllabus"
           >
             Download Full Syllabus (PDF)
           </button>

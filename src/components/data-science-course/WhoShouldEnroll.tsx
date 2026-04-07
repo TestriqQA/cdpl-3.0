@@ -99,12 +99,14 @@ export default function WhoShouldEnroll() {
             <button
               onClick={() => setIsEnrollOpen(true)}
               className="inline-flex items-center justify-center cursor-pointer px-8 py-3 text-base font-semibold rounded-xl text-white bg-indigo-600 hover:bg-indigo-700 transition-all shadow-lg hover:shadow-indigo-200"
+              title="Enroll Now"
             >
               Enroll Now
             </button>
             <button
               onClick={() => setIsSyllabusOpen(true)}
               className="inline-flex items-center justify-center cursor-pointer px-8 py-3 text-base font-semibold rounded-xl text-slate-700 bg-white border border-slate-300 hover:bg-slate-50 transition-all"
+              title="Download Syllabus"
             >
               Download Syllabus
             </button>

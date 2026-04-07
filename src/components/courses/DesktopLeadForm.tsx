@@ -1,11 +1,23 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { User, Mail, TrendingUp, CheckCircle2 } from "lucide-react";
 import PhoneInput from 'react-phone-number-input';
 
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { validatePhone } from '@/lib/formValidation';
+
+const CustomFlag = ({ country, countryName, flagUrl }: any) => {
+  if (!country || !flagUrl) return <></>;
+  return (
+    <img
+      alt={countryName}
+      title={countryName}
+      src={flagUrl.replace('{XX}', country).replace('{xx}', country.toLowerCase())}
+      className="PhoneInputCountryIconImg"
+    />
+  );
+};
 
 export default function DesktopLeadForm() {
     // Form state
@@ -31,6 +43,38 @@ export default function DesktopLeadForm() {
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    // Fix PhoneInput flag image titles for SEO
+    useEffect(() => {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                mutation.addedNodes.forEach((node) => {
+                    if (node instanceof HTMLElement) {
+                        const flags = node.querySelectorAll('.PhoneInputCountryIcon img');
+                        flags.forEach(flag => {
+                            if (!flag.hasAttribute('title')) {
+                                flag.setAttribute('title', flag.getAttribute('alt') || 'India');
+                            }
+                        });
+                    }
+                });
+            });
+        });
+
+        if (formRef.current) {
+            observer.observe(formRef.current, { childList: true, subtree: true });
+
+            // Initial check
+            const flags = formRef.current.querySelectorAll('.PhoneInputCountryIcon img');
+            flags.forEach(flag => {
+                if (!flag.hasAttribute('title')) {
+                    flag.setAttribute('title', flag.getAttribute('alt') || 'India');
+                }
+            });
+        }
+
+        return () => observer.disconnect();
+    }, []);
 
     // Validation functions
     const validateFullName = (name: string) => {
@@ -286,6 +330,7 @@ export default function DesktopLeadForm() {
                             value={formData.phone}
                             onChange={handlePhoneChange}
                             onBlur={() => validatePhoneNumber(formData.phone)}
+                            flagComponent={CustomFlag}
                             className={`phone-input-container ${phoneError ? 'border-red-500' : ''
                                 }`}
                             placeholder="Enter phone number"
@@ -317,7 +362,7 @@ export default function DesktopLeadForm() {
 
                 {/* Trust Badges */}
                 <div className="pt-4 border-t border-slate-200">
-                    <div className="flex items-center justify-center gap-4 text-xs text-slate-600">
+                    <div className="flex items-center justify-center gap-4 text-xs text-slate-600 mb-4">
                         <div className="flex items-center gap-1">
                             <CheckCircle2 className="h-3.5 w-3.5 text-green-600" />
                             <span>Instant Access</span>
@@ -331,6 +376,9 @@ export default function DesktopLeadForm() {
                             <span>100% Secure</span>
                         </div>
                     </div>
+                    <p className="text-[10px] text-center text-slate-500">
+                        By submitting, you agree to our <a href="https://cinutedigital.com/privacy-policy" title="Privacy Policy" className="text-indigo-600 hover:underline">Privacy Policy</a>.
+                    </p>
                 </div>
             </form>
         </div>

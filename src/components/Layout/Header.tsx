@@ -166,7 +166,7 @@ const Header = () => {
         <div className="flex justify-between items-center py-3 sm:py-1">
           {/* Logo */}
           <div className="flex items-center flex-shrink-0">
-            <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
+            <Link href="/" title="Cinute Digital - Home" className="flex items-center space-x-2 sm:space-x-3">
               <div className="rounded-lg">
                 <Image src="/cdpl-logo.png" alt="CDPL Logo" title="CDPL Logo" width={40} height={40} className="w-10 h-10 sm:w-12 sm:h-12 xl:w-14 xl:h-14" priority={true} />
               </div>
@@ -175,7 +175,7 @@ const Header = () => {
           </div>
 
           <nav className="hidden lg:flex items-center justify-start">
-            <Link href="/" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname === "/" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/" title="Home" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname === "/" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Home">Home</span>
             </Link>
 
@@ -219,15 +219,15 @@ const Header = () => {
               )}
             </div>
 
-            <Link href="/services" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/services") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/services" title="Services" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/services") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Services">Services</span>
             </Link>
 
-            <Link href="/events" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/events") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/events" title="Events" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/events") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Event">Event</span>
             </Link>
 
-            <Link href="/mentors" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/mentors") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/mentors" title="Mentors" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/mentors") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Mentors">Mentors</span>
             </Link>
 
@@ -267,6 +267,7 @@ const Header = () => {
                   <div className="py-1">
                     <Link
                       href="/jobs/live-jobs"
+                      title="Live Jobs"
                       role="menuitem"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-brand-50 focus:text-brand outline-none"
                     >
@@ -274,6 +275,7 @@ const Header = () => {
                     </Link>
                     <Link
                       href="/jobs/placements"
+                      title="Placements"
                       role="menuitem"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
                     >
@@ -281,6 +283,7 @@ const Header = () => {
                     </Link>
                     <Link
                       href="/jobs/careers"
+                      title="Careers"
                       role="menuitem"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
                     >
@@ -288,6 +291,7 @@ const Header = () => {
                     </Link>
                     <Link
                       href="/jobs/job-openings"
+                      title="Job Openings"
                       role="menuitem"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
                     >
@@ -333,6 +337,7 @@ const Header = () => {
                   <div className="py-1">
                     <Link
                       href="/about-us"
+                      title="About CDPL"
                       role="menuitem"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
                     >
@@ -340,6 +345,7 @@ const Header = () => {
                     </Link>
                     <Link
                       href="/our-team"
+                      title="Our Team"
                       role="menuitem"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
                     >
@@ -350,10 +356,10 @@ const Header = () => {
               )}
             </div>
 
-            <Link href="/blog" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 ${pathname.startsWith("/blog") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/blog" title="Blog" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 ${pathname.startsWith("/blog") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Blog">Blog</span>
             </Link>
-            <Link href="/contact-us" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 ${pathname.startsWith("/contact-us") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/contact-us" title="Contact Us" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 ${pathname.startsWith("/contact-us") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Contact">Contact</span>
             </Link>
           </nav>

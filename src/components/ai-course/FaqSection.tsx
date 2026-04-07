@@ -114,6 +114,7 @@ export default function FaqSection() {
             <button
               onClick={() => setIsEnrollOpen(true)}
               className="font-semibold text-sky-700 underline-offset-2 hover:underline focus:outline-none focus:ring-2 focus:ring-sky-300 rounded cursor-pointer"
+              title="Talk to an Advisor"
             >
               Talk to an advisor
             </button>{" "}
@@ -123,6 +124,7 @@ export default function FaqSection() {
             <button
               onClick={() => setIsSyllabusOpen(true)}
               className="inline-flex items-center justify-center cursor-pointer rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-200"
+              title="Download Syllabus"
             >
               <Download className="mr-2 h-4 w-4" />
               Download Syllabus (PDF)

@@ -245,6 +245,7 @@ export default function WhyAIProgram() {
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold shadow-sm
                            bg-slate-900 text-white hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300 cursor-pointer"
                 aria-label="Apply now for the Comprehensive Data Science & AI Master Program"
+                title="Apply Now"
               >
                 Apply Now
                 <Rocket className="w-4 h-4" />
@@ -254,6 +255,7 @@ export default function WhyAIProgram() {
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold shadow-sm
                            border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200 cursor-pointer"
                 aria-label="Download detailed syllabus"
+                title="Download Syllabus"
               >
                 Download Syllabus (PDF)
                 <Download className="w-4 h-4" />

@@ -119,11 +119,11 @@ export default function CtaSection() {
                 <div className="mt-16 text-center border-t border-white/10 pt-8">
                     <p className="text-slate-300 mb-4">Have questions? Get in touch with us!</p>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-white">
-                        <Link href="tel:+917888383788" className="cursor-pointer flex items-center gap-2 hover:text-orange-400 transition-colors">
+                        <Link href="tel:+917888383788" title="Call us at +91 788-83-83-788" className="cursor-pointer flex items-center gap-2 hover:text-orange-400 transition-colors">
                             <span>📞</span> +91 788-83-83-788
                         </Link>
                         <div className="hidden sm:block w-px h-6 bg-white/20"></div>
-                        <Link href="mailto:contact@cinutedigital.com" className="cursor-pointer flex items-center gap-2 hover:text-orange-400 transition-colors">
+                        <Link href="mailto:contact@cinutedigital.com" title="Email us at contact@cinutedigital.com" className="cursor-pointer flex items-center gap-2 hover:text-orange-400 transition-colors">
                             <span>✉️</span> contact@cinutedigital.com
                         </Link>
                     </div>

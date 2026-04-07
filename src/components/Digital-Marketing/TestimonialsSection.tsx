@@ -101,6 +101,7 @@ export default function TestimonialsSection() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setIsPopupOpen(true)}
+                            title="Enroll in our industry-leading Digital Marketing Course"
                             className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                         >
                             Enroll in Digital Marketing
