@@ -47,7 +47,7 @@ export const metadata: Metadata = {
             'full stack development',
         ],
         url: '/blog',
-        image: '/blog/og-image.jpg',
+        image: '/og-images/blog-og.webp',
     }),
     title: {
         absolute: 'Tech Blog - Insights, Tutorials & Trends | CDPL',

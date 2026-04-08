@@ -39,7 +39,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     "software engineering blog"
   ],
   url: "/blog/all-posts",
-  image: "/blog/og-image.jpg",
+  image: "/og-images/blog-og.webp",
 });
 
 // ============================================================================

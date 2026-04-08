@@ -39,7 +39,7 @@ export const metadata = generateMetadata({
         "mis reporting course"
     ],
     url: '/courses/bi-courses/data-analytics-and-visualization',
-    image: "/og-images/data-analytics-and-visualization.jpg",
+    image: "/og-images/courses-bi-courses-data-analytics-and-visualization-og.webp",
 });
 
 export default function Home() {
@@ -55,7 +55,7 @@ export default function Home() {
             instructor: "Expert Excel Mentors",
             rating: DATA_ANALYTICS_VIS_REVIEW_DATA.ratingValue,
             reviewCount: DATA_ANALYTICS_VIS_REVIEW_DATA.reviewCount,
-            image: "/og-images/data-analytics-and-visualization.jpg",
+            image: "/og-images/courses-bi-courses-data-analytics-and-visualization-og.webp",
         },
         DATA_ANALYTICS_VIS_FAQS.map(f => ({ question: f.question, answer: f.answer })),
         [

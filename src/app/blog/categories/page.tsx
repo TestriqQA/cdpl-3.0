@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     siteName: "Your Company Tech Blog",
     images: [
       {
-        url: "/blog/og-image.jpg",
+        url: "/og-images/blog-og.webp",
         width: 1200,
         height: 630,
         alt: "Blog Categories - Expert Tech Resources",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     title: "Blog Categories | Tech Topics & Expert Resources",
     description:
       "Browse expert articles by category across software testing, development, AI, and more.",
-    images: ["/blog/og-image.jpg"],
+    images: ["/og-images/blog-og.webp"],
     creator: "Cinute Digital",
     site: "https://www.cinutedigital.com/",
   },

@@ -108,7 +108,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             siteName: 'CDPL Tech Blog',
             images: [
                 {
-                    url: latestPost?.featuredImage || '/blog/og-image.jpg',
+                    url: latestPost?.featuredImage || '/og-images/blog-og.webp',
                     width: 1200,
                     height: 630,
                     alt: `${category.name} Articles and Tutorials`,
@@ -124,7 +124,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             card: 'summary_large_image',
             title: `${category.name} - Expert Articles & Tutorials | CDPL`,
             description: `${category.description || ''} ${posts.length}+ articles available.`,
-            images: [latestPost?.featuredImage || '/blog/og-image.jpg'],
+            images: [latestPost?.featuredImage || '/og-images/blog-og.webp'],
             creator: '@cinutedigital',
             site: '@cinutedigital',
         },

@@ -29,7 +29,7 @@ export const metadata = generateMetadata({
     "ai prompt jobs mumbai"
   ],
   url: '/courses/artificial-intelligence-courses/prompt-engineering-course',
-  image: "/og-images/prompt-engineering-course.jpg",
+  image: "/og-images/courses-artificial-intelligence-courses-prompt-engineering-course-og.webp",
 });
 
 export default function PromptGenPage() {
@@ -45,7 +45,7 @@ export default function PromptGenPage() {
       instructor: "Expert AI Engineers",
       rating: PROMPT_ENGINEERING_REVIEW_DATA.ratingValue,
       reviewCount: PROMPT_ENGINEERING_REVIEW_DATA.reviewCount,
-      image: "/og-images/prompt-engineering-course.jpg",
+      image: "/og-images/courses-artificial-intelligence-courses-prompt-engineering-course-og.webp",
     },
     PROMPT_ENGINEERING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
     [

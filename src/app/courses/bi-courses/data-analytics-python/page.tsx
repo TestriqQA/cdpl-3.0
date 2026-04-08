@@ -46,7 +46,7 @@ export const metadata = generateMetadata({
         "data analyst courses for beginners"
     ],
     url: '/courses/bi-courses/data-analytics-python',
-    image: "/og-images/data-analytics-python.jpg",
+    image: "/og-images/courses-bi-courses-data-analytics-python-og.webp",
 });
 
 export default function Home() {
@@ -62,7 +62,7 @@ export default function Home() {
             instructor: "Expert Data Analysts",
             rating: DATA_ANALYTICS_PYTHON_REVIEW_DATA.ratingValue,
             reviewCount: DATA_ANALYTICS_PYTHON_REVIEW_DATA.reviewCount,
-            image: "/og-images/data-analytics-python.jpg",
+            image: "/og-images/courses-bi-courses-data-analytics-python-og.webp",
         },
         DATA_ANALYTICS_PYTHON_FAQS.map(f => ({ question: f.question, answer: f.answer })),
         [

@@ -66,7 +66,7 @@ export const metadata: Metadata = generateMetadata({
     "DevOps training sessions",
   ],
   url: "/events",
-  image: "/og-images/og-image-events.webp",
+  image: "/og-images/events-og.webp",
   imageAlt: "CDPL Events - Workshops, Webinars & Training Sessions",
 });
 

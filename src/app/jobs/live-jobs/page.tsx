@@ -54,7 +54,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
         description: `Apply for ${job.title} at ${job.company} in ${job.location}. ${job.highlights?.[0] || 'Verified job opening'} - CDPL Placement Alerts.`,
         url: `/jobs/live-jobs?jobId=${job.id}`,
         keywords: [...baseKeywords, job.title, job.company, job.location],
-        image: job.bannerImage || "/testimonial_images/job_image.jpg",
+        image: job.bannerImage || "/og-images/jobs-live-jobs-og.webp",
       });
     }
   }
@@ -64,7 +64,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     description: baseDesc,
     url: "/jobs/live-jobs",
     keywords: baseKeywords,
-    image: "/testimonial_images/job_image.jpg",
+    image: "/og-images/jobs-live-jobs-og.webp",
   });
 }
 
@@ -90,7 +90,7 @@ const JobsLiveJobsSubscribeCTASection = dynamic(
 );
 
 // Constant data
-const DEFAULT_BANNER = "/testimonial_images/job_image.jpg";
+const DEFAULT_BANNER = "/og-images/jobs-live-jobs-og.webp";
 const JOBS_WITH_BANNER: Job[] = JOBS.map((j) => ({
   ...j,
   bannerImage: j.bannerImage ?? DEFAULT_BANNER,
