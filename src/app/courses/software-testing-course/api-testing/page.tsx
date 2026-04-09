@@ -59,6 +59,7 @@ export const metadata = generateMetadata({
   title: "API Testing Course with POSTMAN & RestAPIs",
   description: "Master API testing in 15 hours with live projects, global certification, and placement support.",
   url: "/courses/software-testing-course/api-testing",
+  image: "/og-images/courses-software-testing-course-api-testing-og.webp",
 });
 
 export default async function Page() {
@@ -73,7 +74,8 @@ export default async function Page() {
       rating: API_TESTING_REVIEW_DATA.ratingValue,
       reviewCount: API_TESTING_REVIEW_DATA.reviewCount,
       price: 5000,
-      currency: "INR"
+      currency: "INR",
+      image: "/og-images/courses-software-testing-course-api-testing-og.webp",
     },
     API_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
     [

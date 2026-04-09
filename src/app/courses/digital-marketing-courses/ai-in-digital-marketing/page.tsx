@@ -45,7 +45,7 @@ export const metadata = generateMetadata({
         "Online Marketing Business"
     ],
     url: '/courses/digital-marketing-courses/ai-in-digital-marketing',
-    image: "/og-images/ai-in-digital-marketing.jpg",
+    image: "/og-images/courses-digital-marketing-courses-ai-in-digital-marketing-og.webp",
 });
 
 export default async function AiInDigitalMarketingPage() {
@@ -63,7 +63,7 @@ export default async function AiInDigitalMarketingPage() {
             instructor: "Expert Digital Marketers",
             rating: AI_IN_DIGITAL_MARKETING_REVIEW_DATA.ratingValue,
             reviewCount: AI_IN_DIGITAL_MARKETING_REVIEW_DATA.reviewCount,
-            image: "/og-images/ai-in-digital-marketing.jpg",
+            image: "/og-images/courses-digital-marketing-courses-ai-in-digital-marketing-og.webp",
         },
         AI_IN_DIGITAL_MARKETING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
         [

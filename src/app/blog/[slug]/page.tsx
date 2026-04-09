@@ -88,7 +88,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         modifiedDate: new Date(post.publishDate).toISOString(), // Sanity tracks _updatedAt but using publishDate for now
         category: post.category?.name,
         tags: post.tags,
-        image: post.featuredImage || '/og-images/blog-og.webp', // Updated fallback to use standardized blog-og image
+        // image: post.featuredImage || '/blog/og-image.jpg',
+        image: post.featuredImage || '/og-images/blog-og.webp',
     });
 }
 

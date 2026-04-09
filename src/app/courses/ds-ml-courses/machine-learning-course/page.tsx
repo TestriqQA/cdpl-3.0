@@ -31,7 +31,7 @@ export const metadata = generateMetadata({
     "deep learning training"
   ],
   url: '/courses/ds-ml-courses/machine-learning-course',
-  image: "/og-images/machine-learning-course.jpg",
+  image: "/og-images/courses-ds-ml-courses-machine-learning-course-og.webp",
 });
 
 export default function MachineLearningPage() {
@@ -47,7 +47,7 @@ export default function MachineLearningPage() {
       instructor: "Expert ML & Data Science Mentors",
       rating: MACHINE_LEARNING_REVIEW_DATA.ratingValue,
       reviewCount: MACHINE_LEARNING_REVIEW_DATA.reviewCount,
-      image: "/og-images/machine-learning-course.jpg",
+      image: "/og-images/courses-ds-ml-courses-machine-learning-course-og.webp",
     },
     MACHINE_LEARNING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
     [

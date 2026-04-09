@@ -32,7 +32,7 @@ export const metadata = generateMetadata({
     "prompt engineering training"
   ],
   url: '/courses/ds-ml-courses/generative-ai-course',
-  image: "/og-images/generative-ai-course.jpg",
+  image: "/og-images/courses-ds-ml-courses-generative-ai-course-og.webp",
 });
 
 export default function GenerativeAiPage() {
@@ -48,7 +48,7 @@ export default function GenerativeAiPage() {
       instructor: "Expert AI & Generative AI Mentors",
       rating: GENERATIVE_AI_REVIEW_DATA.ratingValue,
       reviewCount: GENERATIVE_AI_REVIEW_DATA.reviewCount,
-      image: "/og-images/generative-ai-course.jpg",
+      image: "/og-images/courses-ds-ml-courses-generative-ai-course-og.webp",
     },
     GENERATIVE_AI_FAQS.map(f => ({ question: f.question, answer: f.answer })),
     [

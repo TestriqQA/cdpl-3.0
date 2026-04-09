@@ -17,6 +17,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     title: 'Artificial Intelligence Courses | AI & Generative AI Training',
     description: 'Advance your career with our specialized Artificial Intelligence courses. Learn Generative AI, NLP, Deep Learning, and more.',
     url: '/courses/artificial-intelligence-courses',
+    image: "/og-images/courses-artificial-intelligence-courses-og.webp",
     keywords: ['artificial intelligence course', 'AI training', 'generative ai course', 'deep learning', 'NLP training'],
 });
 
@@ -32,6 +33,7 @@ export default function Home() {
             rating: 4.8,
             reviewCount: 3105,
             instructor: "Industry Experts",
+            image: "/og-images/courses-artificial-intelligence-courses-og.webp",
         },
         aiFaqs.map(f => ({ question: f.q, answer: f.a })),
         [

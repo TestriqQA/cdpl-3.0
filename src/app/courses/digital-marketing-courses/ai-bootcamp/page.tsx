@@ -38,7 +38,7 @@ export const metadata = generateMetadata({
         "digital marketing hybrid course"
     ],
     url: '/courses/digital-marketing-courses/ai-bootcamp',
-    image: "/og-images/ai-bootcamp.jpg",
+    image: "/og-images/courses-digital-marketing-courses-ai-bootcamp-og.webp",
 });
 
 export default function AiBootcampPage() {
@@ -54,7 +54,7 @@ export default function AiBootcampPage() {
             instructor: "Expert Digital Marketers",
             rating: AI_BOOTCAMP_REVIEW_DATA.ratingValue,
             reviewCount: AI_BOOTCAMP_REVIEW_DATA.reviewCount,
-            image: "/og-images/ai-bootcamp.jpg",
+            image: "/og-images/courses-digital-marketing-courses-ai-bootcamp-og.webp",
         },
         AI_BOOTCAMP_FAQS.map(f => ({ question: f.question, answer: f.answer })),
         [

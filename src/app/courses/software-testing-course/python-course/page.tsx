@@ -31,7 +31,7 @@ export const metadata = generateMetadata({
     "online python classes"
   ],
   url: '/courses/software-testing-course/python-course',
-  image: "/og-images/python-course.jpg",
+  image: "/og-images/courses-software-testing-course-python-course-og.webp",
 });
 
 export default function PythonPage() {
@@ -47,7 +47,7 @@ export default function PythonPage() {
       instructor: "Expert Python Mentors",
       rating: PYTHON_REVIEW_DATA.ratingValue,
       reviewCount: PYTHON_REVIEW_DATA.reviewCount,
-      image: "/og-images/python-course.jpg",
+      image: "/og-images/courses-software-testing-course-python-course-og.webp",
     },
     PYTHON_FAQS.map(f => ({ question: f.question, answer: f.answer })),
     [

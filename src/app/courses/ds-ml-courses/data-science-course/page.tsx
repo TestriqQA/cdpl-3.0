@@ -32,7 +32,7 @@ export const metadata = generateMetadata({
     "master data science"
   ],
   url: '/courses/ds-ml-courses/data-science-course',
-  image: "/og-images/data-science-course.jpg",
+  image: "/og-images/courses-ds-ml-courses-data-science-course-og.webp",
 });
 
 export default function AdvancedDSMLPage() {
@@ -48,7 +48,7 @@ export default function AdvancedDSMLPage() {
       instructor: "Expert Data Science & AI Mentors",
       rating: DATA_SCIENCE_REVIEW_DATA.ratingValue,
       reviewCount: DATA_SCIENCE_REVIEW_DATA.reviewCount,
-      image: "/og-images/data-science-course.jpg",
+      image: "/og-images/courses-ds-ml-courses-data-science-course-og.webp",
     },
     DATA_SCIENCE_FAQS.map(f => ({ question: f.question, answer: f.answer })),
     [

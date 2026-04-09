@@ -17,6 +17,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     title: 'Digital Marketing Courses | SEO, SEM, SMM & More',
     description: 'Become a certified digital marketer with our industry-focused courses. Learn SEO, PPC, social media marketing, and content strategy.',
     url: '/courses/digital-marketing-courses',
+    image: "/og-images/courses-digital-marketing-courses-og.webp",
     keywords: ['digital marketing course', 'SEO training', 'social media marketing', 'PPC course', 'digital marketing certification'],
 });
 
@@ -32,6 +33,7 @@ export default function Home() {
             rating: 4.8,
             reviewCount: 3042,
             instructor: "Industry Experts",
+            image: "/og-images/courses-digital-marketing-courses-og.webp",
         },
         dmFaqs.map(f => ({ question: f.q, answer: f.a })),
         [

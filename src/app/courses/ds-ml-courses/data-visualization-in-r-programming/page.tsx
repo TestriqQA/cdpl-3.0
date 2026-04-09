@@ -42,7 +42,7 @@ export const metadata = generateMetadata({
         "Predictive Modeling R"
     ],
     url: '/courses/ds-ml-courses/data-visualization-in-r-programming',
-    image: "/og-images/data-visualization-in-r-programming.jpg",
+    image: "/og-images/courses-ds-ml-courses-data-visualization-in-r-programming-og.webp",
 });
 
 export default function Home() {
@@ -58,7 +58,7 @@ export default function Home() {
             instructor: "Expert R Data Scientists",
             rating: R_DATA_VIS_REVIEW_DATA.ratingValue,
             reviewCount: R_DATA_VIS_REVIEW_DATA.reviewCount,
-            image: "/og-images/data-visualization-in-r-programming.jpg",
+            image: "/og-images/courses-ds-ml-courses-data-visualization-in-r-programming-og.webp",
         },
         R_DATA_VIS_FAQS.map(f => ({ question: f.question, answer: f.answer })),
         [

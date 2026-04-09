@@ -13,6 +13,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
   title: "Our Mentors | Industry Experts from Top Tech Companies",
   description: "Meet our mentors and industry experts who guide you through your learning journey. Learn from professionals working at top tech companies.",
   url: "/mentors",
+  image: "/og-images/mentors-og.webp",
   keywords: ["mentors", "industry experts", "tech mentors", "career guidance", "placement support"],
 });
 

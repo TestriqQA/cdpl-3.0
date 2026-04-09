@@ -34,7 +34,7 @@ export const metadata = generateMetadata({
     "masters in ai and ml in india"
   ],
   url: '/courses/ds-ml-courses/ai-course',
-  image: "/og-images/ai-course.jpg",
+  image: "/og-images/courses-ds-ml-courses-ai-course-og.webp",
 });
 
 export default function ComprehensiveDSAI() {
@@ -50,7 +50,7 @@ export default function ComprehensiveDSAI() {
       instructor: "Expert AI & Data Science Mentors",
       rating: AI_REVIEW_DATA.ratingValue,
       reviewCount: AI_REVIEW_DATA.reviewCount,
-      image: "/og-images/ai-course.jpg",
+      image: "/og-images/courses-ds-ml-courses-ai-course-og.webp",
     },
     AI_FAQS.map(f => ({ question: f.question, answer: f.answer })),
     [

@@ -46,7 +46,7 @@ export const metadata = generateMetadata({
     "web testing tools"
   ],
   url: '/courses/software-testing-course/advance-manual-automation-testing',
-  image: "/og-images/advance-manual-automation-testing.jpg",
+  image: "/og-images/courses-software-testing-course-advance-manual-automation-testing-og.webp",
 });
 
 export default function Home() {
@@ -62,7 +62,7 @@ export default function Home() {
       instructor: "Expert QA Mentors",
       rating: ADVANCE_MANUAL_AUTOMATION_REVIEW_DATA.ratingValue,
       reviewCount: ADVANCE_MANUAL_AUTOMATION_REVIEW_DATA.reviewCount,
-      image: "/og-images/advance-manual-automation-testing.jpg",
+      image: "/og-images/courses-software-testing-course-advance-manual-automation-testing-og.webp",
     },
     ADVANCE_MANUAL_AUTOMATION_FAQS.map(f => ({ question: f.question, answer: f.answer })),
     [

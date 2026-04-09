@@ -39,7 +39,7 @@ export const metadata = generateMetadata({
     "backend development with MySQL"
   ],
   url: '/courses/software-testing-course/dbms-course',
-  image: "/og-images/dbms-course.jpg",
+  image: "/og-images/courses-software-testing-course-dbms-course-og.webp",
 });
 
 export default function Home() {
@@ -55,6 +55,7 @@ export default function Home() {
       reviewCount: DBMS_REVIEW_DATA.reviewCount,
       price: 6000, // Estimated price
       currency: "INR",
+      image: "/og-images/courses-software-testing-course-dbms-course-og.webp",
     },
     DBMS_FAQS.map(f => ({ question: f.question, answer: f.answer })),
     [

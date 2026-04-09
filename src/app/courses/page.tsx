@@ -19,6 +19,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     title: "All Courses",
     description: "Explore our industry-leading courses in Software Testing, Data Science, AI/ML, and Full Stack Development. 100% placement support.",
     url: "/courses",
+    image: "/og-images/courses-og.webp",
     keywords: ["software testing courses", "data science training", "full stack development course", "it courses mumbai", "placement guarantee courses"],
 });
 

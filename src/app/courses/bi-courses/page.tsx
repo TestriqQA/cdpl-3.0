@@ -17,6 +17,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     title: 'Business Intelligence Courses | Power BI, Tableau & Data Viz',
     description: 'Explore our top-rated Business Intelligence courses. Master Power BI, Tableau, and data visualization skills with hands-on training and placement support.',
     url: '/courses/bi-courses',
+    image: "/og-images/courses-bi-courses-og.webp",
     keywords: ['business intelligence course', 'power bi training', 'tableau course', 'data visualization', 'data analysis'],
 });
 
@@ -32,6 +33,7 @@ export default function Home() {
             rating: 4.8,
             reviewCount: 2285,
             instructor: "Industry Experts",
+            image: "/og-images/courses-bi-courses-og.webp",
         },
         biFaqs.map(f => ({ question: f.q, answer: f.a })),
         [
@@ -44,7 +46,7 @@ export default function Home() {
     return (
         <>
             {schemas.map((schema, index) => (
-               <JsonLd key={`bi-schema-${index}`} id={`bi-schema-${index}`} schema={schema} />
+                <JsonLd key={`bi-schema-${index}`} id={`bi-schema-${index}`} schema={schema} />
             ))}
             <HeroSection />
             <WhyChooseSection />

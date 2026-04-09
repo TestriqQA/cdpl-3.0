@@ -37,6 +37,7 @@ export const metadata: Metadata = generateMetadata({
   description: pageDescription,
   keywords: pageKeywords,
   url: '/courses/software-testing-course',
+  image: "/og-images/courses-software-testing-course-og.png",
 });
 
 
@@ -52,6 +53,7 @@ export default function SoftwareTestingPage() {
       rating: 4.9,
       reviewCount: 1250,
       instructor: "Industry Experts",
+      image: "/og-images/courses-software-testing-course-og.png",
     },
     softwareTestingFaqs.map(f => ({ question: f.question, answer: f.answer })),
     [
