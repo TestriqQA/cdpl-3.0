@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Script from "next/script";
 import Link from "next/link";
 
 type FAQ = { q: string; a: string; cat: "Admissions" | "Learning" | "Financing" | "Placement" | "Corporate" };
@@ -95,12 +94,6 @@ export function ContactFAQSection() {
     const q = query.trim().toLowerCase();
     return ALL_FAQS.filter((f) => (activeCat === "All" ? true : f.cat === activeCat) && (!q || f.q.toLowerCase().includes(q) || f.a.toLowerCase().includes(q)));
   }, [query, activeCat]);
-
-  const faqJsonLd = useMemo(() => ({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: filtered.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-  }), [filtered]);
 
   return (
     <section className="relative bg-white dark:[color-scheme:light]">
@@ -203,10 +196,6 @@ export function ContactFAQSection() {
           </div>
         </div>
       </div>
-
-      <Script id="faq-jsonld" type="application/ld+json">
-        {JSON.stringify(faqJsonLd)}
-      </Script>
     </section>
   );
 }

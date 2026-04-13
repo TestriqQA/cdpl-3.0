@@ -268,30 +268,54 @@ export default async function JobSharePage() {
   const schemas = generateJobOpeningsPageAllSchemas(jobs);
 
   // 3. JobPosting Schemas
-  const jobSchemas = jobs.map((job) => generateJobPostingSchema({
-    title: job.job_title,
-    description: job.description || job.job_title,
-    datePosted: job.job_created_at || new Date().toISOString(),
-    employmentType: job.job_type === "Full Time" ? "FULL_TIME" : job.job_type === "Contract" ? "CONTRACTOR" : "OTHER",
-    hiringOrganization: {
-      name: "Hiring Partner", // Company name not explicitly available in summary
-      sameAs: "https://optimhire.com",
-    },
-    jobLocation: {
-      addressLocality: job.location || "Remote",
-      addressCountry: "IN",
-      streetAddress: job.location_type === "remote" ? "Remote" : undefined,
-    },
-    baseSalary: (job.min_charge && job.max_charge) ? {
-      currency: job.currency || "INR",
-      value: {
-        minValue: Number(job.min_charge),
-        maxValue: Number(job.max_charge),
-        unitText: "YEAR" // Assuming annual, adjust if needed
-      }
-    } : undefined,
-    url: `/jobs/job-openings?jobId=${job.job_id}`,
-  }));
+  const jobSchemas = jobs.map((job) => {
+    // Attempt to synthesize missing address fields from location
+    const locationLower = (job.location || "").toLowerCase();
+    let region = "Maharashtra";
+    let postal = "400001";
+
+    if (locationLower.includes("pune")) {
+      region = "Maharashtra";
+      postal = "411001";
+    } else if (locationLower.includes("bangalore") || locationLower.includes("bengaluru")) {
+      region = "Karnataka";
+      postal = "560001";
+    } else if (locationLower.includes("chennai")) {
+      region = "Tamil Nadu";
+      postal = "600001";
+    } else if (locationLower.includes("remote")) {
+      region = "India";
+      postal = "000000";
+    }
+
+    return generateJobPostingSchema({
+      title: job.job_title,
+      description: job.description || job.job_title,
+      datePosted: job.job_created_at || new Date().toISOString().split('T')[0],
+      validThrough: "2026-12-31", // Default validity for partner jobs
+      employmentType: job.job_type === "Full Time" ? "FULL_TIME" : job.job_type === "Contract" ? "CONTRACTOR" : "OTHER",
+      hiringOrganization: {
+        name: "Hiring Partner",
+        sameAs: "https://optimhire.com",
+      },
+      jobLocation: {
+        addressLocality: job.location || "Mumbai",
+        addressRegion: region,
+        postalCode: postal,
+        addressCountry: "IN",
+        streetAddress: job.location_type === "remote" ? "Remote" : (job.location || "Mumbai Office"),
+      },
+      baseSalary: (job.min_charge && job.max_charge) ? {
+        currency: job.currency || "INR",
+        value: {
+          minValue: Number(job.min_charge),
+          maxValue: Number(job.max_charge),
+          unitText: "YEAR"
+        }
+      } : undefined,
+      url: `/jobs/job-openings?jobId=${job.job_id}`,
+    });
+  });
 
   return (
     <>

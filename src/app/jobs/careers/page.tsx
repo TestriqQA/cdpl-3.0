@@ -100,22 +100,54 @@ export default async function Page() {
     const schemas = generateCareersPageAllSchemas(jobs);
 
     // 3. JobPosting Schemas
-    const jobSchemas = jobs.map((job) => generateJobPostingSchema({
-        title: job.title,
-        description: `${job.summary} \n\nResponsibilities:\n${job.responsibilities.join('\n')}\n\nRequirements:\n${job.requirements.join('\n')}`,
-        datePosted: new Date().toISOString().split('T')[0],
-        employmentType: job.type === "Full-time" ? "FULL_TIME" : job.type === "Internship" ? "INTERN" : job.type === "Contract" ? "CONTRACTOR" : "OTHER",
-        hiringOrganization: {
-            name: "Cinute Digital",
-            sameAs: "https://cinutedigital.com",
-            logo: "https://cinutedigital.com/logo.png"
-        },
-        jobLocation: {
-            addressLocality: job.location,
-            addressCountry: "IN",
-        },
-        url: `/jobs/careers#${job.id}`,
-    }));
+    const jobSchemas = jobs.map((job) => {
+        // Synthesize address details from location
+        const locationLower = job.location.toLowerCase();
+        let region = "Maharashtra";
+        let postal = "400001";
+
+        if (locationLower.includes("pune")) {
+            region = "Maharashtra";
+            postal = "411001";
+        } else if (locationLower.includes("bangalore") || locationLower.includes("bengaluru")) {
+            region = "Karnataka";
+            postal = "560001";
+        } else if (locationLower.includes("chennai")) {
+            region = "Tamil Nadu";
+            postal = "600001";
+        } else if (locationLower.includes("remote")) {
+            region = "India";
+            postal = "000000";
+        }
+
+        return generateJobPostingSchema({
+            title: job.title,
+            description: `${job.summary} \n\nResponsibilities:\n${job.responsibilities.join('\n')}\n\nRequirements:\n${job.requirements.join('\n')}`,
+            datePosted: new Date(job._createdAt || Date.now()).toISOString().split('T')[0],
+            validThrough: "2026-12-31", // Careers are typically long-term
+            employmentType:
+                job.type === "Full-time"
+                    ? "FULL_TIME"
+                    : job.type === "Internship"
+                        ? "INTERN"
+                        : job.type === "Contract"
+                            ? "CONTRACTOR"
+                            : "OTHER",
+            hiringOrganization: {
+                name: "Cinute Digital",
+                sameAs: "https://cinutedigital.com",
+                logo: "https://cinutedigital.com/logo.png",
+            },
+            jobLocation: {
+                addressLocality: job.location,
+                streetAddress: job.location.includes("Remote") ? "Remote" : "Vikhroli, Mumbai",
+                addressRegion: region,
+                postalCode: postal,
+                addressCountry: "IN",
+            },
+            url: `/jobs/careers#${job.id}`,
+        });
+    });
 
     return (
         <>

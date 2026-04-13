@@ -227,6 +227,15 @@ export function generateItemListSchema(items: ItemListElement[], name: string): 
           url: item.url,
           // Only include description if it exists
           ...(item.description && { description: item.description }),
+          // Fix: Course objects require a provider
+          ...(item.type === 'Course' && {
+            provider: {
+              '@type': 'EducationalOrganization',
+              '@id': getOrganizationId(),
+              name: SITE_CONFIG.name,
+              url: SITE_CONFIG.url,
+            }
+          }),
         };
       } else {
         // Fallback to just name and position if URL is missing, though this is not ideal for rich results
@@ -1001,9 +1010,9 @@ export function generateHomePageSchema(faqs?: { question: string; answer: string
   const aggregateRatingSchema = generateReviewSchema({
     ratingValue: STATISTICS.rating,
     reviewCount: STATISTICS.reviewCount,
-    itemType: 'Service',
+    itemType: 'LocalBusiness',
     itemName: 'Professional Training & Placement Services',
-    itemId: getFullUrl('/#service'),
+    itemId: `${SITE_CONFIG.url}/#localbusiness`,
   });
 
   // NOTE: Organization and WebSite schemas are handled by Root Layout
@@ -1017,7 +1026,7 @@ export function generateHomePageSchema(faqs?: { question: string; answer: string
     webPageSchema,
     howToSchema,
     aggregateRatingSchema,
-    generateSingleReviewSchema('Service', 'Professional Training & Placement Services', getFullUrl('/#service')),
+    generateSingleReviewSchema('LocalBusiness', 'Professional Training & Placement Services', `${SITE_CONFIG.url}/#localbusiness`),
     siteNavSchemas,
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -3196,14 +3205,20 @@ export function generateAiBootcampCoursePageSchema(
 /**
  * Generate ContactPage schema
  */
-export function generateContactPageSchema(): WithContext<Record<string, unknown>> {
+export function generateContactPageSchema(page?: { name?: string; description?: string; url?: string }): WithContext<Record<string, unknown>> {
+  const pageName = page?.name || 'Contact Us';
+  const pageDescription = page?.description || 'Get in touch with CDPL - Cinute Digital for course inquiries, admissions, and support';
+  const pageUrl = page?.url || '/contact-us';
+
   return {
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
-    '@id': `${SITE_CONFIG.url}/contact-us#contactpage`,
-    url: `${SITE_CONFIG.url}/contact-us`,
-    name: 'Contact Us',
-    description: 'Get in touch with CDPL - Cinute Digital for course inquiries, admissions, and support',
+    '@id': `${getFullUrl(pageUrl)}#contactpage`,
+    url: getFullUrl(pageUrl),
+    name: pageName,
+    description: pageDescription,
+    isPartOf: { '@id': getWebsiteId() },
+    about: { '@id': getOrganizationId() },
     mainEntity: {
       '@type': 'EducationalOrganization',
       '@id': getOrganizationId(),
@@ -3213,7 +3228,11 @@ export function generateContactPageSchema(): WithContext<Record<string, unknown>
       email: BUSINESS_INFO.email,
       address: {
         '@type': 'PostalAddress',
-        ...BUSINESS_INFO.address,
+        streetAddress: BUSINESS_INFO.address.streetAddress,
+        addressLocality: BUSINESS_INFO.address.addressLocality,
+        addressRegion: BUSINESS_INFO.address.addressRegion,
+        postalCode: BUSINESS_INFO.address.postalCode,
+        addressCountry: BUSINESS_INFO.address.addressCountry,
       },
     },
   };
@@ -3224,18 +3243,13 @@ export function generateContactPageSchema(): WithContext<Record<string, unknown>
 // ============================================================================
 
 export function generateContactPageAllSchemas(): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // Note: organizationSchema and websiteSchema are handled by Root Layout
 
-  const webPageSchema = generateWebPageSchema({
+  const contactPageSchema = generateContactPageSchema({
     name: 'Contact Us | Software Testing & Data Science Training | CDPL',
     description: 'Get in touch with CDPL (Cinute Digital) for course inquiries, admissions, and career guidance. Call us, email, or visit our Mumbai office. 100% Placement Support.',
-    url: '/contact-us',
-    isPartOf: { '@id': getWebsiteId() },
-    about: { '@id': getOrganizationId() }
+    url: '/contact-us'
   });
-
-  const contactPageSchema = generateContactPageSchema();
 
   // FAQPage — common contact-related questions
   const faqSchema = generateFAQSchema([
@@ -3300,9 +3314,6 @@ export function generateContactPageAllSchemas(): WithContext<Record<string, unkn
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
-    webPageSchema,
     contactPageSchema,
     faqSchema,
     itemListSchema,
@@ -3345,9 +3356,6 @@ export function generateAboutPageSchema(data: {
 export function generateAboutPageAllSchemas(
   faqs: { question: string; answer: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
-
   const webPageSchema = generateWebPageSchema({
     name: 'About CDPL - Leading EdTech for Tech Training',
     description: "CDPL (Cinute Digital) is India's premier EdTech institute delivering industry-ready training in Software Testing, Automation, Data Science, and AI/ML. Founded in 2020, we've empowered 5000+ professionals with live projects, expert mentorship, and 100% placement support.",
@@ -3411,8 +3419,6 @@ export function generateAboutPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     aboutPageSchema,
     faqSchema,
@@ -3433,9 +3439,6 @@ export function generateAboutPageAllSchemas(
 export function generateServicesPageAllSchemas(
   services: { id: string; slug: string; title: string; shortDescription: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
-
   const webPageSchema = generateWebPageSchema({
     name: 'Our Services | Training, Consulting & Custom Solutions – CDPL',
     description: 'CDPL offers comprehensive corporate training, software testing consulting, custom automation solutions, and technical workshops for enterprises.',
@@ -3492,7 +3495,6 @@ export function generateServicesPageAllSchemas(
       name: s.title,
       url: `/services/${s.slug}`,
       description: s.shortDescription,
-      type: 'Service'
     })),
     'CDPL Corporate Training & Consulting Services'
   );
@@ -3525,8 +3527,6 @@ export function generateServicesPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     collectionPageSchema,
     faqSchema,
@@ -3899,9 +3899,6 @@ export function generateOurTeamPageAllSchemas(
   trainers: { name: string; role: string; avatar: string; yearsExp: number; specialties: string[] }[],
   leaders: { name: string; title: string; experience: string; specialization: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
-
   const webPageSchema = generateWebPageSchema({
     name: 'Our Team - Expert Trainers & Mentors | CDPL',
     description: "Meet CDPL's team of expert trainers and mentors with 10+ years of industry experience in Software Testing, Data Science, AI/ML, and Automation.",
@@ -3917,14 +3914,12 @@ export function generateOurTeamPageAllSchemas(
         name: leader.name,
         description: `${leader.title} - ${leader.experience} experience. Specialized in ${leader.specialization}.`,
         url: '/our-team',
-        type: 'Person' as const
       })),
       ...trainers.map(trainer => ({
         name: trainer.name,
         description: `${trainer.role} - ${trainer.yearsExp} Years Experience. Expert in ${trainer.specialties.slice(0, 3).join(', ')}.`,
         url: '/our-team',
         image: trainer.avatar,
-        type: 'Person' as const
       }))
     ],
     'Expert Mentors and Leadership Team at CDPL'
@@ -3975,8 +3970,6 @@ export function generateOurTeamPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -3994,9 +3987,6 @@ export function generateOurTeamPageAllSchemas(
 export function generateMentorsPageAllSchemas(
   mentors: { name: string; title: string; avatar?: string; company?: string; domain: string; bio?: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
-
   const webPageSchema = generateWebPageSchema({
     name: 'Our Mentors - Expert Industry Professionals | CDPL',
     description: "Meet our global network of mentors from top tech companies like Infosys, Oracle, Deloitte, and KPMG. Get 1-on-1 career guidance and technical mentorship.",
@@ -4062,8 +4052,6 @@ export function generateMentorsPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -4081,9 +4069,6 @@ export function generateMentorsPageAllSchemas(
 export function generateLiveJobsPageAllSchemas(
   jobs: { title: string; company: string; location: string; type: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
-
   const webPageSchema = generateWebPageSchema({
     name: 'Live Jobs & Placement Alerts | Verified Engineering & QA Jobs - CDPL',
     description: "Access verified live jobs, walk-in drives, and internship alerts curated by CDPL. We filter openings from top tech companies across India for freshers and experienced professionals.",
@@ -4098,7 +4083,6 @@ export function generateLiveJobsPageAllSchemas(
       name: `${job.title} at ${job.company}`,
       description: `${job.type} role based in ${job.location}. Placement alert from CDPL.`,
       url: '/jobs/live-jobs',
-      type: 'JobPosting' as const
     })),
     'Latest Live Jobs and Walk-in Drives Curated by CDPL'
   );
@@ -4148,8 +4132,6 @@ export function generateLiveJobsPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -4167,9 +4149,6 @@ export function generateLiveJobsPageAllSchemas(
 export function generatePlacementsPageAllSchemas(
   placements: { name: string; company: string; domain: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
-
   const webPageSchema = generateWebPageSchema({
     name: 'Student Placements & Alumni Success Stories | CDPL Placement Cell',
     description: "Explore CDPL's track record of successful student placements in top tech companies like TCS, Infosys, and Accenture. See how our product-led training leads to high-package job outcomes.",
@@ -4184,7 +4163,6 @@ export function generatePlacementsPageAllSchemas(
       name: `${p.name} - Placed at ${p.company}`,
       description: `Successful career transition into ${p.domain} role via CDPL training.`,
       url: '/jobs/placements',
-      type: 'Person' as const
     })),
     'Recent Successful Student Placements from CDPL'
   );
@@ -4234,8 +4212,6 @@ export function generatePlacementsPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -4253,9 +4229,6 @@ export function generatePlacementsPageAllSchemas(
 export function generateCareersPageAllSchemas(
   jobs: { title: string; location: string; type: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
-
   const webPageSchema = generateWebPageSchema({
     name: 'Careers at CDPL - Join the Future of Tech Education',
     description: "Explore high-impact career opportunities at CDPL. Build innovative EdTech products, mentor the next generation of tech talent, and grow with a product-led team.",
@@ -4270,7 +4243,6 @@ export function generateCareersPageAllSchemas(
       name: job.title,
       description: `${job.type} position based in ${job.location}. Join the CDPL core team.`,
       url: '/jobs/careers',
-      type: 'JobPosting' as const
     })),
     'Open Career Opportunities at CDPL'
   );
@@ -4320,8 +4292,6 @@ export function generateCareersPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -4339,9 +4309,6 @@ export function generateCareersPageAllSchemas(
 export function generateJobOpeningsPageAllSchemas(
   jobs: { job_title: string; location?: string | null; job_type: string; description?: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
-
   const webPageSchema = generateWebPageSchema({
     name: 'Tech Job Openings & Career Opportunities | CDPL Partner Portal',
     description: "Browse curated tech job openings from global companies through the CDPL partner portal. Discover roles in QA, Data Science, and Engineering with direct application support.",
@@ -4356,7 +4323,6 @@ export function generateJobOpeningsPageAllSchemas(
       name: job.job_title,
       description: `${job.job_type} role at a CDPL hiring partner. ${job.location || 'Remote'} based position.`,
       url: '/jobs/job-openings',
-      type: 'JobPosting' as const
     })),
     'Latest Curated Job Openings from CDPL Partners'
   );
@@ -4406,8 +4372,6 @@ export function generateJobOpeningsPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,

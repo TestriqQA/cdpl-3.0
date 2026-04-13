@@ -56,4 +56,5 @@ export interface SanityJob {
     requirements: string[];
     applyEmail?: string;
     applyLink?: string;
+    _createdAt?: string;
 }

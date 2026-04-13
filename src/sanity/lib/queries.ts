@@ -152,5 +152,6 @@ export const JOBS_QUERY = groq`*[_type == "job" && isActive == true] | order(tea
   responsibilities,
   requirements,
   applyEmail,
-  applyLink
+  applyLink,
+  _createdAt
 }`
