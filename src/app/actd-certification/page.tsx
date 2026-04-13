@@ -59,7 +59,8 @@ export const metadata: Metadata = generateStaticPageMetadata({
     "agile test automation",
   ],
   url: "/actd-certification",
-  image: "/og-image-actd-certification.jpg",
+  image: "/og-images/actd-certification.webp",
+
 });
 
 /* ---------- Page (server component) ---------- */
@@ -104,7 +105,9 @@ export default function ACTDCertificationTrainingPage() {
 
     slug: "actd-certification-training",
     url: "/actd-certification-training",
+    image: "/og-images/actd-certification.webp",
     level: "Intermediate to Advanced",
+
     learningOutcomes: [
       "Agile Testing Methodologies",
       "Cloud Testing Strategies",

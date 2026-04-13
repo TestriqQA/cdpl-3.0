@@ -47,7 +47,8 @@ export const metadata: Metadata = generateStaticPageMetadata({
     "digital certificate validation",
   ],
   url: "/cdpl-certificate-validation",
-  image: "/og-image-certificate-validation.jpg",
+  image: "/og-images/cdpl-certificate-validation-og.webp",
+
 });
 
 /* ---------- Page (server component) ---------- */

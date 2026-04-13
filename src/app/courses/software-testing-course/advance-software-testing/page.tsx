@@ -38,7 +38,8 @@ export const metadata = generateMetadata({
     "job-oriented software testing course"
   ],
   url: '/courses/software-testing-course/advance-software-testing',
-  image: "/og-images/advanced-testing-course.jpg",
+  image: "/og-images/courses-software-testing-course-advance-software-testing-og.webp",
+
 });
 
 export default function Home() {
@@ -54,7 +55,9 @@ export default function Home() {
       reviewCount: ADVANCED_TESTING_REVIEW_DATA.reviewCount,
       price: 8000, // Estimated price
       currency: "INR",
+      image: "/og-images/courses-software-testing-course-advance-software-testing-og.webp",
     },
+
     ADVANCED_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
     [
       { name: "Home", url: "/" },

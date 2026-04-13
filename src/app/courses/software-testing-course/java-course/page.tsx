@@ -31,7 +31,8 @@ export const metadata = generateMetadata({
     "java microservices training"
   ],
   url: '/courses/software-testing-course/java-course',
-  image: "/og-images/java-course.jpg",
+  image: "/og-images/courses-software-testing-course-java-course-og.png",
+
 });
 
 export default function JavaPage() {
@@ -47,7 +48,8 @@ export default function JavaPage() {
       instructor: "Expert Java Mentors",
       rating: JAVA_REVIEW_DATA.ratingValue,
       reviewCount: JAVA_REVIEW_DATA.reviewCount,
-      image: "/og-images/java-course.jpg",
+      image: "/og-images/courses-software-testing-course-java-course-og.png",
+
     },
     JAVA_FAQS.map(f => ({ question: f.question, answer: f.answer })),
     [

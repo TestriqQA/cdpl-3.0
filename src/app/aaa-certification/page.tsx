@@ -63,7 +63,8 @@ export const metadata: Metadata = generateStaticPageMetadata({
     "continuous testing certification",
   ],
   url: "/aaa-certification",
-  image: "/og-image-aaa-certification.jpg",
+  image: "/og-images/aaa-certification-og.webp",
+
 });
 
 /* ---------- Page (server component) ---------- */
@@ -108,7 +109,9 @@ export default function AAACertificationCoursePage() {
 
     slug: "aaa-certification-course",
     url: "/aaa-certification-course",
+    image: "/og-images/aaa-certification-og.webp",
     level: "Intermediate to Advanced",
+
     learningOutcomes: [
       "Test Automation Frameworks",
       "CI/CD Pipeline Integration",

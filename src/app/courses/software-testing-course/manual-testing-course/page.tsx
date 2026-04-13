@@ -27,7 +27,8 @@ export const metadata: Metadata = generateMetadata({
     "ISTQB foundation level course",
   ],
   url: '/courses/software-testing-course/manual-testing-course',
-  image: "/og-images/manual-testing-course.jpg",
+  image: "/og-images/courses-software-testing-course-manual-testing-course-og.webp",
+
 });
 
 export default function ManualTestingPage() {
@@ -43,7 +44,9 @@ export default function ManualTestingPage() {
       reviewCount: MANUAL_TESTING_REVIEW_DATA.reviewCount,
       price: 15000,
       currency: "INR",
+      image: "/og-images/courses-software-testing-course-manual-testing-course-og.webp",
     },
+
     MANUAL_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
     [
       { name: "Home", url: "/" },

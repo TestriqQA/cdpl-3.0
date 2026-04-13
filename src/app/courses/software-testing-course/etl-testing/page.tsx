@@ -105,7 +105,8 @@ export const metadata = generateMetadata({
     "sql queries for etl testing"
   ],
   url: '/courses/software-testing-course/etl-testing',
-  image: "/og-images/etl-testing-course.jpg",
+  image: "/og-images/courses-software-testing-course-etl-testing-og.webp",
+
 });
 
 export default function Home() {
@@ -121,7 +122,9 @@ export default function Home() {
       reviewCount: ETL_TESTING_REVIEW_DATA.reviewCount,
       price: 5500, // Estimated price
       currency: "INR",
+      image: "/og-images/courses-software-testing-course-etl-testing-og.webp",
     },
+
     ETL_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
     [
       { name: "Home", url: "/" },
