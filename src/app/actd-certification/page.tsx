@@ -66,6 +66,28 @@ export const metadata: Metadata = generateStaticPageMetadata({
 /* ---------- Page (server component) ---------- */
 export default function ACTDCertificationTrainingPage() {
   /* ---------- JSON-LD ---------- */
+  const courseData = {
+    name: "ACTD Certification Training - Agile, Cloud & Test-Driven Development",
+    description: "Comprehensive certification program covering Agile testing methodologies, cloud-based testing strategies, and test-driven development practices.",
+    slug: "actd-certification-training",
+    url: "/actd-certification",
+    image: "/og-images/actd-certification.webp",
+    level: "Intermediate to Advanced",
+    learningOutcomes: [
+      "Agile Testing Methodologies",
+      "Cloud Testing Strategies",
+      "Test-Driven Development (TDD)",
+      "Continuous Integration/Continuous Deployment",
+      "Scrum and Kanban for QA",
+      "Cloud Platform Testing (AWS, Azure, GCP)",
+    ],
+    prerequisites: ["Basic software testing knowledge", "Programming fundamentals"],
+    duration: "P10W",
+    price: 39999,
+    rating: 4.7,
+    reviewCount: 120,
+  };
+
   const consolidatedSchemas = generateActdCertificationPageAllSchemas({
     faqs: [
       {
@@ -96,31 +118,8 @@ export default function ACTDCertificationTrainingPage() {
       "Core Concepts",
       "Practical Skills",
       "Capstone + Interview"
-    ]
-  });
-
-  const courseSchema = generateCourseSchema({
-    name: "ACTD Certification Training - Agile, Cloud & Test-Driven Development",
-    description: "Comprehensive certification program covering Agile testing methodologies, cloud-based testing strategies, and test-driven development practices.",
-
-    slug: "actd-certification-training",
-    url: "/actd-certification-training",
-    image: "/og-images/actd-certification.webp",
-    level: "Intermediate to Advanced",
-
-    learningOutcomes: [
-      "Agile Testing Methodologies",
-      "Cloud Testing Strategies",
-      "Test-Driven Development (TDD)",
-      "Continuous Integration/Continuous Deployment",
-      "Scrum and Kanban for QA",
-      "Cloud Platform Testing (AWS, Azure, GCP)",
     ],
-    prerequisites: ["Basic software testing knowledge", "Programming fundamentals"],
-    duration: "P10W",
-    price: 39999,
-    rating: 4.7,
-    reviewCount: 120,
+    courseData: courseData
   });
 
   return (
@@ -130,7 +129,6 @@ export default function ACTDCertificationTrainingPage() {
       {consolidatedSchemas.map((schema, index) => (
         <JsonLd key={`actd-schema-${index}`} id={`actd-schema-${index}`} schema={schema} />
       ))}
-      <JsonLd id="actd-course" schema={courseSchema} />
 
       <ACTDCertificationHeroSection />
       <ACTDCertificationTracksSection />

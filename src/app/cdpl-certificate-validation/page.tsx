@@ -94,11 +94,6 @@ export default function CertificateValidationPage() {
         <JsonLd key={`validation-schema-${index}`} id={`validation-schema-${index}`} schema={schema} />
       ))}
 
-      <meta itemProp="name" content="CDPL Certificate Validation Tool" />
-      <meta itemProp="description" content="Verify CDPL certificate authenticity online" />
-      <meta itemProp="url" content="https://www.cinutedigital.com/cdpl-certificate-validation" />
-      <meta itemProp="applicationCategory" content="BusinessApplication" />
-
       <CertificationBreadcrumb />
 
       {/* Page Title */}

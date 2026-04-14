@@ -195,6 +195,9 @@ interface ItemListElement {
   url?: string;
   description?: string;
   type?: string;
+  date?: string;     // Added for Event type support
+  location?: string; // Added for Event type support
+  image?: string;    // Added for better Rich Results
   itemSchema?: Record<string, unknown>; // New optional property for full schema
 }
 
@@ -215,20 +218,45 @@ export function generateItemListSchema(items: ItemListElement[], name: string): 
       };
 
       // Fix: Ensure 'item' or 'url' is present for a nested ListItem.
-      // We will use the 'item' property with a nested object containing name and url.
       if (item.itemSchema) {
         // Strip out aggregateRating to avoid "Multiple aggregate rating" errors in Rich Results
         const { aggregateRating, ...cleanItemSchema } = item.itemSchema as any;
         listItem.item = cleanItemSchema;
       } else if (item.url) {
+        const itemType = item.type || 'Thing';
         listItem.item = {
-          '@type': item.type || 'Thing', // Default to Thing if type is missing
+          '@type': itemType,
           name: item.name,
-          url: item.url,
-          // Only include description if it exists
+          url: getFullUrl(item.url),
           ...(item.description && { description: item.description }),
+          
+          // Fix: Event objects in ItemList require startDate and location for Rich Results
+          ...(itemType === 'Event' && {
+            startDate: formatDateToISO(item.date),
+            location: {
+              '@type': 'Place',
+              name: item.location || 'Online',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: BUSINESS_INFO.address.streetAddress,
+                addressLocality: BUSINESS_INFO.address.addressLocality,
+                addressRegion: BUSINESS_INFO.address.addressRegion,
+                postalCode: BUSINESS_INFO.address.postalCode,
+                addressCountry: BUSINESS_INFO.address.addressCountry,
+              }
+            },
+            eventStatus: 'https://schema.org/EventScheduled',
+            eventAttendanceMode: item.location === 'Online Event' ? 'https://schema.org/OnlineEventAttendanceMode' : 'https://schema.org/OfflineEventAttendanceMode',
+            organizer: {
+              '@type': 'Organization',
+              name: SITE_CONFIG.name,
+              url: SITE_CONFIG.url,
+            },
+            image: getImageUrl(item.image || SITE_CONFIG.defaultOgImage),
+          }),
+
           // Fix: Course objects require a provider
-          ...(item.type === 'Course' && {
+          ...(itemType === 'Course' && {
             provider: {
               '@type': 'EducationalOrganization',
               '@id': getOrganizationId(),
@@ -238,7 +266,6 @@ export function generateItemListSchema(items: ItemListElement[], name: string): 
           }),
         };
       } else {
-        // Fallback to just name and position if URL is missing, though this is not ideal for rich results
         listItem.name = item.name;
       }
 
@@ -381,10 +408,7 @@ export function generateCourseSchema(course: CourseSchemaInput): WithContext<Rec
 
     // Provider (Required)
     provider: {
-      '@type': 'EducationalOrganization',
       '@id': getOrganizationId(),
-      name: SITE_CONFIG.name,
-      url: SITE_CONFIG.url,
     },
 
     // Image
@@ -704,9 +728,14 @@ export function generateSingleReviewSchema(
       name: 'CDPL Student',
     },
     itemReviewed: {
-      '@type': itemType,
       '@id': fullItemId,
-      name: itemName,
+      // Only include name/type if it's NOT the main organization to avoid duplication
+      ...(fullItemId !== getOrganizationId() && {
+        '@type': itemType,
+        name: itemName,
+        image: getImageUrl(SITE_CONFIG.logo),
+        description: `Professional training and events by ${SITE_CONFIG.name}`,
+      }),
     },
     reviewBody:
       'The training curriculum at CDPL is highly practical and industry-aligned. The mentors provide hands-on guidance on real-world projects, which significantly helped in my career transition.',
@@ -747,9 +776,9 @@ interface EventSchemaInput {
 /**
  * Generate Event schema for webinars, workshops, etc.
  */
-export function generateEventSchema(event: EventSchemaInput): WithContext<Record<string, unknown>> {
-  return {
-    '@context': 'https://schema.org',
+export function generateEventSchema(event: EventSchemaInput, excludeContext = false): Record<string, unknown> {
+  const schema: Record<string, unknown> = {
+    ...(!excludeContext && { '@context': 'https://schema.org' }),
     '@type': 'Event',
     name: event.name,
     description: event.description,
@@ -811,6 +840,8 @@ export function generateEventSchema(event: EventSchemaInput): WithContext<Record
     // Free or Paid
     isAccessibleForFree: event.isAccessibleForFree !== undefined ? event.isAccessibleForFree : true,
   };
+
+  return schema;
 }
 
 // ============================================================================
@@ -1040,9 +1071,7 @@ export function generateHomePageSchema(faqs?: { question: string; answer: string
  * This includes CollectionPage, ItemList (for all courses), BreadcrumbList, FAQPage, Organization, WebSite, and SiteNavigationElement.
  */
 export function generateAllCoursesPageSchema(): WithContext<Record<string, unknown>>[] {
-  // 1. Core Foundational Schemas (Organization & WebSite)
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   // 2. Collection Page Schema (acts as WebPage schema)
   const collectionPageSchema = generateCollectionPageSchema({
@@ -1151,8 +1180,6 @@ export function generateAllCoursesPageSchema(): WithContext<Record<string, unkno
 
   // Return exactly the requested schemas
   return [
-    organizationSchema,
-    websiteSchema,
     collectionPageSchema,
     webPageSchema,
     itemListSchema,
@@ -1161,7 +1188,7 @@ export function generateAllCoursesPageSchema(): WithContext<Record<string, unkno
     howToSchema,
     generateSingleReviewSchema(),
     siteNavigationSchema,
-  ];
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
 
 // ============================================================================
@@ -1173,9 +1200,7 @@ export function generateSoftwareTestingCategoryPageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Core Foundational Schemas
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   // 2. WebPage Schema
   const webPageSchema = generateWebPageSchema({
@@ -1226,8 +1251,6 @@ export function generateSoftwareTestingCategoryPageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -1248,9 +1271,7 @@ export function generateDataScienceMachineLearningCategoryPageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Core Foundational Schemas
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   // 2. WebPage Schema
   const webPageSchema = generateWebPageSchema({
@@ -1301,8 +1322,8 @@ export function generateDataScienceMachineLearningCategoryPageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -1323,9 +1344,7 @@ export function generateBusinessIntelligenceCategoryPageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Core Foundational Schemas
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   // 2. WebPage Schema
   const webPageSchema = generateWebPageSchema({
@@ -1376,8 +1395,8 @@ export function generateBusinessIntelligenceCategoryPageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -1398,9 +1417,7 @@ export function generateArtificialIntelligenceCategoryPageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Core Foundational Schemas
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   // 2. WebPage Schema
   const webPageSchema = generateWebPageSchema({
@@ -1451,8 +1468,8 @@ export function generateArtificialIntelligenceCategoryPageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -1473,9 +1490,7 @@ export function generateDigitalMarketingCategoryPageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Core Foundational Schemas
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   // 2. WebPage Schema
   const webPageSchema = generateWebPageSchema({
@@ -1526,8 +1541,8 @@ export function generateDigitalMarketingCategoryPageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -1548,9 +1563,7 @@ export function generateManualTestingCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Core Foundational Schemas
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   // 2. WebPage Schema
   const webPageSchema = generateWebPageSchema({
@@ -1601,8 +1614,8 @@ export function generateManualTestingCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -1623,8 +1636,8 @@ export function generateApiTestingCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'API Testing Course with POSTMAN & RestAPIs | CDPL',
@@ -1667,8 +1680,8 @@ export function generateApiTestingCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -1689,8 +1702,8 @@ export function generateDbmsCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'MySQL Database Course | 100% Job Placement | 20-Hour Training | CDPL',
@@ -1733,8 +1746,8 @@ export function generateDbmsCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -1755,8 +1768,8 @@ export function generateEtlTestingCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'ETL Testing Course with Placement | Master SQL, Data Validation & ETL Tools | CDPL',
@@ -1799,8 +1812,8 @@ export function generateEtlTestingCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -1821,8 +1834,8 @@ export function generateAdvanceSoftwareTestingCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Advanced Software Testing Course in Mumbai | SDET & Selenium Training - 100% Placement | CDPL',
@@ -1865,8 +1878,8 @@ export function generateAdvanceSoftwareTestingCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -1887,8 +1900,8 @@ export function generateAutomationTestingCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Advanced Automation Testing Course | SDET Training | 100% Placement | CDPL',
@@ -1931,8 +1944,8 @@ export function generateAutomationTestingCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -1953,8 +1966,8 @@ export function generateAdvanceManualAutomationTestingCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'What is Selenium Testing? Master Manual & Automation Testing | 100% Placement | CDPL',
@@ -1997,8 +2010,8 @@ export function generateAdvanceManualAutomationTestingCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2019,8 +2032,8 @@ export function generatePythonCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Python Programming Course in Mumbai | 80-Hour Job-Ready Training | CDPL',
@@ -2063,8 +2076,8 @@ export function generatePythonCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2085,8 +2098,8 @@ export function generateJavaCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Java Programming Course in Mumbai | 80-Hour Job-Ready Training | CDPL',
@@ -2129,8 +2142,8 @@ export function generateJavaCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2151,8 +2164,8 @@ export function generateMachineLearningCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Machine Learning & Data Science with Python Hero Program | Mumbai | CDPL',
@@ -2195,8 +2208,8 @@ export function generateMachineLearningCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2217,8 +2230,8 @@ export function generateGenerativeAICoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Deep Learning, NLP & Gen AI Course Mumbai | CDPL',
@@ -2261,8 +2274,8 @@ export function generateGenerativeAICoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2283,8 +2296,8 @@ export function generateDataScienceCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Advanced Data Science & Machine Learning Masterclass Mumbai | Placement',
@@ -2327,8 +2340,8 @@ export function generateDataScienceCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2349,8 +2362,8 @@ export function generateAICoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Masters in AI and ML | AI Master Program Mumbai | 100% Placement Support',
@@ -2393,8 +2406,8 @@ export function generateAICoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2415,8 +2428,8 @@ export function generateMachineLearningUsingPythonCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Machine Learning with Python Course in Mumbai | 45-Hour Master Program | CDPL',
@@ -2459,8 +2472,8 @@ export function generateMachineLearningUsingPythonCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2481,8 +2494,8 @@ export function generateDataVisualizationInRProgrammingCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Machine Learning and Data Visualization using R Programming | CDPL',
@@ -2525,8 +2538,8 @@ export function generateDataVisualizationInRProgrammingCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2547,8 +2560,8 @@ export function generatePromptEngineeringCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Prompt Engineering with Generative AI Course in Mumbai | 20-Hour Hero Program | CDPL',
@@ -2591,8 +2604,8 @@ export function generatePromptEngineeringCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2613,8 +2626,8 @@ export function generateDataAnalyticsCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Advanced Data Analytics Course Mumbai | Data Analyst Training',
@@ -2657,8 +2670,8 @@ export function generateDataAnalyticsCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2679,8 +2692,8 @@ export function generateDataAnalyticsPythonCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Best Data Analytics Course with Python | 20-Hour Training Mumbai | 100% Job Assistance',
@@ -2723,8 +2736,8 @@ export function generateDataAnalyticsPythonCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2745,8 +2758,8 @@ export function generateDataAnalyticsVisualizationCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Advanced Excel for Data Analytics & Visualization | 20-Hour Course | Mumbai',
@@ -2789,8 +2802,8 @@ export function generateDataAnalyticsVisualizationCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2811,8 +2824,8 @@ export function generateDataAnalyticsTableauCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Data Analytics with Tableau Course | 20-Hour Training | Mumbai | CDPL',
@@ -2855,8 +2868,8 @@ export function generateDataAnalyticsTableauCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2877,8 +2890,8 @@ export function generatePowerBICoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Best Power BI Course in Mumbai & Thane | Master Data Analytics with 100% Placement',
@@ -2921,8 +2934,8 @@ export function generatePowerBICoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -2943,8 +2956,8 @@ export function generateMastersDataEngineeringCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Master Program in Data Engineering | BI & Big Data Engineering Course | Mumbai',
@@ -2987,8 +3000,8 @@ export function generateMastersDataEngineeringCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -3013,8 +3026,8 @@ export function generateDigitalMarketingCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Best Digital Marketing Course in Mumbai with 100% Placement | CDPL',
@@ -3057,8 +3070,8 @@ export function generateDigitalMarketingCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -3079,8 +3092,8 @@ export function generateAiInDigitalMarketingCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'Master Digital Marketing & AI for Business Owners | 10X Your Growth - Cinute Digital',
@@ -3123,8 +3136,8 @@ export function generateAiInDigitalMarketingCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -3145,8 +3158,8 @@ export function generateAiBootcampCoursePageSchema(
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: 'AI-Powered Digital Marketing Bootcamp | 30-Hour Expert Training | CDPL',
@@ -3189,8 +3202,8 @@ export function generateAiBootcampCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     courseSchema,
     itemListSchema,
@@ -3555,8 +3568,8 @@ export function generateServiceDetailPageAllSchemas(service: {
   deliveryFormats: { format: string; duration: string; description: string }[];
   whoShouldAttend: string[];
 }): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
 
   const webPageSchema = generateWebPageSchema({
     name: `${service.title} | CDPL`,
@@ -3660,8 +3673,8 @@ export function generateServiceDetailPageAllSchemas(service: {
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
+
+
     webPageSchema,
     serviceSchema,
     faqSchema,
@@ -3703,6 +3716,7 @@ export function generateEventsPageAllSchemas(
         name: event.title,
         description: event.subtitle || event.purpose || event.title,
         startDate: formatDateToISO(event.date),
+        endDate: formatDateToISO(event.date.split(' to ')[1] || event.date),
         location: { 
           name: event.location,
           address: event.location && event.location !== 'Online Event' ? event.location : BUSINESS_INFO.address.streetAddress
@@ -3712,7 +3726,7 @@ export function generateEventsPageAllSchemas(
         eventAttendanceMode: event.location === 'Online Event' ? 'OnlineEventAttendanceMode' : 'OfflineEventAttendanceMode',
         performerName: event.subtitle?.replace('by ', '') || SITE_CONFIG.name,
         offers: { price: 0, priceCurrency: 'INR' } // All workshops/listings are free to attend by default
-      })
+      }, true) // Exclude context for nested items
     }))
   });
 
@@ -3725,7 +3739,10 @@ export function generateEventsPageAllSchemas(
       name: event.title,
       url: `/events/${event.slug}`,
       description: event.subtitle || event.purpose,
-      type: 'Event'
+      type: 'Event',
+      date: event.date,
+      location: event.location,
+      image: event.heroImageUrl
     })),
     'CDPL Upcoming and Past Events'
   );
@@ -3809,7 +3826,7 @@ export function generateEventDetailPageAllSchemas(
     eventAttendanceMode: event.location === 'Online Event' ? "OnlineEventAttendanceMode" : "OfflineEventAttendanceMode",
     performerName: event.organization || SITE_CONFIG.name,
     offers: { price: 0, priceCurrency: 'INR' }
-  });
+  }, true); // Exclude context for nested items
 
   // Dynamic FAQPage based on event properties
   const faqs: { question: string; answer: string }[] = [];
@@ -3851,7 +3868,9 @@ export function generateEventDetailPageAllSchemas(
       name: e.title,
       url: `/events/${e.slug}`,
       description: e.purpose,
-      type: 'Event'
+      type: 'Event',
+      date: 'Ongoing', // Fallback as list usually doesn't have dates pre-mapped
+      location: 'Multiple Locations'
     })),
     `CDPL Events Directory`
   );
@@ -4229,6 +4248,8 @@ export function generatePlacementsPageAllSchemas(
 export function generateCareersPageAllSchemas(
   jobs: { title: string; location: string; type: string }[]
 ): WithContext<Record<string, unknown>>[] {
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
   const webPageSchema = generateWebPageSchema({
     name: 'Careers at CDPL - Join the Future of Tech Education',
     description: "Explore high-impact career opportunities at CDPL. Build innovative EdTech products, mentor the next generation of tech talent, and grow with a product-led team.",
@@ -4309,6 +4330,8 @@ export function generateCareersPageAllSchemas(
 export function generateJobOpeningsPageAllSchemas(
   jobs: { job_title: string; location?: string | null; job_type: string; description?: string }[]
 ): WithContext<Record<string, unknown>>[] {
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
+
   const webPageSchema = generateWebPageSchema({
     name: 'Tech Job Openings & Career Opportunities | CDPL Partner Portal',
     description: "Browse curated tech job openings from global companies through the CDPL partner portal. Discover roles in QA, Data Science, and Engineering with direct application support.",
@@ -4466,13 +4489,9 @@ export function generateIstqbRegistrationPageAllSchemas(
     levels: string[];
   }
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Organization Schema
-  const organizationSchema = generateOrganizationSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
-  // 2. WebSite Schema
-  const websiteSchema = generateWebsiteSchema();
-
-  // 3. WebPage Schema
+  // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
     name: "ISTQB Certification Registration | Testriq",
     description: "Register for ISTQB Certification exams with Testriq. Comprehensive training and exam booking for Foundation, Advanced, and Agile levels.",
@@ -4511,8 +4530,6 @@ export function generateIstqbRegistrationPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -4538,13 +4555,9 @@ export function generateMockTestPageAllSchemas(
     categories: string[];
   }
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Organization Schema
-  const organizationSchema = generateOrganizationSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
-  // 2. WebSite Schema
-  const websiteSchema = generateWebsiteSchema();
-
-  // 3. WebPage Schema
+  // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
     name: "Free Online Mock Tests & Premium Assessments | Testriq",
     description: "Validate your expertise with precision. Industry-standard simulation environments for Software Testing, Cloud, Security, and more.",
@@ -4583,8 +4596,6 @@ export function generateMockTestPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -4608,15 +4619,12 @@ export function generateAaaCertificationPageAllSchemas(
     faqs: { question: string; answer: string }[];
     howToSteps: { name: string; text: string; url?: string }[];
     curriculum: string[];
+    courseData: CourseSchemaInput;
   }
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Organization Schema
-  const organizationSchema = generateOrganizationSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
-  // 2. WebSite Schema
-  const websiteSchema = generateWebsiteSchema();
-
-  // 3. WebPage Schema
+  // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
     name: "AAA Certification Course | Advanced Automation Architecture",
     description: "Master Advanced Automation Architecture with CDPL's 12-week certification program. CI/CD integration, cloud testing, and expert-led labs.",
@@ -4624,6 +4632,9 @@ export function generateAaaCertificationPageAllSchemas(
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() }
   });
+
+  // 2. Course Schema (integrated)
+  const courseSchema = generateCourseSchema(data.courseData);
 
   // 4. FAQPage Schema
   const faqSchema = generateFAQSchema(data.faqs);
@@ -4638,12 +4649,6 @@ export function generateAaaCertificationPageAllSchemas(
     "AAA Certification Curriculum Modules"
   );
 
-  // 6. Review / Aggregate Rating Schema
-  const reviewAggregateSchema = generateReviewSchema({
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-  });
-
   // 7. HowTo Schema (Certification Journey)
   const howToSchema = generateHowToSchema({
     name: "How to achieve AAA Certification",
@@ -4655,12 +4660,10 @@ export function generateAaaCertificationPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
+    courseSchema,
     faqSchema,
     itemListSchema,
-    reviewAggregateSchema,
     howToSchema,
     generateSingleReviewSchema(),
     siteNavigationSchema,
@@ -4680,15 +4683,12 @@ export function generateActdCertificationPageAllSchemas(
     faqs: { question: string; answer: string }[];
     howToSteps: { name: string; text: string; url?: string }[];
     tracks: string[];
+    courseData: CourseSchemaInput;
   }
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Organization Schema
-  const organizationSchema = generateOrganizationSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
-  // 2. WebSite Schema
-  const websiteSchema = generateWebsiteSchema();
-
-  // 3. WebPage Schema
+  // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
     name: "ACTD Certification Training | Agile, Cloud & Test-Driven Development",
     description: "Master modern testing with CDPL's ACTD program. Intensive 10-week tracks in Agile methodologies, Cloud testing, and TDD with mentor support.",
@@ -4696,6 +4696,9 @@ export function generateActdCertificationPageAllSchemas(
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() }
   });
+
+  // 2. Course Schema (integrated)
+  const courseSchema = generateCourseSchema(data.courseData);
 
   // 4. FAQPage Schema
   const faqSchema = generateFAQSchema(data.faqs);
@@ -4710,12 +4713,6 @@ export function generateActdCertificationPageAllSchemas(
     "ACTD Certification Training Tracks"
   );
 
-  // 6. Review / Aggregate Rating Schema
-  const reviewAggregateSchema = generateReviewSchema({
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-  });
-
   // 7. HowTo Schema (Certification Roadmap)
   const howToSchema = generateHowToSchema({
     name: "How to achieve ACTD Certification",
@@ -4727,12 +4724,10 @@ export function generateActdCertificationPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
+    courseSchema,
     faqSchema,
     itemListSchema,
-    reviewAggregateSchema,
     howToSchema,
     generateSingleReviewSchema(),
     siteNavigationSchema,
@@ -4754,13 +4749,9 @@ export function generateCertificateValidationPageAllSchemas(
     features: string[];
   }
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Organization Schema
-  const organizationSchema = generateOrganizationSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
-  // 2. WebSite Schema
-  const websiteSchema = generateWebsiteSchema();
-
-  // 3. WebPage Schema
+  // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
     name: "CDPL Certificate Validation - Verify AAA & ACTD Certificates Online",
     description: "Instantly validate and verify CDPL, AAA, and ACTD certificates online. Professional certificate authenticity verification tool.",
@@ -4799,12 +4790,9 @@ export function generateCertificateValidationPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
-    reviewAggregateSchema,
     howToSchema,
     generateSingleReviewSchema(),
     siteNavigationSchema,
@@ -4826,13 +4814,9 @@ export function generateCmsPageAllSchemas(
     features: string[];
   }
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Organization Schema
-  const organizationSchema = generateOrganizationSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
-  // 2. WebSite Schema
-  const websiteSchema = generateWebsiteSchema();
-
-  // 3. WebPage Schema
+  // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
     name: "Course Management System - Cinute Digital Studio",
     description: "Manage course content, SEO metadata, and digital assets via the Cinute Digital CMS. Secure administrative portal for content management.",
@@ -4871,8 +4855,6 @@ export function generateCmsPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -4893,13 +4875,9 @@ export function generateCmsPageAllSchemas(
  * Consolidates legal information to ensure 100% compliance and accuracy.
  */
 export function generatePrivacyPolicyPageAllSchemas(): WithContext<Record<string, unknown>>[] {
-  // 1. Organization Schema (Correct Legal Address)
-  const organizationSchema = generateOrganizationSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
-  // 2. WebSite Schema
-  const websiteSchema = generateWebsiteSchema();
-
-  // 3. WebPage Schema
+  // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
     name: "Privacy Policy | Cinute Digital Pvt. Ltd.",
     description: "Our policies and procedures on the collection, use and disclosure of Your information when You use the Service. Learn about Your privacy rights and how the law protects You.",
@@ -4967,8 +4945,6 @@ export function generatePrivacyPolicyPageAllSchemas(): WithContext<Record<string
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -4989,38 +4965,9 @@ export function generatePrivacyPolicyPageAllSchemas(): WithContext<Record<string
  * Consolidates legal information to ensure 100% compliance and accuracy.
  */
 export function generateCookiesPolicyPageAllSchemas(): WithContext<Record<string, unknown>>[] {
-  // 1. Organization Schema (Specific to Cookies Policy)
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": `${getWebsiteId()}#organization`,
-    "name": "TESTRIQ QA Lab, LLP",
-    "url": getWebsiteId(),
-    "logo": {
-      "@type": "ImageObject",
-      "url": `${getWebsiteId()}/logo.png`,
-      "width": 600,
-      "height": 60
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "215, A Wing, Main Frame Premises, Goregaon East",
-      "addressLocality": "Mumbai",
-      "postalCode": "400065",
-      "addressCountry": "IN"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+91 788-83-83-788",
-      "contactType": "customer service",
-      "email": "contact@cinutedigital.com"
-    }
-  } as WithContext<Record<string, unknown>>;
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
-  // 2. WebSite Schema
-  const websiteSchema = generateWebsiteSchema();
-
-  // 3. WebPage Schema
+  // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
     name: "Cookies Policy | Cinute Digital Pvt. Ltd.",
     description: "Read the Cookies Policy of Cinute Digital (CDPL). Understand how we use cookies to improve your browsing experience and how you can manage them.",
@@ -5085,8 +5032,6 @@ export function generateCookiesPolicyPageAllSchemas(): WithContext<Record<string
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -5107,39 +5052,9 @@ export function generateCookiesPolicyPageAllSchemas(): WithContext<Record<string
  * Ensures 100% legal accuracy for Job Assistance policies.
  */
 export function generateTermsOfServicePageAllSchemas(): WithContext<Record<string, unknown>>[] {
-  // 1. Organization Schema (Standard Legal Identity)
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": `${getWebsiteId()}#organization`,
-    "name": "Cinute Digital Pvt. Ltd.",
-    "url": getWebsiteId(),
-    "logo": {
-      "@type": "ImageObject",
-      "url": `${getWebsiteId()}/logo.png`,
-      "width": 600,
-      "height": 60
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road, Mira Bhayandar",
-      "addressLocality": "Mumbai",
-      "postalCode": "401107",
-      "addressRegion": "Maharashtra",
-      "addressCountry": "IN"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+91 788-83-83-788",
-      "contactType": "customer service",
-      "email": "contact@cinutedigital.com"
-    }
-  } as WithContext<Record<string, unknown>>;
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
-  // 2. WebSite Schema
-  const websiteSchema = generateWebsiteSchema();
-
-  // 3. WebPage Schema
+  // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
     name: "Terms & Conditions | Cinute Digital Pvt. Ltd.",
     description: "Read the Terms of Service for Cinute Digital (CDPL). Understand our enrollment policies, intellectual property terms, and comprehensive Job Assistance services.",
@@ -5210,8 +5125,6 @@ export function generateTermsOfServicePageAllSchemas(): WithContext<Record<strin
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -5232,39 +5145,9 @@ export function generateTermsOfServicePageAllSchemas(): WithContext<Record<strin
  * Ensures 100% legal accuracy for Refund and Batch Change policies.
  */
 export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<Record<string, unknown>>[] {
-  // 1. Organization Schema (Standard Legal Identity)
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": `${getWebsiteId()}#organization`,
-    "name": "Cinute Digital Pvt. Ltd.",
-    "url": getWebsiteId(),
-    "logo": {
-      "@type": "ImageObject",
-      "url": `${getWebsiteId()}/logo.png`,
-      "width": 600,
-      "height": 60
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road, Mira Bhayandar",
-      "addressLocality": "Mumbai",
-      "postalCode": "401107",
-      "addressRegion": "Maharashtra",
-      "addressCountry": "IN"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+91 788-83-83-788",
-      "contactType": "customer service",
-      "email": "contact@cinutedigital.com"
-    }
-  } as WithContext<Record<string, unknown>>;
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
-  // 2. WebSite Schema
-  const websiteSchema = generateWebsiteSchema();
-
-  // 3. WebPage Schema
+  // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
     name: "Cancellation/Refund Policy | Cinute Digital Pvt. Ltd.",
     description: "Read the Cancellation and Refund Policy for Cinute Digital (CDPL). Learn about full refunds before batch starts, 50% partial refunds during demo, and batch change flexibility.",
@@ -5335,8 +5218,6 @@ export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<Re
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -5358,13 +5239,9 @@ export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<Re
 export function generateReviewsPageAllSchemas(
   reviews: { author: string; rating: number; text: string; role?: string }[]
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Organization Schema
-  const organizationSchema = generateOrganizationSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
-  // 2. WebSite Schema
-  const websiteSchema = generateWebsiteSchema();
-
-  // 3. WebPage Schema
+  // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
     name: "Authentic Student Reviews & Testimonials | CDPL",
     description: "Read 5000+ authentic student reviews and success stories for CDPL's software testing, data science, and AI/ML courses.",
@@ -5426,8 +5303,6 @@ export function generateReviewsPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -5451,13 +5326,9 @@ export function generateCityCoursePageSchema(
   faqs: { question: string; answer: string }[],
   city: string
 ): WithContext<Record<string, unknown>>[] {
-  // 1. Organization Schema
-  const organizationSchema = generateOrganizationSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
-  // 2. WebSite Schema
-  const websiteSchema = generateWebsiteSchema();
-
-  // 3. WebPage Schema
+  // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
     name: courseInput.name,
     description: courseInput.description,
@@ -5497,8 +5368,6 @@ export function generateCityCoursePageSchema(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -5516,8 +5385,7 @@ export function generateCityCoursePageSchema(
 export function generateLocationsPageAllSchemas(
   locations: string[]
 ): WithContext<Record<string, unknown>>[] {
-  const organizationSchema = generateOrganizationSchema();
-  const websiteSchema = generateWebsiteSchema();
+  // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   const webPageSchema = generateWebPageSchema({
     name: 'Our Global Presence & Training Locations | CDPL',
@@ -5589,8 +5457,6 @@ export function generateLocationsPageAllSchemas(
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
-    organizationSchema,
-    websiteSchema,
     webPageSchema,
     faqSchema,
     itemListSchema,
@@ -5703,13 +5569,7 @@ export function generateBlogSchema(input: {
     name: input.name,
     description: input.description,
     publisher: {
-      '@type': 'Organization',
       '@id': getOrganizationId(),
-      name: SITE_CONFIG.name,
-      logo: {
-        '@type': 'ImageObject',
-        url: getImageUrl(SITE_CONFIG.logo),
-      },
     },
     inLanguage: 'en-IN',
   };
@@ -5840,9 +5700,7 @@ export function generateServiceSchema(service: ServiceSchemaInput): WithContext<
     description: service.description,
     serviceType: service.serviceType,
     provider: {
-      '@type': 'Organization',
       '@id': getOrganizationId(),
-      name: service.providerName || SITE_CONFIG.name,
     },
     areaServed: {
       '@type': 'Country',

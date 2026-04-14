@@ -70,6 +70,28 @@ export const metadata: Metadata = generateStaticPageMetadata({
 /* ---------- Page (server component) ---------- */
 export default function AAACertificationCoursePage() {
   /* ---------- JSON-LD ---------- */
+  const courseData = {
+    name: "AAA Certification Course - Advanced Automation Architecture",
+    description: "Comprehensive certification program covering advanced test automation architecture, frameworks, CI/CD integration, and cloud-based testing.",
+    slug: "aaa-certification-course",
+    url: "/aaa-certification",
+    image: "/og-images/aaa-certification-og.webp",
+    level: "Intermediate to Advanced",
+    learningOutcomes: [
+      "Test Automation Frameworks",
+      "CI/CD Pipeline Integration",
+      "Cloud Testing Strategies",
+      "API Automation",
+      "Performance Testing",
+      "Security Testing Automation",
+    ],
+    prerequisites: ["Basic programming knowledge", "Testing fundamentals"],
+    duration: "P12W",
+    price: 49999,
+    rating: 4.8,
+    reviewCount: 150,
+  };
+
   const consolidatedSchemas = generateAaaCertificationPageAllSchemas({
     faqs: [
       {
@@ -100,31 +122,8 @@ export default function AAACertificationCoursePage() {
       "Module 1 - Foundations & Blueprint",
       "Module 2 - Practical Labs",
       "Module 3 - Capstone & Review"
-    ]
-  });
-
-  const courseSchema = generateCourseSchema({
-    name: "AAA Certification Course - Advanced Automation Architecture",
-    description: "Comprehensive certification program covering advanced test automation architecture, frameworks, CI/CD integration, and cloud-based testing.",
-
-    slug: "aaa-certification-course",
-    url: "/aaa-certification-course",
-    image: "/og-images/aaa-certification-og.webp",
-    level: "Intermediate to Advanced",
-
-    learningOutcomes: [
-      "Test Automation Frameworks",
-      "CI/CD Pipeline Integration",
-      "Cloud Testing Strategies",
-      "API Automation",
-      "Performance Testing",
-      "Security Testing Automation",
     ],
-    prerequisites: ["Basic programming knowledge", "Testing fundamentals"],
-    duration: "P12W",
-    price: 49999,
-    rating: 4.8,
-    reviewCount: 150,
+    courseData: courseData
   });
 
   return (
@@ -134,7 +133,6 @@ export default function AAACertificationCoursePage() {
       {consolidatedSchemas.map((schema, index) => (
         <JsonLd key={`aaa-schema-${index}`} id={`aaa-schema-${index}`} schema={schema} />
       ))}
-      <JsonLd id="aaa-course" schema={courseSchema} />
 
       <AAACerticationHeroSection />
       <AAACertificationWhySection />
