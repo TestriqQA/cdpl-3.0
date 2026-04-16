@@ -3,12 +3,21 @@ import { MetadataRoute } from 'next';
 /**
  * Robots.txt configuration for CDPL
  * Next.js 15 App Router format
- * 
+ *
  * Optimized for:
  * - Traditional search engines (Google, Bing, Yahoo)
  * - AI crawlers (GPTBot, Claude-Web, Google-Extended)
  * - Social media bots (Facebook, Twitter, LinkedIn)
  * - Generative Engine Optimization (GEO)
+ *
+ * ⚠️  SEO FIX (April 2026):
+ * Removed '/_next/' from ALL Disallow lists.
+ * Next.js serves CSS, JS, and image assets from /_next/static/ and /_next/image/.
+ * Blocking '/_next/' prevents Googlebot from loading these assets, which caused
+ * 838 pages to be "Crawled – currently not indexed" because Google could not
+ * properly render the page content.
+ * Google explicitly requires JS/CSS to be crawlable for proper rendering.
+ * Ref: https://developers.google.com/search/docs/crawling-indexing/robots/intro
  */
 export default function robots(): MetadataRoute.Robots {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.cinutedigital.com';
@@ -30,14 +39,18 @@ export default function robots(): MetadataRoute.Robots {
           'Baiduspider',  // Baidu
           'YandexBot',    // Yandex
         ],
-        allow: ['/', '/_next/static/', '/_next/image*'],
+        allow: [
+          '/',
+          '/_next/static/',  // CSS, JS bundles — MUST be crawlable
+          '/_next/image/',   // Optimized images — MUST be crawlable
+        ],
         disallow: [
           '/api/',
           '/admin/',
-          '/_next/',
           '/private/',
+          '/cms/',
           '/*.json$',
-          '/search?*',  // Avoid indexing search result pages
+          '/search?*',       // Avoid indexing search result pages
         ],
         crawlDelay: 0,
       },
@@ -59,12 +72,16 @@ export default function robots(): MetadataRoute.Robots {
           'PerplexityBot',    // Perplexity AI
           'YouBot',           // You.com AI
         ],
-        allow: ['/', '/_next/static/', '/_next/image*'],
+        allow: [
+          '/',
+          '/_next/static/',
+          '/_next/image/',
+        ],
         disallow: [
           '/api/',
           '/admin/',
-          '/_next/',
           '/private/',
+          '/cms/',
         ],
       },
 
@@ -86,6 +103,7 @@ export default function robots(): MetadataRoute.Robots {
           '/api/',
           '/admin/',
           '/private/',
+          '/cms/',
         ],
       },
 
@@ -108,12 +126,16 @@ export default function robots(): MetadataRoute.Robots {
       // ========================================
       {
         userAgent: '*',
-        allow: ['/', '/_next/static/', '/_next/image*'],
+        allow: [
+          '/',
+          '/_next/static/',
+          '/_next/image/',
+        ],
         disallow: [
           '/api/',
           '/admin/',
-          '/_next/',
           '/private/',
+          '/cms/',
         ],
       },
     ],
@@ -122,6 +144,5 @@ export default function robots(): MetadataRoute.Robots {
     // SITEMAP LOCATION
     // ========================================
     sitemap: `${siteUrl}/sitemap.xml`,
-
   };
 }

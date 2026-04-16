@@ -7,9 +7,12 @@ import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { courseSlugs } from "@/data/headerSlugs";
-const EnquireModal = dynamic(() => import("./EnquireModal"), { ssr: false });
-const MegaMenuContent = dynamic(() => import("./MegaMenuContent"), { ssr: false });
-const MobileMenuContent = dynamic(() => import("./MobileMenuContent"), { ssr: false });
+const EnquireModal = dynamic(() => import("./EnquireModal"), { ssr: false }); // Modal is interactive-only, ssr:false is OK
+// ⚠️  SEO FIX (April 2026): Changed ssr:false → ssr:true for navigation menus.
+// With ssr:false, Googlebot could NOT see course links in the mega/mobile menu
+// from the initial HTML, reducing internal link discovery for course pages.
+const MegaMenuContent = dynamic(() => import("./MegaMenuContent"), { ssr: true });
+const MobileMenuContent = dynamic(() => import("./MobileMenuContent"), { ssr: true });
 
 // Dummy comment to force build refresh
 

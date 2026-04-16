@@ -8,6 +8,19 @@ import { generateMetadata as generateSEOMetadata, generateMetaDescription } from
 import { generateServiceDetailPageAllSchemas } from '@/lib/schema-generators';
 import JsonLd from '@/components/JsonLd';
 
+// ============================================================================
+// STATIC SITE GENERATION — Pre-build all service pages at deploy time
+// Without this, service pages are fully dynamic (SSR-only) and not pre-rendered.
+// ============================================================================
+export async function generateStaticParams() {
+  return trainingServices.map((service) => ({
+    slug: service.slug,
+  }));
+}
+
+// Revalidate daily so content stays fresh without full rebuilds
+export const revalidate = 86400;
+
 // Helper functions
 function getServiceBySlug(slug: string): TrainingService | undefined {
   return trainingServices.find(s => s.slug === slug);

@@ -24,6 +24,7 @@ export interface SanityCategory {
 
 export interface SanityPost {
     _id: string;
+    _updatedAt?: string; // ISO date — when the document was last edited in Sanity CMS
     title: string;
     slug: string; // Query returns string
     publishDate: string;
