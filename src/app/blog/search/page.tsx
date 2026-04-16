@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { SITE_CONFIG } from '@/lib/seo-config';
 import { BlogCategoryMenu } from "@/components/blog";
 import { SearchAgainButton } from "@/components/blog/SearchAgainButton";
 import Link from "next/link";
@@ -35,8 +36,8 @@ export async function generateMetadata({
         ? `Find articles about ${query} in our comprehensive tech blog`
         : "Search our comprehensive tech blog for expert articles and tutorials",
       type: "website",
-      url: query ? `https://yoursite.com/blog/search?q=${encodeURIComponent(query)}` : 'https://yoursite.com/blog/search',
-      siteName: 'Your Company Tech Blog',
+      url: query ? `${SITE_CONFIG.url}/blog/search?q=${encodeURIComponent(query)}` : `${SITE_CONFIG.url}/blog/search`,
+      siteName: SITE_CONFIG.name,
     },
     twitter: {
       card: "summary",
@@ -124,7 +125,7 @@ export default async function SearchPage({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SearchResultsPage",
-    "url": `https://yoursite.com/blog/search?q=${encodeURIComponent(query)}`,
+    "url": `${SITE_CONFIG.url}/blog/search?q=${encodeURIComponent(query)}`,
     "name": query ? `Search Results for "${query}"` : "Blog Search",
     "description": query ? `Search results for ${query} in our tech blog` : "Search our tech blog",
     "mainEntity": query && searchResults.length > 0 ? {
@@ -137,7 +138,7 @@ export default async function SearchPage({
           "@type": "BlogPosting",
           "headline": post.title,
           "description": post.excerpt,
-          "url": `https://yoursite.com/blog/${post.slug}`,
+          "url": `${SITE_CONFIG.url}/blog/${post.slug}`,
           "datePublished": new Date(post.publishDate).toISOString(),
           "author": {
             "@type": "Person",

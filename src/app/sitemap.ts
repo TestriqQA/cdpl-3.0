@@ -229,6 +229,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
 
+    // Assessment & Registration Pages
+    {
+      url: `${siteUrl}/mock-test`,
+      lastModified: DATES.COURSES_INDEX,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${siteUrl}/istqb-registration`,
+      lastModified: DATES.AAA_CERT,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+
     // Legal Pages - Lower Priority
     {
       url: `${siteUrl}/privacy-policy`,
@@ -332,11 +346,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // 1. City-Course Pages (e.g., /software-testing-course-in-mumbai)
   // Generate from actual courseData to ensure only real pages are in sitemap
+  // ⚠️  SEO FIX (April 2026): Boosted priority from 0.6 → 0.8 and frequency
+  // from monthly → weekly. These 765+ city-course pages are the primary
+  // money pages and need urgent indexing. Lower priority was causing Googlebot
+  // to deprioritize them in favor of less important pages.
   const cityCoursePages: MetadataRoute.Sitemap = Object.values(courseData).map((course) => ({
     url: `${siteUrl}/${course.slug.toLowerCase()}`,
     lastModified: DATES.CITY_COURSE,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
   }));
 
   // 2. Events Pages (e.g., /events/ai-conference-nagindas-khandwala)

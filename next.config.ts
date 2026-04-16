@@ -315,6 +315,68 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  /**
+   * ⚠️  SEO FIX (April 2026):
+   * Prevent Google from indexing internal Next.js asset files.
+   * Googlebot discovers these via <script> and <link> tags in the HTML,
+   * then attempts to index them as pages. They show up in GSC as
+   * "Crawled – currently not indexed", wasting crawl budget.
+   *
+   * We keep them CRAWLABLE (robots.txt allows /_next/static/) so Googlebot
+   * can still fetch JS/CSS for rendering, but we tell it NOT to index them.
+   */
+  async headers() {
+    return [
+      // ⚠️  SEO FIX (April 2026): Blanket noindex for ALL Next.js static assets.
+      // Previously only covered /_next/static/chunks/. Expanded to catch CSS,
+      // media, fonts, and webpack assets that Googlebot also discovers via
+      // <link> and <script> tags, wasting crawl budget as
+      // "Crawled – currently not indexed" entries in GSC.
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      {
+        source: '/_next/data/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      // Defense-in-depth: noindex the CMS admin route.
+      // Already disallowed in robots.txt, but this header ensures
+      // it's not indexed even if discovered through internal links.
+      {
+        source: '/cms/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      // Mock-test dynamic pages are CSR-only ("use client" + useEffect).
+      // Googlebot cannot render them — it sees an empty spinner.
+      // The landing page /mock-test (no slug) is SSR and remains indexable.
+      {
+        source: '/mock-test/:courseSlug*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default withBundleAnalyzer(nextConfig);

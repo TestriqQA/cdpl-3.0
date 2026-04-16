@@ -4,16 +4,22 @@ import MockTestHero from "@/components/mock-test/MockTestHero";
 import dynamic from "next/dynamic";
 import { generateMockTestPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
+import { generateStaticPageMetadata } from '@/lib/metadata-generator';
 
 const MockTestListing = dynamic(() => import("@/components/mock-test/MockTestListing"), {
     ssr: true, // Keep SSR for SEO content, but split the bundle
     loading: () => <div className="h-96 w-full animate-pulse bg-slate-50 rounded-3xl" /> // Placeholder to prevent layout shift
 });
 
-export const metadata = {
-    title: 'Free Online Mock Tests & Premium Assessments | Testriq',
+// ⚠️  SEO FIX (April 2026): Migrated from raw metadata to centralized generator.
+// Adds canonical URL, OG image, Twitter card, robots directives, and keywords.
+// Fixed branding from "Testriq" → "CDPL".
+export const metadata = generateStaticPageMetadata({
+    title: { absolute: 'Free Online Mock Tests & Premium Assessments | CDPL' },
     description: 'Validate your expertise with precision. Industry-standard simulation environments for Software Testing, Cloud, Security, and Web Dev.',
-};
+    url: '/mock-test',
+    keywords: ['mock test', 'online test', 'software testing quiz', 'practice test', 'free assessment'],
+});
 
 export default function MockTestLandingPage() {
     const mockSchemas = generateMockTestPageAllSchemas({

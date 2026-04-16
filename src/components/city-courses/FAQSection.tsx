@@ -40,6 +40,9 @@ interface FAQSectionProps {
 }
 
 const FAQSection: React.FC<FAQSectionProps> = ({ data = mockData }) => {
+  // ⚠️ SEO FIX (April 2026): Prioritize localized FAQs if available to differentiate city pages.
+  // This resolves the "near-duplicate" content issue that prevents indexing.
+  const faqsToDisplay = (data as any).localizedFaqs || data.faqsContent.faqs;
   const { faqsContent } = data;
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(0);
 
@@ -114,7 +117,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ data = mockData }) => {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {faqsContent.faqs.map((faq, index) => (
+          {faqsToDisplay.map((faq: any, index: number) => (
             <motion.div
               key={index}
               variants={itemVariants}
