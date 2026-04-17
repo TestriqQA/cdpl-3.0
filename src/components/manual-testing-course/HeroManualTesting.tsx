@@ -1,5 +1,5 @@
 "use client";
-
+ 
 import {
     LuBadgeCheck,
     LuChevronRight,
@@ -11,12 +11,12 @@ import {
     LuArrowDownNarrowWide,
 } from "react-icons/lu";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-
+ 
 import Image from "next/image";
 import Link from "next/link";
 const Modal = dynamic(() => import("@/components/Modal"), { ssr: false });
 const BrochureDownloadForm = dynamic(() => import("@/components/BrochureDownloadForm"), { ssr: false });
-
+ 
 function LeadFormSkeleton() {
     return (
         <div className="rounded-2xl border bg-white/92 backdrop-blur-xl p-6 sm:p-8 shadow-2xl border-slate-200 h-[520px] animate-pulse">
@@ -31,7 +31,7 @@ function LeadFormSkeleton() {
         </div>
     )
 }
-
+ 
 const LeadForm = dynamic(() => import('../forms/ManualCourseLeadForm'), {
     ssr: false,
     loading: () => <LeadFormSkeleton />
@@ -40,8 +40,8 @@ const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloa
 const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
 import dynamic from "next/dynamic";
 import { Home } from "lucide-react";
-
-
+ 
+ 
 /* ----------------------- NEW: Count-up + Stats ----------------------- */
 type StatItem = {
     label: string;
@@ -50,7 +50,7 @@ type StatItem = {
     suffix?: string;
     emphasize?: boolean;
 };
-
+ 
 const PDF_STATS: StatItem[] = [
     { label: "Training Hours", value: 50, suffix: " hrs", emphasize: true },
     { label: "Job Vacancies (India)", value: 101000, suffix: "+", emphasize: true },
@@ -61,7 +61,7 @@ const PDF_STATS: StatItem[] = [
     { label: "Job Assistance", value: 100, suffix: "%" },
     { label: "Years of Expertise", value: 14, suffix: "+" },
 ];
-
+ 
 /* --- after PDF_STATS --- */
 type StatColor = {
     bg: string;       // background for primary card
@@ -69,7 +69,7 @@ type StatColor = {
     text: string;     // value color
     chip: string;     // small heading color in primary card
 };
-
+ 
 /** 8 unique color schemes — no repeats */
 const STAT_COLORS: StatColor[] = [
     { bg: "bg-indigo-50", border: "border-indigo-200", text: "text-indigo-800", chip: "text-indigo-700/80" },
@@ -81,23 +81,23 @@ const STAT_COLORS: StatColor[] = [
     { bg: "bg-lime-50", border: "border-lime-200", text: "text-lime-800", chip: "text-lime-700/80" },
     { bg: "bg-fuchsia-50", border: "border-fuchsia-200", text: "text-fuchsia-800", chip: "text-fuchsia-700/80" },
 ];
-
+ 
 /** Attach a unique color to each stat (index-aligned) */
 type ColoredStat = StatItem & { color: StatColor };
 const COLORED_STATS: ColoredStat[] = PDF_STATS.map((s, i) => ({
     ...s,
     color: STAT_COLORS[i], // Assumes same length; we have 8 & 8
 }));
-
+ 
 type RefLike<T extends Element> = { current: T | null };
-
+ 
 function useInView<T extends Element>(ref: RefLike<T>, rootMargin = "0px") {
     const [inView, setInView] = React.useState(false);
-
+ 
     React.useEffect(() => {
         const node = ref.current;
         if (!node) return;
-
+ 
         const obs = new IntersectionObserver(
             (entries) => {
                 for (const e of entries) {
@@ -110,14 +110,14 @@ function useInView<T extends Element>(ref: RefLike<T>, rootMargin = "0px") {
             },
             { root: null, rootMargin, threshold: 0.25 }
         );
-
+ 
         obs.observe(node);
         return () => obs.disconnect();
     }, [ref, rootMargin]);
-
+ 
     return inView;
 }
-
+ 
 const CountUp: React.FC<{ value: number; duration?: number; formatter?: (n: number) => string }> = ({
     value,
     duration = 1400,
@@ -125,7 +125,7 @@ const CountUp: React.FC<{ value: number; duration?: number; formatter?: (n: numb
 }) => {
     const [val, setVal] = useState(0);
     const startRef = useRef<number | null>(null);
-
+ 
     useEffect(() => {
         let raf = 0;
         const step = (ts: number) => {
@@ -138,19 +138,19 @@ const CountUp: React.FC<{ value: number; duration?: number; formatter?: (n: numb
         raf = requestAnimationFrame(step);
         return () => cancelAnimationFrame(raf);
     }, [value, duration]);
-
+ 
     const display = formatter ? formatter(val) : val.toLocaleString();
     return <span>{display}</span>;
 };
-
+ 
 const StatsBar: React.FC = () => {
     const wrapRef = React.useRef<HTMLDivElement>(null);
     const visible = useInView(wrapRef, "80px");
-
+ 
     // Use the colored stats
     const primary = useMemo(() => COLORED_STATS.filter((s) => s.emphasize), []);
     const secondary = useMemo(() => COLORED_STATS.filter((s) => !s.emphasize), []);
-
+ 
     return (
         <div ref={wrapRef} className="mt-8">
             {/* Primary big cards */}
@@ -169,7 +169,7 @@ const StatsBar: React.FC = () => {
                     </div>
                 ))}
             </div>
-
+ 
             {/* Secondary compact pills */}
             <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {secondary.map((s) => (
@@ -190,23 +190,23 @@ const StatsBar: React.FC = () => {
         </div>
     );
 };
-
-
-
+ 
+ 
+ 
 /* ------------------------------------------------------------------- */
-
+ 
 const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Courses", href: "/courses" },
     { label: "Software Testing", href: "/courses/software-testing-course" },
     { label: "Manual Testing" },
 ];
-
+ 
 export default function HeroManualTesting() {
     const [isDownloadOpen, setIsDownloadOpen] = React.useState(false);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
-
+ 
     return (
         <section className="relative py-10 bg-white" aria-labelledby="manual-testing-hero">
             {/* Background (no color gradients) */}
@@ -215,7 +215,7 @@ export default function HeroManualTesting() {
                 <div className="absolute top-10 left-4 h-24 w-24 rounded-2xl bg-sky-50 border border-sky-100 shadow-sm" />
                 <div className="absolute bottom-12 right-6 h-28 w-28 rounded-2xl bg-emerald-50 border border-emerald-100 shadow-sm" />
             </div>
-
+ 
             <div className="relative overflow-hidden mx-auto max-w-full xl:max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Breadcrumbs for SEO & UX */}
                 <nav aria-label="Breadcrumb" className="mb-4 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
@@ -248,7 +248,7 @@ export default function HeroManualTesting() {
                         })}
                     </ol>
                 </nav>
-
+ 
                 <div className="grid items-start gap-10 lg:gap-16 lg:grid-cols-12 grid-cols-1">
                     {/* LEFT */}
                     <div className="lg:col-span-8">
@@ -256,7 +256,7 @@ export default function HeroManualTesting() {
                             <LuSparkles className="h-4 w-4 text-amber-500" />
                             <span>ISTQB Foundation Aligned • Job-Oriented</span>
                         </div>
-
+ 
                         <h1
                             id="manual-testing-hero"
                             className="mt-3 md:mt-0 text-2xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
@@ -264,18 +264,18 @@ export default function HeroManualTesting() {
                             <span className='text-ST'>Manual Testing Course</span> with 100% Placement –{" "}
                             <br className="hidden md:block" />Launch Your QA Career in 12 Weeks
                         </h1>
-
+ 
                         <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
                             Break into software quality assurance with Cinute Digital's comprehensive manual testing course—no coding background needed. Master test case design, defect tracking, <strong>ISTQB preparation</strong>, and real-world{" "}
                             <strong>QA workflows</strong> to land your first testing role in Mumbai, Pune, or across India.
                         </p>
-
+ 
                         {/* Lead Form For Mobile Screens and Tab Screens */}
                         {/* Lead Form For Mobile Screens */}
                         <div className="lg:hidden mt-8">
                             <LeadForm variant="elevated" source="Manual Testing Course Page - Hero Section (Mobile) - Get Started Now" />
                         </div>
-
+ 
                         {/* Trust Bar */}
                         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
                             <div className="flex items-center gap-1 text-slate-800">
@@ -293,36 +293,7 @@ export default function HeroManualTesting() {
                                 <span>5,000+ Alumni Placed</span>
                             </div>
                         </div>
-
-                        {/* CTAs */}
-                        {/* <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                            <button
-                                onClick={() => setIsPopupOpen(true)}
-                                className="group inline-flex items-center justify-center rounded-xl bg-indigo-600 px-3 py-4 text-base font-bold text-white shadow-md transition-transform hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
-                                aria-label="Enroll in Manual Testing Course"
-                            >
-                                Enroll Now
-                                <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-                            </button>
  
-                            <button
-                                onClick={() => setIsDownloadOpen(true)}
-                                className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-2 py-4 text-base font-semibold text-slate-900 shadow-sm transition hover:shadow-md hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
-                                aria-label="Download Manual Testing syllabus"
-                            >
-                                <Download className="mr-2 h-5 w-5 text-slate-700" />
-                                Download Syllabus (PDF)
-                            </button>
- 
-                            <button
-                                className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-sky-700 px-3 py-4 text-base font-semibold text-white shadow-sm transition hover:bg-sky-800 hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 sm:ml-1"
-                                aria-label="Book a free demo class"
-                            >
-                                <PlayCircle className="mr-2 h-5 w-5" />
-                                Free Demo Class
-                            </button>
-                        </div> */}
-
                         {/* CTAs */}
                         <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                             <button
@@ -333,7 +304,7 @@ export default function HeroManualTesting() {
                                 Enroll Now
                                 <LuArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </button>
-
+ 
                             <button
                                 onClick={() => setIsSyllabusModalOpen(true)}
                                 className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
@@ -342,18 +313,19 @@ export default function HeroManualTesting() {
                                 Download Syllabus
                                 <LuCloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </button>
-
+ 
                             <Link
                                 href="#curriculum"
+                                title="View Curriculum"
                                 className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
                                 aria-label="View full Manual testing curriculum"
                             >
                                 View Curriculum
                                 <LuArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </Link>
-
+ 
                         </div>
-
+ 
                         {/* Feature bullets */}
                         <ul className="mt-8 grid grid-cols-1 gap-3 text-slate-700 sm:grid-cols-2">
                             {[
@@ -368,7 +340,7 @@ export default function HeroManualTesting() {
                                 </li>
                             ))}
                         </ul>
-
+ 
                         {/* Company logos + Stats */}
                         <div className="mt-10">
                             <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Alumni work at</p>
@@ -410,18 +382,18 @@ export default function HeroManualTesting() {
                                     priority={true}
                                 />
                             </div>
-
+ 
                             {/* NEW: PDF Stats with animated counters */}
                             <StatsBar />
                         </div>
                     </div>
-
+ 
                     {/* RIGHT */}
                     <div className="relative lg:col-span-4 min-h-[520px] hidden lg:block">
                         <LeadForm variant="elevated" source="Manual Testing Course Page - Hero Section (Desktop) - Get Started Now" />
                     </div>
                 </div>
-
+ 
                 {/* Enroll Modal */}
                 <EnrollModal
                     isOpen={isPopupOpen}
@@ -429,18 +401,18 @@ export default function HeroManualTesting() {
                     courseName="Manual Testing"
                     source="Manual Testing Course Page - Hero Section - Enroll Now"
                 />
-
+ 
                 <Modal isOpen={isDownloadOpen} onClose={() => setIsDownloadOpen(false)} title="Download Manual Testing Syllabus">
                     <BrochureDownloadForm onClose={() => setIsDownloadOpen(false)} />
                 </Modal>
-
+ 
                 <SyllabusDownloadModal
                     isOpen={isSyllabusModalOpen}
                     onClose={() => setIsSyllabusModalOpen(false)}
                     courseName="Manual Testing"
                     source="Manual Testing Course Page - Hero Section - Download Syllabus"
                 />
-
+ 
                 {/* SEO helper text */}
                 <div className="mx-auto mt-10 max-w-4xl text-center">
                     <p className="text-sm leading-relaxed text-slate-600">
@@ -450,8 +422,8 @@ export default function HeroManualTesting() {
                     </p>
                 </div>
             </div>
-
-
+ 
+ 
         </section>
     );
 }

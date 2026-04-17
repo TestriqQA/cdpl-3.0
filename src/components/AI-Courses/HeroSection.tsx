@@ -64,7 +64,11 @@ const DesktopHeroContent: React.FC<{
                             <li key={i} className="flex items-center gap-2">
                                 {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
                                 {c.href ? (
-                                    <Link href={c.href} className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}>
+                                    <Link
+                                        href={c.href}
+                                        title={c.label}
+                                        className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
+                                    >
                                         {c.label}
                                     </Link>
                                 ) : (
@@ -293,7 +297,11 @@ export default function HeroSection(): React.JSX.Element {
                                     <li key={i} className="flex items-center gap-2">
                                         {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
                                         {c.href ? (
-                                            <Link href={c.href} className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}>
+                                            <Link
+                                                href={c.href}
+                                                title={c.label}
+                                                className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
+                                            >
                                                 {c.label}
                                             </Link>
                                         ) : (

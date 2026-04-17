@@ -318,7 +318,11 @@ const CareerCard = ({ path, index, onEnroll }: { path: CareerPath; index: number
                             <ArrowRight className="w-5 h-5" />
                         </motion.button>
 
-                        <Link href="/jobs/live-jobs" className="w-full text-gray-600 font-semibold py-3 rounded-xl border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300">
+                        <Link 
+                            href="/jobs/live-jobs" 
+                            title="View Live Job Openings and Opportunities"
+                            className="w-full text-gray-600 font-semibold py-3 rounded-xl border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-300"
+                        >
                             View Job Openings
                         </Link>
                     </div>

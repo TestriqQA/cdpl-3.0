@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 import EnrollModal from "@/components/EnrollModal";
 import dynamic from 'next/dynamic';
 import PhoneInput from 'react-phone-number-input';
+import CustomFlag from '../ui/CustomFlag';
 import { validatePhone, validateFullName as validateNameLib, validateEmail as validateEmailLib } from '@/lib/formValidation';
 
 // Dynamically import the desktop form to save bundle size on mobile
@@ -165,6 +166,7 @@ export default function HeroSection() {
                                         {c.href ? (
                                             <Link
                                                 href={c.href}
+                                                title={c.label}
                                                 className={`hover:text-indigo-700 transition-colors ${isLast ? "font-semibold text-slate-900" : ""}`}
                                             >
                                                 {c.label}
@@ -271,6 +273,7 @@ export default function HeroSection() {
                                                     international
                                                     limitMaxLength={true}
                                                     defaultCountry="IN"
+                                                    flagComponent={CustomFlag}
                                                     value={formData.phone}
                                                     onChange={handlePhoneChange}
                                                     onBlur={() => validatePhoneNumber(formData.phone)}
@@ -331,7 +334,8 @@ export default function HeroSection() {
                                 </button>
 
                                 <Link
-                                    href="contact-us"
+                                    href="/contact-us"
+                                    title="Book a Free Demo Class"
                                     className="group inline-flex items-center justify-center rounded-2xl border-2 border-emerald-200 bg-gradient-to-br from-emerald-50 to-teal-50 px-7 py-3.5 text-base font-semibold text-emerald-700 shadow-md shadow-emerald-200/50 transition-all hover:border-emerald-300 hover:shadow-lg hover:from-emerald-100 hover:to-teal-100"
                                     aria-label="Free Demo"
                                 >

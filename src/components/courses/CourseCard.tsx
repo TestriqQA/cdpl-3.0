@@ -240,6 +240,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, index, nowMs }) => {
                 <div className="pt-4 space-y-3 mt-auto">
                     <Link
                         href={course.href || course.link || '#'}
+                        title={`View ${course.title} Course Details`}
                         className={`flex items-center justify-center gap-2 w-full ${variant.button} text-white font-semibold py-3 rounded-xl hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300`}
                     >
                         <span>View Course Details</span>

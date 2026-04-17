@@ -64,6 +64,7 @@ export default function CtaSection() {
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="tel:+917888383788"
+              title="Call Admissions for Java Programming Program"
               className="inline-flex w-full items-center justify-center rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300 sm:w-auto"
               aria-label="Call admissions at +91 788-83-83-788"
             >
@@ -75,6 +76,7 @@ export default function CtaSection() {
 
             <Link
               href="mailto:contact@cinutedigital.com"
+              title="Email us for course details and syllabus"
               className="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-base font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-purple-200 sm:w-auto"
               aria-label="Visit Cinute Digital website"
               target="_blank"

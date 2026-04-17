@@ -58,6 +58,7 @@ export function ContactHeroSection() {
                   {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
                   <a
                     href={c.href}
+                    title={c.label}
                     className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
                   >
                     {c.label}
@@ -136,6 +137,7 @@ export function ContactHeroSection() {
                   {/* Call Now */}
                   <Link
                     href="tel:+918488988984"
+                    title="Call CDPL Admissions"
                     aria-label="Call Now"
                     className="group inline-flex w-full items-center gap-4 lg:gap-3 xl:gap-4 rounded-2xl border border-slate-200 bg-white/90 px-4 py-3 shadow-sm transition hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 overflow-hidden"
                   >
@@ -153,6 +155,7 @@ export function ContactHeroSection() {
                   {/* Email Us */}
                   <Link
                     href="mailto:contact@cinutedigital.com"
+                    title="Send Email to CDPL"
                     aria-label="Email Us"
                     className="group inline-flex w-full items-center gap-4 lg:gap-3 xl:gap-4 rounded-2xl border border-slate-200 bg-white/90 px-4 py-3 shadow-sm transition hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 overflow-hidden"
                   >
@@ -171,6 +174,7 @@ export function ContactHeroSection() {
                   <Link
                     href="https://calendar.app.google/tvh9dsXZsX9BujRR8"
                     target="_blank"
+                    title="Schedule a Meeting with CDPL Counselor"
                     aria-label="Schedule a Meeting"
                     className="group inline-flex w-full items-center gap-4 lg:gap-3 xl:gap-4 rounded-2xl border border-slate-200 bg-white/90 px-4 py-3 shadow-sm transition hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400 overflow-hidden"
                   >

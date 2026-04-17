@@ -18,11 +18,11 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import IconCard from '@/components/ui/IconCard';
-// import LeadForm from '../CourseLeadForm';
 import dynamic from 'next/dynamic';
 import LeadForm from '../forms/ApiCourseLeadForm'
 import Link from 'next/link';
 import { useState } from 'react';
+
 const EnrollModal = dynamic(() => import('../EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
 const SyllabusDownloadModal = dynamic(() => import('../SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
 
@@ -35,10 +35,6 @@ const SectionLoader = ({ label }: { label: string }) => {
     );
 };
 
-/** -----------------------------
- *  Feature cards (unchanged data)
- *  -----------------------------
- */
 const features = [
     { icon: <Code />, title: 'Hands-On API Labs', description: 'Postman, REST, GraphQL & auth flows', bg: 'bg-cyan-50', iconColor: 'text-cyan-700', border: 'border-cyan-200' },
     { icon: <Users />, title: 'Mentor-Led Cohort', description: '13+ yrs industry veterans', bg: 'bg-violet-50', iconColor: 'text-violet-700', border: 'border-violet-200' },
@@ -79,6 +75,7 @@ export default function HeroSection() {
                                     {c.href ? (
                                         <Link
                                             href={c.href}
+                                            title={c.label}
                                             className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
                                         >
                                             {c.label}
@@ -96,7 +93,6 @@ export default function HeroSection() {
                     </ol>
                 </nav>
                 <div className="grid items-start gap-10 md:grid-cols-12">
-                    {/* Left: copy */}
                     {/* Left: copy */}
                     <div className="md:col-span-7 lg:col-span-8">
                         {/* badges - STATIC LCP */}
@@ -125,7 +121,6 @@ export default function HeroSection() {
                             Master <span className='text-ST'>API Testing</span> & <span className='text-ST'>Automation</span> with Postman, REST & GraphQL
                         </h1>
 
-
                         {/* FORM — mobile : shown right below H1 */}
                         <div className="mt-6 block md:hidden">
                             <LeadForm variant="elevated" source="API Testing Course Page - Hero Section" />
@@ -146,7 +141,6 @@ export default function HeroSection() {
                             </p>
 
                             {/* CTAs */}
-
                             <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                                 <button
                                     onClick={() => setIsEnrollModalOpen(true)}
@@ -177,9 +171,7 @@ export default function HeroSection() {
                                     View Curriculum
                                     <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                                 </button>
-
                             </div>
-
 
                             {/* Quick highlights */}
                             <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
@@ -235,7 +227,6 @@ export default function HeroSection() {
                         className="hidden md:col-span-5 lg:col-span-4 md:block"
                     >
                         <LeadForm variant="elevated" source="API Testing Course Page - Hero Section" />
-
                     </motion.aside>
                 </div>
             </div>

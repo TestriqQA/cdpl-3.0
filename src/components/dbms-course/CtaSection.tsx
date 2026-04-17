@@ -47,6 +47,7 @@ export default function CtaSection() {
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link
               href="tel:+917888383788"
+              title="Call us to enroll in DBMS Course"
               aria-label="Call Think and Do Institute at +91 788-83-83-788"
               className="group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-7 py-3 text-sm sm:text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
             >
@@ -56,6 +57,7 @@ export default function CtaSection() {
 
             <Link
               href="mailto:contact@cinutedigital.com"
+              title="Email us for course details"
               aria-label="Email Think and Do Institute at contact@cinutedigital.com"
               className="inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-7 py-3 text-sm sm:text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
             >

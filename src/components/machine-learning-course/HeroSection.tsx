@@ -44,6 +44,7 @@ export default function HeroSection() {
                                     {c.href ? (
                                         <Link
                                             href={c.href}
+                                            title={c.label}
                                             className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
                                         >
                                             {c.label}
@@ -119,6 +120,7 @@ export default function HeroSection() {
 
                             <Link
                                 href="#curriculum"
+                                title="View the core modules and curriculum of the ML & DS program"
                                 className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
                                 aria-label="View full ML & DS curriculum"
                             >

@@ -143,7 +143,8 @@ export default function ProjectsSection() {
                 {/* card footer actions */}
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                   <Link
-                    href="contact-us"
+                    href="/contact-us"
+                    title="Contact us to learn more about projects"
                     className={[
                       'inline-flex items-center justify-center gap-2 rounded-xl border bg-white px-4 py-2 text-sm font-semibold shadow-sm transition hover:bg-slate-50 focus:outline-none',
                       p.border,

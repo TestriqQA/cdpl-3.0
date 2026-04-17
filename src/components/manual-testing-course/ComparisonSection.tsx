@@ -239,6 +239,7 @@ export default function ComparisonSection({
                 </button>
                 <Link
                   href="#curriculum"
+                  title="View Curriculum"
                   className="inline-flex justify-center rounded-xl border border-indigo-200 px-5 py-3 text-indigo-700 font-semibold hover:bg-white focus:outline-none focus:ring-4 focus:ring-indigo-100"
                 >
                   View Curriculum

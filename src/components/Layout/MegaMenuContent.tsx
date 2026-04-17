@@ -42,6 +42,7 @@ export default function MegaMenuContent({ closeMega }: MegaMenuContentProps) {
                             <Link
                                 href={href}
                                 key={category.id}
+                                title={category.name}
                                 onMouseEnter={() => {
                                     setSelectedCategory(category.id);
                                     setHoveredCategory(category.id);
@@ -80,7 +81,7 @@ export default function MegaMenuContent({ closeMega }: MegaMenuContentProps) {
                         )
                     })}
                 </div>
-                <Link href="/courses" className="mt-4 flex items-center text-brand hover:text-brand font-medium text-sm group" onClick={closeMega}>
+                <Link href="/courses" title="View All Courses" className="mt-4 flex items-center text-brand hover:text-brand font-medium text-sm group" onClick={closeMega}>
                     <span className="nav-link-bold" data-text="View All Courses">View All Courses</span>
                     <ChevronRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -114,6 +115,7 @@ export default function MegaMenuContent({ closeMega }: MegaMenuContentProps) {
                             <Link
                                 key={index}
                                 href={href}
+                                title={course.name}
                                 onMouseEnter={() => setHoveredCourse(course.name)}
                                 className={itemClasses}
                                 onClick={closeMega}

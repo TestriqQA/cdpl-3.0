@@ -13,24 +13,15 @@ import React, { useEffect, useState } from 'react';
  * version with the additional 'title' attribute.
  */
 const CustomFlag = ({ country, countryName }: any): any => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  // Return a fragment during SSR to avoid attribute mismatch
-  if (!isMounted || !country) {
-    return <div />;
-  }
+  if (!country) return null;
 
   // Render the country flag using the same CDN source as react-phone-number-input
   return (
     <img
       className="PhoneInputCountryIconImg"
       src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country}.svg`}
-      alt={countryName || country}
-      title={countryName || country} // This is the fix for the SEO issue
+      alt={`${countryName || country} Flag`}
+      title={`${countryName || country} Flag`} // Explicit title to resolve SEO issue
       loading="lazy"
     />
   );

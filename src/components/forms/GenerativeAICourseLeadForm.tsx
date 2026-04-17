@@ -6,6 +6,7 @@ import { User, Mail, CheckCircle2, TrendingUp } from "lucide-react";
 
 // Import react-phone-number-input for professional phone input
 import PhoneInput from 'react-phone-number-input';
+import CustomFlag from '../ui/CustomFlag';
 
 import { validateFullName as validateFullNameLib, validatePhone } from '@/lib/formValidation';
 
@@ -285,6 +286,7 @@ export default function GenerativeAICourseLeadForm({
                                 international
                                 limitMaxLength={true}
                                 defaultCountry="IN"
+                                flagComponent={CustomFlag}
                                 value={formData.phone}
                                 onChange={handlePhoneChange}
                                 onBlur={() => validatePhoneNumber(formData.phone)}
@@ -318,7 +320,7 @@ export default function GenerativeAICourseLeadForm({
                     </button>
 
                     <p className="text-xs text-slate-500">
-                        By submitting, you agree to our <a href="https://cinutedigital.com/privacy-policy">Privacy Policy</a>.
+                        By submitting, you agree to our <a href="https://cinutedigital.com/privacy-policy" title="Privacy Policy">Privacy Policy</a>.
                     </p>
 
                 </div>

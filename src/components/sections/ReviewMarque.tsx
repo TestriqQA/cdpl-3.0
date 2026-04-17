@@ -58,7 +58,14 @@ function ReviewCard({ review }: { review: Review }) {
           <div className="flex items-center gap-3">
             <div className="relative w-10 h-10 rounded-full overflow-hidden ring-1 ring-slate-100">
               {review.reviewerInfo?.photoUrl ? (
-                <img src={review.reviewerInfo.photoUrl} alt="" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                <img 
+                  src={review.reviewerInfo.photoUrl} 
+                  alt={review.name || "Reviewer"} 
+                  title={review.name || "Reviewer"} 
+                  className="w-full h-full object-cover" 
+                  loading="lazy" 
+                  decoding="async" 
+                />
               ) : (
                 <div className="w-full h-full bg-slate-50 flex items-center justify-center text-slate-400 font-bold">
                   {review.name.charAt(0)}
@@ -70,7 +77,7 @@ function ReviewCard({ review }: { review: Review }) {
               <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">{dateStr}</div>
             </div>
           </div>
-          <Image src={GOOGLE_LOGO} alt="Google" width={40} height={40} className="w-10 h-10 opacity-30" />
+          <Image src={GOOGLE_LOGO} alt="Google Review Logo" title="Google Reviews" width={40} height={40} className="w-10 h-10 opacity-30" />
         </div>
 
         {/* Stars - single container with SVG background or simplified icons */}

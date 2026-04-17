@@ -287,6 +287,7 @@ function CurriculumCard({ mod }: { mod: Module }) {
                             <div className="pt-2 border-t border-gray-200">
                                 <Link
                                     href={mod.internalLink.href}
+                                    title={mod.internalLink.label}
                                     className="inline-flex items-center text-sm font-medium text-indigo-700 hover:text-indigo-600 transition"
                                 >
                                     {mod.internalLink.label} →

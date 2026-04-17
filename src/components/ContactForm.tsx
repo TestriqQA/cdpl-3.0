@@ -9,6 +9,7 @@ import dynamic from 'next/dynamic';
 // Import react-phone-number-input for professional phone input
 // Use dynamic import to ensure it's only loaded on the client side
 const PhoneInput = dynamic(() => import('react-phone-number-input'), { ssr: false });
+import CustomFlag from './ui/CustomFlag';
 
 import {
   validateFullName as validateFullNameLib,
@@ -242,6 +243,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             international
             limitMaxLength={true}
             defaultCountry="IN"
+            flagComponent={CustomFlag}
             value={formData.phone}
             onChange={handlePhoneChange}
             onBlur={() => validatePhoneNumber(formData.phone)}

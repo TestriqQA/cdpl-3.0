@@ -46,6 +46,7 @@ export interface Course {
     level: string;
     popular: boolean;
     link: string;
+    titleAttribute?: string;
     icon: keyof typeof iconMap;
     features: string[];
     /** Optional per-course offer end timestamp (ISO). If omitted, defaults to +48h from mount */
@@ -65,6 +66,7 @@ export const COURSES: Course[] = [
         level: 'Beginner',
         popular: true,
         link: '/courses/bi-courses/data-analytics',
+        titleAttribute: 'Advanced Data Analytics - Hero Program Overview',
         icon: 'BarChart3',
         features: ['Advanced Analytics Hero', 'Data Analytics Mastery', 'Predictive Analytics Pro'],
         syllabusLink: 'https://www.cinutedigital.com/downloads/advanced-data-analytics-hero-program.pdf',
@@ -80,6 +82,7 @@ export const COURSES: Course[] = [
         level: 'Beginner',
         popular: true,
         link: '/courses/bi-courses/data-analytics-python',
+        titleAttribute: 'Advanced Data Analytics with Python Libraries Overview',
         icon: 'BarChart3',
         features: ['Python Data Analytics', 'Advanced Analytics Libraries', 'Pandas NumPy Mastery'],
         syllabusLink: 'https://www.cinutedigital.com/downloads/advanced-data-analytics-with-python-libraries.pdf',
@@ -95,6 +98,7 @@ export const COURSES: Course[] = [
         level: 'Beginner',
         popular: true,
         link: '/courses/bi-courses/data-analytics-and-visualization',
+        titleAttribute: 'Advanced Excel for Data Analytics & Visualization Overview',
         icon: 'BarChart3',
         features: ['Excel Data Analytics', 'Data Visualization Excel', 'Excel Analytics Mastery'],
         syllabusLink: 'https://www.cinutedigital.com/downloads/advanced-excel-for-data-analytics-&-visualization.pdf',
@@ -110,6 +114,7 @@ export const COURSES: Course[] = [
         level: 'Beginner',
         popular: true,
         link: '/courses/bi-courses/data-analytics-with-tableau',
+        titleAttribute: 'Data Analytics & Visualization with Tableau Overview',
         icon: 'BarChart3',
         features: ['Tableau Data Analytics', 'Visualization Mastery Tableau', 'Interactive Dashboards Tableau'],
         syllabusLink: 'https://www.cinutedigital.com/downloads/data-analytics-&-visualization-with-tableau.pdf',
@@ -125,6 +130,7 @@ export const COURSES: Course[] = [
         level: 'Beginner',
         popular: true,
         link: '/courses/bi-courses/power-bi-course',
+        titleAttribute: 'Data Analytics & Visualization with Power BI Overview',
         icon: 'BarChart3',
         features: ['Power BI Analytics', 'Data Visualization Power BI', 'Power BI Mastery'],
         syllabusLink: 'https://www.cinutedigital.com/downloads/data-analytics-&-visualization-with-power-bi.pdf',
@@ -140,6 +146,7 @@ export const COURSES: Course[] = [
         level: 'Beginner',
         popular: true,
         link: '/courses/bi-courses/masters-in-data-engineering',
+        titleAttribute: 'Data Analytics With BI And Big Data Engineering Master Program Overview',
         icon: 'BarChart3',
         features: ['Power BI/Tableau', 'Big Data Concepts', 'Data Warehousing'],
         syllabusLink: 'https://www.cinutedigital.com/downloads/data-analytics-with-bi-and-big-data-engineering-master-program.pdf',

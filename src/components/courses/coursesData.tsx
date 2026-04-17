@@ -17,7 +17,7 @@ export const coursesData: Category[] = [
             {
                 id: 'st-1',
                 title: 'Manual Software Testing',
-                href: 'manual-testing-course',
+                href: '/courses/software-testing-course/manual-testing-course',
                 category: 'Software Testing',
                 description: 'Learn to facilitate Scrum teams and drive Agile projects effectively.',
                 duration: '50 Hours',
@@ -35,7 +35,7 @@ export const coursesData: Category[] = [
             {
                 id: 'st-2',
                 title: 'Advanced Automation Testing',
-                href: 'automation-testing-course',
+                href: '/courses/software-testing-course/automation-testing-course',
                 category: 'Software Testing',
                 description: 'Drive product vision and delivery in SAFe settings.',
                 duration: '85 Hours',
@@ -53,7 +53,7 @@ export const coursesData: Category[] = [
             {
                 id: 'st-3',
                 title: 'API Testing using POSTMAN and RestAPIs',
-                href: 'api-testing',
+                href: '/courses/software-testing-course/api-testing',
                 category: 'Software Testing',
                 description: 'Master API testing using Postman, Rest Assured, and Groovy for robust web services.',
                 duration: '15 Hours',
@@ -71,7 +71,7 @@ export const coursesData: Category[] = [
             {
                 id: 'st-4',
                 title: 'ETL Testing Course',
-                href: 'etl-testing',
+                href: '/courses/software-testing-course/etl-testing',
                 category: 'Software Testing',
                 description: 'Master the art of leading enterprise-wide Agile transformations using the Scaled Agile Framework (SAFe).',
                 duration: '100 Hours',
@@ -89,7 +89,7 @@ export const coursesData: Category[] = [
             {
                 id: 'st-5',
                 title: 'Database Management System using MySQL',
-                href: 'dbms-course',
+                href: '/courses/software-testing-course/dbms-course',
                 category: 'Software Testing',
                 description: 'Master SQL queries, database design, and management with MySQL. Learn to build scalable and efficient database solutions.',
                 duration: '40 Hours',
@@ -107,7 +107,7 @@ export const coursesData: Category[] = [
             {
                 id: 'st-6',
                 title: 'Advanced Software Testing',
-                href: 'advance-software-testing',
+                href: '/courses/software-testing-course/advance-software-testing',
                 category: 'Software Testing',
                 description: 'Go beyond the basics—build strategies, manage risk, and measure quality with actionable metrics.',
                 duration: '95 Hours',
@@ -125,7 +125,7 @@ export const coursesData: Category[] = [
             {
                 id: 'st-7',
                 title: 'Master Program in Java Programming',
-                href: 'java-course',
+                href: '/courses/software-testing-course/java-course',
                 category: 'Software Testing',
                 description: 'Become industry-ready with Core Java, OOP, Collections, JDBC, Spring Boot, REST APIs, unit testing, and deployment. Build portfolio projects and earn a QR-verified certificate.',
                 duration: '30 Hours',
@@ -148,7 +148,7 @@ export const coursesData: Category[] = [
             {
                 id: 'st-8',
                 title: 'Advanced Manual & Automation Testing — Master Program',
-                href: 'advance-manual-automation-testing',
+                href: '/courses/software-testing-course/advance-manual-automation-testing',
                 category: 'Software Testing',
                 description: 'End-to-end mastery: advanced test strategy and leadership combined with enterprise-grade automation and CI/CD.',
                 duration: '180 Hours',
@@ -172,7 +172,7 @@ export const coursesData: Category[] = [
                 id: 'st-9',
                 title: 'Python Programming',
                 category: 'Software Testing',
-                href: 'python-course',
+                href: '/courses/software-testing-course/python-course',
                 description: 'Master Python Programming from absolute basics w/ advanced concepts! Dive deep into Python syntax, OOP, automation scripting, and real-world problem-solving.',
                 duration: '30 Hours',
                 students: '2,268+',
@@ -202,7 +202,7 @@ export const coursesData: Category[] = [
             {
                 id: 'ds-1',
                 title: 'Machine Learning and Data Science with Python - Hero Program',
-                href: 'machine-learning-course',
+                href: '/courses/ds-ml-courses/machine-learning-course',
                 category: 'Data Science',
                 description: 'Master Machine Learning & Data Science with Python in our Hero Program! Hands-on projects, expert mentorship & job-ready skills.',
                 duration: '95 Hours',
@@ -220,7 +220,7 @@ export const coursesData: Category[] = [
             {
                 id: 'ds-2',
                 title: 'Deep Learning, NLP and Generative AI',
-                href: 'generative-ai-course',
+                href: '/courses/ds-ml-courses/generative-ai-course',
                 category: 'Data Science',
                 description: 'Dive into Deep Learning, NLP & Generative AI! Master neural networks, text processing & AI creation with hands-on projects.',
                 duration: '55 Hours',
@@ -238,7 +238,7 @@ export const coursesData: Category[] = [
             {
                 id: 'ds-3',
                 title: 'Advanced Data Science and Machine Learning Masterclass',
-                href: 'data-science-course',
+                href: '/courses/ds-ml-courses/data-science-course',
                 category: 'Data Science',
                 description: 'Elevate your career with Advanced Data Science & Machine Learning Masterclass! Deep-dive into algorithms, big data & AI.',
                 duration: '200 Hours',
@@ -256,7 +256,7 @@ export const coursesData: Category[] = [
             {
                 id: 'ds-4',
                 title: 'Comprehensive Data Science and AI - Master Program',
-                href: 'ai-course',
+                href: '/courses/ds-ml-courses/ai-course',
                 category: 'Data Science',
                 description: 'Unlock expertise in Comprehensive Data Science & AI Master Program! From ML to deep learning, big data & ethics.',
                 duration: '255 Hours',
@@ -274,7 +274,7 @@ export const coursesData: Category[] = [
             {
                 id: 'ds-5',
                 title: 'Machine Learning Algorithms using python Programming',
-                href: 'machine-learning-using-python',
+                href: '/courses/ds-ml-courses/machine-learning-using-python',
                 category: 'Data Science',
                 description: 'Master Machine Learning Algorithms using Python Programming! Implement regression, classification, clustering & more with scikit-learn.',
                 duration: '45 Hours',
@@ -292,7 +292,7 @@ export const coursesData: Category[] = [
             {
                 id: 'ds-6',
                 title: 'Machine Learning and Data Visualization using R Programming',
-                href: 'data-visualization-in-r-programming',
+                href: '/courses/ds-ml-courses/data-visualization-in-r-programming',
                 category: 'Data Science',
                 description: 'Master Machine Learning & Data Visualization using R Programming! Explore ggplot2, tidyverse, ML models & interactive dashboards.',
                 duration: '20 Hours',
@@ -311,14 +311,14 @@ export const coursesData: Category[] = [
                 id: 'ds-7',
                 title: 'Python Programming',
                 category: 'Data Science',
-                href: 'python-course',
+                href: '/courses/ds-ml-courses/python-course',
                 description: 'Master Python Programming from absolute basics w/ advanced concepts! Dive deep into Python syntax, OOP, automation scripting, and real-world problem-solving.',
                 duration: '30 Hours',
                 students: '2,268+',
                 rating: 4.8,
                 level: 'Beginner',
                 popular: true,
-                link: '/courses/software-testing-course/python-course',
+                link: '/courses/ds-ml-courses/python-course',
                 icon: 'TrendingUp',
                 features: ['Python Basics Guide', 'Advanced Python Coding', 'Learn Python Fast', 'Real-World Python Projects & Automation Mastery'],
                 skills: ['Python', 'Scripting', 'Automation'],
@@ -341,7 +341,7 @@ export const coursesData: Category[] = [
             {
                 id: 'bi-1',
                 title: 'Advanced Data Analytics - Hero Program',
-                href: 'data-analytics',
+                href: '/courses/bi-courses/data-analytics',
                 category: 'Business Intelligence',
                 description: 'Elevate to pro with Advanced Data Analytics Hero Program! Master SQL, Python, Tableau, predictive modeling & big data.',
                 duration: '110 Hours',
@@ -359,7 +359,7 @@ export const coursesData: Category[] = [
             {
                 id: 'bi-2',
                 title: 'Advanced Data Analytics with Python Libraries',
-                href: 'data-analytics-python',
+                href: '/courses/bi-courses/data-analytics-python',
                 category: 'Business Intelligence',
                 description: 'Master Advanced Data Analytics with Python Libraries! Harness Pandas, NumPy, Matplotlib, Seaborn & Scikit-learn for insights & predictions.',
                 duration: '20 Hours',
@@ -377,7 +377,7 @@ export const coursesData: Category[] = [
             {
                 id: 'bi-3',
                 title: 'Advanced Excel for Data Analytics & Visualization',
-                href: 'data-analytics-and-visualization',
+                href: '/courses/bi-courses/data-analytics-and-visualization',
                 category: 'Business Intelligence',
                 description: 'Master Excel for Data Analytics & Visualization! Unlock PivotTables, Power Query, charts, dashboards & advanced formulas.',
                 duration: '20 Hours',
@@ -395,7 +395,7 @@ export const coursesData: Category[] = [
             {
                 id: 'bi-4',
                 title: 'Data Analytics & Visualization with Tableau',
-                href: 'data-analytics-with-tableau',
+                href: '/courses/bi-courses/data-analytics-with-tableau',
                 category: 'Business Intelligence',
                 description: 'Master Data Analytics & Visualization with Tableau! Build interactive dashboards, explore data with drag-and-drop, uncover insights & tell stories.',
                 duration: '20 Hours',
@@ -413,7 +413,7 @@ export const coursesData: Category[] = [
             {
                 id: 'bi-5',
                 title: 'Data Analytics & Visualization with Power BI',
-                href: 'power-bi-course',
+                href: '/courses/bi-courses/power-bi-course',
                 category: 'Business Intelligence',
                 description: 'Master Data Analytics & Visualization with Power BI! Create stunning dashboards, DAX formulas, data modeling & insights.',
                 duration: '20 Hours',
@@ -431,7 +431,7 @@ export const coursesData: Category[] = [
             {
                 id: 'bi-6',
                 title: 'Data Analytics With BI And Big Data Engineering Master Program',
-                href: 'masters-in-data-engineering',
+                href: '/courses/bi-courses/masters-in-data-engineering',
                 category: 'Business Intelligence',
                 description: 'Master Data Analytics with BI & Big Data Engineering Master Program! Harness Power BI, Tableau, Spark, Hadoop & ETL pipelines.',
                 duration: '155 Hours',
@@ -462,7 +462,7 @@ export const coursesData: Category[] = [
             {
                 id: 'ai-1',
                 title: 'Prompt Engineering with Gen AI',
-                href: 'prompt-engineering-course',
+                href: '/courses/artificial-intelligence-courses/prompt-engineering-course',
                 category: 'Artificial Intelligence',
                 description: 'Become an AI Expert in Mumbai. Master the fundamentals of AI, deep learning, NLP, and intelligent automation systems.',
                 duration: '20 Hours',
@@ -494,7 +494,7 @@ export const coursesData: Category[] = [
             {
                 id: 'dm-1',
                 title: 'AI-Driven Digital Marketing & Analytics',
-                href: 'digital-marketing-course',
+                href: '/courses/digital-marketing-courses/digital-marketing-course',
                 category: 'Digital Marketing',
                 description: 'End-to-end mastery: full-funnel strategies, analytics-driven decisions, and campaign leadership.',
                 duration: '80 Hours',
@@ -512,7 +512,7 @@ export const coursesData: Category[] = [
             {
                 id: 'dm-2',
                 title: 'Digital Marketing and AI (For Business Owners)',
-                href: 'ai-in-digital-marketing',
+                href: '/courses/digital-marketing-courses/ai-in-digital-marketing',
                 category: 'Digital Marketing',
                 description: 'Leverage AI to grow your business faster and cheaper – no agency needed. Perfect for founders, CEOs & solopreneurs.',
                 duration: '50 Hours',
@@ -530,7 +530,7 @@ export const coursesData: Category[] = [
             {
                 id: 'dm-3',
                 title: 'Digital Marketing With AI Bootcamp',
-                href: 'ai-bootcamp',
+                href: '/courses/digital-marketing-courses/ai-bootcamp',
                 category: 'Digital Marketing',
                 description: 'Become a future-ready digital marketer: master AI tools, prompt engineering for ads & content, and run hyper-personalized campaigns.',
                 duration: '30 Hours',
@@ -548,7 +548,7 @@ export const coursesData: Category[] = [
             {
                 id: "dm-4",
                 title: "Digital Marketing and Analytics - Master Program",
-                href: "digital-marketing-course",
+                href: "/courses/digital-marketing-courses/digital-marketing-course",
                 description:
                     "End-to-end training in SEO, Google & Meta Ads, social media strategy, GA4, and Looker Studio—learn to plan, execute, and measure ROI with real projects.",
                 duration: "20 weeks",

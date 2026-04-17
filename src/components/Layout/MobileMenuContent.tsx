@@ -44,6 +44,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
         <div className="px-4 pt-2 pb-6 space-y-1">
             <Link
                 href="/"
+                title="Home"
                 className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/" ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 onClick={closeMenu}
             >
@@ -90,6 +91,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                                                     <Link
                                                         key={idx}
                                                         href={href}
+                                                        title={course.name}
                                                         className={`block px-4 py-2 text-sm rounded-lg transition-colors active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === href ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                                                         onClick={closeMenu}
                                                     >
@@ -111,6 +113,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                         })}
                         <Link
                             href="/courses"
+                            title="View All Courses"
                             className={`block px-4 py-2 text-sm font-medium active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/courses" ? "text-brand" : "text-brand hover:text-brand"}`}
                             onClick={closeMenu}
                         >
@@ -123,6 +126,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
             {/* Mobile Services Link */}
             <Link
                 href="/services"
+                title="Services"
                 className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/services") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 onClick={closeMenu}
             >
@@ -146,6 +150,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                     <div id="mobile-jobs" className="pl-4 space-y-1">
                         <Link
                             href="/jobs/live-jobs"
+                            title="Live Jobs"
                             className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/live-jobs" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                             onClick={closeMenu}
                         >
@@ -153,6 +158,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                         </Link>
                         <Link
                             href="/jobs/placements"
+                            title="Placements"
                             className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/placements" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                             onClick={closeMenu}
                         >
@@ -160,6 +166,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                         </Link>
                         <Link
                             href="/jobs/careers"
+                            title="Careers"
                             className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/careers" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                             onClick={closeMenu}
                         >
@@ -167,6 +174,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                         </Link>
                         <Link
                             href="/jobs/job-openings"
+                            title="Job Openings"
                             className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/job-openings" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                             onClick={closeMenu}
                         >
@@ -193,6 +201,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                     <div id="mobile-about" className="pl-4 space-y-1">
                         <Link
                             href="/about-us"
+                            title="About CDPL"
                             className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/about-us" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                             onClick={closeMenu}
                         >
@@ -200,6 +209,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                         </Link>
                         <Link
                             href="/our-team"
+                            title="Our Team"
                             className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/our-team" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
                             onClick={closeMenu}
                         >
@@ -211,6 +221,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
 
             <Link
                 href="/events"
+                title="Events"
                 className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/events") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 onClick={closeMenu}
             >
@@ -218,6 +229,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
             </Link>
             <Link
                 href="/mentors"
+                title="Mentors"
                 className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/mentors") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 onClick={closeMenu}
             >
@@ -225,6 +237,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
             </Link>
             <Link
                 href="/blog"
+                title="Blog"
                 className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/blog") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 onClick={closeMenu}
             >
@@ -232,6 +245,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
             </Link>
             <Link
                 href="/contact-us"
+                title="Contact Us"
                 className={`block px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/contact-us") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                 onClick={closeMenu}
             >

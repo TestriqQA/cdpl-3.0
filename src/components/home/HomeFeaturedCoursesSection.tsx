@@ -710,6 +710,7 @@ const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index
         <div className="pt-4 space-y-3 mt-auto">
           <Link
             href={course.link}
+            title={course.title}
             className={`flex items-center justify-center gap-2 w-full ${variant.button} text-white font-semibold py-3 rounded-xl hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300`}
           >
             <span>View Course Details</span>
@@ -820,6 +821,7 @@ export default function HomeFeaturedCoursesSection() {
         >
           <Link
             href="/courses"
+            title="View All Courses"
             className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-gray-50 text-gray-800 font-bold rounded-xl shadow-md border-2 border-gray-200 hover:border-brand transition-all duration-300"
           >
             <span>View All Courses</span>

@@ -121,7 +121,7 @@ export default function FaqSection() {
 
                 {/* tiny helper line */}
                 <p className="mt-8 text-center text-sm text-slate-500">
-                    Can’t find your answer? <Link href="contact-us" className="underline decoration-slate-300 hover:decoration-slate-400">Contact us</Link> and we’ll help.
+                    Can't find your answer? <Link href="/contact-us" title="Contact us for support" className="underline decoration-slate-300 hover:decoration-slate-400">Contact us</Link> and we'll help.
                 </p>
             </div>
 

@@ -257,6 +257,7 @@ const CourseCard = ({ course, index }: { course: Course; index: number }) => {
         <div className="pt-4 mt-auto">
           <Link
             href={course.link}
+            title={course.title}
             className={`flex items-center justify-center gap-2 w-full ${variant.button} text-white font-semibold py-3 rounded-xl hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300`}
           >
             <span>View Course Details</span>

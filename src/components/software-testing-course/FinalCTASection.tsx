@@ -8,6 +8,7 @@ import Link from "next/link";
 import { EnrollFormData, EnrollPopup } from "../EnrollForms";
 import BrochureDownloadModal from '@/components/home/BrochureDownloadModal';
 import PhoneInput from 'react-phone-number-input';
+import CustomFlag from '@/components/ui/CustomFlag';
 
 import { validatePhone } from '@/lib/formValidation';
 
@@ -211,6 +212,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                 <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Phone</p>
                                 <Link
                                     href={`tel:${content.contactInfo.phone}`}
+                                    title={`Call us at ${content.contactInfo.phone}`}
                                     className="mt-1 block text-sm font-semibold text-slate-900 transition group-hover:text-brand"
                                 >
                                     {content.contactInfo.phone}
@@ -225,6 +227,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                 <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Email</p>
                                 <Link
                                     href={`mailto:${content.contactInfo.email}`}
+                                    title={`Email us at ${content.contactInfo.email}`}
                                     className="mt-1 block text-sm lg:text-xs xl:text-sm font-semibold text-slate-900 transition group-hover:text-brand"
                                 >
                                     {content.contactInfo.email}
@@ -316,6 +319,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                                 international
                                                 limitMaxLength={true}
                                                 countryCallingCodeEditable={false}
+                                                flagComponent={CustomFlag}
                                                 value={form.phone}
                                                 onChange={(e) => setForm((f) => ({ ...f, phone: e || '' }))}
                                                 className="w-full [&>input]:w-full [&>input]:border-none [&>input]:outline-none [&>input]:py-3 [&>input]:px-3 [&>input]:rounded-lg [&>input]:bg-white backdrop-blur-sm overflow-hidden"
