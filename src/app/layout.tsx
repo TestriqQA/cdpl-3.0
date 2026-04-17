@@ -15,7 +15,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import 'react-phone-number-input/style.css';
-import dynamic from "next/dynamic";
+import SeoHead from '@/components/SeoHead';
+import dynamic from 'next/dynamic';
 import {
   generateOrganizationSchema,
   generateWebsiteSchema,
@@ -76,6 +77,7 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" data-scroll-behavior="smooth">
       <head>
+        <SeoHead />
         {/* ========================================
             STRUCTURED DATA (Schema.org)
             ======================================== */}

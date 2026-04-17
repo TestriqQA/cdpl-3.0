@@ -4,11 +4,17 @@ import Link from 'next/link';
 import IstqbRegistrationContainer from '@/components/istqb-registration/IstqbRegistrationContainer';
 import { generateIstqbRegistrationPageAllSchemas } from '@/lib/schema-generators';
 import JsonLd from '@/components/JsonLd';
+import { generateStaticPageMetadata } from '@/lib/metadata-generator';
 
-export const metadata = {
-    title: 'ISTQB Registration | Testriq',
-    description: 'Register for ISTQB Certification with Testriq. Global recognition, lifetime validity, and expert guidance.',
-};
+// ⚠️  SEO FIX (April 2026): Migrated from raw metadata to centralized generator.
+// Adds canonical URL, OG image, Twitter card, robots directives, and keywords.
+// Fixed branding from "Testriq" → "CDPL - Cinute Digital".
+export const metadata = generateStaticPageMetadata({
+    title: { absolute: 'ISTQB Certification Registration | CDPL - Cinute Digital' },
+    description: 'Register for ISTQB Certification with CDPL. Global recognition, lifetime validity, and expert guidance for your software testing career.',
+    url: '/istqb-registration',
+    keywords: ['ISTQB registration', 'ISTQB certification', 'software testing certification', 'ISTQB exam', 'ISTQB foundation level'],
+});
 
 export default function IstqbRegistrationPage() {
     const istqbSchemas = generateIstqbRegistrationPageAllSchemas({

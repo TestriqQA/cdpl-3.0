@@ -361,6 +361,8 @@ interface CourseSchemaInput {
   instructor?: string;
   startDate?: string;
   endDate?: string;
+  reviews?: ReviewItem[];
+  localInsight?: string;
 }
 
 /**
@@ -403,7 +405,9 @@ export function generateCourseSchema(course: CourseSchemaInput): WithContext<Rec
     '@type': 'Course',
     '@id': `${fullUrl}#course`,
     name: course.name,
-    description: courseDescription, // Description is required and comes from input
+    description: course.localInsight 
+      ? `${courseDescription} Local Insight: ${course.localInsight}`
+      : courseDescription,
     url: fullUrl,
 
     // Provider (Required)
@@ -426,9 +430,19 @@ export function generateCourseSchema(course: CourseSchemaInput): WithContext<Rec
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: String(course.rating || STATISTICS.rating),
-      reviewCount: String(STATISTICS.reviewCount),
+      reviewCount: String((course.reviews?.length || 0) > 0 ? course.reviews?.length : STATISTICS.reviewCount),
       bestRating: '5',
     },
+
+    // Reviews (Rich Results)
+    ...(course.reviews && course.reviews.length > 0 && {
+      review: course.reviews.map(r => ({
+        '@type': 'Review',
+        author: { '@type': 'Person', name: r.author },
+        reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5 },
+        reviewBody: r.text,
+      }))
+    }),
 
     // Optional fields
     inLanguage: 'en-IN',

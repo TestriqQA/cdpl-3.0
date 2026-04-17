@@ -59,10 +59,10 @@ export async function generateStaticParams() {
     }));
 }
 
-// ============================================================================
-// REVALIDATION (ISR) - Update cache every 60 seconds
-// ============================================================================
-export const revalidate = 60;
+// ⚠️  SEO FIX (April 2026): Increased from 60s to 3600s (1 hour).
+// 60-second revalidation constantly invalidates the static cache, causing
+// Googlebot to receive inconsistent HTML across different crawls.
+export const revalidate = 3600;
 
 // ============================================================================
 // DYNAMIC METADATA GENERATION - SEO Optimized
@@ -85,10 +85,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         slug: post.slug,
         author: post.author?.name || 'CDPL Team',
         publishedDate: new Date(post.publishDate).toISOString(),
-        modifiedDate: new Date(post.publishDate).toISOString(), // Sanity tracks _updatedAt but using publishDate for now
+        // Use _updatedAt if available, otherwise fall back to publishDate
+        modifiedDate: post._updatedAt
+            ? new Date(post._updatedAt).toISOString()
+            : new Date(post.publishDate).toISOString(),
         category: post.category?.name,
         tags: post.tags,
-        // image: post.featuredImage || '/blog/og-image.jpg',
         image: post.featuredImage || '/og-images/blog-og.webp',
     });
 }
@@ -129,7 +131,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         image: post.featuredImage || '',
         author: author ? author.name : 'CDPL Team',
         publishedDate: new Date(post.publishDate).toISOString(),
-        modifiedDate: new Date(post.publishDate).toISOString(),
+        // Use _updatedAt if available for accurate modifiedDate in structured data
+        modifiedDate: post._updatedAt
+            ? new Date(post._updatedAt).toISOString()
+            : new Date(post.publishDate).toISOString(),
         keywords: post.tags,
         wordCount: estimatedWordCount,
         category: category ? category.name : undefined,

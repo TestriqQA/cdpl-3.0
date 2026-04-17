@@ -84,6 +84,15 @@ const mockData: WhyChooseSectionProps["data"] = {
 
 const WhyChooseSection: React.FC<WhyChooseSectionProps> = ({ data = mockData }) => {
   const { whyChooseContent } = data;
+  const castData = data as any;
+  
+  // ⚠️ SEO FIX (April 2026): Unique localized content to differentiate 765+ pages.
+  const testimonialsToDisplay = castData.localizedTestimonials 
+    ? castData.localizedTestimonials[0] // Take the primary localized testimonial
+    : whyChooseContent?.testimonial;
+    
+  const marketInsight = castData.localJobMarketInsight;
+  const salaryInsight = castData.localSalaryInsight;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -145,6 +154,39 @@ const WhyChooseSection: React.FC<WhyChooseSectionProps> = ({ data = mockData }) 
 
         {/* Marquee Review */}
         <ReviewsMarquee />
+
+        {/* Local Industry Pulse — SEO Enhancement */}
+        {(marketInsight || salaryInsight) && (
+          <motion.div
+            className="mb-12 sm:mb-16 lg:mb-20 p-6 sm:p-10 bg-gradient-to-br from-emerald-600 to-teal-700 rounded-3xl text-white shadow-xl shadow-emerald-200/50 relative overflow-hidden"
+            variants={itemVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+             <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center shrink-0">
+                   <MapPin className="w-10 h-10 text-white" />
+                </div>
+                <div>
+                   <h3 className="text-2xl font-bold mb-3 flex items-center gap-2">
+                      Local Industry Pulse: {(data as any).location}
+                      <Sparkles className="w-5 h-5 text-emerald-300" />
+                   </h3>
+                   <div className="space-y-4 text-emerald-50 text-base sm:text-lg leading-relaxed">
+                      {marketInsight && <p>{marketInsight}</p>}
+                      {salaryInsight && (
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-lg border border-white/20">
+                           <Award className="w-5 h-5" />
+                           <span className="font-semibold">{salaryInsight}</span>
+                        </div>
+                      )}
+                   </div>
+                </div>
+             </div>
+          </motion.div>
+        )}
 
         {/* Reasons Grid */}
         <motion.div
