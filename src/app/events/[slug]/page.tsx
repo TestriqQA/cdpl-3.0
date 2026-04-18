@@ -61,7 +61,7 @@ export default async function EventDetailPage({ params }: PageProps) {
       sessionHighlights: event.sessionHighlights,
       keyTakeaways: event.keyTakeaways,
     },
-    pastEvents.map(e => ({ title: e.title, slug: e.slug, purpose: e.purpose }))
+    pastEvents.map(e => ({ title: e.title, slug: e.slug, purpose: e.purpose, date: e.date, location: e.location }))
   );
 
   const breadcrumbSchema = generateBreadcrumbSchema([
