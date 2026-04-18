@@ -65,6 +65,7 @@ export const COURSES: Course[] = [
         level: 'Master',
         popular: true,
         link: '/courses/artificial-intelligence-courses/prompt-engineering-course',
+        titleAttribute: 'Prompt Engineering with Generative AI Course',
         icon: 'Brain',
         features: ['AI Foundations & Generative AI', 'Large Language Models & Multimodal AI', 'Prompt Engineering Techniques', 'Responsible AI, Governance & Capstone'],
         syllabusLink: 'https://www.cinutedigital.com/downloads/prompt-engineering-with-gen-ai.pdf',

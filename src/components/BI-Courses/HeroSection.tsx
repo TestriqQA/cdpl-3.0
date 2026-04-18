@@ -64,6 +64,7 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
                                 {c.href ? (
                                     <Link
                                         href={c.href}
+                                        title={c.label}
                                         className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
                                     >
                                         {c.label}
@@ -286,6 +287,7 @@ export default function HeroSection(): React.JSX.Element {
                                         {c.href ? (
                                             <Link
                                                 href={c.href}
+                                                title={c.label}
                                                 className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
                                             >
                                                 {c.label}

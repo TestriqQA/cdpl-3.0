@@ -1,7 +1,10 @@
 import { groq } from 'next-sanity'
 
+// ⚠️ SEO FIX (April 2026): Added _updatedAt to all post queries so
+// modifiedTime in metadata and sitemap reflects actual Sanity CMS update time.
 export const POSTS_QUERY = groq`*[_type == "post" && defined(slug.current)] | order(publishDate desc) {
   _id,
+  _updatedAt,
   title,
   "slug": slug.current,
   publishDate,
@@ -14,6 +17,7 @@ export const POSTS_QUERY = groq`*[_type == "post" && defined(slug.current)] | or
 
 export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0] {
   _id,
+  _updatedAt,
   title,
   "slug": slug.current,
   publishDate,

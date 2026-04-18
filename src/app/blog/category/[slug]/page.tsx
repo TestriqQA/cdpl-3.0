@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         },
         description: `${category.description || ''} Explore ${posts.length}+ in-depth articles, tutorials, and best practices on ${category.name.toLowerCase()}. Learn from CDPL industry experts and stay updated with the latest trends.`,
 
-        // Keywords - Category-specific
+        // Keywords - Category-specific (array format required by Next.js Metadata API)
         keywords: [
             category.name,
             `${category.name} tutorials`,
@@ -75,7 +75,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             'tech blog',
             'programming tutorials',
             'software development',
-        ].join(', '),
+        ],
 
         // Author Information
         authors: [{ name: 'CDPL Tech Experts Team', url: 'https://www.cinutedigital.com/our-team' }],

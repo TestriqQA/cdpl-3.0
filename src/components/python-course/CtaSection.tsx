@@ -50,6 +50,7 @@ export default function CtaSection() {
         <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
           <Link
             href="tel:+917888383788"
+            title="Call Admissions for Python Programming Program"
             className="inline-flex items-center justify-center rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
             aria-label="Call CDPL admissions"
           >
@@ -57,6 +58,7 @@ export default function CtaSection() {
           </Link>
           <Link
             href="mailto:contact@cinutedigital.com"
+            title="Email us for course details and syllabus"
             className="inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
             aria-label="Email CDPL"
           >

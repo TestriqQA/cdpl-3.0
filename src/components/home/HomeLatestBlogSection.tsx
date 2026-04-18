@@ -25,7 +25,7 @@ const BlogCard: React.FC<{ post: SanityPost; index: number }> = ({ post, index }
       whileHover={{ y: -10 }}
       className="group"
     >
-      <Link href={`/blog/${post.slug}`}>
+      <Link href={`/blog/${post.slug}`} title={post.title}>
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
           {/* Featured Image */}
           <div className="relative h-48 bg-gradient-to-br from-indigo-300 to-indigo-600 overflow-hidden">
@@ -150,6 +150,7 @@ export default function HomeLatestBlogSection({ posts = [] }: HomeLatestBlogSect
         >
           <Link
             href="/blog" // Link to the main blog page
+            title="View All Articles"
             className="inline-flex items-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
           >
             <span>View All Articles</span>

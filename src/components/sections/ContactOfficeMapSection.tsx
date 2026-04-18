@@ -91,12 +91,12 @@ export function ContactOfficeMapSection() {
                     <div className="font-bold text-lg text-slate-900">
                       Head Office (<span className="text-brand">CDPL</span>)
                     </div>
-                    <Link href="https://www.google.com/maps/place/Cinute+Digital+Pvt.+Ltd.+A+Premier+Software+Training+Institute+(CDPL)/@19.29342,72.8685471,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b1af2b2c5fed:0x7104f80b9fec8b9d!8m2!3d19.293415!4d72.871122!16s%2Fg%2F11t5q_mt87?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D" className="text-base text-slate-800 hover:text-brand transition">{active.headOffice}</Link>
+                    <Link href="https://www.google.com/maps/place/Cinute+Digital+Pvt.+Ltd.+A+Premier+Software+Training+Institute+(CDPL)/@19.29342,72.8685471,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b1af2b2c5fed:0x7104f80b9fec8b9d!8m2!3d19.293415!4d72.871122!16s%2Fg%2F11t5q_mt87?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D" title="View Head Office on Google Maps" className="text-base text-slate-800 hover:text-brand transition">{active.headOffice}</Link>
                   </div>
 
                   <div className="mt-4">
                     <div className="font-bold text-lg text-slate-900 mb-1">Study Center <span className="text-red-700">MeghMehul Classes</span> (Vasai)</div>
-                    <Link href="https://maps.app.goo.gl/SACPou6JCdRZh5j98" className="text-base text-slate-800 hover:text-brand transition">{active.studyCenter}</Link>
+                    <Link href="https://maps.app.goo.gl/SACPou6JCdRZh5j98" title="View Vasai Study Center on Google Maps" className="text-base text-slate-800 hover:text-brand transition">{active.studyCenter}</Link>
                   </div>
                 </div>
 
@@ -108,6 +108,7 @@ export function ContactOfficeMapSection() {
                 <div className="grid sm:grid-cols-2 gap-3">
                   <Link
                     href={active.phone}
+                    title={`Call ${active.label} Office`}
                     className="rounded-xl border border-purple-200 bg-purple-50 p-3 text-sm shadow-sm hover:shadow-md transition"
                     aria-label={`Call ${active.label} office`}
                   >
@@ -117,6 +118,7 @@ export function ContactOfficeMapSection() {
 
                   <Link
                     href={active.email}
+                    title={`Email ${active.label} Office`}
                     className="rounded-xl border border-indigo-200 bg-indigo-50 p-3 text-sm shadow-sm hover:shadow-md transition"
                     aria-label={`Email ${active.label} office`}
                   >
@@ -131,6 +133,7 @@ export function ContactOfficeMapSection() {
                       href={active.whatsapp}
                       target="_blank"
                       rel="noopener noreferrer"
+                      title="Chat with CDPL on WhatsApp"
                       className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm shadow-sm hover:shadow-md transition"
                       aria-label={`WhatsApp ${active.label} office`}
                     >
@@ -143,6 +146,7 @@ export function ContactOfficeMapSection() {
                     href={active.directions}
                     target="_blank"
                     rel="noopener noreferrer"
+                    title={`Get Directions to ${active.label} Office`}
                     className="rounded-xl border border-sky-200 bg-sky-50 p-3 text-sm shadow-sm hover:shadow-md transition"
                     aria-label={`Get directions to ${active.label}`}
                   >

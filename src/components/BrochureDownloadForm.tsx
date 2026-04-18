@@ -222,6 +222,7 @@ const BrochureDownloadForm: React.FC<BrochureDownloadFormProps> = ({ onClose }) 
             international
             limitMaxLength={true}
             defaultCountry="IN"
+            flagComponent={CustomFlag}
             value={formData.phone}
             onChange={handlePhoneChange}
             onBlur={() => validatePhoneNumber(formData.phone)}

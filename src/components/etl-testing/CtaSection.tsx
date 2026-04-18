@@ -47,6 +47,7 @@ export default function CtaSection() {
           <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center">
             <Link
               href="tel:+917888383788"
+              title="Call us for ETL Testing course admissions"
               className="group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-7 py-3 text-sm sm:text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
               aria-label="Call admissions"
             >
@@ -56,6 +57,7 @@ export default function CtaSection() {
 
             <Link
               href="mailto:contact@cinutedigital.com"
+              title="Email us for course details and fees"
               className="inline-flex items-center justify-center rounded-xl border-2 border-emerald-600 bg-white px-7 py-3 text-sm sm:text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
               aria-label="Email admissions"
             >
@@ -65,6 +67,7 @@ export default function CtaSection() {
 
             <Link
               href="https://calendar.app.google/tvh9dsXZsX9BujRR8"
+              title="Schedule a free demo session via Google Calendar"
               target="_blank"
               className="inline-flex items-center justify-center rounded-xl border-2 border-amber-600 bg-white px-7 py-3 text-sm sm:text-base font-semibold text-amber-800 shadow-sm transition hover:bg-amber-50 focus:outline-none focus:ring-4 focus:ring-amber-200"
               aria-label="Book a free demo session"

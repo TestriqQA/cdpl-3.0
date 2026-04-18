@@ -207,6 +207,7 @@ export default function StatsSection() {
         <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-4">
           <Link
             href="#java-curriculum"
+            title="Explore the detailed Java syllabus and modules"
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
           >
             Explore Java Curriculum

@@ -172,7 +172,7 @@ export default async function CoursePage({ params, searchParams }: PageProps): P
   // 2. Full 8-Point Schema Consolidation
   const learningOutcomes = data.courseOverviewContent.modules.flatMap(m => m.topics).slice(0, 10);
 
-  const faqs = data.faqsContent.faqs.map(f => ({
+  const faqs = (data.localizedFaqs || data.faqsContent.faqs).map(f => ({
     question: f.question,
     answer: f.answer
   }));
@@ -188,7 +188,13 @@ export default async function CoursePage({ params, searchParams }: PageProps): P
     duration: parseDuration(data.courseDetails.duration),
     price: parsePrice(data.courseDetails.price),
     rating: 4.8,
-    reviewCount: 425, // Standardized review count
+    reviewCount: (data.localizedTestimonials?.length || 0) > 0 ? data.localizedTestimonials?.length : 425,
+    reviews: data.localizedTestimonials?.map(t => ({
+      author: t.author,
+      rating: t.rating,
+      text: t.text
+    })),
+    localInsight: data.localJobMarketInsight,
   }, faqs, city);
 
   return (

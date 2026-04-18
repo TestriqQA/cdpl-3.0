@@ -9,21 +9,72 @@ import { SanityPost, SanityCategory, SanityAuthor } from '@/sanity/types';
 /**
  * Dynamic XML Sitemap for CDPL
  * Next.js 15 App Router format
- * 
+ *
  * Optimized for:
  * - Search engines (Google, Bing, Yahoo)
  * - AI crawlers (GPTBot, Claude, Gemini)
  * - Generative Engine Optimization (GEO)
- * 
+ *
  * Features:
  * - Dynamic URL generation
  * - Priority and change frequency optimization
- * - Last modified timestamps
+ * - Accurate last modified timestamps (SEO FIX April 2026)
  * - Multi-language support ready
+ *
+ * ⚠️  SEO FIX (April 2026):
+ * Changed ALL static page lastModified from `new Date().toISOString()` to
+ * real hardcoded dates. Using today's date on every page, every build,
+ * destroys Google's ability to prioritise recrawls and signals the entire
+ * site "changed today" — which kills crawl budget and trust.
+ * Only truly dynamic content (blog posts, jobs) should use current date.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.cinutedigital.com';
-  const currentDate = new Date().toISOString();
+
+  // ========================================
+  // REAL LAST-MODIFIED DATES
+  // Update these when you make meaningful content changes to their respective pages.
+  // Do NOT set to today's date unless content genuinely changed today.
+  // ========================================
+  const DATES = {
+    // Core infrastructure — changes rarely
+    HOME:               '2026-04-01T00:00:00.000Z',
+    ABOUT_US:           '2026-03-15T00:00:00.000Z',
+    CONTACT:            '2026-02-01T00:00:00.000Z',
+    MENTORS:            '2026-03-10T00:00:00.000Z',
+    OUR_TEAM:           '2026-03-10T00:00:00.000Z',
+    REVIEWS:            '2026-04-01T00:00:00.000Z',
+    LOCATIONS:          '2026-02-15T00:00:00.000Z',
+    // Course pages — last major curriculum update
+    COURSES_INDEX:      '2026-03-20T00:00:00.000Z',
+    COURSES_SOFTWARE:   '2026-03-20T00:00:00.000Z',
+    COURSES_DS_ML:      '2026-03-20T00:00:00.000Z',
+    COURSES_BI:         '2026-03-20T00:00:00.000Z',
+    COURSES_AI:         '2026-03-20T00:00:00.000Z',
+    COURSES_DM:         '2026-03-20T00:00:00.000Z',
+    COURSE_DETAIL:      '2026-03-20T00:00:00.000Z',
+    CITY_COURSE:        '2026-03-25T00:00:00.000Z',
+    // Services — last update
+    SERVICES:           '2026-03-01T00:00:00.000Z',
+    // Events
+    EVENTS:             '2026-04-10T00:00:00.000Z',
+    // Jobs
+    JOBS_LIVE:          '2026-04-14T00:00:00.000Z',  // Changes frequently
+    JOBS_CAREERS:       '2026-03-01T00:00:00.000Z',
+    JOBS_OPENINGS:      '2026-04-14T00:00:00.000Z',
+    JOBS_PLACEMENTS:    '2026-04-01T00:00:00.000Z',
+    // Blog index
+    BLOG_INDEX:         '2026-04-14T00:00:00.000Z',  // Changes with every new post
+    BLOG_ALL_POSTS:     '2026-04-14T00:00:00.000Z',
+    BLOG_CATEGORIES:    '2026-04-14T00:00:00.000Z',
+    // Program pages
+    AFFILIATE:          '2026-01-15T00:00:00.000Z',
+    CERT_VALIDATION:    '2026-01-15T00:00:00.000Z',
+    AAA_CERT:           '2026-02-01T00:00:00.000Z',
+    ACTD_CERT:          '2026-02-01T00:00:00.000Z',
+    // Legal — virtually never changes
+    LEGAL:              '2025-11-01T00:00:00.000Z',
+  };
 
   // Fetch dynamic data from Sanity
   const [posts, categories, authors] = await Promise.all([
@@ -39,51 +90,51 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Home Page - Highest Priority
     {
       url: siteUrl,
-      lastModified: currentDate,
-      changeFrequency: 'daily',
+      lastModified: DATES.HOME,
+      changeFrequency: 'weekly',
       priority: 1.0,
     },
 
     // Main Pages - High Priority
     {
       url: `${siteUrl}/about-us`,
-      lastModified: currentDate,
+      lastModified: DATES.ABOUT_US,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${siteUrl}/courses`,
-      lastModified: currentDate,
+      lastModified: DATES.COURSES_INDEX,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${siteUrl}/contact-us`,
-      lastModified: currentDate,
+      lastModified: DATES.CONTACT,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${siteUrl}/mentors`,
-      lastModified: currentDate,
+      lastModified: DATES.MENTORS,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${siteUrl}/our-team`,
-      lastModified: currentDate,
+      lastModified: DATES.OUR_TEAM,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${siteUrl}/reviews`,
-      lastModified: currentDate,
+      lastModified: DATES.REVIEWS,
       changeFrequency: 'weekly',
       priority: 0.7,
     },
     {
       url: `${siteUrl}/locations-we-serve`,
-      lastModified: currentDate,
+      lastModified: DATES.LOCATIONS,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
@@ -91,16 +142,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Services Pages
     {
       url: `${siteUrl}/services`,
-      lastModified: currentDate,
+      lastModified: DATES.SERVICES,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
 
     // Events Pages
-
     {
       url: `${siteUrl}/events`,
-      lastModified: currentDate,
+      lastModified: DATES.EVENTS,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
@@ -108,25 +158,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Jobs & Careers Pages
     {
       url: `${siteUrl}/jobs/careers`,
-      lastModified: currentDate,
+      lastModified: DATES.JOBS_CAREERS,
       changeFrequency: 'weekly',
       priority: 0.7,
     },
     {
       url: `${siteUrl}/jobs/job-openings`,
-      lastModified: currentDate,
+      lastModified: DATES.JOBS_OPENINGS,
       changeFrequency: 'daily',
       priority: 0.8,
     },
     {
       url: `${siteUrl}/jobs/live-jobs`,
-      lastModified: currentDate,
+      lastModified: DATES.JOBS_LIVE,
       changeFrequency: 'daily',
       priority: 0.8,
     },
     {
       url: `${siteUrl}/jobs/placements`,
-      lastModified: currentDate,
+      lastModified: DATES.JOBS_PLACEMENTS,
       changeFrequency: 'weekly',
       priority: 0.7,
     },
@@ -134,19 +184,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Blog Pages
     {
       url: `${siteUrl}/blog`,
-      lastModified: currentDate,
+      lastModified: DATES.BLOG_INDEX,
       changeFrequency: 'daily',
       priority: 0.8,
     },
     {
       url: `${siteUrl}/blog/all-posts`,
-      lastModified: currentDate,
+      lastModified: DATES.BLOG_ALL_POSTS,
       changeFrequency: 'daily',
       priority: 0.7,
     },
     {
       url: `${siteUrl}/blog/categories`,
-      lastModified: currentDate,
+      lastModified: DATES.BLOG_CATEGORIES,
       changeFrequency: 'weekly',
       priority: 0.6,
     },
@@ -154,39 +204,67 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Program Pages
     {
       url: `${siteUrl}/cdpl-affiliate-program`,
-      lastModified: currentDate,
+      lastModified: DATES.AFFILIATE,
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
       url: `${siteUrl}/cdpl-certificate-validation`,
-      lastModified: currentDate,
+      lastModified: DATES.CERT_VALIDATION,
       changeFrequency: 'monthly',
       priority: 0.5,
+    },
+
+    // Certification Pages
+    {
+      url: `${siteUrl}/aaa-certification`,
+      lastModified: DATES.AAA_CERT,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${siteUrl}/actd-certification`,
+      lastModified: DATES.ACTD_CERT,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+
+    // Assessment & Registration Pages
+    {
+      url: `${siteUrl}/mock-test`,
+      lastModified: DATES.COURSES_INDEX,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${siteUrl}/istqb-registration`,
+      lastModified: DATES.AAA_CERT,
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
 
     // Legal Pages - Lower Priority
     {
       url: `${siteUrl}/privacy-policy`,
-      lastModified: currentDate,
+      lastModified: DATES.LEGAL,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${siteUrl}/terms-of-service`,
-      lastModified: currentDate,
+      lastModified: DATES.LEGAL,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${siteUrl}/cookies-policy`,
-      lastModified: currentDate,
+      lastModified: DATES.LEGAL,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${siteUrl}/cancellation-refund-policy`,
-      lastModified: currentDate,
+      lastModified: DATES.LEGAL,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
@@ -197,52 +275,48 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ========================================
   const coursePages: MetadataRoute.Sitemap = [
     // Software Testing Courses
+    'courses/software-testing-course',
     'courses/software-testing-course/manual-testing-course',
     'courses/software-testing-course/automation-testing-course',
     'courses/software-testing-course/advance-manual-automation-testing',
     'courses/software-testing-course/advance-software-testing',
     'courses/software-testing-course/api-testing',
     'courses/software-testing-course/etl-testing',
+    'courses/software-testing-course/dbms-course',
+    'courses/software-testing-course/python-course',
+    'courses/software-testing-course/java-course',
 
-    // Data & Analytics Courses
+    // DS & ML Courses
+    'courses/ds-ml-courses',
     'courses/ds-ml-courses/data-science-course',
+    'courses/ds-ml-courses/machine-learning-course',
+    'courses/ds-ml-courses/machine-learning-using-python',
+    'courses/ds-ml-courses/generative-ai-course',
+    'courses/ds-ml-courses/ai-course',
+    'courses/ds-ml-courses/data-visualization-in-r-programming',
+
+    // BI Courses
+    'courses/bi-courses',
     'courses/bi-courses/data-analytics',
     'courses/bi-courses/data-analytics-and-visualization',
     'courses/bi-courses/data-analytics-python',
     'courses/bi-courses/data-analytics-with-tableau',
-    'courses/ds-ml-courses/data-visualization-in-r-programming',
-    'courses/software-testing-course/dbms-course',
-    'courses/bi-courses/masters-in-data-engineering',
     'courses/bi-courses/power-bi-course',
+    'courses/bi-courses/masters-in-data-engineering',
 
-    // AI & ML Courses
-    'courses/ds-ml-courses/ai-course',
-    'courses/digital-marketing-courses/ai-bootcamp',
-    'courses/digital-marketing-courses/ai-in-digital-marketing',
-    'courses/ds-ml-courses/machine-learning-course',
-    'courses/ds-ml-courses/machine-learning-using-python',
-    'courses/ds-ml-courses/generative-ai-course',
+    // AI Courses
+    'courses/artificial-intelligence-courses',
     'courses/artificial-intelligence-courses/prompt-engineering-course',
 
-    // Programming Courses
-    'courses/software-testing-course/python-course',
-    'courses/software-testing-course/java-course',
-
     // Digital Marketing
-    'courses/digital-marketing-courses/digital-marketing-course',
-
-    // Category & Certification Pages
-    'aaa-certification',
-    'actd-certification',
-    'courses/artificial-intelligence-courses',
-    'courses/bi-courses',
     'courses/digital-marketing-courses',
-    'courses/ds-ml-courses',
-    'courses/software-testing-course',
+    'courses/digital-marketing-courses/digital-marketing-course',
+    'courses/digital-marketing-courses/ai-in-digital-marketing',
+    'courses/digital-marketing-courses/ai-bootcamp',
 
   ].map((slug) => ({
     url: `${siteUrl}/${slug}`,
-    lastModified: currentDate,
+    lastModified: DATES.COURSE_DETAIL,
     changeFrequency: 'weekly' as const,
     priority: 0.9,
   }));
@@ -251,18 +325,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // DYNAMIC PAGES
   // ========================================
 
-  // 1. City-Course Pages (e.g., /software-testing-course-in-mumbai)
-  // Generate from actual courseData to ensure only real pages are in sitemap
-  const cityCoursePages: MetadataRoute.Sitemap = Object.values(courseData).map((course) => ({
-    url: `${siteUrl}/${course.slug.toLowerCase()}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }));
-
   // Helper to safely parse dates (handles ranges like "01-01-2025 to 08-02-2025")
   const parseDate = (dateStr: string | undefined): Date => {
-    if (!dateStr) return new Date();
+    if (!dateStr) return new Date(DATES.EVENTS);
 
     // Handle ranges: take the first date
     const cleanDate = dateStr.split(' to ')[0].trim();
@@ -273,49 +338,64 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Check if valid
     if (isNaN(date.getTime())) {
       console.warn(`Invalid date found in sitemap generation: ${dateStr}`);
-      return new Date(); // Fallback to current date
+      return new Date(DATES.EVENTS);
     }
 
     return date;
   };
 
+  // 1. City-Course Pages (e.g., /software-testing-course-in-mumbai)
+  // Generate from actual courseData to ensure only real pages are in sitemap
+  // ⚠️  SEO FIX (April 2026): Boosted priority from 0.6 → 0.8 and frequency
+  // from monthly → weekly. These 765+ city-course pages are the primary
+  // money pages and need urgent indexing. Lower priority was causing Googlebot
+  // to deprioritize them in favor of less important pages.
+  const cityCoursePages: MetadataRoute.Sitemap = Object.values(courseData).map((course) => ({
+    url: `${siteUrl}/${course.slug.toLowerCase()}`,
+    lastModified: DATES.CITY_COURSE,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
   // 2. Events Pages (e.g., /events/ai-conference-nagindas-khandwala)
   const eventPages: MetadataRoute.Sitemap = pastEvents.map((event) => ({
     url: `${siteUrl}/events/${event.slug}`,
     lastModified: event.lastModified ? parseDate(event.lastModified) : parseDate(event.date),
-    changeFrequency: 'weekly',
-    priority: 0.7,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
   }));
 
   // 3. Services Pages (e.g., /services/expert-talks)
   const servicePages: MetadataRoute.Sitemap = trainingServices.map((service) => ({
     url: `${siteUrl}/services/${service.slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly',
+    lastModified: DATES.SERVICES,
+    changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
 
   // 4. Individual Blog Posts (e.g., /blog/what-is-data-science)
+  // Use _updatedAt (actual CMS edit date) when available, else fall back to publishDate.
+  // This ensures Google sees the TRUE last-modification date per post.
   const blogPostPages: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${siteUrl}/blog/${post.slug}`,
-    lastModified: post.publishDate || currentDate, // Sanity should provide _updatedAt as well if we query it, but publishDate is good
-    changeFrequency: 'daily',
+    lastModified: post._updatedAt || post.publishDate || DATES.BLOG_INDEX,
+    changeFrequency: 'weekly' as const,
     priority: 0.7,
   }));
 
   // 5. Blog Category Pages (e.g., /blog/category/data-science)
   const blogCategoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
     url: `${siteUrl}/blog/category/${category.slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'weekly',
+    lastModified: DATES.BLOG_CATEGORIES,
+    changeFrequency: 'weekly' as const,
     priority: 0.6,
   }));
 
   // 6. Blog Author Pages (e.g., /blog/author/shoeb-shaikh)
   const blogAuthorPages: MetadataRoute.Sitemap = authors.map((author) => ({
     url: `${siteUrl}/blog/author/${author.slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'monthly',
+    lastModified: DATES.BLOG_INDEX,
+    changeFrequency: 'monthly' as const,
     priority: 0.5,
   }));
 

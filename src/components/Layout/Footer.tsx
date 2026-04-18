@@ -46,10 +46,11 @@ function XLogo(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+const FooterLink = ({ href, children, title }: { href: string; children: React.ReactNode; title?: string }) => {
   return (
     <Link
       href={href}
+      title={title || (typeof children === 'string' ? children : undefined)}
       className="hover:text-brand hover:translate-x-2 active:textColor-orange-500 active:text-orange-500 focus-visible:text-orange-500 active:translate-x-2 active:transition-none focus-visible:transition-none transition-all duration-300 ease-in-out text-sm outline-none text-gray-300 inline-block py-2 px-3"
     >
       {children}
@@ -58,10 +59,11 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
 };
 
 // Institute links without translate effect
-const InstituteLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+const InstituteLink = ({ href, children, title }: { href: string; children: React.ReactNode; title?: string }) => {
   return (
     <Link
       href={href}
+      title={title || (typeof children === 'string' ? children : undefined)}
       className="hover:text-brand active:text-orange-500 focus-visible:text-orange-500 transition-colors duration-300 ease-in-out text-sm outline-none text-gray-300 inline-block py-2 px-3"
     >
       {children}
@@ -398,23 +400,23 @@ const Footer = () => {
               <h2 className="text-lg font-semibold text-brand">Follow Us On</h2>
               <ul className="space-y-2">
                 <li className='flex items-center gap-5'>
-                  <Link href="https://www.facebook.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
+                  <Link href="https://www.facebook.com/cinutedigital" title="Facebook" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
                     <Facebook />
                   </Link>
 
-                  <Link href="https://x.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="X">
+                  <Link href="https://x.com/cinutedigital" title="X (Twitter)" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="X">
                     <XLogo />
                   </Link>
 
-                  <Link href="https://www.youtube.com/@cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="YouTube">
+                  <Link href="https://www.youtube.com/@cinutedigital" title="YouTube" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="YouTube">
                     <Youtube />
                   </Link>
 
-                  <Link href="https://www.linkedin.com/company/cinute-digital/" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="LinkedIn">
+                  <Link href="https://www.linkedin.com/company/cinute-digital/" title="LinkedIn" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="LinkedIn">
                     <Linkedin />
                   </Link>
 
-                  <Link href="https://www.instagram.com/cinutedigital/" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Instagram">
+                  <Link href="https://www.instagram.com/cinutedigital/" title="Instagram" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Instagram">
                     <Instagram />
                   </Link>
                 </li>
@@ -426,23 +428,23 @@ const Footer = () => {
               <h2 className="text-lg font-semibold text-brand">Follow Us On</h2>
               <ul className="space-y-2">
                 <li className='flex items-center gap-5'>
-                  <Link href="https://www.facebook.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
+                  <Link href="https://www.facebook.com/cinutedigital" title="Facebook" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
                     <Facebook />
                   </Link>
 
-                  <Link href="https://x.com/cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="X">
+                  <Link href="https://x.com/cinutedigital" title="X (Twitter)" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="X">
                     <XLogo />
                   </Link>
 
-                  <Link href="https://www.youtube.com/@cinutedigital" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="YouTube">
+                  <Link href="https://www.youtube.com/@cinutedigital" title="YouTube" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="YouTube">
                     <Youtube />
                   </Link>
 
-                  <Link href="https://www.linkedin.com/company/cinute-digital/" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="LinkedIn">
+                  <Link href="https://www.linkedin.com/company/cinute-digital/" title="LinkedIn" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="LinkedIn">
                     <Linkedin />
                   </Link>
 
-                  <Link href="https://www.instagram.com/cinutedigital/" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Instagram">
+                  <Link href="https://www.instagram.com/cinutedigital/" title="Instagram" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Instagram">
                     <Instagram />
                   </Link>
                 </li>
@@ -456,22 +458,22 @@ const Footer = () => {
           <h2 className="text-lg font-semibold text-brand mb-4">Institute</h2>
           <ul>
             <li className='flex flex-wrap'>
-              <InstituteLink href="/">Home</InstituteLink>
-              <InstituteLink href="/cms">CMS Login</InstituteLink>
-              <InstituteLink href="/mock-test">Mock Test</InstituteLink>
-              <InstituteLink href="/istqb-registration">ISTQB Registration</InstituteLink>
-              <InstituteLink href="/services">Services</InstituteLink>
-              <InstituteLink href="/events">Events</InstituteLink>
-              <InstituteLink href="/mentors">Mentors</InstituteLink>
-              <InstituteLink href="/jobs/placements">Placements</InstituteLink>
-              <InstituteLink href="/jobs/live-jobs">Live Jobs</InstituteLink>
-              <InstituteLink href="/jobs/job-openings">Job Openings</InstituteLink>
-              <InstituteLink href="/jobs/careers">Careers</InstituteLink>
-              <InstituteLink href="/about-us">About CDPL</InstituteLink>
-              <InstituteLink href="/our-team">Our Team</InstituteLink>
-              <InstituteLink href="/reviews">Reviews</InstituteLink>
-              <InstituteLink href="/cdpl-affiliate-program">Affiliate Program</InstituteLink>
-              <InstituteLink href="/contact-us">Contact Us</InstituteLink>
+              <InstituteLink href="/" title="CDPL Home Page">Home</InstituteLink>
+              <InstituteLink href="/cms" title="CMS Student/Faculty Login">CMS Login</InstituteLink>
+              <InstituteLink href="/mock-test" title="Free Online Mock Tests">Mock Test</InstituteLink>
+              <InstituteLink href="/istqb-registration" title="ISTQB Certification Registration">ISTQB Registration</InstituteLink>
+              <InstituteLink href="/services" title="Our Professional Services">Services</InstituteLink>
+              <InstituteLink href="/events" title="Upcoming & Past Events">Events</InstituteLink>
+              <InstituteLink href="/mentors" title="Our Expert Mentors">Mentors</InstituteLink>
+              <InstituteLink href="/jobs/placements" title="Recent Student Placements">Placements</InstituteLink>
+              <InstituteLink href="/jobs/live-jobs" title="Live Job Openings & Opportunities">Live Jobs</InstituteLink>
+              <InstituteLink href="/jobs/job-openings" title="Current Job Openings">Job Openings</InstituteLink>
+              <InstituteLink href="/jobs/careers" title="Careers at CDPL">Careers</InstituteLink>
+              <InstituteLink href="/about-us" title="About Cinute Digital">About CDPL</InstituteLink>
+              <InstituteLink href="/our-team" title="Meet the Team">Our Team</InstituteLink>
+              <InstituteLink href="/reviews" title="Student Reviews & Success Stories">Reviews</InstituteLink>
+              <InstituteLink href="/cdpl-affiliate-program" title="CDPL Affiliate Partner Program">Affiliate Program</InstituteLink>
+              <InstituteLink href="/contact-us" title="Contact Us for Support & Enquiries">Contact Us</InstituteLink>
             </li>
           </ul>
         </div>

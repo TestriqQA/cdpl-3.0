@@ -23,7 +23,18 @@ export const SITE_CONFIG = {
   tagline: 'Transform Your Career with Industry-Ready Skills',
 
   // URLs
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.cinutedigital.com',
+  // ⚠️  SEO FIX (April 2026): Always resolve to the www canonical domain.
+  // Even if NEXT_PUBLIC_SITE_URL is set to the non-www version (e.g. in a
+  // misconfigured .env), we normalise it here so that every canonical tag,
+  // OG URL, and sitemap entry points to the single canonical origin.
+  url: (() => {
+    const raw = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.cinutedigital.com';
+    // Normalise: ensure www prefix
+    if (raw.includes('cinutedigital.com') && !raw.includes('www.cinutedigital.com')) {
+      return raw.replace('cinutedigital.com', 'www.cinutedigital.com');
+    }
+    return raw;
+  })(),
   domain: 'cinutedigital.com',
 
   // Brand Colors

@@ -168,7 +168,7 @@ export function ContactMethodsSection() {
                 <Link
                   href={item.href}
                   target={item.target}
-
+                  title={item.aria || item.title}
                   className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-sky-700 hover:text-sky-800"
                   aria-label={item.aria}
                 >

@@ -77,9 +77,9 @@ export default function HeroSection() {
 
 
     const breadcrumbs = [
-        { label: "Home", href: "/" },
-        { label: "Courses", href: "/courses" },
-        { label: 'Software Testing', href: '/courses/software-testing-course' },
+        { label: "Home", href: "/", title: "Home" },
+        { label: "Courses", href: "/courses", title: "Courses" },
+        { label: 'Software Testing', href: '/courses/software-testing-course', title: "Software Testing" },
         { label: "Python Master Program" },
     ];
 
@@ -103,6 +103,7 @@ export default function HeroSection() {
                                     {c.href ? (
                                         <Link
                                             href={c.href}
+                                            title={c.label}
                                             className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
                                         >
                                             {c.label}

@@ -15,6 +15,7 @@ import {
   Users,
   Clock,
   Download,
+  Sparkles,
 } from "lucide-react";
 import { DownloadFormButton } from "@/components/DownloadForm";
 import Link from "next/link";
@@ -343,6 +344,30 @@ const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ data }) =
             </motion.p>
           )}
         </motion.div>
+
+        {/* City Career Hub - SEO Highlight */}
+        {data.localJobMarketInsight && (
+          <motion.div
+            className="mb-12 sm:mb-16 p-4 sm:p-6 bg-indigo-50/50 rounded-2xl border border-indigo-100 flex flex-col sm:flex-row items-center gap-6"
+            variants={itemVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <div className="w-16 h-16 bg-white rounded-xl shadow-sm flex items-center justify-center shrink-0">
+              <Sparkles className="w-8 h-8 text-indigo-600" />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">
+                City Career Hub: {data.location}
+                <span className="text-xs font-medium px-2 py-0.5 bg-indigo-100 text-indigo-700 rounded-full">Localized Insight</span>
+              </h3>
+              <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                {data.localJobMarketInsight}
+              </p>
+            </div>
+          </motion.div>
+        )}
 
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"

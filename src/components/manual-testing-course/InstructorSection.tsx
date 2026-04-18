@@ -172,7 +172,8 @@ export default function InstructorSection() {
               {/* CTA */}
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link
-                  href="contact-us"
+                  href="/contact-us"
+                  title="Book a Free Demo"
                   className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold ring-1 ring-slate-300 text-slate-800 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300"
                 >
                   Book a Free Demo

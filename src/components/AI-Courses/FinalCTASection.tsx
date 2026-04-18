@@ -8,6 +8,7 @@ import Link from "next/link";
 import { EnrollFormData, EnrollPopup } from "../EnrollForms";
 import BrochureDownloadModal from '@/components/home/BrochureDownloadModal';
 import PhoneInput from 'react-phone-number-input';
+import CustomFlag from '../ui/CustomFlag';
 
 import { validatePhone } from '@/lib/formValidation';
 
@@ -216,6 +217,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                     <p className="text-xs font-bold uppercase tracking-wider text-white/80">Call Us</p>
                                     <Link
                                         href={`tel:${content.contactInfo.phone}`}
+                                        title={`Call us at ${content.contactInfo.phone}`}
                                         className="mt-1 block text-sm font-bold text-white"
                                     >
                                         {content.contactInfo.phone}
@@ -234,6 +236,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                     <p className="text-xs font-bold uppercase tracking-wider text-white/80">Email Us</p>
                                     <Link
                                         href={`mailto:${content.contactInfo.email}`}
+                                        title={`Email us at ${content.contactInfo.email}`}
                                         className="mt-1 block text-xs font-bold text-white break-words"
                                     >
                                         {content.contactInfo.email}
@@ -328,6 +331,7 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                             <PhoneInput
                                                 defaultCountry="IN"
                                                 international
+                                                flagComponent={CustomFlag}
                                                 limitMaxLength={true}
                                                 countryCallingCodeEditable={false}
                                                 value={form.phone}

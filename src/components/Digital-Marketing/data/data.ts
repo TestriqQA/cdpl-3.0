@@ -49,6 +49,7 @@ export interface Course {
     /** Optional per-course offer end timestamp (ISO). If omitted, defaults to +48h from mount */
     offerEndsAt?: string;
     syllabusLink?: string;
+    titleAttribute?: string;
 }
 
 export const COURSES: Course[] = [
@@ -63,6 +64,7 @@ export const COURSES: Course[] = [
         level: 'Master',
         popular: true,
         link: '/courses/digital-marketing-courses/digital-marketing-course',
+        titleAttribute: 'Digital Marketing and Analytics Course',
         icon: 'Smartphone',
         features: ['Holistic Strategy & Planning', 'Advanced Analytics & Attribution', 'Multi-Channel Campaigns', 'Portfolio & Freelance Readiness'],
         syllabusLink: 'https://www.cinutedigital.com/downloads/ai-driven-digital-marketing-&-analytics.pdf',
@@ -78,6 +80,7 @@ export const COURSES: Course[] = [
         level: 'Beginner',
         popular: true,
         link: '/courses/digital-marketing-courses/ai-in-digital-marketing',
+        titleAttribute: 'Digital Marketing and AI for Business Owners Course',
         icon: 'Smartphone',
         features: ['AI-Powered Market Research & Customer Avatars', 'Automated Content Creation at Scale', 'AI Ads Optimization & Predictive Analytics', 'Build Your Own No-Code AI Marketing Team'],
         syllabusLink: 'https://www.cinutedigital.com/downloads/digital-marketing-and-ai-for-business-owners-digital-marketing-and-ai-for-business-owners.pdf',
@@ -93,6 +96,7 @@ export const COURSES: Course[] = [
         level: 'Beginner',
         popular: true,
         link: '/courses/digital-marketing-courses/ai-bootcamp',
+        titleAttribute: 'Digital Marketing with AI Bootcamp',
         icon: 'Smartphone',
         features: ['Prompt Engineering for Ads & Copywriting', 'AI Tools Mastery (ChatGPT, Claude, Midjourney, ElevenLabs, etc.)', 'Automated Funnels & Omnichannel AI Workflows', 'AI-Driven Performance Marketing & ROAS Optimization'],
         syllabusLink: 'https://www.cinutedigital.com/downloads/digital-marketing-with-ai-bootcamp-digital-marketing-with-ai-bootcamp.pdf',

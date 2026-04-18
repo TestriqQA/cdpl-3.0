@@ -92,6 +92,7 @@ const MobileFeatureList: React.FC<MobileFeatureListProps> = ({ onOpenBrochure, o
       </button>
       <Link
         href="/jobs/placements"
+        title="View Placement Success Stories"
         className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto cursor-pointer"
       >
         <Eye className="h-5 w-5" />
@@ -220,6 +221,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
       {/* Secondary CTA - View Placement Success Stories */}
       <Link
         href="/jobs/placements"
+        title="View Placement Success Stories"
         className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
       >
         <Eye className="h-5 w-5" />
@@ -390,7 +392,7 @@ const HomeHeroSection: React.FC = () => {
       <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
         <li className="flex items-center gap-2">
           <Home className="h-4 w-4" />
-          <Link href="/" className="hover:text-indigo-700 font-semibold text-slate-900 transition-colors">
+          <Link href="/" title="Home" className="hover:text-indigo-700 font-semibold text-slate-900 transition-colors">
             Home
           </Link>
         </li>

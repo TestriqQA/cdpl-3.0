@@ -104,6 +104,7 @@ export default function HeroSection() {
                                     {c.href ? (
                                         <Link
                                             href={c.href}
+                                            title={c.label}
                                             className={`hover:text-indigo-700 ${isLast ? 'font-semibold text-slate-900' : ''}`}
                                         >
                                             {c.label}
@@ -234,7 +235,7 @@ export default function HeroSection() {
                 isOpen={isEnrollModalOpen}
                 onClose={() => setIsEnrollModalOpen(false)}
                 courseName="ETL Testing"
-                source="ETL Testing Course Page - Hero Section - Enroll Now"
+                source="ETL Testing Course Page - Enroll Now- Hero Section"
             />
 
             <SyllabusDownloadModal

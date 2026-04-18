@@ -39,6 +39,7 @@ export default function CtaSection() {
           <div className="mt-7 flex flex-col items-stretch justify-center gap-3 sm:flex-row">
             <Link
               href="tel:+917888383788"
+              title="Call us to enroll in API Testing"
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-indigo-600 bg-indigo-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
               aria-label="Call us to enroll"
             >
@@ -48,6 +49,7 @@ export default function CtaSection() {
 
             <Link
               href="mailto:contact@cinutedigital.com"
+              title="Email us for course details"
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-300 bg-white px-7 py-3 text-sm font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
               aria-label="Email us for course details"
             >

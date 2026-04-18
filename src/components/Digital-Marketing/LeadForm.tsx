@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import PhoneInput from 'react-phone-number-input';
+import CustomFlag from '../ui/CustomFlag';
 
 
 import {
@@ -167,6 +168,7 @@ export default function LeadForm({
                         limitMaxLength={true}
                         defaultCountry="IN"
                         international
+                        flagComponent={CustomFlag}
                         countryCallingCodeEditable={false}
                         value={form.watch('phone')}
                         onChange={(v) => form.setValue('phone', v || '')}

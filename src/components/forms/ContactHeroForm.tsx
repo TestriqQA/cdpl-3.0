@@ -4,6 +4,7 @@ import React, { useState, useRef } from "react";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { Phone, Mail, User, CheckCircle2 } from "lucide-react";
 import PhoneInput from 'react-phone-number-input';
+import CustomFlag from '../ui/CustomFlag';
 
 import {
     validatePhone as validatePhoneLib,
@@ -348,6 +349,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                                 international
                                 limitMaxLength={true}
                                 defaultCountry="IN"
+                                flagComponent={CustomFlag}
                                 value={formData.phone}
                                 onChange={handlePhoneChange}
                                 placeholder="Enter your mobile number"

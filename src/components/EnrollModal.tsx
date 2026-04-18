@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, CheckCircle2, Loader2, GraduationCap } from 'lucide-react';
 import PhoneInput from 'react-phone-number-input';
+import CustomFlag from './ui/CustomFlag';
 
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
@@ -327,6 +328,7 @@ const EnrollModal: React.FC<EnrollModalProps> = ({
                                                     international
                                                     limitMaxLength={true}
                                                     defaultCountry="IN"
+                                                    flagComponent={CustomFlag}
                                                     value={formData.phone}
                                                     onChange={handlePhoneChange}
                                                     placeholder="Enter your mobile number (e.g., 98765 43210)"

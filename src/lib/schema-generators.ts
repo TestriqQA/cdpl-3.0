@@ -240,7 +240,10 @@ export function generateItemListSchema(
 
           // Fix: Event objects in ItemList require startDate and location for Rich Results
           ...(itemType === "Event" && {
-            startDate: item.date === "Ongoing" ? new Date().toISOString().split("T")[0] : formatDateToISO(item.date),
+            startDate:
+              item.date === "Ongoing"
+                ? new Date().toISOString().split("T")[0]
+                : formatDateToISO(item.date),
             location: {
               "@type": "Place",
               name: item.location || "Online",
@@ -395,6 +398,8 @@ interface CourseSchemaInput {
   instructor?: string;
   startDate?: string;
   endDate?: string;
+  reviews?: ReviewItem[];
+  localInsight?: string;
 }
 
 /**
@@ -440,7 +445,9 @@ export function generateCourseSchema(
     "@type": "Course",
     "@id": `${fullUrl}#course`,
     name: course.name,
-    description: courseDescription, // Description is required and comes from input
+    description: course.localInsight
+      ? `${courseDescription} Local Insight: ${course.localInsight}`
+      : courseDescription,
     url: fullUrl,
 
     // Provider (Required)
@@ -463,9 +470,28 @@ export function generateCourseSchema(
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: String(course.rating || STATISTICS.rating),
-      reviewCount: String(STATISTICS.reviewCount),
+      reviewCount: String(
+        (course.reviews?.length || 0) > 0
+          ? course.reviews?.length
+          : STATISTICS.reviewCount,
+      ),
       bestRating: "5",
     },
+
+    // Reviews (Rich Results)
+    ...(course.reviews &&
+      course.reviews.length > 0 && {
+        review: course.reviews.map((r) => ({
+          "@type": "Review",
+          author: { "@type": "Person", name: r.author },
+          reviewRating: {
+            "@type": "Rating",
+            ratingValue: r.rating,
+            bestRating: 5,
+          },
+          reviewBody: r.text,
+        })),
+      }),
 
     // Optional fields
     inLanguage: "en-IN",
@@ -675,12 +701,15 @@ export function generateReviewSchema(
     name: itemName,
     description: `Professional training and services provided by ${SITE_CONFIG.name}`,
     image: getImageUrl(SITE_CONFIG.logo),
-    ...( (itemType === "Service" || itemType === "Course" || itemType === "LocalBusiness" || itemType === "EducationalOrganization") && {
+    ...((itemType === "Service" ||
+      itemType === "Course" ||
+      itemType === "LocalBusiness" ||
+      itemType === "EducationalOrganization") && {
       provider: {
         "@type": "Organization",
         "@id": getOrganizationId(),
         name: SITE_CONFIG.name,
-      }
+      },
     }),
     aggregateRating: {
       "@type": "AggregateRating",
@@ -795,7 +824,9 @@ export function generateSingleReviewSchema(
       url: fullItemId.split("#")[0], // Use URL from ID (stripping anchor)
       image: getImageUrl(SITE_CONFIG.logo),
       description: `Professional training and events by ${SITE_CONFIG.name}`,
-      ...( (itemType === "Service" || itemType === "Course" || itemType === "Event") && {
+      ...((itemType === "Service" ||
+        itemType === "Course" ||
+        itemType === "Event") && {
         provider: {
           "@type": "Organization",
           "@id": getOrganizationId(),
@@ -4677,7 +4708,13 @@ export function generateEventDetailPageAllSchemas(
     sessionHighlights?: { title: string; points: string[] }[];
     keyTakeaways?: { title: string; description: string }[];
   },
-  allEventsList: { title: string; slug: string; purpose: string; date: string; location: string }[],
+  allEventsList: {
+    title: string;
+    slug: string;
+    purpose: string;
+    date: string;
+    location: string;
+  }[],
 ): WithContext<Record<string, unknown>>[] {
   // NOTE: Organization and WebSite schemas are handled by Root Layout
 
