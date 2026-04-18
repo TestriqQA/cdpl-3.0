@@ -66,7 +66,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     "customer reviews",
   ],
   url: "/reviews",
-  image: "/og-images/og-image-testimonials.webp",
+  image: "/og-images/reviews-og.webp",
 });
 
 export default function Page() {

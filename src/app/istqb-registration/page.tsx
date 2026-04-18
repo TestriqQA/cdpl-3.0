@@ -5,10 +5,14 @@ import IstqbRegistrationContainer from '@/components/istqb-registration/IstqbReg
 import { generateIstqbRegistrationPageAllSchemas } from '@/lib/schema-generators';
 import JsonLd from '@/components/JsonLd';
 
-export const metadata = {
+import { generateStaticPageMetadata } from "@/lib/metadata-generator";
+
+export const metadata = generateStaticPageMetadata({
     title: 'ISTQB Registration | Testriq',
     description: 'Register for ISTQB Certification with Testriq. Global recognition, lifetime validity, and expert guidance.',
-};
+    url: '/istqb-registration',
+    image: '/og-images/istqb-registration-og.webp',
+});
 
 export default function IstqbRegistrationPage() {
     const istqbSchemas = generateIstqbRegistrationPageAllSchemas({

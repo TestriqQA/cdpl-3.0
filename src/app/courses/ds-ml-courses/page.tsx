@@ -18,6 +18,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     description: 'Master Data Science and Machine Learning with our comprehensive courses. Learn Python, R, SQL, and AI with hands-on projects and placement support.',
     url: '/courses/ds-ml-courses',
     keywords: ['data science course', 'machine learning training', 'python for data science', 'AI course', 'data analytics'],
+    image: "/og-images/courses-ds-ml-courses-og.webp",
 });
 
 export default function Home() {

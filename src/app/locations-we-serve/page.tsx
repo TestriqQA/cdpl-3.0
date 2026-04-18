@@ -68,7 +68,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     "course locations near me"
   ],
   url: "/locations-we-serve",
-  image: "/og-images/og-locations-we-serve.webp",
+  image: "/og-images/locations-we-serve-og.webp",
 });
 
 /* ------------------------------- Utilities ------------------------------- */

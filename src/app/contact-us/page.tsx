@@ -35,7 +35,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     'data science course mumbai'
   ],
   url: '/contact-us',
-  image: '/og-images/cdpl-og-image-contact.webp',
+  image: '/og-images/contact-us-og.webp',
 });
 
 // ============================================================================

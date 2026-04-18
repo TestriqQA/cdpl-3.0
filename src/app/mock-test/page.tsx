@@ -10,10 +10,14 @@ const MockTestListing = dynamic(() => import("@/components/mock-test/MockTestLis
     loading: () => <div className="h-96 w-full animate-pulse bg-slate-50 rounded-3xl" /> // Placeholder to prevent layout shift
 });
 
-export const metadata = {
+import { generateStaticPageMetadata } from "@/lib/metadata-generator";
+
+export const metadata = generateStaticPageMetadata({
     title: 'Free Online Mock Tests & Premium Assessments | Testriq',
     description: 'Validate your expertise with precision. Industry-standard simulation environments for Software Testing, Cloud, Security, and Web Dev.',
-};
+    url: '/mock-test',
+    image: '/og-images/mock-test-og.webp',
+});
 
 export default function MockTestLandingPage() {
     const mockSchemas = generateMockTestPageAllSchemas({

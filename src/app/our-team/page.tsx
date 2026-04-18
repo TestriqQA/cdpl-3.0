@@ -33,7 +33,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     "meet our trainers",
   ],
   url: "/our-team",
-  image: "/og-images/og-image-team.webp",
+  image: "/og-images/our-team-og.webp",
 });
 
 // ============================================================================

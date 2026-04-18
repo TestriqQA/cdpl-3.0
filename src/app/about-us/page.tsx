@@ -82,7 +82,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     "ISO 9001 certified",
     "Skill India partner",
   ],
-  image: "/og-images/og-image-about.webp",
+  image: "/og-images/about-us-og.webp",
 });
 
 // ============================================================================

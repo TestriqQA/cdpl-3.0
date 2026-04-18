@@ -29,7 +29,7 @@ export const metadata = generateMetadata({
     "full stack QA"
   ],
   url: '/courses/software-testing-course/automation-testing-course',
-  image: "/og-images/automation-testing-course.jpg",
+  image: "/og-images/courses-software-testing-course-automation-testing-course-og.webp",
 });
 
 export default function Home() {

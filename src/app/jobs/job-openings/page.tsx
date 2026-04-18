@@ -2,11 +2,19 @@ import type { Metadata } from "next";
 import JobOpeningsHeroSection from "@/components/sections/JobOpeningsHeroSection";
 import JobOpeningsJobBrowser from "@/components/sections/JobOpeningsJobBrowser";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
-import { generateJobOpeningsPageAllSchemas, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
+import {
+  generateJobOpeningsPageAllSchemas,
+  generateJobPostingSchema,
+  generateBreadcrumbSchema,
+} from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
 // ---- Types ---------------------------------------------------------------
-export type Skill = { skill_name: string; years?: string | number | null; level?: string | null };
+export type Skill = {
+  skill_name: string;
+  years?: string | number | null;
+  level?: string | null;
+};
 export type Position = { position_name: string };
 
 export type JobSummary = {
@@ -28,7 +36,10 @@ export type JobSummary = {
   currency?: string;
 };
 
-export type JobListResponse = { status: number; data: { job: JobSummary[]; total_count: number } };
+export type JobListResponse = {
+  status: number;
+  data: { job: JobSummary[]; total_count: number };
+};
 
 export type JobDetail = {
   job_id: string;
@@ -58,11 +69,16 @@ export type CandidatePayload = {
   email_verified?: boolean;
 };
 
-export type VerifyPayload = { email: string; mobile: string; mobile_country_code: number | string };
+export type VerifyPayload = {
+  email: string;
+  mobile: string;
+  mobile_country_code: number | string;
+};
 
 // ---- Helpers -------------------------------------------------------------
 const API_BASE =
-  process.env.OPTIMHIRE_API_BASE ?? "https://partnerapi.optimhire.com/v1/partner";
+  process.env.OPTIMHIRE_API_BASE ??
+  "https://partnerapi.optimhire.com/v1/partner";
 const AUTH_HEADER = process.env.OPTIMHIRE_API_KEY
   ? { Authorization: `Bearer ${process.env.OPTIMHIRE_API_KEY}` }
   : { Authorization: "Auth Token" };
@@ -71,10 +87,14 @@ async function ohFetch<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {
     next: {
       revalidate: 3600, // Cache for 1 hour
-      tags: ['optimhire-jobs'] // For on-demand revalidation
+      tags: ["optimhire-jobs"], // For on-demand revalidation
     },
     ...init,
-    headers: { "Content-Type": "application/json", ...AUTH_HEADER, ...(init?.headers ?? {}) },
+    headers: {
+      "Content-Type": "application/json",
+      ...AUTH_HEADER,
+      ...(init?.headers ?? {}),
+    },
   });
   if (!res.ok) {
     const text = await res.text().catch(() => "");
@@ -93,7 +113,7 @@ function cleanHTML(raw?: string): string {
     amp: "&",
     lt: "<",
     gt: ">",
-    quot: "\"",
+    quot: '"',
     apos: "'",
     rsquo: "\u2019",
     lsquo: "\u2018",
@@ -148,13 +168,20 @@ function cleanHTML(raw?: string): string {
     .replace(/^[ \t]*([-*_]){3,}[ \t]*$/gm, "");
 
   // 6) Remove leftover markdown tokens
-  s = s.replace(/(^|\s)#{2,}(\s|$)/g, " ").replace(/\*{2,}/g, "").replace(/_{2,}/g, "");
+  s = s
+    .replace(/(^|\s)#{2,}(\s|$)/g, " ")
+    .replace(/\*{2,}/g, "")
+    .replace(/_{2,}/g, "");
 
   // 7) Tidy repeated punctuation
   s = s.replace(/\?{2,}/g, "?").replace(/!{2,}/g, "!");
 
   // 8) Normalize whitespace
-  s = s.replace(/\u00A0/g, " ").replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n").trim();
+  s = s
+    .replace(/\u00A0/g, " ")
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
 
   return s;
 }
@@ -165,11 +192,16 @@ export type FetchJobsArgs = { page?: number; size?: number; q?: string };
 async function getJobsServer(args: FetchJobsArgs = { page: 1, size: 10 }) {
   "use server";
   const { page = 1, size = 10, q } = args;
-  const params = new URLSearchParams({ page: String(page), size: String(size) });
+  const params = new URLSearchParams({
+    page: String(page),
+    size: String(size),
+  });
   if (q) params.set("q", q);
   const query = params.toString();
 
-  const res = await ohFetch<JobListResponse>(`/job-list/?${query}`, { next: { revalidate: 3600 } });
+  const res = await ohFetch<JobListResponse>(`/job-list/?${query}`, {
+    next: { revalidate: 3600 },
+  });
 
   const cleaned = {
     ...res,
@@ -189,7 +221,7 @@ async function getJobByIdServer(job_id: string) {
   "use server";
   if (!job_id) throw new Error("job_id is required");
   const res = await ohFetch<JobDetailResponse>(
-    `/job-description/?job_id=${encodeURIComponent(job_id)}`
+    `/job-description/?job_id=${encodeURIComponent(job_id)}`,
   );
 
   const cleaned = {
@@ -226,7 +258,8 @@ export const metadata: Metadata = generateStaticPageMetadata({
   title: {
     absolute: "Job Openings - Apply to Latest Tech Jobs | CDPL",
   },
-  description: "Browse and apply to latest job openings curated by CDPL through OptimHire. QA, Automation, Data Science, Full-Stack, and DevOps roles from top companies. Filter by skills and experience, then apply directly with resume upload.",
+  description:
+    "Browse and apply to latest job openings curated by CDPL through OptimHire. QA, Automation, Data Science, Full-Stack, and DevOps roles from top companies. Filter by skills and experience, then apply directly with resume upload.",
   keywords: [
     "job openings",
     "apply jobs",
@@ -245,7 +278,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     "software testing jobs",
   ],
   url: "/jobs/job-openings",
-  image: "/og-image-job-openings.jpg",
+  image: "/og-images/jobs-job-openings-og.webp",
 });
 
 // ---- Page ----------------------------------------------------------------
@@ -277,7 +310,10 @@ export default async function JobSharePage() {
     if (locationLower.includes("pune")) {
       region = "Maharashtra";
       postal = "411001";
-    } else if (locationLower.includes("bangalore") || locationLower.includes("bengaluru")) {
+    } else if (
+      locationLower.includes("bangalore") ||
+      locationLower.includes("bengaluru")
+    ) {
       region = "Karnataka";
       postal = "560001";
     } else if (locationLower.includes("chennai")) {
@@ -291,9 +327,14 @@ export default async function JobSharePage() {
     return generateJobPostingSchema({
       title: job.job_title,
       description: job.description || job.job_title,
-      datePosted: job.job_created_at || new Date().toISOString().split('T')[0],
+      datePosted: job.job_created_at || new Date().toISOString().split("T")[0],
       validThrough: "2026-12-31", // Default validity for partner jobs
-      employmentType: job.job_type === "Full Time" ? "FULL_TIME" : job.job_type === "Contract" ? "CONTRACTOR" : "OTHER",
+      employmentType:
+        job.job_type === "Full Time"
+          ? "FULL_TIME"
+          : job.job_type === "Contract"
+            ? "CONTRACTOR"
+            : "OTHER",
       hiringOrganization: {
         name: "Hiring Partner",
         sameAs: "https://optimhire.com",
@@ -303,16 +344,22 @@ export default async function JobSharePage() {
         addressRegion: region,
         postalCode: postal,
         addressCountry: "IN",
-        streetAddress: job.location_type === "remote" ? "Remote" : (job.location || "Mumbai Office"),
+        streetAddress:
+          job.location_type === "remote"
+            ? "Remote"
+            : job.location || "Mumbai Office",
       },
-      baseSalary: (job.min_charge && job.max_charge) ? {
-        currency: job.currency || "INR",
-        value: {
-          minValue: Number(job.min_charge),
-          maxValue: Number(job.max_charge),
-          unitText: "YEAR"
-        }
-      } : undefined,
+      baseSalary:
+        job.min_charge && job.max_charge
+          ? {
+              currency: job.currency || "INR",
+              value: {
+                minValue: Number(job.min_charge),
+                maxValue: Number(job.max_charge),
+                unitText: "YEAR",
+              },
+            }
+          : undefined,
       url: `/jobs/job-openings?jobId=${job.job_id}`,
     });
   });
@@ -331,16 +378,22 @@ export default async function JobSharePage() {
       {/* Structured Data */}
       <JsonLd id="job-openings-breadcrumb" schema={breadcrumbSchema} />
       {schemas.map((schema: any, index: number) => (
-        <JsonLd key={`job-openings-schema-${index}`} id={`job-openings-schema-${index}`} schema={schema} />
+        <JsonLd
+          key={`job-openings-schema-${index}`}
+          id={`job-openings-schema-${index}`}
+          schema={schema}
+        />
       ))}
       {jobSchemas.map((schema, index) => (
-        <JsonLd key={`job-posting-schema-${index}`} id={`job-posting-schema-${index}`} schema={schema} />
+        <JsonLd
+          key={`job-posting-schema-${index}`}
+          id={`job-posting-schema-${index}`}
+          schema={schema}
+        />
       ))}
 
       {/* Main Content - Semantic HTML Structure */}
-      <main
-        className="min-h-screen bg-slate-50 text-slate-800"
-      >
+      <main className="min-h-screen bg-slate-50 text-slate-800">
         {/* Keep hero as-is; it can manage its own inner width */}
         <section className="w-full">
           <JobOpeningsHeroSection

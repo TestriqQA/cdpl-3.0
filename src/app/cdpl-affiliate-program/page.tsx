@@ -30,7 +30,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     "tech education affiliate",
   ],
   url: "/cdpl-affiliate-program",
-  image: "/og-image-affiliate.jpg",
+  image: "/og-images/cdpl-affiliate-program-og.webp",
 });
 
 // ---------- Inline Loader ----------

@@ -31,7 +31,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
         "placement assistance",
     ],
     url: "/jobs/placements",
-    image: "/og-images/our-placements-image.webp",
+    image: "/og-images/jobs-placements-og.webp",
 });
 
 /** =====================================
