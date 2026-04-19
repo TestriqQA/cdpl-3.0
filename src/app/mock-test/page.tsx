@@ -15,7 +15,7 @@ const MockTestListing = dynamic(
   },
 );
 
-import { generateStaticPageMetadata } from "@/lib/metadata-generator";
+
 
 export const metadata = generateStaticPageMetadata({
   title: "Free Online Mock Tests & Premium Assessments | Testriq",

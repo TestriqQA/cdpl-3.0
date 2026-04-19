@@ -21,6 +21,7 @@ export interface Course {
     level: string;
     popular: boolean;
     link: string;
+    titleAttribute?: string;
     icon: keyof typeof iconMap;
     features: string[];
     /** Optional per-course offer end timestamp (ISO). If omitted, defaults to +48h from mount */

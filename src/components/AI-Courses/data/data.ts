@@ -51,6 +51,7 @@ export interface Course {
     /** Optional per-course offer end timestamp (ISO). If omitted, defaults to +48h from mount */
     offerEndsAt?: string;
     syllabusLink?: string;
+    titleAttribute?: string;
 }
 
 export const COURSES: Course[] = [

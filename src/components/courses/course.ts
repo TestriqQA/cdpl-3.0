@@ -22,6 +22,7 @@ export interface Course {
     popular?: boolean;
     category?: string;
     comingSoon?: boolean;
+    titleAttribute?: string;
 }
 
 
