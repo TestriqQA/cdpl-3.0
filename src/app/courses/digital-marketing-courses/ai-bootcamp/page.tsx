@@ -71,7 +71,7 @@ export default function AiBootcampPage() {
                 <JsonLd key={`ai-bootcamp-schema-${index}`} id={`ai-bootcamp-schema-${index}`} schema={schema} />
             ))}
 
-            <main>
+            <div>
                 <HeroSection />
                 <div className="hidden md:block sticky top-0 z-20">
                     <StickyNav navItems={with_roadmap} />
@@ -87,7 +87,7 @@ export default function AiBootcampPage() {
                 <section id="who-should-enroll"><WhoShouldEnroll /></section>
                 <section id="faqs"><FaqSection /></section>
                 <section id="contact"><CtaSection /></section>
-            </main>
+            </div>
         </div>
     );
 }

@@ -208,7 +208,7 @@ export default async function Page({ searchParams }: Props) {
     : undefined;
 
   return (
-    <main className="bg-white text-slate-900 relative">
+    <div className="bg-white text-slate-900 relative">
       {schemas.map((schema: any, index: number) => (
         <JsonLd key={`jobs-schema-${index}`} id={`jobs-schema-${index}`} schema={schema} />
       ))}
@@ -237,6 +237,6 @@ export default async function Page({ searchParams }: Props) {
       <JobsLiveJobsTestimonialSection />
       <JobsLiveJobsReviewSection />
       <JobsLiveJobsSubscribeCTASection />
-    </main>
+    </div>
   );
 }

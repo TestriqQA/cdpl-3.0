@@ -73,7 +73,7 @@ export default function Home() {
             ))}
 
             {/* Main content */}
-            <main className="w-full">
+            <div className="w-full">
                 <HeroSection />
                 <div className="hidden md:block sticky top-0 z-20">
                     <StickyNav navItems={with_roadmap} />
@@ -89,7 +89,7 @@ export default function Home() {
                 <section id="testimonials"><TestimonialsSection /></section>
                 <section id="faqs"><FaqSection /></section>
                 <section id="contact"><CtaSection /></section>
-            </main>
+            </div>
         </div>
     );
 }

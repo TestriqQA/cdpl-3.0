@@ -127,7 +127,7 @@ export default function AAACertificationCoursePage() {
   });
 
   return (
-    <main
+    <div
       className="bg-white text-slate-900"
     >
       {consolidatedSchemas.map((schema, index) => (
@@ -138,6 +138,6 @@ export default function AAACertificationCoursePage() {
       <AAACertificationWhySection />
       <AAACertificationCurriculumSection />
       <AAACertificationOutcomesCtaSection />
-    </main>
+    </div>
   );
 }

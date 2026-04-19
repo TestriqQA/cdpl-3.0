@@ -175,7 +175,7 @@ export default function AboutPage(): React.ReactNode {
       ))}
 
       {/* Main Content */}
-      <main className="relative isolate">
+      <div className="relative isolate">
         <AboutHeroSection />
         <AboutStatsSection />
         <AboutWhyJoinUs />
@@ -185,7 +185,7 @@ export default function AboutPage(): React.ReactNode {
         <AboutAccreditations />
         <AboutCTASection />
         <AboutFAQSection faqs={faqs} />
-      </main>
+      </div>
     </LightTheme>
   );
 }

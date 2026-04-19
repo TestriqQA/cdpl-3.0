@@ -156,9 +156,9 @@ export default async function BlogPage() {
 
                         <div className="grid lg:grid-cols-3 gap-8">
                             {/* Article List - 2 columns */}
-                            <main className="lg:col-span-2" role="main" aria-label="Blog articles">
+                            <div className="lg:col-span-2" role="main" aria-label="Blog articles">
                                 <BlogArticleList posts={posts.slice(1)} /> {/* Start from second post */}
-                            </main>
+                            </div>
 
                             {/* Sidebar - 1 column */}
                             <aside className="lg:col-span-1" role="complementary" aria-label="Blog sidebar">

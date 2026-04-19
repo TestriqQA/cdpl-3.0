@@ -205,7 +205,7 @@ export default async function CoursePage({ params, searchParams }: PageProps): P
       ))}
 
       {/* Semantic HTML Structure */}
-      <main
+      <div
         className="overflow-hidden"
       >
         <HeroSection data={data} />
@@ -224,7 +224,7 @@ export default async function CoursePage({ params, searchParams }: PageProps): P
             description: interpolateLocation(data.ctaContent.description, city),
           }
         }} />
-      </main>
+      </div>
     </>
   );
 }

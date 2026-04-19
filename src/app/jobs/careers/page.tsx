@@ -160,7 +160,7 @@ export default async function Page() {
                 <JsonLd key={`job-posting-schema-${index}`} id={`job-posting-schema-${index}`} schema={schema} />
             ))}
 
-            <main className="w-full bg-white text-neutral-900 dark:bg-white dark:text-neutral-900">
+            <div className="w-full bg-white text-neutral-900 dark:bg-white dark:text-neutral-900">
                 {/* Sections now manage their own inner container (max-w-7xl px-4 py-12 sm:px-6 lg:px-8) */}
                 <JobsCareersHeroSection />
                 <JobsCareersOpenRolesSection jobs={jobs} />
@@ -169,7 +169,7 @@ export default async function Page() {
                 <JobsCareersCultureSection />
                 <JobsCareersFAQSection />
                 <JobsCareersCTASection />
-            </main>
+            </div>
         </>
     );
 }

@@ -24,7 +24,7 @@ export default function TermsOfServicePage() {
       {consolidatedSchemas.map((schema, index) => (
         <JsonLd key={`terms-schema-${index}`} id={`terms-schema-${index}`} schema={schema} />
       ))}
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900">
         <h1 className={H1}>Cinute Digital Pvt. Ltd. (CDPL) - Terms and Conditions</h1>
 
         <div className="mt-6 space-y-8">
@@ -242,7 +242,7 @@ export default function TermsOfServicePage() {
             </p>
           </section>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

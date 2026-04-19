@@ -221,7 +221,7 @@ export default async function AllPostsPage() {
         </section>
 
         {/* Main Content - All Posts Grouped by Category */}
-        <main className="bg-gray-50 py-12" role="main">
+        <div className="bg-gray-50 py-12" role="main">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {postsByCategory.map(({ category, posts }) => (
               <section key={category.slug} className="mb-16">
@@ -319,7 +319,7 @@ export default async function AllPostsPage() {
               </section>
             ))}
           </div>
-        </main>
+        </div>
       </div>
     </>
   );

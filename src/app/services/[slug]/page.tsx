@@ -150,7 +150,7 @@ export async function generateMetadata(
     : `Join CDPL's ${service.title} training program. Industry-expert led courses with 100% placement support. Master usage with real-world projects.`;
 
   return generateSEOMetadata({
-    title: `${service.title} | CDPL`,
+    title: `${service.title} — Training Programs & Solutions | CDPL`,
     description: finalDescription,
     keywords,
     url: `/services/${slug}`,
@@ -191,7 +191,7 @@ export default async function ServiceDetailPage(
       ))}
 
       {/* Semantic HTML Structure */}
-      <main className="overflow-hidden">
+      <div className="overflow-hidden">
         <ServiceDetailHeroSection service={serviceForClient} />
         <ServiceDetailAboutSection service={serviceForClient} />
         <ServiceDetailStatsSection service={serviceForClient} />
@@ -201,7 +201,7 @@ export default async function ServiceDetailPage(
         <ServiceDetailMethodologySection service={serviceForClient} />
         {events?.length > 0 && <ServiceDetailPastEventsSection events={events} />}
         <ServiceDetailCTASection service={serviceForClient} />
-      </main>
+      </div>
     </>
   );
 }

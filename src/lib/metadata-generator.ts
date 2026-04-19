@@ -143,10 +143,25 @@ export function generateMetadata(input: MetadataGeneratorInput): Metadata {
   // Merge keywords with defaults
   const allKeywords = [...new Set([...keywords, ...SEO_DEFAULTS.defaultKeywords])];
 
+  // ⚠️  SEO FIX (April 2026): Auto-truncate descriptions to 160 chars
+  const safeDescription = description.length > 160
+    ? description.substring(0, 157) + '...'
+    : description;
+
+  // Dev-mode SEO validation warnings
+  if (process.env.NODE_ENV === 'development') {
+    if (description.length > 160) {
+      console.warn(`[SEO] Meta description too long (${description.length}/160 chars): ${url}`);
+    }
+    if (typeof title === 'string' && title.length < 30) {
+      console.warn(`[SEO] Title too short (${title.length}/60 chars): ${url}`);
+    }
+  }
+
   return {
     // Basic Metadata
     title: finalTitle,
-    description,
+    description: safeDescription,
     keywords: allKeywords,
 
     // Authors

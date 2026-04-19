@@ -52,14 +52,14 @@ export default function ContactPage() {
       ))}
 
       {/* Main Content - Semantic HTML Structure */}
-      <main className="relative min-h-[220vh]">
+      <div className="relative min-h-[220vh]">
         <ContactHeroSection />
         <ContactMethodsSection />
         <ContactOfficeMapSection />
         <ContactReviewSection />
         <ContactBookCallSection />
         <ContactFAQSection />
-      </main>
+      </div>
     </>
   );
 }

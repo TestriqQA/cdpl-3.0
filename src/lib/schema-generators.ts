@@ -466,17 +466,15 @@ export function generateCourseSchema(
     // Offers (Required)
     offers: defaultOffer,
 
-    // Aggregate Rating
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: String(course.rating || STATISTICS.rating),
-      reviewCount: String(
-        (course.reviews?.length || 0) > 0
-          ? course.reviews?.length
-          : STATISTICS.reviewCount,
-      ),
-      bestRating: "5",
-    },
+    // Aggregate Rating — only when real reviews exist
+    ...(course.reviews && course.reviews.length > 0 && {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: String(course.rating || STATISTICS.rating),
+        reviewCount: String(course.reviews.length),
+        bestRating: "5",
+      },
+    }),
 
     // Reviews (Rich Results)
     ...(course.reviews &&

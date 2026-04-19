@@ -279,12 +279,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {/* Main Content - Article List */}
-                        <main className="lg:col-span-2" role="main" aria-label={`${category.name} articles`}>
+                        <div className="lg:col-span-2" role="region" aria-label={`${category.name} articles`}>
                             <CategoryArticleList
                                 categoryName={category.name}
                                 posts={otherPosts}
                             />
-                        </main>
+                        </div>
 
                         {/* Sidebar with Category-Specific Content */}
                         <aside className="lg:col-span-1" role="complementary" aria-label="Category sidebar">

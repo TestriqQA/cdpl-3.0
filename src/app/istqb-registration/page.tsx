@@ -59,7 +59,7 @@ export default function IstqbRegistrationPage() {
   });
 
   return (
-    <main className="min-h-screen bg-slate-50 relative font-sans">
+    <div className="min-h-screen bg-slate-50 relative font-sans">
       {istqbSchemas.map((schema, index) => (
         <JsonLd
           key={`istqb-schema-${index}`}
@@ -97,6 +97,6 @@ export default function IstqbRegistrationPage() {
         {/* Client Interactive Container */}
         <IstqbRegistrationContainer />
       </div>
-    </main>
+    </div>
   );
 }

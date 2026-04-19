@@ -220,7 +220,7 @@ export default async function SearchPage({
         </header>
 
         {/* Search Results or Popular Searches */}
-        <main className="py-12 bg-gray-50" role="main">
+        <div className="py-12 bg-gray-50" role="main">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {query && searchResults.length > 0 ? (
               <>
@@ -372,7 +372,7 @@ export default async function SearchPage({
               </div>
             )}
           </div>
-        </main>
+        </div>
       </div>
     </>
   );

@@ -170,7 +170,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </header>
 
                 {/* Blog Post Main Content */}
-                <main role="main" aria-label="Article content">
+                <div role="region" aria-label="Article content">
                     <React.Suspense fallback={<div>Loading content...</div>}>
                         <BlogPostSection
                             post={post}
@@ -179,7 +179,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                             latestPosts={latestPosts}
                         />
                     </React.Suspense>
-                </main>
+                </div>
 
                 {/* Contact Section */}
                 <aside role="complementary" aria-label="Contact information">

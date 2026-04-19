@@ -71,7 +71,7 @@ export default function Home() {
 
     return (
         <div className="min-h-screen bg-gray-50 text-gray-800 antialiased">
-            <main>
+            <div>
                 {schemas.map((schema, index) => (
                     <JsonLd key={`data-vis-r-schema-${index}`} id={`data-vis-r-schema-${index}`} schema={schema} />
                 ))}
@@ -114,7 +114,7 @@ export default function Home() {
 
                 {/* Section 12: Final Call to Action */}
                 <section id="contact"><CtaSection /></section>
-            </main>
+            </div>
         </div>
     );
 }

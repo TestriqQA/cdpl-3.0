@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
       {consolidatedSchemas.map((schema, index) => (
         <JsonLd key={`privacy-schema-${index}`} id={`privacy-schema-${index}`} schema={schema} />
       ))}
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900 break-words">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900 break-words">
         <h1 className={H1}>Privacy Policy</h1>
 
         <div className="mt-6 space-y-8">
@@ -984,7 +984,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
         </div>
-      </main>
+      </div>
     </div>
   );
 }

@@ -81,7 +81,7 @@ export default function MentorsPage() {
       <JsonLd schema={breadcrumbSchema} id="mentors-breadcrumb" />
 
       {/* Main Content - Semantic HTML Structure */}
-      <main
+      <div
         className="relative bg-white text-slate-900"
       >
         <MentorHeroSection />
@@ -89,7 +89,7 @@ export default function MentorsPage() {
         <MentorOutcomesSection />
         <MentorProcessFlowSection />
         <MentorHelpCTASection />
-      </main>
+      </div>
     </>
   );
 }

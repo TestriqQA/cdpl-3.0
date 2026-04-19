@@ -146,7 +146,7 @@ input::placeholder {
 }
 
 /* Optimization: Defer rendering of off-screen sections */
-main>section:not(:first-child) {
+main > section:not(:first-child) {
   content-visibility: auto;
-  contain-intrinsic-size: auto 600px;
+  contain-intrinsic-size: auto 500px;
 }

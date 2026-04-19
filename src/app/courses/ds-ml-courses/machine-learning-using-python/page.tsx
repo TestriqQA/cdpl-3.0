@@ -60,7 +60,7 @@ export default function Home() {
 
     return (
         <div className="min-h-screen flex flex-col bg-white">
-            <main className="flex-1">
+            <div className="flex-1">
                 {schemas.map((schema, index) => (
                     <JsonLd key={`ml-python-schema-${index}`} id={`ml-python-schema-${index}`} schema={schema} />
                 ))}
@@ -104,7 +104,7 @@ export default function Home() {
                 {/* CTA Section */}
                 <section id="contact"><CtaClient /></section>
 
-            </main>
+            </div>
         </div>
     );
 }

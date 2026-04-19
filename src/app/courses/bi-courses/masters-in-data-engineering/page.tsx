@@ -75,7 +75,7 @@ const DataAnalyticsMasterProgramPage: React.FC = () => {
                 <JsonLd key={`data-eng-schema-${index}`} id={`data-eng-schema-${index}`} schema={schema} />
             ))}
 
-            <main>
+            <div>
                 <HeroSection />
                 <div className="hidden md:block sticky top-0 z-20">
                     <StickyNav navItems={with_roadmap} />
@@ -91,7 +91,7 @@ const DataAnalyticsMasterProgramPage: React.FC = () => {
                 <section id="testimonials"><TestimonialsClient /></section>
                 <section id="faqs"><FaqSection /></section>
                 <section id="contact"><CtaClient /></section>
-            </main>
+            </div>
         </div>
     );
 };

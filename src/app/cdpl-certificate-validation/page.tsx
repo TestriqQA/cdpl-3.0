@@ -87,7 +87,7 @@ export default function CertificateValidationPage() {
   });
 
   return (
-    <main
+    <div
       className="bg-white text-slate-900"
     >
       {consolidatedSchemas.map((schema, index) => (
@@ -109,6 +109,6 @@ export default function CertificateValidationPage() {
       <CertificationValidatorSection />
       <CertificationSampleSection />
       <CertificationFeaturesSection />
-    </main>
+    </div>
   );
 }

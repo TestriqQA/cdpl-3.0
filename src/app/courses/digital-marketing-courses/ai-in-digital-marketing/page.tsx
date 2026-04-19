@@ -80,7 +80,7 @@ export default async function AiInDigitalMarketingPage() {
                 <JsonLd key={`ai-dm-schema-${index}`} id={`ai-dm-schema-${index}`} schema={schema} />
             ))}
 
-            <main>
+            <div>
                 <HeroSection />
                 <div className="hidden md:block sticky top-0 z-20">
                     <StickyNav navItems={with_roadmap} />
@@ -102,7 +102,7 @@ export default async function AiInDigitalMarketingPage() {
                 <section id="career"><CareerSection /></section>
                 <section id="faqs"><FaqSection /></section>
                 <section id="contact"><CtaSection /></section>
-            </main>
+            </div>
         </div>
     );
 }

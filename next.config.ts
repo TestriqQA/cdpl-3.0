@@ -216,7 +216,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/email-marketing',
-        destination: '/digital-marketing-courses',
+        destination: '/courses/digital-marketing-courses',
         permanent: true,
       },
       {
@@ -313,6 +313,13 @@ const nextConfig: NextConfig = {
         destination: '/courses/bi-courses',
         permanent: true,
       },
+      // ⚠️  SEO FIX (April 2026): Redirect old plural DM city slugs to canonical singular form.
+      // 38 city pages previously used "courses-in" (plural); now standardized to "course-in" (singular).
+      {
+        source: '/digital-marketing-courses-in-:city',
+        destination: '/digital-marketing-course-in-:city',
+        permanent: true,
+      },
     ];
   },
 
@@ -372,6 +379,24 @@ const nextConfig: NextConfig = {
           {
             key: 'X-Robots-Tag',
             value: 'noindex, nofollow',
+          },
+        ],
+      },
+      // ⚠️  SEO FIX (April 2026): Standard security headers for all pages.
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
           },
         ],
       },

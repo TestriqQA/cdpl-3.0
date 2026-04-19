@@ -157,7 +157,7 @@ export default async function AffiliateProgramPage() {
   });
 
   return (
-    <main
+    <div
       className="relative min-h-screen bg-white text-slate-800 [color-scheme:light] dark:[color-scheme:light]"
     >
       {/* Structured data for SEO */}
@@ -213,6 +213,6 @@ export default async function AffiliateProgramPage() {
           <AffiliateCTASection />
         </div>
       </section>
-    </main>
+    </div>
   );
 }

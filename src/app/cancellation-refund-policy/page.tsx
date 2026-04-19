@@ -23,7 +23,7 @@ export default function CancellationRefundPolicyPage() {
       {consolidatedSchemas.map((schema, index) => (
         <JsonLd key={`refund-schema-${index}`} id={`refund-schema-${index}`} schema={schema} />
       ))}
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900">
         <h1 className={H1}>Cancellation/Refund Policy</h1>
 
         <div className="mt-6 space-y-8">
@@ -92,7 +92,7 @@ export default function CancellationRefundPolicyPage() {
             </p>
           </section>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

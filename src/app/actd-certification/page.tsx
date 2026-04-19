@@ -123,7 +123,7 @@ export default function ACTDCertificationTrainingPage() {
   });
 
   return (
-    <main
+    <div
       className="bg-white text-slate-900"
     >
       {consolidatedSchemas.map((schema, index) => (
@@ -133,6 +133,6 @@ export default function ACTDCertificationTrainingPage() {
       <ACTDCertificationHeroSection />
       <ACTDCertificationTracksSection />
       <ACTDCertificationProgressFaqSection />
-    </main>
+    </div>
   );
 }

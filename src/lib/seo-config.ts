@@ -105,7 +105,7 @@ export const BUSINESS_INFO = {
 export const SOCIAL_PROFILES = {
   facebook: 'https://www.facebook.com/cinutedigital',
   linkedin: 'https://www.linkedin.com/company/cinute-digital/',
-  twitter: 'https://twitter.com/cinutedigital',
+  twitter: 'https://x.com/cinutedigital',
   twitterHandle: '@cinutedigital',
   instagram: 'https://www.instagram.com/cinutedigital',
   youtube: 'https://www.youtube.com/@cinutedigital',
@@ -367,7 +367,8 @@ export function getImageUrl(imagePath: string): string {
  * Get all social media URLs as array (for schema.org sameAs)
  */
 export function getSocialMediaUrls(): string[] {
-  return Object.values(SOCIAL_PROFILES);
+  const { twitterHandle, ...urlProfiles } = SOCIAL_PROFILES;
+  return Object.values(urlProfiles);
 }
 
 /**

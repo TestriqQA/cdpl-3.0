@@ -78,12 +78,12 @@ export default function TrainingServicesPage() {
       ))}
 
       {/* Main Content - Semantic HTML Structure */}
-      <main className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50">
         <ServicesHeroSection />
         <ServicesGridSection />
         <ServicesWhyChooseUsSection />
         <ServicesCTASection />
-      </main>
+      </div>
     </>
   );
 }

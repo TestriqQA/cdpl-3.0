@@ -104,7 +104,7 @@ export default function PlacementsPage() {
             ))}
 
             {/* Main Content - Semantic HTML Structure */}
-            <main
+            <div
                 className="relative min-h-screen overflow-hidden"
             >
                 {/* Soft, moving CDPL gradients */}
@@ -245,7 +245,7 @@ export default function PlacementsPage() {
 })();
         `}
                 </Script>
-            </main>
+            </div>
         </>
     );
 }

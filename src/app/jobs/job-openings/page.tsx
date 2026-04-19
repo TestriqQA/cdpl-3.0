@@ -393,7 +393,7 @@ export default async function JobSharePage() {
       ))}
 
       {/* Main Content - Semantic HTML Structure */}
-      <main className="min-h-screen bg-slate-50 text-slate-800">
+      <div className="min-h-screen bg-slate-50 text-slate-800">
         {/* Keep hero as-is; it can manage its own inner width */}
         <section className="w-full">
           <JobOpeningsHeroSection
@@ -421,7 +421,7 @@ export default async function JobSharePage() {
             className=""
           />
         </section>
-      </main>
+      </div>
     </>
   );
 }

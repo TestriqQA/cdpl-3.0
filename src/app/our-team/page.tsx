@@ -66,7 +66,7 @@ export default function Page() {
       <JsonLd id="team-breadcrumb" schema={breadcrumbSchema} />
 
       {/* Main Content - Semantic HTML Structure */}
-      <main className="bg-white">
+      <div className="bg-white">
 
 
         <TeamHeroSection />
@@ -75,7 +75,7 @@ export default function Page() {
         <TeamDirectory data={teamData} />
         <TeamCultureSection />
 
-      </main>
+      </div>
     </>
   );
 }

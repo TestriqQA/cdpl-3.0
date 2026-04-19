@@ -42,7 +42,7 @@ import { SanityPost } from "@/sanity/types";
 // ============================================================================
 
 export const metadata: Metadata = generateMetadata({
-  title: "Software Testing & Data Science Course Mumbai | CDPL",
+  title: "Best Software Testing & Data Science Courses India | CDPL",
   description: "Launch your tech career with CDPL's industry-leading courses in Software Testing, Data Science, and AI/ML. 100% Placement Support, Live Projects & Expert Mentors. Book a Free Demo!",
   keywords: [
     "software testing course",
@@ -98,7 +98,7 @@ export default async function HomePage(): Promise<React.ReactElement> {
         <JsonLd key={index} id={`home-schema-${index}`} schema={schema} />
       ))}
 
-      <main className="relative bg-white">
+      <div className="relative bg-white">
         {/* ========================================
             PAGE CONTENT
             ======================================== */}
@@ -119,7 +119,7 @@ export default async function HomePage(): Promise<React.ReactElement> {
         <HomeLatestBlogSection posts={latestPosts} />
         <HomeFAQSection />
         <HomeFinalCTASection />
-      </main>
+      </div>
     </>
   );
 }

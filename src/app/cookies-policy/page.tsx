@@ -23,7 +23,7 @@ export default function CookiesPolicyPage() {
       {consolidatedSchemas.map((schema, index) => (
         <JsonLd key={`cookies-schema-${index}`} id={`cookies-schema-${index}`} schema={schema} />
       ))}
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900">
         <h1 className={H1}>Cookies Policy</h1>
 
         <div className="mt-6 space-y-8">
@@ -138,7 +138,7 @@ export default function CookiesPolicyPage() {
             <p className={P}>You can learn more about cookies: <a href="#" className="underline text-blue-600 hover:text-blue-800" aria-label="What Are Cookies?" title="What Are Cookies?">What Are Cookies?</a>.</p>
           </section>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

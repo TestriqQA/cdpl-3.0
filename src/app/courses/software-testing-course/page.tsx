@@ -64,7 +64,7 @@ export default function SoftwareTestingPage() {
   );
 
   return (
-    <main className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen">
       {schemas.map((schema, index) => (
         <JsonLd key={index} id={`software-testing-schema-${index}`} schema={schema} />
       ))}
@@ -82,6 +82,6 @@ export default function SoftwareTestingPage() {
       <section id="career"><CareerPathSection /></section>
       <section id="faqs"><FAQSection /></section>
       <section id="contact"><CtaClient /></section>
-    </main>
+    </div>
   );
 }
