@@ -1,8 +1,8 @@
 # CDPL SEO + GEO Audit — Live Progress
 
-> **Updated:** 2026-05-19 (Phase 5 complete; ready for Phase 6)
+> **Updated:** 2026-05-19 (Phase 6 complete; ready for Phase 7)
 > **Branch:** `seo-audit/cycle-1-discovery`
-> **Last commit:** Phase 5 commit pending below.
+> **Last commit:** Phase 6 commit pending below.
 
 This file is rewritten **on every response that touches the audit**, so you always see current state without having to scroll back.
 
@@ -16,8 +16,8 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | 2 | Codebase Architecture Audit | ✅ done | [02-codebase-audit.md](02-codebase-audit.md) | `d05558e` |
 | 3 | Technical SEO Audit | ✅ done | [03-technical-seo.md](03-technical-seo.md) | `ab75d25` |
 | 4 | On-Page SEO Audit | ✅ done | [04-onpage-audit.md](04-onpage-audit.md) | `6153793` |
-| 5 | Structured Data & Schema (JSON-LD) | ✅ done | [05-schema-audit.md](05-schema-audit.md) | (pending commit) |
-| 6 | Core Web Vitals & Performance | ⏳ pending | 06-cwv-performance.md | — |
+| 5 | Structured Data & Schema (JSON-LD) | ✅ done | [05-schema-audit.md](05-schema-audit.md) | `cfd584c` |
+| 6 | Core Web Vitals & Performance | ✅ done | [06-cwv-performance.md](06-cwv-performance.md) | (pending commit) |
 | 7 | Content & Information Architecture | ⏳ pending | 07-content-ia.md | — |
 | 8 | GEO / AEO Strategy | ⏳ pending | 08-geo-aeo-strategy.md | — |
 | 9 | Sanity CMS Schema Audit | ⏳ pending | 09-sanity-schema-audit.md | — |
@@ -100,3 +100,4 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | 2026-05-19 | Phase 3 complete. 03-technical-seo.md emitted. **16 new backlog entries (BLG-026 → BLG-041).** Headline P0s: placeholder `"Your Company"` branding shipping to production in blog/categories (BLG-026), `CATEGORY_QUERY + CATEGORY_POSTS_QUERY` double-fetch in blog/category/[slug] (BLG-027). 0 redirect chains detected in 52 static redirects. Sitemap is comprehensive (~870 URLs, no orphans). AI-crawler content-blindness on course detail pages confirmed as primary GEO blocker (BLG-004 deepening). |
 | 2026-05-19 | Phase 4 complete. 04-onpage-audit.md emitted. **14 new backlog entries (BLG-042 → BLG-055).** Headline P0s: `/mock-test` + `/istqb-registration` titles show **"Testriq"** instead of CDPL/Cinute Digital (BLG-042); 30+ pages reference non-defensible claims ("5,000+ placed", "100% placement", "15+ years") in meta descriptions (BLG-044). ~35 titles exceed 60 chars (BLG-043). LSI keyword coverage is strong on course pages (~16 keywords each). 9 generic-anchor occurrences only. **Total backlog so far: 55 entries (6 P0 / 16 P1 / 20 P2 / 13 P3).** |
 | 2026-05-19 | Phase 5 complete. 05-schema-audit.md emitted. **26 new backlog entries (BLG-056 → BLG-081).** **Most critical finding of the audit so far:** `generateSingleReviewSchema` emits a **fabricated 5-star review with hard-coded body** ("The training curriculum at CDPL is highly practical…") attributed to "CDPL Student" with `Math.random()` in @id — **~830 routes ship this fake review** (home + 25 course detail + 765 city + blog + categories + more). Direct manual-action risk + violates Google self-serving review policy. Also: `generateCourseSchema` hard-codes 25k-65k price ignoring real prices (BLG-058); Organization description includes non-defensible "100% placement support" (BLG-059). 77 schema generators inventoried; 57 are page-specific consolidators (~4500 lines of dup). **Total backlog: 81 entries (10 P0 / 25 P1 / 28 P2 / 18 P3).** 4 open user-confirmation questions added for Sprint 2. |
+| 2026-05-19 | Phase 6 complete. 06-cwv-performance.md emitted. **13 new backlog entries (BLG-082 → BLG-094).** **Discovery:** 4 production deps are installed but never imported anywhere — `recharts`, `react-calendly`, `react-countup`, `typewriter-effect` (BLG-082) → ~250 KB lockfile bloat. `next-sanity-image ^6.2.0` is installed but unused (BLG-083) — adopting it for blog images is the **single biggest blog-CWV win** available (auto width/height/blur from Sanity metadata). `framer-motion` imported in **160 files** (BLG-084) is the biggest aggregated JS cost. Other findings: 4 below-fold company logos marked `priority` (BLG-085), alt text mismatches filename on 3 logo images suggesting placeholder alumni-company badges (BLG-086, P1), inline `font-family: system-ui` override on 765 city H1s (BLG-089). Font strategy is **exemplar** (variable Inter, preload, swap, comprehensive fallback). No images missing dimensions. **Total backlog: 94 entries (12 P0 / 29 P1 / 32 P2 / 21 P3).** |
