@@ -1,8 +1,8 @@
 # CDPL SEO + GEO Audit — Live Progress
 
-> **Updated:** 2026-05-19 (Phase 9 complete; ready for Phase 10)
+> **Updated:** 2026-05-19 (Phase 10 complete; ready for Phase 11)
 > **Branch:** `seo-audit/cycle-1-discovery`
-> **Last commit:** Phase 9 commit pending below.
+> **Last commit:** Phase 10 commit pending below.
 
 This file is rewritten **on every response that touches the audit**, so you always see current state without having to scroll back.
 
@@ -20,8 +20,8 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | 6 | Core Web Vitals & Performance | ✅ done | [06-cwv-performance.md](06-cwv-performance.md) | `0be4916` |
 | 7 | Content & Information Architecture | ✅ done | [07-content-ia.md](07-content-ia.md) | `a268df1` |
 | 8 | GEO / AEO Strategy | ✅ done | [08-geo-aeo-strategy.md](08-geo-aeo-strategy.md) | `24c1a78` |
-| 9 | Sanity CMS Schema Audit | ✅ done | [09-sanity-schema-audit.md](09-sanity-schema-audit.md) | (pending commit) |
-| 10 | GSC Triage | ⏳ pending (needs GSC) | 10-gsc-triage.md | — |
+| 9 | Sanity CMS Schema Audit | ✅ done | [09-sanity-schema-audit.md](09-sanity-schema-audit.md) | `85e4ddc` |
+| 10 | GSC Triage | ✅ done (methodology + predictions; awaits GSC paste) | [10-gsc-triage.md](10-gsc-triage.md) | (pending commit) |
 | 11 | Browser-Based Live Audit | ⏳ pending (needs Chrome MCP) | 11-live-browser-audit.md | — |
 | 12 | Competitive Gap Analysis | ⏳ pending | 12-competitive-gap.md | — |
 | 13 | EdTech India Optimization | ⏳ pending | 13-edtech-india-optimization.md | — |
@@ -73,7 +73,7 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | Q8 | Is `numberOfEmployees: 50` accurate (BLG-071)? | 2026-05-19 Phase 5 | ⏳ blocks Cycle 2 Sprint 2 |
 | Q9 | Sign-off on removing fabricated reviews from 830 routes (BLG-056) — confirm scope | 2026-05-19 Phase 5 | ⏳ blocks Cycle 2 Sprint 1 |
 | Q10 | Actual prices per course (or confirm 25k-65k range is correct for ALL 25 courses) (BLG-058) | 2026-05-19 Phase 5 | ⏳ blocks Cycle 2 Sprint 2 |
-| Q6 | GSC property access (for Phase 10) | — | ⏳ Phase 10 will ask |
+| Q6 | GSC property access (for Phase 10 validation) | 2026-05-19 Phase 10 | ⏳ paste GSC exports into [10-gsc-triage.md](10-gsc-triage.md) §10.10 template |
 | Q7 | Sanity webhook secret + Studio API token scope (Phase 9 / Cycle 2 Sprint 5) | — | ⏳ Phase 9 will ask |
 
 ---
@@ -104,3 +104,4 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | 2026-05-19 | Phase 7 complete. 07-content-ia.md emitted. **20 new backlog entries (BLG-095 → BLG-114).** **P0 discovery:** ALL 30+ course descriptions in `headerData.ts` are **wrong boilerplate** — Manual Testing says "Master Scrum", Python says "Master containerization", DM says "Earn PMP certification", BI says "Craft a standout resume". These propagate to **MegaMenu navigation (visible) + Footer + `generateHomePageSchema` ItemList + `generateAllCoursesPageSchema` ItemList (JSON-LD)** — so AI engines ingest wrong descriptions. Other findings: AI hub has only 1 spoke (BLG-096); 3-way ML/Python cannibalization + 4-way Data-Analytics + 4-way AI cannibalization (BLG-097); **0 pillar pages of 3000+ words** (BLG-099); **0 free-tool linkable assets** (BLG-100); no per-mentor profile pages (BLG-101); 21 stray `.tsx` blog seeds in `src/content/posts/` (BLG-109). Strengths: anchor text is keyword-rich across MegaMenu; Sanity author schema has social fields ready for E-E-A-T (just not wired to Article schema). **Total backlog: 114 entries (13 P0 / 36 P1 / 41 P2 / 24 P3).** |
 | 2026-05-19 | Phase 8 complete. 08-geo-aeo-strategy.md emitted. **17 new backlog entries (BLG-115 → BLG-131).** `public/llms.txt` exists ✓ but uses 17 old-slug URLs that all 301-redirect (BLG-115), lists AI Bootcamp under wrong category (BLG-116), missing 13+ course pages + city-courses + certifications + NAP + founder (BLG-117/118/119/120), claims "100% placement assistance" (BLG-121 — P0). No `llms-full.txt` (BLG-122). No Wikidata Q-ID — **highest-leverage external GEO action** (BLG-123). All major AI bots already Allowed in robots.ts ✓. **Cross-phase GEO blockers identified:** BLG-004 (ssr:false invisible to AI), BLG-056 (fake reviews), BLG-095 (wrong descriptions), BLG-066 (author no sameAs), BLG-064 (no founder) — all must land Sprint 1-2 before Sprint 5's GEO infra ships. **Total backlog: 131 entries (14 P0 / 45 P1 / 46 P2 / 26 P3).** |
 | 2026-05-19 | Phase 9 complete. 09-sanity-schema-audit.md emitted. **21 new backlog entries (BLG-132 → BLG-152).** **P0 discovery:** ALL 3 Sanity image fields (post.featuredImage, author.avatar, certificate.certificateImage) lack `alt` subfield with `Rule.required()` validation (BLG-132) — a11y + image-SEO blocker. **Architectural finding:** No Sanity doc types for `course`, `mentor`, `event`, `testimonial`, `hiringPartner`, `service`, `city` (BLG-133) — content lives in TS data files, blocks BLG-095/BLG-101/BLG-126 fixes. No `validation.required()` on critical fields in post/author/category (BLG-134). job schema missing salary/datePosted/validThrough/description fields required for JobPosting Rich Results (BLG-138 — P1). No draftMode integration / /api/preview routes (BLG-139). PortableTextRenderer DOES use `useNextSanityImage` ✓ but blog hero / list / sidebar / author avatar don't (BLG-145 refined). GROQ projection discipline is excellent ✓. Strong references (post→author, post→category) ✓. **Total backlog: 152 entries (15 P0 / 55 P1 / 52 P2 / 28 P3).** |
+| 2026-05-19 | Phase 10 complete. 10-gsc-triage.md emitted. **No new backlog entries** — Phase 10 is methodology + predictive findings only (live GSC data required to validate). Doc provides: §10.10 paste-here template for 8 GSC reports (Coverage/Sitemaps/Performance/Enhancements/Manual Actions/Security/Links/Page Experience); §10.11 cross-reference table linking each prediction to a backlog ID; §10.5 rich-result predictions per type. Top predicted GSC manifestations: BLG-001 will show as "Duplicate without user-selected canonical"; BLG-056 will trigger Review snippet warnings; BLG-058 will surface as Course rich-result "Invalid offer price"; BLG-138 will surface as JobPosting "Missing description/datePosted/validThrough/baseSalary". **Total backlog unchanged: 152 entries.** |
