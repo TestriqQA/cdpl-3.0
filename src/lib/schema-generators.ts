@@ -793,54 +793,15 @@ export function generateVideoSchema(
 }
 
 // ============================================================================
-// INDIVIDUAL REVIEW SCHEMA
+// (Removed) INDIVIDUAL REVIEW SCHEMA
 // ============================================================================
-
-/**
- * Generate a specific individual Review schema.
- * Associates the review with a Course/Service rather than a self-serving Organization review.
- */
-export function generateSingleReviewSchema(
-  itemType: string = "Service",
-  itemName: string = "CDPL Training",
-  itemId?: string,
-): WithContext<Record<string, unknown>> {
-  const fullItemId = itemId || getOrganizationId();
-
-  return {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "@id": `${SITE_CONFIG.url}/#student-review-${Math.floor(Math.random() * 1000)}`,
-    author: {
-      "@type": "Person",
-      name: "CDPL Student",
-    },
-    itemReviewed: {
-      "@type": itemType,
-      "@id": fullItemId,
-      name: itemName,
-      url: fullItemId.split("#")[0], // Use URL from ID (stripping anchor)
-      image: getImageUrl(SITE_CONFIG.logo),
-      description: `Professional training and events by ${SITE_CONFIG.name}`,
-      ...((itemType === "Service" ||
-        itemType === "Course" ||
-        itemType === "Event") && {
-        provider: {
-          "@type": "Organization",
-          "@id": getOrganizationId(),
-          name: SITE_CONFIG.name,
-        },
-      }),
-    },
-    reviewBody:
-      "The training curriculum at CDPL is highly practical and industry-aligned. The mentors provide hands-on guidance on real-world projects, which significantly helped in my career transition.",
-    reviewRating: {
-      "@type": "Rating",
-      bestRating: "5",
-      ratingValue: "5",
-    },
-  };
-}
+// generateSingleReviewSchema was deleted in BLG-056 (Sprint 1) because it
+// emitted a fabricated 5-star review with a hardcoded reviewBody attributed
+// to a fake "CDPL Student" author and a Math.random()-derived @id on every
+// route that called it (~830 routes total). This violated Google's self-
+// serving review policy and risked a manual action. Real student reviews
+// belong on Course/Service entities, derived from actual Sanity testimonial
+// data via generateCourseSchema's review array (already wired).
 
 // ============================================================================
 // EVENT SCHEMAMA
@@ -1189,11 +1150,6 @@ export function generateHomePageSchema(
     webPageSchema,
     howToSchema,
     aggregateRatingSchema,
-    generateSingleReviewSchema(
-      "LocalBusiness",
-      "Professional Training & Placement Services",
-      `${SITE_CONFIG.url}/#localbusiness`,
-    ),
     siteNavSchemas,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1352,7 +1308,6 @@ export function generateAllCoursesPageSchema(): WithContext<
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1445,7 +1400,6 @@ export function generateSoftwareTestingCategoryPageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1537,7 +1491,6 @@ export function generateDataScienceMachineLearningCategoryPageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1629,7 +1582,6 @@ export function generateBusinessIntelligenceCategoryPageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1723,7 +1675,6 @@ export function generateArtificialIntelligenceCategoryPageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1817,7 +1768,6 @@ export function generateDigitalMarketingCategoryPageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1911,7 +1861,6 @@ export function generateManualTestingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1994,7 +1943,6 @@ export function generateApiTestingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2077,7 +2025,6 @@ export function generateDbmsCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2160,7 +2107,6 @@ export function generateEtlTestingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2243,7 +2189,6 @@ export function generateAdvanceSoftwareTestingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2326,7 +2271,6 @@ export function generateAutomationTestingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2409,7 +2353,6 @@ export function generateAdvanceManualAutomationTestingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2492,7 +2435,6 @@ export function generatePythonCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2575,7 +2517,6 @@ export function generateJavaCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2656,7 +2597,6 @@ export function generateMachineLearningCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2737,7 +2677,6 @@ export function generateGenerativeAICoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2818,7 +2757,6 @@ export function generateDataScienceCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2899,7 +2837,6 @@ export function generateAICoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2980,7 +2917,6 @@ export function generateMachineLearningUsingPythonCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3061,7 +2997,6 @@ export function generateDataVisualizationInRProgrammingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3144,7 +3079,6 @@ export function generatePromptEngineeringCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3225,7 +3159,6 @@ export function generateDataAnalyticsCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3306,7 +3239,6 @@ export function generateDataAnalyticsPythonCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3387,7 +3319,6 @@ export function generateDataAnalyticsVisualizationCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3468,7 +3399,6 @@ export function generateDataAnalyticsTableauCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3549,7 +3479,6 @@ export function generatePowerBICoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3630,7 +3559,6 @@ export function generateMastersDataEngineeringCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3717,7 +3645,6 @@ export function generateDigitalMarketingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3800,7 +3727,6 @@ export function generateAiInDigitalMarketingCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3883,7 +3809,6 @@ export function generateAiBootcampCoursePageSchema(
     breadcrumbSchema,
     faqSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -4062,7 +3987,6 @@ export function generateContactPageAllSchemas(): WithContext<
     itemListSchema,
     aggregateRatingSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -4219,7 +4143,6 @@ export function generateAboutPageAllSchemas(
     itemListSchema,
     aggregateRatingSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -4355,7 +4278,6 @@ export function generateServicesPageAllSchemas(
     itemListSchema,
     aggregateRatingSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -4550,7 +4472,6 @@ export function generateServiceDetailPageAllSchemas(service: {
     itemListSchema,
     aggregateRatingSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -4676,11 +4597,6 @@ export function generateEventsPageAllSchemas(
     itemListSchema,
     aggregateRatingSchema,
     howToSchema,
-    generateSingleReviewSchema(
-      "Service",
-      "CDPL Events & Training",
-      getFullUrl("/events#service"),
-    ),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -4973,7 +4889,6 @@ export function generateOurTeamPageAllSchemas(
     itemListSchema,
     aggregateRatingSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -5079,7 +4994,6 @@ export function generateMentorsPageAllSchemas(
     itemListSchema,
     aggregateRatingSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -5176,7 +5090,6 @@ export function generateLiveJobsPageAllSchemas(
     itemListSchema,
     aggregateRatingSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -5273,7 +5186,6 @@ export function generatePlacementsPageAllSchemas(
     itemListSchema,
     aggregateRatingSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -5371,7 +5283,6 @@ export function generateCareersPageAllSchemas(
     itemListSchema,
     aggregateRatingSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -5475,7 +5386,6 @@ export function generateJobOpeningsPageAllSchemas(
     itemListSchema,
     aggregateRatingSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -5546,11 +5456,6 @@ export function generateAffiliateProgram8PointSchema(data: {
     itemListSchema,
     affiliateServiceSchema,
     howToSchema,
-    generateSingleReviewSchema(
-      "Service",
-      "CDPL Affiliate Program",
-      getFullUrl("/cdpl-affiliate-program#service"),
-    ),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -5619,7 +5524,6 @@ export function generateIstqbRegistrationPageAllSchemas(data: {
     itemListSchema,
     reviewAggregateSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -5688,7 +5592,6 @@ export function generateMockTestPageAllSchemas(data: {
     itemListSchema,
     reviewAggregateSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -5755,7 +5658,6 @@ export function generateAaaCertificationPageAllSchemas(data: {
     faqSchema,
     itemListSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -5822,7 +5724,6 @@ export function generateActdCertificationPageAllSchemas(data: {
     faqSchema,
     itemListSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -5890,7 +5791,6 @@ export function generateCertificateValidationPageAllSchemas(data: {
     faqSchema,
     itemListSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -5959,7 +5859,6 @@ export function generateCmsPageAllSchemas(data: {
     itemListSchema,
     reviewAggregateSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -6072,7 +5971,6 @@ export function generatePrivacyPolicyPageAllSchemas(): WithContext<
     itemListSchema,
     reviewAggregateSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -6182,7 +6080,6 @@ export function generateCookiesPolicyPageAllSchemas(): WithContext<
     itemListSchema,
     reviewAggregateSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -6304,7 +6201,6 @@ export function generateTermsOfServicePageAllSchemas(): WithContext<
     itemListSchema,
     reviewAggregateSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -6421,7 +6317,6 @@ export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<
     itemListSchema,
     reviewAggregateSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -6524,7 +6419,6 @@ export function generateReviewsPageAllSchemas(
     itemListSchema,
     reviewAggregateSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -6601,7 +6495,6 @@ export function generateCityCoursePageSchema(
     itemListSchema,
     courseSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -6718,7 +6611,6 @@ export function generateLocationsPageAllSchemas(
     itemListSchema,
     aggregateRatingSchema,
     howToSchema,
-    generateSingleReviewSchema(),
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>

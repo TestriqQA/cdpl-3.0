@@ -8,7 +8,6 @@ import {
     generateBlogSchema,
     generateFAQSchema,
     generateReviewSchema,
-    generateSingleReviewSchema,
     generateWebPageSchema,
 } from "@/lib/schema-generators";
 import {
@@ -127,7 +126,6 @@ export default async function BlogPage() {
             <JsonLd id="blog-main" schema={blogSchema} />
             <JsonLd id="blog-rating" schema={aggregateRatingSchema} />
             <JsonLd id="blog-faq" schema={faqSchema} />
-            <JsonLd id="blog-review" schema={generateSingleReviewSchema('Service', 'CDPL Tech Blog & Knowledge Hub', getFullUrl('/blog#service'))} />
 
             {/* Semantic HTML with proper structure */}
             <article>
