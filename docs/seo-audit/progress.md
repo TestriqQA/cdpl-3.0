@@ -2,7 +2,7 @@
 
 > **Updated:** 2026-05-19 — **CYCLE 1 COMPLETE** ✅
 > **Branch:** `seo-audit/cycle-1-discovery` (ready for merge to `develop` at user discretion)
-> **Last commit:** Phase 14 commit pending below.
+> **Last commit:** `cd003b0 docs(seo-audit): Phase 14 — Off-Page + Master Backlog + Sprint Roadmap (CYCLE 1 COMPLETE)`
 > **Total backlog:** 199 entries (18 P0 / 75 P1 / 64 P2 / 42 P3) across 14 phases + 4 ancillary docs
 
 This file is rewritten **on every response that touches the audit**, so you always see current state without having to scroll back.
@@ -27,9 +27,9 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | 11 | Browser-Based Live Audit | ✅ done | [11-live-browser-audit.md](11-live-browser-audit.md) | `8c25e73` |
 | 12 | Competitive Gap Analysis | ✅ done | [12-competitive-gap.md](12-competitive-gap.md) | `a9731e1` |
 | 13 | EdTech India Optimization | ✅ done | [13-edtech-india-optimization.md](13-edtech-india-optimization.md) | `d2cf626` |
-| 14 | Off-Page & Authority Strategy | ✅ done | [14-offpage-strategy.md](14-offpage-strategy.md) | (pending commit) |
-| — | Master Fix Backlog (199 entries) | ✅ done | [fix-backlog.md](fix-backlog.md) | (pending commit) |
-| — | Cycle 2 Sprint Roadmap (7 sprints + Cycle 3) | ✅ done | [sprint-roadmap.md](sprint-roadmap.md) | (pending commit) |
+| 14 | Off-Page & Authority Strategy | ✅ done | [14-offpage-strategy.md](14-offpage-strategy.md) | `cd003b0` |
+| — | Master Fix Backlog (199 entries) | ✅ done | [fix-backlog.md](fix-backlog.md) | `cd003b0` |
+| — | Cycle 2 Sprint Roadmap (7 sprints + Cycle 3) | ✅ done | [sprint-roadmap.md](sprint-roadmap.md) | `cd003b0` |
 
 **Cadence:** Phase-by-phase with pause for review (per user decision 2026-05-19).
 **Commit policy:** One commit per phase on `seo-audit/cycle-1-discovery` branch.
