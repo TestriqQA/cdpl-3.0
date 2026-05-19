@@ -1,8 +1,8 @@
 # CDPL SEO + GEO Audit — Live Progress
 
-> **Updated:** 2026-05-19 (Phase 2 complete; ready for Phase 3)
+> **Updated:** 2026-05-19 (Phase 3 complete; ready for Phase 4)
 > **Branch:** `seo-audit/cycle-1-discovery`
-> **Last commit:** Phase 2 commit pending below.
+> **Last commit:** Phase 3 commit pending below.
 
 This file is rewritten **on every response that touches the audit**, so you always see current state without having to scroll back.
 
@@ -13,8 +13,8 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | # | Phase | Status | Deliverable | Commit |
 | --- | --- | --- | --- | --- |
 | 1 | Discovery & Baseline Snapshot | ✅ done | [01-baseline.md](01-baseline.md) | `25969c9` |
-| 2 | Codebase Architecture Audit | ✅ done | [02-codebase-audit.md](02-codebase-audit.md) | (pending commit) |
-| 3 | Technical SEO Audit | ⏳ pending | 03-technical-seo.md | — |
+| 2 | Codebase Architecture Audit | ✅ done | [02-codebase-audit.md](02-codebase-audit.md) | `d05558e` |
+| 3 | Technical SEO Audit | ✅ done | [03-technical-seo.md](03-technical-seo.md) | (pending commit) |
 | 4 | On-Page SEO Audit | ⏳ pending | 04-onpage-audit.md | — |
 | 5 | Structured Data & Schema (JSON-LD) | ⏳ pending | 05-schema-audit.md | — |
 | 6 | Core Web Vitals & Performance | ⏳ pending | 06-cwv-performance.md | — |
@@ -94,3 +94,4 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | 2026-05-19 | Audit kicked off. Phase 1 (Discovery & Baseline) completed and committed. 4 deliverables + decisions log emitted. 16-item initial issue radar produced. 3 user-confirmation questions answered. |
 | 2026-05-19 | Phase 2 (Codebase Architecture Audit) started. |
 | 2026-05-19 | Phase 2 complete. 02-codebase-audit.md emitted. **25 backlog entries (BLG-001 → BLG-025) seeded.** Headline P0s: SeoHead client-canonical (BLG-001), broken not-found.tsx Link import (BLG-002), POST_QUERY double-fetch (BLG-003), course-content `ssr:false` invisible to AI crawlers (BLG-004). progress.md introduced and integrated into commit cadence. |
+| 2026-05-19 | Phase 3 complete. 03-technical-seo.md emitted. **16 new backlog entries (BLG-026 → BLG-041).** Headline P0s: placeholder `"Your Company"` branding shipping to production in blog/categories (BLG-026), `CATEGORY_QUERY + CATEGORY_POSTS_QUERY` double-fetch in blog/category/[slug] (BLG-027). 0 redirect chains detected in 52 static redirects. Sitemap is comprehensive (~870 URLs, no orphans). AI-crawler content-blindness on course detail pages confirmed as primary GEO blocker (BLG-004 deepening). |
