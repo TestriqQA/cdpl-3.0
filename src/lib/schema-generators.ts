@@ -429,16 +429,24 @@ export function generateCourseSchema(
     // Add location if available, though not strictly required for all courses
   };
 
-  // Default Offer using AggregateOffer to represent the 25,000 to 65,000 range
-  const defaultOffer = {
-    "@type": "AggregateOffer",
-    lowPrice: "25000",
-    highPrice: "65000",
-    priceCurrency: course.currency || "INR",
-    availability: "https://schema.org/InStock",
-    url: fullUrl,
-    category: "Paid",
-  };
+  // BLG-058 (Sprint 1): use the actual course.price passed by the caller.
+  // Previously this was hard-coded to lowPrice 25000 / highPrice 65000 via
+  // AggregateOffer, ignoring course.price entirely — every Course schema
+  // shipped the same wrong 25k-65k range regardless of the real price.
+  //
+  // - If course.price is provided: emit a single Offer with that price.
+  // - If not provided: omit offers (a missing offers field is a soft
+  //   warning in Google Rich Results, but a wrong price is a hard problem).
+  const offer = course.price !== undefined
+    ? {
+        "@type": "Offer",
+        price: String(course.price),
+        priceCurrency: course.currency || "INR",
+        availability: "https://schema.org/InStock",
+        url: fullUrl,
+        category: "Paid",
+      }
+    : undefined;
 
   return {
     "@context": "https://schema.org",
@@ -463,8 +471,8 @@ export function generateCourseSchema(
     // Course Instance (Required)
     hasCourseInstance: [defaultCourseInstance],
 
-    // Offers (Required)
-    offers: defaultOffer,
+    // Offers — only emitted when caller provides course.price (BLG-058)
+    ...(offer && { offers: offer }),
 
     // Aggregate Rating — only when real reviews exist
     ...(course.reviews && course.reviews.length > 0 && {
