@@ -92,7 +92,7 @@ export function generateOrganizationSchema(): WithContext<
       height: SITE_CONFIG.defaultOgImageHeight,
     },
     description:
-      "Leading EdTech company providing industry-focused training in Software Testing, Data Science, AI/ML, and Digital Marketing with 100% placement support.",
+      "EdTech institute providing industry-focused training in Software Testing, Data Science, AI/ML, Business Intelligence, and Digital Marketing. ISTQB Training Partner with AAA and ACTD accreditation, placement assistance, live-project-based learning, and mentor-led cohorts.",
     slogan: SITE_CONFIG.tagline,
 
     // Contact Information
