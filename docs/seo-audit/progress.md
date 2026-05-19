@@ -1,8 +1,9 @@
 # CDPL SEO + GEO Audit — Live Progress
 
-> **Updated:** 2026-05-19 (Phase 13 complete; ready for Phase 14 — final)
-> **Branch:** `seo-audit/cycle-1-discovery`
-> **Last commit:** Phase 13 commit pending below.
+> **Updated:** 2026-05-19 — **CYCLE 1 COMPLETE** ✅
+> **Branch:** `seo-audit/cycle-1-discovery` (ready for merge to `develop` at user discretion)
+> **Last commit:** Phase 14 commit pending below.
+> **Total backlog:** 199 entries (18 P0 / 75 P1 / 64 P2 / 42 P3) across 14 phases + 4 ancillary docs
 
 This file is rewritten **on every response that touches the audit**, so you always see current state without having to scroll back.
 
@@ -25,8 +26,10 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | 10b | GSC Live Data (validated via Chrome MCP) | ✅ done | [10b-gsc-live.md](10b-gsc-live.md) | `0c1f2a0` |
 | 11 | Browser-Based Live Audit | ✅ done | [11-live-browser-audit.md](11-live-browser-audit.md) | `8c25e73` |
 | 12 | Competitive Gap Analysis | ✅ done | [12-competitive-gap.md](12-competitive-gap.md) | `a9731e1` |
-| 13 | EdTech India Optimization | ✅ done | [13-edtech-india-optimization.md](13-edtech-india-optimization.md) | (pending commit) |
-| 14 | Off-Page & Authority Strategy + Master Backlog | ⏳ pending | 14-offpage-strategy.md + fix-backlog.md + sprint-roadmap.md | — |
+| 13 | EdTech India Optimization | ✅ done | [13-edtech-india-optimization.md](13-edtech-india-optimization.md) | `d2cf626` |
+| 14 | Off-Page & Authority Strategy | ✅ done | [14-offpage-strategy.md](14-offpage-strategy.md) | (pending commit) |
+| — | Master Fix Backlog (199 entries) | ✅ done | [fix-backlog.md](fix-backlog.md) | (pending commit) |
+| — | Cycle 2 Sprint Roadmap (7 sprints + Cycle 3) | ✅ done | [sprint-roadmap.md](sprint-roadmap.md) | (pending commit) |
 
 **Cadence:** Phase-by-phase with pause for review (per user decision 2026-05-19).
 **Commit policy:** One commit per phase on `seo-audit/cycle-1-discovery` branch.
@@ -110,3 +113,4 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | 2026-05-19 | Phase 11 complete (live browser audit via Chrome MCP). **4 new backlog entries (BLG-163 → BLG-166).** **🚨 P0 NEW BLG-163:** Home emits **3 separate canonical tags** — one points to non-existent `/index`. BLG-001 worse than predicted. **NEW BLG-164:** CountUp animated stats render initial value `0` in SSR → AI crawlers ingest "0 training hours / 0 job vacancies" instead of real numbers. **NEW BLG-165:** auto-abbreviator leaves dangling pipe `\| \| CDPL` after stripping "Testriq" on /mock-test title. **NEW BLG-166:** Blog hero `<Image>` is `loading="lazy"` (no priority) — direct cause of LCP universal failure. **DOWNGRADED** BLG-093/011 to P3 (Sanity images route through `/_next/image`, no direct cdn.sanity.io fetch). **Live-verified BLG-001 (3 canonicals), BLG-002 (broken Go Home link), BLG-004 (210 words hero SSR, curriculum invisible), BLG-042 (`/istqb-registration` still has "Testriq"), BLG-056 verbatim payload, BLG-057 random @id `-953`, BLG-058 (25k-65k served despite source 15000), BLG-063 (teaches+level MISSING), BLG-076 @id collision, BLG-095 ("Learn to facilitate Scrum teams" in live JSON-LD).** **Total backlog: 166 entries (17 P0 / 59 P1 / 54 P2 / 36 P3).** |
 | 2026-05-19 | Phase 12 complete (competitive gap analysis via Chrome MCP). Audited Simplilearn, Edureka, Intellipaat, Scaler live. **7 new backlog entries (BLG-167 → BLG-173).** **Edureka schema vs CDPL:** Edureka course page has teaches, syllabusSections, coursePrerequisites, educationalCredentialAwarded, video, Product+Course+FAQPage. **Edureka aggregateRating: 4.2 / 49,300 reviews** = 116× CDPL's 425. **Intellipaat strategy:** Product schema (no Course) + "with IIT Certification" titles. **Scaler moat:** verified LinkedIn alumni URLs. **Untapped niches (0 competitors have):** Comparison pages, city-level scale (CDPL already has 765 city pages — unique advantage), vertical-solution pages. **Top content gaps:** tutorials, interview-question pages, comparison pages, verified alumni, salary calculator. **Backlink baseline:** CDPL not on Shiksha (formerly Naukri Learning). **Total backlog: 173 entries (17 P0 / 64 P1 / 56 P2 / 36 P3).** |
 | 2026-05-19 | Phase 13 complete (EdTech India optimization). **15 new backlog entries (BLG-174 → BLG-188).** Strategic recommendations: 10 `/tools/*` landing pages for Selenium/Postman/SQL/Cypress/Playwright/Power BI/Tableau (BLG-174 P1); 2 vertical pages BFSI Testing + Healthcare Data Analytics (BLG-175 P2); `/corporate-training` B2B cluster of 5-8 pages (BLG-176 P1 extends BLG-048/BLG-102); pricing transparency (BLG-177 P1); upcoming-batches page (BLG-178 P1); `/case-studies/[slug]` route with LinkedIn-verified alumni (BLG-179 P1 — closes Scaler's moat); claim Shiksha/CollegeDunia/Justdial/Sulekha listings (BLG-183/184); footer CIN+GST+ISO display (BLG-185); city-page meta-description CTR rescue (BLG-187 P1 — cross-cuts BLG-044). **Brand SERP verified live:** GBP + Knowledge Panel exist ✓. Thane separate listing — NAP consistency check needed. **Total Cycle 2 Sprint 6 scope: ~30-35 new pages.** **Total backlog: 188 entries (17 P0 / 70 P1 / 60 P2 / 41 P3).** |
+| 2026-05-19 | **CYCLE 1 COMPLETE.** Phase 14 emitted **3 final deliverables**: [14-offpage-strategy.md](14-offpage-strategy.md) (backlink + entity establishment + founder thought leadership), [fix-backlog.md](fix-backlog.md) (199-entry tabular master backlog), [sprint-roadmap.md](sprint-roadmap.md) (7 Cycle 2 sprints + Cycle 3). **11 new backlog entries (BLG-189 → BLG-199):** GSC Links pull (BLG-189), founder cadence (BLG-190), EdTech awards (BLG-191), speaking circuit (BLG-192), review acquisition workflow (BLG-193), Tier-1 directory submission sprint with 15 directories (BLG-194), disavow audit (BLG-195), NAP audit (BLG-196), **Wikidata Q-ID creation (BLG-197 — highest-leverage external GEO action)**, Crunchbase (BLG-198), Clutch (BLG-199). **FINAL TOTAL: 199 backlog entries (18 P0 / 75 P1 / 64 P2 / 42 P3) over 14 phases + live GSC + live browser audit. Cycle 1 branch ready for merge to `develop` at user discretion.** |
