@@ -1,0 +1,96 @@
+# CDPL SEO + GEO Audit — Live Progress
+
+> **Updated:** 2026-05-19 (Phase 2 complete; ready for Phase 3)
+> **Branch:** `seo-audit/cycle-1-discovery`
+> **Last commit:** Phase 2 commit pending below.
+
+This file is rewritten **on every response that touches the audit**, so you always see current state without having to scroll back.
+
+---
+
+## Cycle 1 progress (14 phases)
+
+| # | Phase | Status | Deliverable | Commit |
+| --- | --- | --- | --- | --- |
+| 1 | Discovery & Baseline Snapshot | ✅ done | [01-baseline.md](01-baseline.md) | `25969c9` |
+| 2 | Codebase Architecture Audit | ✅ done | [02-codebase-audit.md](02-codebase-audit.md) | (pending commit) |
+| 3 | Technical SEO Audit | ⏳ pending | 03-technical-seo.md | — |
+| 4 | On-Page SEO Audit | ⏳ pending | 04-onpage-audit.md | — |
+| 5 | Structured Data & Schema (JSON-LD) | ⏳ pending | 05-schema-audit.md | — |
+| 6 | Core Web Vitals & Performance | ⏳ pending | 06-cwv-performance.md | — |
+| 7 | Content & Information Architecture | ⏳ pending | 07-content-ia.md | — |
+| 8 | GEO / AEO Strategy | ⏳ pending | 08-geo-aeo-strategy.md | — |
+| 9 | Sanity CMS Schema Audit | ⏳ pending | 09-sanity-schema-audit.md | — |
+| 10 | GSC Triage | ⏳ pending (needs GSC) | 10-gsc-triage.md | — |
+| 11 | Browser-Based Live Audit | ⏳ pending (needs Chrome MCP) | 11-live-browser-audit.md | — |
+| 12 | Competitive Gap Analysis | ⏳ pending | 12-competitive-gap.md | — |
+| 13 | EdTech India Optimization | ⏳ pending | 13-edtech-india-optimization.md | — |
+| 14 | Off-Page & Authority Strategy + Master Backlog | ⏳ pending | 14-offpage-strategy.md + fix-backlog.md + sprint-roadmap.md | — |
+
+**Cadence:** Phase-by-phase with pause for review (per user decision 2026-05-19).
+**Commit policy:** One commit per phase on `seo-audit/cycle-1-discovery` branch.
+
+---
+
+## Cycle 2 progress (7 sprints)
+
+> Will populate after Cycle 1 deliverable #14 lands (`sprint-roadmap.md`).
+> Branch policy: one `fix/<slug>` branch per fix, off `develop`.
+
+| Sprint | Title | Status |
+| --- | --- | --- |
+| 1 | Production-Risk De-risking | ⏳ |
+| 2 | Schema Parity | ⏳ |
+| 3 | Tooling + Small UX | ⏳ |
+| 4 | Performance + Caching | ⏳ |
+| 5 | GEO/AEO + Infra | ⏳ |
+| 6 | Content Cycle (25+ new routes) | ⏳ |
+| 7 | Final Backlog Cleanup | ⏳ |
+
+---
+
+## Cycle 3 progress (CWV sweep)
+
+> Will populate after Cycle 2 surfaces CWV findings via bundle analyzer baselines.
+
+| Item | Status |
+| --- | --- |
+| Heavy-library replacement (recharts / leaflet / framer-motion / typewriter-effect / react-phone-number-input) | ⏳ |
+| Animation-library sweep (framer-motion → CSS / IntersectionObserver codemod) | ⏳ |
+| Server-component conversion (90+ candidates from 250 `'use client'` files) | ⏳ |
+
+---
+
+## Open user-confirmation requests
+
+| # | Question | Asked | Resolved |
+| --- | --- | --- | --- |
+| Q1 | Authoritative address (Mira Road vs Goregaon East) | 2026-05-19 | ✅ Mira Road |
+| Q2 | Founded year (2020 vs 2022) | 2026-05-19 | ✅ 2020 |
+| Q3 | Which trust-signal numbers are defensible | 2026-05-19 | ✅ Only 4.9/425 |
+| Q4 | Cycle 1 cadence + commit strategy | 2026-05-19 | ✅ Phase-by-phase, commit-per-phase |
+| Q5 | Sandeep Maske LinkedIn URL (for Organization.founder.sameAs) | — | ⏳ Phase 5 will ask |
+| Q6 | GSC property access (for Phase 10) | — | ⏳ Phase 10 will ask |
+| Q7 | Sanity webhook secret + Studio API token scope (Phase 9 / Cycle 2 Sprint 5) | — | ⏳ Phase 9 will ask |
+
+---
+
+## Open deferred items
+
+| # | Item | Reason | Unblocks |
+| --- | --- | --- | --- |
+| D1 | Lighthouse mobile + desktop scores | Needs live Chrome MCP run | Phase 11 |
+| D2 | GSC coverage / queries / impressions / CWV field data | Needs GSC access | Phase 10 |
+| D3 | Bundle analyzer output | Needs `ANALYZE=true next build` — **deferred until user OK due to Sanity API-token concern** | Phase 6 + Cycle 3 |
+| D4 | Competitor backlink data | Needs Ahrefs/SEMrush | Phase 12 |
+| D5 | Live DOM / network waterfall for home + 1 course + 1 city + 1 blog | Needs Chrome MCP | Phase 11 |
+
+---
+
+## Activity log
+
+| Timestamp | Activity |
+| --- | --- |
+| 2026-05-19 | Audit kicked off. Phase 1 (Discovery & Baseline) completed and committed. 4 deliverables + decisions log emitted. 16-item initial issue radar produced. 3 user-confirmation questions answered. |
+| 2026-05-19 | Phase 2 (Codebase Architecture Audit) started. |
+| 2026-05-19 | Phase 2 complete. 02-codebase-audit.md emitted. **25 backlog entries (BLG-001 → BLG-025) seeded.** Headline P0s: SeoHead client-canonical (BLG-001), broken not-found.tsx Link import (BLG-002), POST_QUERY double-fetch (BLG-003), course-content `ssr:false` invisible to AI crawlers (BLG-004). progress.md introduced and integrated into commit cadence. |
