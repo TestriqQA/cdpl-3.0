@@ -1,0 +1,143 @@
+CDPL — Page-file inventory (Phase 1 baseline snapshot, 2026-05-19)
+=====================================================================
+
+Static + dynamic page files: 64
+Dynamic-routed templates expand to ~870 actual URLs (city-courses dominate)
+
+----------------------------------------------------------------------
+HOME
+----------------------------------------------------------------------
+src/app/page.tsx
+
+----------------------------------------------------------------------
+CORE / EVERGREEN
+----------------------------------------------------------------------
+src/app/about-us/page.tsx
+src/app/our-team/page.tsx
+src/app/mentors/page.tsx
+src/app/reviews/page.tsx
+src/app/locations-we-serve/page.tsx
+src/app/contact-us/page.tsx
+
+----------------------------------------------------------------------
+COURSES HUB + CATEGORY HUBS (5)
+----------------------------------------------------------------------
+src/app/courses/page.tsx
+src/app/courses/software-testing-course/page.tsx
+src/app/courses/ds-ml-courses/page.tsx
+src/app/courses/bi-courses/page.tsx
+src/app/courses/artificial-intelligence-courses/page.tsx
+src/app/courses/digital-marketing-courses/page.tsx
+
+----------------------------------------------------------------------
+COURSE DETAIL PAGES
+----------------------------------------------------------------------
+src/app/courses/software-testing-course/manual-testing-course/page.tsx
+src/app/courses/software-testing-course/automation-testing-course/page.tsx
+src/app/courses/software-testing-course/advance-manual-automation-testing/page.tsx
+src/app/courses/software-testing-course/advance-software-testing/page.tsx
+src/app/courses/software-testing-course/api-testing/page.tsx
+src/app/courses/software-testing-course/etl-testing/page.tsx
+src/app/courses/software-testing-course/dbms-course/page.tsx
+src/app/courses/software-testing-course/python-course/page.tsx
+src/app/courses/software-testing-course/java-course/page.tsx
+src/app/courses/ds-ml-courses/data-science-course/page.tsx
+src/app/courses/ds-ml-courses/machine-learning-course/page.tsx
+src/app/courses/ds-ml-courses/machine-learning-using-python/page.tsx
+src/app/courses/ds-ml-courses/generative-ai-course/page.tsx
+src/app/courses/ds-ml-courses/ai-course/page.tsx
+src/app/courses/ds-ml-courses/data-visualization-in-r-programming/page.tsx
+src/app/courses/bi-courses/data-analytics/page.tsx
+src/app/courses/bi-courses/data-analytics-and-visualization/page.tsx
+src/app/courses/bi-courses/data-analytics-python/page.tsx
+src/app/courses/bi-courses/data-analytics-with-tableau/page.tsx
+src/app/courses/bi-courses/power-bi-course/page.tsx
+src/app/courses/bi-courses/masters-in-data-engineering/page.tsx
+src/app/courses/artificial-intelligence-courses/prompt-engineering-course/page.tsx
+src/app/courses/digital-marketing-courses/digital-marketing-course/page.tsx
+src/app/courses/digital-marketing-courses/ai-in-digital-marketing/page.tsx
+src/app/courses/digital-marketing-courses/ai-bootcamp/page.tsx
+
+----------------------------------------------------------------------
+CITY-COURSE LANDING (route group; ~765 actual URLs from courseData)
+----------------------------------------------------------------------
+src/app/(city-courses)/[slug]/page.tsx
+
+----------------------------------------------------------------------
+BLOG
+----------------------------------------------------------------------
+src/app/blog/page.tsx
+src/app/blog/all-posts/page.tsx
+src/app/blog/categories/page.tsx
+src/app/blog/category/[slug]/page.tsx
+src/app/blog/[slug]/page.tsx
+src/app/blog/author/[slug]/page.tsx
+src/app/blog/search/page.tsx
+
+----------------------------------------------------------------------
+EVENTS
+----------------------------------------------------------------------
+src/app/events/page.tsx
+src/app/events/[slug]/page.tsx
+
+----------------------------------------------------------------------
+SERVICES
+----------------------------------------------------------------------
+src/app/services/page.tsx
+src/app/services/[slug]/page.tsx
+
+----------------------------------------------------------------------
+MOCK TEST (slug page noindex via X-Robots-Tag)
+----------------------------------------------------------------------
+src/app/mock-test/page.tsx
+src/app/mock-test/[courseSlug]/page.tsx
+
+----------------------------------------------------------------------
+JOBS / PLACEMENTS
+----------------------------------------------------------------------
+src/app/jobs/careers/page.tsx
+src/app/jobs/job-openings/page.tsx
+src/app/jobs/live-jobs/page.tsx
+src/app/jobs/placements/page.tsx
+
+----------------------------------------------------------------------
+CERTIFICATIONS / PROGRAMS
+----------------------------------------------------------------------
+src/app/aaa-certification/page.tsx
+src/app/actd-certification/page.tsx
+src/app/istqb-registration/page.tsx
+src/app/cdpl-affiliate-program/page.tsx
+src/app/cdpl-certificate-validation/page.tsx
+
+----------------------------------------------------------------------
+LEGAL
+----------------------------------------------------------------------
+src/app/privacy-policy/page.tsx
+src/app/terms-of-service/page.tsx
+src/app/cookies-policy/page.tsx
+src/app/cancellation-refund-policy/page.tsx
+
+----------------------------------------------------------------------
+SANITY STUDIO (noindex via X-Robots-Tag)
+----------------------------------------------------------------------
+src/app/cms/[[...tool]]/page.tsx
+
+----------------------------------------------------------------------
+SPECIAL FILES
+----------------------------------------------------------------------
+src/app/layout.tsx              (root layout — global SEO surface)
+src/app/cms/layout.tsx          (CMS-only layout)
+src/app/sitemap.ts              (dynamic XML sitemap, fetches Sanity)
+src/app/robots.ts               (robots.txt — explicit AI-bot Allow rules)
+src/app/error.tsx               (global error boundary, 'use client')
+src/app/not-found.tsx           (404 page)
+
+----------------------------------------------------------------------
+MISSING (Phase 2 / 3 will flag)
+----------------------------------------------------------------------
+- No icon.tsx / apple-icon.tsx (uses /favicon.ico + /apple-touch-icon.png from public/)
+- No opengraph-image.tsx (uses static /og-images/*.png/.webp)
+- No manifest.ts (PWA manifest)
+- No loading.tsx anywhere (UX skeleton during ISR / streaming)
+- No template.tsx / default.tsx
+- No /api/revalidate route (Sanity webhook target — P1 gap)
