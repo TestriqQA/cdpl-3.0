@@ -8,20 +8,25 @@ import {
   generateItemListSchema,
   generateBreadcrumbSchema
 } from "@/lib/schema-generators";
+import { generateMetadata as generateSEOMetadata } from "@/lib/metadata-generator";
 import JsonLd from "@/components/JsonLd";
 import { client } from "@/sanity/client";
 import { CATEGORIES_WITH_COUNTS_QUERY, POSTS_QUERY } from "@/sanity/lib/queries";
 import { SanityCategory, SanityPost } from "@/sanity/types";
 
 // ============================================================================
-// SEO METADATA - ENHANCED
+// SEO METADATA
 // ============================================================================
-export const metadata: Metadata = {
-  title: {
-    absolute: "Blog Categories - Explore Tech Topics | CDPL",
-  },
+// BLG-026/029/030/031/032 (Sprint 1): this page previously hand-rolled its
+// entire Metadata object, which shipped placeholder branding ("Your Company",
+// "Your Company Tech Blog"), the wrong locale (en_US), a fake en-US hreflang
+// alternate, and a redundant per-page metadataBase. Now routed through the
+// central generateMetadata helper — single source of truth, correct CDPL
+// branding, en_IN locale, no fake hreflang.
+export const metadata: Metadata = generateSEOMetadata({
+  title: { absolute: "Blog Categories - Explore Tech Topics | CDPL" },
   description:
-    "Browse our comprehensive blog by category. Discover 100+ expert articles organized by topic: software testing, web development, AI & machine learning, data science, DevOps, cloud computing, and more. Find the perfect resource for your learning journey.",
+    "Browse the CDPL tech blog by category — software testing, web development, AI & machine learning, data science, and DevOps. Find the right learning resource.",
   keywords: [
     "blog categories",
     "software testing category",
@@ -31,63 +36,12 @@ export const metadata: Metadata = {
     "DevOps guides",
     "tech blog categories",
     "programming topics",
-    "technology categories",
-    "software engineering blog",
     "quality assurance articles",
     "test automation tutorials",
-    "React tutorials",
-    "cloud computing guides",
-    "database optimization",
   ],
-  authors: [{ name: "Tech Experts Team", url: "https://www.cinutedigital.com/about" }],
-  creator: "Your Company",
-  publisher: "Your Company",
-  metadataBase: new URL("https://www.cinutedigital.com"),
-  openGraph: {
-    title: "Blog Categories | Explore Tech Topics - Software Testing, Development & AI",
-    description:
-      "Browse 100+ expert articles by category: software testing, web development, AI/ML, data science, DevOps, and more. Find your perfect learning resource.",
-    type: "website",
-    url: "https://www.cinutedigital.com/blog/categories",
-    siteName: "Your Company Tech Blog",
-    images: [
-      {
-        url: "/og-images/blog-og.webp",
-        width: 1200,
-        height: 630,
-        alt: "Blog Categories - Expert Tech Resources",
-      },
-    ],
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Blog Categories | Tech Topics & Expert Resources",
-    description:
-      "Browse expert articles by category across software testing, development, AI, and more.",
-    images: ["/og-images/blog-og.webp"],
-    creator: "Cinute Digital",
-    site: "https://www.cinutedigital.com/",
-  },
-  alternates: {
-    canonical: "https://www.cinutedigital.com/blog/categories",
-    languages: {
-      "en-US": "/blog/categories",
-    },
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  category: "Technology",
-};
+  url: "/blog/categories",
+  image: "/og-images/blog-og.webp",
+});
 
 // ============================================================================
 // CATEGORIES PAGE COMPONENT
