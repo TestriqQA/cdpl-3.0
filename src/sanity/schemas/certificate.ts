@@ -49,6 +49,15 @@ export default defineType({
             options: {
                 hotspot: true,
             },
+            fields: [
+                defineField({
+                    name: 'alt',
+                    title: 'Alt text',
+                    type: 'string',
+                    description: 'Describe the certificate image for screen readers and image SEO. Required.',
+                    validation: (Rule) => Rule.required().min(5).max(160),
+                }),
+            ],
         }),
     ],
     preview: {

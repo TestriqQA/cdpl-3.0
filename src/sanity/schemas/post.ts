@@ -38,6 +38,15 @@ export default defineType({
             options: {
                 hotspot: true,
             },
+            fields: [
+                defineField({
+                    name: 'alt',
+                    title: 'Alt text',
+                    type: 'string',
+                    description: 'Describe the image for screen readers and image SEO. Required.',
+                    validation: (Rule) => Rule.required().min(5).max(160),
+                }),
+            ],
         }),
         defineField({
             name: 'publishDate',
@@ -66,6 +75,15 @@ export default defineType({
                 {
                     type: 'image',
                     options: { hotspot: true },
+                    fields: [
+                        defineField({
+                            name: 'alt',
+                            title: 'Alt text',
+                            type: 'string',
+                            description: 'Describe the image for screen readers and image SEO. Required.',
+                            validation: (Rule) => Rule.required().min(5).max(160),
+                        }),
+                    ],
                 },
                 {
                     type: 'code',
