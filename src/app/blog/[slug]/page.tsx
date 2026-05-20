@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import React from 'react';
+import React, { cache } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { BlogCategoryMenu } from '@/components/blog';
@@ -9,6 +9,13 @@ import JsonLd from '@/components/JsonLd';
 import { client } from '@/sanity/client';
 import { POST_QUERY, POSTS_SLUG_QUERY, RELATED_POSTS_QUERY, CATEGORIES_WITH_COUNTS_QUERY, LATEST_POSTS_QUERY } from '@/sanity/lib/queries';
 import { SanityPost, SanityCategory } from '@/sanity/types';
+
+// Deduplicate the Sanity fetch between generateMetadata and the page
+// component for the same request. Without React.cache(), POST_QUERY ran
+// twice per request on every blog post (BLG-003).
+const getPostBySlug = cache(
+    (slug: string) => client.fetch<SanityPost>(POST_QUERY, { slug })
+);
 
 const BlogPostHeroSection = dynamic(
     () => import("@/components/sections/BlogPostHeroSection").then(m => ({ default: m.BlogPostHeroSection })),
@@ -69,7 +76,7 @@ export const revalidate = 3600;
 // ============================================================================
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
-    const post: SanityPost = await client.fetch(POST_QUERY, { slug });
+    const post: SanityPost = await getPostBySlug(slug);
 
     if (!post) {
         return {
@@ -101,8 +108,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
 
-    // Fetch Post
-    const post: SanityPost = await client.fetch(POST_QUERY, { slug });
+    // Fetch Post (cached per request — same call as generateMetadata)
+    const post: SanityPost = await getPostBySlug(slug);
 
     if (!post) {
         notFound();
