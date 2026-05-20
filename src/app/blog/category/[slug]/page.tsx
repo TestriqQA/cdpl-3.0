@@ -10,7 +10,6 @@ import {
     generateItemListSchema,
     generateBreadcrumbSchema,
     generateReviewSchema,
-    generateSingleReviewSchema,
     generateWebPageSchema
 } from "@/lib/schema-generators";
 import { 
@@ -267,7 +266,6 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
             <JsonLd id="category-collection" schema={collectionPageSchema} />
             <JsonLd id="category-itemlist" schema={itemListSchema} />
             <JsonLd id="category-rating" schema={aggregateRatingSchema} />
-            <JsonLd id="category-review" schema={generateSingleReviewSchema('Service', `CDPL ${category.name} Training & Resources`, getFullUrl(`/blog/category/${category.slug}#service`))} />
 
             {/* Semantic HTML structure with proper structure */}
             <div className="category-page">
