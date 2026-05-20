@@ -18,8 +18,8 @@ import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, gene
 import { ADVANCE_MANUAL_AUTOMATION_FAQS, ADVANCE_MANUAL_AUTOMATION_REVIEW_DATA } from "@/data/advanceManualAutomationData";
 
 export const metadata = generateMetadata({
-  title: "What is Selenium Testing? Master Manual & Automation Testing | 100% Placement",
-  description: "Learn what is selenium testing & UI testing in our 180-hour Master Program. Cover Selenium, Cypress, API & Mobile automation. 100% placement support in Mumbai/Thane.",
+  title: "Manual + Automation Testing Master Program | CDPL",
+  description: "180-hour QA master program — Selenium, Cypress, API & mobile automation plus manual testing fundamentals. Live projects & placement assistance in Mumbai.",
   keywords: [
     "what is selenium testing",
     "what is ui testing",

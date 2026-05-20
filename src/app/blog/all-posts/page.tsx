@@ -15,8 +15,8 @@ import { getFullUrl } from "@/lib/seo-config";
 // SEO METADATA - ENHANCED
 // ============================================================================
 export const metadata: Metadata = generateStaticPageMetadata({
-  title: "All Blog Posts | 100+ Software Testing & Development Resources - CDPL",
-  description: "Explore CDPL's complete collection of 100+ expert articles on software testing, data science, web development, AI & machine learning, DevOps, and more. In-depth tutorials, best practices, and actionable insights from industry professionals. Updated weekly with fresh content.",
+  title: "All Blog Posts | CDPL Tech Articles & Tutorials",
+  description: "Explore CDPL's full collection of expert articles on software testing, data science, AI/ML, BI and digital marketing — tutorials, best practices and industry insights.",
   keywords: [
     "CDPL blog",
     "software testing blog",

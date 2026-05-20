@@ -18,8 +18,8 @@ import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, gene
 import { PYTHON_FAQS, PYTHON_REVIEW_DATA } from "@/data/pythonData";
 
 export const metadata = generateMetadata({
-  title: "Python Programming Course in Mumbai | 80-Hour Job-Ready Training | CDPL",
-  description: "Best Python course in Mumbai with Django, Data Science, ML, Automation. 100% placement. Live projects, global certificate.",
+  title: "Python Programming Course in Mumbai | CDPL",
+  description: "Job-ready Python course in Mumbai — data structures, OOP, pandas, NumPy, automation scripting & live projects with placement assistance.",
   keywords: [
     "python course mumbai",
     "python training",

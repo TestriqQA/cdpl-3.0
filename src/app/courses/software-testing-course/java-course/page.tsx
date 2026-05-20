@@ -19,8 +19,8 @@ import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, gene
 import { JAVA_FAQS, JAVA_REVIEW_DATA } from "@/data/javaData";
 
 export const metadata = generateMetadata({
-  title: "Java Programming Course in Mumbai | 80-Hour Job-Ready Training | CDPL",
-  description: "Best Java course in Mumbai with Core Java, Spring Boot, Microservices, AWS. 100% placement. Live projects, global certificate.",
+  title: "Java Programming Course in Mumbai | CDPL",
+  description: "Job-ready Java course in Mumbai — Core Java, OOP, collections, JUnit & Selenium automation foundations with live projects and placement assistance.",
   keywords: [
     "java course mumbai",
     "core java training",

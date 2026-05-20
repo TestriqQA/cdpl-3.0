@@ -27,8 +27,8 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 export const metadata = generateMetadata({
-    title: "Machine Learning and Data Visualization using R Programming | CDPL",
-    description: "Master Machine Learning algorithms and advanced Data Visualization using R Programming. 20-hour Master Program with 100% job assistance.",
+    title: "Machine Learning & Data Visualization with R | CDPL",
+    description: "20-hour master program in R programming — ML algorithms, ggplot2 visualization & statistical modeling with hands-on projects and placement assistance.",
     keywords: [
         "Machine Learning with R",
         "Data Visualization R",

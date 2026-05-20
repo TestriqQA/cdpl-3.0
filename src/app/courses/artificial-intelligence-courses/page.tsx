@@ -14,8 +14,8 @@ import { Metadata } from 'next';
 import { aiFaqs } from '@/components/AI-Courses/faqData';
 
 export const metadata: Metadata = generateStaticPageMetadata({
-    title: 'Artificial Intelligence Courses | AI & Generative AI Training',
-    description: 'Advance your career with our specialized Artificial Intelligence courses. Learn Generative AI, NLP, Deep Learning, and more.',
+    title: 'Artificial Intelligence Courses in Mumbai | CDPL',
+    description: 'Advance your career with CDPL Artificial Intelligence courses — prompt engineering, generative AI, NLP & deep learning with hands-on projects and placement assistance.',
     url: '/courses/artificial-intelligence-courses',
     image: "/og-images/courses-artificial-intelligence-courses-og.webp",
     keywords: ['artificial intelligence course', 'AI training', 'generative ai course', 'deep learning', 'NLP training'],

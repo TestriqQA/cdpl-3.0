@@ -28,8 +28,8 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 export const metadata = generateMetadata({
-    title: "Master Digital Marketing & AI for Business Owners | 10X Your Growth - Cinute Digital",
-    description: "Master Business Marketing Strategies & AI. Learn Local Business SEO, Digital Marketing Sales, and Marketing Automation for Business Owners. The #1 AI Digital Marketing Course to grow your business.",
+    title: "AI Digital Marketing Course for Business Owners | CDPL",
+    description: "Digital marketing & AI for entrepreneurs — local business SEO, lead generation, marketing automation & AI growth playbooks. Built for business owners.",
     keywords: [
         "Digital Marketing for Business Owners",
         "Business Marketing Strategies",

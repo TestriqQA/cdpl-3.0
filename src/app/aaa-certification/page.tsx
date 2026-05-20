@@ -42,9 +42,9 @@ const AAACertificationOutcomesCtaSection = dynamic(
 
 /* ---------- SEO ---------- */
 export const metadata: Metadata = generateStaticPageMetadata({
-  title: "AAA Certification Course - Advanced Automation Architecture | CDPL",
+  title: "AAA Certification Course | Automation Architecture",
   description:
-    "Master Advanced Automation Architecture (AAA) with CDPL's comprehensive certification course. Learn test automation frameworks, CI/CD, cloud testing, and API automation. Includes hands-on labs, capstone project, and industry-recognized certificate.",
+    "Master Advanced Automation Architecture (AAA) with CDPL — test automation frameworks, CI/CD, cloud testing & API automation with hands-on labs and a capstone project.",
   keywords: [
     "AAA certification",
     "advanced automation architecture",

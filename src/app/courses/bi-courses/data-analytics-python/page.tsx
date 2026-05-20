@@ -27,8 +27,8 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 export const metadata = generateMetadata({
-    title: "Best Data Analytics Course with Python | 20-Hour Training Mumbai | 100% Job Assistance",
-    description: "Learn how to become a data analyst with our Python data analysis course in Mumbai/Thane. 20-hour hands-on training with real projects, global certification, and 100% placement support. Best data analytics courses for beginners.",
+    title: "Data Analytics with Python Course in Mumbai | CDPL",
+    description: "20-hour data analytics with Python course in Mumbai — pandas, NumPy, matplotlib, real projects & data-analyst job prep with placement assistance.",
     keywords: [
         "what is data analytics course",
         "what is data analyst course",

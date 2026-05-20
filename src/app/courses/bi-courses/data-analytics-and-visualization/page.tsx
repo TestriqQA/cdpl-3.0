@@ -27,8 +27,8 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 export const metadata = generateMetadata({
-    title: "Advanced Excel for Data Analytics & Visualization | 20-Hour Course | Mumbai",
-    description: "Master Advanced Excel for Data Analytics & Visualization. 20-Hour comprehensive course with interactive dashboards, Power Query, and Power Pivot. 100% job assistance.",
+    title: "Advanced Excel for Data Analytics & Visualization | CDPL",
+    description: "20-hour advanced Excel course — Power Query, Power Pivot, DAX, interactive dashboards & data visualization with placement assistance in Mumbai.",
     keywords: [
         "advanced excel course mumbai",
         "excel for data analytics",

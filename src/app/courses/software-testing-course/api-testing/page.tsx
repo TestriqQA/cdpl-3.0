@@ -56,8 +56,8 @@ const FaqSection = dynamic(
 );
 
 export const metadata = generateMetadata({
-  title: "API Testing Course with POSTMAN & RestAPIs",
-  description: "Master API testing in 15 hours with live projects, global certification, and placement support.",
+  title: "API Testing Course with Postman & REST APIs | CDPL",
+  description: "Master API testing with Postman & REST APIs in 15 hours — request chaining, validation, automation & live projects with placement assistance.",
   url: "/courses/software-testing-course/api-testing",
   image: "/og-images/courses-software-testing-course-api-testing-og.webp",
 });

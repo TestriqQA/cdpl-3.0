@@ -14,8 +14,8 @@ import { AUTOMATION_TESTING_FAQS, AUTOMATION_TESTING_REVIEW_DATA } from "@/data/
 
 
 export const metadata = generateMetadata({
-  title: "Advanced Automation Testing Course | SDET Training | 100% Placement",
-  description: "Master Cypress, Playwright, AI Testing, CI/CD. Become a future-ready SDET with elite projects and FAANG placement.",
+  title: "Automation Testing Course in Mumbai | SDET | CDPL",
+  description: "Master Selenium, Cypress, Playwright, API testing & CI/CD automation. Job-oriented SDET training in Mumbai with live projects and placement assistance.",
   keywords: [
     "automation testing course",
     "SDET training",

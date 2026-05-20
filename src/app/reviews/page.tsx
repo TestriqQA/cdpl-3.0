@@ -51,9 +51,9 @@ const ReviewsCTAJoinSection = dynamic(
 
 // ---------- SEO Metadata ----------
 export const metadata: Metadata = generateStaticPageMetadata({
-  title: "Authentic Student Reviews & Testimonials | CDPL - Cinute Digital",
+  title: "Student Reviews & Testimonials | CDPL",
   description:
-    "Read 5000+ authentic student reviews and success stories for CDPL's Software Testing, Data Science, and AI/ML courses. See why we are rated 4.9/5 for career transformation and placement support.",
+    "Read authentic student reviews and success stories for CDPL's Software Testing, Data Science and AI/ML courses — rated 4.9/5 across 425 reviews.",
   keywords: [
     "CDPL reviews",
     "student testimonials",

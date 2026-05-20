@@ -44,9 +44,9 @@ const LocationsServicesSection = dynamic(
 // ENHANCED METADATA FOR SEO
 // ============================================================================
 export const metadata: Metadata = generateStaticPageMetadata({
-  title: "Locations We Serve | Software Testing & Programming Courses in India & UAE - CDPL",
+  title: "Locations We Serve | CDPL Training Across India & UAE",
   description:
-    "Explore CDPL training centers across India and the UAE. Find the nearest software testing, programming, and QA courses in Maharashtra, Karnataka, Delhi NCR, Dubai, Abu Dhabi, and more. 50+ cities served.",
+    "CDPL software testing, data science & programming courses across India and the UAE — Mumbai, Pune, Bengaluru, Delhi NCR, Hyderabad, Dubai and 38+ more cities.",
   keywords: [
     "software testing courses locations India",
     "programming training centers Maharashtra",
