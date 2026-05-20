@@ -19,8 +19,8 @@ import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, gene
 import { MACHINE_LEARNING_FAQS, MACHINE_LEARNING_REVIEW_DATA } from "@/data/machineLearningData";
 
 export const metadata = generateMetadata({
-  title: "Machine Learning & Data Science with Python Hero Program | Mumbai | CDPL",
-  description: "95-Hour Hero Program in Machine Learning and Data Science with Python. Hands-on projects, 100% job assistance, global certificates.",
+  title: "Machine Learning & Data Science with Python | CDPL",
+  description: "95-hour Hero Program in machine learning & data science with Python — supervised & unsupervised ML, hands-on projects and placement assistance in Mumbai.",
   keywords: [
     "machine learning course mumbai",
     "data science with python",

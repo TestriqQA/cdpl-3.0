@@ -4,8 +4,8 @@ import { generateCookiesPolicyPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = generateStaticPageMetadata({
-  title: "Cookies Policy",
-  description: "Read the Cookies Policy of Cinute Digital (CDPL). Understand how we use cookies to improve your browsing experience.",
+  title: "Cookies Policy | Cinute Digital (CDPL)",
+  description: "Read the Cookies Policy of Cinute Digital (CDPL) — how we use cookies and similar technologies to improve your browsing experience on cinutedigital.com.",
   url: "/cookies-policy",
 });
 

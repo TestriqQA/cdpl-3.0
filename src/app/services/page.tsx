@@ -9,8 +9,8 @@ import { trainingServices } from "@/data/servicesData";
 // SEO METADATA - Optimized for Services Page
 // ============================================================================
 export const metadata: Metadata = generateStaticPageMetadata({
-  title: "Our Services | Training, Consulting & Custom Solutions – CDPL",
-  description: "CDPL offers comprehensive corporate training, software testing consulting, custom automation solutions, and technical workshops for enterprises. Upskill your team with industry-expert trainers in Software Testing, Data Science, AI/ML, and DevOps.",
+  title: "Our Services | Corporate Training & Consulting | CDPL",
+  description: "CDPL corporate training, software testing consulting, custom automation solutions & technical workshops — upskill your team with industry-expert trainers.",
   keywords: [
     "CDPL services",
     "corporate training",

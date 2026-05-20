@@ -27,8 +27,8 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 export const metadata = generateMetadata({
-  title: "Advanced Data Analytics Course Mumbai | Data Analyst Training",
-  description: "Master the data analyst full course in Mumbai with 110 hours of intensive training. Advanced data analytics, Python, SQL & Power BI with 100% job placement.",
+  title: "Data Analytics Course in Mumbai | Data Analyst Training",
+  description: "110-hour advanced data analytics course in Mumbai — Excel, SQL, Python & Power BI with hands-on projects and placement assistance.",
   keywords: [
     "data analyst full course",
     "advanced data analytics",

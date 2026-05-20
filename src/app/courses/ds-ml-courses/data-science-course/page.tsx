@@ -19,8 +19,8 @@ import { generateDataScienceCoursePageSchema } from "@/lib/schema-generators";
 import { DATA_SCIENCE_FAQS, DATA_SCIENCE_REVIEW_DATA } from "@/data/dataScienceData";
 
 export const metadata = generateMetadata({
-  title: "Advanced Data Science & Machine Learning Masterclass Mumbai | Placement",
-  description: "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with 100% job placement.",
+  title: "Data Science & Machine Learning Course Mumbai | CDPL",
+  description: "200-hour advanced data science course in Mumbai — Python, EDA, ML algorithms, model deployment & end-to-end pipelines with placement assistance.",
   keywords: [
     "data science full course",
     "advanced data science",

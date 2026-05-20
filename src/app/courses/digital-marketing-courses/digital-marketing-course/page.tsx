@@ -18,8 +18,8 @@ import { generateDigitalMarketingCoursePageSchema } from "@/lib/schema-generator
 import { DIGITAL_MARKETING_FAQS, DIGITAL_MARKETING_REVIEW_DATA } from "@/data/digitalMarketingData";
 
 export const metadata = generateMetadata({
-  title: "Best Digital Marketing Course in Mumbai with 100% Placement | CDPL",
-  description: "Join the #1 Digital Marketing Course in Mumbai. Master AI-Driven SEO, PPC, Google Ads, Social Media, and Analytics with 100% Placement Support. 80+ Hours of Practical Training.",
+  title: "Digital Marketing Course in Mumbai with AI | CDPL",
+  description: "80+ hour digital marketing course in Mumbai — AI-driven SEO, PPC, Google Ads, social media & analytics with hands-on training and placement assistance.",
   keywords: [
     "digital marketing course Mumbai",
     "digital marketing course in Mumbai with placement",

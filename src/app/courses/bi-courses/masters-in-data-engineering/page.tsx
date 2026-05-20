@@ -21,8 +21,8 @@ import { generateMastersDataEngineeringCoursePageSchema } from "@/lib/schema-gen
 import { DATA_ENGINEERING_MASTERS_FAQS, DATA_ENGINEERING_MASTERS_REVIEW_DATA } from "@/data/dataEngineeringMastersData";
 
 export const metadata = generateMetadata({
-    title: "Master Program in Data Engineering | BI & Big Data Engineering Course | Mumbai",
-    description: "Master BI and Big Data Engineering with our Data Analytics Program Mumbai. Learn SQL for data analytics, Spark, and get Data Engineer Certifications. 100% placement.",
+    title: "Data Engineering & BI Master Program in Mumbai | CDPL",
+    description: "Master program in BI & big data engineering — SQL, Spark, Power BI, Tableau, Python & data pipelines with hands-on projects and placement assistance.",
     keywords: [
         "best institute for data analytics",
         "sql data analyst",

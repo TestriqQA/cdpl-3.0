@@ -19,8 +19,8 @@ import { generateAICoursePageSchema } from "@/lib/schema-generators";
 import { AI_FAQS, AI_REVIEW_DATA } from "@/data/aiData";
 
 export const metadata = generateMetadata({
-  title: "Masters in AI and ML | AI Master Program Mumbai | 100% Placement Support",
-  description: "Enroll in our Masters in AI and ML in India. 255-hour Data Science & AI Master Program in Mumbai/Thane. Get post graduate program in ai and machine learning with 100% job assistance.",
+  title: "Data Science & AI Master Program in Mumbai | CDPL",
+  description: "255-hour Data Science & AI master program in Mumbai — Python, ML, deep learning, NLP, generative AI & cloud-deployed projects with placement assistance.",
   keywords: [
     "masters in ai and ml",
     "ms in artificial intelligence in india",

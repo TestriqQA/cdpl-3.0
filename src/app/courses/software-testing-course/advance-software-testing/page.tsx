@@ -18,8 +18,8 @@ import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, gene
 import { ADVANCED_TESTING_FAQS, ADVANCED_TESTING_REVIEW_DATA } from "@/data/advancedTestingData";
 
 export const metadata = generateMetadata({
-  title: "Advanced Software Testing Course in Mumbai | SDET & Selenium Training - 100% Placement",
-  description: "Master Selenium, Cypress, Appium & API Testing with our Advanced Software Testing Course. Job-oriented SDET training in Mumbai/Thane with real projects & ISTQB certification.",
+  title: "Advanced Software Testing Course in Mumbai | CDPL",
+  description: "Master Selenium, Cypress, Appium & API testing in our advanced SDET program. Job-oriented training in Mumbai with live projects, ISTQB prep & placement assistance.",
   keywords: [
     "advanced software testing course",
     "selenium course",

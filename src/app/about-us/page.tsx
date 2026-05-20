@@ -63,7 +63,7 @@ const AboutAccreditations = dynamic(
 
 export const metadata: Metadata = generateStaticPageMetadata({
   title: "About CDPL - Leading EdTech for Tech Training",
-  description: "CDPL (Cinute Digital) is India's premier EdTech institute delivering industry-ready training in Software Testing, Automation, Data Science, and AI/ML. Founded in 2020, we've empowered 5000+ professionals with live projects, expert mentorship, and 100% placement support.",
+  description: "CDPL (Cinute Digital) is an India-based EdTech institute delivering industry-focused training in Software Testing, Data Science, AI/ML & BI. Founded in 2020 — live projects, expert mentorship & placement assistance.",
   url: "/about-us",
   keywords: [
     "about CDPL",

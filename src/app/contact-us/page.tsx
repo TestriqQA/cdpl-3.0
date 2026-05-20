@@ -17,7 +17,7 @@ import JsonLd from "@/components/JsonLd";
 // ============================================================================
 export const metadata: Metadata = generateStaticPageMetadata({
   title: 'Contact Us | Software Testing & Data Science Training',
-  description: 'Get in touch with CDPL (Cinute Digital) for course inquiries, admissions, and career guidance. Call us, email, or visit our Mumbai office. 100% Placement Support.',
+  description: 'Get in touch with CDPL (Cinute Digital) for course inquiries, admissions and career guidance. Call, email, or visit our Mira Road, Mumbai office.',
   keywords: [
     'contact CDPL',
     'Cinute Digital contact',

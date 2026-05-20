@@ -83,8 +83,8 @@ import JsonLd from "@/components/JsonLd";
 import { ETL_TESTING_FAQS, ETL_TESTING_REVIEW_DATA } from "@/data/etlTestingData";
 
 export const metadata = generateMetadata({
-  title: "ETL Testing Course with Placement | Master SQL, Data Validation & ETL Tools",
-  description: "Learn what is ETL testing, master SQL queries for ETL testing, data validation, and real projects. Get certified and placed in top data companies in Mumbai/Thane.",
+  title: "ETL Testing Course in Mumbai | SQL & Data Validation",
+  description: "Learn ETL testing, SQL queries, data-warehouse validation & data-quality checks with real projects. Job-oriented training in Mumbai with placement assistance.",
   keywords: [
     "what is etl testing",
     "what is etl",

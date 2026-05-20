@@ -42,8 +42,8 @@ import { SanityPost } from "@/sanity/types";
 // ============================================================================
 
 export const metadata: Metadata = generateMetadata({
-  title: "Best Software Testing & Data Science Courses India | CDPL",
-  description: "Launch your tech career with CDPL's industry-leading courses in Software Testing, Data Science, and AI/ML. 100% Placement Support, Live Projects & Expert Mentors. Book a Free Demo!",
+  title: "Software Testing & Data Science Courses India | CDPL",
+  description: "Launch your tech career with CDPL's industry-focused courses in Software Testing, Data Science & AI/ML — live projects, expert mentors & placement assistance.",
   keywords: [
     "software testing course",
     "data science course",

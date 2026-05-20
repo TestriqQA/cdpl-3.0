@@ -19,8 +19,8 @@ import { generatePromptEngineeringCoursePageSchema } from "@/lib/schema-generato
 import { PROMPT_ENGINEERING_FAQS, PROMPT_ENGINEERING_REVIEW_DATA } from "@/data/promptEngineeringData";
 
 export const metadata = generateMetadata({
-  title: "Prompt Engineering with Generative AI Course in Mumbai | 20-Hour Hero Program | CDPL",
-  description: "20-Hour Hero Program in Prompt Engineering with Gen AI. Hands-on projects, 100% job assistance, AAA global certificates.",
+  title: "Prompt Engineering with Generative AI Course | CDPL",
+  description: "20-hour Hero Program in prompt engineering with generative AI — LLM workflows, RAG, AI agents & hands-on projects with placement assistance in Mumbai.",
   keywords: [
     "prompt engineering course mumbai",
     "generative ai training",

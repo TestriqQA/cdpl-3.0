@@ -27,8 +27,8 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 export const metadata = generateMetadata({
-    title: "AI-Powered Digital Marketing Bootcamp | 30-Hour Expert Training | CDPL",
-    description: "Master Digital Marketing with AI in this 30-hour bootcamp. Learn SEO, SEM, Social Media, and Performance Marketing with 100% Job Assistance. Classroom & Online options available.",
+    title: "AI-Powered Digital Marketing Bootcamp | CDPL",
+    description: "30-hour AI digital marketing bootcamp — ChatGPT for content, AI ad optimization, SEO, SEM & performance marketing with placement assistance. Online & classroom.",
     keywords: [
         "AI digital marketing bootcamp",
         "digital marketing course mumbai",

@@ -20,8 +20,8 @@ import { generateMachineLearningUsingPythonCoursePageSchema } from "@/lib/schema
 import { ML_PYTHON_FAQS, ML_PYTHON_REVIEW_DATA } from "@/data/mlPythonData";
 
 export const metadata = generateMetadata({
-    title: "Machine Learning with Python Course in Mumbai | 45-Hour Master Program | CDPL",
-    description: "45-Hour Master Program in Machine Learning Algorithms using Python. Hands-on projects, 100% job assistance, global certificates.",
+    title: "Machine Learning with Python Course in Mumbai | CDPL",
+    description: "45-hour master program in ML algorithms using Python — scikit-learn, pandas, real datasets & hands-on projects with placement assistance in Mumbai.",
     keywords: [
         "machine learning with python course mumbai",
         "python for data science training",

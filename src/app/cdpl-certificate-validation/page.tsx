@@ -26,7 +26,7 @@ const CertificationFeaturesSection = dynamic(
 
 /* ---------- SEO ---------- */
 export const metadata: Metadata = generateStaticPageMetadata({
-  title: "CDPL Certificate Validation - Verify AAA & ACTD Certificates Online",
+  title: "Certificate Validation | Verify CDPL Certificates",
   description:
     "Instantly validate and verify CDPL certificates online. Check authenticity of AAA, ACTD, and other CDPL certification courses. Enter certificate ID for instant verification. Trusted by employers worldwide.",
   keywords: [

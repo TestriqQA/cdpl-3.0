@@ -16,11 +16,11 @@ import JsonLd from "@/components/JsonLd";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = generateStaticPageMetadata({
-    title: "All Courses",
-    description: "Explore our industry-leading courses in Software Testing, Data Science, AI/ML, and Full Stack Development. 100% placement support.",
+    title: "All Courses — Software Testing, Data Science, BI & AI",
+    description: "Explore CDPL's industry-focused courses in Software Testing, Data Science, AI/ML, Business Intelligence & Digital Marketing — live projects with placement assistance.",
     url: "/courses",
     image: "/og-images/courses-og.webp",
-    keywords: ["software testing courses", "data science training", "full stack development course", "it courses mumbai", "placement guarantee courses"],
+    keywords: ["software testing courses", "data science training", "business intelligence courses", "it courses mumbai", "tech courses with placement"],
 });
 
 export default function CoursesPage() {
