@@ -18,9 +18,9 @@ const MockTestListing = dynamic(
 
 
 export const metadata = generateStaticPageMetadata({
-  title: "Free Online Mock Tests & Premium Assessments | Testriq",
+  title: "Free Online Mock Tests & Premium Assessments",
   description:
-    "Validate your expertise with precision. Industry-standard simulation environments for Software Testing, Cloud, Security, and Web Dev.",
+    "Validate your expertise with precision. CDPL mock tests for Software Testing, Databases, Cloud, Security, Automation, and Web Development.",
   url: "/mock-test",
   image: "/og-images/mock-test-og.webp",
 });

@@ -7,9 +7,9 @@ import JsonLd from "@/components/JsonLd";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 
 export const metadata = generateStaticPageMetadata({
-  title: "ISTQB Registration | Testriq",
+  title: "ISTQB Registration | Certified Training Partner",
   description:
-    "Register for ISTQB Certification with Testriq. Global recognition, lifetime validity, and expert guidance.",
+    "Register for ISTQB Foundation Certification with CDPL — an ISTQB Certified Training Partner. Global recognition, lifetime validity, expert-led prep.",
   url: "/istqb-registration",
   image: "/og-images/istqb-registration-og.webp",
 });

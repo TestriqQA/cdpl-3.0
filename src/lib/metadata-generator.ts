@@ -63,7 +63,13 @@ function abbreviateTitle(title: string): string {
   // If we couldn't even fit one word + suffix (rare), just return truncated title
   if (reduced.length === 0) return newTitle.substring(0, MAX_LENGTH - 3) + '...';
 
-  return reduced + suffix;
+  // BLG-165: collapse dangling/duplicated pipes left behind when the word-by-
+  // word reducer drops a middle token like "Testriq" out of "X | Testriq | CDPL".
+  // Trim any trailing pipe before re-adding the suffix, and collapse double
+  // pipes anywhere in the result.
+  reduced = reduced.replace(/\s*\|\s*$/, '').trim();
+  const finalTitle = (reduced + suffix).replace(/\s*\|\s*\|\s*/g, ' | ');
+  return finalTitle;
 }
 
 export interface MetadataGeneratorInput {
