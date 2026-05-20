@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { cache } from 'react';
 import { BlogCategoryMenu } from '@/components/blog';
 import BlogSidebarCategory from '@/components/blog/BlogSidebarCategory';
 import { notFound } from 'next/navigation';
@@ -23,6 +24,16 @@ import { client } from '@/sanity/client';
 import { CATEGORIES_WITH_COUNTS_QUERY, CATEGORY_POSTS_QUERY, CATEGORY_QUERY } from '@/sanity/lib/queries';
 import { SanityCategory, SanityPost } from '@/sanity/types';
 
+// Deduplicate Sanity fetches between generateMetadata and the page
+// component for the same request (BLG-027). Without React.cache(),
+// CATEGORY_QUERY and CATEGORY_POSTS_QUERY each ran twice per request.
+const getCategoryBySlug = cache(
+    (slug: string) => client.fetch<SanityCategory>(CATEGORY_QUERY, { slug })
+);
+const getCategoryPosts = cache(
+    (slug: string) => client.fetch<SanityPost[]>(CATEGORY_POSTS_QUERY, { slug })
+);
+
 // ============================================================================
 // STATIC SITE GENERATION - Generate pages for all categories
 // ============================================================================
@@ -38,7 +49,7 @@ export async function generateStaticParams() {
 // ============================================================================
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
-    const category = await client.fetch<SanityCategory>(CATEGORY_QUERY, { slug });
+    const category = await getCategoryBySlug(slug);
 
     if (!category) {
         return {
@@ -51,7 +62,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         };
     }
 
-    const posts = await client.fetch<SanityPost[]>(CATEGORY_POSTS_QUERY, { slug });
+    const posts = await getCategoryPosts(slug);
     const latestPost = posts[0];
 
     return {
@@ -155,10 +166,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
 
-    // Parallel fetching
+    // Parallel fetching — getCategoryBySlug / getCategoryPosts are
+    // React.cache()-wrapped, so these reuse the results already fetched
+    // in generateMetadata for the same request (BLG-027).
     const [category, posts, categoriesWithCounts] = await Promise.all([
-        client.fetch<SanityCategory>(CATEGORY_QUERY, { slug }),
-        client.fetch<SanityPost[]>(CATEGORY_POSTS_QUERY, { slug }),
+        getCategoryBySlug(slug),
+        getCategoryPosts(slug),
         client.fetch<any[]>(CATEGORIES_WITH_COUNTS_QUERY)
     ]);
 
