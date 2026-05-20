@@ -51,6 +51,7 @@ export default function robots(): MetadataRoute.Robots {
           '/cms/',
           '/*.json$',
           '/search?*',       // Avoid indexing search result pages
+          '/blog/search',    // BLG-038: blog search results — noindex'd; save crawl budget
         ],
         crawlDelay: 0,
       },
@@ -82,6 +83,7 @@ export default function robots(): MetadataRoute.Robots {
           '/admin/',
           '/private/',
           '/cms/',
+          '/blog/search',    // BLG-038: blog search results — noindex'd; save crawl budget
         ],
       },
 
@@ -136,6 +138,7 @@ export default function robots(): MetadataRoute.Robots {
           '/admin/',
           '/private/',
           '/cms/',
+          '/blog/search',    // BLG-038: blog search results — noindex'd; save crawl budget
         ],
       },
     ],
