@@ -383,6 +383,13 @@ const nextConfig: NextConfig = {
         ],
       },
       // ⚠️  SEO FIX (April 2026): Standard security headers for all pages.
+      // BLG-013 (Cycle 2 Sprint 1): added Strict-Transport-Security and
+      // Permissions-Policy. Content-Security-Policy is intentionally NOT
+      // added here — a wrong CSP white-screens production (GA, Meta Pixel,
+      // GTM, YouTube embeds, Leaflet tiles and Next.js itself each need
+      // explicit allowances). CSP should ship separately as
+      // Content-Security-Policy-Report-Only first, tuned from real
+      // violation reports, then promoted to enforcing.
       {
         source: '/(.*)',
         headers: [
@@ -397,6 +404,17 @@ const nextConfig: NextConfig = {
           {
             key: 'X-Frame-Options',
             value: 'SAMEORIGIN',
+          },
+          {
+            // 2 years, includeSubDomains + preload. Site is 100% HTTPS
+            // (confirmed via GSC: 128/128 HTTPS URLs, 0 non-HTTPS).
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          {
+            // Deny powerful features the site does not use.
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(), browsing-topics=()',
           },
         ],
       },
