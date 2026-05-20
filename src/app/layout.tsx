@@ -15,7 +15,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import 'react-phone-number-input/style.css';
-import SeoHead from '@/components/SeoHead';
 import dynamic from 'next/dynamic';
 import {
   generateOrganizationSchema,
@@ -77,7 +76,11 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" data-scroll-behavior="smooth">
       <head>
-        <SeoHead />
+        {/* Canonical URL: handled server-side by Next.js Metadata API
+            via `alternates.canonical` in each route's generateMetadata.
+            Previously had a client-rendered <SeoHead /> here which
+            duplicated the canonical tag (BLG-001). */}
+
         {/* ========================================
             STRUCTURED DATA (Schema.org)
             ======================================== */}
