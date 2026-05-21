@@ -56,6 +56,7 @@ export default function ACTDCertificationHeroSection() {
               <Link
                 href="https://www.actd.us/verify-certificate/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
                 style={{ border: "1px solid #e2e8f0" }}
               >

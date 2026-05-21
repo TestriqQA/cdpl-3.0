@@ -148,6 +148,7 @@ export default function AboutCTASection() {
                                 <Link
                                     href="https://wa.me/9152929342"
                                     target="_blank"
+                                    rel="noopener noreferrer"
                                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-green-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-[#ff8c00]/30"
                                     aria-label="Chat on WhatsApp"
                                 >
@@ -158,6 +159,7 @@ export default function AboutCTASection() {
                                 <Link
                                     href="https://calendar.app.google/tvh9dsXZsX9BujRR8"
                                     target="_blank"
+                                    rel="noopener noreferrer"
                                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-purple-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-[#ff8c00]/30"
                                     aria-label="Book a 15-minute counseling slot"
                                 >

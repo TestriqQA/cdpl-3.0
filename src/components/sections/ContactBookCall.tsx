@@ -53,6 +53,7 @@ export function ContactBookCallSection() {
                 <Link
                   href="https://calendar.app.google/tvh9dsXZsX9BujRR8"
                   target="_blank"
+                  rel="noopener noreferrer"
                   title="Schedule a Counseling Call with CDPL Advisor"
                   className="group relative inline-flex items-center justify-center rounded-full bg-blue-700 px-6 py-3 font-semibold text-white shadow-md transition hover:brightness-110"
                   aria-label="Schedule a counseling call"
