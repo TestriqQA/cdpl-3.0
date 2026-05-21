@@ -417,17 +417,35 @@ export function generateCourseSchema(
       ? course.description
       : `Comprehensive training program: ${course.name}`;
 
-  // Default CourseInstance
-  const defaultCourseInstance = {
+  // Default CourseInstance.
+  // BLG-078: instructor is only emitted when a real name is supplied — the
+  // previous `course.instructor || "Expert Mentors"` shipped a fabricated
+  // instructor name on every course that didn't specify one.
+  // BLG-075: batch start/end dates are surfaced on the CourseInstance when
+  // the caller provides them.
+  const defaultCourseInstance: Record<string, unknown> = {
     "@type": "CourseInstance",
     courseMode: ["online", "onsite"],
     courseWorkload: course.duration || "P3M", // Use course duration or default to 3 months
-    instructor: {
-      "@type": "Person",
-      name: course.instructor || "Expert Mentors",
-    },
-    // Add location if available, though not strictly required for all courses
+    ...(course.instructor && {
+      instructor: {
+        "@type": "Person",
+        name: course.instructor,
+      },
+    }),
+    ...(course.startDate && { startDate: course.startDate }),
+    ...(course.endDate && { endDate: course.endDate }),
   };
+
+  // BLG-063: `teaches` lists the concrete skills/topics the course covers —
+  // a strong signal for both search and AI engines. Prefer explicit learning
+  // outcomes, fall back to syllabus modules.
+  const teaches =
+    course.learningOutcomes && course.learningOutcomes.length > 0
+      ? course.learningOutcomes
+      : course.syllabus && course.syllabus.length > 0
+        ? course.syllabus
+        : [];
 
   // BLG-058 (Sprint 1): use the actual course.price passed by the caller.
   // Previously this was hard-coded to lowPrice 25000 / highPrice 65000 via
@@ -473,6 +491,29 @@ export function generateCourseSchema(
 
     // Offers — only emitted when caller provides course.price (BLG-058)
     ...(offer && { offers: offer }),
+
+    // BLG-063: educational metadata — emitted when the caller supplies the
+    // underlying data. `educationalCredentialAwarded` and `audience` are
+    // always emitted because they hold for every CDPL course.
+    ...(course.level && { educationalLevel: course.level }),
+    ...(teaches.length > 0 && { teaches }),
+    ...(course.prerequisites &&
+      course.prerequisites.length > 0 && {
+        coursePrerequisites: course.prerequisites,
+      }),
+    educationalCredentialAwarded: {
+      "@type": "EducationalOccupationalCredential",
+      name: `${course.name} Completion Certificate`,
+      credentialCategory: "Certificate",
+      recognizedBy: { "@id": getOrganizationId() },
+    },
+    // BLG-074: intended audience for the course.
+    audience: {
+      "@type": "EducationalAudience",
+      educationalRole: "student",
+      audienceType:
+        "Career changers, fresh graduates, and working professionals",
+    },
 
     // Aggregate Rating — only when real reviews exist
     ...(course.reviews && course.reviews.length > 0 && {
