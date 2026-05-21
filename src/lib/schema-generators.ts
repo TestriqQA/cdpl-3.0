@@ -3495,6 +3495,59 @@ export function generatePowerBICoursePageSchema(
 }
 
 // ============================================================================
+// EDUCATIONAL OCCUPATIONAL PROGRAM SCHEMA
+// ============================================================================
+
+/**
+ * Generate EducationalOccupationalProgram schema for long-form programs
+ * (Master's programs, Bootcamps) — a stronger entity than a plain Course
+ * for structured programs that lead to an occupational outcome. (BLG-072)
+ */
+export function generateEducationalProgramSchema(input: {
+  name: string;
+  description: string;
+  url: string;
+  programType?: string; // e.g. "Master's Program", "Bootcamp"
+  timeToComplete?: string; // ISO 8601 duration
+  price?: number;
+  currency?: string;
+  occupationalCategory?: string;
+}): WithContext<Record<string, unknown>> {
+  const fullUrl = getFullUrl(input.url);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalProgram",
+    "@id": `${fullUrl}#program`,
+    name: input.name,
+    description: input.description,
+    url: fullUrl,
+    provider: { "@id": getOrganizationId() },
+    ...(input.programType && { programType: input.programType }),
+    ...(input.timeToComplete && { timeToComplete: input.timeToComplete }),
+    ...(input.occupationalCategory && {
+      occupationalCategory: input.occupationalCategory,
+    }),
+    educationalCredentialAwarded: {
+      "@type": "EducationalOccupationalCredential",
+      name: `${input.name} Completion Certificate`,
+      credentialCategory: "Certificate",
+      recognizedBy: { "@id": getOrganizationId() },
+    },
+    ...(input.price !== undefined && {
+      offers: {
+        "@type": "Offer",
+        price: String(input.price),
+        priceCurrency: input.currency || "INR",
+        availability: "https://schema.org/InStock",
+        url: fullUrl,
+      },
+    }),
+    inLanguage: "en-IN",
+  };
+}
+
+// ============================================================================
 // MASTERS IN DATA ENGINEERING (BI) COURSE PAGE SCHEMA CONSOLIDATION
 // ============================================================================
 
@@ -3516,6 +3569,18 @@ export function generateMastersDataEngineeringCoursePageSchema(
   });
 
   const courseSchema = generateCourseSchema(courseInput);
+
+  // EducationalOccupationalProgram — Master's-level structured program.
+  const programSchema = generateEducationalProgramSchema({
+    name: courseInput.name,
+    description: courseInput.description,
+    url: courseInput.url,
+    programType: "Master's Program",
+    timeToComplete: courseInput.duration,
+    price: courseInput.price,
+    currency: courseInput.currency,
+    occupationalCategory: "Data Engineer",
+  });
 
   const biCourses: any[] = [];
   const biCategory = courseCategories.find((c) => c.slug === "bi-courses");
@@ -3563,6 +3628,7 @@ export function generateMastersDataEngineeringCoursePageSchema(
   return [
     webPageSchema,
     courseSchema,
+    programSchema,
     itemListSchema,
     breadcrumbSchema,
     faqSchema,
@@ -3765,6 +3831,18 @@ export function generateAiBootcampCoursePageSchema(
 
   const courseSchema = generateCourseSchema(courseInput);
 
+  // EducationalOccupationalProgram — long-form bootcamp program.
+  const programSchema = generateEducationalProgramSchema({
+    name: courseInput.name,
+    description: courseInput.description,
+    url: courseInput.url,
+    programType: "Bootcamp",
+    timeToComplete: courseInput.duration,
+    price: courseInput.price,
+    currency: courseInput.currency,
+    occupationalCategory: "Digital Marketing Specialist",
+  });
+
   const dmCourses: any[] = [];
   const dmCategory = courseCategories.find(
     (c) => c.slug === "digital-marketing-courses",
@@ -3813,6 +3891,7 @@ export function generateAiBootcampCoursePageSchema(
   return [
     webPageSchema,
     courseSchema,
+    programSchema,
     itemListSchema,
     breadcrumbSchema,
     faqSchema,
