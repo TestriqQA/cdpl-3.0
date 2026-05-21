@@ -586,6 +586,7 @@ interface ArticleSchemaInput {
   url: string;
   image?: string;
   author: string;
+  authorSameAs?: string[]; // BLG-066: author social/profile URLs for E-E-A-T
   publishedDate: string;
   modifiedDate?: string;
   keywords?: string[];
@@ -594,7 +595,7 @@ interface ArticleSchemaInput {
 }
 
 /**
- * Generate Article schema for blog posts
+ * Generate BlogPosting schema for blog posts
  */
 export function generateArticleSchema(
   article: ArticleSchemaInput,
@@ -603,7 +604,9 @@ export function generateArticleSchema(
 
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    // BLG-065: BlogPosting is the correct subtype for blog posts and gives
+    // Rich Results an extra signal over the generic Article type.
+    "@type": "BlogPosting",
     "@id": `${fullUrl}#article`,
     headline: article.title,
     description: article.description,
@@ -619,10 +622,15 @@ export function generateArticleSchema(
       },
     }),
 
-    // Author
+    // Author — BLG-066: sameAs links the author to their verified profiles
+    // (LinkedIn etc.), a key E-E-A-T signal for both search and AI engines.
     author: {
       "@type": "Person",
       name: article.author,
+      ...(article.authorSameAs &&
+        article.authorSameAs.length > 0 && {
+          sameAs: article.authorSameAs,
+        }),
     },
 
     // Publisher
