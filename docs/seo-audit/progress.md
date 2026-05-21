@@ -1,6 +1,6 @@
 # CDPL SEO + GEO Audit — Live Progress
 
-> **Updated:** 2026-05-21 — **CYCLE 2 SPRINT 2 COMPLETE** ✅ (Schema Parity)
+> **Updated:** 2026-05-21 — **CYCLE 2 SPRINT 3 COMPLETE** ✅ (Tooling + Small UX)
 > **Branch:** `seo-audit/cycle-1-discovery` (audit docs) — Cycle 2 fixes land on `fix/*` branches off `develop`
 > **Total backlog:** 199 entries (18 P0 / 75 P1 / 64 P2 / 42 P3) across 14 phases + 4 ancillary docs
 
@@ -43,7 +43,7 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | --- | --- | --- |
 | 1 | Production-Risk De-risking | ✅ done — 14 `fix/*` branches merged to `develop` |
 | 2 | Schema Parity | ✅ done — 12 `fix/*` branches pending merge to `develop` |
-| 3 | Tooling + Small UX | ⏳ |
+| 3 | Tooling + Small UX | ✅ done — 12 `fix/*` branches pending merge to `develop` |
 | 4 | Performance + Caching | ⏳ |
 | 5 | GEO/AEO + Infra | ⏳ |
 | 6 | Content Cycle (25+ new routes) | ⏳ |
@@ -82,6 +82,41 @@ re-export task**, not a schema-parity code change — deferred, no branch create
 **Spawned task:** careers-page JobPosting `streetAddress` is "Vikhroli, Mumbai" — wrong;
 CDPL HQ is Mira Road. Flagged for a separate session (NAP defect, needs an office-
 location decision for Pune/Bengaluru roles).
+
+### Sprint 3 — Tooling + Small UX (12 branches off `develop`, awaiting merge)
+
+| Branch | BLG closed | Summary |
+| --- | --- | --- |
+| `fix/blg-091-092-caching` | 091, 092 | image optimizer minimumCacheTTL 60s→24h; Cache-Control on /api/reviews |
+| `fix/blg-010-layout-cleanup` | 010, 011, 093 | direct Header/Footer/Banner imports; preconnect+dns-prefetch to cdn.sanity.io |
+| `fix/blg-085-heromanualtesting` | 085, 088 | drop priority from 4 below-fold logos; react-icons/lu → lucide-react |
+| `fix/blg-094-aboutaccreditations-priority` | 094 | below-fold accreditation logos → loading="lazy" |
+| `fix/blg-089-city-h1-font` | 089 | removed inline system-ui font override on 765 city H1s |
+| `fix/blg-041-mocktest-noindex` | 041 | layout.tsx with robots noindex meta for /mock-test/[courseSlug] |
+| `fix/blg-024-error-styling` | 024 | error.tsx restyled to site theme (Tailwind, brand) |
+| `fix/blg-028-privacy-link` | 028 | 5 lead forms: non-www privacy `<a>` → next/link relative |
+| `fix/blg-018-blog-skeleton` | 018 | blog hero "Loading…" text → same-shape skeleton |
+| `fix/blg-025-loading-states` | 025 | shared PageSkeleton + loading.tsx for blog/courses/events/mentors |
+| `fix/blg-045-mobile-h1` | 045 | mobile home hero headline h2 → h1 |
+| `fix/blg-055-noopener` | 055 | rel="noopener noreferrer" on 7 external target=_blank links |
+
+**BLG-046** (hero `alt=""`) — **verified, no code change.** Forensic re-inspection
+found every `alt=""` is correctly on a decorative image (blurred backdrop layers
+with `aria-hidden`, floating decorations, or avatars inside `aria-label`'d buttons);
+the main content images already carry proper alt. Phase 4 over-flagged.
+
+**BLG-012** (raw `<img>` → next/image) — **deferred.** Sources span remote Google
+user-content photos (need `remotePatterns`), local SVG logos (need
+`dangerouslyAllowSVG`), and `CustomFlag`'s flag SVG (where raw `<img>` is correct).
+Converting blind without a `next build` to verify risks breaking production
+imagery — folded toward Sprint 4 image work (next-sanity-image adoption).
+
+**BLG-052** (PNG→WebP OG images) — **deferred,** folded into the BLG-053 / Q11
+OG-image asset re-export task (converting format without fixing dimensions is
+half a job).
+
+**BLG-184** (Justdial/Sulekha/Bing Places listings) — external directory work,
+not an engineering task.
 
 ---
 
@@ -149,3 +184,4 @@ location decision for Pune/Bengaluru roles).
 | 2026-05-19 | **CYCLE 1 COMPLETE.** Phase 14 emitted **3 final deliverables**: [14-offpage-strategy.md](14-offpage-strategy.md) (backlink + entity establishment + founder thought leadership), [fix-backlog.md](fix-backlog.md) (199-entry tabular master backlog), [sprint-roadmap.md](sprint-roadmap.md) (7 Cycle 2 sprints + Cycle 3). **11 new backlog entries (BLG-189 → BLG-199):** GSC Links pull (BLG-189), founder cadence (BLG-190), EdTech awards (BLG-191), speaking circuit (BLG-192), review acquisition workflow (BLG-193), Tier-1 directory submission sprint with 15 directories (BLG-194), disavow audit (BLG-195), NAP audit (BLG-196), **Wikidata Q-ID creation (BLG-197 — highest-leverage external GEO action)**, Crunchbase (BLG-198), Clutch (BLG-199). **FINAL TOTAL: 199 backlog entries (18 P0 / 75 P1 / 64 P2 / 42 P3) over 14 phases + live GSC + live browser audit. Cycle 1 branch ready for merge to `develop` at user discretion.** |
 | 2026-05-21 | **CYCLE 2 SPRINT 1 COMPLETE** (Production-Risk De-risking) — 14 `fix/*` branches merged to `develop`. Closed 25 backlog entries: BLG-001/002/003/013/026/027/029/030/031/032/038/042/043/044/047/050/051/056/057/058/059/095/132/142/165. Headline: fabricated reviews removed from ~830 routes (BLG-056/057), client-side canonical removed (BLG-001), "Testriq" brand stripped (BLG-042), non-defensible claims swept from titles/descriptions/Org schema (BLG-043/044/059), all 30+ course descriptions rewritten (BLG-095). |
 | 2026-05-21 | **CYCLE 2 SPRINT 2 COMPLETE** (Schema Parity) — 12 `fix/*` branches off `develop`, awaiting user merge. Closed 19 backlog entries: BLG-060/061/062/063/064/065/066/068/069/071/072/073/074/075/076/078/080/138/162. Course schema now emits teaches/educationalLevel/coursePrerequisites/educationalCredentialAwarded/audience + CourseInstance dates (BLG-063/074/075). **`generateReviewSchema` foot-gun fixed (BLG-060): 9 call-sites were silently attaching the AggregateRating to the Organization @id — now itemType/itemId are required.** LocalBusiness↔Organization linked (BLG-061); city LocalBusiness on 765 routes (BLG-062); founder added, numberOfEmployees removed (BLG-064/071); BlogPosting subtype + author sameAs (BLG-065/066); WebSite SearchAction + a missed "100% placement" claim removed (BLG-068); home @id collision fixed (BLG-076); Quiz, OfferCatalog, EducationalOccupationalProgram schemas added (BLG-069/073/072); JobPosting re-audited — valid, hiringOrganization URL bug fixed (BLG-138/162). **BLG-053 verified FAILING** — 73/113 OG images off 1200×630 spec (asset re-export task, deferred → Q11). Cycle-3 entries (BLG-004/008/014/015/022/084/090/161) remain deferred. |
+| 2026-05-21 | **CYCLE 2 SPRINT 3 COMPLETE** (Tooling + Small UX) — 12 `fix/*` branches off `develop`, awaiting user merge. Closed 16 backlog entries: BLG-010/011/018/024/025/028/041/045/055/085/088/089/091/092/093/094. Highlights: image-optimizer + /api/reviews caching (091/092); direct layout imports + Sanity CDN preconnect (010/011/093); below-fold `priority` removed from logos (085/094); react-icons/lu dropped for lucide-react (088); inline system-ui font removed from 765 city H1s (089); meta-robots noindex layout for /mock-test/[courseSlug] (041); themed error.tsx (024); 5 lead-form privacy links de-redirected (028); blog-hero loading skeleton (018); route loading.tsx states (025); mobile home h1 (045); rel=noopener on 7 external links (055). **BLG-046 verified — no-op** (all `alt=""` correctly decorative). **BLG-012 deferred** (raw-img conversion needs next.config remotePatterns/dangerouslyAllowSVG + build verification → Sprint 4). **BLG-052 deferred** → folded into Q11 OG-image asset task. **BLG-184** is external directory work. |
