@@ -5540,6 +5540,45 @@ export function generateIstqbRegistrationPageAllSchemas(data: {
 }
 
 // ============================================================================
+// QUIZ SCHEMA
+// ============================================================================
+
+/**
+ * Generate a Quiz schema for assessment / mock-test pages. (BLG-069)
+ *
+ * The mock-test landing page lists assessment domains rather than concrete
+ * questions, so this emits a domain-level Quiz entity (no `hasPart`
+ * Questions). It is still valid structured data that AI engines can read.
+ */
+export function generateQuizSchema(input: {
+  name: string;
+  description: string;
+  url: string;
+  domains: string[];
+}): WithContext<Record<string, unknown>> {
+  const fullUrl = getFullUrl(input.url);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "@id": `${fullUrl}#quiz`,
+    name: input.name,
+    description: input.description,
+    url: fullUrl,
+    educationalUse: "Assessment",
+    learningResourceType: "Quiz",
+    inLanguage: "en-IN",
+    isAccessibleForFree: true,
+    about: input.domains.map((domain) => ({
+      "@type": "Thing",
+      name: domain,
+    })),
+    provider: { "@id": getOrganizationId() },
+    publisher: { "@id": getOrganizationId() },
+  };
+}
+
+// ============================================================================
 // MOCK TEST PAGE SCHEMA CONSOLIDATION (/mock-test)
 // ============================================================================
 
@@ -5594,6 +5633,15 @@ export function generateMockTestPageAllSchemas(data: {
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+  // 9. Quiz Schema (BLG-069) — domain-level assessment entity.
+  const quizSchema = generateQuizSchema({
+    name: "CDPL Technical Mock Tests & Assessments",
+    description:
+      "Industry-standard mock assessments across Software Testing, Databases, Cloud Computing, Test Automation, Cyber Security, and Full Stack Development, with instant scoring.",
+    url: "/mock-test",
+    domains: data.categories,
+  });
+
   return [
     webPageSchema,
     faqSchema,
@@ -5601,6 +5649,7 @@ export function generateMockTestPageAllSchemas(data: {
     reviewAggregateSchema,
     howToSchema,
     siteNavigationSchema,
+    quizSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
       schema !== undefined,
