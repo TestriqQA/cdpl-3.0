@@ -1,6 +1,6 @@
 # CDPL SEO + GEO Audit — Live Progress
 
-> **Updated:** 2026-05-21 — **CYCLE 2 SPRINT 4 COMPLETE** ✅ (Performance + Caching)
+> **Updated:** 2026-05-21 — **CYCLE 2 SPRINT 5 (safe subset) COMPLETE** ✅ (GEO/AEO + Infra)
 > **Branch:** `seo-audit/cycle-1-discovery` (audit docs) — Cycle 2 fixes land on `fix/*` branches off `develop`
 > **Total backlog:** 199 entries (18 P0 / 75 P1 / 64 P2 / 42 P3) across 14 phases + 4 ancillary docs
 
@@ -45,7 +45,7 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | 2 | Schema Parity | ✅ done — 12 `fix/*` branches pending merge to `develop` |
 | 3 | Tooling + Small UX | ✅ done — 12 `fix/*` branches pending merge to `develop` |
 | 4 | Performance + Caching | ✅ done — 4 `fix/*` branches pending merge; image-refactor items → Cycle 3 |
-| 5 | GEO/AEO + Infra | ⏳ |
+| 5 | GEO/AEO + Infra | 🟡 safe subset done — 7 `fix/*` branches pending merge; big/blocked/external items deferred |
 | 6 | Content Cycle (25+ new routes) | ⏳ |
 | 7 | Final Backlog Cleanup | ⏳ |
 
@@ -149,6 +149,46 @@ numbered routes vs `?page=` query param, posts-per-page (12–24), whether
 canonical handling. A half-built pagination hurts SEO more than the current
 unbounded list. Recommend a dedicated decision + branch.
 
+### Sprint 5 — GEO/AEO + Infra (safe subset: 7 branches off `develop`, awaiting merge)
+
+> Sprint 5 is the roadmap's largest sprint (~3–4 weeks) and mixes safe code
+> work with blocked items, external tasks, product decisions and multi-week
+> refactors. The self-contained, build-safe subset was done this pass.
+
+| Branch | BLG closed | Summary |
+| --- | --- | --- |
+| `fix/blg-134-sanity-schema-hardening` | 134, 135, 136, 137, 141, 143, 144, 147, 151, 152, 108 | required validation; post.seo ogImage/noindex/nofollow + maxLength; body block styles (no H1); author expertise/credentials + seo; category featuredImage + seo; certificate issuedDate/expiresAt |
+| `fix/blg-148-jobs-queries` | 148, 149 | JOBS_SLUG_QUERY; `_updatedAt` in JOBS_QUERY + SanityJob type |
+| `fix/blg-129-robots-ai-bots` | 129 | CCBot → AI allow; Bytespider + Diffbot → bad-bot block |
+| `fix/blg-021-sitemap-cache` | 021 | sitemap Sanity fetches wrapped in `unstable_cache` (1h, tagged) |
+| `fix/blg-077-breadcrumb-id` | 077 | BreadcrumbList always gets a deterministic `@id` |
+| `fix/blg-150-portabletext-link` | 150 | PortableText external-link detection by origin, not leading slash |
+| `fix/blg-115-llms-txt` | 115, 116, 117, 118, 119, 120, 121 | llms.txt rewritten — canonical URLs, AI Bootcamp re-categorised, missing courses/certs/city-summary added, NAP + founder + social, "100% placement" removed |
+
+**Sprint 5 deferred items (with reasons):**
+- **BLG-005 / BLG-079** (split + refactor the 6,800-line schema-generators.ts /
+  57 consolidators) — W-effort refactor, high blast radius, not build-verifiable
+  here.
+- **BLG-006 / BLG-146 / BLG-139 / BLG-140** (Sanity revalidate webhook, fetch
+  cache tags, draftMode + preview routes) — **blocked on Q7** (Sanity webhook
+  secret + Studio API token scope).
+- **BLG-039** (Sanity-category redirects → middleware) — interacts with the
+  existing redirect config; medium-risk, defer.
+- **BLG-070** (Crunchbase/Clutch/G2/Wikidata in Org `sameAs`) — blocked until
+  those external profiles exist (BLG-130/197/198/199).
+- **BLG-081** (Course→Mentor→Article `mentions` cross-refs) — depends on the
+  entity graph / Sanity doc types (BLG-133).
+- **BLG-096 / BLG-097 / BLG-098 / BLG-113 / BLG-114** (AI-hub restructure,
+  cannibalisation disambiguation, DM slug rename, AAA hub→tag, hub
+  cross-linking) — **need product decisions** (URL moves + redirect strategy).
+- **BLG-104** (Sanity blog-link workflow) — content/process, not code.
+- **BLG-122** (`/llms-full.txt` route handler) — D-effort, separate build-out.
+- **BLG-123/197, BLG-130/198/199** (Wikidata Q-ID, Crunchbase, Clutch, G2,
+  Tracxn) — external profile creation, not code.
+- **BLG-133** (7 new Sanity doc types: course/mentor/event/testimonial/
+  hiringPartner/service/city) — W-effort, multi-week; do as its own sprint.
+- **BLG-156** (plural-slug ranking investigation) — needs live GSC.
+
 ---
 
 ## Cycle 3 progress (CWV sweep)
@@ -217,3 +257,4 @@ unbounded list. Recommend a dedicated decision + branch.
 | 2026-05-21 | **CYCLE 2 SPRINT 2 COMPLETE** (Schema Parity) — 12 `fix/*` branches off `develop`, awaiting user merge. Closed 19 backlog entries: BLG-060/061/062/063/064/065/066/068/069/071/072/073/074/075/076/078/080/138/162. Course schema now emits teaches/educationalLevel/coursePrerequisites/educationalCredentialAwarded/audience + CourseInstance dates (BLG-063/074/075). **`generateReviewSchema` foot-gun fixed (BLG-060): 9 call-sites were silently attaching the AggregateRating to the Organization @id — now itemType/itemId are required.** LocalBusiness↔Organization linked (BLG-061); city LocalBusiness on 765 routes (BLG-062); founder added, numberOfEmployees removed (BLG-064/071); BlogPosting subtype + author sameAs (BLG-065/066); WebSite SearchAction + a missed "100% placement" claim removed (BLG-068); home @id collision fixed (BLG-076); Quiz, OfferCatalog, EducationalOccupationalProgram schemas added (BLG-069/073/072); JobPosting re-audited — valid, hiringOrganization URL bug fixed (BLG-138/162). **BLG-053 verified FAILING** — 73/113 OG images off 1200×630 spec (asset re-export task, deferred → Q11). Cycle-3 entries (BLG-004/008/014/015/022/084/090/161) remain deferred. |
 | 2026-05-21 | **CYCLE 2 SPRINT 3 COMPLETE** (Tooling + Small UX) — 12 `fix/*` branches off `develop`, awaiting user merge. Closed 16 backlog entries: BLG-010/011/018/024/025/028/041/045/055/085/088/089/091/092/093/094. Highlights: image-optimizer + /api/reviews caching (091/092); direct layout imports + Sanity CDN preconnect (010/011/093); below-fold `priority` removed from logos (085/094); react-icons/lu dropped for lucide-react (088); inline system-ui font removed from 765 city H1s (089); meta-robots noindex layout for /mock-test/[courseSlug] (041); themed error.tsx (024); 5 lead-form privacy links de-redirected (028); blog-hero loading skeleton (018); route loading.tsx states (025); mobile home h1 (045); rel=noopener on 7 external links (055). **BLG-046 verified — no-op** (all `alt=""` correctly decorative). **BLG-012 deferred** (raw-img conversion needs next.config remotePatterns/dangerouslyAllowSVG + build verification → Sprint 4). **BLG-052 deferred** → folded into Q11 OG-image asset task. **BLG-184** is external directory work. |
 | 2026-05-21 | **CYCLE 2 SPRINT 4 COMPLETE** (Performance + Caching) — 4 `fix/*` branches off `develop`, awaiting user merge. Closed 4 backlog entries: BLG-007/009/067/166. Meta Pixel deferred to `lazyOnload` (007); real Portable-Text `wordCount` for BlogPosting schema (067); blog-hero LCP image keeps priority while the decorative blur layer no longer competes for preload (166); `react-phone-number-input` stylesheet moved off the root layout into a shared wrapper, 32 importers rewired (009). **BLG-003 + BLG-027 were already closed in Sprint 1** (no work needed). **BLG-083/145 + BLG-012 + BLG-090 deferred to a Cycle 3 Sanity-image refactor pass** — `useNextSanityImage` needs a GROQ/type data-contract change (URL string → image object) across queries + 6 components, build-unverifiable here, blast radius = all blog images; audit Phase 6 originally scoped it Cycle 3. **BLG-036 deferred** — blog pagination is a feature needing a product decision (numbered routes vs `?page=`, posts/page, category-grouping, rel=next/prev). |
+| 2026-05-21 | **CYCLE 2 SPRINT 5 — safe subset COMPLETE** (GEO/AEO + Infra) — 7 `fix/*` branches off `develop`, awaiting user merge. Closed 24 backlog entries: BLG-021/077/108/115/116/117/118/119/120/121/129/134/135/136/137/141/143/144/147/148/149/150/151/152. Sanity Studio schemas hardened (required validation, SEO objects, maxLength, certificate dates, author E-E-A-T fields, restricted body block styles); JOBS_SLUG_QUERY + `_updatedAt`; robots.ts explicitly handles CCBot (allow) / Bytespider + Diffbot (block); sitemap Sanity fetches cached; BreadcrumbList always has a deterministic `@id`; PortableText external-link detection fixed; **llms.txt fully rewritten** — canonical URLs, AI Bootcamp re-categorised, missing courses/certs/city-summary added, NAP + founder + social, and the non-defensible "100% placement" claim removed (closes the un-done P0 BLG-121). **Deferred (big/blocked/external/product-decision):** BLG-005/079 (schema-generators refactor), BLG-006/146/139/140 (revalidate webhook + preview — blocked on Q7 secret/token), BLG-039, BLG-070 (blocked on external profiles), BLG-081, BLG-096/097/098/113/114 (IA restructuring — product decisions), BLG-104, BLG-122, BLG-123/197 + BLG-130/198/199 (external profiles), BLG-133 (7 Sanity doc types — multi-week), BLG-156. |
