@@ -1,4 +1,4 @@
-/* ==================== WHY LEARN (Manual Testing 2025) ==================== */
+/* ==================== WHY LEARN (Manual Testing 2026) ==================== */
 "use client";
 
 import {
@@ -95,7 +95,7 @@ export default function WhyLearnSection() {
                         id="why-learn-title"
                         className="mt-4 text-4xl font-bold text-gray-900"
                     >
-                        Why <span className="text-blue-700">Manual Testing</span> in 2025?
+                        Why <span className="text-blue-700">Manual Testing</span> in 2026?
                     </h2>
                     <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                         The foundation of <strong>software quality assurance</strong> - high
@@ -297,7 +297,7 @@ export default function WhyLearnSection() {
                     Learn manual testing, QA fundamentals, software testing certification,
                     ISTQB preparation, API testing with Postman, test case design,
                     Agile/Scrum workflows, defect tracking with Jira, and portfolio-ready
-                    projects for high-demand QA careers in 2025.
+                    projects for high-demand QA careers in 2026.
                 </p>
             </div>
 

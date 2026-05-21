@@ -92,7 +92,7 @@ export default function CurriculumSection() {
                     </motion.div>
 
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                        Latest <span className="text-brand">Software Testing Course Syllabus</span> 2025-26
+                        Latest <span className="text-brand">Software Testing Course Syllabus</span> 2026-27
                     </h2>
 
 

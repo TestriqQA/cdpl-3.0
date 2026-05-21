@@ -120,7 +120,7 @@ const WhyChooseUsSection = () => {
     {
       icon: <Lightbulb className="w-8 h-8" />,
       title: "Latest Curriculum",
-      description: "Learn the most in-demand technologies and tools used by leading companies in 2025 and beyond.",
+      description: "Learn the most in-demand technologies and tools used by leading companies in 2026 and beyond.",
       color: "from-yellow-500 to-yellow-600",
       bgColor: "bg-yellow-50",
     },
