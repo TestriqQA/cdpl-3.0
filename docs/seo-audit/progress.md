@@ -1,8 +1,7 @@
 # CDPL SEO + GEO Audit — Live Progress
 
-> **Updated:** 2026-05-19 — **CYCLE 1 COMPLETE** ✅
-> **Branch:** `seo-audit/cycle-1-discovery` (ready for merge to `develop` at user discretion)
-> **Last commit:** `cd003b0 docs(seo-audit): Phase 14 — Off-Page + Master Backlog + Sprint Roadmap (CYCLE 1 COMPLETE)`
+> **Updated:** 2026-05-21 — **CYCLE 2 SPRINT 2 COMPLETE** ✅ (Schema Parity)
+> **Branch:** `seo-audit/cycle-1-discovery` (audit docs) — Cycle 2 fixes land on `fix/*` branches off `develop`
 > **Total backlog:** 199 entries (18 P0 / 75 P1 / 64 P2 / 42 P3) across 14 phases + 4 ancillary docs
 
 This file is rewritten **on every response that touches the audit**, so you always see current state without having to scroll back.
@@ -38,18 +37,51 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 
 ## Cycle 2 progress (7 sprints)
 
-> Will populate after Cycle 1 deliverable #14 lands (`sprint-roadmap.md`).
-> Branch policy: one `fix/<slug>` branch per fix, off `develop`.
+> Branch policy: one `fix/<slug>` branch per fix, off `develop`. User decides when to merge.
 
 | Sprint | Title | Status |
 | --- | --- | --- |
-| 1 | Production-Risk De-risking | ⏳ |
-| 2 | Schema Parity | ⏳ |
+| 1 | Production-Risk De-risking | ✅ done — 14 `fix/*` branches merged to `develop` |
+| 2 | Schema Parity | ✅ done — 12 `fix/*` branches pending merge to `develop` |
 | 3 | Tooling + Small UX | ⏳ |
 | 4 | Performance + Caching | ⏳ |
 | 5 | GEO/AEO + Infra | ⏳ |
 | 6 | Content Cycle (25+ new routes) | ⏳ |
 | 7 | Final Backlog Cleanup | ⏳ |
+
+### Sprint 1 — Production-Risk De-risking (merged to `develop`)
+
+Closed: BLG-001, 002, 003, 013, 026, 027, 029, 030, 031, 032, 038, 042, 043, 044,
+047, 050, 051, 056, 057, 058, 059, 095, 132, 142, 165. Merge commits: `75e0aff`,
+`849d4aa`, `66a2602`, `38e022c`, `128b2c0`, `cbab1b0`, `90af701`, `ed1ee6b`,
+`5d27567`, `ea5c845`, `ad4c51f`, `b419421`, `5fc2fd5`, `32cb441`.
+
+### Sprint 2 — Schema Parity (12 branches off `develop`, awaiting merge)
+
+| Branch | BLG closed | Summary |
+| --- | --- | --- |
+| `fix/blg-063-course-schema-fields` | 063, 074, 075, 078 | Course schema: teaches, educationalLevel, coursePrerequisites, educationalCredentialAwarded, audience, CourseInstance dates; drop fake "Expert Mentors" instructor |
+| `fix/blg-060-review-itemtype-required` | 060 | `generateReviewSchema` itemType/itemId now required — fixed 9 call-sites that were attaching AggregateRating to the Organization |
+| `fix/blg-061-org-localbusiness-link` | 061, 080 | LocalBusiness `parentOrganization` @id ref; `paymentAccepted`, `currenciesAccepted`, `award` |
+| `fix/blg-064-org-founder` | 064, 071 | Org `founder` (Sandeep Maske, no sameAs yet); removed unverified `numberOfEmployees` |
+| `fix/blg-068-website-searchaction` | 068 | WebSite `SearchAction`; also dropped a missed "100% placement" claim from WebSite description |
+| `fix/blg-076-home-aggregaterating-id` | 076 | Home AggregateRating @id collision with LocalBusiness resolved |
+| `fix/blg-065-blogposting-author` | 065, 066 | `Article` → `BlogPosting` subtype; author `sameAs` wired from Sanity author.social |
+| `fix/blg-062-city-localbusiness` | 062 | City pages emit a city-scoped LocalBusiness with `areaServed` + HQ address |
+| `fix/blg-069-quiz-schema` | 069 | `Quiz` schema added to `/mock-test` |
+| `fix/blg-073-services-offercatalog` | 073 | `OfferCatalog` schema added to `/services` |
+| `fix/blg-072-educational-program` | 072 | `EducationalOccupationalProgram` schema for Masters + AI Bootcamp |
+| `fix/blg-138-job-schema-hiringorg` | 138, 162 | Job schema re-audit — confirmed valid; fixed careers `hiringOrganization` non-www URL + 404 logo |
+
+**BLG-053** (OG image dimensions) — **verified, FAILING.** 73 of 113 `public/og-images/*`
+files are not 1200×630 (49 have the wrong aspect ratio ~1.5:1 and will be cropped by
+social platforms; 24 are the correct ~1.91:1 ratio but oversized and safely
+downscalable). The `defaultOgImage` file resolves OK. This is an **asset / design
+re-export task**, not a schema-parity code change — deferred, no branch created.
+
+**Spawned task:** careers-page JobPosting `streetAddress` is "Vikhroli, Mumbai" — wrong;
+CDPL HQ is Mira Road. Flagged for a separate session (NAP defect, needs an office-
+location decision for Pune/Bengaluru roles).
 
 ---
 
@@ -73,10 +105,11 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | Q2 | Founded year (2020 vs 2022) | 2026-05-19 | ✅ 2020 |
 | Q3 | Which trust-signal numbers are defensible | 2026-05-19 | ✅ Only 4.9/425 |
 | Q4 | Cycle 1 cadence + commit strategy | 2026-05-19 | ✅ Phase-by-phase, commit-per-phase |
-| Q5 | Sandeep Maske LinkedIn URL (for Organization.founder.sameAs / BLG-064) | 2026-05-19 Phase 5 | ⏳ blocks Cycle 2 Sprint 2 |
-| Q8 | Is `numberOfEmployees: 50` accurate (BLG-071)? | 2026-05-19 Phase 5 | ⏳ blocks Cycle 2 Sprint 2 |
-| Q9 | Sign-off on removing fabricated reviews from 830 routes (BLG-056) — confirm scope | 2026-05-19 Phase 5 | ⏳ blocks Cycle 2 Sprint 1 |
-| Q10 | Actual prices per course (or confirm 25k-65k range is correct for ALL 25 courses) (BLG-058) | 2026-05-19 Phase 5 | ⏳ blocks Cycle 2 Sprint 2 |
+| Q5 | Sandeep Maske LinkedIn URL (for Organization.founder.sameAs / BLG-064) | 2026-05-19 Phase 5 | 🟡 partial — founder added name-only (2026-05-21); LinkedIn `sameAs` still needed |
+| Q8 | Is `numberOfEmployees: 50` accurate (BLG-071)? | 2026-05-19 Phase 5 | ✅ resolved 2026-05-21 — user said remove the field; done |
+| Q9 | Sign-off on removing fabricated reviews from 830 routes (BLG-056) — confirm scope | 2026-05-19 Phase 5 | ✅ resolved — BLG-056 fixed + merged in Sprint 1 |
+| Q10 | Actual prices per course (or confirm 25k-65k range is correct for ALL 25 courses) (BLG-058) | 2026-05-19 Phase 5 | ✅ resolved — BLG-058 fixed + merged in Sprint 1 (schema uses real `course.price`) |
+| Q11 | OG image re-export — 73/113 `og-images/*` not 1200×630 (BLG-053). Approve batch downscale of the 24 correct-ratio files + design re-export of the 49 wrong-ratio files? | 2026-05-21 Sprint 2 | ⏳ awaiting decision |
 | Q6 | GSC property access (for Phase 10 validation) | 2026-05-19 Phase 10 | ⏳ paste GSC exports into [10-gsc-triage.md](10-gsc-triage.md) §10.10 template |
 | Q7 | Sanity webhook secret + Studio API token scope (Phase 9 / Cycle 2 Sprint 5) | — | ⏳ Phase 9 will ask |
 
@@ -114,3 +147,5 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | 2026-05-19 | Phase 12 complete (competitive gap analysis via Chrome MCP). Audited Simplilearn, Edureka, Intellipaat, Scaler live. **7 new backlog entries (BLG-167 → BLG-173).** **Edureka schema vs CDPL:** Edureka course page has teaches, syllabusSections, coursePrerequisites, educationalCredentialAwarded, video, Product+Course+FAQPage. **Edureka aggregateRating: 4.2 / 49,300 reviews** = 116× CDPL's 425. **Intellipaat strategy:** Product schema (no Course) + "with IIT Certification" titles. **Scaler moat:** verified LinkedIn alumni URLs. **Untapped niches (0 competitors have):** Comparison pages, city-level scale (CDPL already has 765 city pages — unique advantage), vertical-solution pages. **Top content gaps:** tutorials, interview-question pages, comparison pages, verified alumni, salary calculator. **Backlink baseline:** CDPL not on Shiksha (formerly Naukri Learning). **Total backlog: 173 entries (17 P0 / 64 P1 / 56 P2 / 36 P3).** |
 | 2026-05-19 | Phase 13 complete (EdTech India optimization). **15 new backlog entries (BLG-174 → BLG-188).** Strategic recommendations: 10 `/tools/*` landing pages for Selenium/Postman/SQL/Cypress/Playwright/Power BI/Tableau (BLG-174 P1); 2 vertical pages BFSI Testing + Healthcare Data Analytics (BLG-175 P2); `/corporate-training` B2B cluster of 5-8 pages (BLG-176 P1 extends BLG-048/BLG-102); pricing transparency (BLG-177 P1); upcoming-batches page (BLG-178 P1); `/case-studies/[slug]` route with LinkedIn-verified alumni (BLG-179 P1 — closes Scaler's moat); claim Shiksha/CollegeDunia/Justdial/Sulekha listings (BLG-183/184); footer CIN+GST+ISO display (BLG-185); city-page meta-description CTR rescue (BLG-187 P1 — cross-cuts BLG-044). **Brand SERP verified live:** GBP + Knowledge Panel exist ✓. Thane separate listing — NAP consistency check needed. **Total Cycle 2 Sprint 6 scope: ~30-35 new pages.** **Total backlog: 188 entries (17 P0 / 70 P1 / 60 P2 / 41 P3).** |
 | 2026-05-19 | **CYCLE 1 COMPLETE.** Phase 14 emitted **3 final deliverables**: [14-offpage-strategy.md](14-offpage-strategy.md) (backlink + entity establishment + founder thought leadership), [fix-backlog.md](fix-backlog.md) (199-entry tabular master backlog), [sprint-roadmap.md](sprint-roadmap.md) (7 Cycle 2 sprints + Cycle 3). **11 new backlog entries (BLG-189 → BLG-199):** GSC Links pull (BLG-189), founder cadence (BLG-190), EdTech awards (BLG-191), speaking circuit (BLG-192), review acquisition workflow (BLG-193), Tier-1 directory submission sprint with 15 directories (BLG-194), disavow audit (BLG-195), NAP audit (BLG-196), **Wikidata Q-ID creation (BLG-197 — highest-leverage external GEO action)**, Crunchbase (BLG-198), Clutch (BLG-199). **FINAL TOTAL: 199 backlog entries (18 P0 / 75 P1 / 64 P2 / 42 P3) over 14 phases + live GSC + live browser audit. Cycle 1 branch ready for merge to `develop` at user discretion.** |
+| 2026-05-21 | **CYCLE 2 SPRINT 1 COMPLETE** (Production-Risk De-risking) — 14 `fix/*` branches merged to `develop`. Closed 25 backlog entries: BLG-001/002/003/013/026/027/029/030/031/032/038/042/043/044/047/050/051/056/057/058/059/095/132/142/165. Headline: fabricated reviews removed from ~830 routes (BLG-056/057), client-side canonical removed (BLG-001), "Testriq" brand stripped (BLG-042), non-defensible claims swept from titles/descriptions/Org schema (BLG-043/044/059), all 30+ course descriptions rewritten (BLG-095). |
+| 2026-05-21 | **CYCLE 2 SPRINT 2 COMPLETE** (Schema Parity) — 12 `fix/*` branches off `develop`, awaiting user merge. Closed 19 backlog entries: BLG-060/061/062/063/064/065/066/068/069/071/072/073/074/075/076/078/080/138/162. Course schema now emits teaches/educationalLevel/coursePrerequisites/educationalCredentialAwarded/audience + CourseInstance dates (BLG-063/074/075). **`generateReviewSchema` foot-gun fixed (BLG-060): 9 call-sites were silently attaching the AggregateRating to the Organization @id — now itemType/itemId are required.** LocalBusiness↔Organization linked (BLG-061); city LocalBusiness on 765 routes (BLG-062); founder added, numberOfEmployees removed (BLG-064/071); BlogPosting subtype + author sameAs (BLG-065/066); WebSite SearchAction + a missed "100% placement" claim removed (BLG-068); home @id collision fixed (BLG-076); Quiz, OfferCatalog, EducationalOccupationalProgram schemas added (BLG-069/073/072); JobPosting re-audited — valid, hiringOrganization URL bug fixed (BLG-138/162). **BLG-053 verified FAILING** — 73/113 OG images off 1200×630 spec (asset re-export task, deferred → Q11). Cycle-3 entries (BLG-004/008/014/015/022/084/090/161) remain deferred. |
