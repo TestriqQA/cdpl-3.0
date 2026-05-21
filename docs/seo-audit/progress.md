@@ -1,6 +1,6 @@
 # CDPL SEO + GEO Audit — Live Progress
 
-> **Updated:** 2026-05-21 — **CYCLE 2 SPRINT 3 COMPLETE** ✅ (Tooling + Small UX)
+> **Updated:** 2026-05-21 — **CYCLE 2 SPRINT 4 COMPLETE** ✅ (Performance + Caching)
 > **Branch:** `seo-audit/cycle-1-discovery` (audit docs) — Cycle 2 fixes land on `fix/*` branches off `develop`
 > **Total backlog:** 199 entries (18 P0 / 75 P1 / 64 P2 / 42 P3) across 14 phases + 4 ancillary docs
 
@@ -44,7 +44,7 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | 1 | Production-Risk De-risking | ✅ done — 14 `fix/*` branches merged to `develop` |
 | 2 | Schema Parity | ✅ done — 12 `fix/*` branches pending merge to `develop` |
 | 3 | Tooling + Small UX | ✅ done — 12 `fix/*` branches pending merge to `develop` |
-| 4 | Performance + Caching | ⏳ |
+| 4 | Performance + Caching | ✅ done — 4 `fix/*` branches pending merge; image-refactor items → Cycle 3 |
 | 5 | GEO/AEO + Infra | ⏳ |
 | 6 | Content Cycle (25+ new routes) | ⏳ |
 | 7 | Final Backlog Cleanup | ⏳ |
@@ -118,6 +118,37 @@ half a job).
 **BLG-184** (Justdial/Sulekha/Bing Places listings) — external directory work,
 not an engineering task.
 
+### Sprint 4 — Performance + Caching (4 branches off `develop`, awaiting merge)
+
+> BLG-003 and BLG-027 (Sanity double-fetch React.cache wraps) were already
+> closed in Sprint 1 — no Sprint 4 work needed for them.
+
+| Branch | BLG closed | Summary |
+| --- | --- | --- |
+| `fix/blg-007-metapixel-lazyload` | 007 | Meta Pixel Script strategy `afterInteractive` → `lazyOnload` |
+| `fix/blg-067-blog-wordcount` | 067 | real BlogPosting `wordCount` from Portable Text (was hard-coded 1000) |
+| `fix/blg-166-blog-hero-priority` | 166 | blog-hero blur layer de-prioritised; main LCP image keeps priority + `fetchPriority="high"` |
+| `fix/blg-009-phone-css-scope` | 009 | `react-phone-number-input/style.css` moved out of root layout into a shared `PhoneNumberInput` wrapper; 32 importers rewired |
+
+**BLG-083 / BLG-145** (adopt `useNextSanityImage`) — **deferred to Cycle 3.**
+This is a data-contract refactor: the GROQ queries currently project
+`featuredImage` as a resolved URL string (`featuredImage.asset->url`), but
+`useNextSanityImage` needs the raw Sanity image object. Changing it touches
+`queries.ts` + `types.ts` + 6 components, requires client components for the
+hook, and the blast radius is *every blog image*. Cannot be build-verified
+here (Sanity-token rule) — belongs in a dedicated, build-tested image pass.
+The audit's own Phase 6 originally scoped it as Cycle 3.
+
+**BLG-012** (raw `<img>` → next/image) and **BLG-090** (blur placeholders) —
+remain **deferred to that same Cycle 3 Sanity-image refactor pass.**
+
+**BLG-036** (paginate `/blog/all-posts` + `/blog/category/[slug]`) — **deferred,
+needs a product decision.** It is a feature, not a fix: it requires choosing
+numbered routes vs `?page=` query param, posts-per-page (12–24), whether
+`/blog/all-posts` keeps its category-grouped layout, and `rel=next/prev` /
+canonical handling. A half-built pagination hurts SEO more than the current
+unbounded list. Recommend a dedicated decision + branch.
+
 ---
 
 ## Cycle 3 progress (CWV sweep)
@@ -185,3 +216,4 @@ not an engineering task.
 | 2026-05-21 | **CYCLE 2 SPRINT 1 COMPLETE** (Production-Risk De-risking) — 14 `fix/*` branches merged to `develop`. Closed 25 backlog entries: BLG-001/002/003/013/026/027/029/030/031/032/038/042/043/044/047/050/051/056/057/058/059/095/132/142/165. Headline: fabricated reviews removed from ~830 routes (BLG-056/057), client-side canonical removed (BLG-001), "Testriq" brand stripped (BLG-042), non-defensible claims swept from titles/descriptions/Org schema (BLG-043/044/059), all 30+ course descriptions rewritten (BLG-095). |
 | 2026-05-21 | **CYCLE 2 SPRINT 2 COMPLETE** (Schema Parity) — 12 `fix/*` branches off `develop`, awaiting user merge. Closed 19 backlog entries: BLG-060/061/062/063/064/065/066/068/069/071/072/073/074/075/076/078/080/138/162. Course schema now emits teaches/educationalLevel/coursePrerequisites/educationalCredentialAwarded/audience + CourseInstance dates (BLG-063/074/075). **`generateReviewSchema` foot-gun fixed (BLG-060): 9 call-sites were silently attaching the AggregateRating to the Organization @id — now itemType/itemId are required.** LocalBusiness↔Organization linked (BLG-061); city LocalBusiness on 765 routes (BLG-062); founder added, numberOfEmployees removed (BLG-064/071); BlogPosting subtype + author sameAs (BLG-065/066); WebSite SearchAction + a missed "100% placement" claim removed (BLG-068); home @id collision fixed (BLG-076); Quiz, OfferCatalog, EducationalOccupationalProgram schemas added (BLG-069/073/072); JobPosting re-audited — valid, hiringOrganization URL bug fixed (BLG-138/162). **BLG-053 verified FAILING** — 73/113 OG images off 1200×630 spec (asset re-export task, deferred → Q11). Cycle-3 entries (BLG-004/008/014/015/022/084/090/161) remain deferred. |
 | 2026-05-21 | **CYCLE 2 SPRINT 3 COMPLETE** (Tooling + Small UX) — 12 `fix/*` branches off `develop`, awaiting user merge. Closed 16 backlog entries: BLG-010/011/018/024/025/028/041/045/055/085/088/089/091/092/093/094. Highlights: image-optimizer + /api/reviews caching (091/092); direct layout imports + Sanity CDN preconnect (010/011/093); below-fold `priority` removed from logos (085/094); react-icons/lu dropped for lucide-react (088); inline system-ui font removed from 765 city H1s (089); meta-robots noindex layout for /mock-test/[courseSlug] (041); themed error.tsx (024); 5 lead-form privacy links de-redirected (028); blog-hero loading skeleton (018); route loading.tsx states (025); mobile home h1 (045); rel=noopener on 7 external links (055). **BLG-046 verified — no-op** (all `alt=""` correctly decorative). **BLG-012 deferred** (raw-img conversion needs next.config remotePatterns/dangerouslyAllowSVG + build verification → Sprint 4). **BLG-052 deferred** → folded into Q11 OG-image asset task. **BLG-184** is external directory work. |
+| 2026-05-21 | **CYCLE 2 SPRINT 4 COMPLETE** (Performance + Caching) — 4 `fix/*` branches off `develop`, awaiting user merge. Closed 4 backlog entries: BLG-007/009/067/166. Meta Pixel deferred to `lazyOnload` (007); real Portable-Text `wordCount` for BlogPosting schema (067); blog-hero LCP image keeps priority while the decorative blur layer no longer competes for preload (166); `react-phone-number-input` stylesheet moved off the root layout into a shared wrapper, 32 importers rewired (009). **BLG-003 + BLG-027 were already closed in Sprint 1** (no work needed). **BLG-083/145 + BLG-012 + BLG-090 deferred to a Cycle 3 Sanity-image refactor pass** — `useNextSanityImage` needs a GROQ/type data-contract change (URL string → image object) across queries + 6 components, build-unverifiable here, blast radius = all blog images; audit Phase 6 originally scoped it Cycle 3. **BLG-036 deferred** — blog pagination is a feature needing a product decision (numbered routes vs `?page=`, posts/page, category-grouping, rel=next/prev). |
