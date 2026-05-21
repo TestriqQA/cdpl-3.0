@@ -6,7 +6,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ['@prisma/client'], // Remove this line if not using Prisma or similar
+  // BLG-020: removed serverExternalPackages: ['@prisma/client'] — Prisma is
+  // not used anywhere in the codebase.
   productionBrowserSourceMaps: false,
   poweredByHeader: false,
   reactStrictMode: true,
@@ -22,7 +23,6 @@ const nextConfig: NextConfig = {
     ],
     optimizeCss: false, // Disabled: incompatible with Tailwind v4 (causes build error)
     optimizeServerReact: true,
-    // webpackBuildWorker: true, // Commented out to ensure critters runs reliably
   },
 
   // Fix: Tailwind v4 generates CSS with data URIs that contain '&' characters.
@@ -379,6 +379,18 @@ const nextConfig: NextConfig = {
           {
             key: 'X-Robots-Tag',
             value: 'noindex, nofollow',
+          },
+        ],
+      },
+      // BLG-040: brochure / syllabus PDFs under /downloads/ are indexable by
+      // default and compete with the real HTML course pages in search.
+      // noindex them so the course pages rank instead (links still followed).
+      {
+        source: '/downloads/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex',
           },
         ],
       },
