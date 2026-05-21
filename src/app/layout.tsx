@@ -15,7 +15,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import 'react-phone-number-input/style.css';
-import dynamic from 'next/dynamic';
 import {
   generateOrganizationSchema,
   generateWebsiteSchema,
@@ -24,6 +23,12 @@ import { generateMetadata, generateAIMetaTags } from "@/lib/metadata-generator";
 import { SITE_CONFIG, SEO_DEFAULTS } from "@/lib/seo-config";
 import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+// BLG-010: Header/Footer/SpecialOfferBanner are always rendered with
+// ssr:true — dynamic() only added an extra code-split chunk with no
+// lazy-loading benefit. Imported directly instead.
+import Header from "@/components/Layout/Header";
+import Footer from "@/components/Layout/Footer";
+import SpecialOfferBanner from "@/components/SpecialOfferBanner";
 
 const inter = localFont({
   src: './fonts/inter-variable.woff2',
@@ -33,15 +38,6 @@ const inter = localFont({
   fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Arial', 'sans-serif'],
   weight: '100 900',
 });
-
-// ============================================================================
-// DYNAMIC IMPORTS (for performance)
-// ============================================================================
-
-// import Header from "@/components/Layout/Header";
-const Header = dynamic(() => import("@/components/Layout/Header"), { ssr: true });
-const Footer = dynamic(() => import("@/components/Layout/Footer"), { ssr: true });
-const SpecialOfferBanner = dynamic(() => import("@/components/SpecialOfferBanner"), { ssr: true });
 
 // ============================================================================
 // GLOBAL METADATA (using the new generator)
@@ -101,10 +97,12 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href={SITE_CONFIG.appleTouchIcon} />
         <link rel="icon" href={SITE_CONFIG.favicon} />
 
-        {/* Resource hints for performance - only for actually used origins */}
-
-
-
+        {/* Resource hints for performance - only for actually used origins.
+            BLG-011/093: all blog and course imagery is served from the
+            Sanity CDN — preconnect cuts the TLS/handshake cost of the
+            first image fetch. */}
+        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
       </head>
 
       <body className={`${inter.variable} font-sans antialiased`}>
