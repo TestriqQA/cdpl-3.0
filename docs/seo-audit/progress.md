@@ -281,9 +281,16 @@ typecheck-clean, awaiting user merge.** Sprint 1's 14 branches already merged.
 - **Asset re-export:** BLG-052/053 (OG images, → Q11).
 - **Verification-only:** BLG-156 (needs live GSC).
 
+**Merge readiness (empirically tested 2026-05-21):** all 41 branches were
+test-merged onto a throwaway branch off `develop` — **39 merge cleanly, 2
+have a trivial conflict** (`fix/blg-067-blog-wordcount` vs `blg-065` on
+`blog/[slug]/page.tsx`; `fix/blg-009-phone-css-scope` vs `blg-010` on
+`layout.tsx` — keep both sides in each). Full recommended merge order +
+resolution steps: [cycle-2-merge-guide.md](cycle-2-merge-guide.md).
+
 **Open follow-ups for the user:**
-1. Merge/review the 41 `fix/*` branches; run `npm install` (BLG-082 changed
-   package.json) and a production build.
+1. Merge/review the 41 `fix/*` branches (see the merge guide); run
+   `npm install` (BLG-082 changed package.json) and a production build.
 2. Answer **Q5** (Sandeep Maske LinkedIn URL → founder `sameAs`) and **Q7**
    (Sanity webhook secret + token scope).
 3. Decide **Q11** (OG-image re-export) and the IA-restructure / pagination
