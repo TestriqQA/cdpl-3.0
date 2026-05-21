@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback, useRef } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '@/components/ui/CustomFlag';
 
 import {

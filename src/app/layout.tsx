@@ -14,7 +14,6 @@ import MetaPixel from '@/components/MetaPixel'
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import 'react-phone-number-input/style.css';
 import dynamic from 'next/dynamic';
 import {
   generateOrganizationSchema,

@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { Phone, Mail, User, CheckCircle2 } from "lucide-react";
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '../ui/CustomFlag';
 
 import {

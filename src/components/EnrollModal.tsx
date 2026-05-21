@@ -4,7 +4,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, CheckCircle2, Loader2, GraduationCap } from 'lucide-react';
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from './ui/CustomFlag';
 
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';

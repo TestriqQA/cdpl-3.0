@@ -5,7 +5,7 @@ import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '@/components/ui/CustomFlag';
 
 

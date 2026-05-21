@@ -5,7 +5,7 @@ import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { motion } from 'framer-motion';
 import { User, Mail, MapPin, Briefcase, Award, ArrowRight, Loader2 } from 'lucide-react';
 import { submitIstqbStep1 } from '@/app/istqb-registration/actions';
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput from '@/components/ui/PhoneNumberInput';
 
 
 interface RegistrationFormProps {

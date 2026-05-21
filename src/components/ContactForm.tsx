@@ -6,9 +6,10 @@ import { motion } from 'framer-motion';
 import { CheckCircle2, User, Mail } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
-// Import react-phone-number-input for professional phone input
-// Use dynamic import to ensure it's only loaded on the client side
-const PhoneInput = dynamic(() => import('react-phone-number-input'), { ssr: false });
+// Import the phone input via the shared wrapper (BLG-009: scopes the
+// react-phone-number-input stylesheet to phone-bearing routes only).
+// Dynamic import keeps it client-only.
+const PhoneInput = dynamic(() => import('@/components/ui/PhoneNumberInput'), { ssr: false });
 import CustomFlag from './ui/CustomFlag';
 
 import {

@@ -7,7 +7,7 @@ import { ArrowRight, Phone, Mail, MapPin, Check, Star, Zap } from "lucide-react"
 import Link from "next/link";
 import { EnrollFormData, EnrollPopup } from "../EnrollForms";
 import BrochureDownloadModal from '@/components/home/BrochureDownloadModal';
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '@/components/ui/CustomFlag';
 
 import { validatePhone } from '@/lib/formValidation';
