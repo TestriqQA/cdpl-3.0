@@ -117,9 +117,24 @@ const components: PortableTextComponents = {
     marks: {
         link: ({ children, value }) => {
             const href = value?.href || '#'
-            const rel = !href.startsWith('/') ? 'noreferrer noopener' : undefined
+            // BLG-150: external = an absolute http(s) URL on a different host.
+            // The old `!href.startsWith('/')` test wrongly flagged absolute
+            // links to cinutedigital.com (and mailto:/tel:/#anchor) as external.
+            let isExternal = false
+            if (/^https?:\/\//i.test(href)) {
+                try {
+                    const host = new URL(href).hostname.replace(/^www\./, '')
+                    isExternal = host !== 'cinutedigital.com'
+                } catch {
+                    isExternal = false
+                }
+            }
             return (
-                <Link href={href} rel={rel} className="text-indigo-600 hover:text-indigo-800 underline transition-colors">
+                <Link
+                    href={href}
+                    {...(isExternal && { target: '_blank', rel: 'noopener noreferrer' })}
+                    className="text-indigo-600 hover:text-indigo-800 underline transition-colors"
+                >
                     {children}
                 </Link>
             )
