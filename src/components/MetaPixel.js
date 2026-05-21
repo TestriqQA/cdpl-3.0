@@ -23,7 +23,10 @@ export default function MetaPixel() {
         <>
             <Script
                 id="fb-pixel"
-                strategy="afterInteractive"
+                // BLG-007: lazyOnload defers fbevents.js until the browser is
+                // idle, so the Meta Pixel no longer competes with hydration
+                // and core content for main-thread time.
+                strategy="lazyOnload"
                 dangerouslySetInnerHTML={{
                     __html: `
             !function(f,b,e,v,n,t,s)
