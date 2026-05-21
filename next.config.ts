@@ -46,7 +46,10 @@ const nextConfig: NextConfig = {
   // Image optimization
   images: {
     formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 60,
+    // BLG-091: 24h (was 60s). A 60s TTL forced the Next image
+    // optimizer to re-process images constantly; site imagery is
+    // effectively static, so a long TTL cuts function invocations.
+    minimumCacheTTL: 86400,
     qualities: [40, 50, 60, 75, 90],
     deviceSizes: [320, 360, 390, 414, 480, 640, 750, 828, 1080, 1200, 1536, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 320, 346, 384],
