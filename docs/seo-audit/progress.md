@@ -1,6 +1,6 @@
 # CDPL SEO + GEO Audit — Live Progress
 
-> **Updated:** 2026-05-21 — **CYCLE 2 SPRINT 5 (safe subset) COMPLETE** ✅ (GEO/AEO + Infra)
+> **Updated:** 2026-05-21 — **CYCLE 2 SPRINT 6 (content-light slice) DONE** ✅ — Sprint 6 proper needs a content team
 > **Branch:** `seo-audit/cycle-1-discovery` (audit docs) — Cycle 2 fixes land on `fix/*` branches off `develop`
 > **Total backlog:** 199 entries (18 P0 / 75 P1 / 64 P2 / 42 P3) across 14 phases + 4 ancillary docs
 
@@ -46,7 +46,7 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | 3 | Tooling + Small UX | ✅ done — 12 `fix/*` branches pending merge to `develop` |
 | 4 | Performance + Caching | ✅ done — 4 `fix/*` branches pending merge; image-refactor items → Cycle 3 |
 | 5 | GEO/AEO + Infra | 🟡 safe subset done — 7 `fix/*` branches pending merge; big/blocked/external items deferred |
-| 6 | Content Cycle (25+ new routes) | ⏳ |
+| 6 | Content Cycle (25+ new routes) | 🟡 content-light slice done (1 branch); ~30-35 new pages need a content team + budget |
 | 7 | Final Backlog Cleanup | ⏳ |
 
 ### Sprint 1 — Production-Risk De-risking (merged to `develop`)
@@ -189,6 +189,33 @@ unbounded list. Recommend a dedicated decision + branch.
   hiringPartner/service/city) — W-effort, multi-week; do as its own sprint.
 - **BLG-156** (plural-slug ranking investigation) — needs live GSC.
 
+### Sprint 6 — Content Cycle (content-light slice only)
+
+> Sprint 6 proper = ~30-35 brand-new pages (tool landing, comparison,
+> 4,000-word pillar articles, B2B cluster, case studies, pricing). The
+> roadmap itself scopes it at 8-12 weeks of combined engineering + content
+> + design and a content-team budget. It is **not autonomously executable**
+> — fabricating marketing copy/pricing/alumni data would violate the audit's
+> "never guess" rule and thin placeholder pages would hurt SEO. Sprint 6
+> proper is parked for a content team. The content-light slice was done:
+
+| Branch | BLG closed | Summary |
+| --- | --- | --- |
+| `fix/blg-110-year-stamp-refresh` | 110 | Refreshed stale "2025" forward-looking year-stamps → 2026 in 6 live course/section components (Manual Testing WhyLearn/Curriculum/Career, WhyChooseUs, Power BI + Software Testing syllabus headings). |
+
+**Sprint 6 — left for a content team / deferred:**
+- All new-page work: tool landing pages (BLG-174), comparison pages
+  (BLG-125/167), pillar pages (BLG-099/124/131), B2B corporate cluster
+  (BLG-176/048/102), vertical solutions (BLG-103/175), free tools
+  (BLG-100/128), case studies (BLG-179/112/170), process pages
+  (BLG-178/180/181), mentor profiles (BLG-101), pricing (BLG-177).
+- Content rewrites: 765 city-page meta descriptions (BLG-187), /services/sttp
+  (BLG-154), interview-question pages (BLG-168), tutorial cluster (BLG-169),
+  CDPL Placement Report (BLG-127), stat-citation swaps (BLG-126).
+- **Spawned task:** stale course "next batch" dates (FeaturedCoursesSection,
+  software-testing data.ts) — real scheduling data CDPL must supply; not
+  auto-bumped during BLG-110.
+
 ---
 
 ## Cycle 3 progress (CWV sweep)
@@ -258,3 +285,4 @@ unbounded list. Recommend a dedicated decision + branch.
 | 2026-05-21 | **CYCLE 2 SPRINT 3 COMPLETE** (Tooling + Small UX) — 12 `fix/*` branches off `develop`, awaiting user merge. Closed 16 backlog entries: BLG-010/011/018/024/025/028/041/045/055/085/088/089/091/092/093/094. Highlights: image-optimizer + /api/reviews caching (091/092); direct layout imports + Sanity CDN preconnect (010/011/093); below-fold `priority` removed from logos (085/094); react-icons/lu dropped for lucide-react (088); inline system-ui font removed from 765 city H1s (089); meta-robots noindex layout for /mock-test/[courseSlug] (041); themed error.tsx (024); 5 lead-form privacy links de-redirected (028); blog-hero loading skeleton (018); route loading.tsx states (025); mobile home h1 (045); rel=noopener on 7 external links (055). **BLG-046 verified — no-op** (all `alt=""` correctly decorative). **BLG-012 deferred** (raw-img conversion needs next.config remotePatterns/dangerouslyAllowSVG + build verification → Sprint 4). **BLG-052 deferred** → folded into Q11 OG-image asset task. **BLG-184** is external directory work. |
 | 2026-05-21 | **CYCLE 2 SPRINT 4 COMPLETE** (Performance + Caching) — 4 `fix/*` branches off `develop`, awaiting user merge. Closed 4 backlog entries: BLG-007/009/067/166. Meta Pixel deferred to `lazyOnload` (007); real Portable-Text `wordCount` for BlogPosting schema (067); blog-hero LCP image keeps priority while the decorative blur layer no longer competes for preload (166); `react-phone-number-input` stylesheet moved off the root layout into a shared wrapper, 32 importers rewired (009). **BLG-003 + BLG-027 were already closed in Sprint 1** (no work needed). **BLG-083/145 + BLG-012 + BLG-090 deferred to a Cycle 3 Sanity-image refactor pass** — `useNextSanityImage` needs a GROQ/type data-contract change (URL string → image object) across queries + 6 components, build-unverifiable here, blast radius = all blog images; audit Phase 6 originally scoped it Cycle 3. **BLG-036 deferred** — blog pagination is a feature needing a product decision (numbered routes vs `?page=`, posts/page, category-grouping, rel=next/prev). |
 | 2026-05-21 | **CYCLE 2 SPRINT 5 — safe subset COMPLETE** (GEO/AEO + Infra) — 7 `fix/*` branches off `develop`, awaiting user merge. Closed 24 backlog entries: BLG-021/077/108/115/116/117/118/119/120/121/129/134/135/136/137/141/143/144/147/148/149/150/151/152. Sanity Studio schemas hardened (required validation, SEO objects, maxLength, certificate dates, author E-E-A-T fields, restricted body block styles); JOBS_SLUG_QUERY + `_updatedAt`; robots.ts explicitly handles CCBot (allow) / Bytespider + Diffbot (block); sitemap Sanity fetches cached; BreadcrumbList always has a deterministic `@id`; PortableText external-link detection fixed; **llms.txt fully rewritten** — canonical URLs, AI Bootcamp re-categorised, missing courses/certs/city-summary added, NAP + founder + social, and the non-defensible "100% placement" claim removed (closes the un-done P0 BLG-121). **Deferred (big/blocked/external/product-decision):** BLG-005/079 (schema-generators refactor), BLG-006/146/139/140 (revalidate webhook + preview — blocked on Q7 secret/token), BLG-039, BLG-070 (blocked on external profiles), BLG-081, BLG-096/097/098/113/114 (IA restructuring — product decisions), BLG-104, BLG-122, BLG-123/197 + BLG-130/198/199 (external profiles), BLG-133 (7 Sanity doc types — multi-week), BLG-156. |
+| 2026-05-21 | **CYCLE 2 SPRINT 6 — content-light slice DONE** (Content Cycle). Sprint 6 proper (~30-35 new pages) is a content-team + design + budget effort and is parked. Did the one content-light item: **`fix/blg-110-year-stamp-refresh`** (BLG-110) — refreshed stale "2025" forward-looking year-stamps to 2026 across 6 live course/section components; left real dates, the dead BlogPageNewUI/CategoriesCTASection components, and real "next batch" scheduling data untouched (the latter spawned as a separate task for CDPL to supply real dates). |
