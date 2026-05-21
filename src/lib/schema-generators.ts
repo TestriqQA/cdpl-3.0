@@ -683,9 +683,14 @@ interface ReviewSchemaInput {
   reviewCount: number;
   bestRating?: number;
   reviews?: ReviewItem[];
-  itemType?: string; // e.g., 'Service', 'Product', 'Course'
+  // BLG-060: itemType and itemId are REQUIRED. They previously defaulted to
+  // EducationalOrganization / the Organization @id, so any caller that omitted
+  // them silently re-attached the AggregateRating to the Organization —
+  // undoing the deliberate self-serving-review removal in
+  // generateOrganizationSchema.
+  itemType: string; // e.g., 'Service', 'Product', 'Course'
+  itemId: string; // must be a distinct @id, never the Organization @id
   itemName?: string;
-  itemId?: string;
 }
 
 /**
@@ -696,9 +701,8 @@ interface ReviewSchemaInput {
 export function generateReviewSchema(
   reviewData: ReviewSchemaInput,
 ): WithContext<Record<string, unknown>> {
-  const itemType = reviewData.itemType || "EducationalOrganization";
+  const { itemType, itemId } = reviewData;
   const itemName = reviewData.itemName || SITE_CONFIG.name;
-  const itemId = reviewData.itemId || getOrganizationId();
 
   return {
     "@context": "https://schema.org",
@@ -5509,10 +5513,14 @@ export function generateIstqbRegistrationPageAllSchemas(data: {
     "Available ISTQB Certification Levels",
   );
 
-  // 6. Review / Aggregate Rating Schema
+  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
+  // Service entity so the rating never lands on the Organization @id.
   const reviewAggregateSchema = generateReviewSchema({
     ratingValue: STATISTICS.rating,
     reviewCount: STATISTICS.reviewCount,
+    itemType: "Service",
+    itemName: "CDPL Professional Training Services",
+    itemId: `${SITE_CONFIG.url}/#training-services`,
   });
 
   // 7. HowTo Schema (How to Register)
@@ -5577,10 +5585,14 @@ export function generateMockTestPageAllSchemas(data: {
     "Available Mock Test Domains",
   );
 
-  // 6. Review / Aggregate Rating Schema
+  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
+  // Service entity so the rating never lands on the Organization @id.
   const reviewAggregateSchema = generateReviewSchema({
     ratingValue: STATISTICS.rating,
     reviewCount: STATISTICS.reviewCount,
+    itemType: "Service",
+    itemName: "CDPL Professional Training Services",
+    itemId: `${SITE_CONFIG.url}/#training-services`,
   });
 
   // 7. HowTo Schema (How to start a test)
@@ -5777,12 +5789,6 @@ export function generateCertificateValidationPageAllSchemas(data: {
     "CDPL Certificate Validation Key Features",
   );
 
-  // 6. Review / Aggregate Rating Schema
-  const reviewAggregateSchema = generateReviewSchema({
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-  });
-
   // 7. HowTo Schema (Validation Process)
   const howToSchema = generateHowToSchema({
     name: "How to verify a CDPL Certificate",
@@ -5844,10 +5850,14 @@ export function generateCmsPageAllSchemas(data: {
     "Cinute Digital CMS Administrative Features",
   );
 
-  // 6. Review / Aggregate Rating Schema
+  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
+  // Service entity so the rating never lands on the Organization @id.
   const reviewAggregateSchema = generateReviewSchema({
     ratingValue: STATISTICS.rating,
     reviewCount: STATISTICS.reviewCount,
+    itemType: "Service",
+    itemName: "CDPL Professional Training Services",
+    itemId: `${SITE_CONFIG.url}/#training-services`,
   });
 
   // 7. HowTo Schema (Content Management Process)
@@ -5939,10 +5949,14 @@ export function generatePrivacyPolicyPageAllSchemas(): WithContext<
     "Cinute Digital Data Protection Rights & Categories",
   );
 
-  // 6. Review / Aggregate Rating Schema
+  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
+  // Service entity so the rating never lands on the Organization @id.
   const reviewAggregateSchema = generateReviewSchema({
     ratingValue: STATISTICS.rating,
     reviewCount: STATISTICS.reviewCount,
+    itemType: "Service",
+    itemName: "CDPL Professional Training Services",
+    itemId: `${SITE_CONFIG.url}/#training-services`,
   });
 
   // 7. HowTo Schema (How to exercise privacy rights)
@@ -6048,10 +6062,14 @@ export function generateCookiesPolicyPageAllSchemas(): WithContext<
     "Cinute Digital Cookie Categories",
   );
 
-  // 6. Review / Aggregate Rating Schema
+  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
+  // Service entity so the rating never lands on the Organization @id.
   const reviewAggregateSchema = generateReviewSchema({
     ratingValue: STATISTICS.rating,
     reviewCount: STATISTICS.reviewCount,
+    itemType: "Service",
+    itemName: "CDPL Professional Training Services",
+    itemId: `${SITE_CONFIG.url}/#training-services`,
   });
 
   // 7. HowTo Schema (How to manage/delete cookies)
@@ -6165,10 +6183,14 @@ export function generateTermsOfServicePageAllSchemas(): WithContext<
     "CDPL Policy & Assistance Framework",
   );
 
-  // 6. Review / Aggregate Rating Schema
+  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
+  // Service entity so the rating never lands on the Organization @id.
   const reviewAggregateSchema = generateReviewSchema({
     ratingValue: STATISTICS.rating,
     reviewCount: STATISTICS.reviewCount,
+    itemType: "Service",
+    itemName: "CDPL Professional Training Services",
+    itemId: `${SITE_CONFIG.url}/#training-services`,
   });
 
   // 7. HowTo Schema (Enrollment to Career Placement)
@@ -6285,10 +6307,14 @@ export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<
     "CDPL Cancellation & Refund Tiers",
   );
 
-  // 6. Review / Aggregate Rating Schema
+  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
+  // Service entity so the rating never lands on the Organization @id.
   const reviewAggregateSchema = generateReviewSchema({
     ratingValue: STATISTICS.rating,
     reviewCount: STATISTICS.reviewCount,
+    itemType: "Service",
+    itemName: "CDPL Professional Training Services",
+    itemId: `${SITE_CONFIG.url}/#training-services`,
   });
 
   // 7. HowTo Schema (How to Request a Refund)
@@ -6386,10 +6412,14 @@ export function generateReviewsPageAllSchemas(
     "Top Student Success Stories and Testimonials",
   );
 
-  // 6. Review / Aggregate Rating Schema
+  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
+  // Service entity so the rating never lands on the Organization @id.
   const reviewAggregateSchema = generateReviewSchema({
     ratingValue: STATISTICS.rating,
     reviewCount: STATISTICS.reviewCount,
+    itemType: "Service",
+    itemName: "CDPL Professional Training Services",
+    itemId: `${SITE_CONFIG.url}/#training-services`,
     reviews: reviews.slice(0, 10).map((r) => ({
       author: r.author,
       rating: r.rating,
