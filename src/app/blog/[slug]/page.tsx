@@ -17,6 +17,24 @@ const getPostBySlug = cache(
     (slug: string) => client.fetch<SanityPost>(POST_QUERY, { slug })
 );
 
+// BLG-067: count words in the Portable Text body so BlogPosting.wordCount
+// is accurate per post (it was previously hard-coded to 1000 for every post).
+function countPortableTextWords(content: unknown): number {
+    if (!Array.isArray(content)) return 0;
+    let words = 0;
+    for (const block of content) {
+        const b = block as { _type?: string; children?: unknown };
+        if (b?._type !== 'block' || !Array.isArray(b.children)) continue;
+        for (const child of b.children) {
+            const text = (child as { text?: unknown })?.text;
+            if (typeof text === 'string' && text.trim()) {
+                words += text.trim().split(/\s+/).length;
+            }
+        }
+    }
+    return words;
+}
+
 const BlogPostHeroSection = dynamic(
     () => import("@/components/sections/BlogPostHeroSection").then(m => ({ default: m.BlogPostHeroSection })),
     {
@@ -127,8 +145,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
     const { author, category } = post;
 
-    // Calculate estimated word count (approximate for now since content is structured)
-    const estimatedWordCount = 1000; // Placeholder or calculate from Portable Text
+    // BLG-067: real word count derived from the Portable Text body.
+    const wordCount = countPortableTextWords(post.content);
 
     // Generate Article Schema
     const articleSchema = generateArticleSchema({
@@ -143,7 +161,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             ? new Date(post._updatedAt).toISOString()
             : new Date(post.publishDate).toISOString(),
         keywords: post.tags,
-        wordCount: estimatedWordCount,
+        wordCount: wordCount,
         category: category ? category.name : undefined,
     });
 
