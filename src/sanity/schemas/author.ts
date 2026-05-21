@@ -5,10 +5,12 @@ export default defineType({
     title: 'Author',
     type: 'document',
     fields: [
+        // BLG-134: required validation on the author's critical fields.
         defineField({
             name: 'name',
             title: 'Name',
             type: 'string',
+            validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'slug',
@@ -18,6 +20,7 @@ export default defineType({
                 source: 'name',
                 maxLength: 96,
             },
+            validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'avatar',
@@ -55,6 +58,42 @@ export default defineType({
                 defineField({ name: 'twitter', title: 'Twitter', type: 'url' }),
                 defineField({ name: 'github', title: 'GitHub', type: 'url' }),
                 defineField({ name: 'website', title: 'Website', type: 'url' }),
+            ],
+        }),
+        // BLG-108/147: E-E-A-T fields — areas of expertise and credentials.
+        defineField({
+            name: 'expertise',
+            title: 'Areas of Expertise',
+            type: 'array',
+            of: [{ type: 'string' }],
+            description: 'e.g. "Software Testing", "Test Automation", "Data Science".',
+        }),
+        defineField({
+            name: 'credentials',
+            title: 'Credentials & Certifications',
+            type: 'array',
+            of: [{ type: 'string' }],
+            description: 'e.g. "ISTQB Certified Tester", "10+ years in QA".',
+        }),
+        // BLG-136: per-author SEO metadata for author archive pages.
+        defineField({
+            name: 'seo',
+            title: 'SEO Metadata',
+            type: 'object',
+            fields: [
+                defineField({
+                    name: 'metaTitle',
+                    title: 'Meta Title',
+                    type: 'string',
+                    validation: (Rule) => Rule.max(60).warning('Keep meta titles under 60 characters.'),
+                }),
+                defineField({
+                    name: 'metaDescription',
+                    title: 'Meta Description',
+                    type: 'text',
+                    rows: 3,
+                    validation: (Rule) => Rule.max(160).warning('Keep meta descriptions under 160 characters.'),
+                }),
             ],
         }),
     ],

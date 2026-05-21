@@ -5,10 +5,12 @@ export default defineType({
     title: 'Post',
     type: 'document',
     fields: [
+        // BLG-134: required validation on the post's critical fields.
         defineField({
             name: 'title',
             title: 'Title',
             type: 'string',
+            validation: (Rule) => Rule.required().min(10).max(120),
         }),
         defineField({
             name: 'slug',
@@ -18,18 +20,22 @@ export default defineType({
                 source: 'title',
                 maxLength: 96,
             },
+            // BLG-134/144: slug must exist; the slug type enforces uniqueness.
+            validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'author',
             title: 'Author',
             type: 'reference',
             to: { type: 'author' },
+            validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'category',
             title: 'Category',
             type: 'reference',
             to: { type: 'category' },
+            validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'featuredImage',
@@ -52,6 +58,8 @@ export default defineType({
             name: 'publishDate',
             title: 'Publish Date',
             type: 'datetime',
+            // BLG-151: required so post ordering (by publishDate) is stable.
+            validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'excerpt',
@@ -71,7 +79,18 @@ export default defineType({
             title: 'Content',
             type: 'array',
             of: [
-                { type: 'block' },
+                // BLG-141: restrict block styles — H1 is reserved for the
+                // page title, so the body offers H2-H4, quote and normal only.
+                {
+                    type: 'block',
+                    styles: [
+                        { title: 'Normal', value: 'normal' },
+                        { title: 'Heading 2', value: 'h2' },
+                        { title: 'Heading 3', value: 'h3' },
+                        { title: 'Heading 4', value: 'h4' },
+                        { title: 'Quote', value: 'blockquote' },
+                    ],
+                },
                 {
                     type: 'image',
                     options: { hotspot: true },
@@ -107,10 +126,42 @@ export default defineType({
             title: 'SEO Metadata',
             type: 'object',
             fields: [
-                defineField({ name: 'metaTitle', title: 'Meta Title', type: 'string' }),
-                defineField({ name: 'metaDescription', title: 'Meta Description', type: 'text' }),
+                // BLG-143: length guidance so titles/descriptions don't get
+                // truncated in search results.
+                defineField({
+                    name: 'metaTitle',
+                    title: 'Meta Title',
+                    type: 'string',
+                    validation: (Rule) => Rule.max(60).warning('Keep meta titles under 60 characters.'),
+                }),
+                defineField({
+                    name: 'metaDescription',
+                    title: 'Meta Description',
+                    type: 'text',
+                    rows: 3,
+                    validation: (Rule) => Rule.max(160).warning('Keep meta descriptions under 160 characters.'),
+                }),
                 defineField({ name: 'canonical', title: 'Canonical URL', type: 'string' }), // Optional overrides
                 defineField({ name: 'keywords', title: 'Keywords', type: 'array', of: [{ type: 'string' }] }),
+                // BLG-135: per-post Open Graph image + indexing overrides.
+                defineField({
+                    name: 'ogImage',
+                    title: 'Social Share Image (Open Graph)',
+                    type: 'image',
+                    description: 'Optional override for the social-share image. Falls back to the featured image.',
+                }),
+                defineField({
+                    name: 'noindex',
+                    title: 'Hide from search engines (noindex)',
+                    type: 'boolean',
+                    initialValue: false,
+                }),
+                defineField({
+                    name: 'nofollow',
+                    title: 'Do not follow links on this page (nofollow)',
+                    type: 'boolean',
+                    initialValue: false,
+                }),
             ]
         })
     ],

@@ -42,6 +42,19 @@ export default defineType({
             },
             initialValue: 'Valid',
         }),
+        // BLG-152: issue / expiry dates for the certificate.
+        defineField({
+            name: 'issuedDate',
+            title: 'Issued Date',
+            type: 'date',
+            validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+            name: 'expiresAt',
+            title: 'Expires At',
+            type: 'date',
+            description: 'Leave blank if the certificate does not expire.',
+        }),
         defineField({
             name: 'certificateImage',
             title: 'Certificate Image',
