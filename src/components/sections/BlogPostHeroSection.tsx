@@ -48,16 +48,19 @@ export const BlogPostHeroSection: React.FC<BlogPostHeroSectionProps> = ({ post }
 
             <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[420px] mb-6 sm:mb-8 rounded-lg overflow-hidden shadow-lg bg-gray-100 dark:bg-gray-800">
                 {/* Blurred Background Layer */}
+                {/* BLG-166: no `priority` here — this decorative blur layer
+                    must not compete with the real LCP image for the preload
+                    budget. Only the main image below is prioritised. */}
                 <Image
                     src={post.featuredImage || getFallbackImage(post.category?.slug)}
                     alt=""
                     fill
                     className="object-cover blur-xl scale-110 opacity-60 dark:opacity-40"
                     aria-hidden="true"
-                    priority
+                    loading="lazy"
                 />
 
-                {/* Main Image Layer */}
+                {/* Main Image Layer — the blog-hero LCP element */}
                 <Image
                     src={post.featuredImage || getFallbackImage(post.category?.slug)}
                     alt={post.title}
@@ -65,6 +68,7 @@ export const BlogPostHeroSection: React.FC<BlogPostHeroSectionProps> = ({ post }
                     className="object-contain z-10 relative"
                     sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 768px) 90vw, (max-width: 1024px) 85vw, 1200px"
                     priority
+                    fetchPriority="high"
                     quality={90}
                 />
             </div>
