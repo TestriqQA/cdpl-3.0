@@ -58,4 +58,5 @@ export interface SanityJob {
     applyEmail?: string;
     applyLink?: string;
     _createdAt?: string;
+    _updatedAt?: string; // BLG-149 — actual CMS edit time for accurate JobPosting dateModified
 }
