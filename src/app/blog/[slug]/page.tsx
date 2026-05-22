@@ -17,13 +17,22 @@ const getPostBySlug = cache(
     (slug: string) => client.fetch<SanityPost>(POST_QUERY, { slug })
 );
 
+// BLG-018: same-shape skeleton instead of a centered "Loading..." text.
+// The text fallback was a full-height element that could flash as the LCP
+// candidate and caused a layout shift when the real hero swapped in.
 const BlogPostHeroSection = dynamic(
     () => import("@/components/sections/BlogPostHeroSection").then(m => ({ default: m.BlogPostHeroSection })),
     {
         ssr: true,
         loading: () => (
-            <div className="flex items-center justify-center h-screen bg-white">
-                <p className="text-gray-500">Loading...</p>
+            <div className="animate-pulse" aria-hidden="true">
+                <div className="mb-4 h-8 w-3/4 rounded bg-gray-200" />
+                <div className="mb-8 h-4 w-1/2 rounded bg-gray-200" />
+                <div className="mb-6 sm:mb-8 h-64 w-full rounded-lg bg-gray-200 sm:h-80 md:h-96 lg:h-[420px]" />
+                <div className="space-y-3">
+                    <div className="h-4 w-full rounded bg-gray-200" />
+                    <div className="h-4 w-5/6 rounded bg-gray-200" />
+                </div>
             </div>
         )
     }
