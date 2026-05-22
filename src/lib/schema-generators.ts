@@ -631,16 +631,26 @@ interface BreadcrumbItem {
 }
 
 /**
- * Generate BreadcrumbList schema
+ * Generate BreadcrumbList schema.
+ *
+ * BLG-077: the `@id` is now always present. When a caller does not pass an
+ * explicit `id`, a deterministic one is derived from the last crumb's URL
+ * (`<page-url>#breadcrumb`). Previously, pages that emitted a breadcrumb
+ * both from a consolidator and from the page component produced two
+ * BreadcrumbList objects with no `@id`, which Google could not tell apart.
  */
 export function generateBreadcrumbSchema(
   items: BreadcrumbItem[],
   id?: string,
 ): WithContext<Record<string, unknown>> {
+  const lastItem = items[items.length - 1];
+  const breadcrumbId =
+    id || (lastItem ? `${getFullUrl(lastItem.url)}#breadcrumb` : undefined);
+
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    ...(id && { "@id": id }),
+    ...(breadcrumbId && { "@id": breadcrumbId }),
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
