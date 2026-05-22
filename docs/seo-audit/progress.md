@@ -1,6 +1,6 @@
 # CDPL SEO + GEO Audit — Live Progress
 
-> **Updated:** 2026-05-22 — **CYCLE 2 INTEGRATED & DEPLOYED** ✅ — all 42 `fix/*` branches merged to `develop`, pushed to origin, server build PASSED
+> **Updated:** 2026-05-22 — **CYCLE 2 LIVE IN PRODUCTION** ✅ — all 42 `fix/*` branches merged, `develop` → `main` deployed; Q5 resolved (founder `sameAs` wired, merged to `develop`)
 > **Branch:** `seo-audit/cycle-1-discovery` (audit docs) — Cycle 2 fixes land on `fix/*` branches off `develop`
 > **Total backlog:** 199 entries (18 P0 / 75 P1 / 64 P2 / 42 P3) across 14 phases + 4 ancillary docs
 
@@ -298,12 +298,13 @@ integrated branch; `develop` pushed; **server build PASSED — Cycle 2 live.**
 
 **Open follow-ups for the user:**
 1. ~~Merge/review the `fix/*` branches~~ — ✅ done; Cycle 2 deployed.
-2. Answer **Q5** (Sandeep Maske LinkedIn URL → founder `sameAs`). **Q7 part 1
-   resolved** (webhook secret set; BLG-006 `/api/revalidate` route built &
-   shipped) — **Q7 part 2 still open**: a Sanity read-token (Viewer perm) for
+2. ~~Answer **Q5**~~ — ✅ done (2026-05-22); founder `sameAs` wired & merged to
+   `develop`. **Q7 part 1 resolved** (webhook secret set on the Sanity webhook
+   **and** the hosting env; BLG-006 `/api/revalidate` route built & shipped) —
+   **Q7 part 2 still open**: a Sanity read-token (Viewer perm) for
    draftMode/preview, which unblocks BLG-139/140/146.
-3. Confirm `SANITY_REVALIDATE_SECRET` is set on the **hosting** env (it is set
-   on the Sanity webhook) — the `/api/revalidate` route is inert without it.
+3. Merge `develop` → `main` again to ship the Q5 founder-`sameAs` fix
+   (`fe90166`) to production.
 4. Decide **Q11** (OG-image re-export) and the IA-restructure / pagination
    approaches (BLG-035/036/037/096/097/098/113/114).
 5. Three spawned side-tasks: careers JobPosting address (Vikhroli→Mira Road),
@@ -331,13 +332,13 @@ integrated branch; `develop` pushed; **server build PASSED — Cycle 2 live.**
 | Q2 | Founded year (2020 vs 2022) | 2026-05-19 | ✅ 2020 |
 | Q3 | Which trust-signal numbers are defensible | 2026-05-19 | ✅ Only 4.9/425 |
 | Q4 | Cycle 1 cadence + commit strategy | 2026-05-19 | ✅ Phase-by-phase, commit-per-phase |
-| Q5 | Sandeep Maske LinkedIn URL (for Organization.founder.sameAs / BLG-064) | 2026-05-19 Phase 5 | 🟡 partial — founder added name-only (2026-05-21); LinkedIn `sameAs` still needed |
+| Q5 | Sandeep Maske LinkedIn URL (for Organization.founder.sameAs / BLG-064) | 2026-05-19 Phase 5 | ✅ resolved 2026-05-22 — user supplied `https://www.linkedin.com/in/sandeepmaske/`; wired into `founder.sameAs` (`fix/blg-064-founder-sameas`, merged to `develop`) |
 | Q8 | Is `numberOfEmployees: 50` accurate (BLG-071)? | 2026-05-19 Phase 5 | ✅ resolved 2026-05-21 — user said remove the field; done |
 | Q9 | Sign-off on removing fabricated reviews from 830 routes (BLG-056) — confirm scope | 2026-05-19 Phase 5 | ✅ resolved — BLG-056 fixed + merged in Sprint 1 |
 | Q10 | Actual prices per course (or confirm 25k-65k range is correct for ALL 25 courses) (BLG-058) | 2026-05-19 Phase 5 | ✅ resolved — BLG-058 fixed + merged in Sprint 1 (schema uses real `course.price`) |
 | Q11 | OG image re-export — 73/113 `og-images/*` not 1200×630 (BLG-053). Approve batch downscale of the 24 correct-ratio files + design re-export of the 49 wrong-ratio files? | 2026-05-21 Sprint 2 | ⏳ awaiting decision |
 | Q6 | GSC property access (for Phase 10 validation) | 2026-05-19 Phase 10 | ⏳ paste GSC exports into [10-gsc-triage.md](10-gsc-triage.md) §10.10 template |
-| Q7 | Sanity webhook secret + Studio API token scope (Phase 9 / Cycle 2 Sprint 5) | — | ⏳ Phase 9 will ask |
+| Q7 | Sanity webhook secret + Studio API token scope (Phase 9 / Cycle 2 Sprint 5) | 2026-05-21 | 🟡 part 1 ✅ — webhook secret `SANITY_REVALIDATE_SECRET` set on the Sanity webhook **and** on the hosting env; `/api/revalidate` route built & deployed (BLG-006). Part 2 ⏳ — still need a Sanity **read-token** (Viewer perm) for draftMode/preview (unblocks BLG-139/140/146) |
 
 ---
 
@@ -381,4 +382,5 @@ integrated branch; `develop` pushed; **server build PASSED — Cycle 2 live.**
 | 2026-05-21 | **CYCLE 2 SPRINT 6 — content-light slice DONE** (Content Cycle). Sprint 6 proper (~30-35 new pages) is a content-team + design + budget effort and is parked. Did the one content-light item: **`fix/blg-110-year-stamp-refresh`** (BLG-110) — refreshed stale "2025" forward-looking year-stamps to 2026 across 6 live course/section components; left real dates, the dead BlogPageNewUI/CategoriesCTASection components, and real "next batch" scheduling data untouched (the latter spawned as a separate task for CDPL to supply real dates). |
 | 2026-05-21 | **CYCLE 2 SPRINT 7 COMPLETE** (Final Backlog Cleanup) — 5 `fix/*` branches off `develop`, awaiting user merge. Closed 7 backlog entries: BLG-016/019/020/023/040/082/109. Removed dead JSON-LD from the noindex /cms layout (016); next.config cleanup — stale webpackBuildWorker comment + unused @prisma/client + X-Robots-Tag noindex on /downloads PDFs (019/020/040); removed 4 unused production deps (082); moved 20 dead blog-seed .tsx files out of src/ to docs/content-seeds/ + tsconfig exclude (109); fixed GoogleAnalytics initial-page-view double-count (023). BLG-160 verified (healthy 301 redirect, no change). **Deferred:** BLG-017 (P3 cosmetic, blog page already has 3 pending branches), BLG-035 (route restructure), BLG-037 (cannibalisation — product decision), BLG-049 (content), BLG-191/192 (external). **CYCLE 2 ENGINEERING WORK COMPLETE** — 41 `fix/*` branches across Sprints 2-7 awaiting merge; Sprint 1's 14 already merged. |
 | 2026-05-21 | **Q7 part 1 resolved + BLG-006 built.** User set the Sanity revalidate webhook secret (`SANITY_REVALIDATE_SECRET`). `fix/blg-006-revalidate-webhook` branch created off `develop` — adds the `/api/revalidate` route handler (secret-validated, tag/path revalidation). 42nd Cycle-2 `fix/*` branch. |
-| 2026-05-22 | **CYCLE 2 INTEGRATED & DEPLOYED.** All 42 `fix/*` branches merged into `develop` in the merge-guide order. The 2 expected conflicts resolved keep-both: `blg-067`↔`blg-065` on `src/app/blog/[slug]/page.tsx` (kept `authorSameAs` + real `wordCount`); `blg-009`↔`blg-010` on `src/app/layout.tsx` (kept direct layout imports + Sanity preconnect + removed phone-input CSS). Full `NODE_OPTIONS=--max-old-space-size=8192 npx tsc --noEmit` passes on integrated `develop`. `develop` pushed to `origin`; recovery tag `pre-cycle2-integration` at `32cb441`. Empty commit `6fd6707` pushed to trigger a fresh hosting build. **Server (Vercel) build of `develop` PASSED — Cycle 2 is live in production.** Remaining open work is user-input / product-decision / content-team / external-profile / Cycle-3 bound — no autonomous engineering work left in Cycle 2. |
+| 2026-05-22 | **CYCLE 2 INTEGRATED & DEPLOYED.** All 42 `fix/*` branches merged into `develop` in the merge-guide order. The 2 expected conflicts resolved keep-both: `blg-067`↔`blg-065` on `src/app/blog/[slug]/page.tsx` (kept `authorSameAs` + real `wordCount`); `blg-009`↔`blg-010` on `src/app/layout.tsx` (kept direct layout imports + Sanity preconnect + removed phone-input CSS). Full `NODE_OPTIONS=--max-old-space-size=8192 npx tsc --noEmit` passes on integrated `develop`. `develop` pushed to `origin`; recovery tag `pre-cycle2-integration` at `32cb441`. Empty commit `6fd6707` pushed to trigger a fresh hosting build. **Server (Vercel) build of `develop` PASSED.** User then merged `develop` → `main` — **Cycle 2 is live in production.** `SANITY_REVALIDATE_SECRET` confirmed set on the hosting env (Q7 part 1 fully closed). Remaining open work is user-input / product-decision / content-team / external-profile / Cycle-3 bound. |
+| 2026-05-22 | **Q5 RESOLVED — BLG-064 fully closed.** User supplied founder Sandeep Maske's verified LinkedIn URL (`https://www.linkedin.com/in/sandeepmaske/`). `fix/blg-064-founder-sameas` branch off `develop` — adds `sameAs: ["https://www.linkedin.com/in/sandeepmaske/"]` to the Organization `founder` Person in `src/lib/schema-generators.ts`. Typecheck clean; merged to `develop` (`fe90166`), pushed. Pending the next `develop` → `main` merge to reach production. |
