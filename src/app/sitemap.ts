@@ -1,10 +1,31 @@
 import { MetadataRoute } from 'next';
+import { unstable_cache } from 'next/cache';
 import { courseData } from '@/types/courseData';
 import { pastEvents } from '@/data/eventsData';
 import { trainingServices } from '@/data/servicesData';
 import { client } from '@/sanity/client';
 import { POSTS_QUERY, CATEGORIES_QUERY, AUTHORS_QUERY } from '@/sanity/lib/queries';
 import { SanityPost, SanityCategory, SanityAuthor } from '@/sanity/types';
+
+/**
+ * BLG-021: cache the sitemap's Sanity fetches.
+ *
+ * Previously every sitemap.xml request ran three live GROQ queries.
+ * unstable_cache memoises them for an hour; the cache `tags` let a future
+ * Sanity publish webhook (BLG-146) invalidate the sitemap on demand.
+ */
+const getSitemapSanityData = unstable_cache(
+  async () => {
+    const [posts, categories, authors] = await Promise.all([
+      client.fetch<SanityPost[]>(POSTS_QUERY),
+      client.fetch<SanityCategory[]>(CATEGORIES_QUERY),
+      client.fetch<SanityAuthor[]>(AUTHORS_QUERY),
+    ]);
+    return { posts, categories, authors };
+  },
+  ['sitemap-sanity-data'],
+  { revalidate: 3600, tags: ['sitemap', 'posts', 'categories', 'authors'] },
+);
 
 /**
  * Dynamic XML Sitemap for CDPL
@@ -76,12 +97,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     LEGAL:              '2025-11-01T00:00:00.000Z',
   };
 
-  // Fetch dynamic data from Sanity
-  const [posts, categories, authors] = await Promise.all([
-    client.fetch<SanityPost[]>(POSTS_QUERY),
-    client.fetch<SanityCategory[]>(CATEGORIES_QUERY),
-    client.fetch<SanityAuthor[]>(AUTHORS_QUERY)
-  ]);
+  // Fetch dynamic data from Sanity (cached — see getSitemapSanityData / BLG-021)
+  const { posts, categories, authors } = await getSitemapSanityData();
 
   // ========================================
   // STATIC PAGES
