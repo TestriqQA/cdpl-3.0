@@ -152,12 +152,13 @@ export function generateOrganizationSchema(): WithContext<
     foundingDate: BUSINESS_INFO.foundedYear,
 
     // BLG-064: founder entity for E-E-A-T / knowledge-graph linkage.
-    // sameAs (LinkedIn) intentionally omitted until a verified URL is
-    // supplied — see docs/seo-audit/_decisions.md Q5.
+    // sameAs links the founder Person to a verified external profile
+    // (Q5 resolved) — see docs/seo-audit/_decisions.md.
     founder: {
       "@type": "Person",
       name: "Sandeep Maske",
       jobTitle: "Founder",
+      sameAs: ["https://www.linkedin.com/in/sandeepmaske/"],
     },
 
     // BLG-071: numberOfEmployees removed — the "50" value was never
