@@ -330,10 +330,22 @@ export function generateWebsiteSchema(): WithContext<Record<string, unknown>> {
     "@id": getWebsiteId(),
     url: SITE_CONFIG.url,
     name: SITE_CONFIG.name,
+    // Non-defensible "100% placement support" claim removed (per
+    // docs/seo-audit/_decisions.md — same rule that drove BLG-059).
     description:
-      "Professional training in Software Testing, Data Science, AI/ML with 100% placement support",
+      "Professional training in Software Testing, Data Science, AI/ML and Digital Marketing with placement assistance.",
     publisher: {
       "@id": getOrganizationId(),
+    },
+    // BLG-068: SearchAction makes the site eligible for the Google
+    // Sitelinks Searchbox. Points at the on-site blog search endpoint.
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_CONFIG.url}/blog/search?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
     },
     inLanguage: "en-IN",
   };
