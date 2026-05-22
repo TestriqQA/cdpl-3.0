@@ -4,7 +4,7 @@ import { Award, Users, Star, Home, ChevronRight, CheckCircle2, User, Mail } from
 import { useState, useRef } from "react";
 import EnrollModal from "@/components/EnrollModal";
 import dynamic from 'next/dynamic';
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '../ui/CustomFlag';
 import { validatePhone, validateFullName as validateNameLib, validateEmail as validateEmailLib } from '@/lib/formValidation';
 

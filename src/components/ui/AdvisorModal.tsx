@@ -5,7 +5,7 @@ import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, TrendingUp, CheckCircle2, Loader2 } from 'lucide-react';
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput from '@/components/ui/PhoneNumberInput';
 
 import styles from './phone-input.module.css';
 import CustomFlag from './CustomFlag';

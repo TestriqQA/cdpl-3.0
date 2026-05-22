@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 
 // Import react-phone-number-input for professional phone input
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput from '@/components/ui/PhoneNumberInput';
 
 import styles from '../ui/phone-input.module.css';
 import CustomFlag from '../ui/CustomFlag';

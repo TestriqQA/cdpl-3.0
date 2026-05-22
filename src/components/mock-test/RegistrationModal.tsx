@@ -8,7 +8,9 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { validatePhone } from '@/lib/formValidation';
 
-const PhoneInput = dynamic(() => import("react-phone-number-input"), { ssr: false });
+// BLG-009: import via the shared wrapper so the phone-input stylesheet
+// is scoped to phone-bearing routes instead of loading globally.
+const PhoneInput = dynamic(() => import("@/components/ui/PhoneNumberInput"), { ssr: false });
 
 interface RegistrationModalProps {
     isOpen: boolean;

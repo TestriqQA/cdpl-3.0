@@ -6,7 +6,7 @@ import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { User, Mail, CheckCircle2, TrendingUp } from "lucide-react";
 
 // Import react-phone-number-input for professional phone input
-import PhoneInput from 'react-phone-number-input';
+import PhoneInput from '@/components/ui/PhoneNumberInput';
 
 import {
     validateFullName as validateFullNameLib,
