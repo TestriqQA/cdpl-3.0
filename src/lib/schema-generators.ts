@@ -4369,6 +4369,29 @@ export function generateServicesPageAllSchemas(
 
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+  // OfferCatalog — the catalog of corporate training & consulting services
+  // CDPL offers, making the /services page eligible for catalog rich
+  // results (BLG-073).
+  const offerCatalogSchema: WithContext<Record<string, unknown>> = {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    "@id": `${SITE_CONFIG.url}/services#offercatalog`,
+    name: "CDPL Corporate Training & Consulting Services",
+    url: getFullUrl("/services"),
+    provider: { "@id": getOrganizationId() },
+    itemListElement: services.map((service, i) => ({
+      "@type": "Offer",
+      position: i + 1,
+      itemOffered: {
+        "@type": "Service",
+        name: service.title,
+        description: service.shortDescription,
+        url: getFullUrl(`/services/${service.slug}`),
+        provider: { "@id": getOrganizationId() },
+      },
+    })),
+  };
+
   return [
     webPageSchema,
     collectionPageSchema,
@@ -4377,6 +4400,7 @@ export function generateServicesPageAllSchemas(
     aggregateRatingSchema,
     howToSchema,
     siteNavigationSchema,
+    offerCatalogSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
       schema !== undefined,
