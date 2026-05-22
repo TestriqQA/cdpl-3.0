@@ -2,7 +2,7 @@
 
 import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
-import { useEffect, Suspense } from "react";
+import { useEffect, useRef, Suspense } from "react";
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -12,8 +12,18 @@ const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 function GoogleAnalyticsTracker() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const isInitialLoad = useRef(true);
 
   useEffect(() => {
+    // BLG-023: the gtag-init script already fires the initial
+    // gtag('config', …) / page_path on load. Skip the tracker's first
+    // run so the landing page is not counted twice — only report
+    // subsequent client-side route changes here.
+    if (isInitialLoad.current) {
+      isInitialLoad.current = false;
+      return;
+    }
+
     if (GA_MEASUREMENT_ID && typeof window !== 'undefined' && (window as any).gtag) {
       const url = pathname + searchParams.toString();
 
