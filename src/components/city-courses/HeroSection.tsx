@@ -87,9 +87,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
                             </span>
                         </div>
 
+                        {/* BLG-089: inline fontFamily:system-ui removed — it
+                            overrode the site's Inter font on all 765 city H1s. */}
                         <h1
                             className="text-4xl font-extrabold leading-12 tracking-tight text-slate-900 sm:text-5xl"
-                            style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif' }}
                         >
                             {heroContent.title}
                         </h1>
