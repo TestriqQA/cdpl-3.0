@@ -1,4 +1,4 @@
-/* ==================== CURRICULUM (Manual Testing 2025) ==================== */
+/* ==================== CURRICULUM (Manual Testing 2026) ==================== */
 "use client";
 
 import { LuBadgeCheck, LuBookOpen, LuTarget, LuSparkles, LuChevronDown, LuNotebookPen, LuFlaskConical, LuBug, LuPin, LuCode, LuDatabase, LuSmartphone } from "react-icons/lu";

@@ -230,7 +230,7 @@ export default function CareerSection() {
             <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-gray-600">
               <LuStar className="h-4 w-4 text-yellow-500" />
               <span>
-                SEO keywords: Manual Testing Course, Software Testing Jobs, QA Engineer Salary India 2025,
+                SEO keywords: Manual Testing Course, Software Testing Jobs, QA Engineer Salary India 2026,
                 ISTQB Certification, Placement Assistance
               </span>
             </div>
