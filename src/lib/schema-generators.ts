@@ -1216,13 +1216,17 @@ export function generateHomePageSchema(
   // 7. Site Navigation Schema
   const siteNavSchemas = generateSiteNavigationSchema();
 
-  // 8. Consolidated AggregateRating (using valid Service entity)
+  // 8. Consolidated AggregateRating.
+  // BLG-076: previously emitted as a second LocalBusiness object sharing the
+  // /#localbusiness @id with generateLocalBusinessSchema — two top-level
+  // objects with the same @id but different properties. Now scoped to the
+  // dedicated #training-services Service entity (same one used site-wide).
   const aggregateRatingSchema = generateReviewSchema({
     ratingValue: STATISTICS.rating,
     reviewCount: STATISTICS.reviewCount,
-    itemType: "LocalBusiness",
-    itemName: "Professional Training & Placement Services",
-    itemId: `${SITE_CONFIG.url}/#localbusiness`,
+    itemType: "Service",
+    itemName: "CDPL Professional Training Services",
+    itemId: `${SITE_CONFIG.url}/#training-services`,
   });
 
   // NOTE: Organization and WebSite schemas are handled by Root Layout
