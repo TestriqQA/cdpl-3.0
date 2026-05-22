@@ -186,6 +186,10 @@ export function generateOrganizationSchema(): WithContext<
       name: cert.name,
     })),
 
+    // BLG-080: accreditations surfaced as award (mirrors the user-approved
+    // Organization description — ISTQB partner, AAA & ACTD accredited).
+    award: "ISTQB Certified Training Partner; AAA & ACTD Accredited",
+
     // Aggregate Rating removed to avoid global self-serving review errors
   };
 }
@@ -371,6 +375,17 @@ export function generateLocalBusinessSchema(): WithContext<
         closes,
       };
     }),
+
+    // BLG-061: link this LocalBusiness back to the Organization entity so
+    // Google treats them as one business, not two unrelated entities.
+    parentOrganization: {
+      "@id": getOrganizationId(),
+    },
+
+    // BLG-080: payment trust signals.
+    paymentAccepted: "Cash, Credit Card, Debit Card, UPI, Net Banking",
+    currenciesAccepted: "INR",
+
     // aggregateRating removed to avoid duplication with Global Organization Schema
   };
 }
