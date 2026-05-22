@@ -145,6 +145,7 @@ export default function MentorHeroSection() {
               <Link
                 href="https://calendar.app.google/tvh9dsXZsX9BujRR8"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:opacity-90 cursor-pointer bg-brand"
                 aria-label="Book a free mentorship session"
               >
