@@ -135,8 +135,9 @@ export default async function Page() {
                             : "OTHER",
             hiringOrganization: {
                 name: "Cinute Digital",
-                sameAs: "https://cinutedigital.com",
-                logo: "https://cinutedigital.com/logo.png",
+                // BLG-138: was a non-www URL + a 404 logo path (/logo.png).
+                sameAs: "https://www.cinutedigital.com",
+                logo: "https://www.cinutedigital.com/cdpl-logo.png",
             },
             jobLocation: {
                 addressLocality: job.location,
