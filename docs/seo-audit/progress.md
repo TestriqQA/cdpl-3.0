@@ -1,6 +1,6 @@
 # CDPL SEO + GEO Audit — Live Progress
 
-> **Updated:** 2026-05-21 — **CYCLE 2 SPRINT 7 (Final Backlog Cleanup) DONE** ✅ — all 7 Cycle-2 sprints' engineering-executable work complete
+> **Updated:** 2026-05-22 — **CYCLE 2 INTEGRATED & DEPLOYED** ✅ — all 42 `fix/*` branches merged to `develop`, pushed to origin, server build PASSED
 > **Branch:** `seo-audit/cycle-1-discovery` (audit docs) — Cycle 2 fixes land on `fix/*` branches off `develop`
 > **Total backlog:** 199 entries (18 P0 / 75 P1 / 64 P2 / 42 P3) across 14 phases + 4 ancillary docs
 
@@ -42,12 +42,21 @@ This file is rewritten **on every response that touches the audit**, so you alwa
 | Sprint | Title | Status |
 | --- | --- | --- |
 | 1 | Production-Risk De-risking | ✅ done — 14 `fix/*` branches merged to `develop` |
-| 2 | Schema Parity | ✅ done — 12 `fix/*` branches pending merge to `develop` |
-| 3 | Tooling + Small UX | ✅ done — 12 `fix/*` branches pending merge to `develop` |
-| 4 | Performance + Caching | ✅ done — 4 `fix/*` branches pending merge; image-refactor items → Cycle 3 |
-| 5 | GEO/AEO + Infra | 🟡 safe subset done — 7 `fix/*` branches pending merge; big/blocked/external items deferred |
-| 6 | Content Cycle (25+ new routes) | 🟡 content-light slice done (1 branch); ~30-35 new pages need a content team + budget |
-| 7 | Final Backlog Cleanup | ✅ done — 5 `fix/*` branches pending merge; route-restructure/decision items deferred |
+| 2 | Schema Parity | ✅ done — 12 `fix/*` branches merged to `develop` |
+| 3 | Tooling + Small UX | ✅ done — 12 `fix/*` branches merged to `develop` |
+| 4 | Performance + Caching | ✅ done — 4 `fix/*` branches merged to `develop`; image-refactor items → Cycle 3 |
+| 5 | GEO/AEO + Infra | 🟡 safe subset done — 7 `fix/*` branches + `fix/blg-006-revalidate-webhook` merged to `develop`; big/blocked/external items deferred |
+| 6 | Content Cycle (25+ new routes) | 🟡 content-light slice done (1 branch, merged); ~30-35 new pages need a content team + budget |
+| 7 | Final Backlog Cleanup | ✅ done — 5 `fix/*` branches merged to `develop`; route-restructure/decision items deferred |
+
+> **2026-05-22 — Cycle 2 integration complete.** All 42 `fix/*` branches built
+> across Sprints 2-7 (the 41 in the merge guide + `fix/blg-006-revalidate-webhook`)
+> are now merged into `develop`. The 2 expected conflicts were resolved keep-both
+> (`blg-067`↔`blg-065` on `blog/[slug]/page.tsx`; `blg-009`↔`blg-010` on
+> `layout.tsx`). Full `tsc --noEmit` passes on integrated `develop`. `develop`
+> pushed to `origin`; tip `6fd6707` (empty commit to trigger a fresh deploy).
+> Recovery tag `pre-cycle2-integration` at `32cb441` (pre-merge state).
+> **Server (Vercel) build of `develop` PASSED — Cycle 2 is live.**
 
 ### Sprint 1 — Production-Risk De-risking (merged to `develop`)
 
@@ -256,15 +265,17 @@ All seven Cycle-2 sprints' **engineering-executable** work is complete.
 | Sprint | Branches | Status |
 | --- | --- | --- |
 | 1 — Production De-risking | 14 | ✅ merged to `develop` |
-| 2 — Schema Parity | 12 | ✅ awaiting merge |
-| 3 — Tooling + Small UX | 12 | ✅ awaiting merge |
-| 4 — Performance + Caching | 4 | ✅ awaiting merge |
-| 5 — GEO/AEO + Infra | 7 | 🟡 safe subset; awaiting merge |
-| 6 — Content Cycle | 1 | 🟡 content-light slice; awaiting merge |
-| 7 — Final Backlog Cleanup | 5 | ✅ awaiting merge |
+| 2 — Schema Parity | 12 | ✅ merged to `develop` |
+| 3 — Tooling + Small UX | 12 | ✅ merged to `develop` |
+| 4 — Performance + Caching | 4 | ✅ merged to `develop` |
+| 5 — GEO/AEO + Infra | 7 (+1: blg-006) | ✅ merged to `develop` |
+| 6 — Content Cycle | 1 | ✅ merged to `develop` |
+| 7 — Final Backlog Cleanup | 5 | ✅ merged to `develop` |
 
-**41 `fix/*` branches built across Sprints 2-7, all off `develop`, all
-typecheck-clean, awaiting user merge.** Sprint 1's 14 branches already merged.
+**All 42 `fix/*` branches built across Sprints 2-7 are merged into `develop`,
+typecheck-clean on the integrated branch, pushed to origin, and the server
+build PASSED.** Sprint 1's 14 branches were merged earlier. **Cycle 2 is
+deployed.**
 
 **Not done — and why (needs the user / a team, not engineering):**
 - **Blocked on Q7** (Sanity webhook secret + Studio token): BLG-006/139/140/146.
@@ -281,21 +292,21 @@ typecheck-clean, awaiting user merge.** Sprint 1's 14 branches already merged.
 - **Asset re-export:** BLG-052/053 (OG images, → Q11).
 - **Verification-only:** BLG-156 (needs live GSC).
 
-**Merge readiness (empirically tested 2026-05-21):** all 41 branches were
-test-merged onto a throwaway branch off `develop` — **39 merge cleanly, 2
-have a trivial conflict** (`fix/blg-067-blog-wordcount` vs `blg-065` on
-`blog/[slug]/page.tsx`; `fix/blg-009-phone-css-scope` vs `blg-010` on
-`layout.tsx` — keep both sides in each). Full recommended merge order +
-resolution steps: [cycle-2-merge-guide.md](cycle-2-merge-guide.md).
+**Integration done (2026-05-22):** all 42 branches merged into `develop` —
+the 2 expected conflicts resolved keep-both. `tsc --noEmit` passes on the
+integrated branch; `develop` pushed; **server build PASSED — Cycle 2 live.**
 
 **Open follow-ups for the user:**
-1. Merge/review the 41 `fix/*` branches (see the merge guide); run
-   `npm install` (BLG-082 changed package.json) and a production build.
-2. Answer **Q5** (Sandeep Maske LinkedIn URL → founder `sameAs`) and **Q7**
-   (Sanity webhook secret + token scope).
-3. Decide **Q11** (OG-image re-export) and the IA-restructure / pagination
-   approaches.
-4. Three spawned side-tasks: careers JobPosting address (Vikhroli→Mira Road),
+1. ~~Merge/review the `fix/*` branches~~ — ✅ done; Cycle 2 deployed.
+2. Answer **Q5** (Sandeep Maske LinkedIn URL → founder `sameAs`). **Q7 part 1
+   resolved** (webhook secret set; BLG-006 `/api/revalidate` route built &
+   shipped) — **Q7 part 2 still open**: a Sanity read-token (Viewer perm) for
+   draftMode/preview, which unblocks BLG-139/140/146.
+3. Confirm `SANITY_REVALIDATE_SECRET` is set on the **hosting** env (it is set
+   on the Sanity webhook) — the `/api/revalidate` route is inert without it.
+4. Decide **Q11** (OG-image re-export) and the IA-restructure / pagination
+   approaches (BLG-035/036/037/096/097/098/113/114).
+5. Three spawned side-tasks: careers JobPosting address (Vikhroli→Mira Road),
    stale course batch dates, OG-image dimensions.
 
 ---
@@ -369,3 +380,5 @@ resolution steps: [cycle-2-merge-guide.md](cycle-2-merge-guide.md).
 | 2026-05-21 | **CYCLE 2 SPRINT 5 — safe subset COMPLETE** (GEO/AEO + Infra) — 7 `fix/*` branches off `develop`, awaiting user merge. Closed 24 backlog entries: BLG-021/077/108/115/116/117/118/119/120/121/129/134/135/136/137/141/143/144/147/148/149/150/151/152. Sanity Studio schemas hardened (required validation, SEO objects, maxLength, certificate dates, author E-E-A-T fields, restricted body block styles); JOBS_SLUG_QUERY + `_updatedAt`; robots.ts explicitly handles CCBot (allow) / Bytespider + Diffbot (block); sitemap Sanity fetches cached; BreadcrumbList always has a deterministic `@id`; PortableText external-link detection fixed; **llms.txt fully rewritten** — canonical URLs, AI Bootcamp re-categorised, missing courses/certs/city-summary added, NAP + founder + social, and the non-defensible "100% placement" claim removed (closes the un-done P0 BLG-121). **Deferred (big/blocked/external/product-decision):** BLG-005/079 (schema-generators refactor), BLG-006/146/139/140 (revalidate webhook + preview — blocked on Q7 secret/token), BLG-039, BLG-070 (blocked on external profiles), BLG-081, BLG-096/097/098/113/114 (IA restructuring — product decisions), BLG-104, BLG-122, BLG-123/197 + BLG-130/198/199 (external profiles), BLG-133 (7 Sanity doc types — multi-week), BLG-156. |
 | 2026-05-21 | **CYCLE 2 SPRINT 6 — content-light slice DONE** (Content Cycle). Sprint 6 proper (~30-35 new pages) is a content-team + design + budget effort and is parked. Did the one content-light item: **`fix/blg-110-year-stamp-refresh`** (BLG-110) — refreshed stale "2025" forward-looking year-stamps to 2026 across 6 live course/section components; left real dates, the dead BlogPageNewUI/CategoriesCTASection components, and real "next batch" scheduling data untouched (the latter spawned as a separate task for CDPL to supply real dates). |
 | 2026-05-21 | **CYCLE 2 SPRINT 7 COMPLETE** (Final Backlog Cleanup) — 5 `fix/*` branches off `develop`, awaiting user merge. Closed 7 backlog entries: BLG-016/019/020/023/040/082/109. Removed dead JSON-LD from the noindex /cms layout (016); next.config cleanup — stale webpackBuildWorker comment + unused @prisma/client + X-Robots-Tag noindex on /downloads PDFs (019/020/040); removed 4 unused production deps (082); moved 20 dead blog-seed .tsx files out of src/ to docs/content-seeds/ + tsconfig exclude (109); fixed GoogleAnalytics initial-page-view double-count (023). BLG-160 verified (healthy 301 redirect, no change). **Deferred:** BLG-017 (P3 cosmetic, blog page already has 3 pending branches), BLG-035 (route restructure), BLG-037 (cannibalisation — product decision), BLG-049 (content), BLG-191/192 (external). **CYCLE 2 ENGINEERING WORK COMPLETE** — 41 `fix/*` branches across Sprints 2-7 awaiting merge; Sprint 1's 14 already merged. |
+| 2026-05-21 | **Q7 part 1 resolved + BLG-006 built.** User set the Sanity revalidate webhook secret (`SANITY_REVALIDATE_SECRET`). `fix/blg-006-revalidate-webhook` branch created off `develop` — adds the `/api/revalidate` route handler (secret-validated, tag/path revalidation). 42nd Cycle-2 `fix/*` branch. |
+| 2026-05-22 | **CYCLE 2 INTEGRATED & DEPLOYED.** All 42 `fix/*` branches merged into `develop` in the merge-guide order. The 2 expected conflicts resolved keep-both: `blg-067`↔`blg-065` on `src/app/blog/[slug]/page.tsx` (kept `authorSameAs` + real `wordCount`); `blg-009`↔`blg-010` on `src/app/layout.tsx` (kept direct layout imports + Sanity preconnect + removed phone-input CSS). Full `NODE_OPTIONS=--max-old-space-size=8192 npx tsc --noEmit` passes on integrated `develop`. `develop` pushed to `origin`; recovery tag `pre-cycle2-integration` at `32cb441`. Empty commit `6fd6707` pushed to trigger a fresh hosting build. **Server (Vercel) build of `develop` PASSED — Cycle 2 is live in production.** Remaining open work is user-input / product-decision / content-team / external-profile / Cycle-3 bound — no autonomous engineering work left in Cycle 2. |
