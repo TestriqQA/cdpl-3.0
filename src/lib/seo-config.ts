@@ -93,9 +93,6 @@ export const BUSINESS_INFO = {
 
   // Founded Year
   foundedYear: '2020',
-
-  // Number of Employees
-  numberOfEmployees: '50',
 } as const;
 
 // ============================================================================

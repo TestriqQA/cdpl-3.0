@@ -151,11 +151,17 @@ export function generateOrganizationSchema(): WithContext<
     // Founding Date
     foundingDate: BUSINESS_INFO.foundedYear,
 
-    // Number of Employees
-    numberOfEmployees: {
-      "@type": "QuantitativeValue",
-      value: BUSINESS_INFO.numberOfEmployees,
+    // BLG-064: founder entity for E-E-A-T / knowledge-graph linkage.
+    // sameAs (LinkedIn) intentionally omitted until a verified URL is
+    // supplied — see docs/seo-audit/_decisions.md Q5.
+    founder: {
+      "@type": "Person",
+      name: "Sandeep Maske",
+      jobTitle: "Founder",
     },
+
+    // BLG-071: numberOfEmployees removed — the "50" value was never
+    // verified and an inflated headcount is a trust-signal liability.
 
     // Opening Hours
     openingHoursSpecification: BUSINESS_INFO.openingHours.map((hours) => {
