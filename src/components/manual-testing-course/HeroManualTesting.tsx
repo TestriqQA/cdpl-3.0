@@ -1,15 +1,5 @@
 "use client";
  
-import {
-    LuBadgeCheck,
-    LuChevronRight,
-    LuStar,
-    LuShieldCheck,
-    LuSparkles,
-    LuArrowRight,
-    LuCloudDownload,
-    LuArrowDownNarrowWide,
-} from "react-icons/lu";
 import React, { useEffect, useMemo, useRef, useState } from "react";
  
 import Image from "next/image";
@@ -39,7 +29,19 @@ const LeadForm = dynamic(() => import('../forms/ManualCourseLeadForm'), {
 const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false });
 const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
 import dynamic from "next/dynamic";
-import { Home } from "lucide-react";
+// BLG-088: standardised on lucide-react (was importing the same icons
+// twice — once from react-icons/lu, once from lucide-react).
+import {
+    Home,
+    BadgeCheck,
+    ChevronRight,
+    Star,
+    ShieldCheck,
+    Sparkles,
+    ArrowRight,
+    CloudDownload,
+    ArrowDownNarrowWide,
+} from "lucide-react";
  
  
 /* ----------------------- NEW: Count-up + Stats ----------------------- */
@@ -224,7 +226,7 @@ export default function HeroManualTesting() {
                             const isLast = i === breadcrumbs.length - 1;
                             return (
                                 <li key={i} className="flex items-center gap-2">
-                                    {i === 0 ? <Home className="h-4 w-4" /> : <LuChevronRight className="h-4 w-4" />}
+                                    {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
                                     {c.href ? (
                                         <Link
                                             href={c.href}
@@ -253,7 +255,7 @@ export default function HeroManualTesting() {
                     {/* LEFT */}
                     <div className="lg:col-span-8">
                         <div className="hidden md:inline-flex mb-4 items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-0.5 md:py-1.5 text-xs font-semibold text-slate-700 shadow-sm">
-                            <LuSparkles className="h-4 w-4 text-amber-500" />
+                            <Sparkles className="h-4 w-4 text-amber-500" />
                             <span>ISTQB Foundation Aligned • Job-Oriented</span>
                         </div>
  
@@ -279,17 +281,17 @@ export default function HeroManualTesting() {
                         {/* Trust Bar */}
                         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
                             <div className="flex items-center gap-1 text-slate-800">
-                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                                <LuStar className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
                                 <span className="ml-2 font-semibold">4.9/5</span>
                                 <span className="ml-1 text-slate-500">from 1,200+ reviews</span>
                             </div>
                             <span className="hidden h-3 w-px bg-slate-300 md:inline-block" />
                             <div className="flex items-center gap-2 text-slate-800">
-                                <LuShieldCheck className="h-5 w-5 text-emerald-600" />
+                                <ShieldCheck className="h-5 w-5 text-emerald-600" />
                                 <span>5,000+ Alumni Placed</span>
                             </div>
                         </div>
@@ -302,7 +304,7 @@ export default function HeroManualTesting() {
                                 aria-label="Enroll now in Manual Testing program"
                             >
                                 Enroll Now
-                                <LuArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                             </button>
  
                             <button
@@ -311,7 +313,7 @@ export default function HeroManualTesting() {
                                 aria-label="Download Manual Testing Syllabus"
                             >
                                 Download Syllabus
-                                <LuCloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </button>
  
                             <Link
@@ -321,7 +323,7 @@ export default function HeroManualTesting() {
                                 aria-label="View full Manual testing curriculum"
                             >
                                 View Curriculum
-                                <LuArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                                <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                             </Link>
  
                         </div>
@@ -335,7 +337,7 @@ export default function HeroManualTesting() {
                                 { color: "text-rose-700", text: "100% Placement Support" },
                             ].map((item, i) => (
                                 <li className="flex items-center gap-2" key={i}>
-                                    <LuBadgeCheck className={`h-5 w-5 ${item.color}`} />
+                                    <BadgeCheck className={`h-5 w-5 ${item.color}`} />
                                     <span>{item.text}</span>
                                 </li>
                             ))}
@@ -352,7 +354,6 @@ export default function HeroManualTesting() {
                                     width={150}
                                     height={24}
                                     className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                                    priority={true}
                                 />
                                 <Image
                                     src="/company_images/axiom.webp"
@@ -361,7 +362,6 @@ export default function HeroManualTesting() {
                                     width={150}
                                     height={24}
                                     className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                                    priority={true}
                                 />
                                 <Image
                                     src="/company_images/credility.webp"
@@ -370,7 +370,6 @@ export default function HeroManualTesting() {
                                     width={150}
                                     height={24}
                                     className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                                    priority={true}
                                 />
                                 <Image
                                     src="/company_images/marqetrix.webp"
@@ -379,7 +378,6 @@ export default function HeroManualTesting() {
                                     width={150}
                                     height={24}
                                     className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                                    priority={true}
                                 />
                             </div>
  
