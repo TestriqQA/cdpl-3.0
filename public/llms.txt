@@ -1,51 +1,96 @@
 # Cinute Digital Pvt. Ltd. (CDPL)
 
-> The Premier Destination for Industry-Ready IT Training & Certification in Mumbai.
+> Industry-ready IT training and certification institute based in Mira Road, Mumbai, India. Hands-on, mentor-led courses in Software Testing, Data Science, Machine Learning, Business Intelligence, Artificial Intelligence and Digital Marketing, with placement assistance.
 
 ## About Cinute Digital
-Cinute Digital Pvt. Ltd. (CDPL) is a leading EdTech institute bridging the gap between academic education and industry demands. We specialize in providing comprehensive, hands-on training in cutting-edge technologies. Our curriculum is designed by industry experts to ensure students and professionals acquire practical skills that are immediately applicable in the workforce. We offer 100% placement assistance and work with top corporate partners.
+Cinute Digital Pvt. Ltd. (CDPL) is an EdTech institute that bridges the gap between academic education and industry demand. Founded in 2020 by Sandeep Maske, CDPL delivers practical, project-based training designed by industry practitioners so students and working professionals gain skills that are immediately applicable on the job. CDPL is an ISTQB Training Partner with AAA and ACTD accreditation and provides placement assistance, including resume support, mock interviews and referrals to hiring partners.
+
+## Contact & Location (NAP)
+- **Legal name**: Cinute Digital Private Limited
+- **Address**: Office #1, 2nd Floor, Ashley Tower, Kanakia Road, Vagad Nagar, Beverly Park, Mira Road, Mira Bhayandar, Mumbai 401107, Maharashtra, India
+- **Phone**: +91 8488988984
+- **Email**: contact@cinutedigital.com
+- **Founded**: 2020
+- **Founder**: Sandeep Maske
+- **Rating**: 4.9 / 5 (425 verified reviews)
 
 ## Core Course Categories
 
 ### 1. Software Testing
-Master the art of Quality Assurance with our extensive testing curriculum. We cover the entire testing lifecycle from fundamental concepts to advanced automation frameworks.
-- **[Manual Testing Course](https://www.cinutedigital.com/manual-testing-course)**: Learn functional testing, bug tracking with JIRA, and test case management.
-- **[Automation Testing Course](https://www.cinutedigital.com/automation-testing-course)**: Proficiency in Selenium WebDriver, Java/Python, and TestNG/JUnit frameworks.
-- **[API Testing](https://www.cinutedigital.com/api-testing)**: Master REST Assured and Postman for backend validation.
-- **[ETL Testing](https://www.cinutedigital.com/etl-testing)**: Data warehouse testing and validation techniques.
-- **[Advanced Software Testing](https://www.cinutedigital.com/advance-software-testing)**: Full-stack QA training including CI/CD integration.
+Quality Assurance training covering the full testing lifecycle, from fundamentals to automation frameworks and CI/CD.
+- **[Software Testing Courses (category)](https://www.cinutedigital.com/courses/software-testing-course)**
+- **[Manual Testing Course](https://www.cinutedigital.com/courses/software-testing-course/manual-testing-course)**: Functional testing, SDLC/STLC, test case design, defect tracking with Jira, Agile, ISTQB preparation.
+- **[Automation Testing Course](https://www.cinutedigital.com/courses/software-testing-course/automation-testing-course)**: Selenium WebDriver, Java/Python, TestNG/JUnit, CI/CD with Jenkins.
+- **[Advanced Manual + Automation Testing](https://www.cinutedigital.com/courses/software-testing-course/advance-manual-automation-testing)**: Combined manual and automation master program.
+- **[Advanced Software Testing](https://www.cinutedigital.com/courses/software-testing-course/advance-software-testing)**: Full-stack QA including CI/CD integration.
+- **[API Testing](https://www.cinutedigital.com/courses/software-testing-course/api-testing)**: REST Assured and Postman for backend validation.
+- **[ETL Testing](https://www.cinutedigital.com/courses/software-testing-course/etl-testing)**: Data warehouse testing and validation.
+- **[DBMS Course](https://www.cinutedigital.com/courses/software-testing-course/dbms-course)**: Database management and SQL for testers.
+- **[Python Course](https://www.cinutedigital.com/courses/software-testing-course/python-course)**: Python programming for testing and automation.
+- **[Java Course](https://www.cinutedigital.com/courses/software-testing-course/java-course)**: Java programming for automation testing.
 
-### 2. Data Science
-Transform data into actionable insights. Our Data Science programs are tailored for beginners and professionals looking to dominate the data revolution.
-- **[Data Science Course](https://www.cinutedigital.com/data-science-course)**: Comprehensive curriculum covering Python, Statistics, and Exploratory Data Analysis (EDA).
-- **[Machine Learning](https://www.cinutedigital.com/machine-learning-course)**: Supervised and unsupervised learning, regression, classification, and clustering algorithms.
-- **[Masters in Data Engineering](https://www.cinutedigital.com/masters-in-data-engineering)**: Big Data technologies including Hadoop, Spark, and Cloud Data Engineering.
+### 2. Data Science & Machine Learning
+- **[Data Science & ML Courses (category)](https://www.cinutedigital.com/courses/ds-ml-courses)**
+- **[Data Science Course](https://www.cinutedigital.com/courses/ds-ml-courses/data-science-course)**: Python, statistics, exploratory data analysis and machine learning.
+- **[Machine Learning Course](https://www.cinutedigital.com/courses/ds-ml-courses/machine-learning-course)**: Supervised and unsupervised learning, regression, classification, clustering.
+- **[Machine Learning using Python](https://www.cinutedigital.com/courses/ds-ml-courses/machine-learning-using-python)**: Applied ML with the Python ecosystem.
+- **[Generative AI Course](https://www.cinutedigital.com/courses/ds-ml-courses/generative-ai-course)**: LLMs, RAG pipelines and building AI-powered applications.
+- **[Artificial Intelligence Course](https://www.cinutedigital.com/courses/ds-ml-courses/ai-course)**: Foundations of AI, neural networks and deep learning.
+- **[Data Visualization in R Programming](https://www.cinutedigital.com/courses/ds-ml-courses/data-visualization-in-r-programming)**: Visual analytics with R.
 
-### 3. Business Intelligence (BI)
-Empower decision-making with advanced Business Intelligence tools. Learn to visualize and analyze complex business data.
-- **[Power BI Course](https://www.cinutedigital.com/power-bi-course)**: Create interactive dashboards and reports using Microsoft Power BI.
-- **[Data Analytics with Tableau](https://www.cinutedigital.com/data-analytics-with-tableau)**: Master visual analytics and storytelling with data.
-- **[Data Analytics & Visualization](https://www.cinutedigital.com/data-analytics-and-visualization)**: End-to-end analytics training for business professionals.
+### 3. Business Intelligence (BI) & Data Analytics
+- **[BI Courses (category)](https://www.cinutedigital.com/courses/bi-courses)**
+- **[Data Analytics](https://www.cinutedigital.com/courses/bi-courses/data-analytics)**: End-to-end analytics for business professionals.
+- **[Data Analytics & Visualization](https://www.cinutedigital.com/courses/bi-courses/data-analytics-and-visualization)**: Analytics with a visualization focus.
+- **[Data Analytics with Python](https://www.cinutedigital.com/courses/bi-courses/data-analytics-python)**: Analytics using the Python stack.
+- **[Data Analytics with Tableau](https://www.cinutedigital.com/courses/bi-courses/data-analytics-with-tableau)**: Visual analytics and data storytelling with Tableau.
+- **[Power BI Course](https://www.cinutedigital.com/courses/bi-courses/power-bi-course)**: Interactive dashboards and reports with Microsoft Power BI.
+- **[Masters in Data Engineering](https://www.cinutedigital.com/courses/bi-courses/masters-in-data-engineering)**: Big Data engineering with Hadoop, Spark and cloud data platforms.
 
-### 4. Artificial Intelligence (AI)
-Stay ahead of the curve with our future-ready AI courses. From Generative AI to tailored industry applications, we cover it all.
-- **[Artificial Intelligence Course](https://www.cinutedigital.com/ai-course)**: Foundations of AI, neural networks, and deep learning.
-- **[Generative AI Course](https://www.cinutedigital.com/generative-ai-course)**: Master LLMs, RAG pipelines, and building AI-powered applications.
-- **[Prompt Engineering](https://www.cinutedigital.com/prompt-engineering-course)**: The art of communicating with AI models effectively.
-- **[AI Bootcamp](https://www.cinutedigital.com/ai-bootcamp)**: Intensive, fast-track program for rapid upskilling.
+### 4. Artificial Intelligence
+- **[Artificial Intelligence Courses (category)](https://www.cinutedigital.com/courses/artificial-intelligence-courses)**
+- **[Prompt Engineering Course](https://www.cinutedigital.com/courses/artificial-intelligence-courses/prompt-engineering-course)**: Effective prompting and working with AI models.
 
 ### 5. Digital Marketing
-Dominate the digital landscape. Our courses blend traditional marketing principles with modern AI tools.
-- **[Digital Marketing Course](https://www.cinutedigital.com/digital-marketing-course)**: SEO, SEM, Social Media Marketing, and Content Strategy.
-- **[AI in Digital Marketing](https://www.cinutedigital.com/ai-in-digital-marketing)**: Leverage AI tools for content creation, ad optimization, and customer analytics.
+- **[Digital Marketing Courses (category)](https://www.cinutedigital.com/courses/digital-marketing-courses)**
+- **[Digital Marketing Course](https://www.cinutedigital.com/courses/digital-marketing-courses/digital-marketing-course)**: SEO, SEM, social media marketing and content strategy.
+- **[AI in Digital Marketing](https://www.cinutedigital.com/courses/digital-marketing-courses/ai-in-digital-marketing)**: AI tools for content, ad optimization and customer analytics.
+- **[AI-Powered Digital Marketing Bootcamp](https://www.cinutedigital.com/courses/digital-marketing-courses/ai-bootcamp)**: Intensive AI + digital marketing bootcamp.
+
+## Certifications & Assessments
+- **[AAA Certification](https://www.cinutedigital.com/aaa-certification)**: Advanced Automation Architecture certification program.
+- **[ACTD Certification](https://www.cinutedigital.com/actd-certification)**: Agile, Cloud and Test-Driven Development certification.
+- **[ISTQB Registration](https://www.cinutedigital.com/istqb-registration)**: ISTQB certification exam registration and preparation.
+- **[Certificate Validation](https://www.cinutedigital.com/cdpl-certificate-validation)**: Verify the authenticity of a CDPL certificate.
+- **[Mock Tests](https://www.cinutedigital.com/mock-test)**: Practice assessments across software testing, databases, cloud, automation, security and development.
+
+## City-Specific Course Pages
+CDPL publishes localized course pages for learners across many Indian cities (for example, manual testing, automation testing, data science and digital marketing courses tailored to a specific city). These follow the pattern `https://www.cinutedigital.com/{course}-course-in-{city}` and are listed in the sitemap at https://www.cinutedigital.com/sitemap.xml.
 
 ## Why Choose CDPL?
-- **Expert Mentors**: Learn from professionals with 10+ years of experience.
-- **Live Projects**: Work on real-world industry case studies.
-- **Certification**: Globally recognized certifications (ISTQB, etc.).
-- **Placement Support**: Dedicated team for resume building, mock interviews, and job referrals.
+- **Mentor-led learning**: Courses taught by working industry professionals.
+- **Live projects**: Real-world, project-based curriculum.
+- **Recognized certifications**: ISTQB Training Partner; AAA and ACTD accreditation.
+- **Placement assistance**: Resume building, mock interviews and referrals to hiring partners.
+
+## Corporate Training & Services
+- **[Services](https://www.cinutedigital.com/services)**: Corporate training, workshops, faculty development, STTP, internships and custom training solutions.
 
 ## Resources & Links
-- **[Blog & Insights](https://www.cinutedigital.com/blog)**: Latest trends in Tech and EdTech.
-- **[Events & Workshops](https://www.cinutedigital.com/events)**: Webinars, industrial visits, and seminars.
-- **[Placement Records](https://www.cinutedigital.com/jobs/placements)**: See our students working in top MNCs.
+- **[Blog & Insights](https://www.cinutedigital.com/blog)**: Articles and tutorials on technology and EdTech.
+- **[Events & Workshops](https://www.cinutedigital.com/events)**: Webinars, seminars and industrial visits.
+- **[Placements](https://www.cinutedigital.com/jobs/placements)**: Student placement outcomes.
+- **[Live Jobs](https://www.cinutedigital.com/jobs/live-jobs)**: Curated job listings for learners.
+- **[Careers at CDPL](https://www.cinutedigital.com/jobs/careers)**: Open roles at Cinute Digital.
+- **[Reviews](https://www.cinutedigital.com/reviews)**: Student reviews and testimonials.
+- **[Mentors](https://www.cinutedigital.com/mentors)**: CDPL's training mentors.
+- **[Locations We Serve](https://www.cinutedigital.com/locations-we-serve)**: Cities and regions covered.
+- **[About Us](https://www.cinutedigital.com/about-us)**: Company background.
+- **[Contact Us](https://www.cinutedigital.com/contact-us)**: Get in touch with CDPL.
+
+## Social Profiles
+- LinkedIn: https://www.linkedin.com/company/cinute-digital/
+- Facebook: https://www.facebook.com/cinutedigital
+- Instagram: https://www.instagram.com/cinutedigital
+- YouTube: https://www.youtube.com/@cinutedigital
+- X (Twitter): https://x.com/cinutedigital
