@@ -146,6 +146,8 @@ export const LATEST_POSTS_QUERY = groq`*[_type == "post" && defined(slug.current
 
 export const JOBS_QUERY = groq`*[_type == "job" && isActive == true] | order(team asc, title asc) {
   _id,
+  _createdAt,
+  _updatedAt,
   title,
   "id": slug.current,
   team,
@@ -156,6 +158,8 @@ export const JOBS_QUERY = groq`*[_type == "job" && isActive == true] | order(tea
   responsibilities,
   requirements,
   applyEmail,
-  applyLink,
-  _createdAt
+  applyLink
 }`
+
+// BLG-148: slug list for generateStaticParams on job detail routes.
+export const JOBS_SLUG_QUERY = groq`*[_type == "job" && isActive == true && defined(slug.current)][].slug.current`
