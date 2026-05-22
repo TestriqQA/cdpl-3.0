@@ -72,6 +72,9 @@ export default function robots(): MetadataRoute.Robots {
           'anthropic-ai',     // Anthropic AI
           'PerplexityBot',    // Perplexity AI
           'YouBot',           // You.com AI
+          'CCBot',            // BLG-129: Common Crawl — a major LLM training
+                              // corpus; allowing it keeps CDPL content present
+                              // in the models that power answer engines.
         ],
         allow: [
           '/',
@@ -119,6 +122,11 @@ export default function robots(): MetadataRoute.Robots {
           'BLEXBot',
           'DataForSeoBot',
           'PetalBot',
+          // BLG-129: Bytespider (ByteDance) is an aggressive scraper with no
+          // user-facing answer engine; Diffbot is a commercial knowledge-graph
+          // scraper. Neither offers GEO/citation value — both blocked.
+          'Bytespider',
+          'Diffbot',
         ],
         disallow: '/',
       },
