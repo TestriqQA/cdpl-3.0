@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateCareersPageAllSchemas, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
-import { client } from "@/sanity/client";
+import { sanityFetch } from "@/sanity/lib/fetch";
 import { JOBS_QUERY } from "@/sanity/lib/queries";
 import { SanityJob } from "@/sanity/types";
 
@@ -84,9 +84,11 @@ const JobsCareersCTASection = dynamic(
 // ====== Page =====
 export default async function Page() {
 
-    // Fetch jobs from Sanity CMS
-    const jobs: SanityJob[] = await client.fetch(JOBS_QUERY, {}, {
-        next: { revalidate: 60 }
+    // Fetch jobs from Sanity CMS — draft-aware + cache-tagged (BLG-139/146).
+    const jobs: SanityJob[] = await sanityFetch<SanityJob[]>({
+        query: JOBS_QUERY,
+        tags: ['job'],
+        revalidate: 60,
     });
 
     // 1. Breadcrumb Schema

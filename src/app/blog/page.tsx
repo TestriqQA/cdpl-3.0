@@ -17,7 +17,7 @@ import {
     STATISTICS
 } from "@/lib/seo-config";
 import JsonLd from "@/components/JsonLd";
-import { client } from '@/sanity/client';
+import { sanityFetch } from '@/sanity/lib/fetch';
 import { POSTS_QUERY } from '@/sanity/lib/queries';
 import { SanityPost } from '@/sanity/types';
 
@@ -57,9 +57,11 @@ export const metadata: Metadata = {
 // MAIN BLOG PAGE COMPONENT
 // ============================================================================
 export default async function BlogPage() {
-    // Fetch data from Sanity
-    const posts: SanityPost[] = await client.fetch(POSTS_QUERY, {}, {
-        next: { revalidate: 60 } // Revalidate every minute
+    // Fetch data from Sanity — draft-aware + cache-tagged (BLG-139/146).
+    const posts: SanityPost[] = await sanityFetch<SanityPost[]>({
+        query: POSTS_QUERY,
+        tags: ['post'],
+        revalidate: 60,
     });
 
     // Breadcrumb Schema

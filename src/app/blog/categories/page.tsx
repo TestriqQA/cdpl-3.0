@@ -10,7 +10,7 @@ import {
 } from "@/lib/schema-generators";
 import { generateMetadata as generateSEOMetadata } from "@/lib/metadata-generator";
 import JsonLd from "@/components/JsonLd";
-import { client } from "@/sanity/client";
+import { sanityFetch } from "@/sanity/lib/fetch";
 import { CATEGORIES_WITH_COUNTS_QUERY, POSTS_QUERY } from "@/sanity/lib/queries";
 import { SanityCategory, SanityPost } from "@/sanity/types";
 
@@ -51,8 +51,12 @@ export default async function CategoriesPage() {
   // We also fetch all posts to calculate total count efficiently if needed, or rely on individual calls
   // The query `CATEGORIES_WITH_COUNTS_QUERY` now includes 'count' and 'latestPost'
 
-  const categories = await client.fetch<(SanityCategory & { count: number, latestPost?: any })[]>(CATEGORIES_WITH_COUNTS_QUERY);
-  const allPosts = await client.fetch<SanityPost[]>(POSTS_QUERY); // Needed for total calculations/SEO
+  // Draft-aware + cache-tagged via sanityFetch (BLG-139/146).
+  const categories = await sanityFetch<(SanityCategory & { count: number, latestPost?: any })[]>({
+    query: CATEGORIES_WITH_COUNTS_QUERY,
+    tags: ['category', 'post'],
+  });
+  const allPosts = await sanityFetch<SanityPost[]>({ query: POSTS_QUERY, tags: ['post'] }); // Needed for total calculations/SEO
 
   const categoriesWithCounts = categories.filter((cat) => cat.count > 0);
 

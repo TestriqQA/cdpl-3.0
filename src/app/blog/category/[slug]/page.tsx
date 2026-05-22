@@ -20,17 +20,29 @@ import {
 } from "@/lib/seo-config";
 import JsonLd from "@/components/JsonLd";
 import { client } from '@/sanity/client';
+import { sanityFetch } from '@/sanity/lib/fetch';
 import { CATEGORIES_WITH_COUNTS_QUERY, CATEGORY_POSTS_QUERY, CATEGORY_QUERY } from '@/sanity/lib/queries';
 import { SanityCategory, SanityPost } from '@/sanity/types';
 
 // Deduplicate Sanity fetches between generateMetadata and the page
 // component for the same request (BLG-027). Without React.cache(),
 // CATEGORY_QUERY and CATEGORY_POSTS_QUERY each ran twice per request.
+//
+// BLG-139: routed through sanityFetch so an editor in the Presentation
+// tool previews the unpublished draft of this category.
 const getCategoryBySlug = cache(
-    (slug: string) => client.fetch<SanityCategory>(CATEGORY_QUERY, { slug })
+    (slug: string) => sanityFetch<SanityCategory>({
+        query: CATEGORY_QUERY,
+        params: { slug },
+        tags: ['category', `category:${slug}`],
+    })
 );
 const getCategoryPosts = cache(
-    (slug: string) => client.fetch<SanityPost[]>(CATEGORY_POSTS_QUERY, { slug })
+    (slug: string) => sanityFetch<SanityPost[]>({
+        query: CATEGORY_POSTS_QUERY,
+        params: { slug },
+        tags: ['post', `category:${slug}`],
+    })
 );
 
 // ============================================================================
@@ -171,7 +183,10 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     const [category, posts, categoriesWithCounts] = await Promise.all([
         getCategoryBySlug(slug),
         getCategoryPosts(slug),
-        client.fetch<any[]>(CATEGORIES_WITH_COUNTS_QUERY)
+        sanityFetch<any[]>({
+            query: CATEGORIES_WITH_COUNTS_QUERY,
+            tags: ['category', 'post'],
+        })
     ]);
 
     if (!category) {
