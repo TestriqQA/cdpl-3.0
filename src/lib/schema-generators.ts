@@ -6555,6 +6555,53 @@ export function generateReviewsPageAllSchemas(
 // ============================================================================
 
 /**
+ * Generate a city-scoped LocalBusiness schema for city-course pages.
+ *
+ * BLG-062: city-course pages previously emitted no LocalBusiness entity at
+ * all. This uses the single verified Mira Road HQ address (NAP consistency —
+ * we never invent a per-city address) and declares the served city via
+ * `areaServed`, so each of the 765 city pages contributes a local-SEO entity.
+ */
+export function generateCityLocalBusinessSchema(
+  city: string,
+  pageUrl: string,
+): WithContext<Record<string, unknown>> {
+  const fullUrl = getFullUrl(pageUrl);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${fullUrl}#localbusiness`,
+    name: `Cinute Digital (CDPL) — Training for ${city}`,
+    url: fullUrl,
+    image: getImageUrl(SITE_CONFIG.defaultOgImage),
+    telephone: BUSINESS_INFO.phone,
+    priceRange: BUSINESS_INFO.priceRange,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: BUSINESS_INFO.address.streetAddress,
+      addressLocality: BUSINESS_INFO.address.addressLocality,
+      addressRegion: BUSINESS_INFO.address.addressRegion,
+      postalCode: BUSINESS_INFO.address.postalCode,
+      addressCountry: BUSINESS_INFO.address.addressCountry,
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: BUSINESS_INFO.geo.latitude,
+      longitude: BUSINESS_INFO.geo.longitude,
+    },
+    areaServed: {
+      "@type": "City",
+      name: city,
+    },
+    parentOrganization: {
+      "@id": getOrganizationId(),
+    },
+    currenciesAccepted: "INR",
+  };
+}
+
+/**
  * Generate a complete 8-point schema set for city-specific course pages.
  * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Course (AggregateRating), HowTo, and SiteNavigation.
  */
@@ -6613,6 +6660,11 @@ export function generateCityCoursePageSchema(
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
+  // 9. City-scoped LocalBusiness (BLG-062) — only when a city is known.
+  const cityLocalBusinessSchema = city
+    ? generateCityLocalBusinessSchema(city, courseInput.url)
+    : undefined;
+
   return [
     webPageSchema,
     faqSchema,
@@ -6620,6 +6672,7 @@ export function generateCityCoursePageSchema(
     courseSchema,
     howToSchema,
     siteNavigationSchema,
+    cityLocalBusinessSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
       schema !== undefined,
