@@ -584,14 +584,16 @@ const HomeHeroSection: React.FC = () => {
             {/* 1. Breadcrumb */}
             {Breadcrumb}
 
-            {/* 2. Headline */}
             {/* 2. Headline - ANIMATION REMOVED FOR LCP */}
-            <h2
+            {/* BLG-045: this is the visible primary heading on mobile, so it
+                must be an <h1> — it previously rendered as <h2>, leaving the
+                mobile (mobile-first-indexed) view without an h1. */}
+            <h1
               id="home-heading-mobile"
               className="mt-2 py-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
             >
               Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span>
-            </h2>
+            </h1>
 
             {/* 3. Description */}
             {/* 3. Description - ANIMATION REMOVED FOR LCP */}
