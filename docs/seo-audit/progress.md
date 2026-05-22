@@ -1,6 +1,6 @@
 # CDPL SEO + GEO Audit — Live Progress
 
-> **Updated:** 2026-05-22 — **CYCLE 2 LIVE IN PRODUCTION** ✅ — all 42 `fix/*` branches merged, `develop` → `main` deployed; Q5 resolved (founder `sameAs` wired, merged to `develop`)
+> **Updated:** 2026-05-22 — **CYCLE 2 LIVE IN PRODUCTION** ✅ — all 42 `fix/*` branches merged, `develop` → `main` deployed. Post-Cycle-2: Q5 resolved (founder `sameAs`); Q7 fully resolved + draft-mode preview built (BLG-139/140/146). Both merged to `develop`, awaiting next `develop` → `main`.
 > **Branch:** `seo-audit/cycle-1-discovery` (audit docs) — Cycle 2 fixes land on `fix/*` branches off `develop`
 > **Total backlog:** 199 entries (18 P0 / 75 P1 / 64 P2 / 42 P3) across 14 phases + 4 ancillary docs
 
@@ -298,13 +298,13 @@ integrated branch; `develop` pushed; **server build PASSED — Cycle 2 live.**
 
 **Open follow-ups for the user:**
 1. ~~Merge/review the `fix/*` branches~~ — ✅ done; Cycle 2 deployed.
-2. ~~Answer **Q5**~~ — ✅ done (2026-05-22); founder `sameAs` wired & merged to
-   `develop`. **Q7 part 1 resolved** (webhook secret set on the Sanity webhook
-   **and** the hosting env; BLG-006 `/api/revalidate` route built & shipped) —
-   **Q7 part 2 still open**: a Sanity read-token (Viewer perm) for
-   draftMode/preview, which unblocks BLG-139/140/146.
-3. Merge `develop` → `main` again to ship the Q5 founder-`sameAs` fix
-   (`fe90166`) to production.
+2. ~~Answer **Q5** / **Q7**~~ — ✅ both resolved (2026-05-22). Q5: founder
+   `sameAs` wired. Q7: webhook secret + Viewer read-token both set; BLG-006
+   revalidate webhook + BLG-139/140/146 draft-mode preview all built & merged
+   to `develop`.
+3. Merge `develop` → `main` to ship the post-Cycle-2 work to production —
+   the Q5 founder-`sameAs` fix **and** the BLG-139/140/146 draft-mode preview
+   (current `develop` tip `4988497`).
 4. Decide **Q11** (OG-image re-export) and the IA-restructure / pagination
    approaches (BLG-035/036/037/096/097/098/113/114).
 5. Three spawned side-tasks: careers JobPosting address (Vikhroli→Mira Road),
@@ -338,7 +338,7 @@ integrated branch; `develop` pushed; **server build PASSED — Cycle 2 live.**
 | Q10 | Actual prices per course (or confirm 25k-65k range is correct for ALL 25 courses) (BLG-058) | 2026-05-19 Phase 5 | ✅ resolved — BLG-058 fixed + merged in Sprint 1 (schema uses real `course.price`) |
 | Q11 | OG image re-export — 73/113 `og-images/*` not 1200×630 (BLG-053). Approve batch downscale of the 24 correct-ratio files + design re-export of the 49 wrong-ratio files? | 2026-05-21 Sprint 2 | ⏳ awaiting decision |
 | Q6 | GSC property access (for Phase 10 validation) | 2026-05-19 Phase 10 | ⏳ paste GSC exports into [10-gsc-triage.md](10-gsc-triage.md) §10.10 template |
-| Q7 | Sanity webhook secret + Studio API token scope (Phase 9 / Cycle 2 Sprint 5) | 2026-05-21 | 🟡 part 1 ✅ — webhook secret `SANITY_REVALIDATE_SECRET` set on the Sanity webhook **and** on the hosting env; `/api/revalidate` route built & deployed (BLG-006). Part 2 ⏳ — still need a Sanity **read-token** (Viewer perm) for draftMode/preview (unblocks BLG-139/140/146) |
+| Q7 | Sanity webhook secret + Studio API token scope (Phase 9 / Cycle 2 Sprint 5) | 2026-05-21 | ✅ resolved 2026-05-22 — **part 1:** `SANITY_REVALIDATE_SECRET` set on the Sanity webhook + hosting env; `/api/revalidate` shipped (BLG-006). **part 2:** Viewer read-token `SANITY_API_READ_TOKEN` confirmed set in `.env.local` + Vercel; draft-mode preview built & merged (BLG-139/140/146) |
 
 ---
 
@@ -384,3 +384,4 @@ integrated branch; `develop` pushed; **server build PASSED — Cycle 2 live.**
 | 2026-05-21 | **Q7 part 1 resolved + BLG-006 built.** User set the Sanity revalidate webhook secret (`SANITY_REVALIDATE_SECRET`). `fix/blg-006-revalidate-webhook` branch created off `develop` — adds the `/api/revalidate` route handler (secret-validated, tag/path revalidation). 42nd Cycle-2 `fix/*` branch. |
 | 2026-05-22 | **CYCLE 2 INTEGRATED & DEPLOYED.** All 42 `fix/*` branches merged into `develop` in the merge-guide order. The 2 expected conflicts resolved keep-both: `blg-067`↔`blg-065` on `src/app/blog/[slug]/page.tsx` (kept `authorSameAs` + real `wordCount`); `blg-009`↔`blg-010` on `src/app/layout.tsx` (kept direct layout imports + Sanity preconnect + removed phone-input CSS). Full `NODE_OPTIONS=--max-old-space-size=8192 npx tsc --noEmit` passes on integrated `develop`. `develop` pushed to `origin`; recovery tag `pre-cycle2-integration` at `32cb441`. Empty commit `6fd6707` pushed to trigger a fresh hosting build. **Server (Vercel) build of `develop` PASSED.** User then merged `develop` → `main` — **Cycle 2 is live in production.** `SANITY_REVALIDATE_SECRET` confirmed set on the hosting env (Q7 part 1 fully closed). Remaining open work is user-input / product-decision / content-team / external-profile / Cycle-3 bound. |
 | 2026-05-22 | **Q5 RESOLVED — BLG-064 fully closed.** User supplied founder Sandeep Maske's verified LinkedIn URL (`https://www.linkedin.com/in/sandeepmaske/`). `fix/blg-064-founder-sameas` branch off `develop` — adds `sameAs: ["https://www.linkedin.com/in/sandeepmaske/"]` to the Organization `founder` Person in `src/lib/schema-generators.ts`. Typecheck clean; merged to `develop` (`fe90166`), pushed. Pending the next `develop` → `main` merge to reach production. |
+| 2026-05-22 | **Q7 RESOLVED — BLG-139/140/146 done (draft-mode preview).** Inspection found `SANITY_API_READ_TOKEN` already set in `.env.local` (Viewer perm) and on Vercel — user confirmed both. `fix/blg-139-draft-mode-preview` branch off `develop` (6 files): **BLG-140** `previewClient` (`useCdn:false` + read token + `perspective:'drafts'`) + `readToken` export in `src/sanity/client.ts`; **BLG-146** `sanityFetch` wrapper (`src/sanity/lib/fetch.ts`) — draftMode-aware client selection + `next.tags` so `revalidateTag` has a target; **BLG-139** `/api/draft` (`defineEnableDraftMode`, secret-validated) + `/api/disable-draft` route handlers, and `presentationTool` added to `sanity.config.ts` for the side-by-side preview pane. Blog post page (`blog/[slug]`) routed through `sanityFetch`; `generateStaticParams` kept on the plain client. Typecheck clean; branch build had no errors (user-confirmed); merged to `develop` (`4988497`), pushed. **Scope note:** only the blog post page is wired so far — category/author/listing-page conversions + `<VisualEditing/>` click-to-edit overlays are a deliberate follow-up. Pending the next `develop` → `main` merge to reach production. |
