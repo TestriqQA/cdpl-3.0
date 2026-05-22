@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Link from "next/link";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { User, Mail, CheckCircle2, TrendingUp } from "lucide-react";
 
@@ -320,7 +321,7 @@ export default function LeadForm({
           </button>
 
           <p className="text-xs text-slate-500">
-            By submitting, you agree to our <a href="https://cinutedigital.com/privacy-policy" title="Privacy Policy">Privacy Policy</a>.
+            By submitting, you agree to our <Link href="/privacy-policy" title="Privacy Policy">Privacy Policy</Link>.
           </p>
 
         </div>
