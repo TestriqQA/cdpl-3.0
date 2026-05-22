@@ -130,6 +130,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     // Calculate estimated word count (approximate for now since content is structured)
     const estimatedWordCount = 1000; // Placeholder or calculate from Portable Text
 
+    // BLG-066: collect the author's verified profile URLs for the
+    // BlogPosting author.sameAs (an E-E-A-T signal for search and AI engines).
+    const authorSameAs = author?.social
+        ? [
+              author.social.linkedin,
+              author.social.twitter,
+              author.social.github,
+              author.social.website,
+          ].filter((url): url is string => Boolean(url))
+        : [];
+
     // Generate Article Schema
     const articleSchema = generateArticleSchema({
         title: post.title,
@@ -137,6 +148,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         url: `/blog/${post.slug}`,
         image: post.featuredImage || '',
         author: author ? author.name : 'CDPL Team',
+        authorSameAs,
         publishedDate: new Date(post.publishDate).toISOString(),
         // Use _updatedAt if available for accurate modifiedDate in structured data
         modifiedDate: post._updatedAt
