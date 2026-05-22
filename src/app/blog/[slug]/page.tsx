@@ -7,14 +7,22 @@ import { generateBlogMetadata } from '@/lib/metadata-generator';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/schema-generators';
 import JsonLd from '@/components/JsonLd';
 import { client } from '@/sanity/client';
+import { sanityFetch } from '@/sanity/lib/fetch';
 import { POST_QUERY, POSTS_SLUG_QUERY, RELATED_POSTS_QUERY, CATEGORIES_WITH_COUNTS_QUERY, LATEST_POSTS_QUERY } from '@/sanity/lib/queries';
 import { SanityPost, SanityCategory } from '@/sanity/types';
 
 // Deduplicate the Sanity fetch between generateMetadata and the page
 // component for the same request. Without React.cache(), POST_QUERY ran
 // twice per request on every blog post (BLG-003).
+//
+// BLG-139: routed through sanityFetch so an editor inside the Sanity
+// Presentation tool sees the unpublished draft of this post.
 const getPostBySlug = cache(
-    (slug: string) => client.fetch<SanityPost>(POST_QUERY, { slug })
+    (slug: string) => sanityFetch<SanityPost>({
+        query: POST_QUERY,
+        params: { slug },
+        tags: ['post', `post:${slug}`],
+    })
 );
 
 // BLG-067: count words in the Portable Text body so BlogPosting.wordCount
@@ -143,13 +151,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     }
 
     // Fetch Additional Data for Sidebar and Related Content
+    // BLG-139/146: draft-aware + cache-tagged via sanityFetch.
     const [relatedPosts, categories, latestPosts] = await Promise.all([
-        client.fetch<SanityPost[]>(RELATED_POSTS_QUERY, {
-            categorySlug: post.category?.slug || 'all',
-            currentId: post._id
+        sanityFetch<SanityPost[]>({
+            query: RELATED_POSTS_QUERY,
+            params: {
+                categorySlug: post.category?.slug || 'all',
+                currentId: post._id,
+            },
+            tags: ['post'],
         }),
-        client.fetch<SanityCategory[]>(CATEGORIES_WITH_COUNTS_QUERY),
-        client.fetch<SanityPost[]>(LATEST_POSTS_QUERY)
+        sanityFetch<SanityCategory[]>({
+            query: CATEGORIES_WITH_COUNTS_QUERY,
+            tags: ['category', 'post'],
+        }),
+        sanityFetch<SanityPost[]>({
+            query: LATEST_POSTS_QUERY,
+            tags: ['post'],
+        }),
     ]);
 
     const { author, category } = post;
