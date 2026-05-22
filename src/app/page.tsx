@@ -33,7 +33,7 @@ const HomeLatestBlogSection = dynamic(() => import('@/components/home/HomeLatest
 const HomeFAQSection = dynamic(() => import('@/components/home/HomeFAQSection'), { ssr: true });
 const HomeFinalCTASection = dynamic(() => import('@/components/home/HomeFinalCTASection'), { ssr: true });
 
-import { client } from "@/sanity/client";
+import { sanityFetch } from "@/sanity/lib/fetch";
 import { LATEST_POSTS_QUERY } from "@/sanity/lib/queries";
 import { SanityPost } from "@/sanity/types";
 
@@ -77,8 +77,11 @@ export default async function HomePage(): Promise<React.ReactElement> {
   // ========================================
   // DATA FETCHING
   // ========================================
-  const latestPosts: SanityPost[] = await client.fetch(LATEST_POSTS_QUERY, {}, {
-    next: { revalidate: 3600 } // Revalidate every hour
+  // Draft-aware + cache-tagged via sanityFetch (BLG-139/146).
+  const latestPosts: SanityPost[] = await sanityFetch<SanityPost[]>({
+    query: LATEST_POSTS_QUERY,
+    tags: ['post'],
+    revalidate: 3600,
   });
 
   // ========================================

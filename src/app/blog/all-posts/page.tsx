@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateBreadcrumbSchema } from "@/lib/schema-generators";
-import { client } from "@/sanity/client";
+import { sanityFetch } from "@/sanity/lib/fetch";
 import { CATEGORIES_WITH_COUNTS_QUERY, POSTS_QUERY } from "@/sanity/lib/queries";
 import { SanityPost, SanityCategory } from "@/sanity/types";
 import JsonLd from "@/components/JsonLd";
@@ -46,9 +46,13 @@ export const metadata: Metadata = generateStaticPageMetadata({
 // ALL POSTS PAGE COMPONENT
 // ============================================================================
 export default async function AllPostsPage() {
+  // Draft-aware + cache-tagged via sanityFetch (BLG-139/146).
   const [allPosts, categories] = await Promise.all([
-    client.fetch<SanityPost[]>(POSTS_QUERY),
-    client.fetch<SanityCategory[]>(CATEGORIES_WITH_COUNTS_QUERY)
+    sanityFetch<SanityPost[]>({ query: POSTS_QUERY, tags: ['post'] }),
+    sanityFetch<SanityCategory[]>({
+      query: CATEGORIES_WITH_COUNTS_QUERY,
+      tags: ['category', 'post'],
+    })
   ]);
 
   // Group posts by category for better organization

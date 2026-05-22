@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { generateMetadata as generateCentralMetadata } from "@/lib/metadata-generator";
 import { AuthorPageContent } from "@/components/blog/AuthorPageContent";
 import { client } from "@/sanity/client";
+import { sanityFetch } from "@/sanity/lib/fetch";
 import { AUTHOR_QUERY, AUTHOR_POSTS_QUERY, AUTHORS_QUERY } from "@/sanity/lib/queries";
 import { SanityAuthor, SanityPost } from "@/sanity/types";
 
@@ -17,7 +18,12 @@ export async function generateStaticParams() {
 // SEO: Generate metadata
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
-    const author = await client.fetch<SanityAuthor>(AUTHOR_QUERY, { slug });
+    // BLG-139: draft-aware so an editor previews the unpublished author profile.
+    const author = await sanityFetch<SanityAuthor>({
+        query: AUTHOR_QUERY,
+        params: { slug },
+        tags: ['author', `author:${slug}`],
+    });
 
     if (!author) {
         return {
@@ -39,10 +45,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function AuthorPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
 
-    // Parallel fetching for performance
+    // Parallel fetching for performance — draft-aware via sanityFetch (BLG-139).
     const [author, posts] = await Promise.all([
-        client.fetch<SanityAuthor>(AUTHOR_QUERY, { slug }),
-        client.fetch<SanityPost[]>(AUTHOR_POSTS_QUERY, { slug })
+        sanityFetch<SanityAuthor>({
+            query: AUTHOR_QUERY,
+            params: { slug },
+            tags: ['author', `author:${slug}`],
+        }),
+        sanityFetch<SanityPost[]>({
+            query: AUTHOR_POSTS_QUERY,
+            params: { slug },
+            tags: ['post', `author:${slug}`],
+        })
     ]);
 
     if (!author) {

@@ -5,7 +5,7 @@ import { SearchAgainButton } from "@/components/blog/SearchAgainButton";
 import Link from "next/link";
 import Image from "next/image";
 import { Calendar, Clock, User, Search as SearchIcon, X } from "lucide-react";
-import { client } from "@/sanity/client";
+import { sanityFetch } from "@/sanity/lib/fetch";
 import { CATEGORIES_WITH_COUNTS_QUERY, SEARCH_POSTS_QUERY } from "@/sanity/lib/queries";
 import { SanityPost, SanityCategory } from "@/sanity/types";
 
@@ -68,9 +68,13 @@ export default async function SearchPage({
 
   // Fetch all posts and categories from Sanity
   // Note: For larger sites, use groq filtering. For static/small sites, client-side or server-side filtering of all posts is okay.
+  // Draft-aware + cache-tagged via sanityFetch (BLG-139/146).
   const [allPosts, categories] = await Promise.all([
-    client.fetch<SanityPost[]>(SEARCH_POSTS_QUERY),
-    client.fetch<SanityCategory[]>(CATEGORIES_WITH_COUNTS_QUERY)
+    sanityFetch<SanityPost[]>({ query: SEARCH_POSTS_QUERY, tags: ['post'] }),
+    sanityFetch<SanityCategory[]>({
+      query: CATEGORIES_WITH_COUNTS_QUERY,
+      tags: ['category', 'post'],
+    })
   ]);
 
   // Enhanced search algorithm
