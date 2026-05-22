@@ -28,6 +28,11 @@ import GoogleAnalytics from '@/components/GoogleAnalytics';
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import SpecialOfferBanner from "@/components/SpecialOfferBanner";
+// BLG-139: VisualEditing establishes the connection between a previewed
+// page and the Sanity Presentation tool. It is only rendered when Next.js
+// draft mode is on, so it never ships to normal visitors.
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
 
 const inter = localFont({
   src: './fonts/inter-variable.woff2',
@@ -56,7 +61,7 @@ metadata.metadataBase = new URL(SITE_CONFIG.url);
 // ROOT LAYOUT COMPONENT
 // ============================================================================
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -67,6 +72,11 @@ export default function RootLayout({
 
   // Generate AI meta tags
   const aiMetaTags = generateAIMetaTags();
+
+  // BLG-139: detect Next.js draft mode. Reading draftMode() does not opt
+  // normal (non-preview) requests into dynamic rendering — the published
+  // site stays statically generated.
+  const { isEnabled: isDraftMode } = await draftMode();
 
   return (
     <html lang="en" dir="ltr" data-scroll-behavior="smooth">
@@ -114,6 +124,10 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <GoogleAnalytics />
+
+        {/* BLG-139: only mounted inside the Sanity Presentation tool —
+            connects the previewed page to the Studio. */}
+        {isDraftMode && <VisualEditing />}
       </body>
     </html>
   );
