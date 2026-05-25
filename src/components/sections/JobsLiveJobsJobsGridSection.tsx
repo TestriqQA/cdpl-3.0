@@ -40,14 +40,9 @@ export function JobsLiveJobsJobsGridSection({
 }) {
   const buildShareUrl = (id: string) => {
     if (typeof window === "undefined") return "";
-    const url = new URL(window.location.pathname, window.location.origin);
-    // Ensure we strip existing search params to avoid duplicates, but keep path
-    // If we want to be strict about /jobs/live-jobs, we could force it, 
-    // but using current pathname is safer if this component is used elsewhere.
-    // However, the user specifically asked for "detail page url".
-    // Since this section is likely only on live-jobs, current path is fine.
-    url.searchParams.set("jobId", id);
-    return url.toString();
+    // BLG-035: every job now has its own canonical URL at
+    // /jobs/live-jobs/{id} (the old ?jobId= form is 301'd to it).
+    return `${window.location.origin}/jobs/live-jobs/${id}`;
   };
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
