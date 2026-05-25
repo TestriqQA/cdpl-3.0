@@ -62,6 +62,15 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // BLG-035: legacy ?jobId= URLs redirect to the new clean /[jobId] path.
+      {
+        source: '/jobs/live-jobs',
+        has: [
+          { type: 'query', key: 'jobId', value: '(?<jobId>.+)' },
+        ],
+        destination: '/jobs/live-jobs/:jobId',
+        permanent: true,
+      },
       {
         source: '/software-testing-course',
         destination: '/courses/software-testing-course',

@@ -20,20 +20,16 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
   );
 }
 
-type Props = {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
-export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-  const resolvedSearchParams = await searchParams;
-  const jobId = resolvedSearchParams?.jobId as string | undefined;
-
-  // Default metadata
-  const baseTitle = {
+// BLG-035: per-job detail view moved to /jobs/live-jobs/[jobId]. This route
+// is now strictly the listing — no more searchParams branching.
+export const metadata: Metadata = generateStaticPageMetadata({
+  title: {
     absolute: "Live Jobs & Placement Alerts | CDPL",
-  };
-  const baseDesc = "Verified live jobs and walk-in drives curated by CDPL. QA, Automation, Data, and Engineering roles across India with internships, fresher support, and interview prep guidance";
-  const baseKeywords = [
+  },
+  description:
+    "Verified live jobs and walk-in drives curated by CDPL. QA, Automation, Data, and Engineering roles across India with internships, fresher support, and interview prep guidance",
+  url: "/jobs/live-jobs",
+  keywords: [
     "live jobs",
     "placement alerts",
     "walk-in drives",
@@ -42,31 +38,9 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     "automation testing jobs",
     "data science jobs",
     "CDPL jobs",
-  ];
-
-  if (jobId) {
-    const job = JOBS.find((j) => j.id === jobId);
-    if (job) {
-      return generateStaticPageMetadata({
-        title: {
-          absolute: `${job.title} | ${job.company} - CDPL Jobs`,
-        },
-        description: `Apply for ${job.title} at ${job.company} in ${job.location}. ${job.highlights?.[0] || 'Verified job opening'} - CDPL Placement Alerts.`,
-        url: `/jobs/live-jobs?jobId=${job.id}`,
-        keywords: [...baseKeywords, job.title, job.company, job.location],
-        image: job.bannerImage || "/og-images/jobs-live-jobs-og.webp",
-      });
-    }
-  }
-
-  return generateStaticPageMetadata({
-    title: baseTitle,
-    description: baseDesc,
-    url: "/jobs/live-jobs",
-    keywords: baseKeywords,
-    image: "/og-images/jobs-live-jobs-og.webp",
-  });
-}
+  ],
+  image: "/og-images/jobs-live-jobs-og.webp",
+});
 
 // Dynamic sections for below-the-fold content
 const JobsLiveJobsWhyWePostJobsSection = dynamic(
@@ -96,20 +70,11 @@ const JOBS_WITH_BANNER: Job[] = JOBS.map((j) => ({
   bannerImage: j.bannerImage ?? DEFAULT_BANNER,
 }));
 
-export default async function Page({ searchParams }: Props) {
-  const resolvedSearchParams = await searchParams;
-  const jobId = resolvedSearchParams?.jobId as string | undefined;
-
-  let selectedJob: Job | undefined;
-  if (jobId) {
-    selectedJob = JOBS.find((j) => j.id === jobId);
-  }
-
+export default async function Page() {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Jobs", url: "/jobs" },
     { name: "Live Jobs", url: "/jobs/live-jobs" },
-    ...(selectedJob ? [{ name: selectedJob.title, url: `/jobs/live-jobs?jobId=${selectedJob.id}` }] : []),
   ]);
 
   // Generate 8-point Schemas dynamically
@@ -186,26 +151,10 @@ export default async function Page({ searchParams }: Props) {
         addressCountry: "IN",
       },
       baseSalary,
-      url: `/jobs/live-jobs?jobId=${job.id}`,
+      // BLG-035: each JobPosting now points to its own canonical detail URL.
+      url: `/jobs/live-jobs/${job.id}`,
     });
   });
-
-  // Logic for rendered content
-  const displayedJobs = selectedJob ? [{ ...selectedJob, bannerImage: selectedJob.bannerImage ?? DEFAULT_BANNER }] : JOBS_WITH_BANNER;
-
-  const heroTitle = selectedJob ? (
-    <>
-      <span style={{ color: "rgb(0, 105, 168)" }}>{selectedJob.title}</span>
-      {" "}
-      <span className="text-slate-900">at</span>
-      {" "}
-      <span style={{ color: "#ff8c00" }}>{selectedJob.company}</span>
-    </>
-  ) : undefined;
-
-  const heroDescription = selectedJob
-    ? `Apply now for the ${selectedJob.title} position at ${selectedJob.company} in ${selectedJob.location}. Verified opportunity curated by CDPL.`
-    : undefined;
 
   return (
     <div className="bg-white text-slate-900 relative">
@@ -225,12 +174,11 @@ export default async function Page({ searchParams }: Props) {
         />
       </div>
 
-      <JobsLiveJobsJobsHeroSection customTitle={heroTitle} customDescription={heroDescription} />
+      <JobsLiveJobsJobsHeroSection />
 
-      {/* Hide ticker on detail view to reduce noise */}
-      {!selectedJob && <JobsLiveJobsJobsTickerSection jobs={JOBS_WITH_BANNER.slice(0, 12)} />}
+      <JobsLiveJobsJobsTickerSection jobs={JOBS_WITH_BANNER.slice(0, 12)} />
 
-      <JobsLiveJobsListingSection jobs={displayedJobs} />
+      <JobsLiveJobsListingSection jobs={JOBS_WITH_BANNER} />
 
       {/* Below the fold sections load dynamically */}
       <JobsLiveJobsWhyWePostJobsSection />
