@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { cache } from 'react';
 import { BlogCategoryMenu } from '@/components/blog';
 import BlogSidebarCategory from '@/components/blog/BlogSidebarCategory';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import CategoryHero from '@/components/blog/CategoryHero';
 import CategoryArticleList from '@/components/blog/CategoryArticleList';
 import {
@@ -21,7 +21,7 @@ import {
 import JsonLd from "@/components/JsonLd";
 import { client } from '@/sanity/client';
 import { sanityFetch } from '@/sanity/lib/fetch';
-import { CATEGORIES_WITH_COUNTS_QUERY, CATEGORY_POSTS_QUERY, CATEGORY_QUERY } from '@/sanity/lib/queries';
+import { CATEGORIES_WITH_COUNTS_QUERY, CATEGORY_CURRENT_SLUG_FOR_PREVIOUS_QUERY, CATEGORY_POSTS_QUERY, CATEGORY_QUERY } from '@/sanity/lib/queries';
 import { SanityCategory, SanityPost } from '@/sanity/types';
 
 // Deduplicate Sanity fetches between generateMetadata and the page
@@ -190,6 +190,19 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     ]);
 
     if (!category) {
+        // BLG-039: before 404-ing, check whether this slug is a retired
+        // (`previousSlugs`) name of a renamed category. If so, send the
+        // visitor — and Googlebot — to the current canonical URL with a
+        // permanent (308) redirect so the old link's accumulated SEO
+        // authority transfers to the new slug.
+        const renamed = await sanityFetch<{ slug?: string } | null>({
+            query: CATEGORY_CURRENT_SLUG_FOR_PREVIOUS_QUERY,
+            params: { slug },
+            tags: ['category'],
+        });
+        if (renamed?.slug) {
+            permanentRedirect(`/blog/category/${renamed.slug}`);
+        }
         notFound();
     }
 

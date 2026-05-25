@@ -22,6 +22,19 @@ export default defineType({
             },
             validation: (Rule) => Rule.required(),
         }),
+        // BLG-039: when a category is renamed, list its old slugs here.
+        // `/blog/category/{old-slug}` requests will be 308-redirected to the
+        // current slug instead of 404-ing, preserving any external links and
+        // accumulated SEO authority.
+        defineField({
+            name: 'previousSlugs',
+            title: 'Previous Slugs (for 301 redirects)',
+            description:
+                'Old slugs this category used to have. Visitors hitting /blog/category/{old-slug} will be permanently redirected to the current slug. Add the slug-string only (no leading slash).',
+            type: 'array',
+            of: [{ type: 'string' }],
+            options: { layout: 'tags' },
+        }),
         defineField({
             name: 'description',
             title: 'Description',

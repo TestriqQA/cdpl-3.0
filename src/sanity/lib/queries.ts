@@ -76,6 +76,14 @@ export const CATEGORY_QUERY = groq`*[_type == "category" && slug.current == $slu
   color
 }`
 
+// BLG-039: looks up a category by one of its retired (`previousSlugs`)
+// slugs and returns the *current* slug, so /blog/category/{old} can
+// permanently redirect to /blog/category/{new}. Returns null when no
+// rename match.
+export const CATEGORY_CURRENT_SLUG_FOR_PREVIOUS_QUERY = groq`*[_type == "category" && $slug in previousSlugs][0]{
+  "slug": slug.current
+}`
+
 export const CATEGORY_POSTS_QUERY = groq`*[_type == "post" && category->slug.current == $slug] | order(publishDate desc) {
   _id,
   title,
