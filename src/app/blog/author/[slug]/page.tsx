@@ -1,10 +1,10 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { Metadata } from "next";
 import { generateMetadata as generateCentralMetadata } from "@/lib/metadata-generator";
 import { AuthorPageContent } from "@/components/blog/AuthorPageContent";
 import { client } from "@/sanity/client";
 import { sanityFetch } from "@/sanity/lib/fetch";
-import { AUTHOR_QUERY, AUTHOR_POSTS_QUERY, AUTHORS_QUERY } from "@/sanity/lib/queries";
+import { AUTHOR_QUERY, AUTHOR_POSTS_QUERY, AUTHORS_QUERY, AUTHOR_CURRENT_SLUG_FOR_PREVIOUS_QUERY } from "@/sanity/lib/queries";
 import { SanityAuthor, SanityPost } from "@/sanity/types";
 
 // SSG: Generate pages for all authors
@@ -60,6 +60,18 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
     ]);
 
     if (!author) {
+        // BLG-039 (extended): before 404-ing, check whether this slug is a
+        // retired (`previousSlugs`) name of an author that has since been
+        // renamed. If so, 308 to the current canonical URL so the old link
+        // (and any external citations of the author archive) keeps working.
+        const renamed = await sanityFetch<{ slug?: string } | null>({
+            query: AUTHOR_CURRENT_SLUG_FOR_PREVIOUS_QUERY,
+            params: { slug },
+            tags: ['author'],
+        });
+        if (renamed?.slug) {
+            permanentRedirect(`/blog/author/${renamed.slug}`);
+        }
         notFound();
     }
 

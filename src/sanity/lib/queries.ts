@@ -84,6 +84,18 @@ export const CATEGORY_CURRENT_SLUG_FOR_PREVIOUS_QUERY = groq`*[_type == "categor
   "slug": slug.current
 }`
 
+// BLG-039 (extended): same pattern for renamed posts. /blog/{old-slug}
+// → /blog/{current-slug} 308 redirect when matched.
+export const POST_CURRENT_SLUG_FOR_PREVIOUS_QUERY = groq`*[_type == "post" && $slug in previousSlugs][0]{
+  "slug": slug.current
+}`
+
+// BLG-039 (extended): same pattern for renamed authors.
+// /blog/author/{old-slug} → /blog/author/{current-slug} 308.
+export const AUTHOR_CURRENT_SLUG_FOR_PREVIOUS_QUERY = groq`*[_type == "author" && $slug in previousSlugs][0]{
+  "slug": slug.current
+}`
+
 export const CATEGORY_POSTS_QUERY = groq`*[_type == "post" && category->slug.current == $slug] | order(publishDate desc) {
   _id,
   title,

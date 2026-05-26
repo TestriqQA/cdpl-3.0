@@ -1,14 +1,14 @@
 import dynamic from 'next/dynamic';
 import React, { cache } from 'react';
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { BlogCategoryMenu } from '@/components/blog';
 import { generateBlogMetadata } from '@/lib/metadata-generator';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/schema-generators';
 import JsonLd from '@/components/JsonLd';
 import { client } from '@/sanity/client';
 import { sanityFetch } from '@/sanity/lib/fetch';
-import { POST_QUERY, POSTS_SLUG_QUERY, RELATED_POSTS_QUERY, CATEGORIES_WITH_COUNTS_QUERY, LATEST_POSTS_QUERY } from '@/sanity/lib/queries';
+import { POST_QUERY, POSTS_SLUG_QUERY, POST_CURRENT_SLUG_FOR_PREVIOUS_QUERY, RELATED_POSTS_QUERY, CATEGORIES_WITH_COUNTS_QUERY, LATEST_POSTS_QUERY } from '@/sanity/lib/queries';
 import { SanityPost, SanityCategory } from '@/sanity/types';
 
 // Deduplicate the Sanity fetch between generateMetadata and the page
@@ -147,6 +147,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     const post: SanityPost = await getPostBySlug(slug);
 
     if (!post) {
+        // BLG-039 (extended): before 404-ing, check whether this slug is a
+        // retired (`previousSlugs`) name of a post that has since been
+        // renamed. If so, 308 to its current canonical URL so the old
+        // link's accumulated SEO authority transfers.
+        const renamed = await sanityFetch<{ slug?: string } | null>({
+            query: POST_CURRENT_SLUG_FOR_PREVIOUS_QUERY,
+            params: { slug },
+            tags: ['post'],
+        });
+        if (renamed?.slug) {
+            permanentRedirect(`/blog/${renamed.slug}`);
+        }
         notFound();
     }
 
