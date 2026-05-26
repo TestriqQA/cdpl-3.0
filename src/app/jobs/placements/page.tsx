@@ -6,6 +6,8 @@ import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generatePlacementsPageAllSchemas, generateBreadcrumbSchema } from "@/lib/schema-generators";
 import { PLACEMENTS } from "@/lib/placementShared";
 import JsonLd from "@/components/JsonLd";
+import { getHiringPartners } from "@/lib/hiring-partners";
+import type { SanityHiringPartner } from "@/sanity/types";
 
 // ============================================================================
 // SEO METADATA - Enhanced for Placements Page
@@ -61,7 +63,10 @@ const PlacementsFiltersGridSection = dynamic(
     () => import("@/components/sections/PlacementsFiltersGridSection"),
     { ssr: true, loading: () => <SectionLoader label="Building grid…" /> }
 );
-const PlacementsCompanyWallSection = dynamic(
+const PlacementsCompanyWallSection = dynamic<{
+    sanityPartners?: SanityHiringPartner[];
+    contained?: boolean;
+}>(
     () => import("@/components/sections/PlacementsCompanyWallSection"),
     { ssr: true, loading: () => <SectionLoader label="Loading partners…" /> }
 );
@@ -83,7 +88,11 @@ const PlacementsFAQSection = dynamic(
 //     { ssr: true, loading: () => <SectionLoader label="Loading updates…" /> }
 // );
 
-export default function PlacementsPage() {
+export default async function PlacementsPage() {
+
+    // BLG-133 follow-up: editor-managed hiring partners. Falls back to the
+    // hard-coded list inside PlacementsCompanyWallSection when Sanity is empty.
+    const hiringPartners = await getHiringPartners();
 
     // 1. Breadcrumb Schema
     const breadcrumbSchema = generateBreadcrumbSchema([
@@ -153,7 +162,7 @@ export default function PlacementsPage() {
                     data-scroll-target="placements-partners"
                 >
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <PlacementsCompanyWallSection />
+                        <PlacementsCompanyWallSection sanityPartners={hiringPartners} />
                     </div>
                 </section>
 

@@ -27,7 +27,10 @@ const HomeTrustBarSection = dynamic(() => import('@/components/home/HomeTrustBar
 const HomeFeaturedCoursesSection = dynamic(() => import('@/components/home/HomeFeaturedCoursesSection'), { ssr: true });
 const HomeLearningExperienceSection = dynamic(() => import('@/components/home/HomeLearningExperienceSection'), { ssr: true });
 const HomePlacementSupportSection = dynamic(() => import('@/components/home/HomePlacementSupportSection'), { ssr: true });
-const PlacementsCompanyWallSection = dynamic(() => import("@/components/sections/PlacementsCompanyWallSection"), { ssr: true });
+const PlacementsCompanyWallSection = dynamic<{ sanityPartners?: SanityHiringPartner[]; contained?: boolean }>(
+  () => import("@/components/sections/PlacementsCompanyWallSection"),
+  { ssr: true }
+);
 const HomeWhyChooseSection = dynamic(() => import('@/components/home/HomeWhyChooseSection'), { ssr: true });
 const HomeLatestBlogSection = dynamic(() => import('@/components/home/HomeLatestBlogSection'), { ssr: true });
 const HomeFAQSection = dynamic(() => import('@/components/home/HomeFAQSection'), { ssr: true });
@@ -35,7 +38,8 @@ const HomeFinalCTASection = dynamic(() => import('@/components/home/HomeFinalCTA
 
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { LATEST_POSTS_QUERY } from "@/sanity/lib/queries";
-import { SanityPost } from "@/sanity/types";
+import { SanityPost, SanityHiringPartner } from "@/sanity/types";
+import { getHiringPartners } from "@/lib/hiring-partners";
 
 // ============================================================================
 // HOME PAGE METADATA
@@ -84,6 +88,10 @@ export default async function HomePage(): Promise<React.ReactElement> {
     revalidate: 3600,
   });
 
+  // BLG-133 follow-up: editor-managed hiring partners. Falls back to the
+  // hard-coded list inside PlacementsCompanyWallSection when Sanity is empty.
+  const hiringPartners = await getHiringPartners();
+
   // ========================================
   // SCHEMA DATA
   // ========================================
@@ -115,7 +123,7 @@ export default async function HomePage(): Promise<React.ReactElement> {
           data-scroll-target="placements-partners"
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <PlacementsCompanyWallSection />
+            <PlacementsCompanyWallSection sanityPartners={hiringPartners} />
           </div>
         </section>
         <HomeWhyChooseSection />
