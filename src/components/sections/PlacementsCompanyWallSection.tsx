@@ -3,12 +3,30 @@
 import { useMemo } from "react";
 import type React from "react";
 import Image from "next/image";
+import type { SanityHiringPartner } from "@/sanity/types";
 
 /**
  * CDPL — Hiring Partners Ticker (Logos Only)
  * Seamless continuous marquee (no gap at start or loop).
+ *
+ * BLG-133 follow-up — accepts an optional `sanityPartners` prop. When the
+ * parent passes a non-empty list, the rail renders Sanity-managed partners;
+ * otherwise it falls back to the curated local list below. This lets
+ * server pages migrate the data source one consumer at a time without
+ * breaking client-component callers (e.g. MentorOutcomesSection) that
+ * still rely on the hard-coded list.
  */
 
+type Partner = {
+  name: string;
+  logoUrl: string;
+  logoAlt?: string;
+};
+
+// ---------------------------------------------------------------------------
+// Curated local list — the fallback when no Sanity-managed partners come in.
+// Per-logo visual tweaks (LOGO_TWEAKS below) are matched against these names.
+// ---------------------------------------------------------------------------
 const COMPANIES: string[] = [
   "Tech Mahindra",
   "Accenture",
@@ -58,6 +76,10 @@ const BASE_SCALE = 0.7;
  * Per-logo visual tweaks:
  *  - mult: scale multiplier (1 = no change)
  *  - tx/ty: pixel nudges to compensate transparent padding inside PNGs
+ *
+ * Keyed by lowercased name. Sanity-managed partners that don’t match a
+ * key here simply use the defaults (no tweak) — acceptable for now;
+ * future enhancement can promote these tweaks into the schema.
  */
 const LOGO_TWEAKS: Record<
   string,
@@ -86,13 +108,7 @@ const LOGO_TWEAKS: Record<
   "alif management services": { mult: 1.0, tx: 0 },
 };
 
-type TickerRowProps = {
-  items: string[];
-  direction: "ltr" | "rtl"; // ltr = right→left, rtl = left→right
-  speedSec?: number;
-};
-
-function getLogoPath(name: string): string | undefined {
+function getLocalLogoPath(name: string): string | undefined {
   const key = name.trim().toLowerCase();
   const file = COMPANY_LOGOS[key];
   return file ? `/placements/companies/${file}` : undefined;
@@ -107,6 +123,12 @@ function getTransform(name: string) {
 
 /** Typed CSSProperties with CSS custom properties support */
 type CSSVar = React.CSSProperties & Record<`--${string}`, string | number>;
+
+type TickerRowProps = {
+  items: Partner[];
+  direction: "ltr" | "rtl"; // ltr = right→left, rtl = left→right
+  speedSec?: number;
+};
 
 function TickerRow({
   items,
@@ -123,15 +145,13 @@ function TickerRow({
           } flex w-max py-3 md:py-2.5 sm:py-2 will-change-transform`}
         style={{ "--dur": `${speedSec}s` } as CSSVar}
       >
-        {loopItems.map((name, i) => {
-          const logoSrc = getLogoPath(name);
-          if (!logoSrc) return null;
-
-          const { scale, tx, ty } = getTransform(name);
+        {loopItems.map((partner, i) => {
+          const { scale, tx, ty } = getTransform(partner.name);
+          const alt = partner.logoAlt || `${partner.name} logo`;
 
           return (
             <div
-              key={`${name}-${i}`}
+              key={`${partner.name}-${i}`}
               className={`
                 shrink-0
                 w-[220px] md:w-[180px] sm:w-[150px] max-[425px]:w-[140px]
@@ -140,7 +160,7 @@ function TickerRow({
                 p-3 md:p-2.5 sm:p-2 max-[425px]:p-2
                 mr-4 md:mr-3 sm:mr-2
               `}
-              title={name}
+              title={partner.name}
             >
               <div
                 className={`
@@ -158,9 +178,9 @@ function TickerRow({
                   }}
                 >
                   <Image
-                    src={logoSrc}
-                    alt={`${name} logo`}
-                    title={`${name} logo`}
+                    src={partner.logoUrl}
+                    alt={alt}
+                    title={alt}
                     fill
                     className="object-contain"
                     sizes="(max-width: 640px) 220px, 256px"
@@ -199,25 +219,55 @@ function TickerRow({
   );
 }
 
-type Props = { contained?: boolean };
+type Props = {
+  contained?: boolean;
+  /**
+   * Optional list of partners fetched from Sanity by the parent server
+   * component. When provided and non-empty, the rail renders these instead
+   * of the curated local list. Entries without a `logoUrl` are skipped.
+   */
+  sanityPartners?: SanityHiringPartner[];
+};
 
-export default function PlacementsCompanyWallSection({ contained = false }: Props) {
-  const SAFE_COMPANIES = useMemo(
-    () => COMPANIES.filter((c) => !!getLogoPath(c)),
-    []
-  );
+export default function PlacementsCompanyWallSection({
+  contained = false,
+  sanityPartners,
+}: Props) {
+  const partners = useMemo<Partner[]>(() => {
+    // Prefer the Sanity-managed list when it has usable entries.
+    if (sanityPartners && sanityPartners.length > 0) {
+      const fromSanity = sanityPartners
+        .filter((p): p is SanityHiringPartner & { logoUrl: string } =>
+          Boolean(p.name && p.logoUrl),
+        )
+        .map(
+          (p): Partner => ({
+            name: p.name,
+            logoUrl: p.logoUrl,
+            logoAlt: p.logoAlt,
+          }),
+        );
+      if (fromSanity.length > 0) return fromSanity;
+    }
+
+    // Fallback: the curated local list (kept verbatim from the original).
+    return COMPANIES.flatMap((name) => {
+      const logoUrl = getLocalLogoPath(name);
+      return logoUrl ? [{ name, logoUrl }] : [];
+    });
+  }, [sanityPartners]);
 
   const rows = useMemo(() => {
-    const r1: string[] = [];
-    const r2: string[] = [];
-    const r3: string[] = [];
-    SAFE_COMPANIES.forEach((c, i) => {
-      if (i % 3 === 0) r1.push(c);
-      else if (i % 3 === 1) r2.push(c);
-      else r3.push(c);
+    const r1: Partner[] = [];
+    const r2: Partner[] = [];
+    const r3: Partner[] = [];
+    partners.forEach((p, i) => {
+      if (i % 3 === 0) r1.push(p);
+      else if (i % 3 === 1) r2.push(p);
+      else r3.push(p);
     });
     return [r1, r2, r3];
-  }, [SAFE_COMPANIES]);
+  }, [partners]);
 
   const Wrapper = ({ children }: { children: React.ReactNode }) =>
     contained ? (

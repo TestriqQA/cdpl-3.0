@@ -183,3 +183,15 @@ export const JOBS_QUERY = groq`*[_type == "job" && isActive == true] | order(tea
 
 // BLG-148: slug list for generateStaticParams on job detail routes.
 export const JOBS_SLUG_QUERY = groq`*[_type == "job" && isActive == true && defined(slug.current)][].slug.current`
+
+// BLG-133 follow-up — hiring partners rail. Active partners ordered by
+// `order asc` (with `_createdAt asc` as tiebreaker) so the editor controls
+// display order from Studio. Filters out partners with no logo so the
+// component never has to render a missing image.
+export const HIRING_PARTNERS_QUERY = groq`*[_type == "hiringPartner" && isActive == true && defined(logo.asset)] | order(coalesce(order, 9999) asc, _createdAt asc) {
+  _id,
+  name,
+  "logoUrl": logo.asset->url,
+  "logoAlt": logo.alt,
+  website
+}`

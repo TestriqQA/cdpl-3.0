@@ -60,3 +60,12 @@ export interface SanityJob {
     _createdAt?: string;
     _updatedAt?: string; // BLG-149 — actual CMS edit time for accurate JobPosting dateModified
 }
+
+// BLG-133 follow-up — hiringPartner doc type, projected for the partners rail.
+export interface SanityHiringPartner {
+    _id: string;
+    name: string;
+    logoUrl?: string;  // GROQ projects logo.asset->url
+    logoAlt?: string;  // GROQ projects logo.alt
+    website?: string;
+}
