@@ -3,6 +3,9 @@ import { toPlainText } from '@portabletext/toolkit'
 
 import { client } from '@/sanity/client'
 import { courseCategories, type Course } from '@/data/headerData'
+import { getServices } from '@/lib/services'
+import { getEvents } from '@/lib/events'
+import { PAST_EVENTS_FAQS } from '@/data/pastEventsData'
 
 import { MANUAL_TESTING_FAQS } from '@/data/manualTestingData'
 import { API_TESTING_FAQS } from '@/data/apiTestingData'
@@ -265,14 +268,161 @@ function renderCourseFaqsSection(): string {
     return sections.length === 0 ? '' : `\n${sections.join('\n\n')}\n`
 }
 
+// Render a `- Label: value` line; collapses to nothing if value is empty.
+function bulletLine(label: string, value?: string): string | null {
+    const v = value?.trim()
+    return v ? `- **${label}:** ${v}` : null
+}
+
+// Render a sub-list with a leading label. Returns null if the list is empty.
+function bulletList(label: string, items?: ReadonlyArray<string>): string | null {
+    if (!items || items.length === 0) return null
+    const cleaned = items.map((s) => s?.trim()).filter(Boolean) as string[]
+    if (cleaned.length === 0) return null
+    return [`**${label}:**`, ...cleaned.map((s) => `- ${s}`)].join('\n')
+}
+
+// BLG-122 enhancement v2 — rich Services content.
+//
+// Walks the Sanity-backed services list (with local trainingServices
+// fallback inside getServices()) and emits each service's full editorial
+// payload — tagline, descriptions, features, benefits, who-should-attend,
+// outcomes, methodology, delivery formats — so an AI engine ingests the
+// concrete value proposition for each, not just the URL.
+async function renderServicesSection(): Promise<string> {
+    const services = await getServices()
+    if (services.length === 0) return ''
+
+    const blocks = services.map((service) => {
+        const lines: string[] = [
+            `### ${service.title}`,
+            `URL: ${SITE_URL}/services/${service.slug}`,
+        ]
+        const tagline = bulletLine('Tagline', service.tagline)
+        if (tagline) lines.push(tagline)
+
+        if (service.shortDescription) {
+            lines.push('', service.shortDescription.trim())
+        }
+        if (
+            service.fullDescription &&
+            service.fullDescription.trim() !== service.shortDescription?.trim()
+        ) {
+            lines.push('', service.fullDescription.trim())
+        }
+
+        const features = bulletList('Key Features', service.features)
+        const benefits = bulletList('Benefits', service.benefits)
+        const audience = bulletList('Who Should Attend', service.whoShouldAttend)
+        const outcomes = bulletList('Outcomes', service.outcomes)
+        const methodology = bulletList('Methodology', service.methodology)
+
+        if (features) lines.push('', features)
+        if (benefits) lines.push('', benefits)
+        if (audience) lines.push('', audience)
+        if (outcomes) lines.push('', outcomes)
+        if (methodology) lines.push('', methodology)
+
+        if (service.deliveryFormats && service.deliveryFormats.length > 0) {
+            const formatted = service.deliveryFormats
+                .map((d) => {
+                    const head = `- ${d.format}${d.duration ? ` (${d.duration})` : ''}`
+                    return d.description?.trim() ? `${head}: ${d.description.trim()}` : head
+                })
+                .join('\n')
+            lines.push('', '**Delivery Formats:**', formatted)
+        }
+
+        return lines.join('\n').trimEnd()
+    })
+
+    return `\n## Services\n\n${blocks.join('\n\n')}\n`
+}
+
+// BLG-122 enhancement v2 — rich Events content.
+//
+// Only featured events are emitted, so the section stays focused on the
+// editorial case-studies CDPL wants AI engines to surface (MoU signings,
+// flagship workshops) rather than every minor session. Falls open to the
+// local `pastEvents` array via getEvents() when Sanity is empty.
+async function renderEventsSection(): Promise<string> {
+    const events = await getEvents()
+    const featured = events.filter((e) => e.featured)
+    if (featured.length === 0) return ''
+
+    const blocks = featured.map((event) => {
+        const lines: string[] = [
+            `### ${event.title}`,
+            `URL: ${SITE_URL}/events/${event.slug}`,
+        ]
+        const meta: string[] = []
+        if (event.date) meta.push(`Date: ${event.date}`)
+        if (event.location) meta.push(`Location: ${event.location}`)
+        if (event.attendees) meta.push(`Attendees: ${event.attendees}+`)
+        if (event.category) meta.push(`Category: ${event.category}`)
+        if (meta.length > 0) lines.push(meta.join(' · '))
+
+        if (event.purpose?.trim()) {
+            lines.push('', event.purpose.trim())
+        }
+
+        if (event.sessionHighlights && event.sessionHighlights.length > 0) {
+            lines.push('', '**Session Highlights:**')
+            for (const session of event.sessionHighlights) {
+                if (!session.title) continue
+                lines.push(`- ${session.title}`)
+                for (const point of session.points ?? []) {
+                    const p = point?.trim()
+                    if (p) lines.push(`  - ${p}`)
+                }
+            }
+        }
+
+        if (event.keyTakeaways && event.keyTakeaways.length > 0) {
+            lines.push('', '**Key Takeaways:**')
+            for (const t of event.keyTakeaways) {
+                if (!t.title || !t.description) continue
+                lines.push(`- **${t.title.trim()}** — ${t.description.trim()}`)
+            }
+        }
+
+        if (event.success?.trim()) {
+            lines.push('', event.success.trim())
+        }
+
+        return lines.join('\n').trimEnd()
+    })
+
+    return `\n## Events\n\n${blocks.join('\n\n')}\n`
+}
+
+// BLG-122 enhancement v2 — Events FAQ from PAST_EVENTS_FAQS.
+function renderEventsFaqSection(): string {
+    if (PAST_EVENTS_FAQS.length === 0) return ''
+    const parts: string[] = ['', '## Events — FAQ', '']
+    for (const faq of PAST_EVENTS_FAQS) {
+        const q = faq.question?.trim()
+        const a = faq.answer?.trim()
+        if (!q || !a) continue
+        parts.push(`**Q: ${q}**`, '', a, '')
+    }
+    return `${parts.join('\n').trimEnd()}\n`
+}
+
 export const revalidate = 3600
 
 export async function GET() {
-    const posts: PostFull[] = await client.fetch(
-        POSTS_FULL_QUERY,
-        {},
-        { next: { revalidate: 3600, tags: ['post'] } },
-    )
+    // Fan out the three async sources in parallel so the response time is
+    // bounded by the slowest fetch, not the sum.
+    const [posts, servicesSection, eventsSection] = await Promise.all([
+        client.fetch<PostFull[]>(
+            POSTS_FULL_QUERY,
+            {},
+            { next: { revalidate: 3600, tags: ['post'] } },
+        ),
+        renderServicesSection(),
+        renderEventsSection(),
+    ])
 
     const blogSection =
         posts.length === 0
@@ -303,8 +453,13 @@ export async function GET() {
               ].join('\n\n')
 
     const courseFaqsSection = renderCourseFaqsSection()
+    const eventsFaqSection = renderEventsFaqSection()
 
-    const body = `${FRAME}${courseFaqsSection}\n${blogSection}\n`
+    // Order: FRAME (curated index) → Services (rich) → Events (rich) →
+    // Course FAQs (Q&A) → Events FAQ (Q&A) → Blog Posts (long-form).
+    // Structural-content-first, then conversational Q&A, then the
+    // heavyweight blog bodies an AI engine treats as deepest context.
+    const body = `${FRAME}${servicesSection}${eventsSection}${courseFaqsSection}${eventsFaqSection}\n${blogSection}\n`
 
     return new Response(body, {
         headers: {
