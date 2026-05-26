@@ -442,11 +442,11 @@ export const curriculumContent = {
 }
 
 
-export const batches = [
-    { type: 'Weekend Batch', start: '14 Dec 2025', seats: 6, instructor: 'Rakesh Sir (15+ yrs)' },
-    { type: 'Weekday Batch', start: '6 Jan 2026', seats: 12, instructor: 'Neha Mam (Ex-Accenture)' },
-    { type: 'Fast-Track', start: '20 Dec 2025', seats: 3, instructor: 'Vikram Sir (Ex-TCS)' },
-];
+// NOTE: a `batches` export with hard-coded 2025/early-2026 start dates +
+// instructor names lived here but was never imported anywhere — removed
+// to stop shipping stale data in the bundle. Real, current batch
+// scheduling should come from the Sanity `course` doc type (BLG-133)
+// once content team populates it.
 
 export const softwareTestingFaqs = [
     {

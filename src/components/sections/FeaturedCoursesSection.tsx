@@ -20,7 +20,11 @@ interface Course {
   description: string;
   duration: string;
   batchType: string;
-  nextBatch: string;
+  // NOTE: removed `nextBatch: string` — the field was set on every course
+  // to a hard-coded date ("Oct 15, 2025" etc.) but never rendered (the
+  // displayed countdown reads `nextBatchDate`, a dynamic +48h Date). Real
+  // batch scheduling, when CDPL is ready to publish it, should come from
+  // the Sanity `course` doc type (BLG-133) — not a stale TS constant.
   seatsLeft: number;
   enrolled: number;
   rating: number;
@@ -241,7 +245,6 @@ const FeaturedCoursesSection = () => {
       description: "Master manual and automation testing with real-world projects. Learn Selenium, API testing, and modern QA practices.",
       duration: "8-10 Months",
       batchType: "Weekday & Weekend",
-      nextBatch: "Oct 15, 2025",
       seatsLeft: 3,
       enrolled: 2450,
       rating: 4.8,
@@ -264,7 +267,6 @@ const FeaturedCoursesSection = () => {
       description: "Comprehensive program covering Python, Machine Learning, Deep Learning, and AI with hands-on projects.",
       duration: "10-12 Months",
       batchType: "Weekday & Weekend",
-      nextBatch: "Oct 12, 2025",
       seatsLeft: 2,
       enrolled: 3200,
       rating: 4.9,
@@ -287,7 +289,6 @@ const FeaturedCoursesSection = () => {
       description: "Build modern web applications using React, Node.js, MongoDB, and cloud technologies. Become a complete developer.",
       duration: "8-10 Months",
       batchType: "Weekday & Weekend",
-      nextBatch: "Oct 18, 2025",
       seatsLeft: 5,
       enrolled: 1850,
       rating: 4.7,
