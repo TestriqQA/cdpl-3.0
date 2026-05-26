@@ -1,9 +1,8 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
-import { trainingServices, type TrainingService } from '@/data/servicesData';
-import { pastEvents } from '@/data/eventsData';
-import { type ServiceClient } from '@/types/service';
+import { getServices, getServiceBySlug } from '@/lib/services';
+import { getEvents } from '@/lib/events';
 import { generateMetadata as generateSEOMetadata, generateMetaDescription } from '@/lib/metadata-generator';
 import { generateServiceDetailPageAllSchemas } from '@/lib/schema-generators';
 import JsonLd from '@/components/JsonLd';
@@ -13,50 +12,14 @@ import JsonLd from '@/components/JsonLd';
 // Without this, service pages are fully dynamic (SSR-only) and not pre-rendered.
 // ============================================================================
 export async function generateStaticParams() {
-  return trainingServices.map((service) => ({
-    slug: service.slug,
-  }));
+  // BLG-133 follow-up: pulls slugs from Sanity first; falls back to the
+  // local trainingServices array inside getServices() when Sanity is empty.
+  const services = await getServices();
+  return services.map((service) => ({ slug: service.slug }));
 }
 
 // Revalidate daily so content stays fresh without full rebuilds
 export const revalidate = 86400;
-
-// Helper functions
-function getServiceBySlug(slug: string): TrainingService | undefined {
-  return trainingServices.find(s => s.slug === slug);
-}
-
-function getEventsByService(slug: string) {
-  return pastEvents.filter(e => e.serviceType === slug);
-}
-
-// --- map server model -> serializable client model (no React components) ---
-function toClientService(s: TrainingService): ServiceClient {
-  const extras = s as unknown as {
-    iconName?: string;
-    stats?: ServiceClient['stats'];
-    keywords?: ServiceClient['keywords'];
-  };
-
-  return {
-    id: s.id,
-    slug: s.slug,
-    iconName: extras.iconName ?? 'GraduationCap',
-    title: s.title,
-    tagline: s.tagline,
-    shortDescription: s.shortDescription,
-    fullDescription: s.fullDescription,
-    color: s.color,
-    features: s.features,
-    benefits: s.benefits,
-    whoShouldAttend: s.whoShouldAttend,
-    deliveryFormats: s.deliveryFormats,
-    outcomes: s.outcomes,
-    methodology: s.methodology,
-    stats: extras.stats,
-    keywords: extras.keywords,
-  };
-}
 
 // ------- Reusable loader for dynamic sections -------
 function SectionLoader({ label = 'Loading...' }: { label?: string }) {
@@ -111,7 +74,7 @@ export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = await getServiceBySlug(slug);
 
   if (!service) {
     return {
@@ -121,9 +84,7 @@ export async function generateMetadata(
     };
   }
 
-  const extras = service as unknown as { keywords?: string[]; ogImage?: string };
-  const serviceKeywords = extras.keywords || [];
-  const customOgImage = extras.ogImage;
+  const serviceKeywords = service.keywords || [];
   const keywords = [
     service.title,
     `${service.title} training`,
@@ -154,7 +115,7 @@ export async function generateMetadata(
     description: finalDescription,
     keywords,
     url: `/services/${slug}`,
-    image: customOgImage || `/og-images/og-service-${slug}.webp`,
+    image: `/og-images/og-service-${slug}.webp`,
     type: 'article'
   });
 }
@@ -163,11 +124,18 @@ export default async function ServiceDetailPage(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
-  if (!service) notFound();
+  const serviceForClient = await getServiceBySlug(slug);
+  if (!serviceForClient) notFound();
+  // Alias kept for the schema-generator call below, which historically
+  // took the full TrainingService shape; ServiceClient is a superset of
+  // every field it actually reads.
+  const service = serviceForClient;
 
-  const events = getEventsByService(slug);
-  const serviceForClient = toClientService(service);
+  // BLG-133 follow-up: related events now come from getEvents() (Sanity
+  // first, local pastEvents fallback) so editor-published events with a
+  // matching serviceType show up here too.
+  const allEvents = await getEvents();
+  const events = allEvents.filter((e) => e.serviceType === slug);
 
   // Generate all 8 schemas dynamically from real service data
   const schemas = generateServiceDetailPageAllSchemas({

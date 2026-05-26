@@ -92,6 +92,31 @@ export interface SanityMentor {
     };
 }
 
+// BLG-133 follow-up — service doc type, projected for /services + /services/[slug].
+// Field names mirror the `ServiceClient` shape (src/types/service.ts) so the
+// mapper in src/lib/services.ts is a flat projection. `iconName` is a
+// lucide-react component name (string).
+export interface SanityService {
+    _id: string;
+    slug?: string;
+    title: string;
+    tagline?: string;
+    shortDescription?: string;
+    fullDescription?: string;
+    iconName?: string;
+    color?: string;
+    features?: string[];
+    benefits?: string[];
+    whoShouldAttend?: string[];
+    deliveryFormats?: { format: string; duration: string; description?: string }[];
+    curriculum?: { module: string; topics?: string[] }[];
+    outcomes?: string[];
+    methodology?: string[];
+    stats?: { label: string; value: number; suffix?: string }[];
+    keywords?: string[];
+    ogImage?: string;
+}
+
 // BLG-133 follow-up — event doc type, projected for /events + /events/[slug].
 // Mapped to the legacy `PastEvent` shape in src/lib/events.ts; the mapper
 // fills in CDPL defaults when organizerInfo/venueInfo are left blank.
