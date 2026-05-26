@@ -7,6 +7,7 @@ import JsonLd from "@/components/JsonLd";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { JOBS_QUERY } from "@/sanity/lib/queries";
 import { SanityJob } from "@/sanity/types";
+import { BUSINESS_INFO } from "@/lib/seo-config";
 
 
 // SEO METADATA - Enhanced for Careers Page
@@ -103,10 +104,16 @@ export default async function Page() {
 
     // 3. JobPosting Schemas
     const jobSchemas = jobs.map((job) => {
-        // Synthesize address details from location
+        // Synthesize address details from job.location. Default to the
+        // CDPL HQ NAP (Mira Road) — these are CDPL's own careers, so
+        // anything not explicitly tagged to another city resolves to
+        // headquarters. NAP values come from BUSINESS_INFO to stay in
+        // sync with the rest of the schema layer.
         const locationLower = job.location.toLowerCase();
-        let region = "Maharashtra";
-        let postal = "400001";
+        // `: string` widens the literal types from `BUSINESS_INFO` so the
+        // city-specific branches below can reassign Karnataka / Tamil Nadu etc.
+        let region: string = BUSINESS_INFO.address.addressRegion;
+        let postal: string = BUSINESS_INFO.address.postalCode;
 
         if (locationLower.includes("pune")) {
             region = "Maharashtra";
@@ -143,7 +150,12 @@ export default async function Page() {
             },
             jobLocation: {
                 addressLocality: job.location,
-                streetAddress: job.location.includes("Remote") ? "Remote" : "Vikhroli, Mumbai",
+                // NAP fix: previously hard-coded to "Vikhroli, Mumbai",
+                // which is not a CDPL office. CDPL HQ is Mira Road —
+                // the single source of truth is BUSINESS_INFO.address.
+                streetAddress: job.location.includes("Remote")
+                    ? "Remote"
+                    : BUSINESS_INFO.address.streetAddress,
                 addressRegion: region,
                 postalCode: postal,
                 addressCountry: "IN",
