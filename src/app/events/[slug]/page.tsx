@@ -1,4 +1,4 @@
-import { getEventBySlug, pastEvents } from "@/data/eventsData";
+import { getEvents, getEventBySlug } from "@/lib/events";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { generateEventMetadata } from "@/lib/metadata-generator";
@@ -15,13 +15,16 @@ import RelatedEvents from "@/components/events/RelatedEvents";
 type PageProps = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
-  return pastEvents.map((event) => ({ slug: event.slug }));
+  // BLG-133 follow-up: pulls slugs from Sanity first; falls back to the
+  // local pastEvents array inside getEvents() when Sanity is empty.
+  const events = await getEvents();
+  return events.map((event) => ({ slug: event.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   if (!slug) return { title: "Event Not Found" };
-  const event = getEventBySlug(slug as string);
+  const event = await getEventBySlug(slug as string);
   if (!event) return { title: "Event Not Found" };
 
   return generateEventMetadata({
@@ -43,8 +46,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function EventDetailPage({ params }: PageProps) {
   const { slug } = await params;
   if (!slug) notFound();
-  const event = getEventBySlug(slug as string);
+  const event = await getEventBySlug(slug as string);
   if (!event) notFound();
+
+  // BLG-133 follow-up: the related-events corpus is now fetched from
+  // Sanity (with the local pastEvents array as fallback) so the
+  // ItemList schema reflects every published event, not just the
+  // hard-coded ones.
+  const allEvents = await getEvents();
 
   // Generate 8-point Schemas dynamically
   const schemas = generateEventDetailPageAllSchemas(
@@ -61,7 +70,7 @@ export default async function EventDetailPage({ params }: PageProps) {
       sessionHighlights: event.sessionHighlights,
       keyTakeaways: event.keyTakeaways,
     },
-    pastEvents.map(e => ({ title: e.title, slug: e.slug, purpose: e.purpose, date: e.date, location: e.location }))
+    allEvents.map(e => ({ title: e.title, slug: e.slug, purpose: e.purpose, date: e.date, location: e.location }))
   );
 
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -121,9 +130,9 @@ export default async function EventDetailPage({ params }: PageProps) {
         </div>
 
         {/* Related Events Section - Full Width within Container */}
-        {pastEvents.length > 1 && (
+        {allEvents.length > 1 && (
           <div className="mt-16">
-            <RelatedEvents currentSlug={slug} />
+            <RelatedEvents currentSlug={slug} events={allEvents} />
           </div>
         )}
       </div>

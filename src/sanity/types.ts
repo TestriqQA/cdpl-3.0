@@ -91,3 +91,59 @@ export interface SanityMentor {
         website?: string;
     };
 }
+
+// BLG-133 follow-up — event doc type, projected for /events + /events/[slug].
+// Mapped to the legacy `PastEvent` shape in src/lib/events.ts; the mapper
+// fills in CDPL defaults when organizerInfo/venueInfo are left blank.
+export interface SanityEvent {
+    _id: string;
+    slug?: string;
+    title: string;
+    subtitle?: string;
+    format?: string;
+    startDate?: string;
+    endDate?: string;
+    location?: string;
+    summary?: string;
+    category?: string;
+    serviceType?: string;
+    attendees?: number;
+    purpose?: string;
+    trainingDuration?: string;
+    success?: string;
+    featured?: boolean;
+    videoUrl?: string;
+    sessionHighlights?: { title: string; points?: string[] }[];
+    keyTakeaways?: { title: string; description: string }[];
+    highlights?: string[];
+    specialSession?: { speaker?: string; topic?: string; highlights?: string[] };
+    registrationUrl?: string;
+    coverImageUrl?: string;
+    coverImageAlt?: string;
+    galleryUrls?: string[];
+    organizerInfo?: {
+        name?: string;
+        website?: string;
+        facebook?: string;
+        instagram?: string;
+        twitter?: string;
+        youtube?: string;
+        about?: string;
+        details?: string;
+        imageUrl?: string;
+    };
+    venueInfo?: {
+        title?: string;
+        address?: string;
+        description?: string;
+        imageUrl?: string;
+        fallbackImageUrl?: string;
+    };
+    speakers?: {
+        name?: string;
+        role?: string;
+        company?: string;
+        linkedinUrl?: string;
+        photoUrl?: string;
+    }[];
+}

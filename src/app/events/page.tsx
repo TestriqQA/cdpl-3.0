@@ -1,7 +1,7 @@
 // app/events/page.tsx
 import type { Metadata } from "next";
 import type { ComponentProps } from "react";
-import { pastEvents } from "@/data/eventsData";
+import { getEvents } from "@/lib/events";
 import { PAST_EVENTS_FAQS } from "@/data/pastEventsData";
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateEventsPageAllSchemas } from "@/lib/schema-generators";
@@ -73,8 +73,12 @@ export const metadata: Metadata = generateMetadata({
 // ============================================================================
 // EVENTS PAGE COMPONENT
 // ============================================================================
-export default function EventsPage() {
-  const featuredEvents: FeaturedEvent[] = pastEvents
+export default async function EventsPage() {
+  // BLG-133 follow-up: editor-managed events. Falls back to the local
+  // pastEvents array inside getEvents() when Sanity is empty.
+  const events = await getEvents();
+
+  const featuredEvents: FeaturedEvent[] = events
     .filter((e) => e.featured)
     .slice(0, 6)
     .map((e) => ({
@@ -92,7 +96,7 @@ export default function EventsPage() {
       heroImageUrl: e.heroImageUrl,
     }));
 
-  const regularEvents: AllEventsProps["events"] = pastEvents
+  const regularEvents: AllEventsProps["events"] = events
     .slice(0, 12)
     .map((e) => ({
       id: e.id,
@@ -111,7 +115,7 @@ export default function EventsPage() {
 
   // Generate the full 8-point schema array
   const schemas = generateEventsPageAllSchemas(
-    pastEvents.map(e => ({
+    events.map(e => ({
       title: e.title,
       subtitle: e.subtitle,
       purpose: e.purpose,
