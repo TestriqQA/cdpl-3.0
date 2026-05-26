@@ -2,6 +2,33 @@ import { groq } from 'next-sanity'
 import { toPlainText } from '@portabletext/toolkit'
 
 import { client } from '@/sanity/client'
+import { courseCategories, type Course } from '@/data/headerData'
+
+import { MANUAL_TESTING_FAQS } from '@/data/manualTestingData'
+import { API_TESTING_FAQS } from '@/data/apiTestingData'
+import { DBMS_FAQS } from '@/data/dbmsData'
+import { ETL_TESTING_FAQS } from '@/data/etlTestingData'
+import { ADVANCED_TESTING_FAQS } from '@/data/advancedTestingData'
+import { AUTOMATION_TESTING_FAQS } from '@/data/automationTestingData'
+import { ADVANCE_MANUAL_AUTOMATION_FAQS } from '@/data/advanceManualAutomationData'
+import { PYTHON_FAQS } from '@/data/pythonData'
+import { JAVA_FAQS } from '@/data/javaData'
+import { MACHINE_LEARNING_FAQS } from '@/data/machineLearningData'
+import { GENERATIVE_AI_FAQS } from '@/data/generativeAiData'
+import { DATA_SCIENCE_FAQS } from '@/data/dataScienceData'
+import { AI_FAQS } from '@/data/aiData'
+import { ML_PYTHON_FAQS } from '@/data/mlPythonData'
+import { R_DATA_VIS_FAQS } from '@/data/rDataVisData'
+import { DATA_ANALYTICS_FAQS } from '@/data/dataAnalyticsData'
+import { DATA_ANALYTICS_PYTHON_FAQS } from '@/data/dataAnalyticsPythonData'
+import { DATA_ANALYTICS_VIS_FAQS } from '@/data/dataAnalyticsVisData'
+import { DATA_ANALYTICS_TABLEAU_FAQS } from '@/data/dataAnalyticsTableauData'
+import { POWER_BI_FAQS } from '@/data/powerBiData'
+import { DATA_ENGINEERING_MASTERS_FAQS } from '@/data/dataEngineeringMastersData'
+import { PROMPT_ENGINEERING_FAQS } from '@/data/promptEngineeringData'
+import { DIGITAL_MARKETING_FAQS } from '@/data/digitalMarketingData'
+import { AI_IN_DIGITAL_MARKETING_FAQS } from '@/data/aiInDigitalMarketingData'
+import { AI_BOOTCAMP_FAQS } from '@/data/aiBootcampData'
 
 /**
  * BLG-122 — /llms-full.txt
@@ -12,6 +39,14 @@ import { client } from '@/sanity/client'
  * to plain markdown so an AI engine (ChatGPT, Claude, Perplexity, Gemini)
  * can ingest the whole site in one fetch without crawling JS-rendered
  * pages individually.
+ *
+ * BLG-122 enhancement (May 2026) — adds **per-course FAQs** (25 leaf
+ * courses) on top of the curated frame and blog bodies, so AI engines
+ * ingest the concrete Q&A pairs that students actually ask. The FAQs
+ * live in src/data/*Data.ts files (each course exports its own
+ * `*_FAQS` constant); the curated frame already covers course names,
+ * URLs and one-line descriptions. When the BLG-133 course migration to
+ * Sanity ships, this registry can switch to a single GROQ fetch.
  *
  * Cached for an hour at the edge; refreshed on demand whenever the
  * revalidate webhook (BLG-006) calls `revalidateTag('post')`.
@@ -146,6 +181,90 @@ type PostFull = {
     content?: unknown
 }
 
+// BLG-122 enhancement — per-course FAQs registry.
+//
+// Keyed by course slug (path-relative, no leading slash) so the renderer
+// can walk `courseCategories` from headerData and look each course's FAQs
+// up by slug. Every FAQ collection across the 25 *Data.ts files conforms
+// to `{ question, answer, category? }` (some carry extra UI fields like
+// `accent` / `emoji` that we ignore in the text output).
+type CourseFaqEntry = {
+    question: string
+    answer: string
+    category?: string
+}
+
+const COURSE_FAQS_BY_SLUG: Record<string, ReadonlyArray<CourseFaqEntry>> = {
+    // Software Testing
+    'courses/software-testing-course/manual-testing-course': MANUAL_TESTING_FAQS,
+    'courses/software-testing-course/api-testing': API_TESTING_FAQS,
+    'courses/software-testing-course/dbms-course': DBMS_FAQS,
+    'courses/software-testing-course/etl-testing': ETL_TESTING_FAQS,
+    'courses/software-testing-course/advance-software-testing': ADVANCED_TESTING_FAQS,
+    'courses/software-testing-course/automation-testing-course': AUTOMATION_TESTING_FAQS,
+    'courses/software-testing-course/advance-manual-automation-testing': ADVANCE_MANUAL_AUTOMATION_FAQS,
+    'courses/software-testing-course/python-course': PYTHON_FAQS,
+    'courses/software-testing-course/java-course': JAVA_FAQS,
+    // Data Science & ML
+    'courses/ds-ml-courses/machine-learning-course': MACHINE_LEARNING_FAQS,
+    'courses/ds-ml-courses/generative-ai-course': GENERATIVE_AI_FAQS,
+    'courses/ds-ml-courses/data-science-course': DATA_SCIENCE_FAQS,
+    'courses/ds-ml-courses/ai-course': AI_FAQS,
+    'courses/ds-ml-courses/machine-learning-using-python': ML_PYTHON_FAQS,
+    'courses/ds-ml-courses/data-visualization-in-r-programming': R_DATA_VIS_FAQS,
+    // BI
+    'courses/bi-courses/data-analytics': DATA_ANALYTICS_FAQS,
+    'courses/bi-courses/data-analytics-python': DATA_ANALYTICS_PYTHON_FAQS,
+    'courses/bi-courses/data-analytics-and-visualization': DATA_ANALYTICS_VIS_FAQS,
+    'courses/bi-courses/data-analytics-with-tableau': DATA_ANALYTICS_TABLEAU_FAQS,
+    'courses/bi-courses/power-bi-course': POWER_BI_FAQS,
+    'courses/bi-courses/masters-in-data-engineering': DATA_ENGINEERING_MASTERS_FAQS,
+    // AI
+    'courses/artificial-intelligence-courses/prompt-engineering-course': PROMPT_ENGINEERING_FAQS,
+    // Digital Marketing
+    'courses/digital-marketing-courses/digital-marketing-course': DIGITAL_MARKETING_FAQS,
+    'courses/digital-marketing-courses/ai-in-digital-marketing': AI_IN_DIGITAL_MARKETING_FAQS,
+    'courses/digital-marketing-courses/ai-bootcamp': AI_BOOTCAMP_FAQS,
+}
+
+const SITE_URL = 'https://www.cinutedigital.com'
+
+function renderCourseFaqs(course: Course): string | null {
+    if (!course.slug) return null
+    const faqs = COURSE_FAQS_BY_SLUG[course.slug]
+    if (!faqs || faqs.length === 0) return null
+
+    const parts: string[] = [
+        `### ${course.name}`,
+        `URL: ${SITE_URL}/${course.slug}`,
+    ]
+    if (course.description) {
+        parts.push('', course.description)
+    }
+    parts.push('')
+    for (const faq of faqs) {
+        const q = faq.question?.trim()
+        const a = faq.answer?.trim()
+        if (!q || !a) continue
+        parts.push(`**Q: ${q}**`, '', a, '')
+    }
+    return parts.join('\n').trimEnd()
+}
+
+function renderCourseFaqsSection(): string {
+    const sections: string[] = []
+    for (const category of courseCategories) {
+        const categoryBlocks: string[] = []
+        for (const course of category.courses ?? []) {
+            const rendered = renderCourseFaqs(course)
+            if (rendered) categoryBlocks.push(rendered)
+        }
+        if (categoryBlocks.length === 0) continue
+        sections.push(`## Course FAQs — ${category.name}`, ...categoryBlocks)
+    }
+    return sections.length === 0 ? '' : `\n${sections.join('\n\n')}\n`
+}
+
 export const revalidate = 3600
 
 export async function GET() {
@@ -169,7 +288,7 @@ export async function GET() {
                             ).trim()
                           : ''
                       const meta: string[] = [
-                          `URL: https://www.cinutedigital.com/blog/${post.slug}`,
+                          `URL: ${SITE_URL}/blog/${post.slug}`,
                           `Published: ${new Date(post.publishDate).toISOString().split('T')[0]}`,
                       ]
                       if (post.author) meta.push(`Author: ${post.author}`)
@@ -183,7 +302,9 @@ export async function GET() {
                   }),
               ].join('\n\n')
 
-    const body = `${FRAME}\n${blogSection}\n`
+    const courseFaqsSection = renderCourseFaqsSection()
+
+    const body = `${FRAME}${courseFaqsSection}\n${blogSection}\n`
 
     return new Response(body, {
         headers: {
