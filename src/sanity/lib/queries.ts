@@ -213,3 +213,73 @@ export const MENTORS_QUERY = groq`*[_type == "mentor" && isActive == true] | ord
   expertise,
   social
 }`
+
+// BLG-133 follow-up — events. Newest first by startDate so the /events
+// listing matches the chronological layout of the legacy hard-coded array.
+// All image assets are projected to URL strings so the consumer doesn't
+// need `urlFor`; nested objects (organizerInfo, venueInfo) are spread so
+// the mapper in src/lib/events.ts can fall back to CDPL defaults when
+// they're left blank in Studio.
+const EVENT_PROJECTION = `
+  _id,
+  "slug": slug.current,
+  title,
+  subtitle,
+  format,
+  startDate,
+  endDate,
+  location,
+  summary,
+  category,
+  serviceType,
+  attendees,
+  purpose,
+  trainingDuration,
+  success,
+  featured,
+  videoUrl,
+  sessionHighlights,
+  keyTakeaways,
+  highlights,
+  specialSession,
+  registrationUrl,
+  "coverImageUrl": coverImage.asset->url,
+  "coverImageAlt": coverImage.alt,
+  "galleryUrls": gallery[].asset->url,
+  organizerInfo {
+    name,
+    website,
+    facebook,
+    instagram,
+    twitter,
+    youtube,
+    about,
+    details,
+    "imageUrl": image.asset->url
+  },
+  venueInfo {
+    title,
+    address,
+    description,
+    "imageUrl": image.asset->url,
+    "fallbackImageUrl": fallbackImage.asset->url
+  },
+  speakers[]{
+    name,
+    role,
+    company,
+    linkedinUrl,
+    "photoUrl": photo.asset->url
+  }
+`
+
+export const EVENTS_QUERY = groq`*[_type == "event" && isPublished == true] | order(coalesce(startDate, _createdAt) desc) {
+  ${EVENT_PROJECTION}
+}`
+
+export const EVENT_BY_SLUG_QUERY = groq`*[_type == "event" && slug.current == $slug][0] {
+  ${EVENT_PROJECTION}
+}`
+
+// BLG-133 follow-up — slug list for `generateStaticParams` on /events/[slug].
+export const EVENT_SLUGS_QUERY = groq`*[_type == "event" && isPublished == true && defined(slug.current)][].slug.current`

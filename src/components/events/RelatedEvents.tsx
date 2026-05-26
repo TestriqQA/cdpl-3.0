@@ -1,17 +1,20 @@
 import React from "react";
 import Link from "next/link";
 import { Calendar, MapPin, ArrowRight } from "lucide-react";
-import { getFeaturedEvents } from "@/data/eventsData";
+import type { PastEvent } from "@/data/eventsData";
 import NextImage from "next/image";
 
 interface RelatedEventsProps {
     currentSlug: string;
+    // BLG-133 follow-up: caller (the server-side event detail page) now
+    // passes the full event corpus from `getEvents()` so Sanity-published
+    // events appear here, not just the hard-coded local ones.
+    events: PastEvent[];
 }
 
-export default function RelatedEvents({ currentSlug }: RelatedEventsProps) {
-    // Get featured events and filter out the current one
-    const relatedEvents = getFeaturedEvents()
-        .filter((e) => e.slug !== currentSlug)
+export default function RelatedEvents({ currentSlug, events }: RelatedEventsProps) {
+    const relatedEvents = events
+        .filter((e) => e.featured && e.slug !== currentSlug)
         .slice(0, 3);
 
     if (relatedEvents.length === 0) return null;
