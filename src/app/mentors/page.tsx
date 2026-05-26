@@ -3,7 +3,7 @@ import {
   generateBreadcrumbSchema,
   generateMentorsPageAllSchemas
 } from "@/lib/schema-generators";
-import { MENTORS } from "@/lib/mentorShared";
+import { getMentors } from "@/lib/mentors";
 import JsonLd from "@/components/JsonLd";
 
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
@@ -63,7 +63,11 @@ const MentorOutcomesSection = dynamic(
 // ============================================================================
 // MENTORS PAGE COMPONENT
 // ============================================================================
-export default function MentorsPage() {
+export default async function MentorsPage() {
+  // BLG-133 follow-up: editor-managed mentors. Falls back to the local
+  // MENTORS array inside getMentors() when Sanity is empty.
+  const mentors = await getMentors();
+
   // Generate Schemas
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
@@ -71,7 +75,7 @@ export default function MentorsPage() {
   ]);
 
   // Generate 8-point Schemas dynamically
-  const schemas = generateMentorsPageAllSchemas(MENTORS);
+  const schemas = generateMentorsPageAllSchemas(mentors);
 
   return (
     <>
@@ -85,7 +89,7 @@ export default function MentorsPage() {
         className="relative bg-white text-slate-900"
       >
         <MentorHeroSection />
-        <MentorsImpactSection />
+        <MentorsImpactSection mentors={mentors} />
         <MentorOutcomesSection />
         <MentorProcessFlowSection />
         <MentorHelpCTASection />

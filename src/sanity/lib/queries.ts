@@ -195,3 +195,21 @@ export const HIRING_PARTNERS_QUERY = groq`*[_type == "hiringPartner" && isActive
   "logoAlt": logo.alt,
   website
 }`
+
+// BLG-133 follow-up — mentors for the /mentors page. Active mentors only.
+// Photo asset is projected to a URL string so the consumer doesn't need
+// `urlFor`. Slug is included so `Mentor.id` stays stable across edits.
+export const MENTORS_QUERY = groq`*[_type == "mentor" && isActive == true] | order(coalesce(order, 9999) asc, _createdAt asc) {
+  _id,
+  name,
+  "slug": slug.current,
+  role,
+  currentCompany,
+  domain,
+  location,
+  yearsOfExperience,
+  "photoUrl": photo.asset->url,
+  shortBio,
+  expertise,
+  social
+}`

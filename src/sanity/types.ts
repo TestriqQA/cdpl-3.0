@@ -69,3 +69,25 @@ export interface SanityHiringPartner {
     logoAlt?: string;  // GROQ projects logo.alt
     website?: string;
 }
+
+// BLG-133 follow-up — mentor doc type, projected for the /mentors page +
+// JSON-LD. Mapped to the legacy `Mentor` shape in src/lib/mentors.ts.
+export interface SanityMentor {
+    _id: string;
+    name: string;
+    slug?: string;
+    role: string;
+    currentCompany?: string;
+    domain?: string;
+    location?: string;
+    yearsOfExperience?: number;
+    photoUrl?: string;
+    shortBio?: string;
+    expertise?: string[];
+    social?: {
+        linkedin?: string;
+        twitter?: string;
+        github?: string;
+        website?: string;
+    };
+}

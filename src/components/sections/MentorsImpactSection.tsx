@@ -68,7 +68,7 @@ const METRIC_CARD_BACKGROUNDS = [
   },
 ];
 
-import { MENTORS } from "@/lib/mentorShared";
+import type { Mentor } from "@/lib/mentorShared";
 
 type MentorCardTweak = Record<string, string>;
 const IMG_TWEAKS: MentorCardTweak = {
@@ -83,13 +83,17 @@ const DOMAINS = [
   "Digital Marketing",
 ];
 
-export default function MentorsImpactSection() {
+// BLG-133 follow-up: mentors used to be a hard-coded import from
+// mentorShared. The page (server) now resolves the list (Sanity → local
+// fallback) and passes it in as a prop, so this client component never
+// imports the data source directly.
+export default function MentorsImpactSection({ mentors }: { mentors: Mentor[] }) {
   const [domain, setDomain] = useState<string>("");
 
   const filtered = useMemo(() => {
     const d = domain.toLowerCase();
-    return MENTORS.filter((m) => !d || m.domain.toLowerCase() === d);
-  }, [domain]);
+    return mentors.filter((m) => !d || m.domain.toLowerCase() === d);
+  }, [domain, mentors]);
 
 
   return (

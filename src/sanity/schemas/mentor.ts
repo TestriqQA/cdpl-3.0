@@ -35,6 +35,35 @@ export default defineType({
             type: 'string',
             description: 'Where the mentor works today (drives credibility).',
         }),
+        // BLG-133 follow-up: matches the `Mentor.domain` discriminated union
+        // in src/lib/mentorShared.ts so the filter chips and domain colours
+        // on the /mentors page work for Sanity-managed mentors too.
+        defineField({
+            name: 'domain',
+            title: 'Primary Domain',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'QA', value: 'QA' },
+                    { title: 'Data Science', value: 'Data Science' },
+                    { title: 'Data Analytics', value: 'Data Analytics' },
+                    { title: 'Data Engineering', value: 'Data Engineering' },
+                    { title: 'Marketing', value: 'Marketing' },
+                    { title: 'Product', value: 'Product' },
+                    { title: 'Engineering', value: 'Engineering' },
+                    { title: 'Cloud', value: 'Cloud' },
+                    { title: 'Security', value: 'Security' },
+                    { title: 'Full-Stack', value: 'Full-Stack' },
+                    { title: 'Other', value: 'Other' },
+                ],
+            },
+        }),
+        defineField({
+            name: 'location',
+            title: 'Location',
+            type: 'string',
+            description: 'City / region the mentor is based in. Shown on the mentor card.',
+        }),
         defineField({
             name: 'photo',
             title: 'Profile Photo',
