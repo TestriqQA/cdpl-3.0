@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateServicesPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
-import { trainingServices } from "@/data/servicesData";
+import { getServices } from "@/lib/services";
 
 // ============================================================================
 // SEO METADATA - Optimized for Services Page
@@ -41,13 +41,11 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 
 // ---------- Static Import for Hero (LCP Optimization) ----------
 import ServicesHeroSection from "@/components/sections/ServicesHeroSection";
+// ServicesGridSection is now a server component that takes a `services`
+// prop — static import so the page-level fetched data can be passed in.
+import ServicesGridSection from "@/components/sections/ServicesGridSection";
 
 // ---------- Dynamic sections (SSR enabled) ----------
-const ServicesGridSection = dynamic(
-  () => import("@/components/sections/ServicesGridSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading services..." /> }
-);
-
 const ServicesWhyChooseUsSection = dynamic(
   () => import("@/components/sections/ServicesWhyChooseUsSection"),
   { ssr: true, loading: () => <SectionLoader label="Loading benefits..." /> }
@@ -61,9 +59,13 @@ const ServicesCTASection = dynamic(
 // ============================================================================
 // SERVICES PAGE COMPONENT
 // ============================================================================
-export default function TrainingServicesPage() {
+export default async function TrainingServicesPage() {
+  // BLG-133 follow-up: editor-managed services. Falls back to the local
+  // trainingServices array inside getServices() when Sanity is empty.
+  const services = await getServices();
+
   const schemas = generateServicesPageAllSchemas(
-    trainingServices.map(s => ({
+    services.map(s => ({
       id: s.id,
       slug: s.slug,
       title: s.title,
@@ -80,7 +82,7 @@ export default function TrainingServicesPage() {
       {/* Main Content - Semantic HTML Structure */}
       <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50">
         <ServicesHeroSection />
-        <ServicesGridSection />
+        <ServicesGridSection services={services} />
         <ServicesWhyChooseUsSection />
         <ServicesCTASection />
       </div>

@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { unstable_cache } from 'next/cache';
 import { courseData } from '@/types/courseData';
 import { pastEvents } from '@/data/eventsData';
-import { trainingServices } from '@/data/servicesData';
+import { getServices } from '@/lib/services';
 import { client } from '@/sanity/client';
 import { POSTS_QUERY, CATEGORIES_QUERY, AUTHORS_QUERY } from '@/sanity/lib/queries';
 import { SanityPost, SanityCategory, SanityAuthor } from '@/sanity/types';
@@ -383,7 +383,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // 3. Services Pages (e.g., /services/expert-talks)
-  const servicePages: MetadataRoute.Sitemap = trainingServices.map((service) => ({
+  // BLG-133 follow-up: services come from Sanity (with the local
+  // trainingServices array as fallback inside getServices()).
+  const services = await getServices();
+  const servicePages: MetadataRoute.Sitemap = services.map((service) => ({
     url: `${siteUrl}/services/${service.slug}`,
     lastModified: DATES.SERVICES,
     changeFrequency: 'monthly' as const,

@@ -283,3 +283,41 @@ export const EVENT_BY_SLUG_QUERY = groq`*[_type == "event" && slug.current == $s
 
 // BLG-133 follow-up — slug list for `generateStaticParams` on /events/[slug].
 export const EVENT_SLUGS_QUERY = groq`*[_type == "event" && isPublished == true && defined(slug.current)][].slug.current`
+
+// BLG-133 follow-up — services. Active services ordered by editor-supplied
+// `order` (with `_createdAt` as tiebreaker). Field names match the legacy
+// TrainingService / ServiceClient shape one-to-one so the mapper in
+// src/lib/services.ts is a flat projection. `iconName` is a lucide-react
+// component name (string); the consumer resolves it to a component via
+// the same `Icons[key]` lookup used by ServiceDetailHeroSection.
+const SERVICE_PROJECTION = `
+  _id,
+  "slug": slug.current,
+  title,
+  tagline,
+  shortDescription,
+  fullDescription,
+  iconName,
+  color,
+  features,
+  benefits,
+  whoShouldAttend,
+  deliveryFormats,
+  curriculum,
+  outcomes,
+  methodology,
+  stats,
+  keywords,
+  "ogImage": seo.ogImage.asset->url
+`
+
+export const SERVICES_QUERY = groq`*[_type == "service" && isActive == true] | order(coalesce(order, 9999) asc, _createdAt asc) {
+  ${SERVICE_PROJECTION}
+}`
+
+export const SERVICE_BY_SLUG_QUERY = groq`*[_type == "service" && slug.current == $slug && isActive == true][0] {
+  ${SERVICE_PROJECTION}
+}`
+
+// Slug list for `generateStaticParams` on /services/[slug].
+export const SERVICE_SLUGS_QUERY = groq`*[_type == "service" && isActive == true && defined(slug.current)][].slug.current`

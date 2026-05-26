@@ -1,14 +1,28 @@
 // src/components/sections/ServicesGridSection.tsx
-"use client";
-
+//
+// BLG-133 follow-up — server component. Receives services as a prop from
+// the /services page (which fetches them from Sanity with a local fallback
+// in src/lib/services.ts). Resolves the editor-picked `iconName` string to
+// a lucide-react component via the same `Icons[key]` lookup pattern used
+// by ServiceDetailHeroSection / CTASection.
 import Link from "next/link";
 import { ArrowRight, CheckCircle } from "lucide-react";
-import { trainingServices } from "@/data/servicesData";
-import type React from "react";
+import * as Icons from "lucide-react";
+import type { ComponentType, SVGProps } from "react";
+import type { ServiceClient } from "@/types/service";
 
-type Service = (typeof trainingServices)[number];
+type LucideIcon = ComponentType<SVGProps<SVGSVGElement>>;
+function getIcon(name: string): LucideIcon {
+  const key = name as keyof typeof Icons;
+  const Icon = Icons[key];
+  return (Icon as unknown as LucideIcon) ?? Icons.GraduationCap;
+}
 
-export default function ServicesGridSection() {
+interface ServicesGridSectionProps {
+  services: ServiceClient[];
+}
+
+export default function ServicesGridSection({ services }: ServicesGridSectionProps) {
   return (
     <section id="services-grid" className="pt-6 pb-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -21,8 +35,8 @@ export default function ServicesGridSection() {
         </header>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {trainingServices.map((service: Service) => {
-            const IconComponent = service.icon as React.ElementType;
+          {services.map((service) => {
+            const IconComponent = getIcon(service.iconName);
 
             return (
               <article
