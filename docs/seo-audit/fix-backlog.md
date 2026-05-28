@@ -221,7 +221,7 @@
 | BLG-197 | Wikidata Q-ID creation | P1 | 14 | 5 | Q |
 | BLG-198 | Crunchbase profile create | P1 | 14 | 5 | H |
 | BLG-199 | Clutch profile create | P1 | 14 | 5 | H |
-| BLG-200 | Web-development URL convention inconsistency — `courseData` has 75 singular + 34 plural slugs for the same family; sitemap submits all 108 URLs; singular 307s to plural (TEMPORARY, won't transfer SEO weight); other 5 course families use singular. Standardise on singular + add `permanent: true` redirect | P1 | 10c | next | H |
+| BLG-200 | Web-development URL convention inconsistency — `courseData` has 75 singular + 34 plural slugs for the same family; sitemap submits all 108 URLs; singular 307s to plural (TEMPORARY, won't transfer SEO weight); other 5 course families use singular. Standardise on singular + add `permanent: true` redirect — **CLOSED 2026-05-28** (`fix/blg-200-web-dev-url-convention` `896c23c`: normalised 64 occurrences in `courseData.ts` + `citiesData.ts`, fixed 2 corrupted slugs, `redirect()` → `permanentRedirect()` for 308, edge-level config redirect added) | P1 | 10c | C2-followup | H |
 | BLG-201 | Switch all `next.config.ts` redirects from `permanent: true` (308) to explicit `statusCode: 301` — small SEO hardening for ~50 redirects; 308 vs 301 is officially equivalent but 301 has wider crawler/social-unfurler compatibility | P3 | 10c | C3 | Q |
 
 ---
