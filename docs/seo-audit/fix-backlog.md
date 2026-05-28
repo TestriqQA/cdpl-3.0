@@ -1,8 +1,8 @@
 # CDPL SEO + GEO Fix Backlog (Cycle 1 → Cycle 2/3)
 
-> **Total entries:** 199 (BLG-001 → BLG-199)
-> **Severity:** 18 P0 · 75 P1 · 64 P2 · 42 P3
-> **Generated:** Cycle 1 audit, 2026-05-19
+> **Total entries:** 201 (BLG-001 → BLG-201)
+> **Severity:** 18 P0 · 76 P1 · 64 P2 · 43 P3
+> **Generated:** Cycle 1 audit, 2026-05-19 — extended 2026-05-28 (Phase 10c BLG-156 investigation: +BLG-200 P1 + BLG-201 P3)
 > **Branch:** `seo-audit/cycle-1-discovery`
 
 ## Column legend
@@ -177,7 +177,7 @@
 | BLG-153 | No Domain GSC property — only URL-prefix exists | P1 | 10b | 1 | Q |
 | BLG-154 | /services/sttp biggest non-brand traffic page (3,623 imps 0.36% CTR) | P1 | 10b | 6 | content |
 | BLG-155 | 12 URLs Google chose different canonical (confirms BLG-001) | - | 10b | - | (BLG-001) |
-| BLG-156 | Plural slugs still ranking despite redirect | P2 | 10b | 5 | H |
+| BLG-156 | Plural slugs still ranking despite redirect — **CLOSED-AS-INTENDED 2026-05-28** (Phase 10c — Google consolidation lag, redirect & classification correct, declining trend) | P2 | 10b | 5 | H |
 | BLG-157 | 880 pages have impressions vs 613 indexed = 267 dropped | P1 | 10b | 6 | H |
 | BLG-158 | Index-stability: content quality/freshness signals weak | P2 | 10b | 6 | bundled |
 | BLG-159 | sttp/sdet/manual+placement CTR optimization | P1 | 10b | 6 | bundled |
@@ -221,6 +221,8 @@
 | BLG-197 | Wikidata Q-ID creation | P1 | 14 | 5 | Q |
 | BLG-198 | Crunchbase profile create | P1 | 14 | 5 | H |
 | BLG-199 | Clutch profile create | P1 | 14 | 5 | H |
+| BLG-200 | Web-development URL convention inconsistency — `courseData` has 75 singular + 34 plural slugs for the same family; sitemap submits all 108 URLs; singular 307s to plural (TEMPORARY, won't transfer SEO weight); other 5 course families use singular. Standardise on singular + add `permanent: true` redirect | P1 | 10c | next | H |
+| BLG-201 | Switch all `next.config.ts` redirects from `permanent: true` (308) to explicit `statusCode: 301` — small SEO hardening for ~50 redirects; 308 vs 301 is officially equivalent but 301 has wider crawler/social-unfurler compatibility | P3 | 10c | C3 | Q |
 
 ---
 
