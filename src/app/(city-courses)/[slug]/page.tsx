@@ -9,7 +9,10 @@ import {
   generateCityCoursePageSchema,
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
-import { redirect, notFound } from "next/navigation";
+// BLG-200: use permanentRedirect (308) instead of redirect (307 default).
+// The plural ↔ singular fallback below was emitting 307s, which Google
+// does not honour for SEO weight transfer; 308 triggers consolidation.
+import { permanentRedirect, notFound } from "next/navigation";
 
 import HeroSection from "@/components/city-courses/HeroSection";
 import dynamic from "next/dynamic";
@@ -145,8 +148,10 @@ export default async function CoursePage({ params, searchParams }: PageProps): P
     if (altSlug) {
       const altData = getByInternalSlug(altSlug);
       if (altData) {
-        // Perform 301 redirect to the correct canonical version
-        redirect(`/${altSlug}`);
+        // BLG-200: 308 Permanent Redirect to the canonical version.
+        // Was `redirect()` which defaults to 307 Temporary — Google
+        // wouldn't consolidate ranking signal across that.
+        permanentRedirect(`/${altSlug}`);
       }
     }
     

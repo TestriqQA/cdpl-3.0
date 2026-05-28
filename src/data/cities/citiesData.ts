@@ -71,7 +71,7 @@ const ALL_COURSES = [
     {
         type: "web-development",
         label: "Web Development",
-        slugPrefix: "web-development-courses-in-",
+        slugPrefix: "web-development-course-in-",
     },
     {
         type: "digital-marketing",

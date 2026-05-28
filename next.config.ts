@@ -332,6 +332,18 @@ const nextConfig: NextConfig = {
         destination: '/digital-marketing-course-in-:city',
         permanent: true,
       },
+      // BLG-200 (May 2026): Web-Development followed the OPPOSITE convention —
+      // 34 city pages used "courses-in" (plural) while the other 5 course
+      // families used "course-in" (singular). courseData.ts + citiesData.ts
+      // have been normalised to singular; this redirect short-circuits any
+      // remaining inbound links / cached SERP results at the edge with a 308
+      // (was a 307 from the page-handler fallback — Google wouldn't transfer
+      // SEO weight across a 307).
+      {
+        source: '/web-development-courses-in-:city',
+        destination: '/web-development-course-in-:city',
+        permanent: true,
+      },
     ];
   },
 
