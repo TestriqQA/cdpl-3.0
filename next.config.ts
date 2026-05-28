@@ -60,6 +60,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // BLG-201 (May 2026): all permanent redirects use `statusCode: 301` instead
+  // of `permanent: true`. Next.js translates `permanent: true` to HTTP 308
+  // (method-preserving) but for HTML page redirects the historical SEO
+  // standard is 301 — wider crawler / social-unfurler compatibility. Google
+  // honours both equivalently, but 301 is the lower-risk choice. Do NOT
+  // convert these back to `permanent: true` without a real reason.
   async redirects() {
     return [
       // BLG-035: legacy ?jobId= URLs redirect to the new clean /[jobId] path.
@@ -69,172 +75,172 @@ const nextConfig: NextConfig = {
           { type: 'query', key: 'jobId', value: '(?<jobId>.+)' },
         ],
         destination: '/jobs/live-jobs/:jobId',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/software-testing-course',
         destination: '/courses/software-testing-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/manual-testing-course',
         destination: '/courses/software-testing-course/manual-testing-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/automation-testing-course',
         destination: '/courses/software-testing-course/automation-testing-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/api-testing',
         destination: '/courses/software-testing-course/api-testing',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/etl-testing',
         destination: '/courses/software-testing-course/etl-testing',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/dbms-course',
         destination: '/courses/software-testing-course/dbms-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/advance-software-testing',
         destination: '/courses/software-testing-course/advance-software-testing',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/java-course',
         destination: '/courses/software-testing-course/java-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/advance-manual-automation-testing',
         destination: '/courses/software-testing-course/advance-manual-automation-testing',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/python-course',
         destination: '/courses/software-testing-course/python-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/ds-ml-courses',
         destination: '/courses/ds-ml-courses',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/machine-learning-course',
         destination: '/courses/ds-ml-courses/machine-learning-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/generative-ai-course',
         destination: '/courses/ds-ml-courses/generative-ai-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/data-science-course',
         destination: '/courses/ds-ml-courses/data-science-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/ai-course',
         destination: '/courses/ds-ml-courses/ai-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/machine-learning-using-python',
         destination: '/courses/ds-ml-courses/machine-learning-using-python',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/data-visualization-in-r-programming',
         destination: '/courses/ds-ml-courses/data-visualization-in-r-programming',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/bi-courses',
         destination: '/courses/bi-courses',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/data-analytics',
         destination: '/courses/bi-courses/data-analytics',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/data-analytics-python',
         destination: '/courses/bi-courses/data-analytics-python',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/data-analytics-and-visualization',
         destination: '/courses/bi-courses/data-analytics-and-visualization',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/data-analytics-with-tableau',
         destination: '/courses/bi-courses/data-analytics-with-tableau',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/power-bi-course',
         destination: '/courses/bi-courses/power-bi-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/masters-in-data-engineering',
         destination: '/courses/bi-courses/masters-in-data-engineering',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/artificial-intelligence-courses',
         destination: '/courses/artificial-intelligence-courses',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/prompt-engineering-course',
         destination: '/courses/artificial-intelligence-courses/prompt-engineering-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/digital-marketing-courses',
         destination: '/courses/digital-marketing-courses',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/digital-marketing-course',
         destination: '/courses/digital-marketing-courses/digital-marketing-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/ai-in-digital-marketing',
         destination: '/courses/digital-marketing-courses/ai-in-digital-marketing',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/ai-bootcamp',
         destination: '/courses/digital-marketing-courses/ai-bootcamp',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/index.html',
         destination: '/',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/email-marketing',
         destination: '/courses/digital-marketing-courses',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/actd-certification-training',
         destination: '/actd-certification',
-        permanent: true,
+        statusCode: 301,
       },
       // ⚠️  SEO FIX (April 2026): Collapsed two-hop redirect chains.
       // Old: /events/old-slug → /events/past-events → /events (2 hops = crawl budget waste)
@@ -242,95 +248,95 @@ const nextConfig: NextConfig = {
       {
         source: '/events/software-testing-workshop-bangalore',
         destination: '/events',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/events/faculty-development-mumbai-university',
         destination: '/events',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/events/fullstack-workshop-infosys-pune',
         destination: '/events',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/events/data-science-bootcamp-iit-delhi',
         destination: '/events',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/events/industrial-visit-tata-motors',
         destination: '/events',
-        permanent: true,
+        statusCode: 301,
       },
       // NOTE: /events/past-events chain removed — individual slugs now redirect directly to /events
       {
         source: '/authors/:slug',
         destination: '/blog/author/:slug',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/blog/category/ai-ml',
         destination: '/blog/category/artificial-intelligence',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/blog/how-prompt-engineering-can-automate-test-case-generation',
         destination: '/blog/category/software-testing',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/events/sttp-iot-applications',
         destination: '/events',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/events/train-the-trainer-program-corporate',
         destination: '/events',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/events/ai-conference-nagindas-khandwala',
         destination: '/events',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/events/6-days-workshop-on-machine-learning-with-hands-on-training-on-industry-projects-2',
         destination: '/events',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/manual-qa',
         destination: '/courses/software-testing-course/manual-testing-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/java-programming',
         destination: '/courses/software-testing-course/java-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/software-testing-courses',
         destination: '/courses/software-testing-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/data-science-courses',
         destination: '/courses/ds-ml-courses/data-science-course',
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: '/business-intelligence-courses',
         destination: '/courses/bi-courses',
-        permanent: true,
+        statusCode: 301,
       },
       // ⚠️  SEO FIX (April 2026): Redirect old plural DM city slugs to canonical singular form.
       // 38 city pages previously used "courses-in" (plural); now standardized to "course-in" (singular).
       {
         source: '/digital-marketing-courses-in-:city',
         destination: '/digital-marketing-course-in-:city',
-        permanent: true,
+        statusCode: 301,
       },
       // BLG-200 (May 2026): Web-Development followed the OPPOSITE convention —
       // 34 city pages used "courses-in" (plural) while the other 5 course
@@ -342,7 +348,7 @@ const nextConfig: NextConfig = {
       {
         source: '/web-development-courses-in-:city',
         destination: '/web-development-course-in-:city',
-        permanent: true,
+        statusCode: 301,
       },
     ];
   },
