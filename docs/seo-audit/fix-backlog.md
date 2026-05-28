@@ -1,8 +1,8 @@
 # CDPL SEO + GEO Fix Backlog (Cycle 1 → Cycle 2/3)
 
-> **Total entries:** 201 (BLG-001 → BLG-201)
-> **Severity:** 18 P0 · 76 P1 · 64 P2 · 43 P3
-> **Generated:** Cycle 1 audit, 2026-05-19 — extended 2026-05-28 (Phase 10c BLG-156 investigation: +BLG-200 P1 + BLG-201 P3)
+> **Total entries:** 204 (BLG-001 → BLG-204)
+> **Severity:** 18 P0 · 76 P1 · 64 P2 · 46 P3
+> **Generated:** Cycle 1 audit, 2026-05-19 — extended 2026-05-28 (Phase 10c BLG-156 investigation: +BLG-200 P1 + BLG-201 P3; Phase 10d BLG-189 investigation: +BLG-202 P3 + BLG-203 P3 + BLG-204 P3)
 > **Branch:** `seo-audit/cycle-1-discovery`
 
 ## Column legend
@@ -210,7 +210,7 @@
 | BLG-186 | Add MSME/NSDC/Skill India badges if applicable | P2 | 13 | 1 | Q |
 | BLG-187 | City-page meta-description CTR rescue (drop non-defensible) | P1 | 13 | 6 | content |
 | BLG-188 | City-page cross-linking (same-city + same-course-other-city) | P2 | 13 | 6 | H |
-| BLG-189 | Pull GSC Links report for top external + anchor distribution | P1 | 14 | 1 | Q |
+| BLG-189 | Pull GSC Links report for top external + anchor distribution — **CLOSED 2026-05-28** (Phase 10d — full pull via Chrome MCP, doc `10d-blg-189-gsc-links.md`, raised BLG-202/203/204; sharpens BLG-194/195/196 with concrete shortlists) | P1 | 14 | 1 | Q |
 | BLG-190 | Founder LinkedIn content cadence + YourStory outreach | P2 | 14 | C2+ | external |
 | BLG-191 | EdTech awards nomination cycle | P3 | 14 | C2+ | external |
 | BLG-192 | Speaking circuit pipeline | P3 | 14 | C2+ | external |
@@ -223,6 +223,9 @@
 | BLG-199 | Clutch profile create | P1 | 14 | 5 | H |
 | BLG-200 | Web-development URL convention inconsistency — `courseData` has 75 singular + 34 plural slugs for the same family; sitemap submits all 108 URLs; singular 307s to plural (TEMPORARY, won't transfer SEO weight); other 5 course families use singular. Standardise on singular + add `permanent: true` redirect — **CLOSED 2026-05-28** (`fix/blg-200-web-dev-url-convention` `896c23c`: normalised 64 occurrences in `courseData.ts` + `citiesData.ts`, fixed 2 corrupted slugs, `redirect()` → `permanentRedirect()` for 308, edge-level config redirect added) | P1 | 10c | C2-followup | H |
 | BLG-201 | Switch all `next.config.ts` redirects from `permanent: true` (308) to explicit `statusCode: 301` — small SEO hardening for ~50 redirects; 308 vs 301 is officially equivalent but 301 has wider crawler/social-unfurler compatibility — **CLOSED 2026-05-28** (`fix/blg-201-redirects-301` `c8b46af`: 53 occurrences swapped + doc comment added at top of `redirects()` to prevent future "normalisation" back to `permanent: true`) | P3 | 10c | C2-followup | Q |
+| BLG-202 | `cinutedigital.net` domain investigation — domain doesn't resolve but 3 backlinks reference it in GSC. Defensive WHOIS lookup: expired CDPL registration to renew + 301 to `.com`? typo-domain to ignore? third-party speculative? Brand-protection scope. | P3 | 10d | external | Q |
+| BLG-203 | Anchor-text outreach template — 4 of top 5 external anchors are URL-shaped or pure brand; only "certification preparation" is a real keyword anchor. When participating in directory submissions / award submissions / review platforms, pre-write the requested keyword anchor ("Software Testing Course in Mumbai by Cinute Digital", not "Cinute Digital"). | P3 | 10d | content | Q |
+| BLG-204 | Internal-link audit on `/courses/software-testing-course/python-course` — internally linked 953 times, far more than any other course detail page. Either intentional anchor-course or hard-coded sibling-link in some component. Verify + redistribute if accidental. | P3 | 10d | C2-followup | Q |
 
 ---
 
