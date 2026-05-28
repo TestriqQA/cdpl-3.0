@@ -1185,7 +1185,7 @@ export function generateHomePageSchema(
   const videoSchema = generateVideoSchema({
     name: "Transform Your Career with CDPL",
     description:
-      "Discover how CDPL helps you master Software Testing, Data Science, and AI/ML with 100% placement support.",
+      "Discover how CDPL helps you master Software Testing, Data Science, and AI/ML with comprehensive placement support.",
     thumbnailUrl: "/images/video-thumbnail.jpg",
     uploadDate: "2024-01-01T08:00:00+08:00",
     embedUrl: "https://www.youtube.com/embed/8kB2wESj1n8",
@@ -1196,7 +1196,7 @@ export function generateHomePageSchema(
   const webPageSchema = generateWebPageSchema({
     name: "Software Testing & Data Science Course Mumbai | CDPL",
     description:
-      "Launch your tech career with CDPL's industry-leading courses in Software Testing, Data Science, and AI/ML. 100% Placement Support, Live Projects & Expert Mentors. Book a Free Demo!",
+      "Launch your tech career with CDPL's industry-led courses in Software Testing, Data Science, and AI/ML. Placement Support, Live Projects & Expert Mentors. Book a Free Demo!",
     url: "/",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -1222,7 +1222,7 @@ export function generateHomePageSchema(
       },
       {
         name: "Job Referrals",
-        text: "Gain direct exclusive referrals to over 50 hiring partners.",
+        text: "Gain direct referrals to our hiring partner network.",
       },
       {
         name: "Placement",
@@ -1283,7 +1283,7 @@ export function generateAllCoursesPageSchema(): WithContext<
   const collectionPageSchema = generateCollectionPageSchema({
     name: "All Courses - Software Testing, Data Science, AI/ML | CDPL",
     description:
-      "Explore our industry-leading courses in Software Testing, Data Science, AI/ML, and Full Stack Development. 100% placement support.",
+      "Explore our industry-led courses in Software Testing, Data Science, AI/ML, and Full Stack Development. Placement support included.",
     url: "/courses",
   });
 
@@ -1291,7 +1291,7 @@ export function generateAllCoursesPageSchema(): WithContext<
   const webPageSchema = generateWebPageSchema({
     name: "All Courses Directory | CDPL",
     description:
-      "Explore our industry-leading courses in Software Testing, Data Science, AI/ML, and Full Stack Development. 100% placement support.",
+      "Explore our industry-led courses in Software Testing, Data Science, AI/ML, and Full Stack Development. Placement support included.",
     url: "/courses",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -1900,7 +1900,7 @@ export function generateManualTestingCoursePageSchema(
     name: "Manual Testing Course with Placement | QA Training Mumbai",
     description:
       courseInput.description ||
-      "Master Manual Testing in 12 weeks. ISTQB prep, live projects, Jira & Agile training. 5,000+ placed.",
+      "Master Manual Testing in 12 weeks. ISTQB prep, live projects, Jira & Agile training. Industry-led mentorship and placement support.",
     url: "/courses/software-testing-course/manual-testing-course",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -2402,7 +2402,7 @@ export function generateAdvanceManualAutomationTestingCoursePageSchema(
     name: "What is Selenium Testing? Master Manual & Automation Testing | 100% Placement | CDPL",
     description:
       courseInput.description ||
-      "Learn what is selenium testing & UI testing in our 180-hour Master Program. Cover Selenium, Cypress, API & Mobile automation. 100% placement support in Mumbai/Thane.",
+      "Learn what is selenium testing & UI testing in our 180-hour Master Program. Cover Selenium, Cypress, API & Mobile automation. Placement support in Mumbai/Thane.",
     url: "/courses/software-testing-course/advance-manual-automation-testing",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -2448,7 +2448,7 @@ export function generateAdvanceManualAutomationTestingCoursePageSchema(
       },
       {
         name: "Start Learning",
-        text: "Master modern full-stack manual and automated QA methodologies for 100% placement!",
+        text: "Master modern full-stack manual and automated QA methodologies for strong placement support!",
       },
     ],
   });
@@ -2484,7 +2484,7 @@ export function generatePythonCoursePageSchema(
     name: "Python Programming Course in Mumbai | 80-Hour Job-Ready Training | CDPL",
     description:
       courseInput.description ||
-      "Best Python course in Mumbai with Django, Data Science, ML, Automation. 100% placement. Live projects, global certificate.",
+      "Best Python course in Mumbai with Django, Data Science, ML, Automation. Placement support, live projects, global certificate.",
     url: "/courses/software-testing-course/python-course",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -2530,7 +2530,7 @@ export function generatePythonCoursePageSchema(
       },
       {
         name: "Start Learning",
-        text: "Master modern full-stack backend development and automated scripting methodologies for 100% placement!",
+        text: "Master modern full-stack backend development and automated scripting methodologies with strong placement support!",
       },
     ],
   });
@@ -2566,7 +2566,7 @@ export function generateJavaCoursePageSchema(
     name: "Java Programming Course in Mumbai | 80-Hour Job-Ready Training | CDPL",
     description:
       courseInput.description ||
-      "Best Java course in Mumbai with Core Java, Spring Boot, Microservices, AWS. 100% placement. Live projects, global certificate.",
+      "Best Java course in Mumbai with Core Java, Spring Boot, Microservices, AWS. Placement support, live projects, global certificate.",
     url: "/courses/software-testing-course/java-course",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -2612,7 +2612,7 @@ export function generateJavaCoursePageSchema(
       },
       {
         name: "Start Learning",
-        text: "Master modern full-stack backend development and automated scripting methodologies for 100% placement!",
+        text: "Master modern full-stack backend development and automated scripting methodologies with strong placement support!",
       },
     ],
   });
@@ -2692,7 +2692,7 @@ export function generateMachineLearningCoursePageSchema(
       },
       {
         name: "Start Learning",
-        text: "Master modern Data Science frameworks and Automated AI scripting methodologies for 100% placement!",
+        text: "Master modern Data Science frameworks and Automated AI scripting methodologies with strong placement support!",
       },
     ],
   });
@@ -3290,7 +3290,7 @@ export function generateDataAnalyticsPythonCoursePageSchema(
     name: "Best Data Analytics Course with Python | 20-Hour Training Mumbai | 100% Job Assistance",
     description:
       courseInput.description ||
-      "Learn how to become a data analyst with our Python data analysis course in Mumbai/Thane. 20-hour hands-on training with real projects, global certification, and 100% placement support.",
+      "Learn how to become a data analyst with our Python data analysis course in Mumbai/Thane. 20-hour hands-on training with real projects, global certification, and placement support.",
     url: "/courses/bi-courses/data-analytics-python",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -3663,7 +3663,7 @@ export function generateMastersDataEngineeringCoursePageSchema(
     name: "Master Program in Data Engineering | BI & Big Data Engineering Course | Mumbai",
     description:
       courseInput.description ||
-      "Master BI and Big Data Engineering with our Data Analytics Program Mumbai. Learn SQL for data analytics, Spark, and get Data Engineer Certifications. 100% placement.",
+      "Master BI and Big Data Engineering with our Data Analytics Program Mumbai. Learn SQL for data analytics, Spark, and get Data Engineer Certifications. Placement support included.",
     url: "/courses/bi-courses/masters-in-data-engineering",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -3760,7 +3760,7 @@ export function generateDigitalMarketingCoursePageSchema(
     name: "Best Digital Marketing Course in Mumbai with 100% Placement | CDPL",
     description:
       courseInput.description ||
-      "Join the #1 Digital Marketing Course in Mumbai. Master AI-Driven SEO, PPC, Google Ads, Social Media, and Analytics with 100% Placement Support. 80+ Hours of Practical Training.",
+      "Join the comprehensive Digital Marketing Course in Mumbai. Master AI-Driven SEO, PPC, Google Ads, Social Media, and Analytics with Placement Support. 80+ Hours of Practical Training.",
     url: "/courses/digital-marketing-courses/digital-marketing-course",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -4080,7 +4080,7 @@ export function generateContactPageAllSchemas(): WithContext<
         "CDPL offers courses in Software Testing, Data Science, Machine Learning, AI, Business Intelligence, Digital Marketing, and more. Visit our Courses page for the full list.",
     },
     {
-      question: "Does CDPL provide 100% placement assistance?",
+      question: "Does CDPL provide placement assistance?",
       answer:
         "Yes, CDPL provides 100% job placement assistance including resume building, mock interviews, LinkedIn optimization, and direct connections to hiring companies.",
     },
@@ -4102,7 +4102,7 @@ export function generateContactPageAllSchemas(): WithContext<
     {
       name: "Data Science Course",
       url: "/courses/ds-ml-courses/data-science-course",
-      description: "Python, ML, and Data Science with 100% placement.",
+      description: "Python, ML, and Data Science with placement support.",
       type: "Course",
     },
     {
@@ -4215,7 +4215,7 @@ export function generateAboutPageAllSchemas(
   const webPageSchema = generateWebPageSchema({
     name: "About CDPL - Leading EdTech for Tech Training",
     description:
-      "CDPL (Cinute Digital) is India's premier EdTech institute delivering industry-ready training in Software Testing, Automation, Data Science, and AI/ML. Founded in 2020, we've empowered 5000+ professionals with live projects, expert mentorship, and 100% placement support.",
+      "CDPL (Cinute Digital) is an EdTech institute delivering industry-ready training in Software Testing, Automation, Data Science, and AI/ML. Founded in 2020, we deliver live projects, expert mentorship, and comprehensive placement support.",
     url: "/about-us",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -4245,7 +4245,7 @@ export function generateAboutPageAllSchemas(
       url: "/courses/ds-ml-courses/data-science-course",
       slug: "data-science-course",
       description:
-        "Python, Machine Learning, and Data Science with 100% placement.",
+        "Python, Machine Learning, and Data Science with placement support.",
       type: "Course",
     },
     {
@@ -4317,7 +4317,7 @@ export function generateAboutPageAllSchemas(
       },
       {
         name: "Enroll & Start Learning",
-        text: "Complete enrollment, join live online or classroom sessions, work on real projects, and get 100% placement support.",
+        text: "Complete enrollment, join live online or classroom sessions, work on real projects, and get comprehensive placement support.",
       },
     ],
   });
@@ -5185,7 +5185,7 @@ export function generateMentorsPageAllSchemas(
     steps: [
       {
         name: "Join a CDPL Program",
-        text: "Enroll in one of our job-guaranteed training programs in QA, Data Science, or Automation.",
+        text: "Enroll in one of our industry-led training programs in QA, Data Science, or Automation.",
       },
       {
         name: "Identify Your Mentor",
@@ -5254,7 +5254,7 @@ export function generateLiveJobsPageAllSchemas(
     {
       question: "How do I get placement support from CDPL?",
       answer:
-        "Students enrolled in our certification programs get premium placement support, including resume building, mock interviews, and direct referrals to our 50+ hiring partners.",
+        "Students enrolled in our certification programs get premium placement support, including resume building, mock interviews, and direct referrals to our hiring partner network.",
     },
   ]);
 
@@ -5385,7 +5385,7 @@ export function generatePlacementsPageAllSchemas(
       },
       {
         name: "Direct Referrals",
-        text: "Get direct interview invites from our 50+ hiring partners and secure your dream offer.",
+        text: "Get direct interview invites from our hiring partner network and pursue your next role.",
       },
     ],
   });
@@ -6903,7 +6903,7 @@ export function generateLocationsPageAllSchemas(
     {
       question: "Are the course certifications valid globally?",
       answer:
-        "Yes, CDPL certifications are ISO 9001:2015 certified and recognized by our 50+ hiring partners across the globe.",
+        "Yes, CDPL certifications are ISO 9001:2015 certified and recognized by our hiring partner network.",
     },
   ]);
 
