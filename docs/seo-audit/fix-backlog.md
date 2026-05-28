@@ -216,7 +216,7 @@
 | BLG-192 | Speaking circuit pipeline | P3 | 14 | C2+ | external |
 | BLG-193 | Real-alumni review acquisition workflow | P1 | 14 | C2+ | external |
 | BLG-194 | Tier-1 directory submission sprint (15 directories) | P1 | 14 | 1-3 | W |
-| BLG-195 | Disavow audit + submit (after GSC Links pulled) | P2 | 14 | 1 | H |
+| BLG-195 | Disavow audit + submit (after GSC Links pulled) — **DRAFT READY 2026-05-28** (`docs/seo-audit/disavow.txt` on audit branch — 9 high-confidence full-domain disavows from Phase 10d shortlist; 6 medium-confidence held for manual review; do-not-disavow legitimate-authority list also recorded). **User-side upload step pending:** sign in to https://search.google.com/search-console/disavow-links as seo@testriq.com, select cinutedigital.com property, upload the file. Google takes 2–8 weeks to honour. | P2 | 14 | 1 | H |
 | BLG-196 | NAP consistency audit across all external listings | P1 | 14 | 1 | D |
 | BLG-197 | Wikidata Q-ID creation | P1 | 14 | 5 | Q |
 | BLG-198 | Crunchbase profile create | P1 | 14 | 5 | H |
