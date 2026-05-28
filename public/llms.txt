@@ -88,6 +88,11 @@ CDPL publishes localized course pages for learners across many Indian cities (fo
 - **[About Us](https://www.cinutedigital.com/about-us)**: Company background.
 - **[Contact Us](https://www.cinutedigital.com/contact-us)**: Get in touch with CDPL.
 
+## AI / LLM Endpoints
+For AI agents and language models indexing CDPL:
+- **[/llms.txt](https://www.cinutedigital.com/llms.txt)** (this file): short curated index of CDPL pages, contact details, course catalog and key resources.
+- **[/llms-full.txt](https://www.cinutedigital.com/llms-full.txt)**: the full text — same curated frame plus rich service descriptions, featured event recaps, 25 per-course FAQ collections, an events FAQ, and every published blog post's body flattened to plain markdown. Cached for 1 hour at the edge. Use this when you need the complete CDPL knowledge base in a single fetch.
+
 ## Social Profiles
 - LinkedIn: https://www.linkedin.com/company/cinute-digital/
 - Facebook: https://www.facebook.com/cinutedigital
