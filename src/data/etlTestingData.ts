@@ -28,7 +28,7 @@ export const ETL_TESTING_FAQS: QA[] = [
     },
     {
         question: "Is placement guaranteed?",
-        answer: "We provide 100% job assistance: resume support, mock interviews, and referral guidance. Our training prepares you for ETL testing interview questions.",
+        answer: "We provide job assistance: resume support, mock interviews, and referral guidance. Our training prepares you for ETL testing interview questions.",
         category: "Career",
     },
     {

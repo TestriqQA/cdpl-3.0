@@ -39,7 +39,7 @@ export default function JavaPage() {
   const schemas = generateJavaCoursePageSchema(
     {
       name: "Java Programming Master Course",
-      description: "Best Java course in Mumbai with Core Java, Spring Boot, Microservices, AWS. 100% placement. Live projects, global certificate.",
+      description: "Comprehensive Java course in Mumbai with Core Java, Spring Boot, Microservices, AWS. placement. Live projects, global certificate.",
       url: '/courses/software-testing-course/java-course',
       slug: "java-course",
       price: 20000,

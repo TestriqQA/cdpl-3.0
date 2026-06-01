@@ -22,7 +22,7 @@ export default function FaqSection() {
                     </h2>
                     <p className="text-lg text-slate-600 max-w-4xl mx-auto">
                         Everything you need to know about the program, logistics, flexible hybrid learning,
-                        certification, and 100% job assistance support for our AI-powered digital marketing bootcamp.
+                        certification, and job assistance support for our AI-powered digital marketing bootcamp.
                     </p>
                     <p className="mt-4 text-sm md:text-base text-slate-500 max-w-3xl mx-auto">
                         Get clarity on{" "}

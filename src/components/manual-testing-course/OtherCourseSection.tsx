@@ -279,7 +279,7 @@ export default function OtherCoursesSection() {
     <section className="py-10 bg-white" id="other-courses" aria-label="Other professional software testing courses">
       {/* Invisible SEO keywords */}
       <p className="sr-only">
-        Best software testing courses, automation testing with Selenium Java, full-stack QA training, API testing with
+        Comprehensive software testing courses, automation testing with Selenium Java, full-stack QA training, API testing with
         Postman and RestAssured, performance testing JMeter, mobile app testing Appium, ISTQB Foundation certification.
         Job-ready curriculum, placement assistance, live projects.
       </p>

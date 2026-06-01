@@ -158,7 +158,7 @@ export const CareerSection: React.FC = () => {
             <div>
               <h4 className="text-lg font-semibold mb-3 flex items-center gap-2">
                 <Zap className="w-5 h-5 text-orange-400" />
-                100% Job Assistance & Placement Support
+                Job Assistance & Placement Support
               </h4>
               <ul className="space-y-3">
                 {career_section.placement_support.map((support: string, index: number) => (

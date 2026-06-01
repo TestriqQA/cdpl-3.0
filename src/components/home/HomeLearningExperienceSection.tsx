@@ -33,7 +33,7 @@ export default function HomeLearningExperienceSection() {
     {
       icon: Users,
       title: '1:1 Mentorship',
-      description: 'Personal guidance from mentors with 10+ years of industry experience at top companies.',
+      description: 'Personal guidance from mentors with extensive industry experience at top companies.',
       color: 'from-green-500 to-green-600',
     },
     {

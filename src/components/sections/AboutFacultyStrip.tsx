@@ -46,7 +46,7 @@ export default function AboutFacultyStrip({
   brand = "#ff8c00",
   mentors = DEFAULT_MENTORS,
   heading = (<>Learn from <span className="text-brand">Mentors</span> </>),
-  subheading = (<>10+ years average experience across <strong>Software Testing</strong>, <strong>Automation</strong>, <strong>Data Science</strong> & <strong>AI/ML</strong>.</>),
+  subheading = (<>Extensive hands-on experience across <strong>Software Testing</strong>, <strong>Automation</strong>, <strong>Data Science</strong> & <strong>AI/ML</strong>.</>),
   primaryCtaHref = "/mentors",
 }: Props) {
   const TagIcon = ({ tag }: { tag?: Mentor["tag"] }) => {

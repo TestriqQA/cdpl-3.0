@@ -12,7 +12,7 @@ export default function TestimonialsSection() {
                         Success <span className="text-brand">Stories</span> from Our Data Analytics Course
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                        Hear from students who completed our <strong>best data analytics courses</strong> and landed top roles at leading companies.
+                        Hear from students who completed our <strong>comprehensive data analytics courses</strong> and landed top roles at leading companies.
                     </p>
                 </div>
 
@@ -31,12 +31,12 @@ export default function TestimonialsSection() {
                             {
                                 icon: "👨‍🏫",
                                 title: "Expert Mentors",
-                                description: "Learn from professionals with 14+ years of industry experience",
+                                description: "Learn from professionals with extensive industry experience",
                             },
                             {
                                 icon: "💼",
                                 title: "Job Placement Support",
-                                description: "100% job assistance and placement support from our dedicated team",
+                                description: "job assistance and placement support from our dedicated team",
                             },
                             {
                                 icon: "📈",

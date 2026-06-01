@@ -29,8 +29,8 @@ const faqs: FAQ[] = [
     {
         id: 1,
         icon: HelpCircle,
-        q: "Which is the best software testing course in Mumbai for placement?",
-        a: "CDPL offers the best software testing course in Mumbai with 100% placement assistance. Our curriculum covers Manual Testing, Automation (Selenium), API Testing, and ETL testing, ensuring you are job-ready for top QA roles with industry-recognized certification.",
+        q: "Which is the comprehensive software testing course in Mumbai for placement?",
+        a: "CDPL offers the comprehensive software testing course in Mumbai with placement assistance. Our curriculum covers Manual Testing, Automation (Selenium), API Testing, and ETL testing, ensuring you are job-ready for top QA roles with industry-recognized certification.",
     },
     {
         id: 2,
@@ -59,8 +59,8 @@ const faqs: FAQ[] = [
     {
         id: 6,
         icon: Briefcase,
-        q: "Does CDPL provide 100% Job Placement?",
-        a: "Yes, we provide 100% replacement assistance, which includes resume building, LinkedIn optimization, and guaranteed interview calls until you secure a job in the QA domain.",
+        q: "Does CDPL provide Job Placement?",
+        a: "Yes, we provide replacement assistance, which includes resume building, LinkedIn optimization, and interview calls until you secure a job in the QA domain.",
     },
     {
         id: 7,

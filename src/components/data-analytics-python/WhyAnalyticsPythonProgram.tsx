@@ -38,7 +38,7 @@ export default function WhyAnalyticsPythonProgram() {
         {
             icon: <Briefcase className="w-8 h-8" />,
             title: "Expert Instructors",
-            description: "Learn from seasoned data analysts and industry veterans with 14+ years of experience",
+            description: "Learn from seasoned data analysts and industry veterans with extensive experience",
             highlight: "Industry Experience",
             bgColor: "from-purple-50 to-purple-100",
             borderColor: "border-purple-300",
@@ -61,15 +61,15 @@ export default function WhyAnalyticsPythonProgram() {
         },
         {
             icon: <Zap className="w-8 h-8" />,
-            title: "100% Job Assistance",
+            title: "Job Assistance",
             description: "Stay ahead with industry-relevant training and dedicated placement support",
-            highlight: "Placement Guarantee",
+            highlight: "Placement Support",
             bgColor: "from-orange-50 to-orange-100",
             borderColor: "border-orange-300",
         },
         {
             icon: <Award className="w-8 h-8" />,
-            title: "14+ Years Expertise",
+            title: "Industry-Led Training",
             description: "Benefit from over a decade of proven training excellence and student success",
             highlight: "Trusted Institute",
             bgColor: "from-indigo-50 to-indigo-100",
@@ -143,7 +143,7 @@ export default function WhyAnalyticsPythonProgram() {
                                 <span className="text-orange-400 text-2xl mt-1">✓</span>
                                 <div>
                                     <p className="font-semibold text-white">Proven Success Rate</p>
-                                    <p className="text-sm text-slate-300">500+ successful graduates placed in top companies</p>
+                                    <p className="text-sm text-slate-300">successful graduates placed in top companies</p>
                                 </div>
                             </div>
                         </div>

@@ -33,7 +33,7 @@ export default function CtaSection() {
             Ready to Master <span className="text-DS">Advanced Data Analytics?</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-700">
-            Don't get left behind in the data revolution. Join the <strong>Hero Program</strong> today and secure your future with <strong>100% placement assistance</strong> and hands-on tool mastery covering <strong>Power BI</strong>, <strong>Tableau</strong>, <strong>SQL</strong>, and <strong>Python</strong>.
+            Don't get left behind in the data revolution. Join the <strong>Hero Program</strong> today and secure your future with <strong>placement assistance</strong> and hands-on tool mastery covering <strong>Power BI</strong>, <strong>Tableau</strong>, <strong>SQL</strong>, and <strong>Python</strong>.
           </p>
         </header>
 

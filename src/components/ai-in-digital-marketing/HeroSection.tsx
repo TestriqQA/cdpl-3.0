@@ -117,7 +117,7 @@ export default function HeroSection() {
 
             {/* Subheading – using basic.subtitle */}
             <p className="mt-4 max-w-3xl text-center text-base leading-relaxed text-slate-600 md:text-left md:text-lg">
-              The #1 AI Digital Marketing Course for Business Owners in Mumbai & Thane to 10X Growth.
+              The comprehensive AI Digital Marketing Course for Business Owners in Mumbai & Thane to 10X Growth.
             </p>
 
             {/* Description – using basic.description */}
@@ -182,7 +182,7 @@ export default function HeroSection() {
               <div className="flex items-center gap-2">
                 <span className="text-2xl">⭐</span>
                 <span>
-                  <strong className="text-slate-900">4.9/5</strong> Rating (1200+ Reviews)
+                  <strong className="text-slate-900">4.9/5</strong> Rating (425+ Reviews)
                 </span>
               </div>
               <div className="hidden h-6 w-px bg-slate-300 sm:block" />

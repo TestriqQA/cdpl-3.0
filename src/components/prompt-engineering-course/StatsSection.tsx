@@ -36,7 +36,7 @@ type Stat = {
 /** ---------- Stats from the PDF ----------
  * Sources:
  * - Page 1: Duration "20 Hours"
- * - Page 3: "80:20 Approach", "1:1 Doubt Solving", "Global Certification (AAA)", "100% Job Assistance", "14+ Years of Expertise"
+ * - Page 3: "80:20 Approach", "1:1 Doubt Solving", "Global Certification (AAA)", "Job Assistance", "14+ Years of Expertise"
  * - Page 6: "25% Market growth (2020–2030)", "101,000+ Job Vacancies in India", "4 LPA Freshers’ average salary", "75% Job Satisfaction", "32% India’s share in the global market"
  */
 const STATS: Stat[] = [

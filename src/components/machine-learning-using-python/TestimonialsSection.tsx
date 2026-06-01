@@ -29,7 +29,7 @@ export default function TestimonialsSection() {
           <div className="bg-white rounded-xl p-8 border border-slate-200 text-center">
             <p className="text-4xl font-bold text-blue-600 mb-2">4.8/5</p>
             <p className="text-slate-700 font-semibold">Average Rating</p>
-            <p className="text-sm text-slate-600 mt-2">From 500+ students</p>
+            <p className="text-sm text-slate-600 mt-2">From our learner community</p>
           </div>
           <div className="bg-white rounded-xl p-8 border border-slate-200 text-center">
             <p className="text-4xl font-bold text-indigo-600 mb-2">500+</p>

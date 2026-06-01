@@ -136,7 +136,7 @@ export default function CurriculumSection() {
             Advanced <span className="text-green-700">Digital Marketing Course</span> Modules
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
-            Our comprehensive <strong>14-module curriculum</strong> is designed for the 2025-2026 job market. Learn from the best Digital Marketing institute in Mumbai with placement focus on SEO, SEM, SMM, and Analytics.
+            Our comprehensive <strong>14-module curriculum</strong> is designed for the 2025-2026 job market. Learn from the comprehensive Digital Marketing institute in Mumbai with placement focus on SEO, SEM, SMM, and Analytics.
           </p>
         </header>
 

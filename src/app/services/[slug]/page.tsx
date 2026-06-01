@@ -108,7 +108,7 @@ export async function generateMetadata(
   const generatedDesc = generateMetaDescription(rawDescription, 160);
   const finalDescription = (generatedDesc && generatedDesc.length > 10)
     ? generatedDesc
-    : `Join CDPL's ${service.title} training program. Industry-expert led courses with 100% placement support. Master usage with real-world projects.`;
+    : `Join CDPL's ${service.title} training program. Industry-expert led courses with placement support. Master usage with real-world projects.`;
 
   return generateSEOMetadata({
     title: `${service.title} — Training Programs & Solutions | CDPL`,

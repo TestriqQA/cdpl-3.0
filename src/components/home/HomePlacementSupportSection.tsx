@@ -31,7 +31,7 @@ export default function HomePlacementSupportSection() {
     {
       icon: Briefcase,
       title: 'Job Referrals',
-      description: 'Direct referrals to our 50+ hiring partners across India for guaranteed interviews.',
+      description: 'Direct referrals to our our hiring partner network across India for interviews.',
       color: 'text-rose-600',
       bg: 'bg-rose-50',
       border: 'border-rose-200',
@@ -72,7 +72,7 @@ export default function HomePlacementSupportSection() {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold mb-4">
-            100% Placement Support
+            Placement Support
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             We Don&apos;t Stop at <span className="text-indigo-600">Training</span>

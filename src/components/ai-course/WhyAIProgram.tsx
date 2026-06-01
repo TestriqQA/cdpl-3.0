@@ -31,7 +31,7 @@ export default function WhyAIProgram() {
     { label: "Hands-On Projects", color: "bg-emerald-700 text-white" },
     { label: "Expert Faculty", color: "bg-amber-700 text-white" }, // Changed text to white for better contrast
     { label: "Prior Exp Helpful", color: "bg-sky-700 text-white" },
-    { label: "100% Job-Ready", color: "bg-rose-700 text-white" },
+    { label: "Job-Ready", color: "bg-rose-700 text-white" },
   ];
 
   const outcomes = [

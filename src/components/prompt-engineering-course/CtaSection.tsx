@@ -42,7 +42,7 @@ export default function CtaSection() {
           </h2>
           <p className="mt-4 text-base sm:text-lg md:text-xl text-slate-700">
             Join a project-first program with <strong>global certification</strong>,{" "}
-            <strong>20+ guided hours</strong>, and <strong>100% job assistance</strong>-covering
+            <strong>20+ guided hours</strong>, and <strong>job assistance</strong>-covering
             frameworks, evaluation, guardrails, and automation with leading LLMs.
           </p>
         </header>

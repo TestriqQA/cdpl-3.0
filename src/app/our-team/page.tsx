@@ -17,7 +17,7 @@ import JsonLd from "@/components/JsonLd";
 // ============================================================================
 export const metadata: Metadata = generateStaticPageMetadata({
   title: "Our Team - Expert Trainers & Mentors | CDPL",
-  description: "Meet CDPL's team of expert trainers and mentors with 10+ years of industry experience in Software Testing, Data Science, AI/ML, and Automation. Learn from professionals who have worked at top companies and trained 5000+ students.",
+  description: "Meet CDPL's team of expert trainers and mentors with extensive industry experience in Software Testing, Data Science, AI/ML, and Automation. Learn from professionals who have worked at top companies and trained students across India.",
   keywords: [
     "CDPL team",
     "Cinute Digital trainers",

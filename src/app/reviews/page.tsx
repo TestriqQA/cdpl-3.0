@@ -61,7 +61,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     "software testing course reviews",
     "data science course reviews",
     "AI ML course reviews",
-    "best tech training reviews",
+    "comprehensive tech training reviews",
     "placement success stories",
     "customer reviews",
   ],

@@ -47,10 +47,10 @@ export default function CtaSection() {
             id="cta-heading"
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
           >
-            Enroll in the Best <span className="text-ST">Selenium Course Near Me</span>
+            Enroll in Our <span className="text-ST">Selenium Course Near Me</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600">
-            Master <strong>Selenium</strong>, <strong>Appium</strong>, and <strong>Cypress</strong> in our comprehensive <strong>SDET training</strong>. Next batch starts soon. Enroll now for <strong>100% placement support</strong>.
+            Master <strong>Selenium</strong>, <strong>Appium</strong>, and <strong>Cypress</strong> in our comprehensive <strong>SDET training</strong>. Next batch starts soon. Enroll now for <strong>placement support</strong>.
           </p>
 
           {/* Primary actions */}
@@ -106,7 +106,7 @@ export default function CtaSection() {
             <div className="flex items-start gap-3">
               <CheckCircle className="h-6 w-6 text-emerald-700" />
               <div>
-                <div className="font-semibold text-slate-900">100% Job Assistance</div>
+                <div className="font-semibold text-slate-900">Job Assistance</div>
                 <p className="text-sm text-slate-600">Resume, mock interviews & referrals</p>
               </div>
             </div>

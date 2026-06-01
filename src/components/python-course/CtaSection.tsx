@@ -28,7 +28,7 @@ export default function CtaSection() {
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600">
             Enroll now in the <strong>80-hour, mentor-led</strong> program with{" "}
-            <strong>100% placement assistance</strong>, portfolio projects, and a{" "}
+            <strong>placement assistance</strong>, portfolio projects, and a{" "}
             <strong>QR-verified certificate</strong>.
           </p>
 

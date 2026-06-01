@@ -21,7 +21,7 @@ import { GENERATIVE_AI_FAQS, GENERATIVE_AI_REVIEW_DATA } from "@/data/generative
 
 export const metadata = generateMetadata({
   title: "Deep Learning, NLP & Gen AI Course Mumbai | CDPL",
-  description: "55-Hour Hero Program in Deep Learning, NLP, and Generative AI with Python. Hands-on projects, 100% job assistance, global certificates from AAA.",
+  description: "55-Hour Hero Program in Deep Learning, NLP, and Generative AI with Python. Hands-on projects, job assistance, global certificates from AAA.",
   keywords: [
     "deep learning course mumbai",
     "nlp training",
@@ -39,7 +39,7 @@ export default function GenerativeAiPage() {
   const schemas = generateGenerativeAICoursePageSchema(
     {
       name: "Master Program in Deep Learning, NLP & Generative AI",
-      description: "55-Hour Hero Program in Deep Learning, NLP, and Generative AI with Python. Hands-on projects, 100% job assistance, global certificates from AAA.",
+      description: "55-Hour Hero Program in Deep Learning, NLP, and Generative AI with Python. Hands-on projects, job assistance, global certificates from AAA.",
       url: '/courses/ds-ml-courses/generative-ai-course',
       slug: "generative-ai-course",
       price: 45000,

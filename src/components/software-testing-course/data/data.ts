@@ -4,7 +4,7 @@ import { iconMap } from '@/components/software-testing-course/CoursesSection';
 export const features = [
     { icon: Zap, title: '100% Live Interactive Classes', desc: 'No pre-recorded videos' },
     { icon: Users, title: 'Small Batches (Max 15)', desc: 'Personal mentor attention' },
-    { icon: Briefcase, title: '100% Placement Assistance', desc: 'Until you get placed' },
+    { icon: Briefcase, title: 'Placement Assistance', desc: 'Until you get placed' },
     { icon: Award, title: 'Industry Certificate', desc: 'Recognized by 350+ companies' },
     { icon: Clock, title: 'Flexible Timings', desc: 'Weekday & Weekend batches' },
     { icon: ShieldCheck, title: 'Lifetime Access', desc: 'Recordings + updates forever' },
@@ -147,7 +147,7 @@ export const COURSES: Course[] = [
         id: 8,
         title: 'Advanced Manual & Automation Testing — Master Program',
         category: 'Software Testing',
-        description: 'Integrated program: Advanced Manual Testing + Selenium + API + JMeter + 100% Placement in Mumbai.',
+        description: 'Integrated program: Advanced Manual Testing + Selenium + API + JMeter + Placement in Mumbai.',
         duration: '180 Hours',
         students: '2,302+',
         rating: 4.8,
@@ -450,8 +450,8 @@ export const curriculumContent = {
 
 export const softwareTestingFaqs = [
     {
-        question: 'Which is the best software testing course in Mumbai for placement?',
-        answer: 'CDPL offers the best software testing course in Mumbai with 100% placement assistance. Our curriculum covers Manual, Automation (Selenium), API, and ETL testing, ensuring you are job-ready for top QA roles.'
+        question: 'Which is the comprehensive software testing course in Mumbai for placement?',
+        answer: 'CDPL offers the comprehensive software testing course in Mumbai with placement assistance. Our curriculum covers Manual, Automation (Selenium), API, and ETL testing, ensuring you are job-ready for top QA roles.'
     },
     {
         question: 'What is the salary after completing a software testing course in Mumbai?',

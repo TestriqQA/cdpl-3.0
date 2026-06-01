@@ -13,7 +13,7 @@ const mockData = {
   careerPathContent: {
     title: "Transform Your Future with In-Demand Skills",
     description: "Unlock lucrative career opportunities in the fastest-growing tech sectors",
-    subtitle: "Join 50,000+ successful graduates building careers they love",
+    subtitle: "Join successful graduates building careers they love",
     paths: [
       {
         role: "Full Stack Developer",

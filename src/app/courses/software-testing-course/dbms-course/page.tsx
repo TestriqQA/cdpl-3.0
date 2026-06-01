@@ -25,7 +25,7 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 export const metadata = generateMetadata({
-  title: "MySQL Database Course | 100% Job Placement | 20-Hour Training",
+  title: "MySQL Database Course | Job Placement | 20-Hour Training",
   description: "Master MySQL, SQL queries, database design, and optimization. Build real projects. Get certified and placed in top companies.",
   keywords: [
     "MySQL course",

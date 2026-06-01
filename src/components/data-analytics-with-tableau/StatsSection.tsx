@@ -102,7 +102,7 @@ export default function StatsSection() {
                     </p>
                     <div className="inline-block bg-orange-50 border-2 border-orange-200 rounded-lg p-6 mb-6">
                         <p className="text-gray-700">
-                            <span className="font-bold text-gray-950">Join 500+ successful graduates</span> who have built rewarding careers in data analytics
+                            <span className="font-bold text-gray-950">Join successful graduates</span> who have built rewarding careers in data analytics
                         </p>
                     </div>
                     <div>

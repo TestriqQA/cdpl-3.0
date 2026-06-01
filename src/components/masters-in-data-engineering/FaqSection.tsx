@@ -125,7 +125,7 @@ const FaqSection: React.FC = () => {
             </Link>
           </div>
           <p className="mt-4 text-xs text-slate-600 sm:text-sm">
-            Keywords: Best Institute for Data Analytics, SQL Data Analyst, Bi and Big Data Engineering, IIM Business Analytics, Data Analytics Program Mumbai, Data Engineering Certifications, How to Become Data Analyst in India.
+            Keywords: Comprehensive Institute for Data Analytics, SQL Data Analyst, Bi and Big Data Engineering, IIM Business Analytics, Data Analytics Program Mumbai, Data Engineering Certifications, How to Become Data Analyst in India.
           </p>
         </div>
       </div>

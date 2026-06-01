@@ -23,7 +23,7 @@ export const R_DATA_VIS_FAQS: QA[] = [
     },
     {
         question: "Is job placement assistance provided?",
-        answer: "Yes, we provide 100% Job Assistance, which includes comprehensive career support like resume building, interview preparation, and access to placement drives.",
+        answer: "Yes, we provide Job Assistance, which includes comprehensive career support like resume building, interview preparation, and access to placement drives.",
         category: "Placement",
     },
     {

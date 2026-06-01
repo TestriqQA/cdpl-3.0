@@ -120,9 +120,9 @@ export default function InstructorSection() {
             Learn from <span className="text-blue-700">Industry Leaders</span>
           </h2>
           <p className="mt-3 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
-            ISTQB-certified <strong>QA expert</strong> with <strong>15+ years</strong> in Fortune 500 teams.
+            ISTQB-certified <strong>QA expert</strong> with <strong>extensive experience</strong> in Fortune 500 teams.
             Practical <strong>manual & automation testing</strong>, <strong>real projects</strong>, and
-            <strong> job-ready skills</strong> that rank for <em>“best software testing course with placement”</em>.
+            <strong> job-ready skills</strong> that rank for <em>“comprehensive software testing course with placement”</em>.
           </p>
         </div>
 
@@ -161,8 +161,8 @@ export default function InstructorSection() {
 
               {/* Features */}
               <ul className="mt-8 grid sm:grid-cols-2 gap-4">
-                <InstructorFeature text="15+ Years in Quality Assurance" icon={<LuClock className="h-4 w-4 text-emerald-800" />} />
-                <InstructorFeature text="Trained 3,000+ Testers with 95% Placement" icon={<LuUsers className="h-4 w-4 text-emerald-800" />} />
+                <InstructorFeature text="Quality Assurance Experts" icon={<LuClock className="h-4 w-4 text-emerald-800" />} />
+                <InstructorFeature text="Trained Testers with Strong Placement Support" icon={<LuUsers className="h-4 w-4 text-emerald-800" />} />
                 <InstructorFeature text="ISTQB Advanced Test Manager" icon={<LuAward className="h-4 w-4 text-emerald-800" />} />
                 <InstructorFeature text="Automation & API Testing Expertise" icon={<LuBookOpenCheck className="h-4 w-4 text-emerald-800" />} />
                 <InstructorFeature text="SDET Mindset & Test Strategy" icon={<LuShieldCheck className="h-4 w-4 text-emerald-800" />} />
@@ -189,8 +189,8 @@ export default function InstructorSection() {
             <div className="space-y-6">
               {/* Stats */}
               <div className="grid justify-center md:grid-cols-2 gap-4">
-                <Stat label="Students Trained" value="5,000+" sublabel="Across 12 countries" accent="indigo" />
-                <Stat label="Placement Rate" value="92%" sublabel="Interview prep + referrals" accent="emerald" />
+                <Stat label="Learner Rating" value="4.9/5" sublabel="From 425+ reviews" accent="indigo" />
+                <Stat label="Career Support" value="1:1" sublabel="Interview prep + referrals" accent="emerald" />
                 <Stat label="Avg. Salary Hike" value="1.5×" sublabel="After course completion" accent="amber" />
                 <Stat label="Industry Projects" value="10+" sublabel="E-com • BFSI • HealthTech" accent="cyan" />
               </div>
@@ -254,7 +254,7 @@ export default function InstructorSection() {
                 <div className="flex items-center gap-2">
                   <LuSparkles className="h-4 w-4 text-rose-600" />
                   <p className="text-sm font-semibold text-slate-800">
-                    Top-Rated QA Mentor • 4.8/5
+                    Professional QA Mentor • 4.8/5
                   </p>
                 </div>
               </div>
@@ -265,7 +265,7 @@ export default function InstructorSection() {
         {/* Bottom SEO Rich Text (subtle, readable) */}
         <div className="mt-10 text-center">
           <p className="text-sm text-slate-600 max-w-5xl mx-auto">
-            Looking for the <strong>best software testing course with placement</strong> led by an{" "}
+            Looking for the <strong>comprehensive software testing course with placement</strong> led by an{" "}
             <strong>industry expert mentor</strong>? Our <strong>manual testing</strong> and{" "}
             <strong>automation testing</strong> program includes <strong>API testing with Postman</strong>,
             <strong> Selenium</strong>, real <strong>Agile projects</strong>, and <strong>interview preparation</strong>—designed to help you

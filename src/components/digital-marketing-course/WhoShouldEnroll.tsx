@@ -115,7 +115,7 @@ export default function WhoShouldEnrollSection() {
                         Who Should Join Our <span className="text-green-700">Digital Marketing Course</span>?
                     </h2>
                     <p className="mt-4 text-sm sm:text-base text-slate-600">
-                        Our program is the best <strong>Digital Marketing training in Mumbai</strong> for anyone looking to scale their career. Ideal for <strong>freshers, working professionals, and entrepreneurs</strong> who want to master SEO, SEM, and Analytics.
+                        Our program is comprehensive <strong>Digital Marketing training in Mumbai</strong> for anyone looking to scale their career. Ideal for <strong>freshers, working professionals, and entrepreneurs</strong> who want to master SEO, SEM, and Analytics.
                     </p>
 
                     <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold">

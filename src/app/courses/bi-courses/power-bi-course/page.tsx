@@ -19,8 +19,8 @@ import { generateMetadata } from "@/lib/metadata-generator";
 import { generatePowerBICoursePageSchema } from "@/lib/schema-generators";
 import { POWER_BI_FAQS, POWER_BI_REVIEW_DATA } from "@/data/powerBiData";
 
-const pageTitle = "Best Power BI Course in Mumbai & Thane | Master Data Analytics with 100% Placement";
-const pageDescription = "Enroll in the best Power BI course in Mumbai & Thane. Master Power BI Desktop, DAX, and Service in 20 hours. Get 100% job placement assistance and become a certified Power BI Developer.";
+const pageTitle = "Comprehensive Power BI Course in Mumbai & Thane | Master Data Analytics with Placement";
+const pageDescription = "Enroll in the comprehensive Power BI course in Mumbai & Thane. Master Power BI Desktop, DAX, and Service in 20 hours. Get job placement assistance and become a certified Power BI Developer.";
 const pageKeywords = [
     "Power BI Course in Mumbai",
     "Power BI Course in Thane",
@@ -49,7 +49,7 @@ const PowerBIPage: React.FC = () => {
     const schemas = generatePowerBICoursePageSchema(
         {
             name: "Master Data Analytics & Visualization with Power BI",
-            description: "Enroll in the best Power BI course. Master DAX, Data Modeling, and Visualization in 20 hours. Get 100% job assistance and global certification.",
+            description: "Enroll in the comprehensive Power BI course. Master DAX, Data Modeling, and Visualization in 20 hours. Get job assistance and global certification.",
             url: '/courses/bi-courses/power-bi-course',
             slug: "power-bi-course",
             price: 20000,

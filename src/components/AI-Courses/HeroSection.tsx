@@ -92,7 +92,7 @@ const DesktopHeroContent: React.FC<{
                 className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-slate-100 rounded-full px-3 py-1 text-sm font-medium text-slate-700 shadow-sm"
             >
                 <Sparkles className="h-4 w-4 text-amber-500" />
-                <span>India's #1 Artificial Intelligence Training Institute</span>
+                <span>India's comprehensive Artificial Intelligence Training Institute</span>
             </motion.div>
 
             {/* Headline + micro graphic */}
@@ -183,8 +183,8 @@ const DesktopHeroContent: React.FC<{
                                 <Award className="h-5 w-5 text-white" />
                             </div>
                             <div className="text-center lg:text-left">
-                                <div className="text-xl font-bold text-slate-900">15+ Years</div>
-                                <div className="text-xs text-slate-600">Industry Experience</div>
+                                <div className="text-xl font-bold text-slate-900">Industry-Led</div>
+                                <div className="text-xs text-slate-600">Expert Mentors</div>
                             </div>
                         </div>
                     </motion.div>
@@ -206,14 +206,14 @@ const MobileFeatureList: React.FC<{ onOpenBrochure: () => void; onOpenVideo: () 
         <div className="grid grid-cols-2 gap-3 text-sm text-slate-700">
             <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-                <span className="font-semibold">5,000+ Students Placed</span>
+                <span className="font-semibold">425+ Verified Reviews</span>
             </div>
             <div className="flex items-center gap-2">
                 <span className="font-semibold">4.9/5 Student Rating</span>
             </div>
             <div className="flex items-center gap-2">
                 <Award className="h-4 w-4 text-indigo-600 flex-shrink-0" />
-                <span className="font-semibold">15+ Years Industry Experience</span>
+                <span className="font-semibold">Industry-Led Training</span>
             </div>
             <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
@@ -229,7 +229,7 @@ const MobileFeatureList: React.FC<{ onOpenBrochure: () => void; onOpenVideo: () 
             </div>
             <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-                <span className="font-semibold">100% Job Support</span>
+                <span className="font-semibold">Job Support</span>
             </div>
             <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
@@ -317,7 +317,7 @@ export default function HeroSection(): React.JSX.Element {
                         className="inline-flex items-center gap-2 bg-white border border-slate-100 rounded-full px-3 py-1 text-sm font-medium text-slate-700 shadow-sm mb-4"
                     >
                         <Sparkles className="h-4 w-4 text-amber-500" />
-                        <span>India's #1 Artificial Intelligence Training Institute</span>
+                        <span>India's comprehensive Artificial Intelligence Training Institute</span>
                     </div>
 
                     <h2

@@ -2,7 +2,7 @@ import { type QA } from "../types/faq";
 
 export const DATA_ENGINEERING_MASTERS_FAQS: QA[] = [
     {
-        question: "Why is Cinute Digital the best institute for data analytics with placement?",
+        question: "Why is Cinute Digital the comprehensive institute for data analytics with placement?",
         answer: "We offer India's only comprehensive Masters in Data Engineering that combines BI Data Analyst skills with core Big Data Engineering (Hadoop/Spark), ensuring you are ready for high-paying Software Engineer Jobs in Mumbai.",
         category: "General",
     },

@@ -47,7 +47,7 @@ export default function AdvancedDataAnalyticsPage() {
   const schemas = generateDataAnalyticsCoursePageSchema(
     {
       name: "Advanced Data Analytics Hero Program: Full Course in Mumbai",
-      description: "Master the data analyst full course in Mumbai with 110 hours of intensive training. Advanced data analytics, Python, SQL & Power BI with 100% job placement.",
+      description: "Master the data analyst full course in Mumbai with 110 hours of intensive training. Advanced data analytics, Python, SQL & Power BI with job placement.",
       url: '/courses/bi-courses/data-analytics',
       slug: "data-analytics",
       price: 45000,

@@ -36,7 +36,7 @@ export default function PromptGenPage() {
   const schemas = generatePromptEngineeringCoursePageSchema(
     {
       name: "Prompt Engineering with Generative AI Course",
-      description: "20-Hour Hero Program in Prompt Engineering with Gen AI. Hands-on projects, 100% job assistance, AAA global certificates.",
+      description: "20-Hour Hero Program in Prompt Engineering with Gen AI. Hands-on projects, job assistance, AAA global certificates.",
       url: '/courses/artificial-intelligence-courses/prompt-engineering-course',
       slug: "prompt-engineering-course",
       price: 25000,

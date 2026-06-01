@@ -165,7 +165,7 @@ export default function WhoShouldEnroll() {
                                 </span>
                                 <div>
                                     <p className="font-semibold text-slate-900">Expert Training</p>
-                                    <p className="text-sm text-slate-600">Learn from industry veterans with 10+ years experience</p>
+                                    <p className="text-sm text-slate-600">Learn from industry veterans with extensive experience</p>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3">
@@ -192,7 +192,7 @@ export default function WhoShouldEnroll() {
                                 </span>
                                 <div>
                                     <p className="font-semibold text-slate-900">Placement Support</p>
-                                    <p className="text-sm text-slate-600">Resume building, interview prep, and 100% job assistance</p>
+                                    <p className="text-sm text-slate-600">Resume building, interview prep, and job assistance</p>
                                 </div>
                             </div>
                         </div>

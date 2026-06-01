@@ -75,7 +75,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
     "AI ML course India",
     "automation testing institute",
     "job-ready programs",
-    "placement guarantee",
+    "placement assistance",
     "industry mentors",
     "live projects training",
     "ISTQB certified training",

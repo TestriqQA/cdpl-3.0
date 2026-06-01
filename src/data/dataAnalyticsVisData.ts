@@ -28,7 +28,7 @@ export const DATA_ANALYTICS_VIS_FAQS: QA[] = [
     },
     {
         question: "Is job assistance provided?",
-        answer: "Yes, Cinute Digital provides 100% job assistance including resume building, interview preparation, and placement support.",
+        answer: "Yes, Cinute Digital provides job assistance including resume building, interview preparation, and placement support.",
         category: "Career",
     },
     {

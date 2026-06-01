@@ -92,15 +92,15 @@ export default function TrustSection() {
                 <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3">
                     <StatCard
                         icon={LuUsers}
-                        value="5,000+"
-                        label="Students Trained"
-                        caption="Alumni across India & overseas"
+                        value="4.9/5"
+                        label="Learner Rating"
+                        caption="From 425+ verified reviews"
                         accent="indigo"
                     />
                     <StatCard
                         icon={LuBriefcase}
-                        value="92%"
-                        label="Placement Rate"
+                        value="Live"
+                        label="Mentor-Led Classes"
                         caption="Dedicated Career Services & referrals"
                         accent="emerald"
                     />

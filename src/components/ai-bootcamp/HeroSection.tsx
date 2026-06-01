@@ -91,7 +91,7 @@ export default function HeroSection() {
                                 </span>
                             </div>
                             <span className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white">
-                                #1 Mumbai&apos;s Premium Training Institute
+                                Mumbai&apos;s Premium Training Institute
                             </span>
                         </div>
 

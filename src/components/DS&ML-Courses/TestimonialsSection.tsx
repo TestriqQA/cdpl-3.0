@@ -77,8 +77,8 @@ export default function TestimonialsSection() {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
                     <StatCard icon={CheckCircle} value="3,200+" label="Graduates Trained" delay={0.1} />
                     <StatCard icon={TrendingUp} value="45%" label="Avg. Salary Increase" delay={0.2} />
-                    <StatCard icon={Briefcase} value="92%" label="Placement Rate" delay={0.3} />
-                    <StatCard icon={Award} value="600+" label="Hiring Partners" delay={0.4} />
+                    <StatCard icon={Briefcase} value="Live" label="Mentor-Led Classes" delay={0.3} />
+                    <StatCard icon={Award} value="425+" label="Verified Reviews" delay={0.4} />
                 </div>
 
                 <ReviewsMarquee />

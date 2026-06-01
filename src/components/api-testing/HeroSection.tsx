@@ -104,7 +104,7 @@ export default function HeroSection() {
                             <span className="h-3 w-px bg-slate-300" />
                             <span className="inline-flex items-center gap-1">
                                 <Users className="h-4 w-4 text-indigo-600" />
-                                3,000+ Learners
+                                Mentor-Led Cohorts
                             </span>
                             <span className="h-3 w-px bg-slate-300" />
                             <span className="inline-flex items-center gap-1">
@@ -133,7 +133,7 @@ export default function HeroSection() {
                             transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
                         >
                             <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                                Build high-demand skills in <strong>API automation testing</strong>, <strong>REST API examples</strong>, and <strong>security validation</strong>. Learn <strong>how to test API</strong> endpoints efficiently with <strong>Postman</strong>, ensure robust backend performance, and secure your career with our <strong>100% placement support</strong>.
+                                Build high-demand skills in <strong>API automation testing</strong>, <strong>REST API examples</strong>, and <strong>security validation</strong>. Learn <strong>how to test API</strong> endpoints efficiently with <strong>Postman</strong>, ensure robust backend performance, and secure your career with our <strong>placement support</strong>.
                             </p>
                             <p className="mt-3 max-w-3xl text-sm text-slate-600">
                                 Topics include Postman Collections & Newman, REST principles, GraphQL queries & mutations, Swagger/OpenAPI, OAuth2 & JWT, data-driven tests, Jenkins/GitHub Actions,

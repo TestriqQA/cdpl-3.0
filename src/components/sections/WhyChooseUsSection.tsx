@@ -57,13 +57,13 @@ const WhyChooseUsSection = () => {
     {
       icon: <Award className="w-8 h-8" />,
       title: "Industry-Expert Trainers",
-      description: "Learn from professionals with 10+ years of real-world experience in top MNCs and product companies.",
+      description: "Learn from professionals with extensive real-world experience in top MNCs and product companies.",
       color: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-50",
     },
     {
       icon: <Briefcase className="w-8 h-8" />,
-      title: "100% Placement Support",
+      title: "Placement Support",
       description: "Dedicated placement cell with unlimited interview opportunities until you land your dream job.",
       color: "from-green-500 to-green-600",
       bgColor: "bg-green-50",
@@ -106,7 +106,7 @@ const WhyChooseUsSection = () => {
     {
       icon: <HeartHandshake className="w-8 h-8" />,
       title: "Strong Alumni Network",
-      description: "Join a community of 5,000+ successful alumni working in top companies across the globe.",
+      description: "Join a community of successful alumni working in top companies across the globe.",
       color: "from-rose-500 to-rose-600",
       bgColor: "bg-rose-50",
     },

@@ -32,13 +32,13 @@ const HeroSection: React.FC = () => {
         { icon: <CheckCircle size={24} />, title: 'Real-World Projects' },
         { icon: <Users size={24} />, title: 'Expert Instructors' },
         { icon: <Award size={24} />, title: 'Global Certification' },
-        { icon: <Briefcase size={24} />, title: '100% Job Assistance' },
+        { icon: <Briefcase size={24} />, title: 'Dedicated Job Assistance' },
     ];
 
     const stats = [
         { icon: <Star size={20} className="text-yellow-500" />, text: '4.8/5 Average Rating' },
-        { icon: <Users size={20} className="text-blue-500" />, text: '500+ Successful Graduates' },
-        { icon: <TrendingUp size={20} className="text-green-500" />, text: '14+ Years Industry Experience' },
+        { icon: <Users size={20} className="text-blue-500" />, text: 'Hands-On Projects' },
+        { icon: <TrendingUp size={20} className="text-green-500" />, text: 'Industry-Led Training' },
     ];
 
     const breadcrumbs = [
@@ -92,7 +92,7 @@ const HeroSection: React.FC = () => {
                         </div>
 
                         <h1 className="md:mt-0 max-w-3xl text-3xl md:text-4xl xl:text-5xl font-extrabold leading-snug md:leading-tight tracking-tight text-slate-900 break-words">
-                            #1 <span className="text-blue-600">Power BI Course</span> in Mumbai & Thane with <span className="text-brand">100% Placement</span>
+                            <span className="text-blue-600">Power BI Course</span> in Mumbai & Thane with <span className="text-brand">Placement</span>
                         </h1>
 
                         <div className="md:hidden mt-6 mb-6 min-h-[500px]">

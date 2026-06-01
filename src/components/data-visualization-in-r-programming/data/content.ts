@@ -7,7 +7,7 @@ const SEO_KEYWORDS = "Machine Learning with R, Data Visualization R, R Programmi
 // Enhanced and SEO-optimized content based on the extracted data
 export const content: ContentData = {
   course_title: "Machine Learning and Data Visualization using R Programming",
-  seo_description: "Master Machine Learning algorithms and advanced Data Visualization using R Programming. Our 20-hour Master Program offers 80% practical training, real-time projects, and 100% job assistance for a high-growth career in Data Science.",
+  seo_description: "Master Machine Learning algorithms and advanced Data Visualization using R Programming. Our 20-hour Master Program offers 80% practical training, real-time projects, and job assistance for a high-growth career in Data Science.",
   seo_keywords: SEO_KEYWORDS,
   
   hero_section: {
@@ -42,9 +42,9 @@ export const content: ContentData = {
     points: [
       { icon: "Code", title: "80:20 Practical Approach", description: "Our curriculum is structured with 80% practical application and 20% theory for industry-rich experience." },
       { icon: "Rocket", title: "Real-Time Projects", description: "Gain hands-on experience with real-world projects and case studies across diverse domains." },
-      { icon: "UserCheck", title: "Expert Instructors", description: "Learn from seasoned data analysts and industry veterans with 14+ years of expertise." },
+      { icon: "UserCheck", title: "Expert Instructors", description: "Learn from seasoned data analysts and industry veterans with extensive expertise." },
       { icon: "Globe", title: "Global Certification", description: "Receive an internationally recognized certificate from CDPL with a unique authorization QR code." },
-      { icon: "Briefcase", title: "100% Job Assistance", description: "Comprehensive career support including resume building, interview preparation, and placement drives." },
+      { icon: "Briefcase", title: "Job Assistance", description: "Comprehensive career support including resume building, interview preparation, and placement drives." },
       { icon: "MessageSquare", title: "1:1 Doubt Solving", description: "Personalized 1:1 doubt-solving sessions ensure every concept is clearly understood." }
     ]
   },
@@ -163,7 +163,7 @@ export const content: ContentData = {
       { q: "What is the mode of learning?", a: "We offer a Hybrid (CLASSROOM + ONLINE) training pattern. Students can attend live sessions in the classroom or online, and live recording sessions are also provided for flexibility." },
       { q: "Do I need prior programming experience?", a: "The course is ideal for learners with basic R or general programming skills. We build on these fundamentals to teach advanced ML concepts." },
       { q: "What certification will I receive?", a: "You will receive an internationally recognized certificate from Cinute Digital with a unique authorization QR code for validation." },
-      { q: "Is job placement assistance provided?", a: "Yes, we provide 100% Job Assistance, which includes comprehensive career support like resume building, interview preparation, and access to placement drives." },
+      { q: "Is job placement assistance provided?", a: "Yes, we provide Job Assistance, which includes comprehensive career support like resume building, interview preparation, and access to placement drives." },
       { q: "What are the key R packages covered?", a: "The course focuses on core R, RStudio, ggplot2 for visualization, and the Caret package for machine learning, along with built-in functions like lm() and glm()." }
     ]
   },
@@ -176,7 +176,7 @@ export const content: ContentData = {
       { step: 3, title: "Extensive Training in R Tools & Technologies", description: "Deep dive into R, RStudio, ggplot2, and core ML algorithms through live, interactive sessions." },
       { step: 4, title: "Projects and Assignments", description: "Apply your knowledge to real-time, industry-relevant projects to solidify your skills and build your portfolio." },
       { step: 5, title: "Job Readiness", description: "Undergo resume building, profile optimization, and intensive interview preparation with industry experts." },
-      { step: 6, title: "Become a Market-Ready Machine Learning Engineer", description: "Launch your career with 100% job assistance, securing your dream role in the high-growth field of Data Science." }
+      { step: 6, title: "Become a Market-Ready Machine Learning Engineer", description: "Launch your career with job assistance, securing your dream role in the high-growth field of Data Science." }
     ]
   }
 };

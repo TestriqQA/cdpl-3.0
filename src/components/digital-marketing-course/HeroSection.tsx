@@ -116,7 +116,7 @@ export default function HeroSection() {
             <div className="hidden mb-5 lg:inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1.5 text-xs font-medium text-slate-700 backdrop-blur">
               <span className="inline-flex items-center gap-1">
                 <Star className="h-4 w-4 fill-current text-yellow-500" />
-                4.9/5 Rating (Top Rated)
+                4.9/5 Rating (Professional)
               </span>
               <span className="h-3 w-px bg-slate-300" />
               <span className="inline-flex items-center gap-1">
@@ -126,7 +126,7 @@ export default function HeroSection() {
               <span className="h-3 w-px bg-slate-300" />
               <span className="inline-flex items-center gap-1">
                 <Globe2 className="h-4 w-4 text-emerald-600" />
-                #1 Training in Mumbai & Thane
+                Comprehensive Training in Mumbai & Thane
               </span>
             </div>
 
@@ -136,7 +136,7 @@ export default function HeroSection() {
               className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
             >
               Best <span className="text-green-700">Digital Marketing Course</span> in Mumbai with{' '}
-              <span className="text-green-700">100% Placement</span>
+              <span className="text-green-700">Placement</span>
             </h1>
 
             {/* Mobile form just below H1 */}
@@ -149,7 +149,7 @@ export default function HeroSection() {
               Master <strong>AI-Driven SEO</strong>, <strong>Performance Marketing (Google Ads)</strong>, <strong>SMM</strong>, and <strong>GA4 Analytics</strong>. Launch your career with the most practical Digital Marketing training in Mumbai designed for 2025-2026 job market growth.
             </p>
             <p className="mt-3 max-w-3xl text-sm text-slate-600">
-              Get hands-on experience with real budgets, live audits, and 15+ industry tools. 100% Job Assistance for freshers, professionals, and entrepreneurs seeking digital growth.
+              Get hands-on experience with real budgets, live audits, and 15+ industry tools. Job Assistance for freshers, professionals, and entrepreneurs seeking digital growth.
             </p>
 
             {/* CTAs */}
@@ -184,7 +184,7 @@ export default function HeroSection() {
             <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-600" />
-                Guaranteed Placement Assistance & Interview Prep
+                Placement Assistance & Interview Prep
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 text-sky-600" />

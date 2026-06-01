@@ -87,7 +87,7 @@ export default function HeroSection() {
             </div>
 
             <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-              Master the <strong>data science full course</strong> in Mumbai with 200 hours of intensive training. From <strong>advanced data science</strong> to cutting-edge <strong>machine learning</strong>, we prepare you for high-paying roles with <strong>Guaranteed Interviews</strong> and 10+ real-time projects.
+              Master the <strong>data science full course</strong> in Mumbai with 200 hours of intensive training. From <strong>advanced data science</strong> to cutting-edge <strong>machine learning</strong>, we prepare you for high-paying roles with <strong>Interviews</strong> and 10+ real-time projects.
             </p>
             <p className="mt-2 max-w-3xl text-sm text-slate-600">
               Become a <strong>certified data scientist</strong> with mastery in Python, SQL, Statistics, Deep Learning, and AI. Our <strong>data science training</strong> in Mumbai/Thane focuses on 80% practical labs and industry-ready Model Deployments.
@@ -147,7 +147,7 @@ export default function HeroSection() {
             {/* Trust strip */}
             <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-[11px] font-semibold text-slate-700 backdrop-blur">
               <span className="text-yellow-600">★★★★★</span>
-              <span>#1 Mumbai’s Premium Training Institute</span>
+              <span>Mumbai’s Premium Training Institute</span>
             </div>
           </div>
 

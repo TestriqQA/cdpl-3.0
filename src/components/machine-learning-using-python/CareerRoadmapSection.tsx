@@ -271,7 +271,7 @@ export default function CareerRoadmapSection() {
           <p className="text-lg mb-4">Complete Your Journey In</p>
           <p className="text-5xl md:text-6xl font-bold mb-4">45 Hours</p>
           <p className="text-blue-100 max-w-2xl mx-auto">
-            Structured training spread across 7 comprehensive modules with real-world projects, expert mentorship, and guaranteed job support.
+            Structured training spread across 7 comprehensive modules with real-world projects, expert mentorship, and job support.
           </p>
           <div className="mt-8">
             <button

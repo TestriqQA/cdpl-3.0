@@ -33,7 +33,7 @@ export const ADVANCE_MANUAL_AUTOMATION_FAQS: QA[] = [
     },
     {
         question: "Is placement guaranteed after learning what is selenium testing?",
-        answer: "We provide 100% job assistance: resume reviews, mock interviews for web testing interview questions, referrals, and portfolio projects on test website for automation.",
+        answer: "We provide job assistance: resume reviews, mock interviews for web testing interview questions, referrals, and portfolio projects on test website for automation.",
         category: "Career",
     },
     {

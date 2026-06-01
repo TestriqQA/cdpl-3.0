@@ -102,7 +102,7 @@ export default function CtaSection() {
             Ready to Master <span className="text-DS">Advanced Data Science?</span>
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
-            Enroll today and get <strong>100% job assistance</strong>,{" "}
+            Enroll today and get <strong>job assistance</strong>,{" "}
             <strong>mentor-led projects</strong>, and a <strong>verifiable global certificate</strong>.
           </p>
           {/* SEO helper (visually hidden) */}

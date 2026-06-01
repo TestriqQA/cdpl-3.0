@@ -15,7 +15,7 @@ import { biFaqs } from '@/components/BI-Courses/faqData';
 
 export const metadata: Metadata = generateStaticPageMetadata({
     title: 'Business Intelligence Courses | Power BI, Tableau & Data Viz',
-    description: 'Explore our top-rated Business Intelligence courses. Master Power BI, Tableau, and data visualization skills with hands-on training and placement support.',
+    description: 'Explore our professional Business Intelligence courses. Master Power BI, Tableau, and data visualization skills with hands-on training and placement support.',
     url: '/courses/bi-courses',
     image: "/og-images/courses-bi-courses-og.webp",
     keywords: ['business intelligence course', 'power bi training', 'tableau course', 'data visualization', 'data analysis'],

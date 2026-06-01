@@ -69,8 +69,8 @@ const HeroSection = () => {
                   <CheckCircle className="w-4 h-4 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">100% Placement Support</h3>
-                  <p className="text-sm text-gray-600">Guaranteed interview opportunity</p>
+                  <h3 className="font-semibold text-gray-900">Placement Support</h3>
+                  <p className="text-sm text-gray-600">Interview opportunity</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">

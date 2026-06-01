@@ -24,7 +24,7 @@ export const metadata = generateMetadata({
     title: "Data Engineering & BI Master Program in Mumbai | CDPL",
     description: "Master program in BI & big data engineering — SQL, Spark, Power BI, Tableau, Python & data pipelines with hands-on projects and placement assistance.",
     keywords: [
-        "best institute for data analytics",
+        "comprehensive institute for data analytics",
         "sql data analyst",
         "bi and big data engineering",
         "iim business analytics",
@@ -49,7 +49,7 @@ const DataAnalyticsMasterProgramPage: React.FC = () => {
     const schemas = generateMastersDataEngineeringCoursePageSchema(
         {
             name: "Master Program in Data Engineering: BI & Big Data Engineering Course",
-            description: "155-hour intensive master program in Mumbai covering SQL for data analytics, BI tools, and Big Data engineering with Spark and Hadoop. 100% placement.",
+            description: "155-hour intensive master program in Mumbai covering SQL for data analytics, BI tools, and Big Data engineering with Spark and Hadoop. placement.",
             url: '/courses/bi-courses/masters-in-data-engineering',
             slug: "masters-in-data-engineering",
             price: 45000,

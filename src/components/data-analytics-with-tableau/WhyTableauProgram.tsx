@@ -62,7 +62,7 @@ export default function WhyTableauProgram() {
                         Why Choose Our Tableau Course?
                     </h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Experience industry-leading training with hands-on projects, expert mentorship, and guaranteed job support
+                        Experience industry-leading training with hands-on projects, expert mentorship, and job support
                     </p>
                 </div>
 
@@ -108,15 +108,15 @@ export default function WhyTableauProgram() {
                             <div className="text-4xl mb-3">💼</div>
                             <h4 className="font-bold text-gray-900 mb-2">Job Placement</h4>
                             <p className="text-sm text-gray-600">
-                                100% job assistance with top companies
+                                job assistance with top companies
                             </p>
                         </div>
 
                         <div className="flex flex-col items-center text-center">
                             <div className="text-4xl mb-3">🏆</div>
-                            <h4 className="font-bold text-gray-900 mb-2">Industry Experience</h4>
+                            <h4 className="font-bold text-gray-900 mb-2">Expert Mentors</h4>
                             <p className="text-sm text-gray-600">
-                                5+ years of expertise in IT training
+                                extensive expertise in IT training
                             </p>
                         </div>
 

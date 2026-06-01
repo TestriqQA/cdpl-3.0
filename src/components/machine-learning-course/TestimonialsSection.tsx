@@ -124,7 +124,7 @@ export default function TestimonialsSection() {
         <div className="mt-8 text-center">
           <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-[11px] font-semibold text-slate-700 backdrop-blur">
             <span className="text-yellow-600">★★★★★</span>
-            <span>Top-rated ML & Data Science Program in Mumbai</span>
+            <span>Professional ML & Data Science Program in Mumbai</span>
           </div>
         </div>
       </div>

@@ -82,7 +82,7 @@ export default function ReviewsHeroSection() {
               </nav>
               <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-100/50 text-green-700 text-xs font-bold border border-green-200">
                 <Sparkles className="w-3 h-3" />
-                Top Rated 2024
+                Professional 2024
               </span>
             </div>
 
@@ -195,7 +195,7 @@ export default function ReviewsHeroSection() {
               </div>
               <div>
                 <div className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">Impact</div>
-                <div className="text-xs font-bold text-slate-800">Top 1% Career Growth</div>
+                <div className="text-xs font-bold text-slate-800">Strong Career Growth</div>
               </div>
             </motion.div>
 

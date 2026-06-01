@@ -8,7 +8,7 @@ export const JAVA_FAQS: QA[] = [
     },
     {
         question: "Will I get placement support?",
-        answer: "Yes. We provide 100% job assistance—resume building, mock interviews, profile optimization, and referrals where applicable. You’ll graduate with portfolio projects that showcase production-style Java, REST APIs, and Cloud.",
+        answer: "Yes. We provide job assistance—resume building, mock interviews, profile optimization, and referrals where applicable. You’ll graduate with portfolio projects that showcase production-style Java, REST APIs, and Cloud.",
         category: "Career",
     },
     {

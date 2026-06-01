@@ -41,7 +41,7 @@ export default function ComprehensiveDSAI() {
   const schemas = generateAICoursePageSchema(
     {
       name: "Comprehensive Data Science & AI Master Program",
-      description: "255-Hour Master Program in Comprehensive Data Science and AI. Hands-on projects, 100% job assistance, global certificates.",
+      description: "255-Hour Master Program in Comprehensive Data Science and AI. Hands-on projects, job assistance, global certificates.",
       url: '/courses/ds-ml-courses/ai-course',
       slug: "ai-course",
       price: 60000,

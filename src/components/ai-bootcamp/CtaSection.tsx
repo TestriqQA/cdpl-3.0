@@ -122,7 +122,7 @@ export default function CtaSection() {
                                 "Real-world campaign strategy for performance marketing and lead generation",
                                 "Lifetime access to recorded sessions and updated course materials",
                                 "Internationally recognized certification with verification QR code",
-                                "100% job assistance with resume building and interview preparation",
+                                "job assistance with resume building and interview preparation",
                                 "1:1 doubt-solving and personalized career counseling",
                                 "Portfolio-ready digital marketing projects and campaign case studies",
                                 "Access to an active alumni and hiring partner network",

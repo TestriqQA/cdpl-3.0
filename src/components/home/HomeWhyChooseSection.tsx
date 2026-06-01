@@ -68,7 +68,7 @@ export default function HomeWhyChooseSection() {
     {
       icon: Award,
       title: 'Industry Expert Trainers',
-      description: 'Learn from professionals with 10+ years of experience at top companies like Google, Microsoft, and Amazon.',
+      description: 'Learn from professionals with extensive experience at top companies like Google, Microsoft, and Amazon.',
     },
     {
       icon: Users,
@@ -77,8 +77,8 @@ export default function HomeWhyChooseSection() {
     },
     {
       icon: Briefcase,
-      title: '100% Job Assistance',
-      description: 'Guaranteed interview opportunities with our 50+ hiring partners and dedicated placement support.',
+      title: 'Job Assistance',
+      description: 'Interview opportunities with our our hiring partner network and dedicated placement support.',
     },
     {
       icon: Clock,
@@ -124,7 +124,7 @@ export default function HomeWhyChooseSection() {
             Why <span className="text-brand">Choose CDPL</span> for Your Future?
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto font-light">
-            We are committed to transforming your career with a unique blend of expert-led training, personalized support, and guaranteed placement assistance.
+            We are committed to transforming your career with a unique blend of expert-led training, personalized support, and placement assistance.
           </p>
         </motion.div>
 

@@ -42,7 +42,7 @@ export const POWER_BI_FAQS: FaqItem[] = [
     {
         question: "What is the average salary for a Power BI Developer in Mumbai?",
         answer: "A certified Power BI Developer in Mumbai can expect a starting salary of ₹4 LPA to ₹8 LPA. With 2+ years of experience, packages often range from ₹10 LPA to ₹18 LPA in top IT firms.",
-        details: ["100% placement assistance", "Resume and LinkedIn optimization"],
+        details: ["placement assistance", "Resume and LinkedIn optimization"],
         emoji: "💰",
         color: "pink",
         category: "Salary",

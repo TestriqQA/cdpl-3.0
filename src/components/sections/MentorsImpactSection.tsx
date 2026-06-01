@@ -117,7 +117,7 @@ export default function MentorsImpactSection({ mentors }: { mentors: Mentor[] })
         {/* Header */}
         <header className="mb-5 sm:mb-6">
           <div className="flex flex-wrap items-center gap-2">
-            {["Top-rated Industry Experts", "1:1 Live Mentorship", "Career-Focused Guidance"].map((b) => (
+            {["Professional Industry Experts", "1:1 Live Mentorship", "Career-Focused Guidance"].map((b) => (
               <span
                 key={b}
                 className="rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold tracking-wide text-zinc-700 shadow-sm"
@@ -271,7 +271,7 @@ export default function MentorsImpactSection({ mentors }: { mentors: Mentor[] })
 
         <div className="mt-8 flex snap-x gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {[
-            "Trusted by 5,000+ learners",
+            "Trusted by learners across India",
             "Outcome-driven mentorship",
             "Placement support & referrals",
             "Live projects & code reviews",

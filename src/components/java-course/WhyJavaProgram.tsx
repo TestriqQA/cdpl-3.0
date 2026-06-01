@@ -73,7 +73,7 @@ const PILLS: Pill[] = [
 ];
 
 export default function WhyJavaProgram() {
-  const title = "Your Gateway to Top 1% Java Developer";
+  const title = "Your Gateway to Job-Ready Java Developer";
   const subtitle =
     "Job-ready Java training covering Core Java, Spring Boot, REST APIs, Microservices, SQL, and Cloud fundamentals-designed for high-growth engineering careers.";
   const keywords =
@@ -104,7 +104,7 @@ export default function WhyJavaProgram() {
           >
             Your Gateway to{" "}
             <span className="text-FS">
-              Top 1% Java Developer
+              Job-Ready Java Developer
             </span>
           </h2>
           <p className="mt-6 text-base md:text-lg leading-relaxed text-gray-700">

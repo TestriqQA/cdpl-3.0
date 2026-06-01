@@ -13,7 +13,7 @@ const highlights = [
   { icon: "⏱️", label: "155 Hours of Structured Training" },
   { icon: "🎖️", label: "8 Industry-Recognized Certifications" },
   { icon: "📂", label: "10+ Real-World BI & Big Data Projects" },
-  { icon: "💼", label: "Guaranteed Job Assistance & Placement Support" },
+  { icon: "💼", label: "Job Assistance & Placement Support" },
 ];
 
 export default function HeroSection() {
@@ -93,7 +93,7 @@ export default function HeroSection() {
 
             {/* Subheading */}
             <p className="mt-4 max-w-3xl text-center text-base leading-relaxed text-slate-600 md:text-left md:text-lg">
-              Join the best institute for data analytics. Become a high-paid SQL Data Analyst or Big Data Engineer. Learn BI and Big Data Engineering, SQL for data analytics, and cloud pipelines with 100% job support.
+              Join the comprehensive institute for data analytics. Become a high-paid SQL Data Analyst or Big Data Engineer. Learn BI and Big Data Engineering, SQL for data analytics, and cloud pipelines with job support.
             </p>
 
             {/* SEO keywords line */}

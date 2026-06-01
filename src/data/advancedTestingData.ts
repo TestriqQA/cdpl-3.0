@@ -2,8 +2,8 @@ import { type QA } from "../types/faq";
 
 export const ADVANCED_TESTING_FAQS: QA[] = [
     {
-        question: "What makes this the best selenium course near me in Mumbai/Thane?",
-        answer: "Our Advanced Software Testing course in Mumbai/Thane offers 80% practical training, ISTQB certification prep, and 100% placement support, unlike a basic selenium course free online.",
+        question: "What makes this the comprehensive selenium course near me in Mumbai/Thane?",
+        answer: "Our Advanced Software Testing course in Mumbai/Thane offers 80% practical training, ISTQB certification prep, and placement support, unlike a basic selenium course free online.",
         category: "General",
     },
     {
@@ -13,7 +13,7 @@ export const ADVANCED_TESTING_FAQS: QA[] = [
     },
     {
         question: "How does this differ from a free selenium course?",
-        answer: "A free selenium course often lacks structured learning, live projects, and mentor support. Our paid program offers a complete sdet training path with job guarantee assistance.",
+        answer: "A free selenium course often lacks structured learning, live projects, and mentor support. Our paid program offers a complete sdet training path with job assistance.",
         category: "General",
     },
     {

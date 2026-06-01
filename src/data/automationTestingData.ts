@@ -18,7 +18,7 @@ export const AUTOMATION_TESTING_FAQS: QA[] = [
     },
     {
         question: 'Placement?',
-        answer: '100% job assistance: resume revamp, interview drills, LinkedIn optimization, and FAANG-style problem practice.',
+        answer: 'job assistance: resume revamp, interview drills, LinkedIn optimization, and FAANG-style problem practice.',
         category: 'Careers',
     },
 ];

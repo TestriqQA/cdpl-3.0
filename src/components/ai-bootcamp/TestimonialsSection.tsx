@@ -43,13 +43,13 @@ export default async function TestimonialsSection() {
                             },
                             {
                                 icon: "👨‍🏫",
-                                title: "Expert Mentors with 14+ Years Experience",
+                                title: "Expert Mentors with Deep Industry Experience",
                                 description:
                                     "Learn from professionals who actively work in SEO, Google Ads, Meta Ads, and performance marketing.",
                             },
                             {
                                 icon: "💼",
-                                title: "100% Job & Placement Assistance",
+                                title: "Job & Placement Assistance",
                                 description:
                                     "Dedicated career support team for resume building, LinkedIn optimization, interview prep, and job referrals.",
                             },
@@ -79,7 +79,7 @@ export default async function TestimonialsSection() {
                         <em>performance marketing course</em>,{" "}
                         <em>SEO and social media marketing training</em>,{" "}
                         <em>digital marketing course with placement</em>,{" "}
-                        <em>best digital marketing institute with reviews</em>.
+                        <em>comprehensive digital marketing institute with reviews</em>.
                     </p>
                 </div>
 

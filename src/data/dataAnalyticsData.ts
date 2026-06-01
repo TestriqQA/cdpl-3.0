@@ -8,7 +8,7 @@ export const DATA_ANALYTICS_FAQS: QA[] = [
     },
     {
         question: "What makes the 'Data Analytics Hero Program' different?",
-        answer: "Unlike basic certifications, our advanced data analytics training includes 110+ hours of training, Power BI mastery, and guaranteed interviews with top MNCs in Mumbai and Thane.",
+        answer: "Unlike basic certifications, our advanced data analytics training includes 110+ hours of training, Power BI mastery, and interviews with top MNCs in Mumbai and Thane.",
         category: "Program Details",
     },
     {

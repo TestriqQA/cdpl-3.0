@@ -44,7 +44,7 @@ const MobileFeatureList: React.FC<MobileFeatureListProps> = ({ onOpenBrochure, o
     <div className="grid grid-cols-2 gap-3 text-sm text-slate-700">
       <div className="flex items-center gap-2">
         <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-        <span className="font-semibold">5,000+ Students Placed</span>
+        <span className="font-semibold">425+ Verified Reviews</span>
       </div>
       <div className="flex items-center gap-2">
         <Star className="h-4 w-4 text-orange-500 fill-orange-500 flex-shrink-0" />
@@ -52,7 +52,7 @@ const MobileFeatureList: React.FC<MobileFeatureListProps> = ({ onOpenBrochure, o
       </div>
       <div className="flex items-center gap-2">
         <Award className="h-4 w-4 text-indigo-600 flex-shrink-0" />
-        <span className="font-semibold">15+ Years Industry Experience</span>
+        <span className="font-semibold">Industry-Led Training</span>
       </div>
       <div className="flex items-center gap-2">
         <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
@@ -68,7 +68,7 @@ const MobileFeatureList: React.FC<MobileFeatureListProps> = ({ onOpenBrochure, o
       </div>
       <div className="flex items-center gap-2">
         <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-        <span className="font-semibold">100% Job Support with Interview Guarantee</span>
+        <span className="font-semibold">Job Support with Interview Prep</span>
       </div>
       <div className="flex items-center gap-2">
         <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
@@ -126,7 +126,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
     >
       <Sparkles className="h-3.5 w-3.5 text-indigo-500" aria-hidden="true" />
       <span className="text-[11px] sm:text-xs font-semibold text-indigo-700">
-        🏆 India&apos;s #1 Software Testing & Data Science Training Institute
+        🏆 India&apos;s comprehensive Software Testing & Data Science Training Institute
       </span>
     </div>
 
@@ -136,7 +136,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
       id="home-heading"
       className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
     >
-      Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span> with <span className="text-brand">100% Placement</span>
+      Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span> with <span className="text-brand">Placement</span>
     </h1>
 
     {/* Enhanced Subheadline */}
@@ -144,7 +144,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
     <p
       className="mt-5 text-[15px] sm:text-base md:text-lg leading-7 text-slate-700"
     >
-      Launch your tech career with industry-leading courses, live projects, and guaranteed job interviews. Join 5000+ successful graduates today.
+      Launch your tech career with industry-leading courses, live projects, and job interviews. Join our successful graduates today.
     </p>
 
     {/* Trust Indicators - 3 Cards */}
@@ -179,8 +179,8 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
           <Award className="h-5 w-5 text-white" />
         </div>
         <div>
-          <div className="text-xl font-bold text-slate-900">15+ Years</div>
-          <div className="text-xs text-slate-600">Industry Experience</div>
+          <div className="text-xl font-bold text-slate-900">Industry-Led</div>
+          <div className="text-xs text-slate-600">Expert Mentors</div>
         </div>
       </div>
     </div>
@@ -193,7 +193,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
         { icon: CheckCircle2, text: '100% Live Interactive Classes', color: 'text-green-600' },
         { icon: CheckCircle2, text: '90+ Real-World Projects', color: 'text-blue-600' },
         { icon: CheckCircle2, text: 'ISTQB & Industry Certifications', color: 'text-purple-600' },
-        { icon: CheckCircle2, text: '100% Job Support with Interview Guarantee', color: 'text-indigo-600' },
+        { icon: CheckCircle2, text: 'Job Support with Interview Prep', color: 'text-indigo-600' },
         { icon: CheckCircle2, text: 'Flexible Weekend & Weekday Batches', color: 'text-brand' },
         { icon: CheckCircle2, text: 'Lifetime Access to Course Materials', color: 'text-teal-600' },
       ].map((feature, index) => (
@@ -600,7 +600,7 @@ const HomeHeroSection: React.FC = () => {
             <p
               className="mt-1 mb-1.5 text-[15px] sm:text-base leading-7 text-slate-700"
             >
-              Launch your tech career with industry-leading courses, live projects, and guaranteed job interviews. Join 5000+ successful graduates today.
+              Launch your tech career with industry-leading courses, live projects, and job interviews. Join our successful graduates today.
             </p>
 
             {/* 4. Form Card */}

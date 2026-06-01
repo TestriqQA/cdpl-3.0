@@ -263,7 +263,7 @@ export default function HeroManualTesting() {
                             id="manual-testing-hero"
                             className="mt-3 md:mt-0 text-2xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
                         >
-                            <span className='text-ST'>Manual Testing Course</span> with 100% Placement –{" "}
+                            <span className='text-ST'>Manual Testing Course</span> with Placement –{" "}
                             <br className="hidden md:block" />Launch Your QA Career in 12 Weeks
                         </h1>
  
@@ -287,12 +287,12 @@ export default function HeroManualTesting() {
                                 <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
                                 <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
                                 <span className="ml-2 font-semibold">4.9/5</span>
-                                <span className="ml-1 text-slate-500">from 1,200+ reviews</span>
+                                <span className="ml-1 text-slate-500">from 425+ reviews</span>
                             </div>
                             <span className="hidden h-3 w-px bg-slate-300 md:inline-block" />
                             <div className="flex items-center gap-2 text-slate-800">
                                 <ShieldCheck className="h-5 w-5 text-emerald-600" />
-                                <span>5,000+ Alumni Placed</span>
+                                <span>425+ Verified Reviews</span>
                             </div>
                         </div>
  
@@ -334,7 +334,7 @@ export default function HeroManualTesting() {
                                 { color: "text-emerald-600", text: "12-Week Live Instructor-Led Program" },
                                 { color: "text-indigo-700", text: "ISTQB Foundation Certification Prep" },
                                 { color: "text-sky-700", text: "90+ Hands-On Projects" },
-                                { color: "text-rose-700", text: "100% Placement Support" },
+                                { color: "text-rose-700", text: "Placement Support" },
                             ].map((item, i) => (
                                 <li className="flex items-center gap-2" key={i}>
                                     <BadgeCheck className={`h-5 w-5 ${item.color}`} />
@@ -414,9 +414,9 @@ export default function HeroManualTesting() {
                 {/* SEO helper text */}
                 <div className="mx-auto mt-10 max-w-4xl text-center">
                     <p className="text-sm leading-relaxed text-slate-600">
-                        Join India's leading <strong>Manual Testing Course</strong> with 5,000+ successful alumni. Master{" "}
+                        Join India's leading <strong>Manual Testing Course</strong> with a thriving alumni community. Master{" "}
                         <strong>test case design, defect tracking, Jira, Agile workflows</strong>, and <strong>ISTQB Foundation preparation</strong>.
-                        Available in <strong>online</strong> and <strong>classroom modes</strong> (Mumbai, Thane) with <strong>100% placement support</strong>.
+                        Available in <strong>online</strong> and <strong>classroom modes</strong> (Mumbai, Thane) with <strong>placement support</strong>.
                     </p>
                 </div>
             </div>

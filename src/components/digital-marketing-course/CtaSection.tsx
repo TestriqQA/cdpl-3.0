@@ -28,10 +28,10 @@ export default function CtaSection() {
                         id="cta-heading"
                         className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900"
                     >
-                        Enroll in the Best <span className="text-green-700">Digital Marketing Course</span> in Mumbai
+                        Enroll in the <span className="text-green-700">Digital Marketing Course</span> in Mumbai
                     </h2>
                     <p className="mt-3 text-sm sm:text-base text-slate-600">
-                        Join 5,000+ successful learners at the #1 Digital Marketing institute in Mumbai. Get <strong>100% placement assistance</strong> and master AI-driven marketing today.
+                        Join successful learners at our Digital Marketing institute in Mumbai. Get <strong>placement assistance</strong> and master AI-driven marketing today.
                     </p>
 
                     {/* trust badges — each with a different, simple color */}

@@ -16,7 +16,7 @@ export const features = [
     {
         icon: Briefcase,
         title: 'Job-Ready Portfolio & Placement Support',
-        desc: '90+ real projects, portfolio reviews, mock interviews & guaranteed interview opportunities.',
+        desc: '90+ real projects, portfolio reviews, mock interviews & interview opportunities.',
     },
     {
         icon: Award,

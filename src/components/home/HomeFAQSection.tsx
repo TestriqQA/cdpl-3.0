@@ -77,11 +77,11 @@ const FAQItem = ({ faq, index, openIndex, toggleFAQ }: {
 export const HOME_FAQS = [
   {
     question: 'What courses does CDPL offer?',
-    answer: 'We offer comprehensive training in Software Testing (Manual & Automation), Data Science & AI/ML, API Testing, Performance Testing, Mobile Testing, and Full Stack Development. All courses include hands-on projects, industry certifications, and 100% placement support.',
+    answer: 'We offer comprehensive training in Software Testing (Manual & Automation), Data Science & AI/ML, API Testing, Performance Testing, Mobile Testing, and Full Stack Development. All courses include hands-on projects, industry certifications, and placement support.',
   },
   {
     question: 'Do you provide placement assistance?',
-    answer: 'Yes! We provide 100% placement support including resume building, mock interviews, interview preparation, and guaranteed interview opportunities with our 50+ hiring partners. Our dedicated placement cell works with you until you land your dream job.',
+    answer: 'Yes! We provide placement support including resume building, mock interviews, interview preparation, and interview opportunities with our our hiring partner network. Our dedicated placement cell works with you until you land your dream job.',
   },
   {
     question: 'What is the duration of the courses?',
@@ -101,7 +101,7 @@ export const HOME_FAQS = [
   },
   {
     question: 'How experienced are the trainers?',
-    answer: 'All our trainers are industry professionals with 10+ years of hands-on experience at top companies like Google, Microsoft, Amazon, and leading Indian IT firms. They bring real-world expertise and practical insights to every session.',
+    answer: 'All our trainers are industry professionals with extensive hands-on experience at top companies like Google, Microsoft, Amazon, and leading Indian IT firms. They bring real-world expertise and practical insights to every session.',
   },
   {
     question: 'What is the batch size?',

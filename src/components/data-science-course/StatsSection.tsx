@@ -205,7 +205,7 @@ export default function StatsSection() {
             Why Choose Our <span className="text-DS">Advanced Data Science</span> Masterclass?
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
-            Join Mumbai&apos;s most intensive <strong>data science training</strong>. We don&apos;t just teach algorithms; we build careers. With a <strong>4.8/5 rating</strong> and a legacy of <strong>5,000+ placements</strong>, we are the <strong>best institute for data science</strong> in Mumbai and Thane.
+            Join Mumbai&apos;s most intensive <strong>data science training</strong>. We don&apos;t just teach algorithms; we build careers. With a <strong>4.8/5 rating</strong> and a legacy of <strong>strong placement outcomes</strong>, we are the <strong>comprehensive institute for data science</strong> in Mumbai and Thane.
           </p>
           <p className="sr-only">{seoKeywords}</p>
         </header>

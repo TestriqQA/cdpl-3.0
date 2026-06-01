@@ -212,7 +212,7 @@ export default function TestingFeaturesSection() {
                         Expert <span className="text-brand">Software Testing Training</span> in Mumbai & Thane
                     </h2>
                     <p className="text-lg text-gray-600 leading-relaxed">
-                        Industry-ready Software Testing course in Mumbai designed to bridge the gap between education and employment. Master Manual Testing, Automation (Selenium, Java, API), and Performance testing with 100% Job Placement assistance.
+                        Industry-ready Software Testing course in Mumbai designed to bridge the gap between education and employment. Master Manual Testing, Automation (Selenium, Java, API), and Performance testing with Job Placement assistance.
                     </p>
 
                 </motion.div>

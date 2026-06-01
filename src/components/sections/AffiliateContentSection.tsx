@@ -16,7 +16,7 @@ export default function AffiliateContentSection() {
                         Maximize Your Earnings with High-Demand Tech Skills
                     </h3>
                     <p className="mb-6">
-                        The demand for skilled tech professionals is at an all-time high. By partnering with CDPL, you are promoting courses that lead to real career outcomes. Our <strong>100% placement support</strong> and <strong>project-based learning</strong> approach make our courses highly attractive to students and professionals looking to upskill. This ensures high conversion rates and consistent revenue for our affiliates.
+                        The demand for skilled tech professionals is at an all-time high. By partnering with CDPL, you are promoting courses that lead to real career outcomes. Our <strong>placement support</strong> and <strong>project-based learning</strong> approach make our courses highly attractive to students and professionals looking to upskill. This ensures high conversion rates and consistent revenue for our affiliates.
                     </p>
 
                     <ul className="list-disc pl-6 mb-6 space-y-2">
@@ -40,7 +40,7 @@ export default function AffiliateContentSection() {
                     </ul>
 
                     <p>
-                        Start your journey towards financial freedom today. Join the <strong>best education affiliate program in India</strong> and help shape the future of tech talent while growing your income.
+                        Start your journey towards financial freedom today. Join the <strong>comprehensive education affiliate program in India</strong> and help shape the future of tech talent while growing your income.
                     </p>
                 </div>
             </div>

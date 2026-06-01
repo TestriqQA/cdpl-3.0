@@ -111,7 +111,7 @@ const StatsSection: React.FC = () => {
           </h2>
 
           <p className="mx-auto max-w-4xl text-base text-slate-600 sm:text-lg">
-            Why settle for less? Join the best institute for data analytics. Our Data Analytics Program Mumbai delivers in-demand skills in SQL analytics, BI and Big Data Engineering, preparing you for top Software Engineer Jobs in Mumbai.
+            Why settle for less? Join the comprehensive institute for data analytics. Our Data Analytics Program Mumbai delivers in-demand skills in SQL analytics, BI and Big Data Engineering, preparing you for top Software Engineer Jobs in Mumbai.
           </p>
         </header>
 
@@ -226,7 +226,7 @@ const StatsSection: React.FC = () => {
               </ul>
 
               <p className="mt-4 text-xs text-slate-600 sm:text-sm">
-                Keywords: Best Institute for Data Analytics, SQL Data Analyst, Bi and Big Data Engineering, IIM Business Analytics, Data Analytics Program Mumbai, Data Engineering Certifications, How to Become Data Analyst in India.
+                Keywords: Comprehensive Institute for Data Analytics, SQL Data Analyst, Bi and Big Data Engineering, IIM Business Analytics, Data Analytics Program Mumbai, Data Engineering Certifications, How to Become Data Analyst in India.
               </p>
             </div>
           </div>

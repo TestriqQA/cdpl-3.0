@@ -7,7 +7,7 @@ import { MANUAL_TESTING_FAQS, MANUAL_TESTING_REVIEW_DATA } from "@/data/manualTe
 
 export const metadata: Metadata = generateMetadata({
   title: "Manual Testing Course with Placement | QA Training Mumbai",
-  description: "Master Manual Testing in 12 weeks. ISTQB prep, live projects, Jira & Agile training. 5,000+ placed. Online & classroom batches. Enroll now!",
+  description: "Master Manual Testing in 12 weeks. ISTQB prep, live projects, Jira & Agile training. Online & classroom batches. Enroll now!",
   keywords: [
     "manual testing course",
     "qa testing course",
@@ -34,7 +34,7 @@ export const metadata: Metadata = generateMetadata({
 export default function ManualTestingPage() {
   const schemas = generateManualTestingCoursePageSchema(
     {
-      name: "Manual Testing Course with 100% Placement Support",
+      name: "Manual Testing Course with Placement Support",
       description: "Comprehensive 12-week Manual Testing and QA training program covering SDLC, STLC, test case design, Jira, Agile, API testing, and ISTQB preparation. Includes hands-on projects and placement assistance.",
       url: '/courses/software-testing-course/manual-testing-course',
       slug: "manual-testing-course",

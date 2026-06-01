@@ -141,7 +141,7 @@ export const FaqSection: React.FC = () => {
             Popular searches: <strong>R programming course with placement</strong>,{" "}
             <strong>data visualization in R training</strong>,{" "}
             <strong>R for data analysis certification</strong>,{" "}
-            <strong>best R programming course for beginners</strong>.
+            <strong>comprehensive R programming course for beginners</strong>.
           </p>
         </div>
       </div>

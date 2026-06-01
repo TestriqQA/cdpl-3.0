@@ -46,7 +46,7 @@ export default function Home() {
     const schemas = generateDataAnalyticsVisualizationCoursePageSchema(
         {
             name: "Advanced Excel for Data Analytics & Visualization",
-            description: "Master Advanced Excel for Data Analytics & Visualization. 20-Hour comprehensive course with interactive dashboards, Power Query, and Power Pivot. 100% job assistance.",
+            description: "Master Advanced Excel for Data Analytics & Visualization. 20-Hour comprehensive course with interactive dashboards, Power Query, and Power Pivot. job assistance.",
             url: '/courses/bi-courses/data-analytics-and-visualization',
             slug: "data-analytics-and-visualization",
             price: 15000,

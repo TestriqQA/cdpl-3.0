@@ -38,7 +38,7 @@ export default function MachineLearningPage() {
   const schemas = generateMachineLearningCoursePageSchema(
     {
       name: "Machine Learning & Data Science with Python Hero Program",
-      description: "95-Hour Hero Program in Machine Learning and Data Science with Python. Hands-on projects, 100% job assistance, global certificates.",
+      description: "95-Hour Hero Program in Machine Learning and Data Science with Python. Hands-on projects, job assistance, global certificates.",
       url: '/courses/ds-ml-courses/machine-learning-course',
       slug: "machine-learning-course",
       price: 35000,

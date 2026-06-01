@@ -24,7 +24,7 @@ const features: FeatureCard[] = [
     },
     {
         icon: <Award className="w-8 h-8" />,
-        title: "100% Job Assistance",
+        title: "Job Assistance",
         description:
             "Resume building, interview preparation, and direct access to job openings from partner companies.",
         highlight: "Placement Support",
@@ -44,7 +44,7 @@ const features: FeatureCard[] = [
         icon: <Users className="w-8 h-8" />,
         title: "Expert-Led Mentorship",
         description:
-            "Learn from industry veterans with 14+ years of expertise and 1:1 doubt-solving sessions.",
+            "Learn from industry veterans with extensive expertise and 1:1 doubt-solving sessions.",
         highlight: "Mentor Driven",
         bgColor: "from-purple-50 to-purple-100",
         borderColor: "border-purple-300",
@@ -83,7 +83,7 @@ export default function WhyEngineerProgram() {
                     </h2>
                     <p className="text-lg text-slate-600 max-w-4xl mx-auto">
                         We don&apos;t just teach theory; we build{" "}
-                        <strong>Top 1% Digital Marketers</strong> through an industry-vetted,
+                        <strong>highly skilled Digital Marketers</strong> through an industry-vetted,
                         results-driven methodology that blends{" "}
                         <strong>AI-powered digital marketing</strong>,{" "}
                         <strong>performance marketing</strong>,{" "}
@@ -138,7 +138,7 @@ export default function WhyEngineerProgram() {
                             <strong>email automation</strong>, and{" "}
                             <strong>AI-based content &amp; campaign optimization</strong>. With an{" "}
                             <strong>80:20 practical learning model</strong>, real client-style
-                            projects, and <strong>100% job assistance</strong>, you&apos;ll be
+                            projects, and <strong>job assistance</strong>, you&apos;ll be
                             ready to work as a{" "}
                             <strong>
                                 Digital Marketing Executive, Performance Marketer, Growth Marketer,
@@ -151,26 +151,26 @@ export default function WhyEngineerProgram() {
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
                             <div className="text-center sm:text-left">
                                 <div className="text-3xl md:text-4xl font-bold text-orange-300 mb-1">
-                                    14+
+                                    4.9/5
                                 </div>
                                 <p className="text-slate-200 text-sm sm:text-base">
-                                    Years of Industry Expertise
+                                    Verified Learner Rating
                                 </p>
                             </div>
                             <div className="text-center sm:text-left">
                                 <div className="text-3xl md:text-4xl font-bold text-pink-300 mb-1">
-                                    6,000+
+                                    425+
                                 </div>
                                 <p className="text-slate-200 text-sm sm:text-base">
-                                    Students Successfully Trained
+                                    Verified Reviews
                                 </p>
                             </div>
                             <div className="text-center sm:text-left">
                                 <div className="text-3xl md:text-4xl font-bold text-emerald-300 mb-1">
-                                    100%
+                                    1:1
                                 </div>
                                 <p className="text-slate-200 text-sm sm:text-base">
-                                    Placement Assistance Guarantee
+                                    Mentorship &amp; Support
                                 </p>
                             </div>
                         </div>
@@ -195,8 +195,8 @@ export default function WhyEngineerProgram() {
                                         Proven Success &amp; Career Outcomes
                                     </p>
                                     <p className="text-sm text-slate-300">
-                                        6,000+ students trained with{" "}
-                                        <strong>100% placement assistance</strong> across agencies,
+                                        Students trained with{" "}
+                                        <strong>placement assistance</strong> across agencies,
                                         brands, and startups.
                                     </p>
                                 </div>
@@ -207,8 +207,8 @@ export default function WhyEngineerProgram() {
                             Keywords: Digital Marketing Course in Mumbai • Digital Marketing with AI
                             Bootcamp • Performance Marketing Training • SEO and PPC Course • Social
                             Media Marketing Certification • AI Tools for Marketing (ChatGPT, Grok,
-                            DeepSeek) • Job-Oriented Digital Marketing Program • 100% Job Assistance
-                            • Best Digital Marketing Institute in Mumbai.
+                            DeepSeek) • Job-Oriented Digital Marketing Program • Job Assistance
+                            • Comprehensive Digital Marketing Institute in Mumbai.
                         </p>
                     </div>
                 </div>

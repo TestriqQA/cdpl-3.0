@@ -8,7 +8,7 @@ export const DATA_SCIENCE_FAQS: QA[] = [
     },
     {
         question: "What makes the 'Advanced Data Science' masterclass different?",
-        answer: "Unlike basic certifications, our advanced data science training includes 200+ hours of training, MLOps, and guaranteed interviews with top MNCs in Mumbai and Thane.",
+        answer: "Unlike basic certifications, our advanced data science training includes 200+ hours of training, MLOps, and interviews with top MNCs in Mumbai and Thane.",
         category: "Program Details",
     },
     {

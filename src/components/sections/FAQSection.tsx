@@ -49,7 +49,7 @@ const FAQSection = () => {
     },
     {
       question: "Do you provide placement assistance after course completion?",
-      answer: "Yes! We offer 100% placement assistance to all our students. Our dedicated placement cell provides unlimited interview opportunities, resume building support, LinkedIn optimization, mock interviews, and direct connections with our 500+ hiring partners. We continue supporting you until you land your desired job.",
+      answer: "Yes! We offer placement assistance to all our students. Our dedicated placement cell provides unlimited interview opportunities, resume building support, LinkedIn optimization, mock interviews, and direct connections with our our hiring partner network. We continue supporting you until you land your desired job.",
       category: "placement",
     },
     {
@@ -74,7 +74,7 @@ const FAQSection = () => {
     },
     {
       question: "How are the instructors selected? What is their experience?",
-      answer: "All our instructors are industry professionals with 10+ years of hands-on experience in their respective domains. They have worked with top MNCs and product companies, and are passionate about teaching. Our trainers undergo a rigorous selection process and regular training to ensure they deliver the best learning experience.",
+      answer: "All our instructors are industry professionals with extensive hands-on experience in their respective domains. They have worked with top MNCs and product companies, and are passionate about teaching. Our trainers undergo a rigorous selection process and regular training to ensure they deliver the best learning experience.",
       category: "general",
     },
     {
@@ -99,7 +99,7 @@ const FAQSection = () => {
     },
     {
       question: "Can I get a job guarantee after completing the course?",
-      answer: "While we cannot legally guarantee a job, we provide 100% placement assistance with unlimited interview opportunities. Our placement rate is 95%, and most students get placed within 3-6 months of course completion. We work closely with you on resume building, interview preparation, and connecting you with our hiring partners until you secure a job.",
+      answer: "While we cannot legally guarantee a job, we provide placement assistance with unlimited interview opportunities. Most students get placed within 3-6 months of course completion. We work closely with you on resume building, interview preparation, and connecting you with our hiring partners until you secure a job.",
       category: "placement",
     },
   ];

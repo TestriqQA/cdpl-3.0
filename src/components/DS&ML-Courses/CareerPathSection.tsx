@@ -338,9 +338,9 @@ export default function CareerPathSection() {
                 {/* Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
                     <StatCard icon={TrendingUp} value="40%" label="Avg. Salary Hike" gradient="from-blue-500 to-cyan-600" />
-                    <StatCard icon={Users} value="2,500+" label="Students Placed" gradient="from-purple-500 to-fuchsia-600" />
-                    <StatCard icon={Building2} value="500+" label="Hiring Partners" gradient="from-emerald-500 to-teal-600" />
-                    <StatCard icon={Award} value="95%" label="Success Rate" gradient="from-orange-500 to-amber-600" />
+                    <StatCard icon={Users} value="4.9/5" label="Learner Rating" gradient="from-purple-500 to-fuchsia-600" />
+                    <StatCard icon={Building2} value="425+" label="Verified Reviews" gradient="from-emerald-500 to-teal-600" />
+                    <StatCard icon={Award} value="Live" label="Mentor-Led Classes" gradient="from-orange-500 to-amber-600" />
                 </div>
 
                 {/* Career Cards Grid */}

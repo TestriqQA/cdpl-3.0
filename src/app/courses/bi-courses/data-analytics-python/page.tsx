@@ -40,7 +40,7 @@ export const metadata = generateMetadata({
         "python data analysis course",
         "data analytics courses",
         "data analytics certification",
-        "best data analytics courses",
+        "comprehensive data analytics courses",
         "data analyst course duration",
         "career in data analytics",
         "data analyst courses for beginners"
@@ -52,8 +52,8 @@ export const metadata = generateMetadata({
 export default function Home() {
     const schemas = generateDataAnalyticsPythonCoursePageSchema(
         {
-            name: "Best Data Analytics Course with Python | 20-Hour Training Mumbai",
-            description: "20-hour python data analysis course with hands-on projects, global certification, and 100% job assistance. Learn how to become a data analyst in Mumbai/Thane.",
+            name: "Comprehensive Data Analytics Course with Python | 20-Hour Training Mumbai",
+            description: "20-hour python data analysis course with hands-on projects, global certification, and job assistance. Learn how to become a data analyst in Mumbai/Thane.",
             url: '/courses/bi-courses/data-analytics-python',
             slug: "data-analytics-python",
             price: 25000,

@@ -115,7 +115,7 @@ export default function StatsSection() {
             Why Pursue a <span className="text-green-700">Digital Marketing Career</span> in Mumbai?
           </h2>
           <p className="mt-3 text-base sm:text-lg text-slate-700">
-            Digital Marketing is the fast-track to a high-growth career. Master <strong>AI-Driven SEO, Performance Ads, and Data Analytics</strong> with the best Digital Marketing course in Mumbai.
+            Digital Marketing is the fast-track to a high-growth career. Master <strong>AI-Driven SEO, Performance Ads, and Data Analytics</strong> with the comprehensive Digital Marketing course in Mumbai.
           </p>
         </header>
 

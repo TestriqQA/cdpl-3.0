@@ -13,7 +13,7 @@ export const biFaqs: FAQ[] = [
         id: 1,
         icon: HelpCircle,
         q: "What is Business Intelligence and why should I learn it?",
-        a: "Business Intelligence (BI) is the process of transforming raw data into actionable insights for better decision-making. Learning BI opens doors to high-paying careers as organizations increasingly rely on data-driven strategies. With average salaries of ₹6-15 LPA and 95% placement rates, BI professionals are among the most sought-after in today's job market."
+        a: "Business Intelligence (BI) is the process of transforming raw data into actionable insights for better decision-making. Learning BI opens doors to high-paying careers as organizations increasingly rely on data-driven strategies. With average salaries of ₹6-15 LPA, BI professionals are among the most sought-after in today's job market."
     },
     {
         id: 2,
@@ -43,7 +43,7 @@ export const biFaqs: FAQ[] = [
         id: 6,
         icon: Briefcase,
         q: "What kind of job support do you provide after course completion?",
-        a: "We offer comprehensive career support including resume building, portfolio creation, mock interviews with industry experts, and direct referrals to 500+ hiring partners. Our dedicated placement team works with you until you land your dream BI role. We've achieved 95% placement success with companies actively hiring our graduates."
+        a: "We offer comprehensive career support including resume building, portfolio creation, mock interviews with industry experts, and direct referrals to our hiring partner network. Our dedicated placement team works with you until you land your dream BI role. Our placement team works to connect graduates with companies actively hiring."
     },
     {
         id: 7,

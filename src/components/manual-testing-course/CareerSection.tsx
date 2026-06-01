@@ -161,7 +161,7 @@ export default function CareerSection() {
           <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-2 text-indigo-700">
             <LuShieldCheck className="h-4 w-4" />
             <span className="text-[13px] font-medium">
-              100% Placement Support • Job-Ready in 12 Weeks
+              Placement Support • Job-Ready in 12 Weeks
             </span>
           </div>
           <h2 className="mt-6 text-4xl md:text-5xl font-bold text-gray-900">
@@ -269,7 +269,7 @@ export default function CareerSection() {
         <div className="rounded-3xl border border-gray-200 bg-white p-8 md:p-12">
           <div className="text-center mb-8">
             <h3 className="text-3xl font-bold text-gray-900 mb-2">
-              100% Placement Support
+              Placement Support
             </h3>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               Get end-to-end <strong>career services</strong> — resume building, mock interviews,
@@ -294,7 +294,7 @@ export default function CareerSection() {
             <PlacementFeature
               icon={<LuBriefcase className="h-5 w-5" />}
               title="Priority Referrals & Job Alerts"
-              description="50+ partner companies, curated openings, and weekly recruiter connects."
+              description="Partner companies in our network, curated openings, and weekly recruiter connects."
               badge="Fast-Track"
             />
           </div>

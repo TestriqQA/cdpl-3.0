@@ -166,7 +166,7 @@ export default function CareerSection() {
             aria-label="Talk to a mentor and join the program"
           >
             <Sparkles className="h-5 w-5" />
-            Join the Top 1%
+            Accelerate Your Career
             <ArrowRight className="h-5 w-5" />
           </button>
           <p className="mt-3 text-xs text-slate-500">

@@ -17,7 +17,7 @@ import { validatePhone } from '@/lib/formValidation';
  */
 const ctaContent = {
     title: "Ready to Start Your Data Revolution Career?",
-    description: "Join 500+ students who have successfully launched their QA careers.",
+    description: "Join students who have successfully launched their QA careers.",
     subtitle: "Enroll now and get 20% discount for limited time.",
     benefits: [
         "Industry-recognized certificate",

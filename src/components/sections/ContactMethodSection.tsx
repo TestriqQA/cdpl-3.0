@@ -70,7 +70,7 @@ export function ContactMethodsSection() {
     },
     {
       title: "Book 1:1 Counseling",
-      desc: "Personalized guidance on career paths, job roles, and the best course fit for your goals.",
+      desc: "Personalized guidance on career paths, job roles, and the comprehensive course fit for your goals.",
       cta: "Book a Free Slot",
       href: "https://calendar.app.google/tvh9dsXZsX9BujRR8",
       target: "_blank",

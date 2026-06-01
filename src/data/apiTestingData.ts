@@ -28,7 +28,7 @@ export const API_TESTING_FAQS: QA[] = [
     },
     {
         question: "Do you provide placement support?",
-        answer: "Absolutely. As a leading **software testing training** institute in Mumbai, we provide 100% placement support, including resume building (highlighting your **API test cases examples**), mock interviews, and referrals.",
+        answer: "Absolutely. As a leading **software testing training** institute in Mumbai, we provide placement support, including resume building (highlighting your **API test cases examples**), mock interviews, and referrals.",
         category: "Career",
     },
     {
