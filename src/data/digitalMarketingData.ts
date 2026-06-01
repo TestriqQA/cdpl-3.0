@@ -10,8 +10,8 @@ export type DigitalMarketingFaq = {
 
 export const DIGITAL_MARKETING_FAQS: DigitalMarketingFaq[] = [
     {
-        question: 'Who provides the best Digital Marketing Course in Mumbai with placement?',
-        answer: 'CDPL offers the #1 Digital Marketing course in Mumbai with 100% placement assistance. Our program is mentor-led, AI-driven, and focuses on practical skills like SEO, PPC, and Analytics.',
+        question: 'Who provides the comprehensive Digital Marketing Course in Mumbai with placement?',
+        answer: 'CDPL offers the comprehensive Digital Marketing course in Mumbai with placement assistance. Our program is mentor-led, AI-driven, and focuses on practical skills like SEO, PPC, and Analytics.',
         accent: { ring: 'focus:ring-sky-300', border: 'border-sky-200', chip: 'bg-sky-100 text-sky-800' },
     },
     {

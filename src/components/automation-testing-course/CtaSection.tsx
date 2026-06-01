@@ -38,7 +38,7 @@ export default function CtaSection() {
           </h2>
           <p className="mt-3 text-base leading-relaxed text-slate-700 sm:text-lg">
             Cohort starts in <strong>1 day</strong> — only <strong>15 seats</strong> left. Live, mentor-led classes,
-            ISTQB + AI automation, and <strong>100% placement assistance</strong>.
+            ISTQB + AI automation, and <strong>placement assistance</strong>.
           </p>
         </motion.header>
 
@@ -96,7 +96,7 @@ export default function CtaSection() {
             <div className="flex items-start gap-3">
               <CheckCircle className="h-6 w-6 text-violet-700" />
               <div>
-                <div className="font-semibold text-violet-900">100% Placement Support</div>
+                <div className="font-semibold text-violet-900">Placement Support</div>
                 <div className="text-sm text-violet-900">Resume, mock interviews, referrals</div>
               </div>
             </div>

@@ -2,8 +2,8 @@ import { type QA } from "../types/faq";
 
 export const AI_FAQS: QA[] = [
     {
-        question: "What is the best masters in ai and ml program in Mumbai?",
-        answer: "Our ai master program mumbai offers 255 hours of hands-on training, portfolio projects, and 100% placement support. It's rated 4.9/5 by 320+ students. Perfect for masters in ai in india.",
+        question: "What is the comprehensive masters in ai and ml program in Mumbai?",
+        answer: "Our ai master program mumbai offers 255 hours of hands-on training, portfolio projects, and placement support. It's rated 4.9/5 by our learners. Perfect for masters in ai in india.",
         category: "General",
     },
     {

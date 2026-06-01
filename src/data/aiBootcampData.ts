@@ -21,7 +21,7 @@ export const AI_BOOTCAMP_FAQS: AiBootcampFaq[] = [
         answer: "You will receive an International Recognized Certificate from AAA, validated with a unique authorization QR code. This certification is globally recognized and instantly boosts your career prospects.",
     },
     {
-        question: "How does the 100% Job Assistance work?",
+        question: "How does the Job Assistance work?",
         answer: "We provide resume building, mock interviews, soft skills training, and direct access to job and internship opportunities from our partner companies. Our career support extends beyond the program.",
     },
     {

@@ -23,7 +23,7 @@ export const metadata = generateMetadata({
   keywords: [
     "digital marketing course Mumbai",
     "digital marketing course in Mumbai with placement",
-    "best digital marketing institute in Mumbai",
+    "comprehensive digital marketing institute in Mumbai",
     "SEO training Mumbai",
     "Google Ads course Mumbai",
     "social media marketing course Mumbai",
@@ -39,7 +39,7 @@ export default function DigitalMarketingPage() {
   const schemas = generateDigitalMarketingCoursePageSchema(
     {
       name: "Advanced AI-Driven Digital Marketing & Analytics Master Program",
-      description: "A comprehensive 80-hour digital marketing mastery program in Mumbai covering SEO, SEM, SMM, Content Marketing, and AI Tools with guaranteed placement assistance.",
+      description: "A comprehensive 80-hour digital marketing mastery program in Mumbai covering SEO, SEM, SMM, Content Marketing, and AI Tools with placement assistance.",
       url: '/courses/digital-marketing-courses/digital-marketing-course',
       slug: "digital-marketing-course",
       price: 35000,

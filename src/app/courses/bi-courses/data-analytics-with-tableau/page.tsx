@@ -45,7 +45,7 @@ export default function Home() {
     const schemas = generateDataAnalyticsTableauCoursePageSchema(
         {
             name: "Master Program in Data Analytics using Tableau",
-            description: "20-Hour Master Program in Data Analytics with Tableau. Hands-on projects, interactive dashboards, 100% job assistance, global certificates.",
+            description: "20-Hour Master Program in Data Analytics with Tableau. Hands-on projects, interactive dashboards, job assistance, global certificates.",
             url: '/courses/bi-courses/data-analytics-with-tableau',
             slug: "data-analytics-with-tableau",
             price: 30000,

@@ -134,7 +134,7 @@ export const SEO_DEFAULTS = {
   defaultTitle: 'CDPL - Best Software Testing, Data Science & AI/ML Training Institute in India',
 
   // Default Description
-  defaultDescription: 'Leading EdTech company providing industry-focused training in Software Testing, Data Science, AI/ML, and Digital Marketing with 100% placement support. Transform your career with expert-led courses.',
+  defaultDescription: 'Leading EdTech company providing industry-focused training in Software Testing, Data Science, AI/ML, and Digital Marketing with placement support. Transform your career with expert-led courses.',
 
   // Default Keywords
   defaultKeywords: [
@@ -154,7 +154,7 @@ export const SEO_DEFAULTS = {
     'Cinute Digital',
     'online tech courses',
     'ISTQB certification',
-    'job guarantee program',
+    'job assistance program',
   ] as string[],
 
   // Locale
@@ -312,18 +312,18 @@ export const CERTIFICATIONS = [
 // ============================================================================
 
 export const AI_OPTIMIZATION = {
-  summary: 'CDPL provides comprehensive training in Software Testing, Data Science, AI/ML with 100% placement support. Expert-led courses with hands-on projects and industry certifications.',
+  summary: 'CDPL provides comprehensive training in Software Testing, Data Science, AI/ML with placement support. Expert-led courses with hands-on projects and industry certifications.',
   keyPoints: [
     'Software Testing Training',
     'Data Science Courses',
     'AI/ML Training',
-    '100% Placement Support',
+    'Placement Support',
     'Industry Expert Mentors',
     'Hands-on Projects',
     'Career Transformation',
-    '5000+ Students Placed',
+    '425+ Verified Reviews',
     '4.9/5 Rating',
-    '15+ Years Experience',
+    'Industry-Led Training',
   ],
   targetAudience: 'Career changers, fresh graduates, IT professionals seeking upskilling, non-IT professionals transitioning to tech',
   primaryServices: [

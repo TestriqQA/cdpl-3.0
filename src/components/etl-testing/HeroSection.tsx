@@ -62,7 +62,7 @@ const features = [
     },
     {
         icon: <Briefcase />,
-        title: '100% Placement',
+        title: 'Placement',
         description: 'Resume, mock interviews & referrals',
         bg: 'bg-sky-50',
         iconColor: 'text-sky-700',
@@ -136,7 +136,7 @@ export default function HeroSection() {
                             id="etl-hero"
                             className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
                         >
-                            Master <span className='text-ST'>ETL Testing</span> with SQL & Enterprise Tools – 100% Placement Support
+                            Master <span className='text-ST'>ETL Testing</span> with SQL & Enterprise Tools – Placement Support
                         </h1>
 
                         {/* Mobile form under H1 */}

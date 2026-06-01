@@ -42,7 +42,7 @@ export default function CtaSection() {
                 { icon: Clock, text: "45 Hours of Expert Training" },
                 { icon: Users, text: "1:1 Doubt Solving Sessions" },
                 { icon: Award, text: "Global Certification" },
-                { icon: CheckCircle2, text: "100% Job Assistance" },
+                { icon: CheckCircle2, text: "Job Assistance" },
               ].map((item, index) => {
                 const Icon = item.icon;
                 return (

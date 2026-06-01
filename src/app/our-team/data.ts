@@ -27,7 +27,7 @@ export const teamLeaders: TeamLeaders[] = [
         avatar: "/Team_Leaders_image/sandeep-maske-img.webp",
         linkedin: "https://www.linkedin.com/in/sandeepmaske",
         email: "mailto:hello@cinutedigital.com",
-        highlights: ["10+ years in EdTech", "Built 1k+ careers", "ISO-aligned delivery"],
+        highlights: ["10+ years in EdTech", "Mentored career transitions", "ISO-aligned delivery"],
 
     },
     {
@@ -49,7 +49,7 @@ export const teamLeaders: TeamLeaders[] = [
         avatar: "/Team_Leaders_image/Santosh_Kakade.webp",
         linkedin: "https://www.linkedin.com/in/santoshkakade/",
         email: "mailto:hello@cinutedigital.com",
-        highlights: ["10+ years in EdTech", "Built 1k+ careers", "ISO-aligned delivery"],
+        highlights: ["10+ years in EdTech", "Mentored career transitions", "ISO-aligned delivery"],
 
     },
     {
@@ -71,7 +71,7 @@ export const teamLeaders: TeamLeaders[] = [
         avatar: "/Team_Leaders_image/Goutam_Mishra.webp",
         linkedin: "https://www.linkedin.com/in/goutam-mishra-96194117/",
         email: "mailto:hello@cinutedigital.com",
-        highlights: ["10+ years in EdTech", "Built 1k+ careers", "ISO-aligned delivery"],
+        highlights: ["10+ years in EdTech", "Mentored career transitions", "ISO-aligned delivery"],
 
     },
     {
@@ -85,7 +85,7 @@ export const teamLeaders: TeamLeaders[] = [
         bio: "Shoeb Shaikh is a seasoned Software Testing and Data Science Expert and a Mentor with over 14 years of experience in the field. Specialist in designing and managing processes, and leading high-performing teams to deliver impactful results.",
         achievements: [
             "Designed & Delivered 50+ QA and Data Science training programs",
-            "Trained 1000+ professionals in QA and Data Science",
+            "Trained professionals in QA and Data Science",
             "ISTQB Certified Test Manager (Selenium, Pytest, API, DBMS)",
             "Led L&D initiatives in academic and corporate environments"
         ],
@@ -93,7 +93,7 @@ export const teamLeaders: TeamLeaders[] = [
         avatar: "/Team_Leaders_image/ShoebShaikh.webp",
         linkedin: "https://www.linkedin.com/in/ishaikhshoeb/",
         email: "mailto:hello@cinutedigital.com",
-        highlights: ["10+ years in EdTech", "Built 1k+ careers", "ISO-aligned delivery"],
+        highlights: ["10+ years in EdTech", "Mentored career transitions", "ISO-aligned delivery"],
 
     }, {
         id: "5",
@@ -105,7 +105,7 @@ export const teamLeaders: TeamLeaders[] = [
         expertise: ["Business Intelligence", "learning and development professional"],
         bio: "Ashish Shetty is a seasoned Business Intelligence and learning and development professional with over 11 years of experience empowering students and professionals to unlock career success through data-driven skills. Specializing in Power BI, Tableau, and Prompt Engineering, Ashish is known for delivering practical, high-impact workshops and training programs across academic and corporate sectors.",
         achievements: [
-            "Trained 7,000+ students & professionals in BI, ML, and Analytics",
+            "Trained students & professionals in BI, ML, and Analytics",
             "Delivered 50+ workshops and national-level programs",
             "Keynote speaker at leading conferences and UGC events",
             "Designed industry-certified training and faculty development courses",
@@ -115,7 +115,7 @@ export const teamLeaders: TeamLeaders[] = [
         avatar: "/Team_Leaders_image/AshishShetty.png",
         linkedin: "https://www.linkedin.com/in/profashishshetty/",
         email: "mailto:hello@cinutedigital.com",
-        highlights: ["10+ years in EdTech", "Built 1k+ careers", "ISO-aligned delivery"],
+        highlights: ["10+ years in EdTech", "Mentored career transitions", "ISO-aligned delivery"],
 
     },
 ]

@@ -282,11 +282,11 @@ export default function FAQSection() {
                     transition={{ delay: 0.5 }}
                     className="mt-12 text-center"
                 >
-                    <p className="text-sm text-gray-500 mb-3">Trusted by 2,500+ students</p>
+                    <p className="text-sm text-gray-500 mb-3">Trusted by learners across India</p>
                     <div className="flex justify-center items-center gap-4 text-xs text-gray-400">
                         <div className="flex items-center gap-1">
                             <CheckCircle className="w-4 h-4 text-green-500" />
-                            <span>95% Placement Rate</span>
+                            <span>Placement Support</span>
                         </div>
                         <span>•</span>
                         <div className="flex items-center gap-1">
@@ -296,7 +296,7 @@ export default function FAQSection() {
                         <span>•</span>
                         <div className="flex items-center gap-1">
                             <Users className="w-4 h-4 text-purple-500" />
-                            <span>500+ Hiring Partners</span>
+                            <span>Our Hiring Partner Network</span>
                         </div>
                     </div>
                 </motion.div>

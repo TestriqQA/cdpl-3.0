@@ -24,7 +24,7 @@ export default function WhyGenAIProgram() {
     { label: "Hands-On Projects", color: "bg-emerald-600 text-white" },
     { label: "Expert Faculty", color: "bg-amber-500 text-gray-900" },
     { label: "Prior ML Experience Needed", color: "bg-cyan-600 text-white" },
-    { label: "100% Job-Ready", color: "bg-rose-600 text-white" },
+    { label: "Job-Ready", color: "bg-rose-600 text-white" },
   ];
 
   // Each outcome has an icon color and a soft background swatch to ensure visibility

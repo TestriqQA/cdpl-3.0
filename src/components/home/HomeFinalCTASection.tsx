@@ -162,7 +162,7 @@ export default function HomeFinalCTASection() {
               Ready to <span className="text-indigo-600">Transform</span> Your Career?
             </h2>
             <p className="text-lg sm:text-xl mb-8 text-gray-600">
-              Join 5000+ students who have successfully launched their careers in Software Testing, Data Science, and AI/ML with CDPL&apos;s industry-ready training.
+              Join learners who have successfully launched their careers in Software Testing, Data Science, and AI/ML with CDPL&apos;s industry-ready training.
             </p>
 
             {/* Benefits - Enhanced UI */}
@@ -170,7 +170,7 @@ export default function HomeFinalCTASection() {
               {[
                 'Start learning within 48 hours',
                 'Live interactive classes with experts',
-                '100% placement support guaranteed',
+                'placement support',
                 'Flexible payment options available',
               ].map((benefit, index) => (
                 <motion.div

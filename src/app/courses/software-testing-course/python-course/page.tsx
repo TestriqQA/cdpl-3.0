@@ -25,7 +25,7 @@ export const metadata = generateMetadata({
     "python training",
     "django course",
     "data science python",
-    "python job guarantee",
+    "python job assistance",
     "python certification mumbai",
     "python web development course",
     "online python classes"
@@ -38,7 +38,7 @@ export default function PythonPage() {
   const schemas = generatePythonCoursePageSchema(
     {
       name: "Python Programming Master Course",
-      description: "Best Python course in Mumbai with Django, Data Science, ML, Automation. 100% placement. Live projects, global certificate.",
+      description: "Comprehensive Python course in Mumbai with Django, Data Science, ML, Automation. placement. Live projects, global certificate.",
       url: '/courses/software-testing-course/python-course',
       slug: "python-course",
       price: 18000,

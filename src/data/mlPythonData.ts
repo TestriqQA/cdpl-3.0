@@ -38,7 +38,7 @@ export const ML_PYTHON_FAQS: QA[] = [
     },
     {
         question: "Do you provide job placement assistance?",
-        answer: "Yes, we provide 100% job assistance including resume optimization, LinkedIn profile building, interview preparation, and direct connections with top employers. Our placement team works with you from Day 1.",
+        answer: "Yes, we provide job assistance including resume optimization, LinkedIn profile building, interview preparation, and direct connections with top employers. Our placement team works with you from Day 1.",
         category: "Placement",
     },
     {

@@ -33,8 +33,8 @@ export default function CtaSection() {
                         {/* Benefits list */}
                         <div className="space-y-4">
                             {[
-                                "Expert instructors with 10+ years industry experience",
-                                "100% job assistance and placement support",
+                                "Expert instructors with extensive industry experience",
+                                "job assistance and placement support",
                                 "Globally recognized certification",
                                 "Real-world projects and hands-on practice",
                                 "Flexible learning - Classroom + Online options",

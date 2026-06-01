@@ -17,8 +17,8 @@ import { validatePhone } from '@/lib/formValidation';
  */
 const ctaContent = {
     title: "Start Your Software Testing Career in Mumbai Today!",
-    description: "Join 2,500+ successful graduates who have launched their QA careers with our expert-led training in Mumbai & Thane.",
-    subtitle: "100% Placement Support & ISTQB-Aligned Curriculum.",
+    description: "Join successful graduates who have launched their QA careers with our expert-led training in Mumbai & Thane.",
+    subtitle: "Placement Support & ISTQB-Aligned Curriculum.",
 
     benefits: [
         "Industry-recognized certificate",

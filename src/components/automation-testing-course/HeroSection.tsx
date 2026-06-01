@@ -34,7 +34,7 @@ const features = [
     { icon: <FaRobot />, title: '85% Hands-On', description: 'AI-powered test scripts & self-healing locators', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
     { icon: <FaUsers />, title: 'SDET Mentors', description: '10+ years, FAANG & product-based guidance', bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
     { icon: <FaAward />, title: 'Global Cert', description: 'ISTQB Foundation + Advanced automation prep', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
-    { icon: <FaBriefcase />, title: '100% Placement', description: 'Resume clinic, mock interviews, referrals', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
+    { icon: <FaBriefcase />, title: 'Placement', description: 'Resume clinic, mock interviews, referrals', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
 ];
 
 /* ---------------------------------------

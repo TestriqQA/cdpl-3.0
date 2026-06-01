@@ -64,7 +64,7 @@ export default function CareerSection() {
           </div>
 
           <p className="mt-6 text-sm sm:text-base text-slate-600">
-            Demand for Digital Marketing professionals in Mumbai is at an all-time high. Master <strong>SEO, Performance Ads (PPC), and Analytics</strong> with the best institute to secure 100% placement in top MNCs and Agencies.
+            Demand for Digital Marketing professionals in Mumbai is at an all-time high. Master <strong>SEO, Performance Ads (PPC), and Analytics</strong> with the comprehensive institute to secure placement in top MNCs and Agencies.
           </p>
         </header>
 

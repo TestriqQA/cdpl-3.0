@@ -73,7 +73,7 @@ export default function HeroSection() {
                             className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
                         >
                             <span className="text-DS">Masters in AI and ML</span> –{" "}
-                            Data Science Master Program Mumbai with 100% Placement
+                            Data Science Master Program Mumbai with Placement
                         </h1>
 
                         {/* Mobile form directly under headline (FORM 1) */}
@@ -145,7 +145,7 @@ export default function HeroSection() {
                         {/* Trust strip + contact */}
                         <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-[11px] font-semibold text-slate-700 backdrop-blur">
                             <span className="text-yellow-600">★★★★★</span>
-                            <span>#1 Mumbai’s Premium Training Institute</span>
+                            <span>Mumbai’s Premium Training Institute</span>
                         </div>
                     </div>
 

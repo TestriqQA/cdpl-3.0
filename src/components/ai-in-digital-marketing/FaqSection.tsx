@@ -31,7 +31,7 @@ export default function FaqSection() {
             <strong>AI Digital Marketing for Business Owners program</strong>, from{" "}
             <em>course fees, schedule, business applicability</em> to{" "}
             <em>ROI and support</em>. This FAQ helps you decide if this is the{" "}
-            <strong>best digital marketing course for your business growth</strong>.
+            <strong>comprehensive digital marketing course for your business growth</strong>.
           </p>
         </div>
 
@@ -97,7 +97,7 @@ export default function FaqSection() {
             Our team is here to help! Get in touch with us for personalized
             guidance on{" "}
             <strong>course eligibility, fees, EMI options, live classes</strong>{" "}
-            and <strong>100% job assistance</strong>. Speak directly with our
+            and <strong>job assistance</strong>. Speak directly with our
             counselors to understand how this{" "}
             <em>AI-powered digital marketing course</em> fits your career goals.
           </p>
@@ -136,7 +136,7 @@ export default function FaqSection() {
             Keywords: <em>digital marketing course FAQ</em>,{" "}
             <em>AI in digital marketing training questions</em>,{" "}
             <em>business marketing course details</em>,{" "}
-            <em>best digital marketing institute for business owners</em>,{" "}
+            <em>comprehensive digital marketing institute for business owners</em>,{" "}
             <em>course duration, fees, business support</em>.
           </p>
         </div>

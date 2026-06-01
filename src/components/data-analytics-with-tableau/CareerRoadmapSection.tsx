@@ -281,7 +281,7 @@ export default function CareerRoadmapSection() {
                             <div className="text-5xl font-bold text-gray-950 mb-3">100%</div>
                             <p className="text-gray-700 font-semibold mb-2">Job Assistance</p>
                             <p className="text-sm text-gray-600">
-                                Guaranteed support for placement
+                                Dedicated support for placement
                             </p>
                         </div>
                     </div>

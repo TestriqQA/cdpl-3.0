@@ -188,7 +188,7 @@ export default function CareerSection() {
                 {/* Bottom CTA */}
                 <div className="mt-16 text-center">
                     <p className="text-slate-600 mb-4 md:mb-6 text-lg">
-                        Our <strong>100% job assistance</strong> helps you build a winning resume, optimize your
+                        Our <strong>job assistance</strong> helps you build a winning resume, optimize your
                         LinkedIn profile, and prepare for{" "}
                         <strong>digital marketing interviews, SEO interviews, and performance marketing roles</strong>.
                     </p>

@@ -63,7 +63,7 @@ const features = [
     },
     {
         icon: <FaBriefcase />,
-        title: "100% Placement",
+        title: "Placement",
         description: "Resume + mock interviews",
         bg: "bg-rose-50",
         iconColor: "text-rose-700",
@@ -248,7 +248,7 @@ export default function HeroSection() {
                     <div className="mx-auto inline-flex items-center gap-2">
                         <div aria-hidden className="text-yellow-500 text-xl">★★★★★</div>
                         <span className="text-[13px] font-semibold text-amber-900">
-                            #1 Mumbai’s Premium Training Institute
+                            Mumbai’s Premium Training Institute
                         </span>
                     </div>
                 </div>

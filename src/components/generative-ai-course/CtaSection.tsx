@@ -36,7 +36,7 @@ export default function CtaSection() {
             ?
           </h2>
           <p className="mt-4 text-base md:text-lg leading-relaxed text-slate-700">
-            Enroll now to get <strong>100% job assistance</strong>, mentor-led guidance, and a
+            Enroll now to get <strong>job assistance</strong>, mentor-led guidance, and a
             <strong> portfolio of real AI projects</strong> using <strong>Python, PyTorch, LLMs</strong>, and{" "}
             <strong>Transformers</strong>.
           </p>

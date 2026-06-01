@@ -38,7 +38,7 @@ export const DATA_ANALYTICS_TABLEAU_FAQS: QA[] = [
     },
     {
         question: "Do you provide job placement assistance?",
-        answer: "Yes, we provide 100% job assistance. Our placement team helps with resume building, LinkedIn optimization, interview preparation, and connects you with top hiring companies.",
+        answer: "Yes, we provide dedicated job assistance. Our placement team helps with resume building, LinkedIn optimization, interview preparation, and connects you with hiring companies.",
         category: "Career",
     },
     {

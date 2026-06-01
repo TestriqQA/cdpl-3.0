@@ -4,7 +4,7 @@
 import Link from "next/link";
 
 export default function CtaSection() {
-  const title = "Become a Top 1% Java Developer";
+  const title = "Become a Job-Ready Java Developer";
   const subtitle =
     "Enroll now for mentor-led, job-ready training in Core Java, Spring Boot, Microservices, Docker, and AWS—with interview prep and portfolio projects.";
 
@@ -32,7 +32,7 @@ export default function CtaSection() {
             >
               {`Become a `}
               <span className="text-FS">
-                Top 1% Java Developer
+                Job-Ready Java Developer
               </span>
             </h2>
             <p className="mt-3 text-sm sm:text-base text-slate-700">{subtitle}</p>

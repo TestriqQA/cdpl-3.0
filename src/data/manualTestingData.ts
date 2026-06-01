@@ -19,7 +19,7 @@ export const MANUAL_TESTING_FAQS: QA[] = [
     {
         category: "Career",
         question: "Do you provide placement guarantee?",
-        answer: "We provide 100% placement support—guaranteed interview calls, resume building, and referrals. Final selection depends on your interview performance. Our track record: 5,000+ placements with 90%+ students getting offers within 60 days.",
+        answer: "We provide placement support—interview calls, resume building, and referrals. Final selection depends on your interview performance. Our placement team works to help students secure offers soon after course completion.",
     },
     {
         category: "Admissions",

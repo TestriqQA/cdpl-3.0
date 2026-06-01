@@ -117,7 +117,7 @@ function district(
    State descriptions – list all 6 categories
    ------------------------------------------------------------- */
 const STATE_DESC =
-    "Premier courses in {{state}}, including Data Science, Digital Marketing, Web Development, Software Testing, Business Intelligence, Artificial Intelligence. Find top-rated training and bootcamps in major cities across the state. Keywords: data science, digital marketing, web development, software testing, business intelligence, artificial intelligence courses {{state}}, training {{state}}.";
+    "Premier courses in {{state}}, including Data Science, Digital Marketing, Web Development, Software Testing, Business Intelligence, Artificial Intelligence. Find professional training and bootcamps in major cities across the state. Keywords: data science, digital marketing, web development, software testing, business intelligence, artificial intelligence courses {{state}}, training {{state}}.";
 
 export const statesData: State[] = [
     {

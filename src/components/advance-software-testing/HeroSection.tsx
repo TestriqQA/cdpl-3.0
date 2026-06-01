@@ -59,7 +59,7 @@ const features = [
     },
     {
         icon: <Briefcase />,
-        title: '100% Placement',
+        title: 'Placement',
         description: 'Resume + Interview Prep',
         bg: 'bg-rose-50',
         iconColor: 'text-rose-700',
@@ -131,7 +131,7 @@ export default function HeroSection() {
                             <span className="h-3 w-px bg-slate-300" />
                             <span className="inline-flex items-center gap-1">
                                 <Users className="h-4 w-4 text-indigo-600" />
-                                5,000+ Placed
+                                425+ Reviews
                             </span>
                             <span className="h-3 w-px bg-slate-300" />
                             <span className="inline-flex items-center gap-1">
@@ -155,7 +155,7 @@ export default function HeroSection() {
 
                         {/* Supporting copy */}
                         <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Looking for the best <strong>selenium certification course</strong>? Join India's top-rated <strong>SDET training</strong> program. Learn <strong>Selenium Java course</strong> concepts, <strong>API testing</strong>, <strong>Mobile App testing (Appium)</strong>, and <strong>Cypress</strong>. Get <strong>100% placement support</strong> and become a complete <strong>Automation Test Engineer</strong>.
+                            Looking for a hands-on <strong>selenium certification course</strong>? Join India's professional <strong>SDET training</strong> program. Learn <strong>Selenium Java course</strong> concepts, <strong>API testing</strong>, <strong>Mobile App testing (Appium)</strong>, and <strong>Cypress</strong>. Get <strong>placement support</strong> and become a complete <strong>Automation Test Engineer</strong>.
                         </p>
                         <p className="mt-3 max-w-3xl text-sm text-slate-600">
                             Topics: <strong>Selenium online courses</strong>, Page Objects, <strong>Appium testing course</strong>, <strong>API testing</strong>, <strong>Cypress testing course</strong>, Jenkins/GitHub Actions. Better than any <strong>free selenium course</strong> with dedicated mentorship.

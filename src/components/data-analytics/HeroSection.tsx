@@ -92,7 +92,7 @@ export default function HeroSection() {
                         </div>
 
                         <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Master the <strong>data analyst full course</strong> in Mumbai with 110 hours of intensive training. From <strong>advanced data analytics</strong> to business intelligence, we prepare you for high-impact roles with <strong>Guaranteed Interviews</strong> and 5+ real-time projects.
+                            Master the <strong>data analyst full course</strong> in Mumbai with 110 hours of intensive training. From <strong>advanced data analytics</strong> to business intelligence, we prepare you for high-impact roles with <strong>Interviews</strong> and 5+ real-time projects.
                         </p>
                         <p className="mt-2 max-w-3xl text-sm text-slate-600">
                             Become a <strong>certified data analyst</strong> with mastery in Python, SQL, Power BI, and Tableau. Our <strong>data analytics training</strong> in Mumbai/Thane focuses on 80% practical labs and industry-ready dashboard deployments.
@@ -143,14 +143,14 @@ export default function HeroSection() {
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="mt-1 inline-block h-2 w-2 rounded-full bg-indigo-600" />
-                                Guaranteed Interviews & 100% Placement Support
+                                Interviews & Placement Support
                             </li>
                         </ul>
 
                         {/* Trust strip */}
                         <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-[11px] font-semibold text-slate-700 backdrop-blur">
                             <span className="text-yellow-600">★★★★★</span>
-                            <span>#1 Mumbai’s Premium Training Institute</span>
+                            <span>Mumbai’s Premium Training Institute</span>
                         </div>
                     </div>
 

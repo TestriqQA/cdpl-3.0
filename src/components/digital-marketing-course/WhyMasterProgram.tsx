@@ -79,7 +79,7 @@ export default function WhyMasterProgram() {
             Why Choose CDPL for <span className="text-green-700">Digital Marketing Training</span>?
           </h2>
           <p className="mt-3 text-base sm:text-lg text-slate-700">
-            Our mentor-led program is recognized as the best Digital Marketing course in Mumbai. Master <strong>SEO, Performance Marketing, GA4, and AI Tools</strong> with 100% placement support to launch your career.
+            Our mentor-led program is recognized as the comprehensive Digital Marketing course in Mumbai. Master <strong>SEO, Performance Marketing, GA4, and AI Tools</strong> with placement support to launch your career.
           </p>
         </header>
 

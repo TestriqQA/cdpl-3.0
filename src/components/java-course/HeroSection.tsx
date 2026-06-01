@@ -46,7 +46,7 @@ const features = [
     },
     {
         icon: <FaBriefcase />,
-        title: "100% Placement",
+        title: "Placement",
         description: "Resume + mock interviews",
         bg: "bg-rose-50",
         iconColor: "text-rose-700",
@@ -138,7 +138,7 @@ export default function HeroSection() {
                             Master <strong>Core Java</strong>, <strong>Spring Boot</strong>, <strong>Microservices</strong>,{' '}
                             <strong>Hibernate</strong>, and <strong>AWS Cloud</strong>. Build{' '}
                             <strong>enterprise-grade applications</strong>, earn a <strong>QR-verified certificate</strong>,
-                            and get <strong>100% placement assistance</strong>.
+                            and get <strong>placement assistance</strong>.
                         </p>
                         <p className="mt-3 max-w-3xl text-sm text-slate-600">
                             Topics include OOP, Collections, Multithreading, REST APIs, SQL, Docker, Kubernetes, and
@@ -220,7 +220,7 @@ export default function HeroSection() {
                     <div className="mx-auto inline-flex items-center gap-2">
                         <div aria-hidden className="text-yellow-500 text-xl">★★★★★</div>
                         <span className="text-[13px] font-semibold text-amber-900">
-                            #1 Mumbai’s Premium Training Institute
+                            Mumbai’s Premium Training Institute
                         </span>
                     </div>
                 </div>

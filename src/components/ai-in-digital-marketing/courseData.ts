@@ -7,14 +7,14 @@ export const courseData = {
   // Basic Course Information
   basic: {
     title: "Master AI in Digital Marketing for Business Owners",
-    subtitle: "The #1 AI Digital Marketing Course for Business Owners in Mumbai & Thane to 10X Growth.",
+    subtitle: "The comprehensive AI Digital Marketing Course for Business Owners in Mumbai & Thane to 10X Growth.",
     description:
       "Stop relying on agencies. Learn business marketing strategies, local business SEO, and marketing automation for business owners in this 3-month comprehensive program. Master AI digital marketing tools to generate leads, automate sales, and build a profitable online marketing business system yourself.",
     duration: "3 Months Cohort Program",
     weeklyCommitment: "6 hours/week",
     totalHours: "40-50 hours",
     rating: "9.6/10",
-    expertise: "14+ Years of Industry Expertise",
+    expertise: "Industry-Led Training",
     preRequisite: "No pre-requisite required",
   },
 
@@ -66,7 +66,7 @@ export const courseData = {
       id: 3,
       title: "Expert Instructors",
       description:
-        "Learn from seasoned Digital Marketers and Industry veterans with 14+ years of expertise.",
+        "Learn from seasoned Digital Marketers and Industry veterans with extensive expertise.",
       icon: "👨‍🏫",
       bgColor: "bg-purple-50",
       borderColor: "border-purple-200",

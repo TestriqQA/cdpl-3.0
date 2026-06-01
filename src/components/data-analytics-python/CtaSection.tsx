@@ -27,7 +27,7 @@ export default function CtaSection() {
 
                     {/* Subheading */}
                     <p className="text-lg md:text-xl text-slate-200 mb-8 leading-relaxed">
-                        Join 500+ successful graduates who have mastered **python data analysis course** and secured high-paying jobs. Start your **career in data analytics** today—learn **how to become a data analyst** in just 20 hours with our **best data analytics courses** in Mumbai/Thane.
+                        Join successful graduates who have mastered **python data analysis course** and secured high-paying jobs. Start your **career in data analytics** today—learn **how to become a data analyst** in just 20 hours with our **comprehensive data analytics courses** in Mumbai/Thane.
                     </p>
 
                     {/* Key Benefits */}
@@ -40,7 +40,7 @@ export default function CtaSection() {
                             },
                             {
                                 icon: "💼",
-                                title: "100% Job Assistance",
+                                title: "Job Assistance",
                                 description: "Placement support included",
                             },
                             {
@@ -99,7 +99,7 @@ export default function CtaSection() {
                                 "1:1 doubt-solving sessions",
                                 "Lifetime access to recorded sessions",
                                 "International certification from AAA",
-                                "100% job placement assistance",
+                                "job placement assistance",
                                 "Resume building and interview prep",
                                 "Career coaching and mentoring",
                                 "Access to alumni network",

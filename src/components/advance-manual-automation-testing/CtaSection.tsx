@@ -81,7 +81,7 @@ export default function CtaSection() {
               <div className="flex items-start gap-3">
                 <CheckCircle className="h-6 w-6 text-emerald-300" />
                 <div>
-                  <div className="font-semibold">100% Placement Support</div>
+                  <div className="font-semibold">Placement Support</div>
                   <div className="text-sm text-slate-200/80">Resume • Mock Interviews • Referrals</div>
                 </div>
               </div>

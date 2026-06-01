@@ -187,7 +187,7 @@ export default function TermsOfServicePage() {
             </ul>
             <h3 className={H3}>Our Commitment:</h3>
             <p className={P}>
-              At Cinute Digital Pvt. Ltd., we are dedicated to providing you with the resources, guidance, and support you need to succeed in your job search. Our 100% job assistance commitment signifies our unwavering dedication to your success, we however don’t give 100% job guarantee. We believe that through our comprehensive services and your dedication, you will be well-equipped to secure your dream job.
+              At Cinute Digital Pvt. Ltd., we are dedicated to providing you with the resources, guidance, and support you need to succeed in your job search. Our job assistance commitment signifies our unwavering dedication to your success, we however don’t give job assistance. We believe that through our comprehensive services and your dedication, you will be well-equipped to secure your dream job.
             </p>
             <p className={P}>Together, we can turn your career aspirations into reality!</p>
           </section>

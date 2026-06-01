@@ -130,9 +130,9 @@ const WhyBIProgram: React.FC = () => {
     },
     {
       Icon: Clock,
-      title: '14+ Years of Industry Expertise',
+      title: 'Industry-Led Training',
       description:
-        'Learn from seasoned data analysts and industry veterans with over a decade of real-world experience.',
+        'Learn from seasoned data analysts and industry veterans with deep real-world experience.',
       color: 'pink',
     },
     {

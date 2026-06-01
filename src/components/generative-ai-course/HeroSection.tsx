@@ -146,7 +146,7 @@ export default function HeroSection() {
                         {/* Trust strip */}
                         <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-[11px] font-semibold text-slate-700 backdrop-blur">
                             <span className="text-yellow-600">★★★★★</span>
-                            <span>#1 Mumbai’s Premium Training Institute</span>
+                            <span>Mumbai’s Premium Training Institute</span>
                         </div>
                     </div>
 

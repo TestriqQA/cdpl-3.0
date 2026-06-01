@@ -24,7 +24,7 @@ export default function WhyAnalyticsProgram() {
         { label: "Hands-On Projects", color: "bg-[#047857] text-white" },
         { label: "Expert Faculty", color: "bg-amber-500 text-gray-900" },
         { label: "Beginner Friendly", color: "bg-sky-600 text-white" },
-        { label: "100% Job-Ready", color: "bg-rose-600 text-white" },
+        { label: "Job-Ready", color: "bg-rose-600 text-white" },
     ];
 
     const outcomes = [

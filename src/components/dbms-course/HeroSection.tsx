@@ -26,7 +26,7 @@ const features = [
     { icon: <Database />, title: '80% Hands-On', description: 'Build real databases from scratch', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
     { icon: <Users />, title: 'Expert Faculty', description: '15+ yrs MySQL & Oracle certified', bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
     { icon: <Award />, title: 'Global Certification', description: 'MySQL + SQL Certification', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
-    { icon: <Briefcase />, title: '100% Placement', description: 'Resume + Interview Prep', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
+    { icon: <Briefcase />, title: 'Placement', description: 'Resume + Interview Prep', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
 ];
 
 import EnrollModal from '@/components/EnrollModal';
@@ -95,7 +95,7 @@ export default function HeroSection() {
                             <span className="h-3 w-px bg-slate-300" />
                             <span className="inline-flex items-center gap-1">
                                 <Users className="h-4 w-4 text-indigo-600" />
-                                2,500+ Learners
+                                Mentor-Led Cohorts
                             </span>
                             <span className="h-3 w-px bg-slate-300" />
                             <span className="inline-flex items-center gap-1">

@@ -75,7 +75,7 @@ const roadmapSteps: Step[] = [
     id: 5,
     title: 'Job Readiness & Placement',
     description:
-      'Benefit from resume optimization, interview prep, and 100% job assistance to connect with top hiring companies.',
+      'Benefit from resume optimization, interview prep, and job assistance to connect with top hiring companies.',
     Icon: Briefcase,
     color: colorOrder[4],
   },

@@ -146,7 +146,7 @@ export default function HeroSection() {
               </div>
               <div className="flex items-center gap-1.5">
                 <Users className="w-4 h-4 text-blue-600" />
-                <span>200+ Learners</span>
+                <span>Mentor-Led Cohorts</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <Globe2 className="w-4 h-4 text-purple-600" />

@@ -27,7 +27,7 @@ export default function WhyPromptGenProgram() {
         { label: "Hands-On Projects", color: "bg-emerald-700 text-white" },
         { label: "Expert Instructors", color: "bg-amber-500 text-gray-900" },
         { label: "Beginner Friendly", color: "bg-sky-700 text-white" },
-        { label: "100% Job-Ready", color: "bg-rose-700 text-white" },
+        { label: "Job-Ready", color: "bg-rose-700 text-white" },
     ];
 
     const outcomes = [

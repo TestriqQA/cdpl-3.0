@@ -17,7 +17,7 @@ import { validatePhone } from '@/lib/formValidation';
  */
 const ctaContent = {
     title: "Ready to Launch Your Digital Marketing Career?",
-    description: "Join 500+ students who launched careers in SEO, PPC, Social Media & Growth Marketing.",
+    description: "Join students who launched careers in SEO, PPC, Social Media & Growth Marketing.",
     subtitle: "Enroll now and get 20% off — limited seats available.",
     benefits: [
         "Comprehensive SEO & Technical SEO training",

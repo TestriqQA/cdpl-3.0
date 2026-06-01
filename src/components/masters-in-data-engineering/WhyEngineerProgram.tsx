@@ -99,7 +99,7 @@ const WhyEngineerProgram: React.FC = () => {
         {/* Section Header – content kept same, layout styled like reference */}
         <div className="mb-16 text-center md:mb-20">
           <h2 className="text-sm font-semibold tracking-[0.2em] text-[#0f766e] uppercase">
-            Why We Are The Best Institute for Data Analytics
+            Why We Are The Comprehensive Institute for Data Analytics
           </h2>
           <h3 className="mt-2 text-3xl font-bold text-slate-900 md:text-4xl">
             Master <span className="text-[#0f766e]">BI and Big Data Engineering</span> for 2026

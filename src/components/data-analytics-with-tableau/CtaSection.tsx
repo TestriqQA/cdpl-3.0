@@ -36,7 +36,7 @@ export default function CtaSection() {
                         <div className="text-4xl mb-3">💼</div>
                         <h3 className="font-bold text-white mb-2">Career Support</h3>
                         <p className="text-white text-sm">
-                            100% job assistance with placement in top companies
+                            job assistance with placement in top companies
                         </p>
                     </div>
 

@@ -17,7 +17,7 @@ export default function WhyMLProgram() {
     { label: "4 Certificates", cls: "bg-emerald-50 text-emerald-900 border-emerald-200" },
     { label: "Hands-on Projects", cls: "bg-amber-50 text-amber-900 border-amber-200" },
     { label: "No Prerequisites", cls: "bg-rose-50 text-rose-900 border-rose-200" },
-    { label: "100% Job-Ready", cls: "bg-violet-50 text-violet-900 border-violet-200" },
+    { label: "Job-Ready", cls: "bg-violet-50 text-violet-900 border-violet-200" },
   ];
 
   const BULLETS: string[] = [

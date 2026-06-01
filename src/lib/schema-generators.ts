@@ -331,7 +331,7 @@ export function generateWebsiteSchema(): WithContext<Record<string, unknown>> {
     "@id": getWebsiteId(),
     url: SITE_CONFIG.url,
     name: SITE_CONFIG.name,
-    // Non-defensible "100% placement support" claim removed (per
+    // Non-defensible "placement support" claim removed (per
     // docs/seo-audit/_decisions.md — same rule that drove BLG-059).
     description:
       "Professional training in Software Testing, Data Science, AI/ML and Digital Marketing with placement assistance.",
@@ -1437,7 +1437,7 @@ export function generateSoftwareTestingCategoryPageSchema(
 
   // 2. WebPage Schema
   const webPageSchema = generateWebPageSchema({
-    name: "Software Testing Course in Mumbai & Thane with 100% Placement",
+    name: "Software Testing Course in Mumbai & Thane with Placement",
     description:
       courseInput.description || "Master Manual & Automation Testing.",
     url: "/courses/software-testing-course",
@@ -1623,7 +1623,7 @@ export function generateBusinessIntelligenceCategoryPageSchema(
     name: "Business Intelligence Courses | Power BI, Tableau & Data Viz",
     description:
       courseInput.description ||
-      "Explore our top-rated Business Intelligence courses.",
+      "Explore our professional Business Intelligence courses.",
     url: "/courses/bi-courses",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -2071,7 +2071,7 @@ export function generateDbmsCoursePageSchema(
   // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   const webPageSchema = generateWebPageSchema({
-    name: "MySQL Database Course | 100% Job Placement | 20-Hour Training | CDPL",
+    name: "MySQL Database Course | Job Placement | 20-Hour Training | CDPL",
     description:
       courseInput.description ||
       "Master MySQL, SQL queries, database design, and optimization. Build real projects. Get certified and placed in top companies.",
@@ -2235,7 +2235,7 @@ export function generateAdvanceSoftwareTestingCoursePageSchema(
   // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   const webPageSchema = generateWebPageSchema({
-    name: "Advanced Software Testing Course in Mumbai | SDET & Selenium Training - 100% Placement | CDPL",
+    name: "Advanced Software Testing Course in Mumbai | SDET & Selenium Training - Placement | CDPL",
     description:
       courseInput.description ||
       "Master Selenium, Cypress, Appium & API Testing with our Advanced Software Testing Course. Job-oriented SDET training in Mumbai/Thane with real projects & ISTQB certification.",
@@ -2317,7 +2317,7 @@ export function generateAutomationTestingCoursePageSchema(
   // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   const webPageSchema = generateWebPageSchema({
-    name: "Advanced Automation Testing Course | SDET Training | 100% Placement | CDPL",
+    name: "Advanced Automation Testing Course | SDET Training | Placement | CDPL",
     description:
       courseInput.description ||
       "Master Cypress, Playwright, AI Testing, CI/CD. Become a future-ready SDET with elite projects and FAANG placement.",
@@ -2399,7 +2399,7 @@ export function generateAdvanceManualAutomationTestingCoursePageSchema(
   // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   const webPageSchema = generateWebPageSchema({
-    name: "What is Selenium Testing? Master Manual & Automation Testing | 100% Placement | CDPL",
+    name: "What is Selenium Testing? Master Manual & Automation Testing | Placement | CDPL",
     description:
       courseInput.description ||
       "Learn what is selenium testing & UI testing in our 180-hour Master Program. Cover Selenium, Cypress, API & Mobile automation. Placement support in Mumbai/Thane.",
@@ -2484,7 +2484,7 @@ export function generatePythonCoursePageSchema(
     name: "Python Programming Course in Mumbai | 80-Hour Job-Ready Training | CDPL",
     description:
       courseInput.description ||
-      "Best Python course in Mumbai with Django, Data Science, ML, Automation. Placement support, live projects, global certificate.",
+      "Comprehensive Python course in Mumbai with Django, Data Science, ML, Automation. Placement support, live projects, global certificate.",
     url: "/courses/software-testing-course/python-course",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -2566,7 +2566,7 @@ export function generateJavaCoursePageSchema(
     name: "Java Programming Course in Mumbai | 80-Hour Job-Ready Training | CDPL",
     description:
       courseInput.description ||
-      "Best Java course in Mumbai with Core Java, Spring Boot, Microservices, AWS. Placement support, live projects, global certificate.",
+      "Comprehensive Java course in Mumbai with Core Java, Spring Boot, Microservices, AWS. Placement support, live projects, global certificate.",
     url: "/courses/software-testing-course/java-course",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -2648,7 +2648,7 @@ export function generateMachineLearningCoursePageSchema(
     name: "Machine Learning & Data Science with Python Hero Program | Mumbai | CDPL",
     description:
       courseInput.description ||
-      "95-Hour Hero Program in Machine Learning and Data Science with Python. Hands-on projects, 100% job assistance, global certificates.",
+      "95-Hour Hero Program in Machine Learning and Data Science with Python. Hands-on projects, job assistance, global certificates.",
     url: "/courses/ds-ml-courses/machine-learning-course",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -2728,7 +2728,7 @@ export function generateGenerativeAICoursePageSchema(
     name: "Deep Learning, NLP & Gen AI Course Mumbai | CDPL",
     description:
       courseInput.description ||
-      "55-Hour Hero Program in Deep Learning, NLP, and Generative AI with Python. Hands-on projects, 100% job assistance, global certificates from AAA.",
+      "55-Hour Hero Program in Deep Learning, NLP, and Generative AI with Python. Hands-on projects, job assistance, global certificates from AAA.",
     url: "/courses/ds-ml-courses/generative-ai-course",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -2808,7 +2808,7 @@ export function generateDataScienceCoursePageSchema(
     name: "Advanced Data Science & Machine Learning Masterclass Mumbai | Placement",
     description:
       courseInput.description ||
-      "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with 100% job placement.",
+      "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with job placement.",
     url: "/courses/ds-ml-courses/data-science-course",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -2885,10 +2885,10 @@ export function generateAICoursePageSchema(
   // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   const webPageSchema = generateWebPageSchema({
-    name: "Masters in AI and ML | AI Master Program Mumbai | 100% Placement Support",
+    name: "Masters in AI and ML | AI Master Program Mumbai | Placement Support",
     description:
       courseInput.description ||
-      "Enroll in our Masters in AI and ML in India. 255-hour Data Science & AI Master Program in Mumbai/Thane. Get post graduate program in ai and machine learning with 100% job assistance.",
+      "Enroll in our Masters in AI and ML in India. 255-hour Data Science & AI Master Program in Mumbai/Thane. Get post graduate program in ai and machine learning with job assistance.",
     url: "/courses/ds-ml-courses/ai-course",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -2968,7 +2968,7 @@ export function generateMachineLearningUsingPythonCoursePageSchema(
     name: "Machine Learning with Python Course in Mumbai | 45-Hour Master Program | CDPL",
     description:
       courseInput.description ||
-      "45-Hour Master Program in Machine Learning Algorithms using Python. Hands-on projects, 100% job assistance, global certificates.",
+      "45-Hour Master Program in Machine Learning Algorithms using Python. Hands-on projects, job assistance, global certificates.",
     url: "/courses/ds-ml-courses/machine-learning-using-python",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -3048,7 +3048,7 @@ export function generateDataVisualizationInRProgrammingCoursePageSchema(
     name: "Machine Learning and Data Visualization using R Programming | CDPL",
     description:
       courseInput.description ||
-      "Master Machine Learning algorithms and advanced Data Visualization using R Programming. 20-hour Master Program with 100% job assistance.",
+      "Master Machine Learning algorithms and advanced Data Visualization using R Programming. 20-hour Master Program with job assistance.",
     url: "/courses/ds-ml-courses/data-visualization-in-r-programming",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -3128,7 +3128,7 @@ export function generatePromptEngineeringCoursePageSchema(
     name: "Prompt Engineering with Generative AI Course in Mumbai | 20-Hour Hero Program | CDPL",
     description:
       courseInput.description ||
-      "20-Hour Hero Program in Prompt Engineering with Gen AI. Hands-on projects, 100% job assistance, AAA global certificates.",
+      "20-Hour Hero Program in Prompt Engineering with Gen AI. Hands-on projects, job assistance, AAA global certificates.",
     url: "/courses/artificial-intelligence-courses/prompt-engineering-course",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -3210,7 +3210,7 @@ export function generateDataAnalyticsCoursePageSchema(
     name: "Advanced Data Analytics Course Mumbai | Data Analyst Training",
     description:
       courseInput.description ||
-      "Master the data analyst full course in Mumbai with 110 hours of intensive training. Advanced data analytics, Python, SQL & Power BI with 100% job placement.",
+      "Master the data analyst full course in Mumbai with 110 hours of intensive training. Advanced data analytics, Python, SQL & Power BI with job placement.",
     url: "/courses/bi-courses/data-analytics",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -3287,7 +3287,7 @@ export function generateDataAnalyticsPythonCoursePageSchema(
   // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   const webPageSchema = generateWebPageSchema({
-    name: "Best Data Analytics Course with Python | 20-Hour Training Mumbai | 100% Job Assistance",
+    name: "Comprehensive Data Analytics Course with Python | 20-Hour Training Mumbai | Job Assistance",
     description:
       courseInput.description ||
       "Learn how to become a data analyst with our Python data analysis course in Mumbai/Thane. 20-hour hands-on training with real projects, global certification, and placement support.",
@@ -3370,7 +3370,7 @@ export function generateDataAnalyticsVisualizationCoursePageSchema(
     name: "Advanced Excel for Data Analytics & Visualization | 20-Hour Course | Mumbai",
     description:
       courseInput.description ||
-      "Master Advanced Excel for Data Analytics & Visualization. 20-Hour comprehensive course with interactive dashboards, Power Query, and Power Pivot. 100% job assistance.",
+      "Master Advanced Excel for Data Analytics & Visualization. 20-Hour comprehensive course with interactive dashboards, Power Query, and Power Pivot. job assistance.",
     url: "/courses/bi-courses/data-analytics-and-visualization",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -3450,7 +3450,7 @@ export function generateDataAnalyticsTableauCoursePageSchema(
     name: "Data Analytics with Tableau Course | 20-Hour Training | Mumbai | CDPL",
     description:
       courseInput.description ||
-      "20-Hour Master Program in Data Analytics with Tableau. Hands-on projects, interactive dashboards, 100% job assistance, global certificates.",
+      "20-Hour Master Program in Data Analytics with Tableau. Hands-on projects, interactive dashboards, job assistance, global certificates.",
     url: "/courses/bi-courses/data-analytics-with-tableau",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -3527,10 +3527,10 @@ export function generatePowerBICoursePageSchema(
   // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   const webPageSchema = generateWebPageSchema({
-    name: "Best Power BI Course in Mumbai & Thane | Master Data Analytics with 100% Placement",
+    name: "Comprehensive Power BI Course in Mumbai & Thane | Master Data Analytics with Placement",
     description:
       courseInput.description ||
-      "Enroll in the best Power BI course in Mumbai & Thane. Master Power BI Desktop, DAX, and Service in 20 hours. Get 100% job placement assistance.",
+      "Enroll in the comprehensive Power BI course in Mumbai & Thane. Master Power BI Desktop, DAX, and Service in 20 hours. Get job placement assistance.",
     url: "/courses/bi-courses/power-bi-course",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -3757,7 +3757,7 @@ export function generateDigitalMarketingCoursePageSchema(
   // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   const webPageSchema = generateWebPageSchema({
-    name: "Best Digital Marketing Course in Mumbai with 100% Placement | CDPL",
+    name: "Comprehensive Digital Marketing Course in Mumbai with Placement | CDPL",
     description:
       courseInput.description ||
       "Join the comprehensive Digital Marketing Course in Mumbai. Master AI-Driven SEO, PPC, Google Ads, Social Media, and Analytics with Placement Support. 80+ Hours of Practical Training.",
@@ -3924,7 +3924,7 @@ export function generateAiBootcampCoursePageSchema(
     name: "AI-Powered Digital Marketing Bootcamp | 30-Hour Expert Training | CDPL",
     description:
       courseInput.description ||
-      "Master Digital Marketing with AI in this 30-hour bootcamp. Learn SEO, SEM, Social Media, and Performance Marketing with 100% Job Assistance.",
+      "Master Digital Marketing with AI in this 30-hour bootcamp. Learn SEO, SEM, Social Media, and Performance Marketing with Job Assistance.",
     url: "/courses/digital-marketing-courses/ai-bootcamp",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -3982,7 +3982,7 @@ export function generateAiBootcampCoursePageSchema(
       },
       {
         name: "Start Learning",
-        text: "Complete the 30-hour intensive bootcamp and get certified with 100% job assistance.",
+        text: "Complete the 30-hour intensive bootcamp and get certified with job assistance.",
       },
     ],
   });
@@ -4058,7 +4058,7 @@ export function generateContactPageAllSchemas(): WithContext<
   const contactPageSchema = generateContactPageSchema({
     name: "Contact Us | Software Testing & Data Science Training | CDPL",
     description:
-      "Get in touch with CDPL (Cinute Digital) for course inquiries, admissions, and career guidance. Call us, email, or visit our Mumbai office. 100% Placement Support.",
+      "Get in touch with CDPL (Cinute Digital) for course inquiries, admissions, and career guidance. Call us, email, or visit our Mumbai office. Placement Support.",
     url: "/contact-us",
   });
 
@@ -4082,7 +4082,7 @@ export function generateContactPageAllSchemas(): WithContext<
     {
       question: "Does CDPL provide placement assistance?",
       answer:
-        "Yes, CDPL provides 100% job placement assistance including resume building, mock interviews, LinkedIn optimization, and direct connections to hiring companies.",
+        "Yes, CDPL provides job placement assistance including resume building, mock interviews, LinkedIn optimization, and direct connections to hiring companies.",
     },
     {
       question: "Can I schedule a free counseling session?",
@@ -5014,7 +5014,7 @@ export function generateOurTeamPageAllSchemas(
   const webPageSchema = generateWebPageSchema({
     name: "Our Team - Expert Trainers & Mentors | CDPL",
     description:
-      "Meet CDPL's team of expert trainers and mentors with 10+ years of industry experience in Software Testing, Data Science, AI/ML, and Automation.",
+      "Meet CDPL's team of expert trainers and mentors with extensive industry experience in Software Testing, Data Science, AI/ML, and Automation.",
     url: "/our-team",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -5043,7 +5043,7 @@ export function generateOurTeamPageAllSchemas(
     {
       question: "Who are the trainers at CDPL?",
       answer:
-        "CDPL trainers are industry veterans with 10+ years of experience in Software Testing, Data Science, and AI/ML, having worked with top-tier tech companies.",
+        "CDPL trainers are industry veterans with extensive experience in Software Testing, Data Science, and AI/ML, having worked with top-tier tech companies.",
     },
     {
       question: "Can I get 1-on-1 mentorship from the team?",
@@ -5350,7 +5350,7 @@ export function generatePlacementsPageAllSchemas(
     {
       question: "Does CDPL provide job guarantees?",
       answer:
-        "We offer 'Job-Guaranteed' training programs where we provide intensive placement support, multiple interview opportunities, and career coaching until you secure a job.",
+        "We do not guarantee jobs. We provide intensive placement support, multiple interview opportunities, and career coaching to help you secure a role.",
     },
   ]);
 
@@ -6422,7 +6422,7 @@ export function generateTermsOfServicePageAllSchemas(): WithContext<
     [
       "Registration and Enrollment Eligibility",
       "Intellectual Property and Ownership",
-      "100% Job Assistance Commitment",
+      "Job Assistance Commitment",
       "Placement Assistance Parameters",
     ].map((section) => ({
       name: section,

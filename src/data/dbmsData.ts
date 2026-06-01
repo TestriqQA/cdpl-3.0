@@ -18,7 +18,7 @@ export const DBMS_FAQS: QA[] = [
     },
     {
         question: "Is placement guaranteed?",
-        answer: "We offer 100% job assistance: resume building, mock interviews, referrals, and interview prep.",
+        answer: "We offer job assistance: resume building, mock interviews, referrals, and interview prep.",
         category: "Career",
     },
 ];

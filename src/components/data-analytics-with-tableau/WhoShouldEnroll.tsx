@@ -232,7 +232,7 @@ export default function WhoShouldEnroll() {
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-2">Career Acceleration</h4>
                                 <p className="text-gray-900 text-sm">
-                                    100% job assistance with resume building and interview preparation
+                                    job assistance with resume building and interview preparation
                                 </p>
                             </div>
                         </div>

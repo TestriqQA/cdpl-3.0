@@ -33,7 +33,7 @@ export const DATA_ANALYTICS_PYTHON_FAQS: QA[] = [
     },
     {
         category: "Career",
-        question: "What are the career opportunities after the best data analytics courses?",
+        question: "What are the career opportunities after the comprehensive data analytics courses?",
         answer: "A career in data analytics offers diverse opportunities: Data Analyst (4-6 LPA), BI Analyst (5-7 LPA), Data Scientist (6-10 LPA), and more. Our graduates work at Google, Microsoft, Amazon, TCS, and Deloitte.",
     },
     {

@@ -30,7 +30,7 @@ const CtaSection: React.FC = () => {
           </h2>
 
           <p className="text-lg md:text-xl text-slate-200 mb-4 leading-relaxed">
-            Join 5,000+ alumni who transformed their careers. Certifications for data engineers included.
+            Join our alumni who transformed their careers. Certifications for data engineers included.
           </p>
           {/* Extra SEO copy */}
           <p className="text-sm text-slate-300 mb-8 leading-relaxed">

@@ -70,7 +70,7 @@ export default function TestimonialsSection() {
                     </h2>
 
                     <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                        Join 2,500+ successful graduates who transformed their careers with our industry-leading
+                        Join successful graduates who transformed their careers with our industry-leading
                         Business Intelligence training. See how our students landed roles at top companies with
                         significant salary increases.
                     </p>
@@ -78,10 +78,10 @@ export default function TestimonialsSection() {
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-                    <StatCard icon={CheckCircle} value="2,500+" label="Successful Graduates" delay={0.1} />
+                    <StatCard icon={CheckCircle} value="4.9/5" label="Learner Rating" delay={0.1} />
                     <StatCard icon={TrendingUp} value="40%" label="Avg. Salary Increase" delay={0.2} />
-                    <StatCard icon={Briefcase} value="95%" label="Placement Rate" delay={0.3} />
-                    <StatCard icon={Award} value="500+" label="Hiring Partners" delay={0.4} />
+                    <StatCard icon={Briefcase} value="Live" label="Mentor-Led Classes" delay={0.3} />
+                    <StatCard icon={Award} value="425+" label="Verified Reviews" delay={0.4} />
                 </div>
 
                 <ReviewsMarquee />

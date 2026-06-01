@@ -253,7 +253,7 @@ const FeaturedCoursesSection = () => {
       originalPrice: 75000,
       technologies: ["Selenium", "JIRA", "Postman", "MySQL", "TestNG"],
       features: [
-        "100% Placement Assistance",
+        "Placement Assistance",
         "Live Projects & Internship",
         "Industry Certification",
       ],

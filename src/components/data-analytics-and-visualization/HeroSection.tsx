@@ -22,7 +22,7 @@ export default function HeroSection() {
         institute: "Cinute Digital Pvt. Ltd.",
         description:
             "Transform raw business data into decision-ready dashboards with Excel’s advanced formulas, PivotTables, Power Query, and Power Pivot. Learn KPI tracking, interactive charts, reporting automation, and best practices for analytics in just 20 hours.",
-        tagline: "#1 MUMBAI's PREMIUM TRAINING INSTITUTE",
+        tagline: "MUMBAI's PREMIUM TRAINING INSTITUTE",
     };
 
 
@@ -151,7 +151,7 @@ export default function HeroSection() {
 
                             {/* Local SEO helper (subtle, human-readable) */}
                             <p className="mt-3 max-w-3xl text-sm text-slate-600">
-                                Looking for the <strong>best Advanced Excel course in Mumbai</strong>? Join our{" "}
+                                Looking for the <strong>comprehensive Advanced Excel course in Mumbai</strong>? Join our{" "}
                                 <strong>Excel data analytics training</strong> to learn <strong>dashboard design</strong>,
                                 <strong> KPI tracking</strong>, and <strong>Power Query</strong> workflows used by modern
                                 analytics teams across India.
@@ -173,7 +173,7 @@ export default function HeroSection() {
                                 ))}
                             </div>
                             <div>
-                                <p className="text-sm font-semibold text-slate-900">5,000+ Students Trained</p>
+                                <p className="text-sm font-semibold text-slate-900">425+ Verified Reviews</p>
                                 <p className="text-xs text-slate-600">Trusted by professionals worldwide</p>
                             </div>
                         </div>

@@ -33,7 +33,7 @@ const features = [
   { icon: <FaRobot />, title: '70% Manual + 30% Auto', description: 'Best of both worlds', bg: 'bg-emerald-50', iconColor: 'text-emerald-700', border: 'border-emerald-200' },
   { icon: <FaUsers />, title: 'ISTQB Faculty', description: '15+ yrs in QA', bg: 'bg-indigo-50', iconColor: 'text-indigo-700', border: 'border-indigo-200' },
   { icon: <FaAward />, title: 'Dual Certification', description: 'Manual + Automation', bg: 'bg-amber-50', iconColor: 'text-amber-700', border: 'border-amber-200' },
-  { icon: <FaBriefcase />, title: '100% Placement', description: 'Resume + Mock Interviews', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
+  { icon: <FaBriefcase />, title: 'Placement', description: 'Resume + Mock Interviews', bg: 'bg-rose-50', iconColor: 'text-rose-700', border: 'border-rose-200' },
 ];
 
 export default function HeroSection() {
@@ -124,7 +124,7 @@ export default function HeroSection() {
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
               Understand <strong>what is selenium testing</strong> and <strong>what is ui testing</strong> from scratch. Master <strong>ISTQB Manual Testing</strong>, <strong>Selenium</strong>, <strong>Cypress</strong>,{' '}
               <strong>API</strong>, <strong>Mobile</strong>, and <strong>CI/CD</strong>. Build a portfolio with
-              production-like projects using <strong>selenium practice sites</strong> and get <strong>100% placement assistance</strong>. Ideal for <strong>tester fresher</strong> candidates.
+              production-like projects using <strong>selenium practice sites</strong> and get <strong>placement assistance</strong>. Ideal for <strong>tester fresher</strong> candidates.
             </p>
             <p className="mt-3 max-w-3xl text-sm text-slate-600">
               Learn <strong>what is selenium testing tool used for</strong>, test design techniques, defect lifecycle, framework architecture, Page Object Model,

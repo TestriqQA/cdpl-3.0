@@ -39,7 +39,7 @@ export default function AdvancedDSMLPage() {
   const schemas = generateDataScienceCoursePageSchema(
     {
       name: "Advanced Data Science and Machine Learning Masterclass: Full Course in Mumbai",
-      description: "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with 100% job placement.",
+      description: "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with job placement.",
       url: '/courses/ds-ml-courses/data-science-course',
       slug: "data-science-course",
       price: 50000,

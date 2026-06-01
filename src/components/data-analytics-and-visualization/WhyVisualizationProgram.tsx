@@ -66,7 +66,7 @@ export const advantages = [
         icon: "Rocket",
     },
     {
-        title: "100% Job Assistance",
+        title: "Job Assistance",
         description: "Comprehensive placement support and career guidance",
         icon: "Target",
     },

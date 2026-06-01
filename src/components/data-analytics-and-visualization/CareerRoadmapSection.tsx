@@ -198,8 +198,8 @@ export default function CareerRoadmapSection() {
                                     description: "Fast-track your career with industry-recognized certification",
                                 },
                                 {
-                                    benefit: "Job Guarantee",
-                                    description: "100% job assistance ensures you land the right opportunity",
+                                    benefit: "Job Assistance",
+                                    description: "job assistance ensures you land the right opportunity",
                                 },
                                 {
                                     benefit: "Lifetime Support",

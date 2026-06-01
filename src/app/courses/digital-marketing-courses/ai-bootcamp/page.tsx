@@ -45,7 +45,7 @@ export default function AiBootcampPage() {
     const schemas = generateAiBootcampCoursePageSchema(
         {
             name: "AI-Powered Digital Marketing Bootcamp",
-            description: "Master Digital Marketing with AI in this 30-hour bootcamp. Learn SEO, SEM, Social Media, and Performance Marketing with 100% Job Assistance.",
+            description: "Master Digital Marketing with AI in this 30-hour bootcamp. Learn SEO, SEM, Social Media, and Performance Marketing with Job Assistance.",
             url: '/courses/digital-marketing-courses/ai-bootcamp',
             slug: "ai-bootcamp",
             price: 15000,

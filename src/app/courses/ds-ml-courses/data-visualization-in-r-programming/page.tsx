@@ -49,7 +49,7 @@ export default function Home() {
     const schemas = generateDataVisualizationInRProgrammingCoursePageSchema(
         {
             name: "Machine Learning and Data Visualization using R Programming",
-            description: "Master Machine Learning algorithms and advanced Data Visualization using R Programming. 20-hour Master Program with 100% job assistance.",
+            description: "Master Machine Learning algorithms and advanced Data Visualization using R Programming. 20-hour Master Program with job assistance.",
             url: '/courses/ds-ml-courses/data-visualization-in-r-programming',
             slug: "data-visualization-in-r-programming",
             price: 25000,

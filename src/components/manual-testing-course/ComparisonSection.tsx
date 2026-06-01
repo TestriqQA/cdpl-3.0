@@ -134,7 +134,7 @@ export default function ComparisonSection({
             Compare Our Job-Ready <span className="text-blue-700">Manual Testing Course vs. Typical Programs</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto">
-            Transparent comparison to help you choose the best <strong>QA training with placement support</strong>, live
+            Transparent comparison to help you choose the right <strong>QA training with placement support</strong>, live
             projects, and <strong>ISTQB-aligned curriculum</strong>.
           </p>
         </div>

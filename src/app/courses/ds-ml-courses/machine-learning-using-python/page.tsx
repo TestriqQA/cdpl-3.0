@@ -38,7 +38,7 @@ export default function Home() {
     const schemas = generateMachineLearningUsingPythonCoursePageSchema(
         {
             name: "Master Program in Machine Learning Algorithms using Python",
-            description: "45-Hour Master Program in Machine Learning Algorithms using Python. Hands-on projects, 100% job assistance, global certificates.",
+            description: "45-Hour Master Program in Machine Learning Algorithms using Python. Hands-on projects, job assistance, global certificates.",
             url: '/courses/ds-ml-courses/machine-learning-using-python',
             slug: "machine-learning-using-python",
             price: 35000,
