@@ -8,9 +8,16 @@
 #   - Max 100,000 lines / 2 MB
 #
 # Source:    docs/seo-audit/10d-blg-189-gsc-links.md (Phase 10d, 2026-05-28)
+#            + Semrush Backlink Audit (2026-04-19): Toxicity HIGH, 96 toxic /
+#              67 pot-toxic of 1,043 backlinks across 562 referring domains.
 # Backlog:   BLG-195 (disavow audit)
 # Author:    CDPL SEO audit, seo@testriq.com
-# Last updated: 2026-05-28
+# Last updated: 2026-06-15
+#
+# ⚠️ INCOMPLETE — this file currently lists the manual Phase-10d set + the
+#    PBN networks visible in the Semrush screenshot. Semrush reports 96 TOXIC
+#    domains; the FULL list must be exported (Semrush → Backlink Audit →
+#    Disavow tab → Export) and merged here before the final GSC upload.
 #
 # This file is the source of truth for what CDPL disavows. To upload:
 #   1. Sign in to https://search.google.com/search-console/disavow-links
@@ -72,22 +79,37 @@ domain:fanart-central.net
 # Random-content generator ("god name generator"), irrelevant.
 domain:godnamegenerator.com
 
+# Promoted from medium-confidence after 2026-06-15 triage: SSL cert expired
+# (neglected domain) + 10 links to a single CDPL page (auto-injection
+# footprint). Could not load content (dead cert) — owner should eyeball once.
+domain:bonjourdewi.com
+
 # ---------------------------------------------------------------------------
-# MEDIUM CONFIDENCE — investigate before adding to upload
+# SEMRUSH PBN / Web-2.0 SPAM NETWORKS  (toxicity 100/100, parent-level)
 # ---------------------------------------------------------------------------
-# The Phase 10d shortlist also flagged the following for individual
-# review (do NOT add to GSC upload until each is manually checked):
-#
-#   - bonjourdewi.com    (10 links to 1 target — single-domain spread)
-#   - orangepi.org       (3 links, unclear EdTech context)
-#   - sangritimes.com    (1 link, foreign news)
-#   - up18news.com       (1 link, foreign news)
-#   - uscgq.com          (1 link, unclear)
-#   - loktej.com         (1 link, unclear)
-#
-# Suggested check for each: visit the linking URL, confirm whether it's a
-# real editorial/directory mention or auto-generated spam. Add to the
-# HIGH CONFIDENCE block above (and re-upload) only if confirmed spam.
+# From the 2026-04-19 Semrush audit. These parent domains host hundreds of
+# random-gibberish subdomains (e.g. scalabilitystacky311gwu.targetblogs.com)
+# auto-injecting niche-mimicking links ("it-courses-training-institute",
+# "data-science", "technical-skill-benchmark"). Disavow at PARENT level so
+# every current + future random subdomain is covered.
+# NOTE: only the 6 visible in the screenshot are listed — the full Semrush
+#       export (96 toxic domains) must replace/extend this block.
+domain:targetblogs.com
+domain:creacionblog.com
+domain:aboutyoublog.com
+domain:thezenweb.com
+domain:educationalimpactblog.com
+domain:blog2news.com
+
+# ---------------------------------------------------------------------------
+# REVIEWED 2026-06-15 — NOT spam, do NOT disavow
+# ---------------------------------------------------------------------------
+# Triaged from the old medium-confidence shortlist; confirmed legitimate:
+#   - sangritimes.com   legit Hindi news / PR placement
+#   - loktej.com        legit Hindi/Gujarati news portal
+#   - up18news.com      regional Hindi news (blocks bots; 1 link, low risk)
+#   - uscgq.com         legit US Coast Guard exam-prep community (not spam)
+#   - orangepi.org      real single-board-computer hardware brand
 
 # ---------------------------------------------------------------------------
 # DO NOT DISAVOW — these look like real authority signals
