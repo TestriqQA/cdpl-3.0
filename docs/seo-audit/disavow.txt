@@ -1,136 +1,146 @@
 # Google Search Console — Disavow Links file for cinutedigital.com
 #
-# Format reference: https://support.google.com/webmasters/answer/2648487
-#   - Lines beginning with # are comments
-#   - `domain:example.com` disavows ALL links from example.com (and all subdomains)
-#   - A bare URL on its own line disavows just that specific URL
-#   - File must be UTF-8 (no BOM) or 7-bit ASCII
-#   - Max 100,000 lines / 2 MB
+# Format: https://support.google.com/webmasters/answer/2648487
+#   - "#" lines are comments
+#   - "domain:example.com" disavows the whole domain + all subdomains
+#   - a bare URL disavows just that URL
+#   - UTF-8 / 7-bit ASCII, max 100,000 lines / 2 MB
 #
-# Source:    docs/seo-audit/10d-blg-189-gsc-links.md (Phase 10d, 2026-05-28)
-#            + Semrush Backlink Audit (2026-04-19): Toxicity HIGH, 96 toxic /
-#              67 pot-toxic of 1,043 backlinks across 562 referring domains.
-# Backlog:   BLG-195 (disavow audit)
-# Author:    CDPL SEO audit, seo@testriq.com
+# Sources: Phase 10d GSC links audit (2026-05-28, BLG-195) +
+#          Semrush Backlink Audit export (2026-04-19): toxicity HIGH,
+#          96 toxic / 67 pot-toxic of 1,043 backlinks / 562 ref domains.
+# Author:  CDPL SEO audit, seo@testriq.com
 # Last updated: 2026-06-15
 #
-# ⚠️ INCOMPLETE — this file currently lists the manual Phase-10d set + the
-#    PBN networks visible in the Semrush screenshot. Semrush reports 96 TOXIC
-#    domains; the FULL list must be exported (Semrush → Backlink Audit →
-#    Disavow tab → Export) and merged here before the final GSC upload.
+# UPLOAD: search.google.com/search-console/disavow-links → property
+#   https://www.cinutedigital.com/ → upload THIS FULL file (Google
+#   overwrites the previous list; always upload the complete file).
+#   Effect takes 2-8 weeks (Google re-crawls each linking page).
 #
-# This file is the source of truth for what CDPL disavows. To upload:
-#   1. Sign in to https://search.google.com/search-console/disavow-links
-#      with seo@testriq.com (must be the verified owner of the property).
-#   2. Select the property "https://www.cinutedigital.com/" (URL-prefix).
-#   3. Upload this file. Google overwrites any previous disavow list, so
-#      always upload the FULL current list — never an incremental delta.
-#   4. Google takes weeks to honour the disavow (re-crawl of each linking
-#      page, then re-evaluation). First signal of effect is the GSC Links
-#      external-count dropping. Expect partial decay over 2–8 weeks.
+# Totals: 61 PBN parent-domains + 2 other toxic domains
+#         + 2 forum URLs + 10 manual-audit domains.
 #
-# All 9 entries below are FULL-DOMAIN disavows (no specific-URL entries).
-# Rationale:
-#   - Spam link farms generate links from many URLs / subdomains on the
-#     same domain. Disavowing the entire domain is both safer (catches
-#     future spam from the same source) and easier to audit.
-#   - For legitimate domains where ONE bad page links and others are
-#     fine, prefer the bare-URL form (none in this list).
-#
-# Always keep this file in sync with the GSC upload. If you upload a
-# different file via the UI, paste it back here and commit so the repo
-# stays the source of truth.
+# NOTE: Semrush flagged 96 toxic. This file covers every toxic ROW in the
+#   2026-04-19 "for-review" export (collapsed to parent domains). If a
+#   newer Semrush audit lists domains not below, append them here.
 
-# ---------------------------------------------------------------------------
-# HIGH CONFIDENCE — confirmed spam / irrelevant niche
-# ---------------------------------------------------------------------------
+# ===========================================================================
+# 1. PBN / Web-2.0 SPAM NETWORKS  (random-subdomain auto-link injection)
+#    Parent-level disavow → covers all current + future subdomains.
+# ===========================================================================
+domain:aboutyoublog.com
+domain:activoblog.com
+domain:activosblog.com
+domain:ambien-blog.com
+domain:amoblog.com
+domain:ampblogs.com
+domain:articlesblogger.com
+domain:arwebo.com
+domain:atualblog.com
+domain:blazingblog.com
+domain:blog-eye.com
+domain:blog-gold.com
+domain:blog2news.com
+domain:blog5.net
+domain:blog5star.com
+domain:blogadvize.com
+domain:blogdigy.com
+domain:blogdosaga.com
+domain:bloggactivo.com
+domain:bloggerswise.com
+domain:bloggin-ads.com
+domain:blogginaway.com
+domain:bloggosite.com
+domain:blogocial.com
+domain:blogolenta.com
+domain:blogpayz.com
+domain:blogprodesign.com
+domain:blogproducer.com
+domain:blogrenanda.com
+domain:blogsidea.com
+domain:blogsmine.com
+domain:bloguetechno.com
+domain:bluxeblog.com
+domain:canariblogs.com
+domain:creacionblog.com
+domain:dailyblogzz.com
+domain:designertoblog.com
+domain:develop-blog.com
+domain:diowebhost.com
+domain:educationalimpactblog.com
+domain:fitnell.com
+domain:isblog.net
+domain:ja-blog.com
+domain:liberty-blog.com
+domain:mybloglicious.com
+domain:mybuzzblog.com
+domain:newbigblog.com
+domain:onesmablog.com
+domain:pages10.com
+domain:pointblog.net
+domain:suomiblog.com
+domain:targetblogs.com
+domain:tblogz.com
+domain:theideasblog.com
+domain:thenerdsblog.com
+domain:thezenweb.com
+domain:tinyblogging.com
+domain:tribunablog.com
+domain:tusblogos.com
+domain:win-blog.com
+domain:worldblogged.com
 
-# Turkish SEO link-farm. Sells "single-page websites for 20 Euros".
-# Domain misspells "websitedesign" as "websitedesing" (spam fingerprint).
-# 71 of CDPL's 204 external backlinks (35%) come from this one domain,
-# automatically injected 1-link-per-target across 71 different CDPL URLs.
-# Single biggest contamination source — highest-priority disavow.
+# ===========================================================================
+# 2. OTHER TOXIC DOMAINS
+# ===========================================================================
+# backlink-seller spam ("100% Premium Backlinks")
+domain:rankvanceseo.info
+# auto-generated review scraper (toxic 72)
+domain:usersrating.com
+
+# ===========================================================================
+# 3. FORUM-SPAM URLs (specific URLs, hosts are generic)
+# ===========================================================================
+# forum post spam, money anchor
+http://ftp.chambers.com.au/forum/view_post.php?frm=2&page=2&page_rtn=338&pstid=8981
+# forum post spam (mirror), money anchor
+http://esvc000877.wic054u.server-web.com/forum/view_post.php?frm=2&page=2&page_rtn=482&pstid=8981
+
+# ===========================================================================
+# 4. MANUAL PHASE-10d SPAM (GSC links audit)
+# ===========================================================================
+# Turkish link-farm — 71 of CDPL backlinks, biggest contamination
 domain:websitedesing.com.tr
-
-# Indonesian domain (Honda dealer name), irrelevant niche for EdTech.
-# 4 links to 1 CDPL page — automated/scraper pattern.
+# Indonesian, irrelevant niche
 domain:hondaikmciledug.co.id
-
-# Korean portal, irrelevant niche. 4 links to 1 CDPL page.
+# Korean portal, irrelevant
 domain:koreaportal.com
-
-# Anarchist / political news site. Zero topical relevance to EdTech;
-# almost certainly automated link injection. 3 links to 1 CDPL page.
+# political news, auto-injection
 domain:anarkismo.net
-
-# Czech "insulating glass" (izolační skla) industry site, totally
-# irrelevant niche for an Indian software-training institute.
+# Czech insulating-glass site, irrelevant
 domain:izolacniskla.cz
-
-# Czech domain (Horažďovice town site), irrelevant.
+# Czech town site, irrelevant
 domain:horazdovice.cz
-
-# Polish transport / trucking forum, irrelevant.
+# Polish trucking forum, irrelevant
 domain:forumtransportu.pl
-
-# Fan-art community site, irrelevant niche.
+# fan-art community, irrelevant
 domain:fanart-central.net
-
-# Random-content generator ("god name generator"), irrelevant.
+# random-content generator, irrelevant
 domain:godnamegenerator.com
-
-# Promoted from medium-confidence after 2026-06-15 triage: SSL cert expired
-# (neglected domain) + 10 links to a single CDPL page (auto-injection
-# footprint). Could not load content (dead cert) — owner should eyeball once.
+# expired cert + 10-to-1 footprint (triaged 2026-06-15)
 domain:bonjourdewi.com
 
-# ---------------------------------------------------------------------------
-# SEMRUSH PBN / Web-2.0 SPAM NETWORKS  (toxicity 100/100, parent-level)
-# ---------------------------------------------------------------------------
-# From the 2026-04-19 Semrush audit. These parent domains host hundreds of
-# random-gibberish subdomains (e.g. scalabilitystacky311gwu.targetblogs.com)
-# auto-injecting niche-mimicking links ("it-courses-training-institute",
-# "data-science", "technical-skill-benchmark"). Disavow at PARENT level so
-# every current + future random subdomain is covered.
-# NOTE: only the 6 visible in the screenshot are listed — the full Semrush
-#       export (96 toxic domains) must replace/extend this block.
-domain:targetblogs.com
-domain:creacionblog.com
-domain:aboutyoublog.com
-domain:thezenweb.com
-domain:educationalimpactblog.com
-domain:blog2news.com
+# ===========================================================================
+# 5. REVIEW — owner decides (likely self-placed PR; NOT auto-disavowed)
+# ===========================================================================
+# newsdaddy.co.in — PR article "Cinute Digital — Setting the Standard" (naked link)
+# maharashtra24x7.com — same PR article syndication (naked link)
 
-# ---------------------------------------------------------------------------
-# REVIEWED 2026-06-15 — NOT spam, do NOT disavow
-# ---------------------------------------------------------------------------
-# Triaged from the old medium-confidence shortlist; confirmed legitimate:
-#   - sangritimes.com   legit Hindi news / PR placement
-#   - loktej.com        legit Hindi/Gujarati news portal
-#   - up18news.com      regional Hindi news (blocks bots; 1 link, low risk)
-#   - uscgq.com         legit US Coast Guard exam-prep community (not spam)
-#   - orangepi.org      real single-board-computer hardware brand
-
-# ---------------------------------------------------------------------------
-# DO NOT DISAVOW — these look like real authority signals
-# ---------------------------------------------------------------------------
-# (Recorded for future reference so a fresh audit doesn't accidentally
-# include them.)
-#
-#   - linkedin.com       57 links to 2 targets — legitimate brand mentions
-#   - medium.com         7 links to 2 targets — articles citing CDPL
-#   - siliconindia.com   2 links — tech publication, real authority
-#   - trustpilot.com     2 links — reviews platform
-#   - pinterest.com      2 links — legitimate social
-#   - clickindia.com     2 links — Indian classifieds, legit-ish
-#   - sulekha.com        1 link — Indian directory, BLG-184 claim target
-#   - tracxn.com         1 link — startup DB, BLG-199 claim target
-#   - internshala.com    1 link — Indian internships, relevant niche
-#   - zoominfo.com       1 link — B2B database, legit
-#   - f6s.com            1 link — startup directory, legit
-#   - coursevidya.com    1 link — educational directory, relevant
-#   - bhavans.ac.in      1 link — academic partnership (FDP / MoU)
-#   - opendatascience.com 1 link — tech community, relevant
-#   - glassdoor.ie       1 link — reviews, legit
-#   - twitter.com        1 link — social mention
-#   - about.me           1 link — personal profile (mentor)
+# ===========================================================================
+# 6. DO NOT DISAVOW — confirmed legitimate (recorded for future audits)
+# ===========================================================================
+# Reviewed 2026-06-15: sangritimes.com, loktej.com, up18news.com,
+#   uscgq.com, orangepi.org — legit news/edu/hardware, not spam.
+# Authority signals: linkedin.com, medium.com, siliconindia.com,
+#   trustpilot.com, pinterest.com, sulekha.com, tracxn.com,
+#   internshala.com, zoominfo.com, f6s.com, bhavans.ac.in, glassdoor.ie.
