@@ -56,8 +56,8 @@ const FaqSection = dynamic(
 );
 
 export const metadata = generateMetadata({
-  title: "API Testing Course with POSTMAN & RestAPIs",
-  description: "Master API testing in 15 hours with live projects, global certification, and placement support.",
+  title: "API Testing Course in Mumbai | Postman & REST Assured | CDPL",
+  description: "API Testing Course in Mumbai — master Postman & REST Assured in 15 hours with live projects, global certification and placement support.",
   url: "/courses/software-testing-course/api-testing",
   image: "/og-images/courses-software-testing-course-api-testing-og.webp",
 });
@@ -65,8 +65,8 @@ export const metadata = generateMetadata({
 export default async function Page() {
   const schemas = generateApiTestingCoursePageSchema(
     {
-      name: "API Testing Course with POSTMAN & RestAPIs",
-      description: "Master API testing in 15 hours with live projects, global certification, and placement support.",
+      name: "API Testing Course in Mumbai | Postman & REST Assured | CDPL",
+      description: "API Testing Course in Mumbai — master Postman & REST Assured in 15 hours with live projects, global certification and placement support.",
       url: "/courses/software-testing-course/api-testing",
       slug: "api-testing",
       instructor: "CDPL Expert Mentors",

@@ -27,8 +27,8 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 export const metadata = generateMetadata({
-    title: "Best Data Analytics Course with Python | 20-Hour Training Mumbai | 100% Job Assistance",
-    description: "Learn how to become a data analyst with our Python data analysis course in Mumbai/Thane. 20-hour hands-on training with real projects, global certification, and 100% placement support. Best data analytics courses for beginners.",
+    title: "Data Analytics with Python Course in Mumbai | CDPL",
+    description: "Become a data analyst with our Python data analytics course in Mumbai & Thane. 20-hour hands-on training with real projects, certification and placement support.",
     keywords: [
         "what is data analytics course",
         "what is data analyst course",
@@ -52,8 +52,8 @@ export const metadata = generateMetadata({
 export default function Home() {
     const schemas = generateDataAnalyticsPythonCoursePageSchema(
         {
-            name: "Best Data Analytics Course with Python | 20-Hour Training Mumbai",
-            description: "20-hour python data analysis course with hands-on projects, global certification, and 100% job assistance. Learn how to become a data analyst in Mumbai/Thane.",
+            name: "Data Analytics with Python Course | Mumbai & Thane",
+            description: "20-hour Python data analysis course with hands-on projects, global certification and placement support. Learn to become a data analyst in Mumbai & Thane.",
             url: '/courses/bi-courses/data-analytics-python',
             slug: "data-analytics-python",
             price: 25000,

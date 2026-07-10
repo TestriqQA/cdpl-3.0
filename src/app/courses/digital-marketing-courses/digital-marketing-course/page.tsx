@@ -18,8 +18,8 @@ import { generateDigitalMarketingCoursePageSchema } from "@/lib/schema-generator
 import { DIGITAL_MARKETING_FAQS, DIGITAL_MARKETING_REVIEW_DATA } from "@/data/digitalMarketingData";
 
 export const metadata = generateMetadata({
-  title: "Best Digital Marketing Course in Mumbai with 100% Placement | CDPL",
-  description: "Join the #1 Digital Marketing Course in Mumbai. Master AI-Driven SEO, PPC, Google Ads, Social Media, and Analytics with 100% Placement Support. 80+ Hours of Practical Training.",
+  title: "Digital Marketing Course in Mumbai | Placement Support | CDPL",
+  description: "Digital Marketing Course in Mumbai covering AI-driven SEO, PPC, Google Ads, social media & analytics. 80+ hours of practical training with placement support.",
   keywords: [
     "digital marketing course Mumbai",
     "digital marketing course in Mumbai with placement",
@@ -39,7 +39,7 @@ export default function DigitalMarketingPage() {
   const schemas = generateDigitalMarketingCoursePageSchema(
     {
       name: "Advanced AI-Driven Digital Marketing & Analytics Master Program",
-      description: "A comprehensive 80-hour digital marketing mastery program in Mumbai covering SEO, SEM, SMM, Content Marketing, and AI Tools with guaranteed placement assistance.",
+      description: "A comprehensive 80-hour digital marketing program in Mumbai covering SEO, SEM, SMM, content marketing and AI tools, with placement assistance.",
       url: '/courses/digital-marketing-courses/digital-marketing-course',
       slug: "digital-marketing-course",
       price: 35000,

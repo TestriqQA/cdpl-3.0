@@ -19,8 +19,8 @@ import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, gene
 import { MACHINE_LEARNING_FAQS, MACHINE_LEARNING_REVIEW_DATA } from "@/data/machineLearningData";
 
 export const metadata = generateMetadata({
-  title: "Machine Learning & Data Science with Python Hero Program | Mumbai | CDPL",
-  description: "95-Hour Hero Program in Machine Learning and Data Science with Python. Hands-on projects, 100% job assistance, global certificates.",
+  title: "Machine Learning Course in Mumbai | Python | CDPL",
+  description: "Machine Learning Course in Mumbai — 95 hours of Python, ML & data science with hands-on projects, global certification and placement support.",
   keywords: [
     "machine learning course mumbai",
     "data science with python",
@@ -37,8 +37,8 @@ export const metadata = generateMetadata({
 export default function MachineLearningPage() {
   const schemas = generateMachineLearningCoursePageSchema(
     {
-      name: "Machine Learning & Data Science with Python Hero Program",
-      description: "95-Hour Hero Program in Machine Learning and Data Science with Python. Hands-on projects, 100% job assistance, global certificates.",
+      name: "Machine Learning Course with Python & Data Science",
+      description: "Machine Learning Course in Mumbai — 95 hours of Python, ML & data science with hands-on projects, global certification and placement support.",
       url: '/courses/ds-ml-courses/machine-learning-course',
       slug: "machine-learning-course",
       price: 35000,

@@ -27,8 +27,8 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 export const metadata = generateMetadata({
-    title: "Data Analytics with Tableau Course | 20-Hour Training | Mumbai | CDPL",
-    description: "20-Hour Master Program in Data Analytics with Tableau. Hands-on projects, interactive dashboards, 100% job assistance, global certificates.",
+    title: "Tableau Course in Mumbai | Data Analytics & Dashboards | CDPL",
+    description: "Tableau Course in Mumbai — 20-hour program in data analytics & interactive dashboards with hands-on projects, certification and placement support.",
     keywords: [
         "tableau course in mumbai",
         "data analytics with tableau training",
@@ -45,7 +45,7 @@ export default function Home() {
     const schemas = generateDataAnalyticsTableauCoursePageSchema(
         {
             name: "Master Program in Data Analytics using Tableau",
-            description: "20-Hour Master Program in Data Analytics with Tableau. Hands-on projects, interactive dashboards, 100% job assistance, global certificates.",
+            description: "Tableau Course in Mumbai — 20-hour program in data analytics & interactive dashboards with hands-on projects, certification and placement support.",
             url: '/courses/bi-courses/data-analytics-with-tableau',
             slug: "data-analytics-with-tableau",
             price: 30000,

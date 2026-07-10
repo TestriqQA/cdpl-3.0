@@ -16,8 +16,8 @@ import { softwareTestingFaqs } from "@/components/software-testing-course/data/d
 import { generateMetadata } from '@/lib/metadata-generator';
 import { Metadata } from 'next';
 
-const pageTitle = "Software Testing Course in Mumbai & Thane with 100% Placement";
-const pageDescription = "Looking for the best Software Testing Course in Mumbai? Master Manual & Automation Testing (Selenium, Java, API) with guaranteed interviews. Certified QA training with 100% placement support.";
+const pageTitle = "Software Testing Course in Mumbai & Thane | Placement Support";
+const pageDescription = "Certified Software Testing Course in Mumbai & Thane — master Manual & Automation Testing (Selenium, Java, API). Job-oriented QA training with placement support.";
 const pageKeywords = [
   "software testing course",
   "software testing course in mumbai",
