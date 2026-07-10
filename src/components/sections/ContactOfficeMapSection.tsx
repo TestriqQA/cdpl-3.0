@@ -28,7 +28,7 @@ const OFFICES: Office[] = [
       "Shop No 7, Laxmi Palace, Opposite Vidhyavardhini Degree Engineering College, Gurunanak Nagar, Vasai West, Mumbai, Maharashtra - 401202",
     phone: "tel:+918488988984",
     phoneDisplay: "+91 84-889-889-84",
-    whatsapp: "https://wa.me/9152929342",
+    whatsapp: "https://wa.me/917888383788",
     email: "mailto:contact@cinutedigital.com",
     hours: "Mon–Sat • 9:00 AM – 8:00 PM IST",
     mapSrc:

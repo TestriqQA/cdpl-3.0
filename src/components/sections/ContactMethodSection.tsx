@@ -22,7 +22,7 @@ export function ContactMethodsSection() {
       title: "WhatsApp Us",
       desc: "Quick answers on courses, fees, syllabus & career guidance. Get help from our admissions team instantly.",
       cta: "Chat on WhatsApp",
-      href: "https://wa.me/9152929342",
+      href: "https://wa.me/917888383788",
       target: "_blank",
       icon: <FaWhatsappSquare className="h-13 w-13 text-green-600" />,
       badges: ["Fastest response", "Live advisor"],
