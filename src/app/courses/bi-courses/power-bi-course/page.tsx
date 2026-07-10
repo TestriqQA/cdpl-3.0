@@ -20,7 +20,7 @@ import { generatePowerBICoursePageSchema } from "@/lib/schema-generators";
 import { POWER_BI_FAQS, POWER_BI_REVIEW_DATA } from "@/data/powerBiData";
 
 const pageTitle = "Comprehensive Power BI Course in Mumbai & Thane | Master Data Analytics with Placement";
-const pageDescription = "Enroll in the comprehensive Power BI course in Mumbai & Thane. Master Power BI Desktop, DAX, and Service in 20 hours. Get job placement assistance and become a certified Power BI Developer.";
+const pageDescription = "Power BI Course in Mumbai & Thane — master Power BI Desktop, DAX & Service in 20 hours. Job placement assistance and certification.";
 const pageKeywords = [
     "Power BI Course in Mumbai",
     "Power BI Course in Thane",

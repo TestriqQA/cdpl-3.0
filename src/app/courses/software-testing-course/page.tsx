@@ -17,7 +17,7 @@ import { generateMetadata } from '@/lib/metadata-generator';
 import { Metadata } from 'next';
 
 const pageTitle = "Software Testing Course in Mumbai & Thane with Placement";
-const pageDescription = "Looking for the comprehensive Software Testing Course in Mumbai? Master Manual & Automation Testing (Selenium, Java, API) with interviews. Certified QA training with placement support.";
+const pageDescription = "Software Testing Course in Mumbai & Thane — master Manual & Automation Testing (Selenium, Java, API). Certified QA training with placement support.";
 const pageKeywords = [
   "software testing course",
   "software testing course in mumbai",

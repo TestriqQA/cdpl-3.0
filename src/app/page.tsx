@@ -47,7 +47,7 @@ import { getHiringPartners } from "@/lib/hiring-partners";
 
 export const metadata: Metadata = generateMetadata({
   title: "Software Testing & Data Science Courses India | CDPL",
-  description: "Launch your tech career with CDPL's industry-focused courses in Software Testing, Data Science & AI/ML — live projects, expert mentors & placement assistance.",
+  description: "Launch your tech career with CDPL's courses in Software Testing, Data Science & AI/ML — live projects, expert mentors and placement assistance.",
   keywords: [
     "software testing course",
     "data science course",

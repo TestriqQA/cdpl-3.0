@@ -88,7 +88,7 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
             <div className="mt-6 flex gap-8 items-start">
                 <div className="max-w-5xl">
                     <h1 className="text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900">
-                        Best <span className="text-brand">Software Testing Course</span> in Mumbai & Thane
+                        <span className="text-brand">Software Testing Course</span> in Mumbai & Thane
                     </h1>
 
                     <p className="mt-4 text-base text-slate-600">
@@ -302,7 +302,7 @@ export default function HeroSection(): React.JSX.Element {
                     </div>
 
                     <h2 className="text-3xl font-extrabold text-slate-900 leading-tight">
-                        Best <span className="text-brand">Software Testing</span> Course in Mumbai
+                        <span className="text-brand">Software Testing</span> Course in Mumbai
                     </h2>
 
                     <p className="mt-3 text-base text-slate-600">
