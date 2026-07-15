@@ -71,14 +71,14 @@ function sanityToJob(sj: SanityLiveJob): Job {
 }
 
 /**
- * All active live jobs: Sanity docs MERGED with the static `JOBS` seed, deduped
- * by id (Sanity wins on conflict).
+ * All active live jobs, sourced from Sanity.
  *
- * Merging — rather than all-or-nothing — means a job added in Sanity shows up
- * ALONGSIDE the built-in list without having to seed all of them first, and
- * once a static job is seeded into Sanity the duplicate collapses to the Sanity
- * version. When Sanity is empty the result is exactly the static `JOBS` array,
- * in its original order — identical to the pre-migration output.
+ * Every job has been seeded into Sanity (slug = old id), so Sanity is the single
+ * source of truth: the result is exactly what the Studio holds, and a job
+ * deleted/deactivated there disappears from the site. A normal empty result
+ * (all jobs removed) returns [] and is respected. The static `JOBS` array is
+ * retained ONLY as an outage snapshot — used if the Sanity request THROWS — so
+ * the listing never goes blank during a CMS hiccup (mirrors src/lib/services.ts).
  */
 export async function getLiveJobs(): Promise<Job[]> {
     try {
@@ -87,19 +87,19 @@ export async function getLiveJobs(): Promise<Job[]> {
             {},
             { next: { revalidate: LIVE_JOBS_REVALIDATE, tags: ['liveJob'] } },
         );
-        const sanityJobs = Array.isArray(docs) ? docs.map(sanityToJob) : [];
-        if (sanityJobs.length === 0) return JOBS;
-        const sanityIds = new Set(sanityJobs.map((j) => j.id));
-        // Sanity jobs first (freshest editorial content), then any static jobs
-        // not yet migrated. The listing grid re-sorts by date for display.
-        return [...sanityJobs, ...JOBS.filter((j) => !sanityIds.has(j.id))];
+        return Array.isArray(docs) ? docs.map(sanityToJob) : [];
     } catch (err) {
-        console.error('[getLiveJobs] Sanity fetch failed, using static JOBS only:', err);
+        console.error('[getLiveJobs] Sanity fetch failed, using static JOBS snapshot:', err);
         return JOBS;
     }
 }
 
-/** A single live job by its slug/id (Sanity-first, static fallback). */
+/**
+ * A single live job by its slug/id, sourced from Sanity. A slug Sanity does not
+ * have (never existed, or deleted/deactivated in the Studio) returns undefined
+ * so the page 404s. The static `JOBS` array is used ONLY if the Sanity request
+ * THROWS (outage snapshot) — never to resurrect a job that was removed.
+ */
 export async function getLiveJobBySlug(slug: string): Promise<Job | undefined> {
     try {
         const doc = await liveClient.fetch<SanityLiveJob | null>(
@@ -107,10 +107,9 @@ export async function getLiveJobBySlug(slug: string): Promise<Job | undefined> {
             { slug },
             { next: { revalidate: LIVE_JOBS_REVALIDATE, tags: ['liveJob', `liveJob:${slug}`] } },
         );
-        if (doc) return sanityToJob(doc);
+        return doc ? sanityToJob(doc) : undefined;
     } catch (err) {
-        console.error('[getLiveJobBySlug] Sanity fetch failed, falling back to static JOBS:', err);
+        console.error('[getLiveJobBySlug] Sanity fetch failed, using static JOBS snapshot:', err);
+        return JOBS.find((j) => j.id === slug);
     }
-    // Fallback: never drop an existing URL just because Sanity lacks the doc.
-    return JOBS.find((j) => j.id === slug);
 }
