@@ -75,11 +75,10 @@ type Props = {
     params: Promise<{ jobId: string }>;
 };
 
-// ISR: re-fetch live jobs from Sanity at most hourly (the /api/revalidate
-// webhook triggers instant revalidation on publish). Until Sanity is seeded,
-// getLiveJobs() falls back to the static JOBS array, so output is identical to
-// the previous static build — see src/lib/liveJobs.ts.
-export const revalidate = 3600;
+// ISR: re-fetch from Sanity every 60s (the /api/revalidate webhook triggers
+// instant revalidation on publish). getLiveJobs()/getLiveJobBySlug() merge
+// Sanity with the static JOBS seed — see src/lib/liveJobs.ts.
+export const revalidate = 60;
 
 // SSG: every job gets its own canonical URL. Params come from Sanity (with a
 // static JOBS fallback), so no existing URL is ever dropped.

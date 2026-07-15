@@ -4,6 +4,16 @@ import type { SanityLiveJob } from '@/sanity/types';
 import { JOBS } from '@/lib/jobsData';
 import type { Job } from '@/lib/jobsData';
 
+// Non-CDN client for live-jobs reads. The Sanity CDN can lag ~60s behind a
+// publish; useCdn:false hits the live API so ISR + the revalidate webhook
+// reflect newly published/edited jobs promptly (see sanity/client.ts note).
+const liveClient = client.withConfig({ useCdn: false });
+
+// Short revalidate so newly published jobs surface within ~a minute even when
+// the Sanity → /api/revalidate webhook is not configured (the webhook makes it
+// instant when it is).
+const LIVE_JOBS_REVALIDATE = 60;
+
 /**
  * Live-jobs data access — Sanity-first, static fallback.
  *
@@ -60,18 +70,31 @@ function sanityToJob(sj: SanityLiveJob): Job {
     };
 }
 
-/** All active live jobs (Sanity-first, static fallback). */
+/**
+ * All active live jobs: Sanity docs MERGED with the static `JOBS` seed, deduped
+ * by id (Sanity wins on conflict).
+ *
+ * Merging — rather than all-or-nothing — means a job added in Sanity shows up
+ * ALONGSIDE the built-in list without having to seed all of them first, and
+ * once a static job is seeded into Sanity the duplicate collapses to the Sanity
+ * version. When Sanity is empty the result is exactly the static `JOBS` array,
+ * in its original order — identical to the pre-migration output.
+ */
 export async function getLiveJobs(): Promise<Job[]> {
     try {
-        const docs = await client.fetch<SanityLiveJob[]>(
+        const docs = await liveClient.fetch<SanityLiveJob[]>(
             LIVE_JOBS_QUERY,
             {},
-            { next: { revalidate: 3600, tags: ['liveJob'] } },
+            { next: { revalidate: LIVE_JOBS_REVALIDATE, tags: ['liveJob'] } },
         );
-        if (!Array.isArray(docs) || docs.length === 0) return JOBS;
-        return docs.map(sanityToJob);
+        const sanityJobs = Array.isArray(docs) ? docs.map(sanityToJob) : [];
+        if (sanityJobs.length === 0) return JOBS;
+        const sanityIds = new Set(sanityJobs.map((j) => j.id));
+        // Sanity jobs first (freshest editorial content), then any static jobs
+        // not yet migrated. The listing grid re-sorts by date for display.
+        return [...sanityJobs, ...JOBS.filter((j) => !sanityIds.has(j.id))];
     } catch (err) {
-        console.error('[getLiveJobs] Sanity fetch failed, falling back to static JOBS:', err);
+        console.error('[getLiveJobs] Sanity fetch failed, using static JOBS only:', err);
         return JOBS;
     }
 }
@@ -79,10 +102,10 @@ export async function getLiveJobs(): Promise<Job[]> {
 /** A single live job by its slug/id (Sanity-first, static fallback). */
 export async function getLiveJobBySlug(slug: string): Promise<Job | undefined> {
     try {
-        const doc = await client.fetch<SanityLiveJob | null>(
+        const doc = await liveClient.fetch<SanityLiveJob | null>(
             LIVE_JOB_BY_SLUG_QUERY,
             { slug },
-            { next: { revalidate: 3600, tags: ['liveJob', `liveJob:${slug}`] } },
+            { next: { revalidate: LIVE_JOBS_REVALIDATE, tags: ['liveJob', `liveJob:${slug}`] } },
         );
         if (doc) return sanityToJob(doc);
     } catch (err) {

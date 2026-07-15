@@ -66,10 +66,10 @@ const JobsLiveJobsSubscribeCTASection = dynamic(
 // Constant data
 const DEFAULT_BANNER = "/og-images/jobs-live-jobs-og.webp";
 
-// ISR: keep the listing fresh from Sanity at most hourly; the /api/revalidate
-// webhook refreshes it instantly on publish. Falls back to static JOBS when
-// Sanity is empty, so output is identical to the previous build.
-export const revalidate = 3600;
+// ISR: keep the listing fresh from Sanity (revalidate every 60s); the
+// /api/revalidate webhook refreshes it instantly on publish. Sanity jobs are
+// merged with the static JOBS seed — see src/lib/liveJobs.ts.
+export const revalidate = 60;
 
 export default async function Page() {
   const jobs = await getLiveJobs();
