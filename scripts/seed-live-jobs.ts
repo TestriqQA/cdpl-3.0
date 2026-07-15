@@ -10,12 +10,12 @@
  * HOW TO RUN (manual — NOT in CI; needs a scoped write token):
  *   1. Create a Sanity token with Editor (write) access:
  *        sanity.io/manage → your project → API → Tokens → Add token.
- *   2. Export env (do NOT commit the token):
- *        export NEXT_PUBLIC_SANITY_PROJECT_ID=xxxxxxx
- *        export NEXT_PUBLIC_SANITY_DATASET=production
- *        export SANITY_API_WRITE_TOKEN=sk_...
+ *   2. Add it to .env.local (gitignored), next to the existing Sanity vars:
+ *        SANITY_API_WRITE_TOKEN=sk_...
+ *      (NEXT_PUBLIC_SANITY_PROJECT_ID / _DATASET are already there for the app.)
  *   3. From the repo root:
  *        npx tsx scripts/seed-live-jobs.ts
+ *      (auto-loads .env.local / .env via dotenv)
  *
  * Idempotent: uses createOrReplace with a deterministic _id (`liveJob.<id>`),
  * so re-running updates existing docs instead of creating duplicates. Review
@@ -23,8 +23,14 @@
  *
  * NOTE: undefined fields are stripped so Sanity does not persist empty keys.
  */
+import { config as loadEnv } from 'dotenv';
 import { createClient } from '@sanity/client';
 import { JOBS } from '../src/lib/jobsData';
+
+// Load Sanity env from .env.local / .env (Next.js convention) so this script
+// runs directly with `npx tsx scripts/seed-live-jobs.ts`.
+loadEnv({ path: '.env.local' });
+loadEnv({ path: '.env' });
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
