@@ -1,12 +1,12 @@
 // SERVER COMPONENT — Live Jobs detail page (BLG-035)
 // Companion to /jobs/live-jobs (the listing). This route renders a single
 // curated job opening with its own canonical URL, generated statically for
-// every job in `JOBS`.
+// every live job (Sanity-first via getLiveJobs(), static `JOBS` fallback).
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
-import { JOBS } from "@/lib/jobsData";
 import type { Job } from "@/lib/jobsData";
+import { getLiveJobs, getLiveJobBySlug } from "@/lib/liveJobs";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import {
     generateJobPostingSchema,
@@ -75,14 +75,22 @@ type Props = {
     params: Promise<{ jobId: string }>;
 };
 
-// SSG: every job in JOBS gets its own canonical URL.
+// ISR: re-fetch live jobs from Sanity at most hourly (the /api/revalidate
+// webhook triggers instant revalidation on publish). Until Sanity is seeded,
+// getLiveJobs() falls back to the static JOBS array, so output is identical to
+// the previous static build — see src/lib/liveJobs.ts.
+export const revalidate = 3600;
+
+// SSG: every job gets its own canonical URL. Params come from Sanity (with a
+// static JOBS fallback), so no existing URL is ever dropped.
 export async function generateStaticParams() {
-    return JOBS.map((j) => ({ jobId: j.id }));
+    const jobs = await getLiveJobs();
+    return jobs.map((j) => ({ jobId: j.id }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { jobId } = await params;
-    const job = JOBS.find((j) => j.id === jobId);
+    const job = await getLiveJobBySlug(jobId);
 
     if (!job) {
         return {
@@ -103,7 +111,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Page({ params }: Props) {
     const { jobId } = await params;
-    const job = JOBS.find((j) => j.id === jobId);
+    const job = await getLiveJobBySlug(jobId);
     if (!job) notFound();
 
     const jobWithBanner: Job = {

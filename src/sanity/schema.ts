@@ -5,6 +5,7 @@ import category from './schemas/category'
 import post from './schemas/post'
 import certificate from './schemas/certificate'
 import job from './schemas/job'
+import liveJob from './schemas/liveJob'
 // BLG-133: v1 scaffolding for 7 doc types that currently live as TS data
 // files. Schemas only — site components still read from src/data/* until
 // a follow-up sprint migrates them.
@@ -23,6 +24,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
         category,
         certificate,
         job,
+        liveJob,
         course,
         mentor,
         event,

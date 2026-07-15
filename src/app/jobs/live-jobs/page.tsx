@@ -1,8 +1,8 @@
 // SERVER COMPONENT — Live Jobs (CDPL)
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { JOBS } from "@/lib/jobsData";
 import type { Job } from "@/lib/jobsData";
+import { getLiveJobs } from "@/lib/liveJobs";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateLiveJobsPageAllSchemas, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
@@ -65,12 +65,19 @@ const JobsLiveJobsSubscribeCTASection = dynamic(
 
 // Constant data
 const DEFAULT_BANNER = "/og-images/jobs-live-jobs-og.webp";
-const JOBS_WITH_BANNER: Job[] = JOBS.map((j) => ({
-  ...j,
-  bannerImage: j.bannerImage ?? DEFAULT_BANNER,
-}));
+
+// ISR: keep the listing fresh from Sanity at most hourly; the /api/revalidate
+// webhook refreshes it instantly on publish. Falls back to static JOBS when
+// Sanity is empty, so output is identical to the previous build.
+export const revalidate = 3600;
 
 export default async function Page() {
+  const jobs = await getLiveJobs();
+  const JOBS_WITH_BANNER: Job[] = jobs.map((j) => ({
+    ...j,
+    bannerImage: j.bannerImage ?? DEFAULT_BANNER,
+  }));
+
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "/" },
     { name: "Jobs", url: "/jobs" },
@@ -78,9 +85,9 @@ export default async function Page() {
   ]);
 
   // Generate 8-point Schemas dynamically
-  const schemas = generateLiveJobsPageAllSchemas(JOBS);
+  const schemas = generateLiveJobsPageAllSchemas(jobs);
 
-  const jobSchemas = JOBS.map((job) => {
+  const jobSchemas = jobs.map((job) => {
     // Attempt to synthesize missing address fields from location
     const locationLower = job.location.toLowerCase();
     let region = "Maharashtra";
