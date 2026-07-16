@@ -95,7 +95,26 @@ export default defineType({
             title: 'Event / Deadline Date',
             type: 'date',
             options: { dateFormat: 'YYYY-MM-DD' },
-            description: 'Walk-in date or application deadline (optional).',
+            description:
+                'Walk-in date or application deadline (optional). Also used as the posting expiry (validThrough) in Google markup when "Valid Through" below is empty — do NOT set this to the posting date itself.',
+        }),
+        defineField({
+            name: 'validThrough',
+            title: 'Valid Through (apply-by date)',
+            type: 'date',
+            options: { dateFormat: 'YYYY-MM-DD' },
+            description:
+                'Application deadline → JobPosting.validThrough in Google markup. After this date Google treats the posting as EXPIRED, so keep it in the future while the job is open. If empty, falls back to Event/Deadline Date, then 2026-12-31.',
+            validation: (Rule) =>
+                Rule.custom((date) => {
+                    if (
+                        typeof date === 'string' &&
+                        date <= new Date().toISOString().slice(0, 10)
+                    ) {
+                        return 'This date is not in the future — Google will treat the posting as EXPIRED.';
+                    }
+                    return true;
+                }).warning(),
         }),
         defineField({
             name: 'timeWindow',
@@ -117,9 +136,54 @@ export default defineType({
         }),
         defineField({
             name: 'salary',
-            title: 'Salary',
+            title: 'Salary (display text)',
             type: 'string',
-            description: 'e.g. "₹6–10 LPA".',
+            description:
+                'Shown on the job card, e.g. "₹6–10 LPA". For Google rich results, ALSO fill the structured salary fields below whenever the employer disclosed pay.',
+        }),
+        defineField({
+            name: 'salaryMin',
+            title: 'Salary Min (number)',
+            type: 'number',
+            description:
+                'Structured salary for Google JobPosting rich results (fixes the "Missing field baseSalary" notice). Numeric amount per the period below, e.g. 600000 for ₹6 LPA, or 15000 for a ₹15k monthly stipend. Fill ONLY if the employer disclosed it — never estimate.',
+            validation: (Rule) => Rule.min(0),
+        }),
+        defineField({
+            name: 'salaryMax',
+            title: 'Salary Max (number)',
+            type: 'number',
+            description: 'Upper bound of the range. Leave empty for a single fixed amount.',
+            validation: (Rule) =>
+                Rule.min(0).custom((max, context) => {
+                    const min = (context.document as { salaryMin?: number } | undefined)?.salaryMin;
+                    if (typeof max === 'number' && typeof min === 'number' && max < min) {
+                        return 'Salary Max must be greater than or equal to Salary Min.';
+                    }
+                    return true;
+                }),
+        }),
+        defineField({
+            name: 'salaryUnit',
+            title: 'Salary Period',
+            type: 'string',
+            initialValue: 'YEAR',
+            options: {
+                list: [
+                    { title: 'Per year', value: 'YEAR' },
+                    { title: 'Per month', value: 'MONTH' },
+                    { title: 'Per week', value: 'WEEK' },
+                    { title: 'Per day', value: 'DAY' },
+                    { title: 'Per hour', value: 'HOUR' },
+                ],
+            },
+        }),
+        defineField({
+            name: 'salaryCurrency',
+            title: 'Salary Currency',
+            type: 'string',
+            initialValue: 'INR',
+            description: 'ISO 4217 code, e.g. INR.',
         }),
         defineField({
             name: 'highlights',

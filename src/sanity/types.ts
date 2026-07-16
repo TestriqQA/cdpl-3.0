@@ -135,6 +135,11 @@ export interface SanityLiveJob {
     venue?: string;
     exp?: string;
     salary?: string;
+    salaryMin?: number;
+    salaryMax?: number;
+    salaryCurrency?: string;
+    salaryUnit?: 'HOUR' | 'DAY' | 'WEEK' | 'MONTH' | 'YEAR';
+    validThrough?: string;
     highlights?: string[];
     responsibilities?: string[];
     applyEmail?: string;

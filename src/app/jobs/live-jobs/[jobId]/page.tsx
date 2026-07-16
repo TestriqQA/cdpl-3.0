@@ -6,12 +6,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
 import type { Job } from "@/lib/jobsData";
-import { getLiveJobs, getLiveJobBySlug } from "@/lib/liveJobs";
+import { getLiveJobs, getLiveJobBySlug, buildLiveJobPostingSchema } from "@/lib/liveJobs";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
-import {
-    generateJobPostingSchema,
-    generateBreadcrumbSchema,
-} from "@/lib/schema-generators";
+import { generateBreadcrumbSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
 // CRITICAL: static imports for above-the-fold content to eliminate LCP/FCP delay
@@ -118,88 +115,9 @@ export default async function Page({ params }: Props) {
         bannerImage: job.bannerImage ?? DEFAULT_BANNER,
     };
 
-    // Synthesize address details from the job's location string. Mirrors the
-    // logic in /jobs/live-jobs (the listing); kept inline to keep this route
-    // self-contained.
-    const locationLower = job.location.toLowerCase();
-    let region = "Maharashtra";
-    let postal = "400001";
-    if (locationLower.includes("pune") || locationLower.includes("hinjewadi")) {
-        region = "Maharashtra";
-        postal = "411001";
-    } else if (locationLower.includes("ahmedabad")) {
-        region = "Gujarat";
-        postal = "380001";
-    } else if (
-        locationLower.includes("bengaluru") ||
-        locationLower.includes("bangalore")
-    ) {
-        region = "Karnataka";
-        postal = "560001";
-    } else if (locationLower.includes("chennai")) {
-        region = "Tamil Nadu";
-        postal = "600001";
-    } else if (locationLower.includes("indore")) {
-        region = "Madhya Pradesh";
-        postal = "452001";
-    } else if (
-        locationLower.includes("delhi") ||
-        locationLower.includes("noida") ||
-        locationLower.includes("gurgaon")
-    ) {
-        region = "Delhi NCR";
-        postal = "110001";
-    } else if (locationLower.includes("remote")) {
-        region = "India";
-        postal = "000000";
-    }
-
-    // Parse "X-Y LPA" salary strings into baseSalary schema.
-    let baseSalary;
-    if (job.salary) {
-        const lpaMatch = job.salary.match(
-            /([0-9.]+)[^\d.]+([0-9.]+)\s*LPA/i,
-        );
-        if (lpaMatch) {
-            baseSalary = {
-                currency: "INR",
-                value: {
-                    minValue: parseFloat(lpaMatch[1]) * 100000,
-                    maxValue: parseFloat(lpaMatch[2]) * 100000,
-                    unitText: "YEAR",
-                },
-            };
-        }
-    }
-
-    const jobPostingSchema = generateJobPostingSchema({
-        title: job.title,
-        description:
-            job.highlights?.join(". ") || `${job.title} at ${job.company}`,
-        datePosted: job.postedOn,
-        validThrough: job.eventDate || "2026-12-31",
-        employmentType:
-            job.type === "Full-time"
-                ? "FULL_TIME"
-                : job.type === "Internship"
-                    ? "INTERN"
-                    : job.type === "Contract"
-                        ? "CONTRACTOR"
-                        : "OTHER",
-        hiringOrganization: {
-            name: job.company,
-            sameAs: job.companySite,
-        },
-        jobLocation: {
-            addressLocality: job.location,
-            streetAddress: job.venue || job.location,
-            addressRegion: region,
-            postalCode: postal,
-            addressCountry: "IN",
-        },
-        baseSalary,
-        url: `/jobs/live-jobs/${job.id}`,
-    });
+    // JobPosting JSON-LD via the shared builder in src/lib/liveJobs.ts — the
+    // same logic the listing route uses, so schema fixes apply to both.
+    const jobPostingSchema = buildLiveJobPostingSchema(job);
 
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: "/" },

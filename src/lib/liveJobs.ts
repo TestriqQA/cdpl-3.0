@@ -1,5 +1,6 @@
 import { client } from '@/sanity/client';
 import { LIVE_JOBS_QUERY, LIVE_JOB_BY_SLUG_QUERY } from '@/sanity/lib/queries';
+import { generateJobPostingSchema } from '@/lib/schema-generators';
 import type { SanityLiveJob } from '@/sanity/types';
 import { JOBS } from '@/lib/jobsData';
 import type { Job } from '@/lib/jobsData';
@@ -57,6 +58,11 @@ function sanityToJob(sj: SanityLiveJob): Job {
         venue: sj.venue || undefined,
         exp: sj.exp || undefined,
         salary: sj.salary || undefined,
+        salaryMin: typeof sj.salaryMin === 'number' ? sj.salaryMin : undefined,
+        salaryMax: typeof sj.salaryMax === 'number' ? sj.salaryMax : undefined,
+        salaryCurrency: sj.salaryCurrency || undefined,
+        salaryUnit: sj.salaryUnit || undefined,
+        validThrough: sj.validThrough || undefined,
         highlights: nonEmpty(sj.highlights),
         responsibilities: nonEmpty(sj.responsibilities),
         applyEmail: sj.applyEmail || undefined,
@@ -112,4 +118,122 @@ export async function getLiveJobBySlug(slug: string): Promise<Job | undefined> {
         console.error('[getLiveJobBySlug] Sanity fetch failed, using static JOBS snapshot:', err);
         return JOBS.find((j) => j.id === slug);
     }
+}
+
+/**
+ * Build the Google JobPosting JSON-LD for a live job.
+ *
+ * SINGLE SOURCE OF TRUTH shared by /jobs/live-jobs (listing) and
+ * /jobs/live-jobs/[jobId] (detail) — this logic was previously duplicated
+ * inline in both routes, so a fix applied to one could miss the other.
+ *
+ * baseSalary best practice (Google): emit it whenever the employer actually
+ * disclosed pay — the structured salaryMin/Max/Unit/Currency fields take
+ * priority, else a conservative parse of the display string. NEVER invent a
+ * figure: fabricated salary data violates Google's structured-data policy.
+ * Jobs with no disclosed salary simply omit the field; Search Console then
+ * shows a harmless "missing optional field" notice for them, which is the
+ * correct and expected outcome.
+ *
+ * validThrough: explicit apply-by date first, then the walk-in/deadline date,
+ * then the legacy far-future default (kept for output-compat with the seeded
+ * jobs). Editors should keep it in the future while a job is open — once it
+ * passes, Google treats the posting as expired.
+ */
+export function buildLiveJobPostingSchema(job: Job) {
+    // Synthesize address details from the job's location string.
+    const locationLower = job.location.toLowerCase();
+    let region = "Maharashtra";
+    let postal = "400001";
+    if (locationLower.includes("pune") || locationLower.includes("hinjewadi")) {
+        region = "Maharashtra";
+        postal = "411001";
+    } else if (locationLower.includes("ahmedabad")) {
+        region = "Gujarat";
+        postal = "380001";
+    } else if (locationLower.includes("bengaluru") || locationLower.includes("bangalore")) {
+        region = "Karnataka";
+        postal = "560001";
+    } else if (locationLower.includes("chennai")) {
+        region = "Tamil Nadu";
+        postal = "600001";
+    } else if (locationLower.includes("indore")) {
+        region = "Madhya Pradesh";
+        postal = "452001";
+    } else if (locationLower.includes("delhi") || locationLower.includes("noida") || locationLower.includes("gurgaon")) {
+        region = "Delhi NCR";
+        postal = "110001";
+    } else if (locationLower.includes("remote")) {
+        region = "India";
+        postal = "000000";
+    }
+
+    // baseSalary: structured, editor-entered fields take priority…
+    let baseSalary;
+    if (typeof job.salaryMin === "number" || typeof job.salaryMax === "number") {
+        const min = typeof job.salaryMin === "number" ? job.salaryMin : (job.salaryMax as number);
+        const max = typeof job.salaryMax === "number" ? job.salaryMax : min;
+        baseSalary = {
+            currency: job.salaryCurrency || "INR",
+            value: {
+                minValue: Math.min(min, max),
+                maxValue: Math.max(min, max),
+                unitText: job.salaryUnit || "YEAR",
+            },
+        };
+    } else if (job.salary) {
+        // …else parse the display text: "X–Y LPA" range first, then single "X LPA".
+        // Number groups REQUIRE a leading digit so strings like "Rs. 6 LPA" can't
+        // yield NaN→null markup (the old [0-9.]+ pattern matched the bare dot in
+        // "Rs."). Min/max are ordered defensively for odd strings like
+        // "10 LPA + 2 LPA bonus" that would otherwise parse as an inverted range.
+        const lpaRange = job.salary.match(/([0-9]+(?:\.[0-9]+)?)[^\d.]+([0-9]+(?:\.[0-9]+)?)\s*LPA/i);
+        const lpaSingle = job.salary.match(/([0-9]+(?:\.[0-9]+)?)\s*LPA/i);
+        if (lpaRange) {
+            const a = parseFloat(lpaRange[1]) * 100000;
+            const b = parseFloat(lpaRange[2]) * 100000;
+            baseSalary = {
+                currency: "INR",
+                value: {
+                    minValue: Math.min(a, b),
+                    maxValue: Math.max(a, b),
+                    unitText: "YEAR",
+                },
+            };
+        } else if (lpaSingle) {
+            const single = parseFloat(lpaSingle[1]) * 100000;
+            baseSalary = {
+                currency: "INR",
+                value: { minValue: single, maxValue: single, unitText: "YEAR" },
+            };
+        }
+    }
+
+    return generateJobPostingSchema({
+        title: job.title,
+        description: job.highlights?.join(". ") || `${job.title} at ${job.company}`,
+        datePosted: job.postedOn,
+        validThrough: job.validThrough || job.eventDate || "2026-12-31",
+        employmentType:
+            job.type === "Full-time"
+                ? "FULL_TIME"
+                : job.type === "Internship"
+                    ? "INTERN"
+                    : job.type === "Contract"
+                        ? "CONTRACTOR"
+                        : "OTHER",
+        hiringOrganization: {
+            name: job.company,
+            sameAs: job.companySite,
+        },
+        jobLocation: {
+            addressLocality: job.location,
+            streetAddress: job.venue || job.location,
+            addressRegion: region,
+            postalCode: postal,
+            addressCountry: "IN",
+        },
+        baseSalary,
+        url: `/jobs/live-jobs/${job.id}`,
+    });
 }

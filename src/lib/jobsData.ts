@@ -16,6 +16,17 @@ export type Job = {
   exp?: string;
   salary?: string;
 
+  // Structured salary for Google JobPosting rich results (fill ONLY when the
+  // employer disclosed pay — never estimate). Preferred over parsing `salary`.
+  salaryMin?: number;
+  salaryMax?: number;
+  salaryCurrency?: string; // ISO 4217, defaults to "INR"
+  salaryUnit?: "HOUR" | "DAY" | "WEEK" | "MONTH" | "YEAR"; // defaults to "YEAR"
+
+  // Explicit application deadline → JobPosting.validThrough.
+  // Falls back to eventDate, then a far-future default.
+  validThrough?: string;   // ISO: YYYY-MM-DD
+
   highlights?: string[];
   responsibilities?: string[];
 
