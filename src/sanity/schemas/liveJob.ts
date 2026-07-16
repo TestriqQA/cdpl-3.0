@@ -88,6 +88,7 @@ export default defineType({
             title: 'Posted On',
             type: 'date',
             options: { dateFormat: 'YYYY-MM-DD' },
+            initialValue: () => new Date().toISOString().slice(0, 10),
             validation: (Rule) => Rule.required(),
         }),
         defineField({
@@ -103,8 +104,14 @@ export default defineType({
             title: 'Valid Through (apply-by date)',
             type: 'date',
             options: { dateFormat: 'YYYY-MM-DD' },
+            // Pre-fill +30 days on NEW jobs so a posting is never born expired,
+            // even if the editor leaves every date field untouched.
+            initialValue: () =>
+                new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+                    .toISOString()
+                    .slice(0, 10),
             description:
-                'Application deadline → JobPosting.validThrough in Google markup. After this date Google treats the posting as EXPIRED, so keep it in the future while the job is open. If empty, falls back to Event/Deadline Date, then 2026-12-31.',
+                'Application deadline → JobPosting.validThrough in Google markup. After this date Google treats the posting as EXPIRED, so keep it in the future while the job is open. Pre-filled to 30 days from creation — adjust it to the real deadline. If empty, falls back to Event/Deadline Date, then 2026-12-31.',
             validation: (Rule) =>
                 Rule.custom((date) => {
                     if (
