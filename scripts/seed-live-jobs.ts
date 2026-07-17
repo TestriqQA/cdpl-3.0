@@ -23,7 +23,7 @@
  *
  * NOTE: undefined fields are stripped so Sanity does not persist empty keys.
  */
-// Staging build trigger (no-op change) — safe to delete.
+// Staging build trigger (no-op change #2) — safe to delete.
 import { config as loadEnv } from 'dotenv';
 import { createClient } from '@sanity/client';
 import { JOBS } from '../src/lib/jobsData';
