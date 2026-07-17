@@ -225,7 +225,8 @@ interface ItemListElement {
 export function generateItemListSchema(
   items: ItemListElement[],
   name: string,
-): WithContext<Record<string, unknown>> {
+): WithContext<Record<string, unknown>> | undefined {
+  if (items.length === 0) return undefined;
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -280,13 +281,25 @@ export function generateItemListSchema(
             image: getImageUrl(item.image || SITE_CONFIG.defaultOgImage),
           }),
 
-          // Fix: Course objects require a provider
+          // Fix: Course objects require provider, offers and hasCourseInstance
           ...(itemType === "Course" && {
             provider: {
               "@type": "EducationalOrganization",
               "@id": getOrganizationId(),
               name: SITE_CONFIG.name,
               url: SITE_CONFIG.url,
+            },
+            hasCourseInstance: [
+              {
+                "@type": "CourseInstance",
+                courseMode: ["online", "onsite"],
+                courseWorkload: "P3M",
+              },
+            ],
+            offers: {
+              "@type": "Offer",
+              category: "Paid",
+              url: getFullUrl(item.url),
             },
           }),
 

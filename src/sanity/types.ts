@@ -117,6 +117,40 @@ export interface SanityService {
     ogImage?: string;
 }
 
+// Live-jobs doc type, projected for /jobs/live-jobs + /jobs/live-jobs/[jobId].
+// Mirrors the static `Job` shape (src/lib/jobsData.ts); mapped back to it in
+// src/lib/liveJobs.ts so page output stays identical to the pre-migration build.
+export interface SanityLiveJob {
+    _id: string;
+    slug?: string;
+    title: string;
+    company: string;
+    companySite?: string;
+    type: 'Walk-in' | 'Full-time' | 'Internship' | 'Contract';
+    mode?: 'Onsite' | 'Hybrid' | 'Remote';
+    location: string;
+    postedOn: string;
+    eventDate?: string;
+    timeWindow?: string;
+    venue?: string;
+    exp?: string;
+    salary?: string;
+    salaryMin?: number;
+    salaryMax?: number;
+    salaryCurrency?: string;
+    salaryUnit?: 'HOUR' | 'DAY' | 'WEEK' | 'MONTH' | 'YEAR';
+    validThrough?: string;
+    highlights?: string[];
+    responsibilities?: string[];
+    applyEmail?: string;
+    applyLink?: string;
+    contacts?: string[];
+    bannerImage?: string;
+    bannerImageAlt?: string;
+    tags?: string[];
+    isActive?: boolean;
+}
+
 // BLG-133 follow-up — event doc type, projected for /events + /events/[slug].
 // Mapped to the legacy `PastEvent` shape in src/lib/events.ts; the mapper
 // fills in CDPL defaults when organizerInfo/venueInfo are left blank.

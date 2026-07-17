@@ -303,7 +303,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/events/6-days-workshop-on-machine-learning-with-hands-on-training-on-industry-projects-2',
-        destination: '/events',
+        destination: '/events/6-days-workshop-on-machine-learning-with-hands-on-training-on-industry-projects',
         statusCode: 301,
       },
       {
@@ -348,6 +348,108 @@ const nextConfig: NextConfig = {
       {
         source: '/web-development-courses-in-:city',
         destination: '/web-development-course-in-:city',
+        statusCode: 301,
+      },
+      // ⚠️  SEO FIX (June 2026): Redirect mislinked / legacy URLs to correct pages.
+      {
+        source: '/prompt-engineering-with-generativeai',
+        destination: '/courses/artificial-intelligence-courses/prompt-engineering-course',
+        statusCode: 301,
+      },
+      {
+        source: '/REST%20API%20vs%20GraphQL\\:%20Key%20Differences,%20Advantages,%20and%20When%20to%20Use%20Each',
+        destination: '/blog/rest-api-vs-graphql-understanding-the-key-differences',
+        statusCode: 301,
+      },
+      {
+        source: '/What%20Is%20Data%20Science',
+        destination: '/blog/what-is-data-science',
+        statusCode: 301,
+      },
+      {
+        source: '/advanced-automation-testing',
+        destination: '/courses/software-testing-course/automation-testing-course',
+        statusCode: 301,
+      },
+      {
+        source: '/End-to-End%20Data%20Science%20Workflow%20Guide',
+        destination: '/blog/end-to-end-data-science-workflow-model-deployment-guide',
+        statusCode: 301,
+      },
+      {
+        source: '/Step-by-Step%20Tableau%20Dashboard%20Creation',
+        destination: '/blog/step-by-step-tableau-dashboard-creation',
+        statusCode: 301,
+      },
+      {
+        source: '/careers',
+        destination: '/jobs/careers',
+        statusCode: 301,
+      },
+      {
+        source: '/essential-data-science-statistics-concepts',
+        destination: '/blog/essential-data-science-statistics-concepts',
+        statusCode: 301,
+      },
+      {
+        source: '/manual-testing-basics-types-real-time-examples',
+        destination: '/blog/manual-testing-basics-types-real-time-examples',
+        statusCode: 301,
+      },
+      {
+        source: '/Web%20App%20Testing%20Guide\\:%20Black%20Box%20vs%20White%20Box%20Explained',
+        destination: '/blog/black-box-vs-white-box-testing-web-apps',
+        statusCode: 301,
+      },
+      // ⚠️  SEO FIX (June 2026): Batch 2 — additional mislinked / legacy URLs.
+      {
+        source: '/en',
+        destination: '/',
+        statusCode: 301,
+      },
+      {
+        source: '/blog/Pagination',
+        destination: '/blog',
+        statusCode: 301,
+      },
+      {
+        source: '/courses/software-testing-courses',
+        destination: '/courses/software-testing-course',
+        statusCode: 301,
+      },
+      {
+        source: '/blog/istqb-certification-prep-guide',
+        destination: '/blog/istqb-ctfl-prep-guide-pass-on-your-first-attempt',
+        statusCode: 301,
+      },
+      {
+        source: '/courses/step-by-step-tableau-dashboard-creation',
+        destination: '/blog/step-by-step-tableau-dashboard-creation',
+        statusCode: 301,
+      },
+      {
+        source: '/blog/\\:slug',
+        destination: '/blog',
+        statusCode: 301,
+      },
+      {
+        source: '/downloads/digital-marketing-with-ai-bootcamp-digital-marketing-with-ai-bootcamp.pdf',
+        destination: '/courses/digital-marketing-courses/ai-bootcamp',
+        statusCode: 301,
+      },
+      {
+        source: '/old-blog/:slug',
+        destination: '/blog',
+        statusCode: 301,
+      },
+      {
+        source: '/hi/blog',
+        destination: '/blog',
+        statusCode: 301,
+      },
+      {
+        source: '/https\\:/www.cinutedigital.com',
+        destination: '/',
         statusCode: 301,
       },
     ];

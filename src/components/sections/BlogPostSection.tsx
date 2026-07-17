@@ -8,6 +8,7 @@ import PortableTextRenderer from '@/components/blog/PortableTextRenderer';
 import TableOfContents from '@/components/blog/TableOfContents';
 import { notFound } from 'next/navigation';
 import { SanityPost, SanityCategory } from '@/sanity/types';
+import { SITE_CONFIG } from '@/lib/seo-config';
 
 import BlogAuthorInfo from '@/components/blog/BlogAuthorInfo';
 
@@ -81,7 +82,7 @@ export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ post, relatedP
                         <h3 className="text-lg sm:text-xl font-bold mb-4 text-gray-700">Share this article</h3>
                         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                             <Link
-                                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}&text=${encodeURIComponent(post.title)}`}
+                                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`${SITE_CONFIG.url}/blog/${post.slug}`)}&text=${encodeURIComponent(post.title)}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 text-sm sm:text-base"
@@ -90,7 +91,7 @@ export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ post, relatedP
                                 <span className="font-medium">Twitter</span>
                             </Link>
                             <Link
-                                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+                                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${SITE_CONFIG.url}/blog/${post.slug}`)}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm sm:text-base"
@@ -99,7 +100,7 @@ export const BlogPostSection: React.FC<BlogPostSectionProps> = ({ post, relatedP
                                 <span className="font-medium">LinkedIn</span>
                             </Link>
                             <Link
-                                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+                                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${SITE_CONFIG.url}/blog/${post.slug}`)}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm sm:text-base"

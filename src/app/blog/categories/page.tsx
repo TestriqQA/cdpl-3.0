@@ -98,7 +98,7 @@ export default async function CategoriesPage() {
       {/* Enhanced JSON-LD Structured Data */}
       <JsonLd id="categories-breadcrumb" schema={breadcrumbSchema} />
       <JsonLd id="categories-collection" schema={collectionPageSchema} />
-      <JsonLd id="categories-itemlist" schema={itemListSchema} />
+      {itemListSchema && <JsonLd id="categories-itemlist" schema={itemListSchema} />}
 
       {/* Semantic HTML Structure */}
       <div itemScope itemType="https://schema.org/CollectionPage">

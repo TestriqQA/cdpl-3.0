@@ -146,7 +146,7 @@ export default function AboutCTASection() {
                                 </Link>
 
                                 <Link
-                                    href="https://wa.me/9152929342"
+                                    href="https://wa.me/917888383788"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-green-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-[#ff8c00]/30"

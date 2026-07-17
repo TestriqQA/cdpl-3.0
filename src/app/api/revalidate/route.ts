@@ -112,6 +112,15 @@ export async function POST(req: NextRequest) {
         revalidated.push('/jobs/careers');
         break;
       }
+      case 'liveJob': {
+        if (slug) {
+          revalidatePath(`/jobs/live-jobs/${slug}`, 'page');
+          revalidated.push(`/jobs/live-jobs/${slug}`);
+        }
+        revalidatePath('/jobs/live-jobs', 'page');
+        revalidated.push('/jobs/live-jobs');
+        break;
+      }
       case 'certificate': {
         revalidatePath('/cdpl-certificate-validation', 'page');
         revalidated.push('/cdpl-certificate-validation');

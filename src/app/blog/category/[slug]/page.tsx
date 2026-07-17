@@ -292,7 +292,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
             <JsonLd id="category-breadcrumb" schema={breadcrumbSchema} />
             <JsonLd id="category-webpage" schema={webPageSchema} />
             <JsonLd id="category-collection" schema={collectionPageSchema} />
-            <JsonLd id="category-itemlist" schema={itemListSchema} />
+            {itemListSchema && <JsonLd id="category-itemlist" schema={itemListSchema} />}
             <JsonLd id="category-rating" schema={aggregateRatingSchema} />
 
             {/* Semantic HTML structure with proper structure */}

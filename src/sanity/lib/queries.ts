@@ -321,3 +321,50 @@ export const SERVICE_BY_SLUG_QUERY = groq`*[_type == "service" && slug.current =
 
 // Slug list for `generateStaticParams` on /services/[slug].
 export const SERVICE_SLUGS_QUERY = groq`*[_type == "service" && isActive == true && defined(slug.current)][].slug.current`
+
+// ---------------------------------------------------------------------------
+// LIVE JOBS (external CDPL-curated openings) — /jobs/live-jobs + /[jobId]
+// Projection mirrors the static `Job` shape in src/lib/jobsData.ts so the
+// mapper in src/lib/liveJobs.ts reproduces byte-identical page output.
+// ---------------------------------------------------------------------------
+const LIVE_JOB_PROJECTION = `
+  _id,
+  "slug": slug.current,
+  title,
+  company,
+  companySite,
+  type,
+  mode,
+  location,
+  postedOn,
+  eventDate,
+  timeWindow,
+  venue,
+  exp,
+  salary,
+  salaryMin,
+  salaryMax,
+  salaryCurrency,
+  salaryUnit,
+  validThrough,
+  highlights,
+  responsibilities,
+  applyEmail,
+  applyLink,
+  contacts,
+  bannerImage,
+  bannerImageAlt,
+  tags,
+  isActive
+`
+
+export const LIVE_JOBS_QUERY = groq`*[_type == "liveJob" && isActive == true] | order(coalesce(eventDate, postedOn) desc) {
+  ${LIVE_JOB_PROJECTION}
+}`
+
+export const LIVE_JOB_BY_SLUG_QUERY = groq`*[_type == "liveJob" && slug.current == $slug && isActive == true][0] {
+  ${LIVE_JOB_PROJECTION}
+}`
+
+// Slug list for `generateStaticParams` on /jobs/live-jobs/[jobId].
+export const LIVE_JOB_SLUGS_QUERY = groq`*[_type == "liveJob" && isActive == true && defined(slug.current)][].slug.current`

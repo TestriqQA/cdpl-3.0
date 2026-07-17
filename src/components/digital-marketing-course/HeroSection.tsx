@@ -135,7 +135,7 @@ export default function HeroSection() {
               id="dm-hero"
               className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
             >
-              Best <span className="text-green-700">Digital Marketing Course</span> in Mumbai with{' '}
+              <span className="text-green-700">Digital Marketing Course</span> in Mumbai with{' '}
               <span className="text-green-700">Placement</span>
             </h1>
 
