@@ -3,15 +3,19 @@
 import Script from 'next/script'
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
+import { useDeferredLoad } from '@/hooks/useDeferredLoad'
 
 export default function MetaPixel() {
     const pixelId = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID
     const pathname = usePathname()
+    // Gate only the heavy network+execution part. See below.
+    const loadPixelLibrary = useDeferredLoad()
 
     useEffect(() => {
         if (!pixelId) return
-        
-        // Ensure fbq has loaded
+
+        // fbq is defined synchronously by the stub below, so this queues even
+        // before fbevents.js has arrived.
         if (typeof window !== 'undefined' && window.fbq) {
             window.fbq('track', 'PageView')
         }
@@ -21,36 +25,57 @@ export default function MetaPixel() {
 
     return (
         <>
+            {/*
+              The stock Meta snippet does two things at once: it defines the
+              `fbq` stub (which just pushes calls onto `fbq.queue`) and it
+              injects fbevents.js. Those are split here.
+
+              This half is the stub plus init/PageView. It is a few hundred
+              bytes and costs effectively no main-thread time, but it means
+              every event fires at its true timestamp and is buffered.
+            */}
             <Script
                 id="fb-pixel"
-                // BLG-007: lazyOnload defers fbevents.js until the browser is
-                // idle, so the Meta Pixel no longer competes with hydration
-                // and core content for main-thread time.
-                strategy="lazyOnload"
+                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            !function(f,b,e,v,n){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
             if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
+            n.queue=[]}(window, document);
             fbq('init', '${pixelId}');
             fbq('track', 'PageView');
           `,
                 }}
             />
+
+            {/*
+              fbevents.js (plus the signals/config request it chains to) was the
+              single largest main-thread cost on the page. It is deferred until
+              the browser is idle or the user interacts, then drains fbq.queue.
+
+              Caveat: the queue is in-memory. A visitor who leaves before the
+              library loads (no interaction AND no idle window within the
+              timeout) loses their PageView. Any scroll or tap triggers the load
+              immediately, so this only affects sub-timeout bounces.
+            */}
+            {loadPixelLibrary && (
+                <Script
+                    id="fb-pixel-lib"
+                    strategy="afterInteractive"
+                    src="https://connect.facebook.net/en_US/fbevents.js"
+                />
+            )}
+
             <noscript>
                 <img
                     height="1"
                     width="1"
                     style={{ display: 'none' }}
+                    alt=""
                     src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
                 />
             </noscript>
         </>
     )
 }
-

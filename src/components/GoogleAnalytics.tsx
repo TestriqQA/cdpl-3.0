@@ -3,6 +3,7 @@
 import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
 import { useEffect, useRef, Suspense } from "react";
+import { useDeferredLoad } from "@/hooks/useDeferredLoad";
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -40,25 +41,37 @@ function GoogleAnalyticsTracker() {
 // OUTER COMPONENT - Wraps with Suspense and includes Scripts
 // ============================================================================
 const GoogleAnalytics = () => {
+  // Hooks must run unconditionally, so this sits above the early return.
+  const loadGtagLibrary = useDeferredLoad();
+
   if (!GA_MEASUREMENT_ID) {
     return null;
   }
 
   return (
     <>
-      {/* Using 'afterInteractive' or 'lazyOnload' is good, but for maximum performance 
-          we can use 'worker' strategy if Partytown is set up. 
-          However, 'lazyOnload' is safer for general use to avoid blocking LCP. */}
-      {/* 
-        STRATEGY: Mixed
-        1. External Script (Heavy): 'lazyOnload' to avoid TBT on mobile.
-        2. Init Script (Light): 'afterInteractive' to define window.gtag shim immediately.
-           This prevents ReferenceErrors if other components call gtag before the heavy script loads.
+      {/*
+        STRATEGY: split init from library load.
+
+        1. Init script (light, 'afterInteractive'): defines dataLayer and the
+           gtag shim immediately, so nothing can hit a ReferenceError and the
+           initial config/page_view is queued at its true timestamp.
+        2. gtag.js (heavy): deferred until the browser is idle or the user
+           interacts, draining dataLayer on arrival. This moves ~290ms of
+           script evaluation out of the initial load window, where it was a
+           large share of Total Blocking Time.
+
+           Caveat: dataLayer is in-memory, so a visitor who leaves before
+           gtag.js loads loses that page_view. Any scroll or tap triggers the
+           load immediately, so this only affects sub-timeout bounces.
       */}
-      <Script
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-      />
+      {loadGtagLibrary && (
+        <Script
+          id="gtag-lib"
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        />
+      )}
       <Script
         id="gtag-init"
         strategy="afterInteractive"
