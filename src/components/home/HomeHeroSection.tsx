@@ -143,8 +143,8 @@ const HeroHeadline = (
       id="home-heading"
       className="mt-2 py-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:mt-0 lg:py-0 lg:text-4xl lg:leading-tight xl:text-5xl"
     >
-      Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span>
-      <span className="hidden lg:inline"> with <span className="text-brand">Placement</span></span>
+      Master <span className="text-orange-700">Software Testing</span> & <span className="text-orange-700">Data Science</span>
+      <span className="hidden lg:inline"> with <span className="text-orange-700">Placement</span></span>
     </h1>
 
     <p
@@ -204,7 +204,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
         { icon: CheckCircle2, text: '90+ Real-World Projects', color: 'text-blue-600' },
         { icon: CheckCircle2, text: 'ISTQB & Industry Certifications', color: 'text-purple-600' },
         { icon: CheckCircle2, text: 'Job Support with Interview Prep', color: 'text-indigo-600' },
-        { icon: CheckCircle2, text: 'Flexible Weekend & Weekday Batches', color: 'text-brand' },
+        { icon: CheckCircle2, text: 'Flexible Weekend & Weekday Batches', color: 'text-orange-700' },
         { icon: CheckCircle2, text: 'Lifetime Access to Course Materials', color: 'text-teal-600' },
       ].map((feature, index) => (
         <div key={index} className="flex items-start gap-2">
@@ -428,7 +428,7 @@ const HomeHeroSection: React.FC = () => {
                 <span className="text-xs font-bold text-white">FREE</span>
               </div>
             </div>
-            <p className="text-sm font-semibold text-brand">
+            <p className="text-sm font-semibold text-orange-700">
               Get FREE Demo Class Instantly!
             </p>
             <p className="text-xs text-slate-600 mt-1">

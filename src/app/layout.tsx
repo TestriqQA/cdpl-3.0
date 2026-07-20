@@ -113,15 +113,15 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
 
-        {/* The country-flag icon inside the lead form's phone input is served
-            from this origin and is above the fold on the home page, so the
-            handshake is worth paying up front.
-            Note: no preconnect for connect.facebook.net or googletagmanager.com
-            — those are deliberately deferred to idle/first-interaction in
-            MetaPixel/GoogleAnalytics, and preconnecting would pull the cost
-            back into the window we just moved it out of. */}
-        <link rel="preconnect" href="https://purecatamphetamine.github.io" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://purecatamphetamine.github.io" />
+        {/* No preconnect for purecatamphetamine.github.io: the country-flag
+            icon is requested by the phone input only after hydration, far too
+            late for a preconnect to help. Lighthouse confirmed it as an
+            "Unused preconnect", and unused hints crowd out the budget the
+            audit recommends keeping to ~4 origins.
+            Also none for connect.facebook.net or googletagmanager.com — those
+            are deliberately deferred to post-load idle in MetaPixel and
+            GoogleAnalytics, so preconnecting would pull the cost back into the
+            window we just moved it out of. */}
       </head>
 
       <body className={`${inter.variable} font-sans antialiased`}>
