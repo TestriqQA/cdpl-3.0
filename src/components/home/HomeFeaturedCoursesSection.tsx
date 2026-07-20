@@ -796,11 +796,11 @@ export default function HomeFeaturedCoursesSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-2 bg-orange-100 text-brand rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold mb-4">
             Popular Courses
           </span>
           <h2 id="featured-courses-heading" className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Explore Our <span className="text-brand">Industry-Ready</span> Courses
+            Explore Our <span className="text-orange-700">Industry-Ready</span> Courses
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Choose from our comprehensive range of courses designed to make you job-ready with hands-on projects and expert mentorship.
