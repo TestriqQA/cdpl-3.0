@@ -5,15 +5,17 @@ import { Facebook, Linkedin, Instagram, Youtube } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import React from 'react';
 
+// Neither of these declares a `loading` fallback. With ssr:true the real markup
+// is already in the server HTML, so a fallback only ever appeared while the
+// client chunk was in flight — and each reserved a full 100vh that then
+// collapsed to the real footer height. Since both render unconditionally (see
+// below), that was a latent 2x100vh shift on client navigations.
+// The removed markup also used `bg-[theme(color.background)]`, which is not a
+// valid Tailwind theme path (`colors.background`), so it compiled to nothing.
 const Footer2 = dynamic(
   () => import("@/components/Layout/Footer2"),
   {
     ssr: true,
-    loading: () => (
-      <div className="flex items-center justify-center h-screen bg-[theme(color.background)]">
-        <p className="text-gray-300">Loading...</p>
-      </div>
-    ),
   }
 );
 
@@ -21,11 +23,6 @@ const CityFooter = dynamic(
   () => import("@/components/Layout/CityFooter"),
   {
     ssr: true,
-    loading: () => (
-      <div className="flex items-center justify-center h-screen bg-[theme(color.background)]">
-        <p className="text-gray-300">Loading...</p>
-      </div>
-    ),
   }
 )
 

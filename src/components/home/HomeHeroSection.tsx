@@ -117,12 +117,21 @@ interface DesktopHeroContentProps {
   onOpenVideo: () => void;
 }
 
-const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure, onOpenVideo }) => (
+/**
+ * Badge + headline + subheadline, shared by both breakpoints.
+ *
+ * These used to exist twice — once in the mobile branch and once in
+ * DesktopHeroContent — which put two <h1> elements in the DOM and left the
+ * section's aria-labelledby pointing at whichever one CSS had hidden. The
+ * copy difference between the two is preserved by revealing the trailing
+ * "with Placement" clause only from `lg` up, so each breakpoint still renders
+ * exactly the words it rendered before.
+ */
+const HeroHeadline = (
   <>
-    {/* Top Badge */}
-    {/* Top Badge - ANIMATION REMOVED FOR LCP */}
+    {/* Top Badge — desktop only, as before */}
     <div
-      className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-200 rounded-full px-4 py-2 mb-5"
+      className="hidden lg:inline-flex items-center gap-2 bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-200 rounded-full px-4 py-2 mb-5"
     >
       <Sparkles className="h-3.5 w-3.5 text-indigo-500" aria-hidden="true" />
       <span className="text-[11px] sm:text-xs font-semibold text-indigo-700">
@@ -130,23 +139,24 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
       </span>
     </div>
 
-    {/* Main Headline - Updated Copy */}
-    {/* Main Headline - Updated Copy - ANIMATION REMOVED FOR LCP */}
     <h1
       id="home-heading"
-      className="mt-3 md:mt-0 text-3xl md:text-4xl xl:text-5xl font-extrabold leading-tight tracking-tight text-slate-900"
+      className="mt-2 py-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:mt-0 lg:py-0 lg:text-4xl lg:leading-tight xl:text-5xl"
     >
-      Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span> with <span className="text-brand">Placement</span>
+      Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span>
+      <span className="hidden lg:inline"> with <span className="text-brand">Placement</span></span>
     </h1>
 
-    {/* Enhanced Subheadline */}
-    {/* Enhanced Subheadline - ANIMATION REMOVED FOR LCP */}
     <p
-      className="mt-5 text-[15px] sm:text-base md:text-lg leading-7 text-slate-700"
+      className="mt-1 mb-1.5 text-[15px] sm:text-base leading-7 text-slate-700 lg:mt-5 lg:mb-0 lg:text-lg"
     >
       Launch your tech career with industry-leading courses, live projects, and job interviews. Join our successful graduates today.
     </p>
+  </>
+);
 
+const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure, onOpenVideo }) => (
+  <>
     {/* Trust Indicators - 3 Cards */}
     <div
       className="mt-7 grid grid-cols-1 sm:grid-cols-3 gap-4"
@@ -400,12 +410,13 @@ const HomeHeroSection: React.FC = () => {
     </nav>
   );
 
-  // The original Lead Form block (Right side of the grid)
+  // The lead form. Rendered exactly once — the grid below positions it for
+  // both breakpoints. It previously appeared in both the mobile and desktop
+  // branches, so the whole form (including the phone input and its country
+  // metadata) was instantiated twice above the fold, and the shared `formRef`
+  // could only ever point at whichever copy mounted last.
   const LeadForm = (
-    <div
-      className="order-2 lg:order-2 lg:col-span-5"
-    >
-      <div className="sticky top-4 max-w-sm mx-auto lg:ml-auto lg:mr-0">
+    <div className="sticky top-4 max-w-sm mx-auto lg:ml-auto lg:mr-0">
         <div ref={formRef} className="bg-white/92 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200 p-6 sm:p-8">
           {/* Form Header - Catchy and Actionable */}
           <div className="mb-6">
@@ -559,7 +570,6 @@ const HomeHeroSection: React.FC = () => {
           </form>
         </div>
       </div>
-    </div>
   );
 
   return (
@@ -578,58 +588,41 @@ const HomeHeroSection: React.FC = () => {
 
         {/* Main Container */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {Breadcrumb}
 
-          {/* --- Mobile Layout (lg:hidden) --- */}
-          <div className="lg:hidden">
-            {/* 1. Breadcrumb */}
-            {Breadcrumb}
+          {/*
+            A single DOM tree serves both breakpoints. Previously there were two
+            (`lg:hidden` and `hidden lg:block`), both always present in the DOM
+            and toggled by CSS — which meant the entire lead form, breadcrumb
+            and icon set were instantiated twice above the fold.
 
-            {/* 2. Headline - ANIMATION REMOVED FOR LCP */}
-            {/* BLG-045: this is the visible primary heading on mobile, so it
-                must be an <h1> — it previously rendered as <h2>, leaving the
-                mobile (mobile-first-indexed) view without an h1. */}
-            <h1
-              id="home-heading-mobile"
-              className="mt-2 py-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
-            >
-              Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span>
-            </h1>
+            On mobile this is one column and `order` reproduces the previous
+            stacking: headline, form, feature list. From `lg` up it becomes the
+            same 7/5 split as before, with both columns pinned to row 1.
+            Only `gap-x` is set, so the single-column layout keeps its original
+            margin-driven vertical rhythm rather than gaining a 40px row gap.
+          */}
+          <div className="grid grid-cols-1 items-start gap-x-10 lg:grid-cols-12">
 
-            {/* 3. Description */}
-            {/* 3. Description - ANIMATION REMOVED FOR LCP */}
-            <p
-              className="mt-1 mb-1.5 text-[15px] sm:text-base leading-7 text-slate-700"
-            >
-              Launch your tech career with industry-leading courses, live projects, and job interviews. Join our successful graduates today.
-            </p>
-
-            {/* 4. Form Card */}
-            {LeadForm}
-
-            {/* 5. Mobile Feature List */}
-            <MobileFeatureList
-              onOpenBrochure={openBrochure}
-              onOpenVideo={openVideo}
-            />
-          </div>
-
-          {/* --- Desktop/Laptop Layout (hidden lg:block) --- */}
-          <div className="hidden lg:block">
-            {/* 1. Breadcrumb */}
-            {Breadcrumb}
-
-            {/* 2. Grid Layout - 8 columns left, 4 columns right */}
-            <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
-
-              {/* Left Content - 8 columns (66.67% width) */}
-              <div className="order-1 lg:order-1 lg:col-span-7">
+            {/* Headline (both breakpoints) + desktop-only supporting content */}
+            <div className="order-1 lg:col-span-7 lg:row-start-1">
+              {HeroHeadline}
+              <div className="hidden lg:block">
                 <DesktopHeroContent onOpenBrochure={openBrochure} onOpenVideo={openVideo} />
               </div>
+            </div>
 
-              {/* Right Form - 4 columns (33.33% width) */}
-              <div className="order-2 lg:order-2 lg:col-span-5">
-                {LeadForm}
-              </div>
+            {/* Lead form — one instance, right column from lg up */}
+            <div className="order-2 lg:col-span-5 lg:row-start-1">
+              {LeadForm}
+            </div>
+
+            {/* Mobile-only feature list, below the form as before */}
+            <div className="order-3 lg:hidden">
+              <MobileFeatureList
+                onOpenBrochure={openBrochure}
+                onOpenVideo={openVideo}
+              />
             </div>
           </div>
         </div>

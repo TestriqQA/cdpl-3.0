@@ -24,13 +24,18 @@ interface JsonLdProps {
  * @param {object} props.schema - The JSON-LD schema object.
  * @param {string} props.id - A unique key for the script tag.
  * @returns {React.ReactElement} A script tag with the JSON-LD schema.
+ *
+ * The schema is serialized compact rather than pretty-printed. Consumers parse
+ * this as JSON, so indentation carries no meaning to search engines or AI
+ * crawlers, but it was adding ~27% to every JSON-LD block — and these blocks
+ * render in the document head, ahead of the page content.
  */
 const JsonLd: React.FC<JsonLdProps> = ({ schema, id }) => {
   return (
     <script
       type="application/ld+json"
       id={id}
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema, null, 2) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />
   );
 };

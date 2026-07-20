@@ -150,3 +150,28 @@ main > section:not(:first-child) {
   content-visibility: auto;
   contain-intrinsic-size: auto 500px;
 }
+
+/* Respect the OS "reduce motion" setting (WCAG 2.1 SC 2.3.3).
+   Durations are collapsed to ~0 rather than set to `none` so that any code
+   awaiting a transitionend/animationend event still fires and does not hang.
+   `scroll-behavior: auto` overrides the smooth scrolling set on `html` above.
+
+   Scope note: this covers CSS-driven motion (~919 utility usages). It does NOT
+   stop framer-motion, which animates via inline styles from JS across ~149
+   components — those need either MotionConfig reducedMotion="user" or a
+   conversion to CSS animations. See the two components that already call
+   useReducedMotion() for the per-component pattern. */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+}

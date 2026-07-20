@@ -65,8 +65,10 @@ export default function HomeTrustBarSection() {
                 width={100}
                 height={40}
                 className="object-contain w-full h-full grayscale hover:grayscale-0 transition-all duration-300"
-                sizes="(max-width: 768px) 100px, 100px"
-                priority={index < 2}
+                sizes="100px"
+                // No priority: this strip sits below the hero, so preloading
+                // these competed with the LCP text for early bandwidth.
+                loading="lazy"
                 quality={60}
               />
             </motion.div>

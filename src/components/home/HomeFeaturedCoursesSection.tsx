@@ -83,12 +83,17 @@ const iconMap = {
 };
 
 // --- Isolated Countdown Component ---
-const CountdownTimer: React.FC<{ targetDate: Date }> = ({ targetDate }) => {
+const CountdownTimer: React.FC<{ targetDate: Date | null }> = ({ targetDate }) => {
   const [timeLeft, setTimeLeft] = useState<{ hours: string; minutes: string; seconds: string; isOver: boolean }>({
     hours: '00', minutes: '00', seconds: '00', isOver: false
   });
 
   useEffect(() => {
+    // The deadline is resolved on the client (it may come from sessionStorage),
+    // so until it exists we keep the 00/00/00 placeholder. It occupies exactly
+    // the same box as the live timer, so nothing shifts when it populates.
+    if (!targetDate) return;
+
     const calculateTime = () => {
       const now = Date.now();
       const diff = Math.max(0, targetDate.getTime() - now);
@@ -608,8 +613,6 @@ const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index
       }
     }
   }, [course.id, course.offerEndsAt]);
-
-  if (!target) return null; // Or a skeleton
 
   return (
     <motion.article
