@@ -23,7 +23,11 @@ import { HOME_FAQS } from "@/components/home/HomeFAQSection";
 // ============================================================================
 
 import HomeHeroSection from '@/components/home/HomeHeroSection';
-const HomeTrustBarSection = dynamic(() => import('@/components/home/HomeTrustBarSection'), { ssr: true });
+// Static import, not dynamic(): HomeTrustBarSection is a Server Component and
+// ships no client JS, so a lazy wrapper saves no bundle while still adding a
+// Suspense boundary — a skeleton that paints, then a client-side DOM swap
+// forcing style recalc and layout.
+import HomeTrustBarSection from '@/components/home/HomeTrustBarSection';
 const HomeFeaturedCoursesSection = dynamic(() => import('@/components/home/HomeFeaturedCoursesSection'), { ssr: true });
 const HomeLearningExperienceSection = dynamic(() => import('@/components/home/HomeLearningExperienceSection'), { ssr: true });
 const HomePlacementSupportSection = dynamic(() => import('@/components/home/HomePlacementSupportSection'), { ssr: true });
