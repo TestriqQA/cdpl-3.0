@@ -22,7 +22,12 @@ const CustomFlag = ({ country, countryName }: any): any => {
       src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country}.svg`}
       alt={`${countryName || country} Flag`}
       title={`${countryName || country} Flag`} // Explicit title to resolve SEO issue
-      loading="lazy"
+      // Intrinsic 3:2 ratio so the box is reserved before the SVG arrives.
+      // Not lazy: this sits inside the lead form, which is above the fold on
+      // the home page, and lazy-loading it delayed an above-fold paint.
+      width={24}
+      height={16}
+      decoding="async"
     />
   );
 };

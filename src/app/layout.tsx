@@ -112,6 +112,16 @@ export default async function RootLayout({
             first image fetch. */}
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
+
+        {/* The country-flag icon inside the lead form's phone input is served
+            from this origin and is above the fold on the home page, so the
+            handshake is worth paying up front.
+            Note: no preconnect for connect.facebook.net or googletagmanager.com
+            — those are deliberately deferred to idle/first-interaction in
+            MetaPixel/GoogleAnalytics, and preconnecting would pull the cost
+            back into the window we just moved it out of. */}
+        <link rel="preconnect" href="https://purecatamphetamine.github.io" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://purecatamphetamine.github.io" />
       </head>
 
       <body className={`${inter.variable} font-sans antialiased`}>
