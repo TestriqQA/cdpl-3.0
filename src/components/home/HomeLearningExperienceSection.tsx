@@ -60,11 +60,11 @@ export default function HomeLearningExperienceSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-2 bg-orange-100 text-brand rounded-full text-sm font-semibold mb-4">
             Learning Experience
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            How We Make You <span className="text-orange-700">Job-Ready</span>
+            How We Make You <span className="text-brand">Job-Ready</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Our proven methodology combines live training, hands-on projects, and expert mentorship to ensure you&apos;re ready for the industry from day one.

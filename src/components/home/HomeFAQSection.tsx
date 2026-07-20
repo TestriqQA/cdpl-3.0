@@ -37,13 +37,13 @@ const FAQItem = ({ faq, index, openIndex, toggleFAQ }: {
         aria-controls={`faq-content-${index}`}
       >
         <div className="flex items-center gap-4 flex-1">
-          <h3 className={`text-lg font-semibold pr-4 transition-colors duration-300 ${isOpen ? 'text-orange-700' : 'text-gray-900'
+          <h3 className={`text-lg font-semibold pr-4 transition-colors duration-300 ${isOpen ? 'text-brand' : 'text-gray-900'
             }`}>
             {faq.question}
           </h3>
         </div>
         <ChevronDown
-          className={`w-6 h-6 text-gray-500 flex-shrink-0 transition-transform duration-330 ${isOpen ? 'transform rotate-180 text-orange-700' : ''
+          className={`w-6 h-6 text-gray-500 flex-shrink-0 transition-transform duration-330 ${isOpen ? 'transform rotate-180 text-brand' : ''
             }`}
         />
       </button>
@@ -135,7 +135,7 @@ export default function HomeFAQSection() {
             Quick Answers
           </span>
           <h2 id="faq-heading" className="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
-            Frequently Asked <span className="text-orange-700">Questions</span>
+            Frequently Asked <span className="text-brand">Questions</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto font-light">
             Find everything you need to know about our courses, placements, and training methodology.
