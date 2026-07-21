@@ -1,5 +1,3 @@
-'use client';
-import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Award, CheckCircle, BadgeCheck } from 'lucide-react';
 import Link from 'next/link';
 
@@ -19,11 +17,7 @@ export default function CtaSection() {
       </div>
 
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <div
           className="text-center"
         >
           {/* Small badge */}
@@ -103,7 +97,7 @@ export default function CtaSection() {
               Prefer WhatsApp or a call-back? Email us and we’ll reach out within 24 hours.
             </p>
           </div>
-        </motion.div>
+        </div>
       </div>
 
     </section>

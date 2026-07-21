@@ -1,7 +1,5 @@
-'use client';
 import { Building2, ShoppingCart, Smartphone, CheckCircle } from 'lucide-react';
 import { JSX } from 'react';
-import { motion } from 'framer-motion';
 
 
 type Project = {
@@ -111,12 +109,8 @@ export default function ProjectsSection() {
         {/* Cards */}
         <div className="mt-10 grid grid-cols-1 gap-6 sm:gap-7 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => (
-            <motion.div
+            <div
               key={p.title}
-              initial={{ opacity: 0, y: 16, scale: 0.98 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.35, delay: i * 0.06, ease: 'easeOut' }}
-              viewport={{ once: true, amount: 0.2 }}
               className="group/card relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md"
             >
               {/* Accent top bar */}
@@ -174,7 +168,7 @@ export default function ProjectsSection() {
                   </span>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

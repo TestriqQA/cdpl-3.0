@@ -1,7 +1,5 @@
-'use client';
 import { CheckSquare, Bot, Shield, Globe, TrendingUp, Cpu } from 'lucide-react';
 import IconCard from '../ui/IconCard';
-import { motion } from 'framer-motion';
 import { JSX } from 'react';
 
 type Benefit = {
@@ -39,11 +37,7 @@ export default function WhyMasterProgram() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.header
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="text-center"
         >
           <h2
@@ -66,23 +60,19 @@ export default function WhyMasterProgram() {
             <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sky-800">API & Mobile</span>
             <span className="rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-violet-800">AI / Self-Healing</span>
           </div>
-        </motion.header>
+        </header>
 
         {/* Benefits Grid */}
         <div className="mt-10 grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {benefits.map((b, i) => (
-            <motion.div
+            <div
               key={b.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: i * 0.08, ease: 'easeOut' }}
             >
               <IconCard
                 {...b}
                 className="h-full hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
 

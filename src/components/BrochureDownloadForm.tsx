@@ -10,7 +10,6 @@ import {
   validateEmail as validateEmailLib,
   validatePhone as validatePhoneLib
 } from '@/lib/formValidation';
-import { motion } from 'framer-motion';
 import { CheckCircle2, User, Mail, Download } from 'lucide-react';
 
 interface BrochureDownloadFormProps {
@@ -142,12 +141,7 @@ const BrochureDownloadForm: React.FC<BrochureDownloadFormProps> = ({ onClose }) 
   };
 
   const SuccessMessage = () => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="flex flex-col items-center justify-center h-full py-8 text-center"
-    >
+    <div className="flex flex-col items-center justify-center h-full py-8 text-center">
       <CheckCircle2 className="w-16 h-16 text-green-500 mb-6" />
       <h3 className="text-2xl font-bold text-gray-900 mb-3">
         Syllabus Sent!
@@ -162,7 +156,7 @@ const BrochureDownloadForm: React.FC<BrochureDownloadFormProps> = ({ onClose }) 
         <Download className="w-5 h-5 mr-2" />
         Close Now
       </button>
-    </motion.div>
+    </div>
   );
 
   const FormFields = () => (

@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import {
     Brain,
     Database,
@@ -137,26 +136,19 @@ const gradientThemes = [
 const FeatureCard = ({ icon: Icon, title, desc, theme, index }: { icon: any; title: string; desc: string; theme: any; index: number }) => {
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.5, delay: index * 0.08, ease: [0.21, 0.47, 0.32, 0.98] }}
-            whileHover={{ y: -6, transition: { duration: 0.2 } }}
-            className="group relative h-full"
+        <div
+            className="group relative h-full hover:-translate-y-1.5 transition-transform duration-300"
             aria-label={title}
         >
             {/* subtle animated gradient backdrop on hover */}
             <div className={`absolute inset-0 ${theme.bg} rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500 ${theme.glow}`} />
 
             <div className={`relative h-full ${theme.bg} ${theme.border} border-2 rounded-2xl p-6 backdrop-blur-sm transition-all duration-300 shadow-lg ${theme.glow} group-hover:shadow-2xl`}>
-                <motion.div
-                    whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.05 }}
-                    transition={{ duration: 0.5 }}
-                    className={`inline-flex items-center justify-center w-16 h-16 ${theme.iconBg} rounded-xl shadow-lg mb-5 group-hover:shadow-xl transition-shadow duration-300`}
+                <div
+                    className={`inline-flex items-center justify-center w-16 h-16 ${theme.iconBg} rounded-xl shadow-lg mb-5 group-hover:shadow-xl transition-shadow duration-300 hover:scale-105`}
                 >
                     <Icon className="w-8 h-8 text-white" strokeWidth={2} />
-                </motion.div>
+                </div>
 
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-800 transition-colors">
                     {title}
@@ -166,15 +158,11 @@ const FeatureCard = ({ icon: Icon, title, desc, theme, index }: { icon: any; tit
                     {desc}
                 </p>
 
-                <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: '100%' }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.08 + 0.25 }}
+                <div
                     className={`absolute bottom-0 left-0 h-1 ${theme.iconBg} rounded-b-xl`}
                 />
             </div>
-        </motion.div>
+        </div>
     );
 };
 
@@ -202,11 +190,11 @@ export default function DSMLFeaturesSection() {
 
             <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
                 {/* header */}
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center max-w-4xl mx-auto mb-16">
-                    <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-200/50 rounded-full mb-6">
+                <div className="text-center max-w-4xl mx-auto mb-16">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-200/50 rounded-full mb-6">
                         <Sparkles className="w-4 h-4 text-blue-600" />
                         <span className="text-sm font-semibold text-blue-700">Data Science & ML Excellence</span>
-                    </motion.div>
+                    </div>
 
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
                         Become a Data Scientist - <span className="text-brand">Build & Deploy Models</span>
@@ -215,7 +203,7 @@ export default function DSMLFeaturesSection() {
                     <p className="text-lg text-gray-600 leading-relaxed">
                         Learn the full data science lifecycle: data engineering, modeling, evaluation, and production deployment. Projects, mentorship and career support included.
                     </p>
-                </motion.div>
+                </div>
 
                 {/* features grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -232,13 +220,13 @@ export default function DSMLFeaturesSection() {
                 </div>
 
                 {/* CTA */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }} className="text-center mt-16">
+                <div className="text-center mt-16">
                     <p className="text-gray-600 mb-6">Ready to level up? Start building production-ready ML systems today.</p>
-                    <motion.button onClick={scrollToCourses} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <button onClick={scrollToCourses} className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                         <Target className="w-5 h-5" />
                         Explore DS & ML Courses
-                    </motion.button>
-                </motion.div>
+                    </button>
+                </div>
             </div>
         </section>
     );

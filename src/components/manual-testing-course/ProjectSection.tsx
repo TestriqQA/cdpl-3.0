@@ -120,7 +120,7 @@ const ProjectCard = ({ project, onEnroll }: ProjectCardProps) => {
                     onClick={onEnroll}
                     className="cursor-pointer w-full rounded-xl py-3 text-sm font-bold text-white transition shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
                     style={{ backgroundColor: "var(--btn-color, #111827)" }}
-                    aria-label={`Start ${project.title} project`}
+                    aria-label={`Start Project: ${project.title}`}
                 >
                     Start Project
                 </button>

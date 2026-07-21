@@ -1,6 +1,4 @@
-'use client';
 import { Shield, Database, Smartphone, CheckCircle, Github } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { JSX } from 'react';
 import Link from 'next/link';
 
@@ -68,11 +66,7 @@ export default function ProjectsSection() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="text-center mb-10 sm:mb-14"
         >
           <h2 id="projects-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
@@ -81,17 +75,13 @@ export default function ProjectsSection() {
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
             Don't just <strong>learn API testing</strong> theory. Execute <strong>API testing examples</strong> on live apps. Practice <strong>api testing means</strong> delivering bug-free code with these capstones.
           </p>
-        </motion.header>
+        </header>
 
         {/* Cards */}
         <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => (
-            <motion.article
+            <article
               key={p.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: i * 0.08, ease: 'easeOut' }}
               className={[
                 'group relative overflow-hidden rounded-2xl border shadow-[0_1px_0_0_rgba(15,23,42,0.05)] transition hover:shadow-md focus-within:ring-2 focus-within:ring-slate-300',
                 p.bg,
@@ -157,7 +147,7 @@ export default function ProjectsSection() {
                   </Link>
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
 

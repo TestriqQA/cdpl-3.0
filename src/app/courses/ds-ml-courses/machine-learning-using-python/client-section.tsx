@@ -13,7 +13,7 @@ function SectionLoader({ label }: { label: string }) {
 export const TestimonialsClient = dynamic(
     () => import("@/components/machine-learning-using-python/TestimonialsSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <SectionLoader label="Loading testimonials..." />
     }
 );
@@ -21,7 +21,7 @@ export const TestimonialsClient = dynamic(
 export const CtaClient = dynamic(
     () => import("@/components/machine-learning-using-python/CtaSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <SectionLoader label="Loading CTA..." />
     }
 );

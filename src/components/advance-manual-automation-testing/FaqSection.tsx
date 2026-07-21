@@ -1,6 +1,5 @@
 'use client';
 import { useId, useState } from 'react';
-import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
 import { ADVANCE_MANUAL_AUTOMATION_FAQS } from '@/data/advanceManualAutomationData';
@@ -25,11 +24,7 @@ export default function FaqSection() {
       </div>
 
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.45, ease: 'easeOut' }}
+        <div
           className="text-center"
         >
           <h2 className="text-3xl md:text-4xl text-center text-ST font-bold mb-4">
@@ -44,7 +39,7 @@ export default function FaqSection() {
             <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-700">Job Assistance</span>
             <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-700">Beginner Friendly</span>
           </div>
-        </motion.div>
+        </div>
 
         {/* FAQ list */}
         <div className="mt-8 space-y-4">
@@ -55,12 +50,8 @@ export default function FaqSection() {
             const ring = accentRing[i % accentRing.length];
 
             return (
-              <motion.div
+              <div
                 key={faq.question}
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.35, ease: 'easeOut', delay: i * 0.04 }}
                 className={`rounded-xl border bg-white ${ring} hover:shadow-sm transition-shadow`}
               >
                 <button
@@ -80,20 +71,22 @@ export default function FaqSection() {
                   />
                 </button>
 
-                <motion.div
+                {/* CSS grid-rows accordion (replaces framer height animation):
+                    0fr -> 1fr collapses/expands with the inner overflow-hidden
+                    clip. Pure CSS, keeps the collapse behavior and aria wiring. */}
+                <div
                   id={panelId}
                   role="region"
                   aria-labelledby={btnId}
-                  initial={false}
-                  animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
-                  transition={{ duration: 0.25, ease: 'easeOut' }}
-                  className="overflow-hidden border-t border-slate-100"
+                  className={`grid transition-all duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100 border-t border-slate-100' : 'grid-rows-[0fr] opacity-0'}`}
                 >
-                  <div className="px-5 py-4 text-sm sm:text-base leading-relaxed text-slate-700">
-                    {faq.answer}
+                  <div className="overflow-hidden">
+                    <div className="px-5 py-4 text-sm sm:text-base leading-relaxed text-slate-700">
+                      {faq.answer}
+                    </div>
                   </div>
-                </motion.div>
-              </motion.div>
+                </div>
+              </div>
             );
           })}
         </div>

@@ -1,5 +1,3 @@
-'use client';
-import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Award, CheckCircle, Shield, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
@@ -15,11 +13,7 @@ export default function CtaSection() {
       </div>
 
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <div
           className="text-center"
         >
           <p className="mx-auto mb-3 inline-flex items-center gap-2 rounded-full shadow-md border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700">
@@ -94,7 +88,7 @@ export default function CtaSection() {
               Secure & privacy-first enrollment
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
     </section>

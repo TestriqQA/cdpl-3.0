@@ -1,5 +1,4 @@
 'use client';
-import { motion } from 'framer-motion';
 import { Users, GraduationCap, Briefcase, Target, BadgeCheck, ArrowRight } from 'lucide-react';
 import IconCard from '../ui/IconCard';
 import { JSX, useState } from 'react';
@@ -48,11 +47,7 @@ export default function WhoShouldEnroll() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="text-center"
         >
           <p className="mx-auto mb-6 inline-flex items-center gap-2 shadow-md rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700">
@@ -71,23 +66,19 @@ export default function WhoShouldEnroll() {
             No prior <strong>ETL</strong> experience needed. Wondering <strong>what is ETL process</strong> and if this is for you? If you want to work with <strong>data quality</strong>,{' '}
             <strong>data warehouses</strong>, and <strong>analytics pipelines</strong>, this <strong>ETL testing course</strong> is for you.
           </p>
-        </motion.header>
+        </header>
 
         {/* Cards */}
         <div className="mt-10 grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
           {audience.map((a, i) => (
-            <motion.div
+            <div
               key={a.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: i * 0.06, ease: 'easeOut' }}
             >
               <IconCard
                 {...a}
                 className="h-full hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
 

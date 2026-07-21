@@ -1,5 +1,3 @@
-'use client';
-import { motion } from 'framer-motion';
 import {
     MessageSquare,
     Globe,
@@ -111,11 +109,7 @@ export default function ToolsSection() {
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Heading */}
-                <motion.header
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                <header
                     className="text-center mb-10 sm:mb-14"
                 >
                     <h2 id="tools-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
@@ -124,17 +118,13 @@ export default function ToolsSection() {
                     <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
                         Get hands-on with top <strong>free API testing tools</strong> and enterprise platforms. Learn <strong>how to test api</strong> effectively using industry-standard <strong>API testing tools</strong>.
                     </p>
-                </motion.header>
+                </header>
 
                 {/* Tools grid */}
                 <div className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
                     {tools.map((tool, i) => (
-                        <motion.article
+                        <article
                             key={tool.name}
-                            initial={{ opacity: 0, y: 12 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-                            transition={{ duration: 0.4, delay: i * 0.06, ease: 'easeOut' }}
                             className={[
                                 'group relative overflow-hidden rounded-2xl border p-3 sm:p-6 shadow-[0_1px_0_0_rgba(15,23,42,0.05)] transition hover:shadow-md focus-within:ring-2 focus-within:ring-slate-300',
                                 tool.bg,
@@ -176,7 +166,7 @@ export default function ToolsSection() {
                             <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-white/70">
                                 <div className={['h-full w-3/4 rounded-full opacity-80', tool.border.replace('border-', 'bg-')].join(' ')} />
                             </div>
-                        </motion.article>
+                        </article>
                     ))}
                 </div>
             </div>

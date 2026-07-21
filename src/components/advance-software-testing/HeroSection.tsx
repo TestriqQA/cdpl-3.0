@@ -174,8 +174,7 @@ export default function HeroSection() {
 
                             <button
                                 onClick={() => setIsSyllabusModalOpen(true)}
-                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
-                                aria-label="Download Advanced Software Testing Syllabus"
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
                             >
                                 Download Syllabus
                                 <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
@@ -186,8 +185,7 @@ export default function HeroSection() {
                                     e.preventDefault();
                                     document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' });
                                 }}
-                                className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
-                                aria-label="View full Advanced Software Testing curriculum"
+                                className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
                             >
                                 View Curriculum
                                 <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />

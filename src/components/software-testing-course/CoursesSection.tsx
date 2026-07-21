@@ -1,6 +1,5 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion';
 import { BookOpen, Zap, Gauge, Shield, Smartphone, Cpu, BarChart3, Code, TrendingUp, Cog, Trophy, Brain, Database, Star, Clock, Users, CheckCircle, ArrowRight, Download } from 'lucide-react';
 import { COURSES, Course } from '@/components/software-testing-course/data/data';
 import { FaChartBar } from 'react-icons/fa6';
@@ -73,10 +72,6 @@ const pad = (n: number) => n.toString().padStart(2, '0');
 // --- Course Card Component (extracted layout/design/features from ModuleCard) ---
 const CourseCard: React.FC<{ course: Course; index: number; nowMs: number }> = ({ course, index, nowMs }) => {
     const variant = pickVariant(index);
-    const itemVariants: Variants = {
-        hidden: { opacity: 0, y: 18 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-    };
 
     // 48h fallback window from first mount (matches ModuleCard behavior)
     const fallbackDeadlineRef = React.useRef<Date | null>(null);
@@ -94,14 +89,8 @@ const CourseCard: React.FC<{ course: Course; index: number; nowMs: number }> = (
     const [isEnrollOpen, setIsEnrollOpen] = useState(false);
 
     return (
-        <motion.article
-            variants={itemVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            whileHover={{ y: -10 }}
-            className={`relative group bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/20 ${variant.hoverBorder} transform hover:-translate-y-2 flex flex-col h-full`}
+        <article
+            className={`relative group bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/20 ${variant.hoverBorder} transform hover:-translate-y-2 flex flex-col h-full hover:-translate-y-2.5`}
         >
             <EnrollPopup isOpen={isEnrollOpen} onClose={() => setIsEnrollOpen(false)} onSubmit={(data) => console.log(data)} source={`Software Testing Course Category Page - Courses Section - ${course.title} - Enroll Now`} />
             <div className={`${variant.header} p-6 relative overflow-hidden`}>
@@ -256,7 +245,7 @@ const CourseCard: React.FC<{ course: Course; index: number; nowMs: number }> = (
 
             {/* Subtle overlay like ModuleCard */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/0 to-black/0 group-hover:from-black/0 group-hover:to-black/0 transition-all duration-500 pointer-events-none" />
-        </motion.article>
+        </article>
     );
 };
 
@@ -272,7 +261,7 @@ export default function CoursesSection() {
     return (
         <section className="py-10 bg-gray-50" id='courses'>
             <div className="max-w-7xl mx-auto px-6">
-                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mb-16">
+                <div className="text-center mb-16">
                     <span className="inline-block px-4 py-2 bg-orange-100 text-brand rounded-full text-sm font-semibold mb-4">
                         Popular Courses
                     </span>
@@ -283,7 +272,7 @@ export default function CoursesSection() {
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                         Choose from our comprehensive range of courses designed to make you job-ready with hands-on projects and expert mentorship.
                     </p>
-                </motion.div>
+                </div>
 
                 {/* Course Cards Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -293,12 +282,7 @@ export default function CoursesSection() {
                 </div>
 
                 {/* View All CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center mt-12"
-                >
+                <div className="text-center mt-12">
                     <Link
                         href="/courses"
                         title="View All Courses"
@@ -307,7 +291,7 @@ export default function CoursesSection() {
                         <span>View All Courses</span>
                         <ArrowRight className="w-5 h-5" />
                     </Link>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

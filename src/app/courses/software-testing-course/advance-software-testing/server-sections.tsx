@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 export const StatsSection = dynamic(
     () => import("@/components/advance-software-testing/StatsSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-20" />,
     },
 );
@@ -16,7 +16,7 @@ export const StatsSection = dynamic(
 export const WhyAdvancedTesting = dynamic(
     () => import("@/components/advance-software-testing/WhyAdvancedTesting"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-96" />,
     },
 );
@@ -24,7 +24,7 @@ export const WhyAdvancedTesting = dynamic(
 export const CurriculumSection = dynamic(
     () => import("@/components/advance-software-testing/CurriculumSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-96" />,
     },
 );
@@ -32,7 +32,7 @@ export const CurriculumSection = dynamic(
 export const ProjectsSection = dynamic(
     () => import("@/components/advance-software-testing/ProjectsSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-96" />,
     },
 );
@@ -40,7 +40,7 @@ export const ProjectsSection = dynamic(
 export const CareerSection = dynamic(
     () => import("@/components/advance-software-testing/CareerSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-96" />,
     },
 );
@@ -48,7 +48,7 @@ export const CareerSection = dynamic(
 export const WhoShouldEnroll = dynamic(
     () => import("@/components/advance-software-testing/WhoShouldEnroll"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-96" />,
     },
 );
@@ -56,7 +56,7 @@ export const WhoShouldEnroll = dynamic(
 export const ToolsSection = dynamic(
     () => import("@/components/advance-software-testing/ToolsSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-96" />,
     },
 );
@@ -64,7 +64,7 @@ export const ToolsSection = dynamic(
 export const FaqSection = dynamic(
     () => import("@/components/advance-software-testing/FaqSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <div className="h-96" />,
     },
 );

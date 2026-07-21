@@ -2,7 +2,6 @@
 
 import Script from 'next/script';
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { CalendarCheck, ArrowRight, Loader2, CreditCard } from 'lucide-react';
 import { submitIstqbStep2 } from '@/app/istqb-registration/actions';
 
@@ -127,10 +126,7 @@ export default function ExamSelection({ userData, onSuccess, onBack }: ExamSelec
     return (
         <>
             <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
-            <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.1 }}
+            <div
                 className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden flex flex-col h-full"
             >
                 <div className="p-8 md:p-10 flex flex-col h-full relative">
@@ -199,7 +195,7 @@ export default function ExamSelection({ userData, onSuccess, onBack }: ExamSelec
                         </button>
                     </form>
                 </div>
-            </motion.div>
+            </div>
         </>
     );
 }

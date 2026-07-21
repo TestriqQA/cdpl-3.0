@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion, type Variants } from "framer-motion";
 import type { CourseData } from "@/types/courseData";
 import {
   BookOpen,
@@ -99,10 +98,9 @@ const ModuleCard: React.FC<{
     link: string;
   };
   variant: Variant;
-  itemVariants: Variants;
   location?: string;
   courseName?: string;
-}> = ({ nowMs, category, variant, itemVariants, location, courseName }) => {
+}> = ({ nowMs, category, variant, location, courseName }) => {
   const fallbackDeadlineRef = React.useRef<Date | null>(null);
   if (!category.offerEndsAt && !fallbackDeadlineRef.current) {
     fallbackDeadlineRef.current = new Date(Date.now() + 48 * 3600 * 1000);
@@ -119,8 +117,7 @@ const ModuleCard: React.FC<{
 
   return (
     <>
-      <motion.article
-        variants={itemVariants}
+      <article
         className={`relative group bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/20 ${variant.hoverBorder} transform hover:-translate-y-2 flex flex-col h-full`}
       >
         <div className={`${variant.header} p-6 relative overflow-hidden`}>
@@ -276,7 +273,7 @@ const ModuleCard: React.FC<{
         </div>
 
         <div className="absolute inset-0 bg-gradient-to-br from-black/0 to-black/0 group-hover:from-black/0 group-hover:to-black/0 transition-all duration-500 pointer-events-none" />
-      </motion.article>
+      </article>
     </>
   );
 };
@@ -290,18 +287,6 @@ const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ data }) =
     return () => clearInterval(id);
   }, []);
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.15 },
-    },
-  };
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 18 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
   return (
     <section className="relative py-16 sm:py-20 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
       <div className="pointer-events-none absolute inset-0">
@@ -310,49 +295,37 @@ const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ data }) =
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <div
           className="text-center mb-10 sm:mb-14"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
         >
-          <motion.p
+          <p
             className="text-sm font-semibold tracking-wider text-indigo-600 uppercase mb-3"
-            variants={itemVariants}
           >
             Course Structure
-          </motion.p>
-          <motion.h2
+          </p>
+          <h2
             className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4"
-            variants={itemVariants}
           >
             {courseOverviewContent.title}
-          </motion.h2>
-          <motion.p
+          </h2>
+          <p
             className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto"
-            variants={itemVariants}
           >
             {courseOverviewContent.description}
-          </motion.p>
+          </p>
           {courseOverviewContent.subtitle && (
-            <motion.p
+            <p
               className="text-sm sm:text-base text-slate-500 mt-3"
-              variants={itemVariants}
             >
               {courseOverviewContent.subtitle}
-            </motion.p>
+            </p>
           )}
-        </motion.div>
+        </div>
 
         {/* City Career Hub - SEO Highlight */}
         {data.localJobMarketInsight && (
-          <motion.div
+          <div
             className="mb-12 sm:mb-16 p-4 sm:p-6 bg-indigo-50/50 rounded-2xl border border-indigo-100 flex flex-col sm:flex-row items-center gap-6"
-            variants={itemVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
           >
             <div className="w-16 h-16 bg-white rounded-xl shadow-sm flex items-center justify-center shrink-0">
               <Sparkles className="w-8 h-8 text-indigo-600" />
@@ -366,15 +339,11 @@ const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ data }) =
                 {data.localJobMarketInsight}
               </p>
             </div>
-          </motion.div>
+          </div>
         )}
 
-        <motion.div
+        <div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
         >
           {courseOverviewContent.modules.map((mod: Module, idx) => {
             const variant = pickVariant(idx);
@@ -406,20 +375,15 @@ const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ data }) =
                 nowMs={nowMs}
                 category={category}
                 variant={variant}
-                itemVariants={itemVariants}
                 location={data.location} // Pass location to the card
                 courseName={data.courseName} // Pass courseName for source construction
               />
             );
           })}
-        </motion.div>
+        </div>
 
-        <motion.div
+        <div
           className="mt-12 sm:mt-16 text-center"
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
         >
           <p className="text-slate-600 mb-6">
             Ready to explore all modules in detail?
@@ -436,7 +400,7 @@ const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ data }) =
             View Full Curriculum
             <ArrowRight className="w-5 h-5" />
           </button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight, Loader2, Video } from 'lucide-react';
 import { submitIstqbStep2 } from '@/app/istqb-registration/actions';
 
@@ -72,9 +71,7 @@ export default function BookingOption({ userData, onSuccess, onBack }: BookingOp
     }
 
     return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+        <div
             className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden flex flex-col h-full"
         >
             <div className="p-8 md:p-10 flex flex-col h-full relative">
@@ -129,6 +126,6 @@ export default function BookingOption({ userData, onSuccess, onBack }: BookingOp
                     )}
                 </button>
             </div>
-        </motion.div>
+        </div>
     );
 }

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { JSX } from "react";
 
@@ -141,7 +140,6 @@ export default function JobsCareersProcessSection() {
         []
     );
 
-    const reduce = useReducedMotion();
     const flowContainerRef = useRef<HTMLDivElement>(null);
     const pathD = useFlowPath(flowContainerRef);
 
@@ -189,12 +187,8 @@ export default function JobsCareersProcessSection() {
                     <ol className="md:hidden relative z-10">
                         <span className="absolute left-3 top-0 h-full w-px bg-orange-100" aria-hidden />
                         {steps.map((s, i) => (
-                            <motion.li
+                            <li
                                 key={s.title}
-                                initial={{ opacity: 0, x: reduce ? 0 : 12 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true, margin: "-60px" }}
-                                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1], delay: i * 0.05 }}
                                 className="relative mb-4 last:mb-0 pl-8"
                             >
                                 <span className="absolute left-3 top-2 h-3 w-3 -translate-x-1/2 rounded-full bg-orange-300 ring-4 ring-orange-100" />
@@ -205,7 +199,7 @@ export default function JobsCareersProcessSection() {
                                     style={{ opacity: 0 }}
                                 />
                                 <Card index={i} step={s} pointerSide="left" isFinal={i === steps.length - 1} />
-                            </motion.li>
+                            </li>
                         ))}
                     </ol>
 
@@ -224,12 +218,8 @@ export default function JobsCareersProcessSection() {
                                 const s = steps[idx];
                                 if (!s) return null;
                                 return (
-                                    <motion.div
+                                    <div
                                         key={s.title}
-                                        initial={{ opacity: 0, y: reduce ? 0 : 16, x: reduce ? 0 : -12, scale: reduce ? 1 : 0.98 }}
-                                        whileInView={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-                                        viewport={{ once: true, margin: "-80px" }}
-                                        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                                         className="relative"
                                     >
                                         <span
@@ -240,7 +230,7 @@ export default function JobsCareersProcessSection() {
                                         />
                                         <Curve toward="right" />
                                         <Card index={idx} step={s} pointerSide="right" isFinal={idx === steps.length - 1} />
-                                    </motion.div>
+                                    </div>
                                 );
                             })}
                         </div>
@@ -251,12 +241,8 @@ export default function JobsCareersProcessSection() {
                                 const s = steps[idx];
                                 if (!s) return null;
                                 return (
-                                    <motion.div
+                                    <div
                                         key={s.title}
-                                        initial={{ opacity: 0, y: reduce ? 0 : 16, x: reduce ? 0 : 12, scale: reduce ? 1 : 0.98 }}
-                                        whileInView={{ opacity: 1, y: 0, x: 0, scale: 1 }}
-                                        viewport={{ once: true, margin: "-80px" }}
-                                        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                                         className="relative"
                                     >
                                         <span
@@ -267,7 +253,7 @@ export default function JobsCareersProcessSection() {
                                         />
                                         <Curve toward="left" />
                                         <Card index={idx} step={s} pointerSide="left" isFinal={idx === steps.length - 1} />
-                                    </motion.div>
+                                    </div>
                                 );
                             })}
                         </div>

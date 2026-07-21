@@ -11,9 +11,9 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
 }
 
 
-export const TestimonialsSection = dynamic(() => import('@/components/dbms-course/TestimonialsSection'), { ssr: false, loading: () => <SectionLoader label="Loading testimonials..." /> });
+export const TestimonialsSection = dynamic(() => import('@/components/dbms-course/TestimonialsSection'), { ssr: true, loading: () => <SectionLoader label="Loading testimonials..." /> });
 
-export const CtaSection = dynamic(() => import('@/components/dbms-course/CtaSection'), { ssr: false, loading: () => <SectionLoader label="Loading CTA..." /> });
+export const CtaSection = dynamic(() => import('@/components/dbms-course/CtaSection'), { ssr: true, loading: () => <SectionLoader label="Loading CTA..." /> });
 
 
 export default function DbmsCourseClientContent() {

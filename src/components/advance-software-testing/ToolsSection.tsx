@@ -1,5 +1,3 @@
-'use client';
-import { motion } from 'framer-motion';
 import {
   Globe,
   Smartphone,
@@ -47,11 +45,7 @@ export default function ToolsSection() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}
-        <motion.header
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, ease: 'easeOut' }}
+        <header
           className="text-center"
         >
           <h2
@@ -75,7 +69,7 @@ export default function ToolsSection() {
               CI/CD Friendly
             </li>
           </ul>
-        </motion.header>
+        </header>
 
         {/* Tools Grid */}
         <ul
@@ -83,12 +77,8 @@ export default function ToolsSection() {
           className="mt-8 sm:mt-10 grid grid-cols-2 gap-5 sm:gap-6 md:grid-cols-4"
         >
           {tools.map((tool, i) => (
-            <motion.li
+            <li
               key={tool.name}
-              initial={{ opacity: 0, scale: 0.94 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-              transition={{ duration: 0.35, delay: i * 0.05, ease: 'easeOut' }}
             >
               {/* Card: light accent frame, no heavy gradient backgrounds */}
               <div
@@ -128,7 +118,7 @@ export default function ToolsSection() {
                 {/* decorative corner dot for futuristic vibe */}
                 <span className="pointer-events-none absolute right-3 top-3 h-1.5 w-1.5 rounded-full bg-slate-300/70 transition-transform group-hover:scale-125" />
               </div>
-            </motion.li>
+            </li>
           ))}
         </ul>
 

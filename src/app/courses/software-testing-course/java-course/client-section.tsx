@@ -13,7 +13,7 @@ function SectionLoader({ label }: { label: string }) {
 export const TestimonialsClient = dynamic(
     () => import("@/components/java-course/TestimonialsSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <SectionLoader label="Loading testimonials..." />
     }
 );
@@ -21,7 +21,7 @@ export const TestimonialsClient = dynamic(
 export const CtaClient = dynamic(
     () => import("@/components/java-course/CtaSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <SectionLoader label="Loading CTA..." />
     }
 );

@@ -13,7 +13,7 @@ function SectionLoader({ label }: { label: string }) {
 export const TestimonialsClient = dynamic(
     () => import("@/components/python-course/TestimonialsSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <SectionLoader label="Loading testimonials..." />
     }
 );
@@ -21,7 +21,7 @@ export const TestimonialsClient = dynamic(
 export const FaqClient = dynamic(
     () => import("@/components/python-course/FaqSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <SectionLoader label="Loading FAQ..." />,
     },
 );
@@ -29,7 +29,7 @@ export const FaqClient = dynamic(
 export const CtaClient = dynamic(
     () => import("@/components/python-course/CtaSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <SectionLoader label="Loading CTA..." />
     }
 );

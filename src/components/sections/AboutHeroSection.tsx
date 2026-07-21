@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, type Transition } from "framer-motion";
 import Image from "next/image";
 import { Sparkles, Star, ShieldCheck, ArrowRight, Check, Home, ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -9,13 +8,6 @@ import AdvisorModal from "@/components/ui/AdvisorModal";
 
 const gradientText =
     "bg-clip-text text-transparent bg-[linear-gradient(90deg,#0ea5e9,#2563eb,#22c55e)]";
-
-const easeBezier: [number, number, number, number] = [0.22, 1, 0.36, 1];
-const fadeUp = {
-    initial: { opacity: 0, y: 16 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.55, ease: easeBezier } as Transition,
-};
 
 const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -69,21 +61,19 @@ export default function AboutHeroSection() {
             <div className="grid grid-cols-1 items-start gap-8 sm:gap-10 lg:grid-cols-2">
                 {/* LEFT — first on all viewports */}
                 <div className="order-1 lg:order-1">
-                    <motion.div {...fadeUp}>
+                    <div>
                         <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-2 text-[11px] font-medium text-slate-700 shadow-sm backdrop-blur dark:border-slate-200/60 dark:bg-white/85 sm:text-xs">
                             <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
                             Future-Ready EdTech
                         </span>
-                    </motion.div>
+                    </div>
 
-                    <motion.h1
+                    <h1
                         id="about-heading"
-                        {...fadeUp}
-                        transition={{ ...(fadeUp.transition as Transition), delay: 0.06 }}
                         className={`mt-4 py-1 text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl ${gradientText}`}
                     >
                         About <span className="text-brand">Cinute Digital</span>
-                    </motion.h1>
+                    </h1>
 
                     <p
                         className="mt-4 max-w-2xl text-[15px] leading-7 text-slate-700 sm:text-base md:text-lg"
@@ -99,9 +89,7 @@ export default function AboutHeroSection() {
                         <strong>skills, employability, and salary growth</strong>.
                     </p>
 
-                    <motion.ul
-                        {...fadeUp}
-                        transition={{ ...(fadeUp.transition as Transition), delay: 0.18 }}
+                    <ul
                         className="mt-5 grid gap-2.5 text-sm text-slate-700 sm:text-base"
                     >
                         {[
@@ -114,11 +102,9 @@ export default function AboutHeroSection() {
                                 <span>{t}</span>
                             </li>
                         ))}
-                    </motion.ul>
+                    </ul>
 
-                    <motion.div
-                        {...fadeUp}
-                        transition={{ ...(fadeUp.transition as Transition), delay: 0.24 }}
+                    <div
                         className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
                     >
                         <Link
@@ -133,11 +119,9 @@ export default function AboutHeroSection() {
                         >
                             Talk to an Advisor
                         </button>
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                        {...fadeUp}
-                        transition={{ ...(fadeUp.transition as Transition), delay: 0.3 }}
+                    <div
                         className="mt-7 flex flex-wrap items-center gap-3 text-sm"
                     >
                         <div className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white/85 px-3 py-2 shadow-sm dark:border-slate-200/60 dark:bg-white/85">
@@ -149,14 +133,11 @@ export default function AboutHeroSection() {
                             <ShieldCheck className="h-4 w-4 text-purple-700" aria-hidden="true" />
                             <span className="font-semibold text-purple-700">Placement Assistance</span>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* RIGHT — second on mobile; right column on lg+ */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.985 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.55, ease: easeBezier }}
+                <div
                     className="order-2 lg:order-2 relative top-0 mt-6 lg:mt-8 h-56 w-full overflow-hidden rounded-3xl bg-white/92 ring-1 ring-slate-200 shadow-[0_20px_45px_-20px_rgba(2,6,23,0.25)] backdrop-blur sm:h-64 md:h-80 lg:h-[22rem] dark:bg-white/92"
                     role="img"
                     aria-label="Students collaborating with mentors on live software testing and data science projects"
@@ -171,13 +152,11 @@ export default function AboutHeroSection() {
                         className="object-contain"
                         priority
                     />
-                </motion.div>
+                </div>
             </div>
 
             {/* Logos */}
-            <motion.div
-                {...fadeUp}
-                transition={{ ...(fadeUp.transition as Transition), delay: 0.36 }}
+            <div
                 className="mt-10"
             >
                 <p className="text-[11px] uppercase tracking-wider text-slate-500 sm:text-xs">
@@ -198,7 +177,7 @@ export default function AboutHeroSection() {
                         </div>
                     ))}
                 </div>
-            </motion.div>
+            </div>
 
             {/* Organization schema is in layout.tsx - no need to duplicate here */}
             <span className="sr-only">

@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo } from "react";
-import { motion, type Variants, type Transition } from "framer-motion";
 import {
     Rocket,
     Gauge,
@@ -15,12 +14,6 @@ import {
 import Link from "next/link";
 
 const BRAND_COLOR = "#ff8c00";
-const easeBezier: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 16 },
-    show: { opacity: 1, y: 0 },
-};
 
 type Benefit = {
     title: string;
@@ -100,19 +93,11 @@ export default function JobsCareersBenefitsSection() {
                         const accentSoft = LIGHT(accent, 0.1);
                         const accentRing = LIGHT(accent, 0.18);
                         const accentTint = TINT(accent);
-                        const transition: Transition = { delay: 0.05 * i, duration: 0.45, ease: easeBezier };
 
                         return (
-                            <motion.li
+                            <li
                                 key={b.seoId}
-                                initial="hidden"
-                                whileInView="show"
-                                viewport={{ once: true, amount: 0.4 }}
-                                variants={itemVariants}
-                                transition={transition}
-                                className="group relative flex flex-col overflow-hidden rounded-2xl border border-transparent bg-white/95 p-5 sm:p-6 shadow-sm transition-transform duration-300 will-change-transform"
-                                whileHover={{ y: -4, rotateX: 0.6, rotateY: -0.6 }}
-                                style={{ transformPerspective: 800 }}
+                                className="group relative flex flex-col overflow-hidden rounded-2xl border border-transparent bg-white/95 p-5 sm:p-6 shadow-sm transition-transform duration-300 will-change-transform hover:-translate-y-1"
                                 itemProp="itemListElement"
                             >
                                 <span
@@ -204,7 +189,7 @@ export default function JobsCareersBenefitsSection() {
                                     className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-100"
                                     style={{ background: `radial-gradient(circle, ${LIGHT(accentTint, 0.2)}, transparent 60%)` }}
                                 />
-                            </motion.li>
+                            </li>
                         );
                     })}
                 </ul>

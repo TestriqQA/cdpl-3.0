@@ -1,7 +1,4 @@
 // src/components/sections/AffiliatePayoutsSection.tsx
-"use client";
-
-import { motion } from "framer-motion";
 import type React from "react";
 import { CalendarClock, Banknote, FileText } from "lucide-react";
 
@@ -128,12 +125,8 @@ export default function AffiliatePayoutsSection() {
 
       <div className="mt-8 grid gap-6 md:grid-cols-3">
         {cards.map(({ title, sub, Icon, rim, glow, dot, surface, dotFade = 1 }, i) => (
-          <motion.div
+          <div
             key={title}
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: i * 0.05 }}
-            viewport={{ once: true, margin: "-80px" }}
             className="group relative rounded-3xl p-[1.1px]"
             style={{ background: rim }}
           >
@@ -209,7 +202,7 @@ export default function AffiliatePayoutsSection() {
                 }}
               />
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

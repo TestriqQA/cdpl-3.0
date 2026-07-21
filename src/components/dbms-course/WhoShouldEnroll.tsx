@@ -1,5 +1,4 @@
 'use client';
-import { motion } from 'framer-motion';
 import { Users, GraduationCap, Briefcase, Target, BadgeCheck, ArrowRight } from 'lucide-react';
 import IconCard from '../ui/IconCard';
 import { JSX, useState } from 'react';
@@ -44,11 +43,7 @@ export default function WhoShouldEnroll() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* header */}
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="text-center mb-10 sm:mb-14"
         >
           <p className="mx-auto mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700">
@@ -62,23 +57,19 @@ export default function WhoShouldEnroll() {
             Ideal for <strong>career switchers</strong>, <strong>fresh graduates</strong>, and <strong>developers</strong> who want
             practical expertise in <strong>MySQL</strong>, <strong>SQL querying</strong>, <strong>schema design</strong>, and <strong>performance optimization</strong>.
           </p>
-        </motion.header>
+        </header>
 
         {/* audience grid */}
         <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
           {audience.map((a, i) => (
-            <motion.div
+            <div
               key={a.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: i * 0.06, ease: 'easeOut' }}
             >
               <IconCard
                 {...a}
                 className="h-full hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -90,11 +81,7 @@ export default function WhoShouldEnroll() {
         </p>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, ease: 'easeOut' }}
+        <div
           className="mt-12 text-center"
         >
           <button
@@ -104,7 +91,7 @@ export default function WhoShouldEnroll() {
           >
             Enroll Now<ArrowRight className="h-5 w-5" />
           </button>
-        </motion.div>
+        </div>
       </div>
 
       <EnrollModal

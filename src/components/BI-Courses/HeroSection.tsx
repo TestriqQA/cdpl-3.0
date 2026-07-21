@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import { motion } from 'framer-motion';
 import {
     Play,
     Download,
@@ -28,12 +27,6 @@ const LeadForm = dynamic(() => import('./LeadForm'), {
     loading: () => <div className="w-full h-[450px] bg-slate-50 animate-pulse rounded-xl" />,
     ssr: false
 });
-
-const fadeUp = {
-    initial: { opacity: 0, y: 10 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.45, ease: [0.25, 0.1, 0.25, 1.0] as const }
-};
 
 /**
  * Redesigned desktop left content: sleek layered cards, micro-illustration,
@@ -86,24 +79,24 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
             <div aria-hidden className="absolute -left-24 -top-20 w-96 h-96 rounded-full blur-3xl opacity-30 bg-gradient-to-tr from-orange-200 to-yellow-100 pointer-events-none" />
 
             {/* Small badge */}
-            <motion.div {...fadeUp} className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-slate-100 rounded-full px-3 py-1 text-sm font-medium text-slate-700 shadow-sm">
+            <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-slate-100 rounded-full px-3 py-1 text-sm font-medium text-slate-700 shadow-sm">
                 <Sparkles className="h-4 w-4 text-amber-500" />
                 <span>India's comprehensive Business Intelligence Training Institute</span>
-            </motion.div>
+            </div>
 
             {/* Headline + micro graphic */}
             <div className="mt-6 flex gap-8 items-start">
                 <div className="max-w-5xl">
-                    <motion.h1 {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.06 }} className="text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900">
+                    <h1 className="text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900">
                         Master <span className="text-brand">Business Intelligence</span> & Data Analytics - Turn data into actionable insights
-                    </motion.h1>
+                    </h1>
 
-                    <motion.p {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.12 }} className="mt-4 text-base text-slate-600">
+                    <p className="mt-4 text-base text-slate-600">
                         Industry-focused training in Business Intelligence with hands-on projects using SQL, Power BI, Tableau, Python (Pandas), and ETL workflows. Learn data modeling, KPI design, dashboarding, storytelling with data, and best practices for data governance. Build a BI portfolio and get placement support for BI Analyst, Data Analyst, and Analytics Engineer roles.
-                    </motion.p>
+                    </p>
 
                     {/* Feature chips (clean minimal icons) */}
-                    <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.18 }} className="mt-6 flex flex-wrap gap-3">
+                    <div className="mt-6 flex flex-wrap gap-3">
                         <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-50 border border-slate-100 rounded-full text-sm text-slate-700 shadow-sm">
                             <BarChart3 className="w-4 h-4 text-indigo-500" />
                             <span className="font-medium">Hands-on BI Projects</span>
@@ -118,10 +111,10 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
                             <PieChart className="w-4 h-4 text-emerald-500" />
                             <span className="font-medium">Data Visualization & Dashboards</span>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* CTA row — keeps original handlers intact */}
-                    <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.24 }} className="mt-6 flex items-center gap-3">
+                    <div className="mt-6 flex items-center gap-3">
                         <button
                             onClick={onOpenBrochure}
                             className="inline-flex items-center gap-2 px-5 py-4 bg-brand text-white rounded-lg text-md font-semibold shadow hover:bg-brand hover:translate-y-[-1px] transition-all"
@@ -137,12 +130,10 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
                             <Play className="h-4 w-4" />
                             Watch CDPL
                         </button>
-                    </motion.div>
+                    </div>
 
                     {/* Trust Indicators - 3 Cards */}
-                    <motion.div
-                        {...fadeUp}
-                        transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] as const, delay: 0.18 }}
+                    <div
                         className="mt-7 grid grid-cols-1 sm:grid-cols-3 gap-4"
                     >
                         {/* Card 1 - Students Placed */}
@@ -177,7 +168,7 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
                                 <div className="text-xs text-slate-600">Expert Mentors</div>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* microcopy for SEO and trust */}
                     <p className="mt-3 text-sm text-slate-600 max-w-2xl">
@@ -345,10 +336,7 @@ export default function HeroSection(): React.JSX.Element {
 
                         {/* Right form - 5 columns */}
                         <div className="md:col-span-5 lg:col-span-4">
-                            <motion.div
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.3 }}
+                            <div
                                 className="sticky top-24"
                             >
                                 <div className="mt-10 bg-white p-6 rounded-2xl shadow-2xl border border-slate-200">
@@ -359,7 +347,7 @@ export default function HeroSection(): React.JSX.Element {
                                         source="Business Intelligence Course Category Page - Hero Section - Right Form"
                                     />
                                 </div>
-                            </motion.div>
+                            </div>
                         </div>
                     </div>
                 </div>

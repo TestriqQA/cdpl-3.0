@@ -1,6 +1,4 @@
-'use client';
 import { Zap, Cpu, Shield, Globe, TrendingUp, Bot } from 'lucide-react';
-import { motion } from 'framer-motion';
 import IconCard from '../ui/IconCard';
 import { JSX } from 'react';
 
@@ -39,11 +37,7 @@ export default function WhyAutomation() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="text-center"
         >
           <h2
@@ -65,23 +59,19 @@ export default function WhyAutomation() {
             <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-800">Stable Suites</span>
             <span className="rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-violet-800">Cross-Platform</span>
           </div>
-        </motion.header>
+        </header>
 
         {/* Benefits grid */}
         <div className="mt-10 grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {benefits.map((b, i) => (
-            <motion.div
+            <div
               key={b.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: i * 0.08, ease: 'easeOut' }}
             >
               <IconCard
                 {...b}
                 className="h-full hover:shadow-lg focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
 

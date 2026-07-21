@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Phone, Mail, MapPin, Check, Zap } from "lucide-react";
 import Link from "next/link";
 import EnrollModal from "@/components/EnrollModal";
@@ -25,23 +24,6 @@ interface CTASectionProps {
   };
 }
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: "easeOut" },
-  },
-};
-
 const CTASection: React.FC<CTASectionProps> = ({ data }) => {
   const { ctaContent } = data;
   const courseName = data.courseName || "Course";
@@ -64,51 +46,42 @@ const CTASection: React.FC<CTASectionProps> = ({ data }) => {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-        <motion.div
+        <div
           className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12" // Changed items-start to items-center for better image alignment visually
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
         >
           {/* LEFT: Content + Benefits */}
           <div className="lg:col-span-7">
             {/* Special offer badge */}
-            <motion.div
-              variants={itemVariants}
+            <div
               className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 px-3 py-1.5 shadow-sm"
             >
               <Zap className="h-4 w-4 fill-amber-500 text-amber-500" />
               <span className="text-xs font-semibold text-amber-900">
                 Limited Time: 20% Discount Available!
               </span>
-            </motion.div>
+            </div>
 
-            <motion.h2
-              variants={itemVariants}
+            <h2
               className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl"
             >
               {ctaContent.title}
-            </motion.h2>
+            </h2>
 
-            <motion.p
-              variants={itemVariants}
+            <p
               className="mt-3 text-lg font-semibold text-indigo-700"
             >
               {ctaContent.subtitle}
-            </motion.p>
+            </p>
 
-            <motion.p
-              variants={itemVariants}
+            <p
               className="mt-4 max-w-2xl text-base leading-relaxed text-slate-700"
             >
               {ctaContent.description}
-            </motion.p>
+            </p>
 
             {/* Benefits List */}
             {ctaContent.benefits && ctaContent.benefits.length > 0 && (
-              <motion.div
-                variants={itemVariants}
+              <div
                 className="mt-8 space-y-3"
               >
                 {ctaContent.benefits.map((benefit, index) => (
@@ -124,11 +97,10 @@ const CTASection: React.FC<CTASectionProps> = ({ data }) => {
                     </span>
                   </div>
                 ))}
-              </motion.div>
+              </div>
             )}
 
-            <motion.div
-              variants={itemVariants}
+            <div
               className="mt-8 flex flex-col gap-3 sm:flex-row"
             >
               <button
@@ -145,11 +117,10 @@ const CTASection: React.FC<CTASectionProps> = ({ data }) => {
               >
                 Get Free Demo
               </button>
-            </motion.div>
+            </div>
 
             {/* Contact Info Cards */}
-            <motion.div
-              variants={itemVariants}
+            <div
               className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3"
             >
               {/* Phone */}
@@ -196,27 +167,27 @@ const CTASection: React.FC<CTASectionProps> = ({ data }) => {
                   {ctaContent.contactInfo.address}
                 </p>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* RIGHT: Illustration */}
-          <motion.div variants={itemVariants} className="lg:col-span-5 relative mt-8 lg:mt-0">
+          <div className="lg:col-span-5 relative mt-8 lg:mt-0">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               {/* Background accent - reduced opacity/blur for cleaner look behind illustration */}
               <div className="absolute -top-10 -right-10 h-64 w-64 rounded-full bg-gradient-to-br from-indigo-400 to-violet-400 opacity-20 blur-3xl"></div>
               <div className="absolute -bottom-10 -left-10 h-64 w-64 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-400 opacity-20 blur-3xl"></div>
 
               <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-white/20">
-                {/* Embed the generated illustration here. I will use the path of the generated image. 
-                    Wait, I can't hardcode the dynamic generated path unless I know it. 
-                    I should use the artifact mechanism or move the file to public/images 
-                    for direct Next.js usage. 
-                    Since I cannot move files to 'public' easily without exact path knowledge of where 'public' is relative to here 
+                {/* Embed the generated illustration here. I will use the path of the generated image.
+                    Wait, I can't hardcode the dynamic generated path unless I know it.
+                    I should use the artifact mechanism or move the file to public/images
+                    for direct Next.js usage.
+                    Since I cannot move files to 'public' easily without exact path knowledge of where 'public' is relative to here
                     (it is usually src/../public or similar).
-                    I will check file structure for public folder. 
+                    I will check file structure for public folder.
                  */}
-                {/* For now I'll use a placeholder or assume I'm copying the image. 
-                      Let's check if I can just reference a local public image. 
+                {/* For now I'll use a placeholder or assume I'm copying the image.
+                      Let's check if I can just reference a local public image.
                       I generated the image in artifacts. I should probably move it to the project.
                    */}
                 {/* I'll use a standard path and assume I'll copy the file in next step. */}
@@ -229,8 +200,8 @@ const CTASection: React.FC<CTASectionProps> = ({ data }) => {
                 />
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
 
       <EnrollModal

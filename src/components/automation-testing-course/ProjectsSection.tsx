@@ -1,6 +1,4 @@
-'use client';
 import { Globe, Smartphone, Shield, CheckCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { JSX } from 'react';
 
 /** ----------------------------------------------------------------
@@ -96,11 +94,7 @@ export default function ProjectsSection() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="text-center"
         >
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
@@ -111,17 +105,13 @@ export default function ProjectsSection() {
             <strong>visual testing</strong>, <strong>secure mobile E2E</strong>, and <strong>reliability engineering-</strong>
             the exact portfolio hiring managers search for.
           </p>
-        </motion.header>
+        </header>
 
         {/* Cards */}
         <ol className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => (
-            <motion.li
+            <li
               key={p.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: i * 0.08, ease: 'easeOut' }}
               aria-label={`${p.title} — ${p.description}`}
               className={[
                 'group relative overflow-hidden rounded-2xl border p-5 sm:p-6',
@@ -170,7 +160,7 @@ export default function ProjectsSection() {
               <p className="mt-4 text-[11px] leading-5 text-slate-500">
                 Includes CI/CD setup, evidence reporting, and scalability patterns used in modern product teams.
               </p>
-            </motion.li>
+            </li>
           ))}
         </ol>
 

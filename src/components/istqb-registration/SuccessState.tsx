@@ -1,14 +1,9 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { CheckCircle2, ChevronRight, Home } from 'lucide-react';
 import Link from 'next/link';
 
 export default function SuccessState() {
     return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+        <div
             className="max-w-xl mx-auto bg-white rounded-3xl shadow-2xl border border-green-100 p-10 text-center relative overflow-hidden"
         >
             {/* Confetti/Bg effect */}
@@ -39,6 +34,6 @@ export default function SuccessState() {
                     <ChevronRight className="w-4 h-4" />
                 </Link>
             </div>
-        </motion.div>
+        </div>
     );
 }

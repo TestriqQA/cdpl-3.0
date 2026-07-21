@@ -1,6 +1,5 @@
 'use client';
 import { CheckCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 const SyllabusDownloadModal = dynamic(() => import('@/components/SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
@@ -126,12 +125,8 @@ export default function CurriculumSection() {
                     {curriculum.map((mod, i) => {
                         const a = accents[i % accents.length];
                         return (
-                            <motion.li
+                            <li
                                 key={mod.title}
-                                initial={{ opacity: 0, y: 14 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-                                transition={{ duration: 0.45, delay: i * 0.06, ease: 'easeOut' }}
                                 className={[
                                     'group relative overflow-hidden rounded-2xl border p-5 sm:p-6',
                                     a.cardBg,
@@ -170,7 +165,7 @@ export default function CurriculumSection() {
                                         Outcome: hands-on labs, code reviews, and an end-to-end project to validate real-world skills.
                                     </p>
                                 </div>
-                            </motion.li>
+                            </li>
                         );
                     })}
                 </ol>

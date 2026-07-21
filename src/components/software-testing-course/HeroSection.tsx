@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import { motion } from 'framer-motion';
 import {
     Play,
     Download,
@@ -336,10 +335,7 @@ export default function HeroSection(): React.JSX.Element {
 
                         {/* Right form - 5 columns */}
                         <div className="md:col-span-5 lg:col-span-4">
-                            <motion.div
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.3 }}
+                            <div
                                 className="sticky top-24"
                             >
                                 <div className="mt-10 bg-white p-6 rounded-2xl shadow-2xl border border-slate-200">
@@ -350,7 +346,7 @@ export default function HeroSection(): React.JSX.Element {
                                         source="Software Testing Course Category Page - Hero Section - Right Form"
                                     />
                                 </div>
-                            </motion.div>
+                            </div>
                         </div>
                     </div>
                 </div>

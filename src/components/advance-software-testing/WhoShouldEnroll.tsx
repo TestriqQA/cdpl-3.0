@@ -1,7 +1,6 @@
 'use client';
 import { Users, GraduationCap, Briefcase, Target, ArrowRight } from 'lucide-react';
 import IconCard from '../ui/IconCard';
-import { motion } from 'framer-motion';
 import { JSX, useState } from 'react';
 import dynamic from 'next/dynamic';
 const EnrollModal = dynamic(() => import('@/components/EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
@@ -47,11 +46,7 @@ export default function WhoShouldEnroll() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading & SEO-supportive copy */}
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="text-center"
         >
           <h2
@@ -76,23 +71,19 @@ export default function WhoShouldEnroll() {
               Portfolio Projects
             </span>
           </div>
-        </motion.header>
+        </header>
 
         {/* Cards Grid */}
         <div className="mt-10 grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
           {audience.map((a, i) => (
-            <motion.div
+            <div
               key={a.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: i * 0.08, ease: 'easeOut' }}
             >
               <IconCard
                 {...a}
                 className="h-full hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
 

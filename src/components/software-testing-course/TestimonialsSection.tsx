@@ -1,17 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Briefcase, TrendingUp, Award, CheckCircle, Sparkles, LucideIcon } from 'lucide-react';
 import ReviewsMarquee from '@/components/sections/ReviewMarque';
 import { EnrollFormData, EnrollPopup } from "../EnrollForms";
 import { useState } from 'react';
 
 const StatCard = ({ icon: Icon, value, label, delay }: { icon: LucideIcon; value: string; label: string; delay: number }) => (
-    <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay }}
+    <div
         className="flex flex-col items-center p-6 bg-white rounded-xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
     >
         <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-3">
@@ -19,7 +14,7 @@ const StatCard = ({ icon: Icon, value, label, delay }: { icon: LucideIcon; value
         </div>
         <div className="text-3xl font-bold text-gray-900 mb-1">{value}</div>
         <div className="text-sm text-gray-600 text-center">{label}</div>
-    </motion.div>
+    </div>
 );
 
 export default function TestimonialsSection() {
@@ -44,22 +39,15 @@ export default function TestimonialsSection() {
 
             <div className="relative container mx-auto px-6 lg:px-8 max-w-7xl">
                 {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
+                <div
                     className="text-center mb-16"
                 >
-                    <motion.div
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        whileInView={{ scale: 1, opacity: 1 }}
-                        viewport={{ once: true }}
+                    <div
                         className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-200/50 rounded-full mb-6"
                     >
                         <Award className="w-4 h-4 text-blue-600" />
                         <span className="text-sm font-semibold text-blue-700">Student Success Stories</span>
-                    </motion.div>
+                    </div>
 
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                         Real Results From{" "}
@@ -72,7 +60,7 @@ export default function TestimonialsSection() {
                         Join thousands of QA engineers and testers who accelerated their careers with our comprehensive
                         Software Testing training — mastering manual & automated testing, test design, and modern QA tools.
                     </p>
-                </motion.div>
+                </div>
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
@@ -90,11 +78,7 @@ export default function TestimonialsSection() {
                 </div>
 
                 {/* Bottom CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5 }}
+                <div
                     className="text-center mt-10"
                 >
                     <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-6 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border-2 border-blue-200 rounded-2xl shadow-lg">
@@ -107,16 +91,14 @@ export default function TestimonialsSection() {
                                 <div className="text-sm text-gray-600">Join our next Software Testing cohort and become job-ready</div>
                             </div>
                         </div>
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                        <button
                             onClick={() => setIsPopupOpen(true)}
-                            className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                            className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                         >
                             Enroll Now
-                        </motion.button>
+                        </button>
                     </div>
-                </motion.div>
+                </div>
                 <EnrollPopup
                     isOpen={isPopupOpen}
                     onClose={() => setIsPopupOpen(false)}

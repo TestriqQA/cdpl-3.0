@@ -1,6 +1,3 @@
-"use client";
-
-import { motion, type Variants } from "framer-motion";
 import type { ElementType } from "react";
 import {
     Sparkles,
@@ -92,16 +89,6 @@ const BRAND_RING =
 const BRAND_BG =
     "bg-gradient-to-b from-white via-white to-[#fff7ed] dark:from-white dark:via-white dark:to-[#fff7ed]";
 const BRAND_ACCENT_TEXT = "text-brand";
-
-const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.06, delayChildren: 0.05 } },
-};
-
-const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 14 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
-};
 
 type Principle = { k: string; v: string; icon: ElementType; tag: string };
 
@@ -222,20 +209,15 @@ export default function JobsCareersCultureSection() {
                     </p>
                 </header>
 
-                <motion.ul
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.2 }}
+                <ul
                     className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3"
                 >
                     {principles.map((p, i) => {
                         const t = THEMES[i % THEMES.length];
                         const Icon = p.icon;
                         return (
-                            <motion.li
+                            <li
                                 key={p.k}
-                                variants={cardVariants}
                                 className={`relative group rounded-2xl border border-transparent bg-white/90 p-[1px] shadow-sm transition-transform duration-300 hover:-translate-y-0.5 ${BRAND_RING}`}
                                 style={{
                                     boxShadow:
@@ -289,10 +271,10 @@ export default function JobsCareersCultureSection() {
                                 </div>
 
                                 <span aria-hidden className="pointer-events-none absolute inset-0 rounded-2xl" />
-                            </motion.li>
+                            </li>
                         );
                     })}
-                </motion.ul>
+                </ul>
 
                 <div className="mt-8 flex items-center justify-between gap-4">
                     <p className="text-xs sm:text-sm text-neutral-600">

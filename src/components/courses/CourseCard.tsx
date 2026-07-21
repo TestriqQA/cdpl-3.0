@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion, Variants } from "framer-motion";
 import { Clock, Users, ArrowRight, Star, Zap, Download, BookOpen, Gauge, Shield, Smartphone, Cpu, BarChart3, Code, TrendingUp, Cog, Trophy, Brain, Database, CheckCircle, GraduationCap, Workflow, Sparkles, Megaphone } from "lucide-react";
 import { DownloadFormButton } from "@/components/DownloadForm";
 import Link from "next/link";
@@ -70,10 +69,6 @@ interface CourseCardProps {
 
 const CourseCard: React.FC<CourseCardProps> = ({ course, index, nowMs }) => {
     const variant = pickVariant(index);
-    const itemVariants: Variants = {
-        hidden: { opacity: 0, y: 18 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-    };
 
     // 48h fallback window logic
     // We use a ref or just compute it. Since we don't have per-instance persistence without context/localstorage,
@@ -105,14 +100,8 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, index, nowMs }) => {
         : (React.isValidElement(course.icon) ? course.icon : <BookOpen className="w-10 h-10" />);
 
     return (
-        <motion.article
-            variants={itemVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            whileHover={{ y: -10 }}
-            className={`relative group bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/20 ${variant.hoverBorder} transform hover:-translate-y-2 flex flex-col h-full`}
+        <article
+            className={`relative group bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/20 ${variant.hoverBorder} transform hover:-translate-y-2 flex flex-col h-full hover:-translate-y-2.5`}
         >
             <div className={`${variant.header} p-6 relative overflow-hidden`}>
                 {/* Background Pattern */}
@@ -267,7 +256,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, index, nowMs }) => {
 
             {/* Subtle overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-black/0 to-black/0 group-hover:from-black/0 group-hover:to-black/0 transition-all duration-500 pointer-events-none" />
-        </motion.article>
+        </article>
     );
 };
 

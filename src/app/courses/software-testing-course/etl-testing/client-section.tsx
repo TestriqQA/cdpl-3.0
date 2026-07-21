@@ -13,7 +13,7 @@ function SectionLoader({ label }: { label: string }) {
 export const TestimonialsClient = dynamic(
     () => import("@/components/etl-testing/TestimonialsSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <SectionLoader label="Loading testimonials..." />
     }
 );
@@ -21,7 +21,7 @@ export const TestimonialsClient = dynamic(
 export const CtaClient = dynamic(
     () => import("@/components/etl-testing/CtaSection"),
     {
-        ssr: false,
+        ssr: true,
         loading: () => <SectionLoader label="Loading CTA..." />
     }
 );
