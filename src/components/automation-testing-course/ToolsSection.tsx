@@ -1,5 +1,3 @@
-'use client';
-import { motion } from 'framer-motion';
 import { Globe, Bot, Zap, Shield, GitBranch, Cpu, Terminal, Eye } from 'lucide-react';
 import type { JSX } from 'react';
 
@@ -38,11 +36,7 @@ export default function ToolsSection() {
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+        <header
           className="text-center"
         >
           <h2 id="tools-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
@@ -51,18 +45,14 @@ export default function ToolsSection() {
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
             Master a <strong>production-ready automation stack</strong> across UI, API, performance and CI/CD.
           </p>
-        </motion.header>
+        </header>
 
         <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-4">
           {tools.map((tool, i) => {
             const a = accents[i % accents.length];
             return (
-              <motion.div
+              <div
                 key={tool.name}
-                initial={{ opacity: 0, y: 14, scale: 0.98 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
                 className={[
                   'group relative overflow-hidden rounded-2xl border p-4 sm:p-5',
                   a.wrap,
@@ -78,7 +68,7 @@ export default function ToolsSection() {
                 <p className="mt-1 text-xs sm:text-[13px] leading-5 text-slate-600">
                   Learn setup, best practices, and real-world patterns with <strong>scalable test design</strong> and <strong>pipeline integration</strong>.
                 </p>
-              </motion.div>
+              </div>
             );
           })}
         </div>

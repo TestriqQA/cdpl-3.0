@@ -1,5 +1,4 @@
 'use client';
-import { motion } from 'framer-motion';
 import { Briefcase, Building2, ArrowRight, BadgeCheck } from 'lucide-react';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
@@ -55,11 +54,7 @@ export default function CareerSection() {
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <motion.header
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                <header
                     className="text-center mb-10 sm:mb-14"
                 >
                     <p className="mx-auto mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700">
@@ -73,16 +68,11 @@ export default function CareerSection() {
                         Target roles across <strong>Data</strong>, <strong>Backend</strong>, and <strong>BI</strong> tracks.
                         Build in-demand skills—schema design, indexing, SQL optimization, transactions, and analytics.
                     </p>
-                </motion.header>
+                </header>
 
                 <div className="grid lg:grid-cols-2 gap-10 lg:gap-12">
                     {/* Roles */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -18 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, ease: 'easeOut' }}
-                    >
+                    <div>
                         <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-slate-900">
                             <Briefcase className="h-7 w-7 text-sky-600" />
                             Job Roles
@@ -113,15 +103,10 @@ export default function CareerSection() {
                             Stand out with <strong>EXPLAIN plan analysis</strong>, <strong>index strategies</strong>,{' '}
                             <strong>ETL pipelines</strong>, and <strong>reporting models</strong>.
                         </p>
-                    </motion.div>
+                    </div>
 
                     {/* Companies */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 18 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, ease: 'easeOut' }}
-                    >
+                    <div>
                         <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-slate-900">
                             <Building2 className="h-7 w-7 text-violet-600" />
                             Top Companies Hiring
@@ -149,15 +134,11 @@ export default function CareerSection() {
                         <p className="mt-4 text-center text-xs text-slate-600">
                             Plus fast-growing startups and global enterprises across fintech, e-commerce, SaaS, and consulting.
                         </p>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.45, ease: 'easeOut' }}
+                <div
                     className="mt-10 sm:mt-12 text-center"
                 >
                     <button
@@ -168,7 +149,7 @@ export default function CareerSection() {
                         Get Placement Support
                         <ArrowRight className="h-5 w-5" />
                     </button>
-                </motion.div>
+                </div>
             </div>
 
             <CareerSessionModal

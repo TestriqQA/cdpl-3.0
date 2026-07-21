@@ -1,7 +1,4 @@
-"use client";
-
 import React from "react";
-import { easeOut, motion } from "framer-motion";
 import { Award, Users, Clock, MapPin, Sparkles } from "lucide-react";
 import ReviewsMarquee from "../sections/ReviewMarque";
 
@@ -85,29 +82,14 @@ const mockData: WhyChooseSectionProps["data"] = {
 const WhyChooseSection: React.FC<WhyChooseSectionProps> = ({ data = mockData }) => {
   const { whyChooseContent } = data;
   const castData = data as any;
-  
+
   // ⚠️ SEO FIX (April 2026): Unique localized content to differentiate 765+ pages.
-  const testimonialsToDisplay = castData.localizedTestimonials 
+  const testimonialsToDisplay = castData.localizedTestimonials
     ? castData.localizedTestimonials[0] // Take the primary localized testimonial
     : whyChooseContent?.testimonial;
-    
+
   const marketInsight = castData.localJobMarketInsight;
   const salaryInsight = castData.localSalaryInsight;
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: easeOut } },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: easeOut } },
-  };
 
   return (
     <section className="relative py-8 md:py-16 lg:py-28 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden">
@@ -120,49 +102,38 @@ const WhyChooseSection: React.FC<WhyChooseSectionProps> = ({ data = mockData }) 
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
+        <div
           className="text-center mb-12 sm:mb-16 lg:mb-20"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.div
+          <div
             className="inline-flex items-center gap-2 px-2 py-1 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-full mb-4 sm:mb-6"
-            variants={itemVariants}
           >
             <Sparkles className="w-4 h-4 text-emerald-600" />
             <span className="text-emerald-700 font-semibold text-[13px] uppercase tracking-wide">
               Why Choose Us
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h2
+          <h2
             className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight"
-            variants={itemVariants}
           >
             {whyChooseContent?.title ?? "Why Choose Us"}
-          </motion.h2>
+          </h2>
 
-          <motion.p
+          <p
             className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
-            variants={itemVariants}
           >
             {whyChooseContent?.subtitle ?? ""}
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         {/* Marquee Review */}
         <ReviewsMarquee />
 
         {/* Local Industry Pulse — SEO Enhancement */}
         {(marketInsight || salaryInsight) && (
-          <motion.div
+          <div
             className="mb-12 sm:mb-16 lg:mb-20 p-6 sm:p-10 bg-gradient-to-br from-emerald-600 to-teal-700 rounded-3xl text-white shadow-xl shadow-emerald-200/50 relative overflow-hidden"
-            variants={itemVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
           >
              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
              <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
@@ -185,26 +156,20 @@ const WhyChooseSection: React.FC<WhyChooseSectionProps> = ({ data = mockData }) 
                    </div>
                 </div>
              </div>
-          </motion.div>
+          </div>
         )}
 
         {/* Reasons Grid */}
-        <motion.div
+        <div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-7 mt-10 mb-12 sm:mb-16 lg:mb-20"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
         >
           {(whyChooseContent?.reasons ?? []).map((reason, index) => (
-            <motion.div
+            <div
               key={index}
-              className="group relative"
-              variants={cardVariants}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="group relative hover:-translate-y-2 transition-transform duration-300"
             >
               <div className="relative h-full bg-white rounded-2xl p-6 sm:p-7 lg:p-8 shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/0 via-teal-50/0 to-blue-50/0 group-hover:from-emerald-50 group-hover:via-teal-50 group-hover:to-blue-50 transition-all duration-500 opacity-0 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/0 via-teal-50/0 to-blue-50/0 group-hover:from-emerald-50 group-hover:via-teal-50 group-hover:to-blue-50 transition-all duration-500" />
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-100 via-teal-100 to-blue-100 blur-xl opacity-30" />
                 </div>
@@ -231,17 +196,13 @@ const WhyChooseSection: React.FC<WhyChooseSectionProps> = ({ data = mockData }) 
 
                 <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-emerald-100/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Stats Section */}
-        <motion.div
+        <div
           className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
         >
           {[
             { number: "5000+", label: "Students Trained" },
@@ -249,11 +210,9 @@ const WhyChooseSection: React.FC<WhyChooseSectionProps> = ({ data = mockData }) 
             { number: "10+", label: "Years Experience" },
             { number: "24/7", label: "Mentor Support" },
           ].map((stat, index) => (
-            <motion.div
+            <div
               key={index}
-              className="group relative bg-white rounded-2xl p-6 sm:p-7 lg:p-8 text-center hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-emerald-200 overflow-hidden"
-              variants={cardVariants}
-              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              className="group relative bg-white rounded-2xl p-6 sm:p-7 lg:p-8 text-center hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-emerald-200 overflow-hidden hover:-translate-y-1"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/0 to-teal-50/0 group-hover:from-emerald-50 group-hover:to-teal-50 transition-all duration-500" />
               <div className="relative z-10">
@@ -265,9 +224,9 @@ const WhyChooseSection: React.FC<WhyChooseSectionProps> = ({ data = mockData }) 
                 </p>
               </div>
               <div className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tl from-emerald-100/30 to-transparent rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

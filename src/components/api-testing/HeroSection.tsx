@@ -16,7 +16,6 @@ import {
     CloudDownload,
     ArrowDownNarrowWide,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
 import IconCard from '@/components/ui/IconCard';
 import dynamic from 'next/dynamic';
 import LeadForm from '../forms/ApiCourseLeadForm'
@@ -127,11 +126,7 @@ export default function HeroSection() {
                         </div>
 
                         {/* Supporting copy - ANIMATED */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 18 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
-                        >
+                        <div>
                             <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-700 sm:text-lg">
                                 Build high-demand skills in <strong>API automation testing</strong>, <strong>REST API examples</strong>, and <strong>security validation</strong>. Learn <strong>how to test API</strong> endpoints efficiently with <strong>Postman</strong>, ensure robust backend performance, and secure your career with our <strong>placement support</strong>.
                             </p>
@@ -153,7 +148,7 @@ export default function HeroSection() {
 
                                 <button
                                     onClick={() => setIsSyllabusModalOpen(true)}
-                                    className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
+                                    className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
                                 >
                                     Download Syllabus
                                     <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
@@ -164,7 +159,7 @@ export default function HeroSection() {
                                         e.preventDefault();
                                         document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' });
                                     }}
-                                    className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
+                                    className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
                                 >
                                     View Curriculum
                                     <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
@@ -214,18 +209,15 @@ export default function HeroSection() {
                                     />
                                 ))}
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
 
                     {/* Right: Desktop Form */}
-                    <motion.aside
-                        initial={{ opacity: 0, y: 18 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.12, ease: 'easeOut' }}
+                    <aside
                         className="hidden md:col-span-5 lg:col-span-4 md:block"
                     >
                         <LeadForm variant="elevated" source="API Testing Course Page - Hero Section" />
-                    </motion.aside>
+                    </aside>
                 </div>
             </div>
 

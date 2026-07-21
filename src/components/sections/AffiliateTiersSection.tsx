@@ -1,7 +1,4 @@
 // src/components/sections/AffiliateTiersSection.tsx
-"use client";
-
-import { motion } from "framer-motion";
 import { Crown, Sparkles, Rocket } from "lucide-react";
 
 const tiers = [
@@ -52,12 +49,8 @@ export default function AffiliateTiersSection() {
         {tiers.map((t, i) => {
           const Icon = t.icon;
           return (
-            <motion.article
+            <article
               key={t.name}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              viewport={{ once: true, margin: "-80px" }}
               className={[
                 "relative rounded-3xl border bg-white p-6 shadow-[0_16px_45px_-24px_rgba(2,6,23,0.25)]",
                 t.highlight ? "border-slate-900" : "border-slate-200/70",
@@ -81,7 +74,7 @@ export default function AffiliateTiersSection() {
                   </li>
                 ))}
               </ul>
-            </motion.article>
+            </article>
           );
         })}
       </div>

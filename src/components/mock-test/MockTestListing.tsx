@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { mockCategories, MockCourse } from "@/data/mockTestData";
-import { motion } from "framer-motion";
 import {
     Database,
     Globe,
@@ -95,12 +94,8 @@ export default function MockTestListing() {
                     const Icon = CATEGORY_ICONS[styleKey] || CATEGORY_ICONS["default"];
 
                     return (
-                        <motion.div
+                        <div
                             key={category.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1, duration: 0.5 }}
                             className="break-inside-avoid"
                         >
                             <div className={`group relative bg-white rounded-3xl p-6 border ${style.border} shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}>
@@ -147,15 +142,13 @@ export default function MockTestListing() {
                                     </div>
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     );
                 })}
             </div>
 
             {/* FOOTER CTA */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+            <div
                 className="mt-24 p-12 rounded-[2.5rem] bg-slate-900 text-white text-center relative overflow-hidden"
             >
                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full blur-[100px] opacity-20" />
@@ -173,7 +166,7 @@ export default function MockTestListing() {
                         </div>
                     </div>
                 </div>
-            </motion.div>
+            </div>
 
             <RegistrationModal
                 isOpen={isModalOpen}

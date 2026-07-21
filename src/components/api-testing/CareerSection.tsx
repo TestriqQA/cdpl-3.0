@@ -1,6 +1,5 @@
 'use client';
 import { Briefcase, ArrowRight, Building2, TrendingUp, BadgeCheck } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
@@ -37,11 +36,7 @@ export default function CareerSection() {
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <motion.header
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                <header
                     className="text-center mb-10 sm:mb-14"
                 >
                     <p className="mx-auto mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700">
@@ -54,16 +49,12 @@ export default function CareerSection() {
                     <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
                         Average salary: <strong>₹4–8 LPA</strong>. With skills in <strong>API automation testing</strong> and <strong>Postman</strong>, you become eligible for roles like <strong>API Tester</strong> and <strong>SDET</strong>. Companies need experts who know <strong>how to test api</strong> thoroughly.
                     </p>
-                </motion.header>
+                </header>
 
                 <div className="grid gap-10 lg:grid-cols-2">
                     {/* Roles */}
-                    <motion.section
+                    <section
                         aria-labelledby="roles-heading"
-                        initial={{ opacity: 0, x: -16 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, ease: 'easeOut' }}
                     >
                         <h3 id="roles-heading" className="mb-6 flex items-center gap-3 text-2xl font-bold text-slate-900">
                             <Briefcase className="h-7 w-7 text-indigo-600" />
@@ -109,15 +100,11 @@ export default function CareerSection() {
                                 <Briefcase className="h-4 w-4 text-sky-700" /> Placement support
                             </span>
                         </div>
-                    </motion.section>
+                    </section>
 
                     {/* Companies */}
-                    <motion.section
+                    <section
                         aria-labelledby="companies-heading"
-                        initial={{ opacity: 0, x: 16 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, ease: 'easeOut' }}
                     >
                         <h3 id="companies-heading" className="mb-6 flex items-center gap-3 text-2xl font-bold text-slate-900">
                             <Building2 className="h-7 w-7 text-emerald-600" />
@@ -155,15 +142,11 @@ export default function CareerSection() {
                         </ul>
 
                         <p className="text-center mt-6 text-slate-600 text-sm italic">+ 500+ startups & MNCs actively hiring</p>
-                    </motion.section>
+                    </section>
                 </div>
 
                 {/* CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 14 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.45, ease: 'easeOut' }}
+                <div
                     className="mt-12 text-center"
                 >
                     <button
@@ -173,7 +156,7 @@ export default function CareerSection() {
                     >
                         Start Your QA Journey <ArrowRight className="h-5 w-5" />
                     </button>
-                </motion.div>
+                </div>
             </div>
 
             <CareerSessionModal

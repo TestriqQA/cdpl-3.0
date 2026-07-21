@@ -2,7 +2,6 @@
 'use client';
 
 import React, { useState } from "react";
-import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Phone, Mail, MapPin, Check, Star, Zap } from "lucide-react";
 import Link from "next/link";
 import { EnrollFormData, EnrollPopup } from "../EnrollForms";
@@ -40,23 +39,6 @@ interface CTASectionProps {
         ctaContent?: typeof ctaContent;
     };
 }
-
-const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.15, delayChildren: 0.1 },
-    },
-};
-
-const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 18 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.55, ease: "easeOut" },
-    },
-};
 
 const FinalCTASection: React.FC<CTASectionProps> = () => {
     // If someone passes custom data via props, prefer that; otherwise use integrated ctaContent
@@ -131,44 +113,38 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
             </div>
 
             <div className="relative z-10 mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-                <motion.div
+                <div
                     className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
                 >
                     {/* LEFT: Content + Benefits */}
                     <div className="lg:col-span-7">
                         {/* Special offer badge */}
-                        <motion.div
-                            variants={itemVariants}
+                        <div
                             className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 px-3 py-1.5 shadow-sm"
                         >
                             <Zap className="h-4 w-4 fill-amber-500 text-amber-500" />
                             <span className="text-xs font-semibold text-amber-900">
                                 Limited Time: 20% Discount Available!
                             </span>
-                        </motion.div>
+                        </div>
 
-                        <motion.h2
-                            variants={itemVariants}
+                        <h2
                             className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl"
                         >
                             {content.title}
-                        </motion.h2>
+                        </h2>
 
-                        <motion.p variants={itemVariants} className="mt-3 text-lg font-semibold text-brand">
+                        <p className="mt-3 text-lg font-semibold text-brand">
                             {content.subtitle}
-                        </motion.p>
+                        </p>
 
-                        <motion.p variants={itemVariants} className="mt-4 max-w-2xl text-base leading-relaxed text-slate-700">
+                        <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-700">
                             {content.description}
-                        </motion.p>
+                        </p>
 
                         {/* Benefits List */}
                         {content.benefits && content.benefits.length > 0 && (
-                            <motion.div variants={itemVariants} className="mt-8 space-y-3">
+                            <div className="mt-8 space-y-3">
                                 {content.benefits.map((benefit, index) => (
                                     <div key={index} className="flex items-start gap-3">
                                         <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-emerald-500">
@@ -177,11 +153,11 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                         <span className="text-base font-medium text-slate-800">{benefit}</span>
                                     </div>
                                 ))}
-                            </motion.div>
+                            </div>
                         )}
 
                         {/* CTA Buttons */}
-                        <motion.div variants={itemVariants} className="mt-8 flex flex-col gap-3 sm:flex-row">
+                        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                             <button
                                 onClick={() => setIsPopupOpen(true)}
                                 className="group inline-flex items-center justify-center cursor-pointer rounded-lg bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] px-8 py-3.5 font-semibold text-white shadow-lg transition hover:shadow-xl"
@@ -199,10 +175,10 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                             >
                                 Download Brochure
                             </button>
-                        </motion.div>
+                        </div>
 
                         {/* Contact Info Cards */}
-                        <motion.div variants={itemVariants} className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
                             {/* Phone */}
                             <div className="group rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:shadow-md">
                                 <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r from-[#ff8c00] to-[#ff6b00]">
@@ -241,11 +217,11 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                 <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Location</p>
                                 <p className="mt-1 text-sm font-semibold text-slate-900">{content.contactInfo.address}</p>
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
 
                     {/* RIGHT: Consultation Form */}
-                    <motion.div variants={itemVariants} className="lg:col-span-5">
+                    <div className="lg:col-span-5">
                         <div className="rounded-2xl border border-indigo-200 bg-gradient-to-r from-orange-200 to-orange-300 p-8 shadow-2xl max-w-md w-full lg:ml-auto">
                             {isSubmitted ? (
                                 <div className="flex flex-col items-center justify-center py-6 text-center animate-in fade-in zoom-in duration-300">
@@ -349,8 +325,8 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                 </>
                             )}
                         </div>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
 
             </div>
             <EnrollPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} onSubmit={handleEnrollSubmit} source="Data Science & Machine Learning Course Category Page - Final CTA Section - Enroll Now" />

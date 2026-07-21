@@ -1,14 +1,9 @@
-import { motion } from 'framer-motion';
 import { Globe2, TrendingUp, Clock, Wallet, ShieldCheck, Check } from 'lucide-react';
 
 export default function WhyIstqbSection() {
     return (
         <section className="relative py-12">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
+            <div
                 className="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-sm"
             >
                 <div>
@@ -142,7 +137,7 @@ export default function WhyIstqbSection() {
                         </div>
                     </div>
                 </div>
-            </motion.div>
+            </div>
         </section>
     );
 }

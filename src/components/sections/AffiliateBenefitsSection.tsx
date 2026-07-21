@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import {
     Gift,
     BarChart3,
@@ -10,8 +7,6 @@ import {
     Wallet,
 } from "lucide-react";
 import type React from "react";
-
-const ease = [0.22, 1, 0.36, 1] as const;
 
 // Section heading colors (unchanged)
 const BRAND_A = "rgb(0, 105, 168)";
@@ -79,12 +74,8 @@ export default function AffiliateBenefitsSection() {
                     const pair = BRAND_PAIRS[i % BRAND_PAIRS.length];
 
                     return (
-                        <motion.article
+                        <article
                             key={b.title}
-                            initial={{ opacity: 0, y: 12 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, ease, delay: i * 0.03 }}
-                            viewport={{ once: true, margin: "-80px" }}
                             className={[
                                 "group relative h-full overflow-hidden rounded-3xl",
                                 "shadow-[0_14px_40px_-24px_rgba(2,6,23,0.35)]",
@@ -116,7 +107,7 @@ export default function AffiliateBenefitsSection() {
                             </h3>
 
                             <p className="mt-1 text-slate-800">{b.sub}</p>
-                        </motion.article>
+                        </article>
                     );
                 })}
             </div>

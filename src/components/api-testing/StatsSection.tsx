@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
 
 /** Updated Stat type to support count-up + formatting */
 type Stat = {
@@ -137,11 +136,8 @@ function StatCard({ stat, index }: { stat: Stat; index: number }) {
   const value = useCountUp(stat.valueNumber, inView, 1200, stat.decimals ?? 0);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 14 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.45, delay: stat.delay ?? index * 0.05, ease: 'easeOut' }}
       className={[
         'group relative overflow-hidden rounded-2xl border p-5 sm:p-6',
         stat.color,
@@ -159,6 +155,6 @@ function StatCard({ stat, index }: { stat: Stat; index: number }) {
       <div className="mt-3 text-[11px] leading-5 text-slate-600">
         Verified metrics from the program brochure.
       </div>
-    </motion.div>
+    </div>
   );
 }

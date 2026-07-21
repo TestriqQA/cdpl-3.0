@@ -1,5 +1,3 @@
-'use client';
-import { motion } from 'framer-motion';
 import {
   Globe, Smartphone, Terminal, FileText, Shield, GitBranch, CheckSquare, Bug,
 } from 'lucide-react';
@@ -35,11 +33,7 @@ export default function ToolsSection() {
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, ease: 'easeOut' }}
+        <div
           className="text-center"
         >
           <h2 id="tools-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
@@ -54,16 +48,12 @@ export default function ToolsSection() {
             <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-amber-700">CI/CD Focus</span>
             <span className="rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-violet-700">Interview Prep</span>
           </div>
-        </motion.div>
+        </div>
 
         <div className="mt-10 grid grid-cols-2 gap-5 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
           {tools.map((tool, i) => (
-            <motion.article
+            <article
               key={tool.name}
-              initial={{ opacity: 0, scale: 0.96, y: 8 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, margin: '-10% 0px -10% 0px' }}
-              transition={{ duration: 0.35, delay: i * 0.06, ease: 'easeOut' }}
               className="group/card relative"
               aria-label={`${tool.name} card`}
             >
@@ -89,7 +79,7 @@ export default function ToolsSection() {
                   />
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
 

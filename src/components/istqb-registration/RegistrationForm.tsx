@@ -2,7 +2,6 @@
 
 import React, { useState, useRef } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
-import { motion } from 'framer-motion';
 import { User, Mail, MapPin, Briefcase, Award, ArrowRight, Loader2 } from 'lucide-react';
 import { submitIstqbStep1 } from '@/app/istqb-registration/actions';
 import PhoneInput from '@/components/ui/PhoneNumberInput';
@@ -152,7 +151,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
     }
 
     return (
-        <motion.div
+        <div
             // Optimized LCP: Removed initial opacity:0 to ensure immediate paint
             className="bg-white rounded-3xl shadow-xl border border-slate-100 py-8 px-6 md:p-10 relative h-full flex flex-col"
             ref={formRef}
@@ -387,6 +386,6 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
                     </button>
                 </div>
             </form>
-        </motion.div>
+        </div>
     );
 }

@@ -1,5 +1,3 @@
-'use client';
-import { motion } from 'framer-motion';
 import { Building2, ShoppingCart, Heart, CheckCircle } from 'lucide-react';
 import { JSX } from 'react';
 
@@ -54,11 +52,7 @@ export default function ProjectsSection() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="text-center mb-10 sm:mb-14"
         >
           <h2 id="projects-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
@@ -68,19 +62,15 @@ export default function ProjectsSection() {
             Work on <strong>enterprise-grade data flows</strong> used by banks, e-commerce leaders, and healthcare providers.
             Build a portfolio recruiters can verify and trust.
           </p>
-        </motion.header>
+        </header>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-3">
           {projects.map((p, i) => {
             const a = accents[i % accents.length];
             return (
-              <motion.article
+              <article
                 key={p.title}
-                initial={{ opacity: 0, scale: 0.96 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: '-12% 0px -8% 0px' }}
-                transition={{ duration: 0.45, delay: i * 0.06, ease: 'easeOut' }}
                 className={[
                   'group relative h-full overflow-hidden rounded-2xl border p-6 sm:p-7',
                   a.card,
@@ -110,7 +100,7 @@ export default function ProjectsSection() {
                 </p>
                 {/* focus helper */}
                 <span className="absolute inset-0 rounded-2xl" tabIndex={0} />
-              </motion.article>
+              </article>
             );
           })}
         </div>

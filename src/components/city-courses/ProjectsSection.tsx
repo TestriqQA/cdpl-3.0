@@ -1,7 +1,4 @@
-"use client";
-
 import React from "react";
-import { motion, easeOut } from "framer-motion"; // easeOut is already imported correctly
 import { Code2, Briefcase, Award, Zap, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -38,43 +35,6 @@ const difficultyConfig = {
 const ProjectsSection: React.FC<ProjectsSectionProps> = ({ data }) => {
   const { projectsContent } = data;
 
-  // Fixed Variants: Using easeOut (type-safe, smooth, and matches your original feel)
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: easeOut, // Type-safe and beautiful
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.98 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.7,
-        ease: easeOut, // Perfect modern easing
-      },
-    },
-  };
-
   return (
     <section className="relative py-8 md:py-16 bg-white overflow-hidden">
       {/* Subtle Background Pattern */}
@@ -85,50 +45,38 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ data }) => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
+        <div
           className="text-center mb-16 md:mb-20"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.div
+          <div
             className="inline-flex items-center gap-2 px-2 py-1 bg-cyan-50 text-cyan-700 rounded-full text-[13px] font-semibold mb-4 border border-cyan-200 shadow-sm"
-            variants={itemVariants}
           >
             <Code2 className="w-4 h-4" />
             Hands-On Projects
-          </motion.div>
-          <motion.h2
+          </div>
+          <h2
             className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight"
-            variants={itemVariants}
           >
             {projectsContent.title}
-          </motion.h2>
-          <motion.p
+          </h2>
+          <p
             className="text-xl text-slate-600 max-w-4xl mx-auto font-light"
-            variants={itemVariants}
           >
             {projectsContent.description}
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         {/* Projects Grid */}
-        <motion.div
+        <div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mb-20"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
         >
           {projectsContent.projects.map((project, index) => {
             const diffConfig = difficultyConfig[project.difficulty as keyof typeof difficultyConfig] || difficultyConfig.Intermediate;
 
             return (
-              <motion.div
+              <div
                 key={index}
                 className="group"
-                variants={cardVariants}
               >
                 <div className="relative h-full bg-white rounded-3xl border border-slate-100 p-8 shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-100/50 hover:border-cyan-300 transform hover:-translate-y-1">
                   <div className="flex items-start justify-between mb-6">
@@ -174,10 +122,10 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ data }) => {
                     </Link>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* Why Build With Us Section */}
         <div className="text-center mb-12">
@@ -185,12 +133,8 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ data }) => {
           <p className="text-lg text-slate-500">The benefits of completing these hands-on projects.</p>
         </div>
 
-        <motion.div
+        <div
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
         >
           {[
             {
@@ -209,10 +153,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ data }) => {
               description: "Master complex concepts faster through hands-on coding, immediate feedback, and guided problem-solving.",
             },
           ].map((benefit, index) => (
-            <motion.div
+            <div
               key={index}
               className="bg-white border border-slate-100 rounded-2xl p-8 text-center shadow-lg transition-all duration-500 group hover:shadow-xl hover:shadow-indigo-100/50 hover:border-indigo-300"
-              variants={cardVariants}
             >
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl text-white mb-6 shadow-xl shadow-indigo-500/40 group-hover:scale-105 transition-transform duration-300">
                 {benefit.icon}
@@ -223,9 +166,9 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ data }) => {
               <p className="text-slate-500 text-base leading-relaxed">
                 {benefit.description}
               </p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

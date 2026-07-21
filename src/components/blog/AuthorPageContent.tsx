@@ -1,9 +1,6 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Linkedin, Twitter, Github, Globe, FileText, ArrowLeft, BookOpen, Quote } from "lucide-react";
 import { SanityAuthor, SanityPost } from "@/sanity/types";
 import { BlogArticleList } from "@/components/blog";
@@ -28,7 +25,7 @@ export const AuthorPageContent: React.FC<AuthorPageContentProps> = ({ author, po
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 {/* Navigation */}
-                <motion.div
+                <div
                     // Optimized LCP: Removed initial opacity:0
                     className="mb-8"
                 >
@@ -39,11 +36,11 @@ export const AuthorPageContent: React.FC<AuthorPageContentProps> = ({ author, po
                         <ArrowLeft className="w-4 h-4" />
                         Back to Articles
                     </Link>
-                </motion.div>
+                </div>
 
                 <div className="grid lg:grid-cols-12 gap-12 items-start">
                     {/* Sticky Sidebar */}
-                    <motion.div
+                    <div
                         // Optimized LCP: Removed initial opacity:0
                         className="lg:col-span-4 lg:sticky lg:top-24 h-max space-y-8"
                     >
@@ -142,15 +139,12 @@ export const AuthorPageContent: React.FC<AuthorPageContentProps> = ({ author, po
                                 <span>Philosophy</span>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Main Content */}
                     <div className="lg:col-span-8 flex flex-col gap-10">
                         {/* Bio Section */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
+                        <div
                             className="bg-white/60 backdrop-blur-sm border border-slate-200/60 rounded-3xl p-8 sm:p-10 shadow-sm"
                         >
                             <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
@@ -160,14 +154,10 @@ export const AuthorPageContent: React.FC<AuthorPageContentProps> = ({ author, po
                             <div className="prose prose-lg prose-slate prose-headings:text-slate-900 prose-p:text-slate-600 leading-relaxed">
                                 <p>{author.bio}</p>
                             </div>
-                        </motion.div>
+                        </div>
 
                         {/* Articles Feed */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                        >
+                        <div>
                             <div className="flex items-center justify-between mb-8">
                                 <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
                                     <FileText className="w-6 h-6 text-indigo-600" />
@@ -191,7 +181,7 @@ export const AuthorPageContent: React.FC<AuthorPageContentProps> = ({ author, po
                                     <p className="text-slate-500">Check back later for updates from this author.</p>
                                 </div>
                             )}
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             </div>

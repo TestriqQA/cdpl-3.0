@@ -1,5 +1,4 @@
 'use client';
-import { motion } from 'framer-motion';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 type Stat = {
@@ -171,12 +170,8 @@ export default function StatsSection() {
         {/* stats grid */}
         <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
           {stats.map((s, i) => (
-            <motion.article
+            <article
               key={s.label}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-20% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: s.delay ?? i * 0.05, ease: 'easeOut' }}
               aria-label={`${s.value} — ${s.label}`}
               className={[
                 'group relative overflow-hidden rounded-2xl border p-5 sm:p-6',
@@ -191,7 +186,7 @@ export default function StatsSection() {
               <Counter value={s.value} className={`text-xl lg:text-4xl font-extrabold ${s.text}`} />
               <div className="mt-1 text-xs sm:text-sm font-medium text-slate-600">{s.label}</div>
               {s.caption && <p className="mt-3 text-[11px] leading-5 text-slate-500">{s.caption}</p>}
-            </motion.article>
+            </article>
           ))}
         </div>
 

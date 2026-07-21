@@ -1,5 +1,3 @@
-'use client';
-import { motion } from 'framer-motion';
 import { Database, Terminal, FileText, Lock, GitBranch, BadgeCheck } from 'lucide-react';
 
 // Keep icon tile gradient colors EXACTLY the same
@@ -32,11 +30,7 @@ export default function ToolsSection() {
             </div>
 
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <motion.header
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                <header
                     className="text-center mb-10 sm:mb-14"
                 >
                     <p className="mx-auto mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700">
@@ -50,18 +44,14 @@ export default function ToolsSection() {
                         Hands-on with <strong>MySQL Workbench</strong>, <strong>DBeaver</strong>, <strong>phpMyAdmin</strong>,{' '}
                         <strong>MySQL Shell</strong>, <strong>replication</strong>, and <strong>backup</strong> utilities.
                     </p>
-                </motion.header>
+                </header>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
                     {tools.map((tool, i) => {
                         const a = accents[i % accents.length];
                         return (
-                            <motion.article
+                            <article
                                 key={tool.name}
-                                initial={{ opacity: 0, scale: 0.92 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-                                transition={{ duration: 0.45, delay: i * 0.05, ease: 'easeOut' }}
                                 aria-label={tool.name}
                                 className={[
                                     'group relative h-full rounded-2xl border p-4 sm:p-5',
@@ -80,7 +70,7 @@ export default function ToolsSection() {
                                     Essential
                                 </span>
                                 <span className="absolute inset-0 rounded-2xl focus:outline-none" tabIndex={0} />
-                            </motion.article>
+                            </article>
                         );
                     })}
                 </div>

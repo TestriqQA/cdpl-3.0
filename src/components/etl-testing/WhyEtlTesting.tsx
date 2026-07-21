@@ -1,5 +1,3 @@
-'use client';
-import { motion } from 'framer-motion';
 import { CheckCircle, Zap, Shield, Database, Globe, TrendingUp, BadgeCheck } from 'lucide-react';
 import IconCard from '../ui/IconCard';
 import { JSX } from 'react';
@@ -35,11 +33,7 @@ export default function WhyEtlTesting() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="text-center mb-10 sm:mb-14"
         >
           <p className="mx-auto mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700">
@@ -53,24 +47,20 @@ export default function WhyEtlTesting() {
             Data powers every decision. <strong>What is ETL testing?</strong> It ensures your datasets are{' '}
             <strong>accurate</strong>, <strong>compliant</strong>, and <strong>analytics-ready</strong>—from raw extract to trusted dashboards. The <strong>ETL process</strong> is the backbone of any <strong>data warehouse</strong>.
           </p>
-        </motion.header>
+        </header>
 
         {/* Benefit Cards — distinct, non-repeating colors (no heavy gradients) */}
         <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {benefits.map((b, i) => (
-            <motion.div
+            <div
               key={b.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: i * 0.06, ease: 'easeOut' }}
             >
               <IconCard
                 {...b}
                 // polish defaults of IconCard with accessible, sleek touches
                 className="h-full hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
 

@@ -2,7 +2,6 @@
 'use client';
 
 import React, { useState } from "react";
-import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Phone, Mail, MapPin, Check, Star, Zap } from "lucide-react";
 import Link from "next/link";
 import { EnrollFormData, EnrollPopup } from "../EnrollForms";
@@ -40,23 +39,6 @@ interface CTASectionProps {
         ctaContent?: typeof ctaContent;
     };
 }
-
-const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.15, delayChildren: 0.1 },
-    },
-};
-
-const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 18 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.55, ease: "easeOut" },
-    },
-};
 
 const FinalCTASection: React.FC<CTASectionProps> = () => {
     // If someone passes custom data via props, prefer that; otherwise use integrated ctaContent
@@ -131,87 +113,77 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
             </div>
 
             <div className="relative z-10 mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-                <motion.div
+                <div
                     className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
                 >
                     {/* LEFT: Content + Benefits */}
                     <div className="lg:col-span-7">
                         {/* Special offer badge */}
-                        <motion.div
-                            variants={itemVariants}
+                        <div
                             className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 px-3 py-1.5 shadow-sm"
                         >
                             <Zap className="h-4 w-4 fill-amber-500 text-amber-500" />
                             <span className="text-xs font-semibold text-amber-900">
                                 Limited Time: 20% Discount Available!
                             </span>
-                        </motion.div>
+                        </div>
 
-                        <motion.h2
-                            variants={itemVariants}
+                        <h2
                             className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl"
                         >
                             {content.title}
-                        </motion.h2>
+                        </h2>
 
-                        <motion.p variants={itemVariants} className="mt-3 text-lg font-semibold text-brand">
+                        <p className="mt-3 text-lg font-semibold text-brand">
                             {content.subtitle}
-                        </motion.p>
+                        </p>
 
-                        <motion.p variants={itemVariants} className="mt-4 max-w-2xl text-base leading-relaxed text-slate-700">
+                        <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-700">
                             {content.description}
-                        </motion.p>
+                        </p>
 
                         {/* Benefits Grid */}
-                        <motion.div variants={itemVariants} className="mt-8 grid gap-4 sm:grid-cols-2">
+                        <div className="mt-8 grid gap-4 sm:grid-cols-2">
                             {content.benefits.map((benefit, index) => (
-                                <motion.div
+                                <div
                                     key={index}
-                                    whileHover={{ x: 4 }}
-                                    className="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm hover:shadow-md transition-all duration-300"
+                                    className="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm hover:shadow-md transition-all duration-300 hover:translate-x-1"
                                 >
                                     <div className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-green-400 to-emerald-500 shadow-md">
                                         <Check className="h-4 w-4 text-white" strokeWidth={3} />
                                     </div>
                                     <span className="text-sm font-medium leading-snug text-gray-800">{benefit}</span>
-                                </motion.div>
+                                </div>
                             ))}
-                        </motion.div>
+                        </div>
 
                         {/* CTA Buttons */}
-                        <motion.div variants={itemVariants} className="mt-8 flex flex-col gap-4 sm:flex-row">
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                            <button
                                 onClick={() => setIsPopupOpen(true)}
-                                className="group inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-brand to-brand px-8 py-4 font-bold text-white shadow-xl hover:shadow-2xl transition-all duration-300"
+                                className="group inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-brand to-brand px-8 py-4 font-bold text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
                             >
                                 Start Your Journey Now
                                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                            </motion.button>
+                            </button>
 
 
 
-                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <div className="hover:scale-105 transition-transform duration-300">
                                 <button
                                     onClick={() => setIsBrochureOpen(true)}
                                     className="inline-flex items-center justify-center rounded-xl border-2 border-gray-300 bg-white px-8 py-4 font-bold text-gray-800 shadow-lg hover:border-brand hover:shadow-xl transition-all duration-300"
                                 >
                                     Download Brochure
                                 </button>
-                            </motion.div>
-                        </motion.div>
+                            </div>
+                        </div>
 
                         {/* Contact Cards */}
-                        <motion.div variants={itemVariants} className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
                             {/* Phone */}
-                            <motion.div
-                                whileHover={{ y: -4 }}
-                                className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 p-5 shadow-lg hover:shadow-2xl transition-all duration-300"
+                            <div
+                                className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 p-5 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                             >
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
                                 <div className="relative">
@@ -225,12 +197,11 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                         {content.contactInfo.phone}
                                     </Link>
                                 </div>
-                            </motion.div>
+                            </div>
 
                             {/* Email */}
-                            <motion.div
-                                whileHover={{ y: -4 }}
-                                className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 p-5 shadow-lg hover:shadow-2xl transition-all duration-300"
+                            <div
+                                className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 p-5 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                             >
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
                                 <div className="relative">
@@ -244,12 +215,11 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                         {content.contactInfo.email}
                                     </Link>
                                 </div>
-                            </motion.div>
+                            </div>
 
                             {/* Location */}
-                            <motion.div
-                                whileHover={{ y: -4 }}
-                                className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-brand to-red-600 p-5 shadow-lg hover:shadow-2xl transition-all duration-300"
+                            <div
+                                className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-brand to-red-600 p-5 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                             >
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
                                 <div className="relative">
@@ -257,12 +227,12 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                     <p className="text-xs font-bold uppercase tracking-wider text-white/80">Visit Us</p>
                                     <p className="mt-1 text-sm font-bold text-white">{content.contactInfo.address}</p>
                                 </div>
-                            </motion.div>
-                        </motion.div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* RIGHT: Consultation Form */}
-                    <motion.div variants={itemVariants} className="lg:col-span-5">
+                    <div className="lg:col-span-5">
                         <div className="rounded-2xl border border-indigo-200 bg-gradient-to-r from-orange-200 to-orange-300 p-8 shadow-2xl max-w-md w-full lg:ml-auto">
                             {isSubmitted ? (
                                 <div className="flex flex-col items-center justify-center py-6 text-center animate-in fade-in zoom-in duration-300">
@@ -366,8 +336,8 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
                                 </>
                             )}
                         </div>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
             </div>
             <EnrollPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} onSubmit={handleEnrollSubmit} source="Business Intelligence Course Category Page - Final CTA Section - Enroll Now" />
             <BrochureDownloadModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} source="Business Intelligence Course Category Page - Final CTA Section - Download Brochure" />

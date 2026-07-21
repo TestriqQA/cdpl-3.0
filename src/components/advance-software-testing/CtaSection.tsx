@@ -1,5 +1,4 @@
 'use client';
-import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Award, CheckCircle } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -36,11 +35,7 @@ export default function CtaSection() {
       </div>
 
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <div
           className="text-center"
         >
           <h2
@@ -80,7 +75,7 @@ export default function CtaSection() {
               Book Free Demo
             </button>
           </div>
-        </motion.div>
+        </div>
 
         {/* Benefits / trust strip */}
         <div className="mt-8 grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-3">

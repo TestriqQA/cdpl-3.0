@@ -1,5 +1,3 @@
-'use client';
-import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Award, CheckCircle, BadgeCheck } from 'lucide-react';
 import Link from 'next/link';
 
@@ -19,11 +17,7 @@ export default function CtaSection() {
       </div>
 
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <div
           className="text-center"
         >
           {/* trust chip */}
@@ -110,7 +104,7 @@ export default function CtaSection() {
             <MapPin className="h-4 w-4" />
             Mira Road & Vasai, Maharashtra • Live Online & Classroom
           </div>
-        </motion.div>
+        </div>
       </div>
 
     </section>

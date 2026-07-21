@@ -1,6 +1,4 @@
-'use client';
 import { Phone, Mail, MapPin, Clock, Award, CheckCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 export default function CtaSection() {
@@ -23,11 +21,7 @@ export default function CtaSection() {
       </div>
 
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="mx-auto max-w-3xl"
         >
           <h2
@@ -40,14 +34,10 @@ export default function CtaSection() {
             Cohort starts in <strong>1 day</strong> — only <strong>15 seats</strong> left. Live, mentor-led classes,
             ISTQB + AI automation, and <strong>placement assistance</strong>.
           </p>
-        </motion.header>
+        </header>
 
         {/* Primary actions */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.05, duration: 0.45 }}
+        <div
           className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row"
         >
           <Link
@@ -68,7 +58,7 @@ export default function CtaSection() {
             <Mail className="h-5 w-5" />
             Email Your Questions
           </Link>
-        </motion.div>
+        </div>
 
         {/* Trust / highlight strip (distinct colors, no heavy gradients) */}
         <div className="mx-auto mt-8 grid gap-4 text-left sm:grid-cols-2 md:grid-cols-3">

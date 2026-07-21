@@ -1,5 +1,3 @@
-'use client';
-import { motion } from 'framer-motion';
 import { ShoppingCart, Building2, BarChart3, CheckCircle, BadgeCheck } from 'lucide-react';
 import { JSX } from 'react';
 
@@ -65,11 +63,7 @@ export default function ProjectsSection() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="text-center mb-10 sm:mb-14"
         >
           <p className="mx-auto mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700">
@@ -84,17 +78,13 @@ export default function ProjectsSection() {
             <strong>indexing</strong>, <strong>transactions</strong>, <strong>query optimization</strong>, and{' '}
             <strong>backup & recovery</strong>—skills recruiters search for.
           </p>
-        </motion.header>
+        </header>
 
         {/* Cards */}
         <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-3">
           {projects.map((p, i) => (
-            <motion.article
+            <article
               key={p.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: i * 0.06, ease: 'easeOut' }}
               className={[
                 'group relative overflow-hidden rounded-2xl border p-6 md:p-5',
                 p.bg,
@@ -143,7 +133,7 @@ export default function ProjectsSection() {
               <div className="mt-5 h-1.5 w-full overflow-hidden rounded-full bg-white/70">
                 <div className={['h-full w-3/4 rounded-full opacity-80', p.border.replace('border-', 'bg-')].join(' ')} />
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
 

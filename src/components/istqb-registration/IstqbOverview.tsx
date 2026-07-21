@@ -1,14 +1,8 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { BookOpen, CheckCircle2 } from 'lucide-react';
 
 export default function IstqbOverview() {
     return (
-        <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+        <div
             className="bg-white/50 backdrop-blur-sm rounded-3xl p-8 border border-white/50 shadow-sm sticky top-24 h-full"
         >
             <div className="flex items-center gap-3 mb-6">
@@ -49,6 +43,6 @@ export default function IstqbOverview() {
                     We take pride in delivering top-notch learning experiences through interactive and research-driven course content. Our industry-aligned training programs empower professionals to excel in software testing, equipping them with the skills to manage large-scale enterprise projects. Many of our trained professionals go on to secure high-paying roles in the industry.
                 </p>
             </div>
-        </motion.div>
+        </div>
     );
 }

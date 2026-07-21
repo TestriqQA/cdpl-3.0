@@ -1,6 +1,4 @@
-'use client';
 import { ShoppingCart, Smartphone, Shield, CheckCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { JSX } from 'react';
 
 type Project = {
@@ -64,11 +62,7 @@ export default function ProjectsSection() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="text-center"
         >
           <h2 id="projects-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
@@ -78,17 +72,13 @@ export default function ProjectsSection() {
             Production-style projects that showcase <strong>UI, API, Mobile</strong>, and <strong>Performance</strong> automation skills. Perfect
             for resumes, GitHub, and interviews.
           </p>
-        </motion.header>
+        </header>
 
         {/* Cards */}
         <div className="mt-10 grid grid-cols-1 gap-6 sm:gap-7 md:grid-cols-3">
           {projects.map((p, i) => (
-            <motion.article
+            <article
               key={p.title}
-              initial={{ opacity: 0, scale: 0.98, y: 10 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, margin: '-10% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: i * 0.08, ease: 'easeOut' }}
               className={[
                 'group relative h-full overflow-hidden rounded-2xl border',
                 p.cardBg,
@@ -132,7 +122,7 @@ export default function ProjectsSection() {
 
               {/* subtle bottom bar accent */}
               <div className="pointer-events-none h-1 w-full bg-white/60" />
-            </motion.article>
+            </article>
           ))}
         </div>
 

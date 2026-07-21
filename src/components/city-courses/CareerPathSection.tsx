@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { easeOut, motion } from "framer-motion";
 import { TrendingUp, Briefcase, ArrowRight, Sparkles, Target, Zap } from "lucide-react";
-import EnrollModal from "@/components/EnrollModal"; // Fix import if it's named export, or default. 
+import EnrollModal from "@/components/EnrollModal"; // Fix import if it's named export, or default.
 // Checking previous file view of EnrollModal.tsx: export default EnrollModal;
 // So import should be default.
 
@@ -85,36 +84,6 @@ const CareerPathSection = ({ data = mockData }) => {
   // Marked as intentionally used without altering behavior:
   void hoveredPath;
 
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: easeOut },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.4, ease: easeOut },
-    },
-  };
-
   return (
     <section className="relative py-16 md:py-24 lg:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
       {/* Animated Background Elements */}
@@ -129,65 +98,50 @@ const CareerPathSection = ({ data = mockData }) => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
+        <div
           className="text-center mb-12 md:mb-20"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.div
+          <div
             className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 border border-emerald-500/20 rounded-full px-2 py-1 mb-6"
-            variants={itemVariants}
           >
             <Sparkles className="w-4 h-4 text-emerald-400" />
             <span className="text-emerald-300 font-semibold text-[13px] tracking-wider">
               Your Future Awaits
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h2
+          <h2
             className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6 leading-tight"
-            variants={itemVariants}
           >
             {careerPathContent.title}
-          </motion.h2>
+          </h2>
 
-          <motion.p
+          <p
             className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-3 px-4"
-            variants={itemVariants}
           >
             {careerPathContent.description}
-          </motion.p>
+          </p>
 
-          <motion.div
+          <div
             className="flex items-center justify-center gap-2 text-cyan-400"
-            variants={itemVariants}
           >
             <Target className="w-5 h-5" />
             <p className="text-base md:text-lg font-medium">
               {careerPathContent.subtitle}
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Career Paths Grid */}
-        <motion.div
+        <div
           className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-16"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
         >
           {careerPathContent.paths.map((path, index) => (
-            <motion.div
+            <div
               key={index}
-              className="group relative"
-              variants={cardVariants}
+              className="group relative hover:-translate-y-2 transition-transform duration-300"
               onMouseEnter={() => setHoveredPath(index)}
               onMouseLeave={() => setHoveredPath(null)}
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.3 }}
             >
               <div className="relative h-full bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 p-6 md:p-8 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10 overflow-hidden">
                 {/* Hover Gradient Effect */}
@@ -282,17 +236,13 @@ const CareerPathSection = ({ data = mockData }) => {
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Bottom CTA */}
-        <motion.div
+        <div
           className="bg-gradient-to-r from-slate-800/80 to-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 md:p-10 text-center relative overflow-hidden"
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
         >
           {/* Decorative Elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 rounded-full filter blur-3xl"></div>
@@ -314,17 +264,15 @@ const CareerPathSection = ({ data = mockData }) => {
               Join our comprehensive program with expert mentorship, real-world projects, and dedicated job placement support. Your future starts now.
             </p>
 
-            <motion.button
+            <button
               onClick={() => handleOpenModal(`(${(data as any).location || 'City'} ${(data as any).courseName || 'Course'}) - Career Path Section - Enroll Now`)}
-              className="px-6 md:px-10 py-3 md:py-4 cursor-pointer bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold rounded-xl hover:shadow-2xl hover:shadow-cyan-500/30 transition-all duration-300 inline-flex items-center gap-2 text-sm md:text-base group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="px-6 md:px-10 py-3 md:py-4 cursor-pointer bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold rounded-xl hover:shadow-2xl hover:shadow-cyan-500/30 transition-all duration-300 inline-flex items-center gap-2 text-sm md:text-base group hover:scale-105"
             >
               Enroll Now & Transform Your Future
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+            </button>
           </div>
-        </motion.div>
+        </div>
 
         <EnrollModal
           isOpen={isModalOpen}

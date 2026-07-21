@@ -1,5 +1,3 @@
-'use client';
-import { motion } from 'framer-motion';
 import {
   Zap,
   Shield,
@@ -47,11 +45,7 @@ export default function WhyAdvancedTesting() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="text-center"
         >
           <p className="mx-auto mb-3 inline-flex items-center gap-2 shadow-md rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700">
@@ -69,23 +63,19 @@ export default function WhyAdvancedTesting() {
           <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-600 max-w-3xl mx-auto">
             <strong>Selenium training</strong> is the gateway to high-paying QA roles. Move beyond manual testing and build expertise in <strong>UI, API, Mobile</strong> with our <strong>advanced software testing course</strong> designed for 2026.
           </p>
-        </motion.header>
+        </header>
 
         {/* Benefits grid */}
         <div className="mt-10 grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {benefits.map((b, i) => (
-            <motion.div
+            <div
               key={b.title}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: i * 0.08, ease: 'easeOut' }}
             >
               <IconCard
                 {...b}
                 className="h-full hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
 

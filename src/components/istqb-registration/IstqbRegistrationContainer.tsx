@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import RegistrationForm from '@/components/istqb-registration/RegistrationForm';
 import BookingOption from '@/components/istqb-registration/BookingOption';
 import ExamSelection from '@/components/istqb-registration/ExamSelection';
@@ -56,14 +55,11 @@ export default function IstqbRegistrationContainer() {
 
                     {/* Left: Benefits / Trust Signals */}
                     <div className="lg:col-span-6 space-y-8 lg:sticky lg:top-24 h-full order-2 lg:order-1">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.3 }}
+                        <div
                             className="h-full"
                         >
                             <IstqbOverview />
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             )}
@@ -80,9 +76,7 @@ export default function IstqbRegistrationContainer() {
                     {/* Right: Forms/Choice */}
                     <div className="lg:col-span-6 order-1 lg:order-2 h-full">
                         {choice === 'none' && (
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
+                            <div
                                 className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden h-full"
                             >
                                 <div className="p-8 md:p-10 text-center md:text-left h-full relative">
@@ -156,7 +150,7 @@ export default function IstqbRegistrationContainer() {
                                         </button>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         )}
 
                         {choice === 'booking' && (

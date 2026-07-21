@@ -1,6 +1,5 @@
 'use client';
 import { Briefcase, Building2, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
@@ -62,11 +61,7 @@ export default function CareerSection() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <div
           className="text-center mb-10 sm:mb-12"
         >
           <h2 id="career-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
@@ -75,16 +70,12 @@ export default function CareerSection() {
           <p className="mt-3 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
             <strong>SDET training</strong> opens doors to premium roles. With expertise in <strong>selenium</strong>, <strong>API</strong>, and <strong>mobile testing</strong>, you can demand higher salaries. Average fresher package: <strong>₹4–8 LPA</strong>.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12">
           {/* Roles */}
-          <motion.section
+          <section
             aria-labelledby="career-roles"
-            initial={{ opacity: 0, x: -16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, ease: 'easeOut' }}
           >
             <h3 id="career-roles" className="mb-5 flex items-center gap-3 text-2xl font-bold text-slate-900">
               <Briefcase className="h-7 w-7 text-sky-700" />
@@ -108,15 +99,11 @@ export default function CareerSection() {
             <p className="mt-4 text-xs text-slate-500">
               Popular stacks: <em>Selenium/Appium, Playwright/Cypress, REST Assured, JMeter, GitHub Actions/Jenkins</em>.
             </p>
-          </motion.section>
+          </section>
 
           {/* Companies */}
-          <motion.section
+          <section
             aria-labelledby="career-companies"
-            initial={{ opacity: 0, x: 16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, ease: 'easeOut' }}
           >
             <h3 id="career-companies" className="mb-5 flex items-center gap-3 text-2xl font-bold text-slate-900">
               <Building2 className="h-7 w-7 text-violet-700" />
@@ -142,15 +129,11 @@ export default function CareerSection() {
               + Startups & product companies hiring for <strong>SDET</strong>, <strong>Automation</strong>, and{' '}
               <strong>Performance</strong> roles.
             </p>
-          </motion.section>
+          </section>
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, ease: 'easeOut' }}
+        <div
           className="mt-12 text-center"
         >
           <button
@@ -164,7 +147,7 @@ export default function CareerSection() {
           <p className="mt-3 text-xs text-slate-500">
             Mentor-led, project-based training with resume building and mock interviews.
           </p>
-        </motion.div>
+        </div>
       </div>
 
       <CareerSessionModal

@@ -1,7 +1,5 @@
-'use client';
 import { Shield, Zap, Target, TrendingUp, Globe, Lock, CheckCircle2 } from 'lucide-react';
 import IconCard from '@/components/ui/IconCard';
-import { motion } from 'framer-motion';
 
 
 
@@ -19,11 +17,7 @@ export default function WhyApiTesting() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading / Intro */}
-        <motion.header
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="mx-auto mb-10 text-center sm:mb-14"
         >
           <p className="mx-auto mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700">
@@ -51,7 +45,7 @@ export default function WhyApiTesting() {
               <Zap className="h-4 w-4 text-sky-700" /> Faster releases
             </li>
           </ul>
-        </motion.header>
+        </header>
 
         {/* Benefit Cards */}
         <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -93,18 +87,14 @@ export default function WhyApiTesting() {
               bg: 'bg-rose-500', iconColor: 'text-rose-700', border: 'border-rose-200',
             },
           ].map((b, i) => (
-            <motion.div
+            <div
               key={b.title}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: i * 0.06, ease: 'easeOut' }}
             >
               <IconCard
                 {...b}
                 className="hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
 

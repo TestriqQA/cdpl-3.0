@@ -1,6 +1,5 @@
 'use client';
 import { Briefcase, Building2, ArrowRight, Sparkles } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
@@ -51,11 +50,7 @@ export default function CareerSection() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+        <header
           className="text-center"
         >
           <h2 id="career-heading" className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
@@ -73,17 +68,12 @@ export default function CareerSection() {
             <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-emerald-800">DevOps + CI/CD</span>
             <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-amber-800">High Salary Growth</span>
           </div>
-        </motion.header>
+        </header>
 
         {/* Content */}
         <div className="mt-10 grid gap-10 lg:grid-cols-2">
           {/* Roles */}
-          <motion.section
-            initial={{ opacity: 0, x: -18 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-          >
+          <section>
             <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-slate-900">
               <Briefcase className="h-7 w-7 text-sky-600" />
               High-Impact Job Roles
@@ -91,11 +81,7 @@ export default function CareerSection() {
             <ul className="grid grid-cols-2 gap-3 sm:gap-4">
               {ROLES.map((r, i) => (
                 <li key={r.label}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05, duration: 0.35 }}
+                  <div
                     className={[
                       'rounded-xl border px-4 py-3 text-center text-sm font-semibold',
                       r.bg,
@@ -105,22 +91,17 @@ export default function CareerSection() {
                     ].join(' ')}
                   >
                     {r.label}
-                  </motion.div>
+                  </div>
                 </li>
               ))}
             </ul>
             <p className="mt-4 text-xs text-slate-500">
               Pathways: junior SDET → senior SDET → automation architect → quality platform/enablement lead.
             </p>
-          </motion.section>
+          </section>
 
           {/* Companies */}
-          <motion.section
-            initial={{ opacity: 0, x: 18 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-          >
+          <section>
             <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-slate-900">
               <Building2 className="h-7 w-7 text-violet-700" />
               Top Product Companies
@@ -128,11 +109,7 @@ export default function CareerSection() {
             <ul className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
               {COMPANIES.map((c, i) => (
                 <li key={c.label}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05, duration: 0.35 }}
+                  <div
                     className={[
                       'rounded-xl border px-4 py-3 text-center text-sm font-bold',
                       c.bg,
@@ -142,22 +119,18 @@ export default function CareerSection() {
                     ].join(' ')}
                   >
                     {c.label}
-                  </motion.div>
+                  </div>
                 </li>
               ))}
             </ul>
             <p className="mt-4 text-xs text-slate-500">
               Plus: fintech unicorns, SaaS leaders, and cloud-native startups hiring automation-first talent.
             </p>
-          </motion.section>
+          </section>
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, ease: 'easeOut' }}
+        <div
           className="mt-10 text-center"
         >
           <button
@@ -172,7 +145,7 @@ export default function CareerSection() {
           <p className="mt-3 text-xs text-slate-500">
             Speak to a mentor about roadmap, interview prep, and portfolio projects.
           </p>
-        </motion.div>
+        </div>
       </div>
 
       <CareerSessionModal
