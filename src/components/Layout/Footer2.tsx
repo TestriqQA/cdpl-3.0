@@ -140,8 +140,8 @@ const Footer: React.FC = () => {
                     src="/images/msme.png"
                     alt="MSME"
                     title="MSME Registered Company Badge"
-                    width={120}
-                    height={120}
+                    width={626}
+                    height={713}
                     className="h-16 md:h-20 w-auto object-contain"
                   />
                 </div>
@@ -160,8 +160,8 @@ const Footer: React.FC = () => {
                     src="/images/Trustpilot.png"
                     alt="Trustpilot"
                     title="Trustpilot Reviews Badge"
-                    width={150}
-                    height={150}
+                    width={235}
+                    height={57}
                     className="h-16 md:h-20 w-auto object-contain"
                   />
                 </div>
@@ -170,8 +170,8 @@ const Footer: React.FC = () => {
                     src="/images/ISO-27001.png"
                     alt="ISO 27001 Certified"
                     title="ISO 27001 Certified Badge"
-                    width={130}
-                    height={130}
+                    width={153}
+                    height={77}
                     className="h-16 md:h-20 w-auto object-contain"
                   />
                 </div>
@@ -180,8 +180,8 @@ const Footer: React.FC = () => {
                     src="/images/ISO-9001.png"
                     alt="ISO 9001 Certified"
                     title="ISO 9001 Certified Badge"
-                    width={130}
-                    height={130}
+                    width={153}
+                    height={77}
                     className="h-16 md:h-20 w-auto object-contain"
                   />
                 </div>
@@ -242,7 +242,12 @@ const Footer: React.FC = () => {
                     body text. This keeps the brand hue at 5.18:1. */}
                 <h3 className="text-xl font-semibold text-brand">Powered By</h3>
                 <Link href="https://www.testriq.com/" title="Powered by TestRiq QA Lab" className="text-gray-300 hover:text-blue-400 hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
-                  <Image src={'/images/Testriq-Logo-1.webp'} alt='Testriq_logo' title="Testriq-Logo" width={100} height={100} style={{ width: "auto", height: "auto" }} />
+                  {/* Real image is 1445x513 (2.82:1). It was declared 100x100
+                      with width/height:auto, so the reserved 1:1 box collapsed
+                      to the true ratio on load — a ~65px shift on every page
+                      (the site's largest CLS source). Declared at the correct
+                      ratio now; the box matches the paint, so no shift. */}
+                  <Image src={'/images/Testriq-Logo-1.webp'} alt='Testriq_logo' title="Testriq-Logo" width={130} height={46} />
                 </Link>
               </div>
             </div>
