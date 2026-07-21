@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import {
     TrendingUp,
     ArrowRight,
@@ -162,15 +161,10 @@ const CareerCard = ({ path, index, onEnroll }: { path: CareerPath; index: number
     const hiringCompanies = path.hiringCompanies ?? ["Infosys", "TCS", "Cognizant"];
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: index * 0.08, ease: [0.21, 0.47, 0.32, 0.98] }}
-            whileHover={{ y: -8, transition: { duration: 0.28 } }}
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
-            className="group relative h-full"
+        <div
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="group relative h-full hover:-translate-y-2 transition-transform duration-300"
         >
             {/* Glow effect */}
             <div
@@ -186,27 +180,19 @@ const CareerCard = ({ path, index, onEnroll }: { path: CareerPath; index: number
                 <div className="p-8 flex flex-col flex-grow">
                     {/* Header */}
                     <div className="flex items-start justify-between mb-6">
-                        <motion.div
-                            animate={{
-                                rotate: isHovered ? [0, -8, 8, -8, 0] : 0,
-                                scale: isHovered ? 1.06 : 1,
-                            }}
-                            transition={{ duration: 0.5 }}
-                            className={`w-14 h-14 ${theme.iconBg} rounded-2xl flex items-center justify-center border-2 ${theme.border} shadow-lg`}
+                        <div
+                            className={`w-14 h-14 ${theme.iconBg} rounded-2xl flex items-center justify-center border-2 ${theme.border} shadow-lg transition-transform duration-500 ${isHovered ? 'scale-105' : ''}`}
                         >
                             <Briefcase className={`${theme.iconColor} w-7 h-7`} strokeWidth={2.5} />
-                        </motion.div>
+                        </div>
 
                         <div className="flex flex-col gap-2 items-end">
                             {path.trending && (
-                                <motion.span
-                                    initial={{ scale: 0, rotate: -45 }}
-                                    whileInView={{ scale: 1, rotate: 0 }}
-                                    transition={{ delay: index * 0.08 + 0.12, type: "spring" }}
+                                <span
                                     className="flex items-center gap-1 text-xs font-bold px-3 py-1 bg-orange-50 text-brand border border-orange-200 rounded-full"
                                 >
                                     <TrendingUp className="w-3 h-3" /> Trending
-                                </motion.span>
+                                </span>
                             )}
                             <span className={`text-xs font-bold px-3 py-1 rounded-full border ${demandClass}`}>{demandLevel} Demand</span>
                         </div>
@@ -245,15 +231,12 @@ const CareerCard = ({ path, index, onEnroll }: { path: CareerPath; index: number
                             </p>
                             <div className="flex flex-wrap gap-2">
                                 {(path.skills ?? []).slice(0, 6).map((skill, i) => (
-                                    <motion.span
+                                    <span
                                         key={i}
-                                        initial={{ opacity: 0, scale: 0.88 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        transition={{ delay: index * 0.06 + i * 0.04 }}
                                         className="text-xs font-semibold px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg border border-gray-200 hover:border-gray-300 transition-colors"
                                     >
                                         {skill}
-                                    </motion.span>
+                                    </span>
                                 ))}
                             </div>
                         </div>
@@ -307,16 +290,14 @@ const CareerCard = ({ path, index, onEnroll }: { path: CareerPath; index: number
 
                     {/* CTA buttons */}
                     <div className="mt-auto flex flex-col gap-3 text-center">
-                        <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
+                        <button
                             onClick={onEnroll}
-                            className={`w-full bg-gradient-to-r ${theme.accent} text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2`}
+                            className={`w-full bg-gradient-to-r ${theme.accent} text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]`}
                         >
                             <Rocket className="w-5 h-5" />
                             Start Career Path
                             <ArrowRight className="w-5 h-5" />
-                        </motion.button>
+                        </button>
 
                         <Link 
                             href="/jobs/live-jobs" 
@@ -331,7 +312,7 @@ const CareerCard = ({ path, index, onEnroll }: { path: CareerPath; index: number
                 {/* bottom corner decor */}
                 <div className={`absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl ${theme.card} rounded-tl-full opacity-50`} />
             </div>
-        </motion.div>
+        </div>
     );
 };
 
@@ -339,19 +320,15 @@ const CareerCard = ({ path, index, onEnroll }: { path: CareerPath; index: number
    Stat card for header metrics
    ---------------------------- */
 const StatCard = ({ icon: Icon, value, label, gradient }: { icon: React.ElementType; value: string; label: string; gradient: string }) => (
-    <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        whileHover={{ y: -4 }}
-        className="flex flex-col items-center p-6 bg-white rounded-xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
+    <div
+        className="flex flex-col items-center p-6 bg-white rounded-xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
     >
         <div className={`w-14 h-14 bg-gradient-to-br ${gradient} rounded-xl flex items-center justify-center mb-3 shadow-lg`}>
             <Icon className="w-7 h-7 text-white" />
         </div>
         <div className="text-3xl font-bold text-gray-900 mb-1">{value}</div>
         <div className="text-sm text-gray-600 text-center font-medium">{label}</div>
-    </motion.div>
+    </div>
 );
 
 /* ----------------------------
@@ -378,11 +355,11 @@ export default function CareerPathSection() {
 
             <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
                 {/* Header */}
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
-                    <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-200/50 rounded-full mb-6">
+                <div className="text-center mb-16">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-200/50 rounded-full mb-6">
                         <Sparkles className="w-4 h-4 text-blue-600" />
                         <span className="text-sm font-semibold text-blue-700">Career Opportunities</span>
-                    </motion.div>
+                    </div>
 
                     <h2 className="mt-10 text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
                         Software Testing <span className="text-brand">Jobs & Career Roles</span> in Mumbai
@@ -395,7 +372,7 @@ export default function CareerPathSection() {
                     </div>
 
                     <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">{careerPathContent.description}</p>
-                </motion.div>
+                </div>
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
@@ -425,7 +402,7 @@ export default function CareerPathSection() {
                 </div>
 
                 {/* Bottom CTA */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="text-center">
+                <div className="text-center">
                     <div className="inline-flex flex-col items-center gap-6 p-8 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border-2 border-blue-200 rounded-2xl shadow-xl max-w-3xl mx-auto">
                         <div className="flex items-center gap-4">
                             <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
@@ -437,16 +414,16 @@ export default function CareerPathSection() {
                             </div>
                         </div>
                         <div className="flex flex-wrap gap-4 justify-center">
-                            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => setIsEnrollOpen(true)} className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2">
+                            <button onClick={() => setIsEnrollOpen(true)} className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 hover:scale-105 active:scale-95">
                                 Talk to Career Counselor
                                 <ArrowRight className="w-5 h-5" />
-                            </motion.button>
+                            </button>
                             <button onClick={() => setIsBrochureOpen(true)} className="px-8 py-4 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-300 hover:border-gray-400 transition-all duration-300">
                                 Download Career Guide
                             </button>
                         </div>
                     </div>
-                </motion.div>
+                </div>
                 <BrochureDownloadModal isOpen={isBrochureOpen} onClose={() => setIsBrochureOpen(false)} source="Software Testing Course Category Page - Career Section - Download Career Guide" />
             </div>
 
