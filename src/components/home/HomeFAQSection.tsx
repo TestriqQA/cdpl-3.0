@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
 /**
@@ -21,13 +20,7 @@ const FAQItem = ({ faq, index, openIndex, toggleFAQ }: {
   const isOpen = openIndex === index;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ delay: index * 0.05, duration: 0.4 }}
-      className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl"
-    >
+    <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl">
       {/* Question Button */}
       <button
         onClick={() => toggleFAQ(index)}
@@ -48,29 +41,29 @@ const FAQItem = ({ faq, index, openIndex, toggleFAQ }: {
         />
       </button>
 
-      {/* Answer Content */}
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            key="content"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            className="overflow-hidden"
-            id={`faq-content-${index}`}
-            role="region"
-            aria-labelledby={`faq-heading-${index}`}
-          >
-            <div className="px-6 pb-6 pt-0">
-              <p className="text-base text-gray-600 leading-relaxed border-t pt-4 mt-2">
-                {faq.answer}
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+      {/*
+        Answer content. The framer-motion AnimatePresence height animation is
+        replaced by the CSS grid-rows technique: the outer grid animates between
+        0fr and 1fr while the inner div clips with overflow-hidden. Pure CSS, no
+        JS, and it inherits the prefers-reduced-motion block for free.
+        The answer is now always in the DOM (only visually collapsed), so all
+        FAQ answers are crawlable — previously only the open one was rendered.
+      */}
+      <div
+        id={`faq-content-${index}`}
+        role="region"
+        aria-labelledby={`faq-heading-${index}`}
+        className={`grid transition-all duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+      >
+        <div className="overflow-hidden">
+          <div className="px-6 pb-6 pt-0">
+            <p className="text-base text-gray-600 leading-relaxed border-t pt-4 mt-2">
+              {faq.answer}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -125,12 +118,7 @@ export default function HomeFAQSection() {
     <section className="py-6 lg:py-10 bg-gray-50" aria-labelledby="faq-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header - Enhanced for SEO and Impact */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold tracking-wider mb-3">
             Quick Answers
           </span>
@@ -140,7 +128,7 @@ export default function HomeFAQSection() {
           <p className="text-xl text-gray-600 max-w-4xl mx-auto font-light">
             Find everything you need to know about our courses, placements, and training methodology.
           </p>
-        </motion.div>
+        </div>
 
         {/* FAQ Accordion - Two-Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
