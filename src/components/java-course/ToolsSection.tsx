@@ -172,7 +172,7 @@ export default function ToolsSection() {
           aria-label="Developer tools covered in this program"
         >
           {TOOLS.map((t) => (
-            <article
+            <div
               key={t.name}
               role="listitem"
               aria-label={t.aria}
@@ -201,7 +201,7 @@ export default function ToolsSection() {
                   </span>
                 </div>
               </div>
-            </article>
+            </div>
           ))}
         </div>
 

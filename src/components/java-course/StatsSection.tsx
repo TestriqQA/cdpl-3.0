@@ -140,7 +140,7 @@ export default function StatsSection() {
         >
           {STATS.map(
             ({ value, label, caption, icon: Icon, cardClass, textClass, ringClass }, i) => (
-              <article
+              <div
                 key={i}
                 role="listitem"
                 className={[
@@ -183,7 +183,7 @@ export default function StatsSection() {
                     aria-hidden="true"
                   />
                 </div>
-              </article>
+              </div>
             )
           )}
         </div>

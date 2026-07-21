@@ -198,7 +198,7 @@ export default function StatsSection() {
           className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
         >
           {STATS.map((s, idx) => (
-            <article
+            <div
               key={s.label}
               role="listitem"
               tabIndex={0}
@@ -245,7 +245,7 @@ export default function StatsSection() {
                   ].join(" ")}
                 />
               </div>
-            </article>
+            </div>
           ))}
         </div>
 

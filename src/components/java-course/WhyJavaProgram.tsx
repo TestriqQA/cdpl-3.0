@@ -121,7 +121,7 @@ export default function WhyJavaProgram() {
           aria-label="Program highlights"
         >
           {PILLS.map(({ icon: Icon, label, value, bg, text, ring, aria }, i) => (
-            <article
+            <div
               key={i}
               role="listitem"
               aria-label={aria}
@@ -144,7 +144,7 @@ export default function WhyJavaProgram() {
                   <p className="mt-1 text-xs font-medium text-gray-700">{label}</p>
                 </div>
               </div>
-            </article>
+            </div>
           ))}
         </div>
 

@@ -97,7 +97,7 @@ export default function ProjectsSection() {
           {PROJECTS.map((p) => {
             const id = p.title.replace(/\s+/g, "-").toLowerCase();
             return (
-              <article
+              <div
                 key={p.title}
                 role="listitem"
                 tabIndex={0}
@@ -147,7 +147,7 @@ export default function ProjectsSection() {
                     Portfolio-Ready • Production-Minded
                   </span>
                 </div>
-              </article>
+              </div>
             );
           })}
         </div>

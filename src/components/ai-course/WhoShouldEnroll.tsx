@@ -94,7 +94,7 @@ export default function WhoShouldEnroll() {
           {PERSONAS.map((p) => {
             const id = p.title.replace(/\s+/g, "-").toLowerCase();
             return (
-              <article
+              <div
                 key={p.title}
                 role="listitem"
                 aria-labelledby={id}
@@ -136,7 +136,7 @@ export default function WhoShouldEnroll() {
                     ].join(" ")}
                   />
                 </div>
-              </article>
+              </div>
             );
           })}
         </div>

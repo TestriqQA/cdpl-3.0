@@ -168,7 +168,7 @@ export default function CareerSection() {
           aria-label="Popular Java career roles"
         >
           {ROLES.map((r, i) => (
-            <article
+            <div
               key={i}
               role="listitem"
               aria-label={r.aria}
@@ -199,7 +199,7 @@ export default function CareerSection() {
               >
                 Apply
               </button>
-            </article>
+            </div>
           ))}
         </div>
 
