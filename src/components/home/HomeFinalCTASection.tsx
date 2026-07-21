@@ -10,7 +10,6 @@ import {
   validatePhone,
   validateFullName as validateFullNameLib
 } from '@/lib/formValidation';
-import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Mail, User } from 'lucide-react';
 
 /**
@@ -151,11 +150,7 @@ export default function HomeFinalCTASection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+          <div
             className="text-gray-900"
           >
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight text-gray-900">
@@ -173,31 +168,23 @@ export default function HomeFinalCTASection() {
                 'placement support',
                 'Flexible payment options available',
               ].map((benefit, index) => (
-                <motion.div
+                <div
                   key={index}
                   className="flex items-center gap-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                 >
                   <div className="w-6 h-6 bg-green-100 border border-green-200 rounded-full flex items-center justify-center flex-shrink-0 shadow-sm">
                     <CheckCircle2 className="w-4 h-4 text-green-600" />
                   </div>
                   <span className="text-lg text-gray-700 font-medium">{benefit}</span>
-                </motion.div>
+                </div>
               ))}
             </div>
 
 
-          </motion.div>
+          </div>
 
           {/* Right Column - Lead Form - Enhanced UI */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+          <div
             className="relative"
           >
             <div ref={formRef} className="bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-100 p-8 md:p-10 transform hover:shadow-3xl transition-shadow duration-300">
@@ -342,7 +329,7 @@ export default function HomeFinalCTASection() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         <style jsx global>{`

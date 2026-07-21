@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 import { Clock, Users, ArrowRight, Star, Zap, Download, BookOpen, Gauge, Shield, Smartphone, CheckCircle, Cpu, BarChart3, Code, TrendingUp, Cog, Trophy, Brain, Database, Megaphone, Briefcase, Rocket, PieChart, FileSpreadsheet, LayoutGrid } from 'lucide-react';
 import { DownloadFormButton } from '@/components/DownloadForm';
 import Link from 'next/link';
@@ -790,10 +789,7 @@ export default function HomeFeaturedCoursesSection() {
     <section className="py-6 lg:py-10 bg-gray-50" aria-labelledby="featured-courses-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center mb-12"
         >
           <span className="inline-block px-4 py-2 bg-orange-100 text-brand rounded-full text-sm font-semibold mb-4">
@@ -805,13 +801,10 @@ export default function HomeFeaturedCoursesSection() {
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Choose from our comprehensive range of courses designed to make you job-ready with hands-on projects and expert mentorship.
           </p>
-        </motion.div>
+        </div>
 
         {/* Category Filter (Tabs) */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="flex flex-wrap justify-center gap-3 mb-12"
         >
           {ALL_CATEGORIES.map((category) => (
@@ -826,7 +819,7 @@ export default function HomeFeaturedCoursesSection() {
               {category}
             </button>
           ))}
-        </motion.div>
+        </div>
 
         {/* Course Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -836,10 +829,7 @@ export default function HomeFeaturedCoursesSection() {
         </div>
 
         {/* View All CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center mt-12"
         >
           <Link
@@ -850,7 +840,7 @@ export default function HomeFeaturedCoursesSection() {
             <span>View All Courses</span>
             <ArrowRight className="w-5 h-5" />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
