@@ -150,7 +150,10 @@ const Footer: React.FC = () => {
                     src="/images/Skill-India-Color.svg"
                     alt="Skill India"
                     title="Skill India Logo"
-                    width={130}
+                    // SVG viewBox is 364.8x300 (1.216:1); declared 130x130 (1:1)
+                    // left a wrong reserved box — the last remaining footer CLS
+                    // source after the raster badges were fixed.
+                    width={158}
                     height={130}
                     className="h-16 md:h-20 w-auto object-contain"
                   />

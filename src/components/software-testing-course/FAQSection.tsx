@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import {
     ChevronDown,
     HelpCircle,
@@ -162,40 +161,25 @@ const FAQItem: React.FC<{
     const Icon = faq.icon as React.ElementType;
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.05 }}
-            whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="group"
-        >
+        <div className="group hover:-translate-y-1 transition-transform duration-200">
             <div
                 className={`relative bg-white rounded-2xl border-2 ${theme.border} shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden ${isActive ? theme.active : ''}`}
             >
-                {/* Side accent bar */}
-                <motion.div
-                    initial={{ height: 0 }}
-                    animate={{ height: isActive ? '100%' : '0%' }}
-                    transition={{ duration: 0.3 }}
-                    className={`absolute left-0 top-0 w-1.5 bg-gradient-to-b ${theme.icon}`}
+                {/* Side accent bar — height animates via CSS on isActive */}
+                <div
+                    className={`absolute left-0 top-0 w-1.5 bg-gradient-to-b ${theme.icon} transition-[height] duration-300 ${isActive ? 'h-full' : 'h-0'}`}
                 />
 
                 <button
                     onClick={onToggle}
                     className={`w-full text-left p-6 flex items-center gap-4 transition-all duration-300 ${theme.hover} overflow-hidden`}
                 >
-                    {/* Icon */}
-                    <motion.div
-                        animate={{
-                            rotate: isActive ? 360 : 0,
-                            scale: isActive ? 1.1 : 1,
-                        }}
-                        transition={{ duration: 0.4 }}
-                        className={`flex-shrink-0 w-12 h-12 ${theme.iconBg} rounded-xl flex items-center justify-center border-2 ${theme.border} shadow-md`}
+                    {/* Icon — spin+scale on activate, via CSS */}
+                    <div
+                        className={`flex-shrink-0 w-12 h-12 ${theme.iconBg} rounded-xl flex items-center justify-center border-2 ${theme.border} shadow-md transition-transform duration-[400ms] ${isActive ? 'rotate-[360deg] scale-110' : ''}`}
                     >
                         <Icon className={`w-6 h-6 ${theme.iconColor}`} strokeWidth={2.5} />
-                    </motion.div>
+                    </div>
 
                     {/* Question */}
                     <div className="flex-grow min-w-0 pt-1">
@@ -205,36 +189,29 @@ const FAQItem: React.FC<{
                     </div>
 
                     {/* Chevron */}
-                    <motion.div animate={{ rotate: isActive ? 180 : 0 }} transition={{ duration: 0.3 }} className="flex-shrink-0 ml-1">
+                    <div className={`flex-shrink-0 ml-1 transition-transform duration-300 ${isActive ? 'rotate-180' : ''}`}>
                         <div className={`w-9 h-9 md:w-10 md:h-10 rounded-full ${theme.iconBg} border ${theme.border} flex items-center justify-center`}>
                             <ChevronDown className={`w-4 h-4 md:w-5 md:h-5 ${theme.iconColor}`} />
                         </div>
-                    </motion.div>
+                    </div>
                 </button>
 
-                {/* Answer */}
-                <AnimatePresence initial={false}>
-                    {isActive && (
-                        <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{
-                                height: { duration: 0.3, ease: 'easeInOut' },
-                                opacity: { duration: 0.2, ease: 'easeInOut' },
-                            }}
-                            className="overflow-hidden"
-                        >
-                            <div className={`px-6 pb-6 ml-14 md:ml-16 bg-gradient-to-r ${theme.bg} rounded-xl mx-4 md:mx-6 mb-4 p-4 border ${theme.border}`}>
-                                <motion.p initial={{ y: -10 }} animate={{ y: 0 }} transition={{ duration: 0.3 }} className="text-gray-700 leading-relaxed">
-                                    {faq.a}
-                                </motion.p>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                {/* Answer — CSS grid-rows accordion (replaces AnimatePresence height
+                    animation). Answer stays in the DOM (crawlable), collapsed via
+                    0fr -> 1fr with the inner overflow-hidden clip. */}
+                <div
+                    className={`grid transition-all duration-300 ease-in-out ${isActive ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                >
+                    <div className="overflow-hidden">
+                        <div className={`px-6 pb-6 ml-14 md:ml-16 bg-gradient-to-r ${theme.bg} rounded-xl mx-4 md:mx-6 mb-4 p-4 border ${theme.border}`}>
+                            <p className="text-gray-700 leading-relaxed">
+                                {faq.a}
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </motion.div>
+        </div>
     );
 };
 
@@ -252,11 +229,11 @@ export default function FAQSection() {
 
             <div className="relative container mx-auto px-6 lg:px-8 max-w-5xl">
                 {/* Header */}
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
-                    <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-200/50 rounded-full mb-6">
+                <div className="text-center mb-16">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-200/50 rounded-full mb-6">
                         <HelpCircle className="w-4 h-4 text-blue-600" />
                         <span className="text-sm font-semibold text-blue-700">Got Questions?</span>
-                    </motion.div>
+                    </div>
 
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                         Software Testing Course <span className="text-brand">Mumbai FAQ</span>
@@ -266,7 +243,7 @@ export default function FAQSection() {
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
                         Everything you need to know about our Software Testing courses, tools you’ll learn, certification paths, and career support.
                     </p>
-                </motion.div>
+                </div>
 
                 {/* FAQ Items */}
                 <div className="space-y-4 mb-16">
@@ -276,7 +253,7 @@ export default function FAQSection() {
                 </div>
 
                 {/* Bottom CTA */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="text-center">
+                <div className="text-center">
                     <div className="inline-flex flex-col items-center gap-6 p-8 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border-2 border-blue-200 rounded-2xl shadow-xl">
                         <div className="flex items-center gap-4">
                             <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
@@ -303,10 +280,10 @@ export default function FAQSection() {
                             </Link>
                         </div>
                     </div>
-                </motion.div>
+                </div>
 
                 {/* Trust badge */}
-                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5 }} className="mt-12 text-center">
+                <div className="mt-12 text-center">
                     <p className="text-sm text-gray-500 mb-3">Trusted by software teams & testers</p>
                     <div className="flex justify-center items-center gap-4 text-xs text-gray-400">
                         <div className="flex items-center gap-1">
@@ -324,7 +301,7 @@ export default function FAQSection() {
                             <span>Industry Mentors</span>
                         </div>
                     </div>
-                </motion.div>
+                </div>
             </div>
 
             <style jsx>{`
