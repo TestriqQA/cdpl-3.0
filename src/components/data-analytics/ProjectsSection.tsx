@@ -101,7 +101,7 @@ export default function ProjectsSection() {
             const Icon = p.icon;
             const id = p.title.replace(/\s+/g, "-").toLowerCase();
             return (
-              <article
+              <div
                 key={p.title}
                 role="listitem"
                 tabIndex={0}
@@ -150,7 +150,7 @@ export default function ProjectsSection() {
                     </span>
                   ))}
                 </div>
-              </article>
+              </div>
             );
           })}
         </div>

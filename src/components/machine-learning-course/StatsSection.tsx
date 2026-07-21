@@ -147,7 +147,7 @@ function StatCard({ stat, revealed }: { stat: Stat; revealed: boolean }) {
       : `${stat.prefix ?? ""}${formatNumber(counted)}${stat.suffix ?? ""}`;
 
   return (
-    <article
+    <div
       role="listitem"
       aria-label={stat.aria}
       tabIndex={0}
@@ -175,7 +175,7 @@ function StatCard({ stat, revealed }: { stat: Stat; revealed: boolean }) {
           <div className={["h-1 w-full", stat.fill].join(" ")} />
         </div>
       </div>
-    </article>
+    </div>
   );
 }
 

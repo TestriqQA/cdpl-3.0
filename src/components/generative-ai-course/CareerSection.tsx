@@ -111,7 +111,7 @@ export default function CareerSection() {
           {BRANDS.map((b, i) => {
             const acc = ACCENTS[i % ACCENTS.length];
             return (
-              <article
+              <div
                 key={b.name}
                 role="listitem"
                 tabIndex={0}
@@ -139,7 +139,7 @@ export default function CareerSection() {
                 <div className="mt-3 text-xs font-semibold tracking-wide text-slate-600">
                   Trusted Employer • <span className={acc.text}>{b.name}</span>
                 </div>
-              </article>
+              </div>
             );
           })}
         </div>

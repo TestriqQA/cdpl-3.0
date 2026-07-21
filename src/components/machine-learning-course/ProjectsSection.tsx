@@ -177,7 +177,7 @@ export default function ProjectsSection() {
           {PROJECTS.map((p) => {
             const Icon = p.icon; // <-- use the component
             return (
-              <article
+              <div
                 key={p.title}
                 role="listitem"
                 tabIndex={0}
@@ -239,7 +239,7 @@ export default function ProjectsSection() {
                     Job-Ready • Portfolio-Ready
                   </span>
                 </div>
-              </article>
+              </div>
             );
           })}
         </div>

@@ -49,7 +49,7 @@ function BenefitCard({
     accent = "indigo",
 }: BenefitCardProps) {
     return (
-        <article
+        <div
             className="group h-full rounded-2xl border border-gray-200 bg-white/90 p-6 shadow-sm transition-all hover:shadow-md"
             role="listitem"
         >
@@ -72,7 +72,7 @@ function BenefitCard({
                     ))}
                 </ul>
             )}
-        </article>
+        </div>
     );
 }
 

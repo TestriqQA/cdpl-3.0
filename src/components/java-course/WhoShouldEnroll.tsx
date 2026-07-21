@@ -117,7 +117,7 @@ export default function WhoShouldEnroll() {
           aria-label="Who should enroll audience groups"
         >
           {AUDIENCES.map((a, i) => (
-            <article
+            <div
               key={a.title}
               role="listitem"
               aria-label={a.aria}
@@ -154,7 +154,7 @@ export default function WhoShouldEnroll() {
                   style={{ width: ["82%", "74%", "78%", "70%"][i] }}
                 />
               </div>
-            </article>
+            </div>
           ))}
         </div>
 
