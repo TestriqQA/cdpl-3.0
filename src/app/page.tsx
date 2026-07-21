@@ -23,16 +23,24 @@ import { HOME_FAQS } from "@/components/home/HomeFAQSection";
 // ============================================================================
 
 import HomeHeroSection from '@/components/home/HomeHeroSection';
-const HomeTrustBarSection = dynamic(() => import('@/components/home/HomeTrustBarSection'), { ssr: true });
+// Static import, not dynamic(): HomeTrustBarSection is a Server Component and
+// ships no client JS, so a lazy wrapper saves no bundle while still adding a
+// Suspense boundary — a skeleton that paints, then a client-side DOM swap
+// forcing style recalc and layout.
+import HomeTrustBarSection from '@/components/home/HomeTrustBarSection';
+// These five are now Server Components (framer-motion removed), so they ship no
+// client JS. dynamic() would only add a Suspense boundary with no bundle saving,
+// so they are imported statically and emit their markup in correct DOM order.
+import HomeLearningExperienceSection from '@/components/home/HomeLearningExperienceSection';
+import HomePlacementSupportSection from '@/components/home/HomePlacementSupportSection';
+import HomeWhyChooseSection from '@/components/home/HomeWhyChooseSection';
+import HomeLatestBlogSection from '@/components/home/HomeLatestBlogSection';
+// Still client components (form / tabs / accordion), so dynamic() stays.
 const HomeFeaturedCoursesSection = dynamic(() => import('@/components/home/HomeFeaturedCoursesSection'), { ssr: true });
-const HomeLearningExperienceSection = dynamic(() => import('@/components/home/HomeLearningExperienceSection'), { ssr: true });
-const HomePlacementSupportSection = dynamic(() => import('@/components/home/HomePlacementSupportSection'), { ssr: true });
 const PlacementsCompanyWallSection = dynamic<{ sanityPartners?: SanityHiringPartner[]; contained?: boolean }>(
   () => import("@/components/sections/PlacementsCompanyWallSection"),
   { ssr: true }
 );
-const HomeWhyChooseSection = dynamic(() => import('@/components/home/HomeWhyChooseSection'), { ssr: true });
-const HomeLatestBlogSection = dynamic(() => import('@/components/home/HomeLatestBlogSection'), { ssr: true });
 const HomeFAQSection = dynamic(() => import('@/components/home/HomeFAQSection'), { ssr: true });
 const HomeFinalCTASection = dynamic(() => import('@/components/home/HomeFinalCTASection'), { ssr: true });
 

@@ -1,7 +1,6 @@
-'use client';
-
+// Server Component. framer-motion (decorative whileInView fades only) was the
+// sole reason for "use client"; the hover lift is already CSS on the card.
 import React from 'react';
-import { motion } from 'framer-motion';
 import { CheckCircle2, Award, Users, Briefcase, Clock, Globe, HeadphonesIcon, TrendingUp } from 'lucide-react';
 
 /**
@@ -15,7 +14,7 @@ import { CheckCircle2, Award, Users, Briefcase, Clock, Globe, HeadphonesIcon, Tr
 const colorPalette = [
   {
     bg: 'bg-gradient-to-br from-orange-500 to-brand',
-    text: 'text-orange-700',
+    text: 'text-brand',
     ring: 'ring-orange-500',
     hoverBorder: 'hover:border-orange-300',
   },
@@ -111,34 +110,25 @@ export default function HomeWhyChooseSection() {
     <section className=" py-6 lg:py-10 bg-gray-50" aria-labelledby="why-choose-cdpl-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header - Enhanced for SEO and Impact */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block px-4 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold tracking-wider mb-3">
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1 bg-orange-100 text-brand rounded-full text-sm font-semibold tracking-wider mb-3">
             Your Career Advantage
           </span>
           <h2 id="why-choose-cdpl-heading" className="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
-            Why <span className="text-orange-700">Choose CDPL</span> for Your Future?
+            Why <span className="text-brand">Choose CDPL</span> for Your Future?
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto font-light">
             We are committed to transforming your career with a unique blend of expert-led training, personalized support, and placement assistance.
           </p>
-        </motion.div>
+        </div>
 
         {/* Benefits Grid - Improved Responsiveness and Visuals */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {benefits.map((benefit, index) => {
             const color = colorPalette[index % colorPalette.length];
             return (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: index * 0.08, duration: 0.5 }}
                 className="group"
               >
                 {/* Card */}
@@ -177,7 +167,7 @@ export default function HomeWhyChooseSection() {
 
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

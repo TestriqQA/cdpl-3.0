@@ -1,7 +1,5 @@
-"use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowRight, User } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -17,16 +15,12 @@ const BlogCard: React.FC<{ post: SanityPost; index: number }> = ({ post, index }
   });
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
-      whileHover={{ y: -10 }}
+    <div
       className="group"
     >
       <Link href={`/blog/${post.slug}`} title={post.title}>
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 h-full flex flex-col">
+        {/* hover:-translate-y-2.5 replaces framer-motion whileHover={{ y:-10 }} */}
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl hover:-translate-y-2.5 transition-all duration-300 h-full flex flex-col">
           {/* Featured Image */}
           <div className="relative h-48 bg-gradient-to-br from-indigo-300 to-indigo-600 overflow-hidden">
             {post.featuredImage ? (
@@ -93,7 +87,7 @@ const BlogCard: React.FC<{ post: SanityPost; index: number }> = ({ post, index }
           </div>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 };
 
@@ -117,10 +111,7 @@ export default function HomeLatestBlogSection({ posts = [] }: HomeLatestBlogSect
     <section className="py-6 lg:py-10 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm font-semibold mb-4">
@@ -132,7 +123,7 @@ export default function HomeLatestBlogSection({ posts = [] }: HomeLatestBlogSect
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Stay updated with the latest trends, tutorials, and insights in software testing, data science, and technology.
           </p>
-        </motion.div>
+        </div>
 
         {/* Blog Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
@@ -142,10 +133,7 @@ export default function HomeLatestBlogSection({ posts = [] }: HomeLatestBlogSect
         </div>
 
         {/* View All CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center"
         >
           <Link
@@ -156,7 +144,7 @@ export default function HomeLatestBlogSection({ posts = [] }: HomeLatestBlogSect
             <span>View All Articles</span>
             <ArrowRight className="w-5 h-5" />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

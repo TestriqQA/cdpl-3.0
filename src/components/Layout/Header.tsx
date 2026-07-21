@@ -371,11 +371,7 @@ const Header = () => {
           <div className="hidden sm:flex items-center flex-shrink-0">
             <button
               onClick={() => setIsEnquireModalOpen(true)}
-              // bg-orange-700 (#c2410c) rather than bg-brand (#ff8c00): white
-              // on the brand orange is 2.33:1 and fails WCAG AA. White on
-              // orange-700 is 5.18:1. This button is lg-only, which is why it
-              // failed the desktop audit but not mobile.
-              className="cursor-pointer hidden lg:block text-white px-4 sm:px-5 py-2 rounded-lg bg-orange-700 hover:bg-orange-800 transition-all duration-200 transform hover:scale-105 text-sm font-semibold shadow-md"
+              className="cursor-pointer hidden lg:block text-white px-4 sm:px-5 py-2 rounded-lg bg-brand hover:bg-orange-600 transition-all duration-200 transform hover:scale-105 text-sm font-semibold shadow-md"
             >
               Free Demo
             </button>
