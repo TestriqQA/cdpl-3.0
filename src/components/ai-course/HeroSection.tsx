@@ -105,8 +105,7 @@ export default function HeroSection() {
 
                             <button
                                 onClick={() => setIsSyllabusOpen(true)}
-                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#6b21a8] hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-purple-200"
-                                aria-label="Download the full Data Science & AI syllabus"
+                                className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-base font-semibold text-white transition hover:bg-[#6b21a8] hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-purple-200"
                             >
                                 Download Syllabus
                                 <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
@@ -114,8 +113,7 @@ export default function HeroSection() {
 
                             <Link
                                 href="#curriculum"
-                                className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
-                                aria-label="View full DS & AI curriculum"
+                                className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-emerald-300 bg-white px-6 py-3 text-base font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50 focus:outline-none focus:ring-4 focus:ring-emerald-200"
                             >
                                 View Curriculum
                                 <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />

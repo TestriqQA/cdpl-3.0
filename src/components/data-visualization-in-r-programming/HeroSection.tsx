@@ -120,8 +120,7 @@ export const HeroSection: React.FC = () => {
 
                             <button
                                 onClick={() => setIsSyllabusOpen(true)}
-                                className="inline-flex items-center justify-center cursor-pointer rounded-xl bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
-                                aria-label="Download R Programming Syllabus"
+                                className="inline-flex items-center justify-center cursor-pointer rounded-xl bg-brand px-6 py-3 text-base font-semibold text-white transition hover:bg-brand hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-orange-200"
                             >
                                 Download Syllabus
                                 <CloudDownload className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
@@ -132,8 +131,7 @@ export const HeroSection: React.FC = () => {
                                     e.preventDefault();
                                     document.getElementById('curriculum')?.scrollIntoView({ behavior: 'smooth' });
                                 }}
-                                className="inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
-                                aria-label="View full R Programming curriculum"
+                                className="inline-flex items-center justify-center rounded-xl border border-sky-300 bg-white px-6 py-3 text-base font-semibold text-sky-700 shadow-sm transition hover:bg-sky-50 focus:outline-none focus:ring-4 focus:ring-sky-200"
                             >
                                 View Curriculum
                                 <ArrowDownNarrowWide className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
