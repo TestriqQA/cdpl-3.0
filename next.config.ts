@@ -22,6 +22,16 @@ const nextConfig: NextConfig = {
       'lucide-react',
     ],
     optimizeCss: false, // Disabled: incompatible with Tailwind v4 (causes build error)
+    // EXPERIMENT: inline the route CSS into the HTML <head> so the ~50KB
+    // Tailwind stylesheet no longer blocks first paint with a separate
+    // render-blocking network request (~820ms on simulated mobile). This is
+    // the single biggest LCP/FCP lever on this Tailwind-v4 site.
+    // RISK: if Next serialises the CSS into the RSC flight payload as well as
+    // the <style> tag, the document balloons and the byte-bound mobile LCP
+    // gets worse instead of better. VERIFY after deploy by fetching the raw
+    // HTML and checking the CSS appears once, not 2-3x. Revert this one line
+    // if it does. Measured via A/B (staging vs production) before keeping.
+    inlineCss: true,
     optimizeServerReact: true,
   },
 
