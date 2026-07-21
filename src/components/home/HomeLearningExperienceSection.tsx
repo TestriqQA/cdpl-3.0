@@ -1,7 +1,6 @@
-'use client';
-
+// Server Component. framer-motion was the only reason for "use client";
+// whileInView fades are decoration and whileHover is replaced by CSS below.
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Video, FileText, Code, Users, Award, Headphones } from 'lucide-react';
 
 /**
@@ -54,12 +53,7 @@ export default function HomeLearningExperienceSection() {
     <section className="py-6 lg:py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 bg-orange-100 text-brand rounded-full text-sm font-semibold mb-4">
             Learning Experience
           </span>
@@ -69,19 +63,15 @@ export default function HomeLearningExperienceSection() {
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Our proven methodology combines live training, hands-on projects, and expert mentorship to ensure you&apos;re ready for the industry from day one.
           </p>
-        </motion.div>
+        </div>
 
         {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="group relative bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 overflow-hidden"
+              // whileHover={{ y:-10, scale:1.02 }} -> CSS hover
+              className="group relative bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-2.5 hover:scale-[1.02] transition-all duration-300 overflow-hidden"
             >
               {/* Gradient Background on Hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
@@ -98,7 +88,7 @@ export default function HomeLearningExperienceSection() {
               <p className="relative text-gray-600 leading-relaxed">
                 {feature.description}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
