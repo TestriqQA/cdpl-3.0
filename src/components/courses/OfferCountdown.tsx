@@ -17,7 +17,7 @@ const pad = (n: number) => n.toString().padStart(2, "0");
  * from first mount (unchanged behaviour). The numeric cells carry
  * suppressHydrationWarning because the value depends on the client clock.
  */
-export default function OfferCountdown({ offerEndsAt }: { offerEndsAt?: string }) {
+export default function OfferCountdown({ offerEndsAt }: { offerEndsAt?: string | Date }) {
     const deadlineRef = useRef<number>(
         offerEndsAt ? new Date(offerEndsAt).getTime() : Date.now() + 48 * 3600 * 1000
     );
