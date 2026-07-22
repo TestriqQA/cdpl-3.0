@@ -1,6 +1,4 @@
-"use client";
-import React, { useState } from "react";
-import EnrollModal from "../EnrollModal";
+import EnrollButton from "./ui/EnrollButton";
 
 const careerRoadmap = [
     {
@@ -44,7 +42,6 @@ const careerRoadmap = [
 
 
 export default function CareerRoadmapSection() {
-    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
     const courseName = "Data Analytics & Visualization with Tableau";
 
     return (
@@ -292,21 +289,15 @@ export default function CareerRoadmapSection() {
                     <p className="text-gray-600 text-lg mb-6">
                         Ready to start your career transformation? Join our next batch today!
                     </p>
-                    <button
-                        onClick={() => setIsEnrollOpen(true)}
+                    <EnrollButton
+                        source="Tableau Course Page - Career Roadmap Section - Enroll Now"
+                        courseName={courseName}
                         className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Enroll Now and Begin Your Journey
-                    </button>
+                    </EnrollButton>
                 </div>
             </div>
-
-            <EnrollModal
-                isOpen={isEnrollOpen}
-                onClose={() => setIsEnrollOpen(false)}
-                source="Tableau Course Page - Career Roadmap Section - Enroll Now"
-                courseName={courseName}
-            />
         </section>
     );
 }
