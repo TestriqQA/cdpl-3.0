@@ -1,7 +1,6 @@
 // src/components/sections/AffiliateHeroSection.tsx
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -21,7 +20,6 @@ import {
 import { useState } from "react";
 import WorkshopRequestModal from "../WorkshopRequestModal";
 
-const ease = [0.22, 1, 0.36, 1] as const;
 const BRAND_COLOR = "#ff8c00";
 
 // Tiny floating icon chip (background layer)
@@ -43,17 +41,12 @@ function FloatingIcon({
   duration?: number;
 }) {
   return (
-    <motion.div
+    <div
       className={`pointer-events-none absolute select-none ${className || ""}`}
-      style={{ left: x, top: y }}
-      initial={{ opacity: 0, y: 6, rotate: -2 }}
-      animate={{ opacity: 1, y: [0, -8, 0, 6, 0], rotate: [-2, 2, -1, 2, -2] }}
-      transition={{
-        duration,
-        delay,
-        repeat: Infinity,
-        repeatType: "mirror",
-        ease,
+      style={{
+        left: x,
+        top: y,
+        animation: `cdpl-float ${duration}s ease-in-out ${delay}s infinite`,
       }}
     >
       <div
@@ -62,7 +55,7 @@ function FloatingIcon({
       >
         <div className="grid h-full place-items-center">{children}</div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -149,42 +142,30 @@ export default function AffiliateHeroSection() {
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-10 lg:gap-14">
           {/* LEFT — text */}
           <div className="order-1 md:order-1 max-w-2xl md:flex-1 md:basis-[58%] lg:basis-[60%]">
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease }}
+            <p
               className="inline-flex items-center gap-2 rounded-full border border-sky-200/70 px-3 py-1 text-sm bg-white/85 backdrop-blur-md text-gray-800"
             >
               <Sparkles className="h-4 w-4 text-sky-500" />
               <span>CDPL Partner Ecosystem</span>
-            </motion.p>
+            </p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.08, ease }}
+            <h1
               className="mt-4 text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl"
             >
               <span style={{ color: "#0069A8" }}>CDPL Affiliate</span>{" "}
               <span style={{ color: BRAND_COLOR }}>Program</span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.14, ease }}
+            <p
               className="mt-4 mx-auto max-w-3xl text-base text-slate-700 sm:text-lg lg:mx-0"
             >
               Earn commissions by promoting CDPL’s training, developer events, and
               engineering services. Transparent tracking, fast payouts, and content
               built for conversions.
-            </motion.p>
+            </p>
 
             {/* Trust highlights */}
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.16, ease }}
+            <div
               className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4"
             >
               <div className="flex items-center gap-2 rounded-xl bg-emerald-50 px-4 py-2 ring-1 ring-emerald-200">
@@ -199,13 +180,10 @@ export default function AffiliateHeroSection() {
                 <TrendingUp className="h-4 w-4 text-indigo-700" />
                 <span className="text-sm text-indigo-700">High-intent funnels</span>
               </div>
-            </motion.div>
+            </div>
 
             {/* CTA row */}
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2, ease }}
+            <div
               className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center"
             >
               <button
@@ -222,7 +200,7 @@ export default function AffiliateHeroSection() {
               >
                 How it works
               </Link>
-            </motion.div>
+            </div>
           </div>
 
           {/* RIGHT — image (big, blended, no card look) */}

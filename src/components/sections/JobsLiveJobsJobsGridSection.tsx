@@ -2,7 +2,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, m, LazyMotion, domAnimation } from "framer-motion";
 
 // CRITICAL: Static import for JobCard to eliminate client-side render delay
 import { JobsLiveJobsJobCardSection } from "./JobsLiveJobsJobCardSection";
@@ -150,7 +149,7 @@ export function JobsLiveJobsJobsGridSection({
   const canLoadMore = visibleCount < filtered.length;
 
   return (
-    <LazyMotion features={domAnimation}>
+    <>
       <div className="mb-3 mt-2 flex items-center justify-between text-sm text-slate-600 font-sans">
         <span>
           Showing{" "}
@@ -169,17 +168,11 @@ export function JobsLiveJobsJobsGridSection({
 
       <section aria-label="Job details" className="font-sans">
         <ul className="grid grid-cols-1 gap-y-6 md:gap-y-8">
-          <AnimatePresence mode="popLayout">
             {visibleItems.map((job) => (
-              <m.li
+              <li
                 key={job.id}
                 id={job.id}
                 className="scroll-mt-24"
-                layout
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 6 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
               >
                 <div className="relative rounded-2xl border border-slate-200 bg-white p-4 shadow-sm md:p-5">
                   <JobsLiveJobsJobCardSection
@@ -188,9 +181,8 @@ export function JobsLiveJobsJobsGridSection({
                     isCopied={copiedId === job.id}
                   />
                 </div>
-              </m.li>
+              </li>
             ))}
-          </AnimatePresence>
 
           {filtered.length === 0 && (
             <li className="text-sm text-slate-600">
@@ -222,6 +214,6 @@ export function JobsLiveJobsJobsGridSection({
       <style jsx global>{`
         :target { scroll-margin-top: 96px; }
       `}</style>
-    </LazyMotion>
+    </>
   );
 }

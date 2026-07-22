@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
 import { Play, Share2, X, Sparkles, Clock, Star } from "lucide-react";
 import { createPortal } from "react-dom";
 
@@ -468,23 +467,16 @@ export default function JobsLiveJobsTestimonialSection(
 
       {/* Player Modal — PORTALED to <body> with very high z-index */}
       <ClientPortal>
-        <AnimatePresence>
           {active && (
-            <motion.div
-              className="fixed inset-0 z-[9999]"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+            <div
+              className="fixed inset-0 z-[9999] cdpl-animate-fade-in"
             >
               {/* Backdrop made fixed to escape any ancestor stacking context */}
               <div className="fixed inset-0 bg-black/60" onClick={() => setActive(null)} />
-              <motion.div
+              <div
                 role="dialog"
                 aria-modal="true"
-                className="fixed left-1/2 top-1/2 w-[94vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl bg-white shadow-2xl z-[10000]"
-                initial={{ scale: 0.98, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.98, opacity: 0 }}
+                className="fixed left-1/2 top-1/2 w-[94vw] max-w-3xl -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl bg-white shadow-2xl z-[10000] cdpl-animate-modal-in"
               >
                 <div className="relative aspect-video w-full">
                   {(active?.src.includes("youtube.com") || active?.src.includes("youtu.be")) ? (
@@ -525,10 +517,9 @@ export default function JobsLiveJobsTestimonialSection(
                     </p>
                   </div>
                 )}
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           )}
-        </AnimatePresence>
       </ClientPortal>
 
     </section>

@@ -7,7 +7,6 @@
 
 import { useMemo, useState } from "react";
 import type { ElementType } from "react";
-import { motion } from "framer-motion";
 import {
   Award,
   Handshake,
@@ -172,10 +171,9 @@ export default function TeamCultureSection() {
 
       {/* Rolling marquee — subtle credibility loop */}
       <div className="relative z-10 mt-5 overflow-hidden rounded-xl border border-slate-200 bg-white/70 p-2 shadow-sm backdrop-blur">
-        <motion.div
+        <div
           className="flex gap-8 whitespace-nowrap text-xs text-slate-600"
-          animate={{ x: [0, -240] }}
-          transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
+          style={{ animation: "cdpl-marquee 12s linear infinite" }}
           aria-hidden
         >
           {[...marquee, ...marquee].map((m, i) => (
@@ -184,7 +182,7 @@ export default function TeamCultureSection() {
               {m}
             </span>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* KPI band */}
@@ -341,17 +339,13 @@ function BeamBg() {
             "radial-gradient(80% 60% at 50% -10%, rgba(255,140,0,0.06) 0%, rgba(255,140,0,0) 60%)",
         }}
       />
-      <motion.div
+      <div
         className="absolute left-1/2 top-[-40px] h-40 w-[520px] -translate-x-1/2 rounded-full blur-3xl"
-        style={{ background: "rgba(255,140,0,0.18)" }}
-        animate={{ opacity: [0.35, 0.6, 0.35] }}
-        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+        style={{ background: "rgba(255,140,0,0.18)", animation: "cdpl-beam-pulse 6s ease-in-out infinite" }}
       />
-      <motion.div
+      <div
         className="absolute right-8 top-24 h-36 w-36 rounded-full blur-3xl"
-        style={{ background: "rgba(255,179,106,0.35)" }}
-        animate={{ y: [0, -10, 0] }}
-        transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+        style={{ background: "rgba(255,179,106,0.35)", animation: "cdpl-beam-float 5s ease-in-out infinite" }}
       />
     </div>
   );

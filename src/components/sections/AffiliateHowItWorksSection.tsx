@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useMotionValue, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import type React from "react";
@@ -12,7 +11,6 @@ import {
     WalletMinimal,
     CheckCircle2,
 } from "lucide-react";
-import { useCallback } from "react";
 
 type Step = {
     icon: React.ComponentType<{ className?: string }>;
@@ -49,20 +47,6 @@ export default function AffiliateHowItWorksSection({
     imageAlt?: string;
     imagetitle?: string;
 }) {
-    // Subtle parallax tilt for the illustration (blended, no card)
-    const rx = useMotionValue(0);
-    const ry = useMotionValue(0);
-    const rotX = useTransform(ry, [-40, 40], [4, -4]);
-    const rotY = useTransform(rx, [-40, 40], [-6, 6]);
-
-    const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-        const { left, top, width, height } = (e.currentTarget as HTMLDivElement).getBoundingClientRect();
-        rx.set(e.clientX - left - width / 2);
-        ry.set(e.clientY - top - height / 2);
-    }, [rx, ry]);
-
-    const onMouseLeave = useCallback(() => { rx.set(0); ry.set(0); }, [rx, ry]);
-
     return (
         <section
             id="how-it-works"
@@ -83,14 +67,7 @@ export default function AffiliateHowItWorksSection({
                 {/* LEFT — illustration (blended; no borders/shadows) */}
                 <aside className="relative">
                     <div className="lg:sticky lg:top-28">
-                        <motion.div
-                            className="relative"
-                            style={{ rotateX: rotX, rotateY: rotY }}
-                            onMouseMove={onMouseMove}
-                            onMouseLeave={onMouseLeave}
-                            whileHover={{ scale: 1.015 }}
-                            transition={{ type: "spring", stiffness: 120, damping: 18 }}
-                        >
+                        <div className="relative transition-transform duration-300 hover:scale-[1.015]">
                             <div
                                 aria-hidden
                                 className="absolute -inset-x-12 -top-10 bottom-0 -z-10 blur-3xl"
@@ -116,7 +93,7 @@ export default function AffiliateHowItWorksSection({
                                         "radial-gradient(130% 120% at 60% 40%, black 70%, transparent 100%)",
                                 }}
                             />
-                        </motion.div>
+                        </div>
                     </div>
                 </aside>
 
@@ -132,22 +109,17 @@ export default function AffiliateHowItWorksSection({
                         {steps.map((s, i) => {
                             const Icon = s.icon;
                             const num = i + 1;
-                            // 'dot' isn't used in the UI; keep palette intact but avoid lint error
-                            const { tint, glow } = palette[i % palette.length];
+                            // 'dot'/'glow' aren't used in the UI; keep palette intact but avoid lint error
+                            const { tint } = palette[i % palette.length];
 
                             return (
-                                <motion.li
+                                <li
                                     key={s.title}
-                                    initial={{ opacity: 0, y: 14 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, margin: "-80px" }}
-                                    transition={{ duration: 0.45, delay: i * 0.04 }}
                                     className="relative"
                                 >
                                     {/* Number centered on the spine */}
-                                    <motion.div
-                                        whileHover={{ scale: 1.06 }}
-                                        className="absolute left-4 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 sm:left-6"
+                                    <div
+                                        className="absolute left-4 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 hover:scale-105 sm:left-6"
                                         aria-hidden="true"
                                     >
                                         <div
@@ -156,7 +128,7 @@ export default function AffiliateHowItWorksSection({
                                         >
                                             <span className="text-sm font-bold leading-none">{num}</span>
                                         </div>
-                                    </motion.div>
+                                    </div>
 
                                     {/* Connector (neutral, no gradient) */}
                                     <span
@@ -166,11 +138,8 @@ export default function AffiliateHowItWorksSection({
                                     />
 
                                     {/* Step pill — flat tint, no border */}
-                                    <motion.div
-                                        whileHover={{ y: -2, scale: 1.01, boxShadow: `0 26px 60px -32px ${glow}` }}
-                                        whileTap={{ scale: 0.995 }}
-                                        transition={{ type: "spring", stiffness: 140, damping: 16 }}
-                                        className="ml-14 sm:ml-20 rounded-2xl px-4 py-3 sm:px-5 sm:py-4 shadow-[0_18px_40px_-24px_rgba(2,6,23,0.25)]"
+                                    <div
+                                        className="ml-14 sm:ml-20 rounded-2xl px-4 py-3 sm:px-5 sm:py-4 shadow-[0_18px_40px_-24px_rgba(2,6,23,0.25)] transition-transform duration-300 hover:-translate-y-0.5 hover:scale-[1.01]"
                                         style={{ backgroundColor: tint }}
                                     >
                                         <div className="flex items-start gap-3">
@@ -194,8 +163,8 @@ export default function AffiliateHowItWorksSection({
                                                 )}
                                             </div>
                                         </div>
-                                    </motion.div>
-                                </motion.li>
+                                    </div>
+                                </li>
                             );
                         })}
                     </ol>

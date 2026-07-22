@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import React, { useMemo, useRef, useState, useEffect } from "react";
 
 type Skill = { skill_name: string; years?: string | number | null; level?: string | null };
@@ -159,21 +158,13 @@ export default function JobOpeningsJobDetails({
     }, []);
 
     const modalContent = (
-        <AnimatePresence>
+        <>
             {open && (
-                <motion.div
-                    key="details"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-[100] bg-black/20 backdrop-blur-sm flex items-center justify-center"
+                <div
+                    className="fixed inset-0 z-[100] bg-black/20 backdrop-blur-sm flex items-center justify-center cdpl-animate-fade-in"
                 >
-                    <motion.div
-                        initial={{ y: 24, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: 24, opacity: 0 }}
-                        transition={{ type: "spring", stiffness: 140, damping: 18 }}
-                        className="container mx-auto my-6 max-w-6xl px-4 h-full max-h-[90vh]"
+                    <div
+                        className="container mx-auto my-6 max-w-6xl px-4 h-full max-h-[90vh] cdpl-animate-modal-in"
                     >
                         <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-2xl">
                             <div className="flex flex-col items-start justify-between gap-3 border-b border-slate-200 p-4 sm:flex-row sm:items-center">
@@ -338,7 +329,7 @@ export default function JobOpeningsJobDetails({
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* CDPL scrollbar styling */}
                     <style jsx global>{`
@@ -357,9 +348,9 @@ export default function JobOpeningsJobDetails({
             }
             .cdpl-scroll::-webkit-scrollbar-corner { background: transparent; }
           `}</style>
-                </motion.div>
+                </div>
             )}
-        </AnimatePresence>
+        </>
     );
 
     if (!mounted) return null;

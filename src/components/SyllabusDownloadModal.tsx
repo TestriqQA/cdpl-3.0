@@ -2,7 +2,6 @@
 
 import React, { useState, useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, CheckCircle2, Loader2, FileDown } from 'lucide-react';
 import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from './ui/CustomFlag';
@@ -201,22 +200,14 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
 
         }
       `}</style>
-      <AnimatePresence>
+      <>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4"
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4 cdpl-animate-fade-in"
             onClick={handleClose}
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] as const }}
-              className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
+            <div
+              className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden cdpl-animate-modal-in"
               onClick={(e) => e.stopPropagation()}
               ref={formRef}
             >
@@ -244,11 +235,7 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
               {/* Modal Body */}
               <div className="p-6">
                 {isSubmitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-8"
-                  >
+                  <div className="text-center py-8 cdpl-animate-fade-in">
                     <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
                       <CheckCircle2 className="w-8 h-8 text-green-600" />
                     </div>
@@ -259,7 +246,7 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
                     <p className="text-sm text-gray-500">
                       Closing in a moment...
                     </p>
-                  </motion.div>
+                  </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
                     {/* Full Name Field */}
@@ -370,10 +357,10 @@ const SyllabusDownloadModal: React.FC<SyllabusDownloadModalProps> = ({
                   </form>
                 )}
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         )}
-      </AnimatePresence>
+      </>
     </>,
     document.body
   );

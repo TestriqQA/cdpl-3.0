@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
 import { Users, TrendingUp, MapPin, ShieldCheck } from "lucide-react";
 
 const stats = [
@@ -9,14 +8,6 @@ const stats = [
   { icon: MapPin, label: "Cities Covered", value: "50+" },
   { icon: ShieldCheck, label: "Hiring Partners", value: "50+" },
 ];
-
-// micro-interactions
-const card: Variants = {
-  rest: { y: 0, boxShadow: "0 1px 2px rgba(0,0,0,0.06)", transition: { duration: 0.2 } },
-  hover: { y: -4, boxShadow: "0 10px 20px rgba(0,0,0,0.08)", transition: { duration: 0.2 } },
-};
-const icon: Variants = { rest: { scale: 1, rotate: 0 }, hover: { scale: 1.05, rotate: 2 } };
-const value: Variants = { rest: { y: 0 }, hover: { y: -2 } };
 
 /** Per-card gradient classes — cycles if more cards are added */
 const VALUE_GRADIENTS: string[] = [
@@ -60,18 +51,12 @@ export default function PlacementsHighlightsStatsSection({ contained = false }: 
           {stats.map((s, i) => {
             const gradient = VALUE_GRADIENTS[i % VALUE_GRADIENTS.length];
             return (
-              <motion.button
+              <button
                 key={s.label}
                 type="button"
-                initial="rest"
-                animate="rest"
-                whileHover="hover"
-                whileFocus="hover"
-                whileTap={{ scale: 0.995 }}
-                variants={card}
-                transition={{ delay: i * 0.03 }}
-                className="group m-0 w-full text-left rounded-2xl border border-slate-200 bg-white
+                className="group m-0 w-full text-left rounded-2xl border border-slate-200 bg-white shadow-sm
                            outline-none ring-0 transition-all duration-200 hover:border-slate-300
+                           hover:-translate-y-1 hover:shadow-lg focus-visible:-translate-y-1 focus-visible:shadow-lg
                            focus-visible:ring-2 focus-visible:ring-[#ff8c00]/40 overflow-hidden
                            /* Phone: natural height */
                            aspect-auto
@@ -84,25 +69,24 @@ export default function PlacementsHighlightsStatsSection({ contained = false }: 
                 {/* content */}
                 <div className="flex h-full flex-col p-4 sm:p-5">
                   <div className="flex items-center gap-2.5 sm:gap-3">
-                    <motion.span variants={icon} className="inline-flex h-6 w-6 items-center justify-center">
+                    <span className="inline-flex h-6 w-6 items-center justify-center transition-transform duration-200 group-hover:scale-105 group-hover:rotate-2">
                       <s.icon className="h-5 w-5 text-brand" />
-                    </motion.span>
+                    </span>
                     <div className="text-sm sm:text-base font-medium text-slate-900">{s.label}</div>
                   </div>
 
                   {/* Number — distinct gradient per card */}
-                  <motion.div
-                    variants={value}
-                    className={`mt-1.5 sm:mt-2 text-xl sm:text-3xl font-extrabold text-transparent bg-clip-text transition-all duration-200 ${gradient}`}
+                  <div
+                    className={`mt-1.5 sm:mt-2 text-xl sm:text-3xl font-extrabold text-transparent bg-clip-text transition-all duration-200 group-hover:-translate-y-0.5 ${gradient}`}
                   >
                     {s.value}
-                  </motion.div>
+                  </div>
 
                   <div className="mt-auto" />
 
                   <div className="h-[2px] w-full rounded-full bg-transparent transition-colors duration-200 group-hover:bg-gradient-to-r group-hover:from-[#ff8c00]/70 group-hover:to-[#ffd19e]/70" />
                 </div>
-              </motion.button>
+              </button>
             );
           })}
         </div>

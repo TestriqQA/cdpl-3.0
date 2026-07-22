@@ -3,7 +3,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useSpring, useMotionTemplate, useMotionValue, AnimatePresence } from "framer-motion";
 import { Star, ArrowRight, Quote, Sparkles, CheckCircle2, TrendingUp, ShieldCheck, Activity } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { getAllReviews } from "@/data/reviews/reviewsData";
@@ -11,22 +10,17 @@ import SafeAvatar from "@/components/sections/SafeAvatar";
 
 export default function ReviewsHeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
 
-  // Mouse Follow Effect
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
+  // Mouse Follow Effect — updates the glow background directly (no re-render).
   function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
     const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
+    const x = clientX - left;
+    const y = clientY - top;
+    if (glowRef.current) {
+      glowRef.current.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(59, 130, 246, 0.08), transparent 80%)`;
+    }
   }
-
-  // Smooth mouse background
-  const bgX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const bgY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-
-  const gradientBackground = useMotionTemplate`radial-gradient(600px circle at ${bgX}px ${bgY}px, rgba(59, 130, 246, 0.08), transparent 80%)`;
 
   const allReviews = getAllReviews();
 
@@ -53,9 +47,10 @@ export default function ReviewsHeroSection() {
       {/* ... (Background elements kept the same) ... */}
       {/* --- Background Elements --- */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px]"></div>
-      <motion.div
+      <div
+        ref={glowRef}
         className="absolute inset-0 z-0 pointer-events-none"
-        style={{ background: gradientBackground }}
+        style={{ background: "radial-gradient(600px circle at 50% 50%, rgba(59, 130, 246, 0.08), transparent 80%)" }}
       />
 
       {/* Large Soft Glows */}
@@ -67,10 +62,7 @@ export default function ReviewsHeroSection() {
 
           {/* --- LEFT: Content --- */}
           {/* ... (Left content kept the same) ... */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+          <div
             className="flex flex-col space-y-8"
           >
             {/* Breadcrumb / Tag */}
@@ -149,7 +141,7 @@ export default function ReviewsHeroSection() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* --- RIGHT: Levitating Stack & HUD Interface --- */}
           <div
@@ -163,17 +155,15 @@ export default function ReviewsHeroSection() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]"></div>
 
               {/* Pulse Ring */}
-              <motion.div
-                animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0, 0.1] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              <div
+                style={{ animation: "cdpl-pulse-ring 4s ease-in-out infinite" }}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-blue-200 rounded-full"
               />
             </div>
 
             {/* 2. Floating Badges (Independent Motion) */}
-            <motion.div
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            <div
+              style={{ animation: "cdpl-float-a 5s ease-in-out infinite" }}
               className="absolute top-20 right-10 z-10 bg-white/90 backdrop-blur border border-slate-100 p-3 rounded-2xl shadow-lg flex items-center gap-2"
             >
               <div className="bg-green-100 p-1.5 rounded-full text-green-600">
@@ -183,11 +173,10 @@ export default function ReviewsHeroSection() {
                 <div className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">Status</div>
                 <div className="text-xs font-bold text-slate-800">Verified Alumni</div>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              animate={{ y: [10, -10, 10] }}
-              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            <div
+              style={{ animation: "cdpl-float-b 7s ease-in-out infinite", animationDelay: "1s" }}
               className="absolute hidden md:flex bottom-32 left-0 lg:-left-12 z-10 bg-white/90 backdrop-blur border border-slate-100 p-3 rounded-2xl shadow-lg items-center gap-2"
             >
               <div className="bg-blue-100 p-1.5 rounded-full text-blue-600">
@@ -197,90 +186,76 @@ export default function ReviewsHeroSection() {
                 <div className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">Impact</div>
                 <div className="text-xs font-bold text-slate-800">Strong Career Growth</div>
               </div>
-            </motion.div>
+            </div>
 
             {/* 3. The Card Stack */}
             <div className="relative z-20 w-[90%] max-w-[420px] perspective-[1000px]">
-              <AnimatePresence mode="popLayout">
-                {/* We map 2 cards: Current and Next to create depth */}
-                {[activeIndex].map((index) => {
-                  const review = allReviews[index];
-                  return (
-                    <motion.div
-                      key={review.id}
-                      layout
-                      initial={{ opacity: 0, y: 100, scale: 0.9, rotateX: -20 }}
-                      animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
-                      exit={{ opacity: 0, y: -50, scale: 1.05, filter: "blur(4px)" }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 200,
-                        damping: 24,
-                        mass: 1
-                      }}
-                      className="relative bg-white rounded-3xl p-6 md:p-8 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100"
-                    >
+              {/* We map 2 cards: Current and Next to create depth */}
+              {[activeIndex].map((index) => {
+                const review = allReviews[index];
+                return (
+                  <div
+                    key={review.id}
+                    className="relative bg-white rounded-3xl p-6 md:p-8 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100"
+                  >
 
-                      {/* Scanning Light Effect */}
-                      <motion.div
-                        initial={{ top: "0%", opacity: 0 }}
-                        animate={{ top: "100%", opacity: [0, 1, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                        className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent z-30 pointer-events-none blur-[2px]"
-                      />
+                    {/* Scanning Light Effect */}
+                    <div
+                      style={{ top: "0%", animation: "cdpl-scan 2s ease-in-out infinite", animationDelay: "1s" }}
+                      className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent z-30 pointer-events-none blur-[2px]"
+                    />
 
-                      {/* Decorative Top Line */}
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-t-3xl opacity-80"></div>
+                    {/* Decorative Top Line */}
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-t-3xl opacity-80"></div>
 
-                      <div className="relative z-10 space-y-6">
-                        {/* User Header */}
-                        <div className="flex justify-between items-start">
-                          <div className="flex items-center gap-4">
-                            <div className="relative">
-                              <SafeAvatar name={review.name} sizes="56px" className="w-14 h-14 rounded-full border-4 border-white shadow-md" />
-                              <div className="absolute -bottom-1 -right-1 bg-blue-600 text-white p-1 rounded-full border-2 border-white">
-                                <Quote className="w-3 h-3 fill-current" />
-                              </div>
-                            </div>
-                            <div>
-                              <h2 className="text-lg font-bold text-slate-900">{review.name}</h2>
-                              <div className="flex items-center gap-2">
-                                <div className="flex text-amber-400">
-                                  {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-current" />)}
-                                </div>
-                                <span className="text-xs font-medium text-slate-600">5.0</span>
-                              </div>
+                    <div className="relative z-10 space-y-6">
+                      {/* User Header */}
+                      <div className="flex justify-between items-start">
+                        <div className="flex items-center gap-4">
+                          <div className="relative">
+                            <SafeAvatar name={review.name} sizes="56px" className="w-14 h-14 rounded-full border-4 border-white shadow-md" />
+                            <div className="absolute -bottom-1 -right-1 bg-blue-600 text-white p-1 rounded-full border-2 border-white">
+                              <Quote className="w-3 h-3 fill-current" />
                             </div>
                           </div>
-                          {/* Platform Logo */}
-                          <div className="grayscale opacity-50">
-                            <Image src="/slider_logos/google.svg" width={24} height={24} alt="Platform" />
+                          <div>
+                            <h2 className="text-lg font-bold text-slate-900">{review.name}</h2>
+                            <div className="flex items-center gap-2">
+                              <div className="flex text-amber-400">
+                                {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-current" />)}
+                              </div>
+                              <span className="text-xs font-medium text-slate-600">5.0</span>
+                            </div>
                           </div>
                         </div>
-
-                        {/* Review Text */}
-                        <div className="relative">
-                          <p className="text-lg text-slate-700 leading-relaxed font-medium">
-                            "{review.quote}"
-                          </p>
-                        </div>
-
-                        {/* Tech/Course Tags */}
-                        <div className="flex flex-wrap gap-2 pt-2">
-                          {["Data Science", "Placement"].map((tag, i) => (
-                            <span key={i} className="px-3 py-1 rounded-lg bg-slate-50 text-slate-500 text-xs font-semibold border border-slate-200">
-                              {tag}
-                            </span>
-                          ))}
+                        {/* Platform Logo */}
+                        <div className="grayscale opacity-50">
+                          <Image src="/slider_logos/google.svg" width={24} height={24} alt="Platform" />
                         </div>
                       </div>
 
-                      {/* Card Background Decor */}
-                      <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-blue-50/50 rounded-full blur-2xl -z-0"></div>
-                    </motion.div>
-                  );
-                })}
-              </AnimatePresence>
+                      {/* Review Text */}
+                      <div className="relative">
+                        <p className="text-lg text-slate-700 leading-relaxed font-medium">
+                          "{review.quote}"
+                        </p>
+                      </div>
+
+                      {/* Tech/Course Tags */}
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {["Data Science", "Placement"].map((tag, i) => (
+                          <span key={i} className="px-3 py-1 rounded-lg bg-slate-50 text-slate-500 text-xs font-semibold border border-slate-200">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Card Background Decor */}
+                    <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-blue-50/50 rounded-full blur-2xl -z-0"></div>
+                  </div>
+                );
+              })}
 
               {/* Back Stack Visuals (Static Layers behind to give depth) */}
               <div className="absolute top-4 left-4 right-4 h-full bg-white/40 rounded-3xl border border-slate-100 shadow-sm -z-10 scale-[0.95] translate-y-2"></div>

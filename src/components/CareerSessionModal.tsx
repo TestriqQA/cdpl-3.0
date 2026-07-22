@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
@@ -48,27 +47,20 @@ export default function CareerSessionModal({
     if (!mounted) return null;
 
     return createPortal(
-        <AnimatePresence>
+        <>
             {isOpen && (
                 <>
                     {/* Backdrop */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
+                    <div
                         onClick={onClose}
-                        className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm"
+                        className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm cdpl-animate-fade-in"
                         aria-hidden="true"
                     />
 
                     {/* Modal Container */}
                     <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-6">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                            transition={{ duration: 0.2 }}
-                            className="relative w-full max-w-md"
+                        <div
+                            className="relative w-full max-w-md cdpl-animate-modal-in"
                             role="dialog"
                             aria-modal="true"
                             aria-labelledby="career-modal-title"
@@ -90,11 +82,11 @@ export default function CareerSessionModal({
                                 subtitle={subtitle || `Speak with our career counselors to plan your ${courseName} journey.`}
                                 source={source}
                             />
-                        </motion.div>
+                        </div>
                     </div>
                 </>
             )}
-        </AnimatePresence>,
+        </>,
         document.body
     );
 }
