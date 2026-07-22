@@ -1,6 +1,4 @@
-"use client";
-import React, { useState } from "react";
-import EnrollModal from "../EnrollModal";
+import EnrollButton from "./ui/EnrollButton";
 
 const targetAudience = [
     {
@@ -40,7 +38,6 @@ const targetAudience = [
 
 
 export default function WhoShouldEnroll() {
-    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
     const courseName = "Data Analytics & Visualization with Tableau";
 
     return (
@@ -254,21 +251,15 @@ export default function WhoShouldEnroll() {
                     <p className="text-gray-600 text-lg mb-6">
                         If you match any of the above profiles, this course is perfect for you!
                     </p>
-                    <button
-                        onClick={() => setIsEnrollOpen(true)}
+                    <EnrollButton
+                        source="Tableau Course Page - Who Should Enroll Section - Enroll Now"
+                        courseName={courseName}
                         className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Check Your Eligibility and Enroll
-                    </button>
+                    </EnrollButton>
                 </div>
             </div>
-
-            <EnrollModal
-                isOpen={isEnrollOpen}
-                onClose={() => setIsEnrollOpen(false)}
-                source="Tableau Course Page - Who Should Enroll Section - Enroll Now"
-                courseName={courseName}
-            />
         </section>
     );
 }

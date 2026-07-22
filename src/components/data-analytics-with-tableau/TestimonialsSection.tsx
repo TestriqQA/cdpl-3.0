@@ -1,10 +1,7 @@
-"use client";
-import React, { useState } from "react";
 import ReviewsMarquee from "../sections/ReviewMarque";
-import EnrollModal from "../EnrollModal";
+import EnrollButton from "./ui/EnrollButton";
 
 export default function TestimonialsSection() {
-    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
     const courseName = "Data Analytics & Visualization with Tableau";
 
     return (
@@ -63,21 +60,15 @@ export default function TestimonialsSection() {
                     <p className="text-gray-600 text-lg mb-6">
                         Join hundreds of successful students who have transformed their careers with our Tableau training
                     </p>
-                    <button
-                        onClick={() => setIsEnrollOpen(true)}
+                    <EnrollButton
+                        source="Tableau Course Page - Testimonials Section - Enroll Now"
+                        courseName={courseName}
                         className="bg-[#431407] hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Start Your Success Story →
-                    </button>
+                    </EnrollButton>
                 </div>
             </div>
-
-            <EnrollModal
-                isOpen={isEnrollOpen}
-                onClose={() => setIsEnrollOpen(false)}
-                source="Tableau Course Page - Testimonials Section - Enroll Now"
-                courseName={courseName}
-            />
         </section>
     );
 }

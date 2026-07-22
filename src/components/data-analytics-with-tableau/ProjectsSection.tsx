@@ -1,6 +1,4 @@
-"use client";
-import React, { useState } from "react";
-import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import SyllabusButton from "./ui/SyllabusButton";
 
 const projectsData = [
     {
@@ -54,7 +52,6 @@ const domainKnowledge = [
 
 
 export default function ProjectsSection() {
-    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
     const courseName = "Data Analytics & Visualization with Tableau";
 
     return (
@@ -185,21 +182,15 @@ export default function ProjectsSection() {
 
                 {/* CTA */}
                 <div className="mt-16 text-center">
-                    <button
-                        onClick={() => setIsSyllabusOpen(true)}
+                    <SyllabusButton
+                        source="Tableau Course Page - Projects Section - Download Details"
+                        courseName={courseName}
                         className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                     >
                         Download Project Details
-                    </button>
+                    </SyllabusButton>
                 </div>
             </div>
-
-            <SyllabusDownloadModal
-                isOpen={isSyllabusOpen}
-                onClose={() => setIsSyllabusOpen(false)}
-                source="Tableau Course Page - Projects Section - Download Details"
-                courseName={courseName}
-            />
         </section>
     );
 }

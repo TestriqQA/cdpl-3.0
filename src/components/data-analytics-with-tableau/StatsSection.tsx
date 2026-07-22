@@ -1,6 +1,4 @@
-"use client";
-import React, { useState } from "react";
-import CareerSessionModal from "../CareerSessionModal";
+import CareerSessionButton from "./ui/CareerSessionButton";
 
 
 const statsData = [
@@ -49,7 +47,6 @@ const statsData = [
 
 
 export default function StatsSection() {
-    const [isCareerSessionOpen, setIsCareerSessionOpen] = useState(false);
     const courseName = "Data Analytics & Visualization with Tableau";
 
     return (
@@ -106,22 +103,16 @@ export default function StatsSection() {
                         </p>
                     </div>
                     <div>
-                        <button
-                            onClick={() => setIsCareerSessionOpen(true)}
+                        <CareerSessionButton
+                            source="Tableau Course Page - Stats Section - Career Session"
+                            courseName={courseName}
                             className="bg-brand hover:bg-brand text-white font-bold py-3 px-8 rounded-lg transition-all inline-block cursor-pointer"
                         >
                             Book a Free Career Session
-                        </button>
+                        </CareerSessionButton>
                     </div>
                 </div>
             </div>
-
-            <CareerSessionModal
-                isOpen={isCareerSessionOpen}
-                onClose={() => setIsCareerSessionOpen(false)}
-                source="Tableau Course Page - Stats Section - Career Session"
-                courseName={courseName}
-            />
         </section>
     );
 }
