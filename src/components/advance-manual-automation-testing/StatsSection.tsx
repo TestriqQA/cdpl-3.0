@@ -1,5 +1,4 @@
 'use client';
-import { motion, useInView } from 'framer-motion';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 /** Count-up that starts from 0 when parent section scrolls into view */
@@ -122,7 +121,22 @@ const stats: Stat[] = [
 
 export default function StatsSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const inView = useInView(sectionRef, { once: true, margin: '-10% 0px -10% 0px' });
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setInView(true);
+          obs.disconnect(); // animate once
+        }
+      },
+      { rootMargin: '-10% 0px -10% 0px', threshold: 0.2 }
+    );
+    obs.observe(sectionRef.current);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <section
@@ -156,13 +170,9 @@ export default function StatsSection() {
 
         {/* Stat cards grid */}
         <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
-          {stats.map((s, i) => (
-            <motion.div
+          {stats.map((s) => (
+            <div
               key={s.label}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-20% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: s.delay ?? i * 0.05, ease: 'easeOut' }}
               className={[
                 'group relative overflow-hidden rounded-2xl border p-5 sm:p-6',
                 s.color,
@@ -194,7 +204,7 @@ export default function StatsSection() {
               <div className="mt-3 text-[11px] leading-5 text-slate-500">
                 Verified metrics for <em>QA</em>, <em>Automation Testing</em>, and <em>SDET</em> roles across India.
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

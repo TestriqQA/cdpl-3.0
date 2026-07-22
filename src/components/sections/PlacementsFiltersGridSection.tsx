@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 import { PLACEMENTS as DATA } from "@/lib/placementShared";
@@ -120,23 +119,14 @@ export default function PlacementsFiltersGridSection({ contained = false }: Prop
           ... (showing results UI retained here in comments)
           */}
 
-          <AnimatePresence mode="popLayout">
-            {results.length === 0 ? (
-              <motion.div
-                key="empty"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 8 }}
+          {results.length === 0 ? (
+              <div
                 className="grid place-items-center rounded-2xl border border-slate-200 bg-white p-10 text-center"
               >
                 <p className="text-slate-700">No matches. Try a different search.</p>
-              </motion.div>
+              </div>
             ) : (
-              <motion.div
-                key="grid"
-                initial="hidden"
-                animate="show"
-                variants={{ hidden: { opacity: 1 }, show: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.02 } } }}
+              <div
                 className="grid grid-cols-2 gap-4 max-[400px]:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 xl:gap-6 2xl:gap-8"
               >
                 {results.map((p, idx) => {
@@ -145,12 +135,9 @@ export default function PlacementsFiltersGridSection({ contained = false }: Prop
                   const pat = PATTERNS[idx % PATTERNS.length];
 
                   return (
-                    <motion.div
+                    <div
                       key={`${p.name}-${idx}`}
-                      variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-                      whileHover={{ y: -2 }}
-                      transition={{ duration: 0.25 }}
-                      className="relative overflow-visible rounded-2xl border border-slate-200 bg-white p-4 shadow-sm w-full"
+                      className="relative overflow-visible rounded-2xl border border-slate-200 bg-white p-4 shadow-sm w-full transition-transform duration-300 hover:-translate-y-0.5"
                     >
                       {/* pattern paint (different per-card) */}
                       <span
@@ -201,12 +188,11 @@ export default function PlacementsFiltersGridSection({ contained = false }: Prop
                           {p.domain}
                         </span>
                       </div>
-                    </motion.div>
+                    </div>
                   );
                 })}
-              </motion.div>
+              </div>
             )}
-          </AnimatePresence>
         </div>
       </Wrapper>
     </section>

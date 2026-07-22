@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Star, Filter, CheckCircle2, Trophy, BadgeCheck } from "lucide-react";
 
 import { getAllReviews, type StudentReview } from "@/data/reviews/reviewsData";
@@ -48,12 +47,7 @@ function FilterPill({
 
 function ReviewCard({ review }: { review: StudentReview }) {
   return (
-    <motion.article
-      layout
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
+    <article
       className="group relative bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-slate-200/50 hover:border-blue-200 transition-all duration-300"
     >
       <div className="flex gap-4">
@@ -103,7 +97,7 @@ function ReviewCard({ review }: { review: StudentReview }) {
           </div>
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 }
 
@@ -230,13 +224,11 @@ export default function ReviewsFeedbackSection() {
               </span>
             </div>
 
-            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <AnimatePresence mode="popLayout">
-                {displayReviews.map((review) => (
-                  <ReviewCard key={review.id} review={review} />
-                ))}
-              </AnimatePresence>
-            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {displayReviews.map((review) => (
+                <ReviewCard key={review.id} review={review} />
+              ))}
+            </div>
 
             {/* Load More Trigger */}
             {canLoadMore && (

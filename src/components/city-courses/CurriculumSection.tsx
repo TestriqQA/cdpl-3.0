@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
 import type { CourseData } from "@/types/courseData";
 import { BookOpen, Zap, CheckCircle2 } from "lucide-react";
 
@@ -17,23 +16,6 @@ interface Week {
   description: string;
   deliverables?: string[];
 }
-
-/** ---- Framer variants ---- */
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: "easeOut" } },
-};
-
-const panelVariants: Variants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.25 } },
-  exit: { opacity: 0, y: 12, transition: { duration: 0.2 } },
-};
 
 /** ---- Palette for tabs ---- */
 type Variant = {
@@ -80,36 +62,24 @@ const CurriculumSection: React.FC<CurriculumSectionProps> = ({ data }) => {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          className="text-center mb-12 sm:mb-16"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <motion.p className="inline-flex items-center gap-2 text-[13px] font-semibold tracking-widest text-cyan-600 uppercase" variants={itemVariants}>
+        <div className="text-center mb-12 sm:mb-16">
+          <p className="inline-flex items-center gap-2 text-[13px] font-semibold tracking-widest text-cyan-600 uppercase">
             <Zap className="h-4 w-4" />
             Curriculum Matrix
-          </motion.p>
-          <motion.h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-slate-900" variants={itemVariants}>
+          </p>
+          <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
             {curriculumContent.title}
-          </motion.h2>
+          </h2>
           {curriculumContent.subtitle && tracks.length > 1 && (
-            <motion.p className="mx-auto mt-6 max-w-3xl text-lg text-slate-600" variants={itemVariants}>
+            <p className="mx-auto mt-6 max-w-3xl text-lg text-slate-600">
               {curriculumContent.subtitle}
-            </motion.p>
+            </p>
           )}
-        </motion.div>
+        </div>
 
         {/* Tabs */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="relative"
-        >
-          <motion.div variants={itemVariants}>
+        <div className="relative">
+          <div>
             <div
               role="tablist"
               aria-label="Curriculum tracks"
@@ -143,34 +113,31 @@ const CurriculumSection: React.FC<CurriculumSectionProps> = ({ data }) => {
                 );
               })}
             </div>
-          </motion.div>
+          </div>
 
           {/* Quick meta */}
           {current && (
-            <motion.div variants={itemVariants} className="mt-6 text-center text-base text-slate-600">
+            <div className="mt-6 text-center text-base text-slate-600">
               <span className="rounded-full bg-slate-100 border border-slate-200 px-4 py-1.5 font-medium">
                 <BookOpen className="inline h-4 w-4 mr-2 mb-0.5 text-slate-500" />
                 {totalWeeks} {totalWeeks === 1 ? "Module" : "Modules"}
               </span>
-            </motion.div>
+            </div>
           )}
-        </motion.div>
+        </div>
 
         {/* Tab Panel */}
         <div className="mt-12 lg:mt-16">
-          <AnimatePresence mode="wait">
-            {current ? (
-              <motion.div
-                key={current.id ?? activeTrack}
-                variants={panelVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                id={`track-panel-${current.id ?? activeTrack}`}
-                role="tabpanel"
-                aria-labelledby={`track-tab-${current.id ?? activeTrack}`}
-                className="rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6 lg:p-8 shadow-xl shadow-slate-200/50 overflow-hidden"
-              >
+          {/* key remounts the panel on tab switch (was an AnimatePresence
+              crossfade; content swap is now instant) */}
+          {current ? (
+            <div
+              key={current.id ?? activeTrack}
+              id={`track-panel-${current.id ?? activeTrack}`}
+              role="tabpanel"
+              aria-labelledby={`track-tab-${current.id ?? activeTrack}`}
+              className="rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6 lg:p-8 shadow-xl shadow-slate-200/50 overflow-hidden"
+            >
                 {/* Curriculum List/Table */}
                 <div className="space-y-6">
                   {current.weeks.map((w: Week, idx: number) => (
@@ -231,21 +198,16 @@ const CurriculumSection: React.FC<CurriculumSectionProps> = ({ data }) => {
                     </div>
                   ))}
                 </div>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="empty"
-                variants={panelVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="rounded-xl border border-slate-200 bg-slate-50 p-8 text-center text-slate-600"
-              >
-                <Zap className="mx-auto h-10 w-10 text-cyan-600 mb-4" />
-                <p className="text-lg font-medium">Select a track to view its detailed curriculum.</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
+            </div>
+          ) : (
+            <div
+              key="empty"
+              className="rounded-xl border border-slate-200 bg-slate-50 p-8 text-center text-slate-600"
+            >
+              <Zap className="mx-auto h-10 w-10 text-cyan-600 mb-4" />
+              <p className="text-lg font-medium">Select a track to view its detailed curriculum.</p>
+            </div>
+          )}
         </div>
       </div>
     </section>

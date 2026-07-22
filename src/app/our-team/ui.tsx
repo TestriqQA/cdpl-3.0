@@ -2,17 +2,8 @@
 
 
 import Image from "next/image";
-import { motion, type Transition } from "framer-motion";
 import { Star } from "lucide-react";
 import type { TeamMember } from "./types";
-
-
-export const easeBezier: [number, number, number, number] = [0.22, 1, 0.36, 1];
-export const fadeUp = {
-    initial: { opacity: 0, y: 18 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.55, ease: easeBezier } as Transition,
-};
 
 
 export function Badge({ children }: { children: React.ReactNode }) {
@@ -37,8 +28,7 @@ export function Pill({ children }: { children: React.ReactNode }) {
 
 export function TeamCard({ m }: { m: TeamMember }) {
     return (
-        <motion.article
-            {...fadeUp}
+        <article
             className="group rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md"
         >
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:items-center">
@@ -117,6 +107,6 @@ export function TeamCard({ m }: { m: TeamMember }) {
                 className="pointer-events-none absolute inset-x-0 -bottom-2 mx-4 h-8 rounded-3xl bg-gradient-to-b from-transparent to-orange-50/60 opacity-0 transition group-hover:opacity-100"
                 aria-hidden
             />
-        </motion.article>
+        </article>
     );
 }

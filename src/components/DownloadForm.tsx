@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
-import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Mail, TrendingUp, CheckCircle2, Download } from 'lucide-react';
 import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from './ui/CustomFlag';
@@ -152,13 +151,9 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
       </div>
 
       {/* Success Message */}
-      <AnimatePresence>
-        {isSubmitted && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg"
+      {isSubmitted && (
+          <div
+            className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg cdpl-animate-fade-in"
           >
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-5 w-5 text-green-600" />
@@ -171,9 +166,8 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
 
       {/* Error Message */}
       {submitError && (
@@ -357,22 +351,14 @@ export const DownloadFormButton: React.FC<DownloadFormButtonProps> = ({
       </button>
 
       {/* The Modal */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm overflow-y-auto"
+      {isOpen && (
+          <div
+            className="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm overflow-y-auto cdpl-animate-fade-in"
           >
             <div className="flex min-h-full items-center justify-center p-4">
-              <motion.div
+              <div
                 ref={modalRef}
-                initial={{ scale: 0.9, y: 20 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.9, y: 20 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                className="relative w-full max-w-md"
+                className="relative w-full max-w-md cdpl-animate-modal-in"
               >
                 <DownloadFormContent
                   courseTitle={courseTitle}
@@ -382,11 +368,10 @@ export const DownloadFormButton: React.FC<DownloadFormButtonProps> = ({
                   onSubmit={handleFormSubmit}
                   onClose={closeModal}
                 />
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
     </>
   );
 };

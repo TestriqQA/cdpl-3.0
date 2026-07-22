@@ -1,7 +1,6 @@
 'use client';
 import { useState, type KeyboardEvent } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ADVANCED_TESTING_FAQS } from '@/data/advancedTestingData';
 
 const accents = [
@@ -78,32 +77,29 @@ export default function FaqSection() {
                   />
                 </button>
 
-                <AnimatePresence initial={false}>
-                  {open === i && (
-                    <motion.div
-                      id={`faq-panel-${i}`}
-                      role="region"
-                      aria-labelledby={`faq-trigger-${i}`}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.28, ease: 'easeOut' }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0">
-                        <div className="flex gap-3 text-slate-600">
-                          <span className={['mt-2 h-2 w-2 rounded-full', accent.bullet].join(' ')} />
-                          <p className="text-sm sm:text-base leading-relaxed">{faq.answer}</p>
-                        </div>
-                        {/* micro copy for SEO */}
-                        <p className="mt-3 pl-5 sm:pl-6 text-xs sm:text-sm text-slate-700">
-                          Still curious? Explore details on <em className="text-slate-900 font-medium not-italic">course curriculum</em>, <em className="text-slate-900 font-medium not-italic">live projects</em>,{' '}
-                          <em className="text-slate-900 font-medium not-italic">ISTQB prep</em>, and <em className="text-slate-900 font-medium not-italic">job assistance</em> in our program brochure.
-                        </p>
+                {/* Answer — CSS grid-rows accordion (replaces AnimatePresence height
+                    animation). Answer stays in the DOM (crawlable), collapsed via
+                    0fr -> 1fr with the inner overflow-hidden clip. */}
+                <div
+                  id={`faq-panel-${i}`}
+                  role="region"
+                  aria-labelledby={`faq-trigger-${i}`}
+                  className={`grid transition-all duration-300 ease-in-out ${open === i ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0">
+                      <div className="flex gap-3 text-slate-600">
+                        <span className={['mt-2 h-2 w-2 rounded-full', accent.bullet].join(' ')} />
+                        <p className="text-sm sm:text-base leading-relaxed">{faq.answer}</p>
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                      {/* micro copy for SEO */}
+                      <p className="mt-3 pl-5 sm:pl-6 text-xs sm:text-sm text-slate-700">
+                        Still curious? Explore details on <em className="text-slate-900 font-medium not-italic">course curriculum</em>, <em className="text-slate-900 font-medium not-italic">live projects</em>,{' '}
+                        <em className="text-slate-900 font-medium not-italic">ISTQB prep</em>, and <em className="text-slate-900 font-medium not-italic">job assistance</em> in our program brochure.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </li>
             );
           })}

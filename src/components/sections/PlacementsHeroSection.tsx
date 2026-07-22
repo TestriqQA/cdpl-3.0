@@ -1,9 +1,6 @@
 // components/sections/PlacementsHeroSection.tsx
 "use client";
 
-import { m, LazyMotion } from "framer-motion";
-const loadFeatures = () =>
-  import("framer-motion").then((res) => res.domAnimation);
 import {
   Sparkles,
   GraduationCap,
@@ -44,17 +41,12 @@ function FloatingIcon({
   duration?: number;
 }) {
   return (
-    <m.div
+    <div
       className={`pointer-events-none absolute select-none ${className || ""}`}
-      style={{ left: x, top: y }}
-      initial={{ opacity: 0, y: 6, rotate: -2 }}
-      animate={{ opacity: 1, y: [0, -8, 0, 6, 0], rotate: [-2, 2, -1, 2, -2] }}
-      transition={{
-        duration,
-        delay,
-        repeat: Infinity,
-        repeatType: "mirror",
-        ease: [0.22, 1, 0.36, 1],
+      style={{
+        left: x,
+        top: y,
+        animation: `cdpl-float ${duration}s ease-in-out ${delay}s infinite`,
       }}
     >
       <div
@@ -63,22 +55,9 @@ function FloatingIcon({
       >
         <div className="grid h-full place-items-center">{children}</div>
       </div>
-    </m.div>
+    </div>
   );
 }
-
-const MotionProvider = ({
-  children,
-  active,
-}: {
-  children: React.ReactNode;
-  active: boolean;
-}) => {
-  if (active) {
-    return <LazyMotion features={loadFeatures}>{children}</LazyMotion>;
-  }
-  return <>{children}</>;
-};
 
 export default function PlacementsHeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -98,8 +77,7 @@ export default function PlacementsHeroSection() {
     { label: "Placements", href: "/jobs/placements" },
   ];
   return (
-    <MotionProvider active={showFloatingIcons}>
-      <section
+    <section
         className="
         relative isolate overflow-hidden bg-white text-slate-900
         pt-[96px] md:pt-[104px] lg:pt-[112px]
@@ -288,7 +266,6 @@ export default function PlacementsHeroSection() {
           onClose={() => setIsModalOpen(false)}
           source="Placements Page - Hero Section"
         />
-      </section>
-    </MotionProvider>
+    </section>
   );
 }

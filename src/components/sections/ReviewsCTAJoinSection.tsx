@@ -1,20 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
 import { Star, Sparkles, ArrowRight, Users, Target, Clock, Award } from "lucide-react";
 
-// Animation variants
-const fadeUp = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1.0] as const }
-};
-
 export default function CTAJoinSection() {
-  const prefersReduced = useReducedMotion();
-
   return (
     <section
       id="cta-join"
@@ -23,20 +12,12 @@ export default function CTAJoinSection() {
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={prefersReduced ? {} : {
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        <div
+          style={{ animation: "cdpl-blob-pulse-1 10s ease-in-out infinite" }}
           className="absolute -top-32 -right-32 w-[600px] h-[600px] bg-gradient-to-br from-orange-500/20 to-amber-500/10 rounded-full blur-3xl"
         />
-        <motion.div
-          animate={prefersReduced ? {} : {
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        <div
+          style={{ animation: "cdpl-blob-pulse-2 12s ease-in-out infinite" }}
           className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-gradient-to-tr from-blue-500/20 to-indigo-500/10 rounded-full blur-3xl"
         />
 
@@ -64,19 +45,17 @@ export default function CTAJoinSection() {
               {/* Left Content */}
               <div className="lg:col-span-7">
                 {/* Badge */}
-                <motion.div {...fadeUp}>
+                <div>
                   <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-500/30 px-4 py-2 mb-6">
                     <Sparkles className="h-4 w-4 text-orange-400" />
                     <span className="text-xs font-semibold uppercase tracking-wide text-orange-300">
                       Limited Seats Available
                     </span>
                   </div>
-                </motion.div>
+                </div>
 
                 {/* Headline */}
-                <motion.h2
-                  {...fadeUp}
-                  transition={{ duration: 0.6, delay: 0.1 }}
+                <h2
                   className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-white"
                 >
                   Ready to Turn Practice into{" "}
@@ -84,12 +63,10 @@ export default function CTAJoinSection() {
                     Offers
                   </span>
                   ?
-                </motion.h2>
+                </h2>
 
                 {/* Description */}
-                <motion.p
-                  {...fadeUp}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                <p
                   className="mt-5 max-w-2xl text-base sm:text-lg text-slate-300 leading-relaxed"
                 >
                   Join our hands-on programs in{" "}
@@ -97,12 +74,10 @@ export default function CTAJoinSection() {
                   <span className="font-semibold text-white">Data Science</span>, and{" "}
                   <span className="font-semibold text-white">Marketing</span>.
                   Build portfolio projects, get real feedback, and ship with confidence.
-                </motion.p>
+                </p>
 
                 {/* CTA Buttons */}
-                <motion.div
-                  {...fadeUp}
-                  transition={{ duration: 0.6, delay: 0.3 }}
+                <div
                   className="mt-8 flex flex-wrap items-center gap-4"
                 >
                   <Link
@@ -119,12 +94,10 @@ export default function CTAJoinSection() {
                   >
                     Read Student Stories
                   </Link>
-                </motion.div>
+                </div>
 
                 {/* Trust Indicator */}
-                <motion.div
-                  {...fadeUp}
-                  transition={{ duration: 0.6, delay: 0.4 }}
+                <div
                   className="mt-6 flex items-center gap-4"
                 >
                   <div className="flex items-center gap-1">
@@ -135,16 +108,12 @@ export default function CTAJoinSection() {
                   <span className="text-sm text-slate-400">
                     <span className="font-semibold text-white">4.9/5</span> average rating · Alumni at leading companies
                   </span>
-                </motion.div>
+                </div>
               </div>
 
               {/* Right Stats Grid */}
-              <motion.div
+              <div
                 className="lg:col-span-5"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.3 }}
               >
                 <div className="grid grid-cols-2 gap-4">
                   <StatCard
@@ -172,7 +141,7 @@ export default function CTAJoinSection() {
                     gradient="from-violet-500 to-purple-500"
                   />
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
@@ -196,9 +165,8 @@ function StatCard({
   gradient: string;
 }) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.03, y: -3 }}
-      className="relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-5 text-center group hover:bg-white/10 transition-all duration-300"
+    <div
+      className="relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-5 text-center group hover:bg-white/10 hover:-translate-y-[3px] hover:scale-[1.03] transition-all duration-300"
     >
       {/* Gradient glow on hover */}
       <div
@@ -219,6 +187,6 @@ function StatCard({
       <div className="text-xs sm:text-sm font-medium text-slate-400">
         {label}
       </div>
-    </motion.div>
+    </div>
   );
 }

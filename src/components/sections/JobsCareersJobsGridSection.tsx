@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Briefcase, Building2, Calendar, MapPin } from "lucide-react";
 import { JobsCareersJobCardSection } from "./JobsCareersJobCardSection";
 import { SanityJob } from "@/sanity/types";
@@ -52,18 +51,10 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: SanityJob[]
             aria-label="Open roles list"
           >
             <ul className="divide-y divide-slate-100">
-              <AnimatePresence mode="popLayout">
                 {list.map((job) => {
                   const active = job.id === selectedId;
                   return (
-                    <motion.li
-                      key={job.id}
-                      layout
-                      initial={{ opacity: 0, y: 6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 6 }}
-                      transition={{ duration: 0.2, ease: "easeOut" }}
-                    >
+                    <li key={job.id}>
                       <div
                         role="button"
                         tabIndex={0}
@@ -106,10 +97,9 @@ export default function JobsCareersJobsGridSection({ jobs }: { jobs: SanityJob[]
                           ) : null}
                         </div>
                       </div>
-                    </motion.li>
+                    </li>
                   );
                 })}
-              </AnimatePresence>
             </ul>
 
             <div className="flex items-center justify-center border-t border-slate-100 p-3">

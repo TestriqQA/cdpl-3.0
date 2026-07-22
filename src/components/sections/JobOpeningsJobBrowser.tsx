@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
 /* ---------- Shared types (no `any`) ---------- */
@@ -345,18 +344,10 @@ export default function JobOpeningsJobBrowser({
                     {/* list column */}
                     <section className="min-w-0 flex-1">
                         <ul className="space-y-4">
-                            <AnimatePresence mode="popLayout">
-                                {paginatedJobs.map((job) => {
+                            {paginatedJobs.map((job) => {
                                     const desc = decodeAndStrip(job.description).slice(0, 350);
                                     return (
-                                        <motion.li
-                                            key={job.job_id}
-                                            layout
-                                            initial={{ opacity: 0, y: 8 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: -8 }}
-                                            transition={{ duration: 0.2 }}
-                                        >
+                                        <li key={job.job_id}>
                                             <div className="grid grid-cols-1 gap-4 rounded-xl border border-slate-200 bg-white p-5 shadow-sm sm:grid-cols-[72px,1fr] xl:grid-cols-[72px,1fr,180px]">
                                                 <div className="sm:pt-1">
                                                     <Logo title={job.job_title} />
@@ -413,10 +404,9 @@ export default function JobOpeningsJobBrowser({
                                                     </button>
                                                 </div>
                                             </div>
-                                        </motion.li>
+                                        </li>
                                     );
                                 })}
-                            </AnimatePresence>
 
                             {filtered.length === 0 && (
                                 <li className="rounded-xl border border-slate-200 bg-white p-10 text-center">
@@ -451,7 +441,6 @@ export default function JobOpeningsJobBrowser({
             </div>
 
             {/* details overlay — NO key prop (prevents remount/fetch loops) */}
-            {/* details overlay — Keep mounted to allow AnimatePresence to handle exit animations */}
             {selected && (
                 <JobOpeningsJobDetails
                     jobId={selected}

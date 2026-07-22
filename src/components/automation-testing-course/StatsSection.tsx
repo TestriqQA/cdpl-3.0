@@ -1,5 +1,4 @@
 'use client';
-import { motion, useInView } from 'framer-motion';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 /** ---------- Types ---------- */
@@ -72,7 +71,23 @@ function useCountUp(target: number, start: boolean, durationMs = 1600) {
 /** ---------- Stat Card ---------- */
 function StatCard({ s }: { s: Stat }) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const inView = useInView(ref, { once: true, margin: '-20% 0px -10% 0px' });
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setInView(true);
+          obs.disconnect(); // animate once
+        }
+      },
+      { rootMargin: '-20% 0px -10% 0px', threshold: 0.2 }
+    );
+    obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
   const animatedVal = useCountUp(s.value, inView);
   const display = useMemo(() => {
     const base = formatNumber(animatedVal);
@@ -80,12 +95,8 @@ function StatCard({ s }: { s: Stat }) {
   }, [animatedVal, s.prefix, s.suffix]);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-20% 0px -10% 0px' }}
-      transition={{ duration: 0.45, delay: s.delay ?? 0.1, ease: 'easeOut' }}
       className={[
         'group relative overflow-hidden rounded-2xl border p-4 sm:p-5',
         s.color,
@@ -108,7 +119,7 @@ function StatCard({ s }: { s: Stat }) {
       <div className="mt-3 text-[11px] leading-5 text-slate-500">
         Benchmarks for <em>Automation Testing</em> / <em>SDET</em> opportunities and training.
       </div>
-    </motion.div>
+    </div>
   );
 }
 

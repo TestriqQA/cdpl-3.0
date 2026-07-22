@@ -1,18 +1,11 @@
 'use client';
-import { motion, useMotionValue } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
 // ---- Animated counter that starts when in-view ----
 function Counter({ to, duration = 1.2 }: { to: number; duration?: number }) {
-  const count = useMotionValue(0);
   const [value, setValue] = useState(0);
   const ref = useRef<HTMLSpanElement | null>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
-
-  useEffect(() => {
-    const unsub = count.on('change', v => setValue(Math.round(v)));
-    return () => unsub();
-  }, [count]);
 
   useEffect(() => {
     // simple IntersectionObserver so we only animate once when visible
@@ -29,7 +22,7 @@ function Counter({ to, duration = 1.2 }: { to: number; duration?: number }) {
 
           const step = (now: number) => {
             const t = Math.min(1, (now - start) / (duration * 1000));
-            count.set(startVal + (endVal - startVal) * easeOut(t));
+            setValue(Math.round(startVal + (endVal - startVal) * easeOut(t)));
             if (t < 1) requestAnimationFrame(step);
           };
           requestAnimationFrame(step);
@@ -39,7 +32,7 @@ function Counter({ to, duration = 1.2 }: { to: number; duration?: number }) {
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [count, duration, hasAnimated, to]);
+  }, [duration, hasAnimated, to]);
 
   return <span ref={ref}>{value}</span>;
 }
@@ -92,13 +85,9 @@ export default function StatsSection() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
-          {stats.map((s, i) => (
-            <motion.div
+          {stats.map((s) => (
+            <div
               key={s.label}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-20% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: s.delay ?? i * 0.05, ease: 'easeOut' }}
               className={[
                 'group relative overflow-hidden rounded-2xl border p-5 sm:p-6',
                 s.color,
@@ -117,7 +106,7 @@ export default function StatsSection() {
               <div className="mt-3 text-[11px] leading-5 text-slate-500">
                 Verified from the official program: duration, curriculum items, capstone projects, and job-role mapping.
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
