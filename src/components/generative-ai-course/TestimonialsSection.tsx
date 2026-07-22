@@ -1,5 +1,4 @@
 // components/sections/TestimonialsSection.tsx
-"use client";
 
 import { Quote, ShieldCheck, Sparkles } from "lucide-react";
 import ReviewsMarquee from "../sections/ReviewMarque";

@@ -48,6 +48,7 @@ export function AAAVerificationChoiceModal({
             >
                 <button
                     type="button"
+                    aria-label="Close"
                     className="absolute right-4 top-4 rounded-full bg-slate-100 p-1 text-slate-500 hover:bg-slate-200"
                     onClick={onClose}
                 >

@@ -249,7 +249,7 @@ const WorkshopRequestModal = ({
                         >
                             {/* Header */}
                             <div className="bg-gradient-to-r from-blue-700 to-indigo-800 px-6 py-5 relative">
-                                <button onClick={handleClose} disabled={isSubmitting} className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors p-1 rounded-full hover:bg-white/10">
+                                <button onClick={handleClose} disabled={isSubmitting} aria-label="Close" className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors p-1 rounded-full hover:bg-white/10">
                                     <X className="w-6 h-6" />
                                 </button>
                                 <div className="flex items-center gap-4">

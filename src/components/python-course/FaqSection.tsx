@@ -1,6 +1,5 @@
 // components/sections/FaqSection.tsx
 // Server component — sleek, slightly futuristic, responsive, SEO-friendly FAQ.
-'use client';
 import Link from "next/link";
 import { PYTHON_FAQS } from "@/data/pythonData";
 

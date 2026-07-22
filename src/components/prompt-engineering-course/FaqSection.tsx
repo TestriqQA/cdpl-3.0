@@ -41,9 +41,8 @@ export default function FaqSection() {
         {/* FAQ list */}
         <div role="list" aria-label="Program frequently asked questions" className="mx-auto mt-10 grid grid-cols-1 gap-4 sm:gap-5 max-w-4xl">
           {PROMPT_ENGINEERING_FAQS.map((f) => (
+            <div role="listitem" key={f.question}>
             <details
-              key={f.question}
-              role="listitem"
               className={[
                 "group relative rounded-2xl border bg-white p-4 sm:p-5 shadow-sm transition-all duration-200",
                 "open:shadow-md hover:-translate-y-0.5 focus-within:-translate-y-0.5",
@@ -80,6 +79,7 @@ export default function FaqSection() {
                 <div className={["h-1 w-1/2 origin-left scale-x-0 rounded-full transition-transform duration-500 ease-out", f.accent.bar, "group-open:scale-x-100 group-hover:scale-x-100"].join(" ")} />
               </div>
             </details>
+            </div>
           ))}
         </div>
 

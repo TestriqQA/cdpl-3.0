@@ -225,6 +225,7 @@ const TestimonialsSection = () => {
           <div className="hidden lg:flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prevSlide}
+              aria-label="Previous testimonials"
               disabled={currentIndex === 0}
               className="w-12 h-12 rounded-full bg-white shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-gray-700 hover:text-blue-600 transition-all duration-300 border border-gray-200 hover:border-blue-300"
             >
@@ -236,6 +237,7 @@ const TestimonialsSection = () => {
               {[...Array(totalPages)].map((_, index) => (
                 <button
                   key={index}
+                  aria-label={`Go to slide ${index + 1}`}
                   onClick={() => setCurrentIndex(index)}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     index === currentIndex
@@ -248,6 +250,7 @@ const TestimonialsSection = () => {
 
             <button
               onClick={nextSlide}
+              aria-label="Next testimonials"
               disabled={currentIndex === totalPages - 1}
               className="w-12 h-12 rounded-full bg-white shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-gray-700 hover:text-blue-600 transition-all duration-300 border border-gray-200 hover:border-blue-300"
             >
@@ -260,6 +263,7 @@ const TestimonialsSection = () => {
             {[...Array(totalPages)].map((_, index) => (
               <button
                 key={index}
+                aria-label={`Go to slide ${index + 1}`}
                 onClick={() => setCurrentIndex(index)}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   index === currentIndex
