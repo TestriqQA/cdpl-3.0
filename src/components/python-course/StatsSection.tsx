@@ -189,7 +189,7 @@ export default function StatsSection() {
         {/* Stat cards */}
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 max-w-7xl mx-auto">
           {STATS.map((s) => (
-            <article
+            <div
               key={s.label}
               role="group"
               aria-label={s.aria ?? s.label}
@@ -219,7 +219,7 @@ export default function StatsSection() {
                 {/* Visually hidden final value for screen readers */}
                 <span className="sr-only">{s.value}</span>
               </div>
-            </article>
+            </div>
           ))}
         </div>
 

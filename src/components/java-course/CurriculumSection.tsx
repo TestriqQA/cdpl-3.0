@@ -270,7 +270,6 @@ export default function CurriculumSection() {
           {MODULES.map((m, i) => (
             <li key={m.num} className="relative">
               <article
-                role="article"
                 aria-label={`${m.num} ${m.title}`}
                 className={[
                   "group relative overflow-hidden rounded-2xl p-5 md:p-6 shadow-sm transition-all duration-200",

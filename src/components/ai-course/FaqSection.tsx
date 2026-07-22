@@ -52,9 +52,8 @@ export default function FaqSection() {
           {AI_FAQS.map((f, i) => {
             const accent = ACCENT_STYLES[i % ACCENT_STYLES.length];
             return (
+              <div role="listitem" key={f.question}>
               <details
-                key={f.question}
-                role="listitem"
                 className={[
                   "group relative rounded-2xl border bg-white p-4 sm:p-5 shadow-sm transition-all duration-200",
                   "open:shadow-md hover:-translate-y-0.5 focus-within:-translate-y-0.5",
@@ -103,6 +102,7 @@ export default function FaqSection() {
                   />
                 </div>
               </details>
+              </div>
             );
           })}
         </div>
