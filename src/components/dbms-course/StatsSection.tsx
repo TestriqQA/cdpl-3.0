@@ -1,6 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
-import { motion, animate, useInView } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
 type Stat = {
   value: string;      // e.g. "101,000+"
@@ -22,7 +21,7 @@ const stats: Stat[] = [
 /** CountUp: animates the numeric portion of a value string (e.g. "101,000+", "4 LPA", "25%", "30 Hours") */
 function CountUp({ value, className }: { value: string; className?: string }) {
   const nodeRef = useRef<HTMLSpanElement>(null);
-  const inView = useInView(nodeRef, { once: true, margin: '-20% 0px -10% 0px' });
+  const [inView, setInView] = useState(false);
 
   // Parse leading number + suffix (keeps things like "+", "%", " LPA", " Hours")
   const parseValue = (s: string) => {
@@ -33,22 +32,43 @@ function CountUp({ value, className }: { value: string; className?: string }) {
 
   useEffect(() => {
     if (!nodeRef.current) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setInView(true);
+          obs.disconnect(); // animate once
+        }
+      },
+      { rootMargin: '-20% 0px -10% 0px', threshold: 0.2 }
+    );
+    obs.observe(nodeRef.current);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!nodeRef.current) return;
     const { num, suffix } = parseValue(value);
 
     // Start at 0 only when scrolled into view
     if (inView) {
-      const control = animate(0, num, {
-        duration: 1.2,
-        ease: 'easeOut',
-        onUpdate(v) {
-          const formatted = new Intl.NumberFormat('en-IN').format(Math.round(v));
-          nodeRef.current!.textContent = `${formatted}${suffix}`;
-        },
-      });
-      return () => control.stop();
+      let raf = 0;
+      const t0 = performance.now();
+      const durationMs = 1200;
+      const ease = (x: number) => 1 - Math.pow(1 - x, 3); // easeOutCubic
+
+      const tick = (now: number) => {
+        const p = Math.min(1, (now - t0) / durationMs);
+        const current = num * ease(p);
+        const formatted = new Intl.NumberFormat('en-IN').format(Math.round(current));
+        if (nodeRef.current) nodeRef.current.textContent = `${formatted}${suffix}`;
+        if (p < 1) raf = requestAnimationFrame(tick);
+      };
+
+      raf = requestAnimationFrame(tick);
+      return () => cancelAnimationFrame(raf);
     } else {
       // Pre-hydration fallback: render 0 + suffix to avoid mismatch
-      nodeRef.current.textContent = `0${parseValue(value).suffix}`;
+      nodeRef.current.textContent = `0${suffix}`;
     }
   }, [inView, value]);
 
@@ -84,13 +104,9 @@ export default function StatsSection() {
 
         {/* Stats grid */}
         <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
-          {stats.map((s, i) => (
-            <motion.article
+          {stats.map((s) => (
+            <article
               key={s.label}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-20% 0px -10% 0px' }}
-              transition={{ duration: 0.45, delay: s.delay ?? i * 0.05, ease: 'easeOut' }}
               aria-label={`${s.value} — ${s.label}`}
               className={[
                 'group relative overflow-hidden rounded-2xl border p-5 sm:p-6',
@@ -107,7 +123,7 @@ export default function StatsSection() {
               <p className="mt-3 text-[11px] leading-5 text-slate-500">
                 Data sourced from the program brochure (see PDF).
               </p>
-            </motion.article>
+            </article>
           ))}
         </div>
 
