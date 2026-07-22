@@ -1,6 +1,3 @@
-'use client';
-
-import React from 'react';
 import {
     Cpu,
     Brain,
@@ -170,19 +167,6 @@ const FeatureCard = ({ icon: Icon, title, desc, theme, index }: FeatureCardProps
 };
 
 export default function AIFeaturesSection() {
-    // Smooth scroll to #courses on same page
-    const scrollToCourses = () => {
-        if (typeof window === 'undefined') return;
-        const el = document.getElementById('courses');
-        if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            // Fallback: try scrolling to an anchor named courses
-            const anchor = document.querySelector('a[name="courses"]') as HTMLElement | null;
-            if (anchor) anchor.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
     return (
         <section className="relative py-10 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
             <div className="absolute inset-0 bg-grid-gray-100/50 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
@@ -227,15 +211,14 @@ export default function AIFeaturesSection() {
                     className="text-center mt-16"
                 >
                     <p className="text-gray-600 mb-6">Ready to accelerate your AI career and build impactful models?</p>
-                    <button
-                        onClick={scrollToCourses}
+                    <a
+                        href="#courses"
                         className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                         aria-label="Explore AI Courses"
-                        type="button"
                     >
                         <Target className="w-5 h-5" />
                         Explore Courses
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
