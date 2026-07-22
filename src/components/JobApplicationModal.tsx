@@ -244,6 +244,7 @@ export default function JobApplicationModal({
                         </div>
                         <button
                             onClick={onClose}
+                            aria-label="Close"
                             className="rounded-full p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors"
                         >
                             <X className="h-5 w-5" />
