@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, CheckCircle2, Clock, Award, TrendingUp, Sparkles } from "lucide-react";
 import { curriculumContent } from "@/components/BI-Courses/data/data";
 
@@ -61,22 +60,11 @@ export default function CurriculumSection() {
 
             <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
                 {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
-                    <motion.div
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        whileInView={{ scale: 1, opacity: 1 }}
-                        viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-200/50 rounded-full mb-6"
-                    >
+                <div className="text-center mb-16">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-200/50 rounded-full mb-6">
                         <Sparkles className="w-4 h-4 text-blue-600" />
                         <span className="text-sm font-semibold text-blue-700">Comprehensive Curriculum</span>
-                    </motion.div>
+                    </div>
 
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                         {data.title}
@@ -87,41 +75,26 @@ export default function CurriculumSection() {
                             {data.subtitle}
                         </p>
                     )}
-                </motion.div>
+                </div>
 
                 {/* Track Tabs */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
-                    className="mb-12"
-                >
+                <div className="mb-12">
                     <div className="flex flex-wrap justify-center gap-3 mb-8">
                         {tracks.map((track, index) => {
                             const isActive = index === activeTrack;
                             const theme = gradientThemes[index % gradientThemes.length];
 
                             return (
-                                <motion.button
+                                <button
                                     key={track.id ?? index}
                                     onClick={() => setActiveTrack(index)}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className={`relative px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 ${isActive
+                                    className={`relative px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-105 active:scale-95 ${isActive
                                         ? `bg-gradient-to-r ${theme.gradient} text-white shadow-lg ${theme.glowColor}`
                                         : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-gray-300'
                                         }`}
                                 >
                                     {track.title}
-                                    {isActive && (
-                                        <motion.div
-                                            layoutId="activeTab"
-                                            className="absolute inset-0 rounded-xl"
-                                            style={{ zIndex: -1 }}
-                                        />
-                                    )}
-                                </motion.button>
+                                </button>
                             );
                         })}
                     </div>
@@ -141,25 +114,18 @@ export default function CurriculumSection() {
                             <span className="font-semibold text-gray-700">Industry Certification</span>
                         </div>
                     </div>
-                </motion.div>
+                </div>
 
-                {/* Content Panel */}
-                <AnimatePresence mode="wait">
-                    {current && (
-                        <motion.div
+                {/* Content Panel — key remounts the panel on tab switch (was an
+                    AnimatePresence crossfade; content swap is now instant) */}
+                {current && (
+                        <div
                             key={current.id ?? activeTrack}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -30 }}
-                            transition={{ duration: 0.4 }}
                             className="space-y-6"
                         >
                             {current.weeks.map((week, index) => (
-                                <motion.div
+                                <div
                                     key={index}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: index * 0.1 }}
                                     className="group relative"
                                 >
                                     {/* Glow effect on hover */}
@@ -175,15 +141,13 @@ export default function CurriculumSection() {
                                                 <div className="flex-1">
                                                     <div className="flex items-start gap-4 mb-4">
                                                         {/* Week number badge */}
-                                                        <motion.div
-                                                            whileHover={{ rotate: 360, scale: 1.1 }}
-                                                            transition={{ duration: 0.6 }}
-                                                            className={`flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br ${currentTheme.gradient} flex items-center justify-center shadow-lg ${currentTheme.glowColor}`}
+                                                        <div
+                                                            className={`hover:rotate-[360deg] hover:scale-110 transition-transform duration-[600ms] flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br ${currentTheme.gradient} flex items-center justify-center shadow-lg ${currentTheme.glowColor}`}
                                                         >
                                                             <span className="text-white font-bold text-md">
                                                                 {week.number || String(index + 1).padStart(2, '0')}
                                                             </span>
-                                                        </motion.div>
+                                                        </div>
 
                                                         <div className="flex-1 pt-1">
                                                             <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-gray-800 transition-colors">
@@ -211,23 +175,19 @@ export default function CurriculumSection() {
                                                         {Array.isArray(week.deliverables) && week.deliverables.length > 0 ? (
                                                             <ul className="space-y-3">
                                                                 {week.deliverables.map((deliverable, i) => (
-                                                                    <motion.li
+                                                                    <li
                                                                         key={i}
-                                                                        initial={{ opacity: 0, x: -10 }}
-                                                                        animate={{ opacity: 1, x: 0 }}
-                                                                        transition={{ delay: index * 0.1 + i * 0.05 }}
                                                                         className="flex items-start gap-3 text-sm text-gray-700"
                                                                     >
-                                                                        <motion.div
-                                                                            whileHover={{ scale: 1.2 }}
-                                                                            className={`mt-1 p-1 rounded-full bg-gradient-to-br ${currentTheme.gradient} flex-shrink-0`}
+                                                                        <div
+                                                                            className={`hover:scale-125 transition-transform duration-200 mt-1 p-1 rounded-full bg-gradient-to-br ${currentTheme.gradient} flex-shrink-0`}
                                                                         >
                                                                             <div className="w-1.5 h-1.5 bg-white rounded-full" />
-                                                                        </motion.div>
+                                                                        </div>
                                                                         <span className="font-medium leading-relaxed">
                                                                             {deliverable}
                                                                         </span>
-                                                                    </motion.li>
+                                                                    </li>
                                                                 ))}
                                                             </ul>
                                                         ) : (
@@ -243,10 +203,8 @@ export default function CurriculumSection() {
                                                                 <span>{Math.round(((index + 1) / current.weeks.length) * 100)}%</span>
                                                             </div>
                                                             <div className="h-2 bg-white/60 rounded-full overflow-hidden">
-                                                                <motion.div
-                                                                    initial={{ width: 0 }}
-                                                                    animate={{ width: `${((index + 1) / current.weeks.length) * 100}%` }}
-                                                                    transition={{ duration: 0.8, delay: 0.2 }}
+                                                                <div
+                                                                    style={{ width: `${((index + 1) / current.weeks.length) * 100}%` }}
                                                                     className={`h-full bg-gradient-to-r ${currentTheme.gradient} rounded-full`}
                                                                 />
                                                             </div>
@@ -256,27 +214,20 @@ export default function CurriculumSection() {
                                             </div>
                                         </div>
                                     </div>
-                                </motion.div>
+                                </div>
                             ))}
-                        </motion.div>
+                        </div>
                     )}
-                </AnimatePresence>
 
                 {/* Bottom CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 }}
-                    className="text-center mt-16"
-                >
+                <div className="text-center mt-16">
                     <div className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${currentTheme.lightGradient} ${currentTheme.borderColor} border-2 rounded-xl`}>
                         <TrendingUp className={`w-5 h-5 ${currentTheme.textColor}`} />
                         <span className="font-semibold text-gray-700">
                             Complete all tracks to earn your BI Professional Certificate
                         </span>
                     </div>
-                </motion.div>
+                </div>
             </div>
 
             <style jsx>{`

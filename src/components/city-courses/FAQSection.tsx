@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence, easeOut } from "framer-motion";
 import { ChevronDown, HelpCircle, MessageCircle, Calendar, Sparkles } from "lucide-react";
 import Link from "next/link";
 
@@ -46,26 +45,6 @@ const FAQSection: React.FC<FAQSectionProps> = ({ data = mockData }) => {
   const { faqsContent } = data;
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(0);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: easeOut },
-    },
-  };
-
   return (
     <section className="relative py-16 md:py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden">
       {/* Animated Background Elements */}
@@ -77,50 +56,28 @@ const FAQSection: React.FC<FAQSectionProps> = ({ data = mockData }) => {
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          className="text-center mb-12 md:mb-16"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <motion.div
-            className="inline-flex items-center gap-2 px-2 py-1 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-full mb-6"
-            variants={itemVariants}
-          >
+        <div className="text-center mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-2 py-1 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-full mb-6">
             <Sparkles className="w-4 h-4 text-emerald-600" />
             <span className="text-sm font-semibold text-emerald-700 tracking-wide">
               Questions & Answers
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h2
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight"
-            variants={itemVariants}
-          >
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
             {faqsContent.title}
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto"
-            variants={itemVariants}
-          >
+          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
             {faqsContent.subtitle}
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         {/* FAQs Grid */}
-        <motion.div
-          className="space-y-3 md:space-y-4"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-        >
+        <div className="space-y-3 md:space-y-4">
           {faqsToDisplay.map((faq: any, index: number) => (
-            <motion.div
+            <div
               key={index}
-              variants={itemVariants}
               className="group"
             >
               <button
@@ -148,52 +105,39 @@ const FAQSection: React.FC<FAQSectionProps> = ({ data = mockData }) => {
                       </h3>
                     </div>
 
-                    {/* Expand Icon */}
-                    <motion.div
-                      animate={{
-                        rotate: expandedFAQ === index ? 180 : 0,
-                      }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="flex-shrink-0 mt-2"
+                    {/* Expand Icon — chevron rotates via CSS on expanded state */}
+                    <div
+                      className={`flex-shrink-0 mt-2 transition-transform duration-300 ${expandedFAQ === index ? 'rotate-180' : ''}`}
                     >
                       <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 group-hover:from-emerald-100 group-hover:to-teal-100 flex items-center justify-center transition-all duration-300">
                         <ChevronDown className="w-5 h-5 text-gray-600 group-hover:text-emerald-600 transition-colors" />
                       </div>
-                    </motion.div>
+                    </div>
                   </div>
                 </div>
               </button>
 
-              {/* Expanded Content */}
-              <AnimatePresence>
-                {expandedFAQ === index && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                    animate={{ opacity: 1, height: "auto", marginTop: 12 }}
-                    exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                  >
-                    <div className="ml-0 md:ml-16 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 border-2 border-emerald-200 rounded-2xl p-5 md:p-6 shadow-lg shadow-emerald-100/50">
-                      <p className="text-gray-700 leading-relaxed text-sm md:text-base">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+              {/* Expanded Content — CSS grid-rows accordion (replaces
+                  AnimatePresence height animation). Answer stays in the DOM
+                  (crawlable), collapsed via 0fr -> 1fr with the inner
+                  overflow-hidden clip. */}
+              <div
+                className={`grid transition-all duration-300 ease-in-out ${expandedFAQ === index ? 'grid-rows-[1fr] opacity-100 mt-3' : 'grid-rows-[0fr] opacity-0'}`}
+              >
+                <div className="overflow-hidden">
+                  <div className="ml-0 md:ml-16 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 border-2 border-emerald-200 rounded-2xl p-5 md:p-6 shadow-lg shadow-emerald-100/50">
+                    <p className="text-gray-700 leading-relaxed text-sm md:text-base">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Contact CTA Card */}
-        <motion.div
-          className="mt-12 md:mt-16 relative overflow-hidden"
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div className="mt-12 md:mt-16 relative overflow-hidden">
           <div className="relative bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-500 rounded-3xl p-8 md:p-10 text-center shadow-2xl shadow-emerald-200/50">
             {/* Decorative Elements */}
             <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mr-20 -mt-20 blur-2xl"></div>
@@ -227,7 +171,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ data = mockData }) => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

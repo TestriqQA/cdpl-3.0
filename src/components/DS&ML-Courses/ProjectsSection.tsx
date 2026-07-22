@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import {
     Code2,
     Briefcase,
@@ -112,15 +111,10 @@ const ProjectCard = ({ project, index, onEnroll }: { project: typeof projectsCon
     const theme = gradients[index % gradients.length];
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: index * 0.08, ease: [0.21, 0.47, 0.32, 0.98] }}
-            whileHover={{ y: -8, transition: { duration: 0.28 } }}
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
-            className="group relative h-full"
+        <div
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="group relative h-full hover:-translate-y-2 transition-transform duration-300"
         >
             {/* Glow */}
             <div className={`absolute inset-0 bg-gradient-to-br ${theme.card} rounded-3xl opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-500 ${theme.glow}`} />
@@ -131,13 +125,11 @@ const ProjectCard = ({ project, index, onEnroll }: { project: typeof projectsCon
 
                 <div className="p-8 flex flex-col flex-grow">
                     <div className="flex items-start justify-between mb-6">
-                        <motion.div
-                            animate={{ rotate: isHovered ? [0, -10, 10, -10, 0] : 0 }}
-                            transition={{ duration: 0.6 }}
-                            className={`w-16 h-16 bg-gradient-to-br ${theme.iconBg} rounded-2xl flex items-center justify-center shadow-lg ${theme.glow}`}
+                        <div
+                            className={`w-16 h-16 bg-gradient-to-br ${theme.iconBg} rounded-2xl flex items-center justify-center shadow-lg ${theme.glow} transition-transform duration-500 ${isHovered ? 'scale-105' : ''}`}
                         >
                             <BarChart3 className="w-8 h-8 text-white" strokeWidth={2.5} />
-                        </motion.div>
+                        </div>
                     </div>
 
                     <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-gray-800 transition-colors">
@@ -154,15 +146,12 @@ const ProjectCard = ({ project, index, onEnroll }: { project: typeof projectsCon
                         </p>
                         <div className="flex flex-wrap gap-2">
                             {project.skills.map((skill, i) => (
-                                <motion.span
+                                <span
                                     key={i}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: index * 0.06 + i * 0.03 }}
                                     className="text-xs font-semibold px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg border border-gray-200"
                                 >
                                     {skill}
-                                </motion.span>
+                                </span>
                             ))}
                         </div>
                     </div>
@@ -170,21 +159,19 @@ const ProjectCard = ({ project, index, onEnroll }: { project: typeof projectsCon
                     <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-6" />
 
                     <div className="mt-auto">
-                        <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
+                        <button
                             onClick={onEnroll}
-                            className={`flex-1 bg-gradient-to-r ${theme.accent} text-white font-bold px-3 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2`}
+                            className={`flex-1 bg-gradient-to-r ${theme.accent} text-white font-bold px-3 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]`}
                         >
                             <Eye className="w-5 h-5" />
                             View Project Details
-                        </motion.button>
+                        </button>
                     </div>
                 </div>
 
                 <div className={`absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl ${theme.card} rounded-tl-full opacity-50`} />
             </div>
-        </motion.div>
+        </div>
     );
 };
 
@@ -192,28 +179,19 @@ const ProjectCard = ({ project, index, onEnroll }: { project: typeof projectsCon
    BenefitCard
    -------------------------- */
 const BenefitCard = ({ benefit, index }: { benefit: typeof benefits[0]; index: number }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: index * 0.12 }}
-        whileHover={{ y: -6, transition: { duration: 0.2 } }}
-        className="group relative"
-    >
+    <div className="group relative hover:-translate-y-1.5 transition-transform duration-200">
         <div className={`absolute inset-0 bg-gradient-to-br ${benefit.bgColor} rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500`} />
         <div className="relative bg-white border-2 border-gray-200 rounded-2xl p-8 shadow-lg group-hover:shadow-2xl transition-all duration-300">
-            <motion.div
-                whileHover={{ rotate: 360, scale: 1.05 }}
-                transition={{ duration: 0.6 }}
-                className={`w-16 h-16 bg-gradient-to-br ${benefit.color} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}
+            <div
+                className={`hover:rotate-[360deg] hover:scale-105 transition-transform duration-[600ms] w-16 h-16 bg-gradient-to-br ${benefit.color} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}
             >
                 <benefit.icon className="w-8 h-8 text-white" />
-            </motion.div>
+            </div>
 
             <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
             <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
         </div>
-    </motion.div>
+    </div>
 );
 
 /* --------------------------
@@ -239,16 +217,16 @@ const ProjectsSection = () => {
 
             <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
                 {/* header */}
-                <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
-                    <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-200/50 rounded-full mb-6">
+                <div className="text-center mb-16">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-200/50 rounded-full mb-6">
                         <Code2 className="w-4 h-4 text-blue-600" />
                         <span className="text-sm font-semibold text-blue-700">Capstone Projects</span>
-                    </motion.div>
+                    </div>
 
                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{projectsContent.title}</h2>
                     <p className="text-xl font-semibold text-gray-700 mb-4">{projectsContent.subtitle}</p>
                     <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">{projectsContent.description}</p>
-                </motion.div>
+                </div>
 
                 {/* projects grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
@@ -258,15 +236,15 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* why build */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-                    <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-200/50 rounded-full mb-6">
+                <div className="text-center mb-12">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-200/50 rounded-full mb-6">
                         <TrendingUp className="w-4 h-4 text-emerald-600" />
                         <span className="text-sm font-semibold text-emerald-700">Career Advantages</span>
-                    </motion.div>
+                    </div>
 
                     <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Why Build These Projects?</h3>
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto">Gain hands-on experience from data ingestion to deployed models — the exact skills hiring managers ask for.</p>
-                </motion.div>
+                </div>
 
                 {/* benefits grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
@@ -276,7 +254,7 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* bottom CTA */}
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="text-center">
+                <div className="text-center">
                     <div className="inline-flex flex-col items-center gap-6 p-8 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border-2 border-blue-200 rounded-2xl shadow-xl max-w-3xl mx-auto">
                         <div className="flex items-center gap-4">
                             <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
@@ -289,17 +267,17 @@ const ProjectsSection = () => {
                         </div>
 
                         <div className="flex flex-wrap gap-4 justify-center">
-                            <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => setIsPopupOpen(true)} className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2">
+                            <button onClick={() => setIsPopupOpen(true)} className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 hover:scale-105 active:scale-95">
                                 Enroll in DS & ML Course
                                 <ArrowRight className="w-5 h-5" />
-                            </motion.button>
+                            </button>
 
                             <Link href="/contact-us" className="px-8 py-4 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-300 hover:border-gray-400 transition-all duration-300">
                                 Talk to Course Advisor
                             </Link>
                         </div>
                     </div>
-                </motion.div>
+                </div>
                 <EnrollPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} onSubmit={handleEnrollSubmit} source="Data Science & Machine Learning Course Category Page - Projects Section - Enroll Now" />
             </div>
 
