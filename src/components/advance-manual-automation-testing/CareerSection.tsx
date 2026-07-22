@@ -2,7 +2,7 @@
 
 import { Briefcase, Building2, ArrowRight, Sparkles } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import type { JSX } from 'react';
 const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
 
@@ -13,61 +13,6 @@ function SectionLoader({ label = "Loading..." }: { label?: string }) {
     </div>
   );
 }
-
-/* ---------- Motion typing & lazy loader (safe fallback) ---------- */
-type MotionOnlyProps = {
-  initial?: unknown;
-  animate?: unknown;
-  whileInView?: unknown;
-  whileHover?: unknown;
-  whileTap?: unknown;
-  exit?: unknown;
-  transition?: unknown;
-  variants?: Record<string, unknown>;
-  viewport?: boolean | { once?: boolean; amount?: number };
-};
-
-type MotionDivProps = JSX.IntrinsicElements['div'] & MotionOnlyProps;
-type MotionDivLike = React.ComponentType<MotionDivProps>;
-
-function useMotionDiv(): MotionDivLike {
-  // Fallback strips motion props and tolerates undefined props
-  const Fallback: MotionDivLike = (props: MotionDivProps) => {
-    const safe = (props ?? {}) as MotionDivProps;
-    const {
-      initial,
-      animate,
-      whileInView,
-      whileHover,
-      whileTap,
-      exit,
-      transition,
-      variants,
-      viewport,
-      ...rest
-    } = safe;
-    return <div {...rest} />;
-  };
-
-  const [Comp, setComp] = React.useState<MotionDivLike>(() => Fallback);
-
-  React.useEffect(() => {
-    let mounted = true;
-    (async () => {
-      const m = await import('framer-motion');
-      if (mounted) {
-        // cast to our compatible type
-        setComp(() => (m.motion.div as unknown as MotionDivLike));
-      }
-    })();
-    return () => {
-      mounted = false;
-    };
-  }, []);
-
-  return Comp;
-}
-
 
 /* ---------- Data (typed) ---------- */
 const ROLES = [
@@ -98,7 +43,6 @@ type CompanyItem = (typeof COMPANIES)[number];
 
 /* ---------- Component ---------- */
 export default function CareerSection(): JSX.Element {
-  const MotionDiv = useMotionDiv();
   const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
 
 
@@ -111,29 +55,18 @@ export default function CareerSection(): JSX.Element {
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <MotionDiv
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="text-center"
-        >
+        <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
             High-Paying <span className='text-ST'>QA Careers</span> After Selenium Training
           </h2>
           <p className="mt-5 text-sm sm:text-base text-slate-600 max-w-3xl mx-auto">
             Master <strong>what is selenium testing</strong>, <strong>ui testing</strong>, and <strong>mobile automation testing</strong> to unlock top QA roles. Prepare for <strong>web testing interview questions</strong> and pass the <strong>selenium quiz</strong> with confidence. <strong>4,00,000+ QA openings</strong> • Typical salary <strong>₹5–20 LPA</strong>.
           </p>
-        </MotionDiv>
+        </div>
 
         <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2">
           {/* Roles */}
-          <MotionDiv
-            initial={{ opacity: 0, x: -18 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-          >
+          <div>
             <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-slate-900">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-sky-600 text-white">
                 <Briefcase className="h-5 w-5" />
@@ -156,15 +89,10 @@ export default function CareerSection(): JSX.Element {
                 </li>
               ))}
             </ul>
-          </MotionDiv>
+          </div>
 
           {/* Companies */}
-          <MotionDiv
-            initial={{ opacity: 0, x: 18 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-          >
+          <div>
             <h3 className="mb-6 flex items-center gap-3 text-2xl font-bold text-slate-900">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-violet-600 text-white">
                 <Building2 className="h-5 w-5" />
@@ -192,17 +120,11 @@ export default function CareerSection(): JSX.Element {
                 </li>
               ))}
             </ul>
-          </MotionDiv>
+          </div>
         </div>
 
         {/* CTA */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="mt-12 text-center"
-        >
+        <div className="mt-12 text-center">
           <button
             onClick={() => setIsCareerModalOpen(true)}
             className="cursor-pointer inline-flex items-center gap-2 rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
@@ -211,7 +133,7 @@ export default function CareerSection(): JSX.Element {
             Start Your QA Career
             <ArrowRight className="h-5 w-5" />
           </button>
-        </MotionDiv>
+        </div>
       </div>
 
       <CareerSessionModal

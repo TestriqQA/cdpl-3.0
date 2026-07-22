@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { TrendingUp, Briefcase, DollarSign, Smile, Globe } from "lucide-react";
 
