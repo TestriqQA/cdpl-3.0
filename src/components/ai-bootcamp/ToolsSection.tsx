@@ -1,8 +1,6 @@
-"use client";
-
 import { Zap, BarChart3, Mail, Smartphone } from "lucide-react";
-import React, { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
+import React from "react";
+import EnrollButton from "./ui/EnrollButton";
 
 interface ToolCategory {
     title: string;
@@ -192,7 +190,6 @@ const tools: ToolCard[] = [
 ];
 
 export default function ToolsSection() {
-    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
     const courseName = "AI Bootcamp Course";
 
     return (
@@ -334,23 +331,17 @@ export default function ToolsSection() {
                             <strong>AI, SEO, analytics, email marketing, and paid media tools</strong> that
                             top digital marketing professionals rely on daily.
                         </p>
-                        <button
-                            onClick={() => setIsEnrollOpen(true)}
+                        <EnrollButton
+                            source="AI Bootcamp - Tools Section"
+                            courseName={courseName}
                             className="cursor-pointer inline-flex items-center justify-center px-8 py-3 rounded-xl bg-brand text-white font-semibold shadow-md hover:bg-brand transition-colors"
                         >
                             Master These Tools Today
-                        </button>
+                        </EnrollButton>
                     </div>
                 </div>
 
             </div>
-
-            <EnrollModal
-                isOpen={isEnrollOpen}
-                onClose={() => setIsEnrollOpen(false)}
-                source="AI Bootcamp - Tools Section"
-                courseName={courseName}
-            />
         </section>
     );
 }

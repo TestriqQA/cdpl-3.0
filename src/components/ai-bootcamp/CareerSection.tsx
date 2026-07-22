@@ -1,8 +1,6 @@
-"use client";
-
-import React, { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { Briefcase, Users, TrendingUp, Award, ArrowRight } from 'lucide-react';
-import EnrollModal from "@/components/EnrollModal";
+import EnrollButton from "./ui/EnrollButton";
 
 interface CareerRole {
     title: string;
@@ -59,7 +57,6 @@ const hiringCompanies = [
 ];
 
 export default function CareerSection() {
-    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
     const courseName = "AI Bootcamp Course";
 
     return (
@@ -197,22 +194,16 @@ export default function CareerSection() {
                         <strong>high-paying digital marketing career</strong> with hands-on projects, live campaigns,
                         and expert mentorship.
                     </p>
-                    <button
-                        onClick={() => setIsEnrollOpen(true)}
+                    <EnrollButton
+                        source="AI Bootcamp - Career Section"
+                        courseName={courseName}
                         className="cursor-pointer inline-flex items-center justify-center px-8 py-3 rounded-full bg-brand text-white font-semibold text-base md:text-lg shadow-md hover:bg-brand transition-colors"
                     >
                         Start Your Digital Marketing Career Journey
                         <ArrowRight className="ml-2 h-5 w-5" />
-                    </button>
+                    </EnrollButton>
                 </div>
             </div>
-
-            <EnrollModal
-                isOpen={isEnrollOpen}
-                onClose={() => setIsEnrollOpen(false)}
-                source="AI Bootcamp - Career Section"
-                courseName={courseName}
-            />
         </section>
     );
 }
