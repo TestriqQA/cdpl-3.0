@@ -1,8 +1,6 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import { TrendingUp, Award, Users, Zap } from "lucide-react";
-import EnrollModal from "@/components/EnrollModal";
+import EnrollButton from "./ui/EnrollButton";
 
 interface Stat {
     value: string;
@@ -59,7 +57,6 @@ const stats: Stat[] = [
 ];
 
 export default function StatsSection() {
-    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
     const courseName = "AI Bootcamp Course";
 
     return (
@@ -219,24 +216,18 @@ export default function StatsSection() {
                                     Ready to be part of this booming industry? Our bootcamp prepares you
                                     for high-paying roles in just 30 hours.
                                 </p>
-                                <button
-                                    onClick={() => setIsEnrollOpen(true)}
+                                <EnrollButton
+                                    source="AI Bootcamp - Stats Section"
+                                    courseName={courseName}
                                     className="cursor-pointer inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-orange-500 to-brand px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:from-brand hover:to-brand hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
                                 >
                                     Start Your Journey Today
-                                </button>
+                                </EnrollButton>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <EnrollModal
-                isOpen={isEnrollOpen}
-                onClose={() => setIsEnrollOpen(false)}
-                source="AI Bootcamp - Stats Section"
-                courseName={courseName}
-            />
         </section>
     );
 }

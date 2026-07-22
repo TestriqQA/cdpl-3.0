@@ -1,8 +1,6 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import { Users, Briefcase, Lightbulb, Zap, CheckCircle } from "lucide-react";
-import EnrollModal from "@/components/EnrollModal";
+import EnrollButton from "./ui/EnrollButton";
 
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
@@ -103,7 +101,6 @@ const prerequisites = [
 ];
 
 export default function WhoShouldEnroll() {
-    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
     const courseName = "AI Bootcamp Course";
 
     return (
@@ -267,22 +264,16 @@ export default function WhoShouldEnroll() {
                             </strong>{" "}
                             with in-demand, job-ready skills.
                         </p>
-                        <button
-                            onClick={() => setIsEnrollOpen(true)}
+                        <EnrollButton
+                            source="AI Bootcamp - Who Should Enroll"
+                            courseName={courseName}
                             className="cursor-pointer inline-flex items-center justify-center rounded-lg bg-brand px-8 py-4 text-base font-semibold text-white shadow-lg transition-all hover:from-brand hover:to-brand hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-orange-300"
                         >
                             Check Your Eligibility
-                        </button>
+                        </EnrollButton>
                     </div>
                 </div>
             </div>
-
-            <EnrollModal
-                isOpen={isEnrollOpen}
-                onClose={() => setIsEnrollOpen(false)}
-                source="AI Bootcamp - Who Should Enroll"
-                courseName={courseName}
-            />
         </section>
     );
 }

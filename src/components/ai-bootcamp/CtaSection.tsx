@@ -1,14 +1,9 @@
-"use client";
-
 import { ArrowRight, Download, CheckCircle } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+import EnrollButton from "./ui/EnrollButton";
+import SyllabusButton from "./ui/SyllabusButton";
 
 export default function CtaSection() {
-    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
-    const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
     const courseName = "AI Bootcamp Course";
 
     return (
@@ -65,35 +60,23 @@ export default function CtaSection() {
 
                     {/* CTA Buttons – keeps Enroll + Download, styled like reference */}
                     <div className="flex flex-col md:flex-row gap-4 justify-center mb-10">
-                        <button
-                            onClick={() => setIsEnrollOpen(true)}
+                        <EnrollButton
+                            source="AI Bootcamp - CTA Section"
+                            courseName={courseName}
                             className="cursor-pointer flex items-center justify-center bg-brand hover:bg-brand text-white font-semibold px-8 py-6 text-base rounded-lg shadow-lg hover:shadow-xl transition-all"
                         >
                             Enroll Now
                             <ArrowRight className="w-5 h-5 ml-2" />
-                        </button>
-                        <button
-                            onClick={() => setIsSyllabusOpen(true)}
+                        </EnrollButton>
+                        <SyllabusButton
+                            source="AI Bootcamp - CTA Section"
+                            courseName={courseName}
                             className="cursor-pointer flex items-center justify-center border-2 border-white text-white hover:bg-white/10 font-semibold px-8 py-6 text-base rounded-lg transition-all"
                         >
                             <Download className="w-5 h-5 mr-2" />
                             Download Free Curriculum
-                        </button>
+                        </SyllabusButton>
                     </div>
-
-                    {/* Modals */}
-                    <EnrollModal
-                        isOpen={isEnrollOpen}
-                        onClose={() => setIsEnrollOpen(false)}
-                        source="AI Bootcamp - CTA Section"
-                        courseName={courseName}
-                    />
-                    <SyllabusDownloadModal
-                        isOpen={isSyllabusOpen}
-                        onClose={() => setIsSyllabusOpen(false)}
-                        source="AI Bootcamp - CTA Section"
-                        courseName={courseName}
-                    />
 
 
                     {/* Limited Time Offer – original offer + small SEO boost */}

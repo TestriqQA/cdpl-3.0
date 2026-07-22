@@ -1,10 +1,6 @@
-"use client";
-
-import React, { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
+import EnrollButton from "./ui/EnrollButton";
 
 export default function CareerRoadmapSection() {
-    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
     const courseName = "AI Bootcamp Course";
 
     return (
@@ -170,24 +166,18 @@ export default function CareerRoadmapSection() {
 
                 {/* Bottom CTA */}
                 <div className="text-center mt-20">
-                    <button
-                        onClick={() => setIsEnrollOpen(true)}
+                    <EnrollButton
+                        source="AI Bootcamp - Career Roadmap"
+                        courseName={courseName}
                         className="cursor-pointer inline-flex items-center justify-center px-8 py-4 rounded-full bg-slate-900 text-white font-bold text-lg hover:bg-slate-800 transition-colors shadow-lg hover:shadow-xl"
                     >
                         Start Your 8-Step Journey Today
-                    </button>
+                    </EnrollButton>
                     <p className="mt-4 text-slate-500">
                         Join the next cohort and start your transformation.
                     </p>
                 </div>
             </div>
-
-            <EnrollModal
-                isOpen={isEnrollOpen}
-                onClose={() => setIsEnrollOpen(false)}
-                source="AI Bootcamp - Career Roadmap"
-                courseName={courseName}
-            />
         </section>
     );
 }
