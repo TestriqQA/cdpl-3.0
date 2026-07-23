@@ -28,6 +28,9 @@ import GoogleAnalytics from '@/components/GoogleAnalytics';
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import SpecialOfferBanner from "@/components/SpecialOfferBanner";
+// Suppresses the marketing chrome on the /cms Studio route — see the component
+// for why (the header + footer around <NextStudio/> caused CLS 0.922 there).
+import SiteChrome from "@/components/Layout/SiteChrome";
 // BLG-139: VisualEditing establishes the connection between a previewed
 // page and the Sanity Presentation tool. It is only rendered when Next.js
 // draft mode is on, so it never ships to normal visitors.
@@ -125,15 +128,21 @@ export default async function RootLayout({
       </head>
 
       <body className={`${inter.variable} font-sans antialiased`}>
-        <MetaPixel />
+        <SiteChrome>
+          <MetaPixel />
 
-        <div className="sticky top-0 z-[100] w-full">
-          <SpecialOfferBanner />
-          <Header />
-        </div>
+          <div className="sticky top-0 z-[100] w-full">
+            <SpecialOfferBanner />
+            <Header />
+          </div>
+        </SiteChrome>
+
         <main>{children}</main>
-        <Footer />
-        <GoogleAnalytics />
+
+        <SiteChrome>
+          <Footer />
+          <GoogleAnalytics />
+        </SiteChrome>
 
         {/* BLG-139: only mounted inside the Sanity Presentation tool —
             connects the previewed page to the Studio. */}
