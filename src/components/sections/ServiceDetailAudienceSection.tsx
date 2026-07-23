@@ -1,5 +1,3 @@
-'use client';
-
 import { UserCheck, Check } from 'lucide-react';
 import type { ServiceClient } from '@/types/service';
 import { useMemo } from 'react';

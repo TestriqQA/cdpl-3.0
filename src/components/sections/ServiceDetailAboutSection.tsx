@@ -1,5 +1,3 @@
-'use client';
-
 import type { ServiceClient } from '@/types/service';
 
 export default function ServiceDetailAboutSection({ service }: { service: ServiceClient }) {
