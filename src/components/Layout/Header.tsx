@@ -7,12 +7,17 @@ import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { courseSlugs } from "@/data/headerSlugs";
-const EnquireModal = dynamic(() => import("./EnquireModal"), { ssr: false }); // Modal is interactive-only, ssr:false is OK
-// ⚠️  SEO FIX (April 2026): Changed ssr:false → ssr:true for navigation menus.
-// With ssr:false, Googlebot could NOT see course links in the mega/mobile menu
-// from the initial HTML, reducing internal link discovery for course pages.
-const MegaMenuContent = dynamic(() => import("./MegaMenuContent"), { ssr: true });
-const MobileMenuContent = dynamic(() => import("./MobileMenuContent"), { ssr: true });
+// ⚠️  SEO FIX (April 2026): the nav menus must be in the initial HTML so Googlebot
+// discovers the course links (they were ssr:false before, which hid them).
+// They are now imported directly rather than via dynamic(ssr:true): that wrapper
+// kept them in the HTML but added a client Suspense boundary which swaps the
+// markup out during hydration — the layout-shift pattern fixed in d34d08e /
+// BLG-010. The Header renders on every page, so the boundary cost was sitewide.
+import MegaMenuContent from "./MegaMenuContent";
+import MobileMenuContent from "./MobileMenuContent";
+
+// Modal is interactive-only, so ssr:false is correct here and stays dynamic.
+const EnquireModal = dynamic(() => import("./EnquireModal"), { ssr: false });
 
 // Dummy comment to force build refresh
 

@@ -188,38 +188,35 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <JsonLd id="article-schema" schema={articleSchema} />
             <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
 
+            {/* No <Suspense> wrappers here: none of these children do async work,
+                so the boundaries never suspended for a real reason — they only
+                let a small "Loading …" div replace the real section during
+                hydration, which is the layout-shift pattern fixed in d34d08e /
+                BLG-010. Rendered directly. */}
             <article className="blog-post-page">
                 {/* Category Navigation Menu */}
                 <nav aria-label="Blog categories">
-                    <React.Suspense fallback={<div>Loading menu...</div>}>
-                        <BlogCategoryMenu />
-                    </React.Suspense>
+                    <BlogCategoryMenu />
                 </nav>
 
                 {/* Blog Post Hero Section */}
                 <header>
-                    <React.Suspense fallback={<div>Loading header...</div>}>
-                        <BlogPostHeroSection post={post} />
-                    </React.Suspense>
+                    <BlogPostHeroSection post={post} />
                 </header>
 
                 {/* Blog Post Main Content */}
                 <div role="region" aria-label="Article content">
-                    <React.Suspense fallback={<div>Loading content...</div>}>
-                        <BlogPostSection
-                            post={post}
-                            relatedPosts={relatedPosts}
-                            categories={categories}
-                            latestPosts={latestPosts}
-                        />
-                    </React.Suspense>
+                    <BlogPostSection
+                        post={post}
+                        relatedPosts={relatedPosts}
+                        categories={categories}
+                        latestPosts={latestPosts}
+                    />
                 </div>
 
                 {/* Contact Section */}
                 <aside role="complementary" aria-label="Contact information">
-                    <React.Suspense fallback={<div>Loading contact form...</div>}>
-                        <BlogPostContactSection slug={slug} />
-                    </React.Suspense>
+                    <BlogPostContactSection slug={slug} />
                 </aside>
             </article>
         </>
