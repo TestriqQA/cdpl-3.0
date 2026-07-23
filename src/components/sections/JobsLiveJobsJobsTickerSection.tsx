@@ -1,5 +1,3 @@
-"use client";
-
 import type { Job } from "@/lib/jobsData";
 
 const formatDate = (iso: string) =>
