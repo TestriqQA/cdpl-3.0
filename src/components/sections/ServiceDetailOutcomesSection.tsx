@@ -1,3 +1,5 @@
+'use client';
+
 import { CircuitBoard, Check } from 'lucide-react';
 import type { ServiceClient } from '@/types/service';
 import React, { useMemo } from 'react';

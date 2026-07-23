@@ -1,3 +1,5 @@
+'use client';
+
 import { ScrollText, CheckCircle2 } from 'lucide-react';
 import type { ServiceClient } from '@/types/service';
 import { useMemo, type CSSProperties } from 'react';
