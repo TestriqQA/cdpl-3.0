@@ -4,7 +4,6 @@
 // every live job (Sanity-first via getLiveJobs(), static `JOBS` fallback).
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import dynamic from "next/dynamic";
 import type { Job } from "@/lib/jobsData";
 import { getLiveJobs, getLiveJobBySlug, buildLiveJobPostingSchema } from "@/lib/liveJobs";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
@@ -15,45 +14,12 @@ import JsonLd from "@/components/JsonLd";
 import JobsLiveJobsJobsHeroSection from "@/components/sections/JobsLiveJobsJobsHeroSection";
 import { JobsLiveJobsListingSection } from "@/components/sections/JobsLiveJobsListingSection";
 
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-    return (
-        <div className="flex items-center justify-center py-16">
-            <p className="text-gray-500">{label}</p>
-        </div>
-    );
-}
-
-const JobsLiveJobsWhyWePostJobsSection = dynamic(
-    () =>
-        import(
-            "@/components/sections/LiveJobsLiveJobsWhyWePostJobsSection"
-        ).then((m) => m.default),
-    { ssr: true, loading: () => <SectionLoader label="Loading details..." /> },
-);
-
-const JobsLiveJobsTestimonialSection = dynamic(
-    () =>
-        import("@/components/sections/JobsLiveJobsTestimonialSection").then(
-            (m) => m.default,
-        ),
-    { ssr: true, loading: () => <SectionLoader /> },
-);
-
-const JobsLiveJobsReviewSection = dynamic(
-    () =>
-        import("@/components/sections/JobsLiveJobsReviewSection").then(
-            (m) => m.default,
-        ),
-    { ssr: true, loading: () => <SectionLoader /> },
-);
-
-const JobsLiveJobsSubscribeCTASection = dynamic(
-    () =>
-        import(
-            "@/components/sections/JobsLiveJobsSubscribeCTASection"
-        ).then((m) => m.JobsLiveJobsSubscribeCTASection),
-    { ssr: true, loading: () => <SectionLoader /> },
-);
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
+import JobsLiveJobsWhyWePostJobsSection from "@/components/sections/LiveJobsLiveJobsWhyWePostJobsSection";
+import JobsLiveJobsTestimonialSection from "@/components/sections/JobsLiveJobsTestimonialSection";
+import JobsLiveJobsReviewSection from "@/components/sections/JobsLiveJobsReviewSection";
+import { JobsLiveJobsSubscribeCTASection } from "@/components/sections/JobsLiveJobsSubscribeCTASection";
 
 const DEFAULT_BANNER = "/og-images/jobs-live-jobs-og.webp";
 

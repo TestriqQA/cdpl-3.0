@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateServicesPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
@@ -30,31 +29,16 @@ export const metadata: Metadata = generateStaticPageMetadata({
   image: "/og-images/services-og.webp",
 });
 
-// Simple loading UI used by all sections
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-10">
-      <p className="text-gray-500">{label}</p>
-    </div>
-  );
-}
-
 // ---------- Static Import for Hero (LCP Optimization) ----------
 import ServicesHeroSection from "@/components/sections/ServicesHeroSection";
 // ServicesGridSection is now a server component that takes a `services`
 // prop — static import so the page-level fetched data can be passed in.
 import ServicesGridSection from "@/components/sections/ServicesGridSection";
 
-// ---------- Dynamic sections (SSR enabled) ----------
-const ServicesWhyChooseUsSection = dynamic(
-  () => import("@/components/sections/ServicesWhyChooseUsSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading benefits..." /> }
-);
-
-const ServicesCTASection = dynamic(
-  () => import("@/components/sections/ServicesCTASection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading CTA..." /> }
-);
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
+import ServicesWhyChooseUsSection from "@/components/sections/ServicesWhyChooseUsSection";
+import ServicesCTASection from "@/components/sections/ServicesCTASection";
 
 // ============================================================================
 // SERVICES PAGE COMPONENT

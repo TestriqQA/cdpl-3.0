@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import {
   generateCourseSchema,
@@ -7,38 +6,12 @@ import {
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
-/* ---------- Small, reusable loading UI ---------- */
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-16">
-      <p className="text-gray-500">{label}</p>
-    </div>
-  );
-}
-
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 import AAACerticationHeroSection from "@/components/sections/AAACerticationHeroSection";
-
-/* ---------- Dynamic sections (client components) ---------- */
-// Hero is now static for LCP optimization
-// const AAACerticationHeroSection = dynamic(
-//   () => import("@/components/sections/AAACerticationHeroSection"),
-//   { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
-// );
-
-const AAACertificationWhySection = dynamic(
-  () => import("@/components/sections/AAACertificationWhySection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading highlights..." /> }
-);
-
-const AAACertificationCurriculumSection = dynamic(
-  () => import("@/components/sections/AAACertificationCurriculumSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading curriculum..." /> }
-);
-
-const AAACertificationOutcomesCtaSection = dynamic(
-  () => import("@/components/sections/AAACertificationOutcomesCtaSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading outcomes..." /> }
-);
+import AAACertificationWhySection from "@/components/sections/AAACertificationWhySection";
+import AAACertificationCurriculumSection from "@/components/sections/AAACertificationCurriculumSection";
+import AAACertificationOutcomesCtaSection from "@/components/sections/AAACertificationOutcomesCtaSection";
 
 /* ---------- SEO ---------- */
 export const metadata: Metadata = generateStaticPageMetadata({

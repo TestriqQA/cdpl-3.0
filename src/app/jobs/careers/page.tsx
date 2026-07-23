@@ -1,5 +1,12 @@
-import dynamic from "next/dynamic";
 import JobsCareersHeroSection from "@/components/sections/JobsCareersHeroSection";
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
+import JobsCareersOpenRolesSection from "@/components/sections/JobsCareersOpenRolesSection";
+import JobsCareersProcessSection from "@/components/sections/JobsCareersProcessSection";
+import JobsCareersBenefitsSection from "@/components/sections/JobsCareersBenefitsSection";
+import JobsCareersCultureSection from "@/components/sections/JobsCareersCultureSection";
+import JobsCareersFAQSection from "@/components/sections/JobsCareersFAQSection";
+import JobsCareersCTASection from "@/components/sections/JobsCareersCTASection";
 import type { Metadata } from "next";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateCareersPageAllSchemas, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
@@ -38,49 +45,6 @@ export const metadata: Metadata = generateStaticPageMetadata({
 // ====== Revalidation (ISR) ======
 export const revalidate = 60;
 
-
-// ====== Section Loader ======
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-    return (
-        <div className="flex items-center justify-center py-16">
-            <p className="text-gray-500 dark:text-gray-500">{label}</p>
-        </div>
-    );
-}
-
-// ====== Dynamic Section Imports (typed) ======
-// JobsCareersHeroSection is now static
-
-
-const JobsCareersOpenRolesSection = dynamic<{ jobs: SanityJob[] }>(
-    () => import("@/components/sections/JobsCareersOpenRolesSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading roles..." /> }
-);
-
-const JobsCareersProcessSection = dynamic(
-    () => import("@/components/sections/JobsCareersProcessSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading process..." /> }
-);
-
-const JobsCareersBenefitsSection = dynamic(
-    () => import("@/components/sections/JobsCareersBenefitsSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading benefits..." /> }
-);
-
-const JobsCareersCultureSection = dynamic(
-    () => import("@/components/sections/JobsCareersCultureSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading culture..." /> }
-);
-
-const JobsCareersFAQSection = dynamic(
-    () => import("@/components/sections/JobsCareersFAQSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading FAQs..." /> }
-);
-
-const JobsCareersCTASection = dynamic(
-    () => import("@/components/sections/JobsCareersCTASection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading CTA..." /> }
-);
 
 // ====== Page =====
 export default async function Page() {

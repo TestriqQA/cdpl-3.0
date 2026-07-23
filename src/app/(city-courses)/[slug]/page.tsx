@@ -15,20 +15,20 @@ import JsonLd from "@/components/JsonLd";
 import { permanentRedirect, notFound } from "next/navigation";
 
 import HeroSection from "@/components/city-courses/HeroSection";
-import dynamic from "next/dynamic";
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
+import CourseOverviewSection from "@/components/city-courses/CourseOverviewSection";
+import CurriculumSection from "@/components/city-courses/CurriculumSection";
+import ProjectsSection from "@/components/city-courses/ProjectsSection";
+import WhyChooseSection from "@/components/city-courses/WhyChooseSection";
+import CareerPathSection from "@/components/city-courses/CareerPathSection";
+import FAQSection from "@/components/city-courses/FAQSection";
+import CTASection from "@/components/city-courses/CTASection";
+
 // Helper: interpolate {location_name} with actual location
 function interpolateLocation(text: string, location: string): string {
   return text.replace(/{location_name}/g, location).replace(/{city}/g, location);
 }
-
-// Dynamic imports for below-the-fold content
-const CourseOverviewSection = dynamic(() => import("@/components/city-courses/CourseOverviewSection"), { ssr: true });
-const CurriculumSection = dynamic(() => import("@/components/city-courses/CurriculumSection"), { ssr: true });
-const ProjectsSection = dynamic(() => import("@/components/city-courses/ProjectsSection"), { ssr: true });
-const WhyChooseSection = dynamic(() => import("@/components/city-courses/WhyChooseSection"), { ssr: true });
-const CareerPathSection = dynamic(() => import("@/components/city-courses/CareerPathSection"), { ssr: true });
-const FAQSection = dynamic(() => import("@/components/city-courses/FAQSection"), { ssr: true });
-const CTASection = dynamic(() => import("@/components/city-courses/CTASection"), { ssr: true });
 
 import NotFoundPage from "@/components/NotFoundPage";
 

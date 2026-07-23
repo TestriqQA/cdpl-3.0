@@ -5,57 +5,26 @@
  */
 
 import React from 'react';
-import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateAboutPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
 // ============================================================================
-// DYNAMIC IMPORTS
+// SECTION IMPORTS
 // ============================================================================
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 
 import AboutHeroSection from "@/components/sections/AboutHeroSection";
-
-const AboutStatsSection = dynamic(
-  () => import("@/components/sections/AboutStatsSection"),
-  { ssr: true, loading: () => null }
-);
-
-const AboutWhyJoinUs = dynamic(
-  () => import("@/components/sections/AboutWhyJoinUs"),
-  { ssr: true, loading: () => null }
-);
-
-const AboutStorySection = dynamic(
-  () => import("@/components/sections/AboutStorySection"),
-  { ssr: true, loading: () => null }
-);
-
-const AboutFacultyStrip = dynamic(
-  () => import("@/components/sections/AboutFacultyStrip"),
-  { ssr: true, loading: () => null }
-);
-
-const AboutMissionVision = dynamic(
-  () => import("@/components/sections/AboutVisionMission"),
-  { ssr: true, loading: () => null }
-);
-
-const AboutFAQSection = dynamic(
-  () => import("@/components/sections/AboutFAQSection"),
-  { ssr: true, loading: () => null }
-);
-
-const AboutCTASection = dynamic(
-  () => import("@/components/sections/AboutCTASection"),
-  { ssr: true, loading: () => null }
-);
-
-const AboutAccreditations = dynamic(
-  () => import("@/components/sections/AboutAccreditations"),
-  { ssr: true, loading: () => null }
-);
+import AboutStatsSection from "@/components/sections/AboutStatsSection";
+import AboutWhyJoinUs from "@/components/sections/AboutWhyJoinUs";
+import AboutStorySection from "@/components/sections/AboutStorySection";
+import AboutFacultyStrip from "@/components/sections/AboutFacultyStrip";
+import AboutMissionVision from "@/components/sections/AboutVisionMission";
+import AboutFAQSection from "@/components/sections/AboutFAQSection";
+import AboutCTASection from "@/components/sections/AboutCTASection";
+import AboutAccreditations from "@/components/sections/AboutAccreditations";
 
 // ============================================================================
 // METADATA (Page-specific only)

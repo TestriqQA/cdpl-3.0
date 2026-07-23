@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 
 import { buildLocationsHierarchy } from "@/data/courseData/buildLocationsHierarchy";
@@ -12,31 +11,14 @@ import type { CourseData } from "@/types/courseData";
 // Your data (currently a Record<string, CourseData>)
 import { courseData } from "@/types/courseData";
 
-/* -------------------------------- Loaders -------------------------------- */
-
-/* -------------------------- Dynamic (client) sections -------------------------- */
-
-const LocationsHeroSection = dynamic(
-  () => import("@/components/sections/LocationsHeroSection")
-);
-
-const HierarchicalLocationsSection = dynamic(
-  () => import("@/components/sections/LocationsHierarchicalLocationsSection")
-);
-
-const LocationsBenefitsSection = dynamic(
-  () => import("@/components/sections/LocationsBenefitsSection")
-);
-
-const LocationsCTASection = dynamic(
-  () => import("@/components/sections/LocationsCTASection")
-);
-
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
+import LocationsHeroSection from "@/components/sections/LocationsHeroSection";
+import HierarchicalLocationsSection from "@/components/sections/LocationsHierarchicalLocationsSection";
+import LocationsBenefitsSection from "@/components/sections/LocationsBenefitsSection";
+import LocationsCTASection from "@/components/sections/LocationsCTASection";
 // NEW: Services section (replaces the client map section)
-const LocationsServicesSection = dynamic(
-  () => import("@/components/sections/LocationsServicesSection"),
-  { ssr: true }
-);
+import LocationsServicesSection from "@/components/sections/LocationsServicesSection";
 
 /* --------------------------------- Metadata --------------------------------- */
 

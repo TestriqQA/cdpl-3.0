@@ -11,7 +11,6 @@
  */
 
 import React from 'react';
-import dynamic from 'next/dynamic';
 import type { Metadata } from "next";
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateHomePageSchema } from "@/lib/schema-generators";
@@ -19,8 +18,10 @@ import JsonLd from "@/components/JsonLd";
 import { HOME_FAQS } from "@/components/home/HomeFAQSection";
 
 // ============================================================================
-// DYNAMIC IMPORTS (for performance)
+// SECTION IMPORTS
 // ============================================================================
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 
 import HomeHeroSection from '@/components/home/HomeHeroSection';
 // Static import, not dynamic(): HomeTrustBarSection is a Server Component and
@@ -35,18 +36,18 @@ import HomeLearningExperienceSection from '@/components/home/HomeLearningExperie
 import HomePlacementSupportSection from '@/components/home/HomePlacementSupportSection';
 import HomeWhyChooseSection from '@/components/home/HomeWhyChooseSection';
 import HomeLatestBlogSection from '@/components/home/HomeLatestBlogSection';
-// Still client components (form / tabs / accordion), so dynamic() stays.
-const HomeFeaturedCoursesSection = dynamic(() => import('@/components/home/HomeFeaturedCoursesSection'), { ssr: true });
-const PlacementsCompanyWallSection = dynamic<{ sanityPartners?: SanityHiringPartner[]; contained?: boolean }>(
-  () => import("@/components/sections/PlacementsCompanyWallSection"),
-  { ssr: true }
-);
-const HomeFAQSection = dynamic(() => import('@/components/home/HomeFAQSection'), { ssr: true });
-const HomeFinalCTASection = dynamic(() => import('@/components/home/HomeFinalCTASection'), { ssr: true });
+// These four are client components, but in the App Router dynamic(ssr:true)
+// gives them no lazy-loading benefit (route segments are already code-split)
+// while each wrapper adds a client Suspense boundary that swaps the
+// server-rendered section for its fallback on hydration.
+import HomeFeaturedCoursesSection from '@/components/home/HomeFeaturedCoursesSection';
+import PlacementsCompanyWallSection from "@/components/sections/PlacementsCompanyWallSection";
+import HomeFAQSection from '@/components/home/HomeFAQSection';
+import HomeFinalCTASection from '@/components/home/HomeFinalCTASection';
 
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { LATEST_POSTS_QUERY } from "@/sanity/lib/queries";
-import { SanityPost, SanityHiringPartner } from "@/sanity/types";
+import { SanityPost } from "@/sanity/types";
 import { getHiringPartners } from "@/lib/hiring-partners";
 
 // ============================================================================

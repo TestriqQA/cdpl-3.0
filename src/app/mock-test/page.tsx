@@ -1,21 +1,10 @@
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 import MockTestHero from "@/components/mock-test/MockTestHero";
-// Dynamically import the interactive listing to deprioritize its hydration
-import dynamic from "next/dynamic";
+import MockTestListing from "@/components/mock-test/MockTestListing";
 import { generateMockTestPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
-
-const MockTestListing = dynamic(
-  () => import("@/components/mock-test/MockTestListing"),
-  {
-    ssr: true, // Keep SSR for SEO content, but split the bundle
-    loading: () => (
-      <div className="h-96 w-full animate-pulse bg-slate-50 rounded-3xl" />
-    ), // Placeholder to prevent layout shift
-  },
-);
-
-
 
 export const metadata = generateStaticPageMetadata({
   title: "Free Online Mock Tests & Premium Assessments",

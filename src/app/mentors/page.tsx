@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import {
   generateBreadcrumbSchema,
   generateMentorsPageAllSchemas
@@ -19,46 +18,13 @@ export const metadata: Metadata = generateStaticPageMetadata({
 
 // ... (metadata export remains same)
 
-// ---------- Small, reusable loading UI ----------
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-16">
-      <p className="text-gray-500">{label}</p>
-    </div>
-  );
-}
-
-// ---------- Dynamic sections (SSR enabled like your example) ----------
-// ---------- Static sections (Critical for LCP/CLS) ----------
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 import MentorHeroSection from "@/components/sections/MentorHeroSection";
 import MentorsImpactSection from "@/components/sections/MentorsImpactSection";
-
-// ---------- Dynamic sections (Below fold) ----------
-const MentorProcessFlowSection = dynamic(
-  () => import("@/components/sections/MentorProcessFlowSection"),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading process..." />,
-  }
-);
-
-const MentorHelpCTASection = dynamic(
-  () => import("@/components/sections/MentorHelpCTASection"),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading help..." />,
-  }
-);
-
-const MentorOutcomesSection = dynamic(
-  () => import("@/components/sections/MentorOutcomesSection"),
-  {
-    ssr: true,
-    loading: () => <SectionLoader label="Loading outcomes..." />,
-  }
-);
-
-
+import MentorProcessFlowSection from "@/components/sections/MentorProcessFlowSection";
+import MentorHelpCTASection from "@/components/sections/MentorHelpCTASection";
+import MentorOutcomesSection from "@/components/sections/MentorOutcomesSection";
 
 // ============================================================================
 // MENTORS PAGE COMPONENT
