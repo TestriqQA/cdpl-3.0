@@ -1,77 +1,22 @@
-import dynamic from "next/dynamic";
-
-const withLoader = (label: string) => ({
-    loading: () => (
-        <div className="flex items-center justify-center py-16 text-gray-500">
-            {label}
-        </div>
-    ),
-});
+// Direct re-exports — dynamic(ssr:true) only added client Suspense boundaries
+// that caused a hydration layout shift (see d34d08e / BLG-010).
 
 // HeroSection and StatsSection removed (now static in page.tsx)
 
-export const WhyPromptGenProgram = dynamic(
-    () => import("@/components/prompt-engineering-course/WhyPromptGenProgram"),
-    {
-        ssr: true,
-        ...withLoader("Loading why prompt gen program...")
-    },
-);
+export { default as WhyPromptGenProgram } from "@/components/prompt-engineering-course/WhyPromptGenProgram";
 
-export const CurriculumSection = dynamic(
-    () => import("@/components/prompt-engineering-course/CurriculumSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading curriculum...")
-    },
-);
+export { default as CurriculumSection } from "@/components/prompt-engineering-course/CurriculumSection";
 
-export const ProjectsSection = dynamic(
-    () => import("@/components/prompt-engineering-course/ProjectsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading projects...")
-    },
-);
+export { default as ProjectsSection } from "@/components/prompt-engineering-course/ProjectsSection";
 
-export const CareerSection = dynamic(
-    () => import("@/components/prompt-engineering-course/CareerSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading career...")
-    },
-);
+export { default as CareerSection } from "@/components/prompt-engineering-course/CareerSection";
 
-export const WhoShouldEnroll = dynamic(
-    () => import("@/components/prompt-engineering-course/WhoShouldEnroll"),
-    {
-        ssr: true,
-        ...withLoader("Loading enrollment info...")
-    },
-);
+export { default as WhoShouldEnroll } from "@/components/prompt-engineering-course/WhoShouldEnroll";
 
-export const ToolsSection = dynamic(
-    () => import("@/components/prompt-engineering-course/ToolsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading tools...")
-    },
-);
+export { default as ToolsSection } from "@/components/prompt-engineering-course/ToolsSection";
 
-export const FaqSection = dynamic(
-    () => import("@/components/prompt-engineering-course/FaqSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading FAQs...")
-    },
-);
+export { default as FaqSection } from "@/components/prompt-engineering-course/FaqSection";
 
-export const CareerRoadmapSection = dynamic(
-    () => import("@/components/prompt-engineering-course/CareerRoadmapSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading career roadmap...")
-    },
-);
+export { default as CareerRoadmapSection } from "@/components/prompt-engineering-course/CareerRoadmapSection";
 
 // JsonLd removed (now static in page.tsx)

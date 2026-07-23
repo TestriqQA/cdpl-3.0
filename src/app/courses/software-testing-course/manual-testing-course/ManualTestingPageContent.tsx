@@ -1,25 +1,12 @@
 "use client";
 
-import dynamic from "next/dynamic";
-
 import StickyNav from "@/components/manual-testing-course/StickyNav";
 import HeroManualTesting from "@/components/manual-testing-course/HeroManualTesting"; // Static Import for LCP
 
-// ssr:true (was ssr:false): these sections carry the entire course body —
-// curriculum, projects, FAQ, etc. With ssr:false that content was absent from
-// the server HTML, invisible to search/AI crawlers and painting only after
-// hydration. They are still code-split (below the fold, client components), but
-// now server-render their markup. Their window/document access is confined to
-// scroll/click handlers, so SSR is safe. The min-h-[60vh] "Loading…" fallbacks
-// are dropped — with ssr:true the real markup is already present.
-const WhyLearnSection = dynamic(
-    () => import("@/components/manual-testing-course/WhyLearnSection"),
-    { ssr: true }
-)
-const CourseDetailSections = dynamic(
-    () => import("./CourseDetailSections"),
-    { ssr: true }
-)
+// Direct imports — dynamic(ssr:true) only added client Suspense boundaries
+// that caused a hydration layout shift (see d34d08e / BLG-010).
+import WhyLearnSection from "@/components/manual-testing-course/WhyLearnSection";
+import CourseDetailSections from "./CourseDetailSections";
 
 export default function ManualTestingPageContent() {
     // <div>, not <main>: the root layout already provides the single <main>
