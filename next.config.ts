@@ -505,8 +505,18 @@ const nextConfig: NextConfig = {
       // Mock-test dynamic pages are CSR-only ("use client" + useEffect).
       // Googlebot cannot render them — it sees an empty spinner.
       // The landing page /mock-test (no slug) is SSR and remains indexable.
+      //
+      // NOTE: the matcher must be `:courseSlug` (a REQUIRED single segment),
+      // not `:courseSlug*` (ZERO or more). With `*` this rule also matched
+      // /mock-test itself, so the SSR landing page was served
+      // `X-Robots-Tag: noindex, nofollow` on production and could not be
+      // indexed — Lighthouse SEO dropped to 69 with "Page is blocked from
+      // indexing". The route tree is exactly one level deep
+      // (app/mock-test/[courseSlug]), so a plain `:courseSlug` matches every
+      // dynamic test page and nothing else, leaving the landing page
+      // indexable — which is what the comment above always intended.
       {
-        source: '/mock-test/:courseSlug*',
+        source: '/mock-test/:courseSlug',
         headers: [
           {
             key: 'X-Robots-Tag',
