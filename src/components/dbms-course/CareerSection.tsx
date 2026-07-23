@@ -1,17 +1,5 @@
-'use client';
 import { Briefcase, Building2, ArrowRight, BadgeCheck } from 'lucide-react';
-import { useState } from 'react';
-import dynamic from 'next/dynamic';
-const CareerSessionModal = dynamic(() => import('../CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
-
-const SectionLoader = ({ label }: { label: string }) => {
-    return (
-        <div className="flex items-center justify-center h-full">
-            <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
-            <span className="ml-2 text-gray-900">{label}</span>
-        </div>
-    );
-};
+import CareerSessionButton from '@/components/course-islands/CareerSessionButton';
 
 const roles = [
     'Database Administrator',
@@ -42,7 +30,6 @@ const companyAccents = [
 ];
 
 export default function CareerSection() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <section id="career" aria-labelledby="career-heading" className="relative py-10 bg-white">
@@ -141,22 +128,16 @@ export default function CareerSection() {
                 <div
                     className="mt-10 sm:mt-12 text-center"
                 >
-                    <button
-                        onClick={() => setIsModalOpen(true)}
+                    <CareerSessionButton
+                        source="DBMS Course Page - Career Section - Get Placement Support"
                         className="cursor-pointer inline-flex items-center gap-2 rounded-xl border border-indigo-600 bg-indigo-600 px-7 py-3 text-sm sm:text-base font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
-                        aria-label="Get placed with MySQL skills"
+                        ariaLabel="Get placed with MySQL skills"
                     >
                         Get Placement Support
                         <ArrowRight className="h-5 w-5" />
-                    </button>
+                    </CareerSessionButton>
                 </div>
             </div>
-
-            <CareerSessionModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                source="DBMS Course Page - Career Section - Get Placement Support"
-            />
         </section>
     );
 }

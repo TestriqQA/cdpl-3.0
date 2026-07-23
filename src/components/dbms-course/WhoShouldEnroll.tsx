@@ -1,17 +1,7 @@
-'use client';
 import { Users, GraduationCap, Briefcase, Target, BadgeCheck, ArrowRight } from 'lucide-react';
 import IconCard from '../ui/IconCard';
-import { JSX, useState } from 'react';
-import dynamic from 'next/dynamic';
-const EnrollModal = dynamic(() => import('../EnrollModal'), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
-const SectionLoader = ({ label }: { label: string }) => {
-  return (
-    <div className="flex items-center justify-center h-full">
-      <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
-      <span className="ml-2 text-gray-900">{label}</span>
-    </div>
-  );
-};
+import { JSX } from 'react';
+import EnrollButton from '@/components/course-islands/EnrollButton';
 
 type Audience = {
   icon: JSX.Element;
@@ -30,8 +20,6 @@ const audience: Audience[] = [
 ];
 
 export default function WhoShouldEnroll() {
-
-  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
 
   return (
     <section id="who-should-enroll" aria-labelledby="who-heading" className="relative py-10 bg-white">
@@ -84,22 +72,16 @@ export default function WhoShouldEnroll() {
         <div
           className="mt-12 text-center"
         >
-          <button
-            onClick={() => setIsEnrollModalOpen(true)}
+          <EnrollButton
+            source="DBMS Course Page - Who Should Enroll Section - Enroll Now"
+            courseName="MySQL DBMS"
             className="cursor-pointer inline-flex items-center gap-2 rounded-xl border border-indigo-600 bg-indigo-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
-            aria-label="Start Your QA Journey"
+            ariaLabel="Start Your QA Journey"
           >
             Enroll Now<ArrowRight className="h-5 w-5" />
-          </button>
+          </EnrollButton>
         </div>
       </div>
-
-      <EnrollModal
-        isOpen={isEnrollModalOpen}
-        onClose={() => setIsEnrollModalOpen(false)}
-        courseName="MySQL DBMS"
-        source="DBMS Course Page - Who Should Enroll Section - Enroll Now"
-      />
 
     </section>
   );

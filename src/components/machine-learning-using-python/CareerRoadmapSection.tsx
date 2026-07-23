@@ -1,7 +1,5 @@
-"use client";
 import { CheckCircle2 } from "lucide-react";
-import { useState } from "react";
-import CareerSessionModal from "../CareerSessionModal";
+import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
 
 const roadmapSteps = [
   {
@@ -121,7 +119,6 @@ const keySkillsGained = [
 ];
 
 export default function CareerRoadmapSection() {
-  const [isCareerOpen, setIsCareerOpen] = useState(false);
   const courseName = "Machine Learning Algorithms using python Programming";
 
   return (
@@ -274,22 +271,16 @@ export default function CareerRoadmapSection() {
             Structured training spread across 7 comprehensive modules with real-world projects, expert mentorship, and job support.
           </p>
           <div className="mt-8">
-            <button
-              onClick={() => setIsCareerOpen(true)}
+            <CareerSessionButton
+              source="Machine Learning Algorithms with Python Course Page - Career Roadmap Section - Get Personalized Roadmap"
+              courseName={courseName}
               className="inline-flex items-center justify-center cursor-pointer rounded-full bg-white px-8 py-3 text-sm font-semibold text-blue-600 shadow-sm transition-all hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-blue-200"
             >
               Get Personalized Roadmap
-            </button>
+            </CareerSessionButton>
           </div>
         </div>
       </div>
-
-      <CareerSessionModal
-        isOpen={isCareerOpen}
-        onClose={() => setIsCareerOpen(false)}
-        source="Machine Learning Algorithms with Python Course Page - Career Roadmap Section - Get Personalized Roadmap"
-        courseName={courseName}
-      />
     </section>
   );
 }

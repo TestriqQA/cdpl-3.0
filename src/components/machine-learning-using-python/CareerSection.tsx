@@ -1,8 +1,6 @@
-"use client";
 import { Briefcase, TrendingUp, Users, Download } from "lucide-react";
-import { useState } from "react";
-import EnrollModal from "../EnrollModal";
-import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import EnrollButton from "@/components/course-islands/EnrollButton";
+import SyllabusButton from "@/components/course-islands/SyllabusButton";
 
 const jobRoles = [
   { role: "Machine Learning Engineer", salary: "9-15 LPA", icon: "🤖" },
@@ -55,8 +53,6 @@ const placementProgram = [
 ];
 
 export default function CareerSection() {
-  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
-  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
   const courseName = "Machine Learning Algorithms using python Programming";
 
   return (
@@ -200,34 +196,23 @@ export default function CareerSection() {
 
         {/* CTA Buttons */}
         <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            onClick={() => setIsEnrollOpen(true)}
+          <EnrollButton
+            source="Machine Learning Algorithms with Python Course Page - Career Section - Placement Assistance"
+            courseName={courseName}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-blue-600 bg-blue-600 px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-200"
           >
             Apply for Placement Assistance
-          </button>
-          <button
-            onClick={() => setIsSyllabusOpen(true)}
+          </EnrollButton>
+          <SyllabusButton
+            source="Machine Learning Algorithms with Python Course Page - Career Section - Download Portfolio Guide"
+            courseName={courseName}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-900 shadow-sm transition-all hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
           >
             <Download className="mr-2 h-5 w-5" />
             Download Portfolio Guide
-          </button>
+          </SyllabusButton>
         </div>
       </div>
-
-      <EnrollModal
-        isOpen={isEnrollOpen}
-        onClose={() => setIsEnrollOpen(false)}
-        source="Machine Learning Algorithms with Python Course Page - Career Section - Placement Assistance"
-        courseName={courseName}
-      />
-      <SyllabusDownloadModal
-        isOpen={isSyllabusOpen}
-        onClose={() => setIsSyllabusOpen(false)}
-        source="Machine Learning Algorithms with Python Course Page - Career Section - Download Portfolio Guide"
-        courseName={courseName}
-      />
     </section>
   );
 }

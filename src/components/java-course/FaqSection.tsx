@@ -2,9 +2,6 @@
 // Sleek, responsive, SEO-friendly FAQ with subtle futuristic accents.
 // Unique colors per item (no repeats), fully self-contained.
 
-"use client";
-
-import React, { useState } from "react";
 import {
   GraduationCap,
   Briefcase,
@@ -14,14 +11,12 @@ import {
   ShieldCheck,
   ChevronDown,
 } from "lucide-react";
-
-const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false, loading: () => <div>Loading...</div> });
-const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <div>Loading...</div> });
+import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
+import SyllabusButton from "@/components/course-islands/SyllabusButton";
 
 
 
 import { JAVA_FAQS } from "@/data/javaData";
-import dynamic from "next/dynamic";
 
 const FAQ_METADATA = [
   { icon: GraduationCap, bg: "bg-sky-50", text: "text-sky-900", ring: "ring-sky-200" },
@@ -33,9 +28,6 @@ const FAQ_METADATA = [
 ];
 
 export default function FaqSection() {
-  const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
-  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
-
   const title = "Frequently Asked Questions";
   const subtitle =
     "Everything you need to know about our Java program—admissions, outcomes, tools, certificates, and weekly schedule.";
@@ -135,36 +127,24 @@ export default function FaqSection() {
 
         {/* CTA */}
         <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-4">
-          <button
-            onClick={() => setIsCareerModalOpen(true)}
+          <CareerSessionButton
+            source="Java Programming Course Page - FAQ Section - Talk to a Mentor"
+            courseName="Java Programming"
+            title="Talk to a Mentor"
+            subtitle="Get answers to all your questions about our Java program."
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
           >
             Still have questions? Talk to a Mentor
-          </button>
-          <button
-            onClick={() => setIsSyllabusModalOpen(true)}
+          </CareerSessionButton>
+          <SyllabusButton
+            source="Java Programming Course Page - FAQ Section - Download Syllabus"
+            courseName="Java Programming"
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
           >
             Download Full Syllabus (PDF)
-          </button>
+          </SyllabusButton>
         </div>
       </div>
-
-      <CareerSessionModal
-        isOpen={isCareerModalOpen}
-        onClose={() => setIsCareerModalOpen(false)}
-        courseName="Java Programming"
-        source="Java Programming Course Page - FAQ Section - Talk to a Mentor"
-        title="Talk to a Mentor"
-        subtitle="Get answers to all your questions about our Java program."
-      />
-
-      <SyllabusDownloadModal
-        isOpen={isSyllabusModalOpen}
-        onClose={() => setIsSyllabusModalOpen(false)}
-        courseName="Java Programming"
-        source="Java Programming Course Page - FAQ Section - Download Syllabus"
-      />
 
       {/* Accessible helpers */}
       <p className="sr-only">{title}</p>

@@ -1,7 +1,5 @@
-"use client";
 import { Code2, Database, BarChart3, Cpu } from "lucide-react";
-import { useState } from "react";
-import CareerSessionModal from "../CareerSessionModal";
+import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
 
 const toolCategories = [
   {
@@ -55,7 +53,6 @@ const toolCategories = [
 ];
 
 export default function ToolsSection() {
-  const [isCareerOpen, setIsCareerOpen] = useState(false);
   const courseName = "Machine Learning Algorithms using python Programming";
 
   return (
@@ -160,21 +157,15 @@ export default function ToolsSection() {
 
         {/* CTA Button */}
         <div className="mt-12 flex justify-center">
-          <button
-            onClick={() => setIsCareerOpen(true)}
+          <CareerSessionButton
+            source="Machine Learning Algorithms with Python Course Page - Tools Section - Book a Free Demo"
+            courseName={courseName}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-brand bg-brand px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-brand hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-orange-200"
           >
             Book a Free Demo
-          </button>
+          </CareerSessionButton>
         </div>
       </div>
-
-      <CareerSessionModal
-        isOpen={isCareerOpen}
-        onClose={() => setIsCareerOpen(false)}
-        source="Machine Learning Algorithms with Python Course Page - Tools Section - Book a Free Demo"
-        courseName={courseName}
-      />
     </section>
   );
 }

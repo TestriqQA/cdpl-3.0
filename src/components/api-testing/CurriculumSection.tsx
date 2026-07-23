@@ -1,5 +1,6 @@
-'use client';
 import { CheckCircle } from 'lucide-react';
+import SyllabusButton from '@/components/course-islands/SyllabusButton';
+import CareerSessionButton from '@/components/course-islands/CareerSessionButton';
 
 type Module = { title: string; topics: string[] };
 
@@ -90,23 +91,7 @@ const accents = [
   { cardBg: 'bg-rose-50', cardBorder: 'border-rose-200', badgeBg: 'bg-rose-600', badgeText: 'text-white', ink: 'text-rose-800', icon: 'text-rose-700' },
 ];
 
-import { useState } from 'react';
-import dynamic from 'next/dynamic';
-const SyllabusDownloadModal = dynamic(() => import('@/components/SyllabusDownloadModal'), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
-const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
-
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-16">
-      <p className="text-gray-500">{label}</p>
-    </div>
-  );
-}
-
 export default function CurriculumSection() {
-  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
-
   return (
     <section className="relative py-10 bg-white">
       {/* subtle separators */}
@@ -175,34 +160,21 @@ export default function CurriculumSection() {
 
         {/* CTAs */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <button
-            onClick={() => setIsDemoModalOpen(true)}
+          <CareerSessionButton
+            source="API Testing Course Page - Curriculum Section - Book Free Demo"
             className="cursor-pointer inline-flex items-center justify-center rounded-xl bg-indigo-700 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-800 focus:outline-none focus:ring-4 focus:ring-indigo-200"
           >
             Book a Free Demo
-          </button>
-          <button
-            onClick={() => setIsSyllabusModalOpen(true)}
+          </CareerSessionButton>
+          <SyllabusButton
+            source="API Testing Course Page - Curriculum Section - Syllabus Download"
+            courseName="API Testing"
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border-2 border-green-700 bg-white px-4 py-2 text-sm font-semibold text-green-800 shadow-sm transition hover:bg-green-700 hover:text-white focus:outline-none focus:ring-4 focus:ring-emerald-200"
           >
             Get Syllabus PDF
-          </button>
+          </SyllabusButton>
         </div>
       </div>
-
-      <SyllabusDownloadModal
-        isOpen={isSyllabusModalOpen}
-        onClose={() => setIsSyllabusModalOpen(false)}
-        courseName="API Testing"
-        source="API Testing Course Page - Curriculum Section - Syllabus Download"
-      />
-
-      <CareerSessionModal
-        isOpen={isDemoModalOpen}
-        onClose={() => setIsDemoModalOpen(false)}
-        source="API Testing Course Page - Curriculum Section - Book Free Demo"
-      />
-
     </section>
   );
 }

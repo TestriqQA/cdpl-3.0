@@ -2,20 +2,8 @@
 // Server component – sleek, slightly futuristic, fully responsive, SEO-friendly.
 // No client-side libs required.
 
-'use client';
-import { useState } from "react";
-import dynamic from "next/dynamic";
-const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
 import { ArrowRight } from "lucide-react";
-
-const SectionLoader = ({ label }: { label: string }) => {
-  return (
-    <div className="flex items-center justify-center h-full">
-      <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
-      <span className="ml-2 text-gray-900">{label}</span>
-    </div>
-  );
-};
+import EnrollButton from "@/components/course-islands/EnrollButton";
 
 type Audience = {
   title: string;
@@ -86,8 +74,6 @@ const AUDIENCES: Audience[] = [
 ];
 
 export default function WhoShouldEnroll() {
-  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
-
   return (
     <section
       id="who-should-enroll"
@@ -185,22 +171,16 @@ export default function WhoShouldEnroll() {
 
         {/* CTA */}
         <div className="mt-10 text-center">
-          <button
-            onClick={() => setIsEnrollModalOpen(true)}
+          <EnrollButton
+            source="Python Course Page - Who Should Enroll Section - Enroll Now"
+            courseName="Python Programming"
             className="cursor-pointer group inline-flex items-center justify-center rounded-xl border border-indigo-600 bg-indigo-600 px-8 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-indigo-700 hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-indigo-200"
           >
             Enroll Now
             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </button>
+          </EnrollButton>
         </div>
       </div>
-
-      <EnrollModal
-        isOpen={isEnrollModalOpen}
-        onClose={() => setIsEnrollModalOpen(false)}
-        courseName="Python Programming"
-        source="Python Course Page - Who Should Enroll Section - Enroll Now"
-      />
 
     </section>
   );

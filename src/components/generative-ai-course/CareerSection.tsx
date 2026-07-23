@@ -1,8 +1,5 @@
-"use client";
-
-import { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+import EnrollButton from "@/components/course-islands/EnrollButton";
+import SyllabusButton from "@/components/course-islands/SyllabusButton";
 
 type Brand = {
   name: string;
@@ -34,9 +31,6 @@ const ACCENTS = [
 ];
 
 export default function CareerSection() {
-  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
-  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
-
   const seoKeywords =
     "ai jobs india, data science jobs, machine learning hiring companies, top companies hiring ai, fresher data analyst jobs, ml engineer roles india, analytics careers, generative ai jobs, python data science careers";
 
@@ -148,34 +142,22 @@ export default function CareerSection() {
 
         {/* CTA Buttons */}
         <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <button
-            onClick={() => setIsEnrollModalOpen(true)}
+          <EnrollButton
+            source="Generative AI Course Page - Career Section - Placement Assistance"
+            courseName="Master Program in Deep Learning, NLP & Generative AI"
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-8 py-3 text-base font-semibold text-white shadow-lg transition hover:bg-[#6b21a8] hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-purple-200"
           >
             Apply for Placement Assistance
-          </button>
-          <button
-            onClick={() => setIsSyllabusModalOpen(true)}
+          </EnrollButton>
+          <SyllabusButton
+            source="Generative AI Course Page - Career Section - Generative AI - Download Syllabus"
+            courseName="Master Program in Deep Learning, NLP & Generative AI"
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-8 py-3 text-base font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-purple-200"
           >
             Download Syllabus
-          </button>
+          </SyllabusButton>
         </div>
       </div>
-
-      <EnrollModal
-        isOpen={isEnrollModalOpen}
-        onClose={() => setIsEnrollModalOpen(false)}
-        courseName="Master Program in Deep Learning, NLP & Generative AI"
-        source="Generative AI Course Page - Career Section - Placement Assistance"
-      />
-
-      <SyllabusDownloadModal
-        isOpen={isSyllabusModalOpen}
-        onClose={() => setIsSyllabusModalOpen(false)}
-        courseName="Master Program in Deep Learning, NLP & Generative AI"
-        source="Generative AI Course Page - Career Section - Generative AI - Download Syllabus"
-      />
 
     </section>
   );

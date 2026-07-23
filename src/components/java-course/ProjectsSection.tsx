@@ -1,11 +1,7 @@
 // components/java-course/ProjectsSection.tsx
 // Futuristic, colorful, and fully responsive projects grid with per-card accents + SEO JSON-LD.
 
-'use client';
-
-import { useState } from "react";
-import dynamic from "next/dynamic";
-const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false, loading: () => <div>Loading...</div> });
+import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
 
 type Project = {
     title: string;
@@ -97,8 +93,6 @@ const ACCENTS = [
 ];
 
 export default function ProjectsSection() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
     return (
         <section
             id="projects"
@@ -197,30 +191,24 @@ export default function ProjectsSection() {
 
                 {/* CTA */}
                 <div className="mt-10 text-center">
-                    <button
-                        onClick={() => setIsModalOpen(true)}
+                    <CareerSessionButton
+                        source="Java Programming Course Page - Projects Section"
+                        courseName="Java Programming"
+                        title="Get Access to Sample Portfolios"
+                        subtitle="Enter your details to view our student portfolio showcase."
                         className="cursor-pointer inline-flex items-center gap-2 rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
-                        aria-label="View sample portfolios"
+                        ariaLabel="View sample portfolios"
                     >
                         View Sample Portfolios
                         <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
                             <path d="M12.293 4.293a1 1 0 011.414 0l4 4c.39.39.39 1.024 0 1.414l-4 4a1 1 0 01-1.497-1.32l.083-.094L14.585 10H4a1 1 0 110-2h10.585l-2.292-2.293a1 1 0 010-1.414z" />
                         </svg>
-                    </button>
+                    </CareerSessionButton>
                     <p className="mt-3 text-xs sm:text-sm text-slate-600">
                         Every project ships with README, tests, and deployment notes.
                     </p>
                 </div>
             </div>
-
-            <CareerSessionModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                courseName="Java Programming"
-                source="Java Programming Course Page - Projects Section"
-                title="Get Access to Sample Portfolios"
-                subtitle="Enter your details to view our student portfolio showcase."
-            />
 
         </section>
     );

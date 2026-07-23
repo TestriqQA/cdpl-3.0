@@ -2,8 +2,6 @@
 // Sleek, responsive, SEO-friendly "Who Should Enroll" section with subtle futuristic accents.
 // Unique card colors (no repeats), minimal/no gradients, fully self-contained.
 
-"use client";
-
 import {
   GraduationCap,
   Repeat,
@@ -12,10 +10,9 @@ import {
   Rocket,
   Users,
 } from "lucide-react";
-import React, { useState } from "react";
-import dynamic from "next/dynamic";
-const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false, loading: () => <div>Loading...</div> });
-const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <div>Loading...</div> });
+import React from "react";
+import EnrollButton from "@/components/course-islands/EnrollButton";
+import SyllabusButton from "@/components/course-islands/SyllabusButton";
 
 type Audience = {
   title: string;
@@ -72,9 +69,6 @@ const AUDIENCES: Audience[] = [
 ];
 
 export default function WhoShouldEnroll() {
-  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
-  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
-
   const title = "Who is this Java course for?";
   const subtitle =
     "Beginner-friendly yet industry-focused: whether you’re starting out or upskilling, our Java program gets you job-ready with Spring Boot, REST APIs, Microservices, and Cloud fundamentals.";
@@ -180,34 +174,22 @@ export default function WhoShouldEnroll() {
 
         {/* CTA */}
         <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-4">
-          <button
-            onClick={() => setIsEnrollModalOpen(true)}
+          <EnrollButton
+            source="Java Programming Course Page - Who Should Enroll Section - Check Eligibility"
+            courseName="Java Programming"
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
           >
             Check Your Eligibility
-          </button>
-          <button
-            onClick={() => setIsSyllabusModalOpen(true)}
+          </EnrollButton>
+          <SyllabusButton
+            source="Java Programming Course Page - Who Should Enroll Section - Download Syllabus"
+            courseName="Java Programming"
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
           >
             Download Syllabus (PDF)
-          </button>
+          </SyllabusButton>
         </div>
       </div>
-
-      <EnrollModal
-        isOpen={isEnrollModalOpen}
-        onClose={() => setIsEnrollModalOpen(false)}
-        courseName="Java Programming"
-        source="Java Programming Course Page - Who Should Enroll Section - Check Eligibility"
-      />
-
-      <SyllabusDownloadModal
-        isOpen={isSyllabusModalOpen}
-        onClose={() => setIsSyllabusModalOpen(false)}
-        courseName="Java Programming"
-        source="Java Programming Course Page - Who Should Enroll Section - Download Syllabus"
-      />
 
       {/* Accessible helpers */}
       <p className="sr-only">{title}</p>

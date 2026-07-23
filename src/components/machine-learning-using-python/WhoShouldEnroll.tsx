@@ -1,8 +1,6 @@
-"use client";
 import { CheckCircle2, Download } from "lucide-react";
-import { useState } from "react";
-import EnrollModal from "../EnrollModal";
-import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import EnrollButton from "@/components/course-islands/EnrollButton";
+import SyllabusButton from "@/components/course-islands/SyllabusButton";
 
 const targetAudience = [
   {
@@ -64,8 +62,6 @@ const idealCandidate = [
 ];
 
 export default function WhoShouldEnroll() {
-  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
-  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
   const courseName = "Machine Learning Algorithms using python Programming";
 
   return (
@@ -218,34 +214,23 @@ export default function WhoShouldEnroll() {
 
         {/* CTA Buttons */}
         <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            onClick={() => setIsEnrollOpen(true)}
+          <EnrollButton
+            source="Machine Learning Algorithms with Python Course Page - Who Should Enroll Section - Check Eligibility"
+            courseName={courseName}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-blue-600 bg-blue-600 px-8 py-4 text-base font-bold text-white shadow-lg transition-all hover:bg-blue-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-blue-200"
           >
             Check Eligibility & Apply
-          </button>
-          <button
-            onClick={() => setIsSyllabusOpen(true)}
+          </EnrollButton>
+          <SyllabusButton
+            source="Machine Learning Algorithms with Python Course Page - Who Should Enroll Section - Download Syllabus"
+            courseName={courseName}
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-8 py-4 text-base font-bold text-slate-900 shadow-sm transition-all hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
           >
             <Download className="mr-2 h-5 w-5" />
             Download Detailed Syllabus
-          </button>
+          </SyllabusButton>
         </div>
       </div>
-
-      <EnrollModal
-        isOpen={isEnrollOpen}
-        onClose={() => setIsEnrollOpen(false)}
-        source="Machine Learning Algorithms with Python Course Page - Who Should Enroll Section - Check Eligibility"
-        courseName={courseName}
-      />
-      <SyllabusDownloadModal
-        isOpen={isSyllabusOpen}
-        onClose={() => setIsSyllabusOpen(false)}
-        source="Machine Learning Algorithms with Python Course Page - Who Should Enroll Section - Download Syllabus"
-        courseName={courseName}
-      />
     </section>
   );
 }

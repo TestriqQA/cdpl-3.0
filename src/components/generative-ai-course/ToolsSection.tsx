@@ -1,7 +1,4 @@
-"use client";
-
-import { useState } from "react";
-import CareerSessionModal from "@/components/CareerSessionModal";
+import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
 
 type Tool = { name: string };
 
@@ -37,8 +34,6 @@ const ACCENTS = [
 ];
 
 export default function ToolsSection() {
-  const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
-
   const seoKeywords =
     "python, tensorflow, pytorch, keras, nltk, spacy, hugging face, docker, numpy, pandas, scikit-learn, fastapi, ai tools, machine learning libraries, data science stack, generative ai framework";
 
@@ -114,20 +109,14 @@ export default function ToolsSection() {
 
         {/* CTA Button */}
         <div className="mt-8 flex justify-center">
-          <button
-            onClick={() => setIsCareerModalOpen(true)}
+          <CareerSessionButton
+            source="Generative AI Course Page - Tools Section - Book Free Demo"
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-base font-semibold text-white shadow-lg transition hover:bg-[#6b21a8] hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-purple-200"
           >
             Book a Free Demo
-          </button>
+          </CareerSessionButton>
         </div>
       </div>
-
-      <CareerSessionModal
-        isOpen={isCareerModalOpen}
-        onClose={() => setIsCareerModalOpen(false)}
-        source="Generative AI Course Page - Tools Section - Book Free Demo"
-      />
 
     </section>
   );

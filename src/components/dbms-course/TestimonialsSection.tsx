@@ -1,15 +1,5 @@
-'use client';
 import { Star } from 'lucide-react';
-import dynamic from 'next/dynamic';
-const ReviewsMarquee = dynamic(() => import('@/components/sections/ReviewMarque'), { ssr: false, loading: () => <SectionLoader label="Loading reviews..." /> });
-
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-    return (
-        <div className="flex items-center justify-center py-16">
-            <p className="text-gray-500">{label}</p>
-        </div>
-    );
-}
+import ReviewsMarquee from '@/components/sections/ReviewMarque';
 
 type Testimonial = {
     name: string;
