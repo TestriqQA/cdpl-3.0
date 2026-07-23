@@ -1,5 +1,3 @@
-'use client';
-
 import { CheckCircle, Target, Award } from 'lucide-react';
 import type { ServiceClient } from '@/types/service';
 

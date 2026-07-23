@@ -1,5 +1,3 @@
-'use client';
-
 import dynamic from 'next/dynamic';
 import * as Icons from 'lucide-react';
 import type { ComponentType, SVGProps } from 'react';
