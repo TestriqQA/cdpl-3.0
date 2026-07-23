@@ -1,16 +1,5 @@
-'use client';
 import { Briefcase, ArrowRight, Building2, TrendingUp, BadgeCheck } from 'lucide-react';
-import { useState } from 'react';
-import dynamic from 'next/dynamic';
-const CareerSessionModal = dynamic(() => import('@/components/CareerSessionModal'), { ssr: false, loading: () => <SectionLoader label="Loading career session modal..." /> });
-
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-    return (
-        <div className="flex items-center justify-center py-16">
-            <p className="text-gray-500">{label}</p>
-        </div>
-    );
-}
+import CareerSessionButton from '@/components/course-islands/CareerSessionButton';
 
 const roles = [
     'API Tester', 'QA Engineer', 'Automation Tester', 'Security Tester',
@@ -24,8 +13,6 @@ const roleAccents = ['sky', 'amber', 'emerald', 'violet', 'rose', 'cyan', 'lime'
 const companyAccents = ['slate', 'sky', 'amber', 'emerald', 'violet', 'rose', 'cyan', 'lime', 'indigo', 'orange'] as const;
 
 export default function CareerSection() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
     return (
         <section id="career" aria-labelledby="career-heading" className="relative py-10 bg-white">
             {/* subtle separators for a clean, futuristic frame */}
@@ -149,21 +136,15 @@ export default function CareerSection() {
                 <div
                     className="mt-12 text-center"
                 >
-                    <button
-                        onClick={() => setIsModalOpen(true)}
+                    <CareerSessionButton
+                        source="API Testing Course Page - Career Section - Start Your QA Journey"
                         className="cursor-pointer inline-flex items-center gap-2 rounded-xl border border-indigo-600 bg-indigo-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700 hover:scale-[1.01] focus:outline-none focus:ring-4 focus:ring-indigo-200"
-                        aria-label="Start Your QA Journey"
+                        ariaLabel="Start Your QA Journey"
                     >
                         Start Your QA Journey <ArrowRight className="h-5 w-5" />
-                    </button>
+                    </CareerSessionButton>
                 </div>
             </div>
-
-            <CareerSessionModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                source="API Testing Course Page - Career Section - Start Your QA Journey"
-            />
         </section>
     );
 }

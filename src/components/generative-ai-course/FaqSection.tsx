@@ -1,8 +1,5 @@
-"use client";
-
-import { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
-import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+import EnrollButton from "@/components/course-islands/EnrollButton";
+import SyllabusButton from "@/components/course-islands/SyllabusButton";
 
 import { GENERATIVE_AI_FAQS } from "@/data/generativeAiData";
 
@@ -15,9 +12,6 @@ const ACCENT_STYLES = [
 ];
 
 export default function FaqSection() {
-  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
-  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
-
   const subtitle =
     "All the essentials about our Deep Learning, NLP & Generative AI program—entry requirements, duration, tools, certification, and placements.";
   const keywords =
@@ -84,36 +78,24 @@ export default function FaqSection() {
 
         {/* CTA below FAQs */}
         <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-3 text-center sm:flex-row">
-          <button
-            onClick={() => setIsEnrollModalOpen(true)}
+          <EnrollButton
+            source="Generative AI Course Page - FAQ Section - Contact Us"
+            courseName="Master Program in Deep Learning, NLP & Generative AI"
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-300"
-            aria-label="Still have questions? Contact admissions"
+            ariaLabel="Still have questions? Contact admissions"
           >
             Still have questions? Contact us
-          </button>
-          <button
-            onClick={() => setIsSyllabusModalOpen(true)}
+          </EnrollButton>
+          <SyllabusButton
+            source="Generative AI Course Page - FAQ Section - Generative AI - Download Syllabus"
+            courseName="Master Program in Deep Learning, NLP & Generative AI"
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-indigo-200"
-            aria-label="Download detailed syllabus"
+            ariaLabel="Download detailed syllabus"
           >
             Download Detailed Syllabus (PDF)
-          </button>
+          </SyllabusButton>
         </div>
       </div>
-
-      <EnrollModal
-        isOpen={isEnrollModalOpen}
-        onClose={() => setIsEnrollModalOpen(false)}
-        courseName="Master Program in Deep Learning, NLP & Generative AI"
-        source="Generative AI Course Page - FAQ Section - Contact Us"
-      />
-
-      <SyllabusDownloadModal
-        isOpen={isSyllabusModalOpen}
-        onClose={() => setIsSyllabusModalOpen(false)}
-        courseName="Master Program in Deep Learning, NLP & Generative AI"
-        source="Generative AI Course Page - FAQ Section - Generative AI - Download Syllabus"
-      />
 
     </section>
   );

@@ -1,12 +1,7 @@
-"use client";
-
-import { useState } from "react";
-import EnrollModal from "../EnrollModal";
-import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import EnrollButton from "@/components/course-islands/EnrollButton";
+import SyllabusButton from "@/components/course-islands/SyllabusButton";
 
 export default function WhyMLPythonProgram() {
-  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
-  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
   const courseName = "Machine Learning Algorithms using python Programming";
 
   const subtitle =
@@ -124,20 +119,22 @@ export default function WhyMLPythonProgram() {
 
         {/* CTA row */}
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <button
-            onClick={() => setIsEnrollOpen(true)}
+          <EnrollButton
+            source="Machine Learning Algorithms with Python Course Page - Why ML Section - Apply Now"
+            courseName={courseName}
+            ariaLabel="Apply to the Machine Learning & Data Science program"
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-900 bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
-            aria-label="Apply to the Machine Learning & Data Science program"
           >
             Apply Now
-          </button>
-          <button
-            onClick={() => setIsSyllabusOpen(true)}
+          </EnrollButton>
+          <SyllabusButton
+            source="Machine Learning Algorithms with Python Course Page - Why ML Section - Download Syllabus"
+            courseName={courseName}
+            ariaLabel="Download the full program syllabus"
             className="inline-flex items-center justify-center cursor-pointer rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-purple-200"
-            aria-label="Download the full program syllabus"
           >
             Download Syllabus (PDF)
-          </button>
+          </SyllabusButton>
         </div>
 
         {/* Footnote for expectations */}
@@ -145,19 +142,6 @@ export default function WhyMLPythonProgram() {
           *Outcomes depend on practice, project quality, and interview performance.
         </p>
       </div>
-
-      <EnrollModal
-        isOpen={isEnrollOpen}
-        onClose={() => setIsEnrollOpen(false)}
-        source="Machine Learning Algorithms with Python Course Page - Why ML Section - Apply Now"
-        courseName={courseName}
-      />
-      <SyllabusDownloadModal
-        isOpen={isSyllabusOpen}
-        onClose={() => setIsSyllabusOpen(false)}
-        source="Machine Learning Algorithms with Python Course Page - Why ML Section - Download Syllabus"
-        courseName={courseName}
-      />
     </section>
   );
 }

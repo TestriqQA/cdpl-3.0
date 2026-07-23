@@ -3,6 +3,7 @@
 import React from "react";
 import { Clock, Users, ArrowRight, Star, Zap, Download, BookOpen, Gauge, Shield, Smartphone, Cpu, BarChart3, Code, TrendingUp, Cog, Trophy, Brain, Database, CheckCircle, GraduationCap, Workflow, Sparkles, Megaphone } from "lucide-react";
 import { DownloadFormButton } from "@/components/DownloadForm";
+import OfferCountdown from "@/components/courses/OfferCountdown";
 import Link from "next/link";
 import { FaChartBar } from "react-icons/fa6";
 import { Course } from "./course";
@@ -58,40 +59,14 @@ const pickVariant = (i: number): Variant => {
     return VARIANTS[i % VARIANTS.length];
 };
 
-const pad = (n: number) => n.toString().padStart(2, '0');
-
 interface CourseCardProps {
     course: Course;
     index: number;
-    nowMs: number;
     categoryBgColor?: string; // Optional, kept for compatibility if needed, but unused in new design
 }
 
-const CourseCard: React.FC<CourseCardProps> = ({ course, index, nowMs }) => {
+const CourseCard: React.FC<CourseCardProps> = ({ course, index }) => {
     const variant = pickVariant(index);
-
-    // 48h fallback window logic
-    // We use a ref or just compute it. Since we don't have per-instance persistence without context/localstorage,
-    // we'll simulate the "offer ends" logic. Ideally, offerEndsAt comes from the course data.
-    // If not, we default to +48h from a fixed point or current time.
-    // To match Home component behavior where it initializes a fallback:
-    const fallbackDeadlineRef = React.useRef<Date | null>(null);
-    if (!course.offerEndsAt && !fallbackDeadlineRef.current) {
-        // If we are on client, set it.
-        fallbackDeadlineRef.current = new Date(Date.now() + 48 * 3600 * 1000);
-    }
-
-    // Note: Parsing offerEndsAt if it's a string, or using the fallback
-    const target: Date = course.offerEndsAt
-        ? new Date(course.offerEndsAt)
-        : (fallbackDeadlineRef.current || new Date(Date.now() + 48 * 3600 * 1000));
-
-    const diff = Math.max(0, target.getTime() - nowMs);
-    const totalSeconds = Math.floor(diff / 1000);
-    const hours = pad(Math.floor(totalSeconds / 3600));
-    const minutes = pad(Math.floor((totalSeconds % 3600) / 60));
-    const seconds = pad(totalSeconds % 60);
-    const isOver = diff <= 0;
 
     // Resolve Icon: check if course.icon is a string key in iconMap, otherwise render as is (if ReactNode) or fallback
     // The new data will strictly use string keys, but let's be safe.
@@ -181,50 +156,9 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, index, nowMs }) => {
                     ))}
                 </ul>
 
-                {/* Timer Block */}
-                <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                    <p className="text-xs font-semibold text-slate-600 mb-2">
-                        Limited-time offer ends in
-                    </p>
-
-                    <div
-                        className="grid grid-cols-3 gap-3 text-center"
-                        role="timer"
-                        aria-live="polite"
-                        aria-atomic="true"
-                    >
-                        <div className="rounded-lg bg-white shadow-sm p-3">
-                            <div className="text-xl font-bold text-slate-900 tabular-nums">
-                                {hours}
-                            </div>
-                            <div className="text-[10px] text-slate-500 tracking-wide uppercase">
-                                Hours
-                            </div>
-                        </div>
-                        <div className="rounded-lg bg-white shadow-sm p-3">
-                            <div className="text-xl font-bold text-slate-900 tabular-nums">
-                                {minutes}
-                            </div>
-                            <div className="text-[10px] text-slate-500 tracking-wide uppercase">
-                                Minutes
-                            </div>
-                        </div>
-                        <div className="rounded-lg bg-white shadow-sm p-3">
-                            <div className="text-xl font-bold text-slate-900 tabular-nums">
-                                {seconds}
-                            </div>
-                            <div className="text-[10px] text-slate-500 tracking-wide uppercase">
-                                Seconds
-                            </div>
-                        </div>
-                    </div>
-
-                    {isOver && (
-                        <p className="mt-2 text-xs text-red-600 font-semibold">
-                            Offer has ended.
-                        </p>
-                    )}
-                </div>
+                {/* Timer Block — self-contained leaf (its own 1s tick; does not
+                    re-render the whole card grid). */}
+                <OfferCountdown offerEndsAt={course.offerEndsAt} />
 
                 <div className="pt-4 space-y-3 mt-auto">
                     <Link

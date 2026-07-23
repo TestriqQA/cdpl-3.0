@@ -1,6 +1,4 @@
-"use client";
-import { useState } from "react";
-import CareerSessionModal from "@/components/CareerSessionModal";
+import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
 
 type Step = {
   n: number;
@@ -66,9 +64,6 @@ const STEPS: Step[] = [
 ];
 
 export default function CareerRoadmapSection() {
-  const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
-
-
   return (
     <section
       id="career-roadmap"
@@ -175,16 +170,16 @@ export default function CareerRoadmapSection() {
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <button
-            onClick={() => setIsCareerModalOpen(true)}
+          <CareerSessionButton
+            source="Generative AI Course Page - Career Roadmap Section - Get Personalized Roadmap"
             className="inline-flex items-center cursor-pointer gap-2 rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-4 md:px-6 py-2 md:py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-300"
-            aria-label="Get personalized AI roadmap guidance"
+            ariaLabel="Get personalized AI roadmap guidance"
           >
             Get Personalized Roadmap
             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
               <path d="M12.293 4.293a1 1 0 011.414 0l4 4a1 1 0 01.083 1.32l-.083.094-4 4a1 1 0 01-1.497-1.32l.083-.094L14.585 10H3a1 1 0 01-.117-1.993L3 8h11.585l-2.292-2.293a1 1 0 010-1.414z" />
             </svg>
-          </button>
+          </CareerSessionButton>
           <p className="mt-3 text-xs sm:text-sm text-slate-600">
             Learn from anywhere.{" "}
             <span className="font-semibold text-slate-800">
@@ -193,12 +188,6 @@ export default function CareerRoadmapSection() {
           </p>
         </div>
       </div>
-
-      <CareerSessionModal
-        isOpen={isCareerModalOpen}
-        onClose={() => setIsCareerModalOpen(false)}
-        source="Generative AI Course Page - Career Roadmap Section - Get Personalized Roadmap"
-      />
 
     </section>
   );

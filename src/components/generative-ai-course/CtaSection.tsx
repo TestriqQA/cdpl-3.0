@@ -1,12 +1,7 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
-import EnrollModal from "@/components/EnrollModal";
+import EnrollButton from "@/components/course-islands/EnrollButton";
 
 export default function CtaSection() {
-  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
-
   const seoKeywords =
     "enroll deep learning course, generative ai certification, nlp training india, machine learning jobs assistance, python ai program, data science placement support, llm course with projects";
 
@@ -104,10 +99,11 @@ export default function CtaSection() {
             Email Us
           </Link>
 
-          <button
-            onClick={() => setIsEnrollModalOpen(true)}
+          <EnrollButton
+            source="Generative AI Course Page - CTA Section - Apply Now"
+            courseName="Master Program in Deep Learning, NLP & Generative AI"
             className="inline-flex w-full items-center justify-center cursor-pointer gap-2 rounded-xl border border-[#7E22CE] bg-[#7E22CE] px-5 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.2)] transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-purple-300 sm:w-auto"
-            aria-label="Apply now for the Deep Learning & AI program"
+            ariaLabel="Apply now for the Deep Learning & AI program"
           >
             {/* Rocket icon */}
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -119,7 +115,7 @@ export default function CtaSection() {
               />
             </svg>
             Apply Now
-          </button>
+          </EnrollButton>
         </div>
 
         {/* Micro trust note + WhatsApp */}
@@ -137,13 +133,6 @@ export default function CtaSection() {
           </Link>
         </address>
       </div>
-
-      <EnrollModal
-        isOpen={isEnrollModalOpen}
-        onClose={() => setIsEnrollModalOpen(false)}
-        courseName="Master Program in Deep Learning, NLP & Generative AI"
-        source="Generative AI Course Page - CTA Section - Apply Now"
-      />
 
     </section>
   );

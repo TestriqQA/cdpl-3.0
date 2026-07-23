@@ -1,14 +1,9 @@
-"use client";
-
 import { CheckCircle2, Clock, Users, Award } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
-import EnrollModal from "../EnrollModal";
-import CareerSessionModal from "../CareerSessionModal";
+import EnrollButton from "@/components/course-islands/EnrollButton";
+import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
 
 export default function CtaSection() {
-  const [isEnrollOpen, setIsEnrollOpen] = useState(false);
-  const [isCareerOpen, setIsCareerOpen] = useState(false);
   const courseName = "Machine Learning Algorithms using python Programming";
 
   return (
@@ -79,18 +74,20 @@ export default function CtaSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <button
-              onClick={() => setIsEnrollOpen(true)}
+            <EnrollButton
+              source="Machine Learning Algorithms with Python Course Page - CTA Section - Enroll Now"
+              courseName={courseName}
               className="bg-white text-blue-600 cursor-pointer hover:bg-blue-50 font-bold rounded-lg text-lg px-8 py-3"
             >
               Enroll Now & Get Started
-            </button>
-            <button
-              onClick={() => setIsCareerOpen(true)}
+            </EnrollButton>
+            <CareerSessionButton
+              source="Machine Learning Algorithms with Python Course Page - CTA Section - Free Demo"
+              courseName={courseName}
               className="border-white text-white bg-brand hover:bg-brand transition-all font-bold rounded-lg text-lg px-8 py-3"
             >
               Schedule Free Demo
-            </button>
+            </CareerSessionButton>
           </div>
 
           {/* Trust Indicators */}
@@ -132,19 +129,6 @@ export default function CtaSection() {
           </div>
         </div>
       </div>
-
-      <EnrollModal
-        isOpen={isEnrollOpen}
-        onClose={() => setIsEnrollOpen(false)}
-        source="Machine Learning Algorithms with Python Course Page - CTA Section - Enroll Now"
-        courseName={courseName}
-      />
-      <CareerSessionModal
-        isOpen={isCareerOpen}
-        onClose={() => setIsCareerOpen(false)}
-        source="Machine Learning Algorithms with Python Course Page - CTA Section - Free Demo"
-        courseName={courseName}
-      />
     </section>
   );
 }

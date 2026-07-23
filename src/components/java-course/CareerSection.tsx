@@ -2,8 +2,6 @@
 // Sleek, responsive, SEO-friendly career section with subtle futuristic accents.
 // Unique colors per pill (no repeats), minimal/no gradients, fully self-contained.
 
-"use client";
-
 import {
   Briefcase,
   Cog,
@@ -15,10 +13,9 @@ import {
   Settings2,
   ChevronRight,
 } from "lucide-react";
-import dynamic from "next/dynamic";
-import React, { useState } from "react";
-const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false, loading: () => <div>Loading...</div> });
-const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false, loading: () => <div>Loading...</div> });
+import React from "react";
+import EnrollButton from "@/components/course-islands/EnrollButton";
+import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
 
 type Role = {
   title: string;
@@ -97,15 +94,6 @@ const ROLES: Role[] = [
 ];
 
 export default function CareerSection() {
-  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
-  const [isCareerModalOpen, setIsCareerModalOpen] = useState(false);
-  const [enrollSource, setEnrollSource] = useState("Java Programming Course Page - Career Section");
-
-  const handleApplyClick = (roleTitle: string) => {
-    setEnrollSource(`Java Programming Course Page - Career Section - Apply for ${roleTitle}`);
-    setIsEnrollModalOpen(true);
-  };
-
   const title = "500K+ Java Jobs in India";
   const subtitle =
     "High-demand Java careers across startups and enterprises. Become job-ready for roles in Spring Boot, Microservices, Cloud, DevOps, and scalable backend engineering.";
@@ -189,16 +177,17 @@ export default function CareerSection() {
                   Hire-ready skills
                 </p>
               </div>
-              <button
-                onClick={() => handleApplyClick(r.title)}
+              <EnrollButton
+                source={`Java Programming Course Page - Career Section - Apply for ${r.title}`}
+                courseName="Java Programming"
                 className={[
                   "cursor-pointer ml-auto hidden rounded-md bg-white px-2 py-1 text-[10px] text-slate-900 font-semibold ring-1 ring-black/5 sm:inline-flex hover:bg-gray-50",
                   r.text.replace("text-", ""),
                 ].join(" ")}
-                aria-label={`Apply for ${r.title}`}
+                ariaLabel={`Apply for ${r.title}`}
               >
                 Apply
-              </button>
+              </EnrollButton>
             </div>
           ))}
         </div>
@@ -218,37 +207,22 @@ export default function CareerSection() {
 
         {/* Actions */}
         <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-4">
-          <button
-            onClick={() => setIsCareerModalOpen(true)}
+          <CareerSessionButton
+            source="Java Programming Course Page - Career Section - Browse Open Roles"
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-200 bg-gray-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
           >
             Browse Open Roles
             <ChevronRight className="ml-1 h-4 w-4" />
-          </button>
-          <button
-            onClick={() => {
-              setEnrollSource("Java Programming Course Page - Career Section - Download Resume Template");
-              setIsEnrollModalOpen(true);
-            }}
+          </CareerSessionButton>
+          <EnrollButton
+            source="Java Programming Course Page - Career Section - Download Resume Template"
+            courseName="Java Programming"
             className="cursor-pointer inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
           >
             Download Resume Template
-          </button>
+          </EnrollButton>
         </div>
       </div>
-
-      <EnrollModal
-        isOpen={isEnrollModalOpen}
-        onClose={() => setIsEnrollModalOpen(false)}
-        courseName="Java Programming"
-        source={enrollSource}
-      />
-
-      <CareerSessionModal
-        isOpen={isCareerModalOpen}
-        onClose={() => setIsCareerModalOpen(false)}
-        source="Java Programming Course Page - Career Section - Browse Open Roles"
-      />
 
       {/* Accessible helpers for crawlers & screen readers */}
       <p className="sr-only">{title}</p>

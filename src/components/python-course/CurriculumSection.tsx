@@ -2,19 +2,7 @@
 // Sleek, slightly futuristic curriculum with distinct non-repeating accents, SEO JSON-LD, fully responsive.
 // Source: “Copy of Course 4P Python Programming .pdf” (Modules on pp.16–19; Capstone on p.19)
 
-'use client';
-import dynamic from "next/dynamic";
-import { useState } from "react";
-const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
-
-const SectionLoader = ({ label }: { label: string }) => {
-  return (
-    <div className="flex items-center justify-center h-full">
-      <div className="animate-spin rounded-full h-3 w-3 border-b-2 border-gray-900"></div>
-      <span className="ml-2 text-gray-900">{label}</span>
-    </div>
-  );
-};
+import SyllabusButton from "@/components/course-islands/SyllabusButton";
 
 type Module = {
   num: string;
@@ -148,8 +136,6 @@ const ACCENTS = [
 ];
 
 export default function CurriculumSection() {
-  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
-
   return (
     <section id="curriculum" aria-labelledby="curriculum-heading" className="relative py-10 bg-gray-50">
       {/* subtle futuristic frame */}
@@ -229,26 +215,20 @@ export default function CurriculumSection() {
 
         {/* CTA */}
         <div className="mt-10 text-center">
-          <button
-            onClick={() => setIsSyllabusModalOpen(true)}
+          <SyllabusButton
+            source="Python Course Page - Curriculum Section - Python Programming - Download Detailed Syllabus"
+            courseName="Python Programming"
+            ariaLabel="Download detailed Python curriculum"
             className="inline-flex items-center gap-2 rounded-xl cursor-pointer border border-slate-900 bg-slate-900 px-4 md:px-6 py-3 text-base font-semibold text-white shadow-[0_2px_0_0_rgba(15,23,42,0.3)] transition hover:translate-y-[-1px] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300"
-            aria-label="Download detailed Python curriculum"
           >
             Download Detailed Syllabus
             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
               <path d="M3 4.5A1.5 1.5 0 014.5 3h11A1.5 1.5 0 0117 4.5v11a1.5 1.5 0 01-1.5 1.5h-11A1.5 1.5 0 013 15.5v-11zm5 2a1 1 0 00-1 1v2H5.707a1 1 0 00-.707 1.707l4.293 4.293a1 1 0 001.414 0l4.293-4.293A1 1 0 0014.293 10H13V7.5a1 1 0 00-1-1H8z" />
             </svg>
-          </button>
+          </SyllabusButton>
           <p className="mt-3 text-xs sm:text-sm text-slate-600">Includes topics, outcomes, tools, and project checklist.</p>
         </div>
       </div>
-
-      <SyllabusDownloadModal
-        isOpen={isSyllabusModalOpen}
-        onClose={() => setIsSyllabusModalOpen(false)}
-        courseName="Python Programming"
-        source="Python Course Page - Curriculum Section - Python Programming - Download Detailed Syllabus"
-      />
 
     </section>
   );

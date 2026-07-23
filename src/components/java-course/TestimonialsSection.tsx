@@ -1,14 +1,9 @@
 // components/sections/JavaTestimonialsSection.tsx
 // Client component (no client-side JS) – sleek, simple, and unique
 
-'use client';
-
-
-const ReviewsMarquee = dynamic(() => import("../sections/ReviewMarque"), { ssr: false, loading: () => <div>Loading...</div> });
-import { useState } from "react";
-import dynamic from "next/dynamic";
-const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false, loading: () => <div>Loading...</div> });
-const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <div>Loading...</div> });
+import ReviewsMarquee from "../sections/ReviewMarque";
+import EnrollButton from "@/components/course-islands/EnrollButton";
+import SyllabusButton from "@/components/course-islands/SyllabusButton";
 
 // ---------- Types ----------
 type Testimonial = {
@@ -36,9 +31,6 @@ export default function TestimonialsSection({
   id = "testimonials",
   title = DEFAULT_TITLE,
 }: Props) {
-  const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
-  const [isSyllabusModalOpen, setIsSyllabusModalOpen] = useState(false);
-
   return (
     <section id={id} aria-labelledby={`${id}-heading`} className="relative py-10">
       {/* Subtle grid backdrop */}
@@ -70,35 +62,23 @@ export default function TestimonialsSection({
 
         {/* CTAs */}
         <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3">
-          <button
-            onClick={() => setIsEnrollModalOpen(true)}
+          <EnrollButton
+            source="Java Programming Course Page - Testimonials Section - Enroll Now"
+            courseName="Java Programming"
             className="cursor-pointer rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-4 focus:ring-slate-200"
           >
             Enroll now
-          </button>
+          </EnrollButton>
 
-          <button
-            onClick={() => setIsSyllabusModalOpen(true)}
+          <SyllabusButton
+            source="Java Programming Course Page - Testimonials Section - Download Syllabus"
+            courseName="Java Programming"
             className="cursor-pointer rounded-xl border border-slate-300 bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition focus:outline-none focus:ring-4 focus:ring-slate-200"
           >
             Download Syllabus
-          </button>
+          </SyllabusButton>
         </div>
       </div>
-
-      <EnrollModal
-        isOpen={isEnrollModalOpen}
-        onClose={() => setIsEnrollModalOpen(false)}
-        courseName="Java Programming"
-        source="Java Programming Course Page - Testimonials Section - Enroll Now"
-      />
-
-      <SyllabusDownloadModal
-        isOpen={isSyllabusModalOpen}
-        onClose={() => setIsSyllabusModalOpen(false)}
-        courseName="Java Programming"
-        source="Java Programming Course Page - Testimonials Section - Download Syllabus"
-      />
 
     </section>
   );
