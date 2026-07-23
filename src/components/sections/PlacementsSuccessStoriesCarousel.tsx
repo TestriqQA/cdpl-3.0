@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { Quote } from "lucide-react";
 import type { CSSProperties, ReactNode } from "react";

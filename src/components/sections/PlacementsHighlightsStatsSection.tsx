@@ -1,5 +1,3 @@
-"use client";
-
 import { Users, TrendingUp, MapPin, ShieldCheck } from "lucide-react";
 
 const stats = [
