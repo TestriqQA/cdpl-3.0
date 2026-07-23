@@ -1,75 +1,20 @@
-import dynamic from "next/dynamic";
-
-const SectionLoader = ({ label }: { label: string }) => {
-    return (
-        <div className="flex items-center justify-center py-16">
-            <p className="text-gray-500">{label}</p>
-        </div>
-    );
-};
-
 // HeroSection moved to page.tsx for Static Import (LCP Optimization)
 
-export const StatsSection = dynamic(
-    () => import("@/components/automation-testing-course/StatsSection"),
-    {
-        ssr: true,
-        loading: () => <SectionLoader label="Stats Section" />,
-    },
-);
+// Direct re-exports — dynamic(ssr:true) only added client Suspense boundaries
+// that caused a hydration layout shift (see d34d08e / BLG-010).
 
-export const WhyAutomation = dynamic(
-    () => import("@/components/automation-testing-course/WhyAutomation"),
-    {
-        ssr: true,
-        loading: () => <SectionLoader label="Why Automation" />,
-    },
-);
+export { default as StatsSection } from "@/components/automation-testing-course/StatsSection";
 
-export const CurriculumSection = dynamic(
-    () => import("@/components/automation-testing-course/CurriculumSection"),
-    {
-        ssr: true,
-        loading: () => <SectionLoader label="Curriculum Section" />,
-    },
-);
+export { default as WhyAutomation } from "@/components/automation-testing-course/WhyAutomation";
 
-export const ProjectsSection = dynamic(
-    () => import("@/components/automation-testing-course/ProjectsSection"),
-    {
-        ssr: true,
-        loading: () => <SectionLoader label="Projects Section" />,
-    },
-);
+export { default as CurriculumSection } from "@/components/automation-testing-course/CurriculumSection";
 
-export const CareerSection = dynamic(
-    () => import("@/components/automation-testing-course/CareerSection"),
-    {
-        ssr: true,
-        loading: () => <SectionLoader label="Career Section" />,
-    },
-);
+export { default as ProjectsSection } from "@/components/automation-testing-course/ProjectsSection";
 
-export const WhoShouldEnroll = dynamic(
-    () => import("@/components/automation-testing-course/WhoShouldEnroll"),
-    {
-        ssr: true,
-        loading: () => <SectionLoader label="Who Should Enroll" />,
-    },
-);
+export { default as CareerSection } from "@/components/automation-testing-course/CareerSection";
 
-export const ToolsSection = dynamic(
-    () => import("@/components/automation-testing-course/ToolsSection"),
-    {
-        ssr: true,
-        loading: () => <SectionLoader label="Tools Section" />,
-    },
-);
+export { default as WhoShouldEnroll } from "@/components/automation-testing-course/WhoShouldEnroll";
 
-export const FaqSection = dynamic(
-    () => import("@/components/automation-testing-course/FaqSection"),
-    {
-        ssr: true,
-        loading: () => <SectionLoader label="FAQ Section" />,
-    },
-);
+export { default as ToolsSection } from "@/components/automation-testing-course/ToolsSection";
+
+export { default as FaqSection } from "@/components/automation-testing-course/FaqSection";

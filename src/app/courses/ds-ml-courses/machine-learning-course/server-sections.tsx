@@ -1,75 +1,18 @@
-import dynamic from "next/dynamic";
+// Direct re-exports — dynamic(ssr:true) only added client Suspense boundaries
+// that caused a hydration layout shift (see d34d08e / BLG-010).
 
-const withLoader = (label: string) => ({
-    loading: () => (
-        <div className="flex items-center justify-center py-16 text-gray-500">
-            {label}
-        </div>
-    ),
-});
+export { default as WhyMLProgram } from "@/components/machine-learning-course/WhyMLProgram";
 
+export { default as CurriculumSection } from "@/components/machine-learning-course/CurriculumSection";
 
+export { default as ProjectsSection } from "@/components/machine-learning-course/ProjectsSection";
 
-export const WhyMLProgram = dynamic(
-    () => import("@/components/machine-learning-course/WhyMLProgram"),
-    {
-        ssr: true,
-        ...withLoader("Loading why ML program...")
-    },
-);
+export { default as CareerSection } from "@/components/machine-learning-course/CareerSection";
 
-export const CurriculumSection = dynamic(
-    () => import("@/components/machine-learning-course/CurriculumSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading curriculum...")
-    },
-);
+export { default as WhoShouldEnroll } from "@/components/machine-learning-course/WhoShouldEnroll";
 
-export const ProjectsSection = dynamic(
-    () => import("@/components/machine-learning-course/ProjectsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading projects...")
-    },
-);
+export { default as ToolsSection } from "@/components/machine-learning-course/ToolsSection";
 
-export const CareerSection = dynamic(
-    () => import("@/components/machine-learning-course/CareerSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading career...")
-    },
-);
+export { default as FaqSection } from "@/components/machine-learning-course/FaqSection";
 
-export const WhoShouldEnroll = dynamic(
-    () => import("@/components/machine-learning-course/WhoShouldEnroll"),
-    {
-        ssr: true,
-        ...withLoader("Loading enrollment info...")
-    },
-);
-
-export const ToolsSection = dynamic(
-    () => import("@/components/machine-learning-course/ToolsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading tools...")
-    },
-);
-
-export const FaqSection = dynamic(
-    () => import("@/components/machine-learning-course/FaqSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading FAQs...")
-    },
-);
-
-export const CareerRoadmapSection = dynamic(
-    () => import("@/components/machine-learning-course/CareerRoadmapSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading career roadmap...")
-    },
-);
+export { default as CareerRoadmapSection } from "@/components/machine-learning-course/CareerRoadmapSection";

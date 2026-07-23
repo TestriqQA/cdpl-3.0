@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import {
   generateReviewSchema,
@@ -14,40 +13,21 @@ import JsonLd from "@/components/JsonLd";
 // Revalidate content periodically (change to 0 if you fetch SSR)
 export const revalidate = 120;
 
-// ---------- Small, reusable loading UI ----------
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-16">
-      <p className="text-gray-500">{label}</p>
-    </div>
-  );
-}
-
-// ---------- Dynamic sections (SSR enabled, with lightweight fallbacks) ----------
-const ReviewsHeroSection = dynamic(
-  () => import("@/components/sections/ReviewsHeroSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading testimonials..." /> }
-);
-
-const JobsLiveJobsTestimonialSection = dynamic(
-  () => import("@/components/sections/JobsLiveJobsTestimonialSection"),
-  { ssr: true, loading: () => <SectionLoader label="Preparing CTA..." /> }
-);
-
-const ReviewsFeedbackSection = dynamic(
-  () => import("@/components/sections/ReviewsFeedbackSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading reviews..." /> }
-);
-
-const JobsLiveJobsReviewSection = dynamic(
-  () => import("@/components/sections/JobsLiveJobsReviewSection"),
-  { ssr: true, loading: () => <SectionLoader label="Preparing CTA..." /> }
-);
-
-const ReviewsCTAJoinSection = dynamic(
-  () => import("@/components/sections/ReviewsCTAJoinSection"),
-  { ssr: true, loading: () => <SectionLoader label="Preparing CTA..." /> }
-);
+// ---------- Sections (direct imports) ----------
+// These were previously wrapped in next/dynamic(..., { ssr: true, loading }).
+// In the App Router that gives NO lazy-loading benefit on a Server Component —
+// Next.js already code-splits route segments — but it DOES add a client
+// Suspense boundary. On hydration each boundary briefly swapped the
+// server-rendered section for its ~152px "Loading…" fallback and then back,
+// collapsing and re-expanding the page: a large layout shift (measured CLS
+// 0.106 on desktop, which failed the Agentic Browsing CLS check). Importing
+// them directly removes the boundaries and the shift. Same reasoning as
+// BLG-010 for Header/Footer/SpecialOfferBanner in app/layout.tsx.
+import ReviewsHeroSection from "@/components/sections/ReviewsHeroSection";
+import JobsLiveJobsTestimonialSection from "@/components/sections/JobsLiveJobsTestimonialSection";
+import ReviewsFeedbackSection from "@/components/sections/ReviewsFeedbackSection";
+import JobsLiveJobsReviewSection from "@/components/sections/JobsLiveJobsReviewSection";
+import ReviewsCTAJoinSection from "@/components/sections/ReviewsCTAJoinSection";
 
 // ---------- SEO Metadata ----------
 export const metadata: Metadata = generateStaticPageMetadata({

@@ -1,81 +1,12 @@
-import dynamic from "next/dynamic";
+// Direct re-exports — dynamic(ssr:true) only added client Suspense boundaries
+// that caused a hydration layout shift (see d34d08e / BLG-010).
 
-const withLoader = (label: string) => ({
-    loading: () => (
-        <div className="flex items-center justify-center py-16 text-gray-500">
-            {label}
-        </div>
-    ),
-});
-
-export const StatsSection = dynamic(
-    () => import("@/components/java-course/StatsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading stats...")
-    },
-);
-
-export const WhyJavaProgram = dynamic(
-    () => import("@/components/java-course/WhyJavaProgram"),
-    {
-        ssr: true,
-        ...withLoader("Loading why java program...")
-    },
-);
-
-export const CurriculumSection = dynamic(
-    () => import("@/components/java-course/CurriculumSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading curriculum...")
-    },
-);
-
-export const ProjectsSection = dynamic(
-    () => import("@/components/java-course/ProjectsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading projects...")
-    },
-);
-
-export const CareerSection = dynamic(
-    () => import("@/components/java-course/CareerSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading career...")
-    },
-);
-
-export const WhoShouldEnroll = dynamic(
-    () => import("@/components/java-course/WhoShouldEnroll"),
-    {
-        ssr: true,
-        ...withLoader("Loading enrollment info...")
-    },
-);
-
-export const ToolsSection = dynamic(
-    () => import("@/components/java-course/ToolsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading tools...")
-    },
-);
-
-export const CareerRoadmapSection = dynamic(
-    () => import("@/components/java-course/CareerRoadmapSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading career roadmap...")
-    },
-);
-
-export const FaqSection = dynamic(
-    () => import("@/components/java-course/FaqSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading FAQs...")
-    },
-);
+export { default as StatsSection } from "@/components/java-course/StatsSection";
+export { default as WhyJavaProgram } from "@/components/java-course/WhyJavaProgram";
+export { default as CurriculumSection } from "@/components/java-course/CurriculumSection";
+export { default as ProjectsSection } from "@/components/java-course/ProjectsSection";
+export { default as CareerSection } from "@/components/java-course/CareerSection";
+export { default as WhoShouldEnroll } from "@/components/java-course/WhoShouldEnroll";
+export { default as ToolsSection } from "@/components/java-course/ToolsSection";
+export { default as CareerRoadmapSection } from "@/components/java-course/CareerRoadmapSection";
+export { default as FaqSection } from "@/components/java-course/FaqSection";

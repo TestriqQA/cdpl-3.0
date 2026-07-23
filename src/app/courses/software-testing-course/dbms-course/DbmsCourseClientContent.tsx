@@ -1,19 +1,11 @@
 'use client';
 
-import dynamic from 'next/dynamic';
+// Direct re-exports — dynamic(ssr:true) only added client Suspense boundaries
+// that caused a hydration layout shift (see d34d08e / BLG-010).
+import TestimonialsSection from '@/components/dbms-course/TestimonialsSection';
+import CtaSection from '@/components/dbms-course/CtaSection';
 
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-    return (
-        <div className="flex items-center justify-center py-16">
-            <p className="text-gray-500">{label}</p>
-        </div>
-    );
-}
-
-
-export const TestimonialsSection = dynamic(() => import('@/components/dbms-course/TestimonialsSection'), { ssr: true, loading: () => <SectionLoader label="Loading testimonials..." /> });
-
-export const CtaSection = dynamic(() => import('@/components/dbms-course/CtaSection'), { ssr: true, loading: () => <SectionLoader label="Loading CTA..." /> });
+export { TestimonialsSection, CtaSection };
 
 
 export default function DbmsCourseClientContent() {

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import {
   generateCourseSchema,
@@ -7,34 +6,12 @@ import {
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
-/* ---------- Small, reusable loading UI ---------- */
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-16">
-      <p className="text-gray-500">{label}</p>
-    </div>
-  );
-}
-
-/* ---------- Dynamic sections (client components) ---------- */
+/* ---------- Sections ---------- */
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 import ACTDCertificationHeroSection from "@/components/sections/ACTDCertificationHeroSection";
-
-/* ---------- Dynamic sections (client components) ---------- */
-// Hero is now static for LCP optimization
-// const ACTDCertificationHeroSection = dynamic(
-//   () => import("@/components/sections/ACTDCertificationHeroSection"),
-//   { ssr: true, loading: () => <SectionLoader label="Loading hero..." /> }
-// );
-
-const ACTDCertificationTracksSection = dynamic(
-  () => import("@/components/sections/ACTDCertificationTracksSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading tracks..." /> }
-);
-
-const ACTDCertificationProgressFaqSection = dynamic(
-  () => import("@/components/sections/ACTDCertificationProgressFaqSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading details..." /> }
-);
+import ACTDCertificationTracksSection from "@/components/sections/ACTDCertificationTracksSection";
+import ACTDCertificationProgressFaqSection from "@/components/sections/ACTDCertificationProgressFaqSection";
 
 /* ---------- SEO ---------- */
 export const metadata: Metadata = generateStaticPageMetadata({

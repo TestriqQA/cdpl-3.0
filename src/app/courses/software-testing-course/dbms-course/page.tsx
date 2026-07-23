@@ -1,28 +1,21 @@
 import HeroSection from '@/components/dbms-course/HeroSection';
-const StatsSection = dynamic(() => import('@/components/dbms-course/StatsSection'), { ssr: true, loading: () => <SectionLoader label="Loading stats..." /> });
-const WhyMysqlSection = dynamic(() => import('@/components/dbms-course/WhyMysqlSection'), { ssr: true, loading: () => <SectionLoader label="Loading why..." /> });
-const CurriculumSection = dynamic(() => import('@/components/dbms-course/CurriculumSection'), { ssr: true, loading: () => <SectionLoader label="Loading curriculum..." /> });
-const ProjectsSection = dynamic(() => import('@/components/dbms-course/ProjectsSection'), { ssr: true, loading: () => <SectionLoader label="Loading projects..." /> });
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
+import StatsSection from '@/components/dbms-course/StatsSection';
+import WhyMysqlSection from '@/components/dbms-course/WhyMysqlSection';
+import CurriculumSection from '@/components/dbms-course/CurriculumSection';
+import ProjectsSection from '@/components/dbms-course/ProjectsSection';
 import StickyNav from '@/components/StickyNav2/StickyNav2';
-const CareerSection = dynamic(() => import('@/components/dbms-course/CareerSection'), { ssr: true, loading: () => <SectionLoader label="Loading career..." /> });
-const WhoShouldEnroll = dynamic(() => import('@/components/dbms-course/WhoShouldEnroll'), { ssr: true, loading: () => <SectionLoader label="Loading enrollment info..." /> });
-const ToolsSection = dynamic(() => import('@/components/dbms-course/ToolsSection'), { ssr: true, loading: () => <SectionLoader label="Loading tools..." /> });
-const FaqSection = dynamic(() => import('@/components/dbms-course/FaqSection'), { ssr: true, loading: () => <SectionLoader label="Loading FAQs..." /> });
+import CareerSection from '@/components/dbms-course/CareerSection';
+import WhoShouldEnroll from '@/components/dbms-course/WhoShouldEnroll';
+import ToolsSection from '@/components/dbms-course/ToolsSection';
+import FaqSection from '@/components/dbms-course/FaqSection';
 import { TestimonialsSection } from '@/app/courses/software-testing-course/dbms-course/DbmsCourseClientContent';
 import { CtaSection } from '@/app/courses/software-testing-course/dbms-course/DbmsCourseClientContent';
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, generateDbmsCoursePageSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 import { DBMS_FAQS, DBMS_REVIEW_DATA } from "@/data/dbmsData";
-import dynamic from 'next/dynamic';
-
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-16">
-      <p className="text-gray-500">{label}</p>
-    </div>
-  );
-}
 
 export const metadata = generateMetadata({
   title: "MySQL Database Course | Job Placement | 20-Hour Training",

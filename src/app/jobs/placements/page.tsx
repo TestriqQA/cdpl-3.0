@@ -1,5 +1,4 @@
 // app/jobs/placements/page.tsx
-import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 import Script from "next/script";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
@@ -7,7 +6,18 @@ import { generatePlacementsPageAllSchemas, generateBreadcrumbSchema } from "@/li
 import { PLACEMENTS } from "@/lib/placementShared";
 import JsonLd from "@/components/JsonLd";
 import { getHiringPartners } from "@/lib/hiring-partners";
-import type { SanityHiringPartner } from "@/sanity/types";
+
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
+import PlacementsHeroSection from "@/components/sections/PlacementsHeroSection";
+import PlacementsHighlightsStatsSection from "@/components/sections/PlacementsHighlightsStatsSection";
+import PlacementsOffersTickerSection from "@/components/sections/PlacementsOffersTickerSection";
+import PlacementsFiltersGridSection from "@/components/sections/PlacementsFiltersGridSection";
+import PlacementsCompanyWallSection from "@/components/sections/PlacementsCompanyWallSection";
+import PlacementsSuccessStoriesCarousel from "@/components/sections/PlacementsSuccessStoriesCarousel";
+import PlacementsMentorCTASection from "@/components/sections/PlacementsMentorCTASection";
+import PlacementsFAQSection from "@/components/sections/PlacementsFAQSection";
+// import PlacementsNewsletterCTASection from "@/components/sections/PlacementsNewsletterCTASection";
 
 // ============================================================================
 // SEO METADATA - Enhanced for Placements Page
@@ -35,58 +45,6 @@ export const metadata: Metadata = generateStaticPageMetadata({
     url: "/jobs/placements",
     image: "/og-images/jobs-placements-og.webp",
 });
-
-/** =====================================
- * Lightweight client-free loading UI
- * ===================================== */
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-    return (
-        <div className="flex items-center justify-center py-16">
-            <p className="text-gray-500 dark:text-gray-400">{label}</p>
-        </div>
-    );
-}
-
-/** =========================
- * Dynamic Imports (Client)
- * ========================= */
-import PlacementsHeroSection from "@/components/sections/PlacementsHeroSection";
-const PlacementsHighlightsStatsSection = dynamic(
-    () => import("@/components/sections/PlacementsHighlightsStatsSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading highlights…" /> }
-);
-const PlacementsOffersTickerSection = dynamic(
-    () => import("@/components/sections/PlacementsOffersTickerSection"),
-    { ssr: true, loading: () => <SectionLoader label="Fetching offers…" /> }
-);
-const PlacementsFiltersGridSection = dynamic(
-    () => import("@/components/sections/PlacementsFiltersGridSection"),
-    { ssr: true, loading: () => <SectionLoader label="Building grid…" /> }
-);
-const PlacementsCompanyWallSection = dynamic<{
-    sanityPartners?: SanityHiringPartner[];
-    contained?: boolean;
-}>(
-    () => import("@/components/sections/PlacementsCompanyWallSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading partners…" /> }
-);
-const PlacementsSuccessStoriesCarousel = dynamic(
-    () => import("@/components/sections/PlacementsSuccessStoriesCarousel"),
-    { ssr: true, loading: () => <SectionLoader label="Loading stories…" /> }
-);
-
-const PlacementsMentorCTASection = dynamic(
-    () => import("@/components/sections/PlacementsMentorCTASection"),
-    { ssr: true, loading: () => <SectionLoader label="Setting up CTA…" /> }
-);
-const PlacementsFAQSection = dynamic(
-    () => import("@/components/sections/PlacementsFAQSection"),
-    { ssr: true, loading: () => <SectionLoader label="Loading FAQs…" /> }
-);
-// const PlacementsNewsletterCTASection = dynamic(
-//     () => import("@/components/sections/PlacementsNewsletterCTASection"),
-//     { ssr: true, loading: () => <SectionLoader label="Loading updates…" /> }
-// );
 
 export default async function PlacementsPage() {
 

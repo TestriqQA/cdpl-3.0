@@ -1,81 +1,17 @@
 import StickyNav from "@/components/StickyNav2/StickyNav2";
 import { TestimonialsClient, CtaClient } from "@/app/courses/software-testing-course/etl-testing/client-section";
-import dynamic from "next/dynamic";
 
-const withLoader = (label: string) => ({
-  loading: () => (
-    <div className="flex items-center justify-center py-16 text-gray-500">
-      {label}
-    </div>
-  ),
-});
-
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 import HeroSection from '@/components/etl-testing/HeroSection'
-
-const StatsSection = dynamic(
-  () => import("@/components/etl-testing/StatsSection"),
-  {
-    ssr: true,
-    ...withLoader("Loading stats...")
-  },
-);
-
-const WhyEtlTesting = dynamic(
-  () => import("@/components/etl-testing/WhyEtlTesting"),
-  {
-    ssr: true,
-    ...withLoader("Loading why...")
-  },
-);
-
-const CurriculumSection = dynamic(
-  () => import("@/components/etl-testing/CurriculumSection"),
-  {
-    ssr: true,
-    ...withLoader("Loading curriculum...")
-  },
-);
-
-const ToolsSection = dynamic(
-  () => import("@/components/etl-testing/ToolsSection"),
-  {
-    ssr: true,
-    ...withLoader("Loading tools...")
-  },
-);
-
-const ProjectsSection = dynamic(
-  () => import("@/components/etl-testing/ProjectsSection"),
-  {
-    ssr: true,
-    ...withLoader("Loading projects...")
-  },
-);
-
-const CareerSection = dynamic(
-  () => import("@/components/etl-testing/CareerSection"),
-  {
-    ssr: true,
-    ...withLoader("Loading career...")
-  },
-);
-
-const WhoShouldEnroll = dynamic(
-  () => import("@/components/etl-testing/WhoShouldEnroll"),
-  {
-    ssr: true,
-    ...withLoader("Loading enrollment info...")
-  },
-);
-
-const FaqSection = dynamic(
-  () => import("@/components/etl-testing/FaqSection"),
-  {
-    ssr: true,
-    ...withLoader("Loading FAQs...")
-  },
-);
-
+import StatsSection from "@/components/etl-testing/StatsSection";
+import WhyEtlTesting from "@/components/etl-testing/WhyEtlTesting";
+import CurriculumSection from "@/components/etl-testing/CurriculumSection";
+import ToolsSection from "@/components/etl-testing/ToolsSection";
+import ProjectsSection from "@/components/etl-testing/ProjectsSection";
+import CareerSection from "@/components/etl-testing/CareerSection";
+import WhoShouldEnroll from "@/components/etl-testing/WhoShouldEnroll";
+import FaqSection from "@/components/etl-testing/FaqSection";
 
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateCourseSchema, generateBreadcrumbSchema, generateFAQSchema, generateEtlTestingCoursePageSchema } from "@/lib/schema-generators";

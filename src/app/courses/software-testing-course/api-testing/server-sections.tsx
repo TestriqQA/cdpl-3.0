@@ -1,74 +1,11 @@
-import dynamic from "next/dynamic";
+// Direct re-exports — dynamic(ssr:true) only added client Suspense boundaries
+// that caused a hydration layout shift (see d34d08e / BLG-010).
 
-const withLoader = (label: string) => ({
-    loading: () => (
-        <div className="flex items-center justify-center py-16 text-gray-500">
-            {label}
-        </div>
-    ),
-});
-
-export const StatsSection = dynamic(
-    () => import("@/components/api-testing/StatsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading stats...")
-    },
-
-);
-
-export const WhyApiTesting = dynamic(
-    () => import("@/components/api-testing/WhyApiTesting"),
-    {
-        ssr: true,
-        ...withLoader("Loading why...")
-    },
-);
-
-export const CurriculumSection = dynamic(
-    () => import("@/components/api-testing/CurriculumSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading curriculum...")
-    },
-);
-
-export const ToolsSection = dynamic(
-    () => import("@/components/api-testing/ToolsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading tools...")
-    },
-);
-
-export const ProjectsSection = dynamic(
-    () => import("@/components/api-testing/ProjectsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading projects...")
-    },
-);
-
-export const CareerSection = dynamic(
-    () => import("@/components/api-testing/CareerSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading career...")
-    },
-);
-
-export const WhoShouldEnroll = dynamic(
-    () => import("@/components/api-testing/WhoShouldEnroll"),
-    {
-        ssr: true,
-        ...withLoader("Loading enrollment info...")
-    },
-);
-
-export const FaqSection = dynamic(
-    () => import("@/components/api-testing/FaqSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading FAQs...")
-    },
-);
+export { default as StatsSection } from "@/components/api-testing/StatsSection";
+export { default as WhyApiTesting } from "@/components/api-testing/WhyApiTesting";
+export { default as CurriculumSection } from "@/components/api-testing/CurriculumSection";
+export { default as ToolsSection } from "@/components/api-testing/ToolsSection";
+export { default as ProjectsSection } from "@/components/api-testing/ProjectsSection";
+export { default as CareerSection } from "@/components/api-testing/CareerSection";
+export { default as WhoShouldEnroll } from "@/components/api-testing/WhoShouldEnroll";
+export { default as FaqSection } from "@/components/api-testing/FaqSection";

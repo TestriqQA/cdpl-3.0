@@ -3,29 +3,22 @@ import StickyNav from "@/components/StickyNav2/StickyNav2";
 import { with_roadmap } from '@/components/StickyNavData';
 import StatsSection from "@/components/ai-in-digital-marketing/StatsSection";
 import JsonLd from "@/components/JsonLd";
-const WhyThisProgram = dynamic(() => import("@/components/ai-in-digital-marketing/WhyThisProgram"), { ssr: true, loading: () => <SectionLoader label="Loading why this program section..." /> });
-const CurriculumSection = dynamic(() => import("@/components/ai-in-digital-marketing/CurriculumSection"), { ssr: true, loading: () => <SectionLoader label="Loading curriculum section..." /> });
-const ProjectsSection = dynamic(() => import("@/components/ai-in-digital-marketing/ProjectsSection"), { ssr: true, loading: () => <SectionLoader label="Loading projects section..." /> });
-const TestimonialsSection = dynamic(() => import("@/components/ai-in-digital-marketing/TestimonialsSection"), { ssr: true, loading: () => <SectionLoader label="Loading testimonials section..." /> });
-const WhoShouldEnroll = dynamic(() => import("@/components/ai-in-digital-marketing/WhoShouldEnroll"), { ssr: true, loading: () => <SectionLoader label="Loading who should enroll section..." /> });
-const ToolsSection = dynamic(() => import("@/components/ai-in-digital-marketing/ToolsSection"), { ssr: true, loading: () => <SectionLoader label="Loading tools section..." /> });
-const CareerSection = dynamic(() => import("@/components/ai-in-digital-marketing/CareerSection"), { ssr: true, loading: () => <SectionLoader label="Loading career section..." /> });
-const CareerRoadmapSection = dynamic(() => import("@/components/ai-in-digital-marketing/CareerRoadmapSection"), { ssr: true, loading: () => <SectionLoader label="Loading career roadmap section..." /> });
-const FaqSection = dynamic(() => import("@/components/ai-in-digital-marketing/FaqSection"), { ssr: true, loading: () => <SectionLoader label="Loading faq section..." /> });
-const CtaSection = dynamic(() => import("@/components/ai-in-digital-marketing/CtaSection"), { ssr: true, loading: () => <SectionLoader label="Loading cta section..." /> });
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
+import WhyThisProgram from "@/components/ai-in-digital-marketing/WhyThisProgram";
+import CurriculumSection from "@/components/ai-in-digital-marketing/CurriculumSection";
+import ProjectsSection from "@/components/ai-in-digital-marketing/ProjectsSection";
+import TestimonialsSection from "@/components/ai-in-digital-marketing/TestimonialsSection";
+import WhoShouldEnroll from "@/components/ai-in-digital-marketing/WhoShouldEnroll";
+import ToolsSection from "@/components/ai-in-digital-marketing/ToolsSection";
+import CareerSection from "@/components/ai-in-digital-marketing/CareerSection";
+import CareerRoadmapSection from "@/components/ai-in-digital-marketing/CareerRoadmapSection";
+import FaqSection from "@/components/ai-in-digital-marketing/FaqSection";
+import CtaSection from "@/components/ai-in-digital-marketing/CtaSection";
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateAiInDigitalMarketingCoursePageSchema } from "@/lib/schema-generators";
 import { AI_IN_DIGITAL_MARKETING_FAQS, AI_IN_DIGITAL_MARKETING_REVIEW_DATA } from "@/data/aiInDigitalMarketingData";
 import { getGoogleReviews } from "@/lib/reviews";
-import dynamic from 'next/dynamic';
-
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-    return (
-        <div className="flex items-center justify-center py-16">
-            <p className="text-gray-500">{label}</p>
-        </div>
-    );
-}
 
 export const metadata = generateMetadata({
     title: "AI Digital Marketing Course for Business Owners | CDPL",

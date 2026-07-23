@@ -2,29 +2,17 @@
 
 import Link from 'next/link';
 import { Facebook, Linkedin, Instagram, Youtube } from 'lucide-react';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
-// Neither of these declares a `loading` fallback. With ssr:true the real markup
-// is already in the server HTML, so a fallback only ever appeared while the
-// client chunk was in flight — and each reserved a full 100vh that then
-// collapsed to the real footer height. Since both render unconditionally (see
-// below), that was a latent 2x100vh shift on client navigations.
-// The removed markup also used `bg-[theme(color.background)]`, which is not a
-// valid Tailwind theme path (`colors.background`), so it compiled to nothing.
-const Footer2 = dynamic(
-  () => import("@/components/Layout/Footer2"),
-  {
-    ssr: true,
-  }
-);
-
-const CityFooter = dynamic(
-  () => import("@/components/Layout/CityFooter"),
-  {
-    ssr: true,
-  }
-)
+// Both render unconditionally, so dynamic() bought nothing here: with ssr:true
+// the real markup is already in the server HTML. The wrapper only added a client
+// Suspense boundary that swaps the footer out during hydration — the layout-shift
+// pattern fixed in d34d08e / BLG-010. The Footer renders on every page, so that
+// boundary cost was sitewide. Imported directly now.
+// (An earlier revision also had 100vh `loading` fallbacks here that collapsed to
+// the real footer height; those were already removed.)
+import Footer2 from "@/components/Layout/Footer2";
+import CityFooter from "@/components/Layout/CityFooter";
 
 /** Minimal X (formerly Twitter) logo */
 function XLogo(props: React.SVGProps<SVGSVGElement>) {

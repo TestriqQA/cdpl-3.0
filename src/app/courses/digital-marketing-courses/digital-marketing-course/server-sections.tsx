@@ -1,89 +1,22 @@
-import dynamic from "next/dynamic";
+// Direct re-exports — dynamic(ssr:true) only added client Suspense boundaries
+// that caused a hydration layout shift (see d34d08e / BLG-010).
 
-const withLoader = (label: string) => ({
-    loading: () => (
-        <div className="flex items-center justify-center py-16 text-gray-500">
-            {label}
-        </div>
-    ),
-});
+export { default as HeroSection } from "@/components/digital-marketing-course/HeroSection";
 
-export const HeroSection = dynamic(
-    () => import("@/components/digital-marketing-course/HeroSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading hero...")
-    },
-);
+export { default as StatsSection } from "@/components/digital-marketing-course/StatsSection";
 
-export const StatsSection = dynamic(
-    () => import("@/components/digital-marketing-course/StatsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading stats...")
-    },
-);
+export { default as WhyMasterProgram } from "@/components/digital-marketing-course/WhyMasterProgram";
 
-export const WhyMasterProgram = dynamic(
-    () => import("@/components/digital-marketing-course/WhyMasterProgram"),
-    {
-        ssr: true,
-        ...withLoader("Loading why master program...")
-    },
-);
+export { default as CurriculumSection } from "@/components/digital-marketing-course/CurriculumSection";
 
-export const CurriculumSection = dynamic(
-    () => import("@/components/digital-marketing-course/CurriculumSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading curriculum...")
-    },
-);
+export { default as ProjectsSection } from "@/components/digital-marketing-course/ProjectsSection";
 
-export const ProjectsSection = dynamic(
-    () => import("@/components/digital-marketing-course/ProjectsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading projects...")
-    },
-);
+export { default as CareerSection } from "@/components/digital-marketing-course/CareerSection";
 
-export const CareerSection = dynamic(
-    () => import("@/components/digital-marketing-course/CareerSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading career...")
-    },
-);
+export { default as WhoShouldEnroll } from "@/components/digital-marketing-course/WhoShouldEnroll";
 
-export const WhoShouldEnroll = dynamic(
-    () => import("@/components/digital-marketing-course/WhoShouldEnroll"),
-    {
-        ssr: true,
-        ...withLoader("Loading enrollment info...")
-    },
-);
+export { default as ToolsSection } from "@/components/digital-marketing-course/ToolsSection";
 
-export const ToolsSection = dynamic(
-    () => import("@/components/digital-marketing-course/ToolsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading tools...")
-    },
-);
+export { default as FaqSection } from "@/components/digital-marketing-course/FaqSection";
 
-export const FaqSection = dynamic(
-    () => import("@/components/digital-marketing-course/FaqSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading FAQs...")
-    },
-);
-
-export const JsonLd = dynamic(
-    () => import("@/components/JsonLd"),
-    {
-        ssr: true,
-        ...withLoader("Loading json ld...")
-    },
-);
+export { default as JsonLd } from "@/components/JsonLd";

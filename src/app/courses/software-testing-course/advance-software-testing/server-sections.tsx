@@ -1,70 +1,23 @@
 'use client';
 
-import dynamic from "next/dynamic";
-
 
 // HeroSection moved to page.tsx for Static Import (LCP Optimization)
 
-export const StatsSection = dynamic(
-    () => import("@/components/advance-software-testing/StatsSection"),
-    {
-        ssr: true,
-        loading: () => <div className="h-20" />,
-    },
-);
+// Direct re-exports — dynamic(ssr:true) only added client Suspense boundaries
+// that caused a hydration layout shift (see d34d08e / BLG-010).
 
-export const WhyAdvancedTesting = dynamic(
-    () => import("@/components/advance-software-testing/WhyAdvancedTesting"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as StatsSection } from "@/components/advance-software-testing/StatsSection";
 
-export const CurriculumSection = dynamic(
-    () => import("@/components/advance-software-testing/CurriculumSection"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as WhyAdvancedTesting } from "@/components/advance-software-testing/WhyAdvancedTesting";
 
-export const ProjectsSection = dynamic(
-    () => import("@/components/advance-software-testing/ProjectsSection"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as CurriculumSection } from "@/components/advance-software-testing/CurriculumSection";
 
-export const CareerSection = dynamic(
-    () => import("@/components/advance-software-testing/CareerSection"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as ProjectsSection } from "@/components/advance-software-testing/ProjectsSection";
 
-export const WhoShouldEnroll = dynamic(
-    () => import("@/components/advance-software-testing/WhoShouldEnroll"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as CareerSection } from "@/components/advance-software-testing/CareerSection";
 
-export const ToolsSection = dynamic(
-    () => import("@/components/advance-software-testing/ToolsSection"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as WhoShouldEnroll } from "@/components/advance-software-testing/WhoShouldEnroll";
 
-export const FaqSection = dynamic(
-    () => import("@/components/advance-software-testing/FaqSection"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as ToolsSection } from "@/components/advance-software-testing/ToolsSection";
+
+export { default as FaqSection } from "@/components/advance-software-testing/FaqSection";

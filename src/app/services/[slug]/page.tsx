@@ -1,11 +1,22 @@
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
 import { getServices, getServiceBySlug } from '@/lib/services';
 import { getEvents } from '@/lib/events';
 import { generateMetadata as generateSEOMetadata, generateMetaDescription } from '@/lib/metadata-generator';
 import { generateServiceDetailPageAllSchemas } from '@/lib/schema-generators';
 import JsonLd from '@/components/JsonLd';
+
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
+import ServiceDetailHeroSection from '@/components/sections/ServiceDetailHeroSection';
+import ServiceDetailAboutSection from '@/components/sections/ServiceDetailAboutSection';
+import ServiceDetailStatsSection from '@/components/sections/ServiceDetailStatsSection';
+import ServiceDetailFeaturesBenefitsSection from '@/components/sections/ServiceDetailFeaturesBenefitsSection';
+import ServiceDetailAudienceSection from '@/components/sections/ServiceDetailAudienceSection';
+import ServiceDetailOutcomesSection from '@/components/sections/ServiceDetailOutcomesSection';
+import ServiceDetailMethodologySection from '@/components/sections/ServiceDetailMethodologySection';
+import ServiceDetailPastEventsSection from '@/components/sections/ServiceDetailPastEventsSection';
+import ServiceDetailCTASection from '@/components/sections/ServiceDetailCTASection';
 
 // ============================================================================
 // STATIC SITE GENERATION — Pre-build all service pages at deploy time
@@ -20,52 +31,6 @@ export async function generateStaticParams() {
 
 // Revalidate daily so content stays fresh without full rebuilds
 export const revalidate = 86400;
-
-// ------- Reusable loader for dynamic sections -------
-function SectionLoader({ label = 'Loading...' }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-16">
-      <p className="text-gray-600">{label}</p>
-    </div>
-  );
-}
-
-// ---------- Static Import for Hero (LCP Optimization) ----------
-import ServiceDetailHeroSection from '@/components/sections/ServiceDetailHeroSection';
-
-// ---------- Dynamic sections (SSR enabled) ----------
-const ServiceDetailAboutSection = dynamic(
-  () => import('@/components/sections/ServiceDetailAboutSection'),
-  { ssr: true, loading: () => <SectionLoader label="Loading about..." /> }
-);
-const ServiceDetailStatsSection = dynamic(
-  () => import('@/components/sections/ServiceDetailStatsSection'),
-  { ssr: true, loading: () => <SectionLoader label="Loading stats..." /> }
-);
-const ServiceDetailFeaturesBenefitsSection = dynamic(
-  () => import('@/components/sections/ServiceDetailFeaturesBenefitsSection'),
-  { ssr: true, loading: () => <SectionLoader label="Loading features..." /> }
-);
-const ServiceDetailAudienceSection = dynamic(
-  () => import('@/components/sections/ServiceDetailAudienceSection'),
-  { ssr: true, loading: () => <SectionLoader label="Loading audience..." /> }
-);
-const ServiceDetailOutcomesSection = dynamic(
-  () => import('@/components/sections/ServiceDetailOutcomesSection'),
-  { ssr: true, loading: () => <SectionLoader label="Loading outcomes..." /> }
-);
-const ServiceDetailMethodologySection = dynamic(
-  () => import('@/components/sections/ServiceDetailMethodologySection'),
-  { ssr: true, loading: () => <SectionLoader label="Loading methodology..." /> }
-);
-const ServiceDetailPastEventsSection = dynamic(
-  () => import('@/components/sections/ServiceDetailPastEventsSection'),
-  { ssr: true, loading: () => <SectionLoader label="Loading events..." /> }
-);
-const ServiceDetailCTASection = dynamic(
-  () => import('@/components/sections/ServiceDetailCTASection'),
-  { ssr: true, loading: () => <SectionLoader label="Loading call-to-action..." /> }
-);
 
 // ============================================================================
 // ENHANCED METADATA GENERATION FOR SEO

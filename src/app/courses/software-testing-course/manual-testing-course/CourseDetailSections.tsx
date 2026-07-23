@@ -1,47 +1,17 @@
 "use client";
 
-import dynamic from "next/dynamic";
-
-const CurriculumSection = dynamic(
-    () => import("@/components/manual-testing-course/CurriculumSection"),
-    { ssr: true }
-)
-const ToolsSection = dynamic(
-    () => import("@/components/manual-testing-course/ToolsSection"),
-    { ssr: true }
-)
-const ProjectSection = dynamic(
-    () => import("@/components/manual-testing-course/ProjectSection"),
-    { ssr: true }
-)
-const LearningPath = dynamic(
-    () => import("@/components/manual-testing-course/LearningPath"),
-    { ssr: true }
-)
-const InstructorSection = dynamic(
-    () => import("@/components/manual-testing-course/InstructorSection"),
-    { ssr: true }
-)
-const CareerSection = dynamic(
-    () => import("@/components/manual-testing-course/CareerSection"),
-    { ssr: true }
-)
-const TrustSection = dynamic(
-    () => import("@/components/manual-testing-course/TrustSection"),
-    { ssr: true }
-)
-const ComparisonSection = dynamic(
-    () => import("@/components/manual-testing-course/ComparisonSection"),
-    { ssr: true }
-)
-const OtherCoursesSection = dynamic(
-    () => import("@/components/manual-testing-course/OtherCourseSection"),
-    { ssr: true }
-)
-const FaqSection = dynamic(
-    () => import("@/components/manual-testing-course/FaqSection"),
-    { ssr: true }
-)
+// Direct re-exports — dynamic(ssr:true) only added client Suspense boundaries
+// that caused a hydration layout shift (see d34d08e / BLG-010).
+import CurriculumSection from "@/components/manual-testing-course/CurriculumSection";
+import ToolsSection from "@/components/manual-testing-course/ToolsSection";
+import ProjectSection from "@/components/manual-testing-course/ProjectSection";
+import LearningPath from "@/components/manual-testing-course/LearningPath";
+import InstructorSection from "@/components/manual-testing-course/InstructorSection";
+import CareerSection from "@/components/manual-testing-course/CareerSection";
+import TrustSection from "@/components/manual-testing-course/TrustSection";
+import ComparisonSection from "@/components/manual-testing-course/ComparisonSection";
+import OtherCoursesSection from "@/components/manual-testing-course/OtherCourseSection";
+import FaqSection from "@/components/manual-testing-course/FaqSection";
 
 export default function CourseDetailSections() {
     return (

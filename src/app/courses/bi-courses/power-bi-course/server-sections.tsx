@@ -1,97 +1,24 @@
-import dynamic from "next/dynamic";
+// Direct re-exports — dynamic(ssr:true) only added client Suspense boundaries
+// that caused a hydration layout shift (see d34d08e / BLG-010).
 
-const withLoader = (label: string) => ({
-    loading: () => (
-        <div className="flex items-center justify-center py-16 text-gray-500">
-            {label}
-        </div>
-    ),
-});
+export { default as HeroSection } from "@/components/power-bi-course/HeroSection";
 
-export const HeroSection = dynamic(
-    () => import("@/components/power-bi-course/HeroSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading hero...")
-    },
-);
+export { default as StatsSection } from "@/components/power-bi-course/StatsSection";
 
-export const StatsSection = dynamic(
-    () => import("@/components/power-bi-course/StatsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading stats...")
-    },
-);
+export { default as WhyBIProgram } from "@/components/power-bi-course/WhyBIProgram";
 
-export const WhyBIProgram = dynamic(
-    () => import("@/components/power-bi-course/WhyBIProgram"),
-    {
-        ssr: true,
-        ...withLoader("Loading why bi program...")
-    },
-);
+export { default as CurriculumSection } from "@/components/power-bi-course/CurriculumSection";
 
-export const CurriculumSection = dynamic(
-    () => import("@/components/power-bi-course/CurriculumSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading curriculum...")
-    },
-);
+export { default as ProjectsSection } from "@/components/power-bi-course/ProjectsSection";
 
-export const ProjectsSection = dynamic(
-    () => import("@/components/power-bi-course/ProjectsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading projects...")
-    },
-);
+export { default as CareerSection } from "@/components/power-bi-course/CareerSection";
 
-export const CareerSection = dynamic(
-    () => import("@/components/power-bi-course/CareerSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading career...")
-    },
-);
+export { default as WhoShouldEnroll } from "@/components/power-bi-course/WhoShouldEnroll";
 
-export const WhoShouldEnroll = dynamic(
-    () => import("@/components/power-bi-course/WhoShouldEnroll"),
-    {
-        ssr: true,
-        ...withLoader("Loading enrollment info...")
-    },
-);
+export { default as ToolsSection } from "@/components/power-bi-course/ToolsSection";
 
-export const ToolsSection = dynamic(
-    () => import("@/components/power-bi-course/ToolsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading tools...")
-    },
-);
+export { default as FaqSection } from "@/components/power-bi-course/FaqSection";
 
-export const FaqSection = dynamic(
-    () => import("@/components/power-bi-course/FaqSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading FAQs...")
-    },
-);
+export { default as CareerRoadmapSection } from "@/components/power-bi-course/CareerRoadmapSection";
 
-export const CareerRoadmapSection = dynamic(
-    () => import("@/components/power-bi-course/CareerRoadmapSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading career roadmap...")
-    },
-);
-
-export const JsonLd = dynamic(
-    () => import("@/components/JsonLd"),
-    {
-        ssr: true,
-        ...withLoader("Loading json ld...")
-    },
-);
+export { default as JsonLd } from "@/components/JsonLd";

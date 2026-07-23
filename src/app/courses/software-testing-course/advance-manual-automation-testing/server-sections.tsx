@@ -1,74 +1,18 @@
-import dynamic from "next/dynamic";
+// Direct re-exports — dynamic(ssr:true) only added client Suspense boundaries
+// that caused a hydration layout shift (see d34d08e / BLG-010).
 
-const withLoader = (label: string) => ({
-    loading: () => (
-        <div className="flex items-center justify-center py-16 text-gray-500">
-            {label}
-        </div>
-    ),
-});
+export { default as StatsSection } from "@/components/advance-manual-automation-testing/StatsSection";
 
-export const StatsSection = dynamic(
-    () => import("@/components/advance-manual-automation-testing/StatsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading stats...")
-    },
-);
+export { default as WhyMasterProgram } from "@/components/advance-manual-automation-testing/WhyMasterProgram";
 
-export const WhyMasterProgram = dynamic(
-    () => import("@/components/advance-manual-automation-testing/WhyMasterProgram"),
-    {
-        ssr: true,
-        ...withLoader("Loading why master program...")
-    },
-);
+export { default as CurriculumSection } from "@/components/advance-manual-automation-testing/CurriculumSection";
 
-export const CurriculumSection = dynamic(
-    () => import("@/components/advance-manual-automation-testing/CurriculumSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading curriculum...")
-    },
-);
+export { default as ProjectsSection } from "@/components/advance-manual-automation-testing/ProjectsSection";
 
-export const ProjectsSection = dynamic(
-    () => import("@/components/advance-manual-automation-testing/ProjectsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading projects...")
-    },
-);
+export { default as CareerSection } from "@/components/advance-manual-automation-testing/CareerSection";
 
-export const CareerSection = dynamic(
-    () => import("@/components/advance-manual-automation-testing/CareerSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading career...")
-    },
-);
+export { default as WhoShouldEnroll } from "@/components/advance-manual-automation-testing/WhoShouldEnroll";
 
-export const WhoShouldEnroll = dynamic(
-    () => import("@/components/advance-manual-automation-testing/WhoShouldEnroll"),
-    {
-        ssr: true,
-        ...withLoader("Loading enrollment info...")
-    },
-);
+export { default as ToolsSection } from "@/components/advance-manual-automation-testing/ToolsSection";
 
-export const ToolsSection = dynamic(
-    () => import("@/components/advance-manual-automation-testing/ToolsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading tools...")
-    },
-);
-
-export const FaqSection = dynamic(
-    () => import("@/components/advance-manual-automation-testing/FaqSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading FAQs...")
-    },
-);
-
+export { default as FaqSection } from "@/components/advance-manual-automation-testing/FaqSection";

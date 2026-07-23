@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import React, { cache } from 'react';
 import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
@@ -10,6 +9,12 @@ import { client } from '@/sanity/client';
 import { sanityFetch } from '@/sanity/lib/fetch';
 import { POST_QUERY, POSTS_SLUG_QUERY, POST_CURRENT_SLUG_FOR_PREVIOUS_QUERY, RELATED_POSTS_QUERY, CATEGORIES_WITH_COUNTS_QUERY, LATEST_POSTS_QUERY } from '@/sanity/lib/queries';
 import { SanityPost, SanityCategory } from '@/sanity/types';
+
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
+import { BlogPostHeroSection } from '@/components/sections/BlogPostHeroSection';
+import { BlogPostSection } from '@/components/sections/BlogPostSection';
+import { BlogPostContactSection } from '@/components/sections/BlogPostContactSection';
 
 // Deduplicate the Sanity fetch between generateMetadata and the page
 // component for the same request. Without React.cache(), POST_QUERY ran
@@ -42,54 +47,6 @@ function countPortableTextWords(content: unknown): number {
     }
     return words;
 }
-
-// BLG-018: same-shape skeleton instead of a centered "Loading..." text.
-// The text fallback was a full-height element that could flash as the LCP
-// candidate and caused a layout shift when the real hero swapped in.
-const BlogPostHeroSection = dynamic(
-    () => import("@/components/sections/BlogPostHeroSection").then(m => ({ default: m.BlogPostHeroSection })),
-    {
-        ssr: true,
-        loading: () => (
-            <div className="animate-pulse" aria-hidden="true">
-                <div className="mb-4 h-8 w-3/4 rounded bg-gray-200" />
-                <div className="mb-8 h-4 w-1/2 rounded bg-gray-200" />
-                <div className="mb-6 sm:mb-8 h-64 w-full rounded-lg bg-gray-200 sm:h-80 md:h-96 lg:h-[420px]" />
-                <div className="space-y-3">
-                    <div className="h-4 w-full rounded bg-gray-200" />
-                    <div className="h-4 w-5/6 rounded bg-gray-200" />
-                </div>
-            </div>
-        )
-    }
-);
-
-const BlogPostSection = dynamic(
-    () => import("@/components/sections/BlogPostSection").then(m => ({ default: m.BlogPostSection })),
-    {
-        ssr: true,
-        loading: () => (
-            <div className="flex items-center justify-center h-screen bg-white">
-                <p className="text-gray-500">Loading...</p>
-            </div>
-        )
-    }
-);
-
-// BlogPostContactSection doesn't need data props, so it can stay as is if it doesn't use slug for logic
-// Checking import below, it seems to take 'slug'. Let's assume it's fine or we might need to update it too.
-// Ideally contact section is generic.
-const BlogPostContactSection = dynamic(
-    () => import("@/components/sections/BlogPostContactSection").then(m => ({ default: m.BlogPostContactSection })),
-    {
-        ssr: true,
-        loading: () => (
-            <div className="flex items-center justify-center h-screen bg-white">
-                <p className="text-gray-500">Loading...</p>
-            </div>
-        )
-    }
-);
 
 // ============================================================================
 // STATIC SITE GENERATION - Generate pages for all blog posts
@@ -231,38 +188,35 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <JsonLd id="article-schema" schema={articleSchema} />
             <JsonLd id="breadcrumb-schema" schema={breadcrumbSchema} />
 
+            {/* No <Suspense> wrappers here: none of these children do async work,
+                so the boundaries never suspended for a real reason — they only
+                let a small "Loading …" div replace the real section during
+                hydration, which is the layout-shift pattern fixed in d34d08e /
+                BLG-010. Rendered directly. */}
             <article className="blog-post-page">
                 {/* Category Navigation Menu */}
                 <nav aria-label="Blog categories">
-                    <React.Suspense fallback={<div>Loading menu...</div>}>
-                        <BlogCategoryMenu />
-                    </React.Suspense>
+                    <BlogCategoryMenu />
                 </nav>
 
                 {/* Blog Post Hero Section */}
                 <header>
-                    <React.Suspense fallback={<div>Loading header...</div>}>
-                        <BlogPostHeroSection post={post} />
-                    </React.Suspense>
+                    <BlogPostHeroSection post={post} />
                 </header>
 
                 {/* Blog Post Main Content */}
                 <div role="region" aria-label="Article content">
-                    <React.Suspense fallback={<div>Loading content...</div>}>
-                        <BlogPostSection
-                            post={post}
-                            relatedPosts={relatedPosts}
-                            categories={categories}
-                            latestPosts={latestPosts}
-                        />
-                    </React.Suspense>
+                    <BlogPostSection
+                        post={post}
+                        relatedPosts={relatedPosts}
+                        categories={categories}
+                        latestPosts={latestPosts}
+                    />
                 </div>
 
                 {/* Contact Section */}
                 <aside role="complementary" aria-label="Contact information">
-                    <React.Suspense fallback={<div>Loading contact form...</div>}>
-                        <BlogPostContactSection slug={slug} />
-                    </React.Suspense>
+                    <BlogPostContactSection slug={slug} />
                 </aside>
             </article>
         </>

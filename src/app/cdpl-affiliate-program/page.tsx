@@ -1,11 +1,21 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import {
   generateBreadcrumbSchema,
   generateAffiliateProgram8PointSchema
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
+
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
+import AffiliateHeroSection from "@/components/sections/AffiliateHeroSection";
+import AffiliateBenefitsSection from "@/components/sections/AffiliateBenefitsSection";
+import AffiliateHowItWorksSection from "@/components/sections/AffiliateHowItWorksSection";
+import AffiliateTiersSection from "@/components/sections/AffiliateTiersSection";
+import AffiliatePayoutsSection from "@/components/sections/AffiliatePayoutsSection";
+import AffiliateFAQSection from "@/components/sections/AffiliateFAQSection";
+import AffiliateCTASection from "@/components/sections/AffiliateCTASection";
+import AffiliateContentSection from "@/components/sections/AffiliateContentSection";
 
 // ---------- SEO ----------
 export const metadata: Metadata = generateStaticPageMetadata({
@@ -32,60 +42,6 @@ export const metadata: Metadata = generateStaticPageMetadata({
   url: "/cdpl-affiliate-program",
   image: "/og-images/cdpl-affiliate-program-og.webp",
 });
-
-// ---------- Inline Loader ----------
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-8">
-      <p className="text-gray-500">{label}</p>
-    </div>
-  );
-}
-
-// ---------- Dynamic sections (SSR enabled) ----------
-import AffiliateHeroSection from "@/components/sections/AffiliateHeroSection";
-
-// ---------- Dynamic sections (SSR enabled) ----------
-// Hero is now static for LCP optimization
-// const AffiliateHeroSection = dynamic(
-//   () => import("@/components/sections/AffiliateHeroSection"),
-//   { ssr: true, loading: () => <SectionLoader label="Booting the hero..." /> }
-// );
-
-const AffiliateBenefitsSection = dynamic(
-  () => import("@/components/sections/AffiliateBenefitsSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading benefits..." /> }
-);
-
-const AffiliateHowItWorksSection = dynamic(
-  () => import("@/components/sections/AffiliateHowItWorksSection"),
-  { ssr: true, loading: () => <SectionLoader label="Wiring the flow..." /> }
-);
-
-const AffiliateTiersSection = dynamic(
-  () => import("@/components/sections/AffiliateTiersSection"),
-  { ssr: true, loading: () => <SectionLoader label="Setting up tiers..." /> }
-);
-
-const AffiliatePayoutsSection = dynamic(
-  () => import("@/components/sections/AffiliatePayoutsSection"),
-  { ssr: true, loading: () => <SectionLoader label="Fetching payouts..." /> }
-);
-
-const AffiliateFAQSection = dynamic(
-  () => import("@/components/sections/AffiliateFAQSection"),
-  { ssr: true, loading: () => <SectionLoader label="Preparing FAQs..." /> }
-);
-
-const AffiliateCTASection = dynamic(
-  () => import("@/components/sections/AffiliateCTASection"),
-  { ssr: true, loading: () => <SectionLoader label="Final touch..." /> }
-);
-
-const AffiliateContentSection = dynamic(
-  () => import("@/components/sections/AffiliateContentSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading content..." /> }
-);
 
 export default async function AffiliateProgramPage() {
   // ---------- Generated Schemas ----------

@@ -1,20 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import dynamic from "next/dynamic";
-
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-16">
-      <p className="text-gray-500 dark:text-gray-400">{label}</p>
-    </div>
-  );
-}
-
-const PlacementsCompanyWallSection = dynamic(
-  () => import("@/components/sections/PlacementsCompanyWallSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading partners…" /> }
-);
+// Imported directly: dynamic(ssr:true) kept the markup in the server HTML but
+// added a client Suspense boundary whose "Loading partners…" fallback replaced
+// the real section during hydration — the layout-shift pattern fixed in
+// d34d08e / BLG-010.
+import PlacementsCompanyWallSection from "@/components/sections/PlacementsCompanyWallSection";
 
 type Case = {
   name: string;

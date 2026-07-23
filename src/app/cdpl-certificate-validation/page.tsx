@@ -1,28 +1,14 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateCertificateValidationPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
-/* ---------- Small, reusable loading UI ---------- */
-function SectionLoader({ label = "Loading..." }: { label?: string }) {
-  return (
-    <div className="flex items-center justify-center py-16">
-      <p className="text-gray-500">{label}</p>
-    </div>
-  );
-}
-
+// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 import CertificationBreadcrumb from "@/components/sections/CertificationBreadcrumb";
 import CertificationValidatorSection from "@/components/sections/CertificationValidatorSection";
 import CertificationSampleSection from "@/components/sections/CertificationSampleSection";
-
-/* ---------- Dynamic sections (client components) ---------- */
-// Kept Features dynamic as it is likely below fold
-const CertificationFeaturesSection = dynamic(
-  () => import("@/components/sections/CertificationFeaturesSection"),
-  { ssr: true, loading: () => <SectionLoader label="Loading features..." /> }
-);
+import CertificationFeaturesSection from "@/components/sections/CertificationFeaturesSection";
 
 /* ---------- SEO ---------- */
 export const metadata: Metadata = generateStaticPageMetadata({

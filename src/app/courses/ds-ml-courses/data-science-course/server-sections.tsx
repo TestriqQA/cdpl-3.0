@@ -1,77 +1,20 @@
-import dynamic from "next/dynamic";
+// Direct re-exports — dynamic(ssr:true) only added client Suspense boundaries
+// that caused a hydration layout shift (see d34d08e / BLG-010).
 
-const withLoader = (label: string) => ({
-    loading: () => (
-        <div className="flex items-center justify-center py-16 text-gray-500">
-            {label}
-        </div>
-    ),
-});
+export { default as WhyDSProgram } from "@/components/data-science-course/WhyDSProgram";
 
+export { default as CurriculumSection } from "@/components/data-science-course/CurriculumSection";
 
+export { default as ProjectsSection } from "@/components/data-science-course/ProjectsSection";
 
-export const WhyDSProgram = dynamic(
-    () => import("@/components/data-science-course/WhyDSProgram"),
-    {
-        ssr: true,
-        ...withLoader("Loading why DS program...")
-    },
-);
+export { default as CareerSection } from "@/components/data-science-course/CareerSection";
 
-export const CurriculumSection = dynamic(
-    () => import("@/components/data-science-course/CurriculumSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading curriculum...")
-    },
-);
+export { default as WhoShouldEnroll } from "@/components/data-science-course/WhoShouldEnroll";
 
-export const ProjectsSection = dynamic(
-    () => import("@/components/data-science-course/ProjectsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading projects...")
-    },
-);
+export { default as ToolsSection } from "@/components/data-science-course/ToolsSection";
 
-export const CareerSection = dynamic(
-    () => import("@/components/data-science-course/CareerSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading career...")
-    },
-);
+export { default as FaqSection } from "@/components/data-science-course/FaqSection";
 
-export const WhoShouldEnroll = dynamic(
-    () => import("@/components/data-science-course/WhoShouldEnroll"),
-    {
-        ssr: true,
-        ...withLoader("Loading enrollment info...")
-    },
-);
-
-export const ToolsSection = dynamic(
-    () => import("@/components/data-science-course/ToolsSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading tools...")
-    },
-);
-
-export const FaqSection = dynamic(
-    () => import("@/components/data-science-course/FaqSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading FAQs...")
-    },
-);
-
-export const CareerRoadmapSection = dynamic(
-    () => import("@/components/data-science-course/CareerRoadmapSection"),
-    {
-        ssr: true,
-        ...withLoader("Loading career roadmap...")
-    },
-);
+export { default as CareerRoadmapSection } from "@/components/data-science-course/CareerRoadmapSection";
 
 export { default as JsonLd } from "@/components/JsonLd";

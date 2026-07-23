@@ -1,78 +1,25 @@
 'use client';
 
-import dynamic from "next/dynamic";
-
 
 // HeroSection moved to page.tsx for Static Import (LCP Optimization)
 
-export const StatsSection = dynamic(
-    () => import("@/components/ai-course/StatsSection"),
-    {
-        ssr: true,
-        loading: () => <div className="h-20" />,
-    },
-);
+// Direct re-exports — dynamic(ssr:true) only added client Suspense boundaries
+// that caused a hydration layout shift (see d34d08e / BLG-010).
 
-export const WhyAIProgram = dynamic(
-    () => import("@/components/ai-course/WhyAIProgram"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as StatsSection } from "@/components/ai-course/StatsSection";
 
-export const CurriculumSection = dynamic(
-    () => import("@/components/ai-course/CurriculumSection"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as WhyAIProgram } from "@/components/ai-course/WhyAIProgram";
 
-export const ProjectsSection = dynamic(
-    () => import("@/components/ai-course/ProjectsSection"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as CurriculumSection } from "@/components/ai-course/CurriculumSection";
 
-export const CareerSection = dynamic(
-    () => import("@/components/ai-course/CareerSection"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as ProjectsSection } from "@/components/ai-course/ProjectsSection";
 
-export const WhoShouldEnroll = dynamic(
-    () => import("@/components/ai-course/WhoShouldEnroll"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as CareerSection } from "@/components/ai-course/CareerSection";
 
-export const ToolsSection = dynamic(
-    () => import("@/components/ai-course/ToolsSection"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as WhoShouldEnroll } from "@/components/ai-course/WhoShouldEnroll";
 
-export const FaqSection = dynamic(
-    () => import("@/components/ai-course/FaqSection"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as ToolsSection } from "@/components/ai-course/ToolsSection";
 
-export const CareerRoadmapSection = dynamic(
-    () => import("@/components/ai-course/CareerRoadmapSection"),
-    {
-        ssr: true,
-        loading: () => <div className="h-96" />,
-    },
-);
+export { default as FaqSection } from "@/components/ai-course/FaqSection";
+
+export { default as CareerRoadmapSection } from "@/components/ai-course/CareerRoadmapSection";
