@@ -306,6 +306,14 @@ export async function POST(request: Request) {
       subjectPrefix = `[AFFILIATE APPLICATION] from ${company || fullName}`;
       adminTemplate = 'admin-notification-affiliate.html';
       adminData.company = company || 'N/A';
+    } else if (type === 'contact') {
+      // Its own template rather than the shared admin-notification.html: the
+      // /contact-us form has no email and no message field, and its two
+      // dropdowns are labelled differently from the generic "Area of
+      // Interest". Reusing the shared table rendered a blank Email Address row
+      // and the wrong wording. admin-notification.html stays exactly as-is for
+      // every other form that falls through to it.
+      adminTemplate = 'admin-notification-contact.html';
     } else if (interest || message) { // Previously hasDetailedFields
       adminTemplate = 'admin-notification.html';
     } else if (isHomeHeroForm) {
