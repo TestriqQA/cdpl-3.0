@@ -200,6 +200,11 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
           padding: 0;
           flex: 1;
           font-size: 0.875rem;
+          /* The container is a flex row, so its content height is its
+             tallest child — this input. A 14px font's default line box is
+             21px, against the 24px box of the 16px/1.5 inputs elsewhere.
+             Pinning 1.5rem equalises them without changing text size. */
+          line-height: 1.5rem;
           color: #111827;
           background-color: transparent;
           outline: none;
@@ -226,7 +231,11 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
           width: 100%;
           border: 2px solid #e5e7eb;
           border-radius: 0.5rem;
-          padding: 0.30rem 1rem;
+          /* 0.75rem vertical matches the py-3 on every other field in this
+             form. Was 0.30rem, which rendered the control 34.6px tall next
+             to their 52px. The horizontal half of this shorthand is
+             overridden by the two declarations below. */
+          padding: 0.75rem 1rem;
           padding-left: 0.875rem;
           padding-right: 1rem;
           transition: border-color 0.3s, box-shadow 0.3s;
