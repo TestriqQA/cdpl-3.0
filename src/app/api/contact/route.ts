@@ -641,7 +641,10 @@ export async function POST(request: Request) {
     // 6. Push to TeleCRM (Async - don't block response)
     pushLeadToTeleCRM({
       fullName,
-      email: email || '',
+      // Passed through as-is: pushLeadToTeleCRM drops the field when absent.
+      // The Google Sheet call below still coerces to '' because there an
+      // empty cell is exactly what we want.
+      email,
       phone,
       source: formSource,
     }).catch(err => console.error('TeleCRM background push error:', err));
