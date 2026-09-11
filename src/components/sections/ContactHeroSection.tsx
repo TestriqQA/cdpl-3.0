@@ -85,7 +85,7 @@ export function ContactHeroSection() {
                 <div className="rounded-3xl p-[1px] bg-gradient-to-br from-sky-100/70 via-indigo-100/60 to-orange-100/70 shadow-2xl">
                   {/* inner glass panel */}
                   <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8">
-                    <h2 className="text-2xl font-bold text-slate-900">Get in Touch - Let&apos;s Find the Right Course for You</h2>
+                    <h2 className="text-2xl font-bold text-slate-900">Let&apos;s Find the Right Course for You</h2>
                     <p className="mt-1.5 text-slate-600">
                       Tell us what you are looking for and we will help you choose the right option.
                     </p>
@@ -211,7 +211,7 @@ export function ContactHeroSection() {
               <div className="rounded-3xl p-[1px] bg-gradient-to-br from-sky-100/70 via-indigo-100/60 to-orange-100/70 shadow-2xl">
                 {/* inner glass panel — constrained width */}
                 <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8 w-full md:max-w-md lg:max-w-sm xl:max-w-md">
-                  <h2 className="text-2xl font-bold text-slate-900">Get in Touch - Let&apos;s Find the Right Course for You</h2>
+                  <h2 className="text-2xl font-bold text-slate-900">Let&apos;s Find the Right Course for You</h2>
                   <p className="mt-1.5 text-slate-600">
                     Tell us what you are looking for and we will help you choose the right option.
                   </p>
