@@ -85,15 +85,15 @@ export function ContactHeroSection() {
                 <div className="rounded-3xl p-[1px] bg-gradient-to-br from-sky-100/70 via-indigo-100/60 to-orange-100/70 shadow-2xl">
                   {/* inner glass panel */}
                   <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8">
-                    <h2 className="text-2xl font-bold text-slate-900">Get in Touch</h2>
+                    <h2 className="text-2xl font-bold text-slate-900">Get in Touch - Let&apos;s Find the Right Course for You</h2>
                     <p className="mt-1.5 text-slate-600">
-                      Have questions about our courses or placements? Our expert counselors are here to help you.
+                      Tell us what you are looking for and we will help you choose the right option.
                     </p>
 
                     <ContactHeroForm />
 
                     <p className="mt-4 text-[12px] text-slate-500">
-                      By submitting, you agree to be contacted about admissions and courses. We respect your privacy.
+                      We will contact you over call or WhatsApp to help you choose the right course.
                     </p>
                   </div>
                 </div>
@@ -211,15 +211,15 @@ export function ContactHeroSection() {
               <div className="rounded-3xl p-[1px] bg-gradient-to-br from-sky-100/70 via-indigo-100/60 to-orange-100/70 shadow-2xl">
                 {/* inner glass panel — constrained width */}
                 <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8 w-full md:max-w-md lg:max-w-sm xl:max-w-md">
-                  <h2 className="text-2xl font-bold text-slate-900">Get in Touch</h2>
+                  <h2 className="text-2xl font-bold text-slate-900">Get in Touch - Let&apos;s Find the Right Course for You</h2>
                   <p className="mt-1.5 text-slate-600">
-                    Share your goals — we&apos;ll help you find the perfect course or training plan.
+                    Tell us what you are looking for and we will help you choose the right option.
                   </p>
 
                   <ContactHeroForm idPrefix="desktop_" />
 
                   <p className="mt-4 text-[12px] text-slate-500">
-                    By submitting, you agree to be contacted about admissions and courses. We respect your privacy.
+                    We will contact you over call or WhatsApp to help you choose the right course.
                   </p>
                 </div>
               </div>

@@ -105,6 +105,9 @@ export async function appendRowToSheet(data: {
     type: string;
     interest?: string;
     message?: string;
+    /** Contact-page form only: "What's your goal?" answer. Appended as the
+     *  last column so existing columns keep their positions. */
+    goal?: string;
 }) {
     try {
         const sheetId = process.env.GOOGLE_SHEET_ID;
@@ -138,12 +141,13 @@ export async function appendRowToSheet(data: {
                 data.type,
                 data.interest || '',
                 data.message || '',
+                data.goal || '',
             ],
         ];
 
         await sheets.spreadsheets.values.append({
             spreadsheetId: sheetId,
-            range: 'Sheet1!A:H', // Appends to the first available row in columns A-H
+            range: 'Sheet1!A:I', // Appends to the first available row in columns A-I
             valueInputOption: 'USER_ENTERED',
             requestBody: {
                 values,
