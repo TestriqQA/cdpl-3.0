@@ -22,7 +22,6 @@ type FormState = {
     interest: string;
     /** "What's your goal?" */
     goal: string;
-    message: string;
 };
 
 interface ContactHeroFormProps {
@@ -36,20 +35,21 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
         phone: "",
         interest: "",
         goal: "",
-        message: "",
     });
 
     // Error states
     const [fullNameError, setFullNameError] = useState<string | null>(null);
     const [phoneError, setPhoneError] = useState<string | null>(null);
-    const [messageError, setMessageError] = useState<string | null>(null);
+    const [interestError, setInterestError] = useState<string | null>(null);
+    const [goalError, setGoalError] = useState<string | null>(null);
 
     const containerRef = useRef<HTMLDivElement>(null);
 
     useFormErrorReset(containerRef, [
         setFullNameError,
         setPhoneError,
-        setMessageError
+        setInterestError,
+        setGoalError
     ]);
 
     // Loading and submission states
@@ -69,12 +69,21 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
         return error === null;
     };
 
-    const validateMessage = (message: string) => {
-        if (message.trim().length < 10) {
-            setMessageError('Message should be at least 10 characters.');
+    const validateInterest = (interest: string) => {
+        if (!interest) {
+            setInterestError('Please choose what you want to learn.');
             return false;
         }
-        setMessageError(null);
+        setInterestError(null);
+        return true;
+    };
+
+    const validateGoal = (goal: string) => {
+        if (!goal) {
+            setGoalError('Please choose your goal.');
+            return false;
+        }
+        setGoalError(null);
         return true;
     };
 
@@ -88,7 +97,8 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
 
         // Real-time validation
         if (name === 'fullName') validateFullName(value);
-        if (name === 'message') validateMessage(value);
+        if (name === 'interest') validateInterest(value);
+        if (name === 'goal') validateGoal(value);
     };
 
     // Handle phone change
@@ -106,9 +116,10 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
 
         const isFullNameValid = validateFullName(formData.fullName);
         const isPhoneValid = validatePhoneNumber(formData.phone);
-        const isMessageValid = validateMessage(formData.message);
+        const isInterestValid = validateInterest(formData.interest);
+        const isGoalValid = validateGoal(formData.goal);
 
-        if (isFullNameValid && isPhoneValid && isMessageValid) {
+        if (isFullNameValid && isPhoneValid && isInterestValid && isGoalValid) {
             setIsSubmitting(true);
             try {
                 const response = await fetch('/api/contact', {
@@ -122,8 +133,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                         type: 'contact',
                         source: 'Contact Page - Hero Section Form',
                         interest: formData.interest,
-                        goal: formData.goal,
-                        message: formData.message
+                        goal: formData.goal
                     }),
                 });
 
@@ -138,8 +148,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                         fullName: '',
                         phone: '',
                         interest: '',
-                        goal: '',
-                        message: ''
+                        goal: ''
                     });
                 } else {
                     alert('Form submission failed. Please try again.');
@@ -307,9 +316,21 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                         <div className={`phone-input-container ${phoneError ? 'border-red-500' : ''
                             }`}>
                             <Phone className="phone-icon h-5 w-5" />
+                            {/* `international` is deliberately omitted here, unlike the
+                                other phone fields on the site. With it set,
+                                react-phone-number-input seeds the input's value with the
+                                calling code ("+91"), and an HTML placeholder only paints
+                                on an empty input — so "Enter your WhatsApp number" could
+                                never be seen. Dropping it leaves the field empty until
+                                the visitor types.
+
+                                The submitted value is unaffected: with defaultCountry set,
+                                onChange still yields E.164 ("+919820853250"), so
+                                validatePhone and the `phone` the API requires are
+                                unchanged. The country is still shown and switchable via
+                                the flag selector. */}
                             <PhoneInput
                                 id={`${idPrefix}phone`}
-                                international
                                 limitMaxLength={true}
                                 defaultCountry="IN"
                                 flagComponent={CustomFlag}
@@ -327,70 +348,60 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                 {/* What are you looking to learn? — posted as `interest` */}
                 <div>
                     <label htmlFor={`${idPrefix}interest`} className="block text-sm font-semibold text-gray-700 mb-2">
-                        What are you looking to learn?
+                        What are you looking to learn? *
                     </label>
                     <select
                         id={`${idPrefix}interest`}
                         name="interest"
                         value={formData.interest}
                         onChange={handleInputChange}
-                        className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-colors duration-300"
+                        className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 transition-colors duration-300 ${interestError
+                            ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
+                            : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
+                            }`}
                     >
                         <option value="">Select…</option>
-                        <option value="Software Testing">Software Testing</option>
-                        <option value="Full Stack Development">Full Stack Development</option>
-                        <option value="Data Science & Analytics">Data Science & Analytics</option>
-                        <option value="AI & ML">AI & ML</option>
-                        <option value="Prompt Engineering">Prompt Engineering</option>
-                        <option value="Digital Marketing">Digital Marketing</option>
-                        <option value="Scholarship">Scholarship</option>
-                        <option value="Corporate Training">Corporate Training</option>
-                        <option value="Understand Training & Event Services">Understand Training & Event Services</option>
-                        <option value="Not Sure Yet">Not Sure Yet</option>
+                            <option value="Software Testing">Software Testing</option>
+                            <option value="Full Stack Development">Full Stack Development</option>
+                            <option value="Data Science & Analytics">Data Science & Analytics</option>
+                            <option value="AI & ML">AI & ML</option>
+                            <option value="Prompt Engineering">Prompt Engineering</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="Scholarship">Scholarship</option>
+                            <option value="Corporate Training">Corporate Training</option>
+                            <option value="Understand Training & Event Services">Understand Training & Event Services</option>
+                            <option value="Not Sure Yet">Not Sure Yet</option>
                     </select>
+                    {interestError && (
+                        <p className="mt-1.5 text-sm text-red-600">{interestError}</p>
+                    )}
                 </div>
 
                 {/* What's your goal? */}
                 <div>
                     <label htmlFor={`${idPrefix}goal`} className="block text-sm font-semibold text-gray-700 mb-2">
-                        What&apos;s your goal?
+                        What&apos;s your goal? *
                     </label>
                     <select
                         id={`${idPrefix}goal`}
                         name="goal"
                         value={formData.goal}
                         onChange={handleInputChange}
-                        className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-colors duration-300"
-                    >
-                        <option value="">Select…</option>
-                        <option value="Get a Good Job">Get a Good Job</option>
-                        <option value="Build New Skills">Build New Skills</option>
-                        <option value="Start Freelancing">Start Freelancing</option>
-                        <option value="Grow My Business">Grow My Business</option>
-                        <option value="Actively Looking for a Job">Actively Looking for a Job</option>
-                        <option value="Just Exploring">Just Exploring</option>
-                    </select>
-                </div>
-
-                {/* Message */}
-                <div>
-                    <label htmlFor={`${idPrefix}message`} className="block text-sm font-semibold text-gray-700 mb-2">
-                        Message *
-                    </label>
-                    <textarea
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        rows={3}
-                        placeholder="Tell us how we can help..."
-                        id={`${idPrefix}message`}
-                        className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 ${messageError
+                        className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 transition-colors duration-300 ${goalError
                             ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                             : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                             }`}
-                    />
-                    {messageError && (
-                        <p className="mt-1.5 text-sm text-red-600">{messageError}</p>
+                    >
+                        <option value="">Select…</option>
+                            <option value="Get a Good Job">Get a Good Job</option>
+                            <option value="Build New Skills">Build New Skills</option>
+                            <option value="Start Freelancing">Start Freelancing</option>
+                            <option value="Grow My Business">Grow My Business</option>
+                            <option value="Actively Looking for a Job">Actively Looking for a Job</option>
+                            <option value="Just Exploring">Just Exploring</option>
+                    </select>
+                    {goalError && (
+                        <p className="mt-1.5 text-sm text-red-600">{goalError}</p>
                     )}
                 </div>
 
