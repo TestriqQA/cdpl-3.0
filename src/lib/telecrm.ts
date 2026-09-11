@@ -15,7 +15,9 @@ interface TeleCRMPayload {
 
 export async function pushLeadToTeleCRM(leadData: {
     fullName: string;
-    email: string;
+    /** Optional: the contact-page form is WhatsApp-first and collects no
+     *  email address. See the note on `fields` below. */
+    email?: string;
     phone: string;
     source: string;
 }) {
@@ -36,7 +38,12 @@ export async function pushLeadToTeleCRM(leadData: {
     const payload: TeleCRMPayload = {
         fields: {
             name: leadData.fullName,
-            email: leadData.email,
+            // Omitted rather than sent as '' when absent. TeleCRM types email
+            // as optional, and an empty string risks being rejected as an
+            // invalid address — which would be silent: the caller fires this
+            // without awaiting and only logs failures, so a rejected push
+            // drops the lead while the visitor still sees a success state.
+            ...(leadData.email ? { email: leadData.email } : {}),
             phone: cleanPhone,
             source: leadData.source,
             status: 'Fresh', // Recommended for new leads to show up in the dashboard
