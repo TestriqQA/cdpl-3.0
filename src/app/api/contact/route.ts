@@ -83,7 +83,7 @@ export async function POST(request: Request) {
   console.log('API Contact Route Hit');
   try {
     const body = await request.json();
-    const { fullName, email, phone, type, source, interest, message, courseName, syllabusLink, company, workshopType, participants, title, interestedTrack, location } = body;
+    const { fullName, email, phone, type, source, interest, goal, message, courseName, syllabusLink, company, workshopType, participants, title, interestedTrack, location } = body;
     console.log('Received payload:', { fullName, email, phone, type, source, workshopType, interestedTrack });
 
     const currentYear = new Date().getFullYear();
@@ -99,7 +99,13 @@ export async function POST(request: Request) {
 
 
     // 1. Basic Validation
-    if (!fullName || !email || !phone) {
+    // The contact-page form is WhatsApp-first: it collects a WhatsApp number
+    // instead of an email address, so `email` is required for every OTHER form
+    // type only. Name and phone stay mandatory everywhere. Scoped to
+    // type === 'contact' deliberately — 29 forms post to this route and the
+    // rest still depend on having an address to confirm to.
+    const isContactForm = type === 'contact';
+    if (!fullName || !phone || (!email && !isContactForm)) {
       console.warn('Missing required fields');
       return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
     }
@@ -348,6 +354,10 @@ export async function POST(request: Request) {
       adminData.interest = interest || 'Not specified';
       if (message) adminData.message = message;
     }
+
+    // Contact form only. Left unset when absent so the {{#if goal}} block in
+    // admin-notification.html drops the row entirely for the other forms.
+    if (goal) adminData.goal = goal;
 
     // Set standardized type for templates that use {{type}}
     adminData.type = requestType;
@@ -616,13 +626,24 @@ export async function POST(request: Request) {
     const adminSuccess = await sendEmail(adminMailOptions);
     console.log('Admin email result:', adminSuccess);
 
-    console.log('Sending user email to:', email);
-    const userSuccess = await sendEmail(userMailOptions);
-    console.log('User email result:', userSuccess);
+    // No address on contact-form submissions, so there is nobody to confirm
+    // to. Counted as success, otherwise the visitor would be shown the
+    // "issue sending confirmation email" response for a form that worked.
+    let userSuccess = true;
+    if (email) {
+      console.log('Sending user email to:', email);
+      userSuccess = await sendEmail(userMailOptions);
+      console.log('User email result:', userSuccess);
+    } else {
+      console.log('No email address supplied — skipping user confirmation email');
+    }
 
     // 6. Push to TeleCRM (Async - don't block response)
     pushLeadToTeleCRM({
       fullName,
+      // Passed through as-is: pushLeadToTeleCRM drops the field when absent.
+      // The Google Sheet call below still coerces to '' because there an
+      // empty cell is exactly what we want.
       email,
       phone,
       source: formSource,
@@ -633,13 +654,14 @@ export async function POST(request: Request) {
       await appendRowToSheet({
         date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
         fullName,
-        email,
+        email: email || '',
         phone,
         source: formSource,
         type: requestType || 'General Enquiry',
 
         interest: interest || '',
         message: message || '',
+        goal: goal || '',
       });
       console.log('Google Sheet updated successfully');
     } catch (err) {

@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
-import { Phone, Mail, User, CheckCircle2 } from "lucide-react";
+import { Phone, User, CheckCircle2 } from "lucide-react";
 import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '../ui/CustomFlag';
 
@@ -14,10 +14,14 @@ import {
 // Types
 type FormState = {
     fullName: string;
-    email: string;
+    /** WhatsApp number. Kept as `phone` so it still satisfies the phone
+     *  validation and the `phone` field /api/contact requires. */
     phone: string;
+    /** "What are you looking to learn?" — reuses the existing `interest`
+     *  field, which already reaches the admin email and the Google Sheet. */
     interest: string;
-    message: string;
+    /** "What's your goal?" */
+    goal: string;
 };
 
 interface ContactHeroFormProps {
@@ -28,25 +32,24 @@ interface ContactHeroFormProps {
 export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormProps) {
     const [formData, setFormData] = useState<FormState>({
         fullName: "",
-        email: "",
         phone: "",
         interest: "",
-        message: "",
+        goal: "",
     });
 
     // Error states
     const [fullNameError, setFullNameError] = useState<string | null>(null);
-    const [emailError, setEmailError] = useState<string | null>(null);
     const [phoneError, setPhoneError] = useState<string | null>(null);
-    const [messageError, setMessageError] = useState<string | null>(null);
+    const [interestError, setInterestError] = useState<string | null>(null);
+    const [goalError, setGoalError] = useState<string | null>(null);
 
     const containerRef = useRef<HTMLDivElement>(null);
 
     useFormErrorReset(containerRef, [
         setFullNameError,
-        setEmailError,
         setPhoneError,
-        setMessageError
+        setInterestError,
+        setGoalError
     ]);
 
     // Loading and submission states
@@ -60,31 +63,27 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
         return error === null;
     };
 
-    const validateEmail = (email: string) => {
-        if (!email) {
-            setEmailError('Email Address is required.');
-            return false;
-        }
-        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-            setEmailError('Invalid email format.');
-            return false;
-        }
-        setEmailError(null);
-        return true;
-    };
-
     const validatePhoneNumber = (phone: string | undefined) => {
         const error = validatePhoneLib(phone);
         setPhoneError(error);
         return error === null;
     };
 
-    const validateMessage = (message: string) => {
-        if (message.trim().length < 10) {
-            setMessageError('Message should be at least 10 characters.');
+    const validateInterest = (interest: string) => {
+        if (!interest) {
+            setInterestError('Please choose what you want to learn.');
             return false;
         }
-        setMessageError(null);
+        setInterestError(null);
+        return true;
+    };
+
+    const validateGoal = (goal: string) => {
+        if (!goal) {
+            setGoalError('Please choose your goal.');
+            return false;
+        }
+        setGoalError(null);
         return true;
     };
 
@@ -98,8 +97,8 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
 
         // Real-time validation
         if (name === 'fullName') validateFullName(value);
-        if (name === 'email') validateEmail(value);
-        if (name === 'message') validateMessage(value);
+        if (name === 'interest') validateInterest(value);
+        if (name === 'goal') validateGoal(value);
     };
 
     // Handle phone change
@@ -116,11 +115,11 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
         e.preventDefault();
 
         const isFullNameValid = validateFullName(formData.fullName);
-        const isEmailValid = validateEmail(formData.email);
         const isPhoneValid = validatePhoneNumber(formData.phone);
-        const isMessageValid = validateMessage(formData.message);
+        const isInterestValid = validateInterest(formData.interest);
+        const isGoalValid = validateGoal(formData.goal);
 
-        if (isFullNameValid && isEmailValid && isPhoneValid && isMessageValid) {
+        if (isFullNameValid && isPhoneValid && isInterestValid && isGoalValid) {
             setIsSubmitting(true);
             try {
                 const response = await fetch('/api/contact', {
@@ -130,12 +129,11 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                     },
                     body: JSON.stringify({
                         fullName: formData.fullName,
-                        email: formData.email,
                         phone: formData.phone,
                         type: 'contact',
                         source: 'Contact Page - Hero Section Form',
                         interest: formData.interest,
-                        message: formData.message
+                        goal: formData.goal
                     }),
                 });
 
@@ -148,10 +146,9 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                     // Reset form
                     setFormData({
                         fullName: '',
-                        email: '',
                         phone: '',
                         interest: '',
-                        message: ''
+                        goal: ''
                     });
                 } else {
                     alert('Form submission failed. Please try again.');
@@ -203,6 +200,11 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
           padding: 0;
           flex: 1;
           font-size: 0.875rem;
+          /* The container is a flex row, so its content height is its
+             tallest child — this input. A 14px font's default line box is
+             21px, against the 24px box of the 16px/1.5 inputs elsewhere.
+             Pinning 1.5rem equalises them without changing text size. */
+          line-height: 1.5rem;
           color: #111827;
           background-color: transparent;
           outline: none;
@@ -229,7 +231,11 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
           width: 100%;
           border: 2px solid #e5e7eb;
           border-radius: 0.5rem;
-          padding: 0.30rem 1rem;
+          /* 0.75rem vertical matches the py-3 on every other field in this
+             form. Was 0.30rem, which rendered the control 34.6px tall next
+             to their 52px. The horizontal half of this shorthand is
+             overridden by the two declarations below. */
+          padding: 0.75rem 1rem;
           padding-left: 0.875rem;
           padding-right: 1rem;
           transition: border-color 0.3s, box-shadow 0.3s;
@@ -310,49 +316,36 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                     )}
                 </div>
 
-                {/* Email Input */}
-                <div>
-                    <label htmlFor={`${idPrefix}email`} className="block text-sm font-semibold text-gray-700 mb-2">
-                        Email Address *
-                    </label>
-                    <div className="relative">
-                        <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            placeholder="Enter your email address"
-                            id={`${idPrefix}email`}
-                            className={`bg-white w-full pl-11 pr-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 ${emailError
-                                ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
-                                : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
-                                }`}
-                        />
-                    </div>
-                    {emailError && (
-                        <p className="mt-1.5 text-sm text-red-600">{emailError}</p>
-                    )}
-                </div>
-
-                {/* Phone Input */}
+                {/* WhatsApp Number (posted as `phone`) */}
                 <div>
                     <label htmlFor={`${idPrefix}phone`} className="block text-sm font-semibold text-gray-700 mb-2">
-                        Mobile Number *
+                        WhatsApp Number *
                     </label>
                     <div className="bg-white relative">
                         <div className={`phone-input-container ${phoneError ? 'border-red-500' : ''
                             }`}>
                             <Phone className="phone-icon h-5 w-5" />
+                            {/* `international` is deliberately omitted here, unlike the
+                                other phone fields on the site. With it set,
+                                react-phone-number-input seeds the input's value with the
+                                calling code ("+91"), and an HTML placeholder only paints
+                                on an empty input — so "Enter your WhatsApp number" could
+                                never be seen. Dropping it leaves the field empty until
+                                the visitor types.
+
+                                The submitted value is unaffected: with defaultCountry set,
+                                onChange still yields E.164 ("+919820853250"), so
+                                validatePhone and the `phone` the API requires are
+                                unchanged. The country is still shown and switchable via
+                                the flag selector. */}
                             <PhoneInput
                                 id={`${idPrefix}phone`}
-                                international
                                 limitMaxLength={true}
                                 defaultCountry="IN"
                                 flagComponent={CustomFlag}
                                 value={formData.phone}
                                 onChange={handlePhoneChange}
-                                placeholder="Enter your mobile number"
+                                placeholder="Enter your WhatsApp number"
                             />
                         </div>
                     </div>
@@ -361,51 +354,63 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                     )}
                 </div>
 
-                {/* Area of Interest */}
+                {/* What are you looking to learn? — posted as `interest` */}
                 <div>
                     <label htmlFor={`${idPrefix}interest`} className="block text-sm font-semibold text-gray-700 mb-2">
-                        Area of Interest
+                        What are you looking to learn? *
                     </label>
                     <select
                         id={`${idPrefix}interest`}
                         name="interest"
                         value={formData.interest}
                         onChange={handleInputChange}
-                        className="bg-white w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:border-[#ff8c00] focus:ring-orange-100 transition-colors duration-300"
-                    >
-                        <option value="">Select…</option>
-                        <option value="Artificial Intelligence (AI)">Artificial Intelligence (AI)</option>
-                        <option value="Business Intelligence (BI)">Business Intelligence (BI)</option>
-                        <option value="Corporate Training">Corporate Training</option>
-                        <option value="Data Science">Data Science</option>
-                        <option value="Digital Marketing">Digital Marketing</option>
-                        <option value="Full Stack Development">Full Stack Development</option>
-                        <option value="Scholarship">Scholarship</option>
-                        <option value="Software Testing">Software Testing</option>
-                        <option value="Training & Event Services">Training & Event Services</option>
-                        <option value="Others">Others</option>
-                    </select>
-                </div>
-
-                {/* Message */}
-                <div>
-                    <label htmlFor={`${idPrefix}message`} className="block text-sm font-semibold text-gray-700 mb-2">
-                        Message *
-                    </label>
-                    <textarea
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        rows={3}
-                        placeholder="Tell us how we can help..."
-                        id={`${idPrefix}message`}
-                        className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-colors duration-300 ${messageError
+                        className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 transition-colors duration-300 ${interestError
                             ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                             : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                             }`}
-                    />
-                    {messageError && (
-                        <p className="mt-1.5 text-sm text-red-600">{messageError}</p>
+                    >
+                        <option value="">Select…</option>
+                            <option value="Software Testing">Software Testing</option>
+                            <option value="Full Stack Development">Full Stack Development</option>
+                            <option value="Data Science & Analytics">Data Science & Analytics</option>
+                            <option value="AI & ML">AI & ML</option>
+                            <option value="Prompt Engineering">Prompt Engineering</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="Scholarship">Scholarship</option>
+                            <option value="Corporate Training">Corporate Training</option>
+                            <option value="Understand Training & Event Services">Understand Training & Event Services</option>
+                            <option value="Not Sure Yet">Not Sure Yet</option>
+                    </select>
+                    {interestError && (
+                        <p className="mt-1.5 text-sm text-red-600">{interestError}</p>
+                    )}
+                </div>
+
+                {/* What's your goal? */}
+                <div>
+                    <label htmlFor={`${idPrefix}goal`} className="block text-sm font-semibold text-gray-700 mb-2">
+                        What&apos;s your goal? *
+                    </label>
+                    <select
+                        id={`${idPrefix}goal`}
+                        name="goal"
+                        value={formData.goal}
+                        onChange={handleInputChange}
+                        className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 transition-colors duration-300 ${goalError
+                            ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
+                            : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
+                            }`}
+                    >
+                        <option value="">Select…</option>
+                            <option value="Get a Good Job">Get a Good Job</option>
+                            <option value="Build New Skills">Build New Skills</option>
+                            <option value="Start Freelancing">Start Freelancing</option>
+                            <option value="Grow My Business">Grow My Business</option>
+                            <option value="Actively Looking for a Job">Actively Looking for a Job</option>
+                            <option value="Just Exploring">Just Exploring</option>
+                    </select>
+                    {goalError && (
+                        <p className="mt-1.5 text-sm text-red-600">{goalError}</p>
                     )}
                 </div>
 
@@ -421,7 +426,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                             Sending...
                         </>
                     ) : (
-                        'Submit Message'
+                        'Get Course Guidance'
                     )}
                 </button>
             </form>
