@@ -316,9 +316,21 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                         <div className={`phone-input-container ${phoneError ? 'border-red-500' : ''
                             }`}>
                             <Phone className="phone-icon h-5 w-5" />
+                            {/* `international` is deliberately omitted here, unlike the
+                                other phone fields on the site. With it set,
+                                react-phone-number-input seeds the input's value with the
+                                calling code ("+91"), and an HTML placeholder only paints
+                                on an empty input — so "Enter your WhatsApp number" could
+                                never be seen. Dropping it leaves the field empty until
+                                the visitor types.
+
+                                The submitted value is unaffected: with defaultCountry set,
+                                onChange still yields E.164 ("+919820853250"), so
+                                validatePhone and the `phone` the API requires are
+                                unchanged. The country is still shown and switchable via
+                                the flag selector. */}
                             <PhoneInput
                                 id={`${idPrefix}phone`}
-                                international
                                 limitMaxLength={true}
                                 defaultCountry="IN"
                                 flagComponent={CustomFlag}
