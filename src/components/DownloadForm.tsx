@@ -1,3 +1,4 @@
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { X, User, Mail, TrendingUp, CheckCircle2, Download } from 'lucide-react';
@@ -59,6 +60,8 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
   const [errors, setErrors] = useState<Partial<Record<keyof DownloadFormValues, string | null>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const goToThankYou = useThankYouRedirect('syllabus');
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const formRef = useRef<HTMLDivElement>(null);
@@ -120,6 +123,10 @@ const DownloadFormContent: React.FC<DownloadFormContentProps> = ({ courseTitle, 
         onSubmit(formData); // Execute the passed-in submit logic (logging, analytics, etc.)
         setIsSubmitting(false);
         setIsSubmitted(true);
+
+        // Only once the API has accepted the lead. Failure paths below are
+        // untouched, so a rejected submit leaves the visitor on the form.
+        goToThankYou();
       } catch (error) {
         console.error('Submission error:', error);
         setSubmitError('Something went wrong. Please try again later.');

@@ -1,4 +1,5 @@
 'use client';
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import { useRef } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 
@@ -33,6 +34,8 @@ export default function HomeFinalCTASection() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const goToThankYou = useThankYouRedirect();
 
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -107,8 +110,10 @@ export default function HomeFinalCTASection() {
           email: '',
           phone: ''
         });
-        // Hide success message after 5 seconds
-        setTimeout(() => setIsSubmitted(false), 5000);
+
+        // Only once the API has accepted the lead. The failure paths are
+        // untouched, so a rejected submit leaves the visitor on the form.
+        goToThankYou();
       } else {
         const errorData = await response.json();
         console.error('Form submission failed:', errorData.message);

@@ -1,5 +1,6 @@
 "use client";
 
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import React, { useState, useRef } from "react";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { TrendingUp, User, Mail, CheckCircle2 } from "lucide-react";
@@ -50,6 +51,8 @@ export default function CityCourseLeadForm({
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const goToThankYou = useThankYouRedirect();
 
     // Validation functions
     const validateFullName = (name: string) => {
@@ -125,7 +128,6 @@ export default function CityCourseLeadForm({
                     if (response.ok) {
                         console.log('Form submitted successfully');
                         setIsSubmitted(true);
-                        setTimeout(() => setIsSubmitted(false), 5000);
 
                         // Reset form
                         setFormData({
@@ -133,6 +135,10 @@ export default function CityCourseLeadForm({
                             email: '',
                             phone: '',
                         });
+
+                        // Only once the API has accepted the lead. The failure paths are
+                        // untouched, so a rejected submit leaves the visitor on the form.
+                        goToThankYou();
                     } else {
                         alert('Form submission failed. Please try again.');
                     }
