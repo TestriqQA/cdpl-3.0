@@ -1,5 +1,6 @@
 "use client";
 
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import { useState, useRef } from "react";
 import Link from "next/link";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
@@ -50,6 +51,8 @@ export default function AiCourseLeadForm({
     // Submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const goToThankYou = useThankYouRedirect();
 
     // Validation functions
     // Dynamic import to avoid hydration mismatches if any, or just direct use if simpler.
@@ -127,7 +130,6 @@ export default function AiCourseLeadForm({
                 if (response.ok) {
                     console.log('Form submitted successfully');
                     setIsSubmitted(true);
-                    setTimeout(() => setIsSubmitted(false), 5000);
 
                     // Reset form
                     setFormData({
@@ -135,6 +137,10 @@ export default function AiCourseLeadForm({
                         email: '',
                         phone: ''
                     });
+
+                    // Only once the API has accepted the lead. The failure paths are
+                    // untouched, so a rejected submit leaves the visitor on the form.
+                    goToThankYou();
                 } else {
                     alert('Form submission failed. Please try again.');
                 }

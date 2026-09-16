@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import { Phone, User, CheckCircle2 } from "lucide-react";
 import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '../ui/CustomFlag';
@@ -55,6 +56,8 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const goToThankYou = useThankYouRedirect();
 
     // Validation functions
     const validateFullName = (name: string) => {
@@ -138,10 +141,8 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                 });
 
                 if (response.ok) {
-                    console.log('Form submitted successfully');
                     setIsSubmitted(true);
                     if (onSuccess) onSuccess();
-                    setTimeout(() => setIsSubmitted(false), 5000);
 
                     // Reset form
                     setFormData({
@@ -150,6 +151,13 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                         interest: '',
                         goal: ''
                     });
+
+                    // Only now that the API has accepted the lead. The banner
+                    // above is what the visitor sees for the instant the
+                    // prefetched thank-you route takes to paint; there is no
+                    // auto-dismiss timer any more because this component
+                    // unmounts on navigation.
+                    goToThankYou();
                 } else {
                     alert('Form submission failed. Please try again.');
                 }

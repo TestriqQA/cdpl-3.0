@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -65,6 +66,8 @@ export default function LeadForm({
 }: LeadFormProps) {
     const [isSuccess, setIsSuccess] = useState(false);
 
+    const goToThankYou = useThankYouRedirect();
+
     const form = useForm<FormData>({
         resolver: zodResolver(schema),
         defaultValues: { name: '', email: '', phone: '', course: '' },
@@ -92,6 +95,11 @@ export default function LeadForm({
             if (response.ok) {
                 setIsSuccess(true);
                 form.reset();
+
+                // Only once the API has accepted the lead. The success card
+                // below is the visitor's feedback for the instant the
+                // prefetched thank-you route takes to paint.
+                goToThankYou();
             } else {
                 alert('Submission failed. Please try again.');
             }

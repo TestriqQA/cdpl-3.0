@@ -10,6 +10,7 @@ import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '../ui/CustomFlag';
 
 import { validatePhone } from '@/lib/formValidation';
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 
 /**
  * Integrated CTA content (from your data)
@@ -48,6 +49,8 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
     const [isBrochureOpen, setIsBrochureOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const goToThankYou = useThankYouRedirect('consultation');
 
     const handleEnrollSubmit = (enroll: EnrollFormData) => {
         // Replace with real submit logic as needed
@@ -89,6 +92,11 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
             if (response.ok) {
                 setIsSubmitted(true);
                 setForm({ name: "", email: "", phone: "" });
+
+                // Only once the API has accepted the lead. The success card
+                // below is the visitor's feedback for the instant the
+                // prefetched thank-you route takes to paint.
+                goToThankYou();
             } else {
                 alert('Something went wrong. Please try again.');
             }
