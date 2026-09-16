@@ -1,5 +1,6 @@
 "use client";
 
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import { useState, useRef } from "react";
 import Link from "next/link";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
@@ -45,6 +46,8 @@ export default function LeadForm({
   // Submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const goToThankYou = useThankYouRedirect();
 
   // Validation functions (same as home page)
   const validateFullName = (name: string): boolean => {
@@ -120,7 +123,6 @@ export default function LeadForm({
         if (response.ok) {
           console.log('Form submitted successfully');
           setIsSubmitted(true);
-          setTimeout(() => setIsSubmitted(false), 5000);
 
           // Reset form
           setFormData({
@@ -128,6 +130,10 @@ export default function LeadForm({
             email: '',
             phone: ''
           });
+
+          // Only once the API has accepted the lead. The failure paths are
+          // untouched, so a rejected submit leaves the visitor on the form.
+          goToThankYou();
         } else {
           alert('Form submission failed. Please try again.');
         }

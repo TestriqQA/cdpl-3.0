@@ -1,5 +1,6 @@
 "use client";
 
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import { useState, useRef } from "react";
 import { User, Mail, TrendingUp, CheckCircle2 } from "lucide-react";
 import PhoneInput from '@/components/ui/PhoneNumberInput';
@@ -32,6 +33,8 @@ export default function DesktopLeadForm() {
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const goToThankYou = useThankYouRedirect();
 
     // Validation functions
     const validateFullName = (name: string) => {
@@ -113,7 +116,6 @@ export default function DesktopLeadForm() {
                 if (response.ok) {
                     console.log('Form submitted successfully');
                     setIsSubmitted(true);
-                    setTimeout(() => setIsSubmitted(false), 5000);
 
                     // Reset form
                     setFormData({
@@ -121,6 +123,10 @@ export default function DesktopLeadForm() {
                         email: '',
                         phone: ''
                     });
+
+                    // Only once the API has accepted the lead. The failure paths are
+                    // untouched, so a rejected submit leaves the visitor on the form.
+                    goToThankYou();
                 } else {
                     alert('Form submission failed. Please try again.');
                 }

@@ -1,5 +1,6 @@
 'use client';
 
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import React, { useState, useRef, useEffect } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { X, User, Mail, TrendingUp, CheckCircle2 } from 'lucide-react';
@@ -38,6 +39,8 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const goToThankYou = useThankYouRedirect();
     const [isVisible, setIsVisible] = useState(false);
 
     // Country state for PhoneInput to allow placeholder visibility
@@ -126,16 +129,18 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
                 if (response.ok) {
                     console.log('Form submitted successfully');
                     setIsSubmitted(true);
-                    setTimeout(() => {
-                        setIsSubmitted(false);
-                        onClose();
-                        // Reset form
-                        setFormData({
-                            fullName: '',
-                            email: '',
-                            phone: ''
-                        });
-                    }, 3000);
+                    setIsSubmitted(false);
+                    onClose();
+                    // Reset form
+                    setFormData({
+                        fullName: '',
+                        email: '',
+                        phone: ''
+                    });
+
+                    // Only once the API has accepted the lead. The failure paths are
+                    // untouched, so a rejected submit leaves the visitor on the form.
+                    goToThankYou();
                 } else {
                     alert('Form submission failed. Please try again.');
                 }

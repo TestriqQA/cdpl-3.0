@@ -1,5 +1,6 @@
 'use client';
 
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import React, { useState, useCallback, useRef } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import PhoneInput from '@/components/ui/PhoneNumberInput';
@@ -17,8 +18,6 @@ interface BrochureDownloadFormProps {
 }
 
 const BrochureDownloadForm: React.FC<BrochureDownloadFormProps> = ({ onClose }) => {
-  // Timer state for auto-closing the success message
-  const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -35,6 +34,8 @@ const BrochureDownloadForm: React.FC<BrochureDownloadFormProps> = ({ onClose }) 
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const goToThankYou = useThankYouRedirect('syllabus');
 
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -117,10 +118,10 @@ const BrochureDownloadForm: React.FC<BrochureDownloadFormProps> = ({ onClose }) 
       if (response.ok) {
         console.log('Brochure request submitted successfully, emails sent.');
         setIsSubmitted(true);
-        const newTimer = setTimeout(() => {
-          onClose();
-        }, 5000);
-        setTimer(newTimer);
+        // Only once the API has accepted the lead. Failure paths below are
+        // untouched, so a rejected submit leaves the visitor on the form.
+        onClose();
+        goToThankYou();
       } else {
         const errorData = await response.json();
         console.error('Form submission failed:', errorData.message);
@@ -136,7 +137,6 @@ const BrochureDownloadForm: React.FC<BrochureDownloadFormProps> = ({ onClose }) 
 
   // --- Sub-Components ---
   const handleClose = () => {
-    if (timer) clearTimeout(timer);
     onClose();
   };
 

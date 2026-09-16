@@ -1,5 +1,6 @@
 'use client';
 
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -291,6 +292,8 @@ const HomeHeroSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const goToThankYou = useThankYouRedirect();
+
   // Brochure modal state
   const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
 
@@ -373,7 +376,6 @@ const HomeHeroSection: React.FC = () => {
         if (response.ok) {
           console.log('Form submitted successfully');
           setIsSubmitted(true);
-          setTimeout(() => setIsSubmitted(false), 5000);
 
           // Reset form
           setFormData({
@@ -381,6 +383,10 @@ const HomeHeroSection: React.FC = () => {
             email: '',
             phone: ''
           });
+
+          // Only once the API has accepted the lead. The failure paths are
+          // untouched, so a rejected submit leaves the visitor on the form.
+          goToThankYou();
         } else {
           alert('Form submission failed. Please try again.');
         }

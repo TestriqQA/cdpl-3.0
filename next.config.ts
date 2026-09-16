@@ -460,6 +460,47 @@ const nextConfig: NextConfig = {
   },
 
   /**
+   * POST-SUBMISSION THANK-YOU PAGES
+   * ==============================
+   * Every form on the site redirects, on success only, to
+   * `<the page it was submitted from>/thank-you` — so each funnel gets its own
+   * conversion URL without anyone maintaining a list of them.
+   *
+   * ⚠️  THIS REWRITE IS LOAD-BEARING, NOT A CONVENIENCE.
+   * The App Router cannot express `<any path>/thank-you`: a catch-all has to be
+   * the final segment, so `src/app/[...path]/thank-you/page.tsx` is rejected
+   * outright ("catch all segment must be the last segment modifying the path"),
+   * and a fixed `src/app/[slug]/thank-you/page.tsx` would only match
+   * one-segment prefixes — `/courses/software-testing-course/thank-you` would
+   * 404. Reversing the path here puts the catch-all last, which is legal.
+   *
+   * It is a REWRITE, not a redirect: the visitor's address bar keeps the public
+   * `/<page>/thank-you` form, which is what analytics records.
+   *
+   * `beforeFiles` so it resolves ahead of the filesystem routes rather than
+   * depending on where a matching folder happens to exist.
+   *
+   * `:path*` (zero or more) rather than `:path+`, and the route is an OPTIONAL
+   * catch-all to match: the home page has no path to prefix, so its forms
+   * derive the bare `/thank-you`, which has to resolve rather than 404.
+   *
+   * See `src/lib/thank-you.ts` for the path derivation and the optional
+   * derivation, and `src/hooks/useThankYouRedirect.ts` for the calling side.
+   */
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/:path*/thank-you',
+          destination: '/thank-you/:path*',
+        },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
+  },
+
+  /**
    * ⚠️  SEO FIX (April 2026):
    * Prevent Google from indexing internal Next.js asset files.
    * Googlebot discovers these via <script> and <link> tags in the HTML,
@@ -541,6 +582,39 @@ const nextConfig: NextConfig = {
       // indexable — which is what the comment above always intended.
       {
         source: '/mock-test/:courseSlug',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      // Post-submission thank-you pages. Both shapes are covered: the public
+      // `/<page path>/thank-you` and the internal `/thank-you/<page path>` the
+      // rewrite above targets, which stays directly reachable as a normal
+      // route. They already render `noindex, nofollow` from their own
+      // metadata and are absent from sitemap.ts; this header is the same
+      // defense-in-depth applied to /cms and /mock-test/:courseSlug below.
+      //
+      // Why they must never be indexed: they are thin and identical across
+      // funnels, and a visitor arriving from search would fire a conversion
+      // event for a lead that was never submitted — which corrupts the
+      // per-funnel conversion numbers these separate URLs exist to produce.
+      //
+      // Unlike the /mock-test matcher, these deliberately use `:path*` — the
+      // prefix is an arbitrary page path of any depth, which is the whole
+      // point of the rewrite.
+      {
+        source: '/:path*/thank-you',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      {
+        source: '/thank-you/:path*',
         headers: [
           {
             key: 'X-Robots-Tag',
