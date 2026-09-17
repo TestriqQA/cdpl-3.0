@@ -98,10 +98,10 @@
                     <th>Full Name</th>
                     <td><strong>{{fullName}}</strong></td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <th>Email Address</th>
                     <td><a href="mailto:{{email}}">{{email}}</a></td>
-                </tr>
+                </tr> -->
                 <tr>
                     <th>Mobile Number</th>
                     <td>{{phone}}</td>
@@ -122,6 +122,20 @@
                 <tr>
                     <th>Goal</th>
                     <td>{{goal}}</td>
+                </tr>
+                {{/if}}
+
+                {{#if timeline}}
+                <tr>
+                    <th>Planning to Start</th>
+                    <td>{{timeline}}</td>
+                </tr>
+                {{/if}}
+
+                {{#if currentStatus}}
+                <tr>
+                    <th>Current Status</th>
+                    <td>{{currentStatus}}</td>
                 </tr>
                 {{/if}}
 

@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
-import { Phone, User, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Phone, User, CheckCircle2 } from "lucide-react";
 import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '../ui/CustomFlag';
 
@@ -11,6 +11,22 @@ import {
     validatePhone as validatePhoneLib,
     validateFullName as validateFullNameLib
 } from '@/lib/formValidation';
+
+/**
+ * TWO-STEP FORM
+ * =============
+ * Step 1 collects the contact details and does NOT submit: the answers are
+ * held in component state and the form swaps to step 2, which asks the two
+ * qualifying questions and posts everything in a single request. Nothing
+ * reaches /api/contact until the visitor completes step 2, so a half-finished
+ * form never produces a lead or an email.
+ *
+ * The heading and sub-heading live here rather than in ContactHeroSection
+ * because they change between the steps; the section previously rendered them
+ * as static markup above this component, in both its mobile and desktop
+ * blocks.
+ */
+type Step = 1 | 2;
 
 // Types
 type FormState = {
@@ -21,8 +37,37 @@ type FormState = {
     /** "What are you looking to learn?" — reuses the existing `interest`
      *  field, which already reaches the admin email and the Google Sheet. */
     interest: string;
-    /** "What's your goal?" */
-    goal: string;
+    /** Step 2: "When are you planning to start your course?" */
+    timeline: string;
+    /** Step 2: "What best describes you right now?" */
+    currentStatus: string;
+};
+
+const TIMELINE_OPTIONS = [
+    'I want to start now',
+    'Within 1 month',
+    'Within 1-2 months',
+    "I'm just exploring",
+] as const;
+
+const STATUS_OPTIONS = [
+    'Currently Looking for a Job',
+    'College Student',
+    'Recent Graduate',
+    'Working Professional',
+    'Looking for a Career Change',
+    'Other',
+] as const;
+
+const STEP_HEADINGS: Record<Step, { title: string; subtitle: string }> = {
+    1: {
+        title: "Let's Find the Right Course for You",
+        subtitle: 'Tell us what you are looking for and we will help you choose the right option.',
+    },
+    2: {
+        title: 'Almost There, One Quick Question',
+        subtitle: 'This helps our advisor prepare the right guidance before calling you.',
+    },
 };
 
 interface ContactHeroFormProps {
@@ -31,18 +76,22 @@ interface ContactHeroFormProps {
 }
 
 export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormProps) {
+    const [step, setStep] = useState<Step>(1);
+
     const [formData, setFormData] = useState<FormState>({
         fullName: "",
         phone: "",
         interest: "",
-        goal: "",
+        timeline: "",
+        currentStatus: "",
     });
 
     // Error states
     const [fullNameError, setFullNameError] = useState<string | null>(null);
     const [phoneError, setPhoneError] = useState<string | null>(null);
     const [interestError, setInterestError] = useState<string | null>(null);
-    const [goalError, setGoalError] = useState<string | null>(null);
+    const [timelineError, setTimelineError] = useState<string | null>(null);
+    const [currentStatusError, setCurrentStatusError] = useState<string | null>(null);
 
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -50,7 +99,8 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
         setFullNameError,
         setPhoneError,
         setInterestError,
-        setGoalError
+        setTimelineError,
+        setCurrentStatusError
     ]);
 
     // Loading and submission states
@@ -81,12 +131,21 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
         return true;
     };
 
-    const validateGoal = (goal: string) => {
-        if (!goal) {
-            setGoalError('Please choose your goal.');
+    const validateTimeline = (timeline: string) => {
+        if (!timeline) {
+            setTimelineError('Please choose when you plan to start.');
             return false;
         }
-        setGoalError(null);
+        setTimelineError(null);
+        return true;
+    };
+
+    const validateCurrentStatus = (currentStatus: string) => {
+        if (!currentStatus) {
+            setCurrentStatusError('Please choose the option that describes you.');
+            return false;
+        }
+        setCurrentStatusError(null);
         return true;
     };
 
@@ -101,7 +160,8 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
         // Real-time validation
         if (name === 'fullName') validateFullName(value);
         if (name === 'interest') validateInterest(value);
-        if (name === 'goal') validateGoal(value);
+        if (name === 'timeline') validateTimeline(value);
+        if (name === 'currentStatus') validateCurrentStatus(value);
     };
 
     // Handle phone change
@@ -113,16 +173,45 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
         if (phone) validatePhoneNumber(phone);
     };
 
-    // Handle form submission
-    const handleSubmit = async (e: React.FormEvent) => {
+    /**
+     * Step 1 — deliberately does NOT post anything.
+     *
+     * The answers stay in `formData` and the form advances to step 2; the
+     * single request that carries both steps' answers is fired by
+     * `handleFinalSubmit` below. Abandoning the form here therefore creates no
+     * lead, no email and no CRM record.
+     */
+    const handleContinue = (e: React.FormEvent) => {
         e.preventDefault();
 
         const isFullNameValid = validateFullName(formData.fullName);
         const isPhoneValid = validatePhoneNumber(formData.phone);
         const isInterestValid = validateInterest(formData.interest);
-        const isGoalValid = validateGoal(formData.goal);
 
-        if (isFullNameValid && isPhoneValid && isInterestValid && isGoalValid) {
+        if (isFullNameValid && isPhoneValid && isInterestValid) {
+            setStep(2);
+        }
+    };
+
+    /** Step 2 — the only place this form talks to the API. */
+    const handleFinalSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const isTimelineValid = validateTimeline(formData.timeline);
+        const isCurrentStatusValid = validateCurrentStatus(formData.currentStatus);
+
+        // Re-checked rather than trusted: step 1 validated these, but the
+        // visitor may have gone Back and emptied a field before returning.
+        const isFullNameValid = validateFullName(formData.fullName);
+        const isPhoneValid = validatePhoneNumber(formData.phone);
+        const isInterestValid = validateInterest(formData.interest);
+
+        if (!isFullNameValid || !isPhoneValid || !isInterestValid) {
+            setStep(1);
+            return;
+        }
+
+        if (isTimelineValid && isCurrentStatusValid) {
             setIsSubmitting(true);
             try {
                 const response = await fetch('/api/contact', {
@@ -136,7 +225,8 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                         type: 'contact',
                         source: 'Contact Page - Hero Section Form',
                         interest: formData.interest,
-                        goal: formData.goal
+                        timeline: formData.timeline,
+                        currentStatus: formData.currentStatus
                     }),
                 });
 
@@ -149,8 +239,10 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                         fullName: '',
                         phone: '',
                         interest: '',
-                        goal: ''
+                        timeline: '',
+                        currentStatus: ''
                     });
+                    setStep(1);
 
                     // Only now that the API has accepted the lead. The banner
                     // above is what the visitor sees for the instant the
@@ -169,6 +261,8 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
             }
         }
     };
+
+    const heading = STEP_HEADINGS[step];
 
     return (
         <div ref={containerRef}>
@@ -280,6 +374,12 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
         }
       `}</style>
 
+            {/* Heading — owned by the form because it changes with the step.
+                ContactHeroSection used to render this as static markup above
+                the component, once for mobile and once for desktop. */}
+            <h2 className="text-2xl font-bold text-slate-900">{heading.title}</h2>
+            <p className="mt-1.5 text-slate-600">{heading.subtitle}</p>
+
             {/* Success Message */}
             {isSubmitted && (
                 <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
@@ -297,7 +397,19 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                 </div>
             )}
 
-            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            {/* ⚠️  The `key` on each form is load-bearing, not decoration.
+                Both branches render a <form> in the same position, so without
+                distinct keys React reconciles them into the SAME DOM nodes —
+                and the step-2 "Back" button (type="button") gets rewritten in
+                place into step 1's submit button while the click that
+                triggered the change is still being processed. The browser then
+                runs that click's default action against what is now a submit
+                button, firing handleContinue and bouncing the visitor straight
+                back to step 2. Distinct keys make React unmount one form and
+                mount the other, so the clicked node is destroyed rather than
+                repurposed. */}
+            {step === 1 ? (
+            <form key="step-1" onSubmit={handleContinue} className="mt-6 space-y-4">
                 {/* Full Name Input */}
                 <div>
                     <label htmlFor={`${idPrefix}fullName`} className="block text-sm font-semibold text-gray-700 mb-2">
@@ -394,35 +506,68 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                     )}
                 </div>
 
-                {/* What's your goal? */}
+                {/* Advances to step 2 — sends nothing. */}
+                <button
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] text-white font-semibold py-3.5 px-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                    Continue
+                    <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                </button>
+            </form>
+            ) : (
+            <form key="step-2" onSubmit={handleFinalSubmit} className="mt-6 space-y-4">
+                {/* When are you planning to start your course? */}
                 <div>
-                    <label htmlFor={`${idPrefix}goal`} className="block text-sm font-semibold text-gray-700 mb-2">
-                        What&apos;s your goal? *
+                    <label htmlFor={`${idPrefix}timeline`} className="block text-sm font-semibold text-gray-700 mb-2">
+                        When are you planning to start your course? *
                     </label>
                     <select
-                        id={`${idPrefix}goal`}
-                        name="goal"
-                        value={formData.goal}
+                        id={`${idPrefix}timeline`}
+                        name="timeline"
+                        value={formData.timeline}
                         onChange={handleInputChange}
-                        className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 transition-colors duration-300 ${goalError
+                        className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 transition-colors duration-300 ${timelineError
                             ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
                             : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
                             }`}
                     >
                         <option value="">Select…</option>
-                            <option value="Get a Good Job">Get a Good Job</option>
-                            <option value="Build New Skills">Build New Skills</option>
-                            <option value="Start Freelancing">Start Freelancing</option>
-                            <option value="Grow My Business">Grow My Business</option>
-                            <option value="Actively Looking for a Job">Actively Looking for a Job</option>
-                            <option value="Just Exploring">Just Exploring</option>
+                        {TIMELINE_OPTIONS.map((option) => (
+                            <option key={option} value={option}>{option}</option>
+                        ))}
                     </select>
-                    {goalError && (
-                        <p className="mt-1.5 text-sm text-red-600">{goalError}</p>
+                    {timelineError && (
+                        <p className="mt-1.5 text-sm text-red-600">{timelineError}</p>
                     )}
                 </div>
 
-                {/* Submit Button */}
+                {/* What best describes you right now? */}
+                <div>
+                    <label htmlFor={`${idPrefix}currentStatus`} className="block text-sm font-semibold text-gray-700 mb-2">
+                        What best describes you right now? *
+                    </label>
+                    <select
+                        id={`${idPrefix}currentStatus`}
+                        name="currentStatus"
+                        value={formData.currentStatus}
+                        onChange={handleInputChange}
+                        className={`bg-white w-full px-4 py-3 border-2 rounded-lg text-gray-900 focus:outline-none focus:ring-2 transition-colors duration-300 ${currentStatusError
+                            ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
+                            : 'border-gray-200 focus:border-[#ff8c00] focus:ring-orange-100'
+                            }`}
+                    >
+                        <option value="">Select…</option>
+                        {STATUS_OPTIONS.map((option) => (
+                            <option key={option} value={option}>{option}</option>
+                        ))}
+                    </select>
+                    {currentStatusError && (
+                        <p className="mt-1.5 text-sm text-red-600">{currentStatusError}</p>
+                    )}
+                </div>
+
+                {/* The real submission — posts both steps' answers. */}
                 <button
                     type="submit"
                     disabled={isSubmitting}
@@ -437,7 +582,24 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                         'Get Course Guidance'
                     )}
                 </button>
+
+                {/* Lets a visitor fix a typo in their number without losing
+                    what they have already entered — step 1's values are still
+                    in state. */}
+                <button
+                    type="button"
+                    // preventDefault as well as the keys above: belt and
+                    // braces against this click ever being treated as a form
+                    // submission on its way back out of React.
+                    onClick={(e) => { e.preventDefault(); setStep(1); }}
+                    disabled={isSubmitting}
+                    className="w-full text-sm font-medium text-gray-500 hover:text-[#ff8c00] transition-colors disabled:opacity-50 flex items-center justify-center gap-1.5"
+                >
+                    <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                    Back to my details
+                </button>
             </form>
+            )}
         </div>
     );
 

@@ -105,9 +105,18 @@ export async function appendRowToSheet(data: {
     type: string;
     interest?: string;
     message?: string;
-    /** Contact-page form only: "What's your goal?" answer. Appended as the
-     *  last column so existing columns keep their positions. */
+    /**
+     * Retired: the contact form's "What's your goal?" select was replaced by
+     * `timeline` + `currentStatus` (step 2 of the two-step hero form). The
+     * column is kept so the thousands of historical rows in column I keep
+     * their meaning — reusing it for a different question would leave one
+     * column holding two different answers.
+     */
     goal?: string;
+    /** Contact form step 2: "When are you planning to start your course?" */
+    timeline?: string;
+    /** Contact form step 2: "What best describes you right now?" */
+    currentStatus?: string;
 }) {
     try {
         const sheetId = process.env.GOOGLE_SHEET_ID;
@@ -142,12 +151,17 @@ export async function appendRowToSheet(data: {
                 data.interest || '',
                 data.message || '',
                 data.goal || '',
+                data.timeline || '',
+                data.currentStatus || '',
             ],
         ];
 
         await sheets.spreadsheets.values.append({
             spreadsheetId: sheetId,
-            range: 'Sheet1!A:I', // Appends to the first available row in columns A-I
+            // A-K. The two new columns are appended after `goal` rather than
+            // replacing it, so every existing column keeps its position and
+            // historical rows stay readable.
+            range: 'Sheet1!A:K',
             valueInputOption: 'USER_ENTERED',
             requestBody: {
                 values,
