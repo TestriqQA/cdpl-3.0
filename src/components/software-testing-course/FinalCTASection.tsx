@@ -10,13 +10,14 @@ import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '@/components/ui/CustomFlag';
 
 import { validatePhone } from '@/lib/formValidation';
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 
 /**
  * Integrated CTA content (from your data)
  */
 const ctaContent = {
-    title: "Start Your Software Testing Career in Mumbai Today!",
-    description: "Join successful graduates who have launched their QA careers with our expert-led training in Mumbai & Thane.",
+    title: "Start Your Software Testing Career Today!",
+    description: "Join successful graduates who have launched their QA careers with our expert-led training.",
     subtitle: "Placement Support & ISTQB-Aligned Curriculum.",
 
     benefits: [
@@ -30,6 +31,9 @@ const ctaContent = {
     contactInfo: {
         phone: "+91 84-889-889-84",
         email: "contact@cinutedigital.com",
+        // City dropped with the rest of this page's Mumbai wording (it is the
+        // national category page). The full office address is still in the
+        // site-wide footer and the Organization schema.
         address: "Mumbai, Maharashtra, India",
     },
 };
@@ -49,6 +53,8 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
     const [isBrochureOpen, setIsBrochureOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const goToThankYou = useThankYouRedirect('consultation');
 
     const handleEnrollSubmit = (enroll: EnrollFormData) => {
         // Replace with real submit logic as needed
@@ -90,6 +96,11 @@ const FinalCTASection: React.FC<CTASectionProps> = () => {
             if (response.ok) {
                 setIsSubmitted(true);
                 setForm({ name: "", email: "", phone: "" });
+
+                // Only once the API has accepted the lead. The success card
+                // below is the visitor's feedback for the instant the
+                // prefetched thank-you route takes to paint.
+                goToThankYou();
             } else {
                 alert('Something went wrong. Please try again.');
             }

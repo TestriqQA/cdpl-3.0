@@ -35,7 +35,7 @@ export const COURSES: Course[] = [
         id: 1,
         title: 'Manual Software Testing',
         category: 'Software Testing',
-        description: 'Master manual testing, SDLC, STLC, and bug tracking with JIRA. Ideal for beginners starting their QA career in Mumbai.',
+        description: 'Master manual testing, SDLC, STLC, and bug tracking with JIRA. Ideal for beginners starting their QA career.',
         duration: '50 Hours',
         students: '1200+',
         rating: 4.9,
@@ -50,7 +50,10 @@ export const COURSES: Course[] = [
         id: 2,
         title: 'Advanced Automation Testing',
         category: 'Software Testing',
-        description: 'Learn Selenium WebDriver with Java, TestNG, and CI/CD pipelines. The most industry-demanded automation course in Thane.',
+        // Second sentence ("The most industry-demanded automation course in
+        // Thane.") dropped rather than trimmed: without "in Thane" it becomes
+        // an unqualified superlative, which BLG-205 removes site-wide.
+        description: 'Learn Selenium WebDriver with Java, TestNG, and CI/CD pipelines.',
         duration: '85 Hours',
         students: '950+',
         rating: 4.8,
@@ -147,7 +150,7 @@ export const COURSES: Course[] = [
         id: 8,
         title: 'Advanced Manual & Automation Testing — Master Program',
         category: 'Software Testing',
-        description: 'Integrated program: Advanced Manual Testing + Selenium + API + JMeter + Placement in Mumbai.',
+        description: 'Integrated program: Advanced Manual Testing + Selenium + API + JMeter + placement support.',
         duration: '180 Hours',
         students: '2,302+',
         rating: 4.8,
@@ -450,11 +453,11 @@ export const curriculumContent = {
 
 export const softwareTestingFaqs = [
     {
-        question: 'Which is the comprehensive software testing course in Mumbai for placement?',
-        answer: 'CDPL offers the comprehensive software testing course in Mumbai with placement assistance. Our curriculum covers Manual, Automation (Selenium), API, and ETL testing, ensuring you are job-ready for top QA roles.'
+        question: 'Which software testing course should I take for placement?',
+        answer: 'CDPL offers a comprehensive software testing course with placement assistance. Our curriculum covers Manual, Automation (Selenium), API, and ETL testing, ensuring you are job-ready for top QA roles.'
     },
     {
-        question: 'What is the salary after completing a software testing course in Mumbai?',
+        question: 'What is the salary after completing a software testing course?',
         answer: 'Freshers can expect a starting salary of ₹3.5 LPA to ₹6 LPA after completing our Software Testing course. With experience and automation skills, salaries can go up to ₹15 LPA+.'
     },
     {
@@ -471,7 +474,7 @@ export const softwareTestingFaqs = [
     },
     {
         question: 'Can I attend a free demo session?',
-        answer: 'Yes, we offer free interactive demo sessions every week. You can chat with our expert advisors in Mumbai & Thane to understand the career roadmap.'
+        answer: 'Yes, we offer free interactive demo sessions every week. You can chat with our expert advisors to understand the career roadmap.'
     },
     {
         question: 'Is it possible to switch from a non-IT background to QA?',

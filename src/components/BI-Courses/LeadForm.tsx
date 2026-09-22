@@ -1,5 +1,6 @@
 'use client';
 
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import { useState, useRef } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { useForm } from 'react-hook-form';
@@ -65,6 +66,8 @@ export default function LeadForm({
 }: LeadFormProps) {
     const [isSuccess, setIsSuccess] = useState(false);
 
+    const goToThankYou = useThankYouRedirect();
+
     const form = useForm<FormData>({
         resolver: zodResolver(schema),
         defaultValues: { name: '', email: '', phone: '', course: '' },
@@ -92,6 +95,10 @@ export default function LeadForm({
             if (response.ok) {
                 setIsSuccess(true);
                 form.reset();
+
+                // Only once the API has accepted the lead. The failure paths are
+                // untouched, so a rejected submit leaves the visitor on the form.
+                goToThankYou();
             } else {
                 alert('Submission failed. Please try again.');
             }

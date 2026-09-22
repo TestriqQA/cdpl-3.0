@@ -342,6 +342,33 @@ const nextConfig: NextConfig = {
         destination: '/digital-marketing-course-in-:city',
         statusCode: 301,
       },
+      // Two web-development city slugs that were corrupted in courseData.ts —
+      // one slug string pasted inside another — before BLG-200 (a1239fe)
+      // repaired them. The broken forms are still linked and crawled; the
+      // repair commit records which city each one was (Mumbra and Nerul, not
+      // Nagpur/Palghar, whose names also appear in the corrupted text).
+      //
+      // ⚠️  ORDER MATTERS: these must stay ABOVE the generic
+      // `/web-development-courses-in-:city` rule below. `:city` happily matches
+      // "naweb-development-courses-in-mumbragpur" as if it were a city name, so
+      // with that rule first the Mumbra URL was forwarded to a singular form of
+      // the same garbage and 404'd. Next.js applies the first matching rule.
+      {
+        source: '/web-development-courses-in-naweb-development-courses-in-mumbragpur',
+        destination: '/web-development-course-in-mumbra',
+        statusCode: 301,
+      },
+      {
+        // The singular form the generic rule below has been handing out.
+        source: '/web-development-course-in-naweb-development-courses-in-mumbragpur',
+        destination: '/web-development-course-in-mumbra',
+        statusCode: 301,
+      },
+      {
+        source: '/web-development-courses-inweb-development-courses-in-nerul-palghar',
+        destination: '/web-development-course-in-nerul',
+        statusCode: 301,
+      },
       // BLG-200 (May 2026): Web-Development followed the OPPOSITE convention —
       // 34 city pages used "courses-in" (plural) while the other 5 course
       // families used "course-in" (singular). courseData.ts + citiesData.ts
@@ -456,7 +483,70 @@ const nextConfig: NextConfig = {
         destination: '/',
         statusCode: 301,
       },
+      // September 2026 404 audit — URLs reported as Not Found, each sent to the
+      // closest live page. Every destination was verified to return 200.
+      {
+        // Old blog post URL from before posts moved under /blog/.
+        source: '/mastering-google-ads-campaign-setup',
+        destination: '/blog/mastering-google-ads-campaign-setup',
+        statusCode: 301,
+      },
+      {
+        // The Python course lives under software testing, not DS-ML.
+        source: '/courses/ds-ml-courses/python-course',
+        destination: '/courses/software-testing-course/python-course',
+        statusCode: 301,
+      },
+      {
+        // No such route exists (a WordPress-style author/user URL). The team
+        // page is the nearest thing to a "people" page on this site. `:id`
+        // rather than the literal `2` so the rest of the series lands too.
+        source: '/users/:id',
+        destination: '/our-team',
+        statusCode: 301,
+      },
     ];
+  },
+
+  /**
+   * POST-SUBMISSION THANK-YOU PAGES
+   * ==============================
+   * Every form on the site redirects, on success only, to
+   * `<the page it was submitted from>/thank-you` — so each funnel gets its own
+   * conversion URL without anyone maintaining a list of them.
+   *
+   * ⚠️  THIS REWRITE IS LOAD-BEARING, NOT A CONVENIENCE.
+   * The App Router cannot express `<any path>/thank-you`: a catch-all has to be
+   * the final segment, so `src/app/[...path]/thank-you/page.tsx` is rejected
+   * outright ("catch all segment must be the last segment modifying the path"),
+   * and a fixed `src/app/[slug]/thank-you/page.tsx` would only match
+   * one-segment prefixes — `/courses/software-testing-course/thank-you` would
+   * 404. Reversing the path here puts the catch-all last, which is legal.
+   *
+   * It is a REWRITE, not a redirect: the visitor's address bar keeps the public
+   * `/<page>/thank-you` form, which is what analytics records.
+   *
+   * `beforeFiles` so it resolves ahead of the filesystem routes rather than
+   * depending on where a matching folder happens to exist.
+   *
+   * `:path*` (zero or more) rather than `:path+`, and the route is an OPTIONAL
+   * catch-all to match: the home page has no path to prefix, so its forms
+   * derive the bare `/thank-you`, which has to resolve rather than 404.
+   *
+   * See `src/lib/thank-you.ts` for the path derivation and the optional
+   * derivation, and `src/hooks/useThankYouRedirect.ts` for the calling side.
+   */
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/:path*/thank-you',
+          destination: '/thank-you/:path*',
+        },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
   },
 
   /**
@@ -541,6 +631,39 @@ const nextConfig: NextConfig = {
       // indexable — which is what the comment above always intended.
       {
         source: '/mock-test/:courseSlug',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      // Post-submission thank-you pages. Both shapes are covered: the public
+      // `/<page path>/thank-you` and the internal `/thank-you/<page path>` the
+      // rewrite above targets, which stays directly reachable as a normal
+      // route. They already render `noindex, nofollow` from their own
+      // metadata and are absent from sitemap.ts; this header is the same
+      // defense-in-depth applied to /cms and /mock-test/:courseSlug below.
+      //
+      // Why they must never be indexed: they are thin and identical across
+      // funnels, and a visitor arriving from search would fire a conversion
+      // event for a lead that was never submitted — which corrupts the
+      // per-funnel conversion numbers these separate URLs exist to produce.
+      //
+      // Unlike the /mock-test matcher, these deliberately use `:path*` — the
+      // prefix is an arbitrary page path of any depth, which is the whole
+      // point of the rewrite.
+      {
+        source: '/:path*/thank-you',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      {
+        source: '/thank-you/:path*',
         headers: [
           {
             key: 'X-Robots-Tag',

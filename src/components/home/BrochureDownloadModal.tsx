@@ -1,5 +1,6 @@
 'use client';
 
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
@@ -46,6 +47,8 @@ const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ isOpen, o
   // Loading and submission states
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const goToThankYou = useThankYouRedirect('brochure');
 
   // Validation functions
   const validateFullName = (name: string) => {
@@ -123,15 +126,17 @@ const BrochureDownloadModal: React.FC<BrochureDownloadModalProps> = ({ isOpen, o
           console.log('Brochure request submitted successfully');
           setIsSubmitted(true);
 
-          setTimeout(() => {
-            setIsSubmitted(false);
-            setFormData({
-              fullName: '',
-              email: '',
-              phone: ''
-            });
-            onClose();
-          }, 3000);
+          setIsSubmitted(false);
+          setFormData({
+            fullName: '',
+            email: '',
+            phone: ''
+          });
+          onClose();
+
+          // Only once the API has accepted the lead. The failure paths are
+          // untouched, so a rejected submit leaves the visitor on the form.
+          goToThankYou();
         } else {
           alert('Form submission failed. Please try again.');
         }

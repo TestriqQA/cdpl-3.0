@@ -1,5 +1,6 @@
 'use client';
 
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { X, User, Mail, CheckCircle2, Loader2, Building2, Briefcase, Calendar, Users, MessageSquare, BookOpen, ChevronDown } from 'lucide-react';
@@ -88,6 +89,8 @@ const WorkshopRequestModal = ({
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
+    const goToThankYou = useThankYouRedirect('workshop');
+
     // Validation
     const validateField = (name: string, value: string) => {
         switch (name) {
@@ -175,9 +178,11 @@ const WorkshopRequestModal = ({
 
                 if (response.ok) {
                     setIsSubmitted(true);
-                    setTimeout(() => {
-                        handleClose();
-                    }, 4000);
+                    handleClose();
+
+                    // Only once the API has accepted the lead. The failure paths are
+                    // untouched, so a rejected submit leaves the visitor on the form.
+                    goToThankYou();
                 } else {
                     alert('Submission failed. Please try again.');
                 }

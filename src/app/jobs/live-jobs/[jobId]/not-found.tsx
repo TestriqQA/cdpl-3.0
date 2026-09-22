@@ -1,17 +1,20 @@
 import Link from "next/link";
 
 /**
- * 404 for a live-job detail URL.
+ * 404 for a live-job detail URL — now the OUTAGE fallback only.
  *
- * Reached whenever `getLiveJobBySlug` returns nothing — the job was closed in
- * Studio (Active toggled off), its apply-by date passed, or the slug never
- * existed. The HTTP status is still 404, which is what Google needs in order to
- * drop an expired posting from Google for Jobs. This route only replaces the
- * bare global 404 with something useful for the person who arrived here.
+ * A job that Sanity confirms is closed, expired or non-existent no longer
+ * reaches this page: page.tsx permanently redirects it to /jobs/live-jobs
+ * (September 2026 404 audit). This page is rendered only when Sanity could not
+ * be reached and the static JOBS snapshot has no open job with this slug —
+ * `authoritative: false` from `lookupLiveJob` in src/lib/liveJobs.ts.
  *
- * That matters because these URLs get shared: a candidate may open a WhatsApp
- * link days after the drive closed. Stranding them on "Page Not Found / Go
- * Home" loses a real applicant; sending them to the current openings does not.
+ * It stays a 404 precisely because it is the unsure case: a redirect issued
+ * there would be cached by browsers and outlive the outage, whereas a 404 is
+ * re-requested and heals itself once Sanity is back.
+ *
+ * The copy below still assumes the opening has closed. In this path that is
+ * usually but not always true (the snapshot predates jobs added in the Studio).
  */
 export default function JobNotFound() {
     return (

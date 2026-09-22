@@ -7,7 +7,19 @@ import Link from "next/link";
 
 const ContactHeroForm = dynamic(() => import('@/components/forms/ContactHeroForm').then(mod => mod.ContactHeroForm), {
   ssr: false,
-  loading: () => <div className="min-h-[400px] w-full flex items-center justify-center text-slate-400">Loading Form...</div>
+  // The heading moved inside the form (it changes between the form's two
+  // steps), so the placeholder now paints it too. Without this the panel
+  // rendered headless until the chunk arrived — a visible jump on a client-only
+  // component this far up the page.
+  loading: () => (
+    <div className="min-h-[400px] w-full">
+      <h2 className="text-2xl font-bold text-slate-900">Let&apos;s Find the Right Course for You</h2>
+      <p className="mt-1.5 text-slate-600">
+        Tell us what you are looking for and we will help you choose the right option.
+      </p>
+      <div className="mt-6 flex min-h-[300px] items-center justify-center text-slate-400">Loading Form...</div>
+    </div>
+  )
 });
 
 export function ContactHeroSection() {
@@ -85,11 +97,8 @@ export function ContactHeroSection() {
                 <div className="rounded-3xl p-[1px] bg-gradient-to-br from-sky-100/70 via-indigo-100/60 to-orange-100/70 shadow-2xl">
                   {/* inner glass panel */}
                   <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8">
-                    <h2 className="text-2xl font-bold text-slate-900">Let&apos;s Find the Right Course for You</h2>
-                    <p className="mt-1.5 text-slate-600">
-                      Tell us what you are looking for and we will help you choose the right option.
-                    </p>
-
+                    {/* Heading and sub-heading now live inside ContactHeroForm:
+                        the form is two-step and both lines change on step 2. */}
                     <ContactHeroForm />
 
                     <p className="mt-4 text-[12px] text-slate-500">
@@ -211,11 +220,8 @@ export function ContactHeroSection() {
               <div className="rounded-3xl p-[1px] bg-gradient-to-br from-sky-100/70 via-indigo-100/60 to-orange-100/70 shadow-2xl">
                 {/* inner glass panel — constrained width */}
                 <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8 w-full md:max-w-md lg:max-w-sm xl:max-w-md">
-                  <h2 className="text-2xl font-bold text-slate-900">Let&apos;s Find the Right Course for You</h2>
-                  <p className="mt-1.5 text-slate-600">
-                    Tell us what you are looking for and we will help you choose the right option.
-                  </p>
-
+                  {/* Heading and sub-heading now live inside ContactHeroForm:
+                      the form is two-step and both lines change on step 2. */}
                   <ContactHeroForm idPrefix="desktop_" />
 
                   <p className="mt-4 text-[12px] text-slate-500">

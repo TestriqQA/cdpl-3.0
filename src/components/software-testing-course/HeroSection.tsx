@@ -34,6 +34,29 @@ const YouTubeVideoModal = dynamic(() => import('@/components/home/YouTubeVideoMo
  * Content updated for Software Testing Courses (SEO-optimized). Everything
  * else in the component is intentionally left unchanged.
  */
+/**
+ * The one intended mention of Mumbai on this page.
+ *
+ * This is the national Software Testing category page; the Mumbai classroom
+ * offer has its own page at /software-testing-course-in-mumbai. The two used
+ * to compete for the same "software testing course in mumbai" searches, so the
+ * city wording was removed from everything here except this line, which hands
+ * Mumbai visitors to the page built for them. Rendered under both the desktop
+ * <h1> and the mobile headline so the text is identical at every breakpoint.
+ */
+const MumbaiBatchLine: React.FC<{ className?: string }> = ({ className = '' }) => (
+    <p className={`text-sm text-slate-600 ${className}`}>
+        Looking for our Mumbai classroom batch? View the{' '}
+        <Link
+            href="/software-testing-course-in-mumbai"
+            className="font-semibold text-brand underline underline-offset-2 hover:text-orange-600"
+        >
+            Software Testing Course in Mumbai
+        </Link>
+        .
+    </p>
+);
+
 const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: () => void; onOpenEnroll: () => void }> = ({ onOpenBrochure, onOpenVideo }) => {
 
     const breadcrumbs = [
@@ -87,11 +110,13 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
             <div className="mt-6 flex gap-8 items-start">
                 <div className="max-w-5xl">
                     <h1 className="text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900">
-                        <span className="text-brand">Software Testing Course</span> in Mumbai & Thane
+                        <span className="text-brand">Software Testing Courses</span> & Programs at CDPL
                     </h1>
 
+                    <MumbaiBatchLine className="mt-3" />
+
                     <p className="mt-4 text-base text-slate-600">
-                        Become a Job-Ready QA Professional. Master Manual & Automation Testing (Selenium, Playwright, API) with industry-expert mentors. Placement Support, ISTQB-aligned training, and real-time projects in Mumbai & Thane.
+                        Become a Job-Ready QA Professional. Master Manual & Automation Testing (Selenium, Playwright, API) with industry-expert mentors. Placement Support, ISTQB-aligned training, and real-time projects.
                     </p>
 
                     {/* Feature chips (clean minimal icons) */}
@@ -300,12 +325,16 @@ export default function HeroSection(): React.JSX.Element {
                         <span>India's comprehensive Software Testing Training Institute</span>
                     </div>
 
+                    {/* Mobile counterpart of the desktop <h1> — kept as an h2 so
+                        the page still has a single h1; same wording. */}
                     <h2 className="text-3xl font-extrabold text-slate-900 leading-tight">
-                        <span className="text-brand">Software Testing</span> Course in Mumbai
+                        <span className="text-brand">Software Testing Courses</span> & Programs at CDPL
                     </h2>
 
+                    <MumbaiBatchLine className="mt-2" />
+
                     <p className="mt-3 text-base text-slate-600">
-                        Master Manual & Automation Testing (Selenium, Java, API) with Job Placement. Certified Software Testing training in Mumbai & Thane with real-world case studies and interview calls.
+                        Master Manual & Automation Testing (Selenium, Java, API) with placement support. Certified Software Testing training with real-world case studies.
                     </p>
 
                     {/* Form below heading on mobile */}

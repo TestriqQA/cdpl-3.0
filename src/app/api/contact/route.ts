@@ -83,7 +83,7 @@ export async function POST(request: Request) {
   console.log('API Contact Route Hit');
   try {
     const body = await request.json();
-    const { fullName, email, phone, type, source, interest, goal, message, courseName, syllabusLink, company, workshopType, participants, title, interestedTrack, location } = body;
+    const { fullName, email, phone, type, source, interest, goal, timeline, currentStatus, message, courseName, syllabusLink, company, workshopType, participants, title, interestedTrack, location } = body;
     console.log('Received payload:', { fullName, email, phone, type, source, workshopType, interestedTrack });
 
     const currentYear = new Date().getFullYear();
@@ -365,7 +365,13 @@ export async function POST(request: Request) {
 
     // Contact form only. Left unset when absent so the {{#if goal}} block in
     // admin-notification.html drops the row entirely for the other forms.
+    //
+    // `goal` is retained for compatibility but the contact hero form no longer
+    // sends it — its "What's your goal?" select was replaced by the two
+    // qualifying questions below, asked on step 2 of that form.
     if (goal) adminData.goal = goal;
+    if (timeline) adminData.timeline = timeline;
+    if (currentStatus) adminData.currentStatus = currentStatus;
 
     // Set standardized type for templates that use {{type}}
     adminData.type = requestType;
@@ -670,6 +676,8 @@ export async function POST(request: Request) {
         interest: interest || '',
         message: message || '',
         goal: goal || '',
+        timeline: timeline || '',
+        currentStatus: currentStatus || '',
       });
       console.log('Google Sheet updated successfully');
     } catch (err) {

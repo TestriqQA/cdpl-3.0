@@ -171,3 +171,47 @@ export function getCityLocalContent(city: string | undefined): CityLocalContent 
     if (!city) return undefined;
     return CITY_LOCAL_CONTENT[city.toLowerCase()];
 }
+
+/**
+ * FAQs for ONE course-in-city page, shown ahead of that page's other FAQs.
+ *
+ * ⚠️  Keyed by page slug on purpose — do not move these into
+ * CITY_LOCAL_CONTENT above. A city's `faqs` are shown on EVERY course page in
+ * that city: software testing, data science, digital marketing and the rest in
+ * Mumbai all render CITY_LOCAL_CONTENT.mumbai.faqs. These answers are about one
+ * specific course — its fee, duration and placement support — so on any other
+ * Mumbai page they would be wrong.
+ *
+ * Merged in by getByInternalSlug in src/app/(city-courses)/[slug]/page.tsx.
+ * The same merged list feeds the page's FAQPage JSON-LD, so the visible FAQs
+ * and the structured data stay identical.
+ */
+export const COURSE_CITY_FAQS: Record<string, { question: string; answer: string }[]> = {
+    // Supplied by the SEO team, September 2026.
+    'software-testing-course-in-mumbai': [
+        {
+            question: 'What is the fee for the Software Testing Course in Mumbai at CDPL?',
+            answer:
+                'The Software Testing Course in Mumbai starts at lowest price, with easy EMI options available. ' +
+                'The fee covers manual + automation testing modules, ISTQB exam prep, hands-on projects, and placement support. ' +
+                'Batch-wise offers may apply — talk to our counsellors for the current fee and any active discount.',
+        },
+        {
+            question: 'Is the Software Testing Course in Mumbai ISTQB-certified, and how long does it take?',
+            answer:
+                'The course runs 12 weeks and is ISTQB Certification Ready, meaning the syllabus is mapped to the ISTQB Foundation Level exam. ' +
+                'You\'ll also get an industry-recognised CDPL certificate on completion, along with hands-on project work to show employers.',
+        },
+        {
+            question: 'Does CDPL provide placement assistance after the Software Testing Course in Mumbai?',
+            answer:
+                'Yes. CDPL offers dedicated placement support including resume building, mock interviews, and job referrals, with 92% of learners placed within 3 months of completing the course. ' +
+                'Mumbai alumni have been placed at companies like Tech Mahindra, Accenture, JM Financial, and IDfy.',
+        },
+    ],
+};
+
+/** Page-specific FAQs for a course-in-city slug; empty when it has none. */
+export function getCourseCityFaqs(slug: string): { question: string; answer: string }[] {
+    return COURSE_CITY_FAQS[slug.toLowerCase()] ?? [];
+}

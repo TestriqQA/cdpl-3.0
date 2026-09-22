@@ -1,5 +1,6 @@
 'use client';
 
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { createPortal } from 'react-dom';
@@ -44,6 +45,8 @@ const AdvisorModal: React.FC<AdvisorModalProps> = ({
     // Loading and submission states
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const goToThankYou = useThankYouRedirect('demo');
 
     // Validation functions
     const validateFullName = (name: string) => {
@@ -121,15 +124,17 @@ const AdvisorModal: React.FC<AdvisorModalProps> = ({
                     console.log('Advisor request submitted successfully');
                     setIsSubmitted(true);
 
-                    setTimeout(() => {
-                        setIsSubmitted(false);
-                        setFormData({
-                            fullName: '',
-                            email: '',
-                            phone: ''
-                        });
-                        onClose();
-                    }, 3000);
+                    setIsSubmitted(false);
+                    setFormData({
+                        fullName: '',
+                        email: '',
+                        phone: ''
+                    });
+                    onClose();
+
+                    // Only once the API has accepted the lead. The failure paths are
+                    // untouched, so a rejected submit leaves the visitor on the form.
+                    goToThankYou();
                 } else {
                     alert('Form submission failed. Please try again.');
                 }

@@ -1,4 +1,5 @@
 "use client";
+import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import Link from "next/link";
 import { Award, Users, Star, Home, ChevronRight, CheckCircle2, User, Mail } from "lucide-react";
 import { useState, useRef } from "react";
@@ -27,6 +28,8 @@ export default function HeroSection() {
     const [formErrors, setFormErrors] = useState<{ fullName?: string | null, email?: string | null, phone?: string | null }>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const goToThankYou = useThankYouRedirect();
 
     const formRef = useRef<HTMLFormElement>(null);
 
@@ -88,7 +91,10 @@ export default function HeroSection() {
                 if (response.ok) {
                     setIsSubmitted(true);
                     setFormData({ fullName: '', email: '', phone: '' });
-                    setTimeout(() => setIsSubmitted(false), 5000);
+
+                    // Only once the API has accepted the lead. The failure paths are
+                    // untouched, so a rejected submit leaves the visitor on the form.
+                    goToThankYou();
                 } else {
                     alert('Something went wrong. Please try again.');
                 }
