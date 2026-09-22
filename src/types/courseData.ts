@@ -183,9 +183,9 @@ export const courseData: Record<string, CourseData> = {
       { label: "Mumbai", href: "/software-testing-course-in-mumbai" },
     ],
     metadata: {
-      title: "Software Testing Course in Mumbai | CDPL",
+      title: "Software Testing Course in Mumbai - Fees & Placement | CDPL",
       description:
-        "Comprehensive software testing course in Mumbai. Learn manual testing, automation, performance testing with industry experts. job placement support.",
+        "Software testing course in Mumbai with classroom batches at our Mira Road centre and live online options. Get fees, batch dates, syllabus and placement support.",
       keywords:
         "software testing course mumbai, qa testing training mumbai, automation testing course, manual testing course, testing certification mumbai, qa course maharashtra",
     },
@@ -197,7 +197,7 @@ export const courseData: Record<string, CourseData> = {
       discountedPrice: "₹19,999",
     },
     heroContent: {
-      title: "Master Software Testing in Mumbai",
+      title: "Software Testing Course in Mumbai with Fees, Placement Support & ISTQB Prep",
       subtitle: "Industry-Recognized QA Testing Course",
       description:
         "Learn comprehensive software testing skills from industry experts in Mumbai. Master manual testing, automation, performance testing, and quality assurance to launch your career in tech.",

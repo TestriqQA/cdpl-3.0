@@ -10,7 +10,7 @@ import {
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 import { isTier1Slug, getCityFromSlug } from "@/lib/cityTiers";
-import { getCityLocalContent } from "@/data/cityLocalContent";
+import { getCityLocalContent, getCourseCityFaqs } from "@/data/cityLocalContent";
 // BLG-200: use permanentRedirect (308) instead of redirect (307 default).
 // The plural ↔ singular fallback below was emitting 307s, which Google
 // does not honour for SEO weight transfer; 308 triggers consolidation.
@@ -55,13 +55,19 @@ function getByInternalSlug(slug: string): CourseData | undefined {
   if (!base) return undefined;
 
   const local = getCityLocalContent(getCityFromSlug(base.slug));
-  if (!local) return base;
+  // FAQs written for this one page (fees, duration, placement for this course
+  // in this city) lead, ahead of the city-wide set or, for cities with no local
+  // content, the course's default set. Keyed by slug — see COURSE_CITY_FAQS
+  // for why they must not live in the city-wide list.
+  const pageFaqs = getCourseCityFaqs(base.slug);
+  if (!local && pageFaqs.length === 0) return base;
 
-  return {
+  const merged: CourseData = {
     ...base,
-    localJobMarketInsight: local.jobMarketInsight,
-    localizedFaqs: local.faqs,
+    localizedFaqs: [...pageFaqs, ...(local ? local.faqs : base.faqsContent.faqs)],
   };
+  if (local) merged.localJobMarketInsight = local.jobMarketInsight;
+  return merged;
 }
 
 // Helper: Parse price string to number (e.g., "₹29,999" -> 29999)
