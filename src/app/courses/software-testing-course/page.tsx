@@ -16,20 +16,25 @@ import { softwareTestingFaqs } from "@/components/software-testing-course/data/d
 import { generateMetadata } from '@/lib/metadata-generator';
 import { Metadata } from 'next';
 
-const pageTitle = "Software Testing Course in Mumbai & Thane with Placement";
-const pageDescription = "Software Testing Course in Mumbai & Thane — master Manual & Automation Testing (Selenium, Java, API). Certified QA training with placement support.";
+// National category page. City wording lives on the city pages — the Mumbai
+// classroom offer is /software-testing-course-in-mumbai, linked from the hero —
+// so this page no longer competes with them for "… in mumbai" searches.
+// The title already carries "| CDPL" and is passed to generateMetadata (not
+// generateStaticPageMetadata), which would append a second suffix.
+const pageTitle = "Software Testing Courses & Certification Programs | CDPL";
+const pageDescription = "Software Testing courses & certification programs at CDPL: master Manual & Automation Testing (Selenium, Java, API) with placement support.";
 const pageKeywords = [
   "software testing course",
-  "software testing course in mumbai",
-  "software testing training thane",
+  "software testing courses",
+  "software testing certification",
   "manual testing course",
   "automation testing course selenium",
   "qa training with placement",
-  "software testing classes mumbai",
+  "software testing classes",
   "certified software tester",
   "software testing course for beginners",
-  "selenium training in mumbai",
-  "api testing course mumbai"
+  "selenium training",
+  "api testing course"
 ];
 
 export const metadata: Metadata = generateMetadata({

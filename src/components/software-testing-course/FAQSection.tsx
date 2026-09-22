@@ -28,8 +28,8 @@ const faqs: FAQ[] = [
     {
         id: 1,
         icon: HelpCircle,
-        q: "Which is the comprehensive software testing course in Mumbai for placement?",
-        a: "CDPL offers the comprehensive software testing course in Mumbai with placement assistance. Our curriculum covers Manual Testing, Automation (Selenium), API Testing, and ETL testing, ensuring you are job-ready for top QA roles with industry-recognized certification.",
+        q: "Which software testing course should I take for placement?",
+        a: "CDPL offers a comprehensive software testing course with placement assistance. Our curriculum covers Manual Testing, Automation (Selenium), API Testing, and ETL testing, ensuring you are job-ready for top QA roles with industry-recognized certification.",
     },
     {
         id: 2,
@@ -40,8 +40,8 @@ const faqs: FAQ[] = [
     {
         id: 3,
         icon: Clock,
-        q: "What is the duration of the Software Testing course in Mumbai?",
-        a: "The duration varies from 8 to 16 weeks depending on the track you choose (Manual, Automation, or Master Program). Typical batches run for 3-4 months with weekend and weekday options available in Mumbai & Thane.",
+        q: "What is the duration of the Software Testing course?",
+        a: "The duration varies from 8 to 16 weeks depending on the track you choose (Manual, Automation, or Master Program). Typical batches run for 3-4 months with weekend and weekday options available.",
     },
     {
         id: 4,
@@ -53,19 +53,22 @@ const faqs: FAQ[] = [
         id: 5,
         icon: DollarSign,
         q: "What is the average salary after a software testing course?",
-        a: "Freshers in Mumbai can expect a salary of ₹3.5 LPA to ₹6 LPA. For candidates with automation skills (Selenium, Playwright, API), the packages can range from ₹6 LPA to ₹12 LPA+, depending on the company and expertise.",
+        a: "Freshers can expect a salary of ₹3.5 LPA to ₹6 LPA. For candidates with automation skills (Selenium, Playwright, API), the packages can range from ₹6 LPA to ₹12 LPA+, depending on the company and expertise.",
     },
     {
         id: 6,
         icon: Briefcase,
-        q: "Does CDPL provide Job Placement?",
-        a: "Yes, we provide replacement assistance, which includes resume building, LinkedIn optimization, and interview calls until you secure a job in the QA domain.",
+        // Was "…interview calls until you secure a job" — a remnant of the
+        // "guaranteed interview calls" claim removed in BLG-205 — and also
+        // misspelled "replacement assistance". Assistance, not a guarantee.
+        q: "Does CDPL provide placement support?",
+        a: "Yes, we provide placement assistance, which includes resume building, LinkedIn optimization and interview preparation to help you move into a QA role.",
     },
     {
         id: 7,
         icon: Users,
         q: "Is there a demo session available?",
-        a: "Absolutely! We encourage students to attend a free interactive demo session at our Mumbai or Thane centers (or online) to experience our teaching style and interact with our expert mentors.",
+        a: "Absolutely! We encourage students to attend a free interactive demo session at one of our centers (or online) to experience our teaching style and interact with our expert mentors.",
     },
     {
         id: 8,
@@ -236,7 +239,7 @@ export default function FAQSection() {
                     </div>
 
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                        Software Testing Course <span className="text-brand">Mumbai FAQ</span>
+                        Software Testing Course <span className="text-brand">FAQ</span>
                     </h2>
 
 
