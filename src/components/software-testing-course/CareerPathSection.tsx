@@ -362,7 +362,7 @@ export default function CareerPathSection() {
                     </div>
 
                     <h2 className="mt-10 text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                        Software Testing <span className="text-brand">Jobs & Career Roles</span> in Mumbai
+                        Software Testing <span className="text-brand">Jobs & Career Roles</span>
                     </h2>
 
 
