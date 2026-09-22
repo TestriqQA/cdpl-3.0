@@ -3,9 +3,9 @@
 // curated job opening with its own canonical URL, generated statically for
 // every live job (Sanity-first via getLiveJobs(), static `JOBS` fallback).
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Job } from "@/lib/jobsData";
-import { getLiveJobs, getLiveJobBySlug, buildLiveJobPostingSchema } from "@/lib/liveJobs";
+import { getLiveJobs, getLiveJobBySlug, lookupLiveJob, buildLiveJobPostingSchema } from "@/lib/liveJobs";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateBreadcrumbSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
@@ -73,8 +73,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Page({ params }: Props) {
     const { jobId } = await params;
-    const job = await getLiveJobBySlug(jobId);
-    if (!job) notFound();
+    const { job, authoritative } = await lookupLiveJob(jobId);
+
+    if (!job) {
+        // A closed, expired or never-existing job goes to the current openings
+        // rather than a dead end — shared WhatsApp links outlive the drives
+        // they advertise. 308, per the permanentRedirect convention in
+        // (city-courses)/[slug]: the posting is gone for good, and search
+        // engines drop the old URL once they see a permanent move.
+        //
+        // ⚠️  Only when Sanity itself said so. Browsers cache permanent
+        // redirects, so one issued during an outage would outlive it — see
+        // `authoritative` in src/lib/liveJobs.ts. When the answer came from
+        // the fallback snapshot instead, fall through to not-found.tsx, which
+        // is a 404 and so is never cached as a redirect.
+        if (authoritative) permanentRedirect("/jobs/live-jobs");
+        notFound();
+    }
 
     const jobWithBanner: Job = {
         ...job,
