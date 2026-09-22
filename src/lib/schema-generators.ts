@@ -1477,7 +1477,9 @@ export function generateSoftwareTestingCategoryPageSchema(
 
   // 2. WebPage Schema
   const webPageSchema = generateWebPageSchema({
-    name: "Software Testing Course in Mumbai & Thane with Placement",
+    // Mirrors the page <title>, minus the "| CDPL" suffix. National page —
+    // city wording belongs to /software-testing-course-in-mumbai.
+    name: "Software Testing Courses & Certification Programs",
     description:
       courseInput.description || "Master Manual & Automation Testing.",
     url: "/courses/software-testing-course",

@@ -16,8 +16,8 @@ import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
  * Integrated CTA content (from your data)
  */
 const ctaContent = {
-    title: "Start Your Software Testing Career in Mumbai Today!",
-    description: "Join successful graduates who have launched their QA careers with our expert-led training in Mumbai & Thane.",
+    title: "Start Your Software Testing Career Today!",
+    description: "Join successful graduates who have launched their QA careers with our expert-led training.",
     subtitle: "Placement Support & ISTQB-Aligned Curriculum.",
 
     benefits: [
@@ -31,6 +31,9 @@ const ctaContent = {
     contactInfo: {
         phone: "+91 84-889-889-84",
         email: "contact@cinutedigital.com",
+        // City dropped with the rest of this page's Mumbai wording (it is the
+        // national category page). The full office address is still in the
+        // site-wide footer and the Organization schema.
         address: "Mumbai, Maharashtra, India",
     },
 };
