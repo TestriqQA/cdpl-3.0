@@ -342,6 +342,33 @@ const nextConfig: NextConfig = {
         destination: '/digital-marketing-course-in-:city',
         statusCode: 301,
       },
+      // Two web-development city slugs that were corrupted in courseData.ts —
+      // one slug string pasted inside another — before BLG-200 (a1239fe)
+      // repaired them. The broken forms are still linked and crawled; the
+      // repair commit records which city each one was (Mumbra and Nerul, not
+      // Nagpur/Palghar, whose names also appear in the corrupted text).
+      //
+      // ⚠️  ORDER MATTERS: these must stay ABOVE the generic
+      // `/web-development-courses-in-:city` rule below. `:city` happily matches
+      // "naweb-development-courses-in-mumbragpur" as if it were a city name, so
+      // with that rule first the Mumbra URL was forwarded to a singular form of
+      // the same garbage and 404'd. Next.js applies the first matching rule.
+      {
+        source: '/web-development-courses-in-naweb-development-courses-in-mumbragpur',
+        destination: '/web-development-course-in-mumbra',
+        statusCode: 301,
+      },
+      {
+        // The singular form the generic rule below has been handing out.
+        source: '/web-development-course-in-naweb-development-courses-in-mumbragpur',
+        destination: '/web-development-course-in-mumbra',
+        statusCode: 301,
+      },
+      {
+        source: '/web-development-courses-inweb-development-courses-in-nerul-palghar',
+        destination: '/web-development-course-in-nerul',
+        statusCode: 301,
+      },
       // BLG-200 (May 2026): Web-Development followed the OPPOSITE convention —
       // 34 city pages used "courses-in" (plural) while the other 5 course
       // families used "course-in" (singular). courseData.ts + citiesData.ts
@@ -454,6 +481,28 @@ const nextConfig: NextConfig = {
       {
         source: '/https\\:/www.cinutedigital.com',
         destination: '/',
+        statusCode: 301,
+      },
+      // September 2026 404 audit — URLs reported as Not Found, each sent to the
+      // closest live page. Every destination was verified to return 200.
+      {
+        // Old blog post URL from before posts moved under /blog/.
+        source: '/mastering-google-ads-campaign-setup',
+        destination: '/blog/mastering-google-ads-campaign-setup',
+        statusCode: 301,
+      },
+      {
+        // The Python course lives under software testing, not DS-ML.
+        source: '/courses/ds-ml-courses/python-course',
+        destination: '/courses/software-testing-course/python-course',
+        statusCode: 301,
+      },
+      {
+        // No such route exists (a WordPress-style author/user URL). The team
+        // page is the nearest thing to a "people" page on this site. `:id`
+        // rather than the literal `2` so the rest of the series lands too.
+        source: '/users/:id',
+        destination: '/our-team',
         statusCode: 301,
       },
     ];

@@ -137,26 +137,54 @@ export async function getLiveJobs(): Promise<Job[]> {
 }
 
 /**
- * A single live job by its slug/id, sourced from Sanity. A slug Sanity does not
- * have (never existed, or deleted/deactivated in the Studio) returns undefined
- * so the page 404s. The static `JOBS` array is used ONLY if the Sanity request
- * THROWS (outage snapshot) — never to resurrect a job that was removed.
+ * A single live job by its slug/id, plus whether that answer can be trusted.
+ *
+ * `authoritative` is true when Sanity itself answered. It is false when the
+ * request THREW and the static `JOBS` snapshot was consulted instead — in that
+ * case a missing job may simply be one the snapshot predates (anything added in
+ * the Studio since the seed was written), not one that has closed.
+ *
+ * The distinction exists for the detail page, which permanently redirects a
+ * closed job to the listing. A permanent redirect is cached by browsers, so it
+ * must never be issued on the strength of an outage: one Sanity blip during an
+ * ISR revalidation would otherwise send every visitor in that window a 308
+ * their browser keeps honouring after Sanity recovers. See
+ * src/app/jobs/live-jobs/[jobId]/page.tsx.
  */
-export async function getLiveJobBySlug(slug: string): Promise<Job | undefined> {
+export async function lookupLiveJob(
+    slug: string,
+): Promise<{ job: Job | undefined; authoritative: boolean }> {
     try {
         const doc = await liveClient.fetch<SanityLiveJob | null>(
             LIVE_JOB_BY_SLUG_QUERY,
             { slug, today: today() },
             { next: { revalidate: LIVE_JOBS_REVALIDATE, tags: ['liveJob', `liveJob:${slug}`] } },
         );
-        if (!doc) return undefined;
+        if (!doc) return { job: undefined, authoritative: true };
         const job = sanityToJob(doc);
-        // An expired posting 404s rather than rendering as an open vacancy.
-        return isJobOpen(job) ? job : undefined;
+        // An expired posting is treated as absent rather than rendered as an
+        // open vacancy.
+        return { job: isJobOpen(job) ? job : undefined, authoritative: true };
     } catch (err) {
-        console.error('[getLiveJobBySlug] Sanity fetch failed, using static JOBS snapshot:', err);
-        return JOBS.filter((j) => isJobOpen(j)).find((j) => j.id === slug);
+        console.error('[lookupLiveJob] Sanity fetch failed, using static JOBS snapshot:', err);
+        return {
+            job: JOBS.filter((j) => isJobOpen(j)).find((j) => j.id === slug),
+            authoritative: false,
+        };
     }
+}
+
+/**
+ * A single live job by its slug/id, sourced from Sanity. A slug Sanity does not
+ * have (never existed, or deleted/deactivated in the Studio) returns undefined.
+ * The static `JOBS` array is used ONLY if the Sanity request THROWS (outage
+ * snapshot) — never to resurrect a job that was removed.
+ *
+ * Use `lookupLiveJob` instead wherever it matters whether "undefined" means
+ * "closed" or "could not check".
+ */
+export async function getLiveJobBySlug(slug: string): Promise<Job | undefined> {
+    return (await lookupLiveJob(slug)).job;
 }
 
 /**
