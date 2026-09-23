@@ -20,7 +20,7 @@ import { DATA_SCIENCE_FAQS, DATA_SCIENCE_REVIEW_DATA } from "@/data/dataScienceD
 
 export const metadata = generateMetadata({
   title: "Data Science & Machine Learning Course Mumbai | CDPL",
-  description: "200-hour advanced data science course in Mumbai — Python, EDA, ML algorithms, model deployment & end-to-end pipelines with placement assistance.",
+  description: "Master advanced data science and machine learning with live mentor-led classes, real datasets, capstone projects and interview preparation at CDPL.",
   keywords: [
     "data science full course",
     "advanced data science",

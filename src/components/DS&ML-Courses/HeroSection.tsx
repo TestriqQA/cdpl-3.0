@@ -35,6 +35,81 @@ const LeadForm = dynamic(() => import('./LeadForm'), {
  * Content updated for Data Science Courses (SEO-optimized). Everything
  * else in the component is intentionally left unchanged.
  */
+/**
+ * Every course that lives under /courses/ds-ml-courses, listed directly under
+ * the H1 so visitors can go straight to the one they came for instead of
+ * scrolling to the course grid.
+ *
+ * Two things to keep in mind when editing:
+ *
+ *  - The hrefs are the canonical /courses/ds-ml-courses/… paths. The course
+ *    grid further down this page still points at the pre-restructure flat URLs
+ *    (/machine-learning-course and friends), which only reach the same pages
+ *    through a 301 in next.config.ts. Link straight to the real path here.
+ *  - The names match the course grid, and each line is condensed from that
+ *    course page's own meta description, so the two never disagree. City names
+ *    are deliberately left out: this is the national category page.
+ */
+const SUB_COURSES = [
+    {
+        name: 'Machine Learning and Data Science with Python — Hero Program',
+        href: '/courses/ds-ml-courses/machine-learning-course',
+        line: '95-hour hero program covering supervised and unsupervised ML with hands-on projects.',
+    },
+    {
+        name: 'Deep Learning, NLP and Generative AI',
+        href: '/courses/ds-ml-courses/generative-ai-course',
+        line: '55 hours on neural networks, natural language processing and generative AI in Python.',
+    },
+    {
+        name: 'Advanced Data Science and Machine Learning Masterclass',
+        href: '/courses/ds-ml-courses/data-science-course',
+        line: '200 hours from EDA and ML algorithms through to model deployment and end-to-end pipelines.',
+    },
+    {
+        name: 'Comprehensive Data Science and AI — Master Program',
+        href: '/courses/ds-ml-courses/ai-course',
+        line: '255-hour program spanning Python, ML, deep learning, NLP, generative AI and cloud deployment.',
+    },
+    {
+        name: 'Machine Learning Algorithms using Python',
+        href: '/courses/ds-ml-courses/machine-learning-using-python',
+        line: '45 hours applying scikit-learn and pandas to real datasets.',
+    },
+    {
+        name: 'Machine Learning and Data Visualization using R',
+        href: '/courses/ds-ml-courses/data-visualization-in-r-programming',
+        line: '20-hour program in R covering ML algorithms, ggplot2 and statistical modeling.',
+    },
+] as const;
+
+const SubCourseLinks: React.FC<{ className?: string }> = ({ className = '' }) => (
+    // Orange is kept for the CTA button and small accents only. Six brand-
+    // coloured links stacked under an H1 that is itself part orange made the
+    // whole hero read as one orange block, so the links are dark by default
+    // and turn orange on hover.
+    <div className={className}>
+        <h2 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+            <span aria-hidden className="h-px w-6 bg-brand" />
+            Sub-Courses
+        </h2>
+
+        <ul className="grid gap-x-8 gap-y-4 sm:grid-cols-2">
+            {SUB_COURSES.map((course) => (
+                <li key={course.href}>
+                    <Link
+                        href={course.href}
+                        className="font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 transition-colors hover:text-brand hover:decoration-brand"
+                    >
+                        {course.name}
+                    </Link>
+                    <span className="mt-0.5 block text-sm text-slate-600">{course.line}</span>
+                </li>
+            ))}
+        </ul>
+    </div>
+);
+
 const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: () => void; onOpenEnroll: () => void }> = ({ onOpenBrochure, onOpenVideo }) => {
 
     const breadcrumbs = [
@@ -88,8 +163,10 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
             <div className="mt-6 flex gap-8 items-start">
                 <div className="max-w-5xl">
                     <h1 className="text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900">
-                        Master <span className="text-brand">Data Science</span> & Machine Learning - Turn data into decisions
+                        <span className="text-brand">Data Science & Machine Learning</span>  Courses at CDPL
                     </h1>
+
+                    <SubCourseLinks className="mt-5" />
 
                     <p className="mt-4 text-base text-slate-600">
                         Industry-focused training in Data Science and Machine Learning with hands-on projects using Python, Pandas, NumPy, scikit-learn, TensorFlow, and PyTorch. Learn SQL, data visualization with Tableau and Power BI, model evaluation, model deployment, and MLOps practices. Build a portfolio of real data projects and get placement support for Data Scientist, ML Engineer, and Data Analyst roles.
@@ -306,9 +383,12 @@ export default function HeroSection(): React.JSX.Element {
                         <span>India's comprehensive Data Science Training Institute</span>
                     </div>
 
+                    {/* Mobile counterpart of the desktop <h1> — same wording. */}
                     <div className="text-3xl font-extrabold text-slate-900 leading-tight">
-                        Master <span className="text-brand">Data Science</span> & Machine Learning
+                        <span className="text-brand">Data Science</span> & Machine Learning Courses at CDPL
                     </div>
+
+                    <SubCourseLinks className="mt-4" />
 
                     <p className="mt-3 text-base text-slate-600">
                         Become a certified Data Scientist. Learn Python, Machine Learning (scikit-learn), Deep Learning, NLP, SQL, data visualization, and model deployment — build a portfolio of real data projects with placement-ready skills.

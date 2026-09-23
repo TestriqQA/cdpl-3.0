@@ -209,6 +209,34 @@ export const COURSE_CITY_FAQS: Record<string, { question: string; answer: string
                 'Mumbai alumni have been placed at companies like Tech Mahindra, Accenture, JM Financial, and IDfy.',
         },
     ],
+
+    // Supplied by the SEO team, September 2026. The hours, project count and
+    // "100% placement support" wording all match this page's own stat cards.
+    'data-science-course-in-mumbai': [
+        {
+            question: 'What is the fee for the Data Science Course in Mumbai at CDPL?',
+            answer:
+                'The Data Science Course in Mumbai starts at lowest price, with EMI options available. ' +
+                'It covers 600+ hours of training across Python, Machine Learning, Statistics and Generative AI, ' +
+                'plus 15+ real-world projects and full placement support. ' +
+                'Speak to our counsellors for the current fee and any active batch offer.',
+        },
+        {
+            question: 'Does CDPL provide placement assistance after the Data Science Course in Mumbai?',
+            answer:
+                'Yes. CDPL offers 100% placement support — resume building, mock interviews, and direct job referrals — ' +
+                'with Mumbai learners going on to roles like Data Scientist (₹8L+) and Data Analyst (₹5L+) ' +
+                'at companies across BFSI, e-commerce, and consulting.',
+        },
+        {
+            question: 'Do I need a coding or IT background to join the Data Science course in Mumbai?',
+            answer:
+                'No. The course is built for both IT and non-IT professionals and starts from Python basics, ' +
+                'so no prior coding or data background is required. ' +
+                'You\'ll build up through hands-on modules — from Python fundamentals to Machine Learning and Generative AI — ' +
+                'with mentor support along the way.',
+        },
+    ],
 };
 
 /** Page-specific FAQs for a course-in-city slug; empty when it has none. */
