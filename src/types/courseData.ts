@@ -62099,8 +62099,8 @@ export const courseData: Record<string, CourseData> = {
       }
     ],
     "metadata": {
-      "title": "Comprehensive Data Science Course in Mumbai with Placement",
-      "description": "Join the comprehensive Data Science course in Mumbai with placement support. Master AI, ML & Data Analytics. Certified Data Scientist training in Thane & Mumbai.",
+      "title": "Data Science Course in Mumbai - Fees & Placement | CDPL",
+      "description": "Data science course in Mumbai with Python, machine learning and projects. Classroom batches at Mira Road plus live online. Fees, duration and placement support.",
       "keywords": "data scientist course in mumbai, data science colleges in mumbai, data science course in mumbai with placement, top 10 data science institute in mumbai, data science course mumbai, data scientist jobs in mumbai, data science training in mumbai, data analytics courses in mumbai, comprehensive data science course in mumbai"
     },
     "courseDetails": {
@@ -62111,7 +62111,7 @@ export const courseData: Record<string, CourseData> = {
       "discountedPrice": "\u20b999,999"
     },
     "heroContent": {
-      "title": "Data Science Course in Mumbai with Placement",
+      "title": "Data Science Course in Mumbai with Fees, Placement Support & Live Projects",
       "subtitle": "Job-Oriented Data Scientist Training in Mumbai & Thane",
       "description": "Enroll in the comprehensive Data Science course in Mumbai with placement. Master Machine Learning, AI, and Data Analytics without prior IT experience. Hands-on projects, expert mentors from top data science colleges in Mumbai, and interview opportunities.",
       "certifications": [
