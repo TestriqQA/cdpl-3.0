@@ -4,7 +4,7 @@ import { generateCancellationRefundPolicyPageAllSchemas } from "@/lib/schema-gen
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Cancellation/Refund Policy | Cinute Digital Pvt. Ltd.",
+  title: "Cancellation/Refund Policy | Cinute Digital Private Limited",
   description: "Read the Cancellation and Refund Policy for Cinute Digital (CDPL). Learn about full refunds before batch starts, 50% partial refunds during demo, and batch change flexibility.",
   alternates: { canonical: "/cancellation-refund-policy" },
   robots: { index: true, follow: true },

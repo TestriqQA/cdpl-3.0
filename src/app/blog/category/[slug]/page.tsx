@@ -101,8 +101,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
         // Author Information
         authors: [{ name: 'CDPL Tech Experts Team', url: 'https://www.cinutedigital.com/our-team' }],
-        creator: 'CDPL - Cinute Digital Pvt. Ltd.',
-        publisher: 'CDPL - Cinute Digital Pvt. Ltd.',
+        creator: 'CDPL - Cinute Digital Private Limited',
+        publisher: 'CDPL - Cinute Digital Private Limited',
 
         // Format Detection
         formatDetection: {
@@ -235,7 +235,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                 },
                 publisher: {
                     '@type': 'Organization',
-                    name: 'CDPL - Cinute Digital Pvt. Ltd.',
+                    name: 'CDPL - Cinute Digital Private Limited',
                     logo: {
                         '@type': 'ImageObject',
                         url: 'https://www.cinutedigital.com/logo.png',
