@@ -4,7 +4,7 @@ import { generatePrivacyPolicyPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Cinute Digital Pvt. Ltd.",
+  title: "Privacy Policy | Cinute Digital Private Limited",
   description:
     "Cinute Digital’s Privacy Policy describing how we collect, use, disclose, and safeguard your information.",
   alternates: { canonical: "/privacy-policy" },
@@ -67,7 +67,7 @@ export default function PrivacyPolicyPage() {
                   consumers’ personal information, that does business in the State of California.
                 </li>
                 <li>
-                  <strong>Company</strong> (referred to as either “the Company”, “We”, “Us” or “Our” in this Agreement) refers to Cinute Digital Pvt. Ltd.  Office 203 &amp; 204, B-Wing, 1st Floor, Shanti Shopping Centre, Opposite Mira Road Station (E), Mumbai, Maharashtra, 401107<br />
+                  <strong>Company</strong> (referred to as either “the Company”, “We”, “Us” or “Our” in this Agreement) refers to Cinute Digital Private Limited.  Office 203 &amp; 204, B-Wing, 1st Floor, Shanti Shopping Centre, Opposite Mira Road Station (E), Mumbai, Maharashtra, 401107<br />
                   For the purpose of the GDPR, the Company is the Data Controller.
                 </li>
                 <li>
@@ -91,7 +91,7 @@ export default function PrivacyPolicyPage() {
                   online activities across websites.
                 </li>
                 <li>
-                  <strong>Facebook Fan Page</strong> is a public profile named Cinute Digital Pvt. Ltd. specifically created by the Company on the Facebook
+                  <strong>Facebook Fan Page</strong> is a public profile named Cinute Digital Private Limited specifically created by the Company on the Facebook
                   social network, accessible from{" "}
                   <a className="underline text-blue-600 hover:text-blue-800" href="https://www.facebook.com/cinutedigital" target="_blank" rel="noopener noreferrer" aria-label="Visit Cinute Digital Facebook Page" title="Visit Cinute Digital Facebook Page">
                     Cinute Digital Facebook Page
@@ -127,7 +127,7 @@ export default function PrivacyPolicyPage() {
                   infrastructure itself (for example, the duration of a page visit).
                 </li>
                 <li>
-                  <strong>Website</strong> refers to Cinute Digital Pvt. Ltd. accessible from{" "}
+                  <strong>Website</strong> refers to Cinute Digital Private Limited accessible from{" "}
                   <a className="underline text-blue-600 hover:text-blue-800" href="https://cinutedigital.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Cinute Digital Website" title="Visit Cinute Digital Website">
                     Cinute Digital Website
                   </a>

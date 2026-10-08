@@ -32,7 +32,7 @@ import AboutAccreditations from "@/components/sections/AboutAccreditations";
 
 export const metadata: Metadata = generateStaticPageMetadata({
   title: "About CDPL - Leading EdTech for Tech Training",
-  description: "CDPL (Cinute Digital) is an India-based EdTech institute delivering industry-focused training in Software Testing, Data Science, AI/ML & BI. Founded in 2020 — live projects, expert mentorship & placement assistance.",
+  description: "CDPL (Cinute Digital) is an India-based EdTech institute delivering industry-focused training in Software Testing, Data Science, AI/ML & BI. Founded in 2018 — live projects, expert mentorship & placement assistance.",
   url: "/about-us",
   keywords: [
     "about CDPL",

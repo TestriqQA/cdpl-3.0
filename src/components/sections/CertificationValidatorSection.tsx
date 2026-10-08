@@ -334,7 +334,7 @@ function CertificationValidatorContent() {
                 </dl>
 
                 <p className="mt-6 text-xs text-slate-400">
-                  This verification is provided by CDPL (Cinute Digital Pvt. Ltd.). If you suspect misuse,{" "}
+                  This verification is provided by CDPL (Cinute Digital Private Limited). If you suspect misuse,{" "}
                   <Link href="/contact-us" className="underline underline-offset-2 hover:text-slate-600">
                     contact CDPL support
                   </Link>

@@ -3,7 +3,7 @@ import { generateMetadata } from "@/lib/metadata-generator";
 
 export const metadata: Metadata = generateMetadata({
   title: "Course Management System - Cinute Digital Studio",
-  description: "Secure administrative portal to manage course content, SEO metadata, and digital assets for Cinute Digital Pvt. Ltd.",
+  description: "Secure administrative portal to manage course content, SEO metadata, and digital assets for Cinute Digital Private Limited.",
   url: "/cms",
   noindex: true,
   nofollow: true,

@@ -47,7 +47,7 @@ export default function CertificateValidationPage() {
       },
       {
         question: "What certificates can be validated here?",
-        answer: "This tool validates all official certifications issued by Cinute Digital Pvt. Ltd., including Advanced Automation Architecture (AAA) and Agile, Cloud & Test-Driven Development (ACTD) programs.",
+        answer: "This tool validates all official certifications issued by Cinute Digital Private Limited, including Advanced Automation Architecture (AAA) and Agile, Cloud & Test-Driven Development (ACTD) programs.",
       },
       {
         question: "Is this validation recognized by employers?",

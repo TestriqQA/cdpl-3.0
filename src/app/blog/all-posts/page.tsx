@@ -120,7 +120,7 @@ export default async function AllPostsPage() {
             },
             "publisher": {
               "@type": "Organization",
-              "name": "CDPL - Cinute Digital Pvt. Ltd.",
+              "name": "CDPL - Cinute Digital Private Limited",
               "logo": {
                 "@type": "ImageObject",
                 "url": getFullUrl("/logo.png"),
@@ -315,7 +315,7 @@ export default async function AllPostsPage() {
 
                         {/* Hidden metadata */}
                         <meta itemProp="url" content={`https://www.cinutedigital.com/blog/${post.slug}`} />
-                        <meta itemProp="publisher" content="CDPL - Cinute Digital Pvt. Ltd." />
+                        <meta itemProp="publisher" content="CDPL - Cinute Digital Private Limited" />
                       </div>
                     </article>
                   ))}
