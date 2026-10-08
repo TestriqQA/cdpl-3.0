@@ -14,7 +14,10 @@ import { Metadata } from 'next';
 import { dsMlFaqs } from '@/components/DS&ML-Courses/data';
 
 export const metadata: Metadata = generateStaticPageMetadata({
-    title: 'Data Science & Machine Learning Courses | CDPL',
+    // `absolute` because generateStaticPageMetadata appends " | CDPL" to a
+    // plain string title — this one already ends in it, so the live page was
+    // serving "Data Science & Machine Learning Courses | CDPL | CDPL".
+    title: { absolute: 'Data Science & Machine Learning Courses | CDPL' },
     description: 'Master Data Science and Machine Learning with our comprehensive courses. Learn Python, R, SQL, and AI with hands-on projects and placement support.',
     url: '/courses/ds-ml-courses',
     keywords: ['data science course', 'machine learning training', 'python for data science', 'AI course', 'data analytics'],

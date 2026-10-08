@@ -23,7 +23,7 @@ const SHADOW = "0 16px 38px -16px rgba(99,102,241,0.6)"; // shadow for depth (no
 const AboutStorySection = memo(function AboutStorySection() {
   const milestones: Milestone[] = useMemo(
     () => [
-      { year: "2020", title: "The Spark", text: "Launched with a vision to revolutionize tech education.", bgColor: "blue-50", textColor: "blue-500" },
+      { year: "2018", title: "The Spark", text: "Launched with a vision to revolutionize tech education.", bgColor: "blue-50", textColor: "blue-500" },
       { year: "2022", title: "Scaling Impact", text: "Expanded to include AI/ML and Automation pathways.", bgColor: "red-50", textColor: "red-500" },
       { year: "2025", title: "Global Reach", text: "Empowering 5k+ learners with innovative learning tools.", bgColor: "green-50", textColor: "green-500" },
     ],
@@ -88,7 +88,7 @@ const AboutStorySection = memo(function AboutStorySection() {
               </header>
 
               <p className="text-base leading-7 text-gray-700">
-                Founded in 2020, <strong>Cinute Digital</strong> was sparked by a group of tech enthusiasts who
+                Founded in 2018, <strong>Cinute Digital</strong> was sparked by a group of tech enthusiasts who
                 believed education should evolve with the industry. Our mission was clear: create a{" "}
                 <strong>dynamic learning ecosystem</strong> where aspiring professionals gain practical skills in{" "}
                 <strong>Software Testing</strong>, <strong>Automation</strong>, <strong>Data Science</strong>, and{" "}

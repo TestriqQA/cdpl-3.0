@@ -111,7 +111,7 @@ export const BUSINESS_INFO = {
   priceRange: '₹₹',
 
   // Founded Year
-  foundedYear: '2020',
+  foundedYear: '2018',
 } as const;
 
 // ============================================================================

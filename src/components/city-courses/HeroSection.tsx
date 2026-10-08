@@ -22,6 +22,52 @@ interface HeroSectionProps {
     data: CourseData;
 }
 
+/**
+ * Dual-colour hero headings, following the course-family convention the rest of
+ * the site already uses: software-testing pages highlight part of the heading in
+ * ST blue, data-science / AI pages in DS purple. Both are defined in
+ * tailwind.config.ts and used by ~90 components ("High-Paying <span
+ * className='text-ST'>QA Careers</span> After Selenium Training" and the like).
+ * City heroes were the exception — their H1 rendered in a single flat slate.
+ *
+ * ⚠️  Keyed by page slug, not by course family, and that is deliberate: this
+ * component renders all 765 city pages, so keying on `courseName` would restyle
+ * every software-testing and data-science city at once. Only the two pages
+ * below were asked for. Adding another city is one line here.
+ */
+const HERO_ACCENTS: Record<string, { className: string; highlight: string }> = {
+    "software-testing-course-in-mumbai": {
+        className: "text-indigo-700",
+        highlight: "Software Testing Course",
+    },
+    "data-science-course-in-mumbai": {
+        className: "text-indigo-700",
+        highlight: "Data Science Course",
+    },
+};
+
+/**
+ * Splits an H1 so `highlight` renders in the page's theme colour. Falls back to
+ * the plain single-colour heading whenever the slug has no accent or the copy
+ * has since been reworded and no longer contains the phrase — so an edit to the
+ * title can never break the heading, it just loses the colour.
+ */
+function renderHeroTitle(slug: string | undefined, title: string): React.ReactNode {
+    const accent = slug ? HERO_ACCENTS[slug.toLowerCase()] : undefined;
+    if (!accent) return title;
+
+    const at = title.indexOf(accent.highlight);
+    if (at === -1) return title;
+
+    return (
+        <>
+            {title.slice(0, at)}
+            <span className={accent.className}>{accent.highlight}</span>
+            {title.slice(at + accent.highlight.length)}
+        </>
+    );
+}
+
 const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
     const { heroContent, location } = data;
 
@@ -92,7 +138,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
                         <h1
                             className="text-4xl font-extrabold leading-12 tracking-tight text-slate-900 sm:text-5xl"
                         >
-                            {heroContent.title}
+                            {renderHeroTitle(data.slug, heroContent.title)}
                         </h1>
 
                         {/* Mobile form uses reusable CityCourseLeadForm */}

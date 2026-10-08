@@ -4,7 +4,7 @@ import { generateTermsOfServicePageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | Cinute Digital Pvt. Ltd.",
+  title: "Terms & Conditions | Cinute Digital Private Limited",
   description: "Read the Terms of Service for Cinute Digital (CDPL). Understand our enrollment policies, intellectual property terms, and comprehensive Job Assistance services.",
   alternates: { canonical: "/terms-of-service" },
   robots: { index: true, follow: true },
@@ -25,13 +25,13 @@ export default function TermsOfServicePage() {
         <JsonLd key={`terms-schema-${index}`} id={`terms-schema-${index}`} schema={schema} />
       ))}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 text-slate-900">
-        <h1 className={H1}>Cinute Digital Pvt. Ltd. (CDPL) - Terms and Conditions</h1>
+        <h1 className={H1}>Cinute Digital Private Limited (CDPL) - Terms and Conditions</h1>
 
         <div className="mt-6 space-y-8">
           <section className="space-y-4">
             <p className={P}><strong>Effective Date: [Date]</strong></p>
             <p className={P}>
-              Thank you for choosing Cinute Digital Pvt. Ltd. (CDPL) for your software training needs. Before you proceed with our services, please carefully review the following Terms of Service (“Terms”) that govern the use of our software training courses, materials, and related services. By enrolling in or using any of our services, you agree to be bound by these Terms.
+              Thank you for choosing Cinute Digital Private Limited (CDPL) for your software training needs. Before you proceed with our services, please carefully review the following Terms of Service (“Terms”) that govern the use of our software training courses, materials, and related services. By enrolling in or using any of our services, you agree to be bound by these Terms.
             </p>
           </section>
 
@@ -39,7 +39,7 @@ export default function TermsOfServicePage() {
             <h2 className={H2}>Definitions</h2>
             <ul className={UL}>
               <li>
-                “CDPL,” “we,” “us,” or “our” refers to Cinute Digital Pvt. Ltd., a software training institute.
+                “CDPL,” “we,” “us,” or “our” refers to Cinute Digital Private Limited, a software training institute.
               </li>
               <li>
                 “User,” “you,” or “your” refers to any individual, student, or entity that enrolls in or uses our software training services.
@@ -166,7 +166,7 @@ export default function TermsOfServicePage() {
               By enrolling in our courses or using our services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.
             </p>
             <p className={P}>
-              Thank you for choosing Cinute Digital Pvt. Ltd. for your software training needs.
+              Thank you for choosing Cinute Digital Private Limited for your software training needs.
             </p>
           </section>
 
@@ -174,7 +174,7 @@ export default function TermsOfServicePage() {
             <h2 className={H2}>Job Assistance Policy</h2>
             <p className={P}>We believe in your potential!</p>
             <p className={P}>
-              Cinute Digital Pvt. Ltd. is dedicated to providing comprehensive job assistance services to empower individuals in securing their dream careers. While we cannot guarantee job placement, we offer 100% commitment to support you throughout your job search journey.
+              Cinute Digital Private Limited is dedicated to providing comprehensive job assistance services to empower individuals in securing their dream careers. While we cannot guarantee job placement, we offer 100% commitment to support you throughout your job search journey.
             </p>
             <h3 className={H3}>Our Services:</h3>
             <ul className={UL}>
@@ -187,7 +187,7 @@ export default function TermsOfServicePage() {
             </ul>
             <h3 className={H3}>Our Commitment:</h3>
             <p className={P}>
-              At Cinute Digital Pvt. Ltd., we are dedicated to providing you with the resources, guidance, and support you need to succeed in your job search. Our job assistance commitment signifies our unwavering dedication to your success, we however don’t give job assistance. We believe that through our comprehensive services and your dedication, you will be well-equipped to secure your dream job.
+              At Cinute Digital Private Limited, we are dedicated to providing you with the resources, guidance, and support you need to succeed in your job search. Our job assistance commitment signifies our unwavering dedication to your success, we however don’t give job assistance. We believe that through our comprehensive services and your dedication, you will be well-equipped to secure your dream job.
             </p>
             <p className={P}>Together, we can turn your career aspirations into reality!</p>
           </section>
@@ -200,7 +200,7 @@ export default function TermsOfServicePage() {
             </p>
             <p className={P}>Here&lsquo;s a breakdown of what being eligible entails:</p>
             <ul className={UL}>
-              <li>Course Completion: You must have successfully completed the relevant training program at Cinute Digital Pvt. Ltd.</li>
+              <li>Course Completion: You must have successfully completed the relevant training program at Cinute Digital Private Limited.</li>
               <li>Attendance: Regular attendance throughout the course demonstrates your commitment to learning and career development.(90% and above)</li>
               <li>Fees: Full payment of your course fees ensures you have access to all program benefits, including Job Assistance.</li>
               <li>Interview Participation and Feedback: Actively participating in mock interviews and providing feedback helps us refine your interview skills and increase your confidence.</li>
