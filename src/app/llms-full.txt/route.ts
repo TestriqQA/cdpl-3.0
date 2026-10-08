@@ -58,19 +58,19 @@ import { AI_BOOTCAMP_FAQS } from '@/data/aiBootcampData'
 // The curated frame is kept in sync with `public/llms.txt`. The static file
 // is the canonical short index; this constant lets the route serve the same
 // content without filesystem reads inside the serverless function.
-const FRAME = `# Cinute Digital Pvt. Ltd. (CDPL)
+const FRAME = `# Cinute Digital Private Limited (CDPL)
 
 > Industry-ready IT training and certification institute based in Mira Road, Mumbai, India. Hands-on, mentor-led courses in Software Testing, Data Science, Machine Learning, Business Intelligence, Artificial Intelligence and Digital Marketing, with placement assistance.
 
 ## About Cinute Digital
-Cinute Digital Pvt. Ltd. (CDPL) is an EdTech institute that bridges the gap between academic education and industry demand. Founded in 2020 by Sandeep Maske, CDPL delivers practical, project-based training designed by industry practitioners so students and working professionals gain skills that are immediately applicable on the job. CDPL is an ISTQB Training Partner with AAA and ACTD accreditation and provides placement assistance, including resume support, mock interviews and referrals to hiring partners.
+Cinute Digital Private Limited (CDPL) is an EdTech institute that bridges the gap between academic education and industry demand. Founded in 2018 by Sandeep Maske, CDPL delivers practical, project-based training designed by industry practitioners so students and working professionals gain skills that are immediately applicable on the job. CDPL is an ISTQB Training Partner with AAA and ACTD accreditation and provides placement assistance, including resume support, mock interviews and referrals to hiring partners.
 
 ## Contact & Location (NAP)
 - **Legal name**: Cinute Digital Private Limited
 - **Address**: Office 203 & 204, B-Wing, 1st Floor, Shanti Shopping Centre, Opposite Mira Road Station (E), Mumbai, Maharashtra, 401107, India
 - **Phone**: +91 8488988984
 - **Email**: contact@cinutedigital.com
-- **Founded**: 2020
+- **Founded**: 2018
 - **Founder**: Sandeep Maske
 - **Rating**: 4.9 / 5 (425 verified reviews)
 

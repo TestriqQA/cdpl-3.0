@@ -247,7 +247,7 @@ const Footer: React.FC = () => {
           <div className="px-6 md:px-10 py-5">
             <div className="flex flex-col md:flex-row items-center justify-between gap-3">
               <p className="text-xs md:text-sm text-slate-600 text-center md:text-left">
-                © 2026 Cinute Digital Pvt. Ltd. — All Rights Reserved.
+                © 2026 Cinute Digital Private Limited — All Rights Reserved.
               </p>
               {/* Powered By */}
               <div className="flex gap-4 space-y-4">

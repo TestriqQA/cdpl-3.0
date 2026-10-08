@@ -4257,7 +4257,7 @@ export function generateAboutPageAllSchemas(
   const webPageSchema = generateWebPageSchema({
     name: "About CDPL - Leading EdTech for Tech Training",
     description:
-      "CDPL (Cinute Digital) is an EdTech institute delivering industry-ready training in Software Testing, Automation, Data Science, and AI/ML. Founded in 2020, we deliver live projects, expert mentorship, and comprehensive placement support.",
+      "CDPL (Cinute Digital) is an EdTech institute delivering industry-ready training in Software Testing, Automation, Data Science, and AI/ML. Founded in 2018, we deliver live projects, expert mentorship, and comprehensive placement support.",
     url: "/about-us",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
@@ -6202,7 +6202,7 @@ export function generatePrivacyPolicyPageAllSchemas(): WithContext<
 
   // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
-    name: "Privacy Policy | Cinute Digital Pvt. Ltd.",
+    name: "Privacy Policy | Cinute Digital Private Limited",
     description:
       "Our policies and procedures on the collection, use and disclosure of Your information when You use the Service. Learn about Your privacy rights and how the law protects You.",
     url: "/privacy-policy",
@@ -6230,7 +6230,7 @@ export function generatePrivacyPolicyPageAllSchemas(): WithContext<
     {
       question: "How can I contact the Data Controller?",
       answer:
-        "You can contact Cinute Digital Pvt. Ltd. at contact@cinutedigital.com or +91 788-83-83-788 for any privacy-related inquiries.",
+        "You can contact Cinute Digital Private Limited at contact@cinutedigital.com or +91 788-83-83-788 for any privacy-related inquiries.",
     },
   ]);
 
@@ -6318,7 +6318,7 @@ export function generateCookiesPolicyPageAllSchemas(): WithContext<
 
   // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
-    name: "Cookies Policy | Cinute Digital Pvt. Ltd.",
+    name: "Cookies Policy | Cinute Digital Private Limited",
     description:
       "Read the Cookies Policy of Cinute Digital (CDPL). Understand how we use cookies to improve your browsing experience and how you can manage them.",
     url: "/cookies-policy",
@@ -6431,7 +6431,7 @@ export function generateTermsOfServicePageAllSchemas(): WithContext<
 
   // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
-    name: "Terms & Conditions | Cinute Digital Pvt. Ltd.",
+    name: "Terms & Conditions | Cinute Digital Private Limited",
     description:
       "Read the Terms of Service for Cinute Digital (CDPL). Understand our enrollment policies, intellectual property terms, and comprehensive Job Assistance services.",
     url: "/terms-of-service",
@@ -6556,7 +6556,7 @@ export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<
 
   // 1. WebPage Schema
   const webPageSchema = generateWebPageSchema({
-    name: "Cancellation/Refund Policy | Cinute Digital Pvt. Ltd.",
+    name: "Cancellation/Refund Policy | Cinute Digital Private Limited",
     description:
       "Read the Cancellation and Refund Policy for Cinute Digital (CDPL). Learn about full refunds before batch starts, 50% partial refunds during demo, and batch change flexibility.",
     url: "/cancellation-refund-policy",
