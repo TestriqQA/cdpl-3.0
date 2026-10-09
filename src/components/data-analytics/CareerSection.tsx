@@ -114,18 +114,16 @@ export default function CareerSection() {
         >
           {COMPANIES.map((c) => (
             <li key={c.name} className="min-w-0">
-              <button
-                aria-label={c.name}
+              <div
                 className={[
-                  "cursor-pointer group block w-full rounded-2xl border p-4 shadow-sm transition-all duration-200 backdrop-blur",
-                  "hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:-translate-y-0.5",
+                  "group block w-full rounded-2xl border p-4 shadow-sm transition-all duration-200 backdrop-blur",
+                  "hover:-translate-y-0.5 hover:shadow-md",
                   c.accent.bg,
                   c.accent.border,
-                  c.accent.ring,
                 ].join(" ")}
               >
                 <p className={["mt-3 text-xs font-semibold", c.accent.text].join(" ")}>{c.name}</p>
-              </button>
+              </div>
             </li>
           ))}
         </ul>

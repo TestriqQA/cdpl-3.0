@@ -49,13 +49,11 @@ export default function PlacementsHighlightsStatsSection({ contained = false }: 
           {stats.map((s, i) => {
             const gradient = VALUE_GRADIENTS[i % VALUE_GRADIENTS.length];
             return (
-              <button
+              <div
                 key={s.label}
-                type="button"
                 className="group m-0 w-full text-left rounded-2xl border border-slate-200 bg-white shadow-sm
-                           outline-none ring-0 transition-all duration-200 hover:border-slate-300
-                           hover:-translate-y-1 hover:shadow-lg focus-visible:-translate-y-1 focus-visible:shadow-lg
-                           focus-visible:ring-2 focus-visible:ring-[#ff8c00]/40 overflow-hidden
+                           transition-all duration-200 hover:border-slate-300
+                           hover:-translate-y-1 hover:shadow-lg overflow-hidden
                            /* Phone: natural height */
                            aspect-auto
                            /* Tablet (640–767): keep gentle ratio as before */
@@ -84,7 +82,7 @@ export default function PlacementsHighlightsStatsSection({ contained = false }: 
 
                   <div className="h-[2px] w-full rounded-full bg-transparent transition-colors duration-200 group-hover:bg-gradient-to-r group-hover:from-[#ff8c00]/70 group-hover:to-[#ffd19e]/70" />
                 </div>
-              </button>
+              </div>
             );
           })}
         </div>
