@@ -195,32 +195,6 @@ export default function InstructorSection() {
                 <Stat label="Industry Projects" value="10+" sublabel="E-com • BFSI • HealthTech" accent="cyan" />
               </div>
 
-              {/* Short Intro Video (placeholder thumbnail) */}
-              {/* <div className="relative overflow-hidden rounded-2xl ring-1 ring-slate-200 bg-slate-50">
-                <button
-                  type="button"
-                  className="group w-full text-left"
-                  aria-label="Play instructor introduction video"
-                >
-                  <div className="aspect-video relative">
-                    <Image
-                      src="/images/instructor/intro-thumb.jpg"
-                      alt="Instructor introduction preview"
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 1024px) 480px, 100vw"
-                      priority={false}
-                    />
-                    <span className="absolute inset-0 flex items-center justify-center">
-                      <span className="inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-sm font-semibold ring-1 ring-slate-200 shadow-sm">
-                        <Video className="h-4 w-4 text-slate-900" />
-                        Watch 90s Intro
-                      </span>
-                    </span>
-                  </div>
-                </button>
-              </div> */}
-
               {/* Certifications / Logos */}
               {/* <div className="rounded-2xl bg-white ring-1 ring-slate-200 p-4">
                 <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">
