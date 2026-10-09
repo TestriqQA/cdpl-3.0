@@ -216,15 +216,6 @@ export default function AboutFacultyStrip({
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
 
-        {/* <button
-          className={clsx(
-            "inline-flex items-center border-brand gap-2 rounded-full border-2 bg-white px-3.5 py-2 text-sm font-medium text-slate-900 hover:bg-brand hover:text-white",
-            "transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-          )}
-
-        >
-          Become a Mentor
-        </button> */}
       </div>
 
       {/* SEO helper for screen readers */}

@@ -3,9 +3,8 @@
 import { Zap, Star, Clock, Users, CheckCircle, ArrowRight, Download, Brain } from 'lucide-react';
 import { COURSES, Course } from "@/components/AI-Courses/data/data"
 import { DownloadFormButton } from '@/components/DownloadForm';
-import { EnrollPopup } from '@/components/EnrollForms';
 import OfferCountdown from "@/components/courses/OfferCountdown";
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
 
@@ -56,13 +55,10 @@ const pickVariant = (i: number): Variant => {
 const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index }) => {
     const variant = pickVariant(index);
 
-    const [isEnrollOpen, setIsEnrollOpen] = useState(false);
-
     return (
         <article
             className={`relative group bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/20 ${variant.hoverBorder} transform hover:-translate-y-2 flex flex-col h-full hover:-translate-y-2.5`}
         >
-            <EnrollPopup isOpen={isEnrollOpen} onClose={() => setIsEnrollOpen(false)} onSubmit={(data) => console.log(data)} source={`Artificial Intelligence Course Category Page - Courses Section - ${course.title} - Enroll Now`} />
             <div className={`${variant.header} p-6 relative overflow-hidden`}>
                 {/* Background Pattern (simplified) */}
                 <div className="absolute inset-0 opacity-10">
