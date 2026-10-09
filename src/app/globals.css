@@ -1,6 +1,22 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
 
+/* Tailwind v4's Preflight sets `button { cursor: default }` - v3 used `pointer`.
+   Restore it site-wide so buttons match links, which browsers already give
+   `cursor: pointer`. Disabled controls keep the default arrow. This lives in
+   @layer base so an explicit `cursor-*` utility on an element still overrides it. */
+@layer base {
+
+  button:not(:disabled),
+  summary,
+  [role="button"]:not([aria-disabled="true"]),
+  input[type="submit"]:not(:disabled),
+  input[type="button"]:not(:disabled),
+  input[type="reset"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
 ::selection {
   background-color: #ff8d01;
   color: white;

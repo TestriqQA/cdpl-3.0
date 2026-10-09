@@ -8,7 +8,7 @@ import { getServices } from "@/lib/services";
 // SEO METADATA - Optimized for Services Page
 // ============================================================================
 export const metadata: Metadata = generateStaticPageMetadata({
-  title: "Our Services | Corporate Training & Consulting | CDPL",
+  title: "Our Services | Corporate Training & Consulting",
   description: "CDPL corporate training, software testing consulting, custom automation solutions & technical workshops — upskill your team with industry-expert trainers.",
   keywords: [
     "CDPL services",

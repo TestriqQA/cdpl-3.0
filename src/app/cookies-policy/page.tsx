@@ -132,11 +132,6 @@ export default function CookiesPolicyPage() {
             </p>
           </section>
 
-          {/* More Information about Cookies */}
-          <section className="space-y-4">
-            <h2 className={H2}>More Information about Cookies</h2>
-            <p className={P}>You can learn more about cookies: <a href="#" className="underline text-blue-600 hover:text-blue-800" aria-label="What Are Cookies?" title="What Are Cookies?">What Are Cookies?</a>.</p>
-          </section>
         </div>
       </div>
     </div>

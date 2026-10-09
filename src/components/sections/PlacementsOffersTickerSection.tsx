@@ -53,13 +53,12 @@ export default function PlacementsJobTitlesRow({ chips, speed = 60 }: Props) {
                             style={{ animation: `cdpl-marquee ${durationSec}s linear infinite` }}
                         >
                             {LOOP.map((c, idx) => (
-                                <button
+                                <span
                                     key={`${c.label}-${idx}`}
-                                    type="button"
                                     className="rounded-full border border-slate-200 bg-white px-3 py-1 text-sm text-slate-700 hover:border-slate-300 transition whitespace-nowrap"
                                 >
                                     {c.label}
-                                </button>
+                                </span>
                             ))}
                         </div>
                     </div>
