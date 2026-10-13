@@ -9,7 +9,6 @@ type Office = {
   id: "mumbai" | "pune" | "bengaluru";
   label: string;
   headOffice: string;
-  studyCenter: string;
   phone: string;
   phoneDisplay: string;
   whatsapp?: string;
@@ -25,8 +24,6 @@ const OFFICES: Office[] = [
     label: "Mumbai",
     headOffice:
       "Office 203 & 204, B-Wing, 1st Floor, Shanti Shopping Centre, Opposite Mira Road Station (E), Mumbai, Maharashtra, 401107",
-    studyCenter:
-      "Shop No 7, Laxmi Palace, Opposite Vidhyavardhini Degree Engineering College, Gurunanak Nagar, Vasai West, Mumbai, Maharashtra - 401202",
     phone: "tel:+918488988984",
     phoneDisplay: "+91 84-889-889-84",
     whatsapp: "https://wa.me/917888383788",
@@ -91,11 +88,6 @@ export function ContactOfficeMapSection() {
                       Head Office (<span className="text-brand">CDPL</span>)
                     </div>
                     <Link href={BUSINESS_INFO.maps.place} title="View Head Office on Google Maps" className="text-base text-slate-800 hover:text-brand transition">{active.headOffice}</Link>
-                  </div>
-
-                  <div className="mt-4">
-                    <div className="font-bold text-lg text-slate-900 mb-1">Study Center <span className="text-red-700">MeghMehul Classes</span> (Vasai)</div>
-                    <Link href="https://maps.app.goo.gl/SACPou6JCdRZh5j98" title="View Vasai Study Center on Google Maps" className="text-base text-slate-800 hover:text-brand transition">{active.studyCenter}</Link>
                   </div>
                 </div>
 
@@ -218,21 +210,12 @@ export function ContactOfficeMapSection() {
             areaServed: "IN",
             availableLanguage: ["English", "Hindi"],
           })),
-          // Two addresses per office (Head Office + Study Center)
-          address: OFFICES.flatMap((o) => [
-            {
-              "@type": "PostalAddress",
-              name: `${o.label} Head Office`,
-              streetAddress: o.headOffice,
-              addressCountry: "IN",
-            },
-            {
-              "@type": "PostalAddress",
-              name: `${o.label} Study Center`,
-              streetAddress: o.studyCenter,
-              addressCountry: "IN",
-            },
-          ]),
+          address: OFFICES.map((o) => ({
+            "@type": "PostalAddress",
+            name: `${o.label} Head Office`,
+            streetAddress: o.headOffice,
+            addressCountry: "IN",
+          })),
         })}
       </Script>
     </section>
