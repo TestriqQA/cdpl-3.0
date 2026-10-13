@@ -65,16 +65,6 @@ const Footer: React.FC = () => {
                   </div>
                 </div>
 
-                <div>
-                  <p className="font-bold">Study Center <span className="text-red-800">MeghMehul Classes</span> (<span className="text-blue-700">Vasai</span>)</p>
-                  <div className="flex items-start mt-1 gap-3">
-                    <MapPin className="h-5 w-5 text-brand mt-0.5" aria-hidden="true" />
-                    <Link className="hover:text-blue-700 transition" title="View Vasai Study Center Location on Google Maps" href="https://maps.app.goo.gl/SACPou6JCdRZh5j98">
-                      Shop No 7, Laxmi Palace, Opposite Vidhyavardhini Degree Engineering College, Gurunanak Nagar, Vasai West, Mumbai, Maharashtra - 401202
-                    </Link>
-                  </div>
-                </div>
-
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-brand" aria-hidden="true" />
                   <Link
