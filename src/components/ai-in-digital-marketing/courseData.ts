@@ -869,8 +869,6 @@ export const courseData = {
     address: {
       headOffice:
         "Office 203 & 204, B-Wing, 1st Floor, Shanti Shopping Centre, Opposite Mira Road Station (E), Mumbai, Maharashtra, 401107",
-      studyCenter:
-        "SHOP NO 7, Laxmi palace, opposite Vidhyavardhini Degree Engineering College, Gurunanak Nagar, Vasai West, Maharashtra 401202",
     },
   },
 
