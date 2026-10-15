@@ -205,6 +205,20 @@ function normalize(pathname: string): string {
 }
 
 /**
+ * True when `pathname` is already a thank-you URL — the bare `/thank-you` or
+ * any page's own `<path>/thank-you`. Query string and trailing slashes are
+ * ignored.
+ *
+ * Exported because the analytics layer needs the same test: a thank-you route
+ * loads the Google tag eagerly rather than waiting for an interaction that a
+ * post-conversion visitor usually never makes.
+ */
+export function isThankYouPath(pathname: string): boolean {
+  const path = normalize(pathname);
+  return path === `/${THANK_YOU_SEGMENT}` || path.endsWith(`/${THANK_YOU_SEGMENT}`);
+}
+
+/**
  * The thank-you URL for a visitor currently on `pathname`.
  *
  * Idempotent: called with a path that already ends in `/thank-you` it returns
@@ -220,7 +234,7 @@ export function thankYouPathFor(pathname: string, intent?: ThankYouIntent): stri
   const path = normalize(pathname);
 
   const base =
-    path === `/${THANK_YOU_SEGMENT}` || path.endsWith(`/${THANK_YOU_SEGMENT}`)
+    isThankYouPath(path)
       ? path
       : // The home page is the one path with nothing to prefix, so it derives
         // the bare `/thank-you`. That URL is a real page — see the optional
