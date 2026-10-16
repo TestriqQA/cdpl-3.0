@@ -5,6 +5,7 @@ import Script from "next/script";
 import { useEffect, useRef, Suspense } from "react";
 import { useDeferredLoad } from "@/hooks/useDeferredLoad";
 import { isThankYouPath } from "@/lib/thank-you";
+import AdsConversion from "@/components/AdsConversion";
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -105,6 +106,7 @@ const GoogleAnalytics = () => {
       <Suspense fallback={null}>
         <GoogleAnalyticsTracker />
       </Suspense>
+      <AdsConversion />
     </>
   );
 };
