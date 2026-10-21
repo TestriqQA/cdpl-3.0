@@ -43,8 +43,6 @@ export default function Home() {
       duration: "PT30H", // 30 hours
       rating: AUTOMATION_TESTING_REVIEW_DATA.ratingValue,
       reviewCount: AUTOMATION_TESTING_REVIEW_DATA.reviewCount,
-      price: 10000, // Estimated price
-      currency: "INR",
     },
     AUTOMATION_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
     [

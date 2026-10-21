@@ -56,8 +56,6 @@ export default function Home() {
       duration: "PT18H", // 18 hours
       rating: ETL_TESTING_REVIEW_DATA.ratingValue,
       reviewCount: ETL_TESTING_REVIEW_DATA.reviewCount,
-      price: 5500, // Estimated price
-      currency: "INR",
       image: "/og-images/courses-software-testing-course-etl-testing-og.webp",
     },
 

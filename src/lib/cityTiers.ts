@@ -48,6 +48,14 @@
  * other cities describe online / live-online delivery and must NOT imply a
  * local centre, carry a local street address, or emit `LocalBusiness` schema.
  */
+/**
+ * The one city with a physical CDPL campus (Mira Road East, Thane district).
+ *
+ * Everything else is online / live-online delivery, so only this city may
+ * carry `LocalBusiness` schema - see the rule in the block comment above.
+ */
+export const CAMPUS_CITY = 'mira-road';
+
 export const TIER_1_CITIES = [
     'mumbai',
     'pune',
@@ -77,6 +85,22 @@ const SLUG_FAMILY_RE = /^(.+?)-courses?-in-/;
  * remove it from this list and build a real page under /courses/ first.
  */
 const EXCLUDED_FAMILIES = ['web-development'] as const;
+
+/**
+ * True when the slug belongs to a course family CDPL does not actually run.
+ *
+ * T-15 (local-SEO audit, Oct 2026): these pages were noindex but still served
+ * 200, so Googlebot re-crawled them forever and they sat permanently in the
+ * Pages report. Dec 2025 - Sep 2026 produced 260 enquiries and not one asked
+ * about web development, while the Mumbai and Pune pages were indexed and
+ * reachable throughout - zero demand, zero content, nothing to preserve. They
+ * now 404. If the course ever launches, build /courses/web-development-course
+ * first, then take the family out of EXCLUDED_FAMILIES.
+ */
+export function isExcludedFamilySlug(slug: string): boolean {
+    const family = getFamilyFromSlug(slug);
+    return !!family && (EXCLUDED_FAMILIES as readonly string[]).includes(family);
+}
 
 /**
  * The locality token from a city-page slug, or undefined if the slug is not a

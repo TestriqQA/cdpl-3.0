@@ -83,7 +83,7 @@ export default function LocationsHeroSection() {
             </h1>
 
             <p className="mt-4 mx-auto max-w-3xl text-base text-slate-600 sm:text-lg lg:mx-0 text-left ml-0">
-              From bustling Mumbai to innovative Bengaluru, discover CDPL’s industry-leading{" "}
+              From our Mira Road campus to live-online batches across India, discover CDPL’s industry-leading{" "}
               <strong>Software Testing (QA)</strong>, <strong>Data Science &amp; AI/ML</strong>,{" "}
               <strong>Product</strong>, and <strong>Engineering</strong> programs near you.
             </p>

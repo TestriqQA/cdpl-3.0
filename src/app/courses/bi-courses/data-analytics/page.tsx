@@ -43,8 +43,6 @@ export default function AdvancedDataAnalyticsPage() {
       description: "Master the data analyst full course in Mumbai with 110 hours of intensive training. Advanced data analytics, Python, SQL & Power BI with job placement.",
       url: '/courses/bi-courses/data-analytics',
       slug: "data-analytics",
-      price: 45000,
-      currency: "INR",
       duration: "P3M",
       instructor: "Expert Data Analysts",
       rating: DATA_ANALYTICS_REVIEW_DATA.ratingValue,

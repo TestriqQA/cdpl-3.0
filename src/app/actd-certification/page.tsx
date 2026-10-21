@@ -60,7 +60,6 @@ export default function ACTDCertificationTrainingPage() {
     ],
     prerequisites: ["Basic software testing knowledge", "Programming fundamentals"],
     duration: "P10W",
-    price: 39999,
     rating: 4.7,
     reviewCount: 120,
   };

@@ -42,8 +42,6 @@ export default function AdvancedDSMLPage() {
       description: "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with job placement.",
       url: '/courses/ds-ml-courses/data-science-course',
       slug: "data-science-course",
-      price: 50000,
-      currency: "INR",
       duration: "P4M", // ~16-20 weeks
       instructor: "Expert Data Science & AI Mentors",
       rating: DATA_SCIENCE_REVIEW_DATA.ratingValue,

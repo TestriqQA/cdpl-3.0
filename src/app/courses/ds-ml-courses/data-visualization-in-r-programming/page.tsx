@@ -45,8 +45,6 @@ export default function Home() {
             description: "Master Machine Learning algorithms and advanced Data Visualization using R Programming. 20-hour Master Program with job assistance.",
             url: '/courses/ds-ml-courses/data-visualization-in-r-programming',
             slug: "data-visualization-in-r-programming",
-            price: 25000,
-            currency: "INR",
             duration: "P1M", // ~4 weeks
             instructor: "Expert R Data Scientists",
             rating: R_DATA_VIS_REVIEW_DATA.ratingValue,

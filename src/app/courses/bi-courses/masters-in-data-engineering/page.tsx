@@ -52,8 +52,6 @@ const DataAnalyticsMasterProgramPage: React.FC = () => {
             description: "155-hour intensive master program in Mumbai covering SQL for data analytics, BI tools, and Big Data engineering with Spark and Hadoop. placement.",
             url: '/courses/bi-courses/masters-in-data-engineering',
             slug: "masters-in-data-engineering",
-            price: 45000,
-            currency: "INR",
             duration: "P3M",
             instructor: "Expert Data Engineers",
             rating: DATA_ENGINEERING_MASTERS_REVIEW_DATA.ratingValue,

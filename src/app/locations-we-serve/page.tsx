@@ -26,26 +26,25 @@ import LocationsServicesSection from "@/components/sections/LocationsServicesSec
 // ENHANCED METADATA FOR SEO
 // ============================================================================
 export const metadata: Metadata = generateStaticPageMetadata({
-  title: "Locations We Serve | CDPL Training Across India & UAE",
+  // T-10 (local-SEO audit, Oct 2026): the UAE/Dubai city pages are noindex,
+  // so promising them in the title and description sets an expectation the
+  // search result cannot meet. Scope the copy to the cities we actually
+  // serve and index.
+  // generateStaticPageMetadata appends " | CDPL" to a plain string, which
+  // doubled the suffix here. An absolute title opts out of that append.
+  title: { absolute: "Locations We Serve | CDPL Training Across India" },
   description:
-    "CDPL software testing, data science & programming courses across India and the UAE — Mumbai, Pune, Bengaluru, Delhi NCR, Hyderabad, Dubai and 38+ more cities.",
+    "CDPL software testing, data science & programming courses across India — classroom training at our Mira Road campus plus online batches for Mumbai, Pune, Chennai, Kolkata, Hyderabad and more.",
   keywords: [
     "software testing courses locations India",
     "programming training centers Maharashtra",
-    "QA testing institutes Bangalore",
-    "coding bootcamps Delhi NCR",
-    "software testing courses UAE",
-    "programming training Dubai Abu Dhabi",
     "CDPL training centers",
     "Cinute Digital locations",
     "software testing Mumbai",
     "programming courses Pune",
-    "QA training Bangalore",
-    "coding courses Delhi",
     "tech training Hyderabad",
     "software courses Chennai",
-    "IT training Dubai",
-    "programming training Abu Dhabi",
+    "software testing course Kolkata",
     "training centers India",
     "course locations near me"
   ],

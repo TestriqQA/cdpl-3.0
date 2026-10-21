@@ -66,7 +66,15 @@ export const BUSINESS_INFO = {
   // Physical Address
   address: {
     streetAddress: 'Office 203 & 204, B-Wing, 1st Floor, Shanti Shopping Centre, Opposite Mira Road Station (E)',
-    addressLocality: 'Mumbai',
+    // T-03 (local-SEO audit, Oct 2026): the Google Business Profile lists this
+    // address as 'Mira Bhayandar, Maharashtra 401107' and categorises the
+    // business as a training institute in Mira-Bhayandar. Publishing 'Mumbai'
+    // here made every JSON-LD block disagree with GBP, which is the one source
+    // Google treats as authoritative for the local entity, so this field
+    // mirrors GBP exactly. "Mira Road East" is the term people search and it
+    // stays in the prose and page copy, but the structured field must match
+    // the profile character-for-character or the NAP signal splits.
+    addressLocality: 'Mira Bhayandar',
     addressRegion: 'Maharashtra',
     postalCode: '401107',
     addressCountry: 'IN',
@@ -262,8 +270,6 @@ export const FEATURED_COURSES = [
     level: 'Beginner',
     rating: 4.9,
     enrollmentCount: 1200,
-    price: 25000,
-    currency: 'INR',
     highlights: ['ISTQB Foundation Prep', 'Test Case Design', 'Defect Life Cycle'],
   },
   {
@@ -274,8 +280,6 @@ export const FEATURED_COURSES = [
     level: 'Intermediate',
     rating: 4.8,
     enrollmentCount: 950,
-    price: 35000,
-    currency: 'INR',
     highlights: ['Selenium WebDriver', 'CI/CD Integration (Jenkins)', 'Advanced Java Concepts'],
   },
   {
@@ -286,8 +290,6 @@ export const FEATURED_COURSES = [
     level: 'Advanced',
     rating: 4.9,
     enrollmentCount: 1100,
-    price: 45000,
-    currency: 'INR',
     highlights: ['Python Programming', 'Statistical Modeling', 'Machine Learning'],
   },
 ] as const;

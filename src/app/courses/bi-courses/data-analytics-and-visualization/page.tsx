@@ -42,8 +42,6 @@ export default function Home() {
             description: "Master Advanced Excel for Data Analytics & Visualization. 20-Hour comprehensive course with interactive dashboards, Power Query, and Power Pivot. job assistance.",
             url: '/courses/bi-courses/data-analytics-and-visualization',
             slug: "data-analytics-and-visualization",
-            price: 15000,
-            currency: "INR",
             duration: "P1M",
             instructor: "Expert Excel Mentors",
             rating: DATA_ANALYTICS_VIS_REVIEW_DATA.ratingValue,

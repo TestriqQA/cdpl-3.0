@@ -1,5 +1,6 @@
 // src/data/courseData/buildLocationsHierarchy.ts
 import { CourseData } from "@/types/courseData";
+import { isTier1Slug } from "@/lib/cityTiers";
 
 export type City = {
   name: string;
@@ -141,8 +142,13 @@ export function buildLocationsHierarchy(courses: CourseData[]): Country[] {
     }
     const entry = byCity.get(city)!;
 
+    // T-09 (local-SEO audit, Oct 2026): /locations-we-serve used to link every
+    // city in courseData, but only Tier 1 city pages are indexable. Linking the
+    // rest spent crawl budget on noindex URLs and spread internal link equity
+    // across pages that can never rank. `isTier1Slug` is the same predicate the
+    // sitemap and robots directives use, so the three can never drift apart.
     const type = getCourseType(c.slug);
-    if (type) {
+    if (type && isTier1Slug(c.slug)) {
       entry.types.add(type);
       entry.links.set(type, c.slug);
     }
@@ -162,6 +168,9 @@ export function buildLocationsHierarchy(courses: CourseData[]): Country[] {
       const cities: City[] = [];
 
       for (const [cityName, { types, links, coord }] of citiesMap) {
+        // Every link for this city was filtered out above, so the city has
+        // nothing indexable to point at - drop it rather than render a dead row.
+        if (links.size === 0) continue;
         cities.push({
           name: cityName,
           lat: coord?.lat ?? 0,
@@ -173,6 +182,11 @@ export function buildLocationsHierarchy(courses: CourseData[]): Country[] {
 
       // Sort cities alphabetically
       cities.sort((a, b) => a.name.localeCompare(b.name));
+
+      // T-09: a state whose cities were all filtered out has nothing to show.
+      // Leaving it in rendered rows like "22 States - 5 Locations", and kept an
+      // entire empty UAE branch advertising coverage that does not exist.
+      if (cities.length === 0) continue;
 
       const districts: District[] = [
         {
@@ -186,6 +200,9 @@ export function buildLocationsHierarchy(courses: CourseData[]): Country[] {
 
     // Sort states alphabetically
     states.sort((a, b) => a.state.localeCompare(b.state));
+
+    // Likewise, drop a country with no remaining states.
+    if (states.length === 0) continue;
 
     countries.push({ country, states });
   }

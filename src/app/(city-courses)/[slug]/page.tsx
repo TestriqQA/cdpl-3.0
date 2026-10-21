@@ -9,7 +9,7 @@ import {
   generateCityCoursePageSchema,
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
-import { isTier1Slug, getCityFromSlug } from "@/lib/cityTiers";
+import { isTier1Slug, getCityFromSlug, isExcludedFamilySlug } from "@/lib/cityTiers";
 import { getCityLocalContent, getCourseCityFaqs } from "@/data/cityLocalContent";
 // BLG-200: use permanentRedirect (308) instead of redirect (307 default).
 // The plural ↔ singular fallback below was emitting 307s, which Google
@@ -167,6 +167,19 @@ export async function generateStaticParams() {
 
 export default async function CoursePage({ params, searchParams }: PageProps): Promise<React.ReactNode> {
   const { slug } = await params;
+
+  // T-15: a retired course family 404s outright - no redirect, because
+  // forwarding "web development in Thane" to a software-testing page is an
+  // irrelevant redirect Google treats as a soft 404 and the visitor bounces.
+  //
+  // This catches the singular form directly. The plural spelling is rewritten
+  // to the singular by a next.config.ts redirect that runs at the edge before
+  // this code, so it arrives here as a 301 -> 404 hop rather than a direct
+  // 404. Same end state; removing those config rules would make it one hop.
+  if (isExcludedFamilySlug(slug)) {
+    notFound();
+  }
+
   let data = getByInternalSlug(slug);
 
   // If not found, try the singular/plural version and redirect if it exists

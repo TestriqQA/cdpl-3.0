@@ -53,8 +53,6 @@ export default function Home() {
       duration: "PT25H", // 25 hours
       rating: ADVANCED_TESTING_REVIEW_DATA.ratingValue,
       reviewCount: ADVANCED_TESTING_REVIEW_DATA.reviewCount,
-      price: 8000, // Estimated price
-      currency: "INR",
       image: "/og-images/courses-software-testing-course-advance-software-testing-og.webp",
     },
 
