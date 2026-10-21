@@ -50,8 +50,6 @@ export default async function AiInDigitalMarketingPage() {
             description: "A 3-month cohort program to master digital marketing and AI strategies tailored for business owners.",
             url: '/courses/digital-marketing-courses/ai-in-digital-marketing',
             slug: "ai-in-digital-marketing",
-            price: 45000,
-            currency: "INR",
             duration: "P3M",
             instructor: "Expert Digital Marketers",
             rating: AI_IN_DIGITAL_MARKETING_REVIEW_DATA.ratingValue,

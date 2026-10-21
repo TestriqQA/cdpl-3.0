@@ -44,8 +44,6 @@ export default function ComprehensiveDSAI() {
       description: "255-Hour Master Program in Comprehensive Data Science and AI. Hands-on projects, job assistance, global certificates.",
       url: '/courses/ds-ml-courses/ai-course',
       slug: "ai-course",
-      price: 60000,
-      currency: "INR",
       duration: "P5M", // ~20-24 weeks
       instructor: "Expert AI & Data Science Mentors",
       rating: AI_REVIEW_DATA.ratingValue,

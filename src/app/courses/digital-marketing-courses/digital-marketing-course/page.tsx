@@ -42,8 +42,6 @@ export default function DigitalMarketingPage() {
       description: "A comprehensive 80-hour digital marketing mastery program in Mumbai covering SEO, SEM, SMM, Content Marketing, and AI Tools with placement assistance.",
       url: '/courses/digital-marketing-courses/digital-marketing-course',
       slug: "digital-marketing-course",
-      price: 35000,
-      currency: "INR",
       duration: "P3M",
       instructor: "Industry Expert Digital Marketing Practitioners",
       rating: DIGITAL_MARKETING_REVIEW_DATA.ratingValue,

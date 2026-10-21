@@ -41,8 +41,6 @@ export default function PythonPage() {
       description: "Comprehensive Python course in Mumbai with Django, Data Science, ML, Automation. placement. Live projects, global certificate.",
       url: '/courses/software-testing-course/python-course',
       slug: "python-course",
-      price: 18000,
-      currency: "INR",
       duration: "P2M2W", // ~10 weeks
       instructor: "Expert Python Mentors",
       rating: PYTHON_REVIEW_DATA.ratingValue,

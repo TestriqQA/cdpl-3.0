@@ -46,8 +46,6 @@ export default function Home() {
       duration: "PT20H", // 20 hours
       rating: DBMS_REVIEW_DATA.ratingValue,
       reviewCount: DBMS_REVIEW_DATA.reviewCount,
-      price: 6000, // Estimated price
-      currency: "INR",
       image: "/og-images/courses-software-testing-course-dbms-course-og.webp",
     },
     DBMS_FAQS.map(f => ({ question: f.question, answer: f.answer })),

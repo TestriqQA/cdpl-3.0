@@ -49,8 +49,6 @@ export default function Home() {
             description: "20-hour python data analysis course with hands-on projects, global certification, and job assistance. Learn how to become a data analyst in Mumbai/Thane.",
             url: '/courses/bi-courses/data-analytics-python',
             slug: "data-analytics-python",
-            price: 25000,
-            currency: "INR",
             duration: "P1M",
             instructor: "Expert Data Analysts",
             rating: DATA_ANALYTICS_PYTHON_REVIEW_DATA.ratingValue,

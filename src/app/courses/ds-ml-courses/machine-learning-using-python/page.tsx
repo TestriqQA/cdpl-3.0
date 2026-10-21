@@ -41,8 +41,6 @@ export default function Home() {
             description: "45-Hour Master Program in Machine Learning Algorithms using Python. Hands-on projects, job assistance, global certificates.",
             url: '/courses/ds-ml-courses/machine-learning-using-python',
             slug: "machine-learning-using-python",
-            price: 35000,
-            currency: "INR",
             duration: "P1M2W", // ~6 weeks
             instructor: "Expert ML & Python Mentors",
             rating: ML_PYTHON_REVIEW_DATA.ratingValue,

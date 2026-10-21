@@ -41,8 +41,6 @@ export default function MachineLearningPage() {
       description: "95-Hour Hero Program in Machine Learning and Data Science with Python. Hands-on projects, job assistance, global certificates.",
       url: '/courses/ds-ml-courses/machine-learning-course',
       slug: "machine-learning-course",
-      price: 35000,
-      currency: "INR",
       duration: "P2M1W", // ~9-10 weeks
       instructor: "Expert ML & Data Science Mentors",
       rating: MACHINE_LEARNING_REVIEW_DATA.ratingValue,

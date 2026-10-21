@@ -41,8 +41,6 @@ export default function AiBootcampPage() {
             description: "Master Digital Marketing with AI in this 30-hour bootcamp. Learn SEO, SEM, Social Media, and Performance Marketing with Job Assistance.",
             url: '/courses/digital-marketing-courses/ai-bootcamp',
             slug: "ai-bootcamp",
-            price: 15000,
-            currency: "INR",
             duration: "P1M",
             instructor: "Expert Digital Marketers",
             rating: AI_BOOTCAMP_REVIEW_DATA.ratingValue,

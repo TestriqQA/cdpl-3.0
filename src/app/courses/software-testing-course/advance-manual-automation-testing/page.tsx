@@ -56,8 +56,6 @@ export default function Home() {
       description: "Master ISTQB Manual Testing + Selenium, Cypress, API, Mobile. Get dual certified and placed in top QA roles.",
       url: '/courses/software-testing-course/advance-manual-automation-testing',
       slug: "advance-manual-automation-testing",
-      price: 25000, // Estimated price
-      currency: "INR",
       duration: "P4M", // 4 Months
       instructor: "Expert QA Mentors",
       rating: ADVANCE_MANUAL_AUTOMATION_REVIEW_DATA.ratingValue,
