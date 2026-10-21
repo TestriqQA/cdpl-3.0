@@ -36,8 +36,6 @@ export default async function Page() {
       duration: "PT15H",
       rating: API_TESTING_REVIEW_DATA.ratingValue,
       reviewCount: API_TESTING_REVIEW_DATA.reviewCount,
-      price: 5000,
-      currency: "INR",
       image: "/og-images/courses-software-testing-course-api-testing-og.webp",
     },
     API_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),

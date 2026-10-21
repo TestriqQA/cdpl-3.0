@@ -1,13 +1,13 @@
 # Cinute Digital Private Limited (CDPL)
 
-> Industry-ready IT training and certification institute based in Mira Road, Mumbai, India. Hands-on, mentor-led courses in Software Testing, Data Science, Machine Learning, Business Intelligence, Artificial Intelligence and Digital Marketing, with placement assistance.
+> Industry-ready IT training and certification institute based in Mira Road East, Mira Bhayandar, Maharashtra, India. Hands-on, mentor-led courses in Software Testing, Data Science, Machine Learning, Business Intelligence, Artificial Intelligence and Digital Marketing, with placement assistance.
 
 ## About Cinute Digital
 Cinute Digital Private Limited (CDPL) is an EdTech institute that bridges the gap between academic education and industry demand. Founded in 2018 by Sandeep Maske, CDPL delivers practical, project-based training designed by industry practitioners so students and working professionals gain skills that are immediately applicable on the job. CDPL is an ISTQB Training Partner with AAA and ACTD accreditation and provides placement assistance, including resume support, mock interviews and referrals to hiring partners.
 
 ## Contact & Location (NAP)
 - **Legal name**: Cinute Digital Private Limited
-- **Address**: Office 203 & 204, B-Wing, 1st Floor, Shanti Shopping Centre, Opposite Mira Road Station (E), Mumbai, Maharashtra, 401107, India
+- **Address**: Office 203 & 204, B-Wing, 1st Floor, Shanti Shopping Centre, Opposite Mira Road Station (E), Mira Bhayandar, Maharashtra, 401107, India
 - **Phone**: +91 8488988984
 - **Email**: contact@cinutedigital.com
 - **Founded**: 2018

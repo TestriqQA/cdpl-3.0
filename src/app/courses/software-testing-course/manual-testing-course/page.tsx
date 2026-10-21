@@ -42,8 +42,6 @@ export default function ManualTestingPage() {
       duration: "P12W", // 12 weeks
       rating: MANUAL_TESTING_REVIEW_DATA.ratingValue,
       reviewCount: MANUAL_TESTING_REVIEW_DATA.reviewCount,
-      price: 15000,
-      currency: "INR",
       image: "/og-images/courses-software-testing-course-manual-testing-course-og.webp",
     },
 

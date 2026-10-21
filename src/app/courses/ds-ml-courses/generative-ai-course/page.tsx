@@ -42,8 +42,6 @@ export default function GenerativeAiPage() {
       description: "55-Hour Hero Program in Deep Learning, NLP, and Generative AI with Python. Hands-on projects, job assistance, global certificates from AAA.",
       url: '/courses/ds-ml-courses/generative-ai-course',
       slug: "generative-ai-course",
-      price: 45000,
-      currency: "INR",
       duration: "P1M2W", // ~6 weeks
       instructor: "Expert AI & Generative AI Mentors",
       rating: GENERATIVE_AI_REVIEW_DATA.ratingValue,

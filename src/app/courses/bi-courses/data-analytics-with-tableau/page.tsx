@@ -41,8 +41,6 @@ export default function Home() {
             description: "20-Hour Master Program in Data Analytics with Tableau. Hands-on projects, interactive dashboards, job assistance, global certificates.",
             url: '/courses/bi-courses/data-analytics-with-tableau',
             slug: "data-analytics-with-tableau",
-            price: 30000,
-            currency: "INR",
             duration: "P1M",
             instructor: "Expert Tableau Mentors",
             rating: DATA_ANALYTICS_TABLEAU_REVIEW_DATA.ratingValue,

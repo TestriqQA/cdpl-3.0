@@ -14,7 +14,8 @@ import { getFullUrl } from "@/lib/seo-config";
 // ============================================================================
 // SEO METADATA - ENHANCED
 // ============================================================================
-export const metadata: Metadata = generateStaticPageMetadata({
+export const metadata: Metadata = {
+  ...generateStaticPageMetadata({
   title: "All Blog Posts | CDPL Tech Articles & Tutorials",
   description: "Explore CDPL's full collection of expert articles on software testing, data science, AI/ML, BI and digital marketing — tutorials, best practices and industry insights.",
   keywords: [
@@ -40,7 +41,12 @@ export const metadata: Metadata = generateStaticPageMetadata({
   ],
   url: "/blog/all-posts",
   image: "/og-images/blog-og.webp",
-});
+  }),
+  // generateStaticPageMetadata does not forward noindex, so the robots block
+  // is overridden here. /blog/all-posts duplicates the /blog listing: keep it
+  // out of the index but crawlable, so its post links still pass equity.
+  robots: { index: false, follow: true },
+};
 
 // ============================================================================
 // ALL POSTS PAGE COMPONENT

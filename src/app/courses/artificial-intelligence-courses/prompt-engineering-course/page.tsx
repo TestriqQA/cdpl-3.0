@@ -39,8 +39,6 @@ export default function PromptGenPage() {
       description: "20-Hour Hero Program in Prompt Engineering with Gen AI. Hands-on projects, job assistance, AAA global certificates.",
       url: '/courses/artificial-intelligence-courses/prompt-engineering-course',
       slug: "prompt-engineering-course",
-      price: 25000,
-      currency: "INR",
       duration: "P1M",
       instructor: "Expert AI Engineers",
       rating: PROMPT_ENGINEERING_REVIEW_DATA.ratingValue,
