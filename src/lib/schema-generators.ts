@@ -25,6 +25,7 @@ import {
   SEO_DEFAULTS,
 } from "./seo-config";
 import { courseCategories } from "@/data/headerData";
+import { CAMPUS_CITY } from "@/lib/cityTiers";
 
 // Type definitions for schema.org structured data
 type WithContext<T> = T & { "@context": string };
@@ -1197,8 +1198,6 @@ export function generateHomePageSchema(
               url: `/${course.slug}`,
               slug: course.slug,
               // Apply safe defaults since headerData doesn't contain these detailed metadata fields
-              price: 25000,
-              currency: "INR",
               duration: "P12W",
               level: "Beginner",
               rating: 4.8,
@@ -1357,8 +1356,6 @@ export function generateAllCoursesPageSchema(): WithContext<
               url: `/${course.slug}`,
               slug: course.slug,
               // Apply safe defaults
-              price: 25000,
-              currency: "INR",
               duration: "P12W",
               level: "Beginner",
               rating: 4.8,
@@ -6876,10 +6873,18 @@ export function generateCityCoursePageSchema(
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
-  // 9. City-scoped LocalBusiness (BLG-062) — only when a city is known.
-  const cityLocalBusinessSchema = city
-    ? generateCityLocalBusinessSchema(city, courseInput.url)
-    : undefined;
+  // 9. City-scoped LocalBusiness (BLG-062), restricted to the campus city.
+  //
+  // T-04 (local-SEO audit, Oct 2026): BLG-062 emitted this for all 765 city
+  // pages, which contradicts the rule stated in cityTiers.ts — pages for
+  // cities without a physical centre "must NOT imply a local centre, carry a
+  // local street address, or emit `LocalBusiness` schema". The HQ address and
+  // `areaServed` were accurate, but a LocalBusiness entity per city still
+  // asserts a local presence that only Mira Road has.
+  const cityLocalBusinessSchema =
+    city && city.toLowerCase() === CAMPUS_CITY
+      ? generateCityLocalBusinessSchema(city, courseInput.url)
+      : undefined;
 
   return [
     webPageSchema,
@@ -6945,7 +6950,7 @@ export function generateLocationsPageAllSchemas(
     {
       question: "Where is CDPL's main headquarters located?",
       answer:
-        "CDPL is headquartered in Mumbai, India, with localized flagship centers in major hubs like Dubai, Bangalore, and Pune.",
+        "CDPL’s campus is in Mira Road East, Mira Bhayandar, Maharashtra, India. Courses for other cities are delivered live-online by the same trainers — CDPL does not operate separate centres in those cities.",
     },
     {
       question:

@@ -213,12 +213,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 0.8,
     },
-    {
-      url: `${siteUrl}/blog/all-posts`,
-      lastModified: DATES.BLOG_ALL_POSTS,
-      changeFrequency: 'daily',
-      priority: 0.7,
-    },
+    // /blog/all-posts is noindex (duplicate listing of /blog), so it is not
+    // submitted here - a sitemap entry for a noindex URL is a contradiction.
     {
       url: `${siteUrl}/blog/categories`,
       lastModified: DATES.BLOG_CATEGORIES,
@@ -389,12 +385,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
   // 2. Events Pages (e.g., /events/ai-conference-nagindas-khandwala)
-  const eventPages: MetadataRoute.Sitemap = pastEvents.map((event) => ({
-    url: `${siteUrl}/events/${event.slug}`,
-    lastModified: event.lastModified ? parseDate(event.lastModified) : parseDate(event.date),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }));
+  //
+  // T-12 (local-SEO audit, Oct 2026): a past event stops being a crawl
+  // target long before it stops being worth keeping on the site. Submitting
+  // every historical event spends crawl budget that the 388-page index needs
+  // elsewhere, so the sitemap carries only the last 12 months. The pages
+  // themselves are untouched and stay reachable (and indexable) through the
+  // /events listing — this drops them from the sitemap, not from the site.
+  const eventSitemapCutoff = new Date();
+  eventSitemapCutoff.setMonth(eventSitemapCutoff.getMonth() - 12);
+
+  const eventPages: MetadataRoute.Sitemap = pastEvents
+    .filter((event) => {
+      const when = event.lastModified ? parseDate(event.lastModified) : parseDate(event.date);
+      // An unparseable date must not silently drop the URL.
+      return Number.isNaN(when.getTime()) || when >= eventSitemapCutoff;
+    })
+    .map((event) => ({
+      url: `${siteUrl}/events/${event.slug}`,
+      lastModified: event.lastModified ? parseDate(event.lastModified) : parseDate(event.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }));
 
   // 3. Services Pages (e.g., /services/expert-talks)
   // BLG-133 follow-up: services come from Sanity (with the local

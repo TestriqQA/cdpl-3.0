@@ -52,8 +52,6 @@ const PowerBIPage: React.FC = () => {
             description: "Enroll in the comprehensive Power BI course. Master DAX, Data Modeling, and Visualization in 20 hours. Get job assistance and global certification.",
             url: '/courses/bi-courses/power-bi-course',
             slug: "power-bi-course",
-            price: 20000,
-            currency: "INR",
             duration: "P1M",
             instructor: "Expert Power BI Mentors",
             rating: POWER_BI_REVIEW_DATA.ratingValue,

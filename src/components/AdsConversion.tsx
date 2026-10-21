@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { GOOGLE_ADS_ID, conversionSendToFor } from "@/lib/google-ads";
+import { isThankYouPath } from "@/lib/thank-you";
 
 type GtagWindow = Window & { gtag?: (...args: unknown[]) => void };
 
@@ -25,8 +26,14 @@ export default function AdsConversion() {
   const firedFor = useRef<string | null>(null);
 
   useEffect(() => {
+    // A thank-you route is the completed enquiry. Google Ads needs the
+    // labelled `conversion`; GA4 needs an event of its own, which is why every
+    // GA4 channel still reports "Key events: 0" — nothing was ever sent for it
+    // to count. `generate_lead` is GA4's recommended name for this; it still
+    // has to be marked as a key event once in the GA4 UI before it counts.
+    const isLead = isThankYouPath(pathname);
     const sendTo = conversionSendToFor(pathname);
-    if (!sendTo) return;
+    if (!isLead && !sendTo) return;
 
     // React invokes effects twice under StrictMode in development; without this
     // guard a dev build would report every conversion twice.
@@ -40,11 +47,21 @@ export default function AdsConversion() {
 
       const gtag = (window as GtagWindow).gtag;
       if (typeof gtag === "function") {
-        if (!configured.current) {
-          gtag("config", GOOGLE_ADS_ID);
-          configured.current = true;
+        if (isLead) {
+          gtag("event", "generate_lead", {
+            // The thank-you path identifies which form was completed.
+            page_path: pathname,
+          });
         }
-        gtag("event", "conversion", { send_to: sendTo });
+
+        if (sendTo) {
+          if (!configured.current) {
+            gtag("config", GOOGLE_ADS_ID);
+            configured.current = true;
+          }
+          gtag("event", "conversion", { send_to: sendTo });
+        }
+
         firedFor.current = pathname;
         return;
       }

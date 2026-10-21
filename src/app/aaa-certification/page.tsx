@@ -60,7 +60,6 @@ export default function AAACertificationCoursePage() {
     ],
     prerequisites: ["Basic programming knowledge", "Testing fundamentals"],
     duration: "P12W",
-    price: 49999,
     rating: 4.8,
     reviewCount: 150,
   };

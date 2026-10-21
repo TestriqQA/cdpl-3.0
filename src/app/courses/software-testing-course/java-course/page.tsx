@@ -42,8 +42,6 @@ export default function JavaPage() {
       description: "Comprehensive Java course in Mumbai with Core Java, Spring Boot, Microservices, AWS. placement. Live projects, global certificate.",
       url: '/courses/software-testing-course/java-course',
       slug: "java-course",
-      price: 20000,
-      currency: "INR",
       duration: "P2M2W", // ~10 weeks
       instructor: "Expert Java Mentors",
       rating: JAVA_REVIEW_DATA.ratingValue,
