@@ -496,6 +496,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                             <option value="AI & ML">AI & ML</option>
                             <option value="Prompt Engineering">Prompt Engineering</option>
                             <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="FREE Foundation Courses">FREE Foundation Courses</option>
                             <option value="Scholarship">Scholarship</option>
                             <option value="Corporate Training">Corporate Training</option>
                             <option value="Understand Training & Event Services">Understand Training & Event Services</option>
