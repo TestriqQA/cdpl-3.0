@@ -261,37 +261,38 @@ function DotDivider() {
   return <span aria-hidden className="mx-1 text-neutral-300">•</span>;
 }
 
+const TICKER_ITEMS = [
+  "AI/ML Mentors",
+  "Data Science Mentors",
+  "Full-Stack Mentors",
+  "DevOps Mentors",
+  "Resume Reviews",
+  "Portfolio Feedback",
+  "Mock Interviews",
+  "Placement Support",
+  "CDPL Mentorship",
+];
+
 function Ticker() {
   return (
-    <div className="relative overflow-hidden">
-      <div
-        className="animate-[marquee_2s_linear_infinite] sm:animate-[marquee_20s_linear_infinite] whitespace-nowrap py-2 text-[12px] text-neutral-700"
-        style={{
-          maskImage:
-            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-          WebkitMaskImage:
-            "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-        }}
-      >
-        <span className="mx-3">AI/ML Mentors</span>
-        <span className="mx-3">Data Science Mentors</span>
-        <span className="mx-3">Full-Stack Mentors</span>
-        <span className="mx-3">DevOps Mentors</span>
-        <span className="mx-3">Resume Reviews</span>
-        <span className="mx-3">Portfolio Feedback</span>
-        <span className="mx-3">Mock Interviews</span>
-        <span className="mx-3">Placement Support</span>
-        <span className="mx-3">CDPL Mentorship</span>
-        {/* duplicate for seamless loop */}
-        <span className="mx-3">AI/ML Mentors</span>
-        <span className="mx-3">Data Science Mentors</span>
-        <span className="mx-3">Full-Stack Mentors</span>
-        <span className="mx-3">DevOps Mentors</span>
-        <span className="mx-3">Resume Reviews</span>
-        <span className="mx-3">Portfolio Feedback</span>
-        <span className="mx-3">Mock Interviews</span>
-        <span className="mx-3">Placement Support</span>
-        <span className="mx-3">CDPL Mentorship</span>
+    <div
+      className="relative overflow-hidden"
+      style={{
+        maskImage:
+          "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+      }}
+    >
+      {/* 4 copies: each half (2 copies) must be wider than the box, or a gap shows before the loop. */}
+      <div className="w-max animate-[marquee_60s_linear_infinite] motion-reduce:animate-none whitespace-nowrap py-2 text-[12px] text-neutral-700">
+        {[0, 1, 2, 3].map((copy) =>
+          TICKER_ITEMS.map((item) => (
+            <span key={`${copy}-${item}`} className="mx-3" aria-hidden={copy > 0 || undefined}>
+              {item}
+            </span>
+          )),
+        )}
       </div>
       <style
         dangerouslySetInnerHTML={{
