@@ -147,7 +147,7 @@ const FeatureCard = ({ icon: Icon, title, desc, theme, index }: FeatureCardProps
             />
 
             <div
-                className={`relative h-full ${theme.bg} ${theme.border} border-2 rounded-2xl p-6 backdrop-blur-sm transition-all duration-300 shadow-lg ${theme.glow} group-hover:shadow-2xl`}
+                className={`relative overflow-hidden h-full ${theme.bg} ${theme.border} border-2 rounded-2xl p-6 backdrop-blur-sm transition-all duration-300 shadow-lg ${theme.glow} group-hover:shadow-2xl`}
             >
                 <div
                     className={`inline-flex items-center justify-center w-16 h-16 ${theme.iconBg} rounded-xl shadow-lg mb-5 group-hover:shadow-xl transition-shadow duration-300 hover:scale-110`}
@@ -159,7 +159,7 @@ const FeatureCard = ({ icon: Icon, title, desc, theme, index }: FeatureCardProps
                 <p className="text-gray-600 leading-relaxed text-sm group-hover:text-gray-700 transition-colors">{desc}</p>
 
                 <div
-                    className={`absolute bottom-0 left-0 h-1 w-full ${theme.iconBg} rounded-b-xl`}
+                    className={`absolute bottom-0 left-0 h-1 w-full ${theme.iconBg}`}
                 />
             </div>
         </div>

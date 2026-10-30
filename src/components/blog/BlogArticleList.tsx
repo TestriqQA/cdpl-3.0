@@ -74,9 +74,6 @@ const BlogArticleList: React.FC<BlogArticleListProps> = ({ posts = [] }) => {
                   day: 'numeric'
                 });
 
-                // Calculate read time if missing (simple estimation)
-                const readTime = post.readTime || "5 min read";
-
                 return (
                   <article
                     key={post._id || post.slug}
@@ -142,14 +139,18 @@ const BlogArticleList: React.FC<BlogArticleListProps> = ({ posts = [] }) => {
                               <span className="font-medium text-gray-700">{author.name}</span>
                             </div>
                           )}
-                          <div className="flex items-center gap-1.5">
-                            <Calendar className="w-3.5 h-3.5 text-indigo-600" />
-                            <span>{formattedDate}</span>
-                          </div>
-                          <div className="flex items-center gap-1.5">
-                            <Clock className="w-3.5 h-3.5 text-indigo-600" />
-                            <span>{readTime}</span>
-                          </div>
+                          {post.publishDate && (
+                            <div className="flex items-center gap-1.5">
+                              <Calendar className="w-3.5 h-3.5 text-indigo-600" />
+                              <span>{formattedDate}</span>
+                            </div>
+                          )}
+                          {post.readTime && (
+                            <div className="flex items-center gap-1.5">
+                              <Clock className="w-3.5 h-3.5 text-indigo-600" />
+                              <span>{post.readTime}</span>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>

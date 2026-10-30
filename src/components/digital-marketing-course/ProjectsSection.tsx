@@ -74,7 +74,9 @@ export default function ProjectsSection() {
                                     ].join(' ')}
                                 >
                                     {/* top accent edge */}
-                                    <span aria-hidden className={`absolute inset-x-0 top-0 h-1 rounded-t-2xl ${a.edge}`} />
+                                    <span aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
+                                      <span aria-hidden className={`absolute inset-x-0 top-0 h-1 ${a.edge}`} />
+                                    </span>
                                     {/* index badge */}
                                     <span
                                         className={[

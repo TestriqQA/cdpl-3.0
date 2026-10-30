@@ -162,22 +162,22 @@ export default function HeroSection() {
             </div>
 
             {/* Quick highlights — unique color markers per line */}
-            <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-800 sm:grid-cols-2">
+            <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-800 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
               <li className="flex items-start gap-2">
-                <span className="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-emerald-500" />
-                70% structured manual + 30% <strong>automation testing projects with selenium</strong>
+                <span className="mt-1 inline-block h-2.5 w-2.5 shrink-0 rounded-full bg-emerald-500" />
+                <span>70% structured manual + 30% <strong>automation testing projects with selenium</strong></span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-indigo-500" />
-                <strong>CI testing</strong> integration (Jenkins & GitHub Actions)
+                <span className="mt-1 inline-block h-2.5 w-2.5 shrink-0 rounded-full bg-indigo-500" />
+                <span><strong>CI testing</strong> integration (Jenkins & GitHub Actions)</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-rose-500" />
-                Interview prep for <strong>web testing interview questions</strong> & referrals
+                <span className="mt-1 inline-block h-2.5 w-2.5 shrink-0 rounded-full bg-rose-500" />
+                <span>Interview prep for <strong>web testing interview questions</strong> & referrals</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="mt-1 inline-block h-2.5 w-2.5 rounded-full bg-amber-500" />
-                Dual certificate (Manual + Automation) with QR verification
+                <span className="mt-1 inline-block h-2.5 w-2.5 shrink-0 rounded-full bg-amber-500" />
+                <span>Dual certificate (Manual + Automation) with QR verification</span>
               </li>
             </ul>
 

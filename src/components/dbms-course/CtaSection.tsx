@@ -22,8 +22,8 @@ export default function CtaSection() {
         >
           {/* Small badge */}
           <p className="mx-auto mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700">
-            <BadgeCheck className="h-4 w-4 text-emerald-600" />
-            Next batch starts in <strong className="font-semibold">2 days</strong> • Limited seats
+            <BadgeCheck className="h-4 w-4 shrink-0 text-emerald-600" />
+            <span>Next batch starts in <strong className="font-semibold">2 days</strong> • Limited seats</span>
           </p>
 
           <h2

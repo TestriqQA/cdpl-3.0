@@ -97,7 +97,7 @@ export default function ProjectsSection() {
                 tabIndex={0}
                 aria-labelledby={id}
                 className={[
-                  "group relative rounded-2xl border bg-white p-6 shadow-sm transition-all duration-200",
+                  "group relative overflow-hidden rounded-2xl border bg-white p-6 shadow-sm transition-all duration-200",
                   "hover:-translate-y-0.5 hover:shadow-md focus-visible:-translate-y-0.5",
                   p.accent.border,
                   p.accent.ring,
@@ -105,7 +105,7 @@ export default function ProjectsSection() {
                 ].join(" ")}
               >
                 {/* top accent bar */}
-                <div className={["absolute left-0 right-0 top-0 h-1 rounded-t-2xl", p.accent.bar].join(" ")} aria-hidden />
+                <div className={["absolute left-0 right-0 top-0 h-1", p.accent.bar].join(" ")} aria-hidden />
 
                 <h3 id={id} className="text-lg md:text-xl font-bold text-slate-900">
                   <span className={p.accent.text}># </span>

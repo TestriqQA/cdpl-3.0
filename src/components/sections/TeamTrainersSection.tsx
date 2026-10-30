@@ -229,14 +229,19 @@ export default function TeamTrainersSection({
             </div>
 
             {/* Footer */}
-            <div className="mt-7 flex items-center justify-between">
-              <div className="text-sm text-slate-600">
-                Personalized feedback • Live code reviews • Interview prep
+            <div className="mt-7 flex items-center justify-between gap-3">
+              <div className="min-w-0 text-sm text-slate-600">
+                <span className="whitespace-nowrap">Personalized feedback •</span>{" "}
+                <span className="whitespace-nowrap">Live code reviews •</span>{" "}
+                <span className="whitespace-nowrap">Interview prep</span>
               </div>
-              {t.slug ? (
+              {t.linkedin ? (
                 <Link
-                  href={`${t.linkedin}`}
-                  className="inline-flex items-center rounded-xl bg-blue-900 px-3 py-1.5 text-sm font-semibold text-white shadow-sm transition hover:translate-y-[-1px] hover:bg-brand"
+                  href={t.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${t.name} on LinkedIn`}
+                  className="inline-flex shrink-0 items-center rounded-xl bg-blue-900 px-3 py-1.5 text-sm font-semibold text-white shadow-sm transition hover:translate-y-[-1px] hover:bg-brand"
                 >
                   LinkedIn
                 </Link>

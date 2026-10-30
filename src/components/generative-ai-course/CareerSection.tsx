@@ -111,7 +111,7 @@ export default function CareerSection() {
                 tabIndex={0}
                 aria-label={b.name}
                 className={[
-                  "group relative rounded-2xl border bg-white p-4 sm:p-5 shadow-sm transition-all duration-200",
+                  "group relative overflow-hidden rounded-2xl border bg-white p-4 sm:p-5 shadow-sm transition-all duration-200",
                   "hover:-translate-y-0.5 hover:shadow-md focus-visible:-translate-y-0.5",
                   acc.border,
                   acc.ring,
@@ -119,7 +119,7 @@ export default function CareerSection() {
                 ].join(" ")}
               >
                 {/* top accent bar */}
-                <div className="absolute left-0 right-0 top-0 h-1 rounded-t-2xl bg-white/70" aria-hidden />
+                <div className="absolute left-0 right-0 top-0 h-1 bg-white/70" aria-hidden />
                 {/* <div className="flex h-16 sm:h-20 items-center justify-center">
                   <Image
                     src={b.src}

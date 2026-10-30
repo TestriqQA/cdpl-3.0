@@ -206,7 +206,9 @@ export default function ReviewsHeroSection() {
                     />
 
                     {/* Decorative Top Line */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-t-3xl opacity-80"></div>
+                    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 opacity-80"></div>
+                    </div>
 
                     <div className="relative z-10 space-y-6">
                       {/* User Header */}

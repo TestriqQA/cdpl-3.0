@@ -8,7 +8,7 @@ type Step = {
   title: string;
   desc: string;
   badge: string;
-  accent: { bg: string; text: string; border: string; ring: string };
+  accent: { bg: string; text: string; border: string; ring: string; bar: string };
 };
 
 const STEPS: Step[] = [
@@ -23,6 +23,7 @@ const STEPS: Step[] = [
       text: "text-sky-900",
       border: "border-sky-200",
       ring: "focus:ring-sky-300",
+      bar: "bg-sky-600",
     },
   },
   {
@@ -36,6 +37,7 @@ const STEPS: Step[] = [
       text: "text-emerald-900",
       border: "border-emerald-200",
       ring: "focus:ring-emerald-300",
+      bar: "bg-emerald-600",
     },
   },
   {
@@ -49,6 +51,7 @@ const STEPS: Step[] = [
       text: "text-amber-900",
       border: "border-amber-200",
       ring: "focus:ring-amber-300",
+      bar: "bg-amber-600",
     },
   },
   {
@@ -62,6 +65,7 @@ const STEPS: Step[] = [
       text: "text-violet-900",
       border: "border-violet-200",
       ring: "focus:ring-violet-300",
+      bar: "bg-violet-600",
     },
   },
 ];
@@ -107,7 +111,7 @@ export default function CareerRoadmapSection() {
           {/* Center spine */}
           <div
             aria-hidden
-            className="pointer-events-none absolute left-4 top-0 h-full w-px bg-slate-200 sm:left-1/2"
+            className="pointer-events-none absolute left-[14px] top-0 h-full w-px -translate-x-1/2 bg-slate-200 sm:left-1/2"
           />
           <ol className="space-y-6">
             {STEPS.map((s, i) => (
@@ -115,23 +119,12 @@ export default function CareerRoadmapSection() {
                 key={s.n}
                 className="relative grid grid-cols-[28px_1fr] items-start gap-4 sm:grid-cols-[1fr_28px_1fr]"
               >
-                {/* Dot on the spine */}
-                <span
-                  aria-hidden
-                  className={[
-                    "absolute left-[14px] top-3 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full animate-pulse border-2 border-white shadow",
-                    "sm:left-1/2 sm:-translate-x-1/2",
-                    s.accent.border.replace("border-", "bg-").replace("200", "400"),
-                  ].join(" ")}
-                />
 
                 {/* Number badge */}
                 <div
                   className={[
-                    "row-span-2 mt-1 flex h-7 w-7 items-center justify-center rounded-full border text-xs font-bold shadow-sm",
-                    s.accent.bg,
-                    s.accent.text,
-                    s.accent.border,
+                    "relative z-10 col-start-1 row-start-1 mt-1 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white text-xs font-bold text-white shadow-sm sm:col-start-2",
+                    s.accent.bar,
                   ].join(" ")}
                   aria-label={`Step ${s.n}`}
                   title={`Step ${s.n}`}
@@ -143,12 +136,12 @@ export default function CareerRoadmapSection() {
                 <article
                   tabIndex={0}
                   className={[
-                    "col-start-2 rounded-2xl border p-4 sm:p-5 shadow-[0_1px_0_0_rgba(15,23,42,0.05)] backdrop-blur transition hover:shadow-md focus:outline-none",
+                    "col-start-2 row-start-1 rounded-2xl border p-4 sm:p-5 shadow-[0_1px_0_0_rgba(15,23,42,0.05)] backdrop-blur transition hover:shadow-md focus:outline-none",
                     s.accent.bg,
                     s.accent.text,
                     s.accent.border,
                     s.accent.ring,
-                    i % 2 === 0 ? "sm:col-start-3" : "sm:col-start-1 sm:row-start-1",
+                    i % 2 === 0 ? "sm:col-start-3" : "sm:col-start-1",
                   ].join(" ")}
                 >
                   <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold">

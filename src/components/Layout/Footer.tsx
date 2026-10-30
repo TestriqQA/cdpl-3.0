@@ -384,7 +384,7 @@ const Footer = () => {
             <div className="space-y-4 hidden lg:block lg:col-start-5 lg:row-start-2">
               <h2 className="text-lg font-semibold text-brand">Follow Us On</h2>
               <ul className="space-y-2">
-                <li className='flex items-center gap-5'>
+                <li className='flex flex-wrap items-center gap-2.5 xl:gap-5'>
                   <Link href="https://www.facebook.com/cinutedigital" title="Facebook" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
                     <Facebook />
                   </Link>
