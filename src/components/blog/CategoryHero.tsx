@@ -64,18 +64,24 @@ const CategoryHero: React.FC<CategoryHeroProps> = ({ category, post }) => {
 
               {/* Meta Information - Subtle but readable */}
               <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm text-gray-600">
-                <div className="flex items-center gap-2">
-                  <User className="w-4 h-4 text-indigo-600" />
-                  <span className="font-medium">{author.name}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-indigo-600" />
-                  <span>{formattedDate}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-indigo-600" />
-                  <span>{featuredPost.readTime}</span>
-                </div>
+                {author?.name && (
+                  <div className="flex items-center gap-2">
+                    <User className="w-4 h-4 text-indigo-600" />
+                    <span className="font-medium">{author.name}</span>
+                  </div>
+                )}
+                {featuredPost.publishDate && (
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4 text-indigo-600" />
+                    <span>{formattedDate}</span>
+                  </div>
+                )}
+                {featuredPost.readTime && (
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-indigo-600" />
+                    <span>{featuredPost.readTime}</span>
+                  </div>
+                )}
               </div>
 
               {/* CTA Button - High contrast */}
