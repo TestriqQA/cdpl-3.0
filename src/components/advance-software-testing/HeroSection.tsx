@@ -193,22 +193,22 @@ export default function HeroSection() {
                         </div>
 
                         {/* Quick highlights */}
-                        <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
+                        <ul className="mt-7 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
                             <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-emerald-600" />
-                                80% practical labs with real <strong>selenium automation testing</strong> projects
+                                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
+                                <span>80% practical labs with real <strong>selenium automation testing</strong> projects</span>
                             </li>
                             <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-indigo-600" />
-                                CI/CD integration using Jenkins & GitHub Actions
+                                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-indigo-600" />
+                                <span>CI/CD integration using Jenkins & GitHub Actions</span>
                             </li>
                             <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-rose-600" />
-                                Interview prep & portfolio for high-paying <strong>SDET</strong> roles
+                                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-rose-600" />
+                                <span>Interview prep & portfolio for high-paying <strong>SDET</strong> roles</span>
                             </li>
                             <li className="flex items-start gap-2">
-                                <CheckCircle2 className="mt-0.5 h-5 w-5 text-amber-600" />
-                                QR-verified <strong>ISTQB</strong> + <strong>Selenium Certification Course</strong>
+                                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" />
+                                <span>QR-verified <strong>ISTQB</strong> + <strong>Selenium Certification Course</strong></span>
                             </li>
                         </ul>
 
