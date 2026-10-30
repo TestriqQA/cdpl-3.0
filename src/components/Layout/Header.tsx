@@ -183,7 +183,7 @@ const Header = () => {
           </div>
 
           <nav className="hidden lg:flex items-center justify-start">
-            <Link href="/" title="Home" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname === "/" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/" title="Home" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-6 active:text-brand ${pathname === "/" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Home">Home</span>
             </Link>
 
@@ -192,7 +192,7 @@ const Header = () => {
               <button
                 ref={coursesButtonRef}
                 type="button"
-                className={`transition-colors flex items-center text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${isCoursesMenuOpen ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
+                className={`transition-colors flex items-center text-sm xl:text-base px-2 xl:px-4 py-6 active:text-brand ${isCoursesMenuOpen ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
                 onMouseEnter={openMega}
                 onMouseLeave={() => scheduleClose()}
                 onClick={toggleMega}
@@ -227,15 +227,15 @@ const Header = () => {
               )}
             </div>
 
-            <Link href="/services" title="Services" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/services") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/services" title="Services" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/services") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Services">Services</span>
             </Link>
 
-            <Link href="/events" title="Events" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/events") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/events" title="Events" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/events") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Event">Event</span>
             </Link>
 
-            <Link href="/mentors" title="Mentors" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/mentors") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/mentors" title="Mentors" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/mentors") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Mentors">Mentors</span>
             </Link>
 
@@ -254,7 +254,7 @@ const Header = () => {
                     });
                   }
                 }}
-                className={`transition-colors flex items-center text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/jobs") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
+                className={`transition-colors flex items-center text-sm xl:text-base px-2 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/jobs") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
                 aria-haspopup="menu"
                 aria-expanded={isJobsOpen}
                 aria-controls="jobs-menu"
@@ -325,7 +325,7 @@ const Header = () => {
                     });
                   }
                 }}
-                className={`transition-colors flex items-center text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 ${pathname.startsWith("/about") || pathname.startsWith("/our-team") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
+                className={`transition-colors flex items-center text-sm xl:text-base px-2 xl:px-4 py-6 ${pathname.startsWith("/about") || pathname.startsWith("/our-team") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
                 aria-haspopup="menu"
                 aria-expanded={isAboutOpen}
                 aria-controls="about-menu"
@@ -364,10 +364,10 @@ const Header = () => {
               )}
             </div>
 
-            <Link href="/blog" title="Blog" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 ${pathname.startsWith("/blog") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/blog" title="Blog" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-6 ${pathname.startsWith("/blog") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Blog">Blog</span>
             </Link>
-            <Link href="/contact-us" title="Contact Us" className={`transition-colors text-sm xl:text-base px-2 lg:px-3 xl:px-4 py-6 ${pathname.startsWith("/contact-us") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/contact-us" title="Contact Us" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-6 ${pathname.startsWith("/contact-us") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Contact">Contact</span>
             </Link>
           </nav>
