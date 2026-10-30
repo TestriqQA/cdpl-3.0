@@ -240,7 +240,7 @@ const Footer: React.FC = () => {
                 © 2026 Cinute Digital Private Limited — All Rights Reserved.
               </p>
               {/* Powered By */}
-              <div className="flex gap-4 space-y-4">
+              <div className="flex items-center gap-4">
                 {/* text-orange-700 (#c2410c) rather than text-brand (#ff8c00):
                     the brand orange is 2.33:1 on white and fails WCAG AA for
                     body text. This keeps the brand hue at 5.18:1. */}

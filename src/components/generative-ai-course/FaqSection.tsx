@@ -45,7 +45,7 @@ export default function FaqSection() {
               <li key={f.question} className="min-w-0">
                 <details
                   className={[
-                    "group relative rounded-2xl border p-4 sm:p-5 shadow-sm transition-all duration-200 backdrop-blur",
+                    "group relative overflow-hidden rounded-2xl border p-4 sm:p-5 shadow-sm transition-all duration-200 backdrop-blur",
                     "open:shadow-md hover:-translate-y-0.5 focus-within:-translate-y-0.5",
                     accent.bg,
                     accent.border,

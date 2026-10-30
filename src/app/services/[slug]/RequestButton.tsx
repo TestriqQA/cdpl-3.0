@@ -37,7 +37,7 @@ export default function RequestButton({ serviceTitle }: RequestButtonProps) {
         {/* Colored inner surface */}
         <span
           className="
-          relative rounded-[10px]
+          relative overflow-hidden rounded-[10px]
           px-8 py-3.5
           text-white font-semibold tracking-wide
           bg-gradient-to-br from-cyan-600 via-cyan-600 to-sky-600

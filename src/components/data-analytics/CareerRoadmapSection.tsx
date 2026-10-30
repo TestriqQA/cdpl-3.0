@@ -109,7 +109,7 @@ export default function CareerRoadmapSection() {
         {/* Timeline */}
         <div className="relative mx-auto mt-10 max-w-5xl">
           {/* Center spine */}
-          <div aria-hidden className="pointer-events-none absolute left-4 top-0 h-full w-px bg-slate-200 sm:left-1/2" />
+          <div aria-hidden className="pointer-events-none absolute left-[14px] top-0 h-full w-px -translate-x-1/2 bg-slate-200 sm:left-1/2" />
 
           <ol className="relative space-y-6">
             {STEPS.map((s, i) => (
@@ -117,22 +117,12 @@ export default function CareerRoadmapSection() {
                 key={s.n}
                 className="relative grid grid-cols-[28px_1fr] items-start gap-4 sm:grid-cols-[1fr_28px_1fr]"
               >
-                {/* Dot on spine */}
-                <span
-                  aria-hidden
-                  className={[
-                    "absolute left-[14px] top-3 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-white shadow",
-                    "sm:left-1/2 sm:-translate-x-1/2",
-                    s.accent.dot,
-                  ].join(" ")}
-                />
 
                 {/* Step number badge */}
                 <div
                   className={[
-                    "row-span-2 mt-1 flex h-7 w-7 items-center justify-center rounded-full border text-xs font-bold shadow-sm bg-white",
-                    s.accent.text,
-                    s.accent.border,
+                    "relative z-10 col-start-1 row-start-1 mt-1 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white text-xs font-bold text-white shadow-sm sm:col-start-2",
+                    s.accent.bar,
                   ].join(" ")}
                   aria-label={`Step ${s.n}`}
                   title={`Step ${s.n}`}
@@ -144,13 +134,13 @@ export default function CareerRoadmapSection() {
                 <article
                   tabIndex={0}
                   className={[
-                    "relative col-start-2 rounded-2xl border p-4 sm:p-5 shadow-[0_1px_0_0_rgba(15,23,42,0.05)] backdrop-blur transition",
+                    "relative overflow-hidden col-start-2 row-start-1 rounded-2xl border p-4 sm:p-5 shadow-[0_1px_0_0_rgba(15,23,42,0.05)] backdrop-blur transition",
                     "hover:shadow-md focus:outline-none",
                     s.accent.bg,
                     s.accent.text,
                     s.accent.border,
                     s.accent.ring,
-                    i % 2 === 0 ? "sm:col-start-3" : "sm:col-start-1 sm:row-start-1",
+                    i % 2 === 0 ? "sm:col-start-3" : "sm:col-start-1",
                   ].join(" ")}
                 >
                   {/* top accent bar */}

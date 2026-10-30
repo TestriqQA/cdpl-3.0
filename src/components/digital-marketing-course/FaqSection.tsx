@@ -36,7 +36,7 @@ export default function FaqSection() {
             <li key={item.question}>
               <details
                 className={[
-                  'group relative rounded-2xl border bg-white p-5 shadow-[0_1px_0_0_rgba(15,23,42,0.05)] transition',
+                  'group relative overflow-hidden rounded-2xl border bg-white p-5 shadow-[0_1px_0_0_rgba(15,23,42,0.05)] transition',
                   'open:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2',
                   item.accent.border,
                   item.accent.ring,

@@ -75,7 +75,7 @@ export default function CareerRoadmapSection() {
                                         {/* Content */}
                                         <div className={`w-1/2 ${index % 2 === 0 ? "pr-12 text-right" : "pl-12 text-left"}`}>
                                             <div className="bg-white rounded-xl border border-slate-200 p-6 hover:shadow-lg transition-all duration-300">
-                                                <div className="flex items-center gap-3 mb-3">
+                                                <div className={`flex items-center gap-3 mb-3 ${index % 2 === 0 ? "justify-end" : ""}`}>
                                                     <span className={`text-sm font-bold px-3 py-1 rounded-full ${index % 2 === 0 ? "bg-blue-100 text-blue-600" : "bg-indigo-100 text-indigo-600"}`}>
                                                         Step {item.step}
                                                     </span>
@@ -91,7 +91,7 @@ export default function CareerRoadmapSection() {
 
                                         {/* Center dot */}
                                         <div className="w-0 flex justify-center">
-                                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#1d4ed8] to-[#4338ca] border-4 border-white flex items-center justify-center text-white font-bold shadow-lg">
+                                            <div className="relative z-10 w-12 h-12 shrink-0 rounded-full bg-gradient-to-br from-[#1d4ed8] to-[#4338ca] border-4 border-white flex items-center justify-center text-white font-bold shadow-lg">
                                                 {item.step}
                                             </div>
                                         </div>

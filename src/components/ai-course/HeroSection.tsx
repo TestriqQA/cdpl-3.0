@@ -121,22 +121,22 @@ export default function HeroSection() {
                         </div>
 
                         {/* Quick highlights (distinct accent bullets; no repeats) */}
-                        <ul className="mt-6 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2">
+                        <ul className="mt-6 grid max-w-3xl grid-cols-1 gap-3 text-sm text-slate-700 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
                             <li className="flex items-start gap-2">
-                                <span className="mt-1 inline-block h-2 w-2 rounded-full bg-emerald-600" />
-                                80% practical labs with mentor feedback for <strong>masters in ai in india</strong>
+                                <span className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full bg-emerald-600" />
+                                <span>80% practical labs with mentor feedback for <strong>masters in ai in india</strong></span>
                             </li>
                             <li className="flex items-start gap-2">
-                                <span className="mt-1 inline-block h-2 w-2 rounded-full bg-indigo-600" />
-                                ML & DL projects with reproducible pipelines
+                                <span className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full bg-indigo-600" />
+                                <span>ML & DL projects with reproducible pipelines</span>
                             </li>
                             <li className="flex items-start gap-2">
-                                <span className="mt-1 inline-block h-2 w-2 rounded-full bg-rose-600" />
-                                Model evaluation, tracking for <strong>data science master program mumbai</strong>
+                                <span className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full bg-rose-600" />
+                                <span>Model evaluation, tracking for <strong>data science master program mumbai</strong></span>
                             </li>
                             <li className="flex items-start gap-2">
-                                <span className="mt-1 inline-block h-2 w-2 rounded-full bg-amber-600" />
-                                CI/CD & basic MLOps: containers and deployment
+                                <span className="mt-1 inline-block h-2 w-2 shrink-0 rounded-full bg-amber-600" />
+                                <span>CI/CD & basic MLOps: containers and deployment</span>
                             </li>
                         </ul>
 
