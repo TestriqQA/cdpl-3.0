@@ -93,13 +93,13 @@ export default function FaqSection() {
               <div role="listitem" key={f.question}>
               <details
                 className={[
-                  "group relative rounded-2xl border bg-white p-4 sm:p-5 shadow-sm transition-all duration-200",
+                  "group relative overflow-hidden rounded-2xl border bg-white p-4 sm:p-5 shadow-sm transition-all duration-200",
                   "open:shadow-md hover:-translate-y-0.5 focus-within:-translate-y-0.5",
                   accent.border,
                 ].join(" ")}
               >
                 {/* top accent bar */}
-                <div className={["absolute left-0 right-0 top-0 h-1 rounded-t-2xl", accent.bar].join(" ")} aria-hidden />
+                <div className={["absolute left-0 right-0 top-0 h-1", accent.bar].join(" ")} aria-hidden />
 
                 <summary
                   className={[

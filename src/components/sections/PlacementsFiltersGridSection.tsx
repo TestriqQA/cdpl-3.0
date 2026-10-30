@@ -152,7 +152,9 @@ export default function PlacementsFiltersGridSection({ contained = false }: Prop
                       />
 
                       {/* left accent (kept) */}
-                      <span aria-hidden className={`absolute left-0 top-0 h-full w-1.5 rounded-l-2xl ${theme.bg}`} />
+                      <span aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
+                        <span aria-hidden className={`absolute left-0 top-0 h-full w-1.5 ${theme.bg}`} />
+                      </span>
 
                       {/* AVATAR — slightly bigger */}
                       <Image

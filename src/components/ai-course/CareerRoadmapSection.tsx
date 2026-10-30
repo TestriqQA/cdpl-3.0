@@ -143,7 +143,7 @@ export default function CareerRoadmapSection() {
               <article
                 tabIndex={0}
                 className={[
-                  "relative col-start-2 row-start-1 rounded-2xl border p-4 sm:p-5 shadow-[0_1px_0_0_rgba(15,23,42,0.05)] backdrop-blur transition",
+                  "relative overflow-hidden col-start-2 row-start-1 rounded-2xl border p-4 sm:p-5 shadow-[0_1px_0_0_rgba(15,23,42,0.05)] backdrop-blur transition",
                   "hover:shadow-md focus:outline-none",
                   s.accent.bg,
                   s.accent.text,

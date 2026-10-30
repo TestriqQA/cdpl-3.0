@@ -222,14 +222,14 @@ export default function StatsSection() {
               role="listitem"
               tabIndex={0}
               className={[
-                "group relative rounded-2xl border bg-white p-6 text-center shadow-sm transition-all duration-200",
+                "group relative overflow-hidden rounded-2xl border bg-white p-6 text-center shadow-sm transition-all duration-200",
                 "hover:-translate-y-0.5 hover:shadow-md focus-visible:-translate-y-0.5",
                 s.accent.border,
                 s.accent.ring,
                 "focus:outline-none focus:ring-2",
               ].join(" ")}
             >
-              <div className={["absolute left-0 right-0 top-0 h-1 rounded-t-2xl", s.accent.bar].join(" ")} aria-hidden />
+              <div className={["absolute left-0 right-0 top-0 h-1", s.accent.bar].join(" ")} aria-hidden />
 
               <div className="mx-auto h-1 w-14 rounded-full bg-white/80" aria-hidden />
               <div className={["mt-3 text-4xl font-extrabold tracking-tight", s.accent.text].join(" ")}>

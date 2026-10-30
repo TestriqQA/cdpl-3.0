@@ -148,7 +148,7 @@ export default function ToolsSection() {
               <article
                 tabIndex={0}
                 className={[
-                  "group relative h-full rounded-2xl border p-4 shadow-sm transition-all duration-200 backdrop-blur",
+                  "group relative h-full overflow-hidden rounded-2xl border p-4 shadow-sm transition-all duration-200 backdrop-blur",
                   "hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:-translate-y-0.5",
                   t.accent.bg,
                   t.accent.border,

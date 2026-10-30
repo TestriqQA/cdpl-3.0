@@ -44,13 +44,13 @@ export default function FaqSection() {
             <div role="listitem" key={f.question}>
             <details
               className={[
-                "group relative rounded-2xl border bg-white p-4 sm:p-5 shadow-sm transition-all duration-200",
+                "group relative overflow-hidden rounded-2xl border bg-white p-4 sm:p-5 shadow-sm transition-all duration-200",
                 "open:shadow-md hover:-translate-y-0.5 focus-within:-translate-y-0.5",
                 f.accent.border,
               ].join(" ")}
             >
               {/* top accent bar */}
-              <div className={["absolute left-0 right-0 top-0 h-1 rounded-t-2xl", f.accent.bar].join(" ")} aria-hidden />
+              <div className={["absolute left-0 right-0 top-0 h-1", f.accent.bar].join(" ")} aria-hidden />
 
               <summary className={["flex cursor-pointer list-none items-start justify-between gap-3", "focus:outline-none focus-visible:ring-2", f.accent.ring].join(" ")}>
                 <h3 className="text-base md:text-lg font-bold text-slate-900">

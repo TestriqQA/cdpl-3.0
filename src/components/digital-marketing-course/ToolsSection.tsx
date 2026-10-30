@@ -98,7 +98,7 @@ export default function ToolsSection() {
             <li key={t.name}>
               <article
                 className={[
-                  'group relative rounded-2xl border p-5 shadow-[0_1px_0_0_rgba(15,23,42,0.05)] transition',
+                  'group relative overflow-hidden rounded-2xl border p-5 shadow-[0_1px_0_0_rgba(15,23,42,0.05)] transition',
                   'hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2',
                   t.accent.bg,
                   t.accent.border,
