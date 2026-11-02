@@ -62,7 +62,7 @@ export default function MockTestLandingPage() {
   });
 
   return (
-    <div className="min-h-screen bg-white text-slate-800 font-sans selection:bg-brand-100 selection:text-brand-900">
+    <div className="relative isolate overflow-hidden min-h-screen bg-white text-slate-800 font-sans selection:bg-brand-100 selection:text-brand-900">
       {mockSchemas.map((schema, index) => (
         <JsonLd
           key={`mock-schema-${index}`}
@@ -71,8 +71,8 @@ export default function MockTestLandingPage() {
         />
       ))}
 
-      {/* Background Decorations - Static */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+      {/* Background Decorations - Static. Absolute, not fixed: a fixed layer painted over the footer. */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/4" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-50/50 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.015)_1px,transparent_1px),linear-gradient(to_right,rgba(0,0,0,0.015)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-60" />
