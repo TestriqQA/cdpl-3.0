@@ -1,3 +1,4 @@
+import Image from "next/image";
 import EnrollButton from "./ui/EnrollButton";
 
 const toolsData = [
@@ -7,7 +8,7 @@ const toolsData = [
         category: "Visualization",
         description:
             "Leading data visualization and business intelligence platform",
-        icon: "📊",
+        logo: "/techstack_logos/tableau-logo.svg",
         bgColor: "bg-orange-100",
         textColor: "text-gray-950",
     },
@@ -25,7 +26,7 @@ const toolsData = [
         name: "Tableau Server",
         category: "Collaboration",
         description: "Publish and share interactive dashboards across organizations",
-        icon: "🖥️",
+        logo: "/techstack_logos/tableau-logo.svg",
         bgColor: "bg-green-100",
         textColor: "text-gray-950",
     },
@@ -34,7 +35,7 @@ const toolsData = [
         name: "Tableau Public",
         category: "Sharing",
         description: "Share interactive visualizations with the public",
-        icon: "🌐",
+        logo: "/techstack_logos/tableau-logo.svg",
         bgColor: "bg-purple-100",
         textColor: "text-gray-950",
     },
@@ -83,16 +84,21 @@ export default function ToolsSection() {
                             key={tool.id}
                             className={`${tool.bgColor} rounded-xl p-8 border-2 border-gray-200 hover:border-orange-300 hover:shadow-lg transition-all hover:-translate-y-1`}
                         >
-                            {/* Icon */}
-                            <div className="text-5xl mb-4">{tool.icon}</div>
-
-                            {/* Name */}
-                            <h3 className={`${tool.textColor} text-2xl font-bold mb-2`}>
-                                {tool.name}
-                            </h3>
+                            <div className="flex items-center gap-3">
+                                {tool.logo ? (
+                                    <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
+                                ) : (
+                                    <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center text-2xl sm:h-10 sm:w-10 sm:text-3xl" aria-hidden>
+                                        {tool.icon}
+                                    </div>
+                                )}
+                                <h3 className={`${tool.textColor} min-w-0 text-2xl font-bold`}>
+                                    {tool.name}
+                                </h3>
+                            </div>
 
                             {/* Category */}
-                            <div className="inline-block bg-white bg-opacity-50 px-3 py-1 rounded-full text-xs font-semibold text-gray-700 mb-4">
+                            <div className="mt-3 inline-block bg-white bg-opacity-50 px-3 py-1 rounded-full text-xs font-semibold text-gray-700 mb-4">
                                 {tool.category}
                             </div>
 

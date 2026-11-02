@@ -171,12 +171,13 @@ export default function TeamCultureSection() {
 
       {/* Rolling marquee — subtle credibility loop */}
       <div className="relative z-10 mt-5 overflow-hidden rounded-xl border border-slate-200 bg-white/70 p-2 shadow-sm backdrop-blur">
+        {/* 6 copies so each half (3 copies) is wider than the box; pr-8 keeps the halves identical. */}
         <div
-          className="flex gap-8 whitespace-nowrap text-xs text-slate-600"
-          style={{ animation: "cdpl-marquee 12s linear infinite" }}
+          className="flex w-max gap-8 pr-8 whitespace-nowrap text-xs text-slate-600 motion-reduce:[animation:none]"
+          style={{ animation: "cdpl-marquee 45s linear infinite" }}
           aria-hidden
         >
-          {[...marquee, ...marquee].map((m, i) => (
+          {[...marquee, ...marquee, ...marquee, ...marquee, ...marquee, ...marquee].map((m, i) => (
             <span key={i} className="inline-flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: BRAND }} />
               {m}

@@ -1,5 +1,6 @@
 import { Zap, BarChart3, Mail, Smartphone } from "lucide-react";
 import React from "react";
+import Image from "next/image";
 import EnrollButton from "./ui/EnrollButton";
 
 interface ToolCategory {
@@ -14,7 +15,8 @@ interface ToolCard {
     name: string;
     category: string;
     description: string;
-    icon: string;
+    icon?: string;
+    logo?: string;
     color: string;
 }
 
@@ -56,7 +58,7 @@ const tools: ToolCard[] = [
         category: "AI Copywriting & Marketing Automation",
         description:
             "Use ChatGPT to create high-converting ad copy, SEO blogs, landing page content, and marketing automation workflows faster.",
-        icon: "🤖",
+        logo: "/techstack_logos/OpenAI-logo.png",
         color: "from-blue-50 to-blue-100",
     },
     {
@@ -64,7 +66,7 @@ const tools: ToolCard[] = [
         category: "AI Insights & Trend Analysis",
         description:
             "Leverage Grok for real-time insights, market trend analysis, and performance marketing ideas powered by AI.",
-        icon: "📡",
+        logo: "/techstack_logos/grok-logo.svg",
         color: "from-indigo-50 to-indigo-100",
     },
     {
@@ -72,7 +74,7 @@ const tools: ToolCard[] = [
         category: "Advanced AI Research",
         description:
             "Tap into DeepSeek for in-depth research, data-backed content strategy, and long-form digital marketing assets.",
-        icon: "🧠",
+        logo: "/techstack_logos/deepseek-logo.svg",
         color: "from-purple-50 to-purple-100",
     },
     {
@@ -80,7 +82,7 @@ const tools: ToolCard[] = [
         category: "Creative Design & Ad Creatives",
         description:
             "Design high-performing social media creatives, ad banners, and brand assets using Canva’s drag-and-drop editor.",
-        icon: "🎨",
+        logo: "/techstack_logos/canva-logo.svg",
         color: "from-pink-50 to-pink-100",
     },
     {
@@ -88,7 +90,7 @@ const tools: ToolCard[] = [
         category: "SEO & Competitor Research",
         description:
             "Perform advanced keyword research, backlink analysis, and competitor audits to boost organic traffic and Google rankings.",
-        icon: "📊",
+        logo: "/techstack_logos/semrush-logo.svg",
         color: "from-orange-50 to-orange-100",
     },
     {
@@ -96,7 +98,7 @@ const tools: ToolCard[] = [
         category: "Technical SEO & Link Building",
         description:
             "Track domain authority, analyze backlinks, and uncover content gaps to strengthen your SEO strategy.",
-        icon: "🧭",
+        logo: "/techstack_logos/ahrefs-logo.png",
         color: "from-teal-50 to-teal-100",
     },
     {
@@ -104,7 +106,7 @@ const tools: ToolCard[] = [
         category: "Keyword & Content Strategy",
         description:
             "Discover long-tail keywords, content ideas, and SEO opportunities to drive targeted organic traffic.",
-        icon: "🔍",
+        logo: "/techstack_logos/ubersuggest-logo.png",
         color: "from-lime-50 to-lime-100",
     },
     {
@@ -112,7 +114,7 @@ const tools: ToolCard[] = [
         category: "Search Performance Monitoring",
         description:
             "Monitor website performance on Google Search, fix indexing issues, and optimize for core web vitals.",
-        icon: "📈",
+        logo: "/techstack_logos/google-search-console-logo.svg",
         color: "from-sky-50 to-sky-100",
     },
     {
@@ -120,7 +122,7 @@ const tools: ToolCard[] = [
         category: "Web Analytics & Tracking",
         description:
             "Use Google Analytics 4 (GA4) to track user journeys, measure conversions, and optimize marketing funnels.",
-        icon: "📉",
+        logo: "/techstack_logos/google-analytics-logo.svg",
         color: "from-emerald-50 to-emerald-100",
     },
     {
@@ -128,7 +130,7 @@ const tools: ToolCard[] = [
         category: "Trend & Demand Analysis",
         description:
             "Identify trending topics, seasonal search demand, and content opportunities across regions and niches.",
-        icon: "📊",
+        logo: "/techstack_logos/Google-Trends-logo.jpg",
         color: "from-red-50 to-red-100",
     },
     {
@@ -136,7 +138,7 @@ const tools: ToolCard[] = [
         category: "Email Marketing Automation",
         description:
             "Create email campaigns, nurture sequences, and newsletter automation to grow your subscriber base and revenue.",
-        icon: "✉️",
+        logo: "/techstack_logos/mailchimp-logo.svg",
         color: "from-yellow-50 to-yellow-100",
     },
     {
@@ -144,7 +146,7 @@ const tools: ToolCard[] = [
         category: "Creator & Funnel Marketing",
         description:
             "Build lead magnets, sales funnels, and audience segments tailored for creators, coaches, and online businesses.",
-        icon: "📬",
+        logo: "/techstack_logos/convertkit-logo.svg",
         color: "from-rose-50 to-rose-100",
     },
     {
@@ -152,7 +154,7 @@ const tools: ToolCard[] = [
         category: "Campaign & Client Planning",
         description:
             "Plan content calendars, campaign launches, client meetings, and automation timelines in one place.",
-        icon: "🗓️",
+        logo: "/techstack_logos/google-calendar-logo.svg",
         color: "from-slate-50 to-slate-100",
     },
     {
@@ -160,7 +162,7 @@ const tools: ToolCard[] = [
         category: "Search & Performance Ads",
         description:
             "Run search, display, and Performance Max campaigns focused on lead generation, e-commerce, and brand visibility.",
-        icon: "💰",
+        logo: "/techstack_logos/google-ads-logo.svg",
         color: "from-blue-50 to-cyan-100",
     },
     {
@@ -168,7 +170,7 @@ const tools: ToolCard[] = [
         category: "Meta Ads Management",
         description:
             "Manage Facebook and Instagram ad campaigns, audiences, and creatives from a central dashboard.",
-        icon: "📱",
+        logo: "/techstack_logos/Meta-Ads-Manager-logo.png",
         color: "from-indigo-50 to-sky-100",
     },
     {
@@ -176,7 +178,7 @@ const tools: ToolCard[] = [
         category: "Social Media Advertising",
         description:
             "Create high-ROAS Facebook ad campaigns using custom audiences, lookalikes, and retargeting strategies.",
-        icon: "👍",
+        logo: "/techstack_logos/Meta-Ads-Manager-logo.png",
         color: "from-blue-50 to-blue-100",
     },
     {
@@ -184,7 +186,7 @@ const tools: ToolCard[] = [
         category: "Visual Performance Marketing",
         description:
             "Launch scroll-stopping Instagram Ads with strong hooks, creatives, and CTA-driven campaigns.",
-        icon: "📸",
+        logo: "/techstack_logos/Meta-Ads-Manager-logo.png",
         color: "from-fuchsia-50 to-pink-100",
     },
 ];
@@ -217,18 +219,21 @@ export default function ToolsSection() {
                             key={idx}
                             className={`bg-gradient-to-br ${tool.color} rounded-xl p-6 border-2 border-slate-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300 group`}
                         >
-                            {/* Icon */}
-                            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
-                                {tool.icon}
+                            <div className="flex items-center gap-3">
+                                {tool.logo ? (
+                                    <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10 group-hover:scale-110 transition-transform" aria-hidden />
+                                ) : (
+                                    <span className="flex h-8 w-8 shrink-0 items-center justify-center text-2xl sm:h-10 sm:w-10 group-hover:scale-110 transition-transform" aria-hidden>
+                                        {tool.icon}
+                                    </span>
+                                )}
+                                <h3 className="min-w-0 text-lg font-bold text-slate-900">
+                                    {tool.name}
+                                </h3>
                             </div>
 
-                            {/* Name */}
-                            <h3 className="text-lg font-bold text-slate-900 mb-1">
-                                {tool.name}
-                            </h3>
-
                             {/* Category */}
-                            <p className="text-xs font-semibold text-brand mb-3">
+                            <p className="mt-3 text-xs font-semibold text-brand mb-3">
                                 {tool.category}
                             </p>
 

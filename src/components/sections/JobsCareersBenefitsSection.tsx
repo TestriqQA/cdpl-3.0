@@ -80,8 +80,12 @@ export default function JobsCareersBenefitsSection() {
                 </header>
 
                 <div className="relative mb-8 overflow-hidden rounded-xl border border-neutral-200 bg-white">
-                    <div className="flex min-w-max gap-8 whitespace-nowrap py-3 text-sm font-medium text-neutral-700 [animation:marquee_24s_linear_infinite] will-change-transform">
+                    {/* Global cdpl-marquee (a styled-jsx scoped keyframe never matched, so this never moved).
+                        4 copies with no outer gap (each copy's px-4 spaces the seam) so the -50% loop is seamless. */}
+                    <div className="flex w-max whitespace-nowrap py-3 text-sm font-medium text-neutral-700 [animation:cdpl-marquee_60s_linear_infinite] motion-reduce:[animation:none] will-change-transform">
                         <TickerItems />
+                        <TickerItems ariaHidden />
+                        <TickerItems ariaHidden />
                         <TickerItems ariaHidden />
                     </div>
                 </div>
@@ -201,7 +205,6 @@ export default function JobsCareersBenefitsSection() {
 
 
             <style jsx>{`
-        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         .shimmer-line { animation: shimmer 2.4s linear infinite; }
         @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(400%); } }
         @media (max-width: 360px) { :global(#benefits-title) { font-size: 1.6rem; line-height: 1.25; } }

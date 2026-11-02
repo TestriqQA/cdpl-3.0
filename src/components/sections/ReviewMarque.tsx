@@ -21,7 +21,7 @@ const GOOGLE_LOGO = '/slider_logos/google-logo.svg';
 function MarqueeRow({
   items,
   direction = 'left',
-  speed = 150
+  speed = 60
 }: {
   items: Review[];
   direction?: 'left' | 'right';
@@ -29,14 +29,16 @@ function MarqueeRow({
 }) {
   return (
     <div className="relative flex overflow-hidden group pointer-events-auto">
+      {/* 4 copies, shifted by -50%: each half (2 copies) is wider than the row, and pr-6 makes
+          the halves identical (gap after the last card too), so the loop has no jump. */}
       <div
-        className="flex gap-6 py-4 w-max group-hover:[animation-play-state:paused_!important]"
+        className="flex gap-6 pr-6 py-4 w-max group-hover:[animation-play-state:paused_!important] motion-reduce:[animation:none_!important]"
         style={{
           animation: `marquee-${direction} ${speed}s linear infinite`,
           willChange: 'transform'
         }}
       >
-        {[...items, ...items].map((review, idx) => (
+        {[...items, ...items, ...items, ...items].map((review, idx) => (
           <ReviewCard key={`${review.name}-${idx}`} review={review} />
         ))}
       </div>
@@ -184,18 +186,18 @@ export default function ReviewsMarquee({ initialReviews, initialTotal, initialRa
 
         {/* Marquees */}
         <div className="space-y-8 mask-linear-gradient">
-          <MarqueeRow items={safeRow1} direction="left" speed={150} />
-          <MarqueeRow items={safeRow2} direction="right" speed={150} />
+          <MarqueeRow items={safeRow1} direction="left" />
+          <MarqueeRow items={safeRow2} direction="right" />
         </div>
 
         {/* CSS for Marquee */}
         <style jsx>{`
             @keyframes marquee-left {
                 0% { transform: translateX(0); }
-                100% { transform: translateX(calc(-100% / 10)); }
+                100% { transform: translateX(-50%); }
             }
             @keyframes marquee-right {
-                0% { transform: translateX(calc(-100% / 10)); }
+                0% { transform: translateX(-50%); }
                 100% { transform: translateX(0); }
             }
             @keyframes fade-in-up {
@@ -206,8 +208,14 @@ export default function ReviewsMarquee({ initialReviews, initialTotal, initialRa
                 animation: fade-in-up 0.6s ease-out forwards;
             }
             .mask-linear-gradient {
-                mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-                -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+                mask-image: linear-gradient(to right, transparent 12px, black 44px, black calc(100% - 44px), transparent calc(100% - 12px));
+                -webkit-mask-image: linear-gradient(to right, transparent 12px, black 44px, black calc(100% - 44px), transparent calc(100% - 12px));
+            }
+            @media (min-width: 640px) {
+                .mask-linear-gradient {
+                    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+                    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+                }
             }
            `}</style>
       </div>

@@ -15,9 +15,9 @@ export function ContactBookCallSection() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-12">
         <div className="rounded-3xl border border-slate-200 bg-white/80 backdrop-blur shadow-lg overflow-hidden">
-          <div className="relative p-8 md:p-10">
+          <div className="relative p-6 sm:p-8 md:p-10">
             <div
               aria-hidden
               className="absolute inset-0 -z-10"
@@ -27,10 +27,10 @@ export function ContactBookCallSection() {
               }}
             />
             <div className="flex flex-col items-center text-center">
-              <h2 className="text-4xl font-bold tracking-tight text-slate-900">
+              <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
                 Book a <span className="text-brand">Free 1:1 Career Counseling</span> Session
               </h2>
-              <p className="mt-5 text-lg max-w-5xl text-slate-600">
+              <p className="mt-4 text-base md:text-lg max-w-5xl text-slate-600">
                 Get personalized guidance on <strong>Software Testing</strong>, <strong>Data Science &amp; AI</strong>, and{" "}
                 <strong>Full-Stack Development</strong> programs. Discuss <strong>placements</strong>,{" "}
                 <strong>EMI &amp; scholarships</strong>, and your <strong>job-ready learning roadmap</strong>.
@@ -55,7 +55,7 @@ export function ContactBookCallSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   title="Schedule a Counseling Call with CDPL Advisor"
-                  className="group relative inline-flex items-center justify-center rounded-full bg-blue-700 px-6 py-3 font-semibold text-white shadow-md transition hover:brightness-110"
+                  className="group relative inline-flex overflow-hidden items-center justify-center rounded-full bg-blue-700 px-6 py-3 font-semibold text-white shadow-md transition hover:brightness-110"
                   aria-label="Schedule a counseling call"
                 >
                   <span className="relative z-[1]">Schedule a Call</span>
@@ -70,14 +70,14 @@ export function ContactBookCallSection() {
           </div>
 
           <div className="border-t border-slate-200 bg-white/80">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-slate-100">
               {[
                 { k: "Personalized Roadmap", v: "Course mapping for your goals & experience" },
                 { k: "Syllabus & Projects", v: "Hands-on curriculum with capstones & case studies" },
                 { k: "Placements", v: "Resume review, mock interviews, hiring drives" },
                 { k: "Financing", v: "Scholarships & flexible EMI options" },
-              ].map((item, i) => (
-                <div key={item.k} className={`p-5 text-center ${i < 3 ? "sm:border-r" : ""} border-slate-100`}>
+              ].map((item) => (
+                <div key={item.k} className="bg-white p-4 sm:p-5 text-center">
                   <div className="text-sm font-semibold text-slate-900">{item.k}</div>
                   <div className="mt-1 text-xs text-slate-600">{item.v}</div>
                 </div>

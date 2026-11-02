@@ -3,11 +3,13 @@
 import { Code2, Database, BarChart3 } from "lucide-react";
 import { courseData } from "@/components/ai-in-digital-marketing/courseData";
 import { useState } from "react";
+import Image from "next/image";
 import EnrollModal from "@/components/EnrollModal";
 
 interface ToolItem {
   name: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
+  logo?: string;
 }
 
 interface ToolCategory {
@@ -59,18 +61,21 @@ export default function ToolsSection() {
               className={`bg-gradient-to-br ${colorClasses[idx % colorClasses.length]
                 } rounded-xl p-6 border-2 border-slate-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300 group`}
             >
-              {/* Icon */}
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
-                {tool.icon}
+              <div className="flex items-center gap-3">
+                {tool.logo ? (
+                  <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10 group-hover:scale-110 transition-transform" aria-hidden />
+                ) : (
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center text-2xl sm:h-10 sm:w-10 group-hover:scale-110 transition-transform" aria-hidden>
+                    {tool.icon}
+                  </span>
+                )}
+                <h3 className="min-w-0 text-lg font-bold text-slate-900">
+                  {tool.name}
+                </h3>
               </div>
 
-              {/* Name */}
-              <h3 className="text-lg font-bold text-slate-900 mb-1">
-                {tool.name}
-              </h3>
-
               {/* Category */}
-              <p className="text-xs font-semibold text-brand mb-3">
+              <p className="mt-3 text-xs font-semibold text-brand mb-3">
                 {tool.category}
               </p>
 

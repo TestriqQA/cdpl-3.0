@@ -105,11 +105,11 @@ export function ContactFAQSection() {
             "radial-gradient(60% 40% at 12% 0%, rgba(56,189,248,0.10), transparent 60%), radial-gradient(50% 40% at 88% 0%, rgba(167,139,250,0.10), transparent 60%)",
         }}
       />
-      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-6 md:py-12">
-        <div className="rounded-3xl bg-white/80 backdrop-blur border border-slate-200 shadow-xl p-6 sm:p-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-6 md:py-12">
+        <div className="rounded-3xl bg-white/80 backdrop-blur border border-slate-200 shadow-xl p-4 sm:p-8">
           <div className="text-center max-w-5xl mx-auto">
-            <h2 className="text-4xl font-bold text-slate-900">Frequently <span className="text-brand">Asked</span> Questions</h2>
-            <p className="mt-5 text-lg text-slate-600">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900">Frequently <span className="text-brand">Asked</span> Questions</h2>
+            <p className="mt-4 text-base md:text-lg text-slate-600">
               Everything you need to know about <strong>admissions</strong>, <strong>live mentor-led learning</strong>,{" "}
               <strong>EMI & scholarships</strong>, and <strong>placement assistance</strong> at Cinute Digital.
             </p>
@@ -117,7 +117,7 @@ export function ContactFAQSection() {
 
           {/* Category pills */}
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center justify-center">
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap justify-center gap-2">
               {["All", ...CATEGORIES].map((c) => (
                 <button
                   key={c}
@@ -140,22 +140,22 @@ export function ContactFAQSection() {
             {filtered.map((item) => (
               <details
                 key={item.q}
-                className="group rounded-2xl border border-slate-200 bg-slate-50 p-5 open:bg-white open:shadow-md transition"
+                className="group rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-5 open:bg-white open:shadow-md transition"
               >
-                <summary className="flex cursor-pointer list-none items-start justify-between gap-4">
-                  <div>
-                    <span className="inline-flex items-center rounded-full border border-slate-200 bg-white px-2 py-0.5 text-[12px] font-medium text-slate-600">
-                      {item.cat}
-                    </span>
-                    <h3 className="mt-2 text-lg text-slate-900 font-semibold">{item.q}</h3>
-                  </div>
-                  <span
-                    className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-slate-300 text-slate-600 transition group-open:rotate-45"
-                    aria-hidden
-                    title="Toggle"
-                  >
-                    +
+                <summary className="cursor-pointer list-none">
+                  <span className="inline-flex items-center rounded-full border border-slate-200 bg-white px-2 py-0.5 text-[12px] font-medium text-slate-600">
+                    {item.cat}
                   </span>
+                  <div className="mt-2 flex items-start justify-between gap-3">
+                    <h3 className="text-base sm:text-lg text-slate-900 font-semibold">{item.q}</h3>
+                    <span
+                      className="sm:mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-slate-300 text-slate-600 transition group-open:rotate-45"
+                      aria-hidden
+                      title="Toggle"
+                    >
+                      +
+                    </span>
+                  </div>
                 </summary>
                 <div className="mt-3 text-slate-700 leading-7">{item.a}</div>
               </details>

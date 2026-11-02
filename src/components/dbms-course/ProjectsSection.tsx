@@ -12,6 +12,7 @@ type Project = {
   ink: string;       // heading/text color
   iconTint: string;  // icon color
   chip: string;      // small tag style
+  bar: string;       // progress fill (literal class so Tailwind generates it)
 };
 
 const projects: Project[] = [
@@ -25,6 +26,7 @@ const projects: Project[] = [
     ink: 'text-sky-900',
     iconTint: 'text-sky-700',
     chip: 'bg-sky-100 text-sky-800 border-sky-200',
+    bar: 'bg-sky-300',
   },
   {
     icon: <Building2 className="w-7 h-7" />,
@@ -36,6 +38,7 @@ const projects: Project[] = [
     ink: 'text-emerald-900',
     iconTint: 'text-emerald-700',
     chip: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+    bar: 'bg-emerald-300',
   },
   {
     icon: <BarChart3 className="w-7 h-7" />,
@@ -47,6 +50,7 @@ const projects: Project[] = [
     ink: 'text-amber-900',
     iconTint: 'text-amber-700',
     chip: 'bg-amber-100 text-amber-900 border-amber-200',
+    bar: 'bg-amber-300',
   },
 ];
 
@@ -130,8 +134,8 @@ export default function ProjectsSection() {
               </ul>
 
               {/* subtle progress rail for futuristic touch */}
-              <div className="mt-5 h-1.5 w-full overflow-hidden rounded-full bg-white/70">
-                <div className={['h-full w-3/4 rounded-full opacity-80', p.border.replace('border-', 'bg-')].join(' ')} />
+              <div className="mt-5 h-1.5 w-full overflow-hidden rounded-full bg-white ring-1 ring-inset ring-slate-900/10">
+                <div className={['h-full w-3/4 rounded-full', p.bar].join(' ')} />
               </div>
             </article>
           ))}

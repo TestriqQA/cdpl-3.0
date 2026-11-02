@@ -1,11 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import CareerSessionModal from "@/components/CareerSessionModal";
 
 type Tool = {
   name: string;
+  logo?: string;
   desc: string;
   accent: { bg: string; text: string; border: string; ring: string; dot: string };
 };
@@ -13,6 +15,7 @@ type Tool = {
 const TOOLS: Tool[] = [
   {
     name: "Python",
+    logo: "/techstack_logos/python-logo.svg",
     desc: "Primary language for ML & data workflows",
     accent: {
       bg: "bg-sky-50",
@@ -24,6 +27,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Pandas",
+    logo: "/techstack_logos/pandas-logo.svg",
     desc: "Data wrangling, cleaning & feature prep",
     accent: {
       bg: "bg-emerald-50",
@@ -35,6 +39,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "NumPy",
+    logo: "/techstack_logos/numpy-logo.svg",
     desc: "Fast arrays, math & vectorized operations",
     accent: {
       bg: "bg-amber-50",
@@ -46,6 +51,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Scikit-Learn",
+    logo: "/techstack_logos/scikit-learn-logo.svg",
     desc: "Core ML algorithms, pipelines & metrics",
     accent: {
       bg: "bg-rose-50",
@@ -57,6 +63,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Matplotlib",
+    logo: "/techstack_logos/matplotlib-logo.svg",
     desc: "Publication-ready charts & plots",
     accent: {
       bg: "bg-indigo-50",
@@ -68,6 +75,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Seaborn",
+    logo: "/techstack_logos/seaborn-logo.png",
     desc: "Statistical visuals & quick EDA",
     accent: {
       bg: "bg-violet-50",
@@ -79,6 +87,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Jupyter Notebook",
+    logo: "/techstack_logos/jupyter-logo.svg",
     desc: "Interactive notebooks for experiments",
     accent: {
       bg: "bg-lime-50",
@@ -159,12 +168,18 @@ export default function ToolsSection() {
               >
                 {/* top accent line */}
                 <div className={`absolute left-0 top-0 h-1 w-2/3 rounded-br-2xl ${t.accent.dot}`} aria-hidden />
-                {/* name + dot */}
-                <div className="flex items-center gap-2">
-                  <span className={`inline-block h-2.5 w-2.5 rounded-full ${t.accent.dot}`} aria-hidden />
-                  <p className={`truncate text-sm md:text-base font-bold ${t.accent.text}`}>{t.name}</p>
+                {/* name + logo */}
+                <div className="flex items-center gap-3">
+                  {t.logo ? (
+                    <Image src={t.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
+                  ) : (
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/70 sm:h-10 sm:w-10" aria-hidden>
+                      <span className={`inline-block h-2.5 w-2.5 rounded-full ${t.accent.dot}`} />
+                    </span>
+                  )}
+                  <p className={`min-w-0 truncate text-sm md:text-base font-bold ${t.accent.text}`}>{t.name}</p>
                 </div>
-                <p className="mt-1 line-clamp-2 text-xs md:text-sm text-slate-700">{t.desc}</p>
+                <p className="mt-3 line-clamp-2 text-xs md:text-sm text-slate-700">{t.desc}</p>
 
                 {/* bottom track to hint interactivity (subtle, not a gradient) */}
                 <div className="mt-3 h-1 w-full rounded-full bg-white/70" aria-hidden>
