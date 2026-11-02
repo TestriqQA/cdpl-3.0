@@ -1,26 +1,21 @@
-import {
-  Globe, Smartphone, Terminal, FileText, Shield, GitBranch, CheckSquare, Bug,
-} from 'lucide-react';
-import type { JSX } from 'react';
+import Image from 'next/image';
 
 type Tool = {
   name: string;
-  icon: JSX.Element;
-  accentBg: string;
+  logo: string;
   accentText: string;
-  accentRing: string;
   keywords: string;
 };
 
 const tools: Tool[] = [
-  { name: 'JIRA', icon: <Bug className="h-7 w-7" />, accentBg: 'bg-sky-50', accentText: 'text-sky-700', accentRing: 'ring-sky-200', keywords: 'JIRA issue tracking, agile boards, bug tracking, sprint planning' },
-  { name: 'Selenium', icon: <Globe className="h-7 w-7" />, accentBg: 'bg-emerald-50', accentText: 'text-emerald-700', accentRing: 'ring-emerald-200', keywords: 'Selenium WebDriver, UI automation testing, cross browser testing' },
-  { name: 'Appium', icon: <Smartphone className="h-7 w-7" />, accentBg: 'bg-fuchsia-50', accentText: 'text-fuchsia-700', accentRing: 'ring-fuchsia-200', keywords: 'Appium mobile automation, Android iOS testing, real device cloud' },
-  { name: 'Postman', icon: <Terminal className="h-7 w-7" />, accentBg: 'bg-orange-50', accentText: 'text-brand', accentRing: 'ring-orange-200', keywords: 'Postman API testing, REST, collections, monitors, newman CI' },
-  { name: 'Cypress', icon: <FileText className="h-7 w-7" />, accentBg: 'bg-indigo-50', accentText: 'text-indigo-700', accentRing: 'ring-indigo-200', keywords: 'Cypress e2e testing, component testing, flake detection, dashboards' },
-  { name: 'Jenkins', icon: <GitBranch className="h-7 w-7" />, accentBg: 'bg-amber-50', accentText: 'text-amber-700', accentRing: 'ring-amber-200', keywords: 'Jenkins CI/CD pipelines, GitHub actions, build automation' },
-  { name: 'TestRail', icon: <CheckSquare className="h-7 w-7" />, accentBg: 'bg-rose-50', accentText: 'text-rose-700', accentRing: 'ring-rose-200', keywords: 'TestRail test case management, test runs, traceability, coverage' },
-  { name: 'Git', icon: <Shield className="h-7 w-7" />, accentBg: 'bg-slate-50', accentText: 'text-slate-700', accentRing: 'ring-slate-200', keywords: 'Git version control, branching strategy, code reviews, PRs' },
+  { name: 'JIRA', logo: '/techstack_logos/jira-logo.svg', accentText: 'text-sky-700', keywords: 'JIRA issue tracking, agile boards, bug tracking, sprint planning' },
+  { name: 'Selenium', logo: '/techstack_logos/selenium-logo.svg', accentText: 'text-emerald-700', keywords: 'Selenium WebDriver, UI automation testing, cross browser testing' },
+  { name: 'Appium', logo: '/techstack_logos/appium-logo.svg', accentText: 'text-fuchsia-700', keywords: 'Appium mobile automation, Android iOS testing, real device cloud' },
+  { name: 'Postman', logo: '/techstack_logos/postman-logo.svg', accentText: 'text-brand', keywords: 'Postman API testing, REST, collections, monitors, newman CI' },
+  { name: 'Cypress', logo: '/techstack_logos/cypress-logo.webp', accentText: 'text-indigo-700', keywords: 'Cypress e2e testing, component testing, flake detection, dashboards' },
+  { name: 'Jenkins', logo: '/techstack_logos/jenkins-logo.svg', accentText: 'text-amber-700', keywords: 'Jenkins CI/CD pipelines, GitHub actions, build automation' },
+  { name: 'TestRail', logo: '/techstack_logos/testrail-logo.svg', accentText: 'text-rose-700', keywords: 'TestRail test case management, test runs, traceability, coverage' },
+  { name: 'Git', logo: '/techstack_logos/git-logo.svg', accentText: 'text-slate-700', keywords: 'Git version control, branching strategy, code reviews, PRs' },
 ];
 
 export default function ToolsSection() {
@@ -59,12 +54,11 @@ export default function ToolsSection() {
             >
               <div className="rounded-2xl bg-gradient-to-br from-white via-white to-white p-[1px] shadow-[0_1px_0_0_rgba(0,0,0,0.04)]">
                 <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 transition hover:shadow-md focus-within:ring-2 focus-within:ring-slate-300 focus-within:ring-offset-2">
-                  <div className={['mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl ring-1', tool.accentRing, tool.accentBg, tool.accentText].join(' ')} aria-hidden>
-                    {tool.icon}
+                  <div className="flex items-center gap-3">
+                    <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
+                    <h3 className="min-w-0 text-base sm:text-lg font-semibold text-slate-900">{tool.name}</h3>
                   </div>
-
-                  <h3 className="text-base sm:text-lg font-semibold text-slate-900">{tool.name}</h3>
-                  <p className="mt-1 text-xs sm:text-sm text-slate-600">{tool.keywords}</p>
+                  <p className="mt-3 text-xs sm:text-sm text-slate-600">{tool.keywords}</p>
 
                   {/* Scoped hover underline (only this card) */}
                   <div

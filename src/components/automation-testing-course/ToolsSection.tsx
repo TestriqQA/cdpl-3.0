@@ -1,16 +1,17 @@
-import { Globe, Bot, Zap, Shield, GitBranch, Cpu, Terminal, Eye } from 'lucide-react';
+import Image from 'next/image';
+import { Bot } from 'lucide-react';
 import type { JSX } from 'react';
 
-type Tool = { name: string; icon: JSX.Element };
+type Tool = { name: string; logo?: string; icon?: JSX.Element };
 const tools: Tool[] = [
-  { name: 'Selenium 4', icon: <Globe className="w-7 h-7" /> },
-  { name: 'Cypress', icon: <Zap className="w-7 h-7" /> },
-  { name: 'Playwright', icon: <Terminal className="w-7 h-7" /> },
-  { name: 'Applitools', icon: <Eye className="w-7 h-7" /> },
-  { name: 'k6', icon: <Shield className="w-7 h-7" /> },
-  { name: 'Jenkins', icon: <GitBranch className="w-7 h-7" /> },
-  { name: 'Docker', icon: <Cpu className="w-7 h-7" /> },
-  { name: 'AI Testing', icon: <Bot className="w-7 h-7" /> },
+  { name: 'Selenium 4', logo: '/techstack_logos/selenium-logo.svg' },
+  { name: 'Cypress', logo: '/techstack_logos/cypress-logo.webp' },
+  { name: 'Playwright', logo: '/techstack_logos/playwright-logo.webp' },
+  { name: 'Applitools', logo: '/techstack_logos/applitools-logo.png' },
+  { name: 'k6', logo: '/techstack_logos/k6-logo.svg' },
+  { name: 'Jenkins', logo: '/techstack_logos/jenkins-logo.svg' },
+  { name: 'Docker', logo: '/techstack_logos/docker-logo.svg' },
+  { name: 'AI Testing', icon: <Bot className="w-5 h-5" /> },
 ];
 
 /** Distinct light accents + explicit icon text colors (fixes invisible icons) */
@@ -61,11 +62,17 @@ export default function ToolsSection() {
               >
                 <span className="pointer-events-none absolute right-4 top-4 h-1.5 w-1.5 rounded-full bg-slate-300/70" />
                 {/* Icon wrapper sets the color (currentColor) so the icon is visible */}
-                <div className={['mb-4 grid h-14 w-14 place-items-center rounded-xl ring-1', a.iconBg, a.iconText].join(' ')}>
-                  {tool.icon}
+                <div className="flex items-center gap-3">
+                  {tool.logo ? (
+                    <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
+                  ) : (
+                    <div className={['grid h-8 w-8 shrink-0 place-items-center rounded-lg ring-1 sm:h-10 sm:w-10', a.iconBg, a.iconText].join(' ')}>
+                      {tool.icon}
+                    </div>
+                  )}
+                  <h3 className={['min-w-0 text-sm sm:text-base font-semibold leading-tight', a.title].join(' ')}>{tool.name}</h3>
                 </div>
-                <h3 className={['text-sm sm:text-base font-semibold leading-tight', a.title].join(' ')}>{tool.name}</h3>
-                <p className="mt-1 text-xs sm:text-[13px] leading-5 text-slate-600">
+                <p className="mt-3 text-xs sm:text-[13px] leading-5 text-slate-600">
                   Learn setup, best practices, and real-world patterns with <strong>scalable test design</strong> and <strong>pipeline integration</strong>.
                 </p>
               </div>

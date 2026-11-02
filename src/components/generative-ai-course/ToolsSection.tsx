@@ -1,20 +1,21 @@
+import Image from "next/image";
 import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
 
-type Tool = { name: string };
+type Tool = { name: string; logo?: string };
 
 const TOOLS: Tool[] = [
-  { name: "Python" },
-  { name: "TensorFlow" },
-  { name: "PyTorch" },
-  { name: "Keras" },
+  { name: "Python", logo: "/techstack_logos/python-logo.svg" },
+  { name: "TensorFlow", logo: "/techstack_logos/tensorflow-logo.svg" },
+  { name: "PyTorch", logo: "/techstack_logos/pytorch-logo.svg" },
+  { name: "Keras", logo: "/techstack_logos/keras-logo.svg" },
   { name: "NLTK" },
-  { name: "spaCy" },
-  { name: "Hugging Face" },
-  { name: "Docker" },
-  { name: "NumPy" },
-  { name: "Pandas" },
-  { name: "scikit-learn" },
-  { name: "FastAPI" },
+  { name: "spaCy", logo: "/techstack_logos/spacy-logo.svg" },
+  { name: "Hugging Face", logo: "/techstack_logos/Hugging-logo.png" },
+  { name: "Docker", logo: "/techstack_logos/docker-logo.svg" },
+  { name: "NumPy", logo: "/techstack_logos/numpy-logo.svg" },
+  { name: "Pandas", logo: "/techstack_logos/pandas-logo.svg" },
+  { name: "scikit-learn", logo: "/techstack_logos/scikit-learn-logo.svg" },
+  { name: "FastAPI", logo: "/techstack_logos/fastapi-logo.webp" },
 ];
 
 // 12 distinct, eye-catching (but soft) accents — reused only if you add more tools.
@@ -80,7 +81,7 @@ export default function ToolsSection() {
                 <span
                   id={id}
                   className={[
-                    "inline-flex w-full items-center justify-center rounded-xl border px-3 py-2 text-sm font-semibold",
+                    "inline-flex w-full items-center justify-center gap-1.5 rounded-xl border px-3 py-2 text-sm font-semibold",
                     "shadow-[0_1px_0_0_rgba(15,23,42,0.04)] transition-all duration-150",
                     "hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2",
                     acc.border,
@@ -90,6 +91,9 @@ export default function ToolsSection() {
                   ].join(" ")}
                   tabIndex={0}
                 >
+                  {t.logo && (
+                    <Image src={t.logo} alt="" width={20} height={20} className="h-5 w-5 shrink-0 object-contain" aria-hidden />
+                  )}
                   {t.name}
                 </span>
               </li>

@@ -1,17 +1,20 @@
-import { Code2, Database, BarChart3, Cpu } from "lucide-react";
+import { Code2, Database, BarChart3, Cpu, type LucideIcon } from "lucide-react";
+import Image from "next/image";
 import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
 
-const toolCategories = [
+type Tool = { name: string; icon?: string; logo?: string };
+
+const toolCategories: { category: string; icon: LucideIcon; color: string; tools: Tool[] }[] = [
   {
     category: "Programming & Core Libraries",
     icon: Code2,
     color: "from-blue-500 to-blue-600",
     tools: [
-      { name: "Python", icon: "🐍" },
-      { name: "NumPy", icon: "📊" },
-      { name: "Pandas", icon: "🐼" },
-      { name: "Matplotlib", icon: "📈" },
-      { name: "Seaborn", icon: "🎨" },
+      { name: "Python", logo: "/techstack_logos/python-logo.svg" },
+      { name: "NumPy", logo: "/techstack_logos/numpy-logo.svg" },
+      { name: "Pandas", logo: "/techstack_logos/pandas-logo.svg" },
+      { name: "Matplotlib", logo: "/techstack_logos/matplotlib-logo.svg" },
+      { name: "Seaborn", logo: "/techstack_logos/seaborn-logo.png" },
     ],
   },
   {
@@ -19,10 +22,10 @@ const toolCategories = [
     icon: Cpu,
     color: "from-purple-500 to-purple-600",
     tools: [
-      { name: "Scikit-learn", icon: "🤖" },
-      { name: "TensorFlow", icon: "⚡" },
-      { name: "Keras", icon: "🧠" },
-      { name: "PyTorch", icon: "🔥" },
+      { name: "Scikit-learn", logo: "/techstack_logos/scikit-learn-logo.svg" },
+      { name: "TensorFlow", logo: "/techstack_logos/tensorflow-logo.svg" },
+      { name: "Keras", logo: "/techstack_logos/keras-logo.svg" },
+      { name: "PyTorch", logo: "/techstack_logos/pytorch-logo.svg" },
       { name: "XGBoost", icon: "🚀" },
     ],
   },
@@ -32,10 +35,10 @@ const toolCategories = [
     color: "from-indigo-500 to-indigo-600",
     tools: [
       { name: "SQL", icon: "🗄️" },
-      { name: "Power BI", icon: "📊" },
-      { name: "Tableau", icon: "📉" },
-      { name: "Plotly", icon: "📊" },
-      { name: "Excel", icon: "📋" },
+      { name: "Power BI", logo: "/techstack_logos/power-bi-logo.svg" },
+      { name: "Tableau", logo: "/techstack_logos/tableau-logo.svg" },
+      { name: "Plotly", logo: "/techstack_logos/plotly-logo.svg" },
+      { name: "Excel", logo: "/techstack_logos/excel-logo.svg" },
     ],
   },
   {
@@ -43,10 +46,10 @@ const toolCategories = [
     icon: Database,
     color: "from-green-500 to-green-600",
     tools: [
-      { name: "Jupyter Notebook", icon: "📓" },
-      { name: "Git & GitHub", icon: "🔗" },
-      { name: "Docker", icon: "🐳" },
-      { name: "AWS/Cloud", icon: "☁️" },
+      { name: "Jupyter Notebook", logo: "/techstack_logos/jupyter-logo.svg" },
+      { name: "Git & GitHub", logo: "/techstack_logos/git-logo.svg" },
+      { name: "Docker", logo: "/techstack_logos/docker-logo.svg" },
+      { name: "AWS/Cloud", logo: "/techstack_logos/amazonwebservices-logo.svg" },
       { name: "APIs", icon: "🔌" },
     ],
   },
@@ -94,12 +97,18 @@ export default function ToolsSection() {
                       key={toolIndex}
                       className="bg-white rounded-lg p-4 border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all duration-300 group"
                     >
-                      <p className="text-2xl mb-2 group-hover:scale-110 transition-transform">
-                        {tool.icon}
-                      </p>
-                      <p className="font-semibold text-slate-900 text-sm">
-                        {tool.name}
-                      </p>
+                      <div className="flex items-center gap-3">
+                        {tool.logo ? (
+                          <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10 group-hover:scale-110 transition-transform" aria-hidden />
+                        ) : (
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center text-xl sm:h-10 sm:w-10 group-hover:scale-110 transition-transform" aria-hidden>
+                            {tool.icon}
+                          </span>
+                        )}
+                        <p className="min-w-0 font-semibold text-slate-900 text-sm">
+                          {tool.name}
+                        </p>
+                      </div>
                     </div>
                   ))}
                 </div>

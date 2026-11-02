@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { FileSpreadsheet, Database, Layers, Grid3x3, BarChart3, TrendingUp } from "lucide-react";
 import EnrollModal from "../EnrollModal";
 
@@ -9,6 +10,7 @@ const tools = [
         category: "Core Tool",
         description: "Advanced Excel features and functions",
         icon: "FileSpreadsheet",
+        logo: "/techstack_logos/excel-logo.svg",
     },
     {
         name: "Power Query",
@@ -91,16 +93,19 @@ export default function ToolsSection() {
                                 <div className={`absolute inset-0 ${color.bg} opacity-0 group-hover:opacity-40 transition-opacity duration-300`}></div>
 
                                 <div className="relative z-10">
-                                    {/* Icon */}
-                                    <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl ${color.bg} ${color.text} mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                                        <Icon className="w-7 h-7" />
+                                    <div className="flex items-center gap-3">
+                                        {tool.logo ? (
+                                            <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10 group-hover:scale-110 transition-transform duration-300" aria-hidden />
+                                        ) : (
+                                            <div className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl sm:h-10 sm:w-10 ${color.bg} ${color.text} group-hover:scale-110 transition-transform duration-300`}>
+                                                <Icon className="h-5 w-5" />
+                                            </div>
+                                        )}
+                                        <h3 className="min-w-0 text-xl font-bold text-slate-900">
+                                            {tool.name}
+                                        </h3>
                                     </div>
-
-                                    {/* Content */}
-                                    <h3 className="text-xl font-bold text-slate-900 mb-2">
-                                        {tool.name}
-                                    </h3>
-                                    <p className={`text-sm font-semibold ${color.text} mb-3`}>
+                                    <p className={`mt-3 text-sm font-semibold ${color.text} mb-3`}>
                                         {tool.category}
                                     </p>
                                     <p className="text-slate-600 leading-relaxed">

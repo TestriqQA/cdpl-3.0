@@ -1,24 +1,28 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { ToolItem } from "./types";
 import { Database, Code, BarChart, Server, ArrowRight } from "lucide-react";
 import EnrollModal from "../EnrollModal";
 
-const toolsData: ToolItem[] = [
-  { id: 1, name: "Tableau", icon: "Tableau", category: "BI & Visualization" },
-  { id: 2, name: "Power BI", icon: "PowerBI", category: "BI & Visualization" },
+type Tool = ToolItem & { logo?: string };
+
+const toolsData: Tool[] = [
+  { id: 1, name: "Tableau", icon: "Tableau", logo: "/techstack_logos/tableau-logo.svg", category: "BI & Visualization" },
+  { id: 2, name: "Power BI", icon: "PowerBI", logo: "/techstack_logos/power-bi-logo.svg", category: "BI & Visualization" },
   {
     id: 3,
     name: "Microsoft Excel",
     icon: "Excel",
+    logo: "/techstack_logos/excel-logo.svg",
     category: "BI & Visualization",
   },
-  { id: 4, name: "MySQL", icon: "MySQL", category: "Databases" },
-  { id: 5, name: "Python", icon: "Python", category: "Programming" },
-  { id: 6, name: "Apache Spark", icon: "Spark", category: "Big Data" },
-  { id: 7, name: "Databricks", icon: "Databricks", category: "Big Data" },
-  { id: 8, name: "Apache Hadoop", icon: "Hadoop", category: "Big Data" },
+  { id: 4, name: "MySQL", icon: "MySQL", logo: "/techstack_logos/mysql-logo.svg", category: "Databases" },
+  { id: 5, name: "Python", icon: "Python", logo: "/techstack_logos/python-logo.svg", category: "Programming" },
+  { id: 6, name: "Apache Spark", icon: "Spark", logo: "/techstack_logos/apache-spark-logo.svg", category: "Big Data" },
+  { id: 7, name: "Databricks", icon: "Databricks", logo: "/techstack_logos/databricks-logo.svg", category: "Big Data" },
+  { id: 8, name: "Apache Hadoop", icon: "Hadoop", logo: "/techstack_logos/hadoop-logo.svg", category: "Big Data" },
 ];
 
 const categoryIcons: { [key: string]: React.ElementType } = {
@@ -28,7 +32,7 @@ const categoryIcons: { [key: string]: React.ElementType } = {
   "Big Data": Server,
 };
 
-interface EnrichedTool extends ToolItem {
+interface EnrichedTool extends Tool {
   description: string;
   color: string;
 }
@@ -150,18 +154,17 @@ const ToolsSection: React.FC = () => {
               key={tool.id}
               className={`group rounded-xl border-2 border-slate-200 bg-gradient-to-br ${tool.color} p-6 transition-all duration-300 hover:border-teal-300 hover:shadow-lg`}
             >
-              {/* Icon (using first letter as placeholder logo) */}
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-white/70 text-2xl font-bold text-[#0f766e] shadow-sm group-hover:scale-110 transition-transform">
-                {tool.name.charAt(0)}
+              <div className="flex items-center gap-3">
+                {tool.logo && (
+                  <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10 group-hover:scale-110 transition-transform" aria-hidden />
+                )}
+                <h3 className="min-w-0 text-lg font-bold text-slate-900">
+                  {tool.name}
+                </h3>
               </div>
 
-              {/* Name (unchanged content) */}
-              <h3 className="mb-1 text-lg font-bold text-slate-900">
-                {tool.name}
-              </h3>
-
               {/* Category (unchanged content) */}
-              <p className="mb-3 text-xs font-semibold text-teal-700">
+              <p className="mt-3 mb-3 text-xs font-semibold text-teal-700">
                 {tool.category}
               </p>
 

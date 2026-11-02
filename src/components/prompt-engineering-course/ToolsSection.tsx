@@ -2,23 +2,18 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import EnrollModal from "@/components/EnrollModal";
 import {
-  Bot,          // ChatGPT
-  Image as ImageIcon, // DALL·E
-  Palette,      // Midjourney
-  Camera,       // Stable Diffusion
   Wrench,       // Prompt Tools
-  Sparkles,     // Google Bard / Gemini
-  MessageSquare,// Claude
-  Gauge,        // Groq (speed/inference)
   Rocket,
 } from "lucide-react";
 
 type Tool = {
   name: string;
   badge: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  logo?: string;
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   bg: string;       // card bg
   text: string;     // body text color
   border: string;   // card border
@@ -31,7 +26,7 @@ const TOOLS: Tool[] = [
   {
     name: "ChatGPT",
     badge: "Conversational LLM",
-    icon: Bot,
+    logo: "/techstack_logos/OpenAI-logo.png",
     bg: "bg-indigo-50",
     text: "text-indigo-900",
     border: "border-indigo-200",
@@ -42,7 +37,7 @@ const TOOLS: Tool[] = [
   {
     name: "DALL·E",
     badge: "Text-to-Image",
-    icon: ImageIcon,
+    logo: "/techstack_logos/OpenAI-logo.png",
     bg: "bg-rose-50",
     text: "text-rose-900",
     border: "border-rose-200",
@@ -53,7 +48,7 @@ const TOOLS: Tool[] = [
   {
     name: "Midjourney",
     badge: "Art Direction",
-    icon: Palette,
+    logo: "/techstack_logos/Midjourney-logo.png",
     bg: "bg-emerald-50",
     text: "text-emerald-900",
     border: "border-emerald-200",
@@ -64,7 +59,7 @@ const TOOLS: Tool[] = [
   {
     name: "Stable Diffusion",
     badge: "Open Diffusion",
-    icon: Camera,
+    logo: "/techstack_logos/stable-diffusion-logo.webp",
     bg: "bg-violet-50",
     text: "text-violet-900",
     border: "border-violet-200",
@@ -86,7 +81,7 @@ const TOOLS: Tool[] = [
   {
     name: "Google Bard",
     badge: "Generative Search",
-    icon: Sparkles,
+    logo: "/techstack_logos/gemini-logo.svg",
     bg: "bg-sky-50",
     text: "text-sky-900",
     border: "border-sky-200",
@@ -97,7 +92,7 @@ const TOOLS: Tool[] = [
   {
     name: "Claude AI",
     badge: "Long Context",
-    icon: MessageSquare,
+    logo: "/techstack_logos/anthropic-logo.svg",
     bg: "bg-lime-50",
     text: "text-lime-900",
     border: "border-lime-200",
@@ -108,7 +103,7 @@ const TOOLS: Tool[] = [
   {
     name: "Grok",
     badge: "Fast Inference",
-    icon: Gauge,
+    logo: "/techstack_logos/grok-logo.svg",
     bg: "bg-cyan-50",
     text: "text-cyan-900",
     border: "border-cyan-200",
@@ -207,10 +202,14 @@ function ToolCard({ tool, onEnroll }: { tool: Tool; onEnroll: () => void }) {
       aria-label={`${tool.name} tool`}
     >
       <div className="flex items-center justify-between">
-        <span className="inline-flex items-center gap-2 text-sm font-semibold">
-          <span className={`p-2 rounded-xl ${tool.iconBg} ring-1 ring-black/5`}>
-            <Icon className={`h-5 w-5 ${tool.iconColor}`} strokeWidth={2.2} />
-          </span>
+        <span className="inline-flex items-center gap-3 text-sm font-semibold">
+          {tool.logo ? (
+            <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
+          ) : Icon ? (
+            <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg sm:h-10 sm:w-10 ${tool.iconBg} ring-1 ring-black/5`}>
+              <Icon className={`h-5 w-5 ${tool.iconColor}`} strokeWidth={2.2} />
+            </span>
+          ) : null}
           {tool.name}
         </span>
         <span
