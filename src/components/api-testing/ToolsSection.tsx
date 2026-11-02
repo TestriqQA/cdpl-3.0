@@ -16,6 +16,7 @@ type Tool = {
     ink: string;      // heading/text color
     iconTint: string; // icon color
     chip?: string;    // optional small tag color
+    bar: string;      // progress fill (literal class so Tailwind generates it)
 };
 
 const tools: Tool[] = [
@@ -24,9 +25,10 @@ const tools: Tool[] = [
         logo: '/techstack_logos/postman-logo.svg',
         bg: 'bg-orange-50',
         border: 'border-orange-200',
-        ink: 'text-brand',
-        iconTint: 'text-brand',
-        chip: 'bg-orange-100 text-brand border-orange-200',
+        ink: 'text-orange-700',
+        iconTint: 'text-orange-600',
+        chip: 'bg-orange-100 text-orange-800 border-orange-200',
+        bar: 'bg-orange-300',
     },
     {
         name: 'REST APIs',
@@ -36,6 +38,7 @@ const tools: Tool[] = [
         ink: 'text-sky-900',
         iconTint: 'text-sky-700',
         chip: 'bg-sky-100 text-sky-800 border-sky-200',
+        bar: 'bg-sky-300',
     },
     {
         name: 'JSON / XML',
@@ -45,6 +48,7 @@ const tools: Tool[] = [
         ink: 'text-emerald-900',
         iconTint: 'text-emerald-700',
         chip: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+        bar: 'bg-emerald-300',
     },
     {
         name: 'OAuth 2.0',
@@ -54,6 +58,7 @@ const tools: Tool[] = [
         ink: 'text-fuchsia-900',
         iconTint: 'text-fuchsia-700',
         chip: 'bg-fuchsia-100 text-fuchsia-800 border-fuchsia-200',
+        bar: 'bg-fuchsia-300',
     },
     {
         name: 'API Chaining',
@@ -63,6 +68,7 @@ const tools: Tool[] = [
         ink: 'text-indigo-900',
         iconTint: 'text-indigo-700',
         chip: 'bg-indigo-100 text-indigo-800 border-indigo-200',
+        bar: 'bg-indigo-300',
     },
     {
         name: 'Newman CLI',
@@ -72,6 +78,7 @@ const tools: Tool[] = [
         ink: 'text-amber-900',
         iconTint: 'text-amber-700',
         chip: 'bg-amber-100 text-amber-800 border-amber-200',
+        bar: 'bg-amber-300',
     },
     {
         name: 'OWASP ZAP',
@@ -81,6 +88,7 @@ const tools: Tool[] = [
         ink: 'text-rose-900',
         iconTint: 'text-rose-700',
         chip: 'bg-rose-100 text-rose-800 border-rose-200',
+        bar: 'bg-rose-300',
     },
     {
         name: 'Mock Servers',
@@ -90,6 +98,7 @@ const tools: Tool[] = [
         ink: 'text-slate-900',
         iconTint: 'text-slate-700',
         chip: 'bg-slate-100 text-slate-800 border-slate-200',
+        bar: 'bg-slate-300',
     },
 ];
 
@@ -163,8 +172,8 @@ export default function ToolsSection() {
                             </p>
 
                             {/* micro “progress” line for a futuristic touch */}
-                            <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-white/70">
-                                <div className={['h-full w-3/4 rounded-full opacity-80', tool.border.replace('border-', 'bg-')].join(' ')} />
+                            <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-white ring-1 ring-inset ring-slate-900/10">
+                                <div className={['h-full w-3/4 rounded-full', tool.bar].join(' ')} />
                             </div>
                         </article>
                     ))}

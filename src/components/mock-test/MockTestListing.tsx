@@ -98,7 +98,7 @@ export default function MockTestListing() {
                             key={category.id}
                             className="break-inside-avoid"
                         >
-                            <div className={`group relative bg-white rounded-3xl p-6 border ${style.border} shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}>
+                            <div className={`group relative overflow-hidden bg-white rounded-3xl p-6 border ${style.border} shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}>
 
                                 {/* Decorative bg blob */}
                                 <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full ${style.bg} opacity-50 blur-2xl group-hover:scale-150 transition-transform duration-500`} />

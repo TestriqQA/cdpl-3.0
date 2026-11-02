@@ -81,13 +81,7 @@ export default function ServiceDetailOutcomesSection({ service }: { service: Ser
           </h2>
         </div>
 
-        {/* SPINE */}
         <div className="relative">
-          <div className="pointer-events-none absolute left-1/2 top-0 h-full w-px -translate-x-1/2">
-            <div className="absolute inset-0 rounded-full" style={{ background: TOKENS.hairline }} />
-            <div className={`absolute inset-y-10 left-1/2 w-[2.5px] -translate-x-1/2 rounded-full bg-gradient-to-b ${unsafe ? safeGradient : headerGradient}`} />
-          </div>
-
           {outcomes.length === 0 ? (
             <p className="text-sm text-slate-600">Outcomes will be published soon. Stay tuned!</p>
           ) : (
@@ -111,16 +105,19 @@ export default function ServiceDetailOutcomesSection({ service }: { service: Ser
 
                 return (
                   <li key={`outcome-${i}`} className="relative">
-                    {/* node */}
-                    <div className="absolute left-1/2 -top-1 -translate-x-1/2 md:top-0">
-                      <div className="relative h-6 w-6">
-                        <span className="absolute inset-0 rounded-full bg-white" />
-                        <span
-                          className="absolute inset-1 rounded-full"
-                          style={{ background: `linear-gradient(90deg, ${skin.from}, ${skin.to})` }}
-                        />
-                      </div>
-                    </div>
+                    {/* spine segment: this chip's centre to the next one's (chip centre is -6px / md 12px
+                        from the li top; the ul gap is 40px / md 48px). Each segment shows its slice of
+                        one gradient, so together they read as a single line from 1 to the last step. */}
+                    {i < outcomes.length - 1 && (
+                      <span
+                        aria-hidden
+                        className={`pointer-events-none absolute left-1/2 -top-1.5 -bottom-[34px] w-[2.5px] -translate-x-1/2 bg-gradient-to-b md:top-3 md:-bottom-[60px] ${headerGradient}`}
+                        style={{
+                          backgroundSize: `100% ${(outcomes.length - 1) * 100}%`,
+                          backgroundPosition: `0 ${outcomes.length > 2 ? (i / (outcomes.length - 2)) * 100 : 0}%`,
+                        }}
+                      />
+                    )}
 
                     {/* curved elbow */}
                     <svg
@@ -143,11 +140,11 @@ export default function ServiceDetailOutcomesSection({ service }: { service: Ser
                       <path d={pathD} stroke={`url(#g-${i})`} strokeWidth="1.5" fill="none" />
                     </svg>
 
-                    {/* index chip */}
-                    <div className={['absolute -top-5', isLeft ? 'md:right-[calc(50%+10px)]' : 'md:left-[calc(50%+10px)]'].join(' ')}>
+                    {/* index chip, sitting on the spine (md: where the old dot was, so the elbow still meets it) */}
+                    <div className="absolute -top-5 left-1/2 z-10 -translate-x-1/2 md:-top-0.5">
                       <span
-                        className="inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-xs font-semibold"
-                        style={{ color: TOKENS.text, border: `1px solid ${TOKENS.hairline}`, background: 'rgba(255,255,255,0.82)', backdropFilter: 'blur(3px)' }}
+                        className="inline-flex h-7 min-w-7 items-center justify-center rounded-full px-2 text-xs font-semibold text-white ring-2 ring-white"
+                        style={{ background: skin.from }}
                         aria-label={`Outcome ${n}`}
                       >
                         {n}
@@ -156,10 +153,10 @@ export default function ServiceDetailOutcomesSection({ service }: { service: Ser
 
                     {/* PANEL */}
                     <div className={['relative mx-auto mt-8 md:mt-2', 'md:max-w-[680px]', isLeft ? 'md:mr-[calc(50%+36px)]' : 'md:ml-[calc(50%+36px)]'].join(' ')}>
-                      <div className={['group relative rounded-2xl px-5 py-4 md:px-6 md:py-5', 'transition-transform duration-300 will-change-transform hover:-translate-y-0.5'].join(' ')} style={cardStyle}>
+                      <div className={['group relative flex items-start gap-3 rounded-2xl px-5 py-4 md:px-6 md:py-5', 'transition-transform duration-300 will-change-transform hover:-translate-y-0.5'].join(' ')} style={cardStyle}>
                         {/* leading icon */}
                         <span
-                          className="mr-3 inline-flex h-9 w-9 items-center justify-center rounded-full align-top"
+                          className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
                           style={{ border: `1px solid ${TOKENS.hairline}`, background: 'rgba(255,255,255,0.65)', backdropFilter: 'blur(2px)' }}
                           aria-hidden
                         >
@@ -167,7 +164,8 @@ export default function ServiceDetailOutcomesSection({ service }: { service: Ser
                         </span>
 
                         {/* TITLE — distinct, dark, high-contrast per card */}
-                        <div className="inline-block align-top min-w-0">
+                        {/* pt centres the first 26px title line on the 36px icon */}
+                        <div className="min-w-0 flex-1 pt-[5px]">
                           <p
                             className="font-semibold leading-relaxed relative inline-block pr-1"
                             style={{

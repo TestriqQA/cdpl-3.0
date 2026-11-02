@@ -260,10 +260,11 @@ main > section:not(:first-child),
   100% { top: 100%; opacity: 0; }
 }
 
-/* TeamCultureSection — credibility marquee */
+/* Seamless marquee: the track holds an even number of identical copies (each half wider than
+   its box) and moves by exactly half. Same name and value as the Placements sections' local copies. */
 @keyframes cdpl-marquee {
   from { transform: translateX(0); }
-  to { transform: translateX(-240px); }
+  to { transform: translateX(-50%); }
 }
 /* TeamCultureSection — BeamBg glows */
 @keyframes cdpl-beam-pulse {
