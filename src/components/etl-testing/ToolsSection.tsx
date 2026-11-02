@@ -1,19 +1,21 @@
-import { Database, FileText, Terminal, Shuffle, Zap, Shield, BadgeCheck } from 'lucide-react';
+import Image from 'next/image';
+import { FileText, BadgeCheck } from 'lucide-react';
 import { JSX } from 'react';
 
 type Tool = {
   name: string;
-  icon: JSX.Element;
+  logo?: string;
+  icon?: JSX.Element;
   color: string; // gradient for icon chip only
 };
 
 const tools: Tool[] = [
-  { name: 'SQL Developer', icon: <Database />, color: 'from-blue-400 to-cyan-500' },
-  { name: 'Informatica', icon: <Shuffle />, color: 'from-purple-400 to-pink-500' },
-  { name: 'Talend', icon: <Terminal />, color: 'from-green-400 to-emerald-500' },
-  { name: 'Datastage', icon: <FileText />, color: 'from-indigo-400 to-blue-500' },
-  { name: 'SSIS', icon: <Zap />, color: 'from-yellow-400 to-amber-500' },
-  { name: 'Control-M', icon: <Shield />, color: 'from-red-500 to-rose-600' },
+  { name: 'SQL Developer', logo: '/techstack_logos/Oracle-logo.svg', color: 'from-blue-400 to-cyan-500' },
+  { name: 'Informatica', logo: '/techstack_logos/informatica-logo.svg', color: 'from-purple-400 to-pink-500' },
+  { name: 'Talend', logo: '/techstack_logos/talend-logo.svg', color: 'from-green-400 to-emerald-500' },
+  { name: 'Datastage', icon: <FileText className="h-5 w-5" />, color: 'from-indigo-400 to-blue-500' },
+  { name: 'SSIS', logo: '/techstack_logos/sql-server-logo.svg', color: 'from-yellow-400 to-amber-500' },
+  { name: 'Control-M', logo: '/techstack_logos/control-m-logo.svg', color: 'from-red-500 to-rose-600' },
 ];
 
 // Distinct, non-repeating, light accents per card (no heavy gradients)
@@ -64,31 +66,35 @@ export default function ToolsSection() {
               >
                 <article
                   className={[
-                    'h-full rounded-2xl border p-4 sm:p-5 text-center',
+                    'h-full rounded-2xl border p-4 sm:p-5',
                     a.card,
                     'shadow-[0_1px_0_0_rgba(15,23,42,0.05)] hover:shadow-md transition',
                     'focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300',
                   ].join(' ')}
                 >
-                  {/* Icon chip with a sleek gradient, no extra outer gradient blocks */}
-                  <div
-                    className={[
-                      'mx-auto mb-4 grid h-16 w-16 place-items-center rounded-xl text-white',
-                      'bg-gradient-to-br',
-                      tool.color,
-                      'ring-2', a.chipRing,
-                    ].join(' ')}
-                    aria-hidden="true"
-                  >
-                    {tool.icon}
+                  <div className="flex items-center gap-3">
+                    {tool.logo ? (
+                      <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
+                    ) : (
+                      <div
+                        className={[
+                          'grid h-8 w-8 shrink-0 place-items-center rounded-lg text-white sm:h-10 sm:w-10',
+                          'bg-gradient-to-br',
+                          tool.color,
+                          'ring-2', a.chipRing,
+                        ].join(' ')}
+                        aria-hidden="true"
+                      >
+                        {tool.icon}
+                      </div>
+                    )}
+                    <h3 className={['min-w-0 text-sm font-semibold', a.text ?? 'text-slate-900'].join(' ')}>
+                      {tool.name}
+                    </h3>
                   </div>
 
-                  <h3 className={['text-sm font-semibold', a.text ?? 'text-slate-900'].join(' ')}>
-                    {tool.name}
-                  </h3>
-
                   {/* microcopy for SEO & clarity */}
-                  <p className="mt-2 text-xs leading-5 text-slate-600">
+                  <p className="mt-3 text-xs leading-5 text-slate-600">
                     Practice real <strong>ETL jobs</strong>, <strong>reconciliation checks</strong>, and <strong>schedule automation</strong>.
                   </p>
 

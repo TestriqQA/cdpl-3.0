@@ -1,13 +1,17 @@
-import { Database, Terminal, FileText, Lock, GitBranch, BadgeCheck } from 'lucide-react';
+import Image from 'next/image';
+import { Lock, GitBranch, BadgeCheck } from 'lucide-react';
+import type { JSX } from 'react';
+
+type Tool = { name: string; logo?: string; icon?: JSX.Element; color: string };
 
 // Keep icon tile gradient colors EXACTLY the same
-const tools = [
-    { name: 'MySQL Workbench', icon: <Database />, color: 'from-blue-400 to-cyan-500' },
-    { name: 'DBeaver', icon: <Terminal />, color: 'from-green-400 to-emerald-500' },
-    { name: 'phpMyAdmin', icon: <FileText />, color: 'from-purple-400 to-pink-500' },
-    { name: 'MySQL Shell', icon: <Terminal />, color: 'from-indigo-400 to-blue-500' },
-    { name: 'Replication', icon: <GitBranch />, color: 'from-yellow-400 to-amber-500' },
-    { name: 'Backup Tools', icon: <Lock />, color: 'from-red-500 to-rose-600' },
+const tools: Tool[] = [
+    { name: 'MySQL Workbench', logo: '/techstack_logos/mysql-logo.svg', color: 'from-blue-400 to-cyan-500' },
+    { name: 'DBeaver', logo: '/techstack_logos/dbeaver-logo.svg', color: 'from-green-400 to-emerald-500' },
+    { name: 'phpMyAdmin', logo: '/techstack_logos/phpmyadmin-logo.svg', color: 'from-purple-400 to-pink-500' },
+    { name: 'MySQL Shell', logo: '/techstack_logos/mysql-logo.svg', color: 'from-indigo-400 to-blue-500' },
+    { name: 'Replication', icon: <GitBranch className="h-5 w-5" />, color: 'from-yellow-400 to-amber-500' },
+    { name: 'Backup Tools', icon: <Lock className="h-5 w-5" />, color: 'from-red-500 to-rose-600' },
 ];
 
 const accents = [
@@ -60,13 +64,17 @@ export default function ToolsSection() {
                                     'shadow-[0_1px_0_0_rgba(15,23,42,0.05)] hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-slate-300',
                                 ].join(' ')}
                             >
-                                {/* UPDATED: single icon tile (removed extra wrapper bg/white box) */}
-                                <div className={`mb-4 grid h-16 w-16 place-items-center rounded-xl text-white bg-gradient-to-br ${tool.color}`} aria-hidden="true">
-                                    {tool.icon}
+                                <div className="flex items-center gap-3">
+                                    {tool.logo ? (
+                                        <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
+                                    ) : (
+                                        <div className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg text-white bg-gradient-to-br sm:h-10 sm:w-10 ${tool.color}`} aria-hidden="true">
+                                            {tool.icon}
+                                        </div>
+                                    )}
+                                    <h3 className={['min-w-0 text-xs sm:text-sm font-semibold leading-snug', a.ink].join(' ')}>{tool.name}</h3>
                                 </div>
-
-                                <h3 className={['text-xs sm:text-sm font-semibold leading-snug', a.ink].join(' ')}>{tool.name}</h3>
-                                <span className={['mt-2 inline-flex rounded-full border px-2 py-0.5 text-[11px] font-medium', a.chip].join(' ')}>
+                                <span className={['mt-3 inline-flex rounded-full border px-2 py-0.5 text-[11px] font-medium', a.chip].join(' ')}>
                                     Essential
                                 </span>
                                 <span className="absolute inset-0 rounded-2xl focus:outline-none" tabIndex={0} />

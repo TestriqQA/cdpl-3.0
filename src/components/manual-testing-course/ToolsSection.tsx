@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { FC } from "react";
 import { useMemo, useState } from "react";
 
@@ -11,6 +12,7 @@ interface Category {
 
 interface Tool {
     name: string;
+    logo?: string;
     tagline: string;
     desc: string;
     category: Category["id"];
@@ -65,27 +67,7 @@ const assignColors = (tools: Tool[]): Tool[] => {
 /* ============================== Emoji Icons ============================== */
 /** WhatsApp-style = emoji glyphs. These render as the platform emoji, like in chat. */
 const EMOJI_MAP: Record<string, string> = {
-    "Jira": "📋",
-    "Zephyr": "✅",
-    "TestRail": "🗂️",
-    "Postman": "📮",
     "REST Assured": "🧪",
-    "Selenium WebDriver": "🕸️",
-    "Cypress": "🌲",
-    "Playwright": "🎭",
-    "JMeter": "📈",
-    "K6": "⚡",
-    "BrowserStack": "🌐",
-    "Chrome DevTools": "🧰",
-    "MySQL": "🐬",
-    "MongoDB": "🍃",
-    "Git": "🌿",
-    "GitHub": "🐙",
-    "Jenkins": "🤖",
-    "Confluence": "📚",
-    "Excel": "📊",
-    "Fiddler": "🪄",
-    "Charles Proxy": "🛰️",
 };
 
 const emojiFor = (name: string) => EMOJI_MAP[name] ?? "🧰";
@@ -94,12 +76,12 @@ const EmojiIcon: FC<{ name: string; color: Accent }> = ({ name, color }) => {
     const colors = COLOR_MAP[color];
     return (
         <div
-            className={`${colors.iconBg} rounded-xl w-10 h-10 flex items-center justify-center`}
+            className={`${colors.iconBg} rounded-lg h-8 w-8 sm:h-10 sm:w-10 shrink-0 flex items-center justify-center`}
             role="img"
             aria-label={`${name} icon`}
             title={name}
         >
-            <span className="text-white text-lg leading-none">{emojiFor(name)}</span>
+            <span className="text-white text-base sm:text-lg leading-none">{emojiFor(name)}</span>
         </div>
     );
 };
@@ -117,27 +99,27 @@ const CATEGORIES: Category[] = [
 ];
 
 const TOOL_DATA: Tool[] = assignColors([
-    { name: "Jira", tagline: "Agile Issue Tracking", desc: "Plan sprints, manage user stories, and track defects with enterprise-grade workflows.", category: "plan", tags: ["agile", "kanban", "scrum"] },
-    { name: "Zephyr", tagline: "Native Test Management", desc: "Create test cases, map requirements, and view real-time coverage inside Jira.", category: "test-mgmt", tags: ["test-cases", "coverage"] },
-    { name: "TestRail", tagline: "Scalable Test Suites", desc: "Organize suites, track runs, and generate audit-ready QA reports at scale.", category: "test-mgmt", tags: ["suites", "runs", "reports"] },
-    { name: "Postman", tagline: "API Testing & Mocking", desc: "Design REST calls, validate responses, automate collections, and monitor APIs.", category: "api-auto", tags: ["api", "rest", "automation"] },
+    { name: "Jira", logo: "/techstack_logos/jira-logo.svg", tagline: "Agile Issue Tracking", desc: "Plan sprints, manage user stories, and track defects with enterprise-grade workflows.", category: "plan", tags: ["agile", "kanban", "scrum"] },
+    { name: "Zephyr", logo: "/techstack_logos/zephyr-logo.png", tagline: "Native Test Management", desc: "Create test cases, map requirements, and view real-time coverage inside Jira.", category: "test-mgmt", tags: ["test-cases", "coverage"] },
+    { name: "TestRail", logo: "/techstack_logos/testrail-logo.svg", tagline: "Scalable Test Suites", desc: "Organize suites, track runs, and generate audit-ready QA reports at scale.", category: "test-mgmt", tags: ["suites", "runs", "reports"] },
+    { name: "Postman", logo: "/techstack_logos/postman-logo.svg", tagline: "API Testing & Mocking", desc: "Design REST calls, validate responses, automate collections, and monitor APIs.", category: "api-auto", tags: ["api", "rest", "automation"] },
     { name: "REST Assured", tagline: "Java API Automation", desc: "Write robust API assertions in code for CI-ready test pipelines.", category: "api-auto", tags: ["java", "assertions", "ci"] },
-    { name: "Selenium WebDriver", tagline: "UI Automation at Scale", desc: "Automate browsers, build maintainable page objects, and run cross-browser suites.", category: "api-auto", tags: ["ui", "e2e", "page-object"] },
-    { name: "Cypress", tagline: "Fast Front-End E2E", desc: "Flaky-resistant web tests with time-travel debugging and rich dashboards.", category: "api-auto", tags: ["front-end", "e2e"] },
-    { name: "Playwright", tagline: "Reliable Cross-Browser E2E", desc: "Auto-waits, trace viewer, and parallel workers for stable end-to-end testing.", category: "api-auto", tags: ["cross-browser", "parallel"] },
-    { name: "JMeter", tagline: "Performance & Load", desc: "Model realistic traffic, analyze throughput, and expose bottlenecks early.", category: "perf", tags: ["load", "stress", "latency"] },
-    { name: "K6", tagline: "Developer-centric Load Tests", desc: "Script performance scenarios in code and integrate with CI pipelines.", category: "perf", tags: ["scripting", "metrics"] },
-    { name: "BrowserStack", tagline: "Real Devices & Browsers", desc: "Execute manual and automated tests on 3000+ real browsers and devices.", category: "cross", tags: ["devices", "cloud"] },
-    { name: "Chrome DevTools", tagline: "Debugging & Audits", desc: "Trace network calls, measure performance, and inspect accessibility issues.", category: "utils", tags: ["debug", "a11y"] },
-    { name: "MySQL", tagline: "Relational Database", desc: "Write SQL for data validation, joins, and analytics to ensure integrity.", category: "data", tags: ["sql", "joins"] },
-    { name: "MongoDB", tagline: "NoSQL for QA", desc: "Query JSON-like documents to verify event streams and microservices.", category: "data", tags: ["nosql", "json"] },
-    { name: "Git", tagline: "Version Control", desc: "Branch, review, and manage test code with modern Git workflows.", category: "devops", tags: ["vcs", "review"] },
-    { name: "GitHub", tagline: "Collaboration & PRs", desc: "Pull requests, code reviews, and actions to automate quality gates.", category: "devops", tags: ["pr", "actions"] },
-    { name: "Jenkins", tagline: "Continuous Integration", desc: "Trigger pipelines, run suites in parallel, and publish reports on merge.", category: "devops", tags: ["ci", "pipeline"] },
-    { name: "Confluence", tagline: "QA Knowledge Base", desc: "Document test strategies, runbooks, and RCA with reusable templates.", category: "plan", tags: ["docs", "rca"] },
-    { name: "Excel", tagline: "Test Data & Analysis", desc: "Quickly model test data, pivot results, and share quality dashboards.", category: "utils", tags: ["data", "reporting"] },
-    { name: "Fiddler", tagline: "Network Sniffing", desc: "Capture HTTP/S traffic to diagnose API errors and performance issues.", category: "utils", tags: ["proxy", "http"] },
-    { name: "Charles Proxy", tagline: "Mobile & API Debugging", desc: "Rewrite rules, throttle bandwidth, and validate edge-case behaviors.", category: "utils", tags: ["throttle", "rewrite"] },
+    { name: "Selenium WebDriver", logo: "/techstack_logos/selenium-logo.svg", tagline: "UI Automation at Scale", desc: "Automate browsers, build maintainable page objects, and run cross-browser suites.", category: "api-auto", tags: ["ui", "e2e", "page-object"] },
+    { name: "Cypress", logo: "/techstack_logos/cypress-logo.webp", tagline: "Fast Front-End E2E", desc: "Flaky-resistant web tests with time-travel debugging and rich dashboards.", category: "api-auto", tags: ["front-end", "e2e"] },
+    { name: "Playwright", logo: "/techstack_logos/playwright-logo.webp", tagline: "Reliable Cross-Browser E2E", desc: "Auto-waits, trace viewer, and parallel workers for stable end-to-end testing.", category: "api-auto", tags: ["cross-browser", "parallel"] },
+    { name: "JMeter", logo: "/techstack_logos/jmeter-logo.svg", tagline: "Performance & Load", desc: "Model realistic traffic, analyze throughput, and expose bottlenecks early.", category: "perf", tags: ["load", "stress", "latency"] },
+    { name: "K6", logo: "/techstack_logos/k6-logo.svg", tagline: "Developer-centric Load Tests", desc: "Script performance scenarios in code and integrate with CI pipelines.", category: "perf", tags: ["scripting", "metrics"] },
+    { name: "BrowserStack", logo: "/techstack_logos/browserstack-logo.svg", tagline: "Real Devices & Browsers", desc: "Execute manual and automated tests on 3000+ real browsers and devices.", category: "cross", tags: ["devices", "cloud"] },
+    { name: "Chrome DevTools", logo: "/techstack_logos/chrome-devtools-logo.svg", tagline: "Debugging & Audits", desc: "Trace network calls, measure performance, and inspect accessibility issues.", category: "utils", tags: ["debug", "a11y"] },
+    { name: "MySQL", logo: "/techstack_logos/mysql-logo.svg", tagline: "Relational Database", desc: "Write SQL for data validation, joins, and analytics to ensure integrity.", category: "data", tags: ["sql", "joins"] },
+    { name: "MongoDB", logo: "/techstack_logos/mongodb-logo.svg", tagline: "NoSQL for QA", desc: "Query JSON-like documents to verify event streams and microservices.", category: "data", tags: ["nosql", "json"] },
+    { name: "Git", logo: "/techstack_logos/git-logo.svg", tagline: "Version Control", desc: "Branch, review, and manage test code with modern Git workflows.", category: "devops", tags: ["vcs", "review"] },
+    { name: "GitHub", logo: "/techstack_logos/github-logo.svg", tagline: "Collaboration & PRs", desc: "Pull requests, code reviews, and actions to automate quality gates.", category: "devops", tags: ["pr", "actions"] },
+    { name: "Jenkins", logo: "/techstack_logos/jenkins-logo.svg", tagline: "Continuous Integration", desc: "Trigger pipelines, run suites in parallel, and publish reports on merge.", category: "devops", tags: ["ci", "pipeline"] },
+    { name: "Confluence", logo: "/techstack_logos/confluence-logo.svg", tagline: "QA Knowledge Base", desc: "Document test strategies, runbooks, and RCA with reusable templates.", category: "plan", tags: ["docs", "rca"] },
+    { name: "Excel", logo: "/techstack_logos/excel-logo.svg", tagline: "Test Data & Analysis", desc: "Quickly model test data, pivot results, and share quality dashboards.", category: "utils", tags: ["data", "reporting"] },
+    { name: "Fiddler", logo: "/techstack_logos/fiddler-logo.png", tagline: "Network Sniffing", desc: "Capture HTTP/S traffic to diagnose API errors and performance issues.", category: "utils", tags: ["proxy", "http"] },
+    { name: "Charles Proxy", logo: "/techstack_logos/charles-proxy-logo.svg", tagline: "Mobile & API Debugging", desc: "Rewrite rules, throttle bandwidth, and validate edge-case behaviors.", category: "utils", tags: ["throttle", "rewrite"] },
 ]);
 
 /* ============================== Section ============================== */
@@ -196,9 +178,13 @@ const ToolCard: FC<ToolCardProps> = ({ tool }) => {
             className={`group relative h-full overflow-hidden rounded-2xl ${colors.cardBg} border ${colors.border} border-l-4 ${colors.accentBorder} p-5 sm:p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md focus-within:ring-2 focus-within:ring-offset-2 ${colors.ring}`}
             aria-label={`${tool.name} — ${tool.tagline}`}
         >
-            <div className="flex items-start gap-3">
-                <EmojiIcon name={tool.name} color={color} />
-                <div>
+            <div className="flex items-center gap-3">
+                {tool.logo ? (
+                    <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
+                ) : (
+                    <EmojiIcon name={tool.name} color={color} />
+                )}
+                <div className="min-w-0">
                     <h3 className="text-lg font-semibold text-gray-900 leading-tight">{tool.name}</h3>
                     <p className="text-sm font-medium text-gray-700 mt-0.5">{tool.tagline}</p>
                 </div>

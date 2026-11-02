@@ -1,21 +1,13 @@
 // components/sections/ToolsSection.tsx
 // Server component — sleek, slightly futuristic, accessible, fully responsive.
 
-import {
-  Bot,
-  BarChart3,
-  Brain,
-  Sparkles,
-  Globe2,
-  Calendar,
-  Link2,
-  Search,
-} from 'lucide-react';
+import Image from 'next/image';
 
 type Tool = {
   name: string;
   desc: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
+  logo?: string;
   accent: { bg: string; text: string; border: string; ring: string; chip: string };
 };
 
@@ -24,49 +16,49 @@ const TOOLS: Tool[] = [
   {
     name: 'ChatGPT',
     desc: 'AI copy, ad creatives, keyword ideation, workflows',
-    icon: <Bot className="h-5 w-5" />,
+    logo: '/techstack_logos/OpenAI-logo.png',
     accent: { bg: 'bg-sky-50', text: 'text-sky-900', border: 'border-sky-200', ring: 'focus:ring-sky-300', chip: 'bg-sky-100 text-sky-800' },
   },
   {
     name: 'Google Insights',
     desc: 'Core Web Vitals & performance optimization',
-    icon: <BarChart3 className="h-5 w-5" />,
+    logo: '/techstack_logos/Google-Trends-logo.jpg',
     accent: { bg: 'bg-emerald-50', text: 'text-emerald-900', border: 'border-emerald-200', ring: 'focus:ring-emerald-300', chip: 'bg-emerald-100 text-emerald-800' },
   },
   {
     name: 'Grok',
     desc: 'Trend mining, research prompts, competitive analysis',
-    icon: <Brain className="h-5 w-5" />,
+    logo: '/techstack_logos/grok-logo.svg',
     accent: { bg: 'bg-amber-50', text: 'text-amber-900', border: 'border-amber-200', ring: 'focus:ring-amber-300', chip: 'bg-amber-100 text-amber-900' },
   },
   {
     name: 'DeepSeek',
     desc: 'Long-form planning, content outlines, data summarization',
-    icon: <Sparkles className="h-5 w-5" />,
+    logo: '/techstack_logos/deepseek-logo.svg',
     accent: { bg: 'bg-violet-50', text: 'text-violet-900', border: 'border-violet-200', ring: 'focus:ring-violet-300', chip: 'bg-violet-100 text-violet-900' },
   },
   {
     name: 'Meta Ads',
     desc: 'Paid social campaigns, creatives testing, pixel checks',
-    icon: <Globe2 className="h-5 w-5" />,
+    logo: '/techstack_logos/Meta-Ads-Manager-logo.png',
     accent: { bg: 'bg-rose-50', text: 'text-rose-900', border: 'border-rose-200', ring: 'focus:ring-rose-300', chip: 'bg-rose-100 text-rose-900' },
   },
   {
     name: 'Google Calendar',
     desc: 'Campaign cadences, sprint schedules, launch timelines',
-    icon: <Calendar className="h-5 w-5" />,
+    logo: '/techstack_logos/google-calendar-logo.svg',
     accent: { bg: 'bg-indigo-50', text: 'text-indigo-900', border: 'border-indigo-200', ring: 'focus:ring-indigo-300', chip: 'bg-indigo-100 text-indigo-900' },
   },
   {
     name: 'Ahrefs',
     desc: 'Backlinks, keyword gaps, content clusters',
-    icon: <Link2 className="h-5 w-5" />,
+    logo: '/techstack_logos/ahrefs-logo.png',
     accent: { bg: 'bg-teal-50', text: 'text-teal-900', border: 'border-teal-200', ring: 'focus:ring-teal-300', chip: 'bg-teal-100 text-teal-900' },
   },
   {
     name: 'SEMrush',
     desc: 'Technical SEO audits, SERP tracking, PPC insights',
-    icon: <Search className="h-5 w-5" />,
+    logo: '/techstack_logos/semrush-logo.svg',
     accent: { bg: 'bg-fuchsia-50', text: 'text-fuchsia-900', border: 'border-fuchsia-200', ring: 'focus:ring-fuchsia-300', chip: 'bg-fuchsia-100 text-fuchsia-900' },
   },
 ];
@@ -114,19 +106,21 @@ export default function ToolsSection() {
                   className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-slate-300/50 to-transparent opacity-60"
                 />
                 <div className="flex items-center gap-3">
-                  <span
-                    className={[
-                      'inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white border border-black/5',
-                      t.accent.text,
-                    ].join(' ')}
-                  >
-                    {t.icon}
-                  </span>
-                  <div>
-                    <h3 className={['text-base font-bold', t.accent.text].join(' ')}>{t.name}</h3>
-                    <p className="mt-0.5 text-xs text-slate-600">{t.desc}</p>
-                  </div>
+                  {t.logo ? (
+                    <Image src={t.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
+                  ) : (
+                    <span
+                      className={[
+                        'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white border border-black/5 sm:h-10 sm:w-10',
+                        t.accent.text,
+                      ].join(' ')}
+                    >
+                      {t.icon}
+                    </span>
+                  )}
+                  <h3 className={['min-w-0 text-base font-bold', t.accent.text].join(' ')}>{t.name}</h3>
                 </div>
+                <p className="mt-3 text-xs text-slate-600">{t.desc}</p>
 
                 {/* chips */}
                 <div className="mt-4 flex flex-wrap items-center gap-2">

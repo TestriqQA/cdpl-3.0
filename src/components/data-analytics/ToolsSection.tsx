@@ -1,40 +1,31 @@
 // components/sections/ToolsSection.tsx
 "use client";
 
-import {
+import { Database, Rocket } from "lucide-react";
 
-  Database,
-  BarChart3,
-  Presentation,
-  Sheet,
-  Blocks,
-  Sigma,
-  Braces,
-  Cpu,
-  Rocket,
-} from "lucide-react"; // note: Python isn't in lucide; we’ll reuse icons meaningfully
-
+import Image from "next/image";
 import { useState } from "react";
 import EnrollModal from "../EnrollModal";
 
 type Tool = {
   name: string;
   badge: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  logo?: string;
   bg: string;
   text: string;
   border: string;
 };
 
 const TOOLS: Tool[] = [
-  { name: "Python", badge: "Scripting", icon: Braces, bg: "bg-indigo-50", text: "text-indigo-900", border: "border-indigo-200" },
+  { name: "Python", badge: "Scripting", logo: "/techstack_logos/python-logo.svg", bg: "bg-indigo-50", text: "text-indigo-900", border: "border-indigo-200" },
   { name: "SQL", badge: "Queries", icon: Database, bg: "bg-emerald-50", text: "text-emerald-900", border: "border-emerald-200" },
-  { name: "Power BI", badge: "Dashboards", icon: BarChart3, bg: "bg-amber-50", text: "text-amber-900", border: "border-amber-200" },
-  { name: "Tableau", badge: "Visual Analytics", icon: Presentation, bg: "bg-sky-50", text: "text-sky-900", border: "border-sky-200" },
-  { name: "Excel (Advanced)", badge: "Analysis", icon: Sheet, bg: "bg-rose-50", text: "text-rose-900", border: "border-rose-200" },
-  { name: "pandas", badge: "DataFrames", icon: Blocks, bg: "bg-violet-50", text: "text-violet-900", border: "border-violet-200" },
-  { name: "NumPy", badge: "Numerics", icon: Sigma, bg: "bg-lime-50", text: "text-lime-900", border: "border-lime-200" },
-  { name: "R", badge: "Stats", icon: Cpu, bg: "bg-cyan-50", text: "text-cyan-900", border: "border-cyan-200" },
+  { name: "Power BI", badge: "Dashboards", logo: "/techstack_logos/power-bi-logo.svg", bg: "bg-amber-50", text: "text-amber-900", border: "border-amber-200" },
+  { name: "Tableau", badge: "Visual Analytics", logo: "/techstack_logos/tableau-logo.svg", bg: "bg-sky-50", text: "text-sky-900", border: "border-sky-200" },
+  { name: "Excel (Advanced)", badge: "Analysis", logo: "/techstack_logos/excel-logo.svg", bg: "bg-rose-50", text: "text-rose-900", border: "border-rose-200" },
+  { name: "pandas", badge: "DataFrames", logo: "/techstack_logos/pandas-logo.svg", bg: "bg-violet-50", text: "text-violet-900", border: "border-violet-200" },
+  { name: "NumPy", badge: "Numerics", logo: "/techstack_logos/numpy-logo.svg", bg: "bg-lime-50", text: "text-lime-900", border: "border-lime-200" },
+  { name: "R", badge: "Stats", logo: "/techstack_logos/r-logo.svg", bg: "bg-cyan-50", text: "text-cyan-900", border: "border-cyan-200" },
 ];
 
 export default function ToolsSection() {
@@ -124,10 +115,14 @@ function ToolCard({ tool, onEnroll }: { tool: Tool; onEnroll: () => void }) {
       aria-label={`${tool.name} tool`}
     >
       <div className="flex items-center justify-between">
-        <span className="inline-flex items-center gap-2 text-sm font-semibold">
-          <span className="p-2 rounded-xl bg-white/70 ring-1 ring-black/5">
-            <Icon className="h-5 w-5" strokeWidth={2.2} />
-          </span>
+        <span className="inline-flex items-center gap-3 text-sm font-semibold">
+          {tool.logo ? (
+            <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
+          ) : Icon ? (
+            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white/70 ring-1 ring-black/5 sm:h-10 sm:w-10">
+              <Icon className="h-5 w-5" strokeWidth={2.2} />
+            </span>
+          ) : null}
           {tool.name}
         </span>
         <span

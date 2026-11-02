@@ -1,31 +1,24 @@
-import {
-  Globe,
-  Smartphone,
-  Terminal,
-  Zap,
-  Shield,
-  GitBranch,
-  Database,
-  FileText,
-} from 'lucide-react';
+import Image from 'next/image';
+import { Terminal } from 'lucide-react';
 import { JSX } from 'react';
 
 type Tool = {
   name: string;
-  icon: JSX.Element;
+  logo?: string;
+  icon?: JSX.Element;
   color: string; // tailwind gradient tokens: "from-... to-..."
   accent: string; // light accent for card frame (no repetition-heavy gradients)
 };
 
 const tools: Tool[] = [
-  { name: 'Selenium', icon: <Globe />, color: 'from-blue-500 to-cyan-500', accent: 'bg-sky-50 border-sky-200' },
-  { name: 'Appium', icon: <Smartphone />, color: 'from-green-500 to-emerald-500', accent: 'bg-emerald-50 border-emerald-200' },
-  { name: 'REST Assured', icon: <Terminal />, color: 'from-purple-500 to-pink-500', accent: 'bg-fuchsia-50 border-fuchsia-200' },
-  { name: 'Cypress', icon: <Zap />, color: 'from-amber-500 to-yellow-500', accent: 'bg-amber-50 border-amber-200' },
-  { name: 'JMeter', icon: <Shield />, color: 'from-rose-600 to-red-500', accent: 'bg-rose-50 border-rose-200' },
-  { name: 'Jenkins', icon: <GitBranch />, color: 'from-indigo-500 to-blue-600', accent: 'bg-indigo-50 border-indigo-200' },
-  { name: 'Postman', icon: <FileText />, color: 'from-orange-500 to-red-500', accent: 'bg-orange-50 border-orange-200' },
-  { name: 'Git', icon: <Database />, color: 'from-slate-500 to-gray-600', accent: 'bg-slate-50 border-slate-200' },
+  { name: 'Selenium', logo: '/techstack_logos/selenium-logo.svg', color: 'from-blue-500 to-cyan-500', accent: 'bg-sky-50 border-sky-200' },
+  { name: 'Appium', logo: '/techstack_logos/appium-logo.svg', color: 'from-green-500 to-emerald-500', accent: 'bg-emerald-50 border-emerald-200' },
+  { name: 'REST Assured', icon: <Terminal className="h-5 w-5" />, color: 'from-purple-500 to-pink-500', accent: 'bg-fuchsia-50 border-fuchsia-200' },
+  { name: 'Cypress', logo: '/techstack_logos/cypress-logo.webp', color: 'from-amber-500 to-yellow-500', accent: 'bg-amber-50 border-amber-200' },
+  { name: 'JMeter', logo: '/techstack_logos/jmeter-logo.svg', color: 'from-rose-600 to-red-500', accent: 'bg-rose-50 border-rose-200' },
+  { name: 'Jenkins', logo: '/techstack_logos/jenkins-logo.svg', color: 'from-indigo-500 to-blue-600', accent: 'bg-indigo-50 border-indigo-200' },
+  { name: 'Postman', logo: '/techstack_logos/postman-logo.svg', color: 'from-orange-500 to-red-500', accent: 'bg-orange-50 border-orange-200' },
+  { name: 'Git', logo: '/techstack_logos/git-logo.svg', color: 'from-slate-500 to-gray-600', accent: 'bg-slate-50 border-slate-200' },
 ];
 
 export default function ToolsSection() {
@@ -92,25 +85,29 @@ export default function ToolsSection() {
               >
                 {/* Inner card */}
                 <div className="rounded-xl bg-white p-5 sm:p-6">
-                  {/* Icon puck with a sleek gradient (kept minimal and consistent) */}
-                  <div
-                    className={[
-                      'mx-auto flex h-16 w-16 items-center justify-center rounded-xl text-white',
-                      'bg-gradient-to-br',
-                      tool.color,
-                      'transition will-change-transform group-hover:scale-105',
-                    ].join(' ')}
-                    aria-hidden="true"
-                  >
-                    {tool.icon}
+                  <div className="flex items-center gap-3">
+                    {tool.logo ? (
+                      <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain transition will-change-transform group-hover:scale-105 sm:h-10 sm:w-10" aria-hidden />
+                    ) : (
+                      <div
+                        className={[
+                          'flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-white sm:h-10 sm:w-10',
+                          'bg-gradient-to-br',
+                          tool.color,
+                          'transition will-change-transform group-hover:scale-105',
+                        ].join(' ')}
+                        aria-hidden="true"
+                      >
+                        {tool.icon}
+                      </div>
+                    )}
+                    <h3 className="min-w-0 text-sm font-bold text-slate-900 sm:text-base">
+                      {tool.name}
+                    </h3>
                   </div>
 
-                  <h3 className="mt-4 text-center text-sm font-bold text-slate-900 sm:text-base">
-                    {tool.name}
-                  </h3>
-
                   {/* tiny helper copy for SEO & clarity */}
-                  <p className="mt-2 text-center text-xs text-slate-700">
+                  <p className="mt-3 text-xs text-slate-700">
                     Widely used in automation pipelines for scalable, maintainable testing.
                   </p>
                 </div>

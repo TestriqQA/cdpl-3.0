@@ -2,16 +2,10 @@
 "use client";
 
 import {
-  Code2,        // Python
-  Braces,       // R
   Database,     // SQL
-  PieChart,     // Tableau
-  BarChart3,    // Power BI
-  Cpu,          // TensorFlow
-  Flame,        // PyTorch
-  CloudCog,     // AWS SageMaker
   Rocket,
 } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import EnrollModal from "../EnrollModal";
 import CareerSessionModal from "../CareerSessionModal";
@@ -19,7 +13,8 @@ import CareerSessionModal from "../CareerSessionModal";
 type Tool = {
   name: string;
   badge: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  logo?: string;
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   bg: string;        // card bg
   text: string;      // body text color
   border: string;    // card border
@@ -32,7 +27,7 @@ const TOOLS: Tool[] = [
   {
     name: "Python",
     badge: "Core Language",
-    icon: Code2,
+    logo: "/techstack_logos/python-logo.svg",
     bg: "bg-indigo-50",
     text: "text-indigo-900",
     border: "border-indigo-200",
@@ -43,7 +38,7 @@ const TOOLS: Tool[] = [
   {
     name: "R",
     badge: "Analytics",
-    icon: Braces,
+    logo: "/techstack_logos/r-logo.svg",
     bg: "bg-rose-50",
     text: "text-rose-900",
     border: "border-rose-200",
@@ -65,7 +60,7 @@ const TOOLS: Tool[] = [
   {
     name: "Tableau",
     badge: "BI & Viz",
-    icon: PieChart,
+    logo: "/techstack_logos/tableau-logo.svg",
     bg: "bg-amber-50",
     text: "text-amber-900",
     border: "border-amber-200",
@@ -76,7 +71,7 @@ const TOOLS: Tool[] = [
   {
     name: "Power BI",
     badge: "Dashboards",
-    icon: BarChart3,
+    logo: "/techstack_logos/power-bi-logo.svg",
     bg: "bg-sky-50",
     text: "text-sky-900",
     border: "border-sky-200",
@@ -87,7 +82,7 @@ const TOOLS: Tool[] = [
   {
     name: "TensorFlow",
     badge: "Deep Learning",
-    icon: Cpu,
+    logo: "/techstack_logos/tensorflow-logo.svg",
     bg: "bg-violet-50",
     text: "text-violet-900",
     border: "border-violet-200",
@@ -98,7 +93,7 @@ const TOOLS: Tool[] = [
   {
     name: "PyTorch",
     badge: "Research → Prod",
-    icon: Flame,
+    logo: "/techstack_logos/pytorch-logo.svg",
     bg: "bg-lime-50",
     text: "text-lime-900",
     border: "border-lime-200",
@@ -109,7 +104,7 @@ const TOOLS: Tool[] = [
   {
     name: "AWS SageMaker",
     badge: "MLOps",
-    icon: CloudCog,
+    logo: "/techstack_logos/amazonwebservices-logo.svg",
     bg: "bg-cyan-50",
     text: "text-cyan-900",
     border: "border-cyan-200",
@@ -225,10 +220,14 @@ function ToolCard({ tool, onEnroll }: { tool: Tool; onEnroll: () => void }) {
       aria-label={`${tool.name} tool`}
     >
       <div className="flex items-center justify-between">
-        <span className="inline-flex items-center gap-2 text-sm font-semibold">
-          <span className={`p-2 rounded-xl ${tool.iconBg} ring-1 ring-black/5`}>
-            <Icon className={`h-5 w-5 ${tool.iconColor}`} strokeWidth={2.2} />
-          </span>
+        <span className="inline-flex items-center gap-3 text-sm font-semibold">
+          {tool.logo ? (
+            <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
+          ) : Icon ? (
+            <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg sm:h-10 sm:w-10 ${tool.iconBg} ring-1 ring-black/5`}>
+              <Icon className={`h-5 w-5 ${tool.iconColor}`} strokeWidth={2.2} />
+            </span>
+          ) : null}
           {tool.name}
         </span>
         <span

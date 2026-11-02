@@ -1,10 +1,12 @@
+import Image from "next/image";
 import { Code2, Database, BarChart3 } from "lucide-react";
 
 interface Tool {
     name: string;
     category: string;
     description: string;
-    icon: string;
+    icon?: string;
+    logo?: string;
     color: string;
 }
 
@@ -14,56 +16,56 @@ export default function ToolsSection() {
             name: "Python",
             category: "Programming Language",
             description: "Core programming language for data analytics and scripting",
-            icon: "🐍",
+            logo: "/techstack_logos/python-logo.svg",
             color: "from-blue-50 to-blue-100",
         },
         {
             name: "Pandas",
             category: "Data Manipulation",
             description: "Powerful library for data cleaning and transformation",
-            icon: "📊",
+            logo: "/techstack_logos/pandas-logo.svg",
             color: "from-orange-50 to-orange-100",
         },
         {
             name: "NumPy",
             category: "Scientific Computing",
             description: "Numerical computing library for array operations",
-            icon: "🔬",
+            logo: "/techstack_logos/numpy-logo.svg",
             color: "from-green-50 to-green-100",
         },
         {
             name: "Matplotlib",
             category: "Data Visualization",
             description: "Comprehensive plotting and visualization library",
-            icon: "📈",
+            logo: "/techstack_logos/matplotlib-logo.svg",
             color: "from-red-50 to-red-100",
         },
         {
             name: "Seaborn",
             category: "Statistical Visualization",
             description: "Statistical data visualization built on Matplotlib",
-            icon: "🎨",
+            logo: "/techstack_logos/seaborn-logo.png",
             color: "from-purple-50 to-purple-100",
         },
         {
             name: "Jupyter Notebook",
             category: "Development Environment",
             description: "Interactive computing environment for coding and visualization",
-            icon: "📓",
+            logo: "/techstack_logos/jupyter-logo.svg",
             color: "from-cyan-50 to-cyan-100",
         },
         {
             name: "Scikit-learn",
             category: "Machine Learning",
             description: "Machine learning library for modeling and prediction",
-            icon: "🤖",
+            logo: "/techstack_logos/scikit-learn-logo.svg",
             color: "from-indigo-50 to-indigo-100",
         },
         {
             name: "SciPy",
             category: "Scientific Computing",
             description: "Advanced scientific and statistical computing library",
-            icon: "⚗️",
+            logo: "/techstack_logos/scipy-logo.svg",
             color: "from-pink-50 to-pink-100",
         },
     ];
@@ -106,18 +108,21 @@ export default function ToolsSection() {
                             key={idx}
                             className={`bg-gradient-to-br ${tool.color} rounded-xl p-6 border-2 border-slate-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300 group`}
                         >
-                            {/* Icon */}
-                            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
-                                {tool.icon}
+                            <div className="flex items-center gap-3">
+                                {tool.logo ? (
+                                    <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10 group-hover:scale-110 transition-transform" aria-hidden />
+                                ) : (
+                                    <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center text-2xl sm:h-10 sm:w-10 sm:text-3xl group-hover:scale-110 transition-transform" aria-hidden>
+                                        {tool.icon}
+                                    </div>
+                                )}
+                                <h3 className="min-w-0 text-lg font-bold text-slate-900">
+                                    {tool.name}
+                                </h3>
                             </div>
 
-                            {/* Name */}
-                            <h3 className="text-lg font-bold text-slate-900 mb-1">
-                                {tool.name}
-                            </h3>
-
                             {/* Category */}
-                            <p className="text-xs font-semibold text-brand mb-3">
+                            <p className="mt-3 text-xs font-semibold text-brand mb-3">
                                 {tool.category}
                             </p>
 

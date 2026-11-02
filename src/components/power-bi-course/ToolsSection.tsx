@@ -1,6 +1,7 @@
 "use client";
 // components/powerbi/ToolsSection.tsx
 import React, { useState } from "react";
+import Image from "next/image";
 import EnrollModal from "../EnrollModal";
 
 type ColorVariant = "blue" | "orange" | "green" | "purple" | "pink" | "indigo";
@@ -8,7 +9,8 @@ type ColorVariant = "blue" | "orange" | "green" | "purple" | "pink" | "indigo";
 interface ToolCardProps {
   title: string;
   description: string;
-  emoji: string;
+  emoji?: string;
+  logo?: string;
   color: ColorVariant;
 }
 
@@ -21,7 +23,7 @@ const colorClasses: Record<ColorVariant, { bg: string; text: string; ring: strin
   indigo: { bg: "bg-indigo-100", text: "text-indigo-700", ring: "ring-indigo-200", grad: "from-indigo-500/20 to-violet-500/20" },
 };
 
-const ToolCard: React.FC<ToolCardProps> = ({ title, description, emoji, color }) => {
+const ToolCard: React.FC<ToolCardProps> = ({ title, description, emoji, logo, color }) => {
   const palette = colorClasses[color];
 
   return (
@@ -39,14 +41,19 @@ const ToolCard: React.FC<ToolCardProps> = ({ title, description, emoji, color })
           "hover:shadow-lg focus-within:ring-2", palette.ring, "transition-all duration-300",
         ].join(" ")}
       >
-        <div className={`p-3 w-fit rounded-full ${palette.bg} ${palette.text} mb-4 text-2xl`} aria-hidden="true">
-          {emoji}
+        <div className="flex items-center gap-3">
+          {logo ? (
+            <Image src={logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
+          ) : (
+            <div className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full sm:h-10 sm:w-10 ${palette.bg} ${palette.text} text-base sm:text-xl`} aria-hidden="true">
+              {emoji}
+            </div>
+          )}
+          <h3 id={`tool-${title.replace(/\s+/g, "-").toLowerCase()}`} className="min-w-0 text-xl font-bold text-gray-900">
+            {title}
+          </h3>
         </div>
-
-        <h3 id={`tool-${title.replace(/\s+/g, "-").toLowerCase()}`} className="text-xl font-bold text-gray-900 mb-2">
-          {title}
-        </h3>
-        <p className="text-gray-600">{description}</p>
+        <p className="mt-3 text-gray-600">{description}</p>
 
         <div className="mt-4 h-1 w-16 rounded-full bg-gradient-to-r from-gray-200 to-transparent group-hover:from-gray-300 transition-colors" />
       </div>
@@ -63,14 +70,14 @@ const ToolsSection: React.FC = () => {
       title: "Power BI Desktop",
       description:
         "Master the primary development tool for connecting, transforming, and modeling data on your local machine.",
-      emoji: "🖥️",
+      logo: "/techstack_logos/power-bi-logo.svg",
       color: "blue",
     },
     {
       title: "Power BI Service",
       description:
         "Learn to publish, share, and collaborate on reports and dashboards in the cloud-based Power BI environment.",
-      emoji: "☁️",
+      logo: "/techstack_logos/power-bi-logo.svg",
       color: "orange",
     },
     {

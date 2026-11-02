@@ -2,26 +2,15 @@
 // Sleek, responsive, SEO-friendly "Tools You’ll Master" section.
 // Unique colors per badge (no repeats), subtle futuristic accents, fully self-contained.
 
-import React from "react";
-import {
-  Code2,
-  Sparkles,
-  Sprout,
-  Layers3,
-  Hammer,
-  Ship,
-  Cloud,
-  GitBranch,
-  Send,
-  ChevronRight,
-} from "lucide-react";
+import Image from "next/image";
+import { ChevronRight } from "lucide-react";
 
 import SyllabusButton from "@/components/course-islands/SyllabusButton";
 import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
 
 type Tool = {
   name: string;
-  icon: React.ComponentType<{ className?: string }>;
+  logo: string;
   note: string;
   bg: string;   // unique background
   text: string; // matching text color
@@ -32,7 +21,7 @@ type Tool = {
 const TOOLS: Tool[] = [
   {
     name: "Java",
-    icon: Code2,
+    logo: "/techstack_logos/java-logo.svg",
     note: "JDK • JVM • Collections • Streams",
     bg: "bg-sky-50",
     text: "text-sky-900",
@@ -41,7 +30,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "IntelliJ IDEA",
-    icon: Sparkles,
+    logo: "/techstack_logos/intellij-logo.svg",
     note: "Productivity • Inspections • Refactors",
     bg: "bg-amber-50",
     text: "text-amber-900",
@@ -50,7 +39,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Spring Boot",
-    icon: Sprout,
+    logo: "/techstack_logos/spring-logo.svg",
     note: "REST APIs • Auto-config • Actuator",
     bg: "bg-emerald-50",
     text: "text-emerald-900",
@@ -59,7 +48,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Hibernate (JPA)",
-    icon: Layers3,
+    logo: "/techstack_logos/hibernate-logo.png",
     note: "ORM • Mappings • JPQL • Caching",
     bg: "bg-rose-50",
     text: "text-rose-900",
@@ -68,7 +57,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Maven",
-    icon: Hammer,
+    logo: "/techstack_logos/Maven-logo.png",
     note: "Build • Dependencies • Profiles",
     bg: "bg-violet-50",
     text: "text-violet-900",
@@ -77,7 +66,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Docker",
-    icon: Ship,
+    logo: "/techstack_logos/docker-logo.svg",
     note: "Images • Containers • Compose",
     bg: "bg-cyan-50",
     text: "text-cyan-900",
@@ -86,7 +75,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "AWS",
-    icon: Cloud,
+    logo: "/techstack_logos/amazonwebservices-logo.svg",
     note: "EC2 • RDS • ECS • S3",
     bg: "bg-lime-50",
     text: "text-lime-900",
@@ -95,7 +84,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Git",
-    icon: GitBranch,
+    logo: "/techstack_logos/git-logo.svg",
     note: "Branching • PRs • Workflows",
     bg: "bg-fuchsia-50",
     text: "text-fuchsia-900",
@@ -104,7 +93,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Postman",
-    icon: Send,
+    logo: "/techstack_logos/postman-logo.svg",
     note: "Collections • Tests • Environments",
     bg: "bg-teal-50",
     text: "text-teal-900",
@@ -171,29 +160,27 @@ export default function ToolsSection() {
               role="listitem"
               aria-label={t.aria}
               className={[
-                "group flex items-start gap-4 rounded-2xl p-5 md:p-6 shadow-sm transition-all duration-200",
+                "group rounded-2xl p-5 md:p-6 shadow-sm transition-all duration-200",
                 "hover:-translate-y-0.5 hover:shadow-md",
                 "border border-white/70 backdrop-blur-sm ring-1",
                 t.bg,
                 t.ring,
               ].join(" ")}
             >
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white ring-1 ring-black/5 shadow-sm">
-                <t.icon className="h-6 w-6 text-gray-900" />
-              </div>
-              <div className="min-w-0">
-                <h3 className="truncate text-lg md:text-xl font-bold text-gray-900">
+              <div className="flex items-center gap-3">
+                <Image src={t.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
+                <h3 className="min-w-0 truncate text-lg md:text-xl font-bold text-gray-900">
                   {t.name}
                 </h3>
-                <p className="mt-1 text-sm leading-relaxed text-gray-700">{t.note}</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  <span className={["rounded-md bg-white px-2.5 py-1 text-[11px] font-semibold ring-1 ring-black/5", t.text].join(" ")}>
-                    Hands-on Labs
-                  </span>
-                  <span className="rounded-md bg-white px-2.5 py-1 text-[11px] font-semibold text-gray-800 ring-1 ring-black/5">
-                    Best Practices
-                  </span>
-                </div>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-gray-700">{t.note}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <span className={["rounded-md bg-white px-2.5 py-1 text-[11px] font-semibold ring-1 ring-black/5", t.text].join(" ")}>
+                  Hands-on Labs
+                </span>
+                <span className="rounded-md bg-white px-2.5 py-1 text-[11px] font-semibold text-gray-800 ring-1 ring-black/5">
+                  Best Practices
+                </span>
               </div>
             </div>
           ))}

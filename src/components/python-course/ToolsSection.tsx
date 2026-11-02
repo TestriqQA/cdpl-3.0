@@ -1,9 +1,11 @@
 // components/sections/ToolsSection.tsx
 // Server component — sleek, slightly futuristic, responsive, and SEO-friendly.
 
+import Image from "next/image";
+
 type Tool = {
   name: string;
-  icon: string; // emoji to avoid extra icon libs
+  logo: string;
   accent: {
     bg: string;
     text: string;
@@ -16,7 +18,7 @@ type Tool = {
 const TOOLS: Tool[] = [
   {
     name: "Python",
-    icon: "🐍",
+    logo: "/techstack_logos/python-logo.svg",
     accent: {
       bg: "bg-emerald-50",
       text: "text-emerald-900",
@@ -27,7 +29,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "VS Code",
-    icon: "🧩",
+    logo: "/techstack_logos/vscode-logo.svg",
     accent: {
       bg: "bg-sky-50",
       text: "text-sky-900",
@@ -38,7 +40,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Jupyter",
-    icon: "📓",
+    logo: "/techstack_logos/jupyter-logo.svg",
     accent: {
       bg: "bg-amber-50",
       text: "text-amber-900",
@@ -49,7 +51,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Django",
-    icon: "🌿",
+    logo: "/techstack_logos/django-logo.svg",
     accent: {
       bg: "bg-teal-50",
       text: "text-teal-900",
@@ -60,7 +62,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Pandas",
-    icon: "🧠",
+    logo: "/techstack_logos/pandas-logo.svg",
     accent: {
       bg: "bg-fuchsia-50",
       text: "text-fuchsia-900",
@@ -71,7 +73,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "NumPy",
-    icon: "📐",
+    logo: "/techstack_logos/numpy-logo.svg",
     accent: {
       bg: "bg-indigo-50",
       text: "text-indigo-900",
@@ -82,7 +84,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Scikit-Learn",
-    icon: "🤖",
+    logo: "/techstack_logos/scikit-learn-logo.svg",
     accent: {
       bg: "bg-rose-50",
       text: "text-rose-900",
@@ -93,7 +95,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "Git",
-    icon: "🧭",
+    logo: "/techstack_logos/git-logo.svg",
     accent: {
       bg: "bg-violet-50",
       text: "text-violet-900",
@@ -104,7 +106,7 @@ const TOOLS: Tool[] = [
   },
   {
     name: "AWS",
-    icon: "☁️",
+    logo: "/techstack_logos/amazonwebservices-logo.svg",
     accent: {
       bg: "bg-stone-50",
       text: "text-stone-900",
@@ -179,16 +181,8 @@ export default function ToolsSection() {
               <span className="absolute left-4 right-4 top-3 h-[3px] rounded-full bg-current/20 transition-all duration-300 group-hover:right-3" />
 
               <div className="flex items-center gap-3">
-                <span
-                  className={[
-                    "inline-flex h-10 w-10 items-center justify-center rounded-xl text-lg",
-                    "shadow-[inset_0_-1px_0_rgba(0,0,0,0.04)]",
-                  ].join(" ")}
-                  aria-hidden
-                >
-                  {t.icon}
-                </span>
-                <div>
+                <Image src={t.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
+                <div className="min-w-0">
                   <h3 className="text-sm sm:text-base font-bold">{t.name}</h3>
                   <div className="mt-1 flex items-center gap-1.5">
                     <span className={["h-1.5 w-1.5 rounded-full", t.accent.dot].join(" ")} />

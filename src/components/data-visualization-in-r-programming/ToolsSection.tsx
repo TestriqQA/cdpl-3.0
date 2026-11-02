@@ -2,6 +2,7 @@
 
 // src/components/ToolsSection.tsx
 import React, { JSX, useState } from 'react';
+import Image from 'next/image';
 import { content } from "@/components/data-visualization-in-r-programming/data/content";
 import {
   Rss,
@@ -20,6 +21,13 @@ interface Tool {
   category: string;
   description: string;
 }
+
+const logoMap: { [key: string]: string } = {
+  'R Programming': '/techstack_logos/r-logo.svg',
+  'RStudio': '/techstack_logos/rstudio-logo.svg',
+  'ggplot2': '/techstack_logos/ggplot2-logo.svg',
+  'MySQL': '/techstack_logos/mysql-logo.svg',
+};
 
 interface Category {
   name: string;
@@ -58,6 +66,7 @@ const getCardGradient = (idx: number): string => {
 
 const ToolCard: React.FC<{ tool: Tool; index: number }> = ({ tool, index }) => {
   const IconComponent = iconMap[tool.category] || Rss;
+  const logo = logoMap[tool.name];
 
   return (
     <div
@@ -65,20 +74,21 @@ const ToolCard: React.FC<{ tool: Tool; index: number }> = ({ tool, index }) => {
         index
       )} rounded-xl p-6 border-2 border-slate-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300 group`}
     >
-      {/* Icon */}
-      <div className="mb-4 group-hover:scale-110 transition-transform">
-        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/90 shadow-md">
-          <IconComponent className="w-6 h-6 text-indigo-600" />
-        </div>
+      <div className="flex items-center gap-3">
+        {logo ? (
+          <Image src={logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10 group-hover:scale-110 transition-transform" aria-hidden />
+        ) : (
+          <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/90 shadow-md sm:h-10 sm:w-10 group-hover:scale-110 transition-transform">
+            <IconComponent className="h-5 w-5 text-indigo-600" />
+          </div>
+        )}
+        <h3 className="min-w-0 text-lg font-bold text-slate-900">
+          {tool.name}
+        </h3>
       </div>
 
-      {/* Name */}
-      <h3 className="text-lg font-bold text-slate-900 mb-1">
-        {tool.name}
-      </h3>
-
       {/* Category */}
-      <p className="text-xs font-semibold text-brand mb-3 uppercase tracking-wide">
+      <p className="mt-3 text-xs font-semibold text-brand mb-3 uppercase tracking-wide">
         {tool.category}
       </p>
 
