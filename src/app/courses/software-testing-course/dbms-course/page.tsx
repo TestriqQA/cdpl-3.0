@@ -5,7 +5,7 @@ import StatsSection from '@/components/dbms-course/StatsSection';
 import WhyMysqlSection from '@/components/dbms-course/WhyMysqlSection';
 import CurriculumSection from '@/components/dbms-course/CurriculumSection';
 import ProjectsSection from '@/components/dbms-course/ProjectsSection';
-import StickyNav from '@/components/StickyNav2/StickyNav2';
+import StickyNav from '@/components/stickynav/StickyNav';
 import CareerSection from '@/components/dbms-course/CareerSection';
 import WhoShouldEnroll from '@/components/dbms-course/WhoShouldEnroll';
 import ToolsSection from '@/components/dbms-course/ToolsSection';
