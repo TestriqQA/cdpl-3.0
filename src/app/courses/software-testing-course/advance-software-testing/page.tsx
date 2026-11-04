@@ -1,4 +1,4 @@
-import StickyNav from '@/components/StickyNav2/StickyNav2';
+import StickyNav from '@/components/stickynav/StickyNav';
 import { TestimonialsClient, CtaClient } from "@/app/courses/software-testing-course/advance-software-testing/client-section";
 import HeroSection from '@/components/advance-software-testing/HeroSection';
 import JsonLd from "@/components/JsonLd";

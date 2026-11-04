@@ -1,4 +1,4 @@
-import StickyNav3 from '@/components/StickyNav2/StickyNav3';
+import StickyNav from '@/components/stickynav/StickyNav';
 import { TestimonialsClient, CtaClient } from "@/app/courses/ds-ml-courses/ai-course/client-section";
 import HeroSection from '@/components/ai-course/HeroSection';
 import {
@@ -68,7 +68,7 @@ export default function ComprehensiveDSAI() {
 
       {/* Sticky nav must appear right after hero */}
       <div className="hidden md:block sticky top-0 z-20">
-        <StickyNav3 />
+        <StickyNav variant="roadmap" />
       </div>
 
       <section id='program-stats'><StatsSection /></section>

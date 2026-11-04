@@ -150,6 +150,26 @@ a[role="button"] {
   /* teal-700 */
 }
 
+/* Thin horizontal scrollbar for overflowing pill rows (sticky course nav). */
+/* Standard props only where ::-webkit-scrollbar is unsupported (Firefox):
+   Chrome 121+ lets scrollbar-width override the slimmer webkit styles. */
+@supports not selector(::-webkit-scrollbar) {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #c7d2fe transparent;
+  }
+}
+.scrollbar-thin::-webkit-scrollbar {
+  height: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #c7d2fe;
+  border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 /* Performance optimization */
 .contains-strict {
   contain: strict;

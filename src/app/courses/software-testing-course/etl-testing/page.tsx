@@ -1,4 +1,4 @@
-import StickyNav from "@/components/StickyNav2/StickyNav2";
+import StickyNav from "@/components/stickynav/StickyNav";
 import { TestimonialsClient, CtaClient } from "@/app/courses/software-testing-course/etl-testing/client-section";
 
 // Sections imported directly — next/dynamic(ssr:true) only added client Suspense

@@ -1,6 +1,6 @@
 "use client";
 
-import StickyNav from "@/components/manual-testing-course/StickyNav";
+import StickyNav from "@/components/stickynav/StickyNav";
 import HeroManualTesting from "@/components/manual-testing-course/HeroManualTesting"; // Static Import for LCP
 
 // Direct imports — dynamic(ssr:true) only added client Suspense boundaries
@@ -18,7 +18,7 @@ export default function ManualTestingPageContent() {
 
             {/* Sticky nav must appear right after hero */}
             <div className="hidden md:block sticky top-0 z-20">
-                <StickyNav />
+                <StickyNav variant="manual-testing" />
             </div>
 
             {/* Ensure each subsequent section wrapper has the correct id */}
