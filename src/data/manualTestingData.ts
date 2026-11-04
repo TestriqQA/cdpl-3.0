@@ -1,4 +1,5 @@
 import { type QA } from "../types/faq";
+import { SITE_STATS } from "@/lib/siteStats";
 
 export const MANUAL_TESTING_FAQS: QA[] = [
     {
@@ -104,8 +105,8 @@ export const MANUAL_TESTING_FAQS: QA[] = [
 ];
 
 export const MANUAL_TESTING_REVIEW_DATA = {
-    ratingValue: 4.8,
-    reviewCount: 1200,
+    ratingValue: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
     bestRating: 5,
     worstRating: 1,
 };

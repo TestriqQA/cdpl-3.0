@@ -26,6 +26,7 @@ import PhoneInput from '@/components/ui/PhoneNumberInput';
 import styles from '../ui/phone-input.module.css';
 import CustomFlag from '../ui/CustomFlag';
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 // Import BrochureDownloadModal
 const BrochureDownloadModal = dynamic(() => import('./BrochureDownloadModal'), { ssr: false });
@@ -45,11 +46,11 @@ const MobileFeatureList: React.FC<MobileFeatureListProps> = ({ onOpenBrochure, o
     <div className="grid grid-cols-2 gap-3 text-sm text-slate-700">
       <div className="flex items-center gap-2">
         <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-        <span className="font-semibold">425+ Verified Reviews</span>
+        <span className="font-semibold"><SiteStat k="reviews" /> Verified Reviews</span>
       </div>
       <div className="flex items-center gap-2">
         <Star className="h-4 w-4 text-orange-500 fill-orange-500 flex-shrink-0" />
-        <span className="font-semibold">4.9/5 Student Rating</span>
+        <span className="font-semibold"><SiteStat k="rating" /> Student Rating</span>
       </div>
       <div className="flex items-center gap-2">
         <Award className="h-4 w-4 text-indigo-600 flex-shrink-0" />
@@ -168,7 +169,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
           <Users className="h-5 w-5 text-white" />
         </div>
         <div>
-          <div className="text-xl font-bold text-slate-900">5,000+</div>
+          <div className="text-xl font-bold text-slate-900"><SiteStat k="studentsPlaced" /></div>
           <div className="text-xs text-slate-600">Students Placed</div>
         </div>
       </div>
@@ -179,7 +180,7 @@ const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure,
           <Star className="h-5 w-5 text-white fill-white" />
         </div>
         <div>
-          <div className="text-xl font-bold text-slate-900">4.9/5</div>
+          <div className="text-xl font-bold text-slate-900"><SiteStat k="rating" /></div>
           <div className="text-xs text-slate-600">Student Rating</div>
         </div>
       </div>

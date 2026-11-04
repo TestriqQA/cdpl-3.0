@@ -1200,8 +1200,8 @@ export function generateHomePageSchema(
               // Apply safe defaults since headerData doesn't contain these detailed metadata fields
               duration: "P12W",
               level: "Beginner",
-              rating: 4.8,
-              reviewCount: 50,
+              rating: STATISTICS.rating,
+              reviewCount: STATISTICS.reviewCount,
               enrollmentCount: 1000,
             }),
           });
@@ -1358,8 +1358,8 @@ export function generateAllCoursesPageSchema(): WithContext<
               // Apply safe defaults
               duration: "P12W",
               level: "Beginner",
-              rating: 4.8,
-              reviewCount: 50,
+              rating: STATISTICS.rating,
+              reviewCount: STATISTICS.reviewCount,
               enrollmentCount: 1000,
             }),
           });

@@ -12,6 +12,7 @@ import { generateBreadcrumbSchema, generateBusinessIntelligenceCategoryPageSchem
 import JsonLd from '@/components/JsonLd';
 import { Metadata } from 'next';
 import { biFaqs } from '@/components/BI-Courses/faqData';
+import { SITE_STATS } from "@/lib/siteStats";
 
 export const metadata: Metadata = generateStaticPageMetadata({
     title: 'Business Intelligence Courses | Power BI, Tableau & Data Viz',
@@ -30,8 +31,8 @@ export default function Home() {
             slug: "bi-courses",
             level: "Beginner to Advanced",
             duration: "P4M", // 4 Months
-            rating: 4.8,
-            reviewCount: 2285,
+            rating: SITE_STATS.rating,
+            reviewCount: SITE_STATS.reviewCount,
             instructor: "Industry Experts",
             image: "/og-images/courses-bi-courses-og.webp",
         },

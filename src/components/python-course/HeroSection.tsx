@@ -23,6 +23,7 @@ import LeadForm from "../forms/ApiCourseLeadForm";
 import Link from "next/link";
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false, loading: () => <SectionLoader label="Loading enroll modal..." /> });
 const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false, loading: () => <SectionLoader label="Loading syllabus download modal..." /> });
 
@@ -130,7 +131,7 @@ export default function HeroSection() {
                         <div className="mb-5 hidden lg:flex flex-wrap items-center gap-2">
                             <span className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-900">
                                 <FaStar className="h-4 w-4 fill-current text-amber-500" />
-                                4.9/5 Rated
+                                <SiteStat k="rating" /> Rated
                             </span>
                             <span className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3 py-1.5 text-xs font-semibold text-sky-800">
                                 <FaGlobe className="h-4 w-4" />

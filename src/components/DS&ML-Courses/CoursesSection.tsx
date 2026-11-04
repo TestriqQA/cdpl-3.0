@@ -6,6 +6,7 @@ import { DownloadFormButton } from '@/components/DownloadForm';
 import OfferCountdown from '@/components/courses/OfferCountdown';
 import React from 'react';
 import Link from 'next/link';
+import { useSiteStats } from "@/components/stats/SiteStatsProvider";
 
 
 export const iconMap = {
@@ -53,6 +54,7 @@ const pickVariant = (i: number): Variant => {
 
 // --- Course Card Component (extracted layout/design/features from ModuleCard) ---
 const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index }) => {
+    const siteStats = useSiteStats();
     const variant = pickVariant(index);
 
     return (
@@ -77,11 +79,11 @@ const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index
                         </div>
                         <div
                             className="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-lg"
-                            aria-label={`Rating ${course.rating.toFixed(1)} out of 5`}
+                            aria-label={`Rating ${siteStats.text.ratingValue} out of 5`}
                         >
                             <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
                             <span className="text-sm font-semibold text-gray-800">
-                                {course.rating.toFixed(1)}
+                                {siteStats.text.ratingValue}
                             </span>
                         </div>
                     </div>

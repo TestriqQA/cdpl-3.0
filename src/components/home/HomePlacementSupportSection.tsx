@@ -2,6 +2,7 @@
 import React from 'react';
 import { FileCheck, Users2, Briefcase, TrendingUp, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 /**
  * HomePlacementSupportSection - Job Assistance
@@ -45,7 +46,7 @@ export default function HomePlacementSupportSection() {
   ];
 
   const placementStats = [
-    { number: '500+', label: 'Learners Placed', gradient: 'from-indigo-500 to-blue-600', icon: '👨‍💼' },
+    { number: <SiteStat k="studentsPlaced" />, label: 'Learners Placed', gradient: 'from-indigo-500 to-blue-600', icon: '👨‍💼' },
     { number: '1.5×', label: 'Avg Package Growth', gradient: 'from-green-500 to-emerald-600', icon: '📈' },
     { number: '50+', label: 'Cities Covered', gradient: 'from-rose-500 to-pink-600', icon: '🌍' },
     { number: '50+', label: 'Hiring Partners', gradient: 'from-amber-500 to-brand', icon: '🤝' },

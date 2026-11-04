@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Sparkles, Star, ShieldCheck, ArrowRight, Check, Home, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import AdvisorModal from "@/components/ui/AdvisorModal";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 const gradientText =
     "bg-clip-text text-transparent bg-[linear-gradient(90deg,#0ea5e9,#2563eb,#22c55e)]";
@@ -126,7 +127,7 @@ export default function AboutHeroSection() {
                     >
                         <div className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white/85 px-3 py-2 shadow-sm dark:border-slate-200/60 dark:bg-white/85">
                             <Star className="h-4 w-4 text-[#b45309]" aria-hidden="true" />
-                            <span className="font-semibold text-[#b45309]">4.8/5</span>
+                            <span className="font-semibold text-[#b45309]"><SiteStat k="rating" /></span>
                             <span className="text-slate-500">&nbsp;avg learner rating</span>
                         </div>
                         <div className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white/85 px-3 py-2 text-slate-800 shadow-sm dark:border-slate-200/60 dark:bg-white/85">

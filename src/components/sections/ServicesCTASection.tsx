@@ -5,6 +5,7 @@ import { useCallback, useState } from "react";
 
 import { Sparkles, ArrowRight, CalendarCheck2, Building2, Star } from "lucide-react";
 import WorkshopRequestModal from "../WorkshopRequestModal";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 export default function ServicesCTASection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -88,7 +89,7 @@ export default function ServicesCTASection() {
                     <Star className="h-5 w-5 text-emerald-700" />
                   </div>
                   <div className="text-sm">
-                    <p className="font-semibold text-slate-900">4.8/5 Avg Rating</p>
+                    <p className="font-semibold text-slate-900"><SiteStat k="rating" /> Avg Rating</p>
                     <p className="text-slate-700/90">Learner Satisfaction</p>
                   </div>
                 </div>

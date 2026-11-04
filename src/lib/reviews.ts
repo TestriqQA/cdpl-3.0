@@ -2,6 +2,7 @@
 import { google } from 'googleapis';
 import axios from 'axios';
 import { unstable_cache } from 'next/cache';
+import { SITE_STATS } from '@/lib/siteStats';
 
 // Credentials
 const CLIENT_ID = '1078247115476-cujpa333jod5j1a9441po9r39snkce25.apps.googleusercontent.com';
@@ -90,7 +91,7 @@ async function fetchGoogleReviewsUncached(): Promise<ReviewsData> {
     // If we don't have a refresh token (and it's not set in env), return fallback
     if (!REFRESH_TOKEN) {
         console.warn('Review API: No REFRESH_TOKEN found. Serving fallback data.');
-        return { reviews: FALLBACK_REVIEWS, totalReviewCount: 300, averageRating: 4.8 };
+        return { reviews: FALLBACK_REVIEWS, totalReviewCount: SITE_STATS.reviewCount, averageRating: SITE_STATS.rating };
     }
 
     try {
@@ -151,24 +152,24 @@ async function fetchGoogleReviewsUncached(): Promise<ReviewsData> {
 
         return {
             reviews: reviews.length > 0 ? reviews : FALLBACK_REVIEWS,
-            totalReviewCount: realTotalReviews > 300 ? realTotalReviews : 300,
-            averageRating: realTotalReviews > 0 ? realAverageRating : 4.8
+            totalReviewCount: Math.max(realTotalReviews, SITE_STATS.reviewCount),
+            averageRating: realTotalReviews > 0 ? realAverageRating : SITE_STATS.rating
         };
 
     } catch (error: any) {
         console.error('Error fetching Google Reviews:', error.message);
         return {
             reviews: FALLBACK_REVIEWS,
-            totalReviewCount: 300,
-            averageRating: 4.8,
+            totalReviewCount: SITE_STATS.reviewCount,
+            averageRating: SITE_STATS.rating,
             error: 'Failed to fetch live reviews, showing cached data.'
         };
     }
 }
 
-// Cache the result for 1 hour (3600 seconds)
+// Daily: the root layout reads this for site stats, so it sets every page's revalidate.
 export const getGoogleReviews = unstable_cache(
     async () => fetchGoogleReviewsUncached(),
     ['google-reviews-data'],
-    { revalidate: 3600, tags: ['reviews'] }
+    { revalidate: 86400, tags: ['reviews'] }
 );

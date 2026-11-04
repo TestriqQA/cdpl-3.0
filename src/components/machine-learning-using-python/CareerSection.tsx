@@ -1,6 +1,7 @@
 import { Briefcase, TrendingUp, Users, Download } from "lucide-react";
 import EnrollButton from "@/components/course-islands/EnrollButton";
 import SyllabusButton from "@/components/course-islands/SyllabusButton";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 const jobRoles = [
   { role: "Machine Learning Engineer", salary: "9-15 LPA", icon: "🤖" },
@@ -188,7 +189,7 @@ export default function CareerSection() {
           </div>
           <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-8 border border-purple-200">
             <Users className="w-8 h-8 text-purple-600 mb-4" />
-            <p className="text-3xl font-bold text-purple-600 mb-2">500+</p>
+            <p className="text-3xl font-bold text-purple-600 mb-2"><SiteStat k="studentsPlaced" /></p>
             <p className="text-slate-700 font-semibold">Successful Placements</p>
             <p className="text-sm text-slate-600 mt-2">From our training programs</p>
           </div>

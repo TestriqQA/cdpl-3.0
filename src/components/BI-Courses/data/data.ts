@@ -1,6 +1,7 @@
 import { Zap, Users, Briefcase, Award, Clock, ShieldCheck } from 'lucide-react';
 
 import { iconMap } from '@/components/BI-Courses/CoursesSection';
+import { SITE_STATS } from "@/lib/siteStats";
 
 export const features = [
     {
@@ -62,7 +63,7 @@ export const COURSES: Course[] = [
         description: 'Elevate to pro with Advanced Data Analytics Hero Program! Master SQL, Python, Tableau, predictive modeling & big data. Hands-on, job-focused.',
         duration: '110 Hours',
         students: '2,200+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: true,
         link: '/courses/bi-courses/data-analytics',
@@ -78,7 +79,7 @@ export const COURSES: Course[] = [
         description: 'Master Advanced Data Analytics with Python Libraries! Harness Pandas, NumPy, Matplotlib, Seaborn & Scikit-learn for insights & predictions. Hands-on projects.',
         duration: '20 Hours',
         students: '2,217+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: true,
         link: '/courses/bi-courses/data-analytics-python',
@@ -94,7 +95,7 @@ export const COURSES: Course[] = [
         description: 'Master Excel for Data Analytics & Visualization! Unlock PivotTables, Power Query, charts, dashboards & advanced formulas. Hands-on, real-world projects.',
         duration: '20 Hours',
         students: '2,234+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: true,
         link: '/courses/bi-courses/data-analytics-and-visualization',
@@ -110,7 +111,7 @@ export const COURSES: Course[] = [
         description: 'Master Data Analytics & Visualization with Tableau! Build interactive dashboards, explore data with drag-and-drop, uncover insights & tell stories. Hands-on projects.',
         duration: '20 Hours',
         students: '2,251+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: true,
         link: '/courses/bi-courses/data-analytics-with-tableau',
@@ -126,7 +127,7 @@ export const COURSES: Course[] = [
         description: 'Master Data Analytics & Visualization with Power BI! Create stunning dashboards, DAX formulas, data modeling & insights. Hands-on projects for business intelligence.',
         duration: '20 Hours',
         students: '2,268+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: true,
         link: '/courses/bi-courses/power-bi-course',
@@ -142,7 +143,7 @@ export const COURSES: Course[] = [
         description: 'Master Data Analytics with BI & Big Data Engineering Master Program! Harness Power BI, Tableau, Spark, Hadoop & ETL pipelines for scalable insights. Hands-on, industry-ready.',
         duration: '155 Hours',
         students: '2,285+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: true,
         link: '/courses/bi-courses/masters-in-data-engineering',

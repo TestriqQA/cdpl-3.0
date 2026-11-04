@@ -1,4 +1,5 @@
 import { type QA } from "../types/faq";
+import { SITE_STATS } from "@/lib/siteStats";
 
 export const JAVA_FAQS: QA[] = [
     {
@@ -34,6 +35,6 @@ export const JAVA_FAQS: QA[] = [
 ];
 
 export const JAVA_REVIEW_DATA = {
-    ratingValue: 4.8,
-    reviewCount: 520,
+    ratingValue: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
 };

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { content } from "@/components/data-visualization-in-r-programming/data/content";
 import { Star, Users, Trophy, DollarSign, Briefcase, CloudDownload } from "lucide-react";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import { useSiteStats } from "@/components/stats/SiteStatsProvider";
 
 interface StatCardData {
   icon: React.ReactNode;
@@ -17,18 +18,19 @@ interface StatCardData {
 
 export const StatsSection: React.FC = () => {
   const { stats_section } = content;
+  const siteStats = useSiteStats();
   const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
   const courseName = "Machine Learning and Data Visualization using R Programming";
 
   // --- ORIGINAL CONTENT (unchanged: values, labels, icon choices) ---
   const combinedStatsBase = [
     {
-      value: stats_section.web_stats_reference[0].value,
+      value: siteStats.text.rating,
       label: stats_section.web_stats_reference[0].label,
       icon: <Star className="w-6 h-6 text-yellow-500" aria-hidden="true" />,
     },
     {
-      value: stats_section.web_stats_reference[1].value,
+      value: siteStats.text.studentsPlaced,
       label: stats_section.web_stats_reference[1].label,
       icon: <Users className="w-6 h-6 text-indigo-600" aria-hidden="true" />,
     },

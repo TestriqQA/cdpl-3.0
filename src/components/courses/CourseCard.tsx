@@ -7,6 +7,7 @@ import OfferCountdown from "@/components/courses/OfferCountdown";
 import Link from "next/link";
 import { FaChartBar } from "react-icons/fa6";
 import { Course } from "./course";
+import { useSiteStats } from "@/components/stats/SiteStatsProvider";
 
 // --- Icon Mapping ---
 export const iconMap: Record<string, React.ReactNode> = {
@@ -66,6 +67,7 @@ interface CourseCardProps {
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({ course, index }) => {
+    const siteStats = useSiteStats();
     const variant = pickVariant(index);
 
     // Resolve Icon: check if course.icon is a string key in iconMap, otherwise render as is (if ReactNode) or fallback
@@ -96,11 +98,11 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, index }) => {
                         </div>
                         <div
                             className="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-lg"
-                            aria-label={`Rating ${course.rating.toFixed(1)} out of 5`}
+                            aria-label={`Rating ${siteStats.text.ratingValue} out of 5`}
                         >
                             <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
                             <span className="text-sm font-semibold text-gray-800">
-                                {course.rating.toFixed(1)}
+                                {siteStats.text.ratingValue}
                             </span>
                         </div>
                     </div>

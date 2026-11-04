@@ -12,6 +12,7 @@ import AAACerticationHeroSection from "@/components/sections/AAACerticationHeroS
 import AAACertificationWhySection from "@/components/sections/AAACertificationWhySection";
 import AAACertificationCurriculumSection from "@/components/sections/AAACertificationCurriculumSection";
 import AAACertificationOutcomesCtaSection from "@/components/sections/AAACertificationOutcomesCtaSection";
+import { SITE_STATS } from "@/lib/siteStats";
 
 /* ---------- SEO ---------- */
 export const metadata: Metadata = generateStaticPageMetadata({
@@ -60,8 +61,8 @@ export default function AAACertificationCoursePage() {
     ],
     prerequisites: ["Basic programming knowledge", "Testing fundamentals"],
     duration: "P12W",
-    rating: 4.8,
-    reviewCount: 150,
+    rating: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
   };
 
   const consolidatedSchemas = generateAaaCertificationPageAllSchemas({

@@ -1,3 +1,5 @@
+import { SITE_STATS } from "@/lib/siteStats";
+
 export type AiBootcampFaq = {
     question: string;
     answer: string;
@@ -39,6 +41,6 @@ export const AI_BOOTCAMP_FAQS: AiBootcampFaq[] = [
 ];
 
 export const AI_BOOTCAMP_REVIEW_DATA = {
-    ratingValue: 4.8,
-    reviewCount: 300,
+    ratingValue: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
 };

@@ -2,6 +2,7 @@ import { CheckCircle2, Clock, Users, Award } from "lucide-react";
 import Link from "next/link";
 import EnrollButton from "@/components/course-islands/EnrollButton";
 import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 export default function CtaSection() {
   const courseName = "Machine Learning Algorithms using python Programming";
@@ -93,11 +94,11 @@ export default function CtaSection() {
           {/* Trust Indicators */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
             <div>
-              <p className="text-3xl font-bold mb-2">500+</p>
-              <p className="text-blue-100">Successful Graduates</p>
+              <p className="text-3xl font-bold mb-2"><SiteStat k="studentsPlaced" /></p>
+              <p className="text-blue-100">Students Placed</p>
             </div>
             <div>
-              <p className="text-3xl font-bold mb-2">4.8/5</p>
+              <p className="text-3xl font-bold mb-2"><SiteStat k="rating" /></p>
               <p className="text-blue-100">Average Student Rating</p>
             </div>
             <div>

@@ -1,4 +1,5 @@
 import EnrollButton from "./ui/EnrollButton";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 const whyProgramData = [
     {
@@ -130,15 +131,15 @@ export default function WhyTableauProgram() {
                 {/* Stats Highlight */}
                 <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div className="text-center p-8 bg-blue-50 rounded-xl border-2 border-blue-200">
-                        <div className="text-5xl font-bold text-gray-950 mb-2">500+</div>
-                        <p className="text-gray-700 font-semibold">Successful Graduates</p>
+                        <div className="text-5xl font-bold text-gray-950 mb-2"><SiteStat k="studentsPlaced" /></div>
+                        <p className="text-gray-700 font-semibold">Students Placed</p>
                         <p className="text-sm text-gray-600 mt-2">
                             Placed in top companies worldwide
                         </p>
                     </div>
 
                     <div className="text-center p-8 bg-orange-50 rounded-xl border-2 border-orange-200">
-                        <div className="text-5xl font-bold text-gray-950 mb-2">4.8/5</div>
+                        <div className="text-5xl font-bold text-gray-950 mb-2"><SiteStat k="rating" /></div>
                         <p className="text-gray-700 font-semibold">Student Rating</p>
                         <p className="text-sm text-gray-600 mt-2">
                             Consistently excellent feedback

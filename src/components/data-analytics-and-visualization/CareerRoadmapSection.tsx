@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { CheckCircle, ArrowRight } from "lucide-react";
 import EnrollModal from "../EnrollModal";
+import { useSiteStats } from "@/components/stats/SiteStatsProvider";
 
 const learningPath = [
     {
@@ -38,6 +39,7 @@ const learningPath = [
 
 
 export default function CareerRoadmapSection() {
+    const siteStats = useSiteStats();
     const [isEnrollOpen, setIsEnrollOpen] = useState(false);
     const courseName = "Advanced Excel for Data Analytics & Visualization";
 
@@ -226,7 +228,7 @@ export default function CareerRoadmapSection() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
                             { metric: "95%", label: "Completion Rate", description: "Students who complete all modules" },
-                            { metric: "4.8/5", label: "Student Rating", description: "Average course satisfaction score" },
+                            { metric: siteStats.text.rating, label: "Student Rating", description: "Average course satisfaction score" },
                             { metric: "3 Months", label: "Avg Placement", description: "Time to secure first job" },
                             { metric: "4+ LPA", label: "Avg Salary", description: "Starting salary for freshers" },
                         ].map((item, index) => (

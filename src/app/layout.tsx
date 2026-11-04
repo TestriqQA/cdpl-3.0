@@ -36,6 +36,8 @@ import SiteChrome from "@/components/Layout/SiteChrome";
 // draft mode is on, so it never ships to normal visitors.
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
+import { SiteStatsProvider } from "@/components/stats/SiteStatsProvider";
+import { getSiteStats } from "@/lib/liveStats";
 
 const inter = localFont({
   src: './fonts/inter-variable.woff2',
@@ -98,6 +100,7 @@ export default async function RootLayout({
   // normal (non-preview) requests into dynamic rendering — the published
   // site stays statically generated.
   const { isEnabled: isDraftMode } = await draftMode();
+  const siteStats = await getSiteStats();
 
   return (
     <html lang="en" dir="ltr" data-scroll-behavior="smooth">
@@ -148,6 +151,7 @@ export default async function RootLayout({
       </head>
 
       <body className={`${inter.variable} font-sans antialiased`}>
+        <SiteStatsProvider value={siteStats}>
         <SiteChrome>
           <MetaPixel />
 
@@ -167,6 +171,7 @@ export default async function RootLayout({
         {/* BLG-139: only mounted inside the Sanity Presentation tool —
             connects the previewed page to the Studio. */}
         {isDraftMode && <VisualEditing />}
+        </SiteStatsProvider>
       </body>
     </html>
   );

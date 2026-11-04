@@ -31,6 +31,7 @@ const features = [
 
 import EnrollModal from '@/components/EnrollModal';
 import SyllabusDownloadModal from '@/components/SyllabusDownloadModal';
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 export default function HeroSection() {
     const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
@@ -90,7 +91,7 @@ export default function HeroSection() {
                         <div className="hidden mb-5 lg:inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1.5 text-xs font-medium text-slate-700 backdrop-blur">
                             <span className="inline-flex items-center gap-1">
                                 <Star className="h-4 w-4 fill-current text-yellow-500" />
-                                4.9/5 Rated
+                                <SiteStat k="rating" /> Rated
                             </span>
                             <span className="h-3 w-px bg-slate-300" />
                             <span className="inline-flex items-center gap-1">

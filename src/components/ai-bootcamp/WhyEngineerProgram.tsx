@@ -1,5 +1,6 @@
 import React from "react";
 import { Zap, Users, Award, Lightbulb, Target, Rocket } from "lucide-react";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 interface FeatureCard {
     icon: React.ReactNode;
@@ -149,7 +150,7 @@ export default function WhyEngineerProgram() {
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
                             <div className="text-center sm:text-left">
                                 <div className="text-3xl md:text-4xl font-bold text-orange-300 mb-1">
-                                    4.9/5
+                                    <SiteStat k="rating" />
                                 </div>
                                 <p className="text-slate-200 text-sm sm:text-base">
                                     Verified Learner Rating
@@ -157,7 +158,7 @@ export default function WhyEngineerProgram() {
                             </div>
                             <div className="text-center sm:text-left">
                                 <div className="text-3xl md:text-4xl font-bold text-pink-300 mb-1">
-                                    425+
+                                    <SiteStat k="reviews" />
                                 </div>
                                 <p className="text-slate-200 text-sm sm:text-base">
                                     Verified Reviews

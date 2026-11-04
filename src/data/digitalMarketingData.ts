@@ -1,3 +1,5 @@
+import { SITE_STATS } from "@/lib/siteStats";
+
 export type DigitalMarketingFaq = {
     question: string;
     answer: string;
@@ -37,6 +39,6 @@ export const DIGITAL_MARKETING_FAQS: DigitalMarketingFaq[] = [
 ];
 
 export const DIGITAL_MARKETING_REVIEW_DATA = {
-    ratingValue: 4.8,
-    reviewCount: 200,
+    ratingValue: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
 };
