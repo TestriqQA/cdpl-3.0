@@ -154,10 +154,6 @@ export default function CareerRoadmapSection() {
                   <h3 className="mt-2 text-base sm:text-lg font-bold tracking-tight text-slate-900">{s.title}</h3>
                   <p className="mt-1 text-sm text-slate-700">{s.desc}</p>
 
-                  {/* bottom progress hint */}
-                  <div className="mt-4 h-1 w-full rounded-full bg-white/80" aria-hidden>
-                    <div className={["h-1 w-3/4 rounded-full", s.accent.bar].join(" ")} />
-                  </div>
                 </article>
               </li>
             ))}
