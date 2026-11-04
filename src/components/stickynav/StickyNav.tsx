@@ -74,7 +74,7 @@ export default function StickyNav({ variant = 'software-testing' }: StickyNavPro
       <div
         ref={navRef}
         className={`z-20 transition-all duration-500 ${isScrolled
-          ? 'fixed md:top-14 lg:top-18 top-20 left-0 right-0 py-1 backdrop-blur-xl bg-white/70 shadow-[0_4px_12px_-6px_rgba(15,23,42,0.08)] border-b border-gray-200/50'
+          ? 'fixed md:top-14 lg:top-16 top-20 left-0 right-0 py-1 backdrop-blur-xl bg-white/70 shadow-[0_4px_12px_-6px_rgba(15,23,42,0.08)] border-b border-gray-200/50'
           : 'relative mt-8'
           }`}
       >
