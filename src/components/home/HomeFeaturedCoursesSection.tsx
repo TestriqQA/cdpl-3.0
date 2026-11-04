@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Clock, Users, ArrowRight, Star, Zap, Download, BookOpen, Gauge, Shield, Smartphone, CheckCircle, Cpu, BarChart3, Code, TrendingUp, Cog, Trophy, Brain, Database, Megaphone, Briefcase, Rocket, PieChart, FileSpreadsheet, LayoutGrid } from 'lucide-react';
 import { DownloadFormButton } from '@/components/DownloadForm';
 import Link from 'next/link';
@@ -79,112 +79,6 @@ const iconMap = {
   FileSpreadsheet: <FileSpreadsheet className="w-10 h-10" />,
   LayoutGrid: <LayoutGrid className="w-10 h-10" />,
 
-};
-
-/**
- * One 1 Hz clock shared by every countdown on the page.
- *
- * Each card previously owned its own setInterval, so 26 cards meant 26
- * independent timer callbacks every second — 26 separate macrotasks, each
- * with its own React render and commit, none of them batched together. This
- * is a single interval driving a single batched update instead.
- *
- * `nowMs` stays 0 until the first client tick so the server render and the
- * first client render agree on the 00/00/00 placeholder.
- */
-const tickListeners = new Set<() => void>();
-let tickHandle: ReturnType<typeof setInterval> | null = null;
-let nowMs = 0;
-
-const subscribeTick = (onStoreChange: () => void) => {
-  tickListeners.add(onStoreChange);
-  if (tickHandle === null) {
-    nowMs = Date.now();
-    tickHandle = setInterval(() => {
-      nowMs = Date.now();
-      tickListeners.forEach((listener) => listener());
-    }, 1000);
-  }
-  return () => {
-    tickListeners.delete(onStoreChange);
-    if (tickListeners.size === 0 && tickHandle !== null) {
-      clearInterval(tickHandle);
-      tickHandle = null;
-    }
-  };
-};
-
-const getTickSnapshot = () => nowMs;
-const getTickServerSnapshot = () => 0;
-
-const PLACEHOLDER_TIME = { hours: '00', minutes: '00', seconds: '00', isOver: false };
-
-/** Single sessionStorage key for the shared 48h offer deadline. */
-const OFFER_DEADLINE_KEY = 'cdpl-offer-deadline';
-
-// --- Isolated Countdown Component ---
-const CountdownTimer: React.FC<{ targetDate: Date | null }> = ({ targetDate }) => {
-  const now = React.useSyncExternalStore(subscribeTick, getTickSnapshot, getTickServerSnapshot);
-
-  const timeLeft = React.useMemo(() => {
-    // `now` is 0 until the first client tick and `targetDate` is resolved on
-    // the client, so both the server and the first client render produce the
-    // placeholder. It occupies exactly the same box as the live timer, so
-    // nothing shifts when the real value arrives.
-    if (!targetDate || now === 0) return PLACEHOLDER_TIME;
-
-    const diff = Math.max(0, targetDate.getTime() - now);
-    if (diff <= 0) return { hours: '00', minutes: '00', seconds: '00', isOver: true };
-
-    const totalSeconds = Math.floor(diff / 1000);
-    return {
-      hours: pad(Math.floor(totalSeconds / 3600)),
-      minutes: pad(Math.floor((totalSeconds % 3600) / 60)),
-      seconds: pad(totalSeconds % 60),
-      isOver: false,
-    };
-  }, [targetDate, now]);
-
-  return (
-    <>
-      <div
-        className="grid grid-cols-3 gap-3 text-center"
-        // role="timer" implies aria-live="off". An explicit aria-live="polite"
-        // was making screen readers announce all 26 countdowns every second.
-        role="timer"
-      >
-        <div className="rounded-lg bg-white shadow-sm p-3">
-          <div className="text-xl font-bold text-slate-900 tabular-nums">
-            {timeLeft.hours}
-          </div>
-          <div className="text-[10px] text-slate-500 tracking-wide uppercase">
-            Hours
-          </div>
-        </div>
-        <div className="rounded-lg bg-white shadow-sm p-3">
-          <div className="text-xl font-bold text-slate-900 tabular-nums">
-            {timeLeft.minutes}
-          </div>
-          <div className="text-[10px] text-slate-500 tracking-wide uppercase">
-            Minutes
-          </div>
-        </div>
-        <div className="rounded-lg bg-white shadow-sm p-3">
-          <div className="text-xl font-bold text-slate-900 tabular-nums">
-            {timeLeft.seconds}
-          </div>
-          <div className="text-[10px] text-slate-500 tracking-wide uppercase">
-            Seconds
-          </div>
-        </div>
-      </div>
-      {timeLeft.isOver && (
-        <p className="mt-2 text-xs text-red-600 font-semibold">
-          Offer has ended.
-        </p>
-      )}
-    </>
-  );
 };
 
 const COURSES: Course[] = [
@@ -610,17 +504,8 @@ const COURSES: Course[] = [
 const pad = (n: number) => n.toString().padStart(2, '0');
 
 // --- Course Card Component (extracted layout/design/features from ModuleCard) ---
-const CourseCard: React.FC<{ course: Course; index: number; sessionDeadline: Date | null }> = ({ course, index, sessionDeadline }) => {
+const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index }) => {
   const variant = pickVariant(index);
-
-  // The generic 48h session deadline is resolved once by the parent — no course
-  // currently sets `offerEndsAt`, so all 26 cards previously computed the same
-  // value independently, costing 26 effects and 52 synchronous sessionStorage
-  // operations during hydration.
-  const target = React.useMemo(
-    () => (course.offerEndsAt ? new Date(course.offerEndsAt) : sessionDeadline),
-    [course.offerEndsAt, sessionDeadline]
-  );
 
   return (
     // Plain <article>, not motion.article. Each of the 26 cards otherwise
@@ -710,15 +595,6 @@ const CourseCard: React.FC<{ course: Course; index: number; sessionDeadline: Dat
           ))}
         </ul>
 
-        {/* Extracted timer block from ModuleCard (boxed H/M/S grid) */}
-        <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-          <p className="text-xs font-semibold text-slate-600 mb-2">
-            Limited-time offer ends in
-          </p>
-
-          <CountdownTimer targetDate={target} />
-        </div>
-
         <div className="pt-4 space-y-3 mt-auto">
           <Link
             href={course.link}
@@ -764,23 +640,6 @@ export default function HomeFeaturedCoursesSection() {
   const ALL_CATEGORIES = ['All', 'Software Testing', 'Data Science', 'Business Intelligence', 'Artificial Intelligence', 'Digital Marketing'];
   const [activeCategory, setActiveCategory] = useState(ALL_CATEGORIES[0]);
 
-  // The generic "offer ends in 48h" deadline, resolved once for the whole grid.
-  // Each card used to resolve this itself against a per-course sessionStorage
-  // key, which meant 26 effects and 52 synchronous storage reads/writes during
-  // hydration for a value that was identical on every card.
-  const [sessionDeadline, setSessionDeadline] = useState<Date | null>(null);
-
-  useEffect(() => {
-    const saved = sessionStorage.getItem(OFFER_DEADLINE_KEY);
-    if (saved) {
-      setSessionDeadline(new Date(saved));
-      return;
-    }
-    const deadline = new Date(Date.now() + 48 * 3600 * 1000);
-    sessionStorage.setItem(OFFER_DEADLINE_KEY, deadline.toISOString());
-    setSessionDeadline(deadline);
-  }, []);
-
   const filteredCourses = activeCategory === 'All'
     ? COURSES
     : COURSES.filter(course => course.category === activeCategory);
@@ -824,7 +683,7 @@ export default function HomeFeaturedCoursesSection() {
         {/* Course Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCourses.map((course, index) => (
-            <CourseCard key={course.id} course={course} index={index} sessionDeadline={sessionDeadline} />
+            <CourseCard key={course.id} course={course} index={index} />
           ))}
         </div>
 
