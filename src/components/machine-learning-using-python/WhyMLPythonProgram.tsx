@@ -110,9 +110,6 @@ export default function WhyMLPythonProgram() {
                 Includes mentor guidance, interview prep, resume & LinkedIn polishing, and{" "}
                 <strong>placement assistance</strong> for relevant roles.
               </p>
-              <div className="mt-3 h-1 w-full rounded-full bg-slate-100">
-                <div className="h-1 w-3/4 rounded-full bg-slate-900" />
-              </div>
             </div>
           </div>
         </div>

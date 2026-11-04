@@ -110,7 +110,7 @@ export default function WhoShouldEnroll() {
           role="list"
           aria-label="Who should enroll audience groups"
         >
-          {AUDIENCES.map((a, i) => (
+          {AUDIENCES.map((a) => (
             <div
               key={a.title}
               role="listitem"
@@ -140,14 +140,6 @@ export default function WhoShouldEnroll() {
                   <li key={p}>{p}</li>
                 ))}
               </ul>
-
-              {/* subtle accent bar (non-gradient) */}
-              <div className="mt-4 h-1 w-full rounded-full bg-white/70" aria-hidden="true">
-                <div
-                  className={["h-1 rounded-full", a.text.replace("text-", "bg-")].join(" ")}
-                  style={{ width: ["82%", "74%", "78%", "70%"][i] }}
-                />
-              </div>
             </div>
           ))}
         </div>

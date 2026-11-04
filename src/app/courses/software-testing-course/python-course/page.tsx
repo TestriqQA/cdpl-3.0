@@ -1,4 +1,4 @@
-import StickyNav3 from "@/components/StickyNav2/StickyNav3";
+import StickyNav from "@/components/stickynav/StickyNav";
 import { TestimonialsClient, CtaClient, FaqClient } from "@/app/courses/software-testing-course/python-course/client-section";
 import HeroSection from '@/components/python-course/HeroSection';
 import JsonLd from "@/components/JsonLd";
@@ -65,7 +65,7 @@ export default function PythonPage() {
 
       {/* Sticky nav must appear right after hero */}
       <div className="hidden md:block sticky top-0 z-20">
-        <StickyNav3 />
+        <StickyNav variant="roadmap" />
       </div>
 
       <section id='program-stats'><StatsSection /></section>

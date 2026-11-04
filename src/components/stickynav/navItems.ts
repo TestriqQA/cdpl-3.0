@@ -49,3 +49,12 @@ export const general_course = [
   { id: "faqs", label: "FAQs", color: "from-indigo-600 to-cyan-600" },
   { id: "contact", label: "Contact", color: "from-indigo-600 to-cyan-600" },
 ]
+
+export const NAV_ITEMS = {
+  "software-testing": software_testing,
+  roadmap: with_roadmap,
+  "manual-testing": sections,
+  general: general_course,
+};
+
+export type NavVariant = keyof typeof NAV_ITEMS;

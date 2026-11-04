@@ -96,14 +96,6 @@ export default function FaqSection() {
                 <div className="mt-3 pl-13 text-sm leading-relaxed text-gray-700 md:text-base">
                   {item.answer}
                 </div>
-
-                {/* subtle accent bar (non-gradient) */}
-                <div className="mt-4 h-1 w-full rounded-full bg-white/70" aria-hidden="true">
-                  <div
-                    className={["h-1 rounded-full", metadata.text.replace("text-", "bg-")].join(" ")}
-                    style={{ width: ["82%", "74%", "76%", "70%", "78%", "72%"][i % 6] }}
-                  />
-                </div>
               </details>
             );
           })}
