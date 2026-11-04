@@ -267,12 +267,12 @@ export default function CurriculumSection() {
           className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2"
           aria-label="Java curriculum modules"
         >
-          {MODULES.map((m, i) => (
+          {MODULES.map((m) => (
             <li key={m.num} className="relative">
               <article
                 aria-label={`${m.num} ${m.title}`}
                 className={[
-                  "group relative overflow-hidden rounded-2xl p-5 md:p-6 shadow-sm transition-all duration-200",
+                  "group relative flex h-full flex-col overflow-hidden rounded-2xl p-5 md:p-6 shadow-sm transition-all duration-200",
                   "hover:-translate-y-0.5 hover:shadow-md",
                   "border border-white/70 backdrop-blur-sm ring-1",
                   m.bg,
@@ -282,7 +282,7 @@ export default function CurriculumSection() {
                 {/* module header */}
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-start gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white ring-1 ring-black/5 shadow-sm">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white ring-1 ring-black/5 shadow-sm">
                       <m.icon className="h-6 w-6 text-gray-900" />
                     </div>
                     <div>
@@ -299,13 +299,6 @@ export default function CurriculumSection() {
                       </h3>
                     </div>
                   </div>
-
-                  {/* slim progress accent (sleek, non-gradient) */}
-                  <div className="hidden md:block h-8 w-1 rounded-full bg-white/70" aria-hidden="true">
-                    <div
-                      className={["h-4 w-1 rounded-full", m.text.replace("text-", "bg-")].join(" ")}
-                    />
-                  </div>
                 </div>
 
                 {/* outcome */}
@@ -314,7 +307,7 @@ export default function CurriculumSection() {
                 </p>
 
                 {/* footer cta */}
-                <div className="mt-4 flex items-center justify-between">
+                <div className="mt-auto flex items-center justify-between pt-4">
                   <span className={["text-xs font-semibold", m.text].join(" ")}>
                     Outcome-Focused
                   </span>
@@ -328,14 +321,6 @@ export default function CurriculumSection() {
                   </SyllabusButton>
                 </div>
               </article>
-
-              {/* lightweight timeline connector on large screens */}
-              {i < MODULES.length - 1 && (
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute right-2 top-[calc(100%+0.25rem)] hidden h-4 w-px bg-gray-300/60 sm:block"
-                />
-              )}
             </li>
           ))}
         </ol>
