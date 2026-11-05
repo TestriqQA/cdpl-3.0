@@ -26,6 +26,7 @@ import {
 } from "./seo-config";
 import { courseCategories } from "@/data/headerData";
 import { CAMPUS_CITY } from "@/lib/cityTiers";
+import { CONTACT_FAQS } from "@/data/contactFaqs";
 
 // Type definitions for schema.org structured data
 type WithContext<T> = T & { "@context": string };
@@ -4101,34 +4102,10 @@ export function generateContactPageAllSchemas(): WithContext<
     url: "/contact-us",
   });
 
-  // FAQPage — common contact-related questions
-  const faqSchema = generateFAQSchema([
-    {
-      question: "How can I contact CDPL (Cinute Digital)?",
-      answer:
-        "You can reach CDPL by phone at +91 98208 53250, by email at info@cinutedigital.com, or by visiting our office in Mumbai. You can also fill out the inquiry form on our Contact Us page.",
-    },
-    {
-      question: "Where is the CDPL office located?",
-      answer:
-        "CDPL (Cinute Digital) is located in Mumbai, Maharashtra, India. We offer both classroom training at our Mumbai center and online/hybrid learning options.",
-    },
-    {
-      question: "What courses does CDPL offer?",
-      answer:
-        "CDPL offers courses in Software Testing, Data Science, Machine Learning, AI, Business Intelligence, Digital Marketing, and more. Visit our Courses page for the full list.",
-    },
-    {
-      question: "Does CDPL provide placement assistance?",
-      answer:
-        "Yes, CDPL provides job placement assistance including resume building, mock interviews, LinkedIn optimization, and direct connections to hiring companies.",
-    },
-    {
-      question: "Can I schedule a free counseling session?",
-      answer:
-        "Absolutely. You can book a free 1:1 career counseling session with our experts by calling us, filling the form on our Contact page, or booking a call directly.",
-    },
-  ]);
+  // FAQPage — mirrors the FAQ shown on the page.
+  const faqSchema = generateFAQSchema(
+    CONTACT_FAQS.map(({ question, answer }) => ({ question, answer })),
+  );
 
   // ItemList — top courses as a directory
   const topCourses = [
