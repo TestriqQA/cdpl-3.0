@@ -18,6 +18,8 @@ const DOMAIN_COLORS = {
   QA: { bg: "bg-orange-50", text: "text-brand", ring: "ring-[#ff8c00]/20" },
 };
 
+const DOMAIN_LABELS = { QA: "Quality Assurance" };
+
 const COMPANY_LOGOS: Record<string, string> = {
   "tech mahindra": "tech_mahindra.png",
   "accenture": "accenture.png",
@@ -25,7 +27,7 @@ const COMPANY_LOGOS: Record<string, string> = {
   "jm financial": "jm_financial.png",
   "testriq": "testriq.png",
   "i-xl technologies": "i-xl_technologies.png",
-  "aryan technologies": "aryan_technologies.png",
+  "aryan technologies": "aryan_technologies_logo.png",
   "maxwell energy systems": "maxwell.png",
   "idfy": "idfy.png",
   "vistaar": "vistaar.png",
@@ -50,6 +52,9 @@ const FALLBACK_SVG = encodeURIComponent(
   </svg>`
 );
 const COMPANY_LOGO_FALLBACK = `data:image/svg+xml;utf8,${FALLBACK_SVG}`;
+
+// Square logos read small in the short logo box, so they get a taller one.
+const TALL_LOGOS = new Set(["aryan technologies"]);
 
 function normalizeCompanyName(name: string): string {
   const n = name.trim().toLowerCase();
@@ -127,7 +132,7 @@ export default function PlacementsFiltersGridSection({ contained = false }: Prop
               </div>
             ) : (
               <div
-                className="grid grid-cols-2 gap-4 max-[400px]:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 xl:gap-6 2xl:gap-8"
+                className="grid grid-cols-2 gap-4 max-[400px]:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:gap-6"
               >
                 {results.map((p, idx) => {
                   const theme = DOMAIN_COLORS[p.domain];
@@ -137,7 +142,7 @@ export default function PlacementsFiltersGridSection({ contained = false }: Prop
                   return (
                     <div
                       key={`${p.name}-${idx}`}
-                      className="relative overflow-visible rounded-2xl border border-slate-200 bg-white p-4 shadow-sm w-full transition-transform duration-300 hover:-translate-y-0.5"
+                      className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-sm w-full transition-transform duration-300 hover:-translate-y-0.5"
                     >
                       {/* pattern paint (different per-card) */}
                       <span
@@ -156,38 +161,37 @@ export default function PlacementsFiltersGridSection({ contained = false }: Prop
                         <span aria-hidden className={`absolute left-0 top-0 h-full w-1.5 ${theme.bg}`} />
                       </span>
 
-                      {/* AVATAR — slightly bigger */}
-                      <Image
-                        src={p.image}
-                        alt={p.name}
-                        title={p.name}
-                        width={64}
-                        height={64}
-                        className="absolute -left-3 -top-3 h-16 w-16 rounded-full object-cover border border-slate-200 ring-4 ring-white shadow"
-                      />
-
-                      {/* Header spacer + logo bay */}
-                      <div className="h-12 pr-28 sm:pr-32 md:pr-36" />
-                      <div className="absolute right-4 top-4 h-12 w-28 sm:w-32 md:w-36 flex items-center justify-center">
+                      {/* Header: avatar + company logo */}
+                      <div className="relative flex items-center justify-between gap-3">
                         <Image
-                          src={logoSrc}
-                          alt={`${p.company} logo`}
-                          title={`${p.company} logo`}
-                          width={128}
-                          height={40}
-                          className="max-h-10 sm:max-h-11 w-auto object-contain"
+                          src={p.image}
+                          alt={p.name}
+                          title={p.name}
+                          width={80}
+                          height={80}
+                          className="h-20 w-20 shrink-0 rounded-full object-cover border border-slate-200 ring-4 ring-white shadow"
                         />
+                        <div className={`relative min-w-0 flex-1 ${TALL_LOGOS.has(normalizeCompanyName(p.company)) ? "h-16" : "h-10 sm:h-11"}`}>
+                          <Image
+                            src={logoSrc}
+                            alt={`${p.company} logo`}
+                            title={`${p.company} logo`}
+                            fill
+                            sizes="160px"
+                            className="object-contain object-right"
+                          />
+                        </div>
                       </div>
 
                       {/* BODY */}
-                      <div className="relative min-w-0 mt-0.5">
+                      <div className="relative min-w-0 mt-3">
                         <p className="truncate text-xs sm:text-sm text-slate-600">{p.company}</p>
                         <h3 className="truncate text-[1.02rem] sm:text-lg font-extrabold text-slate-900">{p.name}</h3>
                       </div>
 
                       <div className="relative mt-2.5">
-                        <span className={`rounded-md px-2 py-0.5 text-xs sm:text-sm font-semibold ${theme.bg} ${theme.text}`}>
-                          {p.domain}
+                        <span className={`text-xs sm:text-sm font-semibold ${theme.text}`}>
+                          {DOMAIN_LABELS[p.domain]}
                         </span>
                       </div>
                     </div>

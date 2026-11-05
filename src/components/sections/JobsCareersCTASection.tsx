@@ -1,52 +1,56 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CircleCheck } from "lucide-react";
 
+// Same orange band as the Our Team page's closing CTA, with careers actions.
 export default function JobsCareersCTASection() {
-    // Smooth-scroll helper (prevents hash-jump)
+    // Smooth-scroll to #open-roles instead of a hash jump
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        const href = (e.currentTarget.getAttribute("href") || "").trim();
-        if (href.startsWith("#")) {
+        const el = document.getElementById("open-roles");
+        if (el) {
             e.preventDefault();
-            const id = href.slice(1);
-            const el = document.getElementById(id);
-            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     };
 
     return (
-        <section className="w-full bg-white text-neutral-900">
-            <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-                <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white p-6 sm:p-8">
+        <section aria-labelledby="careers-cta-heading" className="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 lg:px-8">
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 via-orange-500 to-amber-500 px-6 py-10 text-white shadow-lg sm:px-10 lg:py-12">
+                <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-2xl" />
+                <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-amber-300/20 blur-2xl" />
+
+                <div className="relative flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
                     <div className="max-w-2xl">
-                        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
-                            Don’t see a <span className="text-brand">perfect</span> fit?
-                        </h2>
-                        <p className="mt-2 text-gray-700 text-sm sm:text-base">
-                            Tell us how you can raise the bar. Great people shape new roles.
+                        <h2 id="careers-cta-heading" className="text-2xl font-bold sm:text-3xl">Don’t see a perfect fit?</h2>
+                        <p className="mt-3 text-white/90">
+                            Tell us how you can raise the bar. Great people shape new roles, so we always want to hear
+                            from <span className="font-semibold text-white">people who care about learners</span>.
                         </p>
+                        <ul className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium text-white/95 lg:justify-start">
+                            {["Remote & hybrid roles", "Freshers welcome", "1–2 week hiring process"].map((item) => (
+                                <li key={item} className="inline-flex items-center gap-1.5">
+                                    <CircleCheck className="h-4 w-4" aria-hidden="true" />
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
 
-                        <div className="mt-5 flex flex-col sm:flex-row gap-3">
-                            {/* View open roles — brand button, scrolls to #open-roles */}
-                            <Link
-                                href="#open-roles"
-                                onClick={handleScroll}
-                                className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-sm transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ff8c00] hover:opacity-95"
-                                style={{ backgroundColor: "#ff8c00" }}
-                            >
-                                View open roles
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
-
-                            {/* Secondary link */}
-                            <Link
-                                href="/about-us"
-                                className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-gray-900 border border-gray-200 hover:bg-gray-50 transition"
-                            >
-                                Learn about CDPL
-                            </Link>
-                        </div>
+                    <div className="flex shrink-0 flex-col items-center gap-3 sm:flex-row">
+                        <Link
+                            href="#open-roles"
+                            onClick={handleScroll}
+                            className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 font-semibold text-orange-600 shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
+                        >
+                            View open roles <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                        </Link>
+                        <Link
+                            href="/about-us"
+                            className="inline-flex items-center rounded-xl border-2 border-white/80 px-5 py-2.5 font-semibold text-white transition hover:bg-white/10"
+                        >
+                            Learn about CDPL
+                        </Link>
                     </div>
                 </div>
             </div>

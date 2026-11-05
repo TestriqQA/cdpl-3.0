@@ -26,6 +26,9 @@ import {
 } from "./seo-config";
 import { courseCategories } from "@/data/headerData";
 import { CAMPUS_CITY } from "@/lib/cityTiers";
+import { CONTACT_FAQS } from "@/data/contactFaqs";
+import { PLACEMENTS_FAQS } from "@/data/placementsFaqs";
+import { CAREERS_FAQS } from "@/data/careersFaqs";
 
 // Type definitions for schema.org structured data
 type WithContext<T> = T & { "@context": string };
@@ -4101,34 +4104,10 @@ export function generateContactPageAllSchemas(): WithContext<
     url: "/contact-us",
   });
 
-  // FAQPage — common contact-related questions
-  const faqSchema = generateFAQSchema([
-    {
-      question: "How can I contact CDPL (Cinute Digital)?",
-      answer:
-        "You can reach CDPL by phone at +91 98208 53250, by email at info@cinutedigital.com, or by visiting our office in Mumbai. You can also fill out the inquiry form on our Contact Us page.",
-    },
-    {
-      question: "Where is the CDPL office located?",
-      answer:
-        "CDPL (Cinute Digital) is located in Mumbai, Maharashtra, India. We offer both classroom training at our Mumbai center and online/hybrid learning options.",
-    },
-    {
-      question: "What courses does CDPL offer?",
-      answer:
-        "CDPL offers courses in Software Testing, Data Science, Machine Learning, AI, Business Intelligence, Digital Marketing, and more. Visit our Courses page for the full list.",
-    },
-    {
-      question: "Does CDPL provide placement assistance?",
-      answer:
-        "Yes, CDPL provides job placement assistance including resume building, mock interviews, LinkedIn optimization, and direct connections to hiring companies.",
-    },
-    {
-      question: "Can I schedule a free counseling session?",
-      answer:
-        "Absolutely. You can book a free 1:1 career counseling session with our experts by calling us, filling the form on our Contact page, or booking a call directly.",
-    },
-  ]);
+  // FAQPage — mirrors the FAQ shown on the page.
+  const faqSchema = generateFAQSchema(
+    CONTACT_FAQS.map(({ question, answer }) => ({ question, answer })),
+  );
 
   // ItemList — top courses as a directory
   const topCourses = [
@@ -5386,23 +5365,9 @@ export function generatePlacementsPageAllSchemas(
   );
 
   // FAQPage for Placements Page
-  const faqSchema = generateFAQSchema([
-    {
-      question: "What is the average salary package for CDPL students?",
-      answer:
-        "Our students typically secure packages ranging from 3.5 LPA to 12 LPA, depending on their prior experience and the specific domain (QA, Data Science, or Development).",
-    },
-    {
-      question: "Which companies hire from CDPL?",
-      answer:
-        "Our alumni are placed at global tech leaders including TCS, Infosys, Wipro, Accenture, Tech Mahindra, and numerous high-growth startups.",
-    },
-    {
-      question: "Does CDPL provide job guarantees?",
-      answer:
-        "We do not guarantee jobs. We provide intensive placement support, multiple interview opportunities, and career coaching to help you secure a role.",
-    },
-  ]);
+  const faqSchema = generateFAQSchema(
+    PLACEMENTS_FAQS.map(({ question, answer }) => ({ question, answer })),
+  );
 
   // AggregateRating scoped to the Placements page
   const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
@@ -5483,24 +5448,10 @@ export function generateCareersPageAllSchemas(
     "Open Career Opportunities at CDPL",
   );
 
-  // FAQPage for Careers Page
-  const faqSchema = generateFAQSchema([
-    {
-      question: "What is it like to work at CDPL?",
-      answer:
-        "CDPL offers a fast-paced, product-led environment where innovation and student success are our top priorities. We value ownership, transparency, and continuous learning.",
-    },
-    {
-      question: "What benefits does CDPL offer?",
-      answer:
-        "Our team enjoys competitive compensation, flexible work arrangements, health insurance, and internal growth opportunities through our own advanced training modules.",
-    },
-    {
-      question: "How does the hiring process work?",
-      answer:
-        "Our process typically involves 3 stages: an initial profile screening, a technical or domain-specific assessment, and a final vision-alignment interview with our leadership team.",
-    },
-  ]);
+  // FAQPage for Careers Page — same list the page shows
+  const faqSchema = generateFAQSchema(
+    CAREERS_FAQS.map(({ question, answer }) => ({ question, answer })),
+  );
 
   // AggregateRating scoped to the Careers page
   const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
