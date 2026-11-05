@@ -28,6 +28,7 @@ import { courseCategories } from "@/data/headerData";
 import { CAMPUS_CITY } from "@/lib/cityTiers";
 import { CONTACT_FAQS } from "@/data/contactFaqs";
 import { PLACEMENTS_FAQS } from "@/data/placementsFaqs";
+import { CAREERS_FAQS } from "@/data/careersFaqs";
 
 // Type definitions for schema.org structured data
 type WithContext<T> = T & { "@context": string };
@@ -5447,24 +5448,10 @@ export function generateCareersPageAllSchemas(
     "Open Career Opportunities at CDPL",
   );
 
-  // FAQPage for Careers Page
-  const faqSchema = generateFAQSchema([
-    {
-      question: "What is it like to work at CDPL?",
-      answer:
-        "CDPL offers a fast-paced, product-led environment where innovation and student success are our top priorities. We value ownership, transparency, and continuous learning.",
-    },
-    {
-      question: "What benefits does CDPL offer?",
-      answer:
-        "Our team enjoys competitive compensation, flexible work arrangements, health insurance, and internal growth opportunities through our own advanced training modules.",
-    },
-    {
-      question: "How does the hiring process work?",
-      answer:
-        "Our process typically involves 3 stages: an initial profile screening, a technical or domain-specific assessment, and a final vision-alignment interview with our leadership team.",
-    },
-  ]);
+  // FAQPage for Careers Page — same list the page shows
+  const faqSchema = generateFAQSchema(
+    CAREERS_FAQS.map(({ question, answer }) => ({ question, answer })),
+  );
 
   // AggregateRating scoped to the Careers page
   const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
