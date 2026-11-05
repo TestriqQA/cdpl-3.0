@@ -27,6 +27,7 @@ import {
 import { courseCategories } from "@/data/headerData";
 import { CAMPUS_CITY } from "@/lib/cityTiers";
 import { CONTACT_FAQS } from "@/data/contactFaqs";
+import { PLACEMENTS_FAQS } from "@/data/placementsFaqs";
 
 // Type definitions for schema.org structured data
 type WithContext<T> = T & { "@context": string };
@@ -5363,23 +5364,9 @@ export function generatePlacementsPageAllSchemas(
   );
 
   // FAQPage for Placements Page
-  const faqSchema = generateFAQSchema([
-    {
-      question: "What is the average salary package for CDPL students?",
-      answer:
-        "Our students typically secure packages ranging from 3.5 LPA to 12 LPA, depending on their prior experience and the specific domain (QA, Data Science, or Development).",
-    },
-    {
-      question: "Which companies hire from CDPL?",
-      answer:
-        "Our alumni are placed at global tech leaders including TCS, Infosys, Wipro, Accenture, Tech Mahindra, and numerous high-growth startups.",
-    },
-    {
-      question: "Does CDPL provide job guarantees?",
-      answer:
-        "We do not guarantee jobs. We provide intensive placement support, multiple interview opportunities, and career coaching to help you secure a role.",
-    },
-  ]);
+  const faqSchema = generateFAQSchema(
+    PLACEMENTS_FAQS.map(({ question, answer }) => ({ question, answer })),
+  );
 
   // AggregateRating scoped to the Placements page
   const aggregateRatingSchema: WithContext<Record<string, unknown>> = {

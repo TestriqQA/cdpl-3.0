@@ -74,10 +74,10 @@ export default async function PlacementsPage() {
             <div
                 className="relative min-h-screen overflow-hidden"
             >
-                {/* Soft, moving CDPL gradients */}
+                {/* Soft CDPL gradients */}
                 <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
-                    <div className="absolute -top-24 left-1/2 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full blur-3xl opacity-30 mix-blend-soft-light bg-[conic-gradient(at_50%_50%,#ff8c00_0deg,#ffb558_90deg,#ffd19e_180deg,#7ee7ff_270deg,#9d7bff_360deg)] animate-[spin_30s_linear_infinite]" />
-                    <div className="absolute bottom-[-12rem] right-[-6rem] h-[28rem] w-[28rem] rounded-full blur-3xl opacity-25 mix-blend-screen bg-[radial-gradient(closest-side,#9d7bff,transparent)] animate-[pulse_6s_ease-in-out_infinite]" />
+                    <div className="absolute -top-24 left-1/2 h-[42rem] w-[42rem] -translate-x-1/2 rounded-full blur-3xl opacity-30 mix-blend-soft-light bg-[conic-gradient(at_50%_50%,#ff8c00_0deg,#ffb558_90deg,#ffd19e_180deg,#7ee7ff_270deg,#9d7bff_360deg)]" />
+                    <div className="absolute bottom-[-12rem] right-[-6rem] h-[28rem] w-[28rem] rounded-full blur-3xl opacity-25 mix-blend-screen bg-[radial-gradient(closest-side,#9d7bff,transparent)]" />
                 </div>
 
                 {/* HERO is self-contained (handles its own container) */}
@@ -146,9 +146,7 @@ export default async function PlacementsPage() {
                     className="w-full scroll-mt-[96px] md:scroll-mt-[104px] lg:scroll-mt-[112px]"
                     data-scroll-target="placements-faq"
                 >
-                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <PlacementsFAQSection />
-                    </div>
+                    <PlacementsFAQSection />
                 </section>
 
                 <section
