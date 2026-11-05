@@ -34,7 +34,7 @@ type FormState = {
     /** WhatsApp number. Kept as `phone` so it still satisfies the phone
      *  validation and the `phone` field /api/contact requires. */
     phone: string;
-    /** "What are you looking to learn?" — reuses the existing `interest`
+    /** "What are you looking to learn?" - reuses the existing `interest`
      *  field, which already reaches the admin email and the Google Sheet. */
     interest: string;
     /** Step 2: "When are you planning to start your course?" */
@@ -174,7 +174,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
     };
 
     /**
-     * Step 1 — deliberately does NOT post anything.
+     * Step 1 - deliberately does NOT post anything.
      *
      * The answers stay in `formData` and the form advances to step 2; the
      * single request that carries both steps' answers is fired by
@@ -193,7 +193,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
         }
     };
 
-    /** Step 2 — the only place this form talks to the API. */
+    /** Step 2 - the only place this form talks to the API. */
     const handleFinalSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -303,7 +303,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
           flex: 1;
           font-size: 0.875rem;
           /* The container is a flex row, so its content height is its
-             tallest child — this input. A 14px font's default line box is
+             tallest child - this input. A 14px font's default line box is
              21px, against the 24px box of the 16px/1.5 inputs elsewhere.
              Pinning 1.5rem equalises them without changing text size. */
           line-height: 1.5rem;
@@ -374,7 +374,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
         }
       `}</style>
 
-            {/* Heading — owned by the form because it changes with the step.
+            {/* Heading - owned by the form because it changes with the step.
                 ContactHeroSection used to render this as static markup above
                 the component, once for mobile and once for desktop. */}
             <h2 className="text-2xl font-bold text-slate-900">{heading.title}</h2>
@@ -399,7 +399,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
 
             {/* ⚠️  The `key` on each form is load-bearing, not decoration.
                 Both branches render a <form> in the same position, so without
-                distinct keys React reconciles them into the SAME DOM nodes —
+                distinct keys React reconciles them into the SAME DOM nodes -
                 and the step-2 "Back" button (type="button") gets rewritten in
                 place into step 1's submit button while the click that
                 triggered the change is still being processed. The browser then
@@ -449,7 +449,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                                 other phone fields on the site. With it set,
                                 react-phone-number-input seeds the input's value with the
                                 calling code ("+91"), and an HTML placeholder only paints
-                                on an empty input — so "Enter your WhatsApp number" could
+                                on an empty input - so "Enter your WhatsApp number" could
                                 never be seen. Dropping it leaves the field empty until
                                 the visitor types.
 
@@ -474,7 +474,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                     )}
                 </div>
 
-                {/* What are you looking to learn? — posted as `interest` */}
+                {/* What are you looking to learn? - posted as `interest` */}
                 <div>
                     <label htmlFor={`${idPrefix}interest`} className="block text-sm font-semibold text-gray-700 mb-2">
                         What are you looking to learn? *
@@ -507,7 +507,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                     )}
                 </div>
 
-                {/* Advances to step 2 — sends nothing. */}
+                {/* Advances to step 2 - sends nothing. */}
                 <button
                     type="submit"
                     className="w-full bg-gradient-to-r from-[#ff8c00] to-[#ff6b00] text-white font-semibold py-3.5 px-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2"
@@ -568,7 +568,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                     )}
                 </div>
 
-                {/* The real submission — posts both steps' answers. */}
+                {/* The real submission - posts both steps' answers. */}
                 <button
                     type="submit"
                     disabled={isSubmitting}
@@ -585,7 +585,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                 </button>
 
                 {/* Lets a visitor fix a typo in their number without losing
-                    what they have already entered — step 1's values are still
+                    what they have already entered - step 1's values are still
                     in state. */}
                 <button
                     type="button"

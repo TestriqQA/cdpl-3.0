@@ -5,111 +5,86 @@
 // =============================
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import type { ElementType } from "react";
 import {
-  Award,
-  Handshake,
-  Users2,
   ShieldCheck,
-  BookOpen,
-  Target,
-  Cpu,
-  Sparkles,
+  Database,
+  Brain,
+  BarChart3,
+  Megaphone,
   ArrowRight,
+  CircleCheck,
 } from "lucide-react";
 import Link from "next/link";
 import AdvisorModal from "@/components/ui/AdvisorModal";
 
-const BRAND = "#ff8c00"; // Cinute Digital brand
-
 // ---------------------------------------------
-// Color map (static Tailwind classes – no string interpolation)
+// Domains the team teaches (static Tailwind classes per tone)
 // ---------------------------------------------
-type PaletteKey = "red" | "blue" | "green" | "purple";
+type Tone = "orange" | "blue" | "purple" | "green" | "rose";
 
-const PALETTE: Record<
-  PaletteKey,
-  {
-    cardBg: string;
-    cardBorder: string;
-    iconWrapBg: string;
-    iconColor: string;
-    accentText: string;
-    bullet: string;
-  }
-> = {
-  red: {
-    cardBg: "bg-red-50",
-    cardBorder: "border-red-500",
-    iconWrapBg: "bg-red-600",
-    iconColor: "text-white",
-    accentText: "text-red-700",
-    bullet: "bg-red-600",
-  },
-  blue: {
-    cardBg: "bg-blue-50",
-    cardBorder: "border-blue-500",
-    iconWrapBg: "bg-blue-600",
-    iconColor: "text-white",
-    accentText: "text-blue-700",
-    bullet: "bg-blue-600",
-  },
-  green: {
-    cardBg: "bg-green-50",
-    cardBorder: "border-green-500",
-    iconWrapBg: "bg-green-600",
-    iconColor: "text-white",
-    accentText: "text-green-700",
-    bullet: "bg-green-600",
-  },
-  purple: {
-    cardBg: "bg-purple-50",
-    cardBorder: "border-purple-500",
-    iconWrapBg: "bg-purple-600",
-    iconColor: "text-white",
-    accentText: "text-purple-700",
-    bullet: "bg-purple-600",
-  },
+const TONE: Record<Tone, { icon: string; bar: string; cta: string }> = {
+  orange: { icon: "bg-orange-100 text-orange-600", bar: "from-orange-400 to-amber-400", cta: "bg-orange-500 hover:bg-orange-600" },
+  blue: { icon: "bg-sky-100 text-sky-600", bar: "from-sky-400 to-blue-500", cta: "bg-sky-600 hover:bg-sky-700" },
+  purple: { icon: "bg-violet-100 text-violet-600", bar: "from-violet-400 to-fuchsia-500", cta: "bg-violet-600 hover:bg-violet-700" },
+  green: { icon: "bg-emerald-100 text-emerald-600", bar: "from-emerald-400 to-teal-500", cta: "bg-emerald-600 hover:bg-emerald-700" },
+  rose: { icon: "bg-rose-100 text-rose-600", bar: "from-rose-400 to-pink-500", cta: "bg-rose-600 hover:bg-rose-700" },
 };
 
-// ---------------------------------------------
-// Data (tokenized colors → map to Tailwind classes above)
-// ---------------------------------------------
-const specialties: Array<{
+const domains: Array<{
   title: string;
   desc: string;
   icon: ElementType;
   tags: string[];
-  tone: PaletteKey;
+  tone: Tone;
+  href: string;
+  cta: string;
 }> = [
     {
-      title: "Manual & Automation Testing",
-      desc: "Selenium, Playwright, Cypress, and BDD frameworks aligned with enterprise QA.",
+      title: "Software Testing",
+      desc: "Manual, automation and API testing on real QA workflows, from test design to CI pipelines.",
       icon: ShieldCheck,
-      tags: ["Selenium", "Playwright", "Cypress", "BDD", "Jest"],
-      tone: "red",
+      tags: ["Selenium", "Playwright", "Postman", "JMeter"],
+      tone: "orange",
+      href: "/courses/software-testing-course",
+      cta: "Explore testing courses",
     },
     {
-      title: "API Testing & Tooling",
-      desc: "Postman, REST & GraphQL testing, contract tests, and CI automation.",
-      icon: BookOpen,
-      tags: ["Postman", "REST", "GraphQL", "Newman", "Pact"],
+      title: "Data Science & ML",
+      desc: "Python, statistics and machine learning on real datasets, from analysis to working models.",
+      icon: Database,
+      tags: ["Python", "Pandas", "Scikit-learn", "SQL"],
       tone: "blue",
+      href: "/courses/ds-ml-courses",
+      cta: "Explore data science courses",
     },
     {
-      title: "Performance & Reliability",
-      desc: "Load, stress, and soak testing with stakeholder-ready reporting.",
-      icon: Target,
-      tags: ["k6", "JMeter", "APM", "SLOs"],
-      tone: "green",
-    },
-    {
-      title: "Data & GenAI in QA",
-      desc: "Data validation, test data design, and safe GenAI-assisted authoring.",
-      icon: Cpu,
-      tags: ["Python", "Pandas", "Prompting", "RAG", "Security"],
+      title: "Artificial Intelligence",
+      desc: "Generative AI, prompt engineering and building with LLMs for real business use cases.",
+      icon: Brain,
+      tags: ["GenAI", "Prompting", "LLMs", "RAG"],
       tone: "purple",
+      href: "/courses/artificial-intelligence-courses",
+      cta: "Explore AI courses",
+    },
+    {
+      title: "Business Intelligence",
+      desc: "Dashboards and reporting that turn raw data into decisions teams can act on.",
+      icon: BarChart3,
+      tags: ["Power BI", "Tableau", "Excel", "SQL"],
+      tone: "green",
+      href: "/courses/bi-courses",
+      cta: "Explore BI courses",
+    },
+    {
+      title: "Digital Marketing",
+      desc: "SEO, paid ads and AI-assisted campaigns, measured with analytics from day one.",
+      icon: Megaphone,
+      tags: ["SEO", "Google Ads", "Meta Ads", "Analytics"],
+      tone: "rose",
+      href: "/courses/digital-marketing-courses",
+      cta: "Explore marketing courses",
     },
   ];
 
@@ -118,10 +93,6 @@ const specialties: Array<{
 // =============================
 export default function TeamCultureSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const marquee = useMemo(
-    () => ["Skill India", "ISO 9001", "Hiring Partners", "Industry Projects", "Interview Prep"],
-    []
-  );
 
   return (
     <section
@@ -132,134 +103,52 @@ export default function TeamCultureSection() {
       {/* Animated mesh / beam background */}
       <BeamBg />
 
-      {/* Header (centered) */}
-      <div className="relative z-10 flex flex-col items-center gap-4">
-        <div className="mx-auto max-w-5xl text-center">
-          <h2
-            id="our-team-mentors-heading"
-            className="text-4xl font-bold tracking-tight text-slate-900 text-center"
-          >
-            The People Behind{" "}
-            <span style={{ color: "#ff8c00" }}>Job-Ready</span> Careers
+      {/* Domains the team teaches, each linking to its courses */}
+      <div className="relative z-10">
+        <div className="text-center">
+          <h2 id="our-team-mentors-heading" className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+            What Our <span className="text-brand">Team</span> Teaches
           </h2>
-
-          <p className="mt-8 max-w-5xl text-lg leading-6 text-slate-700 text-center">
-            Learn from <strong>industry-certified QA mentors</strong>,{" "}
-            <strong>automation testing trainers</strong>, and
-            <strong> API testing experts</strong> who ship real products. Human feedback,
-            portfolio-first projects, and
-            <strong> recruiter-ready outcomes</strong>.
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">
+            Learn from <strong className="font-semibold text-slate-800">industry-certified QA mentors</strong>,{" "}
+            <strong className="font-semibold text-slate-800">automation testing trainers</strong>,{" "}
+            <strong className="font-semibold text-slate-800">API testing experts</strong> and{" "}
+            <strong className="font-semibold text-slate-800">performance engineering specialists</strong> who ship
+            real products, with human feedback, portfolio-first projects and recruiter-ready skills.
           </p>
         </div>
 
-        {/* Trust badges */}
-        <div className="flex flex-wrap items-center justify-center gap-2">
-          <Badge>
-            <Award className="h-3.5 w-3.5" /> ISO-aligned
-          </Badge>
-          <Badge>
-            <Handshake className="h-3.5 w-3.5" /> Hiring Network
-          </Badge>
-          <Badge>
-            <Sparkles className="h-3.5 w-3.5" /> Live Projects
-          </Badge>
-          <Badge>
-            <Users2 className="h-3.5 w-3.5" /> 1:1 Mentorship
-          </Badge>
-        </div>
-      </div>
-
-      {/* Rolling marquee — subtle credibility loop */}
-      <div className="relative z-10 mt-5 overflow-hidden rounded-xl border border-slate-200 bg-white/70 p-2 shadow-sm backdrop-blur">
-        {/* 6 copies so each half (3 copies) is wider than the box; pr-8 keeps the halves identical. */}
-        <div
-          className="flex w-max gap-8 pr-8 whitespace-nowrap text-xs text-slate-600 motion-reduce:[animation:none]"
-          style={{ animation: "cdpl-marquee 45s linear infinite" }}
-          aria-hidden
-        >
-          {[...marquee, ...marquee, ...marquee, ...marquee, ...marquee, ...marquee].map((m, i) => (
-            <span key={i} className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: BRAND }} />
-              {m}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* KPI band */}
-      <div
-        className="relative z-10 mt-6 grid grid-cols-1 gap-4 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm md:grid-cols-3"
-        style={{ boxShadow: "0 30px 80px -30px rgba(255,140,0,0.18)" }}
-      >
-        <div className="text-center rounded-2xl shadow-xl p-1 border border-pink-700">
-          <p className="text-3xl font-bold text-pink-700">5k+</p>
-          <p className="text-slate-700">Learners Trained</p>
-        </div>
-
-        <div className="text-center rounded-2xl shadow-xl p-1 border border-purple-700">
-          <p className="text-3xl font-bold text-purple-700">50+</p>
-          <p className="text-slate-700">Hiring Partner Referrals</p>
-        </div>
-
-        <div className="text-center rounded-2xl shadow-xl p-1 border border-red-700">
-          <p className="text-3xl font-bold text-red-700">4</p>
-          <p className="text-slate-700">Job-Aligned Tracks</p>
-        </div>
-      </div>
-
-      {/* Specialties — holographic grid */}
-      <div className="relative z-10 mt-14 text-center">
-        <h3 className="text-2xl font-bold text-slate-900">What Our Team Teaches</h3>
-        <p className="mt-5 text-lg text-slate-700">
-          <strong>Automation testing trainers</strong>, <strong>API testing mentors</strong>, and
-          <strong> performance engineering experts</strong> deliver hands-on, recruiter-trusted skills.
-        </p>
-
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
-          {specialties.map((s) => {
-            const c = PALETTE[s.tone];
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
+          {domains.map((d, idx) => {
+            const c = TONE[d.tone];
             return (
               <article
-                key={s.title}
-                className={[
-                  "rounded-2xl border p-5 shadow-sm",
-                  c.cardBg,
-                  c.cardBorder,
-                ].join(" ")}
+                key={d.title}
+                className={`group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md lg:col-span-2 ${idx === 3 ? "lg:col-start-2" : ""} ${idx === 4 ? "sm:col-span-2" : ""}`}
               >
-                <div className="flex items-start gap-3">
-                  <span
-                    className={[
-                      "grid h-9 w-9 place-items-center rounded-md ring-1",
-                      c.iconWrapBg,
-                      c.cardBorder,
-                    ].join(" ")}
-                    style={{
-                      boxShadow:
-                        "inset 0 0 0 1px rgba(15,23,42,0.03), 0 8px 20px -12px rgba(15,23,42,0.16)",
-                    }}
-                    aria-hidden="true"
-                  >
-                    <s.icon className={["h-5 w-5", c.iconColor].join(" ")} />
+                <div aria-hidden="true" className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${c.bar}`} />
+                <div className="flex items-center gap-3">
+                  <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${c.icon}`} aria-hidden="true">
+                    <d.icon className="h-5 w-5" />
                   </span>
-
-                  <div className="text-left">
-                    <h4 className="text-xl font-bold text-slate-900">{s.title}</h4>
-                    <p className="mt-3 text-md text-slate-700">{s.desc}</p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {s.tags.map((t) => (
-                        <span
-                          key={t}
-                          className="inline-flex items-center rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs text-slate-700"
-                          style={{
-                            boxShadow: "0 6px 16px -10px rgba(0,0,0,0.12)",
-                          }}
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  <h4 className="text-lg font-bold text-slate-900">{d.title}</h4>
+                </div>
+                <p className="mt-3 text-sm leading-6 text-slate-600">{d.desc}</p>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {d.tags.map((tag) => (
+                    <span key={tag} className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-auto pt-5">
+                  <Link
+                    href={d.href}
+                    className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-sm transition ${c.cta}`}
+                  >
+                    {d.cta}
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                  </Link>
                 </div>
               </article>
             );
@@ -267,37 +156,39 @@ export default function TeamCultureSection() {
         </div>
       </div>
 
-      {/* CTA Section */}
-      <div className="mt-16 overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-8 shadow-lg sm:p-10">
-        <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-between">
-          <div className="text-center lg:text-left">
-            <h3 className="text-2xl font-bold text-slate-900">Book a free career consultation</h3>
-            <p className="mt-2 text-slate-600">
-              Speak with a mentor about learning paths, real projects, and{" "}
-              <span className="font-semibold text-slate-900">placement support</span>.
+      {/* Consultation CTA */}
+      <div className="relative mt-16 overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 via-orange-500 to-amber-500 px-6 py-10 text-white shadow-lg sm:px-10 lg:py-12">
+        <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-2xl" />
+        <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-amber-300/20 blur-2xl" />
+
+        <div className="relative flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
+          <div className="max-w-2xl">
+            <h3 className="text-2xl font-bold sm:text-3xl">Not sure where to start?</h3>
+            <p className="mt-3 text-white/90">
+              Book a free career consultation and talk one-on-one with a mentor about the right learning path,
+              real projects and <span className="font-semibold text-white">placement support</span>.
             </p>
+            <ul className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium text-white/95 lg:justify-start">
+              {["Free session", "1:1 with a mentor", "Personalised learning path"].map((item) => (
+                <li key={item} className="inline-flex items-center gap-1.5">
+                  <CircleCheck className="h-4 w-4" aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-3">
+
+          <div className="flex shrink-0 flex-col items-center gap-3 sm:flex-row">
             <button
+              type="button"
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center rounded-xl bg-orange-500 p-3 text-white shadow-lg transition-all hover:translate-y-1 hover:bg-brand cursor-pointer"
+              className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-white px-5 py-3 font-semibold text-orange-600 shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
             >
-              Talk to a mentor <ArrowRight className="ml-2 h-4 w-4" />
+              Talk to a mentor <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </button>
             <Link
               href="/courses"
-              className="flex items-center rounded-xl border-2 bg-white p-3 text-slate-900 transition-all ease-in-out"
-              style={{
-                borderColor: BRAND,
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = BRAND;
-                (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "";
-                (e.currentTarget as HTMLAnchorElement).style.color = "";
-              }}
+              className="inline-flex items-center rounded-xl border-2 border-white/80 px-5 py-2.5 font-semibold text-white transition hover:bg-white/10"
             >
               Explore programs
             </Link>
@@ -311,21 +202,6 @@ export default function TeamCultureSection() {
         source="Team Page - Mentor Section"
       />
     </section>
-  );
-}
-
-// =============================
-// UI helpers
-// =============================
-function Badge({ children }: { children: React.ReactNode }) {
-  return (
-    <span
-      className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-xs font-medium text-slate-700 shadow-sm backdrop-blur"
-      style={{ boxShadow: "0 6px 16px -10px rgba(0,0,0,0.2)" }}
-    >
-      <span aria-hidden className="inline-block h-1.5 w-1.5 rounded-full" style={{ backgroundColor: BRAND }} />
-      {children}
-    </span>
   );
 }
 

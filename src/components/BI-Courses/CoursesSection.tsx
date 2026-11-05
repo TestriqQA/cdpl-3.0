@@ -4,7 +4,6 @@ import { Zap, Star, Clock, Users, CheckCircle, ArrowRight, Download, BarChart3 }
 
 import { COURSES, Course } from '@/components/BI-Courses/data/data';
 import { DownloadFormButton } from '@/components/DownloadForm';
-import OfferCountdown from '@/components/courses/OfferCountdown';
 import React from 'react';
 import Link from 'next/link';
 
@@ -136,9 +135,6 @@ const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index
                         </li>
                     ))}
                 </ul>
-
-                {/* Self-ticking countdown leaf (isolates the 1s interval per card) */}
-                <OfferCountdown offerEndsAt={course.offerEndsAt} />
 
                 <div className="pt-4 space-y-3 mt-auto">
                     <Link
