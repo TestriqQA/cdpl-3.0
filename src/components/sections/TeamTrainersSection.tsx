@@ -3,8 +3,7 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
-import { Check, Star, GraduationCap, BadgeCheck, Search, Globe2, Sparkles } from "lucide-react";
+import { Check, Star, GraduationCap, BadgeCheck, Globe2, Sparkles, ArrowRight } from "lucide-react";
 import { Trainer } from "@/app/our-team/types";
 
 type TrainersSectionProps = {
@@ -19,8 +18,6 @@ type TrainersSectionProps = {
 /** Brand color (Cinute Digital) */
 const BRAND = "#ff8c00";
 
-/** Accent utilities */
-const brandRing: CSSProperties = { boxShadow: `0 0 0 2px ${BRAND}1A` }; // subtle ring
 
 /** ============================
  * Component
@@ -33,7 +30,6 @@ export default function TeamTrainersSection({
   ctaText = "Book a Free Demo Session",
   className = "",
 }: TrainersSectionProps) {
-  const [query, setQuery] = useState("");
   const [expertise, setExpertise] = useState<string>("All");
   const [lang, setLang] = useState<string>("All");
 
@@ -41,24 +37,16 @@ export default function TeamTrainersSection({
   void setLang;
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
     return trainers.filter((t) => {
-      const matchesQuery =
-        !q ||
-        t.name.toLowerCase().includes(q) ||
-        t.role.toLowerCase().includes(q) ||
-        t.specialties.some((sp) => sp.toLowerCase().includes(q)) ||
-        t.bio.toLowerCase().includes(q);
-
       const matchesExpertise =
         expertise === "All" || t.specialties.includes(expertise);
 
       const matchesLang =
         lang === "All" || (t.languages ?? []).includes(lang);
 
-      return matchesQuery && matchesExpertise && matchesLang;
+      return matchesExpertise && matchesLang;
     });
-  }, [trainers, query, expertise, lang]);
+  }, [trainers, expertise, lang]);
 
   /** JSON-LD: ItemList of Person for SEO */
   const jsonLd = useMemo(() => {
@@ -114,47 +102,32 @@ export default function TeamTrainersSection({
         </p>
       </div>
 
-      {/* Controls */}
-      <div className="mt-16 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <div className="relative flex-1">
-          <Search className="pointer-events-none absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search trainers by name, skill, or role…"
-            aria-label="Search trainers"
-            className="w-full rounded-2xl border border-slate-200 bg-white pl-10 pr-3 py-2.5 text-sm text-slate-900 placeholder:text-slate-500 shadow-sm focus:border-transparent focus:outline-none"
-            style={brandRing}
-          />
-        </div>
-      </div>
-
       {/* Grid */}
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((t) => (
           <article
             key={t.id}
-            className="group rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md"
+            className="group flex flex-col rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md"
           >
             <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
-              <div className="relative w-40 h-40 md:h-35 md:w-35 overflow-hidden rounded-full ring-1 ring-slate-200">
+              <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full ring-1 ring-slate-200">
                 <Image
                   src={t.avatar}
                   alt={`${t.name}, ${t.role}`}
                   title={`${t.name}, ${t.role}`}
-                  width={160}
-                  height={160}
-                  sizes="160px"
+                  width={112}
+                  height={112}
+                  sizes="112px"
                   quality={90}
                   className="object-cover"
                 />
               </div>
               <div className="min-w-0 flex-1">
-                <h3 className="truncate text-lg text-center md:text-start font-bold text-slate-900">
+                <h3 className="truncate text-center text-lg font-bold leading-snug text-slate-900 md:text-start">
                   {t.name}
                 </h3>
-                <p className="truncate text-md text-center md:text-start text-slate-600">{t.role}</p>
-                <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
+                <p className="truncate text-center text-sm text-slate-600 md:text-start">{t.role}</p>
+                <div className="mt-2 flex flex-wrap items-center justify-center gap-1.5 text-xs md:justify-start">
                   <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2 py-0.5 font-medium text-brand ring-1 ring-inset ring-orange-200">
                     <GraduationCap className="h-3.5 w-3.5" />
                     {t.yearsExp}+ yrs exp
@@ -176,7 +149,7 @@ export default function TeamTrainersSection({
               </div>
             </div>
 
-            <p className="mt-4 line-clamp-3 text-sm leading-6 text-slate-700">
+            <p className="mt-4 line-clamp-3 text-sm leading-6 text-slate-600">
               {t.bio}
             </p>
 
@@ -185,14 +158,14 @@ export default function TeamTrainersSection({
               {t.specialties.slice(0, 5).map((sp) => (
                 <span
                   key={sp}
-                  className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text[14px] font-medium text-slate-700 ring-1 ring-inset ring-slate-200"
+                  className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-xs font-medium text-slate-700 ring-1 ring-inset ring-slate-200"
                 >
-                  <Check className="h-3.5 w-3.5" style={{ color: BRAND }} />
+                  <Check className="h-3 w-3" style={{ color: BRAND }} />
                   {sp}
                 </span>
               ))}
               {t.specialties.length > 5 && (
-                <span className="inline-flex items-center rounded-full bg-slate-50 px-2 py-0.5 text-[11px] text-slate-600 ring-1 ring-slate-200">
+                <span className="inline-flex items-center rounded-full bg-slate-50 px-2 py-0.5 text-xs text-slate-600 ring-1 ring-slate-200">
                   +{t.specialties.length - 5} more
                 </span>
               )}
@@ -202,13 +175,13 @@ export default function TeamTrainersSection({
             <div className="mt-4 grid grid-cols-2 gap-2">
               {t.certifications && t.certifications.length > 0 && (
                 <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                  <div className="flex items-center gap-2 text-sm font-bold text-slate-800">
-                    <BadgeCheck className="h-4 w-4 hidden md:block text-brand" />
+                  <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <BadgeCheck className="h-3.5 w-3.5 text-brand" />
                     Certifications
                   </div>
-                  <ul className="mt-1.5 list-inside space-y-1">
+                  <ul className="mt-1.5 space-y-0.5">
                     {t.certifications.slice(0, 3).map((c) => (
-                      <li key={c} className="text-xs text-slate-700">
+                      <li key={c} className="text-sm text-slate-800">
                         {c}
                       </li>
                     ))}
@@ -217,11 +190,11 @@ export default function TeamTrainersSection({
               )}
               {typeof t.successStories === "number" && (
                 <div className="rounded-2xl border border-slate-200 bg-white p-3">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-slate-800">
-                    <Star className="h-4 w-4" style={{ color: BRAND }} />
+                  <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <Star className="h-3.5 w-3.5" style={{ color: BRAND }} />
                     Success Stories
                   </div>
-                  <p className="mt-1.5 text-md font-semibold text-slate-900">
+                  <p className="mt-1.5 text-sm text-slate-800">
                     {t.successStories}+ learners placed
                   </p>
                 </div>
@@ -229,8 +202,8 @@ export default function TeamTrainersSection({
             </div>
 
             {/* Footer */}
-            <div className="mt-7 flex items-center justify-between gap-3">
-              <div className="min-w-0 text-sm text-slate-600">
+            <div className="mt-auto flex items-center justify-between gap-3 pt-5">
+              <div className="min-w-0 text-xs leading-5 text-slate-500">
                 <span className="whitespace-nowrap">Personalized feedback •</span>{" "}
                 <span className="whitespace-nowrap">Live code reviews •</span>{" "}
                 <span className="whitespace-nowrap">Interview prep</span>
@@ -252,20 +225,28 @@ export default function TeamTrainersSection({
       </div>
 
       {/* CTA */}
-      <div className="mt-10 rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-sm">
-        <h3 className="text-lg font-semibold text-slate-900">
-          Learn from mentors who’ve shipped and tested real products.
-        </h3>
-        <p className="mt-4 md:mt-1 text-sm text-slate-700">
-          Get hands-on with <strong>Automation Testing</strong>, <strong>API Testing</strong>,{" "}
-          <strong>Playwright</strong>, <strong>Cypress</strong>, and <strong>DevOps fundamentals</strong>.
-        </p>
+      <div className="mt-10 flex flex-col items-center gap-6 rounded-3xl border border-orange-200 bg-gradient-to-r from-orange-50 via-white to-amber-50 p-6 text-center shadow-sm sm:p-8 md:flex-row md:text-left">
+        <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-orange-100 text-brand" aria-hidden="true">
+          <GraduationCap className="h-7 w-7" />
+        </span>
+        <div className="flex-1">
+          <h3 className="text-xl font-bold text-slate-900 sm:text-2xl">
+            Learn from mentors who&apos;ve shipped and tested real products
+          </h3>
+          <p className="mt-2 text-slate-600">
+            Live classes, hands-on projects and code reviews with working practitioners in{" "}
+            <strong className="font-semibold text-slate-800">software testing</strong>,{" "}
+            <strong className="font-semibold text-slate-800">data science</strong> and{" "}
+            <strong className="font-semibold text-slate-800">AI</strong>.
+          </p>
+        </div>
         <Link
           href={ctaHref}
-          className="mt-6 md:mt-4 inline-flex items-center justify-center rounded-2xl px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:opacity-95"
+          className="inline-flex shrink-0 items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
           style={{ backgroundColor: BRAND }}
         >
           {ctaText}
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
       </div>
 

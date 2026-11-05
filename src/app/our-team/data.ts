@@ -82,9 +82,8 @@ export const teamLeaders: TeamLeaders[] = [
         experience: "11+ years",
         specialization: "QA Strategy & Leadership",
         expertise: ["Business Intelligence", "learning and development professional"],
-        bio: "Ashish Shetty is a seasoned Business Intelligence and learning and development professional with over 11 years of experience empowering students and professionals to unlock career success through data-driven skills. Specializing in Power BI, Tableau, and Prompt Engineering, Ashish is known for delivering practical, high-impact workshops and training programs across academic and corporate sectors.",
+        bio: "Business Intelligence and L&D professional with 11+ years helping students and professionals build data-driven careers, specializing in Power BI, Tableau and Prompt Engineering.",
         achievements: [
-            "Trained students & professionals in BI, ML, and Analytics",
             "Delivered 50+ workshops and national-level programs",
             "Keynote speaker at leading conferences and UGC events",
             "Designed industry-certified training and faculty development courses",
@@ -92,6 +91,7 @@ export const teamLeaders: TeamLeaders[] = [
         ],
         location: "Mumbai, India",
         avatar: "/Team_Leaders_image/AshishShetty.png",
+        avatarMask: true,
         linkedin: "https://www.linkedin.com/in/profashishshetty/",
         email: "mailto:hello@cinutedigital.com",
         highlights: ["10+ years in EdTech", "Mentored career transitions", "ISO-aligned delivery"],
@@ -99,7 +99,7 @@ export const teamLeaders: TeamLeaders[] = [
     },
 ]
 
-export const teamData: TeamMember[] = [
+export const industryMentors: TeamMember[] = [
 
     {
         id: "1",
@@ -167,6 +167,10 @@ export const teamData: TeamMember[] = [
         avatar: "/Team/prakash-mishra.png",
         linkedin: "https://www.linkedin.com/in/prakashmmishra/",
     },
+];
+
+// HR and administration: the "Our Team" section.
+export const teamData: TeamMember[] = [
     {
         id: "7",
         name: "Pravin Kodag",
