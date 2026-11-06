@@ -151,7 +151,7 @@ export const HeroSection: React.FC = () => {
                             <div className="flex items-center gap-2">
                                 <span className="text-2xl">👥</span>
                                 <span>
-                                    <strong className="text-slate-900">500+</strong> Successful Learners
+                                    <strong className="text-slate-900"><SiteStat k="studentsPlaced" /></strong> Students Placed
                                 </span>
                             </div>
                             <div className="hidden h-6 w-px bg-slate-300 sm:block" />

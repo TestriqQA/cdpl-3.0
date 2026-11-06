@@ -6674,7 +6674,7 @@ export function generateReviewsPageAllSchemas(
   const webPageSchema = generateWebPageSchema({
     name: "Authentic Student Reviews & Testimonials | CDPL",
     description:
-      "Read 5000+ authentic student reviews and success stories for CDPL's software testing, data science, and AI/ML courses.",
+      `Read ${STATISTICS.reviewCount}+ authentic student reviews and success stories for CDPL's software testing, data science, and AI/ML courses.`,
     url: "/reviews",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
