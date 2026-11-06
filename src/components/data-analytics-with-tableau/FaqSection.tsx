@@ -5,6 +5,7 @@ import {
     AccordionTrigger,
 } from "@/components/data-analytics-with-tableau/ui/accordion";
 import Link from "next/link";
+import { Phone, Mail, MessageCircle } from "lucide-react";
 import EnrollButton from "./ui/EnrollButton";
 
 import { DATA_ANALYTICS_TABLEAU_FAQS } from "@/data/dataAnalyticsTableauData";
@@ -64,7 +65,7 @@ export default function FaqSection() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="text-center border-2 border-orange-500 rounded-2xl p-3 hover:-translate-y-2 transition-all">
-                            <div className="text-4xl mb-3">📞</div>
+                            <Phone className="w-10 h-10 mx-auto mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Call Us</h4>
                             <p className="text-gray-900 mb-3">
                                 Speak with our course counselors directly
@@ -78,7 +79,7 @@ export default function FaqSection() {
                         </div>
 
                         <div className="text-center border-2 border-orange-500 rounded-2xl p-3 hover:-translate-y-2 transition-all">
-                            <div className="text-4xl mb-3">✉️</div>
+                            <Mail className="w-10 h-10 mx-auto mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Email Us</h4>
                             <p className="text-gray-900 mb-3">
                                 Get detailed information via email
@@ -92,7 +93,7 @@ export default function FaqSection() {
                         </div>
 
                         <div className="text-center border-2 border-orange-500 rounded-2xl p-3 hover:-translate-y-2 transition-all">
-                            <div className="text-4xl mb-3">💬</div>
+                            <MessageCircle className="w-10 h-10 mx-auto mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Live Chat</h4>
                             <p className="text-gray-900 mb-3">
                                 Chat with our support team in real-time

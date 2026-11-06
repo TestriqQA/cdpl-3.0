@@ -1,7 +1,12 @@
 "use client";
 
 
-import { ChevronDown, BookOpen, CloudDownload, ArrowRight } from "lucide-react";
+import {
+    ChevronDown, BookOpen, CloudDownload, ArrowRight,
+    Target, MapPin, MessageCircle, Compass, Settings, BarChart3, Search, MonitorPlay, Smartphone,
+    NotebookPen, Palette, Handshake, Mail, Clapperboard, HandCoins, Star, TrendingUp, FlaskConical, Rocket,
+    type LucideIcon,
+} from "lucide-react";
 import { useState } from "react";
 import EnrollModal from "@/components/EnrollModal";
 import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
@@ -13,16 +18,16 @@ interface Module {
     topics: string[];
     projects?: string[];
     color: string;
-    icon: string;
+    icon: LucideIcon;
 }
 
-// 🔹 Same content as your original modules, adapted to new layout structure
+// Same content as your original modules, adapted to new layout structure
 const modules: Module[] = [
     {
         id: 1,
         title: "Intro to Digital Marketing & Strategy Building",
         duration: "1.5 hours",
-        icon: "🎯",
+        icon: Target,
         color: "from-blue-50 to-blue-100",
         topics: [
             "Evolution of Digital Marketing",
@@ -36,7 +41,7 @@ const modules: Module[] = [
         id: 2,
         title: "Google Business Profile (GMB) Optimization",
         duration: "1.5 hours",
-        icon: "📍",
+        icon: MapPin,
         color: "from-emerald-50 to-emerald-100",
         topics: [
             "GMB Account Setup & Verification",
@@ -50,7 +55,7 @@ const modules: Module[] = [
         id: 3,
         title: "WhatsApp Business Marketing",
         duration: "1.5 hours",
-        icon: "💬",
+        icon: MessageCircle,
         color: "from-teal-50 to-teal-100",
         topics: [
             "WhatsApp Business App Setup",
@@ -64,7 +69,7 @@ const modules: Module[] = [
         id: 4,
         title: "SEO - On-page Optimization",
         duration: "2 hours",
-        icon: "🧭",
+        icon: Compass,
         color: "from-orange-50 to-orange-100",
         topics: [
             "Keyword Research & Placement",
@@ -78,7 +83,7 @@ const modules: Module[] = [
         id: 5,
         title: "SEO - Off-page & Technical SEO",
         duration: "2 hours",
-        icon: "⚙️",
+        icon: Settings,
         color: "from-slate-50 to-slate-100",
         topics: [
             "Link Building Strategies",
@@ -92,7 +97,7 @@ const modules: Module[] = [
         id: 6,
         title: "Google Search Console & GA4",
         duration: "1.5 hours",
-        icon: "📊",
+        icon: BarChart3,
         color: "from-indigo-50 to-indigo-100",
         topics: [
             "Property Setup & Domain Verification",
@@ -106,7 +111,7 @@ const modules: Module[] = [
         id: 7,
         title: "Google Ads - Search Campaigns",
         duration: "2 hours",
-        icon: "🔍",
+        icon: Search,
         color: "from-yellow-50 to-yellow-100",
         topics: [
             "Account Structure & Campaign Setup",
@@ -120,7 +125,7 @@ const modules: Module[] = [
         id: 8,
         title: "Google Ads - Display & YouTube Ads",
         duration: "2 hours",
-        icon: "📺",
+        icon: MonitorPlay,
         color: "from-red-50 to-red-100",
         topics: [
             "Google Display Network Overview",
@@ -134,7 +139,7 @@ const modules: Module[] = [
         id: 9,
         title: "Facebook & Instagram Ads - Part 1",
         duration: "1.5 hours",
-        icon: "📱",
+        icon: Smartphone,
         color: "from-pink-50 to-pink-100",
         topics: [
             "Meta Business Suite Setup",
@@ -148,7 +153,7 @@ const modules: Module[] = [
         id: 10,
         title: "Facebook & Instagram Ads - Part 2",
         duration: "1.5 hours",
-        icon: "🎯",
+        icon: Target,
         color: "from-lime-50 to-lime-100",
         topics: [
             "Lead Generation Ads Setup",
@@ -162,7 +167,7 @@ const modules: Module[] = [
         id: 11,
         title: "Social Media Content Strategy",
         duration: "1.5 hours",
-        icon: "📝",
+        icon: NotebookPen,
         color: "from-violet-50 to-violet-100",
         topics: [
             "Content Pillars Creation",
@@ -176,7 +181,7 @@ const modules: Module[] = [
         id: 12,
         title: "Canva Design for Social & Ads",
         duration: "1.5 hours",
-        icon: "🎨",
+        icon: Palette,
         color: "from-cyan-50 to-cyan-100",
         topics: [
             "Using Canva Templates",
@@ -190,7 +195,7 @@ const modules: Module[] = [
         id: 13,
         title: "Influencer & Community Marketing",
         duration: "1.5 hours",
-        icon: "🤝",
+        icon: Handshake,
         color: "from-rose-50 to-rose-100",
         topics: [
             "Identifying Relevant Influencers",
@@ -204,7 +209,7 @@ const modules: Module[] = [
         id: 14,
         title: "Email Marketing & Automation",
         duration: "1.5 hours",
-        icon: "📧",
+        icon: Mail,
         color: "from-amber-50 to-amber-100",
         topics: [
             "Building an Email List",
@@ -218,7 +223,7 @@ const modules: Module[] = [
         id: 15,
         title: "YouTube & Shorts Marketing",
         duration: "1.5 hours",
-        icon: "🎬",
+        icon: Clapperboard,
         color: "from-sky-50 to-sky-100",
         topics: [
             "Channel Branding & Optimization",
@@ -232,7 +237,7 @@ const modules: Module[] = [
         id: 16,
         title: "Affiliate Marketing Basics",
         duration: "1.5 hours",
-        icon: "💸",
+        icon: HandCoins,
         color: "from-emerald-50 to-emerald-100",
         topics: [
             "Understanding Affiliate Networks",
@@ -246,7 +251,7 @@ const modules: Module[] = [
         id: 17,
         title: "ORM – Online Reputation Management",
         duration: "1.5 hours",
-        icon: "⭐",
+        icon: Star,
         color: "from-zinc-50 to-zinc-100",
         topics: [
             "Monitoring Brand Mentions",
@@ -260,7 +265,7 @@ const modules: Module[] = [
         id: 18,
         title: "Competitor & Trend Analysis",
         duration: "1.5 hours",
-        icon: "📈",
+        icon: TrendingUp,
         color: "from-indigo-50 to-indigo-100",
         topics: [
             "Using Google Trends",
@@ -274,7 +279,7 @@ const modules: Module[] = [
         id: 19,
         title: "A/B Testing & Analytics Deep Dive",
         duration: "1.5 hours",
-        icon: "🧪",
+        icon: FlaskConical,
         color: "from-green-50 to-green-100",
         topics: [
             "Understanding A/B Testing Goals",
@@ -288,7 +293,7 @@ const modules: Module[] = [
         id: 20,
         title: "Capstone: Build a Full Strategy & Present",
         duration: "2 hours",
-        icon: "🚀",
+        icon: Rocket,
         color: "from-orange-50 to-orange-100",
         topics: [
             "Selecting a Brand or Startup",
@@ -344,7 +349,7 @@ export default function CurriculumSection() {
                                 className="w-full px-6 py-5 flex items-center justify-between hover:bg-white/30 transition-colors"
                             >
                                 <div className="flex items-center gap-4 text-left">
-                                    <span className="text-3xl">{module.icon}</span>
+                                    <module.icon className="w-8 h-8 text-brand flex-shrink-0" aria-hidden="true" />
                                     <div>
                                         <h3 className="text-lg font-bold text-slate-900">
                                             Module {module.id}: {module.title}

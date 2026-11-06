@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { content } from "@/components/data-visualization-in-r-programming/data/content";
-import { Star, Users, Trophy, DollarSign, Briefcase, CloudDownload } from "lucide-react";
+import { Star, Users, Trophy, DollarSign, Briefcase, CloudDownload, TrendingUp, CircleCheck } from "lucide-react";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 interface StatCardData {
@@ -188,7 +188,7 @@ export const StatsSection: React.FC = () => {
                 className="flex items-center justify-center h-12 w-12 rounded-xl bg-orange-500 text-white"
                 aria-hidden="true"
               >
-                <span className="text-xl">📈</span>
+                <TrendingUp className="w-6 h-6" />
               </div>
             </div>
             <div>
@@ -209,28 +209,28 @@ export const StatsSection: React.FC = () => {
 
               <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-700 text-sm sm:text-[15px]">
                 <li className="flex items-start gap-2">
-                  <span aria-hidden="true">✅</span>
+                  <CircleCheck className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <span>
                     <strong>Core tools:</strong> R, RStudio, ggplot2, dplyr, tidyr,
                     readr, shiny dashboards
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span aria-hidden="true">✅</span>
+                  <CircleCheck className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <span>
                     <strong>Hands-on projects</strong> in business analytics, marketing
                     analytics, and performance reporting
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span aria-hidden="true">✅</span>
+                  <CircleCheck className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <span>
                     <strong>Career support</strong> with resume building, LinkedIn
                     optimization, and interview preparation for data roles
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span aria-hidden="true">✅</span>
+                  <CircleCheck className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <span>
                     <strong>Flexible learning modes</strong> – weekend, evening, online
                     and classroom batches for students & working professionals

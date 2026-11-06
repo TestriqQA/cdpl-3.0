@@ -1,6 +1,9 @@
 "use client";
 
-import { ArrowRight, ChevronRight, Clock, Home, CloudDownload, ArrowDownNarrowWide } from "lucide-react";
+import {
+  ArrowRight, ChevronRight, Clock, Home, CloudDownload, ArrowDownNarrowWide,
+  Timer, Award, FolderOpen, Briefcase, Star, Users, Trophy,
+} from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
@@ -10,10 +13,10 @@ const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
 const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
 
 const highlights = [
-  { icon: "⏱️", label: "155 Hours of Structured Training" },
-  { icon: "🎖️", label: "8 Industry-Recognized Certifications" },
-  { icon: "📂", label: "10+ Real-World BI & Big Data Projects" },
-  { icon: "💼", label: "Job Assistance & Placement Support" },
+  { icon: Timer, label: "155 Hours of Structured Training" },
+  { icon: Award, label: "8 Industry-Recognized Certifications" },
+  { icon: FolderOpen, label: "10+ Real-World BI & Big Data Projects" },
+  { icon: Briefcase, label: "Job Assistance & Placement Support" },
 ];
 
 export default function HeroSection() {
@@ -135,7 +138,7 @@ export default function HeroSection() {
                   key={idx}
                   className="flex flex-col items-center gap-2 rounded-lg border border-slate-200 bg-white/60 p-4 backdrop-blur-sm transition-colors hover:border-teal-300"
                 >
-                  <span className="text-2xl">{item.icon}</span>
+                  <item.icon className="w-7 h-7 text-[#0f766e]" aria-hidden="true" />
                   <span className="text-center text-xs font-semibold text-slate-700 md:text-sm">
                     {item.label}
                   </span>
@@ -146,21 +149,21 @@ export default function HeroSection() {
             {/* Trust Indicators */}
             <div className="mt-10 flex flex-col items-center justify-center gap-6 text-sm text-slate-600 sm:flex-row md:justify-start">
               <div className="flex items-center gap-2">
-                <span className="text-2xl">⭐</span>
+                <Star className="w-7 h-7 text-amber-500 fill-amber-500" aria-hidden="true" />
                 <span>
                   <strong className="text-slate-900">4.8/5</strong> Average Rating
                 </span>
               </div>
               <div className="hidden h-6 w-px bg-slate-300 sm:block" />
               <div className="flex items-center gap-2">
-                <span className="text-2xl">👥</span>
+                <Users className="w-7 h-7 text-[#0f766e]" aria-hidden="true" />
                 <span>
                   <strong className="text-slate-900">500+</strong> Successful Learners
                 </span>
               </div>
               <div className="hidden h-6 w-px bg-slate-300 sm:block" />
               <div className="flex items-center gap-2">
-                <span className="text-2xl">🏆</span>
+                <Trophy className="w-7 h-7 text-[#0f766e]" aria-hidden="true" />
                 <span>
                   <strong className="text-slate-900">14+ Years</strong> Industry Experience
                 </span>

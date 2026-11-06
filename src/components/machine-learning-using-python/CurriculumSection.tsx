@@ -1,14 +1,17 @@
 "use client";
-import { ChevronDown, Download, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { ChevronDown, Download, ArrowRight, Settings, TrendingUp, Bot, BarChart3, Microscope, Target } from "lucide-react";
+import { FaPython } from "react-icons/fa6";
+import React, { useState } from "react";
 import EnrollModal from "../EnrollModal";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
-const modules = [
+type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
+
+const modules: { title: string; duration: string; icon: IconComponent; topics: string[] }[] = [
   {
     title: "Module 1: Introduction to Python & ML Foundations",
     duration: "6 hours",
-    icon: "🐍",
+    icon: FaPython,
     topics: [
       "What is Machine Learning and its Applications",
       "Supervised vs Unsupervised Learning",
@@ -19,7 +22,7 @@ const modules = [
   {
     title: "Module 2: Data Preprocessing & Feature Engineering",
     duration: "6 hours",
-    icon: "⚙️",
+    icon: Settings,
     topics: [
       "Handling missing data (imputation, deletion strategies)",
       "Normalization and scaling (min-max, standardization)",
@@ -30,7 +33,7 @@ const modules = [
   {
     title: "Module 3: Supervised Learning - Regression",
     duration: "6 hours",
-    icon: "📈",
+    icon: TrendingUp,
     topics: [
       "Linear Regression: Assumptions and least squares method",
       "Polynomial Regression: Extending linear models",
@@ -41,7 +44,7 @@ const modules = [
   {
     title: "Module 4: Supervised Learning - Classification",
     duration: "8 hours",
-    icon: "🤖",
+    icon: Bot,
     topics: [
       "Logistic Regression: Binary and multiclass classification",
       "K-Nearest Neighbors (KNN): Distance-based classification",
@@ -53,7 +56,7 @@ const modules = [
   {
     title: "Module 5: Model Evaluation & Validation",
     duration: "5 hours",
-    icon: "📊",
+    icon: BarChart3,
     topics: [
       "Regression Metrics: MSE, MAE, R² Score",
       "Classification Metrics: Accuracy, Precision, Recall, F1 Score, ROC-AUC",
@@ -65,7 +68,7 @@ const modules = [
   {
     title: "Module 6: Unsupervised Learning & Dimensionality Reduction",
     duration: "5 hours",
-    icon: "🔬",
+    icon: Microscope,
     topics: [
       "K-Means Clustering: Algorithm and use cases",
       "Hierarchical Clustering: Dendrograms and linkage methods",
@@ -76,7 +79,7 @@ const modules = [
   {
     title: "Module 7: Capstone Project & Real-World Applications",
     duration: "3 hours",
-    icon: "🎯",
+    icon: Target,
     topics: [
       "Design and implement an end-to-end ML solution",
       "Real-world case studies across multiple domains",
@@ -118,7 +121,7 @@ export default function CurriculumSection() {
                 className="w-full px-6 py-4 flex items-center justify-between cursor-pointer bg-gradient-to-r from-slate-50 to-slate-100 hover:from-slate-100 hover:to-slate-200 transition-colors"
               >
                 <div className="flex items-center gap-4 text-left">
-                  <span className="text-3xl">{module.icon}</span>
+                  <module.icon className="w-8 h-8 text-brand flex-shrink-0" aria-hidden="true" />
                   <div>
                     <h3 className="text-lg font-bold text-slate-900">
                       {module.title}

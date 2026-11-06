@@ -1,43 +1,44 @@
+import { Target, Lightbulb, Handshake, GraduationCap, Medal, Rocket, Briefcase, Trophy, Smartphone } from "lucide-react";
 import EnrollButton from "./ui/EnrollButton";
 
 const whyProgramData = [
     {
-        icon: "🎯",
+        icon: Target,
         title: "80:20 Approach",
         description: "80% practical and 20% theory model for industry-rich experience",
         bgColor: "bg-orange-50",
         borderColor: "border-orange-200",
     },
     {
-        icon: "💡",
+        icon: Lightbulb,
         title: "Real-Time Projects",
         description: "Gain hands-on experience with real-world projects and case studies",
         bgColor: "bg-blue-50",
         borderColor: "border-blue-200",
     },
     {
-        icon: "🤝",
+        icon: Handshake,
         title: "1:1 Doubt Solving",
         description: "Every doubt is resolved with personalized one-on-one support",
         bgColor: "bg-green-50",
         borderColor: "border-green-200",
     },
     {
-        icon: "👨‍🎓",
+        icon: GraduationCap,
         title: "Expert Instructors",
         description: "Learn from seasoned data analysts and industry veterans",
         bgColor: "bg-purple-50",
         borderColor: "border-purple-200",
     },
     {
-        icon: "🏅",
+        icon: Medal,
         title: "Global Certification",
         description: "Get internationally recognized certificates from AAA",
         bgColor: "bg-yellow-50",
         borderColor: "border-yellow-200",
     },
     {
-        icon: "🚀",
+        icon: Rocket,
         title: "Career Support",
         description: "Receive resume-building and interview preparation assistance",
         bgColor: "bg-pink-50",
@@ -71,7 +72,7 @@ export default function WhyTableauProgram() {
                             className={`${feature.bgColor} border-2 ${feature.borderColor} rounded-xl p-8 hover:shadow-lg transition-all hover:-translate-y-1`}
                         >
                             {/* Icon */}
-                            <div className="text-5xl mb-4">{feature.icon}</div>
+                            <feature.icon className="w-12 h-12 mb-4 text-brand" aria-hidden="true" />
 
                             {/* Title */}
                             <h3 className="text-xl font-bold text-gray-900 mb-3">
@@ -94,7 +95,7 @@ export default function WhyTableauProgram() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div className="flex flex-col items-center text-center">
-                            <div className="text-4xl mb-3">🎓</div>
+                            <GraduationCap className="w-10 h-10 mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Certification</h4>
                             <p className="text-sm text-gray-600">
                                 Globally recognized certificate with QR code validation
@@ -102,7 +103,7 @@ export default function WhyTableauProgram() {
                         </div>
 
                         <div className="flex flex-col items-center text-center">
-                            <div className="text-4xl mb-3">💼</div>
+                            <Briefcase className="w-10 h-10 mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Job Placement</h4>
                             <p className="text-sm text-gray-600">
                                 job assistance with top companies
@@ -110,7 +111,7 @@ export default function WhyTableauProgram() {
                         </div>
 
                         <div className="flex flex-col items-center text-center">
-                            <div className="text-4xl mb-3">🏆</div>
+                            <Trophy className="w-10 h-10 mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Expert Mentors</h4>
                             <p className="text-sm text-gray-600">
                                 extensive expertise in IT training
@@ -118,7 +119,7 @@ export default function WhyTableauProgram() {
                         </div>
 
                         <div className="flex flex-col items-center text-center">
-                            <div className="text-4xl mb-3">📱</div>
+                            <Smartphone className="w-10 h-10 mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Flexible Learning</h4>
                             <p className="text-sm text-gray-600">
                                 Hybrid model - attend online or in-class

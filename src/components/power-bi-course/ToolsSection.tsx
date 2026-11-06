@@ -2,6 +2,7 @@
 // components/powerbi/ToolsSection.tsx
 import React, { useState } from "react";
 import Image from "next/image";
+import { Calculator, BrushCleaning, Puzzle, TrendingUp, type LucideIcon } from "lucide-react";
 import EnrollModal from "../EnrollModal";
 
 type ColorVariant = "blue" | "orange" | "green" | "purple" | "pink" | "indigo";
@@ -9,7 +10,7 @@ type ColorVariant = "blue" | "orange" | "green" | "purple" | "pink" | "indigo";
 interface ToolCardProps {
   title: string;
   description: string;
-  emoji?: string;
+  icon?: LucideIcon;
   logo?: string;
   color: ColorVariant;
 }
@@ -23,7 +24,7 @@ const colorClasses: Record<ColorVariant, { bg: string; text: string; ring: strin
   indigo: { bg: "bg-indigo-100", text: "text-indigo-700", ring: "ring-indigo-200", grad: "from-indigo-500/20 to-violet-500/20" },
 };
 
-const ToolCard: React.FC<ToolCardProps> = ({ title, description, emoji, logo, color }) => {
+const ToolCard: React.FC<ToolCardProps> = ({ title, description, icon: Icon, logo, color }) => {
   const palette = colorClasses[color];
 
   return (
@@ -45,8 +46,8 @@ const ToolCard: React.FC<ToolCardProps> = ({ title, description, emoji, logo, co
           {logo ? (
             <Image src={logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
           ) : (
-            <div className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full sm:h-10 sm:w-10 ${palette.bg} ${palette.text} text-base sm:text-xl`} aria-hidden="true">
-              {emoji}
+            <div className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full sm:h-10 sm:w-10 ${palette.bg} ${palette.text}`} aria-hidden="true">
+              {Icon ? <Icon className="h-4 w-4 sm:h-5 sm:w-5" /> : null}
             </div>
           )}
           <h3 id={`tool-${title.replace(/\s+/g, "-").toLowerCase()}`} className="min-w-0 text-xl font-bold text-gray-900">
@@ -84,28 +85,28 @@ const ToolsSection: React.FC = () => {
       title: "DAX (Data Analysis Expressions)",
       description:
         "Deep dive into the formula language used to create custom calculations, measures, and columns for advanced analysis.",
-      emoji: "🧮",
+      icon: Calculator,
       color: "green",
     },
     {
       title: "Power Query (M Language)",
       description:
         "Expertly use the data connection and transformation engine to clean, shape, and prepare data from various sources.",
-      emoji: "🧹",
+      icon: BrushCleaning,
       color: "purple",
     },
     {
       title: "Data Modeling",
       description:
         "Understand Star/Snowflake schemas, relationships, and cardinality to build robust and efficient data models.",
-      emoji: "🧩",
+      icon: Puzzle,
       color: "pink",
     },
     {
       title: "Advanced Visuals",
       description:
         "Utilize custom visuals, KPI indicators, and advanced interactivity features like Drill-Through and Tooltips.",
-      emoji: "📈",
+      icon: TrendingUp,
       color: "indigo",
     },
   ];

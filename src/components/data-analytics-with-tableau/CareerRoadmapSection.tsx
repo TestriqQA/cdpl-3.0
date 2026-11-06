@@ -1,41 +1,42 @@
+import { Phone, PenLine, BookOpen, Target, Briefcase, Rocket, ClipboardList, Mic, Handshake, TrendingUp, type LucideIcon } from "lucide-react";
 import EnrollButton from "./ui/EnrollButton";
 
-const careerRoadmap = [
+const careerRoadmap: { id: number; step: string; description: string; icon: LucideIcon }[] = [
     {
         id: 1,
         step: "You Enquired",
         description: "Initial inquiry about the course",
-        icon: "📞",
+        icon: Phone,
     },
     {
         id: 2,
         step: "You Enroll",
         description: "Complete registration and enrollment",
-        icon: "✍️",
+        icon: PenLine,
     },
     {
         id: 3,
         step: "Extensive Training",
         description: "Learn Tableau tools & technologies",
-        icon: "📚",
+        icon: BookOpen,
     },
     {
         id: 4,
         step: "Projects & Assignments",
         description: "Work on real-world projects",
-        icon: "🎯",
+        icon: Target,
     },
     {
         id: 5,
         step: "Job Readiness",
         description: "Interview prep and portfolio building",
-        icon: "💼",
+        icon: Briefcase,
     },
     {
         id: 6,
         step: "Market-Ready Developer",
         description: "Launch your career as a Tableau Developer",
-        icon: "🚀",
+        icon: Rocket,
     },
 ];
 
@@ -69,8 +70,8 @@ export default function CareerRoadmapSection() {
                                 <div key={item.id} className="relative">
                                     {/* Circle */}
                                     <div className="flex justify-center mb-8">
-                                        <div className="w-16 h-16 bg-white border-4 border-[#ff8c00] rounded-full flex items-center justify-center text-2xl shadow-lg relative z-10">
-                                            {item.icon}
+                                        <div className="w-16 h-16 bg-white border-4 border-[#ff8c00] rounded-full flex items-center justify-center shadow-lg relative z-10">
+                                            <item.icon className="w-7 h-7 text-brand" aria-hidden="true" />
                                         </div>
                                     </div>
 
@@ -99,8 +100,8 @@ export default function CareerRoadmapSection() {
                                 <div className="flex gap-6">
                                     {/* Circle */}
                                     <div className="flex-shrink-0">
-                                        <div className="w-16 h-16 bg-white border-4 border-[#ff8c00] rounded-full flex items-center justify-center text-2xl shadow-lg">
-                                            {item.icon}
+                                        <div className="w-16 h-16 bg-white border-4 border-[#ff8c00] rounded-full flex items-center justify-center shadow-lg">
+                                            <item.icon className="w-7 h-7 text-brand" aria-hidden="true" />
                                         </div>
                                     </div>
 
@@ -218,7 +219,7 @@ export default function CareerRoadmapSection() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div className="p-6 bg-green-50 rounded-xl border-2 border-green-200">
-                            <div className="text-4xl mb-3">📋</div>
+                            <ClipboardList className="w-10 h-10 mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Resume Building</h4>
                             <p className="text-sm text-gray-700">
                                 Our team helps optimize your resume with Tableau skills and projects
@@ -226,7 +227,7 @@ export default function CareerRoadmapSection() {
                         </div>
 
                         <div className="p-6 bg-blue-50 rounded-xl border-2 border-blue-200">
-                            <div className="text-4xl mb-3">🎤</div>
+                            <Mic className="w-10 h-10 mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Interview Prep</h4>
                             <p className="text-sm text-gray-700">
                                 Mock interviews and technical preparation for job interviews
@@ -234,7 +235,7 @@ export default function CareerRoadmapSection() {
                         </div>
 
                         <div className="p-6 bg-purple-50 rounded-xl border-2 border-purple-200">
-                            <div className="text-4xl mb-3">🤝</div>
+                            <Handshake className="w-10 h-10 mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Job Placement</h4>
                             <p className="text-sm text-gray-700">
                                 Direct connections with top companies hiring Tableau professionals
@@ -242,7 +243,7 @@ export default function CareerRoadmapSection() {
                         </div>
 
                         <div className="p-6 bg-orange-50 rounded-xl border-2 border-orange-200">
-                            <div className="text-4xl mb-3">📈</div>
+                            <TrendingUp className="w-10 h-10 mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Career Growth</h4>
                             <p className="text-sm text-gray-700">
                                 Ongoing support for career advancement and skill development

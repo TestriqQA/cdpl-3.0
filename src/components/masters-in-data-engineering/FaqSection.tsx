@@ -3,7 +3,7 @@
 // src/components/data-analytics-bi-bigdata/FaqSection.tsx
 import React, { useState } from "react";
 import Link from "next/link";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Phone, Mail } from "lucide-react";
 import EnrollModal from "../EnrollModal";
 import { DATA_ENGINEERING_MASTERS_FAQS } from "@/data/dataEngineeringMastersData";
 
@@ -113,15 +113,15 @@ const FaqSection: React.FC = () => {
             </button>
             <Link
               href="tel:+917888383788"
-              className="px-6 py-3 bg-brand hover:bg-brand text-white font-bold rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-brand hover:bg-brand text-white font-bold rounded-lg transition-colors"
             >
-              📞 Call Us
+              <Phone className="w-5 h-5" aria-hidden="true" /> Call Us
             </Link>
             <Link
               href="mailto:contact@cinutedigital.com"
-              className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors"
             >
-              ✉️ Email Us
+              <Mail className="w-5 h-5" aria-hidden="true" /> Email Us
             </Link>
           </div>
           <p className="mt-4 text-xs text-slate-600 sm:text-sm">

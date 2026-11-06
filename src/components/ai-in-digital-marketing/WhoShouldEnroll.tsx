@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, AlarmClock, Handshake, Target, BookOpen } from "lucide-react";
 import { courseData } from "@/components/ai-in-digital-marketing/courseData";
 import { useState } from "react";
 import EnrollModal from "@/components/EnrollModal";
@@ -35,7 +35,7 @@ export default function WhoShouldEnroll() {
               className="bg-white rounded-xl p-8 border-2 border-slate-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300"
             >
               {/* Icon */}
-              <div className="text-4xl mb-4">{audience.icon}</div>
+              <audience.icon className="w-10 h-10 mb-4 text-brand" aria-hidden="true" />
 
               {/* Title */}
               <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -142,29 +142,29 @@ export default function WhoShouldEnroll() {
                 title: "Regular Practice",
                 description:
                   "Dedicate consistent time each week to campaigns, assignments, and AI tool experimentation to build real confidence.",
-                icon: "⏰",
+                icon: AlarmClock,
               },
               {
                 title: "Active Participation",
                 description:
                   "Engage in live sessions, ask questions, and leverage doubt-solving support to clarify concepts faster.",
-                icon: "🤝",
+                icon: Handshake,
               },
               {
                 title: "Project Focus",
                 description:
                   "Complete all real-world projects so your portfolio reflects SEO, ads, funnels, automation, and analytics skills.",
-                icon: "🎯",
+                icon: Target,
               },
               {
                 title: "Continuous Learning",
                 description:
                   "Stay updated with the latest AI tools, ad platform changes, and algorithm updates to remain competitive.",
-                icon: "📚",
+                icon: BookOpen,
               },
             ].map((factor, idx) => (
               <div key={idx} className="flex gap-4">
-                <div className="text-3xl flex-shrink-0">{factor.icon}</div>
+                <factor.icon className="w-8 h-8 text-brand flex-shrink-0" aria-hidden="true" />
                 <div>
                   <h4 className="font-bold text-slate-900 mb-1">
                     {factor.title}

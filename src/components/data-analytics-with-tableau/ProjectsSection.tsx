@@ -1,3 +1,4 @@
+import { GraduationCap, Smartphone, RadioTower, Plane, Hospital, Landmark, Car, BarChart3, Users, Package, Lightbulb, Target, Globe, Rocket } from "lucide-react";
 import SyllabusButton from "./ui/SyllabusButton";
 
 const projectsData = [
@@ -14,7 +15,7 @@ const projectsData = [
             "Data Visualization",
             "Domain Knowledge (Education)",
         ],
-        icon: "🎓",
+        icon: GraduationCap,
         bgColor: "bg-blue-50",
         borderColor: "border-blue-200",
     },
@@ -31,22 +32,22 @@ const projectsData = [
             "Tableau Server",
             "Domain Knowledge (Marketing)",
         ],
-        icon: "📱",
+        icon: Smartphone,
         bgColor: "bg-purple-50",
         borderColor: "border-purple-200",
     },
 ];
 
 const domainKnowledge = [
-    { icon: "✈️", label: "Aviation" },
-    { icon: "🏥", label: "Healthcare" },
-    { icon: "📱", label: <>Telecommu<br className="md:hidden" />nication</> },
-    { icon: "🏦", label: "BFSI" },
-    { icon: "📱", label: "Social Media" },
-    { icon: "🚗", label: "Automobile" },
-    { icon: "📊", label: "Sales & Marketing" },
-    { icon: "👥", label: "Human Resources" },
-    { icon: "📦", label: "Supply Chain" },
+    { icon: Plane, label: "Aviation" },
+    { icon: Hospital, label: "Healthcare" },
+    { icon: RadioTower, label: <>Telecommu<br className="md:hidden" />nication</> },
+    { icon: Landmark, label: "BFSI" },
+    { icon: Smartphone, label: "Social Media" },
+    { icon: Car, label: "Automobile" },
+    { icon: BarChart3, label: "Sales & Marketing" },
+    { icon: Users, label: "Human Resources" },
+    { icon: Package, label: "Supply Chain" },
 ];
 
 
@@ -78,7 +79,7 @@ export default function ProjectsSection() {
                             <div className="bg-gradient-to-r from-[#ff8c00] to-[#ff8c00] p-6 text-white">
                                 <div className="flex items-start justify-between">
                                     <div>
-                                        <div className="text-4xl mb-3">{project.icon}</div>
+                                        <project.icon className="w-10 h-10 mb-3" aria-hidden="true" />
                                         <h3 className="text-2xl font-bold">{project.title}</h3>
                                     </div>
                                     <div className="bg-white bg-opacity-20 px-4 py-2 rounded-lg text-slate-800 text-sm font-semibold">
@@ -115,7 +116,7 @@ export default function ProjectsSection() {
                                 {/* Benefits */}
                                 <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
                                     <p className="text-sm text-blue-900">
-                                        <span className="font-bold">💡 Key Benefit:</span> Build a portfolio project that showcases your Tableau expertise to potential employers.
+                                        <span className="font-bold inline-flex items-center gap-1 align-middle"><Lightbulb className="w-4 h-4" aria-hidden="true" /> Key Benefit:</span> Build a portfolio project that showcases your Tableau expertise to potential employers.
                                     </p>
                                 </div>
                             </div>
@@ -138,7 +139,7 @@ export default function ProjectsSection() {
                                 key={index}
                                 className="flex flex-col items-center gap-3 p-4 bg-white rounded-lg border-2 border-purple-200 hover:border-purple-400 hover:shadow-md transition-all"
                             >
-                                <span className="text-4xl">{domain.icon}</span>
+                                <domain.icon className="w-10 h-10 text-brand" aria-hidden="true" />
                                 <span className="text-sm font-semibold text-center text-gray-700">
                                     {domain.label}
                                 </span>
@@ -150,7 +151,7 @@ export default function ProjectsSection() {
                 {/* Project Benefits */}
                 <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div className="p-8 bg-orange-50 rounded-xl border-2 border-orange-200">
-                        <div className="text-4xl mb-4">🎯</div>
+                        <Target className="w-10 h-10 mb-4 text-brand" aria-hidden="true" />
                         <h4 className="text-xl font-bold text-gray-900 mb-3">
                             Portfolio Building
                         </h4>
@@ -160,7 +161,7 @@ export default function ProjectsSection() {
                     </div>
 
                     <div className="p-8 bg-blue-50 rounded-xl border-2 border-blue-200">
-                        <div className="text-4xl mb-4">🌍</div>
+                        <Globe className="w-10 h-10 mb-4 text-brand" aria-hidden="true" />
                         <h4 className="text-xl font-bold text-gray-900 mb-3">
                             Real-World Experience
                         </h4>
@@ -170,7 +171,7 @@ export default function ProjectsSection() {
                     </div>
 
                     <div className="p-8 bg-green-50 rounded-xl border-2 border-green-200">
-                        <div className="text-4xl mb-4">🚀</div>
+                        <Rocket className="w-10 h-10 mb-4 text-brand" aria-hidden="true" />
                         <h4 className="text-xl font-bold text-gray-900 mb-3">
                             Skill Mastery
                         </h4>

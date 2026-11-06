@@ -2,7 +2,7 @@
 
 // src/components/FaqSection.tsx
 import React, { useState } from "react";
-import { ChevronDown, HelpCircle, CloudDownload } from "lucide-react";
+import { ChevronDown, HelpCircle, CloudDownload, Phone } from "lucide-react";
 import EnrollModal from "../EnrollModal";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
 import { R_DATA_VIS_FAQS } from "@/data/rDataVisData";
@@ -125,9 +125,9 @@ export const FaqSection: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
               onClick={() => setIsEnrollOpen(true)}
-              className="px-6 py-3 bg-brand hover:bg-brand text-white font-semibold rounded-lg transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-brand hover:bg-brand text-white font-semibold rounded-lg transition-colors cursor-pointer"
             >
-              📞 Talk to a Career Expert
+              <Phone className="w-5 h-5" aria-hidden="true" /> Talk to a Career Expert
             </button>
             <button
               onClick={() => setIsSyllabusOpen(true)}

@@ -1,6 +1,9 @@
 "use client";
-import { ChevronDown, BookOpen } from "lucide-react";
-import { useState } from "react";
+import { ChevronDown, BookOpen, Database, FileSpreadsheet, BarChart3, ChartSpline, Rocket } from "lucide-react";
+import { FaPython } from "react-icons/fa6";
+import React, { useState } from "react";
+
+type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
 import EnrollModal from "@/components/EnrollModal";
 import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
@@ -12,7 +15,7 @@ interface Module {
   topics: string[];
   projects?: string[];
   color: string;
-  icon: string;
+  icon: IconComponent;
 }
 
 export default function CurriculumSection() {
@@ -30,7 +33,7 @@ export default function CurriculumSection() {
       id: 1,
       title: "DBMS using MySQL",
       duration: "",
-      icon: "🗄️",
+      icon: Database,
       color: "from-orange-50 to-orange-100",
       topics: [
         "Intro to DBMS & MySQL",
@@ -56,7 +59,7 @@ export default function CurriculumSection() {
       id: 2,
       title: "Advance Excel for Analytics & Visualization",
       duration: "",
-      icon: "📑",
+      icon: FileSpreadsheet,
       color: "from-emerald-50 to-emerald-100",
       topics: [
         "Data handling (types, smart entry, duplicates/nulls)",
@@ -79,7 +82,7 @@ export default function CurriculumSection() {
       id: 3,
       title: "Data Analytics & Visualization with Power BI",
       duration: "",
-      icon: "📊",
+      icon: BarChart3,
       color: "from-sky-50 to-sky-100",
       topics: [
         "BI concepts & Power BI ecosystem (Desktop/Service/Mobile)",
@@ -100,7 +103,7 @@ export default function CurriculumSection() {
       id: 4,
       title: "Data Analytics & Visualization with Tableau",
       duration: "",
-      icon: "📉",
+      icon: ChartSpline,
       color: "from-rose-50 to-rose-100",
       topics: [
         "BI + Tableau setup",
@@ -122,7 +125,7 @@ export default function CurriculumSection() {
       id: 5,
       title: "Advanced Data Analytics with Python Libraries",
       duration: "",
-      icon: "🐍",
+      icon: FaPython,
       color: "from-indigo-50 to-indigo-100",
       topics: [
         "Python fundamentals (syntax, control flow, functions/modules, Jupyter setup)",
@@ -168,7 +171,7 @@ export default function CurriculumSection() {
                 className="w-full px-6 py-5 flex items-center justify-between cursor-pointer hover:bg-white/30 transition-colors"
               >
                 <div className="flex items-center gap-4 text-left">
-                  <span className="text-3xl">{module.icon}</span>
+                  <module.icon className="w-8 h-8 text-brand flex-shrink-0" aria-hidden="true" />
                   <div>
                     <h3 className="text-lg font-bold text-slate-900">
                       Module {module.id}: {module.title}
@@ -205,7 +208,7 @@ export default function CurriculumSection() {
                   {module.projects && module.projects.length > 0 && (
                     <div>
                       <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                        <span className="text-2xl">🚀</span>
+                        <Rocket className="w-6 h-6 text-brand" aria-hidden="true" />
                         Hands-On Projects
                       </h4>
                       <ul className="space-y-2">

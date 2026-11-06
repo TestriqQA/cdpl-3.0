@@ -1,16 +1,16 @@
-import { Briefcase, TrendingUp, Users, Download } from "lucide-react";
+import { Briefcase, TrendingUp, Users, Download, Bot, BarChart3, Laptop, ScanEye, Target, Microscope, Folder, FileText, Link as LinkIcon, Globe, Mic, CircleCheck, Building2, Rocket } from "lucide-react";
 import EnrollButton from "@/components/course-islands/EnrollButton";
 import SyllabusButton from "@/components/course-islands/SyllabusButton";
 
 const jobRoles = [
-  { role: "Machine Learning Engineer", salary: "9-15 LPA", icon: "🤖" },
-  { role: "Data Scientist", salary: "8-14 LPA", icon: "📊" },
-  { role: "Data Analyst", salary: "6-10 LPA", icon: "📈" },
-  { role: "Business Intelligence Analyst", salary: "7-12 LPA", icon: "💼" },
-  { role: "Software Engineer (ML)", salary: "10-16 LPA", icon: "💻" },
-  { role: "Computer Vision Engineer", salary: "10-15 LPA", icon: "👁️" },
-  { role: "Predictive Modeler", salary: "8-13 LPA", icon: "🎯" },
-  { role: "Research Scientist", salary: "12-18 LPA", icon: "🔬" },
+  { role: "Machine Learning Engineer", salary: "9-15 LPA", icon: Bot },
+  { role: "Data Scientist", salary: "8-14 LPA", icon: BarChart3 },
+  { role: "Data Analyst", salary: "6-10 LPA", icon: TrendingUp },
+  { role: "Business Intelligence Analyst", salary: "7-12 LPA", icon: Briefcase },
+  { role: "Software Engineer (ML)", salary: "10-16 LPA", icon: Laptop },
+  { role: "Computer Vision Engineer", salary: "10-15 LPA", icon: ScanEye },
+  { role: "Predictive Modeler", salary: "8-13 LPA", icon: Target },
+  { role: "Research Scientist", salary: "12-18 LPA", icon: Microscope },
 ];
 
 const placementProgram = [
@@ -18,37 +18,37 @@ const placementProgram = [
     step: 1,
     title: "Craft a Winning Portfolio",
     description: "Build a standout portfolio and network to showcase your skills and projects.",
-    icon: "📁",
+    icon: Folder,
   },
   {
     step: 2,
     title: "Polish Your Resume",
     description: "Our experts will update your resume with the latest skills and projects.",
-    icon: "📝",
+    icon: FileText,
   },
   {
     step: 3,
     title: "LinkedIn Profile Optimization",
     description: "Boost your professional LinkedIn profile by adding your certifications.",
-    icon: "🔗",
+    icon: LinkIcon,
   },
   {
     step: 4,
     title: "Expand Your Reach",
     description: "Update your profiles on job portals like Naukri, Indeed, and Foundit.",
-    icon: "🌐",
+    icon: Globe,
   },
   {
     step: 5,
     title: "Interview Preparation",
     description: "Intensive interview preparation from Day 1 to prepare for technical interviews.",
-    icon: "🎤",
+    icon: Mic,
   },
   {
     step: 6,
     title: "Ace Your Interviews",
     description: "Industry experts conduct SWOT analysis and provide feedback on performance.",
-    icon: "✅",
+    icon: CircleCheck,
   },
 ];
 
@@ -77,9 +77,7 @@ export default function CareerSection() {
                 key={index}
                 className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg p-6 border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 group"
               >
-                <p className="text-4xl mb-3 group-hover:scale-110 transition-transform">
-                  {job.icon}
-                </p>
+                <job.icon className="w-10 h-10 mb-3 text-brand group-hover:scale-110 transition-transform" aria-hidden="true" />
                 <h4 className="text-lg font-bold text-slate-900 mb-2">
                   {job.role}
                 </h4>
@@ -109,7 +107,7 @@ export default function CareerSection() {
                   </div>
 
                   {/* Icon */}
-                  <p className="text-3xl mb-3">{item.icon}</p>
+                  <item.icon className="w-8 h-8 mb-3 text-brand" aria-hidden="true" />
 
                   {/* Title */}
                   <h4 className="text-lg font-bold text-slate-900 mb-2">
@@ -127,8 +125,8 @@ export default function CareerSection() {
 
           {/* Result */}
           <div className="bg-white rounded-lg p-8 border border-blue-300 text-center">
-            <p className="text-3xl font-bold text-blue-600 mb-2">
-              🚀 Launch Your Career Journey
+            <p className="text-3xl font-bold text-blue-600 mb-2 flex items-center justify-center gap-2">
+              <Rocket className="w-8 h-8" aria-hidden="true" /> Launch Your Career Journey
             </p>
             <p className="text-slate-700">
               Get our support to secure your ideal role and kickstart your professional path in machine learning.
@@ -160,7 +158,7 @@ export default function CareerSection() {
                 key={index}
                 className="bg-white rounded-lg p-6 border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 text-center"
               >
-                <p className="text-4xl mb-2">🏢</p>
+                <Building2 className="w-10 h-10 mx-auto mb-2 text-brand" aria-hidden="true" />
                 <p className="font-semibold text-slate-900">{company}</p>
               </div>
             ))}

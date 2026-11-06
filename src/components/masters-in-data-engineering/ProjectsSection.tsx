@@ -10,6 +10,13 @@ import {
   Zap,
   Users,
   Download,
+  ShoppingCart,
+  Landmark,
+  Smartphone,
+  RadioTower,
+  Hospital,
+  FileCheck,
+  Package,
 } from "lucide-react";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
@@ -79,15 +86,15 @@ const projectMeta: Record<
 };
 
 const domains = [
-  { name: "E-commerce & Retail", icon: "🛒" },
-  { name: "Banking & Finance (BFSI)", icon: "🏦" },
-  { name: "Social Media & Marketing", icon: "📱" },
-  { name: "Cloud & SaaS Products", icon: "☁️" },
-  { name: "Telecom & Customer Analytics", icon: "📡" },
-  { name: "Healthcare & Insurance", icon: "🏥" },
-  { name: "Regulatory & Compliance", icon: "📑" },
-  { name: "Supply Chain & Operations", icon: "📦" },
-  { name: "Executive BI Reporting", icon: "📊" },
+  { name: "E-commerce & Retail", icon: ShoppingCart },
+  { name: "Banking & Finance (BFSI)", icon: Landmark },
+  { name: "Social Media & Marketing", icon: Smartphone },
+  { name: "Cloud & SaaS Products", icon: Cloud },
+  { name: "Telecom & Customer Analytics", icon: RadioTower },
+  { name: "Healthcare & Insurance", icon: Hospital },
+  { name: "Regulatory & Compliance", icon: FileCheck },
+  { name: "Supply Chain & Operations", icon: Package },
+  { name: "Executive BI Reporting", icon: BarChart3 },
 ];
 
 const ProjectsSection: React.FC = () => {
@@ -180,7 +187,7 @@ const ProjectsSection: React.FC = () => {
                 key={idx}
                 className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:border-teal-300 transition-colors text-center"
               >
-                <div className="text-3xl mb-2">{domain.icon}</div>
+                <domain.icon className="w-8 h-8 mx-auto mb-2 text-teal-300" aria-hidden="true" />
                 <p className="text-sm font-semibold text-white">{domain.name}</p>
               </div>
             ))}

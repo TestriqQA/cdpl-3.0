@@ -2,11 +2,12 @@
 
 import { courseData } from "@/components/ai-in-digital-marketing/courseData";
 import { useState } from "react";
+import type { LucideIcon } from "lucide-react";
 import EnrollModal from "@/components/EnrollModal";
 
 interface Advantage {
   id: number | string;
-  icon: React.ReactNode;
+  icon: LucideIcon;
   title: string;
   description: string;
   bgColor: string;
@@ -47,8 +48,8 @@ export default function WhyThisProgram() {
             >
               {/* Icon Container */}
               <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-white/60 backdrop-blur-sm group-hover:scale-110 transition-transform">
-                <div className="text-brand text-4xl">
-                  {advantage.icon}
+                <div className="text-brand">
+                  <advantage.icon className="w-8 h-8" aria-hidden="true" />
                 </div>
               </div>
 

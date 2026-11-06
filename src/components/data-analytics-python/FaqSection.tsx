@@ -1,5 +1,5 @@
 "use client";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Phone, Mail } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -87,15 +87,15 @@ export default function FaqSection() {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Link
                             href="tel:+917888383788"
-                            className="cursor-pointer px-6 py-3 bg-brand hover:bg-brand text-white font-semibold rounded-lg transition-colors"
+                            className="cursor-pointer inline-flex items-center gap-2 px-6 py-3 bg-brand hover:bg-brand text-white font-semibold rounded-lg transition-colors"
                         >
-                            📞 Call Us
+                            <Phone className="w-5 h-5" aria-hidden="true" /> Call Us
                         </Link>
                         <Link
                             href="mailto:contact@cinutedigital.com"
-                            className="cursor-pointer px-6 py-3 bg-[#1d4ed8] hover:bg-blue-800 text-white font-semibold rounded-lg transition-colors"
+                            className="cursor-pointer inline-flex items-center gap-2 px-6 py-3 bg-[#1d4ed8] hover:bg-blue-800 text-white font-semibold rounded-lg transition-colors"
                         >
-                            ✉️ Email Us
+                            <Mail className="w-5 h-5" aria-hidden="true" /> Email Us
                         </Link>
                     </div>
                 </div>

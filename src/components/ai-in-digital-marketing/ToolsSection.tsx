@@ -1,6 +1,6 @@
 "use client";
 
-import { Code2, Database, BarChart3 } from "lucide-react";
+import { Code2, Database, BarChart3, Target, TrendingUp, Rocket } from "lucide-react";
 import { courseData } from "@/components/ai-in-digital-marketing/courseData";
 import { useState } from "react";
 import Image from "next/image";
@@ -200,7 +200,7 @@ export default function ToolsSection() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
             <div className="text-center">
-              <div className="text-5xl mb-4">🎯</div>
+              <Target className="w-12 h-12 mb-4 mx-auto text-brand" aria-hidden="true" />
               <h4 className="font-bold text-gray-900 mb-2">
                 Industry Standard
               </h4>
@@ -210,7 +210,7 @@ export default function ToolsSection() {
               </p>
             </div>
             <div className="text-center">
-              <div className="text-5xl mb-4">📈</div>
+              <TrendingUp className="w-12 h-12 mb-4 mx-auto text-brand" aria-hidden="true" />
               <h4 className="font-bold text-gray-900 mb-2">Proven Results</h4>
               <p className="text-gray-700 text-sm">
                 These tools have helped thousands of businesses achieve
@@ -218,7 +218,7 @@ export default function ToolsSection() {
               </p>
             </div>
             <div className="text-center">
-              <div className="text-5xl mb-4">🚀</div>
+              <Rocket className="w-12 h-12 mb-4 mx-auto text-brand" aria-hidden="true" />
               <h4 className="font-bold text-gray-900 mb-2">Future Ready</h4>
               <p className="text-gray-700 text-sm">
                 We continuously update our curriculum with the latest tools and
