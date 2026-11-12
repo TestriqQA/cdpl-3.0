@@ -284,7 +284,7 @@ const Header = () => {
                     });
                   }
                 }}
-                className={`transition-colors flex items-center text-sm xl:text-base px-2 xl:px-4 py-5 active:text-brand ${pathname.startsWith("/jobs") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
+                className={`transition-colors flex items-center text-sm xl:text-base px-2 xl:px-4 py-5 active:text-brand ${pathname.startsWith("/jobs") && pathname !== "/jobs/careers" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
                 aria-haspopup="menu"
                 aria-expanded={isJobsOpen}
                 aria-controls="jobs-menu"
@@ -320,14 +320,6 @@ const Header = () => {
                       <span className="nav-link-bold" data-text="Placements">Placements</span>
                     </Link>
                     <Link
-                      href="/jobs/careers"
-                      title="Careers"
-                      role="menuitem"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
-                    >
-                      <span className="nav-link-bold" data-text="Careers">Careers</span>
-                    </Link>
-                    <Link
                       href="/jobs/job-openings"
                       title="Job Openings"
                       role="menuitem"
@@ -355,7 +347,7 @@ const Header = () => {
                     });
                   }
                 }}
-                className={`transition-colors flex items-center text-sm xl:text-base px-2 xl:px-4 py-5 ${pathname.startsWith("/about") || pathname.startsWith("/our-team") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
+                className={`transition-colors flex items-center text-sm xl:text-base px-2 xl:px-4 py-5 ${pathname.startsWith("/about") || pathname.startsWith("/our-team") || pathname === "/jobs/careers" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
                 aria-haspopup="menu"
                 aria-expanded={isAboutOpen}
                 aria-controls="about-menu"
@@ -388,6 +380,14 @@ const Header = () => {
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
                     >
                       <span className="nav-link-bold" data-text="Our Team">Our Team</span>
+                    </Link>
+                    <Link
+                      href="/jobs/careers"
+                      title="Careers"
+                      role="menuitem"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
+                    >
+                      <span className="nav-link-bold" data-text="Careers">Careers</span>
                     </Link>
                   </div>
                 </div>

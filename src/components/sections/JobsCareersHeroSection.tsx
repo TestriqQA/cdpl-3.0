@@ -21,10 +21,12 @@ const FLOATERS = [
 ];
 
 export default function JobsCareersHeroSection() {
+  // Careers sits under About in the nav, so the trail follows it. The page URL
+  // stays /jobs/careers.
   const breadcrumbs = [
     { label: "Home", href: "/" },
-    { label: "Jobs" },
-    { label: "Careers", href: "/careers" },
+    { label: "About", href: "/about-us" },
+    { label: "Careers", href: "/jobs/careers" },
   ];
 
   return (

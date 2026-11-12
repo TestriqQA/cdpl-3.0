@@ -137,7 +137,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
             <div className="space-y-2">
                 <button
                     onClick={() => toggleMobileSection("jobs")}
-                    className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/jobs") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+                    className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/jobs") && pathname !== "/jobs/careers" ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                     aria-expanded={mobileSections.jobs}
                     aria-controls="mobile-jobs"
                 >
@@ -165,14 +165,6 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                             &bull; <span className="nav-link-bold" data-text="Placements">Placements</span>
                         </Link>
                         <Link
-                            href="/jobs/careers"
-                            title="Careers"
-                            className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/careers" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
-                            onClick={closeMenu}
-                        >
-                            &bull; <span className="nav-link-bold" data-text="Careers">Careers</span>
-                        </Link>
-                        <Link
                             href="/jobs/job-openings"
                             title="Job Openings"
                             className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/job-openings" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
@@ -188,7 +180,7 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
             <div className="space-y-2">
                 <button
                     onClick={() => toggleMobileSection("about")}
-                    className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/about") || pathname.startsWith("/our-team") ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
+                    className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors text-sm sm:text-base active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname.startsWith("/about") || pathname.startsWith("/our-team") || pathname === "/jobs/careers" ? "text-brand font-semibold bg-white" : "text-gray-700 hover:text-brand hover:bg-white"}`}
                     aria-expanded={mobileSections.about}
                     aria-controls="mobile-about"
                 >
@@ -214,6 +206,14 @@ export default function MobileMenuContent({ closeMenu, openEnquire }: MobileMenu
                             onClick={closeMenu}
                         >
                             &bull; <span className="nav-link-bold" data-text="Our Team">Our Team</span>
+                        </Link>
+                        <Link
+                            href="/jobs/careers"
+                            title="Careers"
+                            className={`block px-4 py-2 text-sm rounded-lg transition-colors active:bg-white active:text-orange-500 focus:text-orange-500 active:transition-none focus:transition-none outline-none ${pathname === "/jobs/careers" ? "text-brand font-semibold bg-white" : "text-gray-600 hover:text-brand hover:bg-white"}`}
+                            onClick={closeMenu}
+                        >
+                            &bull; <span className="nav-link-bold" data-text="Careers">Careers</span>
                         </Link>
                     </div>
                 )}
