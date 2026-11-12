@@ -32,6 +32,8 @@ import { PROMPT_ENGINEERING_FAQS } from '@/data/promptEngineeringData'
 import { DIGITAL_MARKETING_FAQS } from '@/data/digitalMarketingData'
 import { AI_IN_DIGITAL_MARKETING_FAQS } from '@/data/aiInDigitalMarketingData'
 import { AI_BOOTCAMP_FAQS } from '@/data/aiBootcampData'
+import { getSiteStats } from '@/lib/liveStats'
+import type { SiteStats } from '@/lib/siteStats'
 
 /**
  * BLG-122 — /llms-full.txt
@@ -58,7 +60,7 @@ import { AI_BOOTCAMP_FAQS } from '@/data/aiBootcampData'
 // The curated frame is kept in sync with `public/llms.txt`. The static file
 // is the canonical short index; this constant lets the route serve the same
 // content without filesystem reads inside the serverless function.
-const FRAME = `# Cinute Digital Private Limited (CDPL)
+const frame = (s: SiteStats) => `# Cinute Digital Private Limited (CDPL)
 
 > Industry-ready IT training and certification institute based in Mira Road, Mumbai, India. Hands-on, mentor-led courses in Software Testing, Data Science, Machine Learning, Business Intelligence, Artificial Intelligence and Digital Marketing, with placement assistance.
 
@@ -72,7 +74,7 @@ Cinute Digital Private Limited (CDPL) is an EdTech institute that bridges the ga
 - **Email**: contact@cinutedigital.com
 - **Founded**: 2018
 - **Founder**: Sandeep Maske
-- **Rating**: 4.9 / 5 (425 verified reviews)
+- **Rating**: ${s.text.rating} (${s.reviewCount} verified reviews)
 
 ## Core Course Categories
 
@@ -464,7 +466,7 @@ export async function GET() {
     // Course FAQs (Q&A) → Events FAQ (Q&A) → Blog Posts (long-form).
     // Structural-content-first, then conversational Q&A, then the
     // heavyweight blog bodies an AI engine treats as deepest context.
-    const body = `${FRAME}${servicesSection}${eventsSection}${courseFaqsSection}${eventsFaqSection}\n${blogSection}\n`
+    const body = `${frame(await getSiteStats())}${servicesSection}${eventsSection}${courseFaqsSection}${eventsFaqSection}\n${blogSection}\n`
 
     return new Response(body, {
         headers: {

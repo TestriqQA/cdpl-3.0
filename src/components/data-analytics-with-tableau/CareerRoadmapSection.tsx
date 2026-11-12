@@ -1,4 +1,5 @@
 import EnrollButton from "./ui/EnrollButton";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 const careerRoadmap = [
     {
@@ -259,8 +260,8 @@ export default function CareerRoadmapSection() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="text-center">
-                            <div className="text-5xl font-bold text-gray-950 mb-3">500+</div>
-                            <p className="text-gray-700 font-semibold mb-2">Successful Graduates</p>
+                            <div className="text-5xl font-bold text-gray-950 mb-3"><SiteStat k="studentsPlaced" /></div>
+                            <p className="text-gray-700 font-semibold mb-2">Students Placed</p>
                             <p className="text-sm text-gray-600">
                                 Placed in top companies worldwide
                             </p>

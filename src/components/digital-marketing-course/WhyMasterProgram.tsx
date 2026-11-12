@@ -1,7 +1,9 @@
 // components/sections/WhyMasterProgram.tsx
 // Server component — no client/runtime JS needed
+import { getSiteStats } from "@/lib/liveStats";
 
-export default function WhyMasterProgram() {
+export default async function WhyMasterProgram() {
+  const siteStats = await getSiteStats();
 
 
   const highlights = [
@@ -9,7 +11,7 @@ export default function WhyMasterProgram() {
     { label: '40–50 Learning Hours', accent: 'bg-emerald-50 text-emerald-900 border-emerald-200' },
     { label: '6 hrs / week', accent: 'bg-amber-50 text-amber-900 border-amber-200' },
     { label: 'No Prerequisite', accent: 'bg-violet-50 text-violet-900 border-violet-200' },
-    { label: '9.6/10 Rated', accent: 'bg-rose-50 text-rose-900 border-rose-200' },
+    { label: `${siteStats.text.rating} Rated`, accent: 'bg-rose-50 text-rose-900 border-rose-200' },
   ];
 
   const pillars = [

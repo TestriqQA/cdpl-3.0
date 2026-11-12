@@ -42,6 +42,7 @@ import {
     CloudDownload,
     ArrowDownNarrowWide,
 } from "lucide-react";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
  
  
 /* ----------------------- NEW: Count-up + Stats ----------------------- */
@@ -286,13 +287,13 @@ export default function HeroManualTesting() {
                                 <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
                                 <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
                                 <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                                <span className="ml-2 font-semibold">4.9/5</span>
-                                <span className="ml-1 text-slate-500">from 425+ reviews</span>
+                                <span className="ml-2 font-semibold"><SiteStat k="rating" /></span>
+                                <span className="ml-1 text-slate-500">from <SiteStat k="reviews" /> reviews</span>
                             </div>
                             <span className="hidden h-3 w-px bg-slate-300 md:inline-block" />
                             <div className="flex items-center gap-2 text-slate-800">
                                 <ShieldCheck className="h-5 w-5 text-emerald-600" />
-                                <span>425+ Verified Reviews</span>
+                                <span><SiteStat k="reviews" /> Verified Reviews</span>
                             </div>
                         </div>
  

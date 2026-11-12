@@ -12,6 +12,7 @@ import JsonLd from "@/components/JsonLd";
 import ACTDCertificationHeroSection from "@/components/sections/ACTDCertificationHeroSection";
 import ACTDCertificationTracksSection from "@/components/sections/ACTDCertificationTracksSection";
 import ACTDCertificationProgressFaqSection from "@/components/sections/ACTDCertificationProgressFaqSection";
+import { SITE_STATS } from "@/lib/siteStats";
 
 /* ---------- SEO ---------- */
 export const metadata: Metadata = generateStaticPageMetadata({
@@ -60,8 +61,8 @@ export default function ACTDCertificationTrainingPage() {
     ],
     prerequisites: ["Basic software testing knowledge", "Programming fundamentals"],
     duration: "P10W",
-    rating: 4.7,
-    reviewCount: 120,
+    rating: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
   };
 
   const consolidatedSchemas = generateActdCertificationPageAllSchemas({

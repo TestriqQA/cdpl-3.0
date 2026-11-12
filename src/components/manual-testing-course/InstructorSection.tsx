@@ -3,6 +3,7 @@
 import { LuBadgeCheck, LuUsers, LuBuilding, LuBookOpenCheck, LuShieldCheck, LuSparkles, LuClock, LuAward, LuThumbsUp, LuQuote } from "react-icons/lu";
 import Link from "next/link";
 import { useMemo } from "react";
+import { SiteStat, useSiteStats } from "@/components/stats/SiteStatsProvider";
 
 /* ==================== Types ==================== */
 type Accent =
@@ -103,6 +104,7 @@ const ReviewCard: React.FC<ReviewProps> = ({ quote, name, role }) => (
 
 /* ==================== Instructor Section ==================== */
 export default function InstructorSection() {
+    const siteStats = useSiteStats();
 
 
   return (
@@ -189,7 +191,7 @@ export default function InstructorSection() {
             <div className="space-y-6">
               {/* Stats */}
               <div className="grid justify-center md:grid-cols-2 gap-4">
-                <Stat label="Learner Rating" value="4.9/5" sublabel="From 425+ reviews" accent="indigo" />
+                <Stat label="Learner Rating" value={siteStats.text.rating} sublabel={`From ${siteStats.text.reviews} reviews`} accent="indigo" />
                 <Stat label="Career Support" value="1:1" sublabel="Interview prep + referrals" accent="emerald" />
                 <Stat label="Avg. Salary Hike" value="1.5×" sublabel="After course completion" accent="amber" />
                 <Stat label="Industry Projects" value="10+" sublabel="E-com • BFSI • HealthTech" accent="cyan" />
@@ -228,7 +230,7 @@ export default function InstructorSection() {
                 <div className="flex items-center gap-2">
                   <LuSparkles className="h-4 w-4 text-rose-600" />
                   <p className="text-sm font-semibold text-slate-800">
-                    Professional QA Mentor • 4.8/5
+                    Professional QA Mentor • <SiteStat k="rating" />
                   </p>
                 </div>
               </div>

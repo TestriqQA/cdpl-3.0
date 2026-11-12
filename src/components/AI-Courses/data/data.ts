@@ -1,6 +1,7 @@
 import { Zap, Users, Briefcase, Award, Clock, ShieldCheck } from 'lucide-react';
 
 import { iconMap } from '@/components/AI-Courses/CoursesSection';
+import { SITE_STATS } from "@/lib/siteStats";
 
 export const features = [
     {
@@ -62,7 +63,7 @@ export const COURSES: Course[] = [
         description: 'Become an AI Expert in Mumbai. Master the fundamentals of AI, deep learning, NLP, and intelligent automation systems with hands-on projects and industry certifications.',
         duration: '20 Hours',
         students: '10,000+',
-        rating: 4.9,
+        rating: SITE_STATS.rating,
         level: 'Master',
         popular: true,
         link: '/courses/artificial-intelligence-courses/prompt-engineering-course',

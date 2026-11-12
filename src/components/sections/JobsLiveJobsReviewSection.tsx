@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
@@ -183,11 +184,6 @@ export default function JobsLiveJobsReviewSection() {
   const [tab] = useState<PLATFORM>("Google");
   const filtered = useMemo(() => REVIEWS.filter((r) => r.source === tab), [tab]);
 
-  const stats = useMemo(() => {
-    const rating = filtered.reduce((acc, review) => acc + review.rating, 0) / filtered.length;
-    const total = filtered.length;
-    return { rating, total };
-  }, [filtered]);
 
   const GOOGLE_LOGO = '/slider_logos/google-logo.svg'; // Ensure this path is correct based on previous file
 
@@ -273,7 +269,7 @@ export default function JobsLiveJobsReviewSection() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
             <Image src={GOOGLE_LOGO} alt="Google" width={60} height={60} />
             <span className="text-sm font-medium text-slate-700">
-              Rated <span className="font-bold text-slate-900">{stats.rating}/5</span> based on <span className="font-bold text-slate-900">{stats.total}+</span> reviews
+              Rated <span className="font-bold text-slate-900"><SiteStat k="rating" /></span> based on <span className="font-bold text-slate-900"><SiteStat k="reviews" /></span> reviews
             </span>
           </div>
 

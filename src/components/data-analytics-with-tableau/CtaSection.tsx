@@ -1,5 +1,6 @@
 import EnrollButton from "./ui/EnrollButton";
 import SyllabusButton from "./ui/SyllabusButton";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 export default function CtaSection() {
     const courseName = "Data Analytics & Visualization with Tableau";
@@ -72,12 +73,12 @@ export default function CtaSection() {
                 {/* Trust Indicators */}
                 <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 text-white">
                     <div>
-                        <div className="text-3xl font-bold">500+</div>
-                        <p className="text-orange-100 text-sm">Successful Graduates</p>
+                        <div className="text-3xl font-bold"><SiteStat k="studentsPlaced" /></div>
+                        <p className="text-orange-100 text-sm">Students Placed</p>
                     </div>
 
                     <div>
-                        <div className="text-3xl font-bold">4.8/5</div>
+                        <div className="text-3xl font-bold"><SiteStat k="rating" /></div>
                         <p className="text-orange-100 text-sm">Average Rating</p>
                     </div>
 

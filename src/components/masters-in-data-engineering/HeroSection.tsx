@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
 import dynamic from "next/dynamic";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
 const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
@@ -148,14 +149,14 @@ export default function HeroSection() {
               <div className="flex items-center gap-2">
                 <span className="text-2xl">⭐</span>
                 <span>
-                  <strong className="text-slate-900">4.8/5</strong> Average Rating
+                  <strong className="text-slate-900"><SiteStat k="rating" /></strong> Average Rating
                 </span>
               </div>
               <div className="hidden h-6 w-px bg-slate-300 sm:block" />
               <div className="flex items-center gap-2">
                 <span className="text-2xl">👥</span>
                 <span>
-                  <strong className="text-slate-900">500+</strong> Successful Learners
+                  <strong className="text-slate-900"><SiteStat k="studentsPlaced" /></strong> Students Placed
                 </span>
               </div>
               <div className="hidden h-6 w-px bg-slate-300 sm:block" />

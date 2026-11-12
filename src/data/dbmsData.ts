@@ -1,4 +1,5 @@
 import { type QA } from "../types/faq";
+import { SITE_STATS } from "@/lib/siteStats";
 
 export const DBMS_FAQS: QA[] = [
     {
@@ -24,6 +25,6 @@ export const DBMS_FAQS: QA[] = [
 ];
 
 export const DBMS_REVIEW_DATA = {
-    ratingValue: 4.7,
-    reviewCount: 95,
+    ratingValue: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
 };

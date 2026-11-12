@@ -2,6 +2,8 @@
 import { google } from 'googleapis';
 import axios from 'axios';
 import { unstable_cache } from 'next/cache';
+import { SITE_STATS } from '@/lib/siteStats';
+import { singleFlight, isSingleFlightSkip } from '@/lib/singleFlight';
 
 // Credentials
 const CLIENT_ID = '1078247115476-cujpa333jod5j1a9441po9r39snkce25.apps.googleusercontent.com';
@@ -90,7 +92,7 @@ async function fetchGoogleReviewsUncached(): Promise<ReviewsData> {
     // If we don't have a refresh token (and it's not set in env), return fallback
     if (!REFRESH_TOKEN) {
         console.warn('Review API: No REFRESH_TOKEN found. Serving fallback data.');
-        return { reviews: FALLBACK_REVIEWS, totalReviewCount: 300, averageRating: 4.8 };
+        return { reviews: FALLBACK_REVIEWS, totalReviewCount: SITE_STATS.reviewCount, averageRating: SITE_STATS.rating };
     }
 
     try {
@@ -151,24 +153,46 @@ async function fetchGoogleReviewsUncached(): Promise<ReviewsData> {
 
         return {
             reviews: reviews.length > 0 ? reviews : FALLBACK_REVIEWS,
-            totalReviewCount: realTotalReviews > 300 ? realTotalReviews : 300,
-            averageRating: realTotalReviews > 0 ? realAverageRating : 4.8
+            totalReviewCount: Math.max(realTotalReviews, SITE_STATS.reviewCount),
+            averageRating: realTotalReviews > 0 ? realAverageRating : SITE_STATS.rating
         };
 
     } catch (error: any) {
         console.error('Error fetching Google Reviews:', error.message);
+        // Rethrow so the failure is never cached: Next keeps serving the last
+        // good entry, and getGoogleReviews() below falls back if there is none.
+        throw error;
+    }
+}
+
+// Build workers render pages in parallel; this makes them share one Google
+// request per process (at most one per worker), gives up after 10s, and after
+// a failure skips Google for 10 minutes instead of every page retrying.
+const fetchGoogleReviewsShared = singleFlight('google-reviews', fetchGoogleReviewsUncached, {
+    timeoutMs: 10_000,
+    reuseForMs: 10 * 60_000,
+    retryAfterMs: 10 * 60_000,
+});
+
+// Daily: the root layout reads this for site stats, so it sets every page's revalidate.
+const getCachedGoogleReviews = unstable_cache(
+    fetchGoogleReviewsShared,
+    ['google-reviews-data'],
+    { revalidate: 86400, tags: ['reviews'] }
+);
+
+export async function getGoogleReviews(): Promise<ReviewsData> {
+    try {
+        return await getCachedGoogleReviews();
+    } catch (error) {
+        if (!isSingleFlightSkip(error)) {
+            console.error('Google Reviews unavailable, serving fallback:', error instanceof Error ? error.message : error);
+        }
         return {
             reviews: FALLBACK_REVIEWS,
-            totalReviewCount: 300,
-            averageRating: 4.8,
+            totalReviewCount: SITE_STATS.reviewCount,
+            averageRating: SITE_STATS.rating,
             error: 'Failed to fetch live reviews, showing cached data.'
         };
     }
 }
-
-// Cache the result for 1 hour (3600 seconds)
-export const getGoogleReviews = unstable_cache(
-    async () => fetchGoogleReviewsUncached(),
-    ['google-reviews-data'],
-    { revalidate: 3600, tags: ['reviews'] }
-);

@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import ApiCourseLeadForm from "@/components/forms/ApiCourseLeadForm";
 import EnrollModal from "@/components/EnrollModal";
 import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 export default function HeroSection() {
   const [isEnrollOpen, setIsEnrollOpen] = useState(false);
@@ -161,8 +162,8 @@ export default function HeroSection() {
                   <Star className="w-4 h-4 fill-current" />
                   <Star className="w-4 h-4 fill-current" />
                 </div>
-                <span className="font-medium text-slate-900">4.8/5</span>
-                <span className="text-slate-500">(120+ reviews)</span>
+                <span className="font-medium text-slate-900"><SiteStat k="rating" /></span>
+                <span className="text-slate-500">(<SiteStat k="reviews" /> reviews)</span>
               </div>
             </div>
           </div>

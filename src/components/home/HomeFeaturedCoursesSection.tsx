@@ -5,6 +5,8 @@ import { Clock, Users, ArrowRight, Star, Zap, Download, BookOpen, Gauge, Shield,
 import { DownloadFormButton } from '@/components/DownloadForm';
 import Link from 'next/link';
 import { FaChartBar } from 'react-icons/fa6';
+import { useSiteStats } from "@/components/stats/SiteStatsProvider";
+import { SITE_STATS } from "@/lib/siteStats";
 
 // --- Card Styling Constants from CourseOverviewSection.tsx ---
 type Variant = {
@@ -90,7 +92,7 @@ const COURSES: Course[] = [
     description: 'Learn to facilitate Scrum teams and drive Agile projects effectively.',
     duration: '50 Hours',
     students: '1200+',
-    rating: 4.9,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/software-testing-course/manual-testing-course',
@@ -105,7 +107,7 @@ const COURSES: Course[] = [
     description: 'Drive product vision and delivery in SAFe settings.',
     duration: '85 Hours',
     students: '950+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Intermediate',
     popular: true,
     link: '/courses/software-testing-course/automation-testing-course',
@@ -120,7 +122,7 @@ const COURSES: Course[] = [
     description: 'Master API testing using Postman, Rest Assured, and Groovy for robust web services.',
     duration: '15 Hours',
     students: '700+',
-    rating: 4.7,
+    rating: SITE_STATS.rating,
     level: 'Intermediate',
     popular: false,
     link: '/courses/software-testing-course/api-testing',
@@ -135,7 +137,7 @@ const COURSES: Course[] = [
     description: 'Master the art of leading enterprise-wide Agile transformations using the Scaled Agile Framework (SAFe).',
     duration: '100 Hours',
     students: '500+',
-    rating: 4.6,
+    rating: SITE_STATS.rating,
     level: 'Intermediate',
     popular: true,
     link: '/courses/software-testing-course/etl-testing',
@@ -150,7 +152,7 @@ const COURSES: Course[] = [
     description: 'Master SQL queries, database design, and management with MySQL. Learn to build scalable and efficient database solutions.',
     duration: '40 Hours',
     students: '500+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: false,
     link: '/courses/software-testing-course/dbms-course',
@@ -165,7 +167,7 @@ const COURSES: Course[] = [
     description: 'Go beyond the basics—build strategies, manage risk, and measure quality with actionable metrics.',
     duration: '95 Hours',
     students: '2,268+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/software-testing-course/advance-software-testing',
@@ -180,7 +182,7 @@ const COURSES: Course[] = [
     description: 'Become industry-ready with Core Java, OOP, Collections, JDBC, Spring Boot, REST APIs, unit testing, and deployment. Build portfolio projects and earn a QR-verified certificate.',
     duration: '30 Hours',
     students: 'Not specified',
-    rating: 4.9,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/software-testing-course/java-course',
@@ -202,7 +204,7 @@ const COURSES: Course[] = [
     description: 'End-to-end mastery: advanced test strategy and leadership combined with enterprise-grade automation and CI/CD.',
     duration: '180 Hours',
     students: '2,302+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/software-testing-course/advance-manual-automation-testing',
@@ -224,7 +226,7 @@ const COURSES: Course[] = [
     description: 'Master Python Programming from absolute basics all the way to advanced and professional-level concepts! Dive deep into Python syntax, data structures, object-oriented programming, functional programming, automation scripting, and real-world problem-solving through engaging, hands-on projects that reinforce every concept.',
     duration: '30 Hours',
     students: '2,268+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/software-testing-course/python-course',
@@ -241,7 +243,7 @@ const COURSES: Course[] = [
     description: 'Master Machine Learning & Data Science with Python in our Hero Program! Hands-on projects, expert mentorship & job-ready skills. Enroll now & launch your tech career!',
     duration: '95 Hours',
     students: '2,200+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/ds-ml-courses/machine-learning-course',
@@ -256,7 +258,7 @@ const COURSES: Course[] = [
     description: 'Dive into Deep Learning, NLP & Generative AI! Master neural networks, text processing & AI creation with hands-on projects. Enroll now & lead the AI revolution!',
     duration: '55 Hours',
     students: '2,217+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/ds-ml-courses/generative-ai-course',
@@ -271,7 +273,7 @@ const COURSES: Course[] = [
     description: 'Elevate your career with Advanced Data Science & Machine Learning Masterclass! Deep-dive into algorithms, big data & AI. Expert-led, project-based. Enroll today!',
     duration: '200 Hours',
     students: '2,234+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: false,
     link: '/courses/ds-ml-courses/data-science-course',
@@ -286,7 +288,7 @@ const COURSES: Course[] = [
     description: 'Unlock expertise in Comprehensive Data Science & AI Master Program! From ML to deep learning, big data & ethics. Hands-on, industry-aligned. Enroll now & shape the future!',
     duration: '255 Hours',
     students: '2,251+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/ds-ml-courses/ai-course',
@@ -301,7 +303,7 @@ const COURSES: Course[] = [
     description: 'Master Machine Learning Algorithms using Python Programming! Implement regression, classification, clustering & more with scikit-learn. Hands-on code, real projects. Enroll now!',
     duration: '45 Hours',
     students: '2,285+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/ds-ml-courses/machine-learning-using-python',
@@ -316,7 +318,7 @@ const COURSES: Course[] = [
     description: 'Master Machine Learning & Data Visualization using R Programming! Explore ggplot2, tidyverse, ML models & interactive dashboards. Hands-on projects. Enroll now & excel in data!',
     duration: '20 Hours',
     students: '2,302+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/ds-ml-courses/data-visualization-in-r-programming',
@@ -333,7 +335,7 @@ const COURSES: Course[] = [
     description: 'Master Python Programming from absolute basics all the way to advanced and professional-level concepts! Dive deep into Python syntax, data structures, object-oriented programming, functional programming, automation scripting, and real-world problem-solving through engaging, hands-on projects that reinforce every concept.',
     duration: '30 Hours',
     students: '2,268+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/software-testing-course/python-course',
@@ -350,7 +352,7 @@ const COURSES: Course[] = [
     description: 'Elevate to pro with Advanced Data Analytics Hero Program! Master SQL, Python, Tableau, predictive modeling & big data. Hands-on, job-focused.',
     duration: '110 Hours',
     students: '2,200+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/bi-courses/data-analytics',
@@ -365,7 +367,7 @@ const COURSES: Course[] = [
     description: 'Master Advanced Data Analytics with Python Libraries! Harness Pandas, NumPy, Matplotlib, Seaborn & Scikit-learn for insights & predictions. Hands-on projects.',
     duration: '20 Hours',
     students: '2,217+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/bi-courses/data-analytics-python',
@@ -380,7 +382,7 @@ const COURSES: Course[] = [
     description: 'Master Excel for Data Analytics & Visualization! Unlock PivotTables, Power Query, charts, dashboards & advanced formulas. Hands-on, real-world projects.',
     duration: '20 Hours',
     students: '2,234+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/bi-courses/data-analytics-and-visualization',
@@ -395,7 +397,7 @@ const COURSES: Course[] = [
     description: 'Master Data Analytics & Visualization with Tableau! Build interactive dashboards, explore data with drag-and-drop, uncover insights & tell stories. Hands-on projects.',
     duration: '20 Hours',
     students: '2,251+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/bi-courses/data-analytics-with-tableau',
@@ -410,7 +412,7 @@ const COURSES: Course[] = [
     description: 'Master Data Analytics & Visualization with Power BI! Create stunning dashboards, DAX formulas, data modeling & insights. Hands-on projects for business intelligence.',
     duration: '20 Hours',
     students: '2,268+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/bi-courses/power-bi-course',
@@ -425,7 +427,7 @@ const COURSES: Course[] = [
     description: 'Master Data Analytics with BI & Big Data Engineering Master Program! Harness Power BI, Tableau, Spark, Hadoop & ETL pipelines for scalable insights. Hands-on, industry-ready.',
     duration: '155 Hours',
     students: '2,285+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/bi-courses/masters-in-data-engineering',
@@ -442,7 +444,7 @@ const COURSES: Course[] = [
     description: 'Become an AI Expert in Mumbai. Master the fundamentals of AI, deep learning, NLP, and intelligent automation systems with hands-on projects and industry certifications.',
     duration: '20 Hours',
     students: '10,000+',
-    rating: 4.9,
+    rating: SITE_STATS.rating,
     level: 'Master',
     popular: true,
     link: '/courses/artificial-intelligence-courses/prompt-engineering-course',
@@ -459,7 +461,7 @@ const COURSES: Course[] = [
     description: 'End-to-end mastery: full-funnel strategies, analytics-driven decisions, and campaign leadership.',
     duration: '80 Hours',
     students: '2,200+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Master',
     popular: true,
     link: '/courses/digital-marketing-courses/digital-marketing-course',
@@ -474,7 +476,7 @@ const COURSES: Course[] = [
     description: 'Leverage AI to grow your business faster and cheaper – no agency needed. Perfect for founders, CEOs & solopreneurs.',
     duration: '50 Hours',
     students: '2,217+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/digital-marketing-courses/ai-in-digital-marketing',
@@ -489,7 +491,7 @@ const COURSES: Course[] = [
     description: 'Become a future-ready digital marketer: master AI tools, prompt engineering for ads & content, and run hyper-personalized campaigns.',
     duration: '30 Hours',
     students: '2,234+',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: '/courses/digital-marketing-courses/ai-bootcamp',
@@ -504,7 +506,8 @@ const COURSES: Course[] = [
 const pad = (n: number) => n.toString().padStart(2, '0');
 
 // --- Course Card Component (extracted layout/design/features from ModuleCard) ---
-const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index }) => {
+const CourseCard: React.FC<{ course: Course; index: number; sessionDeadline: Date | null }> = ({ course, index, sessionDeadline }) => {
+  const siteStats = useSiteStats();
   const variant = pickVariant(index);
 
   return (
@@ -536,11 +539,11 @@ const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index
             </div>
             <div
               className="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-lg"
-              aria-label={`Rating ${course.rating.toFixed(1)} out of 5`}
+              aria-label={`Rating ${siteStats.text.ratingValue} out of 5`}
             >
               <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
               <span className="text-sm font-semibold text-gray-800">
-                {course.rating.toFixed(1)}
+                {siteStats.text.ratingValue}
               </span>
             </div>
           </div>

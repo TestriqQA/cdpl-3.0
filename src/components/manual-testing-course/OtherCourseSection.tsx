@@ -19,6 +19,8 @@ import {
 } from "react-icons/lu";
 import dynamic from "next/dynamic";
 import { BarChart, CheckCircle } from "lucide-react";
+import { SiteStat, useSiteStats } from "@/components/stats/SiteStatsProvider";
+import { SITE_STATS } from "@/lib/siteStats";
 const CareerSessionModal = dynamic(() => import("@/components/CareerSessionModal"), { ssr: false });
 
 type Course = {
@@ -55,7 +57,7 @@ const COURSES: Course[] = [
     description: "Drive product vision and delivery in SAFe settings.",
     duration: "85 Hours",
     students: "950+",
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: "Intermediate",
     popular: true,
     link: "/automation-testing-course",
@@ -69,7 +71,7 @@ const COURSES: Course[] = [
     description: "Master API testing using Postman, Rest Assured, and Groovy for robust web services.",
     duration: "15 Hours",
     students: "700+",
-    rating: 4.7,
+    rating: SITE_STATS.rating,
     level: "Intermediate",
     popular: false,
     link: "/api-testing",
@@ -83,7 +85,7 @@ const COURSES: Course[] = [
     description: "Learn to lead Agile transformations using the SAFe framework.",
     duration: "100 Hours",
     students: "500+",
-    rating: 4.6,
+    rating: SITE_STATS.rating,
     level: "Intermediate",
     popular: false,
     link: "/etl-testing",
@@ -97,7 +99,7 @@ const COURSES: Course[] = [
     description: "Go beyond the basics—build strategies, manage risk, and measure quality with actionable metrics.",
     duration: "95 Hours",
     students: "2,268+",
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: "Beginner",
     popular: true,
     link: "/advance-software-testing",
@@ -111,7 +113,7 @@ const COURSES: Course[] = [
     description: "Become industry-ready with Core Java, OOP, Collections, JDBC, Spring Boot, REST APIs, unit testing, and deployment. Build portfolio projects and earn a QR-verified certificate.",
     duration: "30 Hours",
     students: "Not specified",
-    rating: 4.9,
+    rating: SITE_STATS.rating,
     level: "Beginner",
     popular: true,
     link: "/java-course",
@@ -125,7 +127,7 @@ const COURSES: Course[] = [
     description: "End-to-end mastery: advanced test strategy and leadership combined with enterprise-grade automation and CI/CD.",
     duration: "180 Hours",
     students: "2,302+",
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     level: 'Beginner',
     popular: true,
     link: "/automation-testing-course",
@@ -171,6 +173,7 @@ function pickVariant(index: number) {
 }
 
 const CourseCard = ({ course, index }: { course: Course; index: number }) => {
+  const siteStats = useSiteStats();
   const variant = pickVariant(index);
 
   return (
@@ -195,11 +198,11 @@ const CourseCard = ({ course, index }: { course: Course; index: number }) => {
             </div>
             <div
               className="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-lg"
-              aria-label={`Rating ${course.rating.toFixed(1)} out of 5`}
+              aria-label={`Rating ${siteStats.text.ratingValue} out of 5`}
             >
               <LuStar className="w-4 h-4 text-yellow-500 fill-yellow-500" />
               <span className="text-sm font-semibold text-gray-800">
-                {course.rating.toFixed(1)}
+                {siteStats.text.ratingValue}
               </span>
             </div>
           </div>
@@ -298,7 +301,7 @@ export default function OtherCoursesSection() {
           {/* Trust strip */}
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm">
             <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 font-medium text-emerald-800 ring-1 ring-emerald-200">
-              <LuStar className="h-4 w-4" aria-hidden="true" /> 4.8/5 Learner Rating
+              <LuStar className="h-4 w-4" aria-hidden="true" /> <SiteStat k="rating" /> Learner Rating
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1 font-medium text-indigo-700 ring-1 ring-indigo-200">
               <LuTrendingUp className="h-4 w-4" aria-hidden="true" /> Job-Ready Curriculum

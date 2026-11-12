@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 
 import { EnrollButton, SyllabusButton } from "./common/ActionButtons";
+import { getSiteStats } from "@/lib/liveStats";
+import { STAT_TEXT } from "@/lib/siteStats";
 
 type Pill = {
   icon: React.ComponentType<{ className?: string }>;
@@ -64,15 +66,21 @@ const PILLS: Pill[] = [
   {
     icon: Star,
     label: "Learner Rating",
-    value: "9.9 / 10",
+    value: STAT_TEXT.rating,
     bg: "bg-rose-50",
     text: "text-rose-800",
     ring: "ring-rose-200",
-    aria: "Nine point nine out of ten learner rating",
+    aria: `${STAT_TEXT.rating} learner rating`,
   },
 ];
 
-export default function WhyJavaProgram() {
+export default async function WhyJavaProgram() {
+  const siteStats = await getSiteStats();
+  const pills = PILLS.map((p) =>
+    p.label === "Learner Rating"
+      ? { ...p, value: siteStats.text.rating, aria: `${siteStats.text.rating} learner rating` }
+      : p,
+  );
   const title = "Your Gateway to Job-Ready Java Developer";
   const subtitle =
     "Job-ready Java training covering Core Java, Spring Boot, REST APIs, Microservices, SQL, and Cloud fundamentals-designed for high-growth engineering careers.";
@@ -120,7 +128,7 @@ export default function WhyJavaProgram() {
           role="list"
           aria-label="Program highlights"
         >
-          {PILLS.map(({ icon: Icon, label, value, bg, text, ring, aria }, i) => (
+          {pills.map(({ icon: Icon, label, value, bg, text, ring, aria }, i) => (
             <div
               key={i}
               role="listitem"

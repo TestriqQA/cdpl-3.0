@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { SiteStat } from '@/components/stats/SiteStatsProvider';
 import Image from 'next/image';
 import { Star } from 'lucide-react';
 
@@ -103,13 +104,10 @@ interface ReviewsMarqueeProps {
   initialRating?: string;
 }
 
-export default function ReviewsMarquee({ initialReviews, initialTotal, initialRating }: ReviewsMarqueeProps) {
+// initialTotal/initialRating are kept for callers; totals come from the site-wide live stats.
+export default function ReviewsMarquee({ initialReviews }: ReviewsMarqueeProps) {
   const [reviews, setReviews] = useState<Review[]>(initialReviews || []);
   const [loading, setLoading] = useState(!initialReviews);
-  const [stats, setStats] = useState({
-    total: initialTotal || '0',
-    rating: initialRating || '0.0'
-  });
 
   useEffect(() => {
     // If we have initial data, don't fetch
@@ -123,12 +121,6 @@ export default function ReviewsMarquee({ initialReviews, initialTotal, initialRa
         if (!res.ok) throw new Error('Failed to fetch');
         const data = await res.json();
         setReviews(data.reviews || []);
-        if (data.totalReviewCount) {
-          setStats({
-            total: data.totalReviewCount.toString(),
-            rating: typeof data.averageRating === 'number' ? data.averageRating.toFixed(1) : data.averageRating
-          });
-        }
       } catch (err) {
         console.error('Failed to load reviews', err);
       } finally {
@@ -179,7 +171,7 @@ export default function ReviewsMarquee({ initialReviews, initialTotal, initialRa
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
             </span>
             <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">
-              {stats.total}+ Verified Reviews
+              <SiteStat k="reviews" /> Verified Reviews
             </span>
           </div>
         </div>

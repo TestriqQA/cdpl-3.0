@@ -5,6 +5,7 @@ import { Clock, CheckCircle, Award, Briefcase, ArrowRight, CloudDownload, ArrowD
 import Link from 'next/link';
 import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
 import dynamic from "next/dynamic";
+import { useSiteStats } from "@/components/stats/SiteStatsProvider";
 
 const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
 const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
@@ -24,6 +25,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title }) => (
 
 
 const HeroSection: React.FC = () => {
+    const siteStats = useSiteStats();
     const [isEnrollOpen, setIsEnrollOpen] = useState(false);
     const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
     const courseName = "Data Analytics & Visualization with Power BI";
@@ -36,7 +38,7 @@ const HeroSection: React.FC = () => {
     ];
 
     const stats = [
-        { icon: <Star size={20} className="text-yellow-500" />, text: '4.8/5 Average Rating' },
+        { icon: <Star size={20} className="text-yellow-500" />, text: `${siteStats.text.rating} Average Rating` },
         { icon: <Users size={20} className="text-blue-500" />, text: 'Hands-On Projects' },
         { icon: <TrendingUp size={20} className="text-green-500" />, text: 'Industry-Led Training' },
     ];

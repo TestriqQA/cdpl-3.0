@@ -2,6 +2,7 @@
 import { useState } from "react";
 import ReviewsMarquee from "../sections/ReviewMarque";
 import EnrollModal from "../EnrollModal";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 export default function TestimonialsSection() {
     const [isEnrollOpen, setIsEnrollOpen] = useState(false);
@@ -36,7 +37,7 @@ export default function TestimonialsSection() {
                         <p className="text-sm text-slate-600">Across all programs</p>
                     </div>
                     <div className="text-center">
-                        <div className="text-4xl font-bold text-indigo-600 mb-2">4.8/5</div>
+                        <div className="text-4xl font-bold text-indigo-600 mb-2"><SiteStat k="rating" /></div>
                         <p className="text-slate-700 font-semibold">Average Rating</p>
                         <p className="text-sm text-slate-600">Based on student reviews</p>
                     </div>

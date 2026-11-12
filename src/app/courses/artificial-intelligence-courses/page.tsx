@@ -12,6 +12,7 @@ import { generateBreadcrumbSchema, generateArtificialIntelligenceCategoryPageSch
 import JsonLd from '@/components/JsonLd';
 import { Metadata } from 'next';
 import { aiFaqs } from '@/components/AI-Courses/faqData';
+import { SITE_STATS } from "@/lib/siteStats";
 
 export const metadata: Metadata = generateStaticPageMetadata({
     title: 'Artificial Intelligence Courses in Mumbai | CDPL',
@@ -30,8 +31,8 @@ export default function Home() {
             slug: "artificial-intelligence-courses",
             level: "Beginner to Advanced",
             duration: "P4M", // 4 Months
-            rating: 4.8,
-            reviewCount: 3105,
+            rating: SITE_STATS.rating,
+            reviewCount: SITE_STATS.reviewCount,
             instructor: "Industry Experts",
             image: "/og-images/courses-artificial-intelligence-courses-og.webp",
         },

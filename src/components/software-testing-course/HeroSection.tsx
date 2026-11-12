@@ -20,6 +20,7 @@ import {
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import LeadForm from './LeadForm';
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 const EnrollPopup = dynamic(() => import('@/components/EnrollForms').then(mod => mod.EnrollPopup), { ssr: false });
 const BrochureDownloadModal = dynamic(() => import('@/components/home/BrochureDownloadModal'), { ssr: false });
@@ -166,7 +167,7 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
                                 <Users className="h-5 w-5 text-white" />
                             </div>
                             <div className="text-center lg:text-left">
-                                <div className="text-xl font-bold text-slate-900">5,000+</div>
+                                <div className="text-xl font-bold text-slate-900"><SiteStat k="studentsPlaced" /></div>
                                 <div className="text-xs text-slate-600">Students Placed</div>
                             </div>
                         </div>
@@ -177,7 +178,7 @@ const DesktopHeroContent: React.FC<{ onOpenBrochure: () => void; onOpenVideo: ()
                                 <Star className="h-5 w-5 text-white fill-white" />
                             </div>
                             <div className="text-center lg:text-left">
-                                <div className="text-xl font-bold text-slate-900">4.9/5</div>
+                                <div className="text-xl font-bold text-slate-900"><SiteStat k="rating" /></div>
                                 <div className="text-xs text-slate-600">Student Rating</div>
                             </div>
                         </div>
@@ -209,11 +210,11 @@ const MobileFeatureList: React.FC<{ onOpenBrochure: () => void; onOpenVideo: () 
         <div className="grid grid-cols-2 gap-3 text-sm text-slate-700">
             <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-                <span className="font-semibold">425+ Verified Reviews</span>
+                <span className="font-semibold"><SiteStat k="reviews" /> Verified Reviews</span>
             </div>
             <div className="flex items-center gap-2">
                 <Star className="h-4 w-4 text-brand flex-shrink-0" />
-                <span className="font-semibold">4.9/5 Student Rating</span>
+                <span className="font-semibold"><SiteStat k="rating" /> Student Rating</span>
             </div>
             <div className="flex items-center gap-2">
                 <Award className="h-4 w-4 text-indigo-600 flex-shrink-0" />

@@ -1,5 +1,6 @@
 // src/data/content.ts
 import { ContentData } from '@/components/data-visualization-in-r-programming/types/index';
+import { STAT_TEXT } from "@/lib/siteStats";
 
 // SEO-optimized keywords for the course
 const SEO_KEYWORDS = "Machine Learning with R, Data Visualization R, R Programming Course, Data Science R, ML Algorithms R, RStudio, ggplot2, Career in Data Science, Data Analyst Training, Predictive Modeling R";
@@ -31,8 +32,8 @@ export const content: ContentData = {
       { value: "32%", label: "India's Share in Global Market" }
     ],
     web_stats_reference: [
-      { value: "4.8/5", label: "Average Rating" },
-      { value: "500+", label: "Successful Graduates" },
+      { value: STAT_TEXT.rating, label: "Average Rating" },
+      { value: STAT_TEXT.studentsPlaced, label: "Students Placed" },
       { value: "14+ Years", label: "Industry Experience" }
     ]
   },

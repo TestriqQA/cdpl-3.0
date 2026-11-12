@@ -5,6 +5,7 @@ import Head from "next/head";
 import React, { useState } from "react";
 import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
 import dynamic from "next/dynamic";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
 const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
@@ -22,8 +23,8 @@ const heroData = {
         { icon: "💼", label: "Job Ready" },
     ],
     stats: [
-        { value: "4.8/5", label: "Average Rating", icon: "⭐" },
-        { value: "500+", label: "Successful Graduates", icon: "👥" },
+        { value: <SiteStat k="rating" />, label: "Average Rating", icon: "⭐" },
+        { value: <SiteStat k="studentsPlaced" />, label: "Students Placed", icon: "👥" },
         { value: "14+", label: "Years Experience", icon: "🏆" },
     ],
     cta: {

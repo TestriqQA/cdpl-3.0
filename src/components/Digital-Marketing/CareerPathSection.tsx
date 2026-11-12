@@ -20,6 +20,7 @@ import { careerPathContent } from "@/components/Digital-Marketing/data/data";
 import { EnrollPopup } from '@/components/EnrollForms';
 import BrochureDownloadModal from '@/components/home/BrochureDownloadModal';
 import Link from "next/link";
+import { useSiteStats } from "@/components/stats/SiteStatsProvider";
 
 type DemandLevel = "Very High" | "High" | "Medium" | string;
 
@@ -269,6 +270,7 @@ const StatCard = ({ icon: Icon, value, label, gradient }: StatCardProps) => (
    CareerPathSection (export)
    ------------------------- */
 export default function CareerPathSection() {
+    const siteStats = useSiteStats();
     const [isBrochureOpen, setIsBrochureOpen] = useState(false);
     const [isEnrollOpen, setIsEnrollOpen] = useState(false);
 
@@ -311,8 +313,8 @@ export default function CareerPathSection() {
                 {/* Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
                     <StatCard icon={TrendingUp} value="40%" label="Avg. Salary Hike" gradient="from-blue-500 to-cyan-600" />
-                    <StatCard icon={Users} value="4.9/5" label="Learner Rating" gradient="from-purple-500 to-fuchsia-600" />
-                    <StatCard icon={Building2} value="425+" label="Verified Reviews" gradient="from-emerald-500 to-teal-600" />
+                    <StatCard icon={Users} value={siteStats.text.rating} label="Learner Rating" gradient="from-purple-500 to-fuchsia-600" />
+                    <StatCard icon={Building2} value={siteStats.text.reviews} label="Verified Reviews" gradient="from-emerald-500 to-teal-600" />
                     <StatCard icon={Award} value="Live" label="Mentor-Led Classes" gradient="from-brand to-amber-700" />
                 </div>
 

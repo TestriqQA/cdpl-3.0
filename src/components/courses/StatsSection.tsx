@@ -1,6 +1,9 @@
 import { GraduationCap, Users, CheckCircle2, Star } from "lucide-react";
+import { getSiteStats } from "@/lib/liveStats";
+import { SITE_STATS } from "@/lib/siteStats";
 
-export default function StatsSection() {
+export default async function StatsSection() {
+    const siteStats = await getSiteStats();
     const STATS = [
         {
             value: "25,000+",
@@ -21,11 +24,11 @@ export default function StatsSection() {
             icon: <CheckCircle2 className="h-5 w-5 text-white" aria-hidden />,
         },
         {
-            value: "4.8/5",
+            value: siteStats.text.rating,
             label: "Average Rating",
             desc: "Verified reviews & testimonials",
             icon: <Star className="h-5 w-5 text-white" aria-hidden />,
-            rating: 4.8,
+            rating: SITE_STATS.rating,
         },
     ];
 
@@ -132,7 +135,7 @@ export default function StatsSection() {
                                     >
                                         <span itemProp="ratingValue">{s.rating.toFixed(1)}</span>
                                         <meta itemProp="bestRating" content="5" />
-                                        <meta itemProp="ratingCount" content="500" />
+                                        <meta itemProp="ratingCount" content={String(SITE_STATS.reviewCount)} />
                                     </div>
                                 )}
                             </div>

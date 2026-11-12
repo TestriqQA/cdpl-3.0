@@ -1,6 +1,7 @@
 import ReviewsMarquee from "../sections/ReviewMarque";
 import { Download } from "lucide-react";
 import SyllabusButton from "@/components/course-islands/SyllabusButton";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 
 export default function TestimonialsSection() {
@@ -24,13 +25,13 @@ export default function TestimonialsSection() {
         {/* Trust Indicators */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-white rounded-xl p-8 border border-slate-200 text-center">
-            <p className="text-4xl font-bold text-blue-600 mb-2">4.8/5</p>
+            <p className="text-4xl font-bold text-blue-600 mb-2"><SiteStat k="rating" /></p>
             <p className="text-slate-700 font-semibold">Average Rating</p>
             <p className="text-sm text-slate-600 mt-2">From our learner community</p>
           </div>
           <div className="bg-white rounded-xl p-8 border border-slate-200 text-center">
-            <p className="text-4xl font-bold text-indigo-600 mb-2">500+</p>
-            <p className="text-slate-700 font-semibold">Successful Graduates</p>
+            <p className="text-4xl font-bold text-indigo-600 mb-2"><SiteStat k="studentsPlaced" /></p>
+            <p className="text-slate-700 font-semibold">Students Placed</p>
             <p className="text-sm text-slate-600 mt-2">Placed in top companies</p>
           </div>
           <div className="bg-white rounded-xl p-8 border border-slate-200 text-center">
@@ -50,7 +51,7 @@ export default function TestimonialsSection() {
               <span className="text-2xl">⭐</span>
               <div className="text-left">
                 <p className="font-semibold text-slate-900">Google Reviews</p>
-                <p className="text-sm text-slate-600">4.8/5 Rating</p>
+                <p className="text-sm text-slate-600"><SiteStat k="rating" /> Rating</p>
               </div>
             </div>
             <div className="flex items-center gap-2 px-6 py-3 bg-white rounded-lg border border-slate-200">
@@ -64,7 +65,7 @@ export default function TestimonialsSection() {
               <span className="text-2xl">⭐</span>
               <div className="text-left">
                 <p className="font-semibold text-slate-900">Justdial Reviews</p>
-                <p className="text-sm text-slate-600">4.8/5 Rating</p>
+                <p className="text-sm text-slate-600"><SiteStat k="rating" /> Rating</p>
               </div>
             </div>
           </div>
