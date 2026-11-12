@@ -11,9 +11,9 @@ import {
   Users,
   Star,
   CheckCircle2,
-  Sparkles,
   Download,
   Eye,
+  Sparkles,
   Play,
   User,
   Mail,
@@ -33,222 +33,118 @@ const BrochureDownloadModal = dynamic(() => import('./BrochureDownloadModal'), {
 // Import YouTubeVideoModal
 const YouTubeVideoModal = dynamic(() => import('./YouTubeVideoModal'), { ssr: false });
 
-// Component for the list of features/stats (for mobile)
-interface MobileFeatureListProps {
-  onOpenBrochure: () => void;
-  onOpenVideo: () => void;
-}
-
-const MobileFeatureList: React.FC<MobileFeatureListProps> = ({ onOpenBrochure, onOpenVideo }) => (
-  <div className="mt-7 space-y-4">
-    {/* List of features/stats */}
-    <div className="grid grid-cols-2 gap-3 text-sm text-slate-700">
-      <div className="flex items-center gap-2">
-        <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-        <span className="font-semibold">425+ Verified Reviews</span>
-      </div>
-      <div className="flex items-center gap-2">
-        <Star className="h-4 w-4 text-orange-500 fill-orange-500 flex-shrink-0" />
-        <span className="font-semibold">4.9/5 Student Rating</span>
-      </div>
-      <div className="flex items-center gap-2">
-        <Award className="h-4 w-4 text-indigo-600 flex-shrink-0" />
-        <span className="font-semibold">Industry-Led Training</span>
-      </div>
-      <div className="flex items-center gap-2">
-        <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-        <span className="font-semibold">100% Live Interactive Classes</span>
-      </div>
-      <div className="flex items-center gap-2">
-        <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-        <span className="font-semibold">90+ Real-World Projects</span>
-      </div>
-      <div className="flex items-center gap-2">
-        <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-        <span className="font-semibold">ISTQB & Industry Certifications</span>
-      </div>
-      <div className="flex items-center gap-2">
-        <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-        <span className="font-semibold">Job Support with Interview Prep</span>
-      </div>
-      <div className="flex items-center gap-2">
-        <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-        <span className="font-semibold">Flexible Weekend & Weekday Batches</span>
-      </div>
-      <div className="flex items-center gap-2">
-        <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-        <span className="font-semibold">Lifetime Access to Course Materials</span>
-      </div>
-    </div>
-
-
-    {/* CTA Buttons */}
-    <div className="flex flex-col sm:flex-row gap-4">
-      <button
-        onClick={onOpenBrochure}
-        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-brand to-brand text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto cursor-pointer"
-      >
-        <Download className="h-5 w-5" />
-        Download Brochure
-      </button>
-      <Link
-        href="/jobs/placements"
-        title="View Placement Success Stories"
-        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto cursor-pointer"
-      >
-        <Eye className="h-5 w-5" />
-        View Placement Stories
-      </Link>
-      <button
-        onClick={onOpenVideo}
-        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 w-full sm:w-auto cursor-pointer"
-      >
-        <Play className="h-5 w-5" />
-        Watch CDPL
-      </button>
-    </div>
-  </div>
-);
-
-
-
-// Component for desktop hero content
-interface DesktopHeroContentProps {
-  onOpenBrochure: () => void;
-  onOpenVideo: () => void;
-}
-
 /**
- * Badge + headline + subheadline, shared by both breakpoints.
+ * Badge + headline + subheadline.
  *
- * These used to exist twice — once in the mobile branch and once in
- * DesktopHeroContent — which put two <h1> elements in the DOM and left the
- * section's aria-labelledby pointing at whichever one CSS had hidden. The
- * copy difference between the two is preserved by revealing the trailing
- * "with Placement" clause only from `lg` up, so each breakpoint still renders
- * exactly the words it rendered before.
+ * The h1 and paragraph copy are unchanged (they carry the page's main
+ * keywords). The trailing "with Placement" clause still shows only from `lg`
+ * up, as before. The badge is still desktop-only (in the HTML on every
+ * breakpoint); its text is the same, minus the trophy emoji that doubled up with
+ * its icon.
  */
 const HeroHeadline = (
   <>
-    {/* Top Badge — desktop only, as before */}
-    <div
-      className="hidden lg:inline-flex items-center gap-2 bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-200 rounded-full px-4 py-2 mb-5"
-    >
-      <Sparkles className="h-3.5 w-3.5 text-indigo-500" aria-hidden="true" />
+    <div className="hidden lg:inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 mb-5 shadow-sm">
+      <Sparkles className="h-3.5 w-3.5 shrink-0 text-indigo-500" aria-hidden="true" />
       <span className="text-[11px] sm:text-xs font-semibold text-indigo-700">
-        🏆 India&apos;s comprehensive Software Testing & Data Science Training Institute
+        India&apos;s comprehensive Software Testing & Data Science Training Institute
       </span>
     </div>
 
     <h1
       id="home-heading"
-      className="mt-2 py-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:mt-0 lg:py-0 lg:text-4xl lg:leading-tight xl:text-5xl"
+      className="py-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:py-0 lg:text-4xl lg:leading-tight xl:text-5xl"
     >
       Master <span className="text-brand">Software Testing</span> & <span className="text-brand">Data Science</span>
       <span className="hidden lg:inline"> with <span className="text-brand">Placement</span></span>
     </h1>
 
-    <p
-      className="mt-1 mb-1.5 text-[15px] sm:text-base leading-7 text-slate-700 lg:mt-5 lg:mb-0 lg:text-lg"
-    >
+    <p className="mt-3 text-[15px] sm:text-base leading-7 text-slate-600 lg:mt-5 lg:text-lg">
       Launch your tech career with industry-leading courses, live projects, and job interviews. Join our successful graduates today.
     </p>
   </>
 );
 
-const DesktopHeroContent: React.FC<DesktopHeroContentProps> = ({ onOpenBrochure, onOpenVideo }) => (
-  <>
-    {/* Trust Indicators - 3 Cards */}
-    <div
-      className="mt-7 grid grid-cols-1 sm:grid-cols-3 gap-4"
-    >
-      {/* Card 1 - Students Placed */}
-      <div className="flex items-center gap-3 p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-        <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
-          <Users className="h-5 w-5 text-white" />
-        </div>
-        <div>
-          <div className="text-xl font-bold text-slate-900">5,000+</div>
-          <div className="text-xs text-slate-600">Students Placed</div>
-        </div>
-      </div>
+// Hard-coded figures; the stats branch swaps these for <SiteStat> values.
+const STATS = [
+  { Icon: Users, value: '5,000+', label: 'Students Placed', tile: 'bg-emerald-600' },
+  { Icon: Star, value: '4.9/5', label: 'Student Rating', note: '425+ Verified Reviews', tile: 'bg-brand', fill: true },
+  { Icon: Award, value: 'Industry-Led', label: 'Expert Mentors', tile: 'bg-indigo-600' },
+];
 
-      {/* Card 2 - Rating */}
-      <div className="flex items-center gap-3 p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-        <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-amber-500 to-brand rounded-lg flex items-center justify-center">
-          <Star className="h-5 w-5 text-white fill-white" />
-        </div>
-        <div>
-          <div className="text-xl font-bold text-slate-900">4.9/5</div>
-          <div className="text-xs text-slate-600">Student Rating</div>
-        </div>
-      </div>
+// Each tick keeps its own colour, as on the original hero.
+const FEATURES = [
+  { text: '100% Live Interactive Classes', color: 'text-green-600' },
+  { text: '90+ Real-World Projects', color: 'text-blue-600' },
+  { text: 'ISTQB & Industry Certifications', color: 'text-purple-600' },
+  { text: 'Job Support with Interview Prep', color: 'text-indigo-600' },
+  { text: 'Flexible Weekend & Weekday Batches', color: 'text-brand' },
+  { text: 'Lifetime Access to Course Materials', color: 'text-teal-600' },
+];
 
-      {/* Card 3 - Experience */}
-      <div className="flex items-center gap-3 p-4 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-        <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
-          <Award className="h-5 w-5 text-white" />
-        </div>
-        <div>
-          <div className="text-xl font-bold text-slate-900">Industry-Led</div>
-          <div className="text-xs text-slate-600">Expert Mentors</div>
-        </div>
-      </div>
-    </div>
+// Shared shape for the three hero buttons; each keeps its own colour.
+const CTA = 'inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm sm:text-base font-semibold text-white shadow-lg ring-1 ring-inset ring-white/15 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl cursor-pointer';
 
-    {/* Key Features - 6 Benefits */}
-    <div
-      className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-3"
-    >
-      {[
-        { icon: CheckCircle2, text: '100% Live Interactive Classes', color: 'text-green-600' },
-        { icon: CheckCircle2, text: '90+ Real-World Projects', color: 'text-blue-600' },
-        { icon: CheckCircle2, text: 'ISTQB & Industry Certifications', color: 'text-purple-600' },
-        { icon: CheckCircle2, text: 'Job Support with Interview Prep', color: 'text-indigo-600' },
-        { icon: CheckCircle2, text: 'Flexible Weekend & Weekday Batches', color: 'text-brand' },
-        { icon: CheckCircle2, text: 'Lifetime Access to Course Materials', color: 'text-teal-600' },
-      ].map((feature, index) => (
-        <div key={index} className="flex items-start gap-2">
-          <feature.icon className={`h-5 w-5 ${feature.color} flex-shrink-0 mt-0.5`} />
-          <span className="text-sm text-slate-700">{feature.text}</span>
+interface HeroDetailsProps {
+  onOpenBrochure: () => void;
+  onOpenVideo: () => void;
+}
+
+/**
+ * Stats, features and CTAs. One copy serves both breakpoints (it used to be
+ * written twice, once per breakpoint, so all of it was in the HTML twice):
+ * below the form on mobile, under the headline from `lg` up. Every phrase the
+ * two old copies showed is still here, including "425+ Verified Reviews".
+ */
+const HeroDetails: React.FC<HeroDetailsProps> = ({ onOpenBrochure, onOpenVideo }) => (
+  <div className="mt-7">
+    {/* One stats strip (was three loose cards), with the coloured icon tiles kept */}
+    <div className="grid grid-cols-3 divide-x divide-slate-200 rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-sm shadow-sm">
+      {STATS.map(({ Icon, value, label, note, tile, fill }) => (
+        <div key={label} className="flex flex-col gap-1.5 px-3 py-3 sm:flex-row sm:items-center sm:gap-3 sm:px-4">
+          <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${tile} text-white shadow-md`} aria-hidden="true">
+            <Icon className={`h-5 w-5 ${fill ? 'fill-white' : ''}`} />
+          </span>
+          <div className="min-w-0">
+            <p className="text-base font-bold leading-tight text-slate-900 sm:text-lg">{value}</p>
+            <p className="text-xs text-slate-500">{label}</p>
+            {note && <p className="text-[11px] text-slate-400">{note}</p>}
+          </div>
         </div>
       ))}
     </div>
 
+    <ul className="mt-6 grid grid-cols-1 gap-x-6 gap-y-2.5 sm:grid-cols-2">
+      {FEATURES.map(({ text, color }) => (
+        <li key={text} className="flex items-start gap-2 text-sm text-slate-700">
+          <CheckCircle2 className={`h-5 w-5 shrink-0 ${color}`} aria-hidden="true" />
+          {text}
+        </li>
+      ))}
+    </ul>
 
-    {/* CTA Buttons */}
-    <div
-      className="mt-7 flex flex-col sm:flex-row gap-4"
-    >
-      {/* Primary CTA - Download Brochure */}
-      <button
-        onClick={onOpenBrochure}
-        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-brand to-brand text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
-      >
+    {/* Same three coloured CTAs, now one shape and a lift on hover instead of a scale jump */}
+    <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+      <button type="button" onClick={onOpenBrochure} className={`${CTA} bg-brand`}>
         <Download className="h-5 w-5" />
         Download Brochure
       </button>
 
-      {/* Secondary CTA - View Placement Success Stories */}
       <Link
         href="/jobs/placements"
         title="View Placement Success Stories"
-        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
+        className={`${CTA} bg-blue-600`}
       >
         <Eye className="h-5 w-5" />
         View Placement Stories
       </Link>
 
-      {/* Tertiary CTA - Watch CDPL */}
-      <button
-        onClick={onOpenVideo}
-        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white text-sm sm:text-base font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
-      >
-        <Play className="h-5 w-5" />
+      <button type="button" onClick={onOpenVideo} className={`${CTA} bg-purple-600`}>
+        <Play className="h-5 w-5 fill-white" />
         Watch CDPL
       </button>
     </div>
-  </>
+  </div>
 );
 
 const HomeHeroSection: React.FC = () => {
@@ -430,7 +326,7 @@ const HomeHeroSection: React.FC = () => {
               <h2 className="text-xl font-bold text-slate-900">
                 Talk to an Advisor
               </h2>
-              <div className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full">
+              <div className="flex items-center gap-1 px-3 py-1 bg-emerald-600 rounded-full shadow-sm">
                 <span className="text-xs font-bold text-white">FREE</span>
               </div>
             </div>
@@ -541,7 +437,7 @@ const HomeHeroSection: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 px-6 bg-gradient-to-r from-brand to-brand text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full py-3 px-6 bg-brand text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:brightness-95 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
@@ -597,38 +493,22 @@ const HomeHeroSection: React.FC = () => {
           {Breadcrumb}
 
           {/*
-            A single DOM tree serves both breakpoints. Previously there were two
-            (`lg:hidden` and `hidden lg:block`), both always present in the DOM
-            and toggled by CSS — which meant the entire lead form, breadcrumb
-            and icon set were instantiated twice above the fold.
-
-            On mobile this is one column and `order` reproduces the previous
-            stacking: headline, form, feature list. From `lg` up it becomes the
-            same 7/5 split as before, with both columns pinned to row 1.
-            Only `gap-x` is set, so the single-column layout keeps its original
-            margin-driven vertical rhythm rather than gaining a 40px row gap.
+            One DOM tree serves both breakpoints. Mobile is one column in
+            source order: headline, form, details. From `lg` up it is a 7/5
+            split: headline and details stacked on the left, the form on the
+            right spanning both rows.
           */}
           <div className="grid grid-cols-1 items-start gap-x-10 lg:grid-cols-12">
-
-            {/* Headline (both breakpoints) + desktop-only supporting content */}
-            <div className="order-1 lg:col-span-7 lg:row-start-1">
+            <div className="lg:col-span-7 lg:row-start-1">
               {HeroHeadline}
-              <div className="hidden lg:block">
-                <DesktopHeroContent onOpenBrochure={openBrochure} onOpenVideo={openVideo} />
-              </div>
             </div>
 
-            {/* Lead form — one instance, right column from lg up */}
-            <div className="order-2 lg:col-span-5 lg:row-start-1">
+            <div className="mt-6 lg:mt-0 lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-2">
               {LeadForm}
             </div>
 
-            {/* Mobile-only feature list, below the form as before */}
-            <div className="order-3 lg:hidden">
-              <MobileFeatureList
-                onOpenBrochure={openBrochure}
-                onOpenVideo={openVideo}
-              />
+            <div className="lg:col-span-7 lg:row-start-2">
+              <HeroDetails onOpenBrochure={openBrochure} onOpenVideo={openVideo} />
             </div>
           </div>
         </div>

@@ -42,31 +42,39 @@ export default function HomeTrustBarSection() {
           </p>
         </div>
 
-        {/* Partner Logos Grid */}
-        <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-4 mb-4 items-center justify-center">
-          {partners.map((partner, index) => (
-            <div
-              key={index}
-              // hover:scale-105 replaces framer-motion's whileHover — same
-              // effect, pure CSS, and it inherits the prefers-reduced-motion
-              // block in globals.css for free.
-              className="flex items-center justify-center h-16 p-2 transition-transform duration-300 hover:scale-105"
-            >
-              <Image
-                src={getLogoPath(partner)}
-                alt={`${partner} Logo`}
-                title={`${partner} Logo`}
-                width={100}
-                height={40}
-                className="object-contain w-full h-full grayscale hover:grayscale-0 transition-all duration-300"
-                sizes="100px"
-                // No priority: this strip sits below the hero, so preloading
-                // these competed with the LCP text for early bandwidth.
-                loading="lazy"
-                quality={60}
-              />
-            </div>
-          ))}
+        {/* Partner logos as a marquee. The track holds two identical copies
+            (the second hidden from screen readers) and the global
+            cdpl-marquee keyframe moves it by exactly half, so the loop is
+            seamless. Pauses on hover; with reduced motion it is a still row.
+            The edge mask fades logos in and out instead of cutting them. */}
+        <div className="group relative mb-4 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+          <div className="flex w-max [animation:cdpl-marquee_40s_linear_infinite] group-hover:[animation-play-state:paused] motion-reduce:[animation:none]">
+            {[0, 1].map((copy) => (
+              <ul
+                key={copy}
+                aria-hidden={copy === 1 ? true : undefined}
+                className="flex shrink-0 items-center gap-12 pr-12"
+              >
+                {partners.map((partner) => (
+                  <li key={partner} className="flex h-16 w-28 items-center justify-center sm:w-32">
+                    <Image
+                      src={getLogoPath(partner)}
+                      alt={copy === 1 ? '' : `${partner} Logo`}
+                      title={copy === 1 ? undefined : `${partner} Logo`}
+                      width={100}
+                      height={40}
+                      className="h-full w-full object-contain grayscale transition-all duration-300 hover:grayscale-0"
+                      sizes="128px"
+                      // No priority: this strip sits below the hero, so preloading
+                      // these competed with the LCP text for early bandwidth.
+                      loading="lazy"
+                      quality={60}
+                    />
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
         </div>
 
 
