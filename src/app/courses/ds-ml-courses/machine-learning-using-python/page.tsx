@@ -1,5 +1,4 @@
-import StickyNav from "@/components/StickyNav2/StickyNav2";
-import { with_roadmap } from '@/components/StickyNavData';
+import StickyNav from "@/components/stickynav/StickyNav";
 import { TestimonialsClient, CtaClient } from "@/app/courses/ds-ml-courses/machine-learning-using-python/client-section";
 import HeroSection from "@/components/machine-learning-using-python/HeroSection";
 import StatsSection from "@/components/machine-learning-using-python/StatsSection";
@@ -66,7 +65,7 @@ export default function Home() {
                 <HeroSection />
 
                 <div className="hidden md:block sticky top-0 z-20">
-                    <StickyNav navItems={with_roadmap} />
+                    <StickyNav variant="roadmap" />
                 </div>
 
                 {/* Stats Section */}

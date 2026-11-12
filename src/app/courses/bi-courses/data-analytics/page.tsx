@@ -13,7 +13,7 @@ import ToolsSection from '@/components/data-analytics/ToolsSection';
 import FaqSection from '@/components/data-analytics/FaqSection';
 import CtaSection from '@/components/data-analytics/CtaSection';
 import CareerRoadmapSection from '@/components/data-analytics/CareerRoadmapSection';
-import StickyNav3 from "@/components/StickyNav2/StickyNav3";
+import StickyNav from "@/components/stickynav/StickyNav";
 import JsonLd from "@/components/JsonLd";
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateDataAnalyticsCoursePageSchema } from "@/lib/schema-generators";
@@ -68,7 +68,7 @@ export default function AdvancedDataAnalyticsPage() {
 
       {/* Sticky nav must appear right after hero */}
       <div className="hidden md:block sticky top-0 z-20">
-        <StickyNav3 />
+        <StickyNav variant="roadmap" />
       </div>
 
       <section id='program-stats'><StatsSection /></section>

@@ -102,11 +102,6 @@ export default function CareerSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {placementProgram.map((item, index) => (
               <div key={index} className="relative">
-                {/* Connector line */}
-                {index < placementProgram.length - 1 && (
-                  <div className="hidden lg:block absolute top-16 -right-4 w-8 h-0.5 bg-gradient-to-r from-blue-400 to-transparent"></div>
-                )}
-
                 {/* Card */}
                 <div className="bg-white rounded-lg p-6 border border-blue-200 h-full">
                   {/* Number */}

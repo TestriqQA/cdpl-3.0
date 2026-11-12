@@ -444,7 +444,6 @@ const Footer = () => {
           <ul>
             <li className='flex flex-wrap'>
               <InstituteLink href="/" title="CDPL Home Page">Home</InstituteLink>
-              <InstituteLink href="/cms" title="CMS Student/Faculty Login">CMS Login</InstituteLink>
               <InstituteLink href="/mock-test" title="Free Online Mock Tests">Mock Test</InstituteLink>
               <InstituteLink href="/istqb-registration" title="ISTQB Certification Registration">ISTQB Registration</InstituteLink>
               <InstituteLink href="/services" title="Our Professional Services">Services</InstituteLink>

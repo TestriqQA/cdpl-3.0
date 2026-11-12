@@ -77,14 +77,6 @@ export default function MentorHelpCTASection({
             </linearGradient>
           </defs>
         </svg>
-
-        {/* Floating micro-dots */}
-        <div className="absolute right-6 top-8 grid gap-2 opacity-70">
-          <DotRow />
-        </div>
-        <div className="absolute right-10 top-32 grid gap-2 opacity-70">
-          <DotRow />
-        </div>
       </div>
 
       {/* CONTENT CONTAINER ONLY */}
@@ -242,18 +234,6 @@ function Chip({ children }: { children: React.ReactNode }) {
     <li className="inline-flex items-center rounded-full border border-neutral-200 bg-white/80 px-3 py-1">
       {children}
     </li>
-  );
-}
-
-function DotRow() {
-  return (
-    <div className="grid grid-flow-col gap-2">
-      <span className="h-1.5 w-1.5 rounded-full bg-orange-400/80" />
-      <span className="h-1.5 w-1.5 rounded-full bg-orange-300/70" />
-      <span className="h-1.5 w-1.5 rounded-full bg-orange-200/60" />
-      <span className="h-1.5 w-1.5 rounded-full bg-orange-300/70" />
-      <span className="h-1.5 w-1.5 rounded-full bg-orange-400/80" />
-    </div>
   );
 }
 

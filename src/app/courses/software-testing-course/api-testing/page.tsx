@@ -1,5 +1,5 @@
 import HeroSection from "@/components/api-testing/HeroSection";
-import StickyNav from "@/components/StickyNav2/StickyNav2";
+import StickyNav from "@/components/stickynav/StickyNav";
 import JsonLd from "@/components/JsonLd";
 import { generateApiTestingCoursePageSchema } from "@/lib/schema-generators";
 import { API_TESTING_FAQS, API_TESTING_REVIEW_DATA } from "@/data/apiTestingData";

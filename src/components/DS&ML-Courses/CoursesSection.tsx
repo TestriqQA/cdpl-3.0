@@ -3,7 +3,6 @@
 import { Zap, TrendingUp, Star, Clock, Users, CheckCircle, ArrowRight, Download } from 'lucide-react';
 import { COURSES, Course } from '@/components/DS&ML-Courses/data/data';
 import { DownloadFormButton } from '@/components/DownloadForm';
-import OfferCountdown from '@/components/courses/OfferCountdown';
 import React from 'react';
 import Link from 'next/link';
 import { useSiteStats } from "@/components/stats/SiteStatsProvider";
@@ -137,9 +136,6 @@ const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index
                         </li>
                     ))}
                 </ul>
-
-                {/* Self-ticking countdown leaf (own 1s interval; no grid-wide re-render) */}
-                <OfferCountdown offerEndsAt={course.offerEndsAt} />
 
                 <div className="pt-4 space-y-3 mt-auto">
                     <Link

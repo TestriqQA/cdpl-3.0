@@ -8,21 +8,8 @@ const stats = [
   { icon: ShieldCheck, label: "Hiring Partners", value: "50+" },
 ];
 
-/** Per-card gradient classes — cycles if more cards are added */
-const VALUE_GRADIENTS: string[] = [
-  // Brand orange
-  "bg-gradient-to-r from-[#ff8c00] via-[#ffb558] to-[#ffd19e] group-hover:from-[#ff7a00] group-hover:via-[#ffb558] group-hover:to-[#ffc978]",
-  // Blue
-  "bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#93c5fd] group-hover:from-[#1d4ed8] group-hover:via-[#60a5fa] group-hover:to-[#93c5fd]",
-  // Emerald / Green
-  "bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#6ee7b7] group-hover:from-[#059669] group-hover:via-[#34d399] group-hover:to-[#6ee7b7]",
-  // Purple
-  "bg-gradient-to-r from-[#7c3aed] via-[#a78bfa] to-[#c4b5fd] group-hover:from-[#6d28d9] group-hover:via-[#a78bfa] group-hover:to-[#c4b5fd]",
-  // Rose / Pink
-  "bg-gradient-to-r from-[#e11d48] via-[#fb7185] to-[#fda4af] group-hover:from-[#be123c] group-hover:via-[#fb7185] group-hover:to-[#fda4af]",
-  // Teal / Cyan
-  "bg-gradient-to-r from-[#06b6d4] via-[#67e8f9] to-[#a5f3fc] group-hover:from-[#0891b2] group-hover:via-[#67e8f9] group-hover:to-[#a5f3fc]",
-];
+/** Per-card number colour — cycles if more cards are added */
+const VALUE_COLORS: string[] = ["text-[#ff8c00]", "text-[#2563eb]", "text-[#10b981]", "text-[#7c3aed]", "text-[#e11d48]", "text-[#06b6d4]"];
 
 type Props = {
   contained?: boolean;
@@ -45,10 +32,10 @@ export default function PlacementsHighlightsStatsSection({ contained = false }: 
           className="h-0 scroll-mt-[72px] md:scroll-mt-[88px] lg:scroll-mt-[104px]"
         />
 
-        {/* 1 col <640, 2 cols 640–1023, 4 cols ≥1024 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 items-stretch">
+        {/* 2 cols <1024, 4 cols ≥1024 */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 items-stretch">
           {stats.map((s, i) => {
-            const gradient = VALUE_GRADIENTS[i % VALUE_GRADIENTS.length];
+            const color = VALUE_COLORS[i % VALUE_COLORS.length];
             return (
               <div
                 key={s.label}
@@ -65,21 +52,21 @@ export default function PlacementsHighlightsStatsSection({ contained = false }: 
               >
                 {/* content */}
                 <div className="flex h-full flex-col p-4 sm:p-5">
-                  <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="flex items-center justify-center gap-2.5 sm:gap-3">
                     <span className="inline-flex h-6 w-6 items-center justify-center transition-transform duration-200 group-hover:scale-105 group-hover:rotate-2">
                       <s.icon className="h-5 w-5 text-brand" />
                     </span>
-                    <div className="text-sm sm:text-base font-medium text-slate-900">{s.label}</div>
+                    <div className="text-center text-sm sm:text-base font-medium text-slate-900">{s.label}</div>
                   </div>
 
                   {/* Number — distinct gradient per card */}
-                  <div
-                    className={`mt-1.5 sm:mt-2 text-xl sm:text-3xl font-extrabold text-transparent bg-clip-text transition-all duration-200 group-hover:-translate-y-0.5 ${gradient}`}
-                  >
-                    {s.value}
+                  <div className="flex flex-1 items-center justify-center py-2">
+                    <div
+                      className={`text-4xl sm:text-5xl font-extrabold transition-transform duration-200 group-hover:-translate-y-0.5 ${color}`}
+                    >
+                      {s.value}
+                    </div>
                   </div>
-
-                  <div className="mt-auto" />
 
                   <div className="h-[2px] w-full rounded-full bg-transparent transition-colors duration-200 group-hover:bg-gradient-to-r group-hover:from-[#ff8c00]/70 group-hover:to-[#ffd19e]/70" />
                 </div>

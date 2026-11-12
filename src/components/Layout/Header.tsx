@@ -84,12 +84,41 @@ const Header = () => {
     cancelClose();
     closeTimerRef.current = window.setTimeout(() => {
       closeMega();
-    });
+    }, 300);
   };
 
   const openMega = () => {
     cancelClose();
+    cancelDropdownClose();
+    setIsJobsOpen(false);
+    setIsAboutOpen(false);
     setIsMegaMenuOpen(true);
+  };
+
+  // Jobs / About dropdowns: same delayed close; opening one closes the others at once.
+  const dropdownTimerRef = useRef<number | null>(null);
+
+  const cancelDropdownClose = () => {
+    if (dropdownTimerRef.current !== null) {
+      window.clearTimeout(dropdownTimerRef.current);
+      dropdownTimerRef.current = null;
+    }
+  };
+
+  const openDropdown = (which: "jobs" | "about") => {
+    cancelDropdownClose();
+    cancelClose();
+    setIsMegaMenuOpen(false);
+    setIsJobsOpen(which === "jobs");
+    setIsAboutOpen(which === "about");
+  };
+
+  const scheduleDropdownClose = () => {
+    cancelDropdownClose();
+    dropdownTimerRef.current = window.setTimeout(() => {
+      setIsJobsOpen(false);
+      setIsAboutOpen(false);
+    }, 300);
   };
 
   const closeMega = () => {
@@ -158,6 +187,7 @@ const Header = () => {
       document.removeEventListener("mousedown", onClickOutside);
       document.removeEventListener("keydown", onKey);
       cancelClose();
+      cancelDropdownClose();
     };
   }, [isJobsOpen, isAboutOpen, isMegaMenuOpen, isMenuOpen]);
 
@@ -169,7 +199,7 @@ const Header = () => {
 
 
   return (
-    <header className="relative bg-gradient-to-r from-white via-white to-slate-50 shadow-lg">
+    <header className="relative bg-gradient-to-r from-white via-white to-slate-50 border-b border-gray-200/50 shadow-[0_2px_8px_-4px_rgba(15,23,42,0.05)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 sm:py-1">
           {/* Logo */}
@@ -183,7 +213,7 @@ const Header = () => {
           </div>
 
           <nav className="hidden lg:flex items-center justify-start">
-            <Link href="/" title="Home" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-6 active:text-brand ${pathname === "/" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/" title="Home" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-5 active:text-brand ${pathname === "/" ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Home">Home</span>
             </Link>
 
@@ -192,7 +222,7 @@ const Header = () => {
               <button
                 ref={coursesButtonRef}
                 type="button"
-                className={`transition-colors flex items-center text-sm xl:text-base px-2 xl:px-4 py-6 active:text-brand ${isCoursesMenuOpen ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
+                className={`transition-colors flex items-center text-sm xl:text-base px-2 xl:px-4 py-5 active:text-brand ${isCoursesMenuOpen ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
                 onMouseEnter={openMega}
                 onMouseLeave={() => scheduleClose()}
                 onClick={toggleMega}
@@ -227,20 +257,20 @@ const Header = () => {
               )}
             </div>
 
-            <Link href="/services" title="Services" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/services") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/services" title="Services" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-5 active:text-brand ${pathname.startsWith("/services") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Services">Services</span>
             </Link>
 
-            <Link href="/events" title="Events" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/events") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/events" title="Events" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-5 active:text-brand ${pathname.startsWith("/events") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Event">Event</span>
             </Link>
 
-            <Link href="/mentors" title="Mentors" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/mentors") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/mentors" title="Mentors" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-5 active:text-brand ${pathname.startsWith("/mentors") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Mentors">Mentors</span>
             </Link>
 
             {/* Jobs Dropdown (Desktop) */}
-            <div className="relative" onMouseEnter={() => setIsJobsOpen(true)} onMouseLeave={() => setIsJobsOpen(false)}>
+            <div className="relative" onMouseEnter={() => openDropdown("jobs")} onMouseLeave={scheduleDropdownClose}>
               <button
                 ref={jobsButtonRef}
                 onClick={() => setIsJobsOpen((v) => !v)}
@@ -254,7 +284,7 @@ const Header = () => {
                     });
                   }
                 }}
-                className={`transition-colors flex items-center text-sm xl:text-base px-2 xl:px-4 py-6 active:text-brand ${pathname.startsWith("/jobs") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
+                className={`transition-colors flex items-center text-sm xl:text-base px-2 xl:px-4 py-5 active:text-brand ${pathname.startsWith("/jobs") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
                 aria-haspopup="menu"
                 aria-expanded={isJobsOpen}
                 aria-controls="jobs-menu"
@@ -311,7 +341,7 @@ const Header = () => {
             </div>
 
             {/* About Dropdown (Desktop) */}
-            <div className="relative" onMouseEnter={() => setIsAboutOpen(true)} onMouseLeave={() => setIsAboutOpen(false)}>
+            <div className="relative" onMouseEnter={() => openDropdown("about")} onMouseLeave={scheduleDropdownClose}>
               <button
                 ref={aboutButtonRef}
                 onClick={() => setIsAboutOpen((v) => !v)}
@@ -325,7 +355,7 @@ const Header = () => {
                     });
                   }
                 }}
-                className={`transition-colors flex items-center text-sm xl:text-base px-2 xl:px-4 py-6 ${pathname.startsWith("/about") || pathname.startsWith("/our-team") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
+                className={`transition-colors flex items-center text-sm xl:text-base px-2 xl:px-4 py-5 ${pathname.startsWith("/about") || pathname.startsWith("/our-team") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}
                 aria-haspopup="menu"
                 aria-expanded={isAboutOpen}
                 aria-controls="about-menu"
@@ -364,10 +394,10 @@ const Header = () => {
               )}
             </div>
 
-            <Link href="/blog" title="Blog" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-6 ${pathname.startsWith("/blog") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/blog" title="Blog" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-5 ${pathname.startsWith("/blog") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Blog">Blog</span>
             </Link>
-            <Link href="/contact-us" title="Contact Us" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-6 ${pathname.startsWith("/contact-us") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
+            <Link href="/contact-us" title="Contact Us" className={`transition-colors text-sm xl:text-base px-2 xl:px-4 py-5 ${pathname.startsWith("/contact-us") ? "text-brand font-semibold" : "text-gray-700 hover:text-brand"}`}>
               <span className="nav-link-bold" data-text="Contact">Contact</span>
             </Link>
           </nav>

@@ -1,8 +1,7 @@
 // Sections imported directly — next/dynamic(ssr:true) only added client Suspense
 // boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 import HeroSection from '@/components/data-analytics-and-visualization/HeroSection';
-import StickyNav from '@/components/StickyNav2/StickyNav2';
-import { with_roadmap } from '@/components/StickyNavData';
+import StickyNav from '@/components/stickynav/StickyNav';
 import StatsSection from "@/components/data-analytics-and-visualization/StatsSection";
 import WhyVisualizationProgram from "@/components/data-analytics-and-visualization/WhyVisualizationProgram";
 import CurriculumSection from "@/components/data-analytics-and-visualization/CurriculumSection";
@@ -67,7 +66,7 @@ export default function Home() {
             <div className="w-full">
                 <HeroSection />
                 <div className="hidden md:block sticky top-0 z-20">
-                    <StickyNav navItems={with_roadmap} />
+                    <StickyNav variant="roadmap" />
                 </div>
                 <section id="program-stats"><StatsSection /></section>
                 <section id="why-master-program"><WhyVisualizationProgram /></section>

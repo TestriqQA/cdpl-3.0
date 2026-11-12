@@ -1,4 +1,4 @@
-import StickyNav from "@/components/StickyNav2/StickyNav2";
+import StickyNav from "@/components/stickynav/StickyNav";
 import { TestimonialsClient, CtaClient } from "@/app/courses/digital-marketing-courses/digital-marketing-course/client-section";
 import HeroSection from "@/components/digital-marketing-course/HeroSection";
 import StatsSection from "@/components/digital-marketing-course/StatsSection";

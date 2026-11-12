@@ -295,16 +295,6 @@ export default function StatsSection() {
                 </div>
               )}
 
-              {/* underline progress */}
-              <div className="mt-5 h-1 w-full rounded-full bg-slate-100" aria-hidden>
-                <div
-                  className={[
-                    "h-1 w-1/2 origin-left rounded-full transition-transform duration-500 ease-out",
-                    inView ? "scale-x-100" : "scale-x-0",
-                    s.accent.bar,
-                  ].join(" ")}
-                />
-              </div>
             </div>
           ))}
         </div>

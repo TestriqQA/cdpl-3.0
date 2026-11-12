@@ -19,7 +19,24 @@ type SortKey = "relevance" | "name-asc" | "name-desc";
 
 type CustomCSSProperties = React.CSSProperties & { [key: `--${string}`]: string };
 
-export default function TeamDirectory({ data }: { data: TeamMember[] }) {
+type DirectoryProps = {
+    data: TeamMember[];
+    sectionId?: string;
+    heading?: React.ReactNode;
+    intro?: React.ReactNode;
+    listName?: string;
+    /** HR / admin cards: no role strip or mentoring taglines. */
+    staff?: boolean;
+};
+
+export default function TeamDirectory({
+    data,
+    sectionId = "directory",
+    heading = <>Our <span className="text-brand">Team</span> Directory</>,
+    intro,
+    listName = "Cinute Digital Mentor Directory",
+    staff = false,
+}: DirectoryProps) {
     const [query, setQuery] = useState("");
     const [role, setRole] = useState<"All" | TeamMember["role"]>("All");
     const [skill, setSkill] = useState<string>("All");
@@ -88,7 +105,7 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
         const itemList = {
             "@context": "https://schema.org",
             "@type": "ItemList",
-            name: "Cinute Digital Mentor Directory",
+            name: listName,
             description:
                 "Explore Cinute Digital’s mentor directory featuring leadership, faculty, advisory, and operations experts in software testing, automation, QA, DevOps, and modern engineering practices.",
             numberOfItems: filtered.length,
@@ -109,7 +126,7 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
         document.head.appendChild(s);
 
         return () => document.getElementById(scriptId)?.remove();
-    }, [filtered, id]);
+    }, [filtered, id, listName]);
 
     const clearAll = () => {
         setQuery("");
@@ -121,7 +138,7 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
 
     return (
         <section
-            id="directory"
+            id={sectionId}
             aria-labelledby={`${id}-directory`}
             className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 lg:py-12"
             style={{ "--brand": brand } as CustomCSSProperties}
@@ -142,12 +159,16 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
                         id={`${id}-directory`}
                         className="text-4xl font-bold tracking-tight text-slate-900"
                     >
-                        Our <span className="text-brand">Team</span> Directory
+                        {heading}
                     </h2>
                     <p className="mt-5 mx-auto max-w-5xl text-lg text-slate-600">
-                        Discover experienced <strong className="font-semibold">mentors, faculty, and advisors</strong> in{" "}
-                        <em>software testing, automation, QA, and industry-ready skills</em>. Learn from leaders who build
-                        job-ready talent through hands-on, project-based learning.
+                        {intro ?? (
+                            <>
+                                Discover experienced <strong className="font-semibold">mentors, faculty, and advisors</strong> in{" "}
+                                <em>software testing, automation, QA, and industry-ready skills</em>. Learn from leaders who build
+                                job-ready talent through hands-on, project-based learning.
+                            </>
+                        )}
                     </p>
                 </div>
 
@@ -162,7 +183,7 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
             {/* Grid */}
             <div className="mt-10 md:mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {filtered.map((m) => (
-                    <MentorCard key={m.id} m={m} />
+                    <MentorCard key={m.id} m={m} staff={staff} />
                 ))}
             </div>
 
@@ -186,20 +207,6 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
                     </div>
                 </div>
             )}
-
-            {/* SEO helper copy */}
-            <div className="mt-12 md:mt-14 rounded-3xl border border-slate-200 bg-white p-6">
-                <h3 className="text-xl font-bold text-slate-900">Learn with industry mentors at <span className="text-brand">Cinute Digital</span></h3>
-                <p className="mt-2 text-md leading-6 text-slate-600">
-                    Our mentor directory brings together{" "}
-                    <strong className="font-semibold">
-                        software testing experts, automation engineers, QA leads, and industry advisors
-                    </strong>{" "}
-                    who teach real-world workflows - test strategy, API testing, CI/CD, Selenium, Playwright, Agile & DevOps.
-                    Build a job-ready portfolio with live projects, capstones, and interview preparation to accelerate{" "}
-                    <strong className="font-semibold">tech careers and high-growth placements</strong>.
-                </p>
-            </div>
         </section>
     );
 }
@@ -207,7 +214,7 @@ export default function TeamDirectory({ data }: { data: TeamMember[] }) {
 /* =============================
  * New Mentor Card (Premium)
  * ============================= */
-function MentorCard({ m }: { m: TeamMember & { avatar?: string } }) {
+function MentorCard({ m, staff }: { m: TeamMember & { avatar?: string }; staff: boolean }) {
     return (
         <article
             className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:shadow-md focus-within:shadow-md"
@@ -252,6 +259,7 @@ function MentorCard({ m }: { m: TeamMember & { avatar?: string } }) {
             )}
 
             {/* Metadata strip */}
+            {!staff && (
             <div className="mt-6 flex items-center justify-between gap-2 rounded-2xl border border-slate-200 bg-slate-50/60 px-3 py-2">
                 <span className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-700">
                     <Shield className="h-3.5 w-3.5 text-slate-500 hidden md:block" />
@@ -262,6 +270,7 @@ function MentorCard({ m }: { m: TeamMember & { avatar?: string } }) {
                     Mentoring for job-readiness
                 </span>
             </div>
+            )}
 
             {/* Actions */}
             <div className="mt-6 flex items-center gap-8">
@@ -271,10 +280,12 @@ function MentorCard({ m }: { m: TeamMember & { avatar?: string } }) {
                 >
                     LinkedIn
                 </Link>
-                <span className="ml-auto inline-flex items-center gap-1 text-[12px] text-slate-500">
-                    <Quote className="h-3.5 w-3.5" />
-                    Industry-aligned teaching
-                </span>
+                {!staff && (
+                    <span className="ml-auto inline-flex items-center gap-1 text-[12px] text-slate-500">
+                        <Quote className="h-3.5 w-3.5" />
+                        Industry-aligned teaching
+                    </span>
+                )}
             </div>
         </article>
     );

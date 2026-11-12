@@ -16,6 +16,8 @@ export type TeamLeaders = {
   achievements: string[];
   location?: string;
   avatar: string;
+  /** Crop the photo to a circle: for rectangular photos, not ready-made circle cut-outs. */
+  avatarMask?: boolean;
   linkedin?: string;
   email?: string;
   highlights?: string[];

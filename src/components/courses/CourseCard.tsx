@@ -3,7 +3,6 @@
 import React from "react";
 import { Clock, Users, ArrowRight, Star, Zap, Download, BookOpen, Gauge, Shield, Smartphone, Cpu, BarChart3, Code, TrendingUp, Cog, Trophy, Brain, Database, CheckCircle, GraduationCap, Workflow, Sparkles, Megaphone } from "lucide-react";
 import { DownloadFormButton } from "@/components/DownloadForm";
-import OfferCountdown from "@/components/courses/OfferCountdown";
 import Link from "next/link";
 import { FaChartBar } from "react-icons/fa6";
 import { Course } from "./course";
@@ -157,10 +156,6 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, index }) => {
                         </li>
                     ))}
                 </ul>
-
-                {/* Timer Block — self-contained leaf (its own 1s tick; does not
-                    re-render the whole card grid). */}
-                <OfferCountdown offerEndsAt={course.offerEndsAt} />
 
                 <div className="pt-4 space-y-3 mt-auto">
                     <Link

@@ -174,15 +174,6 @@ export default function StatsSection() {
                     {caption && <p className="mt-1 text-sm text-gray-600">{caption}</p>}
                   </div>
                 </div>
-
-                {/* subtle progress accent bar (pure color, non-gradient) */}
-                <div className="mt-4 h-1 w-full rounded-full bg-white/70">
-                  <div
-                    className={["h-1 rounded-full", textClass.replace("text-", "bg-")].join(" ")}
-                    style={{ width: ["88%", "72%", "64%", "80%", "76%", "68%"][i] }}
-                    aria-hidden="true"
-                  />
-                </div>
               </div>
             )
           )}
