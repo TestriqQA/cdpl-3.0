@@ -138,6 +138,21 @@ export const SOCIAL_PROFILES = {
 } as const;
 
 // ============================================================================
+// REVIEW PLATFORM PROFILES
+// ============================================================================
+// Where learners leave (and visitors can read) CDPL reviews. Kept separate
+// from SOCIAL_PROFILES so it does not change the schema.org `sameAs` list.
+// The Justdial URL is the one printed in CDPL's course brochures. (The
+// brochures' Sulekha link, .../mira-road-east-mumbai-contact-address, is dead;
+// the profile URL below is the current listing.)
+
+export const REVIEW_PROFILES = {
+  google: BUSINESS_INFO.maps.place,
+  justdial: 'https://www.justdial.com/Mumbai/Cinute-Digital-Private-Limited-Mira-Road-East/022PXX22-XX22-221108174513-P8E6_BZDET',
+  sulekha: 'https://www.sulekha.com/profile/cinute-digital-pvt-ltd-mira-road-mumbai',
+} as const;
+
+// ============================================================================
 // STATISTICS & ACHIEVEMENTS
 // ============================================================================
 
