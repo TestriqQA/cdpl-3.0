@@ -1,134 +1,108 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { Home } from "lucide-react";
+import { ArrowRight, Check, ChevronRight, Home, MapPin } from "lucide-react";
 
-/* --------------------------------------------------------------
-   SSR-safe responsive height hook
-   -------------------------------------------------------------- */
-function useResponsiveMapHeight() {
-  const [height, setHeight] = useState(420);
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Locations We Serve", href: "/locations-we-serve" },
+];
 
-  useEffect(() => {
-    const update = () => {
-      const w = window.innerWidth;
-      setHeight(w < 640 ? 280 : w < 1024 ? 360 : 420);
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
+const CHIPS = ["Mira Road campus", "Live-online across India", "Pan-India placements", "Local mentor support"];
 
-  return height;
-}
-
-/* --------------------------------------------------------------
-   Hero component
-   -------------------------------------------------------------- */
+/**
+ * Locations hero, in the site's hero style (About / Reviews): breadcrumbs,
+ * orange pill, dark heading with an orange key word, brand CTAs, and the
+ * globe illustration on a soft orange glow. Server component.
+ */
 export default function LocationsHeroSection() {
-  const mapHeight = useResponsiveMapHeight();
-
-  const handleFindClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const id = (e.currentTarget.getAttribute("href") || "").replace("#", "");
-    if (!id) return;
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
-    <section className="relative isolate w-full overflow-hidden bg-white text-slate-900">
-      {/* … background layers … */}
-      <div className="absolute inset-0 -z-30">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-50 to-white" />
-        <div className="absolute left-1/2 top-[-6rem] h-[30rem] w-[60rem] -translate-x-1/2 rounded-full blur-3xl opacity-30 bg-[radial-gradient(circle_at_center,theme(colors.indigo.200)_0,transparent_60%)]" />
+    <section aria-labelledby="locations-heading" className="relative isolate overflow-hidden">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -left-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-sky-200/40 blur-3xl" />
+        <div className="absolute -right-24 top-0 h-[32rem] w-[32rem] rounded-full bg-brand-200/40 blur-3xl" />
       </div>
 
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <svg className="absolute left-0 top-0 h-full w-full" aria-hidden />
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pb-10 pt-0 sm:px-6 lg:px-8">
-        {/* breadcrumb */}
-        <nav aria-label="Breadcrumb" className="mb-3">
-          <ol className="flex items-center gap-2 text-sm text-slate-500">
-            <li className="flex items-center gap-2">
-              <Home className="h-4 w-4 text-slate-500" />
-              <Link href="/" className="hover:text-slate-700">Home</Link>
-            </li>
-            <li aria-hidden="true" className="text-slate-400">/</li>
-            <li>
-              <Link href="/locations-we-serve" className="font-medium text-slate-700 hover:text-slate-900">
-                Locations We Serve
-              </Link>
-            </li>
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+        <nav aria-label="Breadcrumb" className="mb-6">
+          <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
+            {breadcrumbs.map((c, i) => {
+              const isLast = i === breadcrumbs.length - 1;
+              return (
+                <li key={c.href} className="flex items-center gap-2">
+                  {i === 0 ? <Home className="h-4 w-4" aria-hidden="true" /> : <ChevronRight className="h-4 w-4" aria-hidden="true" />}
+                  <Link
+                    href={c.href}
+                    aria-current={isLast ? "page" : undefined}
+                    className={`transition-colors hover:text-brand ${isLast ? "font-semibold text-slate-900" : ""}`}
+                  >
+                    {c.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ol>
         </nav>
 
-        <div className="grid grid-cols-1 items-start gap-8 sm:gap-10 lg:grid-cols-2">
-          {/* LEFT – copy */}
-          <div className="order-1 lg:order-1 text-center sm:text-left">
-            <p className="w-fit mb-4 flex items-center gap-2 rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-xs font-medium text-slate-600 backdrop-blur text-left">
-              <span
-                className="hidden h-2 w-2 rounded-full sm:inline-block"
-                style={{ backgroundColor: "var(--color-brand, #ff8c00)" }}
-              />
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
+          {/* LEFT — copy */}
+          <div className="lg:col-span-7">
+            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-brand">
+              <MapPin className="h-4 w-4" aria-hidden="true" />
               India-wide presence
-            </p>
+            </span>
 
-            <h1 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl text-[#0069A8] text-left">
-              Explore our <span style={{ color: "var(--color-brand, #ff8c00)" }}>locations</span> across India
+            <h1 id="locations-heading" className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+              Explore our <span className="text-brand">locations</span> across India
             </h1>
 
-            <p className="mt-4 mx-auto max-w-3xl text-base text-slate-600 sm:text-lg lg:mx-0 text-left ml-0">
-              From our Mira Road campus to live-online batches across India, discover CDPL’s industry-leading{" "}
-              <strong>Software Testing (QA)</strong>, <strong>Data Science &amp; AI/ML</strong>,{" "}
-              <strong>Product</strong>, and <strong>Engineering</strong> programs near you.
+            <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600 md:text-lg md:leading-8">
+              From our Mira Road campus to live-online batches across India, discover CDPL&apos;s industry-leading{" "}
+              <strong className="text-slate-800">Software Testing (QA)</strong>,{" "}
+              <strong className="text-slate-800">Data Science &amp; AI/ML</strong>,{" "}
+              <strong className="text-slate-800">Business Intelligence</strong> and{" "}
+              <strong className="text-slate-800">Digital Marketing</strong> programs near you.
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center sm:justify-start lg:justify-start gap-3 text-sm text-slate-700">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 ring-1 ring-slate-200">50+ cities</span>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 ring-1 ring-slate-200">Pan-India placements</span>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 ring-1 ring-slate-200">Local mentor support</span>
-            </div>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-start lg:justify-start">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <Link
                 href="/contact-us"
-                className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
-                style={{ backgroundColor: "#ff8c00" }}
+                className="inline-flex w-full items-center justify-center rounded-xl bg-brand px-6 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2 sm:w-auto"
               >
-                Talk to our team
+                Talk to our team <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Link>
-              <Link
+              <a
                 href="#locations-directory"
-                onClick={handleFindClick}
-                className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 ring-1 ring-slate-200 transition hover:bg-slate-50"
+                className="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-800 shadow-sm transition-colors duration-300 hover:border-brand hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2 sm:w-auto"
               >
-                Find your nearest center
-              </Link>
+                Find your city
+              </a>
             </div>
+
+            <ul className="mt-7 grid gap-3 border-t border-slate-200/70 pt-6 text-[15px] text-slate-700 sm:grid-cols-2 sm:text-base">
+              {CHIPS.map((t) => (
+                <li key={t} className="flex items-center gap-3">
+                  <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200">
+                    <Check className="h-3 w-3" strokeWidth={3} aria-hidden="true" />
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* RIGHT – static image instead of map */}
-          <div className="order-2 lg:order-2 relative mt-4 flex items-start justify-center sm:mt-6 lg:justify-end lg:mt-0 -translate-y-0 sm:-translate-y-1 lg:-translate-y-8 xl:-translate-y-10">
-            <div aria-hidden className="pointer-events-none absolute -inset-x-4 -inset-y-6 sm:-inset-x-6 sm:-inset-y-8 rounded-[2rem] bg-gradient-to-b from-indigo-100/40 to-white/0 blur-xl" />
-            <div className="relative z-20 w-full max-w-full sm:max-w-[32rem] lg:max-w-[40rem]">
-              <div
-                className="overflow-hidden rounded-2xl !bg-transparent !ring-0 !shadow-none relative"
-                style={{ height: mapHeight }}
-              >
-                <Image
-                  src="/locations/earth.png"
-                  alt="Earth illustration showing India and UAE"
-                  fill
-                  className="object-contain"
-                  sizes="(min-width: 1024px) 640px, (min-width: 640px) 512px, 100vw"
-                  priority
-                />
-              </div>
+          {/* RIGHT — globe on a soft glow */}
+          <div className="flex justify-center lg:col-span-5 lg:justify-end">
+            <div className="relative w-full max-w-[22rem] sm:max-w-[28rem]">
+              <div aria-hidden="true" className="absolute inset-8 rounded-full bg-brand/20 blur-3xl" />
+              <Image
+                src="/locations/earth.png"
+                alt="Earth illustration"
+                width={500}
+                height={500}
+                sizes="(min-width: 1024px) 448px, (min-width: 640px) 448px, 352px"
+                className="relative h-auto w-full object-contain drop-shadow-xl"
+                priority
+              />
             </div>
           </div>
         </div>
