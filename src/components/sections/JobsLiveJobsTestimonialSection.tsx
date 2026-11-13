@@ -29,7 +29,8 @@ export type JobsLiveJobsVideoTestimonialsSectionProps = {
 };
 
 /* ----------------------------- Sample Data --------------------------- */
-const DEFAULT_VIDEOS: VideoTestimonial[] = [
+// Exported for the Reviews page's video section.
+export const DEFAULT_VIDEOS: VideoTestimonial[] = [
   {
     id: "bhagyesh-suresh-mahadik",
     title: "Placed as Manual Tester at Interactive Brokers",
