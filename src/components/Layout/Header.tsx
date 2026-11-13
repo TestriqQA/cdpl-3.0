@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -20,6 +20,72 @@ import MobileMenuContent from "./MobileMenuContent";
 const EnquireModal = dynamic(() => import("./EnquireModal"), { ssr: false });
 
 // Dummy comment to force build refresh
+
+/* ------------------ Small dropdown menus ------------------ */
+// Jobs and About share one panel style that matches the Courses mega menu:
+// orange top border, rounded bottom, uppercase label, rounded rows with a
+// chevron, and the current page highlighted.
+type NavLinkItem = { label: string; href: string };
+
+const JOBS_LINKS: NavLinkItem[] = [
+  { label: "Live Jobs", href: "/jobs/live-jobs" },
+  { label: "Placements", href: "/jobs/placements" },
+  { label: "Job Openings", href: "/jobs/job-openings" },
+];
+
+const ABOUT_LINKS: NavLinkItem[] = [
+  { label: "About CDPL", href: "/about-us" },
+  { label: "Our Team", href: "/our-team" },
+  { label: "Careers", href: "/jobs/careers" },
+];
+
+function NavDropdownPanel({
+  id,
+  label,
+  links,
+  pathname,
+  menuRef,
+}: {
+  id: string;
+  label: string;
+  links: NavLinkItem[];
+  pathname: string;
+  menuRef: React.RefObject<HTMLDivElement | null>;
+}) {
+  return (
+    <div
+      id={id}
+      ref={menuRef}
+      role="menu"
+      aria-label={label}
+      className="absolute left-0 top-full z-50 w-44 overflow-hidden rounded-b-2xl border-t-4 border-brand bg-white p-2 shadow-2xl"
+    >
+      <p className="px-3 pb-1.5 pt-1 text-xs font-semibold uppercase tracking-wider text-gray-500">{label}</p>
+      {links.map(({ label: text, href }) => {
+        const active = pathname === href || pathname.startsWith(`${href}/`);
+        return (
+          <Link
+            key={href}
+            href={href}
+            title={text}
+            role="menuitem"
+            aria-current={active ? "page" : undefined}
+            className={`group flex items-center justify-between rounded-lg px-3 py-2 text-sm font-medium outline-none transition-colors ${active
+              ? "bg-orange-50 text-brand"
+              : "text-gray-700 hover:bg-orange-50 hover:text-brand focus-visible:bg-orange-50 focus-visible:text-brand"
+              }`}
+          >
+            {text}
+            <ChevronRight
+              className={`h-4 w-4 transition-transform group-hover:translate-x-0.5 ${active ? "text-brand" : "text-gray-400 group-hover:text-brand"}`}
+              aria-hidden="true"
+            />
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
 
 /* ----------------------- Header ----------------------- */
 const Header = () => {
@@ -240,7 +306,7 @@ const Header = () => {
                   onMouseEnter={cancelClose}
                   onMouseLeave={() => scheduleClose()}
                 >
-                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div
                       ref={panelRef}
                       className="bg-white rounded-b-2xl shadow-2xl border-t-4 border-brand overflow-hidden"
@@ -248,9 +314,7 @@ const Header = () => {
                       onMouseEnter={cancelClose}
                       onMouseLeave={() => scheduleClose()}
                     >
-                      <div className="bg-white rounded-b-2xl shadow-2xl border-t-4 border-brand overflow-hidden">
-                        <MegaMenuContent closeMega={closeMega} />
-                      </div>
+                      <MegaMenuContent closeMega={closeMega} />
                     </div>
                   </div>
                 </div>
@@ -294,41 +358,7 @@ const Header = () => {
               </button>
 
               {isJobsOpen && (
-                <div
-                  id="jobs-menu"
-                  ref={jobsMenuRef}
-                  role="menu"
-                  aria-label="Jobs"
-                  className="absolute left-0 top-full mt-0 w-64 bg-white border border-gray-200 rounded-xl shadow-2xl py-2 z-50"
-                >
-
-                  <div className="py-1">
-                    <Link
-                      href="/jobs/live-jobs"
-                      title="Live Jobs"
-                      role="menuitem"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-brand-50 focus:text-brand outline-none"
-                    >
-                      <span className="nav-link-bold" data-text="Live Jobs">Live Jobs</span>
-                    </Link>
-                    <Link
-                      href="/jobs/placements"
-                      title="Placements"
-                      role="menuitem"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
-                    >
-                      <span className="nav-link-bold" data-text="Placements">Placements</span>
-                    </Link>
-                    <Link
-                      href="/jobs/job-openings"
-                      title="Job Openings"
-                      role="menuitem"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
-                    >
-                      <span className="nav-link-bold" data-text="Job Openings">Job Openings</span>
-                    </Link>
-                  </div>
-                </div>
+                <NavDropdownPanel id="jobs-menu" label="Jobs" links={JOBS_LINKS} pathname={pathname} menuRef={jobsMenuRef} />
               )}
             </div>
 
@@ -357,40 +387,7 @@ const Header = () => {
               </button>
 
               {isAboutOpen && (
-                <div
-                  id="about-menu"
-                  ref={aboutMenuRef}
-                  role="menu"
-                  aria-label="About"
-                  className="absolute left-0 top-full mt-0 w-64 bg-white border border-gray-200 rounded-xl shadow-2xl py-2 z-50"
-                >
-                  <div className="py-1">
-                    <Link
-                      href="/about-us"
-                      title="About CDPL"
-                      role="menuitem"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
-                    >
-                      <span className="nav-link-bold" data-text="About CDPL">About CDPL</span>
-                    </Link>
-                    <Link
-                      href="/our-team"
-                      title="Our Team"
-                      role="menuitem"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
-                    >
-                      <span className="nav-link-bold" data-text="Our Team">Our Team</span>
-                    </Link>
-                    <Link
-                      href="/jobs/careers"
-                      title="Careers"
-                      role="menuitem"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand focus:bg-orange-50 focus:text-brand outline-none"
-                    >
-                      <span className="nav-link-bold" data-text="Careers">Careers</span>
-                    </Link>
-                  </div>
-                </div>
+                <NavDropdownPanel id="about-menu" label="About" links={ABOUT_LINKS} pathname={pathname} menuRef={aboutMenuRef} />
               )}
             </div>
 
