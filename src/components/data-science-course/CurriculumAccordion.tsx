@@ -1,7 +1,7 @@
 "use client";
 
-import { ChevronDown, BookOpen } from "lucide-react";
-import { useState } from "react";
+import { ChevronDown, BookOpen, Rocket } from "lucide-react";
+import { useState, type ReactNode } from "react";
 
 export interface Module {
     id: number;
@@ -10,7 +10,7 @@ export interface Module {
     topics: string[];
     projects?: string[];
     color: string;
-    icon: string;
+    icon: ReactNode;
 }
 
 /**
@@ -43,7 +43,7 @@ export default function CurriculumAccordion({ modules }: { modules: Module[] }) 
                         className="w-full px-6 py-5 flex items-center justify-between cursor-pointer hover:bg-white/30 transition-colors"
                     >
                         <div className="flex items-center gap-4 text-left">
-                            <span className="text-3xl">{module.icon}</span>
+                            <span className="flex-shrink-0">{module.icon}</span>
                             <div>
                                 <h3 className="text-lg font-bold text-slate-900">
                                     Module {module.id}: {module.title}
@@ -80,7 +80,7 @@ export default function CurriculumAccordion({ modules }: { modules: Module[] }) 
                             {module.projects && module.projects.length > 0 && (
                                 <div>
                                     <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                                        <span className="text-2xl">🚀</span>
+                                        <Rocket className="w-6 h-6 text-brand" aria-hidden="true" />
                                         Hands-On Projects
                                     </h4>
                                     <ul className="space-y-2">

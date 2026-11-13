@@ -1,13 +1,14 @@
 "use client";
 import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import Link from "next/link";
-import { Award, Users, Star, Home, ChevronRight, CheckCircle2, User, Mail } from "lucide-react";
+import { Award, Users, Star, Home, ChevronRight, CheckCircle2, User, Mail, Lock } from "lucide-react";
 import { useState, useRef } from "react";
 import EnrollModal from "@/components/EnrollModal";
 import dynamic from 'next/dynamic';
 import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '../ui/CustomFlag';
 import { validatePhone, validateFullName as validateNameLib, validateEmail as validateEmailLib } from '@/lib/formValidation';
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 // Dynamically import the desktop form to save bundle size on mobile
 const DesktopLeadForm = dynamic(() => import('./DesktopLeadForm'), {
@@ -308,7 +309,7 @@ export default function HeroSection() {
                                         </button>
 
                                         <p className="pt-3 text-xs leading-relaxed text-slate-500 text-center">
-                                            🔒 By submitting, you agree to our terms. We&apos;ll never share your data.
+                                            <Lock className="inline-block w-3.5 h-3.5 mr-1 align-[-2px]" aria-hidden="true" />By submitting, you agree to our terms. We&apos;ll never share your data.
                                         </p>
                                     </form>
                                 )}
@@ -385,7 +386,7 @@ export default function HeroSection() {
                                         <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
                                     </div>
                                     <div>
-                                        <div className="font-bold text-xl text-slate-900">4.8/5</div>
+                                        <div className="font-bold text-xl text-slate-900"><SiteStat k="rating" /></div>
                                         <div className="text-sm text-slate-600">Average Rating</div>
                                     </div>
                                 </div>

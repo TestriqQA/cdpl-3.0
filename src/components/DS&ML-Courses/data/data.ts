@@ -1,5 +1,6 @@
 import { Zap, Users, Briefcase, Award, Clock, ShieldCheck } from 'lucide-react';
 import { iconMap } from '@/components/DS&ML-Courses/CoursesSection';
+import { SITE_STATS } from "@/lib/siteStats";
 
 export const features = [
     {
@@ -61,7 +62,7 @@ export const COURSES: Course[] = [
         description: 'Master Machine Learning & Data Science with Python in our Hero Program! Hands-on projects, expert mentorship & job-ready skills. Enroll now & launch your tech career!',
         duration: '95 Hours',
         students: '2,200+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: true,
         link: '/machine-learning-course',
@@ -77,7 +78,7 @@ export const COURSES: Course[] = [
         description: 'Dive into Deep Learning, NLP & Generative AI! Master neural networks, text processing & AI creation with hands-on projects. Enroll now & lead the AI revolution!',
         duration: '55 Hours',
         students: '2,217+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: true,
         link: '/generative-ai-course',
@@ -93,7 +94,7 @@ export const COURSES: Course[] = [
         description: 'Elevate your career with Advanced Data Science & Machine Learning Masterclass! Deep-dive into algorithms, big data & AI. Expert-led, project-based. Enroll today!',
         duration: '200 Hours',
         students: '2,234+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: false,
         link: '/data-science-course',
@@ -109,7 +110,7 @@ export const COURSES: Course[] = [
         description: 'Unlock expertise in Comprehensive Data Science & AI Master Program! From ML to deep learning, big data & ethics. Hands-on, industry-aligned. Enroll now & shape the future!',
         duration: '255 Hours',
         students: '2,251+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: true,
         link: '/ai-course',
@@ -125,7 +126,7 @@ export const COURSES: Course[] = [
         description: 'Master Machine Learning Algorithms using Python Programming! Implement regression, classification, clustering & more with scikit-learn. Hands-on code, real projects. Enroll now!',
         duration: '45 Hours',
         students: '2,285+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: true,
         link: '/machine-learning-using-python',
@@ -141,7 +142,7 @@ export const COURSES: Course[] = [
         description: 'Master Machine Learning & Data Visualization using R Programming! Explore ggplot2, tidyverse, ML models & interactive dashboards. Hands-on projects. Enroll now & excel in data!',
         duration: '20 Hours',
         students: '2,302+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: true,
         link: '/data-visualization-in-r-programming',
@@ -159,7 +160,7 @@ export const COURSES: Course[] = [
         description: 'Master Python Programming from absolute basics all the way to advanced and professional-level concepts! Dive deep into Python syntax, data structures, object-oriented programming, functional programming, automation scripting, and real-world problem-solving through engaging, hands-on projects that reinforce every concept.',
         duration: '30 Hours',
         students: '2,268+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: true,
         link: '/python-course',

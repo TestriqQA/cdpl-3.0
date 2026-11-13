@@ -1,4 +1,5 @@
 import { type QA } from "../types/faq";
+import { SITE_STATS } from "@/lib/siteStats";
 
 export const ETL_TESTING_FAQS: QA[] = [
     {
@@ -44,6 +45,6 @@ export const ETL_TESTING_FAQS: QA[] = [
 ];
 
 export const ETL_TESTING_REVIEW_DATA = {
-    ratingValue: 4.6,
-    reviewCount: 80,
+    ratingValue: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
 };

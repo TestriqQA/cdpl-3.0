@@ -1,6 +1,7 @@
 import EnrollButton from "@/components/course-islands/EnrollButton";
 import SyllabusButton from "@/components/course-islands/SyllabusButton";
 import ReviewsMarquee from "../sections/ReviewMarque";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 // ---------- Types ----------
 type Testimonial = {
@@ -51,7 +52,7 @@ export default function TestimonialsSection({
             <strong> deployment</strong> - everything you need to become <strong>job-ready</strong>.
           </p>
           <div className="mt-5 mb-5 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold">
-            <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-700">4.9★ Avg Rating</span>
+            <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-700"><SiteStat k="ratingValue" />★ Avg Rating</span>
             <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-700">Placement Support</span>
             <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-700">Real Projects</span>
             <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-700">Beginner → Advanced</span>

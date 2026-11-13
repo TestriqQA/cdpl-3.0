@@ -10,6 +10,7 @@ import {
 import EnrollModal from "../EnrollModal";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
 import CareerSessionModal from "../CareerSessionModal";
+import { BookOpen, Settings, Link, FolderOpen, BarChart3, Palette, Sparkles, Search, Microscope, TrendingUp, Target, Trophy, Wrench, Zap } from "lucide-react";
 
 
 const curriculumModules = [
@@ -17,7 +18,7 @@ const curriculumModules = [
         id: 1,
         title: "Introduction to BI Concepts and Tableau",
         duration: "2 hours",
-        icon: "📚",
+        icon: BookOpen,
         topics: [
             "Understanding Business Intelligence",
             "Introduction to BI",
@@ -35,7 +36,7 @@ const curriculumModules = [
         id: 2,
         title: "Setting Up Tableau",
         duration: "1.5 hours",
-        icon: "⚙️",
+        icon: Settings,
         topics: [
             "Installation and Configuration",
             "System Requirements",
@@ -50,7 +51,7 @@ const curriculumModules = [
         id: 3,
         title: "Data Integration Techniques",
         duration: "2 hours",
-        icon: "🔗",
+        icon: Link,
         topics: [
             "Combining Data",
             "Relationships in Tableau",
@@ -65,7 +66,7 @@ const curriculumModules = [
         id: 4,
         title: "Data Categorization and Management",
         duration: "1.5 hours",
-        icon: "📂",
+        icon: FolderOpen,
         topics: [
             "Data Types and Formats",
             "String, Numeric, Date, and Boolean",
@@ -79,7 +80,7 @@ const curriculumModules = [
         id: 5,
         title: "Creating Fundamental Charts",
         duration: "2 hours",
-        icon: "📊",
+        icon: BarChart3,
         topics: [
             "Basic Visualization Techniques",
             "Bar Charts",
@@ -92,7 +93,7 @@ const curriculumModules = [
         id: 6,
         title: "Enhancing Visualizations",
         duration: "2 hours",
-        icon: "🎨",
+        icon: Palette,
         topics: [
             "Customization with Marks Card",
             "Colors, Shapes, and Sizes",
@@ -105,7 +106,7 @@ const curriculumModules = [
         id: 7,
         title: "Advanced Visualization Techniques",
         duration: "2.5 hours",
-        icon: "✨",
+        icon: Sparkles,
         topics: [
             "Specialized Charts",
             "Treemaps and Heatmaps",
@@ -121,7 +122,7 @@ const curriculumModules = [
         id: 8,
         title: "Organizing and Filtering Data",
         duration: "2 hours",
-        icon: "🔍",
+        icon: Search,
         topics: [
             "Grouping and Sorting",
             "Creating Groups",
@@ -135,7 +136,7 @@ const curriculumModules = [
         id: 9,
         title: "Advanced Data Analysis",
         duration: "3 hours",
-        icon: "🔬",
+        icon: Microscope,
         topics: [
             "Calculated Fields and Functions",
             "Creating Custom Calculations",
@@ -155,7 +156,7 @@ const curriculumModules = [
         id: 10,
         title: "Building Dashboards and Stories",
         duration: "2.5 hours",
-        icon: "📈",
+        icon: TrendingUp,
         topics: [
             "Dashboard Design Fundamentals",
             "Best Practices for Layouts",
@@ -169,7 +170,7 @@ const curriculumModules = [
         id: 11,
         title: "Hands-On Projects",
         duration: "2 hours",
-        icon: "🎯",
+        icon: Target,
         topics: [
             "Project 1: Sales Performance Analysis",
             "Project 2: Financial Data Visualization",
@@ -182,7 +183,7 @@ const curriculumModules = [
         id: 12,
         title: "Assessment and Certification",
         duration: "1 hour",
-        icon: "🏆",
+        icon: Trophy,
         topics: [
             "Final Assessment Test",
             "Practical Coverage",
@@ -230,7 +231,7 @@ export default function CurriculumSection() {
                             <AccordionTrigger className="px-6 py-4 hover:no-underline cursor-pointer hover:bg-orange-50 transition-colors">
                                 <div className="flex items-center gap-4 w-full text-left">
                                     {/* Icon */}
-                                    <div className="text-3xl flex-shrink-0">{module.icon}</div>
+                                    <module.icon className="w-8 h-8 text-brand flex-shrink-0" aria-hidden="true" />
 
                                     {/* Module Info */}
                                     <div className="flex-1">
@@ -308,7 +309,7 @@ export default function CurriculumSection() {
 
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                         <div className="text-center">
-                            <div className="text-4xl mb-3">📚</div>
+                            <BookOpen className="w-10 h-10 mx-auto mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Foundation</h4>
                             <p className="text-sm text-gray-700">
                                 Modules 1-2: Learn BI concepts and Tableau setup
@@ -316,7 +317,7 @@ export default function CurriculumSection() {
                         </div>
 
                         <div className="text-center">
-                            <div className="text-4xl mb-3">🔧</div>
+                            <Wrench className="w-10 h-10 mx-auto mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Core Skills</h4>
                             <p className="text-sm text-gray-700">
                                 Modules 3-6: Master data integration and visualization
@@ -324,7 +325,7 @@ export default function CurriculumSection() {
                         </div>
 
                         <div className="text-center">
-                            <div className="text-4xl mb-3">⚡</div>
+                            <Zap className="w-10 h-10 mx-auto mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Advanced</h4>
                             <p className="text-sm text-gray-700">
                                 Modules 7-10: Build dashboards and advanced analytics
@@ -332,7 +333,7 @@ export default function CurriculumSection() {
                         </div>
 
                         <div className="text-center">
-                            <div className="text-4xl mb-3">🎯</div>
+                            <Target className="w-10 h-10 mx-auto mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Mastery</h4>
                             <p className="text-sm text-gray-700">
                                 Modules 11-12: Real projects and certification

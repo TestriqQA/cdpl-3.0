@@ -1,7 +1,8 @@
-import { CheckCircle2, Clock, Users, Award } from "lucide-react";
+import { CheckCircle2, Clock, Users, Award, AlarmClock, Phone, Mail } from "lucide-react";
 import Link from "next/link";
 import EnrollButton from "@/components/course-islands/EnrollButton";
 import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 export default function CtaSection() {
   const courseName = "Machine Learning Algorithms using python Programming";
@@ -69,7 +70,7 @@ export default function CtaSection() {
 
           {/* Limited Time Offer */}
           <div className="bg-yellow-400 text-slate-900 rounded-lg p-6 mb-8 font-bold">
-            <p className="text-lg">⏰ Limited Time Offer: Get 20% Off on Early Enrollment!</p>
+            <p className="text-lg flex items-center justify-center gap-2"><AlarmClock className="w-5 h-5 flex-shrink-0" aria-hidden="true" /> Limited Time Offer: Get 20% Off on Early Enrollment!</p>
           </div>
 
           {/* CTA Buttons */}
@@ -93,11 +94,11 @@ export default function CtaSection() {
           {/* Trust Indicators */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white">
             <div>
-              <p className="text-3xl font-bold mb-2">500+</p>
-              <p className="text-blue-100">Successful Graduates</p>
+              <p className="text-3xl font-bold mb-2"><SiteStat k="studentsPlaced" /></p>
+              <p className="text-blue-100">Students Placed</p>
             </div>
             <div>
-              <p className="text-3xl font-bold mb-2">4.8/5</p>
+              <p className="text-3xl font-bold mb-2"><SiteStat k="rating" /></p>
               <p className="text-blue-100">Average Student Rating</p>
             </div>
             <div>
@@ -117,14 +118,14 @@ export default function CtaSection() {
               href="tel:+917888383788"
               className="flex items-center justify-center gap-2 hover:text-blue-200 transition-colors"
             >
-              <span>📞</span> +91 788-83-83-788
+              <Phone className="w-5 h-5" aria-hidden="true" /> +91 788-83-83-788
             </Link>
             <span className="hidden sm:block text-blue-300">•</span>
             <Link
               href="mailto:contact@cinutedigital.com"
               className="flex items-center justify-center gap-2 hover:text-blue-200 transition-colors"
             >
-              <span>✉️</span> contact@cinutedigital.com
+              <Mail className="w-5 h-5" aria-hidden="true" /> contact@cinutedigital.com
             </Link>
           </div>
         </div>

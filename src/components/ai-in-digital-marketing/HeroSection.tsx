@@ -1,11 +1,12 @@
 "use client";
 
 import { courseData } from "@/components/ai-in-digital-marketing/courseData";
-import { ArrowRight, ChevronRight, Clock, Home, CloudDownload, ArrowDownNarrowWide } from "lucide-react";
+import { ArrowRight, ChevronRight, Clock, Home, CloudDownload, ArrowDownNarrowWide, BarChart3, Bot, GraduationCap, Briefcase, Star, Users, Trophy } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import ApiCourseLeadForm from "@/components/forms/ApiCourseLeadForm";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
 const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false });
@@ -160,16 +161,16 @@ export default function HeroSection() {
             {/* Highlights (similar layout to reference) */}
             <div className="mt-8 grid w-full max-w-2xl grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
               {[
-                { icon: "📊", label: "Real Projects" },
-                { icon: "🤖", label: "AI Tools Training" },
-                { icon: "🎓", label: "Industry Certification" },
-                { icon: "💼", label: "Job & Business Ready" },
+                { icon: BarChart3, label: "Real Projects" },
+                { icon: Bot, label: "AI Tools Training" },
+                { icon: GraduationCap, label: "Industry Certification" },
+                { icon: Briefcase, label: "Job & Business Ready" },
               ].map((item, idx) => (
                 <div
                   key={idx}
                   className="flex flex-col items-center gap-2 rounded-lg border border-slate-200 bg-white/60 p-4 backdrop-blur-sm transition-colors hover:border-orange-300"
                 >
-                  <span className="text-2xl">{item.icon}</span>
+                  <item.icon className="w-7 h-7 text-brand" aria-hidden="true" />
                   <span className="text-center text-xs font-semibold text-slate-700 md:text-sm">
                     {item.label}
                   </span>
@@ -180,21 +181,21 @@ export default function HeroSection() {
             {/* Trust Indicators using your stats */}
             <div className="mt-10 flex flex-col items-center justify-center gap-6 text-sm text-slate-600 sm:flex-row md:justify-start">
               <div className="flex items-center gap-2">
-                <span className="text-2xl">⭐</span>
+                <Star className="w-7 h-7 text-brand" aria-hidden="true" />
                 <span>
-                  <strong className="text-slate-900">4.9/5</strong> Rating (425+ Reviews)
+                  <strong className="text-slate-900"><SiteStat k="rating" /></strong> Rating (<SiteStat k="reviews" /> Reviews)
                 </span>
               </div>
               <div className="hidden h-6 w-px bg-slate-300 sm:block" />
               <div className="flex items-center gap-2">
-                <span className="text-2xl">👥</span>
+                <Users className="w-7 h-7 text-brand" aria-hidden="true" />
                 <span>
                   <strong className="text-slate-900">5000+</strong> Trained
                 </span>
               </div>
               <div className="hidden h-6 w-px bg-slate-300 sm:block" />
               <div className="flex items-center gap-2">
-                <span className="text-2xl">🏆</span>
+                <Trophy className="w-7 h-7 text-brand" aria-hidden="true" />
                 <span>
                   <strong className="text-slate-900">14+ Years</strong> Experience
                 </span>

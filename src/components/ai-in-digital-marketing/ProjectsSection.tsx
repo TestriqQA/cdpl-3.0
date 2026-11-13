@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Zap, Users, BarChart3, TrendingUp } from "lucide-react";
+import { Zap, Users, BarChart3, TrendingUp, ShoppingCart, MapPin, GraduationCap, Hospital, House, Laptop, Handshake, User, Building2, Timer } from "lucide-react";
 import { courseData } from "@/components/ai-in-digital-marketing/courseData";
 
 export default function ProjectsSection() {
@@ -34,15 +34,15 @@ export default function ProjectsSection() {
   };
 
   const domains = [
-    { name: "E-commerce & D2C Brands", icon: "🛒" },
-    { name: "Local & Service Businesses", icon: "📍" },
-    { name: "Education & EdTech", icon: "🎓" },
-    { name: "Healthcare & Clinics", icon: "🏥" },
-    { name: "Real Estate & Property", icon: "🏠" },
-    { name: "SaaS & Tech Startups", icon: "💻" },
-    { name: "Agencies & Freelancers", icon: "🤝" },
-    { name: "Personal Brands & Creators", icon: "👤" },
-    { name: "B2B & Enterprise", icon: "🏢" },
+    { name: "E-commerce & D2C Brands", icon: ShoppingCart },
+    { name: "Local & Service Businesses", icon: MapPin },
+    { name: "Education & EdTech", icon: GraduationCap },
+    { name: "Healthcare & Clinics", icon: Hospital },
+    { name: "Real Estate & Property", icon: House },
+    { name: "SaaS & Tech Startups", icon: Laptop },
+    { name: "Agencies & Freelancers", icon: Handshake },
+    { name: "Personal Brands & Creators", icon: User },
+    { name: "B2B & Enterprise", icon: Building2 },
   ];
 
   return (
@@ -119,7 +119,7 @@ export default function ProjectsSection() {
 
               {/* Duration */}
               <div className="flex items-center gap-2 pt-4 border-t border-slate-200">
-                <span className="text-2xl">⏱️</span>
+                <Timer className="w-7 h-7 text-brand" aria-hidden="true" />
                 <span className="text-slate-700 font-semibold">
                   {project.duration}
                 </span>
@@ -147,7 +147,7 @@ export default function ProjectsSection() {
                 key={idx}
                 className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:border-orange-400 transition-colors text-center"
               >
-                <div className="text-3xl mb-2">{domain.icon}</div>
+                <domain.icon className="w-8 h-8 mx-auto mb-2 text-orange-400" aria-hidden="true" />
                 <p className="text-sm font-semibold text-white">
                   {domain.name}
                 </p>

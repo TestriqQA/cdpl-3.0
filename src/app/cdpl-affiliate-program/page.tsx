@@ -16,6 +16,7 @@ import AffiliatePayoutsSection from "@/components/sections/AffiliatePayoutsSecti
 import AffiliateFAQSection from "@/components/sections/AffiliateFAQSection";
 import AffiliateCTASection from "@/components/sections/AffiliateCTASection";
 import AffiliateContentSection from "@/components/sections/AffiliateContentSection";
+import { AFFILIATE_FAQS } from "@/data/affiliateFaqs";
 
 // ---------- SEO ----------
 export const metadata: Metadata = generateStaticPageMetadata({
@@ -50,28 +51,8 @@ export default async function AffiliateProgramPage() {
     { name: "Affiliate Program", url: "/cdpl-affiliate-program" },
   ]);
 
-  const affiliateFaqs = [
-    {
-      question: "How much commission can I earn as a CDPL affiliate?",
-      answer: "CDPL affiliates earn between 15-25% commission based on their tier level. Commission rates increase as you refer more students and generate higher revenue.",
-    },
-    {
-      question: "When do I get paid as an affiliate?",
-      answer: "Affiliate commissions are paid monthly via bank transfer or your preferred payment method. Minimum payout threshold applies.",
-    },
-    {
-      question: "What can I promote as a CDPL affiliate?",
-      answer: "You can promote all CDPL offerings including certification courses (AAA, ACTD), corporate training programs, developer events, workshops, and professional services.",
-    },
-    {
-      question: "Is there a cost to join the CDPL affiliate program?",
-      answer: "No, joining the CDPL Affiliate Program is completely free. There are no signup fees or hidden costs.",
-    },
-    {
-      question: "Do I need a website to become an affiliate?",
-      answer: "While having a website helps, it's not mandatory. You can promote CDPL through social media, YouTube, email lists, or other digital channels.",
-    },
-  ];
+  // Same list the visible FAQ renders, so the FAQPage schema always matches it.
+  const affiliateFaqs = AFFILIATE_FAQS.map(({ question, answer }) => ({ question, answer }));
 
   const affiliateHowToSteps = [
     {
@@ -122,50 +103,34 @@ export default async function AffiliateProgramPage() {
         <JsonLd key={`affiliate-schema-${index}`} id={`affiliate-schema-${index}`} schema={schema} />
       ))}
 
-      {/* Page background accents */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 opacity-60"
-        style={{
-          background:
-            "radial-gradient(1000px 400px at 20% 0%, rgba(59,130,246,0.08), transparent 60%), radial-gradient(800px 300px at 80% 20%, rgba(16,185,129,0.08), transparent 60%)",
-        }}
-      />
-
-      {/* Sections (100% width wrapper, content bounded to max-w-7xl) */}
       <AffiliateHeroSection />
 
-      <section className="w-full">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <AffiliateBenefitsSection />
-        </div>
-      </section>
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8">
+        <AffiliateBenefitsSection />
+      </div>
 
-      {/* New SEO Content Section */}
+      {/* Long-form SEO content */}
       <AffiliateContentSection />
 
       <AffiliateHowItWorksSection />
 
-      <section className="w-full" id="tiers">
-        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
+      <section id="tiers" aria-labelledby="tiers-heading" className="scroll-mt-24 bg-slate-50/70">
+        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8">
           <AffiliateTiersSection />
         </div>
       </section>
 
-      <section className="w-full" id="payouts">
-        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
+      <section id="payouts" aria-labelledby="payouts-heading" className="scroll-mt-24">
+        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8">
           <AffiliatePayoutsSection />
         </div>
       </section>
 
-      <section className="w-full" id="faq">
-        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
-          <AffiliateFAQSection />
-        </div>
-      </section>
+      {/* Central FAQ (renders its own <section id="faq">) */}
+      <AffiliateFAQSection />
 
-      <section className="w-full" id="apply">
-        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
+      <section id="apply" aria-labelledby="apply-heading" className="scroll-mt-24">
+        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8">
           <AffiliateCTASection />
         </div>
       </section>

@@ -1,4 +1,5 @@
 import { iconMap } from '@/components/Digital-Marketing/CoursesSection';
+import { SITE_STATS } from "@/lib/siteStats";
 
 // export const features = [
 //     {
@@ -60,7 +61,7 @@ export const COURSES: Course[] = [
         description: 'End-to-end mastery: full-funnel strategies, analytics-driven decisions, and campaign leadership.',
         duration: '80 Hours',
         students: '2,200+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Master',
         popular: true,
         link: '/courses/digital-marketing-courses/digital-marketing-course',
@@ -76,7 +77,7 @@ export const COURSES: Course[] = [
         description: 'Leverage AI to grow your business faster and cheaper – no agency needed. Perfect for founders, CEOs & solopreneurs.',
         duration: '50 Hours',
         students: '2,217+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: true,
         link: '/courses/digital-marketing-courses/ai-in-digital-marketing',
@@ -92,7 +93,7 @@ export const COURSES: Course[] = [
         description: 'Become a future-ready digital marketer: master AI tools, prompt engineering for ads & content, and run hyper-personalized campaigns.',
         duration: '30 Hours',
         students: '2,234+',
-        rating: 4.8,
+        rating: SITE_STATS.rating,
         level: 'Beginner',
         popular: true,
         link: '/courses/digital-marketing-courses/ai-bootcamp',

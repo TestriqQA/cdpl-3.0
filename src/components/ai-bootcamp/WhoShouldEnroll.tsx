@@ -1,5 +1,5 @@
 import React from "react";
-import { Users, Briefcase, Lightbulb, Zap, CheckCircle } from "lucide-react";
+import { Users, Briefcase, Lightbulb, Zap, CheckCircle, Check, AlarmClock, Target } from "lucide-react";
 import EnrollButton from "./ui/EnrollButton";
 
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -218,7 +218,7 @@ export default function WhoShouldEnroll() {
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                         <div className="text-center md:text-left">
-                            <div className="text-4xl mb-4">✓</div>
+                            <div className="mb-4"><Check className="inline-block w-10 h-10 text-brand" aria-hidden="true" /></div>
                             <h4 className="font-bold text-slate-900 mb-2">
                                 No Prerequisites
                             </h4>
@@ -231,7 +231,7 @@ export default function WhoShouldEnroll() {
                             </p>
                         </div>
                         <div className="text-center md:text-left">
-                            <div className="text-4xl mb-4">⏰</div>
+                            <div className="mb-4"><AlarmClock className="inline-block w-10 h-10 text-brand" aria-hidden="true" /></div>
                             <h4 className="font-bold text-slate-900 mb-2">6–8 Hours Weekly</h4>
                             <p className="text-slate-600">
                                 Flexible schedule that fits your lifestyle. Learn at your own pace
@@ -242,7 +242,7 @@ export default function WhoShouldEnroll() {
                             </p>
                         </div>
                         <div className="text-center md:text-left">
-                            <div className="text-4xl mb-4">🎯</div>
+                            <div className="mb-4"><Target className="inline-block w-10 h-10 text-brand" aria-hidden="true" /></div>
                             <h4 className="font-bold text-slate-900 mb-2">Commitment</h4>
                             <p className="text-slate-600">
                                 Dedication to learning and applying real-world{" "}

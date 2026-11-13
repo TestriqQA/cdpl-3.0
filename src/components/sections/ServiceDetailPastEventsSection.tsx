@@ -1,63 +1,65 @@
 import Link from 'next/link';
-import { Calendar, MapPin, Users, ArrowRight } from 'lucide-react';
+import { Calendar, Building2, Users, ArrowRight } from 'lucide-react';
 import type { ServiceEvent } from '@/types/service';
+import { ServiceSectionHeader } from './serviceDetailShared';
 
+/**
+ * Past Events & Programs. Each card is one link (the old card nested a
+ * <button> inside the <a>, which is invalid and gave keyboard users two stops).
+ */
 export default function ServiceDetailPastEventsSection({ events }: { events: ServiceEvent[] }) {
-    return (
-        <section className="w-full">
-            <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Past Events & Programs</h2>
-                <p className="text-lg text-gray-600 mb-8">
-                    See how we’ve successfully delivered this service to organizations like yours.
-                </p>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {events.map((event) => (
-                        <article
-                            key={event.id}
-                            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 ring-1 ring-black/5"
-                        >
-                            <div className="relative h-48 bg-gradient-to-br from-purple-100 to-blue-100">
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <Calendar className="w-16 h-16 text-purple-300" />
-                                </div>
-                                <div className="absolute top-4 left-4">
-                                    <span className={`${event.categoryColor} text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md`}>
-                                        {event.category}
-                                    </span>
-                                </div>
-                            </div>
+  return (
+    <section className="bg-gray-50 py-12 lg:py-16" aria-labelledby="past-events-heading">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <ServiceSectionHeader
+          id="past-events-heading"
+          pill="Track Record"
+          title={<>Past Events &amp; <span className="text-brand">Programs</span></>}
+          intro="See how we've successfully delivered this service to organizations like yours."
+        />
 
-                            <div className="p-6">
-                                <h3 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">{event.title}</h3>
+        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {events.map((event) => (
+            <li key={event.id}>
+              <Link
+                href={`/events/${event.slug}`}
+                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-200 hover:shadow-lg"
+              >
+                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-brand" />
+                <span className={`self-start rounded-full ${event.categoryColor} px-3 py-1 text-xs font-semibold text-white`}>
+                  {event.category}
+                </span>
 
-                                <div className="space-y-2 mb-4">
-                                    <div className="flex items-center gap-2 text-gray-600 text-sm">
-                                        <Calendar className="w-4 h-4 text-purple-600" />
-                                        <span>{event.date}</span>
-                                    </div>
-                                    <div className="flex items-center gap-2 text-gray-600 text-sm">
-                                        <MapPin className="w-4 h-4 text-green-600" />
-                                        <span className="line-clamp-1">{event.organization}</span>
-                                    </div>
-                                    <div className="flex items-center gap-2 text-gray-600 text-sm">
-                                        <Users className="w-4 h-4 text-blue-600" />
-                                        <span>{event.attendees} participants</span>
-                                    </div>
-                                </div>
+                <h3 className="mt-4 line-clamp-2 text-lg font-bold leading-snug text-gray-900 transition-colors group-hover:text-brand">
+                  {event.title}
+                </h3>
 
-                                <p className="text-gray-700 text-sm mb-4 line-clamp-3">{event.purpose}</p>
+                <ul className="mt-4 space-y-2 text-sm text-slate-600">
+                  <li className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
+                    {event.date}
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Building2 className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
+                    <span className="line-clamp-1">{event.organization}</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Users className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
+                    {event.attendees} participants
+                  </li>
+                </ul>
 
-                                <Link href={`/events/${event.slug}`} className="block">
-                                    <button className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2.5 rounded-xl font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                                        View Full Details
-                                        <ArrowRight className="w-4 h-4" />
-                                    </button>
-                                </Link>
-                            </div>
-                        </article>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+                <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-slate-700">{event.purpose}</p>
+
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-brand">
+                  View Full Details
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
 }

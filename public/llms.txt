@@ -12,7 +12,7 @@ Cinute Digital Private Limited (CDPL) is an EdTech institute that bridges the ga
 - **Email**: contact@cinutedigital.com
 - **Founded**: 2018
 - **Founder**: Sandeep Maske
-- **Rating**: 4.9 / 5 (425 verified reviews)
+- **Rating**: 4.8 / 5 (432 verified reviews)
 
 ## Core Course Categories
 
@@ -81,11 +81,11 @@ CDPL publishes localized course pages for learners across many Indian cities (fo
 - **[Events & Workshops](https://www.cinutedigital.com/events)**: Webinars, seminars and industrial visits.
 - **[Placements](https://www.cinutedigital.com/jobs/placements)**: Student placement outcomes.
 - **[Live Jobs](https://www.cinutedigital.com/jobs/live-jobs)**: Curated job listings for learners.
-- **[Careers at CDPL](https://www.cinutedigital.com/jobs/careers)**: Open roles at Cinute Digital.
 - **[Reviews](https://www.cinutedigital.com/reviews)**: Student reviews and testimonials.
 - **[Mentors](https://www.cinutedigital.com/mentors)**: CDPL's training mentors.
 - **[Locations We Serve](https://www.cinutedigital.com/locations-we-serve)**: Cities and regions covered.
 - **[About Us](https://www.cinutedigital.com/about-us)**: Company background.
+- **[Careers at CDPL](https://www.cinutedigital.com/jobs/careers)**: Open roles at Cinute Digital.
 - **[Contact Us](https://www.cinutedigital.com/contact-us)**: Get in touch with CDPL.
 
 ## AI / LLM Endpoints

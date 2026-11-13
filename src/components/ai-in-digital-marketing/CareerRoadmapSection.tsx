@@ -1,6 +1,7 @@
 "use client";
 
 import { courseData } from "@/components/ai-in-digital-marketing/courseData";
+import { BookOpen, Target, Rocket } from "lucide-react";
 
 import { useState } from "react";
 import EnrollModal from "@/components/EnrollModal";
@@ -68,7 +69,7 @@ export default function CareerRoadmapSection() {
 
                 {/* Icon */}
                 <div className="flex-1 hidden lg:flex justify-center">
-                  <div className="text-6xl">{step.icon}</div>
+                  <step.icon className="w-16 h-16 text-brand" aria-hidden="true" />
                 </div>
               </div>
             ))}
@@ -91,7 +92,7 @@ export default function CareerRoadmapSection() {
 
               {/* Content */}
               <div className="flex-1 pt-2">
-                <div className="text-4xl mb-3">{step.icon}</div>
+                <step.icon className="w-10 h-10 mb-3 text-brand" aria-hidden="true" />
                 <h4 className="text-xl font-bold text-gray-900 mb-2">
                   {step.title}
                 </h4>
@@ -104,7 +105,7 @@ export default function CareerRoadmapSection() {
         {/* Key Highlights */}
         <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="p-8 bg-orange-50 rounded-2xl border-2 border-orange-200">
-            <div className="text-5xl mb-4">📚</div>
+            <BookOpen className="w-12 h-12 mb-4 text-brand" aria-hidden="true" />
             <h4 className="text-xl font-bold text-gray-900 mb-3">
               Comprehensive Learning
             </h4>
@@ -114,7 +115,7 @@ export default function CareerRoadmapSection() {
             </p>
           </div>
           <div className="p-8 bg-indigo-50 rounded-2xl border-2 border-indigo-200">
-            <div className="text-5xl mb-4">🎯</div>
+            <Target className="w-12 h-12 mb-4 text-brand" aria-hidden="true" />
             <h4 className="text-xl font-bold text-gray-900 mb-3">
               Practical Application
             </h4>
@@ -124,7 +125,7 @@ export default function CareerRoadmapSection() {
             </p>
           </div>
           <div className="p-8 bg-orange-50 rounded-2xl border-2 border-orange-200">
-            <div className="text-5xl mb-4">🚀</div>
+            <Rocket className="w-12 h-12 mb-4 text-brand" aria-hidden="true" />
             <h4 className="text-xl font-bold text-gray-900 mb-3">
               Career Ready
             </h4>

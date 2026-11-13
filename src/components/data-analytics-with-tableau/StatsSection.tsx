@@ -1,3 +1,4 @@
+import { TrendingUp, Briefcase, Wallet, Smile, Globe } from "lucide-react";
 import CareerSessionButton from "./ui/CareerSessionButton";
 
 
@@ -6,7 +7,7 @@ const statsData = [
         value: "25%",
         label: "Market Growth",
         description: "From 2020 to 2030",
-        icon: "📈",
+        icon: TrendingUp,
         bgColor: "bg-orange-100",
         textColor: "text-gray-950",
     },
@@ -14,7 +15,7 @@ const statsData = [
         value: "101,000+",
         label: "Job Vacancies",
         description: "In India",
-        icon: "💼",
+        icon: Briefcase,
         bgColor: "bg-blue-100",
         textColor: "text-gray-950",
     },
@@ -22,7 +23,7 @@ const statsData = [
         value: "4 LPA",
         label: "Average Salary",
         description: "Tableau Developer Freshers",
-        icon: "💰",
+        icon: Wallet,
         bgColor: "bg-green-100",
         textColor: "text-gray-950",
     },
@@ -30,7 +31,7 @@ const statsData = [
         value: "75%",
         label: "Job Satisfaction",
         description: "Among professionals",
-        icon: "😊",
+        icon: Smile,
         bgColor: "bg-purple-100",
         textColor: "text-gray-950",
     },
@@ -38,7 +39,7 @@ const statsData = [
         value: "32%",
         label: "India's Share",
         description: "In global market",
-        icon: "🌍",
+        icon: Globe,
         bgColor: "bg-pink-100",
         textColor: "text-gray-950",
     },
@@ -70,8 +71,8 @@ export default function StatsSection() {
                             className={`${stat.bgColor} rounded-xl p-8 border-2 border-transparent hover:border-orange-300 transition-all hover:shadow-lg group cursor-pointer`}
                         >
                             {/* Icon */}
-                            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
-                                {stat.icon}
+                            <div className="mb-4 group-hover:scale-110 transition-transform">
+                                <stat.icon className="w-12 h-12 text-brand" aria-hidden="true" />
                             </div>
 
                             {/* Value */}

@@ -12,6 +12,7 @@ import { generateBreadcrumbSchema, generateDigitalMarketingCategoryPageSchema } 
 import JsonLd from '@/components/JsonLd';
 import { Metadata } from 'next';
 import { dmFaqs } from '@/components/Digital-Marketing/faqData';
+import { SITE_STATS } from "@/lib/siteStats";
 
 export const metadata: Metadata = generateStaticPageMetadata({
     title: 'Digital Marketing Courses | SEO, SEM, SMM & More',
@@ -30,8 +31,8 @@ export default function Home() {
             slug: "digital-marketing-courses",
             level: "Beginner to Advanced",
             duration: "P3M", // 3 Months
-            rating: 4.8,
-            reviewCount: 3042,
+            rating: SITE_STATS.rating,
+            reviewCount: SITE_STATS.reviewCount,
             instructor: "Industry Experts",
             image: "/og-images/courses-digital-marketing-courses-og.webp",
         },

@@ -1,99 +1,52 @@
-import { CheckCircle, Target, Award } from 'lucide-react';
+import { CheckCircle2, Target, Award } from 'lucide-react';
 import type { ServiceClient } from '@/types/service';
+import { ServiceSectionHeader } from './serviceDetailShared';
+
+/**
+ * Key Features and Benefits as two matching cards. Colours are literal class
+ * names: the old version built them at runtime (`bg-${accent}-50`), which
+ * Tailwind cannot see, so its tiles and ticks never got their colours.
+ */
+const COLUMNS = [
+  { key: 'features', title: 'Key Features', Icon: Target, strip: 'bg-brand', tile: 'bg-brand', tick: 'text-brand' },
+  { key: 'benefits', title: 'Benefits', Icon: Award, strip: 'bg-emerald-600', tile: 'bg-emerald-600', tick: 'text-emerald-600' },
+] as const;
 
 export default function ServiceDetailFeaturesBenefitsSection({ service }: { service: ServiceClient }) {
-  // Calm brand accents (feel free to tweak)
-  const FEATURE_ACCENT = 'sky';     // tailwind color name
-  const BENEFIT_ACCENT = 'indigo';  // tailwind color name
-
   return (
-    <section className="w-full" aria-labelledby="features-benefits">
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        {/* Section cue: single hairline, no gradient */}
-        <div aria-hidden className="mb-8 h-[3px] w-28 rounded-full bg-slate-900/10" />
+    <section className="bg-gray-50 py-12 lg:py-16" aria-labelledby="features-benefits-heading">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <ServiceSectionHeader
+          id="features-benefits-heading"
+          pill="What You Get"
+          title={<>Features &amp; <span className="text-brand">Benefits</span></>}
+          intro="Everything included in the program, and what your team gains from it."
+        />
 
-        <div id="features-benefits" className="grid lg:grid-cols-2 gap-6 md:gap-8">
-          {/* ---------- FEATURES ---------- */}
-          <article
-            className="rounded-2xl bg-white ring-1 ring-slate-200 p-7 md:p-8"
-            aria-label="Key Features"
-          >
-            <header className="flex items-center gap-3 mb-6">
-              <div
-                className={[
-                  'size-12 rounded-xl flex items-center justify-center',
-                  `bg-${FEATURE_ACCENT}-50 ring-1 ring-${FEATURE_ACCENT}-200`,
-                ].join(' ')}
-              >
-                <Target className={`size-6 text-${FEATURE_ACCENT}-700`} />
+        <div className="grid gap-6 lg:grid-cols-2">
+          {COLUMNS.map(({ key, title, Icon, strip, tile, tick }) => (
+            <article
+              key={key}
+              className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
+            >
+              <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-1 ${strip}`} />
+              <div className="flex items-center gap-3">
+                <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl ${tile} text-white shadow-md`} aria-hidden="true">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <h3 className="text-xl font-bold text-gray-900 sm:text-2xl">{title}</h3>
               </div>
-              {/* Title colored to FEATURES accent */}
-              <h2 className={`text-2xl md:text-3xl font-semibold tracking-tight text-${FEATURE_ACCENT}-800`}>
-                Key Features
-              </h2>
-            </header>
 
-            <ul className="divide-y divide-slate-100">
-              {service.features.map((feature, index) => (
-                <li key={`${feature}-${index}`} className="py-3 first:pt-0 last:pb-0">
-                  <div className="flex items-start gap-3.5">
-                    <span
-                      className={[
-                        'mt-0.5 inline-flex items-center justify-center rounded-full',
-                        'ring-1',
-                        `bg-${FEATURE_ACCENT}-50 ring-${FEATURE_ACCENT}-200 text-${FEATURE_ACCENT}-700`,
-                        'size-6',
-                      ].join(' ')}
-                    >
-                      <CheckCircle className="size-3.5" />
-                    </span>
-                    <span className="text-slate-700 leading-relaxed">{feature}</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </article>
-
-          {/* ---------- BENEFITS ---------- */}
-          <article
-            className="rounded-2xl bg-white ring-1 ring-slate-200 p-7 md:p-8"
-            aria-label="Benefits"
-          >
-            <header className="flex items-center gap-3 mb-6">
-              <div
-                className={[
-                  'size-12 rounded-xl flex items-center justify-center',
-                  `bg-${BENEFIT_ACCENT}-50 ring-1 ring-${BENEFIT_ACCENT}-200`,
-                ].join(' ')}
-              >
-                <Award className={`size-6 text-${BENEFIT_ACCENT}-700`} />
-              </div>
-              {/* Title colored to BENEFITS accent */}
-              <h2 className={`text-2xl md:text-3xl font-semibold tracking-tight text-${BENEFIT_ACCENT}-800`}>
-                Benefits
-              </h2>
-            </header>
-
-            <ul className="divide-y divide-slate-100">
-              {service.benefits.map((benefit, index) => (
-                <li key={`${benefit}-${index}`} className="py-3 first:pt-0 last:pb-0">
-                  <div className="flex items-start gap-3.5">
-                    <span
-                      className={[
-                        'mt-0.5 inline-flex items-center justify-center rounded-full',
-                        'ring-1',
-                        `bg-${BENEFIT_ACCENT}-50 ring-${BENEFIT_ACCENT}-200 text-${BENEFIT_ACCENT}-700`,
-                        'size-6',
-                      ].join(' ')}
-                    >
-                      <CheckCircle className="size-3.5" />
-                    </span>
-                    <span className="text-slate-700 leading-relaxed">{benefit}</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </article>
+              <ul className="mt-6 space-y-3.5">
+                {service[key].map((item, i) => (
+                  <li key={`${item}-${i}`} className="flex items-start gap-3 text-slate-700">
+                    <CheckCircle2 className={`mt-0.5 h-5 w-5 shrink-0 ${tick}`} aria-hidden="true" />
+                    <span className="leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
         </div>
       </div>
     </section>

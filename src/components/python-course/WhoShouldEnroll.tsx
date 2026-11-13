@@ -2,7 +2,7 @@
 // Server component – sleek, slightly futuristic, fully responsive, SEO-friendly.
 // No client-side libs required.
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, GraduationCap, Rocket, Briefcase, BarChart3, type LucideIcon } from "lucide-react";
 import EnrollButton from "@/components/course-islands/EnrollButton";
 
 type Audience = {
@@ -15,7 +15,7 @@ type Audience = {
     ring: string;
     iconBg: string;
   };
-  icon: string; // emoji for zero-dependency icons
+  icon: LucideIcon;
 };
 
 const AUDIENCES: Audience[] = [
@@ -23,7 +23,7 @@ const AUDIENCES: Audience[] = [
     title: "Students & Freshers",
     description:
       "Start from zero and build job-ready Python skills: syntax, OOP, APIs, SQL, and projects.",
-    icon: "🎓",
+    icon: GraduationCap,
     accent: {
       bg: "bg-sky-50",
       text: "text-sky-900",
@@ -36,7 +36,7 @@ const AUDIENCES: Audience[] = [
     title: "Career Switchers",
     description:
       "Move from non-tech roles to high-growth Python careers in Backend, Data, or Automation.",
-    icon: "🚀",
+    icon: Rocket,
     accent: {
       bg: "bg-emerald-50",
       text: "text-emerald-900",
@@ -49,7 +49,7 @@ const AUDIENCES: Audience[] = [
     title: "Entrepreneurs",
     description:
       "Prototype MVPs faster, automate operations, and turn ideas into deployable products.",
-    icon: "💼",
+    icon: Briefcase,
     accent: {
       bg: "bg-amber-50",
       text: "text-amber-900",
@@ -62,7 +62,7 @@ const AUDIENCES: Audience[] = [
     title: "Data Enthusiasts",
     description:
       "Enter Data Science & ML with Pandas, NumPy, scikit-learn, and clean experimentation.",
-    icon: "📊",
+    icon: BarChart3,
     accent: {
       bg: "bg-violet-50",
       text: "text-violet-900",
@@ -139,12 +139,12 @@ export default function WhoShouldEnroll() {
               <div className="flex items-start gap-3">
                 <span
                   className={[
-                    "inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl text-lg",
+                    "inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl",
                     a.accent.iconBg,
                   ].join(" ")}
                   aria-hidden
                 >
-                  {a.icon}
+                  <a.icon className="w-5 h-5" />
                 </span>
                 <div>
                   <h3 className="text-base sm:text-lg font-bold">{a.title}</h3>

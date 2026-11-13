@@ -1,11 +1,11 @@
-import { Briefcase, Code, Database, Download } from "lucide-react";
+import { Briefcase, Code, Database, Download, Hospital, Landmark, Smartphone, ShoppingCart, Settings, MessageCircle } from "lucide-react";
 import SyllabusButton from "@/components/course-islands/SyllabusButton";
 
 const projects = [
   {
     title: "Disease Prediction Model for Hospital",
     domain: "Healthcare",
-    icon: "🏥",
+    icon: Hospital,
     description: "Build a machine learning model to predict disease outbreaks based on patient data including symptoms and demographics.",
     objective: "Improve early detection and optimize resource allocation using Python-based predictive models.",
     skills: ["Python", "Scikit-learn", "Data Preprocessing", "Healthcare Domain Knowledge"],
@@ -14,7 +14,7 @@ const projects = [
   {
     title: "Fraud Detection System for Bank",
     domain: "E-Finance (BFSI)",
-    icon: "🏦",
+    icon: Landmark,
     description: "Develop a fraud detection system using machine learning to analyze transaction data and identify suspicious activities.",
     objective: "Enhance security measures and protect customer assets through intelligent anomaly detection.",
     skills: ["Python", "TensorFlow", "Model Evaluation", "Finance Domain Knowledge"],
@@ -23,7 +23,7 @@ const projects = [
   {
     title: "Customer Churn Prediction",
     domain: "Telecommunication",
-    icon: "📱",
+    icon: Smartphone,
     description: "Create a predictive model to identify customers likely to churn and implement retention strategies.",
     objective: "Reduce customer attrition and improve customer lifetime value through proactive interventions.",
     skills: ["Python", "Pandas", "Classification Models", "Business Analytics"],
@@ -32,7 +32,7 @@ const projects = [
   {
     title: "Recommendation Engine",
     domain: "E-Commerce",
-    icon: "🛒",
+    icon: ShoppingCart,
     description: "Build a recommendation system that suggests products based on user behavior and preferences.",
     objective: "Increase sales and customer satisfaction through personalized product recommendations.",
     skills: ["Python", "Collaborative Filtering", "Content-Based Filtering", "Data Analysis"],
@@ -41,7 +41,7 @@ const projects = [
   {
     title: "Predictive Maintenance System",
     domain: "Manufacturing",
-    icon: "⚙️",
+    icon: Settings,
     description: "Develop a system to predict equipment failures before they occur to minimize downtime.",
     objective: "Reduce maintenance costs and improve operational efficiency through predictive analytics.",
     skills: ["Python", "Time Series Analysis", "IoT Data", "Scikit-learn"],
@@ -50,7 +50,7 @@ const projects = [
   {
     title: "Sentiment Analysis Dashboard",
     domain: "Social Media",
-    icon: "💬",
+    icon: MessageCircle,
     description: "Create a system to analyze and classify sentiment from social media posts and customer reviews.",
     objective: "Monitor brand perception and customer satisfaction in real-time across platforms.",
     skills: ["Python", "NLP", "Text Processing", "Data Visualization"],
@@ -107,9 +107,7 @@ export default function ProjectsSection() {
             >
               {/* Header with gradient */}
               <div className={`h-32 bg-gradient-to-br ${project.color} flex items-center justify-center relative overflow-hidden`}>
-                <span className="text-6xl opacity-80 group-hover:scale-110 transition-transform duration-300">
-                  {project.icon}
-                </span>
+                <project.icon className="w-16 h-16 text-white opacity-80 group-hover:scale-110 transition-transform duration-300" aria-hidden="true" />
               </div>
 
               {/* Content */}

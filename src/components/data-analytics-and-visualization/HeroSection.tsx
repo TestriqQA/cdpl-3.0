@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
 import dynamic from "next/dynamic";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
 const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
@@ -173,7 +174,7 @@ export default function HeroSection() {
                                 ))}
                             </div>
                             <div>
-                                <p className="text-sm font-semibold text-slate-900">425+ Verified Reviews</p>
+                                <p className="text-sm font-semibold text-slate-900"><SiteStat k="reviews" /> Verified Reviews</p>
                                 <p className="text-xs text-slate-600">Trusted by professionals worldwide</p>
                             </div>
                         </div>

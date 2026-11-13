@@ -1,7 +1,16 @@
+import { STAT_TEXT } from "@/lib/siteStats";
+
 /**
  * Centralized Course Data
  * All content extracted from the PDF and reference website
  */
+
+import {
+  Star, Users, GraduationCap, Settings, MessageCircle, Presentation, Rocket, BookOpen, Wrench,
+  BarChart3, Search, Smartphone, PenLine, MousePointerClick, ThumbsUp, Briefcase, TrendingUp,
+  Target, MonitorPlay, LinkIcon, Mail, Laptop, CircleCheck, NotebookPen, RadioTower,
+  UserRound, Stethoscope,
+} from "lucide-react";
 
 export const courseData = {
   // Basic Course Information
@@ -13,7 +22,7 @@ export const courseData = {
     duration: "3 Months Cohort Program",
     weeklyCommitment: "6 hours/week",
     totalHours: "40-50 hours",
-    rating: "9.6/10",
+    rating: STAT_TEXT.rating,
     expertise: "Industry-Led Training",
     preRequisite: "No pre-requisite required",
   },
@@ -21,19 +30,19 @@ export const courseData = {
   // Statistics
   stats: [
     {
-      icon: "⭐",
-      value: "9.6/10",
+      icon: Star,
+      value: STAT_TEXT.rating,
       label: "Program Rating",
       description: "Highly rated by students",
     },
     {
-      icon: "👥",
-      value: "500+",
-      label: "Successful Graduates",
+      icon: Users,
+      value: STAT_TEXT.studentsPlaced,
+      label: "Students Placed",
       description: "Students who transformed their business",
     },
     {
-      icon: "🎓",
+      icon: GraduationCap,
       value: "14+",
       label: "Years of Expertise",
       description: "Industry experience in digital marketing",
@@ -47,7 +56,7 @@ export const courseData = {
       title: "80:20 Practical Approach",
       description:
         "80% Practical and 20% Theory model for industry-rich experience. Multiple meta accounts are given to handle and learn niche-specific approaches.",
-      icon: "⚙️",
+      icon: Settings,
       bgColor: "bg-orange-50",
       borderColor: "border-orange-200",
       iconBg: "bg-orange-100",
@@ -57,7 +66,7 @@ export const courseData = {
       title: "1:1 Doubt Solving & Consultation",
       description:
         "Personalized knowledge tailored for your business niche. Whenever you need our help, we are just a call away.",
-      icon: "💬",
+      icon: MessageCircle,
       bgColor: "bg-blue-50",
       borderColor: "border-blue-200",
       iconBg: "bg-blue-100",
@@ -67,7 +76,7 @@ export const courseData = {
       title: "Expert Instructors",
       description:
         "Learn from seasoned Digital Marketers and Industry veterans with extensive expertise.",
-      icon: "👨‍🏫",
+      icon: Presentation,
       bgColor: "bg-purple-50",
       borderColor: "border-purple-200",
       iconBg: "bg-purple-100",
@@ -77,7 +86,7 @@ export const courseData = {
       title: "Secret Strategies",
       description:
         "Get to learn some of the best strategies that BOOSTS YOUR BUSINESS to 10X.",
-      icon: "🚀",
+      icon: Rocket,
       bgColor: "bg-red-50",
       borderColor: "border-red-200",
       iconBg: "bg-red-100",
@@ -87,7 +96,7 @@ export const courseData = {
       title: "Industry Approved Curriculum",
       description:
         "Courses designed and developed by top industry professionals. Learn from scratch or choose Core/Advanced module based on expertise.",
-      icon: "📚",
+      icon: BookOpen,
       bgColor: "bg-green-50",
       borderColor: "border-green-200",
       iconBg: "bg-green-100",
@@ -97,7 +106,7 @@ export const courseData = {
       title: "Hands-On Training",
       description:
         "Work on real industry case studies and live projects. You cannot master without doing.",
-      icon: "🛠️",
+      icon: Wrench,
       bgColor: "bg-indigo-50",
       borderColor: "border-indigo-200",
       iconBg: "bg-indigo-100",
@@ -109,7 +118,7 @@ export const courseData = {
     {
       id: 1,
       title: "Fundamentals of Digital Marketing",
-      icon: "📊",
+      icon: BarChart3,
       topics: [
         "Setting marketing objectives",
         "Market & Competitor Research",
@@ -130,7 +139,7 @@ export const courseData = {
     {
       id: 2,
       title: "SEO Fundamentals",
-      icon: "🔍",
+      icon: Search,
       topics: [
         "SEO Basics: Google updates & ranking analysis",
         "Content & Technical SEO: Optimization & off-page tactics",
@@ -149,7 +158,7 @@ export const courseData = {
     {
       id: 3,
       title: "Social Media Marketing",
-      icon: "📱",
+      icon: Smartphone,
       topics: [
         "Fundamentals of Social Media Marketing",
         "Company-wise content strategy",
@@ -172,7 +181,7 @@ export const courseData = {
     {
       id: 4,
       title: "Persuasive Copywriting",
-      icon: "✍️",
+      icon: PenLine,
       topics: [
         "Crafting attention-grabbing headlines and subheadings",
         "Writing clear and persuasive copy that communicates value propositions",
@@ -194,7 +203,7 @@ export const courseData = {
     {
       id: 5,
       title: "Marketing on Google",
-      icon: "🔴",
+      icon: MousePointerClick,
       topics: [
         "Setting up Google Webmaster Tool",
         "Understanding Campaign types and structure",
@@ -218,7 +227,7 @@ export const courseData = {
     {
       id: 6,
       title: "Marketing on Facebook",
-      icon: "👍",
+      icon: ThumbsUp,
       topics: [
         "Overview of Facebook Ads",
         "Understanding the Objectives, Metrics to track, Buying Type & Facebook Algorithm",
@@ -244,7 +253,7 @@ export const courseData = {
     {
       id: 7,
       title: "Marketing on LinkedIn & Other Platforms",
-      icon: "💼",
+      icon: Briefcase,
       topics: [
         "Types of LinkedIn Ads & targeting options",
         "Setting up Ads: Accounts, billing & payments",
@@ -264,7 +273,7 @@ export const courseData = {
     {
       id: 8,
       title: "Conversion Tracking",
-      icon: "📈",
+      icon: TrendingUp,
       topics: [
         "Tracking Conversions: Importance & event implementation",
         "Cookies & FLOC: Campaign builder insights",
@@ -281,7 +290,7 @@ export const courseData = {
     {
       id: 9,
       title: "Basic to Advanced CRO",
-      icon: "🎯",
+      icon: Target,
       topics: [
         "Understanding conversions and the fundamentals of CRO",
         "The CRO Process: Observe, Ideate, Test, Deploy",
@@ -305,7 +314,7 @@ export const courseData = {
     {
       id: 10,
       title: "Media Planning",
-      icon: "📺",
+      icon: MonitorPlay,
       topics: [
         "Fundamentals of Media Planning",
         "Understanding media objectives and strategy",
@@ -324,7 +333,7 @@ export const courseData = {
     {
       id: 11,
       title: "Dashboard",
-      icon: "📊",
+      icon: BarChart3,
       topics: [
         "Introduction to Data Visualization and its Techniques",
         "Types of Charts/Representations",
@@ -340,7 +349,7 @@ export const courseData = {
     {
       id: 12,
       title: "Attribution",
-      icon: "🔗",
+      icon: LinkIcon,
       topics: [
         "Why Attribution Is Needed?",
         "View Through & Click Through",
@@ -358,7 +367,7 @@ export const courseData = {
     {
       id: 13,
       title: "Email & WhatsApp Marketing + Marketing Automation",
-      icon: "📧",
+      icon: Mail,
       topics: [
         "Why is Email Marketing important?",
         "Who are the big players winning it?",
@@ -471,7 +480,7 @@ export const courseData = {
         "Converted 1 in 4 DM queries into purchases",
         "Learned: Instagram Reels marketing, Facebook Ads, WhatsApp Business automation, Website setup",
       ],
-      image: "👩‍💼",
+      image: UserRound,
     },
     {
       id: 2,
@@ -487,7 +496,7 @@ export const courseData = {
         "Ranked on Google Maps for 'construction tiles Mumbai'",
         "Implemented: LinkedIn page, InMail ads, Google My Business, Landing page",
       ],
-      image: "👨‍💼",
+      image: UserRound,
     },
     {
       id: 3,
@@ -503,7 +512,7 @@ export const courseData = {
         "Built a consistent personal brand across platforms",
         "Used: ChatGPT, Canva, Instagram Ads, Lead forms",
       ],
-      image: "👩‍⚕️",
+      image: Stethoscope,
     },
     {
       id: 4,
@@ -515,7 +524,7 @@ export const courseData = {
       quote:
         "Before taking this course, we relied heavily on marketplaces. Now, with SEO and Instagram ads, we've built our own loyal customer base.",
       result: "60% jump in website traffic within 3 months",
-      image: "👩‍💼",
+      image: UserRound,
     },
     {
       id: 5,
@@ -527,7 +536,7 @@ export const courseData = {
       quote:
         "Thanks to the Facebook ad strategies we learned, we now generate 30+ qualified property leads per week.",
       result: "Full control of marketing with qualified leads",
-      image: "👨‍💼",
+      image: UserRound,
     },
     {
       id: 6,
@@ -539,7 +548,7 @@ export const courseData = {
       quote:
         "Our batch size doubled within 2 months after implementing Google My Business optimization and Instagram engagement strategies.",
       result: "Doubled student base locally",
-      image: "👩‍🏫",
+      image: Presentation,
     },
     {
       id: 7,
@@ -551,7 +560,7 @@ export const courseData = {
       quote:
         "As a career coach, I used to rely on word-of-mouth. After applying the personal branding and LinkedIn techniques, I now get consistent client inquiries online.",
       result: "Consistent online client inquiries",
-      image: "👨‍💼",
+      image: UserRound,
     },
     {
       id: 8,
@@ -563,7 +572,7 @@ export const courseData = {
       quote:
         "We implemented funnel strategies and lead magnets taught in the course and our course signups went up by 200% in 6 months.",
       result: "200% increase in course signups in 6 months",
-      image: "👩‍💼",
+      image: UserRound,
     },
   ],
 
@@ -573,7 +582,7 @@ export const courseData = {
       id: 1,
       title: "Entrepreneurs & Business Owners",
       description: "Learn to grow your business online and attract more customers.",
-      icon: "🚀",
+      icon: Rocket,
       industries: [
         "E-commerce",
         "Retail",
@@ -587,7 +596,7 @@ export const courseData = {
       title: "Freelancers & Creators",
       description:
         "Master digital tools to monetize your content and land global clients.",
-      icon: "💻",
+      icon: Laptop,
       industries: ["Consultants", "Content Creators", "Agencies", "Coaches"],
     },
     {
@@ -595,7 +604,7 @@ export const courseData = {
       title: "Marketing Professionals",
       description:
         "Upskill with the latest digital marketing strategies and AI tools.",
-      icon: "📊",
+      icon: BarChart3,
       industries: ["Marketing Teams", "Digital Agencies", "In-house Teams"],
     },
     {
@@ -603,7 +612,7 @@ export const courseData = {
       title: "Startup Founders",
       description:
         "Build a strong digital presence and acquire customers efficiently.",
-      icon: "🎯",
+      icon: Target,
       industries: ["Tech Startups", "SaaS", "EdTech", "FinTech"],
     },
   ],
@@ -756,56 +765,56 @@ export const courseData = {
       title: "Learn Through Case Studies",
       description:
         "Start with real-world case studies to understand how successful businesses apply digital marketing strategies.",
-      icon: "📚",
+      icon: BookOpen,
     },
     {
       step: 2,
       title: "Undergo Hands-On Training",
       description:
         "Get practical, hands-on training with industry experts who share real-world knowledge from live projects.",
-      icon: "🛠️",
+      icon: Wrench,
     },
     {
       step: 3,
       title: "Live Projects",
       description:
         "Work on live projects that mirror real business challenges and scenarios you'll encounter in your career.",
-      icon: "🎯",
+      icon: Target,
     },
     {
       step: 4,
       title: "In-Class Assessment & Feedback",
       description:
         "Receive detailed feedback on your assignments and assessments to ensure continuous improvement.",
-      icon: "✅",
+      icon: CircleCheck,
     },
     {
       step: 5,
       title: "Perform Assignments",
       description:
         "Complete assignments that reinforce your learning and build a portfolio of work.",
-      icon: "📝",
+      icon: NotebookPen,
     },
     {
       step: 6,
       title: "Business Niche Based Consultation",
       description:
         "Get personalized consultation tailored to your specific business niche and challenges.",
-      icon: "💬",
+      icon: MessageCircle,
     },
     {
       step: 7,
       title: "Updates on Latest Trends & Tools",
       description:
         "Stay updated with the latest trends, tools, and technologies in digital marketing and AI.",
-      icon: "📡",
+      icon: RadioTower,
     },
     {
       step: 8,
       title: "Business Specific Problem Solving",
       description:
         "Apply your learning to solve specific business problems and implement real strategies.",
-      icon: "🚀",
+      icon: Rocket,
     },
   ],
 

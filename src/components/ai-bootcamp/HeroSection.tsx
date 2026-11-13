@@ -15,6 +15,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import ApiCourseLeadForm from "@/components/forms/ApiCourseLeadForm";
 import dynamic from "next/dynamic";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 const EnrollModal = dynamic(() => import("@/components/EnrollModal"), { ssr: false });
 const SyllabusDownloadModal = dynamic(() => import("@/components/SyllabusDownloadModal"), { ssr: false });
@@ -157,7 +158,7 @@ export default function HeroSection() {
                         <div className="mt-8 grid w-full max-w-2xl grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
                             {[
                                 { label: "Hours Training", value: "30" },
-                                { label: "Student Rating", value: "9.6/10" },
+                                { label: "Student Rating", value: <SiteStat k="rating" /> },
                                 { label: "Job Assistance", value: "100%" },
                                 { label: "High-Income Skill Rank", value: "#4" },
                             ].map((item, idx) => (

@@ -1,3 +1,5 @@
+import { SITE_STATS } from "@/lib/siteStats";
+
 export type AiInDigitalMarketingFaq = {
     question: string;
     answer: string;
@@ -48,6 +50,6 @@ export const AI_IN_DIGITAL_MARKETING_FAQS: AiInDigitalMarketingFaq[] = [
 ];
 
 export const AI_IN_DIGITAL_MARKETING_REVIEW_DATA = {
-    ratingValue: 4.8,
-    reviewCount: 500, // Based on stats in courseData
+    ratingValue: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount, // Based on stats in courseData
 };

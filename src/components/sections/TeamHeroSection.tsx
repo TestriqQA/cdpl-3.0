@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 
 const BRAND = "#ff8c00";
@@ -171,7 +172,7 @@ export default function TeamHero() {
 
               <div className="flex mt-5 md:mt-0 items-center gap-1 text-sm text-slate-600">
                 <Star className="h-4 w-4 fill-yellow-400 stroke-yellow-400" aria-hidden="true" />
-                <span className="font-semibold text-slate-800">4.9/5</span>
+                <span className="font-semibold text-slate-800"><SiteStat k="rating" /></span>
                 <span aria-hidden="true">·</span>
                 <span>Based on verified learner reviews</span>
               </div>

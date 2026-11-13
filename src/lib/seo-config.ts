@@ -1,3 +1,4 @@
+import { SITE_STATS, STAT_TEXT } from "@/lib/siteStats";
 /**
  * ============================================================================
  * CENTRALIZED SEO CONFIGURATION FOR CDPL
@@ -137,14 +138,29 @@ export const SOCIAL_PROFILES = {
 } as const;
 
 // ============================================================================
+// REVIEW PLATFORM PROFILES
+// ============================================================================
+// Where learners leave (and visitors can read) CDPL reviews. Kept separate
+// from SOCIAL_PROFILES so it does not change the schema.org `sameAs` list.
+// The Justdial URL is the one printed in CDPL's course brochures. (The
+// brochures' Sulekha link, .../mira-road-east-mumbai-contact-address, is dead;
+// the profile URL below is the current listing.)
+
+export const REVIEW_PROFILES = {
+  google: BUSINESS_INFO.maps.place,
+  justdial: 'https://www.justdial.com/Mumbai/Cinute-Digital-Private-Limited-Mira-Road-East/022PXX22-XX22-221108174513-P8E6_BZDET',
+  sulekha: 'https://www.sulekha.com/profile/cinute-digital-pvt-ltd-mira-road-mumbai',
+} as const;
+
+// ============================================================================
 // STATISTICS & ACHIEVEMENTS
 // ============================================================================
 
 export const STATISTICS = {
-  studentsPlaced: 5000,
-  rating: 4.9,
-  maxRating: 5,
-  reviewCount: 425,
+  studentsPlaced: SITE_STATS.studentsPlaced,
+  rating: SITE_STATS.rating,
+  maxRating: SITE_STATS.maxRating,
+  reviewCount: SITE_STATS.reviewCount,
   yearsOfExperience: 15,
   realWorldProjects: 90,
   hiringPartners: 50,
@@ -268,7 +284,7 @@ export const FEATURED_COURSES = [
     description: 'Learn to facilitate Scrum teams and drive Agile projects effectively with comprehensive manual testing training.',
     duration: 'P12W', // 12 weeks in ISO 8601 format
     level: 'Beginner',
-    rating: 4.9,
+    rating: SITE_STATS.rating,
     enrollmentCount: 1200,
     highlights: ['ISTQB Foundation Prep', 'Test Case Design', 'Defect Life Cycle'],
   },
@@ -278,7 +294,7 @@ export const FEATURED_COURSES = [
     description: 'Drive product vision and delivery in SAFe settings with advanced automation testing skills.',
     duration: 'P16W',
     level: 'Intermediate',
-    rating: 4.8,
+    rating: SITE_STATS.rating,
     enrollmentCount: 950,
     highlights: ['Selenium WebDriver', 'CI/CD Integration (Jenkins)', 'Advanced Java Concepts'],
   },
@@ -288,7 +304,7 @@ export const FEATURED_COURSES = [
     description: 'Master coding challenges and technical questions with comprehensive data science training.',
     duration: 'P20W',
     level: 'Advanced',
-    rating: 4.9,
+    rating: SITE_STATS.rating,
     enrollmentCount: 1100,
     highlights: ['Python Programming', 'Statistical Modeling', 'Machine Learning'],
   },
@@ -342,8 +358,8 @@ export const AI_OPTIMIZATION = {
     'Industry Expert Mentors',
     'Hands-on Projects',
     'Career Transformation',
-    '425+ Verified Reviews',
-    '4.9/5 Rating',
+    `${STAT_TEXT.reviews} Verified Reviews`,
+    `${STAT_TEXT.rating} Rating`,
     'Industry-Led Training',
   ],
   targetAudience: 'Career changers, fresh graduates, IT professionals seeking upskilling, non-IT professionals transitioning to tech',

@@ -116,7 +116,7 @@ const TestInterface = ({ questions, courseName, onSubmit, isSubmitting }: TestIn
 
                     <div
                         ref={scrollRef}
-                        className="flex items-center gap-3 pb-1 custom-scrollbar scroll-smooth overflow-x-auto flex-1"
+                        className="flex items-center gap-3 pb-1 scrollbar-thin scroll-smooth overflow-x-auto flex-1"
                     >
                         <div className="flex items-center gap-2 mr-4 text-xs font-bold uppercase tracking-widest text-brand whitespace-nowrap bg-white/80 backdrop-blur-sm z-10 pr-4">
                             <LayoutGrid className="w-4 h-4" />

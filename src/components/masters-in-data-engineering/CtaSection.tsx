@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowRight, Download, Phone, CheckCircle } from "lucide-react";
+import { ArrowRight, Download, Phone, CheckCircle, BarChart3, Briefcase, GraduationCap, PartyPopper, Mail } from "lucide-react";
 import Link from "next/link";
 import EnrollModal from "../EnrollModal";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
@@ -41,19 +41,19 @@ const CtaSection: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
             {[
               {
-                icon: "📊",
+                icon: BarChart3,
                 title: "BI & Big Data Focus",
                 description:
                   "End-to-end training across Business Intelligence, Data Analytics, and Big Data Engineering.",
               },
               {
-                icon: "💼",
+                icon: Briefcase,
                 title: "Career & Placement Support",
                 description:
                   "Resume building, mock interviews, portfolio review, and job assistance.",
               },
               {
-                icon: "🎓",
+                icon: GraduationCap,
                 title: "Industry-Ready Curriculum",
                 description:
                   "Hands-on projects, real-time datasets, and globally relevant tools.",
@@ -63,7 +63,7 @@ const CtaSection: React.FC = () => {
                 key={idx}
                 className="bg-white/10 backdrop-blur-sm rounded-lg p-5 border border-white/20"
               >
-                <div className="text-3xl mb-2">{benefit.icon}</div>
+                <benefit.icon className="w-8 h-8 mx-auto mb-2 text-teal-300" aria-hidden="true" />
                 <p className="font-bold text-white mb-1">{benefit.title}</p>
                 <p className="text-sm text-slate-300">{benefit.description}</p>
               </div>
@@ -97,8 +97,8 @@ const CtaSection: React.FC = () => {
 
           {/* Limited Time Offer (SEO-friendly urgency) */}
           <div className="bg-teal-500/20 border-2 border-teal-400 rounded-lg p-6 mb-10">
-            <p className="text-teal-200 font-semibold mb-2">
-              🎉 Limited Time Offer
+            <p className="text-teal-200 font-semibold mb-2 flex items-center justify-center gap-2">
+              <PartyPopper className="w-5 h-5" aria-hidden="true" /> Limited Time Offer
             </p>
             <p className="text-white text-lg font-bold">
               Secure your seat in the{" "}
@@ -148,14 +148,14 @@ const CtaSection: React.FC = () => {
               href="tel:+917888383788"
               className="flex items-center gap-2 hover:text-teal-300 transition-colors"
             >
-              <span>📞</span> +91 788-83-83-788
+              <Phone className="w-5 h-5" aria-hidden="true" /> +91 788-83-83-788
             </Link>
             <div className="hidden sm:block w-px h-6 bg-white/20" />
             <Link
               href="mailto:contact@cinutedigital.com"
               className="flex items-center gap-2 hover:text-teal-300 transition-colors"
             >
-              <span>✉️</span> contact@cinutedigital.com
+              <Mail className="w-5 h-5" aria-hidden="true" /> contact@cinutedigital.com
             </Link>
           </div>
           <p className="mt-4 text-xs text-slate-400 sm:text-sm">

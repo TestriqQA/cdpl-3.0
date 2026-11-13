@@ -1,94 +1,49 @@
-"use client";
+const TRACKS = [
+  { name: "Core Concepts", points: ["Policies & scope", "Assessment patterns", "Readiness metrics"], num: "bg-orange-100 text-brand" },
+  { name: "Practical Skills", points: ["Scenario tasks", "Labs & reviews", "Rubric alignment"], num: "bg-sky-100 text-sky-700" },
+  { name: "Capstone + Interview", points: ["End-to-end case", "Storytelling", "Mock interviews"], num: "bg-violet-100 text-violet-700" },
+];
 
+/** The three training tracks as numbered cards. Server component. */
 export default function ACTDCertificationTracksSection() {
-  const tracks = [
-    {
-      name: "Core Concepts",
-      points: ["Policies & scope", "Assessment patterns", "Readiness metrics"],
-    },
-    {
-      name: "Practical Skills",
-      points: ["Scenario tasks", "Labs & reviews", "Rubric alignment"],
-    },
-    {
-      name: "Capstone + Interview",
-      points: ["End-to-end case", "Storytelling", "Mock interviews"],
-    },
-  ];
-
-  // Clean, blended skins rotated across cards
-  const SKINS: { tint: string; overlay: string; edge?: string }[] = [
-    {
-      // Brand orange with micro-dots
-      tint: "rgba(255,140,0,0.10)",
-      overlay:
-        "radial-gradient(120% 80% at 0% 0%, rgba(255,140,0,.16), transparent 55%),repeating-linear-gradient(45deg, rgba(255,140,0,.10) 0 2px, transparent 2px 6px)",
-      edge: "radial-gradient(60% 60% at 100% 0%, rgba(255,140,0,.14), transparent 60%)",
-    },
-    {
-      // Sky blue with soft stripes
-      tint: "rgba(14,165,233,0.10)",
-      overlay:
-        "conic-gradient(from 0deg at 100% 0%, rgba(14,165,233,.16), transparent 40%),repeating-linear-gradient(-45deg, rgba(14,165,233,.10) 0 2px, transparent 2px 6px)",
-    },
-    {
-      // Violet mesh
-      tint: "rgba(157,123,255,0.10)",
-      overlay:
-        "radial-gradient(80% 60% at 100% 0%, rgba(157,123,255,.18), transparent 55%),repeating-linear-gradient(90deg, rgba(157,123,255,.10) 0 1px, transparent 1px 5px)",
-    },
-  ];
-
   return (
-    <section id="actd-tracks" className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <header className="mb-6 sm:mb-8">
-          <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">Training tracks</h2>
-          <p className="mt-2 max-w-3xl text-[15px] text-slate-800 sm:text-base">
+    <section id="actd-tracks" aria-labelledby="actd-tracks-heading" className="scroll-mt-20 bg-slate-50 py-12 lg:py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-10 max-w-3xl text-center lg:mb-12">
+          <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-brand">
+            Training tracks
+          </span>
+          <h2 id="actd-tracks-heading" className="mt-4 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
+            Three tracks, <span className="text-brand">one capstone</span>
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-gray-600">
             Progress with short sprints, hands-on labs, and structured reviews. Each track culminates in a capstone.
           </p>
-        </header>
-
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {tracks.map((t, i) => {
-            const skin = SKINS[i % SKINS.length];
-            return (
-              <div
-                key={t.name}
-                className="relative overflow-hidden rounded-2xl border border-orange-100 bg-white p-5 shadow-sm transition
-                           hover:-translate-y-0.5 hover:shadow-md duration-300 will-change-transform"
-              >
-                {/* Blended background layers */}
-                <span aria-hidden className="absolute inset-0" style={{ backgroundColor: skin.tint }} />
-                <span
-                  aria-hidden
-                  className="absolute inset-0 rounded-2xl opacity-90 [mask-image:radial-gradient(140%_120%_at_0%_0%,#000_40%,transparent_70%)]"
-                  style={{ backgroundImage: skin.overlay }}
-                />
-                {skin.edge && (
-                  <span aria-hidden className="absolute inset-0 rounded-2xl" style={{ backgroundImage: skin.edge }} />
-                )}
-                {/* Soft inner ring & left accent */}
-                <span aria-hidden className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/5" />
-                <span
-                  aria-hidden
-                  className="absolute left-0 top-0 h-full w-1.5 rounded-l-2xl"
-                  style={{ backgroundColor: "rgba(255,140,0,0.18)" }}
-                />
-
-                {/* Content */}
-                <div className="relative">
-                  <h3 className="text-sm font-extrabold text-slate-900">{t.name}</h3>
-                  <ul className="mt-2 space-y-1 text-sm text-slate-800">
-                    {t.points.map((p) => (
-                      <li key={p}>• {p}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            );
-          })}
         </div>
+
+        <ol className="grid gap-5 md:grid-cols-3">
+          {TRACKS.map((t, i) => (
+            <li
+              key={t.name}
+              className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <div className="flex items-center gap-3">
+                <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl text-sm font-extrabold ${t.num}`} aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="text-lg font-bold text-slate-900">{t.name}</h3>
+              </div>
+              <ul className="mt-4 space-y-2.5 text-slate-700">
+                {t.points.map((p) => (
+                  <li key={p} className="flex items-center gap-2.5">
+                    <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

@@ -1,8 +1,8 @@
-import { Code2, Database, BarChart3, Cpu, type LucideIcon } from "lucide-react";
+import { Code2, Database, BarChart3, Cpu, Rocket, Plug, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
 
-type Tool = { name: string; icon?: string; logo?: string };
+type Tool = { name: string; icon?: LucideIcon; logo?: string };
 
 const toolCategories: { category: string; icon: LucideIcon; color: string; tools: Tool[] }[] = [
   {
@@ -26,7 +26,7 @@ const toolCategories: { category: string; icon: LucideIcon; color: string; tools
       { name: "TensorFlow", logo: "/techstack_logos/tensorflow-logo.svg" },
       { name: "Keras", logo: "/techstack_logos/keras-logo.svg" },
       { name: "PyTorch", logo: "/techstack_logos/pytorch-logo.svg" },
-      { name: "XGBoost", icon: "🚀" },
+      { name: "XGBoost", icon: Rocket },
     ],
   },
   {
@@ -34,7 +34,7 @@ const toolCategories: { category: string; icon: LucideIcon; color: string; tools
     icon: BarChart3,
     color: "from-indigo-500 to-indigo-600",
     tools: [
-      { name: "SQL", icon: "🗄️" },
+      { name: "SQL", icon: Database },
       { name: "Power BI", logo: "/techstack_logos/power-bi-logo.svg" },
       { name: "Tableau", logo: "/techstack_logos/tableau-logo.svg" },
       { name: "Plotly", logo: "/techstack_logos/plotly-logo.svg" },
@@ -50,7 +50,7 @@ const toolCategories: { category: string; icon: LucideIcon; color: string; tools
       { name: "Git & GitHub", logo: "/techstack_logos/git-logo.svg" },
       { name: "Docker", logo: "/techstack_logos/docker-logo.svg" },
       { name: "AWS/Cloud", logo: "/techstack_logos/amazonwebservices-logo.svg" },
-      { name: "APIs", icon: "🔌" },
+      { name: "APIs", icon: Plug },
     ],
   },
 ];
@@ -101,8 +101,8 @@ export default function ToolsSection() {
                         {tool.logo ? (
                           <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10 group-hover:scale-110 transition-transform" aria-hidden />
                         ) : (
-                          <span className="flex h-8 w-8 shrink-0 items-center justify-center text-xl sm:h-10 sm:w-10 group-hover:scale-110 transition-transform" aria-hidden>
-                            {tool.icon}
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center sm:h-10 sm:w-10 group-hover:scale-110 transition-transform" aria-hidden>
+                            {tool.icon ? <tool.icon className="h-6 w-6 text-brand" /> : null}
                           </span>
                         )}
                         <p className="min-w-0 font-semibold text-slate-900 text-sm">

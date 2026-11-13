@@ -1203,8 +1203,8 @@ export function generateHomePageSchema(
               // Apply safe defaults since headerData doesn't contain these detailed metadata fields
               duration: "P12W",
               level: "Beginner",
-              rating: 4.8,
-              reviewCount: 50,
+              rating: STATISTICS.rating,
+              reviewCount: STATISTICS.reviewCount,
               enrollmentCount: 1000,
             }),
           });
@@ -1361,8 +1361,8 @@ export function generateAllCoursesPageSchema(): WithContext<
               // Apply safe defaults
               duration: "P12W",
               level: "Beginner",
-              rating: 4.8,
-              reviewCount: 50,
+              rating: STATISTICS.rating,
+              reviewCount: STATISTICS.reviewCount,
               enrollmentCount: 1000,
             }),
           });
@@ -4368,6 +4368,8 @@ export function generateServicesPageAllSchemas(
     slug: string;
     title: string;
     shortDescription: string;
+    /** The service's share image (site path or absolute URL). */
+    image: string;
   }[],
 ): WithContext<Record<string, unknown>>[] {
   const webPageSchema = generateWebPageSchema({
@@ -4393,7 +4395,8 @@ export function generateServicesPageAllSchemas(
         description: service.shortDescription,
         url: `/services/${service.slug}`,
         serviceType: "Corporate Training",
-        image: `/og-images/og-service-${service.slug}.webp`,
+        // Was `/og-images/og-service-${slug}.webp`, which exists for no service.
+        image: service.image,
       }),
     })),
   });
@@ -4531,6 +4534,8 @@ export function generateServiceDetailPageAllSchemas(service: {
   methodology: string[];
   deliveryFormats: { format: string; duration: string; description: string }[];
   whoShouldAttend: string[];
+  /** The service's share image (site path or absolute URL). */
+  image: string;
 }): WithContext<Record<string, unknown>>[] {
   // NOTE: Organization and WebSite schemas are handled by Root Layout
 
@@ -4548,7 +4553,8 @@ export function generateServiceDetailPageAllSchemas(service: {
     description: service.shortDescription,
     url: `/services/${service.slug}`,
     serviceType: "Corporate Training",
-    image: `/og-images/og-service-${service.slug}.webp`,
+    // Was `/og-images/og-service-${slug}.webp`, which exists for no service.
+    image: service.image,
   });
 
   // FAQPage — dynamically built from service data
@@ -6625,7 +6631,7 @@ export function generateReviewsPageAllSchemas(
   const webPageSchema = generateWebPageSchema({
     name: "Authentic Student Reviews & Testimonials | CDPL",
     description:
-      "Read 5000+ authentic student reviews and success stories for CDPL's software testing, data science, and AI/ML courses.",
+      `Read ${STATISTICS.reviewCount}+ authentic student reviews and success stories for CDPL's software testing, data science, and AI/ML courses.`,
     url: "/reviews",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },

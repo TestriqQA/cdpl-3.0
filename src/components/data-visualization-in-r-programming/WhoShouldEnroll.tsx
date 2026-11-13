@@ -3,14 +3,18 @@
 // src/components/WhoShouldEnroll.tsx
 import React, { useState } from 'react';
 import { content } from "@/components/data-visualization-in-r-programming/data/content";
-import { CheckCircle, CloudDownload } from "lucide-react";
+import {
+  CheckCircle, CloudDownload,
+  GraduationCap, TrendingUp, Briefcase, Bot, AlarmClock, Handshake, Target, BookOpen,
+  type LucideIcon,
+} from "lucide-react";
 import EnrollModal from "../EnrollModal";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 interface AudienceSegment {
   title: string;
   description: string;
-  icon: string;
+  icon: LucideIcon;
   requirements: string[];
 }
 
@@ -22,7 +26,7 @@ interface PrerequisiteGroup {
 interface SuccessFactor {
   title: string;
   description: string;
-  icon: string;
+  icon: LucideIcon;
 }
 
 export const WhoShouldEnroll: React.FC = () => {
@@ -35,7 +39,7 @@ export const WhoShouldEnroll: React.FC = () => {
     {
       title: "Students & Fresh Graduates in Data and Analytics",
       description: who_should_enroll_section.target_audience[0],
-      icon: "🎓",
+      icon: GraduationCap,
       requirements: [
         "Interest in data analytics, R programming, and business intelligence",
         "Basic understanding of maths or statistics (helpful but not mandatory)",
@@ -45,7 +49,7 @@ export const WhoShouldEnroll: React.FC = () => {
     {
       title: "Working Professionals & Upskilling Analysts",
       description: who_should_enroll_section.target_audience[1],
-      icon: "📈",
+      icon: TrendingUp,
       requirements: [
         "Motivation to switch or grow into data analyst / data scientist roles",
         "Basic familiarity with spreadsheets, dashboards, or reporting tools",
@@ -55,7 +59,7 @@ export const WhoShouldEnroll: React.FC = () => {
     {
       title: "Career Changers from Non-Technical Backgrounds",
       description: who_should_enroll_section.target_audience[2],
-      icon: "💼",
+      icon: Briefcase,
       requirements: [
         "Domain expertise in fields like finance, marketing, HR, operations, or healthcare",
         "Curiosity about data-driven decision making and analytics",
@@ -66,7 +70,7 @@ export const WhoShouldEnroll: React.FC = () => {
       title: "Engineers, Programmers & Tech Enthusiasts",
       // ✅ Fixed typo here
       description: who_should_enroll_section.target_audience[3],
-      icon: "🤖",
+      icon: Bot,
       requirements: [
         "Interest in machine learning, AI, and advanced analytics using R",
         "Comfort with basic programming concepts (variables, loops, logic)",
@@ -107,25 +111,25 @@ export const WhoShouldEnroll: React.FC = () => {
       title: "Consistent Hands-On Practice",
       description:
         "Dedicate regular time to coding in R, working with datasets, and building visualizations and dashboards.",
-      icon: "⏰",
+      icon: AlarmClock,
     },
     {
       title: "Active Doubt-Solving & Participation",
       description:
         "Engage in live sessions, ask questions, participate in discussions, and clarify every R and data concept.",
-      icon: "🤝",
+      icon: Handshake,
     },
     {
       title: "Real-World Project Focus",
       description:
         "Complete all capstone and case-study projects to build a strong data analytics and visualization portfolio in R.",
-      icon: "🎯",
+      icon: Target,
     },
     {
       title: "Continuous Learning & Industry Awareness",
       description:
         "Stay updated with the latest trends in data science, BI, and machine learning, and keep refining your R skills.",
-      icon: "📚",
+      icon: BookOpen,
     },
   ];
 
@@ -160,7 +164,7 @@ export const WhoShouldEnroll: React.FC = () => {
               className="bg-white rounded-xl p-8 border-2 border-slate-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300"
             >
               {/* Icon */}
-              <div className="text-4xl mb-4">{audience.icon}</div>
+              <audience.icon className="w-10 h-10 mb-4 text-brand" aria-hidden="true" />
 
               {/* Title */}
               <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -234,9 +238,7 @@ export const WhoShouldEnroll: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {successFactors.map((factor, idx) => (
               <div key={idx} className="flex gap-4">
-                <div className="text-3xl flex-shrink-0">
-                  {factor.icon}
-                </div>
+                <factor.icon className="w-8 h-8 text-brand flex-shrink-0" aria-hidden="true" />
                 <div>
                   <h4 className="font-bold text-slate-900 mb-1">
                     {factor.title}
@@ -252,7 +254,7 @@ export const WhoShouldEnroll: React.FC = () => {
           {/* Program Outcome (from content.outcome) */}
           <div className="mt-4 p-5 bg-white rounded-xl border border-orange-200 shadow-sm">
             <h4 className="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
-              <span className="text-orange-500">🎓</span>
+              <GraduationCap className="w-5 h-5 text-orange-500" aria-hidden="true" />
               <span>Your Program Outcome</span>
             </h4>
             <p className="text-sm text-slate-700 leading-relaxed">

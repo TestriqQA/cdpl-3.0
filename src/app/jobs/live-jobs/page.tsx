@@ -77,18 +77,11 @@ export default async function Page() {
   // field (the fabricated validThrough, the guessed postcodes) across two URLs.
 
   return (
-    <div className="bg-white text-slate-900 relative">
+    <div className="bg-white text-slate-900">
       {schemas.map((schema: any, index: number) => (
         <JsonLd key={`jobs-schema-${index}`} id={`jobs-schema-${index}`} schema={schema} />
       ))}
       <JsonLd id="live-jobs-breadcrumb" schema={breadcrumbSchema} />
-
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(to bottom, #f8fafc, #ffffff 30%)" }}
-        />
-      </div>
 
       <JobsLiveJobsJobsHeroSection />
 

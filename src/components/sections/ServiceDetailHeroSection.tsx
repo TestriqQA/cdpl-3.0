@@ -1,172 +1,133 @@
-'use client';
-
-import { Home, ChevronRight } from 'lucide-react';
-import * as Icons from 'lucide-react';
+// Server Component. Only RequestButton (and the modal it loads on click) ships JS.
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
-import { useMemo, type ComponentType, type SVGProps } from 'react';
-import type { ServiceClient, DeliveryFormat } from '@/types/service';
+import { Home, ChevronRight, Sparkles, CheckCircle2, Clock } from 'lucide-react';
+import type { ServiceClient } from '@/types/service';
+import RequestButton from '@/app/services/[slug]/RequestButton';
+import { getServiceIcon } from './serviceDetailShared';
 
-const RequestButton = dynamic(() => import('@/app/services/[slug]/RequestButton'), {
-  loading: () => (
-    <div className="inline-flex items-center px-8 py-4 bg-gray-200 rounded-xl animate-pulse">
-      <div className="h-4 w-32 bg-gray-300 rounded" />
-    </div>
-  ),
-});
+const DEFAULT_KEYWORDS = [
+  'industry-relevant projects',
+  'placement assistance',
+  'certification',
+  'hands-on labs',
+];
 
-// Strongly-typed icon resolver (no `any`)
-type LucideIcon = ComponentType<SVGProps<SVGSVGElement>>;
-function getIcon(name: string): LucideIcon {
-  const key = name as keyof typeof Icons;
-  const Icon = Icons[key];
-  return (Icon as unknown as LucideIcon) ?? Icons.GraduationCap;
-}
-
+/**
+ * Service hero, in the homepage hero's language: light wash, dark h1, brand
+ * accents, solid buttons. Left: chip, title, tagline, description, keyword
+ * chips and CTAs. Right: the delivery formats as the "Program Overview" card.
+ */
 export default function ServiceDetailHeroSection({ service }: { service: ServiceClient }) {
-  const IconComponent = getIcon(service.iconName);
+  const Icon = getServiceIcon(service.iconName);
+  const keywords = service.keywords?.length ? service.keywords : DEFAULT_KEYWORDS;
 
-  const breadcrumbs = useMemo(
-    () => [
-      { label: 'Home', href: '/' },
-      { label: 'Services', href: '/services' },
-      { label: service.title, href: `/services/${service.slug}` },
-    ],
-    [service.slug, service.title]
-  );
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/services' },
+    { label: service.title, href: `/services/${service.slug}` },
+  ];
 
   return (
-    <section className="relative isolate overflow-hidden">
-      {/* --- Soft mesh background (sky/cyan only, super subtle) --- */}
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-30"
-        style={{
-          backgroundImage:
-            'radial-gradient(60% 50% at 10% 10%, rgba(14,165,233,0.10), transparent 60%), radial-gradient(55% 45% at 90% 15%, rgba(8,145,178,0.10), transparent 60%), radial-gradient(70% 60% at 50% 110%, rgba(14,165,233,0.10), transparent 70%)',
-        }}
-      />
+    <section
+      className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50"
+      aria-labelledby="service-heading"
+    >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute right-10 top-20 h-96 w-96 rounded-full bg-gradient-to-br from-orange-200 to-orange-100 opacity-30 blur-3xl" />
+        <div className="absolute bottom-10 left-10 h-96 w-96 rounded-full bg-gradient-to-tr from-blue-200 to-blue-100 opacity-20 blur-3xl" />
+      </div>
 
-      {/* --- Minimal background pattern (CSS optimization) --- */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-20 opacity-20"
-        style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(15,118,110,0.15) 1px, transparent 0)',
-          backgroundSize: '24px 24px',
-        }}
-      />
-
-      {/* --- Fine “glass” lines for depth (very faint) --- */}
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            'linear-gradient(#0ea5e930 1px, transparent 1px), linear-gradient(90deg, #0ea5e930 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-          mixBlendMode: 'multiply',
-        }}
-      />
-
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        {/* Breadcrumbs */}
-        <nav aria-label="Breadcrumb" className="mb-4 sm:mb-5 md:mb-6">
+      <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+        <nav aria-label="Breadcrumb" className="mb-6 lg:mb-8">
           <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
-            {breadcrumbs.map((c, i) => (
-              <li key={c.href} className="flex items-center gap-2">
-                {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-                <Link
-                  href={c.href}
-                  className={i === breadcrumbs.length - 1 ? 'font-semibold text-slate-900' : 'hover:text-cyan-700'}
-                >
-                  {c.label}
-                </Link>
-              </li>
-            ))}
+            {breadcrumbs.map((c, i) => {
+              const isLast = i === breadcrumbs.length - 1;
+              return (
+                <li key={c.href} className="flex items-center gap-2">
+                  {i === 0 ? <Home className="h-4 w-4" aria-hidden="true" /> : <ChevronRight className="h-4 w-4" aria-hidden="true" />}
+                  <Link
+                    href={c.href}
+                    aria-current={isLast ? 'page' : undefined}
+                    className={isLast ? 'font-semibold text-slate-900' : 'transition-colors hover:text-brand'}
+                  >
+                    {c.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ol>
         </nav>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 items-center">
-          {/* Left: Title + copy */}
-          <div className="md:col-span-7 lg:col-span-7">
-            {/* compact chip */}
-            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200/70 bg-white/90 px-3 py-1 text-[11px] font-medium text-cyan-700 shadow-sm">
-              🚀 Mentor-led • 🎯 Job-ready curriculum
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
+          {/* Left: title + copy */}
+          <div className="lg:col-span-7">
+            <span className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-1.5 text-xs font-semibold text-brand sm:text-sm">
+              <Sparkles className="h-4 w-4" aria-hidden="true" />
+              Mentor-led · Job-ready curriculum
             </span>
 
-            {/* Clean gradient title color */}
-            <h1 className="mt-4 text-4xl md:text-5xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-800 to-cyan-700">
+            <h1
+              id="service-heading"
+              className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl"
+            >
               {service.title}
             </h1>
 
-            <p className="mt-3 text-lg text-slate-700 max-w-prose">{service.tagline}</p>
-            <p className="mt-2 text-[15px] text-slate-700/90 max-w-2xl">{service.shortDescription}</p>
+            <p className="mt-4 text-lg font-medium text-slate-800 sm:text-xl">{service.tagline}</p>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">{service.shortDescription}</p>
 
-            {/* Keywords as soft badges */}
-            <div className="mt-6 flex flex-wrap items-center gap-3 text-sm">
-              {(service.keywords ?? [
-                'industry-relevant projects',
-                'placement assistance',
-                'certification',
-                'hands-on labs',
-              ]).map((k) => (
-                <span
+            <ul className="mt-6 flex flex-wrap gap-2.5">
+              {keywords.map((k) => (
+                <li
                   key={k}
-                  className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 ring-1 ring-slate-200 text-slate-700 shadow-sm"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-sm text-slate-700 shadow-sm ring-1 ring-slate-200"
                 >
-                  <span className="inline-block h-2 w-2 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500" />
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600" aria-hidden="true" />
                   {k}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
 
-            {/* CTA — RequestButton unstyled */}
-            <div className="mt-7">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <RequestButton serviceTitle={service.title} />
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-7 py-3.5 font-semibold text-slate-800 shadow-sm transition-colors duration-300 hover:border-brand hover:text-brand"
+              >
+                Explore All Services
+              </Link>
             </div>
           </div>
 
-          {/* Right: Overview card – blended with section */}
-          <div className="md:col-span-5 lg:col-span-5">
-            <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-sky-100/80 via-cyan-100/70 to-sky-100/80 shadow-2xl">
-              <div className="relative rounded-[calc(1.5rem-1px)] bg-white/95 p-8 ring-1 ring-white/60">
-                {/* interior subtle pattern */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 rounded-[calc(1.5rem-1px)] opacity-[0.06]"
-                  style={{
-                    backgroundImage:
-                      'linear-gradient(#0ea5e930 1px, transparent 1px), linear-gradient(90deg, #0ea5e930 1px, transparent 1px)',
-                    backgroundSize: '28px 28px',
-                    maskImage: 'radial-gradient(120% 90% at 50% 20%, black 40%, transparent 100%)',
-                    WebkitMaskImage: 'radial-gradient(120% 90% at 50% 20%, black 40%, transparent 100%)',
-                  }}
-                />
-                <div className="w-20 h-20 rounded-2xl bg-cyan-600/10 flex items-center justify-center ring-1 ring-cyan-600/10">
-                  <IconComponent className="w-12 h-12 text-cyan-700" />
+          {/* Right: delivery formats */}
+          <div className="lg:col-span-5">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl sm:p-8">
+              <div className="flex items-center gap-4">
+                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand text-white shadow-md" aria-hidden="true">
+                  <Icon className="h-7 w-7" />
+                </span>
+                <div>
+                  <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">Program Overview</h2>
+                  <p className="text-sm text-slate-500">Formats you can choose from</p>
                 </div>
-                <h2 className="mt-5 text-2xl font-bold text-slate-900">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-cyan-700">
-                    Program Overview
-                  </span>
-                </h2>
-                <ul className="mt-4 space-y-3 text-slate-700">
-                  {(service.deliveryFormats ?? []).map((f: DeliveryFormat, idx: number) => (
-                    <li key={String(idx)} className="flex items-start gap-3">
-                      <span className="mt-2 inline-block h-2.5 w-2.5 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500" />
-                      <div>
-                        <div className="font-semibold">{f.format}</div>
-                        <div className="text-sm opacity-80">
-                          {f.duration} • {f.description}
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
               </div>
-              {/* soft outer glow to blend with section */}
-              <div className="pointer-events-none absolute -inset-1 rounded-[1.6rem] bg-gradient-to-b from-sky-400/10 to-cyan-400/0 blur-2xl -z-10" />
+
+              <ul className="mt-6 divide-y divide-slate-100">
+                {(service.deliveryFormats ?? []).map((f) => (
+                  <li key={f.format} className="flex items-start justify-between gap-4 py-3.5 first:pt-0 last:pb-0">
+                    <div className="min-w-0">
+                      <p className="font-semibold text-slate-900">{f.format}</p>
+                      {f.description && <p className="mt-0.5 text-sm text-slate-600">{f.description}</p>}
+                    </div>
+                    {f.duration && (
+                      <span className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-orange-50 px-2.5 py-1 text-xs font-semibold text-brand">
+                        <Clock className="h-3.5 w-3.5" aria-hidden="true" />
+                        {f.duration}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import type { FC } from "react";
 import { useMemo, useState } from "react";
+import { FlaskConical, Toolbox, type LucideIcon } from "lucide-react";
 
 /* ============================== Types ============================== */
 interface Category {
@@ -64,16 +65,17 @@ const assignColors = (tools: Tool[]): Tool[] => {
     }));
 };
 
-/* ============================== Emoji Icons ============================== */
-/** WhatsApp-style = emoji glyphs. These render as the platform emoji, like in chat. */
-const EMOJI_MAP: Record<string, string> = {
-    "REST Assured": "🧪",
+/* ============================== Fallback Icons ============================== */
+/** Lucide icons for tools without a logo. */
+const ICON_MAP: Record<string, LucideIcon> = {
+    "REST Assured": FlaskConical,
 };
 
-const emojiFor = (name: string) => EMOJI_MAP[name] ?? "🧰";
+const iconFor = (name: string): LucideIcon => ICON_MAP[name] ?? Toolbox;
 
-const EmojiIcon: FC<{ name: string; color: Accent }> = ({ name, color }) => {
+const ToolIcon: FC<{ name: string; color: Accent }> = ({ name, color }) => {
     const colors = COLOR_MAP[color];
+    const Icon = iconFor(name);
     return (
         <div
             className={`${colors.iconBg} rounded-lg h-8 w-8 sm:h-10 sm:w-10 shrink-0 flex items-center justify-center`}
@@ -81,7 +83,7 @@ const EmojiIcon: FC<{ name: string; color: Accent }> = ({ name, color }) => {
             aria-label={`${name} icon`}
             title={name}
         >
-            <span className="text-white text-base sm:text-lg leading-none">{emojiFor(name)}</span>
+            <Icon className="text-white h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
         </div>
     );
 };
@@ -182,7 +184,7 @@ const ToolCard: FC<ToolCardProps> = ({ tool }) => {
                 {tool.logo ? (
                     <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
                 ) : (
-                    <EmojiIcon name={tool.name} color={color} />
+                    <ToolIcon name={tool.name} color={color} />
                 )}
                 <div className="min-w-0">
                     <h3 className="text-lg font-semibold text-gray-900 leading-tight">{tool.name}</h3>

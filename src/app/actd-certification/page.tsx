@@ -12,6 +12,8 @@ import JsonLd from "@/components/JsonLd";
 import ACTDCertificationHeroSection from "@/components/sections/ACTDCertificationHeroSection";
 import ACTDCertificationTracksSection from "@/components/sections/ACTDCertificationTracksSection";
 import ACTDCertificationProgressFaqSection from "@/components/sections/ACTDCertificationProgressFaqSection";
+import { SITE_STATS } from "@/lib/siteStats";
+import { ACTD_FAQS } from "@/data/actdFaqs";
 
 /* ---------- SEO ---------- */
 export const metadata: Metadata = generateStaticPageMetadata({
@@ -60,29 +62,13 @@ export default function ACTDCertificationTrainingPage() {
     ],
     prerequisites: ["Basic software testing knowledge", "Programming fundamentals"],
     duration: "P10W",
-    rating: 4.7,
-    reviewCount: 120,
+    rating: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
   };
 
   const consolidatedSchemas = generateActdCertificationPageAllSchemas({
-    faqs: [
-      {
-        question: "What does ACTD stand for?",
-        answer: "ACTD stands for Agile, Cloud, and Test-Driven Development. It's a comprehensive certification that covers modern testing practices in agile and cloud environments.",
-      },
-      {
-        question: "How long is the ACTD certification program?",
-        answer: "The ACTD Certification program is a 10-week intensive course with approximately 15 hours of learning per week, including live sessions, practical labs, and project work.",
-      },
-      {
-        question: "Do I need prior cloud experience for ACTD?",
-        answer: "Prior cloud experience is helpful but not mandatory. The course covers cloud fundamentals and gradually progresses to advanced cloud testing strategies.",
-      },
-      {
-        question: "What are the career opportunities after ACTD certification?",
-        answer: "ACTD certification opens doors to roles like Agile QA Engineer, Cloud Test Engineer, DevOps Tester, Test Automation Specialist, and Senior QA positions in companies adopting agile and cloud practices.",
-      },
-    ],
+    // Same list the page shows, so the FAQPage schema matches the visible FAQ.
+    faqs: ACTD_FAQS,
     howToSteps: [
       { name: "Track Selection", text: "Choose your specialization in Agile, Cloud, or Test-Driven Development." },
       { name: "Hands-on Labs", text: "Complete the 10-week intensive curriculum with practical scenario tasks." },

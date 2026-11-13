@@ -22,6 +22,7 @@ import BrochureDownloadModal from '@/components/home/BrochureDownloadModal';
 import YouTubeVideoModal from '@/components/home/YouTubeVideoModal';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 const LeadForm = dynamic(() => import('./LeadForm'), {
     loading: () => <div className="w-full h-[450px] bg-slate-50 animate-pulse rounded-xl" />,
@@ -149,7 +150,7 @@ const DesktopHeroContent: React.FC<{
                                 <Users className="h-5 w-5 text-white" />
                             </div>
                             <div className="text-center lg:text-left">
-                                <div className="text-xl font-bold text-slate-900">5,000+</div>
+                                <div className="text-xl font-bold text-slate-900"><SiteStat k="studentsPlaced" /></div>
                                 <div className="text-xs text-slate-600">Students Placed</div>
                             </div>
                         </div>
@@ -160,7 +161,7 @@ const DesktopHeroContent: React.FC<{
                                 <Star className="h-5 w-5 text-white fill-white" />
                             </div>
                             <div className="text-center lg:text-left">
-                                <div className="text-xl font-bold text-slate-900">4.9/5</div>
+                                <div className="text-xl font-bold text-slate-900"><SiteStat k="rating" /></div>
                                 <div className="text-xs text-slate-600">Student Rating</div>
                             </div>
                         </div>
@@ -194,10 +195,10 @@ const MobileFeatureList: React.FC<{ onOpenBrochure: () => void; onOpenVideo: () 
         <div className="grid grid-cols-2 gap-3 text-sm text-slate-700">
             <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-green-600 flex-shrink-0" />
-                <span className="font-semibold">425+ Verified Reviews</span>
+                <span className="font-semibold"><SiteStat k="reviews" /> Verified Reviews</span>
             </div>
             <div className="flex items-center gap-2">
-                <span className="font-semibold">4.9/5 Student Rating</span>
+                <span className="font-semibold"><SiteStat k="rating" /> Student Rating</span>
             </div>
             <div className="flex items-center gap-2">
                 <Award className="h-4 w-4 text-indigo-600 flex-shrink-0" />

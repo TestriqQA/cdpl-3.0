@@ -1,7 +1,8 @@
-import { ArrowRight, Download, CheckCircle } from "lucide-react";
+import { ArrowRight, Download, CheckCircle, PartyPopper, Phone, Mail, Globe } from "lucide-react";
 import Link from "next/link";
 import EnrollButton from "./ui/EnrollButton";
 import SyllabusButton from "./ui/SyllabusButton";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 export default function CtaSection() {
     const courseName = "AI Bootcamp Course";
@@ -42,7 +43,7 @@ export default function CtaSection() {
                                 description: "Job Assistance",
                             },
                             {
-                                title: "9.6/10",
+                                title: <SiteStat k="rating" />,
                                 description: "Program Rating",
                             },
                         ].map((benefit, idx) => (
@@ -81,7 +82,7 @@ export default function CtaSection() {
 
                     {/* Limited Time Offer – original offer + small SEO boost */}
                     <div className="bg-orange-500/20 border-2 border-orange-400 rounded-lg p-6 mb-10">
-                        <p className="text-orange-200 font-semibold mb-2">🎉 Limited Time Offer</p>
+                        <p className="text-orange-200 font-semibold mb-2 flex items-center justify-center gap-2"><PartyPopper className="w-5 h-5" aria-hidden="true" /> Limited Time Offer</p>
                         <p className="text-white text-lg font-bold">
                             Get <span className="text-orange-300">20% OFF</span> when you enroll this week!
                         </p>
@@ -130,14 +131,14 @@ export default function CtaSection() {
                             href="tel:+917888383788"
                             className="flex items-center gap-2 hover:text-orange-400 transition-colors"
                         >
-                            <span>📞</span> +91 788-83-83-788
+                            <Phone className="w-5 h-5" aria-hidden="true" /> +91 788-83-83-788
                         </Link>
                         <div className="hidden sm:block w-px h-6 bg-white/20"></div>
                         <Link
                             href="mailto:contact@cinutedigital.com"
                             className="flex items-center gap-2 hover:text-orange-400 transition-colors"
                         >
-                            <span>✉️</span> contact@cinutedigital.com
+                            <Mail className="w-5 h-5" aria-hidden="true" /> contact@cinutedigital.com
                         </Link>
                         <div className="hidden sm:block w-px h-6 bg-white/20"></div>
                         <Link
@@ -146,7 +147,7 @@ export default function CtaSection() {
                             rel="noopener noreferrer"
                             className="flex items-center gap-2 hover:text-orange-400 transition-colors"
                         >
-                            <span>🌐</span> www.cinutedigital.com
+                            <Globe className="w-5 h-5" aria-hidden="true" /> www.cinutedigital.com
                         </Link>
                     </div>
                 </div>

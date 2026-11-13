@@ -1,3 +1,5 @@
+import { SITE_STATS } from "@/lib/siteStats";
+
 export type PromptEngineeringFaq = {
     question: string;
     answer: string;
@@ -39,6 +41,6 @@ export const PROMPT_ENGINEERING_FAQS: PromptEngineeringFaq[] = [
 ];
 
 export const PROMPT_ENGINEERING_REVIEW_DATA = {
-    ratingValue: 4.9,
-    reviewCount: 150,
+    ratingValue: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
 };

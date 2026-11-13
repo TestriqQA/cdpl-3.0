@@ -1,6 +1,7 @@
 "use client";
 // components/powerbi/CareerSection.tsx
 import React, { useState } from "react";
+import { BarChart3, TrendingUp, Calculator, ChartCandlestick, Factory, Truck, Wallet, Megaphone, type LucideIcon } from "lucide-react";
 import CareerSessionModal from "../CareerSessionModal";
 
 type ColorVariant =
@@ -15,7 +16,7 @@ type ColorVariant =
 
 interface RoleCardProps {
   title: string;
-  emoji: string;
+  icon: LucideIcon;
   color: ColorVariant;
 }
 
@@ -33,7 +34,7 @@ const palette: Record<
   teal: { bg: "bg-teal-100", text: "text-teal-700", ring: "ring-teal-200", grad: "from-teal-500/20 to-cyan-500/20" },
 };
 
-const RoleCard: React.FC<RoleCardProps> = ({ title, emoji, color }) => {
+const RoleCard: React.FC<RoleCardProps> = ({ title, icon: Icon, color }) => {
   const c = palette[color];
 
   return (
@@ -51,8 +52,8 @@ const RoleCard: React.FC<RoleCardProps> = ({ title, emoji, color }) => {
           "hover:shadow-lg focus-within:ring-2", c.ring, "transition-all duration-300",
         ].join(" ")}
       >
-        <div className={`p-4 rounded-full mb-4 ${c.bg} ${c.text} text-3xl`} aria-hidden="true">
-          {emoji}
+        <div className={`p-4 rounded-full mb-4 ${c.bg} ${c.text}`} aria-hidden="true">
+          <Icon className="w-8 h-8" />
         </div>
         <h3
           id={`role-${title.replace(/\s+/g, "-").toLowerCase()}`}
@@ -70,14 +71,14 @@ const CareerSection: React.FC = () => {
   const courseName = "Data Analytics & Visualization with Power BI";
 
   const jobRoles: RoleCardProps[] = [
-    { title: "Power BI Analyst", emoji: "📊", color: "blue" },
-    { title: "Business Intelligence Analyst", emoji: "📈", color: "orange" },
-    { title: "Data Analyst", emoji: "🧮", color: "green" },
-    { title: "Financial Analyst", emoji: "💹", color: "purple" },
-    { title: "Operations Analyst", emoji: "🏭", color: "pink" },
-    { title: "Supply Chain Analyst", emoji: "🚚", color: "indigo" },
-    { title: "Sales Analyst", emoji: "💰", color: "amber" },
-    { title: "Marketing Analyst", emoji: "📣", color: "teal" },
+    { title: "Power BI Analyst", icon: BarChart3, color: "blue" },
+    { title: "Business Intelligence Analyst", icon: TrendingUp, color: "orange" },
+    { title: "Data Analyst", icon: Calculator, color: "green" },
+    { title: "Financial Analyst", icon: ChartCandlestick, color: "purple" },
+    { title: "Operations Analyst", icon: Factory, color: "pink" },
+    { title: "Supply Chain Analyst", icon: Truck, color: "indigo" },
+    { title: "Sales Analyst", icon: Wallet, color: "amber" },
+    { title: "Marketing Analyst", icon: Megaphone, color: "teal" },
   ];
 
   return (

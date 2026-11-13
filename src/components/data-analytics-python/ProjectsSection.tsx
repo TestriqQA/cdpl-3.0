@@ -1,4 +1,7 @@
-import { Zap, Users, BarChart3, TrendingUp } from "lucide-react";
+import {
+    Zap, Users, BarChart3, TrendingUp,
+    Plane, Hospital, Smartphone, Landmark, Car, Package,
+} from "lucide-react";
 
 interface Project {
     title: string;
@@ -33,15 +36,15 @@ export default function ProjectsSection() {
     ];
 
     const domains = [
-        { name: "Aviation", icon: "✈️" },
-        { name: "Healthcare", icon: "🏥" },
-        { name: <>Telecomm<br className="lg:hidden" />unication</>, icon: "📱" },
-        { name: "BFSI", icon: "🏦" },
-        { name: "Social Media", icon: "📱" },
-        { name: "Automobile", icon: "🚗" },
-        { name: "Sales & Marketing", icon: "📊" },
-        { name: "Human Resources", icon: "👥" },
-        { name: "Supply Chain", icon: "📦" },
+        { name: "Aviation", icon: Plane },
+        { name: "Healthcare", icon: Hospital },
+        { name: <>Telecomm<br className="lg:hidden" />unication</>, icon: Smartphone },
+        { name: "BFSI", icon: Landmark },
+        { name: "Social Media", icon: Smartphone },
+        { name: "Automobile", icon: Car },
+        { name: "Sales & Marketing", icon: BarChart3 },
+        { name: "Human Resources", icon: Users },
+        { name: "Supply Chain", icon: Package },
     ];
 
     return (
@@ -116,7 +119,7 @@ export default function ProjectsSection() {
                                 key={idx}
                                 className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:border-orange-400 transition-colors text-center"
                             >
-                                <div className="text-3xl mb-2">{domain.icon}</div>
+                                <domain.icon className="w-8 h-8 mx-auto mb-2 text-orange-400" aria-hidden="true" />
                                 <p className="text-sm font-semibold text-white">{domain.name}</p>
                             </div>
                         ))}

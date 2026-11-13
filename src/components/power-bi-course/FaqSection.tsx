@@ -1,7 +1,7 @@
 "use client";
 // components/powerbi/FaqSection.tsx
 import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, type LucideIcon } from "lucide-react";
 import EnrollModal from "../EnrollModal";
 
 import { POWER_BI_FAQS } from "@/data/powerBiData";
@@ -13,7 +13,7 @@ interface FaqItem {
   question: string;
   answer: string;
   details?: string[];
-  emoji: string;
+  icon: LucideIcon;
   color: ColorVariant;
   category?: string;
 }
@@ -68,13 +68,13 @@ function FaqRow({
           <span className="flex items-center text-lg font-semibold text-gray-800">
             <span
               className={[
-                "mr-3 inline-flex items-center justify-center h-9 w-9 rounded-full text-xl select-none",
+                "mr-3 inline-flex items-center justify-center h-9 w-9 rounded-full flex-shrink-0 select-none",
                 c.bg,
                 c.text,
               ].join(" ")}
               aria-hidden="true"
             >
-              {item.emoji}
+              <item.icon className="w-5 h-5" />
             </span>
             {item.question}
           </span>

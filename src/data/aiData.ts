@@ -1,9 +1,10 @@
 import { type QA } from "../types/faq";
+import { SITE_STATS, STAT_TEXT } from "@/lib/siteStats";
 
 export const AI_FAQS: QA[] = [
     {
         question: "What is the comprehensive masters in ai and ml program in Mumbai?",
-        answer: "Our ai master program mumbai offers 255 hours of hands-on training, portfolio projects, and placement support. It's rated 4.9/5 by our learners. Perfect for masters in ai in india.",
+        answer: `Our ai master program mumbai offers 255 hours of hands-on training, portfolio projects, and placement support. It's rated ${STAT_TEXT.rating} by our learners. Perfect for masters in ai in india.`,
         category: "General",
     },
     {
@@ -44,6 +45,6 @@ export const AI_FAQS: QA[] = [
 ];
 
 export const AI_REVIEW_DATA = {
-    ratingValue: 4.9,
-    reviewCount: 320,
+    ratingValue: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
 };

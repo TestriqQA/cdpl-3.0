@@ -1,3 +1,4 @@
+import { STAT_TEXT } from "@/lib/siteStats";
 // import { Url } from "next/dist/shared/lib/router/router";
 
 // types/courseData.ts
@@ -3928,7 +3929,7 @@ export const courseData: Record<string, CourseData> = {
       "description": "Learn comprehensive software testing skills from industry experts in Hyderabad. Master manual testing, automation, performance testing, and quality assurance to launch your career in tech.",
       "certifications": ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       "stats": [
-        { "number": "4.9/5", "label": "Learner Rating", "description": "From 425+ verified reviews" },
+        { "number": STAT_TEXT.rating, "label": "Learner Rating", "description": `From ${STAT_TEXT.reviews} verified reviews` },
         { "number": "Yes", "label": "Placement Support", "description": "Dedicated career assistance" },
         { "number": "12", "label": "Weeks Duration", "description": "Intensive learning program" },
         { "number": "24/7", "label": "Mentor Support", "description": "Dedicated mentorship available" }
@@ -348169,8 +348170,8 @@ export const courseData: Record<string, CourseData> = {
       description: "Looking for the **comprehensive digital marketing courses in Mumbai** with placement? Fast-track your career with Cinute Digital's comprehensive training. We specialize in **SEO, Google Ads, Content Marketing, and Social Media Marketing**, ensuring you gain practical, job-ready skills. Whether you are a student exploring **marketing courses in India** or a professional upskilling in **search engine optimization course in Mumbai**, our program is tailored for you. Join successful alumni who have launched careers in top agencies and firms. With **affordable fees** and dedicated **placement support**, we are the leading choice for **digital marketing course Mumbai** aspirants.",
       certifications: ["Google Ads & Analytics Certified", "Meta Marketing Associate", "ISTQB & Industry-Recognized"],
       stats: [
-        { number: "5000+", label: "Placements Achieved", description: "Successfully placed in top agencies" },
-        { number: "4.9/5", label: "Student Rating", description: "Based on 1200+ Google reviews" },
+        { number: STAT_TEXT.studentsPlaced, label: "Placements Achieved", description: "Successfully placed in top agencies" },
+        { number: STAT_TEXT.rating, label: "Student Rating", description: `Based on ${STAT_TEXT.reviews} Google reviews` },
         { number: "90+", label: "Real-World Projects", description: "Hands-on industry experience" },
         { number: "24/7", label: "Mentor Support", description: "Job-outcome focused mentorship" }
       ],

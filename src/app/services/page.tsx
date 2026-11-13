@@ -54,6 +54,7 @@ export default async function TrainingServicesPage() {
       slug: s.slug,
       title: s.title,
       shortDescription: s.shortDescription,
+      image: s.ogImage || "/og-images/services-og.webp",
     }))
   );
 

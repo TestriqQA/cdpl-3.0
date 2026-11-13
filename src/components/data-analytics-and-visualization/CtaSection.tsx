@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, PartyPopper } from "lucide-react";
 import EnrollModal from "../EnrollModal";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
@@ -112,8 +112,8 @@ export default function CtaSection() {
 
                 {/* Bottom section - Limited offer */}
                 <div className="mt-16 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-2xl p-8 text-center">
-                    <p className="text-yellow-100 text-lg mb-4">
-                        🎉 Limited Time Offer - Enroll Today and Get
+                    <p className="text-yellow-100 text-lg mb-4 flex items-center justify-center gap-2">
+                        <PartyPopper className="w-5 h-5" aria-hidden="true" /> Limited Time Offer - Enroll Today and Get
                     </p>
                     <h3 className="text-3xl font-bold text-white mb-6">
                         30% Discount + Free Career Consultation

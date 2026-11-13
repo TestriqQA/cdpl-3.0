@@ -1,208 +1,154 @@
 // src/components/sections/ServicesHeroSection.tsx
+// Laid out after MentorHeroSection: breadcrumbs, two-tone heading, intro,
+// two CTAs and a trust line on the left; the hero image with floating icon
+// bubbles on the right.
 "use client";
-
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { Home, ChevronRight, Sparkles, ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useState } from "react";
+import {
+  ArrowRight,
+  Building2,
+  Check,
+  ChevronRight,
+  GraduationCap,
+  Home,
+  Presentation,
+  Trophy,
+} from "lucide-react";
 
 const WorkshopRequestModal = dynamic(() => import("../WorkshopRequestModal"), { ssr: false });
-
-
-
-const gradientText =
-  "bg-clip-text text-transparent bg-[linear-gradient(90deg,#0ea5e9,#2563eb,#22c55e)]";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
 ];
 
+// Same bubbles as the mentors hero (keyframes live in globals.css).
+const FLOATERS = [
+  { Icon: Presentation, pos: "-left-4 top-6", color: "text-sky-500", anim: "cdpl-float-a 6s ease-in-out infinite" },
+  { Icon: GraduationCap, pos: "right-2 -top-4", color: "text-brand", anim: "cdpl-float-b 7s ease-in-out infinite" },
+  { Icon: Building2, pos: "-left-6 bottom-10", color: "text-emerald-500", anim: "cdpl-float-b 6.5s ease-in-out infinite" },
+  { Icon: Trophy, pos: "-right-4 bottom-16", color: "text-amber-500", anim: "cdpl-float-a 7.5s ease-in-out infinite" },
+];
+
+const HIGHLIGHTS = ["Customizable curriculum", "Hands-on labs & capstones", "Interview prep & reporting"];
+
 export default function ServicesHeroSection() {
   const [isWorkshopModalOpen, setIsWorkshopModalOpen] = useState(false);
   const scrollToGrid = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    document
-      .getElementById("services-grid")
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById("services-grid")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
   return (
     <>
-      <section
-        aria-labelledby="services-heading"
-        className="relative mx-auto max-w-7xl px-4 pt-8 pb-10 sm:px-6 lg:px-8 isolate overflow-hidden"
-      >
-        {/* Background aura across container */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
-          <div
-            className="mx-auto -mt-20 h-48 w-full max-w-7xl rounded-[999px] blur-3xl sm:h-56"
-            style={{
-              background:
-                "radial-gradient(50% 50% at 50% 50%, rgba(14,165,233,0.10) 0%, rgba(34,197,94,0.10) 50%, rgba(37,99,235,0.10) 100%)",
-            }}
-          />
+      <section aria-labelledby="services-heading" className="relative isolate overflow-hidden text-slate-900">
+        {/* Glow (full-bleed). No solid fill: the page wrapper's gradient shows
+            through, so there is no seam with the section below. */}
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute left-1/2 top-[-6rem] h-[30rem] w-[60rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,theme(colors.indigo.200)_0,transparent_60%)] opacity-40 blur-3xl" />
         </div>
 
-        {/* Floating decorative images (smaller; respect container; behind content) */}
-        <div aria-hidden className="absolute inset-0 -z-10 pointer-events-none">
-          {/* Top-left float */}
-          <div
-            className="hidden sm:block absolute left-2 top-2"
-            style={{ width: 56, height: 56 }}
-          >
-            <Image
-              src="/services/training_board.png"
-              alt=""
-              width={112}
-              height={112}
-              className="w-full h-full object-contain opacity-80 mix-blend-multiply dark:mix-blend-normal"
-              priority={false}
-            />
-          </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 pt-10 pb-12 sm:px-6 lg:px-8">
+          {/* Breadcrumbs for SEO & UX */}
+          <nav aria-label="Breadcrumb" className="mb-4 -mx-4 overflow-x-auto px-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            <ol className="flex items-center gap-2 whitespace-nowrap text-sm text-slate-600">
+              {breadcrumbs.map((c, i) => {
+                const isLast = i === breadcrumbs.length - 1;
+                return (
+                  <li key={c.href} className="flex items-center gap-2">
+                    {i === 0 ? <Home className="h-4 w-4" aria-hidden="true" /> : <ChevronRight className="h-4 w-4" aria-hidden="true" />}
+                    <Link
+                      href={c.href}
+                      title={c.label}
+                      aria-current={isLast ? "page" : undefined}
+                      className={`hover:text-indigo-700 ${isLast ? "font-semibold text-slate-900" : ""}`}
+                    >
+                      {c.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
 
-          {/* Middle-top (center-right) float */}
-          <div
-            className="hidden md:block absolute right-[20%] top-0"
-            style={{ width: 64, height: 64 }}
-          >
-            <Image
-              src="/services/training_board.png"
-              alt=""
-              width={128}
-              height={128}
-              className="w-full h-full object-contain opacity-80 mix-blend-multiply dark:mix-blend-normal"
-              priority={false}
-            />
-          </div>
+          <div className="grid grid-cols-1 items-center gap-8 sm:gap-10 lg:grid-cols-2">
+            {/* LEFT — copy */}
+            <div className="order-1 text-center lg:text-left">
+              <h1 id="services-heading" className="mt-3 text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+                <span className="text-sky-600">Upskill Teams with</span>{" "}
+                <span className="text-brand">Industry-Ready Programs</span>
+              </h1>
 
-          {/* Bottom-right float */}
-          <div
-            className="hidden lg:block absolute right-3 bottom-2"
-            style={{ width: 72, height: 72 }}
-          >
-            <Image
-              src="/services/training_board.png"
-              alt=""
-              width={144}
-              height={144}
-              className="w-full h-full object-contain opacity-80 mix-blend-multiply dark:mix-blend-normal"
-              priority={false}
-            />
-          </div>
-        </div>
+              <p className="mx-auto mt-6 max-w-3xl text-base leading-7 text-slate-700 sm:text-lg lg:mx-0">
+                End-to-end workshops, bootcamps, and academic collaborations across{" "}
+                <strong>Software Testing</strong>, <strong>Automation</strong>, <strong>Data Science</strong>, and{" "}
+                <strong>AI/ML</strong>. Live projects, expert mentors, and placement assistance, designed for real impact.
+              </p>
 
-        {/* Breadcrumbs */}
-        <nav aria-label="Breadcrumb" className="mb-4">
-          <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
-            {breadcrumbs.map((c, i) => (
-              <li key={i} className="flex items-center gap-2">
-                {i === 0 ? <Home className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+              {/* CTAs */}
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:justify-start">
                 <Link
-                  href={c.href}
-                  className={`hover:text-indigo-700 ${i === breadcrumbs.length - 1 ? "font-semibold text-slate-900" : ""}`}
+                  href="#services-grid"
+                  onClick={scrollToGrid}
+                  className="inline-flex items-center justify-center rounded-2xl bg-brand px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-orange-200 transition hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300"
                 >
-                  {c.label}
+                  Explore Programs <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </Link>
-              </li>
-            ))}
-          </ol>
-        </nav>
+                <button
+                  type="button"
+                  onClick={() => setIsWorkshopModalOpen(true)}
+                  className="inline-flex cursor-pointer items-center justify-center rounded-2xl border border-orange-300 bg-white px-5 py-3 text-sm font-semibold text-slate-800 shadow-sm transition hover:bg-orange-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300"
+                >
+                  Request a Workshop
+                </button>
+              </div>
 
-        <div className="grid grid-cols-1 items-start gap-6 sm:gap-8 lg:grid-cols-2">
-          {/* LEFT */}
-          <div className="order-1 lg:order-1 relative z-10">
-            <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-3 py-2 text-[11px] font-medium text-slate-700 shadow-sm backdrop-blur sm:text-xs">
-                <Sparkles className="h-3.5 w-3.5" aria-hidden />
-                Training &amp; Event Services
-              </span>
+              {/* Trust line */}
+              <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-slate-600 lg:justify-start">
+                {HIGHLIGHTS.map((h) => (
+                  <li key={h} className="inline-flex items-center gap-1.5">
+                    <Check className="h-4 w-4 text-emerald-600" strokeWidth={3} aria-hidden="true" />
+                    {h}
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <h1
-              id="services-heading"
-              className={`mt-3 py-1 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl ${gradientText}`}
-            >
-              Upskill Teams with <span className="text-blue-700">Industry-Ready Programs</span>
-            </h1>
-
-            <p
-              className="mt-3 max-w-2xl text-[15px] leading-7 text-slate-700 sm:text-base md:text-lg"
-            >
-              End-to-end workshops, bootcamps, and academic collaborations across{" "}
-              <strong>Software Testing</strong>, <strong>Automation</strong>,{" "}
-              <strong>Data Science</strong>, and <strong>AI/ML</strong>. Live projects, expert mentors,
-              and placement assistance—designed for real impact.
-            </p>
-
-            <ul
-              className="mt-4 grid gap-2.5 text-sm text-slate-700 sm:text-base"
-            >
-              {[
-                "Customizable curriculum for corporates & institutes",
-                "Hands-on labs with case studies and capstones",
-                "Interview prep, assessments, and reporting",
-              ].map((t, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-5 w-5 flex-none" aria-hidden />
-                  <span>{t}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div
-              className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
-            >
-              {/* Smooth scroll to services grid */}
-              <Link
-                href="#services-grid"
-                onClick={scrollToGrid}
-                className="inline-flex w-full items-center justify-center rounded-2xl bg-blue-700 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-slate-900/10 transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2 sm:w-auto"
-              >
-                Explore Programs <ArrowRight className="ml-2 h-4 w-4" aria-hidden />
-              </Link>
-
-              <button
-                onClick={() => setIsWorkshopModalOpen(true)}
-                className="cursor-pointer inline-flex w-full items-center justify-center rounded-2xl border border-brand bg-white/10 px-5 py-3 text-sm font-semibold text-brand shadow-sm transition hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2 sm:w-auto"
-              >
-                Request a Workshop
-              </button>
+            {/* RIGHT — image with floating bubbles */}
+            <div className="order-2 flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-[20rem] sm:max-w-[24rem] lg:max-w-[28rem]">
+                {FLOATERS.map(({ Icon, pos, color, anim }) => (
+                  <span
+                    key={pos}
+                    aria-hidden="true"
+                    className={`absolute z-10 hidden h-12 w-12 place-items-center rounded-full bg-white shadow-[0_8px_30px_rgba(2,6,23,0.08)] ring-1 ring-slate-200 sm:grid ${pos}`}
+                    style={{ animation: anim }}
+                  >
+                    <Icon className={`h-5 w-5 ${color}`} />
+                  </span>
+                ))}
+                <Image
+                  src="/services/events_servies-hero.png"
+                  alt="Training & Event Services hero"
+                  title="Training & Event Services hero"
+                  width={800}
+                  height={800}
+                  sizes="(max-width: 640px) 80vw, 448px"
+                  className="h-auto w-full mix-blend-multiply"
+                  priority
+                  fetchPriority="high"
+                  quality={60}
+                />
+              </div>
             </div>
-          </div>
-
-          {/* RIGHT — bigger, borderless, blended visual */}
-          {/* RIGHT — bigger, borderless, blended visual - ANIMATION REMOVED FOR LCP */}
-          <div
-            className="order-2 lg:order-2 relative mt-4 lg:mt-6 h-72 w-full sm:h-80 md:h-[26rem] lg:h-[28rem]"
-            aria-label="Team training and events hero visual"
-          >
-            {/* Soft glow blobs behind the image to blend into hero */}
-            <div
-              aria-hidden
-              className="absolute -inset-x-10 -top-6 h-64 blur-2xl opacity-60"
-              style={{
-                background:
-                  "radial-gradient(60% 60% at 70% 40%, rgba(99,102,241,.28), transparent 60%), radial-gradient(50% 50% at 20% 80%, rgba(34,197,94,.28), transparent 60%)",
-              }}
-            />
-            {/* Bigger image: no border, scaled up slightly */}
-            <Image
-              src="/services/events_servies-hero.png"
-              alt="Training & Event Services hero"
-              title="Training & Event Services hero"
-              fill
-              sizes="(max-width: 480px) 150px, (max-width: 640px) 256px, (max-width: 1024px) 50vw, 33vw"
-              className="object-contain pointer-events-none select-none mix-blend-multiply dark:mix-blend-normal transform-gpu scale-[1.10] md:scale-[1.16] lg:scale-[1.20]"
-              priority
-              fetchPriority="high"
-              quality={50}
-            />
           </div>
         </div>
       </section>
+
       {isWorkshopModalOpen && (
         <WorkshopRequestModal
           isOpen={isWorkshopModalOpen}

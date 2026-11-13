@@ -1,7 +1,8 @@
 // Sections imported directly — next/dynamic(ssr:true) only added client Suspense
 // boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 import MockTestHero from "@/components/mock-test/MockTestHero";
-import MockTestListing from "@/components/mock-test/MockTestListing";
+import MockTestListing, { type MockCategorySummary } from "@/components/mock-test/MockTestListing";
+import { mockCategories } from "@/data/mockTestData";
 import { generateMockTestPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
@@ -61,8 +62,24 @@ export default function MockTestLandingPage() {
     ],
   });
 
+  // The listing only needs names, slugs and question counts. Passing this
+  // summary (instead of the listing importing mockTestData itself) keeps the
+  // whole question bank out of the client bundle.
+  const categories: MockCategorySummary[] = mockCategories.map((c) => ({
+    id: c.id,
+    name: c.name,
+    tests: c.courses.map((t) => ({
+      id: t.id,
+      slug: t.slug,
+      name: t.name,
+      categoryId: t.categoryId,
+      questionCount: t.questions.length,
+    })),
+  }));
+  const testCount = categories.reduce((n, c) => n + c.tests.length, 0);
+
   return (
-    <div className="relative isolate overflow-hidden min-h-screen bg-white text-slate-800 font-sans selection:bg-brand-100 selection:text-brand-900">
+    <div className="bg-white text-slate-800 selection:bg-brand-100 selection:text-brand-900">
       {mockSchemas.map((schema, index) => (
         <JsonLd
           key={`mock-schema-${index}`}
@@ -71,20 +88,11 @@ export default function MockTestLandingPage() {
         />
       ))}
 
-      {/* Background Decorations - Static. Absolute, not fixed: a fixed layer painted over the footer. */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/4" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-50/50 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.015)_1px,transparent_1px),linear-gradient(to_right,rgba(0,0,0,0.015)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-60" />
-      </div>
+      {/* LCP Element (Server Component - No Hydration) */}
+      <MockTestHero testCount={testCount} domainCount={categories.length} />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 py-16 lg:py-24">
-        {/* LCP Element (Server Component - No Hydration) */}
-        <MockTestHero />
-
-        {/* Interactive Elements (Client Component) */}
-        <MockTestListing />
-      </div>
+      {/* Search, domain filter and the tests (Client Component) */}
+      <MockTestListing categories={categories} />
     </div>
   );
 }

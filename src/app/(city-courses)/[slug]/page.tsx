@@ -33,6 +33,7 @@ function interpolateLocation(text: string, location: string): string {
 }
 
 import NotFoundPage from "@/components/NotFoundPage";
+import { SITE_STATS } from "@/lib/siteStats";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -238,8 +239,8 @@ export default async function CoursePage({ params, searchParams }: PageProps): P
     prerequisites: ["Basic computer knowledge"],
     duration: parseDuration(data.courseDetails.duration),
     price: parsePrice(data.courseDetails.price),
-    rating: 4.8,
-    reviewCount: (data.localizedTestimonials?.length || 0) > 0 ? data.localizedTestimonials?.length : 425,
+    rating: SITE_STATS.rating,
+    reviewCount: (data.localizedTestimonials?.length || 0) > 0 ? data.localizedTestimonials?.length : SITE_STATS.reviewCount,
     reviews: data.localizedTestimonials?.map(t => ({
       author: t.author,
       rating: t.rating,

@@ -4,6 +4,7 @@
 // Includes accessible snap-scrolling on mobile and structured data for search engines.
 
 import ReviewsMarquee from "../sections/ReviewMarque";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 type Testimonial = {
   name: string;
@@ -70,13 +71,6 @@ export default function TestimonialsSection() {
   const keywords =
     "data science course reviews, machine learning student testimonials, placement success stories, ML portfolio feedback, Python training ratings";
 
-  // Aggregate rating (all 5 for demo data)
-  const aggregateRating = {
-    ratingValue: (
-      TESTIMONIALS.reduce((s, t) => s + t.rating, 0) / TESTIMONIALS.length
-    ).toFixed(1),
-    reviewCount: TESTIMONIALS.length,
-  };
 
   return (
     <section
@@ -109,8 +103,8 @@ export default function TestimonialsSection() {
             <span className="text-yellow-600" aria-hidden>
               ★★★★★
             </span>
-            <span aria-label={`Average rating ${aggregateRating.ratingValue} out of 5`}>
-              {aggregateRating.ratingValue}/5 · {aggregateRating.reviewCount} reviews
+            <span>
+              <SiteStat k="rating" /> · <SiteStat k="reviews" /> reviews
             </span>
           </div>
 

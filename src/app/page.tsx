@@ -15,7 +15,7 @@ import type { Metadata } from "next";
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateHomePageSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
-import { HOME_FAQS } from "@/components/home/HomeFAQSection";
+import { HOME_FAQS } from "@/data/homeFaqs";
 
 // ============================================================================
 // SECTION IMPORTS
@@ -34,6 +34,8 @@ import HomeTrustBarSection from '@/components/home/HomeTrustBarSection';
 // so they are imported statically and emit their markup in correct DOM order.
 import HomeLearningExperienceSection from '@/components/home/HomeLearningExperienceSection';
 import HomePlacementSupportSection from '@/components/home/HomePlacementSupportSection';
+import HomePlacementResultsBand from '@/components/home/HomePlacementResultsBand';
+import HomeReviewsSection from '@/components/home/HomeReviewsSection';
 import HomeWhyChooseSection from '@/components/home/HomeWhyChooseSection';
 import HomeLatestBlogSection from '@/components/home/HomeLatestBlogSection';
 // These four are client components, but in the App Router dynamic(ssr:true)
@@ -133,6 +135,8 @@ export default async function HomePage(): Promise<React.ReactElement> {
             <PlacementsCompanyWallSection sanityPartners={hiringPartners} />
           </div>
         </section>
+        <HomePlacementResultsBand />
+        <HomeReviewsSection />
         <HomeWhyChooseSection />
         <HomeLatestBlogSection posts={latestPosts} />
         <HomeFAQSection />

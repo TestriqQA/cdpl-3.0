@@ -24,16 +24,17 @@ export const revalidate = 120;
 // them directly removes the boundaries and the shift. Same reasoning as
 // BLG-010 for Header/Footer/SpecialOfferBanner in app/layout.tsx.
 import ReviewsHeroSection from "@/components/sections/ReviewsHeroSection";
-import JobsLiveJobsTestimonialSection from "@/components/sections/JobsLiveJobsTestimonialSection";
+import ReviewsVideoSection from "@/components/sections/ReviewsVideoSection";
 import ReviewsFeedbackSection from "@/components/sections/ReviewsFeedbackSection";
-import JobsLiveJobsReviewSection from "@/components/sections/JobsLiveJobsReviewSection";
+import ReviewsGoogleSection from "@/components/sections/ReviewsGoogleSection";
 import ReviewsCTAJoinSection from "@/components/sections/ReviewsCTAJoinSection";
+import { SITE_STATS, STAT_TEXT } from "@/lib/siteStats";
 
 // ---------- SEO Metadata ----------
 export const metadata: Metadata = generateStaticPageMetadata({
   title: "Student Reviews & Testimonials | CDPL",
   description:
-    "Read authentic student reviews and success stories for CDPL's Software Testing, Data Science and AI/ML courses — rated 4.9/5 across 425 reviews.",
+    `Read authentic student reviews and success stories for CDPL's Software Testing, Data Science and AI/ML courses — rated ${STAT_TEXT.rating} across ${SITE_STATS.reviewCount} reviews.`,
   keywords: [
     "CDPL reviews",
     "student testimonials",
@@ -76,11 +77,10 @@ export default function Page() {
         <JsonLd key={`reviews-schema-${index}`} id={`reviews-schema-${index}`} schema={schema} />
       ))}
 
-      {/* Sections (unchanged) */}
       <ReviewsHeroSection />
-      <JobsLiveJobsTestimonialSection />
+      <ReviewsVideoSection />
       <ReviewsFeedbackSection />
-      <JobsLiveJobsReviewSection />
+      <ReviewsGoogleSection />
       <ReviewsCTAJoinSection />
     </div>
   );

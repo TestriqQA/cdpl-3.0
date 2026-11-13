@@ -1,16 +1,7 @@
-"use client";
-
 import Image from "next/image";
-import Link from "next/link";
 import type React from "react";
-import {
-    UserPlus,
-    Link2 as LinkIcon,
-    MousePointerClick,
-    Receipt,
-    WalletMinimal,
-    CheckCircle2,
-} from "lucide-react";
+import { UserPlus, Link2 as LinkIcon, MousePointerClick, Receipt, WalletMinimal, CheckCircle2 } from "lucide-react";
+import AffiliateSectionHeader from "./AffiliateSectionHeader";
 
 type Step = {
     icon: React.ComponentType<{ className?: string }>;
@@ -27,142 +18,82 @@ const steps: Step[] = [
     { icon: CheckCircle2, title: "Grow Together", sub: "Co-branded webinars, case studies, and premium content drops." },
 ];
 
-// Solid tints (no gradients) + soft glow
-const palette = [
-    { dot: "#f43f5e", tint: "rgba(244,63,94,0.12)", glow: "rgba(244,63,94,0.25)" },   // rose-500
-    { dot: "#f59e0b", tint: "rgba(245,158,11,0.12)", glow: "rgba(245,158,11,0.25)" }, // amber-500
-    { dot: "#84cc16", tint: "rgba(132,204,22,0.12)", glow: "rgba(132,204,22,0.25)" }, // lime-500
-    { dot: "#0ea5e9", tint: "rgba(14,165,233,0.12)", glow: "rgba(14,165,233,0.25)" }, // sky-500
-    { dot: "#6d28d9", tint: "rgba(109,40,217,0.12)", glow: "rgba(109,40,217,0.25)" }, // violet-600
-    { dot: "#ec4899", tint: "rgba(236,72,153,0.12)", glow: "rgba(236,72,153,0.25)" }, // pink-500
-    { dot: "#4f46e5", tint: "rgba(79,70,229,0.12)", glow: "rgba(79,70,229,0.25)" },   // indigo-600
-];
-
 export default function AffiliateHowItWorksSection({
     imageSrc = "/affiliate_images/affiliate_steps.png",
     imageAlt = "Affiliate program illustration",
-    imagetitle = "Affiliate program illustration",
 }: {
     imageSrc?: string;
     imageAlt?: string;
-    imagetitle?: string;
 }) {
     return (
         <section
             id="how-it-works"
             aria-labelledby="how-heading"
-            className="relative mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 overflow-hidden"
+            className="mx-auto max-w-7xl scroll-mt-24 px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8"
             data-scroll-target="how-it-works"
         >
-            <div className="mb-8">
-                <h2 id="how-heading" className="text-3xl font-bold tracking-tight text-gray-900">
-                    How it works
-                </h2>
-                <p className="mt-2 max-w-2xl text-slate-600">
-                    A simple, transparent flow designed to respect your audience and reward consistency.
-                </p>
-            </div>
+            <AffiliateSectionHeader
+                id="how-heading"
+                eyebrow="How it works"
+                title="From application to"
+                accent="payout"
+                subtitle="A simple, transparent flow designed to respect your audience and reward consistency."
+            />
 
-            <div className="grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-[420px_1fr]">
-                {/* LEFT — illustration (blended; no borders/shadows) */}
-                <aside className="relative">
-                    <div className="lg:sticky lg:top-28">
-                        <div className="relative transition-transform duration-300 hover:scale-[1.015]">
-                            <div
-                                aria-hidden
-                                className="absolute -inset-x-12 -top-10 bottom-0 -z-10 blur-3xl"
-                                style={{
-                                    background:
-                                        "radial-gradient(420px 220px at 60% 35%, rgba(14,165,233,0.14), transparent 60%), radial-gradient(500px 260px at 30% 75%, rgba(99,102,241,0.10), transparent 65%)",
-                                    opacity: 0.9,
-                                }}
-                            />
-                            <Image
-                                src={imageSrc}
-                                alt={imageAlt}
-                                title={imagetitle}
-                                width={820}
-                                height={820}
-                                priority
-                                sizes="(max-width: 1024px) 90vw, 420px"
-                                className="h-auto w-full select-none"
-                                style={{
-                                    WebkitMaskImage:
-                                        "radial-gradient(130% 120% at 60% 40%, black 70%, transparent 100%)",
-                                    maskImage:
-                                        "radial-gradient(130% 120% at 60% 40%, black 70%, transparent 100%)",
-                                }}
-                            />
-                        </div>
-                    </div>
-                </aside>
+            <div className="mt-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-[420px_1fr] lg:gap-14">
+                {/* Illustration */}
+                <div className="relative mx-auto w-full max-w-md">
+                    <div aria-hidden="true" className="absolute inset-8 rounded-full bg-brand/15 blur-3xl" />
+                    <Image
+                        src={imageSrc}
+                        alt={imageAlt}
+                        width={820}
+                        height={820}
+                        sizes="(max-width: 1024px) 90vw, 420px"
+                        className="relative h-auto w-full select-none"
+                        style={{
+                            WebkitMaskImage: "radial-gradient(130% 120% at 60% 40%, black 70%, transparent 100%)",
+                            maskImage: "radial-gradient(130% 120% at 60% 40%, black 70%, transparent 100%)",
+                        }}
+                    />
+                </div>
 
-                {/* RIGHT — timeline (no borders, centered numbers, flat tints) */}
+                {/* Timeline */}
                 <div className="relative">
-                    {/* Spine */}
                     <div
                         aria-hidden="true"
-                        className="pointer-events-none absolute left-4 top-0 h-full w-1 -translate-x-1/2 rounded-full bg-gradient-to-b from-indigo-400 via-cyan-400 to-emerald-400 opacity-80 sm:left-6"
+                        className="pointer-events-none absolute bottom-5 left-5 top-5 w-1 -translate-x-1/2 rounded-full bg-gradient-to-b from-orange-200 via-orange-500 to-orange-200"
                     />
-
-                    <ol className="space-y-7">
+                    <ol className="space-y-4">
                         {steps.map((s, i) => {
                             const Icon = s.icon;
-                            const num = i + 1;
-                            // 'dot'/'glow' aren't used in the UI; keep palette intact but avoid lint error
-                            const { tint } = palette[i % palette.length];
-
                             return (
-                                <li
-                                    key={s.title}
-                                    className="relative"
-                                >
-                                    {/* Number centered on the spine */}
-                                    <div
-                                        className="absolute left-4 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 hover:scale-105 sm:left-6"
-                                        aria-hidden="true"
-                                    >
-                                        <div
-                                            className="grid h-10 w-10 place-items-center rounded-full bg-white text-slate-900"
-                                            style={{ boxShadow: `0 0 0 6px ${tint}` }}
-                                        >
-                                            <span className="text-sm font-bold leading-none">{num}</span>
-                                        </div>
-                                    </div>
-
-                                    {/* Connector (neutral, no gradient) */}
+                                <li key={s.title} className="relative flex items-start gap-4">
                                     <span
-                                        className="absolute left-5 top-1/2 -translate-y-1/2 w-[2.25rem] sm:left-7 sm:w-[3.25rem]"
+                                        className="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand text-sm font-bold text-white shadow-md ring-4 ring-orange-100"
                                         aria-hidden="true"
-                                        style={{ display: "block", height: 1, backgroundColor: "rgba(148,163,184,0.45)" }}
-                                    />
-
-                                    {/* Step pill — flat tint, no border */}
-                                    <div
-                                        className="ml-14 sm:ml-20 rounded-2xl px-4 py-3 sm:px-5 sm:py-4 shadow-[0_18px_40px_-24px_rgba(2,6,23,0.25)] transition-transform duration-300 hover:-translate-y-0.5 hover:scale-[1.01]"
-                                        style={{ backgroundColor: tint }}
                                     >
-                                        <div className="flex items-start gap-3">
-                                            <div className="mt-0.5 grid h-9 w-9 place-items-center rounded-xl bg-white/85 shadow-[0_10px_22px_-18px_rgba(2,6,23,0.35)]">
-                                                <Icon className="h-4 w-4 text-slate-900" />
-                                            </div>
-                                            <div>
-                                                <h3 className="text-[15px] font-semibold text-gray-900">{s.title}</h3>
-                                                <p className="mt-0.5 text-sm text-slate-700">{s.sub}</p>
-
-                                                {i === 0 && (
-                                                    <div className="mt-2">
-                                                        <Link
-                                                            href="#apply"
-                                                            className="inline-flex items-center rounded-lg bg-white/95 px-3 py-1.5 text-sm text-slate-700 hover:bg-white cursor-pointer"
-                                                            style={{ boxShadow: "0 10px 24px -18px rgba(2,6,23,0.30)" }}
-                                                        >
-                                                            Start application
-                                                        </Link>
-                                                    </div>
-                                                )}
-                                            </div>
+                                        {i + 1}
+                                    </span>
+                                    <div className="flex-1 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                                        <div className="flex items-center gap-3">
+                                            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-orange-50 text-brand ring-1 ring-orange-100" aria-hidden="true">
+                                                <Icon className="h-4 w-4" />
+                                            </span>
+                                            <h3 className="font-semibold text-slate-900">
+                                                <span className="sr-only">Step {i + 1}: </span>
+                                                {s.title}
+                                            </h3>
                                         </div>
+                                        <p className="mt-2 text-sm leading-6 text-slate-600">{s.sub}</p>
+                                        {i === 0 && (
+                                            <a
+                                                href="#apply"
+                                                className="mt-3 inline-flex items-center rounded-lg border border-orange-200 bg-orange-50 px-3 py-1.5 text-sm font-semibold text-brand transition hover:bg-orange-100"
+                                            >
+                                                Start application
+                                            </a>
+                                        )}
                                     </div>
                                 </li>
                             );

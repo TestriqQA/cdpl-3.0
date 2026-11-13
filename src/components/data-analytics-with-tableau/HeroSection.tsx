@@ -1,10 +1,11 @@
 "use client";
-import { ArrowRight, ChevronRight, Home, CloudDownload, ArrowDownNarrowWide } from "lucide-react";
+import { ArrowRight, ChevronRight, Home, CloudDownload, ArrowDownNarrowWide, BarChart3, Presentation, GraduationCap, Briefcase, Star, Users, Trophy, Timer } from "lucide-react";
 import Link from "next/link";
 import Head from "next/head";
 import React, { useState } from "react";
 import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
 import dynamic from "next/dynamic";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
 const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
@@ -16,15 +17,15 @@ const heroData = {
         "Transform raw data into powerful, insight-driven visualizations. Learn from industry experts and master Tableau for data science, analytics, and interactive dashboards in just 20 hours.",
     duration: "20 Hours",
     highlights: [
-        { icon: "📊", label: "Real Projects" },
-        { icon: "👨‍🏫", label: "Expert Trainers" },
-        { icon: "🎓", label: "Certification" },
-        { icon: "💼", label: "Job Ready" },
+        { icon: BarChart3, label: "Real Projects" },
+        { icon: Presentation, label: "Expert Trainers" },
+        { icon: GraduationCap, label: "Certification" },
+        { icon: Briefcase, label: "Job Ready" },
     ],
     stats: [
-        { value: "4.8/5", label: "Average Rating", icon: "⭐" },
-        { value: "500+", label: "Successful Graduates", icon: "👥" },
-        { value: "14+", label: "Years Experience", icon: "🏆" },
+         { value: <SiteStat k="rating" />, label: "Average Rating", icon: Star },
+        { value: <SiteStat k="studentsPlaced" />, label: "Students Placed", icon: Users },
+        { value: "14+", label: "Years Experience", icon: Trophy },
     ],
     cta: {
         primary: "Enroll Now",
@@ -101,7 +102,7 @@ export default function HeroSection() {
                     <div className="space-y-4 md:col-span-7 lg:col-span-8">
                         {/* Duration Badge */}
                         <div className="inline-flex items-center gap-2 px-3 py-0.5 bg-orange-100 rounded-full">
-                            <span className="text-2xl">⏱️</span>
+                            <Timer className="w-7 h-7 text-brand" aria-hidden="true" />
                             <span className="text-sm font-semibold text-brand">
                                 Duration: {heroData.duration}
                             </span>
@@ -164,7 +165,7 @@ export default function HeroSection() {
                                     key={index}
                                     className="flex flex-col items-center gap-2 p-4 bg-white rounded-lg border border-gray-200 hover:border-orange-300 hover:shadow-md transition-all"
                                 >
-                                    <span className="text-3xl">{highlight.icon}</span>
+                                    <highlight.icon className="w-8 h-8 text-brand" aria-hidden="true" />
                                     <span className="text-xs sm:text-sm font-semibold text-center text-gray-700">
                                         {highlight.label}
                                     </span>
@@ -193,7 +194,7 @@ export default function HeroSection() {
                         <div className="flex flex-wrap gap-6 pt-4">
                             {heroData.stats.map((stat, index) => (
                                 <div key={index} className="flex items-center gap-2">
-                                    <span className="text-2xl">{stat.icon}</span>
+                                    <stat.icon className="w-7 h-7 text-brand" aria-hidden="true" />
                                     <div>
                                         <div className="font-bold text-lg text-gray-900">{stat.value}</div>
                                         <div className="text-xs text-gray-600">{stat.label}</div>

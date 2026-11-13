@@ -1,5 +1,7 @@
 import { getGoogleReviews } from "@/lib/reviews";
 import ReviewsMarquee from "../sections/ReviewMarque";
+import { GraduationCap, Presentation, Briefcase, Bot } from "lucide-react";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 
 export default async function TestimonialsSection() {
@@ -36,32 +38,32 @@ export default async function TestimonialsSection() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {[
                             {
-                                icon: "🎓",
+                                icon: GraduationCap,
                                 title: "Industry-Recognized Digital Marketing Certification",
                                 description:
                                     "Get certified by AAA with international recognition, ideal for digital marketing jobs in India and abroad.",
                             },
                             {
-                                icon: "👨‍🏫",
+                                icon: Presentation,
                                 title: "Expert Mentors with Deep Industry Experience",
                                 description:
                                     "Learn from professionals who actively work in SEO, Google Ads, Meta Ads, and performance marketing.",
                             },
                             {
-                                icon: "💼",
+                                icon: Briefcase,
                                 title: "Job & Placement Assistance",
                                 description:
                                     "Dedicated career support team for resume building, LinkedIn optimization, interview prep, and job referrals.",
                             },
                             {
-                                icon: "🤖",
+                                icon: Bot,
                                 title: "AI-Powered Learning Experience",
                                 description:
                                     "Master AI tools like ChatGPT, DeepSeek, and Grok to create campaigns, content, and strategies faster and smarter.",
                             },
                         ].map((item, idx) => (
                             <div key={idx} className="flex gap-4">
-                                <div className="text-3xl flex-shrink-0">{item.icon}</div>
+                                <item.icon className="w-8 h-8 text-brand flex-shrink-0" aria-hidden="true" />
                                 <div>
                                     <h4 className="font-bold text-slate-900 mb-1">
                                         {item.title}
@@ -93,7 +95,7 @@ export default async function TestimonialsSection() {
                         className="animate-fadeInUp"
                         style={{ animationDelay: "100ms" }}
                     >
-                        <div className="text-4xl font-bold text-pink-600 mb-2">9.6/10</div>
+                        <div className="text-4xl font-bold text-pink-600 mb-2"><SiteStat k="rating" /></div>
                         <p className="text-gray-600">Average Program Rating</p>
                     </div>
                     <div
