@@ -4519,7 +4519,7 @@ export const mockCategories: MockCategory[] = [
             { id: "generative-ai-course", slug: "generative-ai-course", name: "Deep Learning, NLP and GenerativeAI", description: "Practice real-world interview scenarios with feedback.", categoryId: "data-science", questions: deepLearningNlpGenAiQuestions },
             { id: "data-science-course", slug: "data-science-course", name: "Advanced Data Science and Machine Learning Masterclass", description: "Master coding challenges and technical questions.", categoryId: "data-science", questions: advancedDataScienceMasterclassQuestions },
             { id: "ai-course", slug: "ai-course", name: "Comprehensive Data Science and AI - Master Program", description: "Master coding challenges and technical questions.", categoryId: "data-science", questions: comprehensiveDataScienceAiQuestions },
-            { id: "python-course-ds", slug: "python-course", name: "Python Programming", description: "Master containerization and orchestration technologies.", categoryId: "data-science", questions: pythonDataScienceQuestions },
+            { id: "python-course-ds", slug: "python-course-ds", name: "Python Programming", description: "Master containerization and orchestration technologies.", categoryId: "data-science", questions: pythonDataScienceQuestions },
             { id: "machine-learning-using-python", slug: "machine-learning-using-python", name: "Machine Learning Algorithms using python Programming", description: "Master containerization and orchestration technologies.", categoryId: "data-science", questions: mlPythonQuestions },
             { id: "data-visualization-in-r-programming", slug: "data-visualization-in-r-programming", name: "Machine Learning and Data Visualization using R Programming", description: "Master containerization and orchestration technologies.", categoryId: "data-science", questions: dataVisualizationRQuestions },
         ],
@@ -4556,10 +4556,10 @@ export const mockCategories: MockCategory[] = [
         id: "aaa-accredited",
         name: "AAA Accredited Courses",
         courses: [
-            { id: "aaa-advance-software-testing", slug: "advance-software-testing", name: "Advanced Software Testing", description: "Analyze data to drive business decisions.", categoryId: "aaa-accredited", questions: aaaAdvancedSoftwareTestingQuestions },
-            { id: "aaa-automation-testing-course", slug: "automation-testing-course", name: "Advanced Automation Testing", description: "Build predictive models with machine learning techniques.", categoryId: "aaa-accredited", questions: aaaAutomationTestingQuestions },
-            { id: "aaa-data-science-course", slug: "data-science-course", name: "Advanced Data Science and Machine Learning - Masterclass", description: "Use Python for data analysis and visualization.", categoryId: "aaa-accredited", questions: aaaDataScienceQuestions },
-            { id: "aaa-masters-in-data-engineering", slug: "masters-in-data-engineering", name: "Data Analysis with BI & Big Data Engineering - Master Program", description: "Create interactive data visualizations with Power BI.", categoryId: "aaa-accredited", questions: aaaDataEngineeringQuestions },
+            { id: "aaa-advance-software-testing", slug: "aaa-advance-software-testing", name: "Advanced Software Testing", description: "Analyze data to drive business decisions.", categoryId: "aaa-accredited", questions: aaaAdvancedSoftwareTestingQuestions },
+            { id: "aaa-automation-testing-course", slug: "aaa-automation-testing-course", name: "Advanced Automation Testing", description: "Build predictive models with machine learning techniques.", categoryId: "aaa-accredited", questions: aaaAutomationTestingQuestions },
+            { id: "aaa-data-science-course", slug: "aaa-data-science-course", name: "Advanced Data Science and Machine Learning - Masterclass", description: "Use Python for data analysis and visualization.", categoryId: "aaa-accredited", questions: aaaDataScienceQuestions },
+            { id: "aaa-masters-in-data-engineering", slug: "aaa-masters-in-data-engineering", name: "Data Analysis with BI & Big Data Engineering - Master Program", description: "Create interactive data visualizations with Power BI.", categoryId: "aaa-accredited", questions: aaaDataEngineeringQuestions },
         ],
     },
 ];
