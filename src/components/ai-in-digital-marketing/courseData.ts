@@ -1,3 +1,5 @@
+import { STAT_TEXT } from "@/lib/siteStats";
+
 /**
  * Centralized Course Data
  * All content extracted from the PDF and reference website
@@ -20,7 +22,7 @@ export const courseData = {
     duration: "3 Months Cohort Program",
     weeklyCommitment: "6 hours/week",
     totalHours: "40-50 hours",
-    rating: "9.6/10",
+    rating: STAT_TEXT.rating,
     expertise: "Industry-Led Training",
     preRequisite: "No pre-requisite required",
   },
@@ -29,13 +31,14 @@ export const courseData = {
   stats: [
     {
       icon: Star,
-      value: "9.6/10",
+      value: STAT_TEXT.rating,
       label: "Program Rating",
       description: "Highly rated by students",
     },
     {
       icon: Users,
-      value: "500+",
+      value: STAT_TEXT.studentsPlaced,
+      label: "Students Placed",
       label: "Successful Graduates",
       description: "Students who transformed their business",
     },

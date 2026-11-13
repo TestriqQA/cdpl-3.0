@@ -20,6 +20,7 @@ import React, { useState } from "react";
 import ApiCourseLeadForm from "../forms/ApiCourseLeadForm";
 import EnrollModal from "../EnrollModal";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 export default function HeroSection() {
     const [isEnrollOpen, setIsEnrollOpen] = useState(false);
@@ -141,14 +142,14 @@ export default function HeroSection() {
                             <div className="flex items-center gap-2">
                                 <Star className="w-7 h-7 text-amber-500 fill-amber-500" aria-hidden="true" />
                                 <span>
-                                    <strong className="text-slate-900">4.8/5</strong> Average Rating
+                                    <strong className="text-slate-900"><SiteStat k="rating" /></strong> Average Rating
                                 </span>
                             </div>
                             <div className="hidden h-6 w-px bg-slate-300 sm:block" />
                             <div className="flex items-center gap-2">
                                 <Users className="w-7 h-7 text-brand" aria-hidden="true" />
                                 <span>
-                                    <strong className="text-slate-900">500+</strong> Successful Graduates
+                                    <strong className="text-slate-900"><SiteStat k="studentsPlaced" /></strong> Students Placed
                                 </span>
                             </div>
                             <div className="hidden h-6 w-px bg-slate-300 sm:block" />

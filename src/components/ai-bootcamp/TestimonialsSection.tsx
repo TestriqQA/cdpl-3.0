@@ -1,6 +1,7 @@
 import { getGoogleReviews } from "@/lib/reviews";
 import ReviewsMarquee from "../sections/ReviewMarque";
 import { GraduationCap, Presentation, Briefcase, Bot } from "lucide-react";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 
 export default async function TestimonialsSection() {
@@ -94,7 +95,7 @@ export default async function TestimonialsSection() {
                         className="animate-fadeInUp"
                         style={{ animationDelay: "100ms" }}
                     >
-                        <div className="text-4xl font-bold text-pink-600 mb-2">9.6/10</div>
+                        <div className="text-4xl font-bold text-pink-600 mb-2"><SiteStat k="rating" /></div>
                         <p className="text-gray-600">Average Program Rating</p>
                     </div>
                     <div

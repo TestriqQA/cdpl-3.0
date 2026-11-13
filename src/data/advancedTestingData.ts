@@ -1,4 +1,5 @@
 import { type QA } from "../types/faq";
+import { SITE_STATS } from "@/lib/siteStats";
 
 export const ADVANCED_TESTING_FAQS: QA[] = [
     {
@@ -44,6 +45,6 @@ export const ADVANCED_TESTING_FAQS: QA[] = [
 ];
 
 export const ADVANCED_TESTING_REVIEW_DATA = {
-    ratingValue: 4.9,
-    reviewCount: 200,
+    ratingValue: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
 };

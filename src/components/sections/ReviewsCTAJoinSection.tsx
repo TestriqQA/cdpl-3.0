@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Star, Sparkles, ArrowRight, Users, Target, Clock, Award } from "lucide-react";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 export default function CTAJoinSection() {
   return (
@@ -106,7 +107,7 @@ export default function CTAJoinSection() {
                     ))}
                   </div>
                   <span className="text-sm text-slate-400">
-                    <span className="font-semibold text-white">4.9/5</span> average rating · Alumni at leading companies
+                    <span className="font-semibold text-white"><SiteStat k="rating" /></span> average rating · Alumni at leading companies
                   </span>
                 </div>
               </div>
@@ -118,7 +119,7 @@ export default function CTAJoinSection() {
                 <div className="grid grid-cols-2 gap-4">
                   <StatCard
                     icon={Users}
-                    kpi="500+"
+                    kpi={<SiteStat k="studentsPlaced" />}
                     label="Alumni Placed"
                     gradient="from-orange-500 to-amber-500"
                   />
@@ -152,6 +153,7 @@ export default function CTAJoinSection() {
 
 /* ---------- Stat Card Component ---------- */
 import type { LucideIcon } from "lucide-react";
+import type { ReactNode } from "react";
 
 function StatCard({
   icon: Icon,
@@ -160,7 +162,7 @@ function StatCard({
   gradient,
 }: {
   icon: LucideIcon;
-  kpi: string;
+  kpi: ReactNode;
   label: string;
   gradient: string;
 }) {

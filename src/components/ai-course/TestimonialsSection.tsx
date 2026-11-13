@@ -5,6 +5,7 @@ import { ShieldCheck, Sparkles, Trophy, Download } from "lucide-react";
 import ReviewsMarquee from "../sections/ReviewMarque";
 import { useState } from "react";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 
 export default function TestimonialsSection() {
@@ -39,7 +40,7 @@ export default function TestimonialsSection() {
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
             <span className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-3 py-1 text-sm font-medium text-gray-800">
               <Sparkles className="w-4 h-4 text-indigo-600" />
-              4.9/5 Average Rating
+              <SiteStat k="rating" /> Average Rating
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-3 py-1 text-sm font-medium text-gray-800">
               <ShieldCheck className="w-4 h-4 text-emerald-600" />

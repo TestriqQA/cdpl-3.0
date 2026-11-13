@@ -28,12 +28,13 @@ import JobsLiveJobsTestimonialSection from "@/components/sections/JobsLiveJobsTe
 import ReviewsFeedbackSection from "@/components/sections/ReviewsFeedbackSection";
 import JobsLiveJobsReviewSection from "@/components/sections/JobsLiveJobsReviewSection";
 import ReviewsCTAJoinSection from "@/components/sections/ReviewsCTAJoinSection";
+import { SITE_STATS, STAT_TEXT } from "@/lib/siteStats";
 
 // ---------- SEO Metadata ----------
 export const metadata: Metadata = generateStaticPageMetadata({
   title: "Student Reviews & Testimonials | CDPL",
   description:
-    "Read authentic student reviews and success stories for CDPL's Software Testing, Data Science and AI/ML courses — rated 4.9/5 across 425 reviews.",
+    `Read authentic student reviews and success stories for CDPL's Software Testing, Data Science and AI/ML courses — rated ${STAT_TEXT.rating} across ${SITE_STATS.reviewCount} reviews.`,
   keywords: [
     "CDPL reviews",
     "student testimonials",

@@ -1203,8 +1203,8 @@ export function generateHomePageSchema(
               // Apply safe defaults since headerData doesn't contain these detailed metadata fields
               duration: "P12W",
               level: "Beginner",
-              rating: 4.8,
-              reviewCount: 50,
+              rating: STATISTICS.rating,
+              reviewCount: STATISTICS.reviewCount,
               enrollmentCount: 1000,
             }),
           });
@@ -1361,8 +1361,8 @@ export function generateAllCoursesPageSchema(): WithContext<
               // Apply safe defaults
               duration: "P12W",
               level: "Beginner",
-              rating: 4.8,
-              reviewCount: 50,
+              rating: STATISTICS.rating,
+              reviewCount: STATISTICS.reviewCount,
               enrollmentCount: 1000,
             }),
           });
@@ -6625,7 +6625,7 @@ export function generateReviewsPageAllSchemas(
   const webPageSchema = generateWebPageSchema({
     name: "Authentic Student Reviews & Testimonials | CDPL",
     description:
-      "Read 5000+ authentic student reviews and success stories for CDPL's software testing, data science, and AI/ML courses.",
+      `Read ${STATISTICS.reviewCount}+ authentic student reviews and success stories for CDPL's software testing, data science, and AI/ML courses.`,
     url: "/reviews",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },

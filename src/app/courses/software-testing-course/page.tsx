@@ -14,6 +14,7 @@ import { generateSoftwareTestingCategoryPageSchema } from "@/lib/schema-generato
 import { softwareTestingFaqs } from "@/components/software-testing-course/data/data";
 import { generateMetadata } from '@/lib/metadata-generator';
 import { Metadata } from 'next';
+import { SITE_STATS } from "@/lib/siteStats";
 
 // National category page. City wording lives on the city pages — the Mumbai
 // classroom offer is /software-testing-course-in-mumbai, linked from the hero —
@@ -54,8 +55,8 @@ export default function SoftwareTestingPage() {
       slug: "software-testing-course",
       level: "Beginner to Advanced",
       duration: "P4M", // 4 Months
-      rating: 4.9,
-      reviewCount: 1250,
+      rating: SITE_STATS.rating,
+      reviewCount: SITE_STATS.reviewCount,
       instructor: "Industry Experts",
       image: "/og-images/courses-software-testing-course-og.png",
     },

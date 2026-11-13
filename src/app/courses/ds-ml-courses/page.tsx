@@ -12,6 +12,7 @@ import { generateBreadcrumbSchema, generateDataScienceMachineLearningCategoryPag
 import JsonLd from '@/components/JsonLd';
 import { Metadata } from 'next';
 import { dsMlFaqs } from '@/components/DS&ML-Courses/data';
+import { SITE_STATS } from "@/lib/siteStats";
 
 export const metadata: Metadata = generateStaticPageMetadata({
     // `absolute` because generateStaticPageMetadata appends " | CDPL" to a
@@ -33,8 +34,8 @@ export default function Home() {
             slug: "ds-ml-courses",
             level: "Beginner to Advanced",
             duration: "P4M", // 4 Months
-            rating: 4.8,
-            reviewCount: 950,
+            rating: SITE_STATS.rating,
+            reviewCount: SITE_STATS.reviewCount,
             instructor: "Industry Experts",
         },
         dsMlFaqs.map(f => ({ question: f.q, answer: f.a })),

@@ -1,4 +1,5 @@
 import { type QA } from "../types/faq";
+import { SITE_STATS } from "@/lib/siteStats";
 
 export const ADVANCE_MANUAL_AUTOMATION_FAQS: QA[] = [
     {
@@ -44,6 +45,6 @@ export const ADVANCE_MANUAL_AUTOMATION_FAQS: QA[] = [
 ];
 
 export const ADVANCE_MANUAL_AUTOMATION_REVIEW_DATA = {
-    ratingValue: 5.0,
-    reviewCount: 320,
+    ratingValue: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
 };

@@ -5,6 +5,7 @@ import ReviewsMarquee from "../sections/ReviewMarque";
 import { useState } from "react";
 import EnrollModal from "../EnrollModal";
 import CareerSessionModal from "../CareerSessionModal";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 export default function TestimonialsSection() {
   const [isEnrollOpen, setIsEnrollOpen] = useState(false);
@@ -34,7 +35,7 @@ export default function TestimonialsSection() {
           </p>
           {/* micro badges */}
           <div className="mt-5 mb-5 flex flex-wrap items-center justify-center gap-2 text-[11px] font-semibold">
-            <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-700">4.9★ Avg Rating</span>
+            <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-700"><SiteStat k="ratingValue" />★ Avg Rating</span>
             <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-700">Placement Support</span>
             <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-700">Project-Based Learning</span>
           </div>

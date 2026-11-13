@@ -4,6 +4,7 @@ import { Briefcase, TrendingUp, Award, CheckCircle, Sparkles, LucideIcon } from 
 import ReviewsMarquee from '../sections/ReviewMarque';
 import { EnrollFormData, EnrollPopup } from "../EnrollForms";
 import { useState } from 'react';
+import { useSiteStats } from "@/components/stats/SiteStatsProvider";
 
 
 
@@ -20,6 +21,7 @@ const StatCard = ({ icon: Icon, value, label, delay }: { icon: LucideIcon; value
 );
 
 export default function TestimonialsSection() {
+    const siteStats = useSiteStats();
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     const handleEnrollSubmit = (enroll: EnrollFormData) => {
@@ -66,10 +68,10 @@ export default function TestimonialsSection() {
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-                    <StatCard icon={CheckCircle} value="4.9/5" label="Learner Rating" delay={0.1} />
+                    <StatCard icon={CheckCircle} value={siteStats.text.rating} label="Learner Rating" delay={0.1} />
                     <StatCard icon={TrendingUp} value="40%" label="Avg. Salary Increase" delay={0.2} />
                     <StatCard icon={Briefcase} value="Live" label="Mentor-Led Classes" delay={0.3} />
-                    <StatCard icon={Award} value="425+" label="Verified Reviews" delay={0.4} />
+                    <StatCard icon={Award} value={siteStats.text.reviews} label="Verified Reviews" delay={0.4} />
                 </div>
 
                 <ReviewsMarquee />

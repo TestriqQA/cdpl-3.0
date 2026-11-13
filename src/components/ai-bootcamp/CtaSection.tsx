@@ -2,6 +2,7 @@ import { ArrowRight, Download, CheckCircle, PartyPopper, Phone, Mail, Globe } fr
 import Link from "next/link";
 import EnrollButton from "./ui/EnrollButton";
 import SyllabusButton from "./ui/SyllabusButton";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 export default function CtaSection() {
     const courseName = "AI Bootcamp Course";
@@ -42,7 +43,7 @@ export default function CtaSection() {
                                 description: "Job Assistance",
                             },
                             {
-                                title: "9.6/10",
+                                title: <SiteStat k="rating" />,
                                 description: "Program Rating",
                             },
                         ].map((benefit, idx) => (

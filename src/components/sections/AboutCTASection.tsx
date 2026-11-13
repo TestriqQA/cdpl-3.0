@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ShieldCheck, Phone, Mail, Calendar, MessageCircle, Star, Check } from "lucide-react";
 import Link from "next/link";
 import AdvisorModal from "@/components/ui/AdvisorModal";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 /**
  * CTA-only section — light, sleek, slightly futuristic
@@ -88,7 +89,7 @@ export default function AboutCTASection() {
                             {/* Social proof / stats */}
                             <div className="mt-5 flex flex-wrap items-center gap-4">
                                 <div className="rounded-xl border-2 border-purple-500 bg-purple-50 px-4 py-3 text-center shadow-sm">
-                                    <div className="text-lg font-extrabold text-violet-500">4.8/5</div>
+                                    <div className="text-lg font-extrabold text-violet-500"><SiteStat k="rating" /></div>
                                     <div className="text-sm text-slate-600">Learner Satisfaction</div>
                                 </div>
                                 <div className="rounded-xl border-2 border-green-500 bg-green-50 px-4 py-3 text-center shadow-sm">

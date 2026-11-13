@@ -1,4 +1,5 @@
 import { type QA } from "../types/faq";
+import { SITE_STATS } from "@/lib/siteStats";
 
 export const PYTHON_FAQS: QA[] = [
     {
@@ -34,6 +35,6 @@ export const PYTHON_FAQS: QA[] = [
 ];
 
 export const PYTHON_REVIEW_DATA = {
-    ratingValue: 4.9,
-    reviewCount: 420,
+    ratingValue: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
 };

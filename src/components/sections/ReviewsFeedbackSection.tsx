@@ -5,6 +5,7 @@ import { Star, Filter, CheckCircle2, Trophy, BadgeCheck } from "lucide-react";
 
 import { getAllReviews, type StudentReview } from "@/data/reviews/reviewsData";
 import SafeAvatar from "@/components/sections/SafeAvatar";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 // --- Configuration ---
 const FILTERS = [
@@ -148,11 +149,11 @@ export default function ReviewsFeedbackSection() {
             {/* Stats */}
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                <div className="text-3xl font-bold text-slate-900 tracking-tight">4.9</div>
+                <div className="text-3xl font-bold text-slate-900 tracking-tight"><SiteStat k="ratingValue" /></div>
                 <div className="text-xs font-medium text-slate-500 uppercase mt-1">Avg Rating</div>
               </div>
               <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                <div className="text-3xl font-bold text-slate-900 tracking-tight">12k+</div>
+                <div className="text-3xl font-bold text-slate-900 tracking-tight"><SiteStat k="studentsPlaced" /></div>
                 <div className="text-xs font-medium text-slate-500 uppercase mt-1">Alumni Placed</div>
               </div>
             </div>

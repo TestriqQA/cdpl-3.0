@@ -1,7 +1,8 @@
 import { Users, TrendingUp, MapPin, ShieldCheck } from "lucide-react";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 const stats = [
-  { icon: Users, label: "Learners Placed", value: "500+" },
+  { icon: Users, label: "Learners Placed", value: <SiteStat k="studentsPlaced" /> },
   { icon: TrendingUp, label: "Avg Package Growth", value: "1.5×" },
   { icon: MapPin, label: "Cities Covered", value: "50+" },
   { icon: ShieldCheck, label: "Hiring Partners", value: "50+" },

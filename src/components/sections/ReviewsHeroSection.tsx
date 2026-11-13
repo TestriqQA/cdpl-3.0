@@ -7,8 +7,10 @@ import { Star, ArrowRight, Quote, Sparkles, CheckCircle2, TrendingUp, ShieldChec
 import { useRef, useState, useEffect } from "react";
 import { getAllReviews } from "@/data/reviews/reviewsData";
 import SafeAvatar from "@/components/sections/SafeAvatar";
+import { useSiteStats } from "@/components/stats/SiteStatsProvider";
 
 export default function ReviewsHeroSection() {
+  const siteStats = useSiteStats();
   const containerRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
 
@@ -94,7 +96,7 @@ export default function ReviewsHeroSection() {
             {/* Stats Bar */}
             <div className="flex flex-wrap gap-4">
               {[
-                { label: "Course Rating", val: "4.9/5", icon: Star, bg: "bg-amber-100 text-amber-600" },
+                { label: "Course Rating", val: siteStats.text.rating, icon: Star, bg: "bg-amber-100 text-amber-600" },
                 { label: "Active Learners", val: "12k+", icon: TrendingUp, bg: "bg-blue-100 text-blue-600" },
                 { label: "Completion Rate", val: "94%", icon: CheckCircle2, bg: "bg-green-100 text-green-600" },
               ].map((stat, idx) => (

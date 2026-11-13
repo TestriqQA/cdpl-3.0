@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { ServiceClient, StatItem } from '@/types/service';
+import { useSiteStats } from '@/components/stats/SiteStatsProvider';
 
 /** ---------- Utilities ---------- */
 function useOnScreen<T extends Element>(
@@ -110,10 +111,11 @@ function StatNumber({
 /** ---------- Section ---------- */
 export default function ServiceDetailStatsSection({ service }: { service: ServiceClient }) {
   const { ref, visible } = useOnScreen<HTMLDivElement>();
+  const siteStats = useSiteStats();
 
   const stats: StatItem[] = service.stats ?? [
     { label: 'Learners Trained', value: 5000 },
-    { label: 'Average Rating', value: 4.8, suffix: '/5' },
+    { label: 'Average Rating', value: siteStats.rating, suffix: '/5' },
     { label: 'Placement Success', value: 92, suffix: '%' },
     { label: 'Hiring Partners', value: 50 },
   ];

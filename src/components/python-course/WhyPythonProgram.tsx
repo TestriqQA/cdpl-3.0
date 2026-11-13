@@ -1,8 +1,14 @@
+"use client";
+
 // components/sections/WhyPythonProgram.tsx
-// Server component — sleek, slightly futuristic, fully responsive, SEO-optimized.
+// Sleek, slightly futuristic, fully responsive, SEO-optimized.
+
+import { useSiteStats } from "@/components/stats/SiteStatsProvider";
+import { STAT_TEXT } from "@/lib/siteStats";
 
 type Pill = {
   label: string;
+  rating?: boolean;
   sub?: string;
   bg: string;
   text: string;
@@ -15,7 +21,7 @@ const PILLS: Pill[] = [
   { label: "40+ Projects", sub: "Portfolio Ready", bg: "bg-emerald-50", text: "text-emerald-900", border: "border-emerald-200", ring: "focus:ring-emerald-300" },
   { label: "6 hrs / week", sub: "Flexible Cohort", bg: "bg-amber-50", text: "text-amber-900", border: "border-amber-200", ring: "focus:ring-amber-300" },
   { label: "No Coding Exp.", sub: "Beginner Friendly", bg: "bg-violet-50", text: "text-violet-900", border: "border-violet-200", ring: "focus:ring-violet-300" },
-  { label: "9.8/10 Rating", sub: "Learner Reviews", bg: "bg-rose-50", text: "text-rose-900", border: "border-rose-200", ring: "focus:ring-rose-300" },
+  { label: `${STAT_TEXT.rating} Rating`, rating: true, sub: "Learner Reviews", bg: "bg-rose-50", text: "text-rose-900", border: "border-rose-200", ring: "focus:ring-rose-300" },
 ];
 
 const HIGHLIGHTS = [
@@ -26,6 +32,8 @@ const HIGHLIGHTS = [
 ];
 
 export default function WhyPythonProgram() {
+  const siteStats = useSiteStats();
+  const pills = PILLS.map((p) => (p.rating ? { ...p, label: `${siteStats.text.rating} Rating` } : p));
 
 
   return (
@@ -50,7 +58,7 @@ export default function WhyPythonProgram() {
 
         {/* KPI / Pill row */}
         <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 max-w-6xl mx-auto">
-          {PILLS.map((p) => (
+          {pills.map((p) => (
             <div
               key={p.label}
               tabIndex={0}

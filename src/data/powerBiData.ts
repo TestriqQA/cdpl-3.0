@@ -1,5 +1,6 @@
 import { Rocket, Laptop, Compass, Cloud, Wallet, type LucideIcon } from "lucide-react";
 import { type QA } from "../types/faq";
+import { SITE_STATS } from "@/lib/siteStats";
 
 interface FaqItem extends QA {
     details?: string[];
@@ -52,6 +53,6 @@ export const POWER_BI_FAQS: FaqItem[] = [
 
 
 export const POWER_BI_REVIEW_DATA = {
-    ratingValue: 4.8,
-    reviewCount: 300,
+    ratingValue: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
 };

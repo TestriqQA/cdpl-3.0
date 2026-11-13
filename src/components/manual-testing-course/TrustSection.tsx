@@ -1,6 +1,7 @@
 
 import { LuUsers, LuStar, LuBuilding, LuBriefcase, LuAward, LuShieldCheck, LuClock, LuBookOpenCheck } from "react-icons/lu";
 import React from "react";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 /*
   ========================= TRUST / SOCIAL PROOF =========================
@@ -21,8 +22,8 @@ function StatCard({
 }: {
     icon: React.ElementType;
     label: string;
-    value: string;
-    caption?: string;
+    value: React.ReactNode;
+    caption?: React.ReactNode;
     accent?: "indigo" | "cyan" | "emerald" | "violet" | "rose" | "amber";
 }) {
     const accents: Record<string, string> = {
@@ -92,9 +93,9 @@ export default function TrustSection() {
                 <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3">
                     <StatCard
                         icon={LuUsers}
-                        value="4.9/5"
+                        value={<SiteStat k="rating" />}
                         label="Learner Rating"
-                        caption="From 425+ verified reviews"
+                        caption={<>From <SiteStat k="reviews" /> verified reviews</>}
                         accent="indigo"
                     />
                     <StatCard
@@ -106,9 +107,9 @@ export default function TrustSection() {
                     />
                     <StatCard
                         icon={LuStar}
-                        value="4.8/5"
+                        value={<SiteStat k="rating" />}
                         label="Average Rating"
-                        caption="3,200+ verified learner reviews"
+                        caption={<><SiteStat k="reviews" /> verified learner reviews</>}
                         accent="amber"
                     />
                     <StatCard

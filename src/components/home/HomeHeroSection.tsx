@@ -26,6 +26,7 @@ import PhoneInput from '@/components/ui/PhoneNumberInput';
 import styles from '../ui/phone-input.module.css';
 import CustomFlag from '../ui/CustomFlag';
 import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 // Import BrochureDownloadModal
 const BrochureDownloadModal = dynamic(() => import('./BrochureDownloadModal'), { ssr: false });
@@ -65,10 +66,10 @@ const HeroHeadline = (
   </>
 );
 
-// Hard-coded figures; the stats branch swaps these for <SiteStat> values.
+// Placed / rating / review figures come from the central site stats.
 const STATS = [
-  { Icon: Users, value: '5,000+', label: 'Students Placed', tile: 'bg-emerald-600' },
-  { Icon: Star, value: '4.9/5', label: 'Student Rating', note: '425+ Verified Reviews', tile: 'bg-brand', fill: true },
+  { Icon: Users, value: <SiteStat k="studentsPlaced" />, label: 'Students Placed', tile: 'bg-emerald-600' },
+  { Icon: Star, value: <SiteStat k="rating" />, label: 'Student Rating', note: <><SiteStat k="reviews" /> Verified Reviews</>, tile: 'bg-brand', fill: true },
   { Icon: Award, value: 'Industry-Led', label: 'Expert Mentors', tile: 'bg-indigo-600' },
 ];
 
@@ -94,7 +95,7 @@ interface HeroDetailsProps {
  * Stats, features and CTAs. One copy serves both breakpoints (it used to be
  * written twice, once per breakpoint, so all of it was in the HTML twice):
  * below the form on mobile, under the headline from `lg` up. Every phrase the
- * two old copies showed is still here, including "425+ Verified Reviews".
+ * two old copies showed is still here, including the verified-review count.
  */
 const HeroDetails: React.FC<HeroDetailsProps> = ({ onOpenBrochure, onOpenVideo }) => (
   <div className="mt-7">

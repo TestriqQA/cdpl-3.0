@@ -12,6 +12,7 @@ const EnrollModal = dynamic(() => import("../EnrollModal"), { ssr: false });
 const SyllabusDownloadModal = dynamic(() => import("../SyllabusDownloadModal"), { ssr: false });
 const CareerSessionModal = dynamic(() => import("../CareerSessionModal"), { ssr: false });
 import MachineLearningCourseLeadForm from "../forms/MachineLearningCourseLeadForm";
+import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 export const HeroSection: React.FC = () => {
     const { hero_section, course_title } = content;
@@ -146,14 +147,14 @@ export const HeroSection: React.FC = () => {
                             <div className="flex items-center gap-2">
                                 <Star className="w-7 h-7 text-amber-500 fill-amber-500" aria-hidden="true" />
                                 <span>
-                                    <strong className="text-slate-900">4.8/5</strong> Average Rating
+                                    <strong className="text-slate-900"><SiteStat k="rating" /></strong> Average Rating
                                 </span>
                             </div>
                             <div className="hidden h-6 w-px bg-slate-300 sm:block" />
                             <div className="flex items-center gap-2">
                                 <Users className="w-7 h-7 text-brand" aria-hidden="true" />
                                 <span>
-                                    <strong className="text-slate-900">500+</strong> Successful Learners
+                                    <strong className="text-slate-900"><SiteStat k="studentsPlaced" /></strong> Students Placed
                                 </span>
                             </div>
                             <div className="hidden h-6 w-px bg-slate-300 sm:block" />
