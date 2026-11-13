@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 
@@ -9,18 +9,19 @@ const AdvisorModal = dynamic(() => import("@/components/ui/AdvisorModal"), {
     loading: () => null,
 });
 
+/** Secondary hero button (white outlined) that opens the career-advisor form. */
 export function JobsLiveJobsHeroCTA() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <>
             <button
+                type="button"
                 onClick={() => setIsModalOpen(true)}
-                className="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-semibold text-white shadow-sm transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 cursor-pointer hover:bg-brand focus-visible:ring-orange-400"
-                style={{ backgroundColor: "#ff8c00" }}
+                className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-7 py-3.5 font-semibold text-slate-800 shadow-sm transition-colors duration-300 hover:border-brand hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2"
             >
+                <MessageCircle className="h-5 w-5" aria-hidden="true" />
                 Talk to a Career Advisor
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </button>
 
             {isModalOpen && (

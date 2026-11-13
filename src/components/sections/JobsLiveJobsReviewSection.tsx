@@ -262,10 +262,10 @@ export default function JobsLiveJobsReviewSection() {
   }, [paused, speed, reduced]);
 
   return (
-    <section className="overflow-hidden w-full relative bg-gradient-to-b from-sky-50 via-white to-violet-50 dark:[color-scheme:light]">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-10">
+    <section className="overflow-hidden w-full relative bg-gray-50 dark:[color-scheme:light]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         {/* Header Section */}
-        <div className="text-center max-w-7xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
             <Image src={GOOGLE_LOGO} alt="Google" width={60} height={60} />
             <span className="text-sm font-medium text-slate-700">
@@ -273,13 +273,13 @@ export default function JobsLiveJobsReviewSection() {
             </span>
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-gray-900 mb-4">
             Loved by Students,{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">
+            <span className="text-brand">
               Trusted by Professionals
             </span>
           </h2>
-          <p className="text-slate-600 text-lg">
+          <p className="text-gray-600 text-lg leading-relaxed">
             Join thousands of successful graduates who transformed their careers with us.
           </p>
         </div>

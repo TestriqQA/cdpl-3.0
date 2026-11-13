@@ -141,7 +141,7 @@ export default async function Page({ params }: Props) {
             />
 
             {/* Single-job listing — same component as the index, filtered to one. */}
-            <JobsLiveJobsListingSection jobs={[jobWithBanner]} />
+            <JobsLiveJobsListingSection jobs={[jobWithBanner]} mode="detail" />
 
             {/* Below-the-fold sections kept for consistent UX with the listing. */}
             <JobsLiveJobsWhyWePostJobsSection />

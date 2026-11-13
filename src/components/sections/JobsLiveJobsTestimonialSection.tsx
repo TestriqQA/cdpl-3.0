@@ -78,7 +78,7 @@ function cx(...cls: (string | false | null | undefined)[]) {
 }
 
 const LIGHT = {
-  page: "relative isolate bg-gradient-to-br from-emerald-50 via-cyan-50 to-blue-50",
+  page: "relative isolate bg-white",
   textPrimary: "text-slate-800",
   textSecondary: "text-slate-600",
   chip: "bg-white/80 border border-black/10",
@@ -97,48 +97,6 @@ function splitHeadingForColoring(input: string): { left: string; right: string }
   const words = input.split(/\s+/);
   const mid = Math.floor(words.length / 2);
   return { left: words.slice(0, mid).join(" "), right: words.slice(mid).join(" ") };
-}
-
-/* ----------------------------- UI Pill ------------------------------- */
-function Pill({
-  children,
-  className,
-  title,
-  as,
-  ...rest
-}: {
-  children: React.ReactNode;
-  className?: string;
-  title?: string;
-  as?: "button";
-} & React.ButtonHTMLAttributes<HTMLButtonElement>) {
-  if (as === "button") {
-    return (
-      <button
-        title={title}
-        {...rest}
-        className={cx(
-          "inline-flex items-center px-2.5 py-1 rounded-full text-[0.875rem] font-medium transition-colors",
-          LIGHT.chip,
-          className
-        )}
-      >
-        {children}
-      </button>
-    );
-  }
-  return (
-    <span
-      title={title}
-      className={cx(
-        "inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-medium",
-        LIGHT.chip,
-        className
-      )}
-    >
-      {children}
-    </span>
-  );
 }
 
 /* ----------------------------- Shorts Card --------------------------- */
@@ -172,7 +130,7 @@ function ShortsCard({
       id={`video-${v.id}`}
       data-card
       className={cx("shrink-0 snap-start rounded-2xl overflow-hidden flex flex-col", LIGHT.card)}
-      style={{ width: `${Math.max(220, Math.round(cardWidth))}px` }}
+      style={{ width: `${Math.max(170, Math.round(cardWidth))}px` }}
     >
       <div className="p-4 pb-2">
         <div className="flex items-start justify-between gap-2 min-h-14 sm:min-h-[3.25rem]">
@@ -197,7 +155,7 @@ function ShortsCard({
             alt={`${v.person} — ${v.title}`}
             title={`${v.person} — ${v.title}`}
             fill
-            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 26rem"
+            sizes="280px"
             className="object-cover pointer-events-none"
             priority={false}
           />
@@ -327,8 +285,10 @@ export default function JobsLiveJobsTestimonialSection(
 
   function computeCardWidth(containerWidth: number) {
     if (containerWidth <= 0) return 0;
-    const DEFAULT = 387;
-    const candidates = [1, 2, 3];
+    // Target ~240px per card (was 387: with the 9:16 video that made each
+    // card ~700px tall). Up to 5 per row on wide screens.
+    const DEFAULT = 240;
+    const candidates = [1, 2, 3, 4, 5];
     let bestCols = 1;
     let bestLeftover = Number.POSITIVE_INFINITY;
     for (const cols of candidates) {
@@ -342,8 +302,8 @@ export default function JobsLiveJobsTestimonialSection(
       }
     }
     const exact = (containerWidth - GAP * (bestCols - 1)) / bestCols;
-    const MIN = 260;
-    const MAX = 520;
+    const MIN = 170;
+    const MAX = 280;
     return Math.max(MIN, Math.min(MAX, exact));
   }
 
@@ -398,25 +358,26 @@ export default function JobsLiveJobsTestimonialSection(
 
   return (
     <section className={LIGHT.page}>
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mx-auto max-w-5xl text-center">
-          <Pill className="mb-3">
-            <Sparkles className="h-4 w-4 mr-1" />
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        {/* Header (the site's standard: orange pill, large heading, intro) */}
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-brand">
+            <Sparkles className="h-4 w-4" aria-hidden="true" />
             CDPL Success Stories
-          </Pill>
+          </span>
 
-          <h2 className="mx-auto text-4xl font-bold tracking-tight leading-tight text-slate-900">
-            <span className="text-slate-900">{split.left}</span>{" "}
+          <h2 className="mt-4 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
+            <span>{split.left}</span>{" "}
             <span className={BRAND_TEXT}>{split.right}</span>
           </h2>
 
-          <p className="mt-6 text-base sm:text-base md:text-lg leading-6 text-slate-600">{subheading}</p>
+          <p className="mt-4 text-lg leading-relaxed text-gray-600">{subheading}</p>
         </div>
 
         {/* Shorts Carousel */}
         <div className="mt-8 relative">
-          <div className="absolute left-2 lg:left-0 top-1/2 -translate-y-1/2 lg:-translate-x-1/2 z-10">
+          {/* Arrows only when there is something to scroll */}
+          <div className={cx("absolute left-2 lg:left-0 top-1/2 -translate-y-1/2 lg:-translate-x-1/2 z-10", !canPrev && !canNext && "hidden")}>
             <button
               type="button"
               aria-label="Previous"
@@ -431,7 +392,7 @@ export default function JobsLiveJobsTestimonialSection(
               ‹
             </button>
           </div>
-          <div className="absolute right-2 lg:right-0 top-1/2 -translate-y-1/2 lg:translate-x-1/2 z-10">
+          <div className={cx("absolute right-2 lg:right-0 top-1/2 -translate-y-1/2 lg:translate-x-1/2 z-10", !canPrev && !canNext && "hidden")}>
             <button
               type="button"
               aria-label="Next"
@@ -451,7 +412,9 @@ export default function JobsLiveJobsTestimonialSection(
             ref={scrollerRef}
             role="region"
             aria-label="Testimonial shorts carousel"
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            // first/last auto margins centre the cards when they all fit, and
+            // collapse to nothing (normal scrolling) when they overflow.
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [&>*:first-child]:ml-auto [&>*:last-child]:mr-auto"
           >
             {filtered.map((v) => (
               <ShortsCard
@@ -459,7 +422,7 @@ export default function JobsLiveJobsTestimonialSection(
                 v={v}
                 onPlay={() => setActive(v)}
                 onShare={() => copyLink(v.id)}
-                cardWidth={cardW || 387}
+                cardWidth={cardW || 240}
               />
             ))}
           </div>
