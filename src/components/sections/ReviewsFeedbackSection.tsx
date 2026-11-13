@@ -113,12 +113,10 @@ export default function ReviewsFeedbackSection() {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-brand" />
                 <p className="text-3xl font-extrabold tracking-tight text-brand"><SiteStat k="ratingValue" /></p>
                 <p className="mt-1 text-sm font-semibold text-slate-700">Avg Rating</p>
               </div>
               <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-emerald-600" />
                 <p className="text-3xl font-extrabold tracking-tight text-emerald-600"><SiteStat k="studentsPlaced" /></p>
                 <p className="mt-1 text-sm font-semibold text-slate-700">Alumni Placed</p>
               </div>

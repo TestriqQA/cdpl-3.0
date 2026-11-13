@@ -2,14 +2,14 @@
 import type { LucideIcon } from "lucide-react";
 import { Briefcase, Globe2, Layers, Smartphone } from "lucide-react";
 
-const BENEFITS: { Icon: LucideIcon; title: string; desc: string; strip: string; tile: string }[] = [
-  { Icon: Globe2, title: "Nationwide Reach", desc: "Mira Road campus plus live-online batches anywhere in India.", strip: "bg-brand", tile: "bg-brand" },
-  { Icon: Briefcase, title: "92% Placement", desc: "Job assistance in local tech hubs.", strip: "bg-emerald-600", tile: "bg-emerald-600" },
-  { Icon: Layers, title: "Flexible Modes", desc: "Online, offline, hybrid learning options.", strip: "bg-sky-600", tile: "bg-sky-600" },
-  { Icon: Smartphone, title: "Mobile-First", desc: "Access materials anytime, anywhere.", strip: "bg-violet-600", tile: "bg-violet-600" },
+const BENEFITS: { Icon: LucideIcon; title: string; desc: string; tile: string }[] = [
+  { Icon: Globe2, title: "Nationwide Reach", desc: "Mira Road campus plus live-online batches anywhere in India.", tile: "bg-brand" },
+  { Icon: Briefcase, title: "92% Placement", desc: "Job assistance in local tech hubs.", tile: "bg-emerald-600" },
+  { Icon: Layers, title: "Flexible Modes", desc: "Online, offline, hybrid learning options.", tile: "bg-sky-600" },
+  { Icon: Smartphone, title: "Mobile-First", desc: "Access materials anytime, anywhere.", tile: "bg-violet-600" },
 ];
 
-/** Why learners pick us, as four cards with a coloured top strip (as on About). Server component. */
+/** Why learners pick us, as four cards. Server component. */
 export default function LocationsBenefitsSection() {
   return (
     <section aria-labelledby="locations-benefits-heading" className="bg-slate-50 py-12 lg:py-16">
@@ -24,12 +24,11 @@ export default function LocationsBenefitsSection() {
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {BENEFITS.map(({ Icon, title, desc, strip, tile }) => (
+          {BENEFITS.map(({ Icon, title, desc, tile }) => (
             <div
               key={title}
               className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
             >
-              <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-1 ${strip}`} />
               <span className={`mx-auto grid h-12 w-12 place-items-center rounded-xl text-white ${tile}`} aria-hidden="true">
                 <Icon className="h-6 w-6" />
               </span>

@@ -9,7 +9,6 @@ type Service = {
     description: string;
     Icon: LucideIcon;
     href: string;
-    strip: string;
     tile: string;
     link: string;
 };
@@ -24,7 +23,7 @@ const SERVICES: Service[] = [
         description: "Manual & automation QA, frameworks, CI/CD, and real project workflows for robust product quality.",
         Icon: ShieldCheck,
         href: "/courses/software-testing-course",
-        strip: "bg-brand",
+       
         tile: "bg-orange-100 text-orange-600",
         link: "text-orange-700",
     },
@@ -34,7 +33,7 @@ const SERVICES: Service[] = [
         description: "Python, statistics, EDA, ML pipelines, and deployment best practices for data-driven impact.",
         Icon: Database,
         href: "/courses/ds-ml-courses",
-        strip: "bg-sky-500",
+       
         tile: "bg-sky-100 text-sky-600",
         link: "text-sky-700",
     },
@@ -44,7 +43,7 @@ const SERVICES: Service[] = [
         description: "Power BI, Tableau, dashboards, and KPI storytelling that turns raw data into decisions.",
         Icon: BarChart3,
         href: "/courses/bi-courses",
-        strip: "bg-emerald-500",
+       
         tile: "bg-emerald-100 text-emerald-600",
         link: "text-emerald-700",
     },
@@ -54,7 +53,7 @@ const SERVICES: Service[] = [
         description: "ML, GenAI, prompt engineering, vector DBs, and responsible AI to build intelligent systems.",
         Icon: Brain,
         href: "/courses/artificial-intelligence-courses",
-        strip: "bg-violet-500",
+       
         tile: "bg-violet-100 text-violet-600",
         link: "text-violet-700",
     },
@@ -64,7 +63,7 @@ const SERVICES: Service[] = [
         description: "SEO, performance ads, analytics, landing pages, and content playbooks that compound growth.",
         Icon: Megaphone,
         href: "/courses/digital-marketing-courses",
-        strip: "bg-rose-500",
+       
         tile: "bg-rose-100 text-rose-600",
         link: "text-rose-700",
     },
@@ -96,7 +95,6 @@ export default function LocationsServicesSection() {
                             aria-labelledby={`${s.id}-title`}
                             className={`group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 lg:col-span-2 ${idx === 3 ? "lg:col-start-2" : ""} ${idx === 4 ? "sm:col-span-2" : ""}`}
                         >
-                            <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-1 ${s.strip}`} />
                             <div className="flex items-center gap-3">
                                 <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl ${s.tile}`} aria-hidden="true">
                                     <s.Icon className="h-5 w-5" />
