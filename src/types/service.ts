@@ -27,6 +27,8 @@ export interface ServiceClient {
     methodology: string[];
     stats?: StatItem[];
     keywords?: string[];
+    /** Social share image: a site path or an absolute (Sanity CDN) URL. */
+    ogImage?: string;
 }
 
 export interface ServiceEvent {

@@ -4368,6 +4368,8 @@ export function generateServicesPageAllSchemas(
     slug: string;
     title: string;
     shortDescription: string;
+    /** The service's share image (site path or absolute URL). */
+    image: string;
   }[],
 ): WithContext<Record<string, unknown>>[] {
   const webPageSchema = generateWebPageSchema({
@@ -4393,7 +4395,8 @@ export function generateServicesPageAllSchemas(
         description: service.shortDescription,
         url: `/services/${service.slug}`,
         serviceType: "Corporate Training",
-        image: `/og-images/og-service-${service.slug}.webp`,
+        // Was `/og-images/og-service-${slug}.webp`, which exists for no service.
+        image: service.image,
       }),
     })),
   });
@@ -4531,6 +4534,8 @@ export function generateServiceDetailPageAllSchemas(service: {
   methodology: string[];
   deliveryFormats: { format: string; duration: string; description: string }[];
   whoShouldAttend: string[];
+  /** The service's share image (site path or absolute URL). */
+  image: string;
 }): WithContext<Record<string, unknown>>[] {
   // NOTE: Organization and WebSite schemas are handled by Root Layout
 
@@ -4548,7 +4553,8 @@ export function generateServiceDetailPageAllSchemas(service: {
     description: service.shortDescription,
     url: `/services/${service.slug}`,
     serviceType: "Corporate Training",
-    image: `/og-images/og-service-${service.slug}.webp`,
+    // Was `/og-images/og-service-${slug}.webp`, which exists for no service.
+    image: service.image,
   });
 
   // FAQPage — dynamically built from service data
