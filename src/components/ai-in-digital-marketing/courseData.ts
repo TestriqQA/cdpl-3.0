@@ -39,7 +39,6 @@ export const courseData = {
       icon: Users,
       value: STAT_TEXT.studentsPlaced,
       label: "Students Placed",
-      label: "Successful Graduates",
       description: "Students who transformed their business",
     },
     {

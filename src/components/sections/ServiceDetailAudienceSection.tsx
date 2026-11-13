@@ -1,150 +1,68 @@
-'use client';
-
-import { UserCheck, Check } from 'lucide-react';
+import { Briefcase, Building2, GraduationCap, Laptop, Presentation, UserRound, Users } from 'lucide-react';
+import type { ComponentType, SVGProps } from 'react';
 import type { ServiceClient } from '@/types/service';
-import { useMemo } from 'react';
+import { ServiceSectionHeader, tileColour } from './serviceDetailShared';
 
-type WithOptionalColors = { accentHex?: string; colorHex?: string };
+/** How many audiences to show. */
+const MAX_AUDIENCES = 4;
 
+type Icon = ComponentType<SVGProps<SVGSVGElement>>;
+
+/**
+ * Avatar icon per audience, picked from its wording (first match wins, so
+ * "Engineering students" is a student, not an engineer). Broad, domain-wide
+ * audiences ("Anyone…", "Employees looking…") get a group. Falls back to a person.
+ */
+const AVATARS: [RegExp, Icon][] = [
+  [/\b(anyone|all|employees|working professionals|public servants)\b/i, Users],
+  [/\b(students?|graduates?|interns?|apprentices?|career|candidates?|fresh)\b/i, GraduationCap],
+  [/\b(faculty|instructors?|trainers?|teachers?|educat\w*|research\w*|scholars?|phd)\b/i, Presentation],
+  [/\b(management|leadership|managers?|leads?|executives?|officials?|administrat\w*|hr|l&d|strategists?)\b/i, Briefcase],
+  [/\b(organi[sz]ations?|compan\w*|enterprises?)\b/i, Building2],
+  [/\b(developers?|engineers?|qa|testing|sdets?|devops|data|analysts?|scientists?|technical|tech|cloud)\b/i, Laptop],
+  [/\b(teams?|departments?|staff|employees?|municipal|bmc|personnel)\b/i, Building2],
+];
+const avatarFor = (text: string): Icon => AVATARS.find(([re]) => re.test(text))?.[1] ?? UserRound;
+
+/**
+ * Who Should Attend: the first four audiences as profile-style cards, each
+ * with a round avatar sitting over the card's top edge and the audience
+ * written below it.
+ */
 export default function ServiceDetailAudienceSection({ service }: { service: ServiceClient }) {
-  // Safely read optional color props without using `any`
-  const { accentHex, colorHex } = service as ServiceClient & WithOptionalColors;
-  const accent = accentHex ?? colorHex ?? '#0ea5e9';
-
-  const TOKENS = useMemo(() => ({
-    ringNeutral: 'rgba(15,23,42,0.06)',
-    text: '#0f172a',
-    sub: 'rgba(15,23,42,0.62)',
-    backdrop: `radial-gradient(120% 80% at 50% -10%, rgba(2,6,23,0.04) 0%, rgba(2,6,23,0) 60%)`,
-    accent, // header icon
-
-    // Title colors
-    titleYouShould: '#0ea5e9', // ONE color for the whole "Who Should"
-    titleAttend: '#16a34a',    // green-600 for "Attend?" (success vibe)
-  }), [accent]);
-
-  const audience = service.whoShouldAttend ?? [];
-
-  // Solid, lighter pastel tints (no gradients). Hover slightly increases alpha.
-  const CARD_SKINS = useMemo(() => ([
-    { name: 'sky',     bg: 'rgba(14,165,233,0.10)',  hover: 'rgba(14,165,233,0.14)',  ring: 'rgba(14,165,233,0.26)',  badge: 'rgba(14,165,233,0.16)' },
-    { name: 'cyan',    bg: 'rgba(34,211,238,0.10)',  hover: 'rgba(34,211,238,0.14)',  ring: 'rgba(34,211,238,0.24)',  badge: 'rgba(34,211,238,0.16)' },
-    { name: 'teal',    bg: 'rgba(20,184,166,0.10)',  hover: 'rgba(20,184,166,0.14)',  ring: 'rgba(20,184,166,0.24)',  badge: 'rgba(20,184,166,0.16)' },
-    { name: 'indigo',  bg: 'rgba(99,102,241,0.10)',  hover: 'rgba(99,102,241,0.14)',  ring: 'rgba(99,102,241,0.24)',  badge: 'rgba(99,102,241,0.16)' },
-    { name: 'violet',  bg: 'rgba(139,92,246,0.10)',  hover: 'rgba(139,92,246,0.14)',  ring: 'rgba(139,92,246,0.24)',  badge: 'rgba(139,92,246,0.16)' },
-    { name: 'rose',    bg: 'rgba(244,63,94,0.09)',   hover: 'rgba(244,63,94,0.13)',   ring: 'rgba(244,63,94,0.22)',   badge: 'rgba(244,63,94,0.14)' },
-    { name: 'amber',   bg: 'rgba(245,158,11,0.09)',  hover: 'rgba(245,158,11,0.13)',  ring: 'rgba(245,158,11,0.22)',  badge: 'rgba(245,158,11,0.14)' },
-    { name: 'emerald', bg: 'rgba(16,185,129,0.10)',  hover: 'rgba(16,185,129,0.14)',  ring: 'rgba(16,185,129,0.24)',  badge: 'rgba(16,185,129,0.16)' },
-  ] as const), []);
-
-  // subtle section grain
-  const noiseUrl = useMemo(() => {
-    const svg = `
-      <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'>
-        <filter id='n'>
-          <feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/>
-          <feColorMatrix type='saturate' values='0'/>
-          <feComponentTransfer>
-            <feFuncA type='table' tableValues='0 0 .015 .03 .05 .07 .09 .11 .12 .12'/>
-          </feComponentTransfer>
-        </filter>
-        <rect width='100%' height='100%' filter='url(#n)' opacity='.75'/>
-      </svg>`;
-    return `url("data:image/svg+xml;utf8,${encodeURIComponent(svg)}")`;
-  }, []);
+  const audience = (service.whoShouldAttend ?? []).filter(Boolean).slice(0, MAX_AUDIENCES);
+  if (audience.length === 0) return null;
 
   return (
-    <section className="relative w-full overflow-hidden" aria-labelledby="audience-heading">
-      {/* Background */}
-      <div aria-hidden className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0" style={{ background: TOKENS.backdrop }} />
-        <div
-          className="absolute inset-0 opacity-[0.12] mix-blend-multiply"
-          style={{ backgroundImage: noiseUrl, backgroundRepeat: 'repeat' }}
+    <section className="bg-white py-12 lg:py-16" aria-labelledby="audience-heading">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <ServiceSectionHeader
+          id="audience-heading"
+          pill="Who It's For"
+          title={<>Who Should <span className="text-brand">Attend?</span></>}
+          intro="Built for individuals and teams who want to put these skills to work."
         />
-      </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="flex items-center gap-3 mb-6">
-          <div
-            className="size-11 rounded-xl flex items-center justify-center bg-white/80 backdrop-blur-sm"
-            style={{ border: `1px solid ${TOKENS.ringNeutral}`, color: TOKENS.accent }}
-          >
-            <UserCheck className="size-5" />
-          </div>
-
-          {/* Title: "Who Should" in one color, "Attend?" in green */}
-          <h2 id="audience-heading" className="text-[1.35rem] md:text-[1.6rem] font-semibold tracking-tight">
-            <span style={{ color: TOKENS.titleYouShould }}>Who&nbsp;Should</span>
-            <span> </span>
-            <span style={{ color: TOKENS.titleAttend }}>Attend?</span>
-          </h2>
-        </div>
-
-        {/* Divider */}
-        <div aria-hidden className="mb-7 h-px w-full" style={{ backgroundColor: TOKENS.ringNeutral }} />
-
-        {/* Cards */}
-        <ul
-          className="grid gap-4 md:gap-5"
-          style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}
-        >
+        {/* pt-10 leaves room for the avatars that sit over the cards' top edge */}
+        <ul className="grid grid-cols-2 gap-x-3 gap-y-12 pt-9 sm:gap-x-5 sm:gap-y-14 sm:pt-10 lg:grid-cols-4">
           {audience.map((aud, i) => {
-            const skin = CARD_SKINS[i % CARD_SKINS.length];
+            const Avatar = avatarFor(aud);
             return (
-              <li key={`${aud}-${i}`}>
-                <div
-                  className="relative rounded-2xl px-4 py-3.5 md:px-5 md:py-4 transition-all duration-200"
-                  style={{
-                    backgroundColor: skin.bg,
-                    border: `1px solid ${skin.ring}`,
-                    boxShadow: '0 8px 24px -16px rgba(2,6,23,0.18)',
-                    backdropFilter: 'blur(2px)',
-                  }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.backgroundColor = skin.hover; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.backgroundColor = skin.bg; }}
+              <li
+                key={`${aud}-${i}`}
+                className="group relative flex flex-col items-center rounded-2xl border border-slate-200 bg-white px-3 pb-5 pt-11 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg sm:px-5 sm:pb-6 sm:pt-14"
+              >
+                <span
+                  className={`absolute left-1/2 top-0 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full ${tileColour(i)} text-white shadow-lg ring-4 ring-white transition-transform duration-300 group-hover:scale-105 sm:h-20 sm:w-20`}
+                  aria-hidden="true"
                 >
-                  <div className="flex items-start gap-3">
-                    <span
-                      className="inline-flex items-center justify-center rounded-lg shrink-0 size-8"
-                      style={{
-                        backgroundColor: skin.badge,
-                        border: `1px solid ${skin.ring}`,
-                        color: TOKENS.text,
-                      }}
-                      aria-hidden
-                    >
-                      <Check className="size-4" />
-                    </span>
-
-                    <div className="flex-1">
-                      <p className="text-[0.98rem] leading-relaxed font-medium" style={{ color: TOKENS.text }}>
-                        {aud}
-                      </p>
-                      <p className="mt-1 text-xs" style={{ color: TOKENS.sub }}>
-                        Mentor-led • Outcome-focused • Portfolio-first
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* left hairline accent */}
-                  <span
-                    aria-hidden
-                    className="absolute left-0 top-2 bottom-2 rounded-full"
-                    style={{
-                      width: 2,
-                      background: `linear-gradient(180deg, transparent, ${skin.ring}, transparent)`,
-                    }}
-                  />
-                </div>
+                  <Avatar className="h-7 w-7 sm:h-9 sm:w-9" />
+                </span>
+                <p className="text-sm font-bold leading-snug text-gray-900 sm:text-lg">{aud}</p>
               </li>
             );
           })}
         </ul>
-
-        {/* Bottom spacer line */}
-        <div aria-hidden className="mt-9 h-px w-full" style={{ backgroundColor: TOKENS.ringNeutral }} />
       </div>
     </section>
   );

@@ -24,9 +24,9 @@ export const revalidate = 120;
 // them directly removes the boundaries and the shift. Same reasoning as
 // BLG-010 for Header/Footer/SpecialOfferBanner in app/layout.tsx.
 import ReviewsHeroSection from "@/components/sections/ReviewsHeroSection";
-import JobsLiveJobsTestimonialSection from "@/components/sections/JobsLiveJobsTestimonialSection";
+import ReviewsVideoSection from "@/components/sections/ReviewsVideoSection";
 import ReviewsFeedbackSection from "@/components/sections/ReviewsFeedbackSection";
-import JobsLiveJobsReviewSection from "@/components/sections/JobsLiveJobsReviewSection";
+import ReviewsGoogleSection from "@/components/sections/ReviewsGoogleSection";
 import ReviewsCTAJoinSection from "@/components/sections/ReviewsCTAJoinSection";
 import { SITE_STATS, STAT_TEXT } from "@/lib/siteStats";
 
@@ -77,11 +77,10 @@ export default function Page() {
         <JsonLd key={`reviews-schema-${index}`} id={`reviews-schema-${index}`} schema={schema} />
       ))}
 
-      {/* Sections (unchanged) */}
       <ReviewsHeroSection />
-      <JobsLiveJobsTestimonialSection />
+      <ReviewsVideoSection />
       <ReviewsFeedbackSection />
-      <JobsLiveJobsReviewSection />
+      <ReviewsGoogleSection />
       <ReviewsCTAJoinSection />
     </div>
   );

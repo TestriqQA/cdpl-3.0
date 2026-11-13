@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Star, Filter, CheckCircle2, Trophy, BadgeCheck } from "lucide-react";
+import { Star, Filter, ShieldCheck, Trophy, BadgeCheck } from "lucide-react";
 
 import { getAllReviews, type StudentReview } from "@/data/reviews/reviewsData";
 import SafeAvatar from "@/components/sections/SafeAvatar";
@@ -10,10 +10,12 @@ import { SiteStat } from "@/components/stats/SiteStatsProvider";
 // --- Configuration ---
 const FILTERS = [
   { id: "all", label: "All Reviews" },
-  { id: "testing", label: "Software Testing", matches: ["Software Testing", "QA Engineer"] },
-  { id: "data", label: "Data & Analytics", matches: ["Data Analyst", "Data Scientist"] },
-  { id: "marketing", label: "Digital Marketing", matches: ["Digital Marketing"] },
+  { id: "testing", label: "Software Testing" },
+  { id: "data", label: "Data & Analytics" },
+  { id: "marketing", label: "Digital Marketing" },
 ];
+
+const PAGE_SIZE = 8;
 
 function getCategory(role: string): string {
   if (["Software Testing", "QA Engineer"].includes(role)) return "testing";
@@ -24,80 +26,49 @@ function getCategory(role: string): string {
 
 // --- Components ---
 
-function FilterPill({
-  active,
-  onClick,
-  children,
-}: {
-  active: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <button
-      onClick={onClick}
-      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 border ${active
-        ? "bg-slate-900 border-slate-900 text-white shadow-md"
-        : "bg-white border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50"
-        }`}
-    >
-      {children}
-    </button>
-  );
-}
-
 function ReviewCard({ review }: { review: StudentReview }) {
+  const stars = Math.round(review.rating);
+
   return (
-    <article
-      className="group relative bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-slate-200/50 hover:border-blue-200 transition-all duration-300"
-    >
-      <div className="flex gap-4">
-        {/* Avatar Column */}
-        <div className="flex-shrink-0">
+    <article className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-200 hover:shadow-lg">
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex min-w-0 items-center gap-3">
           <SafeAvatar
             name={review.name}
             sizes="48px"
-            className="w-12 h-12 rounded-full ring-2 ring-slate-100 group-hover:ring-blue-100 transition-all"
+            className="!h-12 !w-12 shrink-0 rounded-full ring-2 ring-slate-100 transition-all group-hover:ring-orange-100"
           />
+          <div className="min-w-0">
+            <h3 className="flex items-center gap-1.5 text-base font-bold text-slate-900">
+              {review.name}
+              <BadgeCheck className="h-4 w-4 shrink-0 text-emerald-600" aria-label="Verified learner" />
+            </h3>
+            <p className="text-xs font-medium text-slate-500">{review.role}</p>
+          </div>
         </div>
-
-        {/* Content Column */}
-        <div className="flex-1 min-w-0 space-y-3">
-          {/* Header */}
-          <div className="flex justify-between items-start">
-            <div>
-              <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                {review.name}
-                <BadgeCheck className="w-4 h-4 text-blue-500 fill-blue-50" />
-              </h3>
-              <div className="text-xs text-slate-500 font-medium">{review.role}</div>
-            </div>
-            <div className="flex items-center gap-0.5" role="img" aria-label={`Rated ${review.rating} stars`}>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  className={`w-3.5 h-3.5 ${i < Math.floor(review.rating) ? "fill-amber-400 text-amber-400" : "fill-slate-100 text-slate-200"}`}
-                />
-              ))}
-            </div>
+        <div className="flex shrink-0 items-center gap-1.5">
+          <div className="flex items-center gap-0.5" role="img" aria-label={`Rated ${review.rating} out of 5`}>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star
+                key={i}
+                aria-hidden="true"
+                className={`h-3.5 w-3.5 ${i < stars ? "fill-amber-400 stroke-amber-400" : "fill-slate-100 stroke-slate-200"}`}
+              />
+            ))}
           </div>
-
-          {/* Quote */}
-          <p className="text-slate-600 text-sm leading-relaxed">
-            {review.quote}
-          </p>
-
-          {/* Footer */}
-          <div className="pt-3 border-t border-slate-100 flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-50 border border-slate-100 text-[11px] font-semibold text-slate-600 uppercase tracking-wide">
-              {review.course}
-            </span>
-            {review.company && (
-              <span className="text-xs text-slate-500 font-medium">Placed at {review.company}</span>
-            )}
-          </div>
+          <span className="text-xs font-semibold text-slate-600">{review.rating.toFixed(1)}</span>
         </div>
       </div>
+
+      <span className="mt-4 self-start rounded-md bg-orange-50 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-orange-700 ring-1 ring-orange-100">
+        {review.course}
+      </span>
+
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">{review.quote}</p>
+
+      {review.company && (
+        <p className="mt-4 border-t border-slate-100 pt-4 text-xs font-medium text-slate-500">Placed at {review.company}</p>
+      )}
     </article>
   );
 }
@@ -106,150 +77,116 @@ export default function ReviewsFeedbackSection() {
   const allReviews = useMemo(() => getAllReviews(), []);
 
   const [activeFilter, setActiveFilter] = useState("all");
-  const [visibleCount, setVisibleCount] = useState(8);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
-  // Filter Logic
   const filteredReviews = useMemo(() => {
     if (activeFilter === "all") return allReviews;
     return allReviews.filter((r) => getCategory(r.role) === activeFilter);
   }, [allReviews, activeFilter]);
 
-  // Display Subset
   const displayReviews = filteredReviews.slice(0, visibleCount);
   const canLoadMore = visibleCount < filteredReviews.length;
 
   const handleFilterChange = (id: string) => {
     setActiveFilter(id);
-    setVisibleCount(8); // Reset pagination on filter change
+    setVisibleCount(PAGE_SIZE); // Reset pagination on filter change
   };
 
   return (
-    <section id="all-reviews" className="relative w-full bg-slate-50/50 py-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-
-          {/* --- LEFT: Sticky Sidebar (Controls & Title) --- */}
-          <div className="hidden lg:block lg:col-span-4 sticky top-24 space-y-8">
-            {/* Header Group */}
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-100 rounded-full text-blue-700 text-xs font-bold uppercase tracking-wide">
-                <Trophy className="w-3.5 h-3.5" />
+    <section id="all-reviews" aria-labelledby="all-reviews-heading" className="scroll-mt-20 bg-slate-50 py-12 lg:py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
+          {/* --- LEFT: header, stats and filters (sticky on desktop) --- */}
+          <div className="space-y-8 lg:sticky lg:top-24 lg:col-span-4">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-brand">
+                <Trophy className="h-4 w-4" aria-hidden="true" />
                 Student Success
-              </div>
-              <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
-                Real Result.<br />
-                <span className="text-slate-500">Real Reviews.</span>
+              </span>
+              <h2 id="all-reviews-heading" className="mt-4 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl">
+                Real results. <span className="text-brand">Real reviews.</span>
               </h2>
-              <p className="text-slate-600 leading-relaxed text-lg">
+              <p className="mt-4 text-lg leading-relaxed text-gray-600">
                 Explore how professionals transformed their careers. Filter by your domain to see relevant stories.
               </p>
             </div>
 
-            {/* Stats */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                <div className="text-3xl font-bold text-slate-900 tracking-tight"><SiteStat k="ratingValue" /></div>
-                <div className="text-xs font-medium text-slate-500 uppercase mt-1">Avg Rating</div>
+              <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                <p className="text-3xl font-extrabold tracking-tight text-brand"><SiteStat k="ratingValue" /></p>
+                <p className="mt-1 text-sm font-semibold text-slate-700">Avg Rating</p>
               </div>
-              <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                <div className="text-3xl font-bold text-slate-900 tracking-tight"><SiteStat k="studentsPlaced" /></div>
-                <div className="text-xs font-medium text-slate-500 uppercase mt-1">Alumni Placed</div>
+              <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                <p className="text-3xl font-extrabold tracking-tight text-emerald-600"><SiteStat k="studentsPlaced" /></p>
+                <p className="mt-1 text-sm font-semibold text-slate-700">Alumni Placed</p>
               </div>
             </div>
 
-            {/* Desktop Filters */}
-            <div className="space-y-3">
-              <div className="text-xs font-bold text-slate-600 uppercase tracking-widest flex items-center gap-2">
-                <Filter className="w-3 h-3" />
+            <div>
+              <p id="review-filter-label" className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-600">
+                <Filter className="h-3 w-3" aria-hidden="true" />
                 Filter by Role
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {FILTERS.map((f) => (
-                  <FilterPill
-                    key={f.id}
-                    active={activeFilter === f.id}
-                    onClick={() => handleFilterChange(f.id)}
-                  >
-                    {f.label}
-                  </FilterPill>
-                ))}
+              </p>
+              <div className="flex flex-wrap gap-2" role="group" aria-labelledby="review-filter-label">
+                {FILTERS.map((f) => {
+                  const active = activeFilter === f.id;
+                  return (
+                    <button
+                      key={f.id}
+                      type="button"
+                      onClick={() => handleFilterChange(f.id)}
+                      aria-pressed={active}
+                      className={`cursor-pointer rounded-full border px-4 py-2 text-sm font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2 ${active
+                        ? "border-brand bg-brand text-white shadow-md"
+                        : "border-slate-200 bg-white text-slate-700 hover:border-brand hover:text-brand"
+                        }`}
+                    >
+                      {f.label}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
-            {/* Trust Indicator */}
-            <div className="flex items-center gap-3 p-4 bg-white/50 border border-slate-200 rounded-xl">
-              <div className="bg-green-100 p-2 rounded-full text-green-600">
-                <CheckCircle2 className="w-5 h-5" />
-              </div>
+            <div className="hidden items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 lg:flex">
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200">
+                <ShieldCheck className="h-5 w-5" aria-hidden="true" />
+              </span>
               <div>
-                <div className="text-sm font-bold text-slate-900">100% Verified</div>
-                <div className="text-xs text-slate-500">Reviews from actual students</div>
+                <p className="text-sm font-bold text-slate-900">100% Verified</p>
+                <p className="text-xs text-slate-500">Reviews from actual students</p>
               </div>
             </div>
           </div>
 
-          {/* --- MOBILE: Header & Filters (Visible only on < lg) --- */}
-          <div className="lg:hidden col-span-1 space-y-6">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold text-slate-900">Student Reviews</h2>
-              <p className="text-slate-600">See what our alumni have to say about their journey.</p>
-            </div>
+          {/* --- RIGHT: feed --- */}
+          <div className="space-y-6 lg:col-span-8">
+            <p className="border-b border-slate-200 pb-4 text-sm font-semibold text-slate-500" aria-live="polite">
+              Showing {displayReviews.length} of {filteredReviews.length} reviews
+            </p>
 
-            {/* Scrollable Filters */}
-            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide -mx-4 px-4">
-              {FILTERS.map((f) => (
-                <button
-                  key={f.id}
-                  onClick={() => handleFilterChange(f.id)}
-                  className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium border ${activeFilter === f.id
-                    ? "bg-slate-900 border-slate-900 text-white"
-                    : "bg-white border-slate-200 text-slate-700"
-                    }`}
-                >
-                  {f.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-
-          {/* --- RIGHT: Feed (Masonry Style) --- */}
-          <div className="col-span-1 lg:col-span-8 space-y-6">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-200">
-              <span className="text-sm font-bold text-slate-500">
-                Showing {displayReviews.length} of {filteredReviews.length} reviews
-              </span>
-              <span className="text-xs font-semibold text-slate-600 uppercase">
-                Sorted by Recent
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {displayReviews.map((review) => (
                 <ReviewCard key={review.id} review={review} />
               ))}
             </div>
 
-            {/* Load More Trigger */}
-            {canLoadMore && (
-              <div className="pt-8 flex justify-center">
+            {canLoadMore ? (
+              <div className="flex justify-center pt-4">
                 <button
-                  onClick={() => setVisibleCount(c => c + 6)}
-                  className="px-8 py-3 bg-white border border-slate-300 hover:border-slate-400 text-slate-700 font-semibold rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95"
+                  type="button"
+                  onClick={() => setVisibleCount((c) => c + 6)}
+                  className="inline-flex cursor-pointer items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-800 shadow-sm transition-colors duration-300 hover:border-brand hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2"
                 >
                   Load More Stories
                 </button>
               </div>
-            )}
-
-            {!canLoadMore && filteredReviews.length > 0 && (
-              <div className="text-center py-12 text-slate-400">
-                <p className="text-sm font-medium">You've reached the end of the list.</p>
-              </div>
+            ) : (
+              filteredReviews.length > 0 && (
+                <p className="py-6 text-center text-sm font-medium text-slate-400">You&apos;ve reached the end of the list.</p>
+              )
             )}
           </div>
-
         </div>
       </div>
     </section>

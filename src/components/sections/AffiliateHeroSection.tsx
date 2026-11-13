@@ -1,233 +1,115 @@
 // src/components/sections/AffiliateHeroSection.tsx
+// Site hero style (About / Reviews / Services): brand glows, breadcrumbs,
+// orange pill, two-tone h1, solid-tile key facts, brand CTAs, image right.
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ArrowRight,
-  Sparkles,
-  ShieldCheck,
-  TrendingUp,
-  Home,
-  ChevronRight,
-  BadgeCheck,
-  Link2,
-  WalletMinimal,
-  Megaphone,
-  BarChart3,
-  Crown,
-} from "lucide-react";
 import { useState } from "react";
+import { ArrowRight, CalendarClock, ChevronRight, Home, Percent, Sparkles, Timer, type LucideIcon } from "lucide-react";
 import WorkshopRequestModal from "../WorkshopRequestModal";
 
-const BRAND_COLOR = "#ff8c00";
-
-// Tiny floating icon chip (background layer)
-function FloatingIcon({
-  children,
-  className,
-  x,
-  y,
-  size = 26,
-  delay = 0,
-  duration = 6,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  x: string;
-  y: string;
-  size?: number;
-  delay?: number;
-  duration?: number;
-}) {
-  return (
-    <div
-      className={`pointer-events-none absolute select-none ${className || ""}`}
-      style={{
-        left: x,
-        top: y,
-        animation: `cdpl-float ${duration}s ease-in-out ${delay}s infinite`,
-      }}
-    >
-      <div
-        className="rounded-xl border backdrop-blur-md bg-white/70 border-white/50 shadow-sm"
-        style={{ width: size + 12, height: size + 12 }}
-      >
-        <div className="grid h-full place-items-center">{children}</div>
-      </div>
-    </div>
-  );
-}
+// Key programme facts, as stated across this page (tiers, payouts, FAQ).
+const FACTS: { value: string; label: string; Icon: LucideIcon; tile: string; text: string }[] = [
+  { value: "Up to 25%", label: "Commission", Icon: Percent, tile: "bg-brand", text: "text-brand" },
+  { value: "60-day", label: "Cookie window", Icon: Timer, tile: "bg-sky-600", text: "text-sky-700" },
+  { value: "Monthly", label: "Payouts", Icon: CalendarClock, tile: "bg-emerald-600", text: "text-emerald-700" },
+];
 
 export default function AffiliateHeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section
-      className="
-        relative isolate overflow-hidden bg-white text-slate-900
-        pt-[96px] md:pt-[104px] lg:pt-[112px]
-        -mt-[96px] md:-mt-[104px] lg:-mt-[112px]
-      "
-      aria-label="CDPL Affiliate Program hero section"
-      data-scroll-target="affiliate-hero"
-    >
-      {/* Background wash (full-bleed) */}
-      <div className="absolute inset-0 -z-30">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-50 to-white" />
-        <div className="absolute left-1/2 top-[-6rem] h-[34rem] w-[70rem] -translate-x-1/2 rounded-full blur-3xl opacity-30 bg-[radial-gradient(circle_at_center,theme(colors.sky.200)_0,transparent_60%)]" />
+    <section aria-labelledby="affiliate-heading" className="relative isolate overflow-hidden" data-scroll-target="affiliate-hero">
+      {/* Background glows, as on the About / Reviews heroes */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -left-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-sky-200/40 blur-3xl" />
+        <div className="absolute -right-24 top-0 h-[32rem] w-[32rem] rounded-full bg-brand-200/40 blur-3xl" />
       </div>
 
-      {/* Ambient sweeping lines (deeper than icons) */}
-      <div className="pointer-events-none absolute inset-0 -z-20">
-        <svg className="absolute left-0 top-0 h-full w-full">
-          <defs>
-            <linearGradient id="cdpl-line-aff" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="rgba(14,165,233,0)" />
-              <stop offset="50%" stopColor="rgba(14,165,233,0.22)" />
-              <stop offset="100%" stopColor="rgba(14,165,233,0)" />
-            </linearGradient>
-          </defs>
-          {[0, 110, 220, 330].map((y, i) => (
-            <g key={i} transform={`translate(0, ${y})`}>
-              <rect x="-45%" y="0" width="90%" height="1.5" fill="url(#cdpl-line-aff)">
-                <animate attributeName="x" values="-45%;65%;-45%" dur={`${14 + i * 2}s`} repeatCount="indefinite" />
-              </rect>
-            </g>
-          ))}
-        </svg>
-      </div>
-
-      {/* Floating vector icons (background layer above lines, away from content/breadcrumb) */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        {/* Hide on small screens to avoid clutter */}
-        <FloatingIcon x="6%" y="22%" className="hidden min-[1040px]:grid">
-          <Link2 className="h-5 w-5 text-sky-500" />
-        </FloatingIcon>
-        <FloatingIcon x="88%" y="18%" className="hidden min-[1040px]:grid" delay={0.6}>
-          <WalletMinimal className="h-5 w-5 text-emerald-500" />
-        </FloatingIcon>
-        <FloatingIcon x="78%" y="34%" className="hidden min-[1040px]:grid" delay={0.2}>
-          <Megaphone className="h-5 w-5 text-indigo-500" />
-        </FloatingIcon>
-        <FloatingIcon x="10%" y="68%" className="hidden min-[1040px]:grid" delay={0.4}>
-          <BarChart3 className="h-5 w-5 text-purple-500" />
-        </FloatingIcon>
-        <FloatingIcon x="92%" y="70%" className="hidden min-[1040px]:grid" delay={0.8}>
-          <Crown className="h-5 w-5 text-amber-500" />
-        </FloatingIcon>
-      </div>
-
-      {/* Container */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-10 pb-0 sm:px-6 lg:px-8">
-        {/* Breadcrumb */}
+      <div className="mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-12 md:pb-16 lg:px-8">
         <nav aria-label="Breadcrumb" className="mb-6">
-          <ol className="flex items-center gap-1 text-sm text-slate-500">
-            <li className="flex items-center gap-1">
-              <Home className="h-4 w-4" />
-              <Link href="/" className="hover:text-indigo-700">Home</Link>
+          <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
+            <li className="flex items-center gap-2">
+              <Home className="h-4 w-4" aria-hidden="true" />
+              <Link href="/" className="transition-colors hover:text-brand">Home</Link>
             </li>
-            <li aria-hidden className="mx-1 text-slate-400">
-              <ChevronRight className="h-4 w-4" />
-            </li>
-            <li>
-              <Link href="/cdpl-affiliate-program" className="font-semibold text-slate-900 hover:text-indigo-700">
-                Affiliate Program
-              </Link>
+            <li className="flex items-center gap-2">
+              <ChevronRight className="h-4 w-4" aria-hidden="true" />
+              <span aria-current="page" className="font-semibold text-slate-900">Affiliate Program</span>
             </li>
           </ol>
         </nav>
 
-        {/* Layout: text left, image right; on small screens, image goes below */}
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-10 lg:gap-14">
-          {/* LEFT — text */}
-          <div className="order-1 md:order-1 max-w-2xl md:flex-1 md:basis-[58%] lg:basis-[60%]">
-            <p
-              className="inline-flex items-center gap-2 rounded-full border border-sky-200/70 px-3 py-1 text-sm bg-white/85 backdrop-blur-md text-gray-800"
-            >
-              <Sparkles className="h-4 w-4 text-sky-500" />
-              <span>CDPL Partner Ecosystem</span>
-            </p>
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+          {/* LEFT — copy */}
+          <div className="lg:col-span-7">
+            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-brand">
+              <Sparkles className="h-4 w-4" aria-hidden="true" />
+              CDPL Partner Ecosystem
+            </span>
 
-            <h1
-              className="mt-4 text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl"
-            >
-              <span style={{ color: "#0069A8" }}>CDPL Affiliate</span>{" "}
-              <span style={{ color: BRAND_COLOR }}>Program</span>
+            <h1 id="affiliate-heading" className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+              <span className="text-sky-600">CDPL Affiliate</span> <span className="text-brand">Program</span>
             </h1>
 
-            <p
-              className="mt-4 mx-auto max-w-3xl text-base text-slate-700 sm:text-lg lg:mx-0"
-            >
-              Earn commissions by promoting CDPL’s training, developer events, and
-              engineering services. Transparent tracking, fast payouts, and content
-              built for conversions.
+            <p className="mt-4 max-w-xl text-base leading-7 text-slate-600 md:text-lg md:leading-8">
+              Earn commissions by promoting CDPL’s training, developer events, and engineering services. Transparent
+              tracking, fast payouts, and content built for conversions.
             </p>
 
-            {/* Trust highlights */}
-            <div
-              className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4"
-            >
-              <div className="flex items-center gap-2 rounded-xl bg-emerald-50 px-4 py-2 ring-1 ring-emerald-200">
-                <BadgeCheck className="h-4 w-4 text-emerald-700" />
-                <span className="text-sm text-emerald-700">Verified tracking</span>
-              </div>
-              <div className="flex items-center gap-2 rounded-xl bg-sky-50 px-4 py-2 ring-1 ring-sky-200">
-                <ShieldCheck className="h-4 w-4 text-sky-700" />
-                <span className="text-sm text-sky-700">Enterprise trusted</span>
-              </div>
-              <div className="flex items-center gap-2 rounded-xl bg-indigo-50 px-4 py-2 ring-1 ring-indigo-200">
-                <TrendingUp className="h-4 w-4 text-indigo-700" />
-                <span className="text-sm text-indigo-700">High-intent funnels</span>
-              </div>
-            </div>
-
-            {/* CTA row */}
-            <div
-              className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center"
-            >
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <button
+                type="button"
                 onClick={() => setIsModalOpen(true)}
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-white shadow-sm ring-1 ring-black/5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-500 active:translate-y-[1px] cursor-pointer sm:w-auto sm:justify-start"
-                style={{ backgroundColor: BRAND_COLOR }}
+                className="group inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 font-semibold text-white shadow-md shadow-orange-200 transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2 sm:w-auto"
               >
                 Apply Now
-                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
               </button>
-              <Link
+              <a
                 href="#how-it-works"
-                className="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-slate-700 hover:bg-slate-50 cursor-pointer sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-xl border border-orange-300 bg-white px-6 py-3 font-semibold text-slate-800 shadow-sm transition hover:bg-orange-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 sm:w-auto"
               >
                 How it works
-              </Link>
+              </a>
             </div>
+
+            {/* Key facts */}
+            <ul className="mt-8 grid grid-cols-3 gap-3">
+              {FACTS.map(({ value, label, Icon, tile, text }) => (
+                <li key={label} className="rounded-2xl border border-slate-200 bg-white/80 p-3 shadow-sm sm:p-4">
+                  <span className={`grid h-8 w-8 place-items-center rounded-lg text-white ${tile}`} aria-hidden="true">
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <p className={`mt-2 text-lg font-extrabold leading-none sm:text-2xl ${text}`}>{value}</p>
+                  <p className="mt-1 text-xs font-medium text-slate-600 sm:text-sm">{label}</p>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* RIGHT — image (big, blended, no card look) */}
-          <div className="order-2 md:order-2 relative self-start mt-2 md:mt-0 md:basis-[42%] lg:basis-[40%]">
-            <div className="absolute -inset-x-10 -top-10 bottom-0 -z-10 opacity-70 blur-3xl bg-[radial-gradient(620px_260px_at_70%_30%,rgba(14,165,233,0.12),transparent_60%)]" />
-            <div className="relative ml-0 mr-0 w-full md:ml-auto max-w-[28rem] sm:max-w-[32rem] md:w-[420px] lg:w-[520px] xl:w-[560px] 2xl:w-[600px]">
-              <Image
-                src="/affiliate_images/affiliate_hero.png"
-                alt="CDPL Affiliate Program — partner growth illustration"
-                title="CDPL Affiliate Program — partner growth illustration"
-                width={1600}
-                height={1200}
-                priority
-                sizes="(max-width: 640px) 92vw, (max-width: 1024px) 48vw, 600px"
-                className="h-auto w-full select-none"
-                quality={50}
-                style={{
-                  WebkitMaskImage:
-                    "radial-gradient(130% 130% at 60% 40%, black 72%, transparent 100%)",
-                  maskImage:
-                    "radial-gradient(130% 130% at 60% 40%, black 72%, transparent 100%)",
-                }}
-              />
-            </div>
+          {/* RIGHT — illustration */}
+          <div className="relative lg:col-span-5">
+            <div aria-hidden="true" className="absolute inset-8 rounded-full bg-brand/20 blur-3xl" />
+            <Image
+              src="/affiliate_images/affiliate_hero.png"
+              alt="CDPL Affiliate Program — partner growth illustration"
+              width={1600}
+              height={1200}
+              priority
+              sizes="(max-width: 1024px) 92vw, 520px"
+              className="relative mx-auto h-auto w-full max-w-[32rem] select-none"
+              quality={50}
+              style={{
+                WebkitMaskImage: "radial-gradient(130% 130% at 60% 40%, black 72%, transparent 100%)",
+                maskImage: "radial-gradient(130% 130% at 60% 40%, black 72%, transparent 100%)",
+              }}
+            />
           </div>
         </div>
       </div>
+
       <WorkshopRequestModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -236,6 +118,6 @@ export default function AffiliateHeroSection() {
         subtitle="Join our partner ecosystem today"
         source="Affiliate Program Page - Hero Section - Apply Now Button"
       />
-    </section >
+    </section>
   );
 }

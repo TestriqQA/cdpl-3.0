@@ -1,95 +1,101 @@
-"use client";
+import Link from "next/link";
+import { ArrowRight, CircleCheck } from "lucide-react";
+import { FAQSection } from "@/components/ui/FAQSection";
+import { ACTD_FAQS } from "@/data/actdFaqs";
 
-import { useState } from "react";
+const STEPS = [
+  { name: "Enroll", desc: "Join the next cohort and pick your focus." },
+  { name: "Learn", desc: "Live sessions and hands-on labs in short sprints." },
+  { name: "Build", desc: "Ship a mentor-reviewed capstone for your portfolio." },
+  { name: "Assess", desc: "Clear the milestone assessments and final exam." },
+  { name: "Share", desc: "Share your certificate with its verification ID." },
+];
 
+const CTA_POINTS = ["10-week cohort", "Mentor reviews", "Placement support"];
+
+/**
+ * Cohort flow as a numbered five-step timeline, the FAQ (shared FAQSection,
+ * same list as the page's FAQPage schema), and a closing CTA in the Our Team
+ * footer style. Server component; only the FAQ accordion is client-side.
+ */
 export default function ACTDCertificationProgressFaqSection() {
-  const steps = ["Enroll", "Learn", "Build", "Assess", "Share"];
-  const [idx, setIdx] = useState(1);
-  const pct = Math.round(((idx + 1) / steps.length) * 100);
-
-  const faqs = [
-    {
-      q: "How is ACTD different from AAA?",
-      a: "ACTD emphasizes demonstrable, practical skills and case execution, while AAA is broader on blueprint coverage.",
-    },
-    {
-      q: "Do I get placement support?",
-      a: "Yes—eligible graduates are surfaced to CDPL partners and receive resume + interview support.",
-    },
-    {
-      q: "Is the certificate digital?",
-      a: "Yes, you’ll receive a shareable link with a unique verification ID.",
-    },
-  ];
-
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h3 className="text-xl font-extrabold">Cohort flow</h3>
-          <div className="mt-4 rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="flex items-center justify-between text-xs font-semibold text-slate-800">
-              <span>Progress</span>
-              <span>{pct}%</span>
-            </div>
-            <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-100">
-              <div
-                className="h-full rounded-full"
-                style={{
-                  width: `${pct}%`,
-                  background:
-                    "linear-gradient(90deg, #ff8c00 0%, #ffb558 55%, #ffd19e 100%)",
-                }}
-              />
-            </div>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {steps.map((s, i) => (
-                <button
-                  key={s}
-                  onClick={() => setIdx(i)}
-                  className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${i === idx
-                    ? "border-zinc-300 text-zinc-900 shadow-sm"
-                    : "border-zinc-200 text-zinc-600 hover:border-zinc-300"
-                    }`}
-                  style={
-                    i === idx
-                      ? {
-                        background:
-                          "linear-gradient(90deg, #ff8c00 0%, #ffb558 55%, #ffd19e 100%)",
-                      }
-                      : undefined
-                  }
-                >
-                  {s}
-                </button>
-              ))}
-            </div>
+    <>
+      <section aria-labelledby="actd-flow-heading" className="bg-white py-12 lg:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-10 max-w-3xl text-center lg:mb-12">
+            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-brand">
+              Cohort flow
+            </span>
+            <h2 id="actd-flow-heading" className="mt-4 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
+              From enrolment to <span className="text-brand">certified</span>
+            </h2>
           </div>
 
-          <div className="mt-8 divide-y divide-slate-200 rounded-2xl border border-slate-200">
-            {faqs.map((f) => (
-              <FaqRow key={f.q} q={f.q} a={f.a} />
+          <ol className="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
+            {/* Connector line on desktop */}
+            <span aria-hidden="true" className="absolute left-[10%] right-[10%] top-6 hidden h-0.5 bg-orange-200 lg:block" />
+            {STEPS.map((s, i) => (
+              <li key={s.name} className="relative flex flex-col items-center text-center">
+                <span className="relative grid h-12 w-12 place-items-center rounded-full bg-brand text-lg font-extrabold text-white shadow-md ring-4 ring-white">
+                  {i + 1}
+                </span>
+                <h3 className="mt-4 text-lg font-bold text-slate-900">{s.name}</h3>
+                <p className="mt-1 max-w-[22ch] text-sm leading-6 text-slate-600">{s.desc}</p>
+              </li>
             ))}
+          </ol>
+        </div>
+      </section>
+
+      <FAQSection
+        id="actd-faq"
+        title={<>Frequently Asked <span className="text-brand">Questions</span></>}
+        subtitle="Everything you need to know about the ACTD certification program."
+        items={ACTD_FAQS}
+        className="bg-slate-50"
+      />
+
+      <section aria-labelledby="actd-cta-heading" className="bg-white">
+        <div className="mx-auto max-w-7xl px-4 pb-16 pt-12 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 via-orange-500 to-amber-500 px-6 py-10 text-white shadow-lg sm:px-10 lg:py-12">
+            <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-2xl" />
+            <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-amber-300/20 blur-2xl" />
+
+            <div className="relative flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
+              <div className="max-w-2xl">
+                <h2 id="actd-cta-heading" className="text-2xl font-bold sm:text-3xl">Ready to get ACTD certified?</h2>
+                <p className="mt-3 text-white/90">
+                  Talk to our admissions team about the next cohort, eligibility and fees.
+                </p>
+                <ul className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium text-white/95 lg:justify-start">
+                  {CTA_POINTS.map((item) => (
+                    <li key={item} className="inline-flex items-center gap-1.5">
+                      <CircleCheck className="h-4 w-4" aria-hidden="true" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="flex shrink-0 flex-col items-center gap-3 sm:flex-row">
+                <Link
+                  href="/contact-us"
+                  className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 font-semibold text-orange-600 shadow-md transition hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-orange-500"
+                >
+                  Talk to an advisor <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+                <a
+                  href="#actd-tracks"
+                  className="inline-flex items-center rounded-xl border-2 border-white/80 px-5 py-2.5 font-semibold text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-orange-500"
+                >
+                  Explore tracks
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function FaqRow({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="p-3">
-      <button
-        onClick={() => setOpen((o) => !o)}
-        className="flex w-full items-center justify-between rounded-xl bg-white px-4 py-3 text-left text-sm font-semibold ring-1 ring-slate-200 transition hover:bg-slate-50"
-        aria-expanded={open}
-      >
-        <span>{q}</span>
-        <span className={`transition ${open ? "rotate-180" : ""}`}>▾</span>
-      </button>
-      {open && <p className="px-4 py-3 text-sm text-slate-800">{a}</p>}
-    </div>
+      </section>
+    </>
   );
 }

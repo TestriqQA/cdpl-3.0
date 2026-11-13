@@ -92,7 +92,10 @@ function getCourseType(slug: string): string | undefined {
     return "ai";
   }
 
-  if (lower.includes("data-science") || lower.includes("ai-ml-bi") || lower.includes("business-intelligence") || lower.includes("data-analytics")) return "data-science";
+  // Business Intelligence has its own city pages; it used to fold into "data-science",
+  // so its link replaced the Data Science one and showed under that label.
+  if (lower.includes("business-intelligence")) return "business-intelligence";
+  if (lower.includes("data-science") || lower.includes("ai-ml-bi") || lower.includes("data-analytics")) return "data-science";
   if (lower.includes("software-testing")) return "software-testing";
   if (lower.includes("digital-marketing") || lower.includes("general")) return "digital-marketing";
   // Changed: map new "web-development" slug, and keep legacy "programming" slugs compatible

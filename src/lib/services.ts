@@ -79,6 +79,7 @@ function sanityToServiceClient(ss: SanityService): ServiceClient {
         methodology: ss.methodology ?? [],
         stats: ss.stats,
         keywords: ss.keywords,
+        ogImage: ss.ogImage,
     }
 }
 
@@ -112,6 +113,7 @@ function legacyToServiceClient(s: TrainingService): ServiceClient {
         methodology: s.methodology,
         stats: extras.stats,
         keywords: extras.keywords,
+        ogImage: s.ogImage,
     }
 }
 

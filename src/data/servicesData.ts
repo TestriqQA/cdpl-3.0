@@ -77,8 +77,8 @@ export const trainingServices: TrainingService[] = [
       "Senior management and leadership teams",
       "Technical teams and developers",
       "Product managers and strategists",
-      "Innovation and R&D teams",
-      "All employees seeking industry insights"
+      "Employees looking for industry insights and connections",
+      "Innovation and R&D teams"
     ],
     deliveryFormats: [
       {
@@ -147,9 +147,9 @@ export const trainingServices: TrainingService[] = [
       "Developers and engineers",
       "QA and testing professionals",
       "Data scientists and analysts",
+      "Anyone seeking hands-on technical skills",
       "DevOps and infrastructure teams",
-      "Technical leads and architects",
-      "Anyone seeking hands-on technical skills"
+      "Technical leads and architects"
     ],
     deliveryFormats: [
       {
@@ -219,8 +219,8 @@ export const trainingServices: TrainingService[] = [
       "Fresh graduates entering the workforce",
       "Career changers transitioning to tech",
       "Junior developers seeking growth",
-      "Interns and apprentices",
-      "Employees moving to new roles"
+      "Employees moving into new roles",
+      "Interns and apprentices"
     ],
     deliveryFormats: [
       {
@@ -287,6 +287,7 @@ export const trainingServices: TrainingService[] = [
       "College and university faculty",
       "Training institute instructors",
       "Corporate trainers",
+      "Educators looking to stay industry-current",
       "Educational administrators",
       "Curriculum designers",
       "Academic coordinators"
@@ -355,9 +356,9 @@ export const trainingServices: TrainingService[] = [
       "Subject matter experts becoming trainers",
       "HR and L&D professionals",
       "Technical leads training teams",
+      "Anyone responsible for knowledge transfer",
       "Corporate trainers",
-      "Consultants delivering training",
-      "Anyone responsible for knowledge transfer"
+      "Consultants delivering training"
     ],
     deliveryFormats: [
       {
@@ -433,8 +434,8 @@ export const trainingServices: TrainingService[] = [
     whoShouldAttend: [
       "College and university faculty",
       "Engineering students",
-      "Working professionals",
       "Researchers and PhD scholars",
+      "Working professionals looking to upskill",
       "Technical enthusiasts",
       "Career changers"
     ],
@@ -517,6 +518,7 @@ export const trainingServices: TrainingService[] = [
       "Engineering students",
       "Management students",
       "Faculty members",
+      "Anyone curious about how the industry works",
       "Research scholars",
       "Career exploration groups",
       "Technical enthusiasts"
@@ -582,10 +584,10 @@ export const trainingServices: TrainingService[] = [
       "Long-term partnership"
     ],
     whoShouldAttend: [
-      "Organizations with specific needs",
       "Companies with proprietary tech",
       "Teams requiring specialized skills",
       "Enterprises scaling operations",
+      "Organizations with specific needs",
       "Startups building capabilities"
     ],
     deliveryFormats: [
@@ -653,8 +655,8 @@ export const trainingServices: TrainingService[] = [
       "Final year engineering students",
       "Pre-final year students",
       "Recent graduates",
-      "Career switchers",
-      "Students seeking industry exposure"
+      "Students seeking industry exposure",
+      "Career switchers"
     ],
     deliveryFormats: [
       {
@@ -792,6 +794,7 @@ export const trainingServices: TrainingService[] = [
       "Software engineers, SDETs, QA",
       "Data engineers, analysts, scientists",
       "DevOps, cloud & platform teams",
+      "Employees looking to upskill and grow",
       "Product managers & tech leads",
       "People managers & new leaders",
       "New hires and lateral joiners"
@@ -834,6 +837,7 @@ export const trainingServices: TrainingService[] = [
       "Capstone aligned to business use-cases",
       "Reporting & impact measurement"
     ],
+    ogImage: "/og-images/services-corporate-training-og.webp",
   },
   {
     id: "12",
@@ -862,10 +866,11 @@ export const trainingServices: TrainingService[] = [
     ],
     whoShouldAttend: [
       "BMC employees and departments",
-      "Municipal corporation staff",
       "Department & district officials",
-      "Clerical & administrative personnel",
       "Government IT cells & operators",
+      "Public servants building digital skills",
+      "Municipal corporation staff",
+      "Clerical & administrative personnel",
       "Program officers & field teams",
       "Public service delivery units"
     ],

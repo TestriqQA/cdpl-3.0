@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateCertificateValidationPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
+import { VALIDATION_FAQS, VALIDATION_STEPS } from "@/data/certificateValidationFaqs";
 
 // Sections imported directly — next/dynamic(ssr:true) only added client Suspense
 // boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
@@ -40,31 +41,9 @@ export const metadata: Metadata = generateStaticPageMetadata({
 /* ---------- Page (server component) ---------- */
 export default function CertificateValidationPage() {
   const consolidatedSchemas = generateCertificateValidationPageAllSchemas({
-    faqs: [
-      {
-        question: "How can I verify a CDPL certificate?",
-        answer: "You can verify any CDPL, AAA, or ACTD certificate by entering the unique Certificate ID on our official validation page. The system will provide instant confirmation of the holder's name and certificate status.",
-      },
-      {
-        question: "What certificates can be validated here?",
-        answer: "This tool validates all official certifications issued by Cinute Digital Private Limited, including Advanced Automation Architecture (AAA) and Agile, Cloud & Test-Driven Development (ACTD) programs.",
-      },
-      {
-        question: "Is this validation recognized by employers?",
-        answer: "Yes, our digital certificates come with an immutable ID that employers can verify in real-time to ensure the authenticity of your qualifications.",
-      },
-      {
-        question: "Can I share my verified status?",
-        answer: "Yes, once a certificate is validated, the system generates a unique shareable link that you can include on your LinkedIn profile, resume, or portfolio.",
-      },
-    ],
-    howToSteps: [
-      { name: "Obtain Certificate ID", text: "Locate the unique alphanumeric ID on your CDPL, AAA, or ACTD certificate." },
-      { name: "Enter ID", text: "Input the Certificate ID into the secure validation search field on the CDPL website." },
-      { name: "Initiate Validation", text: "Click the 'Validate' button to cross-reference the ID with our secure global registry." },
-      { name: "Verify Authenticity", text: "Instantly view the student's name, program, and current certification status." },
-      { name: "Share or Save", text: "Use the unique shareable link to provide proof of qualification to employers." }
-    ],
+    // Same data the page shows, so the FAQPage / HowTo schema match the visible content.
+    faqs: VALIDATION_FAQS,
+    howToSteps: VALIDATION_STEPS,
     features: [
       "Instant Verification",
       "Tamper-Proof Security",
@@ -80,19 +59,16 @@ export default function CertificateValidationPage() {
         <JsonLd key={`validation-schema-${index}`} id={`validation-schema-${index}`} schema={schema} />
       ))}
 
-      <CertificationBreadcrumb />
-
-      {/* Page Title */}
-      <div className="mx-auto max-w-7xl px-4 pt-1 pb-1 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          <span className="text-indigo-700">Certificate</span> <span className="text-brand">Validation</span>
-        </h1>
-        <p className="mt-2 max-w-2xl text-lg text-slate-600">
-          Verify the authenticity of CDPL, AAA, and ACTD certifications instantly.
-        </p>
+      {/* Header + validator share one glow backdrop, as on the other reworked heroes. */}
+      <div className="relative isolate overflow-hidden">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute -left-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-sky-200/40 blur-3xl" />
+          <div className="absolute -right-24 top-0 h-[32rem] w-[32rem] rounded-full bg-brand-200/40 blur-3xl" />
+        </div>
+        <CertificationBreadcrumb />
+        <CertificationValidatorSection />
       </div>
 
-      <CertificationValidatorSection />
       <CertificationSampleSection />
       <CertificationFeaturesSection />
     </div>

@@ -1,89 +1,51 @@
-"use client";
-
-import { CheckCircle2 } from "lucide-react";
 import Image from "next/image";
+import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
 
-
-
+/** "Authenticity you can trust": the pitch beside a framed sample certificate. Server component. */
 export default function CertificationSampleSection() {
     return (
-        <section className="relative overflow-hidden bg-slate-50 py-10 sm:py-16">
-            {/* Background Decor */}
-            <div className="absolute inset-0 opacity-30">
-                <div className="absolute -left-20 top-0 h-72 w-72 rounded-full bg-[#3CB371]/20 blur-3xl mix-blend-multiply filter" />
-                <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-indigo-200/50 blur-3xl mix-blend-multiply filter" />
-            </div>
+        <section aria-labelledby="cert-sample-heading" className="bg-white py-12 lg:py-16">
+            <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+                <div className="lg:col-span-5">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-brand">
+                        <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+                        Gold Standard Verification
+                    </span>
+                    <h2 id="cert-sample-heading" className="mt-4 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
+                        Authenticity you can <span className="text-brand">trust</span>
+                    </h2>
+                    <p className="mt-4 text-lg leading-relaxed text-gray-600">
+                        Our certificates are more than just images. They are digital assets backed by a secure, real-time
+                        registry. Recruiters can verify credentials instantly, ensuring that every CDPL scholar gets the
+                        recognition they deserve.
+                    </p>
+                    <a
+                        href="#validator-section"
+                        className="mt-8 inline-flex items-center justify-center rounded-xl bg-brand px-6 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2"
+                    >
+                        Validate now <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                    </a>
+                </div>
 
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
-
-                    {/* Text Content */}
-                    <div className="lg:col-span-5 relative z-10 text-center lg:text-left">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-green-600/30 bg-green-600/10 px-3 py-1 text-sm font-medium text-green-900">
-                            <CheckCircle2 className="h-4 w-4" />
-                            <span>Gold Standard Verification</span>
-                        </div>
-                        <h2 className="mt-6 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                            Authenticity You Can Trust
-                        </h2>
-                        <p className="mt-4 text-lg text-slate-700 leading-relaxed">
-                            Our certificates are more than just images. They are digital assets backed by a secure, real-time registry.
-                            Recruiters can verify credentials instantly, ensuring that every CDPL scholar gets the recognition they deserve.
-                        </p>
-                        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <button
-                                onClick={() => {
-                                    const el = document.getElementById("validator-section");
-                                    if (el) el.scrollIntoView({ behavior: "smooth" });
-                                }}
-                                className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 transition-all hover:scale-105 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2"
-                            >
-                                <span>Validate Now</span>
-                                <CheckCircle2 className="h-4 w-4" />
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* 3D Visual */}
-                    <div className="lg:col-span-7 mt-12 lg:mt-0 relative perspective-1000">
-                        {/* The "Card" Container - Straight layout now */}
-                        <div className="relative transform transition-all duration-700 hover:scale-[1.02] lg:ml-10">
-
-                            {/* Decoration behind */}
-                            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#3CB371] to-indigo-600 opacity-20 blur-lg" />
-
-                            {/* The Cert Card */}
-                            <div className="relative rounded-2xl bg-white p-2 shadow-2xl ring-1 ring-slate-900/5">
-                                <div className="overflow-hidden rounded-xl border border-slate-100 bg-slate-50 min-h-[250px]">
-                                    {/* Using valid Image component with next/image */}
-                                    <Image
-                                        src="/certifications_images/cdpl_certifications_validation/cdpl_certificate_validation.webp"
-                                        alt="Sample Certificate"
-                                        width={2000}
-                                        height={1414}
-                                        className="h-auto w-full object-contain"
-                                        sizes="(max-width: 640px) 95vw, (max-width: 1024px) 50vw, 600px"
-                                        priority
-                                        quality={40}
-                                    />
-                                </div>
-
-                                {/* Floating Badge */}
-                                <div className="absolute -bottom-6 -right-6 hidden sm:flex h-20 w-20 items-center justify-center rounded-full bg-white p-1 shadow-xl ring-1 ring-slate-900/5">
-                                    <div className="flex h-full w-full items-center justify-center rounded-full bg-green-600/10">
-                                        <CheckCircle2 className="h-8 w-8 text-green-700" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <div className="relative lg:col-span-7">
+                    <div aria-hidden="true" className="absolute inset-6 rounded-3xl bg-brand/20 blur-3xl" />
+                    <figure className="relative mx-auto max-w-[40rem] rounded-3xl border border-slate-200 bg-white p-3 shadow-xl sm:p-4">
+                        <Image
+                            src="/certifications_images/cdpl_certifications_validation/cdpl_certificate_validation.webp"
+                            alt="Sample CDPL course completion certificate"
+                            width={2000}
+                            height={1414}
+                            className="h-auto w-full rounded-2xl"
+                            sizes="(max-width: 640px) 95vw, (max-width: 1024px) 80vw, 640px"
+                            quality={50}
+                        />
+                        <figcaption className="mt-3 flex items-center justify-center gap-1.5 text-sm font-medium text-slate-600">
+                            <ShieldCheck className="h-4 w-4 text-emerald-600" aria-hidden="true" />
+                            Every certificate carries a unique, verifiable ID
+                        </figcaption>
+                    </figure>
                 </div>
             </div>
-
-            <style jsx>{`
-        /* 3D styles removed for straight layout */
-      `}</style>
         </section>
     );
 }

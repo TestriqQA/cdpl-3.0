@@ -3,269 +3,260 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Star, ArrowRight, Quote, Sparkles, CheckCircle2, TrendingUp, ShieldCheck, Activity } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
+import {
+  Star,
+  ArrowRight,
+  Quote,
+  MessageSquareQuote,
+  CheckCircle2,
+  TrendingUp,
+  ShieldCheck,
+  Home,
+  ChevronRight,
+} from "lucide-react";
+import { useState, useEffect } from "react";
 import { getAllReviews } from "@/data/reviews/reviewsData";
 import SafeAvatar from "@/components/sections/SafeAvatar";
 import { useSiteStats } from "@/components/stats/SiteStatsProvider";
+import { REVIEW_PROFILES } from "@/lib/seo-config";
 
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Reviews", href: "/reviews" },
+];
+
+const PLATFORMS = [
+  { src: "/slider_logos/google-logo.svg", name: "Google", w: 64, h: 20, href: REVIEW_PROFILES.google },
+  { src: "/slider_logos/sulekha.svg", name: "Sulekha", w: 75, h: 20, href: REVIEW_PROFILES.sulekha },
+  { src: "/slider_logos/justdial.svg", name: "Justdial", w: 76, h: 20, href: REVIEW_PROFILES.justdial },
+];
+
+const ROTATE_MS = 6000;
+
+/**
+ * Reviews hero, in the site's hero style (About / Home): breadcrumbs, orange
+ * pill, dark heading with an orange key phrase, brand CTAs. The right side
+ * rotates through learner reviews; it pauses on hover or focus, and stays on
+ * the first review under reduced motion (the dots still switch it).
+ */
 export default function ReviewsHeroSection() {
   const siteStats = useSiteStats();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const glowRef = useRef<HTMLDivElement>(null);
-
-  // Mouse Follow Effect — updates the glow background directly (no re-render).
-  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    const x = clientX - left;
-    const y = clientY - top;
-    if (glowRef.current) {
-      glowRef.current.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(59, 130, 246, 0.08), transparent 80%)`;
-    }
-  }
-
   const allReviews = getAllReviews();
 
-  // State for Card Stack Rotation
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
-    if (isPaused) return;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
+  useEffect(() => {
+    if (isPaused || reducedMotion || allReviews.length < 2) return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % allReviews.length);
-    }, 5000); // Rotate every 5 seconds
-
+    }, ROTATE_MS);
     return () => clearInterval(interval);
-  }, [allReviews.length, isPaused]);
+  }, [allReviews.length, isPaused, reducedMotion]);
+
+  const review = allReviews[activeIndex];
+  const stars = Math.round(review.rating);
+
+  const STATS = [
+    { label: "Learner Rating", val: siteStats.text.rating, Icon: Star, tile: "bg-brand", text: "text-brand" },
+    { label: "Active Learners", val: "12k+", Icon: TrendingUp, tile: "bg-sky-600", text: "text-sky-700" },
+    { label: "Completion Rate", val: "94%", Icon: CheckCircle2, tile: "bg-emerald-600", text: "text-emerald-700" },
+  ];
 
   return (
-    <section
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      className="relative w-full overflow-hidden bg-slate-50 min-h-[90vh] flex items-center py-10 lg:py-0"
-    >
-      {/* ... (Background elements kept the same) ... */}
-      {/* --- Background Elements --- */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px]"></div>
-      <div
-        ref={glowRef}
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{ background: "radial-gradient(600px circle at 50% 50%, rgba(59, 130, 246, 0.08), transparent 80%)" }}
-      />
+    <section aria-labelledby="reviews-heading" className="relative isolate overflow-hidden">
+      {/* Background glows, as on the About hero */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -left-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-sky-200/40 blur-3xl" />
+        <div className="absolute -right-24 top-0 h-[32rem] w-[32rem] rounded-full bg-brand-200/40 blur-3xl" />
+      </div>
 
-      {/* Large Soft Glows */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-400/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+        <nav aria-label="Breadcrumb" className="mb-6">
+          <ol className="flex flex-wrap items-center gap-2 text-sm text-slate-600">
+            {breadcrumbs.map((c, i) => {
+              const isLast = i === breadcrumbs.length - 1;
+              return (
+                <li key={c.href} className="flex items-center gap-2">
+                  {i === 0 ? <Home className="h-4 w-4" aria-hidden="true" /> : <ChevronRight className="h-4 w-4" aria-hidden="true" />}
+                  <Link
+                    href={c.href}
+                    aria-current={isLast ? "page" : undefined}
+                    className={`transition-colors hover:text-brand ${isLast ? "font-semibold text-slate-900" : ""}`}
+                  >
+                    {c.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ol>
+        </nav>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+          {/* LEFT — copy */}
+          <div className="lg:col-span-6">
+            <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-brand">
+              <MessageSquareQuote className="h-4 w-4" aria-hidden="true" />
+              Student Reviews &amp; Testimonials
+            </span>
 
-          {/* --- LEFT: Content --- */}
-          {/* ... (Left content kept the same) ... */}
-          <div
-            className="flex flex-col space-y-8"
-          >
-            {/* Breadcrumb / Tag */}
-            <div className="flex items-center gap-3">
-              <nav className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm text-xs font-medium text-slate-500">
-                <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
-                <span className="text-slate-300">/</span>
-                <span className="text-blue-600">Testimonials</span>
-              </nav>
-              <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-100/50 text-green-700 text-xs font-bold border border-green-200">
-                <Sparkles className="w-3 h-3" />
-                Professional 2024
-              </span>
-            </div>
+            <h1 id="reviews-heading" className="mt-4 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+              Stories that <span className="text-brand">inspire action</span>
+            </h1>
 
-            {/* Typography */}
-            <div className="space-y-4">
-              <h1 className="text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 leading-[1.1]">
-                Stories that <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-violet-600 to-blue-500">
-                  Inspire Action.
-                </span>
-              </h1>
-              <p className="text-lg text-slate-600 max-w-lg leading-relaxed">
-                Join thousands of professionals who accelerated their careers. Real feedback from real students, verified by top platforms.
-              </p>
-            </div>
+            <p className="mt-4 max-w-xl text-base leading-7 text-slate-600 md:text-lg md:leading-8">
+              Join thousands of professionals who accelerated their careers with Cinute Digital.
+              Real feedback from real students, verified by top platforms.
+            </p>
 
-            {/* Stats Bar */}
-            <div className="flex flex-wrap gap-4">
-              {[
-                { label: "Course Rating", val: siteStats.text.rating, icon: Star, bg: "bg-amber-100 text-amber-600" },
-                { label: "Active Learners", val: "12k+", icon: TrendingUp, bg: "bg-blue-100 text-blue-600" },
-                { label: "Completion Rate", val: "94%", icon: CheckCircle2, bg: "bg-green-100 text-green-600" },
-              ].map((stat, idx) => (
-                <div key={idx} className="flex items-center gap-3 pr-6 py-2 border-r last:border-0 border-slate-200">
-                  <div className={`p-2 rounded-lg ${stat.bg}`}>
-                    <stat.icon className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-slate-900 text-lg leading-none">{stat.val}</div>
-                    <div className="text-xs text-slate-500 font-medium mt-1">{stat.label}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA & Trust */}
-            <div className="flex flex-col sm:flex-row gap-5 pt-4">
-              <Link
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <a
                 href="#all-reviews"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const el = document.getElementById("all-reviews");
-                  if (el) {
-                    const headerOffset = 80; // Adjust for sticky header
-                    const elementPosition = el.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: "smooth"
-                    });
-                  }
-                }}
-                className="inline-flex items-center justify-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-full font-semibold text-sm hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-slate-900/20"
+                className="inline-flex w-full items-center justify-center rounded-xl bg-brand px-6 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2 sm:w-auto"
               >
-                Read All Reviews
-                <ArrowRight className="w-4 h-4" />
+                Read All Reviews <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              </a>
+              <Link
+                href="/courses"
+                className="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-800 shadow-sm transition-colors duration-300 hover:border-brand hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2 sm:w-auto"
+              >
+                Explore Courses
               </Link>
+            </div>
 
-              <div className="flex items-center gap-4 px-6 py-4 rounded-full bg-white border border-slate-200 shadow-sm">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">Verified on</span>
-                <div className="flex items-center gap-4 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
-                  <Image src="/slider_logos/google.svg" width={60} height={20} alt="Google" className="h-4 w-auto object-contain" />
-                  <Image src="/slider_logos/sulekha-logo.webp" width={60} height={20} alt="Sulekha" className="h-4 w-auto object-contain" />
-                </div>
-              </div>
+            {/* Quick stats */}
+            <ul className="mt-8 grid grid-cols-3 gap-3">
+              {STATS.map(({ label, val, Icon, tile, text }) => (
+                <li key={label} className="rounded-2xl border border-slate-200 bg-white/80 p-3 shadow-sm sm:p-4">
+                  <span className={`grid h-8 w-8 place-items-center rounded-lg text-white ${tile}`}>
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <p className={`mt-2 text-xl font-extrabold leading-none sm:text-2xl ${text}`}>{val}</p>
+                  <p className="mt-1 text-xs font-medium text-slate-600 sm:text-sm">{label}</p>
+                </li>
+              ))}
+            </ul>
+
+            {/* Platforms */}
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-slate-200/70 pt-5">
+              <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Verified on</span>
+              {PLATFORMS.map(({ src, name, w, h, href }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`Read CDPL reviews on ${name}`}
+                  aria-label={`Read CDPL reviews on ${name} (opens in a new tab)`}
+                  className="rounded-md opacity-90 transition hover:-translate-y-0.5 hover:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300"
+                >
+                  <Image src={src} width={w} height={h} alt={name} className="h-5 w-auto" />
+                </a>
+              ))}
+              <span className="inline-flex items-center gap-1.5 text-sm text-slate-600">
+                <ShieldCheck className="h-4 w-4 text-emerald-600" aria-hidden="true" />
+                Reviews from real alumni
+              </span>
             </div>
           </div>
 
-          {/* --- RIGHT: Levitating Stack & HUD Interface --- */}
+          {/* RIGHT — rotating review */}
           <div
-            className="relative h-[600px] w-full flex items-center justify-center cursor-pointer"
+            className="relative lg:col-span-6"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
+            onFocus={() => setIsPaused(true)}
+            onBlur={() => setIsPaused(false)}
           >
+            <div aria-hidden="true" className="absolute inset-8 rounded-full bg-brand/20 blur-3xl" />
 
-            {/* 1. Futuristic Backdrop Grid */}
-            <div className="absolute inset-0 z-0">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]"></div>
+            <div className="relative mx-auto w-full max-w-[460px]">
+              {/* Back layers for depth */}
+              <div aria-hidden="true" className="absolute inset-x-6 -bottom-3 top-3 rounded-3xl border border-orange-100 bg-white/70 shadow-sm" />
+              <div aria-hidden="true" className="absolute inset-x-12 -bottom-6 top-6 rounded-3xl border border-orange-100/70 bg-white/40" />
 
-              {/* Pulse Ring */}
-              <div
-                style={{ animation: "cdpl-pulse-ring 4s ease-in-out infinite" }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-blue-200 rounded-full"
-              />
-            </div>
+              <figure className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-xl sm:p-8">
+                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-brand" />
 
-            {/* 2. Floating Badges (Independent Motion) */}
-            <div
-              style={{ animation: "cdpl-float-a 5s ease-in-out infinite" }}
-              className="absolute top-20 right-10 z-10 bg-white/90 backdrop-blur border border-slate-100 p-3 rounded-2xl shadow-lg flex items-center gap-2"
-            >
-              <div className="bg-green-100 p-1.5 rounded-full text-green-600">
-                <ShieldCheck className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">Status</div>
-                <div className="text-xs font-bold text-slate-800">Verified Alumni</div>
-              </div>
-            </div>
-
-            <div
-              style={{ animation: "cdpl-float-b 7s ease-in-out infinite", animationDelay: "1s" }}
-              className="absolute hidden md:flex bottom-32 left-0 lg:-left-12 z-10 bg-white/90 backdrop-blur border border-slate-100 p-3 rounded-2xl shadow-lg items-center gap-2"
-            >
-              <div className="bg-blue-100 p-1.5 rounded-full text-blue-600">
-                <Activity className="w-4 h-4" />
-              </div>
-              <div>
-                <div className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">Impact</div>
-                <div className="text-xs font-bold text-slate-800">Strong Career Growth</div>
-              </div>
-            </div>
-
-            {/* 3. The Card Stack */}
-            <div className="relative z-20 w-[90%] max-w-[420px] perspective-[1000px]">
-              {/* We map 2 cards: Current and Next to create depth */}
-              {[activeIndex].map((index) => {
-                const review = allReviews[index];
-                return (
-                  <div
-                    key={review.id}
-                    className="relative bg-white rounded-3xl p-6 md:p-8 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] border border-slate-100"
-                  >
-
-                    {/* Scanning Light Effect */}
-                    <div
-                      style={{ top: "0%", animation: "cdpl-scan 2s ease-in-out infinite", animationDelay: "1s" }}
-                      className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-400 to-transparent z-30 pointer-events-none blur-[2px]"
-                    />
-
-                    {/* Decorative Top Line */}
-                    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 opacity-80"></div>
+                <div className="flex items-start justify-between gap-4">
+                  <figcaption className="flex items-center gap-4">
+                    <div className="relative">
+                      <SafeAvatar name={review.name} sizes="56px" className="!h-14 !w-14 rounded-full border-4 border-white shadow-md" />
+                      <span className="absolute -bottom-1 -right-1 grid h-6 w-6 place-items-center rounded-full border-2 border-white bg-brand text-white">
+                        <Quote className="h-3 w-3 fill-current" aria-hidden="true" />
+                      </span>
                     </div>
-
-                    <div className="relative z-10 space-y-6">
-                      {/* User Header */}
-                      <div className="flex justify-between items-start">
-                        <div className="flex items-center gap-4">
-                          <div className="relative">
-                            <SafeAvatar name={review.name} sizes="56px" className="w-14 h-14 rounded-full border-4 border-white shadow-md" />
-                            <div className="absolute -bottom-1 -right-1 bg-blue-600 text-white p-1 rounded-full border-2 border-white">
-                              <Quote className="w-3 h-3 fill-current" />
-                            </div>
-                          </div>
-                          <div>
-                            <h2 className="text-lg font-bold text-slate-900">{review.name}</h2>
-                            <div className="flex items-center gap-2">
-                              <div className="flex text-amber-400">
-                                {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-current" />)}
-                              </div>
-                              <span className="text-xs font-medium text-slate-600">5.0</span>
-                            </div>
-                          </div>
-                        </div>
-                        {/* Platform Logo */}
-                        <div className="grayscale opacity-50">
-                          <Image src="/slider_logos/google.svg" width={24} height={24} alt="Platform" />
-                        </div>
-                      </div>
-
-                      {/* Review Text */}
-                      <div className="relative">
-                        <p className="text-lg text-slate-700 leading-relaxed font-medium">
-                          "{review.quote}"
-                        </p>
-                      </div>
-
-                      {/* Tech/Course Tags */}
-                      <div className="flex flex-wrap gap-2 pt-2">
-                        {["Data Science", "Placement"].map((tag, i) => (
-                          <span key={i} className="px-3 py-1 rounded-lg bg-slate-50 text-slate-500 text-xs font-semibold border border-slate-200">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                    <div>
+                      <p className="text-lg font-bold text-slate-900">{review.name}</p>
+                      <p className="text-sm text-slate-600">{review.role}</p>
                     </div>
-
-                    {/* Card Background Decor */}
-                    <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-blue-50/50 rounded-full blur-2xl -z-0"></div>
+                  </figcaption>
+                  <div className="flex shrink-0 items-center gap-1" role="img" aria-label={`Rated ${review.rating} out of 5`}>
+                    <Star className="h-4 w-4 fill-amber-400 stroke-amber-400" aria-hidden="true" />
+                    <span className="text-sm font-bold text-slate-800">{review.rating.toFixed(1)}</span>
                   </div>
-                );
-              })}
+                </div>
 
-              {/* Back Stack Visuals (Static Layers behind to give depth) */}
-              <div className="absolute top-4 left-4 right-4 h-full bg-white/40 rounded-3xl border border-slate-100 shadow-sm -z-10 scale-[0.95] translate-y-2"></div>
-              <div className="absolute top-8 left-8 right-8 h-full bg-white/20 rounded-3xl border border-slate-100/50 shadow-sm -z-20 scale-[0.9] translate-y-4"></div>
+                <div className="mt-3 flex gap-0.5" aria-hidden="true">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className={`h-4 w-4 ${i < stars ? "fill-amber-400 stroke-amber-400" : "fill-slate-100 stroke-slate-200"}`} />
+                  ))}
+                </div>
+
+                {/* Fixed height so the card does not jump between reviews */}
+                <blockquote className="mt-4 min-h-[9rem] text-base font-medium leading-relaxed text-slate-700 sm:min-h-[10.5rem] sm:text-lg">
+                  <p className="line-clamp-6 sm:line-clamp-5">&ldquo;{review.quote}&rdquo;</p>
+                </blockquote>
+
+                <div className="mt-4 flex flex-wrap gap-2 border-t border-slate-100 pt-4">
+                  <span className="rounded-lg bg-orange-50 px-3 py-1 text-xs font-semibold text-orange-700 ring-1 ring-orange-100">
+                    {review.course}
+                  </span>
+                  {review.company && (
+                    <span className="rounded-lg bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-600 ring-1 ring-slate-200">
+                      Placed at {review.company}
+                    </span>
+                  )}
+                </div>
+              </figure>
+
+              {/* Rating badge */}
+              <a
+                href={REVIEW_PROFILES.google}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Read CDPL reviews on Google"
+                aria-label={`Rated ${siteStats.text.rating} from ${siteStats.text.reviews} Google reviews (opens in a new tab)`}
+                className="absolute -left-3 -top-5 hidden items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 sm:flex lg:-left-8"
+              >
+                <Image src="/slider_logos/google.svg" width={48} height={16} alt="Google" className="h-4 w-auto" />
+                <span className="text-sm font-bold text-slate-900">{siteStats.text.rating}</span>
+                <span className="text-xs text-slate-500">· {siteStats.text.reviews} reviews</span>
+              </a>
             </div>
 
+            {/* Dots */}
+            <div className="relative mt-10 flex flex-wrap justify-center gap-1.5" role="group" aria-label="Choose a review">
+              {allReviews.map((r, i) => (
+                <button
+                  key={r.id}
+                  type="button"
+                  onClick={() => setActiveIndex(i)}
+                  aria-label={`Show review ${i + 1} of ${allReviews.length}, by ${r.name}`}
+                  aria-current={i === activeIndex ? "true" : undefined}
+                  className={`h-2 cursor-pointer rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 ${i === activeIndex ? "w-6 bg-brand" : "w-2 bg-slate-300 hover:bg-orange-300"}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
