@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { StatItem } from "./types";
-import { Clock, DollarSign, TrendingUp, Award } from "lucide-react";
+import { Clock, DollarSign, TrendingUp, Award, Lightbulb, CircleCheck } from "lucide-react";
 import CareerSessionModal from "../CareerSessionModal";
 
 const statsData: StatItem[] = [
@@ -178,7 +178,7 @@ const StatsSection: React.FC = () => {
                 className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-500 text-white"
                 aria-hidden="true"
               >
-                <span className="text-xl">💡</span>
+                <Lightbulb className="w-6 h-6" />
               </div>
             </div>
             <div>
@@ -192,7 +192,7 @@ const StatsSection: React.FC = () => {
 
               <ul className="mt-4 grid grid-cols-1 gap-2 text-sm text-slate-700 sm:grid-cols-2 sm:text-[15px]">
                 <li className="flex items-start gap-2">
-                  <span aria-hidden="true">✅</span>
+                  <CircleCheck className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <span>
                     End-to-end stack: BI tools, SQL, data
                     warehousing, ETL, Big Data technologies, and cloud data
@@ -200,7 +200,7 @@ const StatsSection: React.FC = () => {
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span aria-hidden="true">✅</span>
+                  <CircleCheck className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <span>
                     Industry projects: build dashboards, data
                     pipelines, and reporting solutions using real business
@@ -208,7 +208,7 @@ const StatsSection: React.FC = () => {
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span aria-hidden="true">✅</span>
+                  <CircleCheck className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <span>
                     Career support: resume optimization, mock
                     interviews, LinkedIn profile review, and job assistance for
@@ -216,7 +216,7 @@ const StatsSection: React.FC = () => {
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span aria-hidden="true">✅</span>
+                  <CircleCheck className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <span>
                     Flexible learning: weekend / evening
                     batches, online and classroom options for working

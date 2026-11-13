@@ -1,4 +1,4 @@
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Search, PenLine, BookOpen, Wrench, Target, Rocket } from "lucide-react";
 import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
 
 const roadmapSteps = [
@@ -12,7 +12,7 @@ const roadmapSteps = [
       "Discuss career opportunities",
       "Review pricing and batch schedules",
     ],
-    icon: "🔍",
+    icon: Search,
     color: "from-blue-500 to-blue-600",
   },
   {
@@ -25,7 +25,7 @@ const roadmapSteps = [
       "Join the learning community",
       "Receive welcome orientation",
     ],
-    icon: "✍️",
+    icon: PenLine,
     color: "from-indigo-500 to-indigo-600",
   },
   {
@@ -38,7 +38,7 @@ const roadmapSteps = [
       "Master tools like Scikit-learn, TensorFlow",
       "Practice with hands-on coding exercises",
     ],
-    icon: "📚",
+    icon: BookOpen,
     color: "from-purple-500 to-purple-600",
   },
   {
@@ -51,7 +51,7 @@ const roadmapSteps = [
       "Create portfolio-worthy projects",
       "Collaborate with peers on assignments",
     ],
-    icon: "🛠️",
+    icon: Wrench,
     color: "from-pink-500 to-pink-600",
   },
   {
@@ -64,7 +64,7 @@ const roadmapSteps = [
       "Mock interviews with industry experts",
       "SWOT analysis and feedback sessions",
     ],
-    icon: "🎯",
+    icon: Target,
     color: "from-green-500 to-green-600",
   },
   {
@@ -77,7 +77,7 @@ const roadmapSteps = [
       "Continuous learning and growth",
       "Lifetime community and support access",
     ],
-    icon: "🚀",
+    icon: Rocket,
     color: "from-orange-500 to-brand",
   },
 ];
@@ -148,8 +148,8 @@ export default function CareerRoadmapSection() {
                   <div key={index} className="relative h-56">
                     {/* Circle */}
                     <div className="flex justify-center mb-8">
-                      <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center text-4xl border-4 border-white shadow-lg relative z-10`}>
-                        {item.icon}
+                      <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center border-4 border-white shadow-lg relative z-10`}>
+                        <item.icon className="w-10 h-10 text-white" aria-hidden="true" />
                       </div>
                     </div>
 
@@ -183,8 +183,8 @@ export default function CareerRoadmapSection() {
                 {/* Card */}
                 <div className="flex gap-6">
                   {/* Icon */}
-                  <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center text-3xl flex-shrink-0`}>
-                    {item.icon}
+                  <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center flex-shrink-0`}>
+                    <item.icon className="w-8 h-8 text-white" aria-hidden="true" />
                   </div>
 
                   {/* Content */}
@@ -213,8 +213,8 @@ export default function CareerRoadmapSection() {
               className="bg-white rounded-xl p-8 border border-slate-200 hover:border-slate-300 hover:shadow-lg transition-all duration-300"
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center text-2xl`}>
-                  {item.icon}
+                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center`}>
+                  <item.icon className="w-6 h-6 text-white" aria-hidden="true" />
                 </div>
                 <div>
                   <p className={`text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r ${item.color}`}>

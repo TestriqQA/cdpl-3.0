@@ -3,7 +3,11 @@
 // src/components/CareerSection.tsx
 import React, { useState } from "react";
 import { content } from "@/components/data-visualization-in-r-programming/data/content";
-import { Briefcase, Zap, CheckCircle, TrendingUp, Users, CloudDownload } from "lucide-react";
+import {
+  Briefcase, Zap, CheckCircle, TrendingUp, Users, CloudDownload,
+  BarChart3, Bot, Brain, Search,
+  type LucideIcon,
+} from "lucide-react";
 import EnrollModal from "../EnrollModal";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
@@ -16,33 +20,33 @@ export const CareerSection: React.FC = () => {
   // Helper: derive simple SEO-friendly description + salary band per role
   const getRoleMeta = (role: string) => {
     const lower = role.toLowerCase();
-    let icon = "📊";
+    let icon: LucideIcon = BarChart3;
     let salary = "4–10 LPA+";
     let description =
       "Leverage R programming, data visualization, and analytics to solve real business problems and support data-driven decision-making.";
 
     if (lower.includes("data scientist")) {
-      icon = "🤖";
+      icon = Bot;
       salary = "8–18 LPA*";
       description =
         "Build machine learning models, predictive analytics solutions, and advanced statistical models using R, Python, and modern data science tools.";
     } else if (lower.includes("analyst") && lower.includes("business")) {
-      icon = "📈";
+      icon = TrendingUp;
       salary = "6–12 LPA*";
       description =
         "Translate complex data into actionable business insights, KPIs, and dashboards for leadership teams using R and BI tools.";
     } else if (lower.includes("data analyst")) {
-      icon = "📊";
+      icon = BarChart3;
       salary = "5–10 LPA*";
       description =
         "Clean, visualize, and analyze large datasets using R, SQL, and Excel to uncover trends and drive strategic business decisions.";
     } else if (lower.includes("ml engineer") || lower.includes("machine learning")) {
-      icon = "🧠";
+      icon = Brain;
       salary = "8–16 LPA*";
       description =
         "Deploy scalable machine learning pipelines, optimize models, and work closely with data science teams to productionize R and Python solutions.";
     } else if (lower.includes("research")) {
-      icon = "🔍";
+      icon = Search;
       salary = "4–9 LPA*";
       description =
         "Use quantitative methods, R-based statistical analysis, and experimentation to generate research-driven insights for products or markets.";
@@ -91,9 +95,7 @@ export const CareerSection: React.FC = () => {
                 className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-6 border-2 border-slate-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300 group"
               >
                 {/* Icon */}
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
-                  {meta.icon}
-                </div>
+                <meta.icon className="w-10 h-10 mb-4 text-brand group-hover:scale-110 transition-transform" aria-hidden="true" />
 
                 {/* Role Title */}
                 <h3 className="text-lg font-bold text-slate-900 mb-2">{role}</h3>

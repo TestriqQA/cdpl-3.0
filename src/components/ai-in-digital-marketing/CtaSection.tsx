@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Timer, GraduationCap, Briefcase, PartyPopper, Phone, Mail } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import EnrollModal from "@/components/EnrollModal";
@@ -36,21 +36,21 @@ export default function CtaSection() {
           {/* Key Benefits – using your original 3 cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
-              <div className="text-4xl mb-3">⏱️</div>
+              <Timer className="w-10 h-10 mb-3 text-white" aria-hidden="true" />
               <p className="text-white font-semibold">3-Month Program</p>
               <p className="text-orange-100 text-sm mt-2">
                 6 hours/week commitment
               </p>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
-              <div className="text-4xl mb-3">🎓</div>
+              <GraduationCap className="w-10 h-10 mb-3 text-white" aria-hidden="true" />
               <p className="text-white font-semibold">Industry Certified</p>
               <p className="text-orange-100 text-sm mt-2">
                 Recognized certifications
               </p>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
-              <div className="text-4xl mb-3">💼</div>
+              <Briefcase className="w-10 h-10 mb-3 text-white" aria-hidden="true" />
               <p className="text-white font-semibold">Lifetime Support</p>
               <p className="text-orange-100 text-sm mt-2">
                 1:1 consultation &amp; guidance
@@ -74,8 +74,8 @@ export default function CtaSection() {
 
           {/* Limited Time Offer – keep your content, new styling */}
           <div className="bg-orange-500/20 border-2 border-orange-400 rounded-lg p-6 mb-10">
-            <p className="text-orange-200 font-semibold mb-2">
-              🎉 Limited Time Offer
+            <p className="text-orange-200 font-semibold mb-2 flex items-center justify-center gap-2">
+              <PartyPopper className="w-5 h-5" aria-hidden="true" /> Limited Time Offer
             </p>
             <p className="text-white text-lg font-bold">
               Early Bird Discount: 20% OFF + Free 1:1 Consultation
@@ -128,14 +128,14 @@ export default function CtaSection() {
               href="tel:+917888383788"
               className="flex items-center gap-2 hover:text-orange-400 transition-colors"
             >
-              <span>📞</span> +91 788-83-83-788
+              <Phone className="w-5 h-5" aria-hidden="true" /> +91 788-83-83-788
             </Link>
             <div className="hidden sm:block w-px h-6 bg-white/20" />
             <Link
               href="mailto:contact@cinutedigital.com"
               className="flex items-center gap-2 hover:text-orange-400 transition-colors"
             >
-              <span>✉️</span> contact@cinutedigital.com
+              <Mail className="w-5 h-5" aria-hidden="true" /> contact@cinutedigital.com
             </Link>
           </div>
           <p className="mt-4 text-xs sm:text-sm text-slate-500 max-w-3xl mx-auto">

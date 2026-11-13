@@ -1,5 +1,5 @@
 import ReviewsMarquee from "../sections/ReviewMarque";
-import { Download } from "lucide-react";
+import { Download, Star } from "lucide-react";
 import SyllabusButton from "@/components/course-islands/SyllabusButton";
 import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
@@ -48,21 +48,21 @@ export default function TestimonialsSection() {
           </p>
           <div className="flex flex-wrap justify-center gap-6">
             <div className="flex items-center gap-2 px-6 py-3 bg-white rounded-lg border border-slate-200">
-              <span className="text-2xl">⭐</span>
+              <Star className="w-7 h-7 text-amber-400 fill-amber-400" aria-hidden="true" />
               <div className="text-left">
                 <p className="font-semibold text-slate-900">Google Reviews</p>
                 <p className="text-sm text-slate-600"><SiteStat k="rating" /> Rating</p>
               </div>
             </div>
             <div className="flex items-center gap-2 px-6 py-3 bg-white rounded-lg border border-slate-200">
-              <span className="text-2xl">⭐</span>
+              <Star className="w-7 h-7 text-amber-400 fill-amber-400" aria-hidden="true" />
               <div className="text-left">
                 <p className="font-semibold text-slate-900">Sulekha Reviews</p>
                 <p className="text-sm text-slate-600">5.0/5 Rating</p>
               </div>
             </div>
             <div className="flex items-center gap-2 px-6 py-3 bg-white rounded-lg border border-slate-200">
-              <span className="text-2xl">⭐</span>
+              <Star className="w-7 h-7 text-amber-400 fill-amber-400" aria-hidden="true" />
               <div className="text-left">
                 <p className="font-semibold text-slate-900">Justdial Reviews</p>
                 <p className="text-sm text-slate-600"><SiteStat k="rating" /> Rating</p>

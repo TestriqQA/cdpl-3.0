@@ -80,10 +80,10 @@ export default async function Page() {
         revalidate: 60,
     });
 
-    // 1. Breadcrumb Schema
+    // 1. Breadcrumb Schema — matches the visible trail (Careers sits under About).
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: "/" },
-        { name: "Jobs", url: "/jobs" },
+        { name: "About", url: "/about-us" },
         { name: "Careers", url: "/jobs/careers" },
     ]);
 

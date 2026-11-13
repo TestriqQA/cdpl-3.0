@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { FileSpreadsheet, Database, Layers, Grid3x3, BarChart3, TrendingUp } from "lucide-react";
+import { FileSpreadsheet, Database, Layers, Grid3x3, BarChart3, TrendingUp, Building2, Rocket, Star } from "lucide-react";
 import EnrollModal from "../EnrollModal";
 
 const tools = [
@@ -169,24 +169,24 @@ export default function ToolsSection() {
                         {
                             title: "Industry Standard",
                             description: "All tools taught are widely used across Fortune 500 companies and startups worldwide.",
-                            icon: "🏢",
+                            icon: Building2,
                         },
                         {
                             title: "Future-Proof Skills",
                             description: "These tools are continuously updated and remain relevant in the evolving data landscape.",
-                            icon: "🚀",
+                            icon: Rocket,
                         },
                         {
                             title: "Competitive Advantage",
                             description: "Master tools that give you an edge in the job market and career advancement.",
-                            icon: "⭐",
+                            icon: Star,
                         },
                     ].map((item, index) => (
                         <div
                             key={index}
                             className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl border border-blue-200 p-8"
                         >
-                            <div className="text-4xl mb-4">{item.icon}</div>
+                            <item.icon className="w-10 h-10 mb-4 text-brand" aria-hidden="true" />
                             <h4 className="text-xl font-bold text-slate-900 mb-3">
                                 {item.title}
                             </h4>

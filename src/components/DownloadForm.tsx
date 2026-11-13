@@ -1,5 +1,6 @@
 import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import React, { useState, useCallback, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { X, User, Mail, TrendingUp, CheckCircle2, Download } from 'lucide-react';
 import PhoneInput from '@/components/ui/PhoneNumberInput';
@@ -345,6 +346,16 @@ export const DownloadFormButton: React.FC<DownloadFormButtonProps> = ({
     };
   }, [isOpen, closeModal]);
 
+  // Keep the page behind the modal from scrolling while it is open.
+  useEffect(() => {
+    if (!isOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [isOpen]);
+
   const handleFormSubmit = (data: DownloadFormValues) => {
     onSubmit(data);
     // The form content component handles closing after success
@@ -357,8 +368,12 @@ export const DownloadFormButton: React.FC<DownloadFormButtonProps> = ({
         {buttonText}
       </button>
 
-      {/* The Modal */}
-      {isOpen && (
+      {/* The Modal. Portalled to <body>: the button often sits inside a card
+          with a hover transform, and a transformed ancestor turns
+          `position: fixed` into "fixed to that card", which squeezed the
+          overlay into the card and made it scroll there. isOpen only becomes
+          true after a click, so `document` always exists here. */}
+      {isOpen && createPortal(
           <div
             className="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm overflow-y-auto cdpl-animate-fade-in"
           >
@@ -377,7 +392,8 @@ export const DownloadFormButton: React.FC<DownloadFormButtonProps> = ({
                 />
               </div>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
     </>
   );

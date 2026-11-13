@@ -1,6 +1,9 @@
 "use client";
-import { ChevronDown, BookOpen } from "lucide-react";
-import { useState } from "react";
+import { ChevronDown, BookOpen, Database, FileSpreadsheet, BarChart3, ChartSpline, TrendingUp, Sigma, Bot, Brain, MessageCircle, Rocket } from "lucide-react";
+import { FaPython } from "react-icons/fa6";
+import React, { useState } from "react";
+
+type IconComponent = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 import EnrollModal from "../EnrollModal";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
@@ -11,7 +14,7 @@ interface Module {
   topics: string[];
   projects?: string[];
   color: string;
-  icon: string;
+  icon: IconComponent;
 }
 
 export default function CurriculumSection() {
@@ -31,7 +34,7 @@ export default function CurriculumSection() {
       id: 1,
       title: "DBMS using MySQL",
       duration: "",
-      icon: "🗄️",
+      icon: Database,
       color: "from-indigo-50 to-indigo-100",
       topics: [
         "ER modeling",
@@ -53,7 +56,7 @@ export default function CurriculumSection() {
       id: 2,
       title: "Advanced Excel for Analytics & Viz",
       duration: "",
-      icon: "📑",
+      icon: FileSpreadsheet,
       color: "from-emerald-50 to-emerald-100",
       topics: [
         "Data types/cleaning",
@@ -73,7 +76,7 @@ export default function CurriculumSection() {
       id: 3,
       title: "Power BI (Data Analytics & Visualization)",
       duration: "",
-      icon: "📊",
+      icon: BarChart3,
       color: "from-amber-50 to-amber-100",
       topics: [
         "Power Query transforms",
@@ -92,7 +95,7 @@ export default function CurriculumSection() {
       id: 4,
       title: "Tableau (Analytics & Storytelling)",
       duration: "",
-      icon: "📉",
+      icon: ChartSpline,
       color: "from-sky-50 to-sky-100",
       topics: [
         "Data integration (joins/unions/relationships)",
@@ -108,7 +111,7 @@ export default function CurriculumSection() {
       id: 5,
       title: "Core Python Programming",
       duration: "",
-      icon: "🐍",
+      icon: FaPython,
       color: "from-violet-50 to-violet-100",
       topics: [
         "Syntax",
@@ -125,7 +128,7 @@ export default function CurriculumSection() {
       id: 6,
       title: "Python Data Viz (pandas, Matplotlib, Seaborn) + NumPy",
       duration: "",
-      icon: "📈",
+      icon: TrendingUp,
       color: "from-rose-50 to-rose-100",
       topics: [
         "EDA/cleaning with pandas",
@@ -140,7 +143,7 @@ export default function CurriculumSection() {
       id: 7,
       title: "Statistics & Probability",
       duration: "",
-      icon: "🔢",
+      icon: Sigma,
       color: "from-orange-50 to-orange-100",
       topics: [
         "Descriptive stats",
@@ -156,7 +159,7 @@ export default function CurriculumSection() {
       id: 8,
       title: "ML with Python",
       duration: "",
-      icon: "🤖",
+      icon: Bot,
       color: "from-teal-50 to-teal-100",
       topics: [
         "Preprocessing (imputation/encoding/scaling)",
@@ -173,7 +176,7 @@ export default function CurriculumSection() {
       id: 9,
       title: "Machine Learning & Data Viz with R",
       duration: "",
-      icon: "📊",
+      icon: BarChart3,
       color: "from-fuchsia-50 to-fuchsia-100",
       topics: [
         "RStudio workflow",
@@ -187,7 +190,7 @@ export default function CurriculumSection() {
       id: 10,
       title: "Deep Learning, NLP & Generative AI",
       duration: "",
-      icon: "🧠",
+      icon: Brain,
       color: "from-lime-50 to-lime-100",
       topics: [
         "ANN/CNN essentials",
@@ -201,7 +204,7 @@ export default function CurriculumSection() {
       id: 11,
       title: "Prompt Engineering with Gen AI",
       duration: "",
-      icon: "💬",
+      icon: MessageCircle,
       color: "from-cyan-50 to-cyan-100",
       topics: [
         "AI foundations & ML ecosystem",
@@ -216,7 +219,7 @@ export default function CurriculumSection() {
       id: 12,
       title: "Real-Time Projects & Capstone Portfolio",
       duration: "",
-      icon: "🚀",
+      icon: Rocket,
       color: "from-stone-50 to-stone-100",
       topics: [
         "Domain projects: credit risk",
@@ -267,7 +270,7 @@ export default function CurriculumSection() {
                 className="w-full px-6 py-5 flex items-center justify-between cursor-pointer hover:bg-white/30 transition-colors"
               >
                 <div className="flex items-center gap-4 text-left">
-                  <span className="text-3xl">{module.icon}</span>
+                  <module.icon className="w-8 h-8 text-brand flex-shrink-0" aria-hidden="true" />
                   <div>
                     <h3 className="text-lg font-bold text-slate-900">
                       Module {module.id}: {module.title}
@@ -304,7 +307,7 @@ export default function CurriculumSection() {
                   {module.projects && module.projects.length > 0 && (
                     <div>
                       <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                        <span className="text-2xl">🚀</span>
+                        <Rocket className="w-6 h-6 text-brand" aria-hidden="true" />
                         Hands-On Projects
                       </h4>
                       <ul className="space-y-2">

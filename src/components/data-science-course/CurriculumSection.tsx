@@ -8,6 +8,8 @@
 // held three useState values, which meant the module copy, the header markup
 // and both modal shells all hydrated on a page whose Lighthouse score is
 // limited by Total Blocking Time.
+import { Database, FileSpreadsheet, BarChart3, ChartSpline, TrendingUp, Bot, Rocket } from "lucide-react";
+import { FaPython } from "react-icons/fa6";
 import CurriculumAccordion, { type Module } from "./CurriculumAccordion";
 import EnrollButton from "../course-islands/EnrollButton";
 import SyllabusButton from "../course-islands/SyllabusButton";
@@ -19,12 +21,16 @@ const subtitle =
 const keywords =
   "advanced data science curriculum, MySQL DBMS, Excel analytics, Power BI, Tableau, Python syllabus, statistics probability, machine learning with Python, R programming projects, capstone data science";
 
+// Rendered here (server) and passed to the client accordion as elements —
+// component references can't cross the server/client boundary.
+const MODULE_ICON = "w-8 h-8 text-brand flex-shrink-0";
+
 const modules: Module[] = [
   {
     id: 1,
     title: "DBMS with MySQL",
     duration: "",
-    icon: "🗄️",
+    icon: <Database className={MODULE_ICON} aria-hidden="true" />,
     color: "from-sky-50 to-sky-100",
     topics: [
       "ER modeling",
@@ -50,7 +56,7 @@ const modules: Module[] = [
     id: 2,
     title: "Advanced Excel for Analytics & Viz",
     duration: "",
-    icon: "📑",
+    icon: <FileSpreadsheet className={MODULE_ICON} aria-hidden="true" />,
     color: "from-amber-50 to-amber-100",
     topics: [
       "Data types & cleaning",
@@ -74,7 +80,7 @@ const modules: Module[] = [
     id: 3,
     title: "Power BI — Data Analytics & Visualization",
     duration: "",
-    icon: "📊",
+    icon: <BarChart3 className={MODULE_ICON} aria-hidden="true" />,
     color: "from-indigo-50 to-indigo-100",
     topics: [
       "BI concepts",
@@ -96,7 +102,7 @@ const modules: Module[] = [
     id: 4,
     title: "Tableau — Data Analytics & Storytelling",
     duration: "",
-    icon: "📉",
+    icon: <ChartSpline className={MODULE_ICON} aria-hidden="true" />,
     color: "from-rose-50 to-rose-100",
     topics: [
       "BI workflow",
@@ -121,7 +127,7 @@ const modules: Module[] = [
     id: 5,
     title: "Python Programming",
     duration: "",
-    icon: "🐍",
+    icon: <FaPython className={MODULE_ICON} aria-hidden="true" />,
     color: "from-emerald-50 to-emerald-100",
     topics: [
       "Jupyter setup",
@@ -141,7 +147,7 @@ const modules: Module[] = [
     id: 6,
     title: "Statistics & Probability for Data Science",
     duration: "",
-    icon: "📈",
+    icon: <TrendingUp className={MODULE_ICON} aria-hidden="true" />,
     color: "from-purple-50 to-purple-100",
     topics: [
       "Descriptive stats (central tendency, spread, skew/kurtosis, boxplots)",
@@ -158,7 +164,7 @@ const modules: Module[] = [
     id: 7,
     title: "Machine Learning Algorithms with Python",
     duration: "",
-    icon: "🤖",
+    icon: <Bot className={MODULE_ICON} aria-hidden="true" />,
     color: "from-fuchsia-50 to-fuchsia-100",
     topics: [
       "End-to-end ML workflow: preprocessing (missing data, scaling, encoding, splits)",
@@ -174,7 +180,7 @@ const modules: Module[] = [
     id: 8,
     title: "R Programming — Viz, Stats & ML",
     duration: "",
-    icon: "📊",
+    icon: <BarChart3 className={MODULE_ICON} aria-hidden="true" />,
     color: "from-teal-50 to-teal-100",
     topics: [
       "RStudio workflow",
@@ -191,7 +197,7 @@ const modules: Module[] = [
     id: 9,
     title: "Real-World Projects & Capstone",
     duration: "",
-    icon: "🚀",
+    icon: <Rocket className={MODULE_ICON} aria-hidden="true" />,
     color: "from-slate-50 to-slate-100",
     topics: [
       "Domain case studies and capstones: credit-risk modeling (BFSI)",

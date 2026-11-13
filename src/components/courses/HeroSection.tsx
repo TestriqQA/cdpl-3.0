@@ -1,7 +1,7 @@
 "use client";
 import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import Link from "next/link";
-import { Award, Users, Star, Home, ChevronRight, CheckCircle2, User, Mail } from "lucide-react";
+import { Award, Users, Star, Home, ChevronRight, CheckCircle2, User, Mail, Lock } from "lucide-react";
 import { useState, useRef } from "react";
 import EnrollModal from "@/components/EnrollModal";
 import dynamic from 'next/dynamic';
@@ -309,7 +309,7 @@ export default function HeroSection() {
                                         </button>
 
                                         <p className="pt-3 text-xs leading-relaxed text-slate-500 text-center">
-                                            🔒 By submitting, you agree to our terms. We&apos;ll never share your data.
+                                            <Lock className="inline-block w-3.5 h-3.5 mr-1 align-[-2px]" aria-hidden="true" />By submitting, you agree to our terms. We&apos;ll never share your data.
                                         </p>
                                     </form>
                                 )}

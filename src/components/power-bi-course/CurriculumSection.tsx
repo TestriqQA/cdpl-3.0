@@ -1,7 +1,10 @@
 "use client";
 // components/powerbi/CurriculumSection.tsx
 import React, { useState } from 'react';
-import { ChevronDown, Download } from 'lucide-react';
+import {
+  ChevronDown, Download, BarChart3, Plug, BrushCleaning, Puzzle, TrendingUp, Calculator,
+  SlidersHorizontal, FolderKanban, FolderOpen, Trophy, type LucideIcon,
+} from 'lucide-react';
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
 
 type ColorVariant =
@@ -10,7 +13,7 @@ type ColorVariant =
 
 interface Module {
   title: string;
-  emoji: string;
+  icon: LucideIcon;
   color: ColorVariant;
   topics: string[];
 }
@@ -31,7 +34,7 @@ const colorClasses: Record<ColorVariant, { bg: string; text: string }> = {
 const modules: Module[] = [
   {
     title: 'Module 1: Introduction to BI Concepts and Power BI',
-    emoji: '📊',
+    icon: BarChart3,
     color: 'blue',
     topics: [
       'Understanding Business Intelligence (BI) and its Lifecycle',
@@ -42,7 +45,7 @@ const modules: Module[] = [
   },
   {
     title: 'Module 2: Setting Up Power BI & Data Connection',
-    emoji: '🔌',
+    icon: Plug,
     color: 'orange',
     topics: [
       'Installation and System Requirements for Power BI Desktop',
@@ -53,7 +56,7 @@ const modules: Module[] = [
   },
   {
     title: 'Module 3: Data Transformation using Power Query Editor',
-    emoji: '🧹',
+    icon: BrushCleaning,
     color: 'green',
     topics: [
       'Introduction to Power Query Editor and Ribbon Exploration',
@@ -66,7 +69,7 @@ const modules: Module[] = [
   },
   {
     title: 'Module 4: Data Modeling in Power BI',
-    emoji: '🧩',
+    icon: Puzzle,
     color: 'purple',
     topics: [
       'Building Data Models: Understanding Tables and Relationships',
@@ -77,7 +80,7 @@ const modules: Module[] = [
   },
   {
     title: 'Module 5: Data Visualization Basics',
-    emoji: '📈',
+    icon: TrendingUp,
     color: 'pink',
     topics: [
       'Creating Basic Visualizations: Bar, Line, Pie Charts',
@@ -90,7 +93,7 @@ const modules: Module[] = [
   },
   {
     title: 'Module 6: DAX (Data Analysis Expressions)',
-    emoji: '🧮',
+    icon: Calculator,
     color: 'indigo',
     topics: [
       'Introduction to DAX and Syntax',
@@ -101,7 +104,7 @@ const modules: Module[] = [
   },
   {
     title: 'Module 7: Advanced Visualization Techniques',
-    emoji: '🎛️',
+    icon: SlidersHorizontal,
     color: 'teal',
     topics: [
       'Advanced Visuals: Tree Maps, Waterfall, Funnel Charts',
@@ -114,7 +117,7 @@ const modules: Module[] = [
   },
   {
     title: 'Module 8: Dashboards and Reports',
-    emoji: '🗂️',
+    icon: FolderKanban,
     color: 'amber',
     topics: [
       'Designing Interactive Dashboards: Best Practices for Layout and Design',
@@ -126,7 +129,7 @@ const modules: Module[] = [
   },
   {
     title: 'Module 9: Case Studies and Real-World Applications',
-    emoji: '📂',
+    icon: FolderOpen,
     color: 'rose',
     topics: [
       'End-to-End Project: Data Extraction, Transformation, and Modeling',
@@ -136,7 +139,7 @@ const modules: Module[] = [
   },
   {
     title: 'Module 10: Hands-On Projects',
-    emoji: '🏆',
+    icon: Trophy,
     color: 'cyan',
     topics: [
       'Project 1: Sales Performance Analysis Dashboard',
@@ -183,8 +186,8 @@ const CurriculumSection: React.FC = () => {
                   aria-controls={`module-panel-${index}`}
                 >
                   <div className="flex items-center">
-                    <div className={`mr-4 inline-flex items-center justify-center h-10 w-10 rounded-full ${color.bg} ${color.text} text-xl`}>
-                      <span aria-hidden="true">{module.emoji}</span>
+                    <div className={`mr-4 inline-flex items-center justify-center h-10 w-10 rounded-full ${color.bg} ${color.text} flex-shrink-0`}>
+                      <module.icon className="w-5 h-5" aria-hidden="true" />
                     </div>
                     <span className="text-lg font-semibold text-gray-800">
                       {module.title}

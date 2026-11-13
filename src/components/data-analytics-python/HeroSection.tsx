@@ -6,7 +6,14 @@ import {
     Clock,
     Home,
     CloudDownload,
-    ArrowDownNarrowWide
+    ArrowDownNarrowWide,
+    Star,
+    Users,
+    Trophy,
+    BarChart3,
+    Presentation,
+    GraduationCap,
+    Briefcase,
 } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -133,21 +140,21 @@ export default function HeroSection() {
                         {/* Trust Indicators */}
                         <div className="mt-10 flex flex-col items-center justify-center gap-6 text-sm text-slate-600 sm:flex-row md:justify-start">
                             <div className="flex items-center gap-2">
-                                <span className="text-2xl">⭐</span>
+                                <Star className="w-7 h-7 text-amber-500 fill-amber-500" aria-hidden="true" />
                                 <span>
                                     <strong className="text-slate-900"><SiteStat k="rating" /></strong> Average Rating
                                 </span>
                             </div>
                             <div className="hidden h-6 w-px bg-slate-300 sm:block" />
                             <div className="flex items-center gap-2">
-                                <span className="text-2xl">👥</span>
+                                <Users className="w-7 h-7 text-brand" aria-hidden="true" />
                                 <span>
                                     <strong className="text-slate-900"><SiteStat k="studentsPlaced" /></strong> Students Placed
                                 </span>
                             </div>
                             <div className="hidden h-6 w-px bg-slate-300 sm:block" />
                             <div className="flex items-center gap-2">
-                                <span className="text-2xl">🏆</span>
+                                <Trophy className="w-7 h-7 text-brand" aria-hidden="true" />
                                 <span>
                                     <strong className="text-slate-900">Industry-Led</strong> Industry Experience
                                 </span>
@@ -157,16 +164,16 @@ export default function HeroSection() {
                         {/* Highlights */}
                         <div className="mt-8 grid w-full max-w-2xl grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
                             {[
-                                { icon: "📊", label: "Real Projects" },
-                                { icon: "👨‍🏫", label: "Expert Trainers" },
-                                { icon: "🎓", label: "Certification" },
-                                { icon: "💼", label: "Job Ready" },
+                                { icon: BarChart3, label: "Real Projects" },
+                                { icon: Presentation, label: "Expert Trainers" },
+                                { icon: GraduationCap, label: "Certification" },
+                                { icon: Briefcase, label: "Job Ready" },
                             ].map((item, idx) => (
                                 <div
                                     key={idx}
                                     className="flex flex-col items-center gap-2 rounded-lg border border-slate-200 bg-white/60 p-4 backdrop-blur-sm transition-colors hover:border-orange-300"
                                 >
-                                    <span className="text-2xl">{item.icon}</span>
+                                    <item.icon className="w-7 h-7 text-brand" aria-hidden="true" />
                                     <span className="text-center text-xs font-semibold text-slate-700 md:text-sm">
                                         {item.label}
                                     </span>

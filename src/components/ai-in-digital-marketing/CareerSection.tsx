@@ -1,9 +1,24 @@
 "use client";
 
-import { Briefcase, TrendingUp, Users } from "lucide-react";
+import { Briefcase, TrendingUp, Users, Search, PenLine, Settings, Globe, type LucideIcon } from "lucide-react";
 
 import { useState } from "react";
 import CareerSessionModal from "@/components/CareerSessionModal";
+
+const getRoleIcon = (title: string): LucideIcon => {
+  const t = title.toLowerCase();
+  if (t.includes("seo")) return Search;
+  if (t.includes("performance")) return TrendingUp;
+  if (t.includes("content")) return PenLine;
+  if (t.includes("automation")) return Settings;
+  if (t.includes("freelance")) return Globe;
+  return Briefcase;
+};
+
+function RoleIcon({ title }: { title: string }) {
+  const Icon = getRoleIcon(title);
+  return <Icon className="w-10 h-10 text-brand" aria-hidden="true" />;
+}
 
 export default function CareerSection() {
   const [isCareerOpen, setIsCareerOpen] = useState(false);
@@ -79,15 +94,6 @@ export default function CareerSection() {
     "Dentsu / GroupM",
   ];
 
-  const getRoleIcon = (title: string) => {
-    if (title.toLowerCase().includes("seo")) return "🔍";
-    if (title.toLowerCase().includes("performance")) return "📈";
-    if (title.toLowerCase().includes("content")) return "✍️";
-    if (title.toLowerCase().includes("automation")) return "⚙️";
-    if (title.toLowerCase().includes("freelance")) return "🌍";
-    return "💼";
-  };
-
   return (
     <section className="py-10 bg-white">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -115,8 +121,8 @@ export default function CareerSection() {
               className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-6 border-2 border-slate-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300 group"
             >
               {/* Icon derived from role */}
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
-                {getRoleIcon(path.title)}
+              <div className="inline-block mb-4 group-hover:scale-110 transition-transform">
+                <RoleIcon title={path.title} />
               </div>
 
               {/* Title (unchanged content) */}

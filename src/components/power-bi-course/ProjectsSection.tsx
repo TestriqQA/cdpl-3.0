@@ -2,7 +2,7 @@
 // components/powerbi/ProjectsSection.tsx
 import React, { useState } from "react";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
-import { Download } from "lucide-react";
+import { Download, Hospital, ShoppingCart, ChartCandlestick, Wrench, type LucideIcon } from "lucide-react";
 
 type ColorVariant = "blue" | "orange" | "green";
 
@@ -11,7 +11,7 @@ interface ProjectCardProps {
   title: string;
   description: string;
   skills: string[];
-  emoji: string;
+  icon: LucideIcon;
   color: ColorVariant;
 }
 
@@ -29,7 +29,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   description,
   skills,
-  emoji,
+  icon: Icon,
   color,
 }) => {
   const c = palette[color];
@@ -51,8 +51,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         ].join(" ")}
       >
         <div className="flex items-center mb-4">
-          <div className={`p-3 rounded-full ${c.bg} ${c.text} text-2xl`} aria-hidden="true">
-            {emoji}
+          <div className={`p-3 rounded-full ${c.bg} ${c.text}`} aria-hidden="true">
+            <Icon className="w-7 h-7" />
           </div>
           <span className="ml-3 text-lg font-semibold text-gray-700">{domain} Domain</span>
         </div>
@@ -68,7 +68,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
         <div className="mt-auto">
           <h4 className="text-sm font-semibold text-gray-700 mb-2 flex items-center">
-            <span className="mr-2" aria-hidden="true">🛠️</span> Key Skills Applied:
+            <Wrench className="mr-2 w-4 h-4" aria-hidden="true" /> Key Skills Applied:
           </h4>
           <div className="flex flex-wrap gap-2">
             {skills.map((skill, i) => (
@@ -97,7 +97,7 @@ const ProjectsSection: React.FC = () => {
       description:
         "Analyze patient data (admission rates, treatment outcomes, wait times) to improve operational efficiency. Create dashboards to highlight care bottlenecks and guide resource allocation.",
       skills: ["Data Analytics", "Power BI", "DAX", "Data Visualization", "Healthcare Domain"],
-      emoji: "🏥",
+      icon: Hospital,
       color: "blue", // unique
     },
     {
@@ -106,7 +106,7 @@ const ProjectsSection: React.FC = () => {
       description:
         "Analyze customer purchase data to understand buying patterns, product preferences, and seasonal trends for an online store. Create interactive reports for marketing and inventory decisions.",
       skills: ["Data Analytics", "Power BI", "Power Query", "Data Visualization", "E-Commerce Domain"],
-      emoji: "🛒",
+      icon: ShoppingCart,
       color: "orange", // unique
     },
     {
@@ -115,7 +115,7 @@ const ProjectsSection: React.FC = () => {
       description:
         "Develop a comprehensive financial dashboard to track key performance indicators (KPIs) like revenue, profit margins, and budget variance. Essential for strategic financial planning.",
       skills: ["Financial Analysis", "Power BI", "DAX Measures", "Time Intelligence", "Finance Domain"],
-      emoji: "💹",
+      icon: ChartCandlestick,
       color: "green", // unique
     },
   ];

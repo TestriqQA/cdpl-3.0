@@ -1,6 +1,10 @@
 "use client";
-import { ChevronDown, BookOpen, Download, Phone } from "lucide-react";
-import { useState } from "react";
+import {
+    ChevronDown, BookOpen, Download, Phone,
+    Settings, Bot, BarChart3, TrendingUp, Palette, Microscope, Rocket,
+} from "lucide-react";
+import { FaPython } from "react-icons/fa6";
+import { useState, type ComponentType } from "react";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
 import CareerSessionModal from "../CareerSessionModal";
 
@@ -11,7 +15,7 @@ interface Module {
     topics: string[];
     projects?: string[];
     color: string;
-    icon: string;
+    icon: ComponentType<{ className?: string; "aria-hidden"?: boolean | "true" | "false" }>;
 }
 
 export default function CurriculumSection() {
@@ -26,7 +30,7 @@ export default function CurriculumSection() {
             id: 1,
             title: "Python Fundamentals",
             duration: "2 hours",
-            icon: "🐍",
+            icon: FaPython,
             color: "from-blue-50 to-blue-100",
             topics: [
                 "Overview of Python Programming",
@@ -39,7 +43,7 @@ export default function CurriculumSection() {
             id: 2,
             title: "Introduction to Python Visualization & Environment Setup",
             duration: "1.5 hours",
-            icon: "⚙️",
+            icon: Settings,
             color: "from-purple-50 to-purple-100",
             topics: [
                 "Python for Visualization: An Overview",
@@ -52,7 +56,7 @@ export default function CurriculumSection() {
             id: 3,
             title: "Machine Learning Basics",
             duration: "2 hours",
-            icon: "🤖",
+            icon: Bot,
             color: "from-green-50 to-green-100",
             topics: [
                 "What is Machine Learning and Why It Matters",
@@ -65,7 +69,7 @@ export default function CurriculumSection() {
             id: 4,
             title: "Data Analysis with pandas",
             duration: "3.5 hours",
-            icon: "📊",
+            icon: BarChart3,
             color: "from-orange-50 to-orange-100",
             topics: [
                 "Overview of pandas; DataFrames & Series",
@@ -90,7 +94,7 @@ export default function CurriculumSection() {
             id: 5,
             title: "Data Visualization with Matplotlib",
             duration: "3 hours",
-            icon: "📈",
+            icon: TrendingUp,
             color: "from-red-50 to-red-100",
             topics: [
                 "Overview, Installation & Setup; Basic Plotting",
@@ -115,7 +119,7 @@ export default function CurriculumSection() {
             id: 6,
             title: "Advanced Visualization with Seaborn",
             duration: "2.5 hours",
-            icon: "🎨",
+            icon: Palette,
             color: "from-cyan-50 to-cyan-100",
             topics: [
                 "Overview, Built-in Themes & Color Palettes; Statistical Visuals Support",
@@ -139,7 +143,7 @@ export default function CurriculumSection() {
             id: 7,
             title: "Scientific Computing & Visualization with NumPy",
             duration: "2 hours",
-            icon: "🔬",
+            icon: Microscope,
             color: "from-indigo-50 to-indigo-100",
             topics: [
                 "Overview & Key Features; Installation and Setup",
@@ -186,7 +190,7 @@ export default function CurriculumSection() {
                                 className="w-full px-6 py-5 flex items-center justify-between hover:bg-white/30 transition-colors"
                             >
                                 <div className="flex items-center gap-4 text-left">
-                                    <span className="text-3xl">{module.icon}</span>
+                                    <module.icon className="w-8 h-8 text-brand flex-shrink-0" aria-hidden="true" />
                                     <div>
                                         <h3 className="text-lg font-bold text-slate-900">
                                             Module {module.id}: {module.title}
@@ -223,7 +227,7 @@ export default function CurriculumSection() {
                                     {module.projects && module.projects.length > 0 && (
                                         <div>
                                             <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                                                <span className="text-2xl">🚀</span>
+                                                <Rocket className="w-5 h-5 text-brand" aria-hidden="true" />
                                                 Hands-On Projects
                                             </h4>
                                             <ul className="space-y-2">

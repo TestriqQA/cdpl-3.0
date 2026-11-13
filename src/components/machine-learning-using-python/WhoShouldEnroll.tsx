@@ -1,4 +1,4 @@
-import { CheckCircle2, Download } from "lucide-react";
+import { CheckCircle2, Download, Rocket, GraduationCap, RefreshCw, Briefcase, BookOpen, Target, AlarmClock, Handshake } from "lucide-react";
 import EnrollButton from "@/components/course-islands/EnrollButton";
 import SyllabusButton from "@/components/course-islands/SyllabusButton";
 
@@ -6,25 +6,25 @@ const targetAudience = [
   {
     title: "Beginners with Programming Background",
     description: "If you have basic Python or programming skills and want to transition into machine learning, this course is perfect for you.",
-    icon: "🚀",
+    icon: Rocket,
     color: "from-blue-500 to-blue-600",
   },
   {
     title: "Students & Recent Graduates",
     description: "Perfect for students, developers, and analysts looking to master ML with Python and build a strong career foundation.",
-    icon: "🎓",
+    icon: GraduationCap,
     color: "from-indigo-500 to-indigo-600",
   },
   {
     title: "Career Switchers",
     description: "Professionals in technology, healthcare, finance, retail, or research looking to transition into data science and AI roles.",
-    icon: "🔄",
+    icon: RefreshCw,
     color: "from-purple-500 to-purple-600",
   },
   {
     title: "Working Professionals",
     description: "Individuals looking to upskill and stay competitive in the rapidly evolving machine learning and AI landscape.",
-    icon: "💼",
+    icon: Briefcase,
     color: "from-pink-500 to-pink-600",
   },
 ];
@@ -85,9 +85,7 @@ export default function WhoShouldEnroll() {
               className="bg-white rounded-xl p-8 border border-slate-200 hover:border-slate-300 hover:shadow-lg transition-all duration-300 group"
             >
               {/* Icon */}
-              <p className="text-5xl mb-4 group-hover:scale-110 transition-transform">
-                {audience.icon}
-              </p>
+              <audience.icon className="w-12 h-12 mb-4 text-brand group-hover:scale-110 transition-transform" aria-hidden="true" />
 
               {/* Title */}
               <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -169,22 +167,22 @@ export default function WhoShouldEnroll() {
           <div className="bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl p-8 border border-blue-200">
             <div className="space-y-6">
               <div className="text-center">
-                <p className="text-5xl mb-2">📚</p>
+                <BookOpen className="w-12 h-12 mx-auto mb-2 text-brand" aria-hidden="true" />
                 <p className="font-semibold text-slate-900">Learning Focused</p>
                 <p className="text-sm text-slate-600">Committed to continuous improvement</p>
               </div>
               <div className="text-center">
-                <p className="text-5xl mb-2">🎯</p>
+                <Target className="w-12 h-12 mx-auto mb-2 text-brand" aria-hidden="true" />
                 <p className="font-semibold text-slate-900">Goal Oriented</p>
                 <p className="text-sm text-slate-600">Clear career aspirations in ML/AI</p>
               </div>
               <div className="text-center">
-                <p className="text-5xl mb-2">⏰</p>
+                <AlarmClock className="w-12 h-12 mx-auto mb-2 text-brand" aria-hidden="true" />
                 <p className="font-semibold text-slate-900">Time Committed</p>
                 <p className="text-sm text-slate-600">Able to dedicate 45 hours to learning</p>
               </div>
               <div className="text-center">
-                <p className="text-5xl mb-2">🤝</p>
+                <Handshake className="w-12 h-12 mx-auto mb-2 text-brand" aria-hidden="true" />
                 <p className="font-semibold text-slate-900">Collaborative</p>
                 <p className="text-sm text-slate-600">Open to feedback and peer learning</p>
               </div>

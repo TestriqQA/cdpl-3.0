@@ -1,3 +1,4 @@
+import { Sprout, TrendingUp, Briefcase, Rocket, CircleCheck, Target, BookOpen, Presentation, Trophy, Sparkle, Lightbulb, GraduationCap } from "lucide-react";
 import EnrollButton from "./ui/EnrollButton";
 
 const targetAudience = [
@@ -6,7 +7,7 @@ const targetAudience = [
         title: "Beginners",
         description:
             "Those with basic data skills looking to master Tableau and data visualization",
-        icon: "🌱",
+        icon: Sprout,
         bgColor: "bg-green-50",
     },
     {
@@ -14,7 +15,7 @@ const targetAudience = [
         title: "Intermediate Users",
         description:
             "Professionals enhancing their analytics and visualization expertise",
-        icon: "📈",
+        icon: TrendingUp,
         bgColor: "bg-blue-50",
     },
     {
@@ -22,7 +23,7 @@ const targetAudience = [
         title: "Business Professionals",
         description:
             "Business analysts, data scientists, and managers creating impactful dashboards",
-        icon: "💼",
+        icon: Briefcase,
         bgColor: "bg-orange-50",
     },
     {
@@ -30,7 +31,7 @@ const targetAudience = [
         title: "Career Changers",
         description:
             "Technical and non-technical professionals transitioning to data visualization roles",
-        icon: "🚀",
+        icon: Rocket,
         bgColor: "bg-purple-50",
     },
 ];
@@ -61,7 +62,7 @@ export default function WhoShouldEnroll() {
                             className={`${audience.bgColor} rounded-2xl p-8 border-2 border-gray-200 hover:border-orange-300 hover:shadow-lg transition-all hover:-translate-y-1`}
                         >
                             {/* Icon */}
-                            <div className="text-5xl mb-4">{audience.icon}</div>
+                            <audience.icon className="w-12 h-12 mb-4 text-brand" aria-hidden="true" />
 
                             {/* Title */}
                             <h3 className="text-2xl font-bold text-gray-900 mb-3">
@@ -104,7 +105,7 @@ export default function WhoShouldEnroll() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                <span className="text-2xl">✅</span> Required
+                                <CircleCheck className="w-6 h-6 text-green-600" aria-hidden="true" /> Required
                             </h4>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">
@@ -130,7 +131,7 @@ export default function WhoShouldEnroll() {
 
                         <div>
                             <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                <span className="text-2xl">🎯</span> Recommended
+                                <Target className="w-6 h-6 text-brand" aria-hidden="true" /> Recommended
                             </h4>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">
@@ -164,7 +165,7 @@ export default function WhoShouldEnroll() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div className="p-6 bg-orange-50 rounded-xl border-2 border-orange-200 text-center">
-                            <div className="text-4xl mb-3">📚</div>
+                            <BookOpen className="w-10 h-10 mx-auto mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Comprehensive Content</h4>
                             <p className="text-sm text-gray-900">
                                 12 modules with detailed curriculum and learning materials
@@ -172,7 +173,7 @@ export default function WhoShouldEnroll() {
                         </div>
 
                         <div className="p-6 bg-blue-50 rounded-xl border-2 border-blue-200 text-center">
-                            <div className="text-4xl mb-3">👨‍🏫</div>
+                            <Presentation className="w-10 h-10 mx-auto mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Expert Guidance</h4>
                             <p className="text-sm text-gray-900">
                                 1:1 support from industry experts and experienced instructors
@@ -180,7 +181,7 @@ export default function WhoShouldEnroll() {
                         </div>
 
                         <div className="p-6 bg-green-50 rounded-xl border-2 border-green-200 text-center">
-                            <div className="text-4xl mb-3">🎯</div>
+                            <Target className="w-10 h-10 mx-auto mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Real Projects</h4>
                             <p className="text-sm text-gray-900">
                                 Work on industry-relevant projects for portfolio building
@@ -188,7 +189,7 @@ export default function WhoShouldEnroll() {
                         </div>
 
                         <div className="p-6 bg-purple-50 rounded-xl border-2 border-purple-200 text-center">
-                            <div className="text-4xl mb-3">🏆</div>
+                            <Trophy className="w-10 h-10 mx-auto mb-3 text-brand" aria-hidden="true" />
                             <h4 className="font-bold text-gray-900 mb-2">Certification</h4>
                             <p className="text-sm text-gray-900">
                                 Globally recognized certificate with QR code validation
@@ -205,7 +206,7 @@ export default function WhoShouldEnroll() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="flex gap-4">
-                            <div className="text-4xl flex-shrink-0">🌟</div>
+                            <Sparkle className="w-10 h-10 flex-shrink-0 text-brand" aria-hidden="true" />
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-2">Industry-Aligned Curriculum</h4>
                                 <p className="text-gray-900 text-sm">
@@ -215,7 +216,7 @@ export default function WhoShouldEnroll() {
                         </div>
 
                         <div className="flex gap-4">
-                            <div className="text-4xl flex-shrink-0">💡</div>
+                            <Lightbulb className="w-10 h-10 flex-shrink-0 text-brand" aria-hidden="true" />
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-2">Practical Learning Approach</h4>
                                 <p className="text-gray-900 text-sm">
@@ -225,7 +226,7 @@ export default function WhoShouldEnroll() {
                         </div>
 
                         <div className="flex gap-4">
-                            <div className="text-4xl flex-shrink-0">🚀</div>
+                            <Rocket className="w-10 h-10 flex-shrink-0 text-brand" aria-hidden="true" />
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-2">Career Acceleration</h4>
                                 <p className="text-gray-900 text-sm">
@@ -235,7 +236,7 @@ export default function WhoShouldEnroll() {
                         </div>
 
                         <div className="flex gap-4">
-                            <div className="text-4xl flex-shrink-0">🎓</div>
+                            <GraduationCap className="w-10 h-10 flex-shrink-0 text-brand" aria-hidden="true" />
                             <div>
                                 <h4 className="font-bold text-gray-900 mb-2">Flexible Learning</h4>
                                 <p className="text-gray-900 text-sm">

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { WhoShouldEnrollItem } from "./types";
-import { User, GraduationCap, RefreshCw, Briefcase, CheckCircle, ArrowRight } from "lucide-react";
+import { User, GraduationCap, RefreshCw, Briefcase, CheckCircle, ArrowRight, AlarmClock, Handshake, Target, BookOpen } from "lucide-react";
 import EnrollModal from "../EnrollModal";
 
 const enrollmentCriteria: WhoShouldEnrollItem[] = [
@@ -99,25 +99,25 @@ const successFactors = [
     title: "Regular Practice",
     description:
       "Allocate consistent time for SQL Analytics and Big Data Engineering labs.",
-    icon: "⏰",
+    icon: AlarmClock,
   },
   {
     title: "Active Participation",
     description:
       "Engage in discussions for Data Analytics Program Mumbai topics.",
-    icon: "🤝",
+    icon: Handshake,
   },
   {
     title: "Project-First Mindset",
     description:
       "Complete all real-world projects to build a strong portfolio in BI and Big Data Engineering.",
-    icon: "🎯",
+    icon: Target,
   },
   {
     title: "Continuous Learning",
     description:
       "Stay updated with new tools and Certifications for Data Engineers.",
-    icon: "📚",
+    icon: BookOpen,
   },
 ];
 
@@ -235,7 +235,7 @@ const WhoShouldEnroll: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {successFactors.map((factor, idx) => (
               <div key={idx} className="flex gap-4">
-                <div className="text-3xl flex-shrink-0">{factor.icon}</div>
+                <factor.icon className="w-8 h-8 text-[#0f766e] flex-shrink-0" aria-hidden="true" />
                 <div>
                   <h4 className="font-bold text-slate-900 mb-1">
                     {factor.title}

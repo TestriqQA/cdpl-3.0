@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { TrendingUp, Briefcase, Hourglass, Lightbulb, GraduationCap } from "lucide-react";
 
 export default function StatsSection() {
   interface Stat {
@@ -12,19 +13,19 @@ export default function StatsSection() {
 
   const stats: Stat[] = [
     {
-      icon: "📈",
+      icon: <TrendingUp className="w-6 h-6" />,
       value: "10X",
       label: "Revenue Growth Potential",
       description: "Learn strategies to scale your business revenue.",
     },
     {
-      icon: "💼",
+      icon: <Briefcase className="w-6 h-6" />,
       value: "100%",
       label: "Practical Business Application",
       description: "Apply concepts directly to your business model.",
     },
     {
-      icon: "⏳",
+      icon: <Hourglass className="w-6 h-6" />,
       value: "3 Months",
       label: "Intensive Cohort",
       description: "Comprehensive fast-track learning program.",
@@ -93,7 +94,7 @@ export default function StatsSection() {
                 >
                   {/* Icon */}
                   <div
-                    className={`${iconBg} w-12 h-12 rounded-xl flex items-center justify-center text-white mb-4 text-2xl`}
+                    className={`${iconBg} w-12 h-12 rounded-xl flex items-center justify-center text-white mb-4`}
                     aria-hidden="true"
                   >
                     {stat.icon}
@@ -139,7 +140,7 @@ export default function StatsSection() {
                 className="flex items-center justify-center h-12 w-12 rounded-xl bg-orange-500 text-white"
                 aria-hidden="true"
               >
-                <span className="text-xl">💡</span>
+                <Lightbulb className="w-6 h-6" />
               </div>
             </div>
 
@@ -157,9 +158,7 @@ export default function StatsSection() {
 
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-800 text-sm sm:text-[15px]">
                 <li className="flex items-start gap-2">
-                  <span aria-hidden="true" className="mt-1">
-                    🎓
-                  </span>
+                  <GraduationCap className="w-5 h-5 mt-1 text-brand flex-shrink-0" aria-hidden="true" />
                   <div>
                     <p className="text-base font-bold text-gray-900 mb-1">
                       Industry Recognized
@@ -171,9 +170,7 @@ export default function StatsSection() {
                   </div>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span aria-hidden="true" className="mt-1">
-                    💼
-                  </span>
+                  <Briefcase className="w-5 h-5 mt-1 text-brand flex-shrink-0" aria-hidden="true" />
                   <div>
                     <p className="text-base font-bold text-gray-900 mb-1">
                       Business Ready

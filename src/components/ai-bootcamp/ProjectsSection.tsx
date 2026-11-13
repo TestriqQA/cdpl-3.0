@@ -7,6 +7,16 @@ import {
     Zap,
     Users,
     BarChart3,
+    ShoppingCart,
+    House,
+    GraduationCap,
+    Hospital,
+    MapPin,
+    Laptop,
+    Handshake,
+    User,
+    Building2,
+    Target,
 } from "lucide-react";
 
 interface Project {
@@ -63,15 +73,15 @@ const projects: Project[] = [
 ];
 
 const domains = [
-    { name: "E-commerce & D2C Brands", icon: "🛒" },
-    { name: "Real Estate & Property", icon: "🏠" },
-    { name: "Education & EdTech", icon: "🎓" },
-    { name: "Healthcare & Clinics", icon: "🏥" },
-    { name: "Local & Service Businesses", icon: "📍" },
-    { name: "SaaS & Tech Startups", icon: "💻" },
-    { name: "Agencies & Freelancers", icon: "🤝" },
-    { name: "Personal Brands & Coaches", icon: "👤" },
-    { name: "B2B & Enterprise", icon: "🏢" },
+    { name: "E-commerce & D2C Brands", icon: ShoppingCart },
+    { name: "Real Estate & Property", icon: House },
+    { name: "Education & EdTech", icon: GraduationCap },
+    { name: "Healthcare & Clinics", icon: Hospital },
+    { name: "Local & Service Businesses", icon: MapPin },
+    { name: "SaaS & Tech Startups", icon: Laptop },
+    { name: "Agencies & Freelancers", icon: Handshake },
+    { name: "Personal Brands & Coaches", icon: User },
+    { name: "B2B & Enterprise", icon: Building2 },
 ];
 
 export default function ProjectsSection() {
@@ -168,7 +178,7 @@ export default function ProjectsSection() {
                                 key={idx}
                                 className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 hover:border-orange-400 transition-colors text-center"
                             >
-                                <div className="text-3xl mb-2">{domain.icon}</div>
+                                <domain.icon className="w-8 h-8 mx-auto mb-2 text-orange-400" aria-hidden="true" />
                                 <p className="text-sm font-semibold text-white">{domain.name}</p>
                             </div>
                         ))}
@@ -261,7 +271,7 @@ export default function ProjectsSection() {
                         </div>
                         <div className="bg-gradient-to-br from-blue-100 to-pink-100 rounded-xl p-8 flex items-center justify-center min-h-64">
                             <div className="text-center">
-                                <div className="text-6xl mb-4">🎯</div>
+                                <Target className="w-16 h-16 mx-auto mb-4 text-brand" aria-hidden="true" />
                                 <p className="text-slate-700 font-semibold">
                                     Your Portfolio Showcase
                                 </p>

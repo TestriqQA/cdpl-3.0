@@ -1,154 +1,117 @@
-
 import React from 'react';
-import { FileCheck, Users2, Briefcase, TrendingUp, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
-import { SiteStat } from "@/components/stats/SiteStatsProvider";
+import { FileCheck, Users2, Briefcase, TrendingUp, ChevronRight } from 'lucide-react';
 
 /**
- * HomePlacementSupportSection - Job Assistance
- * 
- * Highlights placement support services with enhanced multi-color UI/UX.
+ * HomePlacementSupportSection - We Don't Stop at Training
+ *
+ * Reads as what we do -> how we do it: four service cards and the 5-step
+ * process. The results band (stats + "View All Success Stories") now sits
+ * after the Hiring Partners wall as HomePlacementResultsBand. Headings and copy are
+ * unchanged (apart from fixing an "our our" typo).
  */
+
+const SERVICES = [
+  {
+    icon: FileCheck,
+    title: 'Resume Building',
+    description: 'Get your resume reviewed and optimized by industry experts to stand out to recruiters.',
+  },
+  {
+    icon: Users2,
+    title: 'Mock Interviews',
+    description: 'Practice with real interview scenarios and get feedback to improve your performance.',
+  },
+  {
+    icon: Briefcase,
+    title: 'Job Referrals',
+    description: 'Direct referrals to our hiring partner network across India for interviews.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Career Guidance',
+    description: 'One-on-one career counseling to help you choose the right path and companies.',
+  },
+];
+
+
+const PROCESS = [
+  { title: 'Profile Building', desc: 'Resume, LinkedIn, Portfolio' },
+  { title: 'Skill Assessment', desc: 'Mock tests & evaluations' },
+  { title: 'Interview Prep', desc: 'Mock interviews & feedback' },
+  { title: 'Job Matching', desc: 'Match with hiring partners' },
+  { title: 'Offer Support', desc: 'Salary negotiation help' },
+];
+
 export default function HomePlacementSupportSection() {
-  const placementServices = [
-    {
-      icon: FileCheck,
-      title: 'Resume Building',
-      description: 'Get your resume reviewed and optimized by industry experts to stand out to recruiters.',
-      color: 'text-indigo-600',
-      bg: 'bg-indigo-50',
-      border: 'border-indigo-200',
-    },
-    {
-      icon: Users2,
-      title: 'Mock Interviews',
-      description: 'Practice with real interview scenarios and get feedback to improve your performance.',
-      color: 'text-green-600',
-      bg: 'bg-green-50',
-      border: 'border-green-200',
-    },
-    {
-      icon: Briefcase,
-      title: 'Job Referrals',
-      description: 'Direct referrals to our our hiring partner network across India for interviews.',
-      color: 'text-rose-600',
-      bg: 'bg-rose-50',
-      border: 'border-rose-200',
-    },
-    {
-      icon: TrendingUp,
-      title: 'Career Guidance',
-      description: 'One-on-one career counseling to help you choose the right path and companies.',
-      color: 'text-amber-600',
-      bg: 'bg-amber-50',
-      border: 'border-amber-200',
-    },
-  ];
-
-  const placementStats = [
-    { number: <SiteStat k="studentsPlaced" />, label: 'Learners Placed', gradient: 'from-indigo-500 to-blue-600', icon: '👨‍💼' },
-    { number: '1.5×', label: 'Avg Package Growth', gradient: 'from-green-500 to-emerald-600', icon: '📈' },
-    { number: '50+', label: 'Cities Covered', gradient: 'from-rose-500 to-pink-600', icon: '🌍' },
-    { number: '50+', label: 'Hiring Partners', gradient: 'from-amber-500 to-brand', icon: '🤝' },
-  ];
-
-  const placementProcess = [
-    { title: 'Profile Building', desc: 'Resume, LinkedIn, Portfolio' },
-    { title: 'Skill Assessment', desc: 'Mock tests & evaluations' },
-    { title: 'Interview Prep', desc: 'Mock interviews & feedback' },
-    { title: 'Job Matching', desc: 'Match with hiring partners' },
-    { title: 'Offer Support', desc: 'Salary negotiation help' },
-  ];
-
   return (
-    <section className="py-6 lg:py-10 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div
-          className="text-center mb-16"
-        >
-          <span className="inline-block px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold mb-4">
+    <section className="bg-white py-12 lg:py-16" aria-labelledby="placement-support-heading">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mx-auto mb-10 max-w-3xl text-center lg:mb-12">
+          <span className="inline-block rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-brand">
             Placement Support
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            We Don&apos;t Stop at <span className="text-indigo-600">Training</span>
+          <h2 id="placement-support-heading" className="mt-4 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
+            We Don&apos;t Stop at <span className="text-brand">Training</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="mt-4 text-lg text-gray-600">
             Our dedicated placement cell works tirelessly to ensure you land your dream job with comprehensive support at every step.
           </p>
         </div>
 
-        {/* Placement Services - Multi-Color Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {placementServices.map((service, index) => (
+        {/* What we do */}
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {SERVICES.map((s) => (
             <div
-              key={index}
-              className={`p-6 rounded-2xl border ${service.border} ${service.bg} shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1`}
+              key={s.title}
+              className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-xl"
             >
-              <div className={`w-12 h-12 ${service.color} ${service.bg} rounded-xl flex items-center justify-center mb-4 border ${service.border}`}>
-                <service.icon className="w-6 h-6" />
+              <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-brand" />
+              {/* Icon and title side by side */}
+              <div className="flex items-center gap-3">
+                <span
+                  aria-hidden="true"
+                  className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-orange-50 text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white"
+                >
+                  <s.icon className="h-5 w-5" />
+                </span>
+                <h3 className="text-lg font-bold leading-snug text-gray-900">{s.title}</h3>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
-              <p className="text-gray-600">{service.description}</p>
+              <p className="mt-3 leading-relaxed text-gray-600">{s.description}</p>
             </div>
           ))}
         </div>
 
-        {/* Placement Stats - Gradient Cards */}
-        <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
-        >
-          {placementStats.map((stat, index) => (
-            <div
-              key={index}
-              className={`bg-gradient-to-br ${stat.gradient} rounded-2xl p-6 text-center text-white shadow-xl transform hover:scale-105 transition-all duration-300`}
-            >
-              <div className="text-4xl mb-2">{stat.icon}</div>
-              <div className="text-3xl md:text-4xl font-bold mb-1">{stat.number}</div>
-              <div className="text-sm md:text-base opacity-90">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+        {/* How: 5 steps as connected cards, in the same card language as the
+            services above and the band below. */}
+        <div className="mt-12 lg:mt-14">
+          <h3 className="text-center text-2xl font-bold text-gray-900 sm:text-3xl">Our 5-Step Placement Process</h3>
 
-        {/* Placement Process - Enhanced Flow */}
-        <div
-          className="bg-gray-50 rounded-3xl p-8 md:p-12 shadow-inner border border-gray-100"
-        >
-          <h3 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-12">
-            Our 5-Step Placement Process
-          </h3>
-
-          <div className="grid md:grid-cols-5 gap-6">
-            {placementProcess.map((step, index) => (
-              <div key={index} className="relative">
-                {/* Connector - Enhanced with color */}
-                {index < 4 && (
-                  <div className="hidden md:block absolute top-6 left-full w-full h-0.5 bg-indigo-300 -z-10"></div>
-                )}
-
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-3 shadow-md">
-                    {index + 1}
-                  </div>
-                  <h4 className="font-bold text-gray-900 mb-1">{step.title}</h4>
-                  <p className="text-sm text-gray-600">{step.desc}</p>
+          <ol className="mt-6 grid gap-3 sm:mt-8 md:grid-cols-5 md:gap-5">
+            {PROCESS.map((step, i) => (
+              <li
+                key={step.title}
+                className="relative flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-200 hover:shadow-md md:flex-col md:items-start md:gap-3"
+              >
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand font-bold text-white shadow-md">
+                  {i + 1}
+                </span>
+                <div>
+                  <h4 className="font-bold text-gray-900">{step.title}</h4>
+                  <p className="mt-0.5 text-sm text-gray-600">{step.desc}</p>
                 </div>
-              </div>
+                {/* Chevron to the next step (md and up) */}
+                {i < PROCESS.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute -right-4 top-1/2 z-10 hidden h-6 w-6 -translate-y-1/2 place-items-center rounded-full bg-white text-brand shadow ring-1 ring-orange-100 md:grid"
+                  >
+                    <ChevronRight className="h-4 w-4" />
+                  </span>
+                )}
+              </li>
             ))}
-          </div>
-        </div>
-
-        {/* View All CTA */}
-        <div
-          className="text-center mt-16"
-        >
-          <Link
-            href="/jobs/placements" // Assuming a placements page exists
-            className="inline-flex items-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-          >
-            <span>View All Success Stories</span>
-            <ArrowRight className="w-5 h-5" />
-          </Link>
+          </ol>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 
 import ReviewsMarquee from "../sections/ReviewMarque";
+import { GraduationCap, Presentation, Briefcase, TrendingUp } from "lucide-react";
 
 export default function TestimonialsSection() {
 
@@ -24,28 +25,28 @@ export default function TestimonialsSection() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {[
                             {
-                                icon: "🎓",
+                                icon: GraduationCap,
                                 title: "Industry-Recognized Certification",
                                 description: "Get certified by AAA with international recognition",
                             },
                             {
-                                icon: "👨‍🏫",
+                                icon: Presentation,
                                 title: "Expert Mentors",
                                 description: "Learn from professionals with extensive industry experience",
                             },
                             {
-                                icon: "💼",
+                                icon: Briefcase,
                                 title: "Job Placement Support",
                                 description: "job assistance and placement support from our dedicated team",
                             },
                             {
-                                icon: "📈",
+                                icon: TrendingUp,
                                 title: "Career Growth",
                                 description: "Average salary increase of 40-50% post-course completion",
                             },
                         ].map((item, idx) => (
                             <div key={idx} className="flex gap-4">
-                                <div className="text-3xl flex-shrink-0">{item.icon}</div>
+                                <item.icon className="w-8 h-8 text-brand flex-shrink-0" aria-hidden="true" />
                                 <div>
                                     <h4 className="font-bold text-slate-900 mb-1">{item.title}</h4>
                                     <p className="text-sm text-slate-600">{item.description}</p>

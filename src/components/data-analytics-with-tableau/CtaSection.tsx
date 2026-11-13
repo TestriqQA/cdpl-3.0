@@ -1,3 +1,4 @@
+import { Target, Briefcase, Trophy, AlarmClock } from "lucide-react";
 import EnrollButton from "./ui/EnrollButton";
 import SyllabusButton from "./ui/SyllabusButton";
 import { SiteStat } from "@/components/stats/SiteStatsProvider";
@@ -21,7 +22,7 @@ export default function CtaSection() {
                 {/* Key Benefits */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
                     <div className="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
-                        <div className="text-4xl mb-3">🎯</div>
+                        <Target className="w-10 h-10 mx-auto mb-3 text-orange-400" aria-hidden="true" />
                         <h3 className="font-bold text-white mb-2">Industry-Ready Skills</h3>
                         <p className="text-white text-sm">
                             Master in-demand Tableau skills valued by top companies
@@ -29,7 +30,7 @@ export default function CtaSection() {
                     </div>
 
                     <div className="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
-                        <div className="text-4xl mb-3">💼</div>
+                        <Briefcase className="w-10 h-10 mx-auto mb-3 text-orange-400" aria-hidden="true" />
                         <h3 className="font-bold text-white mb-2">Career Support</h3>
                         <p className="text-white text-sm">
                             job assistance with placement in top companies
@@ -37,7 +38,7 @@ export default function CtaSection() {
                     </div>
 
                     <div className="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
-                        <div className="text-4xl mb-3">🏆</div>
+                        <Trophy className="w-10 h-10 mx-auto mb-3 text-orange-400" aria-hidden="true" />
                         <h3 className="font-bold text-white mb-2">Global Certificate</h3>
                         <p className="text-white text-sm">
                             Internationally recognized certification with QR validation
@@ -65,8 +66,8 @@ export default function CtaSection() {
 
                 {/* Limited Time Offer */}
                 <div className="bg-white text-slate-900 bg-opacity-20 border-2 border-yellow-300 rounded-lg p-6 mb-12">
-                    <p className="font-bold text-lg">
-                        ⏰ Limited Time Offer: Get 20% discount on enrollment this month!
+                    <p className="font-bold text-lg flex items-center justify-center gap-2">
+                        <AlarmClock className="w-5 h-5 flex-shrink-0" aria-hidden="true" /> Limited Time Offer: Get 20% discount on enrollment this month!
                     </p>
                 </div>
 

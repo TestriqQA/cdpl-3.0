@@ -1,5 +1,9 @@
 "use client";
-import { Briefcase, TrendingUp, Users, ArrowRight, Download } from "lucide-react";
+import {
+    Briefcase, TrendingUp, Users, ArrowRight, Download,
+    BarChart3, Bot, Microscope, Settings, Package, Wallet, Megaphone,
+    type LucideIcon,
+} from "lucide-react";
 import { useState } from "react";
 import CareerSessionModal from "../CareerSessionModal";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
@@ -8,7 +12,7 @@ interface JobRole {
     title: string;
     description: string;
     salary: string;
-    icon: string;
+    icon: LucideIcon;
 }
 
 export default function CareerSection() {
@@ -22,55 +26,55 @@ export default function CareerSection() {
             title: "Data Analyst",
             description: "Analyze business data to identify trends and support decision-making",
             salary: "4-6 LPA",
-            icon: "📊",
+            icon: BarChart3,
         },
         {
             title: "Business Intelligence Analyst",
             description: "Create dashboards and reports for business insights and strategy",
             salary: "5-7 LPA",
-            icon: "📈",
+            icon: TrendingUp,
         },
         {
             title: "Data Scientist",
             description: "Build predictive models and machine learning solutions",
             salary: "6-10 LPA",
-            icon: "🤖",
+            icon: Bot,
         },
         {
             title: "Research Analyst",
             description: "Conduct data research and analysis for market insights",
             salary: "4-6 LPA",
-            icon: "🔬",
+            icon: Microscope,
         },
         {
             title: "Operations Analyst",
             description: "Optimize business operations using data analytics",
             salary: "4-6 LPA",
-            icon: "⚙️",
+            icon: Settings,
         },
         {
             title: "Supply Chain Analyst",
             description: "Analyze supply chain data to improve efficiency",
             salary: "5-7 LPA",
-            icon: "📦",
+            icon: Package,
         },
         {
             title: "Financial Analyst",
             description: "Analyze financial data for investment and risk assessment",
             salary: "6-9 LPA",
-            icon: "💰",
+            icon: Wallet,
         },
         {
             title: "Marketing Analyst",
             description: "Analyze customer and campaign data to drive marketing strategies",
             salary: "4-7 LPA",
-            icon: "📣",
+            icon: Megaphone,
         },
         {
             title: "HR Analyst",
             description: "Use data analytics to optimize human resources management",
             salary: "4-6 LPA",
-            icon: "👥",
+            icon: Users,
         },
     ];
 
@@ -95,9 +99,7 @@ export default function CareerSection() {
                             className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-6 border-2 border-slate-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300 group"
                         >
                             {/* Icon */}
-                            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">
-                                {role.icon}
-                            </div>
+                            <role.icon className="w-10 h-10 mb-4 text-brand group-hover:scale-110 transition-transform" aria-hidden="true" />
 
                             {/* Title */}
                             <h3 className="text-lg font-bold text-slate-900 mb-2">

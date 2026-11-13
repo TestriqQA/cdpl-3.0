@@ -1,5 +1,6 @@
 import Image from "next/image";
 import EnrollButton from "./ui/EnrollButton";
+import { Calculator, Link, TrendingUp, Target, Zap } from "lucide-react";
 
 const toolsData = [
     {
@@ -17,7 +18,7 @@ const toolsData = [
         name: "Calculated Fields",
         category: "Data Manipulation",
         description: "Create custom calculations and derived fields in Tableau",
-        icon: "🧮",
+        icon: Calculator,
         bgColor: "bg-blue-100",
         textColor: "text-gray-950",
     },
@@ -44,7 +45,7 @@ const toolsData = [
         name: "Data Blending",
         category: "Data Integration",
         description: "Combine data from multiple sources seamlessly",
-        icon: "🔗",
+        icon: Link,
         bgColor: "bg-yellow-100",
         textColor: "text-gray-950",
     },
@@ -53,7 +54,7 @@ const toolsData = [
         name: "Advanced Analytics",
         category: "Analysis",
         description: "Perform statistical analysis and forecasting",
-        icon: "📈",
+        icon: TrendingUp,
         bgColor: "bg-pink-100",
         textColor: "text-gray-950",
     },
@@ -88,8 +89,8 @@ export default function ToolsSection() {
                                 {tool.logo ? (
                                     <Image src={tool.logo} alt="" width={40} height={40} className="h-8 w-8 shrink-0 object-contain sm:h-10 sm:w-10" aria-hidden />
                                 ) : (
-                                    <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center text-2xl sm:h-10 sm:w-10 sm:text-3xl" aria-hidden>
-                                        {tool.icon}
+                                    <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center sm:h-10 sm:w-10" aria-hidden>
+                                        {tool.icon && <tool.icon className="h-7 w-7 sm:h-8 sm:w-8 text-brand" />}
                                     </div>
                                 )}
                                 <h3 className={`${tool.textColor} min-w-0 text-2xl font-bold`}>
@@ -119,7 +120,7 @@ export default function ToolsSection() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                <span className="text-2xl">🎯</span> Core Tools
+                                <Target className="w-6 h-6 text-brand" aria-hidden="true" /> Core Tools
                             </h4>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">
@@ -145,7 +146,7 @@ export default function ToolsSection() {
 
                         <div>
                             <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                <span className="text-2xl">⚡</span> Advanced Features
+                                <Zap className="w-6 h-6 text-brand" aria-hidden="true" /> Advanced Features
                             </h4>
                             <ul className="space-y-3">
                                 <li className="flex items-start gap-3">

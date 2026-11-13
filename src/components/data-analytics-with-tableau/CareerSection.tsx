@@ -1,60 +1,61 @@
+import { Users, Package, BarChart3, TrendingUp, Settings, Lightbulb, Wallet, Laptop, Briefcase, type LucideIcon } from "lucide-react";
 import EnrollButton from "./ui/EnrollButton";
 import SyllabusButton from "./ui/SyllabusButton";
 
-const careerRoles = [
+const careerRoles: { id: number; title: string; icon: LucideIcon; bgColor: string; textColor: string }[] = [
     {
         id: 1,
         title: "HR Analyst",
-        icon: "👥",
+        icon: Users,
         bgColor: "bg-blue-100",
         textColor: "text-gray-950",
     },
     {
         id: 2,
         title: "Supply Chain Analyst",
-        icon: "📦",
+        icon: Package,
         bgColor: "bg-green-100",
         textColor: "text-gray-950",
     },
     {
         id: 3,
         title: "Sales Analyst",
-        icon: "📊",
+        icon: BarChart3,
         bgColor: "bg-orange-100",
         textColor: "text-gray-950",
     },
     {
         id: 4,
         title: "Reporting Specialist",
-        icon: "📈",
+        icon: TrendingUp,
         bgColor: "bg-purple-100",
         textColor: "text-gray-950",
     },
     {
         id: 5,
         title: "Operations Analyst",
-        icon: "⚙️",
+        icon: Settings,
         bgColor: "bg-yellow-100",
         textColor: "text-gray-950",
     },
     {
         id: 6,
         title: "Business Intelligence Analyst",
-        icon: "💡",
+        icon: Lightbulb,
         bgColor: "bg-pink-100",
         textColor: "text-gray-950",
     },
     {
         id: 7,
         title: "Financial Analyst",
-        icon: "💰",
+        icon: Wallet,
         bgColor: "bg-red-100",
         textColor: "text-gray-950",
     },
     {
         id: 8,
         title: "Tableau Developer",
-        icon: "💻",
+        icon: Laptop,
         bgColor: "bg-indigo-100",
         textColor: "text-gray-950",
     },
@@ -108,7 +109,7 @@ export default function CareerSection() {
                                 key={role.id}
                                 className={`${role.bgColor} rounded-xl p-6 border-2 border-gray-200 hover:border-orange-300 hover:shadow-lg transition-all hover:-translate-y-1 text-center`}
                             >
-                                <div className="text-4xl mb-3">{role.icon}</div>
+                                <role.icon className="w-10 h-10 mx-auto mb-3 text-brand" aria-hidden="true" />
                                 <h4 className={`${role.textColor} font-bold text-lg`}>
                                     {role.title}
                                 </h4>
@@ -232,7 +233,7 @@ export default function CareerSection() {
                 {/* Job Market Stats */}
                 <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="p-8 bg-blue-50 rounded-xl border-2 border-blue-200">
-                        <div className="text-4xl mb-3">📈</div>
+                        <TrendingUp className="w-10 h-10 mb-3 text-brand" aria-hidden="true" />
                         <h4 className="text-xl font-bold text-gray-900 mb-3">
                             Market Growth
                         </h4>
@@ -245,7 +246,7 @@ export default function CareerSection() {
                     </div>
 
                     <div className="p-8 bg-green-50 rounded-xl border-2 border-green-200">
-                        <div className="text-4xl mb-3">💼</div>
+                        <Briefcase className="w-10 h-10 mb-3 text-brand" aria-hidden="true" />
                         <h4 className="text-xl font-bold text-gray-900 mb-3">
                             Job Vacancies
                         </h4>

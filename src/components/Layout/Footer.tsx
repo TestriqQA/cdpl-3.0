@@ -452,9 +452,9 @@ const Footer = () => {
               <InstituteLink href="/jobs/placements" title="Recent Student Placements">Placements</InstituteLink>
               <InstituteLink href="/jobs/live-jobs" title="Live Job Openings & Opportunities">Live Jobs</InstituteLink>
               <InstituteLink href="/jobs/job-openings" title="Current Job Openings">Job Openings</InstituteLink>
-              <InstituteLink href="/jobs/careers" title="Careers at CDPL">Careers</InstituteLink>
               <InstituteLink href="/about-us" title="About Cinute Digital">About CDPL</InstituteLink>
               <InstituteLink href="/our-team" title="Meet the Team">Our Team</InstituteLink>
+              <InstituteLink href="/jobs/careers" title="Careers at CDPL">Careers</InstituteLink>
               <InstituteLink href="/reviews" title="Student Reviews & Success Stories">Reviews</InstituteLink>
               <InstituteLink href="/cdpl-affiliate-program" title="CDPL Affiliate Partner Program">Affiliate Program</InstituteLink>
               <InstituteLink href="/contact-us" title="Contact Us for Support & Enquiries">Contact Us</InstituteLink>

@@ -1,5 +1,9 @@
 "use client";
-import { CheckCircle, ArrowRight, Download } from "lucide-react";
+import {
+    CheckCircle, ArrowRight, Download,
+    Target, TrendingUp, Briefcase, GraduationCap, AlarmClock, Handshake, BookOpen,
+    type LucideIcon,
+} from "lucide-react";
 import { useState } from "react";
 import EnrollModal from "../EnrollModal";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
@@ -7,7 +11,7 @@ import SyllabusDownloadModal from "../SyllabusDownloadModal";
 interface AudienceSegment {
     title: string;
     description: string;
-    icon: string;
+    icon: LucideIcon;
     requirements: string[];
 }
 
@@ -21,7 +25,7 @@ export default function WhoShouldEnroll() {
         {
             title: "Beginners with Basic Python",
             description: "If you're asking **how to become a data analyst**, this **data analyst courses for beginners** is perfect. Learn **what is data analysis in python** from scratch.",
-            icon: "🎯",
+            icon: Target,
             requirements: [
                 "Basic understanding of Python variables and loops",
                 "Familiarity with fundamental programming concepts",
@@ -31,7 +35,7 @@ export default function WhoShouldEnroll() {
         {
             title: "Intermediate Users",
             description: "Enhance your **python data analysis course** expertise with advanced techniques. Master **how to use python data analysis** for complex scenarios.",
-            icon: "📈",
+            icon: TrendingUp,
             requirements: [
                 "Intermediate Python programming skills",
                 "Basic understanding of data structures",
@@ -41,7 +45,7 @@ export default function WhoShouldEnroll() {
         {
             title: "Professionals Seeking Career Change",
             description: "From finance, healthcare, retail, or marketing—learn **what skills are required for data analyst** roles and transition into a **career in data analytics**.",
-            icon: "💼",
+            icon: Briefcase,
             requirements: [
                 "Basic Python knowledge (recommended)",
                 "Domain expertise in your industry",
@@ -51,7 +55,7 @@ export default function WhoShouldEnroll() {
         {
             title: "Students & Graduates",
             description: "Recent graduates or students looking to build practical skills. Answer **what to study to become a data analyst** with hands-on projects and **data analytics certification**.",
-            icon: "🎓",
+            icon: GraduationCap,
             requirements: [
                 "Basic Python knowledge or willingness to learn",
                 "Strong analytical thinking",
@@ -108,7 +112,7 @@ export default function WhoShouldEnroll() {
                             className="bg-white rounded-xl p-8 border-2 border-slate-200 hover:border-orange-300 hover:shadow-lg transition-all duration-300"
                         >
                             {/* Icon */}
-                            <div className="text-4xl mb-4">{audience.icon}</div>
+                            <audience.icon className="w-10 h-10 mb-4 text-brand" aria-hidden="true" />
 
                             {/* Title */}
                             <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -169,26 +173,28 @@ export default function WhoShouldEnroll() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {[
                             {
+                                icon: AlarmClock,
                                 title: "Regular Practice",
                                 description: "Dedicate time daily to hands-on coding and projects",
                             },
                             {
+                                icon: Handshake,
                                 title: "Active Participation",
                                 description: "Engage in doubt-solving sessions and ask questions",
                             },
                             {
+                                icon: Target,
                                 title: "Project Focus",
                                 description: "Complete all real-world projects to build your portfolio",
                             },
                             {
+                                icon: BookOpen,
                                 title: "Continuous Learning",
                                 description: "Stay updated with latest tools and industry trends",
                             },
                         ].map((factor, idx) => (
                             <div key={idx} className="flex gap-4">
-                                <div className="text-3xl flex-shrink-0">
-                                    {idx === 0 ? "⏰" : idx === 1 ? "🤝" : idx === 2 ? "🎯" : "📚"}
-                                </div>
+                                <factor.icon className="w-8 h-8 text-brand flex-shrink-0" aria-hidden="true" />
                                 <div>
                                     <h4 className="font-bold text-slate-900 mb-1">{factor.title}</h4>
                                     <p className="text-sm text-slate-600">{factor.description}</p>

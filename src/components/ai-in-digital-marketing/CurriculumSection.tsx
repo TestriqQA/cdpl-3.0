@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { courseData } from "@/components/ai-in-digital-marketing/courseData";
-import { ChevronDown, BookOpen } from "lucide-react";
+import { ChevronDown, BookOpen, Target, Briefcase } from "lucide-react";
 
 import EnrollModal from "@/components/EnrollModal";
 import SyllabusDownloadModal from "@/components/SyllabusDownloadModal";
@@ -64,7 +64,7 @@ export default function CurriculumSection() {
                   className="w-full px-6 py-5 flex items-center justify-between hover:bg-white/30 transition-colors"
                 >
                   <div className="flex items-center gap-4 text-left">
-                    <span className="text-3xl">{module.icon}</span>
+                    <module.icon className="w-8 h-8 text-brand flex-shrink-0" aria-hidden="true" />
                     <div>
                       <h3 className="text-lg md:text-xl font-bold text-slate-900">
                         Module {module.id}: {module.title}
@@ -109,7 +109,7 @@ export default function CurriculumSection() {
                     {module.learningOutcome && (
                       <div className="mb-6">
                         <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                          <span className="text-2xl">🎯</span>
+                          <Target className="w-7 h-7 text-brand" aria-hidden="true" />
                           Learning Outcome – Real-World AI Marketing Skills
                         </h4>
                         <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-4 md:p-5">
@@ -131,7 +131,7 @@ export default function CurriculumSection() {
                     {module.projects && module.projects.length > 0 && (
                       <div>
                         <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                          <span className="text-2xl">💼</span>
+                          <Briefcase className="w-7 h-7 text-brand" aria-hidden="true" />
                           Hands-On Projects & Implementation
                         </h4>
                         <ul className="space-y-2">

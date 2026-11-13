@@ -1,5 +1,5 @@
 "use client";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, Timer, Briefcase, GraduationCap, PartyPopper, Phone, Mail } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import EnrollModal from "../EnrollModal";
@@ -34,17 +34,17 @@ export default function CtaSection() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
                         {[
                             {
-                                icon: "⏱️",
+                                icon: Timer,
                                 title: "20 Hours",
                                 description: "Intensive, focused training",
                             },
                             {
-                                icon: "💼",
+                                icon: Briefcase,
                                 title: "Job Assistance",
                                 description: "Placement support included",
                             },
                             {
-                                icon: "🎓",
+                                icon: GraduationCap,
                                 title: "Global Certification",
                                 description: "Internationally recognized",
                             },
@@ -53,7 +53,7 @@ export default function CtaSection() {
                                 key={idx}
                                 className="bg-white/10 backdrop-blur-sm rounded-lg p-5 border border-white/20"
                             >
-                                <div className="text-3xl mb-2">{benefit.icon}</div>
+                                <benefit.icon className="w-8 h-8 mx-auto mb-2 text-orange-400" aria-hidden="true" />
                                 <p className="font-bold text-white mb-1">{benefit.title}</p>
                                 <p className="text-sm text-slate-300">{benefit.description}</p>
                             </div>
@@ -79,7 +79,7 @@ export default function CtaSection() {
 
                     {/* Limited Time Offer */}
                     <div className="bg-orange-500/20 border-2 border-orange-400 rounded-lg p-6 mb-10">
-                        <p className="text-orange-200 font-semibold mb-2">🎉 Limited Time Offer</p>
+                        <p className="text-orange-200 font-semibold mb-2 flex items-center justify-center gap-2"><PartyPopper className="w-5 h-5" aria-hidden="true" /> Limited Time Offer</p>
                         <p className="text-white text-lg font-bold">
                             Get <span className="text-orange-300">20% OFF</span> on enrollment this month!
                         </p>
@@ -120,11 +120,11 @@ export default function CtaSection() {
                     <p className="text-slate-300 mb-4">Have questions? Get in touch with us!</p>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-white">
                         <Link href="tel:+917888383788" className="cursor-pointer flex items-center gap-2 hover:text-orange-400 transition-colors">
-                            <span>📞</span> +91 788-83-83-788
+                            <Phone className="w-5 h-5" aria-hidden="true" /> +91 788-83-83-788
                         </Link>
                         <div className="hidden sm:block w-px h-6 bg-white/20"></div>
                         <Link href="mailto:contact@cinutedigital.com" className="cursor-pointer flex items-center gap-2 hover:text-orange-400 transition-colors">
-                            <span>✉️</span> contact@cinutedigital.com
+                            <Mail className="w-5 h-5" aria-hidden="true" /> contact@cinutedigital.com
                         </Link>
                     </div>
                 </div>

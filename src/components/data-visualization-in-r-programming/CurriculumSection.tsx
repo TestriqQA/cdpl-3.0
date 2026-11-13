@@ -8,6 +8,15 @@ import {
   BookOpen,
   CloudDownload,
   ArrowRight,
+  BarChart3,
+  TrendingUp,
+  TrendingDown,
+  FileSpreadsheet,
+  Calculator,
+  Brain,
+  Pin,
+  Rocket,
+  type LucideIcon,
 } from "lucide-react";
 import EnrollModal from "../EnrollModal";
 import SyllabusDownloadModal from "../SyllabusDownloadModal";
@@ -39,8 +48,8 @@ export const CurriculumSection: React.FC = () => {
     "from-indigo-50 to-indigo-100",
   ];
 
-  // Emoji icons per module (for visual appeal + consistent with reference)
-  const moduleEmojis = ["📊", "📈", "📉", "📑", "📚", "🧮", "🧠", "📌"];
+  // Icons per module (for visual appeal + consistent with reference)
+  const moduleIcons: LucideIcon[] = [BarChart3, TrendingUp, TrendingDown, FileSpreadsheet, BookOpen, Calculator, Brain, Pin];
 
   const handleToggle = (idx: number) => {
     setExpandedModule(expandedModule === idx ? null : idx);
@@ -98,8 +107,8 @@ export const CurriculumSection: React.FC = () => {
             const color =
               moduleColors[index % moduleColors.length] ||
               "from-blue-50 to-blue-100";
-            const iconEmoji =
-              moduleEmojis[index % moduleEmojis.length] || "📊";
+            const ModuleIcon =
+              moduleIcons[index % moduleIcons.length] || BarChart3;
             const isExpanded = expandedModule === index;
 
             return (
@@ -113,7 +122,7 @@ export const CurriculumSection: React.FC = () => {
                   className="w-full px-6 py-5 flex items-center justify-between cursor-pointer hover:bg-white/30 transition-colors"
                 >
                   <div className="flex items-center gap-4 text-left">
-                    <span className="text-3xl">{iconEmoji}</span>
+                    <ModuleIcon className="w-8 h-8 text-brand flex-shrink-0" aria-hidden="true" />
                     <div>
                       <h3 className="text-lg font-bold text-slate-900">
                         Module {index + 1}: {module.title}
@@ -166,7 +175,7 @@ export const CurriculumSection: React.FC = () => {
                     {module.projects && module.projects.length > 0 && (
                       <div>
                         <h4 className="font-semibold text-slate-900 mb-3 flex items-center gap-2">
-                          <span className="text-2xl">🚀</span>
+                          <Rocket className="w-5 h-5 text-brand" aria-hidden="true" />
                           Hands-On Projects in R
                         </h4>
                         <ul className="space-y-2">

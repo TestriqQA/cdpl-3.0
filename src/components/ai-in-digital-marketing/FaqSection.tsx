@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Phone, Mail } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import CareerSessionModal from "@/components/CareerSessionModal";
@@ -119,15 +119,15 @@ export default function FaqSection() {
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
                 href="tel:+917888383788"
-                className="px-4 py-2 bg-white hover:bg-slate-50 border border-orange-300 rounded-lg font-semibold text-brand transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-slate-50 border border-orange-300 rounded-lg font-semibold text-brand transition-colors"
               >
-                📞 Call Us
+                <Phone className="w-5 h-5" aria-hidden="true" /> Call Us
               </Link>
               <Link
                 href="mailto:contact@cinutedigital.com"
-                className="px-4 py-2 bg-white hover:bg-slate-50 border border-blue-300 rounded-lg font-semibold text-blue-600 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-slate-50 border border-blue-300 rounded-lg font-semibold text-blue-600 transition-colors"
               >
-                ✉️ Email Us
+                <Mail className="w-5 h-5" aria-hidden="true" /> Email Us
               </Link>
             </div>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 // components/powerbi/WhoShouldEnroll.tsx
 import React, { useState } from "react";
+import { Sprout, Briefcase, Megaphone, Factory, type LucideIcon } from "lucide-react";
 import EnrollModal from "../EnrollModal";
 
 type ColorVariant = "blue" | "orange" | "green" | "purple";
@@ -8,7 +9,7 @@ type ColorVariant = "blue" | "orange" | "green" | "purple";
 interface AudienceCardProps {
   title: string;
   description: string;
-  emoji: string;
+  icon: LucideIcon;
   color: ColorVariant;
 }
 
@@ -22,7 +23,7 @@ const palette: Record<
   purple: { bg: "bg-purple-100", text: "text-purple-700", ring: "ring-purple-200", grad: "from-purple-500/20 to-fuchsia-500/20" },
 };
 
-const AudienceCard: React.FC<AudienceCardProps> = ({ title, description, emoji, color }) => {
+const AudienceCard: React.FC<AudienceCardProps> = ({ title, description, icon: Icon, color }) => {
   const c = palette[color];
 
   return (
@@ -40,8 +41,8 @@ const AudienceCard: React.FC<AudienceCardProps> = ({ title, description, emoji, 
           "hover:shadow-lg focus-within:ring-2", c.ring, "transition-all duration-300",
         ].join(" ")}
       >
-        <div className={`p-3 w-fit rounded-full ${c.bg} ${c.text} mb-4 text-2xl`} aria-hidden="true">
-          {emoji}
+        <div className={`p-3 w-fit rounded-full ${c.bg} ${c.text} mb-4`} aria-hidden="true">
+          <Icon className="w-7 h-7" />
         </div>
         <h3 id={`aud-${title.replace(/\s+/g, "-").toLowerCase()}`} className="text-xl font-bold text-gray-900 mb-2">
           {title}
@@ -61,28 +62,28 @@ const WhoShouldEnroll: React.FC = () => {
       title: "Beginners & Career Changers",
       description:
         "Individuals with no prior programming or BI experience, looking to start a lucrative career in data analytics.",
-      emoji: "🌱",
+      icon: Sprout,
       color: "blue",
     },
     {
       title: "Business & Financial Analysts",
       description:
         "Professionals who need to move beyond Excel to create dynamic, interactive reports and dashboards for strategic decision-making.",
-      emoji: "💼",
+      icon: Briefcase,
       color: "orange",
     },
     {
       title: "Marketing & Sales Professionals",
       description:
         "Those who want to analyze campaign performance, customer behavior, and sales trends to drive revenue growth.",
-      emoji: "📣",
+      icon: Megaphone,
       color: "green",
     },
     {
       title: "HR & Operations Managers",
       description:
         "Managers in HR, Healthcare, or Manufacturing who rely on data-driven decisions for resource allocation and process optimization.",
-      emoji: "🏭",
+      icon: Factory,
       color: "purple",
     },
   ];
