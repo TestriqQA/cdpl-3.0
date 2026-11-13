@@ -1,65 +1,53 @@
 "use client";
-import { ArrowRight, Sparkles } from "lucide-react";
-import React, { useState } from "react";
+// Same orange band as the Careers / Services / Placements closing CTAs.
+import { ArrowRight, CircleCheck } from "lucide-react";
+import { useState } from "react";
 import WorkshopRequestModal from "../WorkshopRequestModal";
 
-// Strongly-typed CSS variable helper
-type CSSVarStyles<T extends string> = React.CSSProperties & Record<T, string>;
+const POINTS = ["Free to join", "Approval in 2–3 business days", "Up to 25% commission"];
 
 export default function AffiliateCTASection() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // Provide typed CSS vars (fixes no-explicit-any)
-    const vars: CSSVarStyles<
-        "--labelBg" | "--labelText" | "--titleColor" | "--btnBg" | "--btnText"
-    > = {
-        // Distinct solids (no gradients)
-        "--labelBg": "#ff8c00",   // label/tag: dark orange for contrast
-        "--labelText": "rgb(255, 255, 255)",
-        "--titleColor": "rgb(0, 105, 168)", // title: deep blue
-        "--btnBg": "rgb(222, 247, 236)",    // button: light (not white) mint
-        "--btnText": "rgb(6, 95, 70)",      // readable dark teal
-    };
-
     return (
-        <div
-            id="apply"
-            className="relative overflow-hidden rounded-3xl border border-slate-200/70 bg-white p-8 sm:p-12 shadow-[0_16px_45px_-24px_rgba(2,6,23,0.25)]"
-            style={vars}
-        >
-            {/* Solid label/tag (distinct color) */}
-            <div
-                className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium"
-                style={{ backgroundColor: "var(--labelBg)", color: "var(--labelText)" }}
-            >
-                <Sparkles className="h-4 w-4" />
-                Ready to earn with CDPL?
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 via-orange-500 to-amber-500 px-6 py-10 text-white shadow-lg sm:px-10 lg:py-12">
+            <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-2xl" />
+            <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-amber-300/20 blur-2xl" />
+
+            <div className="relative flex flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
+                <div className="max-w-2xl">
+                    <h2 id="apply-heading" className="text-2xl font-bold sm:text-3xl">Become a CDPL affiliate today</h2>
+                    <p className="mt-3 text-white/90">
+                        Apply in minutes. If approved, you’ll receive your dashboard, referral links, and ready-to-ship
+                        content to start earning right away.
+                    </p>
+                    <ul className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm font-medium text-white/95 lg:justify-start">
+                        {POINTS.map((p) => (
+                            <li key={p} className="inline-flex items-center gap-1.5">
+                                <CircleCheck className="h-4 w-4" aria-hidden="true" />
+                                {p}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div className="flex shrink-0 flex-col items-center gap-3 sm:flex-row">
+                    <button
+                        type="button"
+                        onClick={() => setIsModalOpen(true)}
+                        className="group inline-flex cursor-pointer items-center gap-2 rounded-xl bg-white px-5 py-3 font-semibold text-orange-600 shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
+                    >
+                        Apply now <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                    </button>
+                    <a
+                        href="#tiers"
+                        className="inline-flex items-center rounded-xl border-2 border-white/80 px-5 py-2.5 font-semibold text-white transition hover:bg-white/10"
+                    >
+                        See commission tiers
+                    </a>
+                </div>
             </div>
 
-            {/* Solid title (different color from label & button) */}
-            <h2
-                className="mt-4 text-3xl font-bold tracking-tight"
-                style={{ color: "var(--titleColor)" }}
-            >
-                Become a CDPL affiliate today
-            </h2>
-
-            <p className="mt-2 max-w-2xl text-slate-600">
-                Apply in minutes. If approved, you’ll receive your dashboard, referral
-                links, and ready-to-ship content to start earning right away.
-            </p>
-
-            {/* Solid button (light, non-white, different from label & title) */}
-            <div className="mt-6">
-                <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="group inline-flex items-center justify-center rounded-xl px-6 py-3 transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
-                    style={{ backgroundColor: "var(--btnBg)", color: "var(--btnText)" }}
-                >
-                    Apply now
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-0.5" />
-                </button>
-            </div>
             <WorkshopRequestModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
