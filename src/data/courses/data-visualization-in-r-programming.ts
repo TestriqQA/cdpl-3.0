@@ -39,11 +39,11 @@ export const dataVisualizationInRProgrammingCourse: CourseContent = {
       name: "How to Enroll in CDPL Data Visualization in R Program",
       description: "A step-by-step guide to enrolling in our 20 hours intensive Data Visualization in R training program.",
       steps: [
-        { name: "Review Curriculum", text: "Evaluate the comprehensive python, machine learning, and AI algorithms modules." },
+        { name: "Review Curriculum", text: "Evaluate the R programming, ggplot2 data visualization, statistics, SQL integration, and machine learning modules." },
         { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
         {
           name: "Start Learning",
-          text: "Master modern large language models, prompt engineering, and deep learning for advanced tech roles!",
+          text: "Master R and RStudio, build publication-ready ggplot2 visualizations, and implement core machine learning algorithms in R!",
         },
       ],
     },

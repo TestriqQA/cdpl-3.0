@@ -39,7 +39,7 @@ export const machineLearningUsingPythonCourse: CourseContent = {
         { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
         {
           name: "Start Learning",
-          text: "Master modern large language models, prompt engineering, and deep learning for advanced tech roles!",
+          text: "Master data preprocessing, regression, classification, model evaluation, and unsupervised learning in Python, then build a capstone project!",
         },
       ],
     },

@@ -28,6 +28,9 @@ const SYLLABUS_LINKS: Record<string, string> = {
   'Advanced Software Testing': 'https://www.cinutedigital.com/downloads/advanced-software-testing.pdf',
   'AI Driven Digital Marketing': 'https://www.cinutedigital.com/downloads/ai-driven-digital-marketing-&-analytics.pdf',
   'AI in Digital Marketing Course': 'https://www.cinutedigital.com/downloads/digital-marketing-and-ai-for-business-owners-digital-marketing-and-ai-for-business-owners.pdf',
+  // Course name the /ai-in-digital-marketing page sends; without it that page's
+  // syllabus requests fell back to the generic brochure.
+  'Master Digital Marketing & AI for Business Owners': 'https://www.cinutedigital.com/downloads/digital-marketing-and-ai-for-business-owners-digital-marketing-and-ai-for-business-owners.pdf',
   'Comprehensive Data Science and AI': 'https://www.cinutedigital.com/downloads/comprehensive-data-science-and-ai-master-program.pdf',
   'Power BI Data Analytics': 'https://www.cinutedigital.com/downloads/data-analytics-&-visualization-with-power-bi.pdf',
   'Tableau Data Analytics': 'https://www.cinutedigital.com/downloads/data-analytics-&-visualization-with-tableau.pdf',
