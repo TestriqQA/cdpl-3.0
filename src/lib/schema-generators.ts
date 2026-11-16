@@ -2020,6 +2020,76 @@ export function generateManualTestingCoursePageSchema(
 }
 
 // ============================================================================
+// SHARED COURSE PAGE SCHEMA (src/components/course-page)
+// ============================================================================
+
+/**
+ * All JSON-LD for a course page built on the shared template. Replaces the
+ * per-course generate<X>CoursePageSchema functions as courses move over.
+ * The ItemList is built from the course's category siblings (the per-course
+ * functions matched the wrong slug format and always produced an empty list).
+ */
+export function generateCoursePageSchema(input: {
+  name: string;
+  description: string;
+  url: string;
+  slug: string;
+  image?: string;
+  duration?: string;
+  instructor?: string;
+  howTo: { name: string; description: string; steps: { name: string; text: string }[] };
+  program?: { programType: string; timeToComplete?: string; occupationalCategory?: string };
+  category: { name: string; listName: string };
+  siblings: { name: string; href: string; description?: string }[];
+  breadcrumbs: { name: string; url: string }[];
+  faqs: { question: string; answer: string }[];
+}): WithContext<Record<string, unknown>>[] {
+  // Organization and WebSite schemas come from the root layout.
+  const webPageSchema = generateWebPageSchema({
+    name: `${input.name} | CDPL`,
+    description: input.description,
+    url: input.url,
+    isPartOf: { "@id": getWebsiteId() },
+    about: { "@id": getOrganizationId() },
+  });
+
+  const courseSchema = generateCourseSchema({
+    name: input.name,
+    description: input.description,
+    url: input.url,
+    slug: input.slug,
+    duration: input.duration,
+    instructor: input.instructor,
+    image: input.image,
+  });
+
+  const programSchema = input.program
+    ? generateEducationalProgramSchema({
+        name: input.name,
+        description: input.description,
+        url: input.url,
+        ...input.program,
+      })
+    : undefined;
+
+  const itemListSchema = generateItemListSchema(
+    input.siblings.map((c) => ({ name: c.name, url: c.href, description: c.description, type: "Course" })),
+    input.category.listName,
+  );
+
+  return [
+    webPageSchema,
+    courseSchema,
+    programSchema,
+    itemListSchema,
+    generateBreadcrumbSchema(input.breadcrumbs),
+    input.faqs.length > 0 ? generateFAQSchema(input.faqs) : undefined,
+    generateHowToSchema(input.howTo),
+    generateSiteNavigationSchema(),
+  ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
+}
+
+// ============================================================================
 // API TESTING SUB-COURSE PAGE SCHEMA CONSOLIDATION
 // ============================================================================
 

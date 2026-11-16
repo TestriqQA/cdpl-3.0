@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { Mail, Phone, Plus } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { Rich } from "./Rich";
 
 export type FAQItem = { question: string; answer: string; category?: string };
 
@@ -57,7 +58,11 @@ export function FAQSection({ id, title, subtitle, eyebrow = "FAQs", items, categ
           <h2 id={titleId} className="mt-2 text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl">
             {title}
           </h2>
-          {subtitle && <p className="mt-3 text-base text-slate-600">{subtitle}</p>}
+          {subtitle && (
+            <p className="mt-3 text-base text-slate-600">
+              <Rich text={subtitle} />
+            </p>
+          )}
 
           {filters.length > 0 && (
             <div ref={filterBar} role="group" aria-label="Filter questions by topic" className="mt-5 flex flex-wrap justify-center gap-2 sm:mt-6">
@@ -86,7 +91,7 @@ export function FAQSection({ id, title, subtitle, eyebrow = "FAQs", items, categ
           )}
         </div>
 
-        <div className="mt-6 overflow-hidden rounded-2xl sm:mt-8 border border-slate-200 bg-white shadow-sm">
+        <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:mt-10">
           <div className="divide-y divide-slate-200">
             {shown.map((item, i) => {
               const showCategory = filter === "All" && !!item.category;
@@ -107,7 +112,9 @@ export function FAQSection({ id, title, subtitle, eyebrow = "FAQs", items, categ
                       <Plus className="h-4 w-4" />
                     </span>
                   </summary>
-                  <p className="px-4 pb-4 text-[15px] leading-7 text-slate-600 sm:px-6 sm:pb-5 sm:text-base">{item.answer}</p>
+                  <p className="px-4 pb-4 text-[15px] leading-7 text-slate-600 sm:px-6 sm:pb-5 sm:text-base">
+                    <Rich text={item.answer} />
+                  </p>
                 </details>
               );
             })}
