@@ -5,23 +5,22 @@ import { Heading, Rich } from "@/components/ui/Rich";
 import CtaButtons from "./parts/CtaButtons";
 import { CARD, Dot, GRID_GAP, IconTile, SPACE } from "./parts/Section";
 import { ICONS, tileColour } from "./parts/icons";
-import type { CourseContent } from "@/types/coursePage";
+import type { CourseHero as Hero } from "@/types/coursePage";
 
+/** Hero for course and category-hub pages. The last crumb has no href. */
 export default function CourseHero({
-  course,
-  category,
+  hero,
+  crumbs,
+  courseName,
+  sourceName,
 }: {
-  course: CourseContent;
-  category: { name: string; href: string };
+  hero: Hero;
+  crumbs: { label: string; href?: string }[];
+  /** Sent with leads; empty on hub pages (no single course). */
+  courseName?: string;
+  sourceName: string;
 }) {
-  const { hero, courseName, sourceName } = course;
   const source = `${sourceName} - Hero Section`;
-  const crumbs = [
-    { label: "Home", href: "/" },
-    { label: "Courses", href: "/courses" },
-    { label: category.name, href: category.href },
-    { label: hero.breadcrumb },
-  ];
 
   return (
     <section id="hero" aria-labelledby="course-hero-heading" className="relative overflow-hidden bg-white">

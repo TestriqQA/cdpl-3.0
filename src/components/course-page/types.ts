@@ -3,6 +3,7 @@ export type SectionProps<T> = {
   id: string;
   tone: "white" | "muted";
   data: T;
-  courseName: string;
+  /** Omitted on category hubs. */
+  courseName?: string;
   sourceName: string;
 };

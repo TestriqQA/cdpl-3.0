@@ -16,6 +16,8 @@ export type CtaKind =
   | "enroll"
   | "syllabus"
   | "careerSession"
+  | "brochure"
+  | "video"
   | "scroll"
   | "tel"
   | "mailto"
@@ -25,7 +27,7 @@ export type CtaKind =
 export type CtaAction = {
   label: string;
   kind: CtaKind;
-  /** Section id for "scroll", URL for "link"; tel/mailto/whatsapp use site defaults when omitted. */
+  /** Section id for "scroll", URL for "link" and "video" (YouTube); tel/mailto/whatsapp use site defaults when omitted. */
   href?: string;
   ariaLabel?: string;
   /** Rendered as the filled button; others are outlined. Defaults to the first action. */

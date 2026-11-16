@@ -63,7 +63,17 @@ export default function CoursePage({ course }: { course: CourseContent }) {
         <JsonLd key={`course-schema-${i}`} id={`course-schema-${i}`} schema={schema} />
       ))}
 
-      <CourseHero course={course} category={categoryInfo} />
+      <CourseHero
+        hero={course.hero}
+        courseName={course.courseName}
+        sourceName={course.sourceName}
+        crumbs={[
+          { label: "Home", href: "/" },
+          { label: "Courses", href: "/courses" },
+          { label: categoryInfo.name, href: categoryInfo.href },
+          { label: course.hero.breadcrumb },
+        ]}
+      />
 
       {/* Section nav: off-flow, slides in under the site header once the hero is passed. */}
       <div className="hidden md:block">
@@ -83,5 +93,5 @@ export default function CoursePage({ course }: { course: CourseContent }) {
 // body section through the closing band: every section boundary changes tone.
 const toneAt = (i: number): Tone => (i % 2 === 0 ? "muted" : "white");
 
-type Base = { id: string; tone: Tone; courseName: string; sourceName: string };
+type Base = { id: string; tone: Tone; courseName?: string; sourceName: string };
 type Section = { id: string; label: string; render: (p: Base) => ReactNode };

@@ -1,4 +1,4 @@
-import { iconMap } from '@/components/Digital-Marketing/CoursesSection';
+import type { CourseCardIcon } from '@/components/courses/CourseCard';
 import { SITE_STATS } from "@/lib/siteStats";
 
 // export const features = [
@@ -45,7 +45,7 @@ export interface Course {
     level: string;
     popular: boolean;
     link: string;
-    icon: keyof typeof iconMap;
+    icon: CourseCardIcon;
     features: string[];
     /** Optional per-course offer end timestamp (ISO). If omitted, defaults to +48h from mount */
     offerEndsAt?: string;

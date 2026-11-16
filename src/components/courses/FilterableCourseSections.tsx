@@ -2,7 +2,7 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 // import SearchFilter from "@/components/courses/SearchFilter";
 import CategoryCard from "@/components/courses/CategoryCard";
-import CourseCard from "@/components/courses/CourseCard";
+import CourseCard, { type CourseCardData } from "@/components/courses/CourseCard";
 import { coursesData } from "@/components/courses/coursesData";
 import { textToBg } from "@/components/courses/course";
 import { Hash } from "lucide-react";
@@ -47,6 +47,22 @@ const ACCENTS = [
   { chip: "bg-violet-50 text-violet-700 border border-violet-200", ring: "ring-violet-300", dot: "bg-violet-400" },
   { chip: "bg-fuchsia-50 text-fuchsia-700 border border-fuchsia-200", ring: "ring-fuchsia-300", dot: "bg-fuchsia-400" },
 ];
+
+/** Course data from coursesData in the shape the shared CourseCard takes. */
+function toCard(course: UICourse): CourseCardData {
+  return {
+    title: course.title,
+    description: course.description,
+    duration: course.duration,
+    level: course.level,
+    students: course.students,
+    popular: course.popular,
+    link: course.href || course.link || "#",
+    features: course.features ?? course.skills ?? [],
+    syllabusLink: course.syllabusLink,
+    icon: typeof course.icon === "string" ? course.icon : undefined,
+  };
+}
 
 /** Renders the grid with “show 3 then reveal the rest smoothly”. */
 function RevealCoursesGrid({
@@ -124,11 +140,11 @@ function RevealCoursesGrid({
         {head.map((course, idx) => (
           <div
             key={course.id}
-            className="h-full"
+            className="row-span-2 grid grid-rows-subgrid"
             itemProp="itemListElement"
           >
             <meta itemProp="position" content={String(idx + 1)} />
-            <CourseCard course={course as any} index={idx} categoryBgColor={categoryBgColor} />
+            <CourseCard subgrid course={toCard(course)} index={idx} source={`Courses Page - ${course.title} - Download Syllabus Modal Form`} />
           </div>
         ))}
       </div>
@@ -153,12 +169,12 @@ function RevealCoursesGrid({
               {tail.map((course, idx) => (
                 <div
                   key={course.id}
-                  className="h-full"
+                  className="row-span-2 grid grid-rows-subgrid"
                   itemProp="itemListElement"
 
                 >
                   <meta itemProp="position" content={String(visibleCount + idx + 1)} />
-                  <CourseCard course={course as any} index={visibleCount + idx} categoryBgColor={categoryBgColor} />
+                  <CourseCard subgrid course={toCard(course)} index={visibleCount + idx} source={`Courses Page - ${course.title} - Download Syllabus Modal Form`} />
                 </div>
               ))}
             </div>

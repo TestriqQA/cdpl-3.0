@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, ArrowDown, CloudDownload, Mail, Phone } from "lucide-react";
+import { ArrowRight, ArrowDown, CloudDownload, Download, Mail, Phone, Play } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import EnrollButton from "@/components/course-islands/EnrollButton";
 import SyllabusButton from "@/components/course-islands/SyllabusButton";
 import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
+import BrochureButton from "@/components/course-islands/BrochureButton";
+import VideoButton from "@/components/course-islands/VideoButton";
 import ScrollToButton from "./ScrollToButton";
 import type { CtaAction } from "@/types/coursePage";
 
@@ -31,11 +33,18 @@ const STYLES = {
 const BASE =
   "group inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-200 sm:text-base";
 
+// Kinds whose icon sits before the label (contact actions, play).
+const LEADING_ICON: CtaAction["kind"][] = ["tel", "mailto", "whatsapp", "video"];
+
 function ActionIcon({ kind }: { kind: CtaAction["kind"] }) {
   const cls = "h-5 w-5 shrink-0";
   switch (kind) {
     case "syllabus":
       return <CloudDownload className={`${cls} transition-transform group-hover:translate-y-0.5`} aria-hidden="true" />;
+    case "brochure":
+      return <Download className={`${cls} transition-transform group-hover:translate-y-0.5`} aria-hidden="true" />;
+    case "video":
+      return <Play className={cls} aria-hidden="true" />;
     case "scroll":
       return <ArrowDown className={`${cls} transition-transform group-hover:translate-y-0.5`} aria-hidden="true" />;
     case "tel":
@@ -62,7 +71,8 @@ export default function CtaButtons({
   className = "",
 }: {
   actions?: CtaAction[];
-  courseName: string;
+  /** Omitted on category hubs, where no single course applies. */
+  courseName?: string;
   /** Lead source prefix, e.g. "API Testing Course Page - Hero Section". */
   source: string;
   tone?: keyof typeof STYLES;
@@ -80,9 +90,9 @@ export default function CtaButtons({
         const cls = `${BASE} ${style}`;
         const content = (
           <>
-            {(a.kind === "tel" || a.kind === "mailto" || a.kind === "whatsapp") && <ActionIcon kind={a.kind} />}
+            {LEADING_ICON.includes(a.kind) && <ActionIcon kind={a.kind} />}
             {a.label}
-            {!(a.kind === "tel" || a.kind === "mailto" || a.kind === "whatsapp") && <ActionIcon kind={a.kind} />}
+            {!LEADING_ICON.includes(a.kind) && <ActionIcon kind={a.kind} />}
           </>
         );
         const leadSource = `${source} - ${a.label}`;
@@ -105,6 +115,18 @@ export default function CtaButtons({
               <CareerSessionButton key={i} className={cls} source={leadSource} courseName={courseName} ariaLabel={a.ariaLabel}>
                 {content}
               </CareerSessionButton>
+            );
+          case "brochure":
+            return (
+              <BrochureButton key={i} className={cls} source={leadSource} ariaLabel={a.ariaLabel}>
+                {content}
+              </BrochureButton>
+            );
+          case "video":
+            return (
+              <VideoButton key={i} className={cls} videoUrl={a.href ?? ""} ariaLabel={a.ariaLabel}>
+                {content}
+              </VideoButton>
             );
           case "scroll":
             return (

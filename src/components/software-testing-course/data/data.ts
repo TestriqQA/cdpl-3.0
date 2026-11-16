@@ -1,6 +1,6 @@
 // lib/data.ts
 import { Zap, Users, Briefcase, Award, Clock, ShieldCheck } from 'lucide-react';
-import { iconMap } from '@/components/software-testing-course/CoursesSection';
+import type { CourseCardIcon } from '@/components/courses/CourseCard';
 import { SITE_STATS } from "@/lib/siteStats";
 export const features = [
     { icon: Zap, title: '100% Live Interactive Classes', desc: 'No pre-recorded videos' },
@@ -23,7 +23,7 @@ export interface Course {
     popular: boolean;
     link: string;
     titleAttribute?: string;
-    icon: keyof typeof iconMap;
+    icon: CourseCardIcon;
     features: string[];
     /** Optional per-course offer end timestamp (ISO). If omitted, defaults to +48h from mount */
     offerEndsAt?: string;

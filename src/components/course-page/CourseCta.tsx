@@ -18,7 +18,7 @@ export default function CourseCta({
   id: string;
   tone: Tone;
   data: Cta;
-  courseName: string;
+  courseName?: string;
   sourceName: string;
 }) {
   return (
