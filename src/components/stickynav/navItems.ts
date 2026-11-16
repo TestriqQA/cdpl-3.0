@@ -12,32 +12,8 @@ export const sections = [
   { id: "faq", label: "FAQs", color: "from-indigo-600 to-cyan-600" },
 ];
 
-export const software_testing = [
-  { id: "program-stats", label: "Real Metrics", color: "from-indigo-600 to-cyan-600" },
-  { id: "why-master-program", label: "Why Master Program", color: "from-indigo-600 to-cyan-600" },
-  { id: "curriculum", label: "Curriculum", color: "from-indigo-600 to-cyan-600" },
-  { id: "tools", label: "Tools", color: "from-indigo-600 to-cyan-600" },
-  { id: "projects", label: "Projects", color: "from-indigo-600 to-cyan-600" },
-  { id: "testimonials", label: "Reviews", color: "from-indigo-600 to-cyan-600" },
-  { id: "career", label: "Career & Salary", color: "from-indigo-600 to-cyan-600" },
-  { id: "who-should-enroll", label: "Enroll", color: "from-indigo-600 to-cyan-600" },
-  { id: "faqs", label: "FAQs", color: "from-indigo-600 to-cyan-600" },
-  { id: "contact", label: "Contact", color: "from-indigo-600 to-cyan-600" },
-]
-
-export const with_roadmap = [
-  { id: "program-stats", label: "Real Metrics", color: "from-indigo-600 to-cyan-600" },
-  { id: "why-master-program", label: "Why Master Program", color: "from-indigo-600 to-cyan-600" },
-  { id: "curriculum", label: "Curriculum", color: "from-indigo-600 to-cyan-600" },
-  { id: "tools", label: "Tools", color: "from-indigo-600 to-cyan-600" },
-  { id: "roadmap", label: "Roadmap", color: "from-indigo-600 to-cyan-600" },
-  { id: "projects", label: "Projects", color: "from-indigo-600 to-cyan-600" },
-  { id: "testimonials", label: "Reviews", color: "from-indigo-600 to-cyan-600" },
-  { id: "career", label: "Career & Salary", color: "from-indigo-600 to-cyan-600" },
-  { id: "who-should-enroll", label: "Enroll", color: "from-indigo-600 to-cyan-600" },
-  { id: "faqs", label: "FAQs", color: "from-indigo-600 to-cyan-600" },
-  { id: "contact", label: "Contact", color: "from-indigo-600 to-cyan-600" },
-]
+// Course detail pages on the shared template (src/components/course-page)
+// pass their own `items`, built from the sections they render.
 
 export const general_course = [
   { id: "features", label: "Program Highlights", color: "from-indigo-600 to-cyan-600" },
@@ -51,8 +27,6 @@ export const general_course = [
 ]
 
 export const NAV_ITEMS = {
-  "software-testing": software_testing,
-  roadmap: with_roadmap,
   "manual-testing": sections,
   general: general_course,
 };

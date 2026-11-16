@@ -14,7 +14,7 @@ interface StickyNavProps {
   reveal?: boolean;
 }
 
-export default function StickyNav({ variant = 'software-testing', items, reveal = false }: StickyNavProps) {
+export default function StickyNav({ variant = 'general', items, reveal = false }: StickyNavProps) {
   const navItems = items ?? NAV_ITEMS[variant];
   const [activeSection, setActiveSection] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);

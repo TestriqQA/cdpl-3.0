@@ -2,10 +2,13 @@
 //   Rich    — **bold**, *em*, and {rating} {ratingValue} {reviews} {studentsPlaced}
 //             replaced with the live site stats. `\*` is a literal asterisk.
 //   Heading — [[key phrase]] rendered in the brand colour.
-// stripMarkup() returns plain text for JSON-LD and aria labels.
+// stripMarkup() (from lib/richText) returns plain text for JSON-LD and aria labels.
 
 import { Fragment, type ReactNode } from "react";
 import { SiteStat } from "@/components/stats/SiteStatsProvider";
+import { escapeStars, unescapeStars } from "@/lib/richText";
+
+export { stripMarkup } from "@/lib/richText";
 
 const STAT_KEYS = ["rating", "ratingValue", "reviews", "studentsPlaced"] as const;
 type StatKey = (typeof STAT_KEYS)[number];
@@ -19,20 +22,18 @@ function WithStats({ text }: { text: string }) {
     <>
       {text.split(STAT_TOKEN).map((part, i) => {
         const k = part.slice(1, -1) as StatKey;
-        return part.startsWith("{") && STAT_KEYS.includes(k) ? <SiteStat key={i} k={k} /> : <Fragment key={i}>{unescape(part)}</Fragment>;
+        return part.startsWith("{") && STAT_KEYS.includes(k) ? (
+          <SiteStat key={i} k={k} />
+        ) : (
+          <Fragment key={i}>{unescapeStars(part)}</Fragment>
+        );
       })}
     </>
   );
 }
 
-// `\*` is a literal asterisk (e.g. "\\*args" in a TS string). It is swapped for a
-// placeholder before parsing and restored in the output.
-const ESC = "\u0000";
-const escape = (s: string) => s.replace(/\\\*/g, ESC);
-const unescape = (s: string) => s.replace(/\u0000/g, "*");
-
 export function Rich({ text }: { text: string }) {
-  const parts = escape(text).split(TOKEN);
+  const parts = escapeStars(text).split(TOKEN);
   return (
     <>
       {parts.map((part, i) => {
@@ -55,7 +56,7 @@ export function Rich({ text }: { text: string }) {
             </em>
           );
         }
-        return <Fragment key={i}>{unescape(part)}</Fragment>;
+        return <Fragment key={i}>{unescapeStars(part)}</Fragment>;
       })}
     </>
   );
@@ -72,14 +73,5 @@ export function Heading({ text, accentClassName = "text-brand" }: { text: string
         ),
       )}
     </>
-  );
-}
-
-export function stripMarkup(text: string): string {
-  return unescape(
-    escape(text)
-      .replace(/\*\*([^*]+)\*\*/g, "$1")
-      .replace(/\*([^*\s][^*]*)\*/g, "$1")
-      .replace(/\[\[([^\]]+)\]\]/g, "$1"),
   );
 }

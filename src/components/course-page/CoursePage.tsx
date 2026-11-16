@@ -3,10 +3,9 @@ import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
 import StickyNav from "@/components/stickynav/StickyNav";
 import { generateMetadata as generateSEOMetadata } from "@/lib/metadata-generator";
-import { generateCoursePageSchema } from "@/lib/schema-generators";
-import { getCourse, getSiblingCourses } from "@/data/courses/registry";
-import { stripMarkup } from "@/components/ui/Rich";
+import { getCourse } from "@/data/courses/registry";
 import type { CourseContent } from "@/types/coursePage";
+import { courseSchemas } from "./schema";
 import CourseHero from "./CourseHero";
 import CourseStats from "./CourseStats";
 import CourseWhy from "./CourseWhy";
@@ -38,7 +37,7 @@ export function courseMetadata(course: CourseContent): Metadata {
  * course has content for them; the sticky nav lists exactly the sections shown.
  */
 export default function CoursePage({ course }: { course: CourseContent }) {
-  const { href, categoryInfo } = getCourse(course.slug);
+  const { categoryInfo } = getCourse(course.slug);
   const shared = { courseName: course.courseName, sourceName: course.sourceName };
 
   const sections = ([
@@ -56,21 +55,7 @@ export default function CoursePage({ course }: { course: CourseContent }) {
 
   const navItems = [...sections.map(({ id, label }) => ({ id, label })), { id: "contact", label: "Contact" }];
 
-  const schemas = generateCoursePageSchema({
-    ...course.schema,
-    url: href,
-    slug: course.slug,
-    image: course.seo.image,
-    category: categoryInfo,
-    siblings: getSiblingCourses(course.slug),
-    breadcrumbs: [
-      { name: "Home", url: "/" },
-      { name: "Courses", url: "/courses" },
-      { name: categoryInfo.name, url: categoryInfo.href },
-      { name: course.hero.breadcrumb, url: href },
-    ],
-    faqs: course.faq.items.map((f) => ({ question: f.question, answer: stripMarkup(f.answer) })),
-  });
+  const schemas = courseSchemas(course);
 
   return (
     <>
