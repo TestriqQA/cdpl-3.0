@@ -45,7 +45,7 @@ export const AI_IN_DIGITAL_MARKETING_FAQS: AiInDigitalMarketingFaq[] = [
     {
         question: "What if I miss a live session?",
         answer: "All live sessions are recorded and uploaded to your learning portal within 24 hours, so you can watch them at your convenience.",
-        category: "logistics",
+        category: "Logistics",
     },
 ];
 

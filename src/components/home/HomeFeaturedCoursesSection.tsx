@@ -1,38 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
-import { ArrowRight, Zap, Flame, Bug, Download, BookOpen, Gauge, Shield, Smartphone, CheckCircle, Cpu, BarChart3, Code, TrendingUp, Cog, Trophy, Brain, Database, Megaphone, Briefcase, Rocket, PieChart, FileSpreadsheet, LayoutGrid } from 'lucide-react';
-import { DownloadFormButton } from '@/components/DownloadForm';
+import { ArrowRight, Flame, Bug, Brain, Database, Megaphone, PieChart } from 'lucide-react';
 import Link from 'next/link';
-import { FaChartBar } from 'react-icons/fa6';
-
-// --- Card Styling Constants from CourseOverviewSection.tsx ---
-type Variant = {
-  header: string;
-  button: string;
-};
-
-const VARIANTS: Variant[] = [
-  {
-    header:
-      "bg-gradient-to-br from-indigo-600 via-purple-600 to-fuchsia-600 text-white",
-    button: "bg-indigo-600",
-  },
-  {
-    header:
-      "bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 text-white",
-    button: "bg-emerald-600",
-  },
-  {
-    header:
-      "bg-gradient-to-br from-rose-600 via-pink-600 to-orange-500 text-white",
-    button: "bg-rose-600",
-  },
-];
-
-const pickVariant = (i: number): Variant => {
-  return VARIANTS[i % VARIANTS.length];
-};
+import CourseCard, { type CourseCardIcon } from '@/components/courses/CourseCard';
 
 // --- Mock Data Structure (Updated to match new categories) ---
 interface Course {
@@ -45,36 +16,12 @@ interface Course {
   level: string;
   popular: boolean;
   link: string;
-  icon: keyof typeof iconMap;
+  icon: CourseCardIcon;
   features: string[];
   /** Optional per-course offer end timestamp (ISO). If omitted, defaults to +48h from mount */
   offerEndsAt?: string;
   syllabusLink?: string;
 }
-
-const iconMap = {
-  BookOpen: <BookOpen className="w-10 h-10" />,
-  Zap: <Zap className="w-10 h-10" />,
-  Gauge: <Gauge className="w-10 h-10" />,
-  Shield: <Shield className="w-10 h-10" />,
-  Smartphone: <Smartphone className="w-10 h-10" />,
-  Cpu: <Cpu className="w-10 h-10" />,
-  BarChart3: <BarChart3 className="w-10 h-10" />,
-  Code: <Code className="w-10 h-10" />,
-  TrendingUp: <TrendingUp className="w-10 h-10" />,
-  ChartBar: <FaChartBar className="w-10 h-10" />,
-  Cog: <Cog className="w-10 h-10" />,
-  Trophy: <Trophy className="w-10 h-10" />,
-  Brain: <Brain className="w-10 h-10" />,
-  Database: <Database className="w-10 h-10" />,
-  Megaphone: <Megaphone className="w-10 h-10" />,
-  Briefcase: <Briefcase className="w-10 h-10" />,
-  Rocket: <Rocket className="w-10 h-10" />,
-  PieChart: <PieChart className="w-10 h-10" />,
-  FileSpreadsheet: <FileSpreadsheet className="w-10 h-10" />,
-  LayoutGrid: <LayoutGrid className="w-10 h-10" />,
-
-};
 
 const COURSES: Course[] = [
   // --- Software Testing Courses ---
@@ -469,104 +416,8 @@ const COURSES: Course[] = [
 ];
 
 
-// --- Helpers for timer like in ModuleCard ---
-const pad = (n: number) => n.toString().padStart(2, '0');
-
-// --- Course Card ---
-// Each card spans two rows of the parent grid as a subgrid (header row, body
-// row), so every header in a grid row ends at the same height, set by the
-// tallest one.
-// Kept deliberately quiet: coloured header with icon, a subtle "Popular" tag,
-// title and a 2-line description; duration / level / learners as bold
-// labelled columns; three plain features; one solid button plus a text-style
-// syllabus link. Plain <article>, not motion.article: the hover lift is pure
-// CSS, and the cards are visible without JavaScript.
 // Phones show only the first few cards of a tab (the rest stay in the HTML).
 const MOBILE_CARD_LIMIT = 6;
-
-const CourseCard: React.FC<{ course: Course; index: number; hidden: boolean }> = ({ course, index, hidden }) => {
-  const variant = pickVariant(index);
-  // Some courses carry "Not specified" instead of a count; leave it out.
-  const hasStudents = /\d/.test(course.students);
-  const facts = [
-    { label: 'Duration', value: course.duration },
-    { label: 'Level', value: course.level },
-    ...(hasStudents ? [{ label: 'Learners', value: course.students }] : []),
-  ];
-
-  return (
-    <article
-      hidden={hidden}
-      className={`relative group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden hover:-translate-y-0.5 grid grid-rows-subgrid row-span-2 gap-0 [&[hidden]]:hidden ${index >= MOBILE_CARD_LIMIT ? 'max-sm:hidden' : ''}`}
-    >
-      <div className={`${variant.header} px-5 py-4`}>
-        <div className="flex items-center justify-between mb-3">
-          <div className="text-white/90 [&>svg]:w-6 [&>svg]:h-6">{iconMap[course.icon]}</div>
-          {course.popular && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white ring-1 ring-white/30">
-              <Zap className="w-3 h-3" />
-              Popular
-            </span>
-          )}
-        </div>
-
-        <h3 className="text-lg font-bold text-white leading-snug mb-1">{course.title}</h3>
-        <p className="text-white/80 text-sm leading-relaxed line-clamp-2">{course.description}</p>
-      </div>
-
-      <div className="px-5 py-4 flex-grow flex flex-col gap-3">
-        <ul className="space-y-1.5">
-          {course.features.slice(0, 3).map((feature, i) => (
-            <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
-              <CheckCircle className="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5" />
-              <span className="line-clamp-1">{feature}</span>
-            </li>
-          ))}
-        </ul>
-
-        {/* mt-auto pins the facts and buttons to the bottom, so they line up across a row. */}
-        <dl className={`grid ${facts.length === 3 ? 'grid-cols-3' : 'grid-cols-2'} gap-2 mt-auto pt-3 border-t border-slate-100`}>
-          {facts.map((f) => (
-            <div key={f.label}>
-              <dt className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">{f.label}</dt>
-              <dd className="text-sm font-bold text-slate-800">{f.value}</dd>
-            </div>
-          ))}
-        </dl>
-
-        <div className="flex flex-col gap-1 pt-1">
-          <Link
-            href={course.link}
-            title={course.title}
-            className={`flex items-center justify-center gap-1.5 w-full ${variant.button} text-white text-sm font-semibold py-2.5 rounded-lg hover:opacity-90 transition-opacity duration-200`}
-          >
-            {/* The hidden course name gives each link descriptive anchor text
-                (for search engines and screen readers) instead of 26
-                identical "View Course Details" links; visually unchanged. */}
-            <span>View Course Details<span className="sr-only">: {course.title}</span></span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-
-          <DownloadFormButton
-            courseTitle={course.title}
-            syllabusLink={course.syllabusLink}
-            buttonText={
-              <span className="flex items-center justify-center gap-1.5">
-                <Download className="w-4 h-4" />
-                <span>Download Syllabus</span>
-              </span>
-            }
-            buttonClassName="w-full flex items-center justify-center text-slate-500 hover:text-slate-800 text-sm font-medium py-2 transition-colors duration-200"
-            onSubmit={(values) => {
-              console.log("Download form submitted:", { ...values, course: course.title });
-            }}
-          />
-        </div>
-      </div>
-    </article>
-  );
-};
-
 
 // Filter options. "Popular" (the default) shows courses flagged popular; the
 // rest match `course.category` exactly.
@@ -654,7 +505,14 @@ export default function HomeFeaturedCoursesSection() {
         {/* Course Cards Grid */}
         <div id="featured-courses-grid" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {cards.map(({ course, visible, index }) => (
-            <CourseCard key={course.id} course={course} index={index} hidden={!visible} />
+            <CourseCard
+              key={course.id}
+              course={course}
+              index={index}
+              hidden={!visible}
+              subgrid
+              className={index >= MOBILE_CARD_LIMIT ? "max-sm:hidden" : ""}
+            />
           ))}
         </div>
 
