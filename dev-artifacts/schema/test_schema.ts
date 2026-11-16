@@ -1,6 +1,9 @@
-import { generateAllCoursesPageSchema, generateHomePageSchema, generateSoftwareTestingCategoryPageSchema, generateDataScienceMachineLearningCategoryPageSchema, generateBusinessIntelligenceCategoryPageSchema, generateArtificialIntelligenceCategoryPageSchema, generateDigitalMarketingCategoryPageSchema, generateContactPageAllSchemas, generateAboutPageAllSchemas } from './src/lib/schema-generators';
-import { softwareTestingHub } from "./src/data/hubs/software-testing";
+// Writes each page's JSON-LD to a .json file next to this script, for checking.
+// Run from the repo root: npx tsx dev-artifacts/schema/test_schema.ts
+import { generateAllCoursesPageSchema, generateHomePageSchema, generateSoftwareTestingCategoryPageSchema, generateDataScienceMachineLearningCategoryPageSchema, generateBusinessIntelligenceCategoryPageSchema, generateArtificialIntelligenceCategoryPageSchema, generateDigitalMarketingCategoryPageSchema, generateContactPageAllSchemas, generateAboutPageAllSchemas } from '../../src/lib/schema-generators';
+import { softwareTestingHub } from "../../src/data/hubs/software-testing";
 import fs from 'fs';
+import path from 'path';
 
 const schemas = generateAllCoursesPageSchema();
 const homeSchemas = generateHomePageSchema([]);
@@ -64,33 +67,33 @@ const dmSchemas = generateDigitalMarketingCategoryPageSchema(
 
 // Individual course pages: built from their content files, exactly as the
 // shared template (src/components/course-page) builds them for the page.
-import { courseSchemas } from "./src/components/course-page/schema";
-import { apiTestingCourse } from "./src/data/courses/api-testing";
-import { dbmsCourse } from "./src/data/courses/dbms-course";
-import { etlTestingCourse } from "./src/data/courses/etl-testing";
-import { advanceSoftwareTestingCourse } from "./src/data/courses/advance-software-testing";
-import { automationTestingCourse } from "./src/data/courses/automation-testing-course";
-import { advanceManualAutomationTestingCourse } from "./src/data/courses/advance-manual-automation-testing";
-import { pythonCourse } from "./src/data/courses/python-course";
-import { javaCourse } from "./src/data/courses/java-course";
-import { machineLearningCourse } from "./src/data/courses/machine-learning-course";
-import { generativeAiCourse } from "./src/data/courses/generative-ai-course";
-import { dataScienceCourse } from "./src/data/courses/data-science-course";
-import { aiCourse } from "./src/data/courses/ai-course";
-import { machineLearningUsingPythonCourse } from "./src/data/courses/machine-learning-using-python";
-import { dataVisualizationInRProgrammingCourse } from "./src/data/courses/data-visualization-in-r-programming";
-import { promptEngineeringCourse } from "./src/data/courses/prompt-engineering-course";
-import { dataAnalyticsCourse } from "./src/data/courses/data-analytics";
-import { dataAnalyticsPythonCourse } from "./src/data/courses/data-analytics-python";
-import { dataAnalyticsAndVisualizationCourse } from "./src/data/courses/data-analytics-and-visualization";
-import { dataAnalyticsWithTableauCourse } from "./src/data/courses/data-analytics-with-tableau";
-import { powerBiCourse } from "./src/data/courses/power-bi-course";
-import { mastersInDataEngineeringCourse } from "./src/data/courses/masters-in-data-engineering";
-import { digitalMarketingCourse } from "./src/data/courses/digital-marketing-course";
-import { aiInDigitalMarketingCourse } from "./src/data/courses/ai-in-digital-marketing";
-import { aiBootcampCourse } from "./src/data/courses/ai-bootcamp";
-import { manualTestingCourse } from "./src/data/courses/manual-testing-course";
-import { sdetCourse } from "./src/data/courses/sdet-course";
+import { courseSchemas } from "../../src/components/course-page/schema";
+import { apiTestingCourse } from "../../src/data/courses/api-testing";
+import { dbmsCourse } from "../../src/data/courses/dbms-course";
+import { etlTestingCourse } from "../../src/data/courses/etl-testing";
+import { advanceSoftwareTestingCourse } from "../../src/data/courses/advance-software-testing";
+import { automationTestingCourse } from "../../src/data/courses/automation-testing-course";
+import { advanceManualAutomationTestingCourse } from "../../src/data/courses/advance-manual-automation-testing";
+import { pythonCourse } from "../../src/data/courses/python-course";
+import { javaCourse } from "../../src/data/courses/java-course";
+import { machineLearningCourse } from "../../src/data/courses/machine-learning-course";
+import { generativeAiCourse } from "../../src/data/courses/generative-ai-course";
+import { dataScienceCourse } from "../../src/data/courses/data-science-course";
+import { aiCourse } from "../../src/data/courses/ai-course";
+import { machineLearningUsingPythonCourse } from "../../src/data/courses/machine-learning-using-python";
+import { dataVisualizationInRProgrammingCourse } from "../../src/data/courses/data-visualization-in-r-programming";
+import { promptEngineeringCourse } from "../../src/data/courses/prompt-engineering-course";
+import { dataAnalyticsCourse } from "../../src/data/courses/data-analytics";
+import { dataAnalyticsPythonCourse } from "../../src/data/courses/data-analytics-python";
+import { dataAnalyticsAndVisualizationCourse } from "../../src/data/courses/data-analytics-and-visualization";
+import { dataAnalyticsWithTableauCourse } from "../../src/data/courses/data-analytics-with-tableau";
+import { powerBiCourse } from "../../src/data/courses/power-bi-course";
+import { mastersInDataEngineeringCourse } from "../../src/data/courses/masters-in-data-engineering";
+import { digitalMarketingCourse } from "../../src/data/courses/digital-marketing-course";
+import { aiInDigitalMarketingCourse } from "../../src/data/courses/ai-in-digital-marketing";
+import { aiBootcampCourse } from "../../src/data/courses/ai-bootcamp";
+import { manualTestingCourse } from "../../src/data/courses/manual-testing-course";
+import { sdetCourse } from "../../src/data/courses/sdet-course";
 const COURSE_SCHEMA_FILES = [
   [apiTestingCourse, "api"],
   [dbmsCourse, "dbms"],
@@ -133,16 +136,16 @@ const aboutFaqs = [
 const aboutPageSchemas = generateAboutPageAllSchemas(aboutFaqs);
 
 // Output raw, unformatted JSON (no markdown wrappers) to raw .json file in project root
-fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/courses_schema.json', JSON.stringify(schemas, null, 2), 'utf-8');
-fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/home_schema.json', JSON.stringify(homeSchemas, null, 2), 'utf-8');
-fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/software_testing_schema.json', JSON.stringify(stSchemas, null, 2), 'utf-8');
-fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/ds_ml_schema.json', JSON.stringify(dsSchemas, null, 2), 'utf-8');
-fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/bi_schema.json', JSON.stringify(biSchemas, null, 2), 'utf-8');
-fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/ai_schema.json', JSON.stringify(aiSchemas, null, 2), 'utf-8');
-fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/dm_schema.json', JSON.stringify(dmSchemas, null, 2), 'utf-8');
+fs.writeFileSync(path.join(__dirname, 'courses_schema.json'), JSON.stringify(schemas, null, 2), 'utf-8');
+fs.writeFileSync(path.join(__dirname, 'home_schema.json'), JSON.stringify(homeSchemas, null, 2), 'utf-8');
+fs.writeFileSync(path.join(__dirname, 'software_testing_schema.json'), JSON.stringify(stSchemas, null, 2), 'utf-8');
+fs.writeFileSync(path.join(__dirname, 'ds_ml_schema.json'), JSON.stringify(dsSchemas, null, 2), 'utf-8');
+fs.writeFileSync(path.join(__dirname, 'bi_schema.json'), JSON.stringify(biSchemas, null, 2), 'utf-8');
+fs.writeFileSync(path.join(__dirname, 'ai_schema.json'), JSON.stringify(aiSchemas, null, 2), 'utf-8');
+fs.writeFileSync(path.join(__dirname, 'dm_schema.json'), JSON.stringify(dmSchemas, null, 2), 'utf-8');
 for (const [course, out] of COURSE_SCHEMA_FILES) {
-  fs.writeFileSync(`C:/Users/user1/Documents/GitHub/cdpl-3.0/${out}_schema.json`, JSON.stringify(courseSchemas(course), null, 2), 'utf-8');
+  fs.writeFileSync(path.join(__dirname, `${out}_schema.json`), JSON.stringify(courseSchemas(course), null, 2), 'utf-8');
 }
-fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/contact_us_schema.json', JSON.stringify(contactPageSchemas, null, 2), 'utf-8');
-fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/about_us_schema.json', JSON.stringify(aboutPageSchemas, null, 2), 'utf-8');
+fs.writeFileSync(path.join(__dirname, 'contact_us_schema.json'), JSON.stringify(contactPageSchemas, null, 2), 'utf-8');
+fs.writeFileSync(path.join(__dirname, 'about_us_schema.json'), JSON.stringify(aboutPageSchemas, null, 2), 'utf-8');
 console.log('Successfully wrote raw JSON all 34 files!');

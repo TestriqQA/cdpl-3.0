@@ -1,7 +1,10 @@
-import { generateEventsPageAllSchemas } from './src/lib/schema-generators';
-import { pastEvents } from './src/data/eventsData';
-import { PAST_EVENTS_FAQS } from './src/data/pastEventsData';
+// Writes the events page JSON-LD next to this script, for checking.
+// Run from the repo root: npx tsx dev-artifacts/schema/test_events_schema.ts
+import { generateEventsPageAllSchemas } from '../../src/lib/schema-generators';
+import { pastEvents } from '../../src/data/eventsData';
+import { PAST_EVENTS_FAQS } from '../../src/data/pastEventsData';
 import fs from 'fs';
+import path from 'path';
 
 try {
     const schemas = generateEventsPageAllSchemas(
@@ -17,7 +20,7 @@ try {
         PAST_EVENTS_FAQS
     );
 
-    fs.writeFileSync('events_page_schema_verified.json', JSON.stringify(schemas, null, 2), 'utf-8');
+    fs.writeFileSync(path.join(__dirname, 'events_page_schema_verified.json'), JSON.stringify(schemas, null, 2), 'utf-8');
     console.log('Successfully generated events page schema!');
 } catch (error) {
     console.error('Error generating events page schema:', error);
