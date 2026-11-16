@@ -103,10 +103,3 @@ export const MANUAL_TESTING_FAQS: QA[] = [
         answer: "Yes, you'll receive a verifiable course completion certificate that highlights your practical skills, projects, and competencies for hiring managers.",
     },
 ];
-
-export const MANUAL_TESTING_REVIEW_DATA = {
-    ratingValue: SITE_STATS.rating,
-    reviewCount: SITE_STATS.reviewCount,
-    bestRating: 5,
-    worstRating: 1,
-};

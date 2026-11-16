@@ -1,4 +1,5 @@
-import { Clock } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Clock } from "lucide-react";
 import { Rich } from "@/components/ui/Rich";
 import CtaButtons from "./parts/CtaButtons";
 import ContentBlocks from "./parts/ContentBlocks";
@@ -13,7 +14,7 @@ export default function CourseCurriculum({ id, tone, data, courseName, sourceNam
 
       <ol className={`${SPACE.body} grid ${GRID_GAP} md:grid-cols-2`}>
         {data.modules.map((m, i) => (
-          <li key={m.title} className={`${CARD} p-6`}>
+          <li key={m.title} className={`${CARD} flex flex-col p-6`}>
             <div className="flex items-start gap-3">
               <span
                 className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-slate-100 text-sm font-bold text-slate-700"
@@ -51,6 +52,15 @@ export default function CourseCurriculum({ id, tone, data, courseName, sourceNam
               <p className="mt-4 text-sm text-slate-600">
                 <Rich text={m.outcome} />
               </p>
+            )}
+            {m.link && (
+              <Link
+                href={m.link.href}
+                className="group mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-slate-700 hover:text-brand"
+              >
+                {m.link.label}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+              </Link>
             )}
           </li>
         ))}

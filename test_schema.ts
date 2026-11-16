@@ -1,6 +1,5 @@
-import { generateAllCoursesPageSchema, generateHomePageSchema, generateSoftwareTestingCategoryPageSchema, generateDataScienceMachineLearningCategoryPageSchema, generateBusinessIntelligenceCategoryPageSchema, generateArtificialIntelligenceCategoryPageSchema, generateDigitalMarketingCategoryPageSchema, generateManualTestingCoursePageSchema, generateContactPageAllSchemas, generateAboutPageAllSchemas } from './src/lib/schema-generators';
+import { generateAllCoursesPageSchema, generateHomePageSchema, generateSoftwareTestingCategoryPageSchema, generateDataScienceMachineLearningCategoryPageSchema, generateBusinessIntelligenceCategoryPageSchema, generateArtificialIntelligenceCategoryPageSchema, generateDigitalMarketingCategoryPageSchema, generateContactPageAllSchemas, generateAboutPageAllSchemas } from './src/lib/schema-generators';
 import { softwareTestingHub } from "./src/data/hubs/software-testing";
-import { MANUAL_TESTING_FAQS } from "./src/data/manualTestingData";
 import fs from 'fs';
 
 const schemas = generateAllCoursesPageSchema();
@@ -62,16 +61,6 @@ const dmSchemas = generateDigitalMarketingCategoryPageSchema(
   [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Digital Marketing Courses", url: "/courses/digital-marketing-courses" }]
 );
 
-const mtSchemas = generateManualTestingCoursePageSchema(
-  {
-    name: "Manual Testing Course with 100% Placement Support",
-    description: "Comprehensive 12-week Manual Testing and QA training program.",
-    url: '/courses/software-testing-course/manual-testing-course',
-    slug: "manual-testing-course",
-  },
-  MANUAL_TESTING_FAQS.map(f => ({ question: f.question, answer: f.answer })),
-  [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Software Testing Course", url: "/courses/software-testing-course" }, { name: "Manual Testing", url: '/courses/software-testing-course/manual-testing-course' }]
-);
 
 // Individual course pages: built from their content files, exactly as the
 // shared template (src/components/course-page) builds them for the page.
@@ -100,6 +89,8 @@ import { mastersInDataEngineeringCourse } from "./src/data/courses/masters-in-da
 import { digitalMarketingCourse } from "./src/data/courses/digital-marketing-course";
 import { aiInDigitalMarketingCourse } from "./src/data/courses/ai-in-digital-marketing";
 import { aiBootcampCourse } from "./src/data/courses/ai-bootcamp";
+import { manualTestingCourse } from "./src/data/courses/manual-testing-course";
+import { sdetCourse } from "./src/data/courses/sdet-course";
 const COURSE_SCHEMA_FILES = [
   [apiTestingCourse, "api"],
   [dbmsCourse, "dbms"],
@@ -125,6 +116,8 @@ const COURSE_SCHEMA_FILES = [
   [digitalMarketingCourse, "digital_marketing"],
   [aiInDigitalMarketingCourse, "ai_in_digital_marketing"],
   [aiBootcampCourse, "ai_bootcamp"],
+  [manualTestingCourse, "mt"],
+  [sdetCourse, "sdet"],
 ] as const;
 
 const contactPageSchemas = generateContactPageAllSchemas();
@@ -147,7 +140,6 @@ fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/ds_ml_schema.json', J
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/bi_schema.json', JSON.stringify(biSchemas, null, 2), 'utf-8');
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/ai_schema.json', JSON.stringify(aiSchemas, null, 2), 'utf-8');
 fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/dm_schema.json', JSON.stringify(dmSchemas, null, 2), 'utf-8');
-fs.writeFileSync('C:/Users/user1/Documents/GitHub/cdpl-3.0/mt_schema.json', JSON.stringify(mtSchemas, null, 2), 'utf-8');
 for (const [course, out] of COURSE_SCHEMA_FILES) {
   fs.writeFileSync(`C:/Users/user1/Documents/GitHub/cdpl-3.0/${out}_schema.json`, JSON.stringify(courseSchemas(course), null, 2), 'utf-8');
 }

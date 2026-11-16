@@ -46,7 +46,9 @@ export type ContentBlock =
   | { kind: "list"; title?: string; items: Text[] }
   | { kind: "stats"; title?: string; items: { value: Text; label: string; note?: Text }[] }
   | { kind: "steps"; title?: string; items: { title: string; description?: Text; meta?: string }[] }
-  | { kind: "text"; title?: string; text: Text };
+  | { kind: "text"; title?: string; text: Text }
+  /** A real <table> (comparisons get pulled into featured snippets). The first cell of each row is its header. */
+  | { kind: "table"; title?: string; columns: string[]; rows: Text[][] };
 
 /** Fields every body section shares. */
 export type SectionBase = {
@@ -92,7 +94,15 @@ export type CourseWhy = SectionBase & {
 };
 
 export type CourseCurriculum = SectionBase & {
-  modules: { title: string; topics: string[]; duration?: string; outcome?: Text; projects?: string[] }[];
+  modules: {
+    title: string;
+    topics: string[];
+    duration?: string;
+    outcome?: Text;
+    projects?: string[];
+    /** Course that teaches this module in depth. */
+    link?: { label: string; href: string };
+  }[];
   /** Note that applies to every module, shown once. */
   moduleNote?: Text;
 };
@@ -155,6 +165,10 @@ export type CourseSchemaContent = {
   duration?: string;
   instructor?: string;
   howTo: { name: string; description: string; steps: { name: string; text: string }[] };
+  /** Course.teaches. */
+  learningOutcomes?: string[];
+  /** Course.coursePrerequisites. */
+  prerequisites?: string[];
   program?: { programType: string; timeToComplete?: string; occupationalCategory?: string };
 };
 

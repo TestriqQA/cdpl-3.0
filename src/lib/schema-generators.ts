@@ -1927,99 +1927,6 @@ export function generateDigitalMarketingCategoryPageSchema(
 }
 
 // ============================================================================
-// MANUAL TESTING SUB-COURSE PAGE SCHEMA CONSOLIDATION
-// ============================================================================
-
-export function generateManualTestingCoursePageSchema(
-  courseInput: Parameters<typeof generateCourseSchema>[0],
-  faqs: { question: string; answer: string }[],
-  breadcrumbs: { name: string; url: string }[],
-): WithContext<Record<string, unknown>>[] {
-  // NOTE: Organization and WebSite schemas are handled by Root Layout
-
-  // 2. WebPage Schema
-  const webPageSchema = generateWebPageSchema({
-    name: "Manual Testing Course with Placement | QA Training Mumbai",
-    description:
-      courseInput.description ||
-      "Master Manual Testing in 12 weeks. ISTQB prep, live projects, Jira & Agile training. Industry-led mentorship and placement support.",
-    url: "/courses/software-testing-course/manual-testing-course",
-    isPartOf: { "@id": getWebsiteId() },
-    about: { "@id": getOrganizationId() },
-  });
-
-  // 3. Master Course Schema (contains Aggregate Rating)
-  const courseSchema = generateCourseSchema(courseInput);
-
-  // 4. ItemList Schema for Sub-Courses (Sibling Courses in Software Testing)
-  const stCourses: any[] = [];
-  const stCategory = courseCategories.find(
-    (c) => c.slug === "software-testing-course",
-  );
-  if (stCategory && stCategory.courses) {
-    stCategory.courses.forEach((c) => {
-      stCourses.push({
-        name: c.name,
-        url: `/${c.slug}`,
-        description: c.description,
-        type: "Course",
-      });
-    });
-  }
-  const itemListSchema = generateItemListSchema(
-    stCourses,
-    "Software Testing Courses Directory",
-  );
-
-  // 5. Breadcrumb Schema
-  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
-
-  // 6. FAQPage Schema
-  const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
-
-  // 7. HowTo Schema (Dummy Enrollment)
-  const howToSchema = generateHowToSchema({
-    name: "How to Enroll in CDPL Manual Testing Course",
-    description:
-      "A step-by-step guide to enrolling in our specialized QA Manual Testing program.",
-    steps: [
-      {
-        name: "Browse Courses",
-        text: "Select the Manual Testing specialized module.",
-      },
-      {
-        name: "Review Syllabus",
-        text: "Check the ISTQB aligned syllabus, Jira, and Agile methodologies.",
-      },
-      {
-        name: "Contact Admissions",
-        text: "Reach out to our admissions team for counseling and batch details.",
-      },
-      {
-        name: "Start Learning",
-        text: "Attend live classes, perform bug hunting, and get certified!",
-      },
-    ],
-  });
-
-  // 8. Site Navigation Schema
-  const siteNavigationSchema = generateSiteNavigationSchema();
-
-  return [
-    webPageSchema,
-    courseSchema,
-    itemListSchema,
-    breadcrumbSchema,
-    faqSchema,
-    howToSchema,
-    siteNavigationSchema,
-  ].filter(
-    (schema): schema is WithContext<Record<string, unknown>> =>
-      schema !== undefined,
-  );
-}
-
-// ============================================================================
 // SHARED COURSE PAGE SCHEMA (src/components/course-page)
 // ============================================================================
 
@@ -2038,6 +1945,8 @@ export function generateCoursePageSchema(input: {
   duration?: string;
   instructor?: string;
   howTo: { name: string; description: string; steps: { name: string; text: string }[] };
+  learningOutcomes?: string[];
+  prerequisites?: string[];
   program?: { programType: string; timeToComplete?: string; occupationalCategory?: string };
   category: { name: string; listName: string };
   siblings: { name: string; href: string; description?: string }[];
@@ -2061,6 +1970,8 @@ export function generateCoursePageSchema(input: {
     duration: input.duration,
     instructor: input.instructor,
     image: input.image,
+    learningOutcomes: input.learningOutcomes,
+    prerequisites: input.prerequisites,
   });
 
   const programSchema = input.program

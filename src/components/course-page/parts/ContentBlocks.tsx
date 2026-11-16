@@ -59,7 +59,7 @@ function Block({ block }: { block: ContentBlock }) {
       );
     case "stats":
       return (
-        <dl className={`grid grid-cols-2 ${GRID_GAP} lg:grid-cols-4`}>
+        <dl className={`mx-auto grid ${GRID_GAP} ${STATS_COLS[Math.min(block.items.length, 4)]}`}>
           {block.items.map((s) => (
             <div key={s.label} className={`${CARD} p-5 text-center`}>
               <dt className="sr-only">{s.label}</dt>
@@ -101,6 +101,36 @@ function Block({ block }: { block: ContentBlock }) {
           ))}
         </ol>
       );
+    case "table":
+      return (
+        <div className={`${CARD} mx-auto max-w-4xl overflow-x-auto`}>
+          <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50">
+                {block.columns.map((c, i) => (
+                  <th key={i} scope="col" className="px-5 py-3 font-semibold text-slate-900">
+                    {c}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="text-slate-700">
+              {block.rows.map(([head, ...cells], r) => (
+                <tr key={r} className="border-b border-slate-100 align-top last:border-0">
+                  <th scope="row" className="px-5 py-3 font-medium text-slate-900">
+                    <Rich text={head} />
+                  </th>
+                  {cells.map((c, i) => (
+                    <td key={i} className="px-5 py-3">
+                      <Rich text={c} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
     case "text":
       return (
         <p className="mx-auto max-w-4xl text-center text-base leading-7 text-slate-600">
@@ -109,6 +139,14 @@ function Block({ block }: { block: ContentBlock }) {
       );
   }
 }
+
+// Column classes by item count, so short rows stay centred.
+const STATS_COLS: Record<number, string> = {
+  1: "max-w-xs grid-cols-1",
+  2: "max-w-xl grid-cols-2",
+  3: "max-w-4xl grid-cols-1 sm:grid-cols-3",
+  4: "grid-cols-2 lg:grid-cols-4",
+};
 
 /** Bullet list inside a card. */
 export function Points({ points }: { points?: string[] }) {

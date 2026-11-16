@@ -28,27 +28,29 @@ export default function CourseWhy({ id, tone, data, courseName, sourceName }: Se
         </ul>
       )}
 
-      <ul className={`${SPACE.body} grid ${GRID_GAP} md:grid-cols-2 lg:grid-cols-3`}>
-        {data.cards.map(({ icon, title, description, points }, i) => {
-          const Icon = ICONS[icon];
-          return (
-            <li key={title} className={`${CARD} p-6`}>
-              <div className="flex items-center gap-3">
-                <IconTile className={tileColour(i)}>
-                  <Icon className="h-5 w-5" />
-                </IconTile>
-                <h3 className="text-base font-bold leading-snug text-slate-900">{title}</h3>
-              </div>
-              {description && (
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                  <Rich text={description} />
-                </p>
-              )}
-              <Points points={points} />
-            </li>
-          );
-        })}
-      </ul>
+      {data.cards.length > 0 && (
+        <ul className={`${SPACE.body} grid ${GRID_GAP} md:grid-cols-2 lg:grid-cols-3`}>
+          {data.cards.map(({ icon, title, description, points }, i) => {
+            const Icon = ICONS[icon];
+            return (
+              <li key={title} className={`${CARD} p-6`}>
+                <div className="flex items-center gap-3">
+                  <IconTile className={tileColour(i)}>
+                    <Icon className="h-5 w-5" />
+                  </IconTile>
+                  <h3 className="text-base font-bold leading-snug text-slate-900">{title}</h3>
+                </div>
+                {description && (
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                    <Rich text={description} />
+                  </p>
+                )}
+                <Points points={points} />
+              </li>
+            );
+          })}
+        </ul>
+      )}
 
       <ContentBlocks blocks={data.extras} />
       <SectionOutro text={data.outro} />

@@ -50,6 +50,8 @@ export const COURSES = {
   "automation-testing-course": { category: "software-testing", href: `${ST}/automation-testing-course` },
   "advance-software-testing": { category: "software-testing", href: `${ST}/advance-software-testing` },
   "advance-manual-automation-testing": { category: "software-testing", href: `${ST}/advance-manual-automation-testing` },
+  "manual-testing-course": { category: "software-testing", href: `${ST}/manual-testing-course` },
+  "sdet-course": { category: "software-testing", href: `${ST}/sdet-course` },
   // Data science & ML
   "ai-course": { category: "ds-ml", href: `${DSML}/ai-course` },
   "data-science-course": { category: "ds-ml", href: `${DSML}/data-science-course` },

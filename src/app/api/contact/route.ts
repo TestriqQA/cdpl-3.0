@@ -145,7 +145,7 @@ export async function POST(request: Request) {
     const isHomeHeroForm = formSource.includes('Home Hero') || formSource.includes('Enquiry Form - Home Hero Section') || formSource.includes('Enquiry Form - Home Enquire Now Button') || formSource.includes('About Us - Hero Section Modal') || formSource.includes('About Us - CTA Section') || formSource.includes('About Us - FAQ Section');
     const isGetStartedForm = formSource.includes('Get Started Section');
     const isFreeDemoRequest = formSource === 'Book Free Demo - Header Button';
-    const isManualTestingHeroForm = formSource === 'Manual Software Testing Course Page - Hero Section';
+    const isManualTestingHeroForm = formSource === 'Manual Testing Course Page - Hero Section';
     const isApiTestingHeroForm = formSource === 'API Testing Course Page - Hero Section';
     const isDbmsHeroForm = formSource === 'DBMS Course Page - Hero Section';
     const isEtlHeroForm = formSource === 'ETL Testing Course Page - Hero Section';
