@@ -12,6 +12,7 @@ import CourseStats from "./CourseStats";
 import CourseWhy from "./CourseWhy";
 import CourseCurriculum from "./CourseCurriculum";
 import CourseTools from "./CourseTools";
+import CourseRoadmap from "./CourseRoadmap";
 import CourseProjects from "./CourseProjects";
 import CourseTestimonials from "./CourseTestimonials";
 import CourseCareer from "./CourseCareer";
@@ -45,6 +46,7 @@ export default function CoursePage({ course }: { course: CourseContent }) {
     course.why && { id: "why-master-program", label: "Why Master Program", render: (p: Base) => <CourseWhy {...p} data={course.why!} /> },
     course.curriculum && { id: "curriculum", label: "Curriculum", render: (p: Base) => <CourseCurriculum {...p} data={course.curriculum!} /> },
     course.tools && { id: "tools", label: "Tools", render: (p: Base) => <CourseTools {...p} data={course.tools!} /> },
+    course.roadmap && { id: "roadmap", label: "Roadmap", render: (p: Base) => <CourseRoadmap {...p} data={course.roadmap!} /> },
     course.projects && { id: "projects", label: "Projects", render: (p: Base) => <CourseProjects {...p} data={course.projects!} /> },
     course.testimonials && { id: "testimonials", label: "Reviews", render: (p: Base) => <CourseTestimonials {...p} data={course.testimonials!} /> },
     course.career && { id: "career", label: "Career & Salary", render: (p: Base) => <CourseCareer {...p} data={course.career!} /> },

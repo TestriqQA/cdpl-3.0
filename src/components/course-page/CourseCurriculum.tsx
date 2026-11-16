@@ -1,6 +1,7 @@
 import { Clock } from "lucide-react";
 import { Rich } from "@/components/ui/Rich";
 import CtaButtons from "./parts/CtaButtons";
+import ContentBlocks from "./parts/ContentBlocks";
 import { CARD, CourseSection, Dot, GRID_GAP, SPACE, SectionHeader, SectionNote, SectionOutro } from "./parts/Section";
 import type { CourseCurriculum as Curriculum } from "@/types/coursePage";
 import type { SectionProps } from "./types";
@@ -30,14 +31,22 @@ export default function CourseCurriculum({ id, tone, data, courseName, sourceNam
                 )}
               </div>
             </div>
-            <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-              {m.topics.map((t) => (
-                <li key={t} className="flex items-start gap-2.5 text-sm text-slate-700">
-                  <Dot />
-                  <span>{t}</span>
-                </li>
-              ))}
-            </ul>
+            {m.topics.length > 0 && (
+              <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+                {m.topics.map((t) => (
+                  <li key={t} className="flex items-start gap-2.5 text-sm text-slate-700">
+                    <Dot />
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {m.projects && m.projects.length > 0 && (
+              <p className="mt-4 text-sm text-slate-600">
+                <span className="font-semibold text-slate-800">Projects: </span>
+                {m.projects.join(" · ")}
+              </p>
+            )}
             {m.outcome && (
               <p className="mt-4 text-sm text-slate-600">
                 <Rich text={m.outcome} />
@@ -48,6 +57,7 @@ export default function CourseCurriculum({ id, tone, data, courseName, sourceNam
       </ol>
       <SectionNote text={data.moduleNote} />
 
+      <ContentBlocks blocks={data.extras} />
       <SectionOutro text={data.outro} />
       <CtaButtons actions={data.ctas} courseName={courseName} source={`${sourceName} - Curriculum Section`} className={SPACE.block} />
     </CourseSection>

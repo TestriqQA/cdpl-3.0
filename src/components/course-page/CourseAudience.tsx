@@ -1,5 +1,6 @@
 import { Rich } from "@/components/ui/Rich";
 import CtaButtons from "./parts/CtaButtons";
+import ContentBlocks, { Points } from "./parts/ContentBlocks";
 import { CARD, CourseSection, GRID_GAP, IconTile, SPACE, SectionHeader, SectionOutro } from "./parts/Section";
 import { ICONS, tileColour } from "./parts/icons";
 import type { CourseAudience as Audience } from "@/types/coursePage";
@@ -11,7 +12,7 @@ export default function CourseAudience({ id, tone, data, courseName, sourceName 
       <SectionHeader id={id} eyebrow={data.eyebrow} heading={data.heading} intro={data.intro} />
 
       <ul className={`${SPACE.body} grid ${GRID_GAP} md:grid-cols-2 lg:grid-cols-4`}>
-        {data.items.map(({ icon, title, description }, i) => {
+        {data.items.map(({ icon, title, description, points }, i) => {
           const Icon = ICONS[icon];
           return (
             <li key={title} className={`${CARD} p-6`}>
@@ -24,11 +25,13 @@ export default function CourseAudience({ id, tone, data, courseName, sourceName 
                   <Rich text={description} />
                 </p>
               )}
+              <Points points={points} />
             </li>
           );
         })}
       </ul>
 
+      <ContentBlocks blocks={data.extras} />
       <SectionOutro text={data.outro} />
       <CtaButtons actions={data.ctas} courseName={courseName} source={`${sourceName} - Who Should Enroll Section`} className={SPACE.block} />
     </CourseSection>

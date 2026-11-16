@@ -32,14 +32,28 @@ export type CtaAction = {
   primary?: boolean;
 };
 
-export type IconItem = { icon: IconName; title: string; description?: Text };
+export type IconItem = { icon: IconName; title: string; description?: Text; points?: Text[] };
+
+/**
+ * Generic block for one-off content a course has that its section type
+ * doesn't model (a prerequisites list, salary bands, a phase table…).
+ * Rendered under the section body, before the outro.
+ */
+export type ContentBlock =
+  | { kind: "cards"; title?: string; items: IconItem[] }
+  | { kind: "list"; title?: string; items: Text[] }
+  | { kind: "stats"; title?: string; items: { value: Text; label: string; note?: Text }[] }
+  | { kind: "steps"; title?: string; items: { title: string; description?: Text; meta?: string }[] }
+  | { kind: "text"; title?: string; text: Text };
 
 /** Fields every body section shares. */
 export type SectionBase = {
-  /** Small label above the heading. A default per section is used when omitted. */
+  /** Small label above the heading. Only shown when set. */
   eyebrow?: string;
   heading: Heading;
   intro?: Text;
+  /** One-off blocks under the section body. */
+  extras?: ContentBlock[];
   /** Closing paragraph under the section body. */
   outro?: Text;
   ctas?: CtaAction[];
@@ -62,7 +76,8 @@ export type CourseHero = {
 };
 
 export type CourseStats = SectionBase & {
-  items: { value: string; label: string; note?: Text }[];
+  /** value is Text so it can use {studentsPlaced} etc. */
+  items: { value: Text; label: string; note?: Text }[];
   /** Footnote shown once under the grid. */
   footnote?: Text;
 };
@@ -73,13 +88,14 @@ export type CourseWhy = SectionBase & {
 };
 
 export type CourseCurriculum = SectionBase & {
-  modules: { title: string; topics: string[]; duration?: string; outcome?: Text }[];
+  modules: { title: string; topics: string[]; duration?: string; outcome?: Text; projects?: string[] }[];
   /** Note that applies to every module, shown once. */
   moduleNote?: Text;
 };
 
 export type CourseTools = SectionBase & {
-  items: { name: string; logo?: string; icon?: IconName; description?: Text }[];
+  /** Tools with a category are shown in groups, in first-seen order. */
+  items: { name: string; logo?: string; icon?: IconName; description?: Text; category?: string }[];
   /** Small tag shown on every tool. */
   itemTag?: string;
   /** Line that applies to every tool, shown once. */
@@ -87,7 +103,7 @@ export type CourseTools = SectionBase & {
 };
 
 export type CourseProjects = SectionBase & {
-  items: { icon: IconName; title: string; description: Text; features: string[]; tags?: string[] }[];
+  items: { icon: IconName; title: string; description: Text; features?: string[]; tags?: string[]; meta?: string }[];
   /** Link shown on every project card. */
   itemLink?: { label: string; href: string };
 };
@@ -96,14 +112,20 @@ export type CourseTestimonials = SectionBase;
 
 export type CourseCareer = SectionBase & {
   rolesTitle: string;
-  roles: string[];
+  /** Plain names render as chips; objects as small cards with description / salary. */
+  roles: (string | { title: string; description?: Text; salary?: string })[];
   rolesBadges?: string[];
-  companiesTitle: string;
-  companies: string[];
+  /** Optional: without companies the roles card spans the full width. */
+  companiesTitle?: string;
+  companies?: string[];
   companiesNote?: string;
 };
 
 export type CourseAudience = SectionBase & { items: IconItem[] };
+
+export type CourseRoadmap = SectionBase & {
+  steps: { title: string; description?: Text; badge?: string; duration?: string; icon?: IconName; points?: Text[] }[];
+};
 
 export type CourseFaq = {
   heading?: Heading;
@@ -146,6 +168,7 @@ export type CourseContent = {
   why?: CourseWhy;
   curriculum?: CourseCurriculum;
   tools?: CourseTools;
+  roadmap?: CourseRoadmap;
   projects?: CourseProjects;
   testimonials?: CourseTestimonials;
   career?: CourseCareer;

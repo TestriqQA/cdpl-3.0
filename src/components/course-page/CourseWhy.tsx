@@ -1,5 +1,6 @@
 import { Rich } from "@/components/ui/Rich";
 import CtaButtons from "./parts/CtaButtons";
+import ContentBlocks, { Points } from "./parts/ContentBlocks";
 import { CARD, CourseSection, GRID_GAP, IconTile, SPACE, SectionHeader, SectionOutro } from "./parts/Section";
 import { ICONS, tileColour } from "./parts/icons";
 import type { CourseWhy as Why } from "@/types/coursePage";
@@ -28,7 +29,7 @@ export default function CourseWhy({ id, tone, data, courseName, sourceName }: Se
       )}
 
       <ul className={`${SPACE.body} grid ${GRID_GAP} md:grid-cols-2 lg:grid-cols-3`}>
-        {data.cards.map(({ icon, title, description }, i) => {
+        {data.cards.map(({ icon, title, description, points }, i) => {
           const Icon = ICONS[icon];
           return (
             <li key={title} className={`${CARD} p-6`}>
@@ -43,11 +44,13 @@ export default function CourseWhy({ id, tone, data, courseName, sourceName }: Se
                   <Rich text={description} />
                 </p>
               )}
+              <Points points={points} />
             </li>
           );
         })}
       </ul>
 
+      <ContentBlocks blocks={data.extras} />
       <SectionOutro text={data.outro} />
       <CtaButtons actions={data.ctas} courseName={courseName} source={`${sourceName} - Why Section`} className={SPACE.block} />
     </CourseSection>

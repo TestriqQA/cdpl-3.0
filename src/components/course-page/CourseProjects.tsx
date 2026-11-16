@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Rich } from "@/components/ui/Rich";
 import CtaButtons from "./parts/CtaButtons";
+import ContentBlocks from "./parts/ContentBlocks";
 import { CARD, CourseSection, Dot, GRID_GAP, IconTile, SPACE, SectionHeader, SectionOutro } from "./parts/Section";
 import { ICONS, tileColour } from "./parts/icons";
 import type { CourseProjects as Projects } from "@/types/coursePage";
@@ -32,17 +33,20 @@ export default function CourseProjects({ id, tone, data, courseName, sourceName 
                 )}
               </div>
               <h3 className="mt-4 text-lg font-bold leading-snug text-slate-900">{p.title}</h3>
+              {p.meta && <p className="mt-1 text-xs font-medium text-slate-500">{p.meta}</p>}
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
                 <Rich text={p.description} />
               </p>
-              <ul className="mt-4 space-y-2">
-                {p.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-slate-700">
-                    <Dot />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
+              {p.features && p.features.length > 0 && (
+                <ul className="mt-4 space-y-2">
+                  {p.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2.5 text-sm text-slate-700">
+                      <Dot />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
               {data.itemLink && (
                 <Link
                   href={data.itemLink.href}
@@ -58,6 +62,7 @@ export default function CourseProjects({ id, tone, data, courseName, sourceName 
         })}
       </ul>
 
+      <ContentBlocks blocks={data.extras} />
       <SectionOutro text={data.outro} />
       <CtaButtons actions={data.ctas} courseName={courseName} source={`${sourceName} - Projects Section`} className={SPACE.block} />
     </CourseSection>
