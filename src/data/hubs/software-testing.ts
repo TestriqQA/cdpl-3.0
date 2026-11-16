@@ -379,7 +379,6 @@ export const softwareTestingHub: CategoryHubContent = {
           { value: "2,000+", label: "QA Graduates" },
           { value: "40%", label: "Avg. Salary Increase" },
           { value: "Live", label: "Mentor-Led Classes" },
-          { value: "{reviews}", label: "Verified Reviews" },
         ],
       },
     ],

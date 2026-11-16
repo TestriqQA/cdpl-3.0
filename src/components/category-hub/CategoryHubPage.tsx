@@ -11,7 +11,6 @@ import CourseCta from "@/components/course-page/CourseCta";
 import type { Tone } from "@/components/course-page/parts/Section";
 import type { CategoryHubContent } from "@/types/categoryHub";
 import HubCourses from "./HubCourses";
-import HubCurriculum from "./HubCurriculum";
 import HubPath from "./HubPath";
 import HubCareer from "./HubCareer";
 
@@ -28,15 +27,13 @@ export function hubMetadata(hub: CategoryHubContent): Metadata {
 
 /**
  * Shared category hub. Built from the course-page
- * sections plus hub-only ones: course cards, curriculum tracks or a learning
- * path, and career paths. JSON-LD stays in each hub's page.tsx.
+ * sections plus hub-only ones: course cards, a learning path and career paths. JSON-LD stays in each hub's page.tsx.
  */
 export default function CategoryHubPage({ hub }: { hub: CategoryHubContent }) {
   const { sourceName } = hub;
   const sections = ([
     hub.why && { id: "why", render: (p: Base) => <CourseWhy {...p} data={hub.why!} /> },
     { id: "courses", render: (p: Base) => <HubCourses {...p} data={hub.courses} /> },
-    hub.curriculum && { id: "curriculum", render: (p: Base) => <HubCurriculum {...p} data={hub.curriculum!} /> },
     hub.path && { id: "curriculum", render: (p: Base) => <HubPath {...p} data={hub.path!} /> },
     hub.testimonials && { id: "testimonials", render: (p: Base) => <CourseTestimonials {...p} data={hub.testimonials!} /> },
     hub.projects && { id: "projects", render: (p: Base) => <CourseProjects {...p} data={hub.projects!} /> },

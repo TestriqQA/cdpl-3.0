@@ -6,6 +6,8 @@ import type { CategoryHubContent } from "@/types/categoryHub";
 // enrol modal, a stale "20% discount" promo); the closing line said "QA careers"
 // (copied from the testing hub) and now says "BI careers".
 
+const BI = "/courses/bi-courses";
+
 const RAW_COURSES = [
     {
         id: 17,
@@ -98,169 +100,6 @@ const RAW_COURSES = [
         syllabusLink: 'https://www.cinutedigital.com/downloads/data-analytics-with-bi-and-big-data-engineering-master-program.pdf',
     },
 ];
-
-const RAW_CURRICULUM = {
-    title: "Detailed Curriculum",
-    subtitle: "Choose a program track to see its modules.",
-    tracks: [
-        {
-            id: "advanced-data-analytics-hero",
-            title: "Advanced Data Analytics - Hero Program",
-            weeks: [
-                {
-                    number: "01-03",
-                    title: "Database Management with MySQL",
-                    description: "DBMS fundamentals, MySQL setup, database design & normalization, SQL basics (SELECT, clauses, operators), data manipulation (INSERT/UPDATE/DELETE), joins & subqueries, aggregations & window functions, database administration, views, stored procedures, triggers & real-world case studies.",
-                    deliverables: ["Complete MySQL Database Design Project", "Advanced SQL Query Portfolio", "Optimized Database with Indexes & Views"]
-                },
-                {
-                    number: "04-06",
-                    title: "Advanced Excel for Data Analytics & Visualization",
-                    description: "Excel interface & data handling, essential functions (text, date, logical, lookup), Power Query for ETL, PivotTables/Charts, advanced formulas (XLOOKUP, INDEX/MATCH, array formulas), dashboarding, forecasting & data storytelling.",
-                    deliverables: ["Automated Data Pipeline with Power Query", "Interactive Sales/Financial Dashboard", "End-to-End Excel Capstone Project"]
-                },
-                {
-                    number: "07-09",
-                    title: "Power BI & Tableau Mastery",
-                    description: "Power BI: Data modeling, Power Query transformations, DAX deep dive, advanced visualizations, dashboards & publishing. Tableau: Data connections, calculated fields, LOD expressions, advanced charts (treemaps, bullet, geospatial), table calculations, parameters, sets & interactive dashboards.",
-                    deliverables: ["Star Schema Model + DAX Measures", "Published Power BI Enterprise Dashboard", "Tableau Story with Advanced Analytics"]
-                },
-                {
-                    number: "10-12",
-                    title: "Python for Data Visualization & Analytics",
-                    description: "Pandas deep dive (cleaning, manipulation, merging, grouping), Matplotlib/Seaborn customization, NumPy scientific computing, advanced plotting (animations, interactivity), real-world dataset analysis & professional visualization projects.",
-                    deliverables: ["Cancer Dataset EDA + Dashboard", "Animated & Interactive Visualization Project", "Domain-Specific Visualization Portfolio"]
-                },
-                {
-                    number: "13-15",
-                    title: "Capstone Projects & Industry Preparation",
-                    description: "5+ real-world projects across domains (BFSI, Healthcare, Retail, Marketing, HR, Transportation, Media), interview preparation from day 1, resume building, portfolio creation & placement support.",
-                    deliverables: ["Minimum 5 Complete Industry Projects", "Professional Portfolio & GitHub Repo", "Mock Interviews + Placement Readiness"]
-                }
-            ]
-        },
-        {
-            id: "advanced-python-libraries",
-            title: "Advanced Data Analytics with Python Libraries",
-            weeks: [
-                {
-                    number: "01-02",
-                    title: "Python Fundamentals & Pandas Mastery",
-                    description: "Python basics recap, Jupyter setup, Pandas (Series/DataFrames, data import/export, cleaning, filtering, grouping, merging, pivot tables, time-series), exploratory data analysis techniques.",
-                    deliverables: ["Cleaned Real-World Dataset (CSV/Excel/JSON)", "Comprehensive Pandas EDA Report"]
-                },
-                {
-                    number: "03-05",
-                    title: "Visualization with Matplotlib & Seaborn",
-                    description: "Matplotlib deep customization (subplots, annotations, animations), Seaborn statistical plots (pair plots, heatmaps, cluster maps, categorical), themes & aesthetics, integration with Pandas.",
-                    deliverables: ["Custom Matplotlib Animated Visualization", "Seaborn Statistical Dashboard"]
-                },
-                {
-                    number: "06-08",
-                    title: "NumPy Scientific Computing & Projects",
-                    description: "NumPy arrays, broadcasting, mathematical operations, advanced indexing, linear algebra, real-world case studies (cancer dataset, HR analytics, financial plots).",
-                    deliverables: ["NumPy + Pandas End-to-End Project", "Professional Visualization Portfolio (Titanic/HR/Cancer Dataset)"]
-                }
-            ]
-        },
-        {
-            id: "excel-analytics",
-            title: "Advanced Excel for Data Analytics & Visualization",
-            weeks: [
-                {
-                    number: "01-02",
-                    title: "Data Handling & Essential Functions",
-                    description: "Excel interface, data types, cleaning (duplicates, text-to-columns, flash fill), functions (text, date, logical, lookup - VLOOKUP/XLOOKUP/INDEX-MATCH), conditional formatting, data validation.",
-                    deliverables: ["Automated Data Cleaning Workbook", "Advanced Formula Library with Nested Functions"]
-                },
-                {
-                    number: "03-04",
-                    title: "PivotTables, Power Query & Visualization",
-                    description: "PivotTables/Charts deep dive, slicers/timelines, Power Query (ETL, transformations, merging), chart customization, sparklines, combo charts.",
-                    deliverables: ["Dynamic Pivot Dashboard", "Power Query Transformation Pipeline"]
-                },
-                {
-                    number: "05-06",
-                    title: "Advanced Analysis & Dashboard Projects",
-                    description: "Array formulas, forecasting, data analysis ToolPak, dashboard design principles, data storytelling, real-world projects (sales/finance/operations).",
-                    deliverables: ["Interactive Executive Dashboard", "Full End-to-End Domain Project"]
-                }
-            ]
-        },
-        {
-            id: "tableau-analytics",
-            title: "Data Analytics & Visualization with Tableau",
-            weeks: [
-                {
-                    number: "01-02",
-                    title: "Tableau Fundamentals & Data Integration",
-                    description: "BI concepts, Tableau interface, data connections, joins/relationships/unions, data types, calculated fields, parameters, logical/physical layers.",
-                    deliverables: ["Multi-Source Data Blend Workbook", "Dynamic Parameter Dashboard"]
-                },
-                {
-                    number: "03-04",
-                    title: "Core & Advanced Visualizations",
-                    description: "Basic to advanced charts (bar/line/scatter/treemap/bullet/heatmaps), marks card customization, dual-axis, geospatial mapping, table calculations, sets & grouping.",
-                    deliverables: ["Advanced Chart Portfolio", "Geospatial + Multi-Axis Dashboard"]
-                },
-                {
-                    number: "05-06",
-                    title: "Analytics, Dashboards & Projects",
-                    description: "LOD expressions, forecasting, clustering, reference lines, dynamic analysis with sets/parameters, dashboard best practices, stories & interactivity, real-world projects.",
-                    deliverables: ["Interactive Enterprise Dashboard", "Tableau Story + Capstone Project"]
-                }
-            ]
-        },
-        {
-            id: "powerbi-analytics",
-            title: "Data Analytics & Visualization with Power BI",
-            weeks: [
-                {
-                    number: "01-02",
-                    title: "Power BI Desktop & Data Modeling",
-                    description: "Power BI setup, data import, Power Query transformations (merge/append/conditional columns), star schema modeling, relationships & cardinality.",
-                    deliverables: ["Transformed Dataset with Power Query", "Star Schema Data Model"]
-                },
-                {
-                    number: "03-04",
-                    title: "DAX & Advanced Visualization",
-                    description: "DAX basics to advanced (measures, calculated columns, time intelligence), advanced visuals (tree maps, gauge, ribbon, forecasting), conditional formatting, interactivity.",
-                    deliverables: ["Complex DAX Measures Library", "Advanced Analytics Dashboard"]
-                },
-                {
-                    number: "05-06",
-                    title: "Dashboards, Publishing & Projects",
-                    description: "Interactive dashboard design, bookmarks, drill-through, Power BI Service publishing, sharing & security, real-world end-to-end projects.",
-                    deliverables: ["Published Interactive Dashboard", "Full Sales/Finance Capstone Project"]
-                }
-            ]
-        },
-        {
-            id: "bi-bigdata-master",
-            title: "Data Analytics With BI And Big Data Engineering Master Program",
-            weeks: [
-                {
-                    number: "01-06",
-                    title: "Complete Visualization Mastery",
-                    description: "Full modules from Advanced Excel + Python Visualization (Pandas/Matplotlib/Seaborn/NumPy) + Tableau + Power BI (all detailed modules above combined).",
-                    deliverables: ["Cross-Tool Visualization Comparison Project", "Professional Multi-Tool Dashboard Portfolio"]
-                },
-                {
-                    number: "07-09",
-                    title: "Database & Big Data Foundations",
-                    description: "MySQL complete (design, advanced SQL, administration) + Big Data with Hadoop (HDFS, Hive, Pig if covered) + Apache Spark & Databricks fundamentals.",
-                    deliverables: ["MySQL Optimized Database Project", "Spark ETL Pipeline on Databricks"]
-                },
-                {
-                    number: "10-14",
-                    title: "Advanced Big Data Engineering & Capstone",
-                    description: "Spark/Databricks deep dive (PySpark, Spark SQL, streaming if included), modern data architectures, integration with BI tools, full-stack industry capstone combining BI + Big Data.",
-                    deliverables: ["End-to-End Big Data Pipeline", "Complete BI + Big Data Capstone + Presentation"]
-                }
-            ]
-        }
-    ]
-};
 
 const RAW_CAREER = {
     title: "BI Career Outlook",
@@ -412,7 +251,7 @@ const RAW_FAQS = [
     },
     {
         id: 6,        q: "What kind of job support do you provide after course completion?",
-        a: "We offer comprehensive career support including resume building, portfolio creation, mock interviews with industry experts, and direct referrals to our hiring partner network. Our dedicated placement team works with you until you land your dream BI role. Our placement team works to connect graduates with companies actively hiring."
+        a: "We offer comprehensive career support including resume building, portfolio creation, mock interviews with industry experts, and direct referrals to our hiring partner network. Our dedicated placement team works with you until you land your dream BI role."
     },
     {
         id: 7,        q: "What is the batch size and learning format?",
@@ -420,7 +259,7 @@ const RAW_FAQS = [
     },
     {
         id: 8,        q: "What tools and technologies will I master in this course?",
-        a: "You'll gain hands-on expertise in Power BI, Tableau, SQL (MySQL, PostgreSQL, SQL Server), Excel for analytics, Python (Pandas, NumPy), ETL tools (SSIS, Azure Data Factory), data warehousing concepts, and cloud platforms (Azure, AWS). All tools are industry-standard and highly demanded by employers in 2025."
+        a: "You'll gain hands-on expertise in Power BI, Tableau, SQL (MySQL, PostgreSQL, SQL Server), Excel for analytics, Python (Pandas, NumPy), ETL tools (SSIS, Azure Data Factory), data warehousing concepts, and cloud platforms (Azure, AWS). All tools are industry-standard and highly demanded by employers."
     }
 ];
 
@@ -429,7 +268,7 @@ export const biHub: CategoryHubContent = {
   sourceName: "Business Intelligence Course Category Page",
 
   seo: {
-    title: "Business Intelligence Courses | Power BI, Tableau & Data Viz",
+    title: "Business Intelligence Courses | Power BI & Tableau",
     description:
       "Explore our professional Business Intelligence courses. Master Power BI, Tableau, and data visualization skills with hands-on training and placement support.",
     keywords: ["business intelligence course", "power bi training", "tableau course", "data visualization", "data analysis"],
@@ -550,17 +389,58 @@ export const biHub: CategoryHubContent = {
     viewAll: { label: "View All Courses", href: "/courses", title: "Explore All Professional Courses" },
   },
 
-  curriculum: {
+  // The old hub showed every course's full module list in tabs. That syllabus
+  // lives on each course page; the hub shows the order to take them in.
+  path: {
     eyebrow: "Comprehensive Curriculum",
-    heading: "Detailed [[Curriculum]]",
-    intro: RAW_CURRICULUM.subtitle,
-    facts: ["4 Weeks per Track", "Industry Certification"],
-    tracks: RAW_CURRICULUM.tracks.map((t) => ({
-      id: t.id,
-      title: t.title,
-      modules: t.weeks.map((w) => ({ number: w.number, title: w.title, description: w.description, deliverables: w.deliverables })),
-    })),
-    outro: "Complete all tracks to earn your BI Professional Certificate",
+    heading: "[[Business Intelligence Course Syllabus]] & Learning Path",
+    intro:
+      "Not sure where to start? Begin with Excel, add Power BI and Tableau, then Python, or take a program that covers all of it. Each course page has the full module-by-module syllabus.",
+    stages: [
+      {
+        title: "Excel Foundations",
+        description:
+          "Start here if you are new to analytics: clean and shape data in Excel, write lookup formulas, summarise it with PivotTables and Power Query, and build your first dashboards.",
+        topics: ["Data Handling & Essential Functions", "XLOOKUP & INDEX-MATCH", "PivotTables", "Power Query", "Forecasting", "Dashboard Projects"],
+        courses: [{ title: "Advanced Excel for Data Analytics & Visualization", href: `${BI}/data-analytics-and-visualization` }],
+      },
+      {
+        title: "BI Dashboards",
+        description:
+          "Learn the two BI tools employers ask for: model data and write DAX in Power BI, build interactive Tableau dashboards and stories, and publish reports for business users.",
+        topics: ["Power BI Desktop & Data Modeling", "Star Schema", "DAX & Time Intelligence", "Power BI Service Publishing", "Tableau Calculated Fields", "LOD Expressions", "Geospatial Mapping"],
+        courses: [
+          { title: "Data Analytics & Visualization with Power BI", href: `${BI}/power-bi-course` },
+          { title: "Data Analytics & Visualization with Tableau", href: `${BI}/data-analytics-with-tableau` },
+        ],
+      },
+      {
+        title: "Python Analytics",
+        description:
+          "Go beyond the BI tools with Python: clean and explore data with Pandas and NumPy, then build custom and animated charts with Matplotlib and Seaborn.",
+        topics: ["Pandas Mastery", "Exploratory Data Analysis", "Matplotlib & Seaborn", "Statistical Plots & Heatmaps", "NumPy Scientific Computing"],
+        courses: [{ title: "Advanced Data Analytics with Python Libraries", href: `${BI}/data-analytics-python` }],
+      },
+      {
+        title: "All in One",
+        description:
+          "One 110-hour program that covers the analyst path end to end, from MySQL and Advanced Excel to Power BI, Tableau and Python, with 5+ capstone projects and placement support.",
+        topics: ["Database Management with MySQL", "Advanced Excel", "Power BI & Tableau Mastery", "Python for Data Visualization", "Capstone Projects & Interview Prep"],
+        courses: [{ title: "Advanced Data Analytics - Hero Program", href: `${BI}/data-analytics` }],
+      },
+      {
+        title: "Big Data Engineering",
+        description:
+          "For analysts who want to work with data at scale: the master program adds Hadoop, Apache Spark and Databricks ETL pipelines to the full visualization stack and ends in a BI + Big Data capstone.",
+        topics: ["Complete Visualization Mastery", "MySQL & Advanced SQL", "Big Data with Hadoop", "Apache Spark & Databricks", "PySpark & Spark SQL", "ETL Pipelines", "BI + Big Data Capstone"],
+        courses: [
+          {
+            title: "Data Analytics With BI And Big Data Engineering Master Program",
+            href: `${BI}/masters-in-data-engineering`,
+          },
+        ],
+      },
+    ],
   },
 
   testimonials: {
@@ -575,7 +455,6 @@ export const biHub: CategoryHubContent = {
           { value: "{rating}", label: "Learner Rating" },
           { value: "40%", label: "Avg. Salary Increase" },
           { value: "Live", label: "Mentor-Led Classes" },
-          { value: "{reviews}", label: "Verified Reviews" },
         ],
       },
     ],

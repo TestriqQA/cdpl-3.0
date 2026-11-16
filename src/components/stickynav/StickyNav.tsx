@@ -1,12 +1,10 @@
 'use client';
 
-import { NAV_ITEMS, type NavVariant } from './navItems';
 import React, { useEffect, useRef, useState } from 'react';
 
 interface StickyNavProps {
-  variant?: NavVariant;
-  /** Explicit list, e.g. built from the sections a page renders. Wins over `variant`. */
-  items?: { id: string; label: string }[];
+  /** The sections the page renders, in order. */
+  items: { id: string; label: string }[];
   /**
    * Never sits in the page flow: hidden until the page scrolls past #hero, then
    * slides in under the site header (and back out when scrolling up to the hero).
@@ -14,8 +12,7 @@ interface StickyNavProps {
   reveal?: boolean;
 }
 
-export default function StickyNav({ variant = 'general', items, reveal = false }: StickyNavProps) {
-  const navItems = items ?? NAV_ITEMS[variant];
+export default function StickyNav({ items: navItems, reveal = false }: StickyNavProps) {
   const [activeSection, setActiveSection] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
   // Compact pills replace the desktop row as soon as the row no longer fits on one line.

@@ -18,7 +18,10 @@ export default function HubPath({ id, tone, data, sourceName }: SectionProps<Hub
 
       <ol className={`${SPACE.body} mx-auto max-w-5xl space-y-4`}>
         {data.stages.map((stage, i) => (
-          <li key={stage.title} className={`${CARD} grid gap-4 p-5 sm:p-6 md:grid-cols-[auto_1fr_15rem] md:gap-6`}>
+          <li
+            key={stage.title}
+            className={`${CARD} grid gap-4 p-5 sm:p-6 md:gap-6 ${stage.courses.length > 0 ? "md:grid-cols-[auto_1fr_15rem]" : "md:grid-cols-[auto_1fr]"}`}
+          >
             <span
               aria-hidden="true"
               className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-sm font-bold text-white"
@@ -40,23 +43,25 @@ export default function HubPath({ id, tone, data, sourceName }: SectionProps<Hub
               </ul>
             </div>
 
-            <ul className="space-y-2 border-t border-slate-100 pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
-              {stage.courses.map((c) => (
-                <li key={c.href}>
-                  <Link
-                    href={c.href}
-                    title={`${c.title} syllabus`}
-                    className="group flex items-start gap-1.5 text-sm font-semibold text-slate-800 hover:text-brand"
-                  >
-                    <ArrowRight
-                      className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand transition-transform group-hover:translate-x-0.5"
-                      aria-hidden="true"
-                    />
-                    {c.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {stage.courses.length > 0 && (
+              <ul className="space-y-2 border-t border-slate-100 pt-4 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+                {stage.courses.map((c) => (
+                  <li key={c.href}>
+                    <Link
+                      href={c.href}
+                      title={`${c.title} syllabus`}
+                      className="group flex items-start gap-1.5 text-sm font-semibold text-slate-800 hover:text-brand"
+                    >
+                      <ArrowRight
+                        className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand transition-transform group-hover:translate-x-0.5"
+                        aria-hidden="true"
+                      />
+                      {c.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))}
       </ol>
