@@ -67,6 +67,8 @@ export type CourseHero = {
   /** Pill row above the h1. */
   badges?: { icon: IconName; text: Text }[];
   h1: Heading;
+  /** One line with a link under the h1 (e.g. pointing city searchers to the city page). */
+  note?: { text: string; link: { label: string; href: string } };
   subtitle: Text;
   description?: Text;
   ctas: CtaAction[];

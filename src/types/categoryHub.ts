@@ -33,6 +33,21 @@ export type HubCurriculum = SectionBase & {
   facts?: string[];
 };
 
+/** One step of a learning path: what it covers and which courses teach it. */
+export type HubPathStage = {
+  title: string;
+  description: Text;
+  /** Short topic chips (keywords from the courses' syllabi). */
+  topics: string[];
+  courses: { title: string; href: string }[];
+};
+
+/**
+ * Compact alternative to HubCurriculum: the order to take the category's
+ * courses in, linking to each course page for its full syllabus.
+ */
+export type HubLearningPath = SectionBase & { stages: HubPathStage[] };
+
 export type HubCareerPath = {
   role: string;
   trending?: boolean;
@@ -57,7 +72,9 @@ export type CategoryHubContent = {
   hero: CourseHero;
   why?: CourseWhy;
   courses: HubCourses;
+  /** Full module-by-module tracks, or the compact learning path (one or the other). */
   curriculum?: HubCurriculum;
+  path?: HubLearningPath;
   testimonials?: CourseTestimonials;
   projects?: CourseProjects;
   career?: HubCareer;

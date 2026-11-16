@@ -78,6 +78,18 @@ export default function CourseHero({
             >
               <Heading text={hero.h1} />
             </h1>
+            {hero.note && (
+              <p className="mt-3 text-sm text-slate-600">
+                {hero.note.text}{" "}
+                <Link
+                  href={hero.note.link.href}
+                  className="font-semibold text-brand underline underline-offset-2 hover:text-slate-900"
+                >
+                  {hero.note.link.label}
+                </Link>
+                .
+              </p>
+            )}
           </div>
 
           <aside className="md:col-span-5 md:col-start-8 md:row-span-2 md:row-start-1 lg:col-span-4 lg:col-start-9">

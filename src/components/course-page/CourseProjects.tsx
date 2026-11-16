@@ -18,23 +18,25 @@ export default function CourseProjects({ id, tone, data, courseName, sourceName 
           const Icon = ICONS[p.icon];
           return (
             <li key={p.title} className={`${CARD} flex flex-col p-6`}>
-              <div className="flex items-start justify-between gap-3">
+              <div className="flex items-center gap-3">
                 <IconTile className={tileColour(i)}>
                   <Icon className="h-5 w-5" />
                 </IconTile>
-                {p.tags && p.tags.length > 0 && (
-                  <ul className="flex flex-wrap justify-end gap-1.5" aria-label="Stack">
-                    {p.tags.map((t) => (
-                      <li key={t} className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-700">
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                <div className="min-w-0">
+                  <h3 className="text-lg font-bold leading-snug text-slate-900">{p.title}</h3>
+                  {p.meta && <p className="mt-0.5 text-xs font-medium text-slate-500">{p.meta}</p>}
+                </div>
               </div>
-              <h3 className="mt-4 text-lg font-bold leading-snug text-slate-900">{p.title}</h3>
-              {p.meta && <p className="mt-1 text-xs font-medium text-slate-500">{p.meta}</p>}
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              {p.tags && p.tags.length > 0 && (
+                <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Stack">
+                  {p.tags.map((t) => (
+                    <li key={t} className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-700">
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
                 <Rich text={p.description} />
               </p>
               {p.features && p.features.length > 0 && (

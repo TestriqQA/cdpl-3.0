@@ -1,5 +1,5 @@
 import { generateAllCoursesPageSchema, generateHomePageSchema, generateSoftwareTestingCategoryPageSchema, generateDataScienceMachineLearningCategoryPageSchema, generateBusinessIntelligenceCategoryPageSchema, generateArtificialIntelligenceCategoryPageSchema, generateDigitalMarketingCategoryPageSchema, generateManualTestingCoursePageSchema, generateContactPageAllSchemas, generateAboutPageAllSchemas } from './src/lib/schema-generators';
-import { softwareTestingFaqs } from "./src/components/software-testing-course/data/data";
+import { softwareTestingHub } from "./src/data/hubs/software-testing";
 import { MANUAL_TESTING_FAQS } from "./src/data/manualTestingData";
 import fs from 'fs';
 
@@ -14,7 +14,7 @@ const stSchemas = generateSoftwareTestingCategoryPageSchema(
     url: '/courses/software-testing-course',
     slug: "software-testing-course",
   },
-  softwareTestingFaqs.map(f => ({ question: f.question, answer: f.answer })),
+  softwareTestingHub.faq.items.map(f => ({ question: f.question, answer: f.answer })),
   [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Software Testing Course", url: '/courses/software-testing-course' }]
 );
 
