@@ -393,7 +393,7 @@ export default function MiraRoadCampusPage() {
           with REAL photographs of this campus. No stock images. */}
 
       {/* TODO(content): campus-specific FAQ section (use the central
-          FAQSection). Add FAQPage schema only once the answers are final. */}
+          FaqSection). Add FAQPage schema only once the answers are final. */}
 
       {/* ---------------- Book a visit (orange band, as on Careers / Services) ---------------- */}
       <section aria-labelledby="book-visit-heading" className="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 lg:px-8">

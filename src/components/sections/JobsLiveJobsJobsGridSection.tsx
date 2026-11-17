@@ -6,7 +6,7 @@ import Link from "next/link";
 import { BellRing, BriefcaseBusiness, SearchX } from "lucide-react";
 import { JobsLiveJobsJobCardSection } from "./JobsLiveJobsJobCardSection";
 import type { JobsFilters } from "./JobsLiveJobsListingSection";
-import type { Job } from "@/lib/jobsData";
+import type { Job } from "@/data/jobs";
 
 const WHATSAPP_CHANNEL = "https://whatsapp.com/channel/0029VadXpsi3gvWWrDLReF3N";
 

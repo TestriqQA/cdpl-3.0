@@ -1,5 +1,5 @@
 import { BadgeCheck, Check, Compass, GraduationCap, Video } from "lucide-react";
-import type { Mentor } from "@/lib/mentorShared";
+import type { Mentor } from "@/lib/mentor-shared";
 
 const IMG_TWEAKS: Record<string, string> = {
   "Dnyaneshwar Bhabad": "object-[50%_30%] scale-[1.06]",

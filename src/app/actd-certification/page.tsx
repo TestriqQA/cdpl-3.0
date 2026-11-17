@@ -12,8 +12,8 @@ import JsonLd from "@/components/JsonLd";
 import ACTDCertificationHeroSection from "@/components/sections/ACTDCertificationHeroSection";
 import ACTDCertificationTracksSection from "@/components/sections/ACTDCertificationTracksSection";
 import ACTDCertificationProgressFaqSection from "@/components/sections/ACTDCertificationProgressFaqSection";
-import { SITE_STATS } from "@/lib/siteStats";
-import { ACTD_FAQS } from "@/data/actdFaqs";
+import { SITE_STATS } from "@/lib/site-stats";
+import { ACTD_FAQS } from "@/data/faqs/actd-certification";
 
 /* ---------- SEO ---------- */
 export const metadata: Metadata = generateStaticPageMetadata({

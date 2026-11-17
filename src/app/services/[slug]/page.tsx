@@ -16,7 +16,7 @@ import ServiceDetailAudienceSection from '@/components/sections/ServiceDetailAud
 import ServiceDetailOutcomesSection from '@/components/sections/ServiceDetailOutcomesSection';
 import ServiceDetailMethodologySection from '@/components/sections/ServiceDetailMethodologySection';
 import ServiceDetailPastEventsSection from '@/components/sections/ServiceDetailPastEventsSection';
-import ServiceDetailCTASection from '@/components/sections/ServiceDetailCTASection';
+import ServiceDetailCtaSection from '@/components/sections/ServiceDetailCtaSection';
 
 // ============================================================================
 // STATIC SITE GENERATION — Pre-build all service pages at deploy time
@@ -139,7 +139,7 @@ export default async function ServiceDetailPage(
         <ServiceDetailOutcomesSection service={serviceForClient} />
         <ServiceDetailMethodologySection service={serviceForClient} />
         {events?.length > 0 && <ServiceDetailPastEventsSection events={events} />}
-        <ServiceDetailCTASection service={serviceForClient} />
+        <ServiceDetailCtaSection service={serviceForClient} />
       </div>
     </>
   );

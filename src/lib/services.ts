@@ -18,8 +18,8 @@ import {
 } from '@/sanity/lib/queries'
 import type { SanityService } from '@/sanity/types'
 import type { ServiceClient } from '@/types/service'
-import type { TrainingService } from '@/data/servicesData'
-import { trainingServices } from '@/data/servicesData'
+import type { TrainingService } from '@/data/services'
+import { trainingServices } from '@/data/services'
 
 /**
  * BLG-133 follow-up — fetch editor-managed services from Sanity and map
@@ -33,7 +33,7 @@ import { trainingServices } from '@/data/servicesData'
  * pages can prop-drill it into client components without RSC boundary
  * errors. The icon is carried as a *string name* and resolved to a
  * lucide-react component at render time via `getIcon(name)` in the
- * consumer (already used by ServiceDetailHeroSection / CTASection;
+ * consumer (already used by ServiceDetailHeroSection / CtaSection;
  * ServicesGridSection now does the same).
  */
 

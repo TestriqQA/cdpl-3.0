@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { Star, Filter, ShieldCheck, Trophy, BadgeCheck } from "lucide-react";
 
-import { getAllReviews, type StudentReview } from "@/data/reviews/reviewsData";
+import { getAllReviews, type StudentReview } from "@/data/reviews";
 import SafeAvatar from "@/components/sections/SafeAvatar";
 import { SiteStat } from "@/components/stats/SiteStatsProvider";
 

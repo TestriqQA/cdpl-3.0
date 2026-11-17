@@ -7,7 +7,7 @@ import CareerSessionButton from "@/components/course-islands/CareerSessionButton
 import BrochureButton from "@/components/course-islands/BrochureButton";
 import VideoButton from "@/components/course-islands/VideoButton";
 import ScrollToButton from "./ScrollToButton";
-import type { CtaAction } from "@/types/coursePage";
+import type { CtaAction } from "@/types/course-page";
 
 const PHONE = "tel:+917888383788";
 const EMAIL = "mailto:contact@cinutedigital.com";

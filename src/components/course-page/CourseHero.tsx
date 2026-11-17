@@ -5,7 +5,7 @@ import { Heading, Rich } from "@/components/ui/Rich";
 import CtaButtons from "./parts/CtaButtons";
 import { CARD, Dot, GRID_GAP, IconTile, SPACE } from "./parts/Section";
 import { ICONS, tileColour } from "./parts/icons";
-import type { CourseHero as Hero } from "@/types/coursePage";
+import type { CourseHero as Hero } from "@/types/course-page";
 
 /** Hero for course and category-hub pages. The last crumb has no href. */
 export default function CourseHero({

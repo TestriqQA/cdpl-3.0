@@ -8,7 +8,7 @@ import { X, User, Mail, Download, CheckCircle2, Loader2 } from 'lucide-react';
 import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '../ui/CustomFlag';
 
-import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
+import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/form-validation';
 
 interface BrochureDownloadModalProps {
   isOpen: boolean;

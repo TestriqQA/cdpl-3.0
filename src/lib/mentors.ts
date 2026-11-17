@@ -1,8 +1,8 @@
 import { client } from '@/sanity/client'
 import { MENTORS_QUERY } from '@/sanity/lib/queries'
 import type { SanityMentor } from '@/sanity/types'
-import type { Mentor, Social } from '@/lib/mentorShared'
-import { MENTORS } from '@/lib/mentorShared'
+import type { Mentor, Social } from '@/lib/mentor-shared'
+import { MENTORS } from '@/lib/mentor-shared'
 
 /**
  * BLG-133 follow-up — fetch editor-managed mentors from Sanity and map

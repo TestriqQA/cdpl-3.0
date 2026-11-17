@@ -15,7 +15,7 @@ import type { Metadata } from "next";
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateHomePageSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
-import { HOME_FAQS } from "@/data/homeFaqs";
+import { HOME_FAQS } from "@/data/faqs/home";
 
 // ============================================================================
 // SECTION IMPORTS
@@ -44,8 +44,8 @@ import HomeLatestBlogSection from '@/components/home/HomeLatestBlogSection';
 // server-rendered section for its fallback on hydration.
 import HomeFeaturedCoursesSection from '@/components/home/HomeFeaturedCoursesSection';
 import PlacementsCompanyWallSection from "@/components/sections/PlacementsCompanyWallSection";
-import HomeFAQSection from '@/components/home/HomeFAQSection';
-import HomeFinalCTASection from '@/components/home/HomeFinalCTASection';
+import HomeFaqSection from '@/components/home/HomeFaqSection';
+import HomeFinalCtaSection from '@/components/home/HomeFinalCtaSection';
 
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { LATEST_POSTS_QUERY } from "@/sanity/lib/queries";
@@ -139,8 +139,8 @@ export default async function HomePage(): Promise<React.ReactElement> {
         <HomeReviewsSection />
         <HomeWhyChooseSection />
         <HomeLatestBlogSection posts={latestPosts} />
-        <HomeFAQSection />
-        <HomeFinalCTASection />
+        <HomeFaqSection />
+        <HomeFinalCtaSection />
       </div>
 
       {/* ========================================

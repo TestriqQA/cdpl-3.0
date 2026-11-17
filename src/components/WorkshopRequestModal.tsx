@@ -15,7 +15,7 @@ import {
     validateCompany,
     validateMessage,
     validateParticipants
-} from '@/lib/formValidation';
+} from '@/lib/form-validation';
 
 const WORKSHOP_TYPES = [
     "Corporate Training",

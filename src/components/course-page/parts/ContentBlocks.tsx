@@ -1,7 +1,7 @@
 import { Rich } from "@/components/ui/Rich";
 import { CARD, Dot, GRID_GAP, IconTile, SPACE } from "./Section";
 import { ICONS, tileColour } from "./icons";
-import type { ContentBlock } from "@/types/coursePage";
+import type { ContentBlock } from "@/types/course-page";
 
 /** Renders a section's one-off `extras` blocks, each SPACE.block below the last. */
 export default function ContentBlocks({ blocks }: { blocks?: ContentBlock[] }) {

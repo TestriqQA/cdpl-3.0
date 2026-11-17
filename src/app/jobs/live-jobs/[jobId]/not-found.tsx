@@ -7,7 +7,7 @@ import Link from "next/link";
  * reaches this page: page.tsx permanently redirects it to /jobs/live-jobs
  * (September 2026 404 audit). This page is rendered only when Sanity could not
  * be reached and the static JOBS snapshot has no open job with this slug —
- * `authoritative: false` from `lookupLiveJob` in src/lib/liveJobs.ts.
+ * `authoritative: false` from `lookupLiveJob` in src/lib/live-jobs.ts.
  *
  * It stays a 404 precisely because it is the unsure case: a redirect issued
  * there would be cached by browsers and outlive the outage, whereas a 404 is

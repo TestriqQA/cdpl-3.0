@@ -2,7 +2,7 @@ import CategoryHubPage, { hubMetadata } from "@/components/category-hub/Category
 import JsonLd from "@/components/JsonLd";
 import { generateSoftwareTestingCategoryPageSchema } from "@/lib/schema-generators";
 import { softwareTestingHub } from "@/data/hubs/software-testing";
-import { SITE_STATS } from "@/lib/siteStats";
+import { SITE_STATS } from "@/lib/site-stats";
 
 // National category page; the Mumbai classroom offer is
 // /software-testing-course-in-mumbai, linked from the hero note.

@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next';
 import { unstable_cache } from 'next/cache';
-import { courseData } from '@/types/courseData';
-import { isTier1Slug } from '@/lib/cityTiers';
-import { pastEvents } from '@/data/eventsData';
+import { courseData } from '@/types/course-data';
+import { isTier1Slug } from '@/lib/city-tiers';
+import { pastEvents } from '@/data/events';
 import { getServices } from '@/lib/services';
 import { client } from '@/sanity/client';
 import { POSTS_QUERY, CATEGORIES_QUERY, AUTHORS_QUERY } from '@/sanity/lib/queries';
@@ -368,7 +368,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // 1. City-Course Pages (e.g., /data-science-course-in-mumbai)
   //
-  // ONLY Tier 1 cities are listed — see src/lib/cityTiers.ts. The other ~735
+  // ONLY Tier 1 cities are listed — see src/lib/city-tiers.ts. The other ~735
   // city pages now render `noindex`, and a sitemap must never advertise a page
   // that tells Google not to index it: the two directives contradict each other
   // and the conflict costs trust in the whole sitemap.

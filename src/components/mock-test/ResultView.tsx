@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { ArrowRight, Trophy, Sparkles, BookOpen, Clock, Target, Home, RotateCcw } from "lucide-react";
 import Link from "next/link";
-import { MockCourse } from "@/data/mockTestData";
+import { MockCourse } from "@/data/mock-tests";
 
 interface ResultViewProps {
     score: number;

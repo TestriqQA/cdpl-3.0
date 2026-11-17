@@ -1,5 +1,5 @@
 import CoursePage, { courseMetadata } from "@/components/course-page/CoursePage";
-import { powerBiCourse } from "@/data/courses/power-bi-course";
+import { powerBiCourse } from "@/data/courses/bi/power-bi-course";
 
 export const metadata = courseMetadata(powerBiCourse);
 

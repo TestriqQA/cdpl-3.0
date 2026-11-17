@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import type { ServiceClient } from '@/types/service';
-import { ServiceSectionHeader } from './serviceDetailShared';
+import { ServiceSectionHeader } from './service-detail-shared';
 
 /** Gradient ends: a light orange, and the brand orange a shade darker. */
 const FROM = '#ffd9a8';

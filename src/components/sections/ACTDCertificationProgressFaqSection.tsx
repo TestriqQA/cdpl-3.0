@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, CircleCheck } from "lucide-react";
-import { FAQSection } from "@/components/ui/FAQSection";
-import { ACTD_FAQS } from "@/data/actdFaqs";
+import { FaqSection } from "@/components/ui/FaqSection";
+import { ACTD_FAQS } from "@/data/faqs/actd-certification";
 
 const STEPS = [
   { name: "Enroll", desc: "Join the next cohort and pick your focus." },
@@ -14,7 +14,7 @@ const STEPS = [
 const CTA_POINTS = ["10-week cohort", "Mentor reviews", "Placement support"];
 
 /**
- * Cohort flow as a numbered five-step timeline, the FAQ (shared FAQSection,
+ * Cohort flow as a numbered five-step timeline, the FAQ (shared FaqSection,
  * same list as the page's FAQPage schema), and a closing CTA in the Our Team
  * footer style. Server component; only the FAQ accordion is client-side.
  */
@@ -48,7 +48,7 @@ export default function ACTDCertificationProgressFaqSection() {
         </div>
       </section>
 
-      <FAQSection
+      <FaqSection
         id="actd-faq"
         title={<>Frequently Asked <span className="text-brand">Questions</span></>}
         subtitle="Everything you need to know about the ACTD certification program."

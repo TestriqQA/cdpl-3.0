@@ -1,6 +1,6 @@
 import { GraduationCap, Users, CheckCircle2, Star } from "lucide-react";
-import { getSiteStats } from "@/lib/liveStats";
-import { SITE_STATS } from "@/lib/siteStats";
+import { getSiteStats } from "@/lib/live-stats";
+import { SITE_STATS } from "@/lib/site-stats";
 
 export default async function StatsSection() {
     const siteStats = await getSiteStats();

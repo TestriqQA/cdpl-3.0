@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Job } from "@/lib/jobsData";
+import type { Job } from "@/data/jobs";
 
 const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-IN", {

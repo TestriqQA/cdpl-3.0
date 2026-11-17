@@ -1,6 +1,6 @@
 import type { ServiceClient } from '@/types/service';
 import RequestButton from '@/app/services/[slug]/RequestButton';
-import { tileColour } from './serviceDetailShared';
+import { tileColour } from './service-detail-shared';
 
 /**
  * Our Methodology as a numbered timeline, laid out like the homepage's "How

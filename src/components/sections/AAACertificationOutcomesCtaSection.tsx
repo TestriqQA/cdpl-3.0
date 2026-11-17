@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Check, CircleCheck } from "lucide-react";
-import { FAQSection } from "@/components/ui/FAQSection";
-import { AAA_FAQS } from "@/data/aaaFaqs";
+import { FaqSection } from "@/components/ui/FaqSection";
+import { AAA_FAQS } from "@/data/faqs/aaa-certification";
 import AAAValidateCertificateButton from "@/components/sections/AAAValidateCertificateButton";
 
 // Same five steps as the page's HowTo schema, so it is visible too.
@@ -24,7 +24,7 @@ const CTA_POINTS = ["Limited seats", "Mentor bandwidth", "Capstone prep for earl
 
 /**
  * How certification works (timeline + program outcomes), the FAQ (shared
- * FAQSection, same list as the page's FAQPage schema), and the "Next cohort"
+ * FaqSection, same list as the page's FAQPage schema), and the "Next cohort"
  * CTA in the Our Team footer style. Matches the ACTD page. Server component;
  * the FAQ accordion and the validate button are the client-side pieces.
  */
@@ -73,7 +73,7 @@ export default function AAACertificationOutcomesCtaSection() {
         </div>
       </section>
 
-      <FAQSection
+      <FaqSection
         id="aaa-faq"
         title={<>Frequently Asked <span className="text-brand">Questions</span></>}
         subtitle="Everything you need to know about the AAA certification course."

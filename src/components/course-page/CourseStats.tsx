@@ -2,7 +2,7 @@ import { Rich } from "@/components/ui/Rich";
 import CtaButtons from "./parts/CtaButtons";
 import ContentBlocks from "./parts/ContentBlocks";
 import { CARD, CourseSection, GRID_GAP, SPACE, SectionHeader, SectionNote, SectionOutro } from "./parts/Section";
-import type { CourseStats as Stats } from "@/types/coursePage";
+import type { CourseStats as Stats } from "@/types/course-page";
 import type { SectionProps } from "./types";
 
 // Full rows on desktop for any count: 6 → 3+3, 5 → one row, 4 → one row…

@@ -9,7 +9,7 @@ import PhoneInput from '@/components/ui/PhoneNumberInput';
 
 import styles from './phone-input.module.css';
 import CustomFlag from './CustomFlag';
-import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
+import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/form-validation';
 
 interface AdvisorModalProps {
     isOpen: boolean;

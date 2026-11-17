@@ -4,12 +4,12 @@ import {
     EVENT_BY_SLUG_QUERY,
 } from '@/sanity/lib/queries'
 import type { SanityEvent } from '@/sanity/types'
-import type { PastEvent } from '@/data/eventsData'
-import { CDPL_ORG, pastEvents } from '@/data/eventsData'
+import type { PastEvent } from '@/data/events'
+import { CDPL_ORG, pastEvents } from '@/data/events'
 
 /**
  * BLG-133 follow-up — fetch editor-managed events from Sanity and map
- * them onto the legacy `PastEvent` shape (eventsData.ts). When Sanity has
+ * them onto the legacy `PastEvent` shape (data/events.ts). When Sanity has
  * no event docs the helper falls back to the hard-coded `pastEvents`
  * array so the /events listing, /events/[slug] detail, JSON-LD generators,
  * and `generateStaticParams` keep working with zero regression during the

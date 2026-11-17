@@ -1,5 +1,5 @@
 import CoursePage, { courseMetadata } from "@/components/course-page/CoursePage";
-import { mastersInDataEngineeringCourse } from "@/data/courses/masters-in-data-engineering";
+import { mastersInDataEngineeringCourse } from "@/data/courses/bi/masters-in-data-engineering";
 
 export const metadata = courseMetadata(mastersInDataEngineeringCourse);
 

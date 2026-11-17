@@ -3,7 +3,7 @@ import { useState, useMemo, useRef, useEffect } from "react";
 // import SearchFilter from "@/components/courses/SearchFilter";
 import CategoryCard from "@/components/courses/CategoryCard";
 import CourseCard, { type CourseCardData } from "@/components/courses/CourseCard";
-import { coursesData } from "@/components/courses/coursesData";
+import { coursesData } from "@/components/courses/courses-data";
 import { textToBg } from "@/components/courses/course";
 import { Hash } from "lucide-react";
 

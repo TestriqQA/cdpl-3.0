@@ -7,7 +7,7 @@ import EnrollModal from "@/components/EnrollModal";
 import dynamic from 'next/dynamic';
 import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '../ui/CustomFlag';
-import { validatePhone, validateFullName as validateNameLib, validateEmail as validateEmailLib } from '@/lib/formValidation';
+import { validatePhone, validateFullName as validateNameLib, validateEmail as validateEmailLib } from '@/lib/form-validation';
 import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 // Dynamically import the desktop form to save bundle size on mobile

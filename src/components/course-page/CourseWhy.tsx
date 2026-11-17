@@ -3,7 +3,7 @@ import CtaButtons from "./parts/CtaButtons";
 import ContentBlocks, { Points } from "./parts/ContentBlocks";
 import { CARD, CourseSection, GRID_GAP, IconTile, SPACE, SectionHeader, SectionOutro } from "./parts/Section";
 import { ICONS, tileColour } from "./parts/icons";
-import type { CourseWhy as Why } from "@/types/coursePage";
+import type { CourseWhy as Why } from "@/types/course-page";
 import type { SectionProps } from "./types";
 
 export default function CourseWhy({ id, tone, data, courseName, sourceName }: SectionProps<Why>) {

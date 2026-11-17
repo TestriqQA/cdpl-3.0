@@ -2,7 +2,7 @@ import CategoryHubPage, { hubMetadata } from "@/components/category-hub/Category
 import JsonLd from "@/components/JsonLd";
 import { generateDigitalMarketingCategoryPageSchema } from "@/lib/schema-generators";
 import { digitalMarketingHub } from "@/data/hubs/digital-marketing";
-import { SITE_STATS } from "@/lib/siteStats";
+import { SITE_STATS } from "@/lib/site-stats";
 
 export const metadata = hubMetadata(digitalMarketingHub);
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import type { CourseData } from "@/types/courseData";
+import type { CourseData } from "@/types/course-data";
 import {
   BookOpen,
   CheckCircle,
@@ -19,7 +19,7 @@ import {
 import { DownloadFormButton } from "@/components/DownloadForm";
 import Link from "next/link";
 import { useSiteStats } from "@/components/stats/SiteStatsProvider";
-import { SITE_STATS } from "@/lib/siteStats";
+import { SITE_STATS } from "@/lib/site-stats";
 
 interface CourseOverviewSectionProps {
   data: CourseData;

@@ -324,8 +324,8 @@ export const SERVICE_SLUGS_QUERY = groq`*[_type == "service" && isActive == true
 
 // ---------------------------------------------------------------------------
 // LIVE JOBS (external CDPL-curated openings) — /jobs/live-jobs + /[jobId]
-// Projection mirrors the static `Job` shape in src/lib/jobsData.ts so the
-// mapper in src/lib/liveJobs.ts reproduces byte-identical page output.
+// Projection mirrors the static `Job` shape in src/data/jobs.ts so the
+// mapper in src/lib/live-jobs.ts reproduces byte-identical page output.
 // ---------------------------------------------------------------------------
 const LIVE_JOB_PROJECTION = `
   _id,
@@ -367,7 +367,7 @@ const LIVE_JOB_PROJECTION = `
 // far-future default, because asserting a fabricated expiry on a stale vacancy
 // is what breached Google's job-posting policy.
 //
-// $today is supplied by src/lib/liveJobs.ts as YYYY-MM-DD.
+// $today is supplied by src/lib/live-jobs.ts as YYYY-MM-DD.
 const LIVE_JOB_OPEN = `isActive == true && coalesce(validThrough, eventDate, "") >= $today`
 
 export const LIVE_JOBS_QUERY = groq`*[_type == "liveJob" && ${LIVE_JOB_OPEN}] | order(coalesce(eventDate, postedOn) desc) {

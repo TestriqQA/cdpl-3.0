@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import type { CourseData } from "@/types/courseData";
+import type { CourseData } from "@/types/course-data";
 import { BookOpen, Zap, CheckCircle2 } from "lucide-react";
 
 interface Track {

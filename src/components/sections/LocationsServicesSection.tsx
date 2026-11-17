@@ -15,7 +15,7 @@ type Service = {
 
 // Same course families and course-hub links as the Our Team page. Web
 // Development is not listed: CDPL does not run it (see EXCLUDED_FAMILIES in
-// lib/cityTiers.ts).
+// lib/city-tiers.ts).
 const SERVICES: Service[] = [
     {
         id: "testing",

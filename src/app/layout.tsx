@@ -25,19 +25,19 @@ import GoogleAnalytics from '@/components/GoogleAnalytics';
 // BLG-010: Header/Footer/SpecialOfferBanner are always rendered with
 // ssr:true — dynamic() only added an extra code-split chunk with no
 // lazy-loading benefit. Imported directly instead.
-import Header from "@/components/Layout/Header";
-import Footer from "@/components/Layout/Footer";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import SpecialOfferBanner from "@/components/SpecialOfferBanner";
 // Suppresses the marketing chrome on the /cms Studio route — see the component
 // for why (the header + footer around <NextStudio/> caused CLS 0.922 there).
-import SiteChrome from "@/components/Layout/SiteChrome";
+import SiteChrome from "@/components/layout/SiteChrome";
 // BLG-139: VisualEditing establishes the connection between a previewed
 // page and the Sanity Presentation tool. It is only rendered when Next.js
 // draft mode is on, so it never ships to normal visitors.
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { SiteStatsProvider } from "@/components/stats/SiteStatsProvider";
-import { getSiteStats } from "@/lib/liveStats";
+import { getSiteStats } from "@/lib/live-stats";
 
 const inter = localFont({
   src: './fonts/inter-variable.woff2',

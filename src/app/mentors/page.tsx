@@ -23,7 +23,7 @@ export const metadata: Metadata = generateStaticPageMetadata({
 import MentorHeroSection from "@/components/sections/MentorHeroSection";
 import MentorsImpactSection from "@/components/sections/MentorsImpactSection";
 import MentorProcessFlowSection from "@/components/sections/MentorProcessFlowSection";
-import MentorHelpCTASection from "@/components/sections/MentorHelpCTASection";
+import MentorHelpCtaSection from "@/components/sections/MentorHelpCtaSection";
 import MentorOutcomesSection from "@/components/sections/MentorOutcomesSection";
 
 // ============================================================================
@@ -58,7 +58,7 @@ export default async function MentorsPage() {
         <MentorsImpactSection mentors={mentors} />
         <MentorOutcomesSection />
         <MentorProcessFlowSection />
-        <MentorHelpCTASection />
+        <MentorHelpCtaSection />
       </div>
     </>
   );

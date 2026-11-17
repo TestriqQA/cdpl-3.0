@@ -2,8 +2,8 @@
 import { google } from 'googleapis';
 import axios from 'axios';
 import { unstable_cache } from 'next/cache';
-import { SITE_STATS } from '@/lib/siteStats';
-import { singleFlight, isSingleFlightSkip } from '@/lib/singleFlight';
+import { SITE_STATS } from '@/lib/site-stats';
+import { singleFlight, isSingleFlightSkip } from '@/lib/single-flight';
 
 // Credentials
 const CLIENT_ID = '1078247115476-cujpa333jod5j1a9441po9r39snkce25.apps.googleusercontent.com';

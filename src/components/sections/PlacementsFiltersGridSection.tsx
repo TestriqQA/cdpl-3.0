@@ -3,8 +3,8 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 
-import { PLACEMENTS as DATA } from "@/lib/placementShared";
-import type { Placement } from "@/lib/placementShared";
+import { PLACEMENTS as DATA } from "@/lib/placement-shared";
+import type { Placement } from "@/lib/placement-shared";
 
 /** Use a type for the domain instead of a (now-unused) value array */
 type Domain = "All" | "QA";
