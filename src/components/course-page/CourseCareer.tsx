@@ -4,7 +4,7 @@ import CtaButtons from "./parts/CtaButtons";
 import ContentBlocks from "./parts/ContentBlocks";
 import { CARD, CourseSection, GRID_GAP, IconTile, SPACE, SectionHeader, SectionOutro } from "./parts/Section";
 import { tileColour } from "./parts/icons";
-import type { CourseCareer as Career } from "@/types/coursePage";
+import type { CourseCareer as Career } from "@/types/course-page";
 import type { SectionProps } from "./types";
 
 export default function CourseCareer({ id, tone, data, courseName, sourceName }: SectionProps<Career>) {

@@ -4,7 +4,7 @@ import { Heading, Rich } from "@/components/ui/Rich";
 /*
  * Spacing and surface tokens for every course-page section, so gaps are the
  * same everywhere:
- *   section padding  py-8 sm:py-12 md:py-16 (site scale, same as ui/FAQSection),
+ *   section padding  py-8 sm:py-12 md:py-16 (site scale, same as ui/FaqSection),
  *                    backgrounds alternate white / slate-50
  *   header → body    mt-10 (40px)   SPACE.body
  *   body → note      mt-4  (16px)   SPACE.note   one-line footnotes under a grid

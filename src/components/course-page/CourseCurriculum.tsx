@@ -4,7 +4,7 @@ import { Rich } from "@/components/ui/Rich";
 import CtaButtons from "./parts/CtaButtons";
 import ContentBlocks from "./parts/ContentBlocks";
 import { CARD, CourseSection, Dot, GRID_GAP, SPACE, SectionHeader, SectionNote, SectionOutro } from "./parts/Section";
-import type { CourseCurriculum as Curriculum } from "@/types/coursePage";
+import type { CourseCurriculum as Curriculum } from "@/types/course-page";
 import type { SectionProps } from "./types";
 
 export default function CourseCurriculum({ id, tone, data, courseName, sourceName }: SectionProps<Curriculum>) {

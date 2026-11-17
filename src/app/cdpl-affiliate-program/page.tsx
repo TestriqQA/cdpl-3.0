@@ -13,10 +13,10 @@ import AffiliateBenefitsSection from "@/components/sections/AffiliateBenefitsSec
 import AffiliateHowItWorksSection from "@/components/sections/AffiliateHowItWorksSection";
 import AffiliateTiersSection from "@/components/sections/AffiliateTiersSection";
 import AffiliatePayoutsSection from "@/components/sections/AffiliatePayoutsSection";
-import AffiliateFAQSection from "@/components/sections/AffiliateFAQSection";
-import AffiliateCTASection from "@/components/sections/AffiliateCTASection";
+import AffiliateFaqSection from "@/components/sections/AffiliateFaqSection";
+import AffiliateCtaSection from "@/components/sections/AffiliateCtaSection";
 import AffiliateContentSection from "@/components/sections/AffiliateContentSection";
-import { AFFILIATE_FAQS } from "@/data/affiliateFaqs";
+import { AFFILIATE_FAQS } from "@/data/faqs/affiliate";
 
 // ---------- SEO ----------
 export const metadata: Metadata = generateStaticPageMetadata({
@@ -127,11 +127,11 @@ export default async function AffiliateProgramPage() {
       </section>
 
       {/* Central FAQ (renders its own <section id="faq">) */}
-      <AffiliateFAQSection />
+      <AffiliateFaqSection />
 
       <section id="apply" aria-labelledby="apply-heading" className="scroll-mt-24">
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8">
-          <AffiliateCTASection />
+          <AffiliateCtaSection />
         </div>
       </section>
     </div>

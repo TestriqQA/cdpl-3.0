@@ -6,8 +6,8 @@ import JobsCareersProcessSection from "@/components/sections/JobsCareersProcessS
 import JobsCareersExpectationsSection from "@/components/sections/JobsCareersExpectationsSection";
 import JobsCareersBenefitsSection from "@/components/sections/JobsCareersBenefitsSection";
 import JobsCareersCultureSection from "@/components/sections/JobsCareersCultureSection";
-import JobsCareersFAQSection from "@/components/sections/JobsCareersFAQSection";
-import JobsCareersCTASection from "@/components/sections/JobsCareersCTASection";
+import JobsCareersFaqSection from "@/components/sections/JobsCareersFaqSection";
+import JobsCareersCtaSection from "@/components/sections/JobsCareersCtaSection";
 import type { Metadata } from "next";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateCareersPageAllSchemas, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
@@ -177,8 +177,8 @@ export default async function Page() {
                 <JobsCareersProcessSection />
                 <JobsCareersBenefitsSection />
                 <JobsCareersCultureSection />
-                <JobsCareersFAQSection />
-                <JobsCareersCTASection />
+                <JobsCareersFaqSection />
+                <JobsCareersCtaSection />
             </div>
         </>
     );

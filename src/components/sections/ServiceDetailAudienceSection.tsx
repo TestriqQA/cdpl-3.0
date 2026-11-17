@@ -1,7 +1,7 @@
 import { Briefcase, Building2, GraduationCap, Laptop, Presentation, UserRound, Users } from 'lucide-react';
 import type { ComponentType, SVGProps } from 'react';
 import type { ServiceClient } from '@/types/service';
-import { ServiceSectionHeader, tileColour } from './serviceDetailShared';
+import { ServiceSectionHeader, tileColour } from './service-detail-shared';
 
 /** How many audiences to show. */
 const MAX_AUDIENCES = 4;

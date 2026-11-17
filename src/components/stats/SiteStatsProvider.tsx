@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, type ReactNode } from 'react';
-import { FALLBACK_STATS, type SiteStats } from '@/lib/siteStats';
+import { FALLBACK_STATS, type SiteStats } from '@/lib/site-stats';
 
 const SiteStatsContext = createContext<SiteStats>(FALLBACK_STATS);
 

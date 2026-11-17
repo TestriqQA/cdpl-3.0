@@ -6,7 +6,7 @@ import {
 import dynamic from 'next/dynamic';
 
 const EnquireModal = dynamic(
-  () => import("../Layout/EnquireModal"),
+  () => import("../layout/EnquireModal"),
   { ssr: false }
 );
 

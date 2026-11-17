@@ -3,7 +3,7 @@ import { Rich } from "@/components/ui/Rich";
 import CtaButtons from "./parts/CtaButtons";
 import ContentBlocks, { Points } from "./parts/ContentBlocks";
 import { CARD, CourseSection, GRID_GAP, SPACE, SectionHeader, SectionOutro } from "./parts/Section";
-import type { CourseRoadmap as Roadmap } from "@/types/coursePage";
+import type { CourseRoadmap as Roadmap } from "@/types/course-page";
 import type { SectionProps } from "./types";
 
 /** Numbered career / learning path. */

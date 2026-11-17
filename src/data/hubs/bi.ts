@@ -1,4 +1,4 @@
-import type { CategoryHubContent } from "@/types/categoryHub";
+import type { CategoryHubContent } from "@/types/category-hub";
 
 // Content for /courses/bi-courses, moved from the old src/components/BI-Courses/*
 // sections and their data.ts / faqData.ts. Copy is kept word for word except

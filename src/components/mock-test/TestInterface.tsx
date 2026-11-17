@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { Question } from "@/data/mockTestData";
+import { Question } from "@/data/mock-tests";
 import { CheckCircle2, ChevronLeft, ChevronRight, Clock, LayoutGrid, TriangleAlert } from "lucide-react";
 
 interface TestInterfaceProps {

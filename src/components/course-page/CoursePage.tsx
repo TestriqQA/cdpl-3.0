@@ -4,7 +4,7 @@ import JsonLd from "@/components/JsonLd";
 import StickyNav from "@/components/stickynav/StickyNav";
 import { generateMetadata as generateSEOMetadata } from "@/lib/metadata-generator";
 import { getCourse } from "@/data/courses/registry";
-import type { CourseContent } from "@/types/coursePage";
+import type { CourseContent } from "@/types/course-page";
 import { courseSchemas } from "./schema";
 import CourseHero from "./CourseHero";
 import CourseStats from "./CourseStats";

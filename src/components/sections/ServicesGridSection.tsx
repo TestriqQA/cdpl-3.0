@@ -4,7 +4,7 @@
 // the /services page (which fetches them from Sanity with a local fallback
 // in src/lib/services.ts). Resolves the editor-picked `iconName` string to
 // a lucide-react component via the same `Icons[key]` lookup pattern used
-// by ServiceDetailHeroSection / CTASection.
+// by ServiceDetailHeroSection / CtaSection.
 import * as Icons from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 import type { ServiceClient } from "@/types/service";

@@ -6,7 +6,7 @@ import { X, User, Mail, Briefcase } from "lucide-react";
 import dynamic from "next/dynamic";
 
 import Link from "next/link";
-import { validatePhone } from '@/lib/formValidation';
+import { validatePhone } from '@/lib/form-validation';
 
 // BLG-009: import via the shared wrapper so the phone-input stylesheet
 // is scoped to phone-bearing routes instead of loading globally.

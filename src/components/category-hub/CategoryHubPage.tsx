@@ -9,7 +9,7 @@ import CourseTestimonials from "@/components/course-page/CourseTestimonials";
 import CourseFaq from "@/components/course-page/CourseFaq";
 import CourseCta from "@/components/course-page/CourseCta";
 import type { Tone } from "@/components/course-page/parts/Section";
-import type { CategoryHubContent } from "@/types/categoryHub";
+import type { CategoryHubContent } from "@/types/category-hub";
 import HubCourses from "./HubCourses";
 import HubPath from "./HubPath";
 import HubCareer from "./HubCareer";

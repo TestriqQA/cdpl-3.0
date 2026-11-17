@@ -5,7 +5,7 @@ import CtaButtons from "./parts/CtaButtons";
 import ContentBlocks from "./parts/ContentBlocks";
 import { CARD, CourseSection, GRID_GAP, IconTile, SPACE, SectionHeader, SectionNote, SectionOutro } from "./parts/Section";
 import { ICONS } from "./parts/icons";
-import type { CourseTools as Tools } from "@/types/coursePage";
+import type { CourseTools as Tools } from "@/types/course-page";
 import type { SectionProps } from "./types";
 
 export default function CourseTools({ id, tone, data, courseName, sourceName }: SectionProps<Tools>) {

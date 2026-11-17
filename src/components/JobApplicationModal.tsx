@@ -121,7 +121,7 @@ export default function JobApplicationModal({
         }
 
         // Strict Validation
-        const { validateFullName, validateEmail, validatePhone } = await import('@/lib/formValidation');
+        const { validateFullName, validateEmail, validatePhone } = await import('@/lib/form-validation');
 
         const nameError = validateFullName(formData.fullName);
         if (nameError) { setError(nameError); setIsSubmitting(false); return; }

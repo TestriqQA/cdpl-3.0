@@ -22,9 +22,9 @@ import AboutWhyJoinUs from "@/components/sections/AboutWhyJoinUs";
 import AboutStorySection from "@/components/sections/AboutStorySection";
 import AboutFacultyStrip from "@/components/sections/AboutFacultyStrip";
 import AboutMissionVision from "@/components/sections/AboutVisionMission";
-import AboutFAQSection from "@/components/sections/AboutFAQSection";
-import { ABOUT_FAQS } from "@/data/aboutFaqs";
-import AboutCTASection from "@/components/sections/AboutCTASection";
+import AboutFaqSection from "@/components/sections/AboutFaqSection";
+import { ABOUT_FAQS } from "@/data/faqs/about";
+import AboutCtaSection from "@/components/sections/AboutCtaSection";
 import AboutAccreditations from "@/components/sections/AboutAccreditations";
 
 // ============================================================================
@@ -90,8 +90,8 @@ export default function AboutPage(): React.ReactNode {
         <AboutMissionVision />
         <AboutFacultyStrip />
         <AboutAccreditations />
-        <AboutCTASection />
-        <AboutFAQSection />
+        <AboutCtaSection />
+        <AboutFaqSection />
       </div>
     </LightTheme>
   );

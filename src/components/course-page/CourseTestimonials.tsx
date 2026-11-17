@@ -3,7 +3,7 @@ import { getGoogleReviews } from "@/lib/reviews";
 import CtaButtons from "./parts/CtaButtons";
 import ContentBlocks from "./parts/ContentBlocks";
 import { CourseSection, SPACE, SectionHeader, SectionOutro } from "./parts/Section";
-import type { CourseTestimonials as Testimonials } from "@/types/coursePage";
+import type { CourseTestimonials as Testimonials } from "@/types/course-page";
 import type { SectionProps } from "./types";
 
 // Reviews are fetched on the server (cached daily in lib/reviews) so they are

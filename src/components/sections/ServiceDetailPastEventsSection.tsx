@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Calendar, Building2, Users, ArrowRight } from 'lucide-react';
 import type { ServiceEvent } from '@/types/service';
-import { ServiceSectionHeader } from './serviceDetailShared';
+import { ServiceSectionHeader } from './service-detail-shared';
 
 /**
  * Past Events & Programs. Each card is one link (the old card nested a

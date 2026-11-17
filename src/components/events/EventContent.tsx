@@ -1,5 +1,5 @@
 import React from "react";
-import { PastEvent } from "@/data/eventsData";
+import { PastEvent } from "@/data/events";
 import Link from "next/link";
 import { Target, Lightbulb, Star, Building2, MapPin, ExternalLink } from "lucide-react";
 import Image from "next/image";

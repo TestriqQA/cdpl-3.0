@@ -8,12 +8,12 @@ import JsonLd from "@/components/JsonLd";
 
 // Sections imported directly — next/dynamic(ssr:true) only added client Suspense
 // boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
-import AAACerticationHeroSection from "@/components/sections/AAACerticationHeroSection";
+import AAACertificationHeroSection from "@/components/sections/AAACertificationHeroSection";
 import AAACertificationWhySection from "@/components/sections/AAACertificationWhySection";
 import AAACertificationCurriculumSection from "@/components/sections/AAACertificationCurriculumSection";
 import AAACertificationOutcomesCtaSection from "@/components/sections/AAACertificationOutcomesCtaSection";
-import { SITE_STATS } from "@/lib/siteStats";
-import { AAA_FAQS } from "@/data/aaaFaqs";
+import { SITE_STATS } from "@/lib/site-stats";
+import { AAA_FAQS } from "@/data/faqs/aaa-certification";
 
 /* ---------- SEO ---------- */
 export const metadata: Metadata = generateStaticPageMetadata({
@@ -92,7 +92,7 @@ export default function AAACertificationCoursePage() {
         <JsonLd key={`aaa-schema-${index}`} id={`aaa-schema-${index}`} schema={schema} />
       ))}
 
-      <AAACerticationHeroSection />
+      <AAACertificationHeroSection />
       <AAACertificationWhySection />
       <AAACertificationCurriculumSection />
       <AAACertificationOutcomesCtaSection />

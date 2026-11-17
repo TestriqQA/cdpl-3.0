@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity'
 
 // BLG-133: Sanity-managed events (webinars, seminars, workshops, industrial
 // visits, MoU signings, faculty development programs). Replaces the
-// hard-coded `pastEvents` array in src/data/eventsData.ts so the marketing
+// hard-coded `pastEvents` array in src/data/events.ts so the marketing
 // team can publish new events without an engineering change.
 //
 // The v1 scaffold covered registration-style "future" events (format,

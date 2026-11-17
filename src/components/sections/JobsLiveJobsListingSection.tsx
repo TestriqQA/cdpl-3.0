@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import type { Job } from "@/lib/jobsData";
+import type { Job } from "@/data/jobs";
 import { JobsLiveJobsFilterBarSection } from "./JobsLiveJobsFilterBarSection";
 import { JobsLiveJobsJobsGridSection } from "./JobsLiveJobsJobsGridSection";
 import { FROM_LISTING_KEY } from "./JobsLiveJobsJobCardSection";

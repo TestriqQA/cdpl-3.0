@@ -36,7 +36,7 @@ export default defineType({
             description: 'Where the mentor works today (drives credibility).',
         }),
         // BLG-133 follow-up: matches the `Mentor.domain` discriminated union
-        // in src/lib/mentorShared.ts so the filter chips and domain colours
+        // in src/lib/mentor-shared.ts so the filter chips and domain colours
         // on the /mentors page work for Sanity-managed mentors too.
         defineField({
             name: 'domain',

@@ -11,7 +11,7 @@
 // Trained", "89% Placement & Freelance Rate", "750+ Agency & Hiring Partners")
 // are replaced with the defensible stats the other hubs use.
 
-import type { CategoryHubContent } from "@/types/categoryHub";
+import type { CategoryHubContent } from "@/types/category-hub";
 import type { CourseCardIcon } from "@/components/courses/CourseCard";
 
 const DM = "/courses/digital-marketing-courses";

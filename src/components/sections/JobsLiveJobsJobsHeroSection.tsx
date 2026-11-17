@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Sparkles, Home, ChevronRight, ArrowDown, ShieldCheck, Users2, Bell } from "lucide-react";
-import { JobsLiveJobsHeroCTA } from "./JobsLiveJobsHeroCTA";
+import { JobsLiveJobsHeroCta } from "./JobsLiveJobsHeroCta";
 
 interface Props {
   customTitle?: React.ReactNode;
@@ -93,7 +93,7 @@ export default function JobsLiveJobsJobsHeroSection({ customTitle, customDescrip
                 See latest openings
                 <ArrowDown className="h-5 w-5" aria-hidden="true" />
               </Link>
-              <JobsLiveJobsHeroCTA />
+              <JobsLiveJobsHeroCta />
             </div>
 
             <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-slate-700">

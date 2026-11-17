@@ -2,8 +2,8 @@
 import HeroSection from "@/components/courses/HeroSection";
 import StatsSection from "@/components/courses/StatsSection";
 import BenefitsSection from "@/components/courses/BenefitsSection";
-import FAQSection from "@/components/courses/FAQSection";
-import CTASection from "@/components/courses/CTASection";
+import FaqSection from "@/components/courses/FaqSection";
+import CtaSection from "@/components/courses/CtaSection";
 
 // If you kept it where I placed it in the canvas:
 import FilterableCourseSections from "@/components/courses/FilterableCourseSections";
@@ -35,8 +35,8 @@ export default function CoursesPage() {
             <FilterableCourseSections />
             <StatsSection />
             <BenefitsSection />
-            <FAQSection />
-            <CTASection />
+            <FaqSection />
+            <CtaSection />
         </div>
     );
 }

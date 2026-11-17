@@ -10,7 +10,7 @@
 // promo, and the second consultation form. Lines copied from the BI and testing
 // hubs ("BI professional", "BI Career", "QA careers", the BI FAQ intro) now say AI.
 
-import type { CategoryHubContent } from "@/types/categoryHub";
+import type { CategoryHubContent } from "@/types/category-hub";
 import type { CourseCardIcon } from "@/components/courses/CourseCard";
 
 type RawCourse = {

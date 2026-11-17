@@ -35,7 +35,7 @@ const CustomInput = React.forwardRef(({ controlStyle, ...props }: any, ref) => (
 ));
 CustomInput.displayName = 'CustomInput';
 
-import { validatePhone } from '@/lib/formValidation';
+import { validatePhone } from '@/lib/form-validation';
 
 // ... other imports
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateCertificateValidationPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
-import { VALIDATION_FAQS, VALIDATION_STEPS } from "@/data/certificateValidationFaqs";
+import { VALIDATION_FAQS, VALIDATION_STEPS } from "@/data/faqs/certificate-validation";
 
 // Sections imported directly — next/dynamic(ssr:true) only added client Suspense
 // boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).

@@ -11,7 +11,7 @@ import {
   validateFullName as validateFullNameLib,
   validateEmail as validateEmailLib,
   validatePhone as validatePhoneLib
-} from '@/lib/formValidation';
+} from '@/lib/form-validation';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { useRef } from 'react';
 

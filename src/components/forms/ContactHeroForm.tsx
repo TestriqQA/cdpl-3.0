@@ -10,7 +10,7 @@ import CustomFlag from '../ui/CustomFlag';
 import {
     validatePhone as validatePhoneLib,
     validateFullName as validateFullNameLib
-} from '@/lib/formValidation';
+} from '@/lib/form-validation';
 
 /**
  * TWO-STEP FORM

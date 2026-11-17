@@ -5,7 +5,7 @@ import ContentBlocks from "@/components/course-page/parts/ContentBlocks";
 import CtaButtons from "@/components/course-page/parts/CtaButtons";
 import { CourseSection, GRID_GAP, SPACE, SectionHeader, SectionOutro } from "@/components/course-page/parts/Section";
 import type { SectionProps } from "@/components/course-page/types";
-import type { HubCourses as Courses } from "@/types/categoryHub";
+import type { HubCourses as Courses } from "@/types/category-hub";
 
 /** The category's courses, as the site-wide CourseCard (same card as the homepage). */
 export default function HubCourses({ id, tone, data, sourceName }: SectionProps<Courses>) {
