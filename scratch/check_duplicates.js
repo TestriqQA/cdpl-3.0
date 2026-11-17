@@ -1,5 +1,6 @@
 const { generateBusinessIntelligenceCategoryPageSchema } = require('./src/lib/schema-generators');
-const { biFaqs } = require('./src/components/BI-Courses/faqData');
+const { biHub } = require('./src/data/hubs/bi');
+const biFaqs = biHub.faq.items.map((f) => ({ q: f.question, a: f.answer }));
 
 // Mock necessary parts or use actual code if possible
 // Since It's TS, I might need to use ts-node or just check the source for duplication.
