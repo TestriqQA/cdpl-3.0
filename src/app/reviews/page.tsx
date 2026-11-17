@@ -7,7 +7,7 @@ import {
   generateReviewsPageAllSchemas
 } from "@/lib/schema-generators";
 import { STATISTICS } from "@/lib/seo-config";
-import { getAllReviews } from "src/data/reviews/reviewsData";
+import { getAllReviews } from "src/data/reviews";
 import JsonLd from "@/components/JsonLd";
 
 // Revalidate content periodically (change to 0 if you fetch SSR)
@@ -27,8 +27,8 @@ import ReviewsHeroSection from "@/components/sections/ReviewsHeroSection";
 import ReviewsVideoSection from "@/components/sections/ReviewsVideoSection";
 import ReviewsFeedbackSection from "@/components/sections/ReviewsFeedbackSection";
 import ReviewsGoogleSection from "@/components/sections/ReviewsGoogleSection";
-import ReviewsCTAJoinSection from "@/components/sections/ReviewsCTAJoinSection";
-import { SITE_STATS, STAT_TEXT } from "@/lib/siteStats";
+import ReviewsCtaJoinSection from "@/components/sections/ReviewsCtaJoinSection";
+import { SITE_STATS, STAT_TEXT } from "@/lib/site-stats";
 
 // ---------- SEO Metadata ----------
 export const metadata: Metadata = generateStaticPageMetadata({
@@ -81,7 +81,7 @@ export default function Page() {
       <ReviewsVideoSection />
       <ReviewsFeedbackSection />
       <ReviewsGoogleSection />
-      <ReviewsCTAJoinSection />
+      <ReviewsCtaJoinSection />
     </div>
   );
 }

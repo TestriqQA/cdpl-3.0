@@ -1,5 +1,5 @@
 import CoursePage, { courseMetadata } from "@/components/course-page/CoursePage";
-import { generativeAiCourse } from "@/data/courses/generative-ai-course";
+import { generativeAiCourse } from "@/data/courses/ds-ml/generative-ai-course";
 
 export const metadata = courseMetadata(generativeAiCourse);
 

@@ -68,32 +68,32 @@ const dmSchemas = generateDigitalMarketingCategoryPageSchema(
 // Individual course pages: built from their content files, exactly as the
 // shared template (src/components/course-page) builds them for the page.
 import { courseSchemas } from "../../src/components/course-page/schema";
-import { apiTestingCourse } from "../../src/data/courses/api-testing";
-import { dbmsCourse } from "../../src/data/courses/dbms-course";
-import { etlTestingCourse } from "../../src/data/courses/etl-testing";
-import { advanceSoftwareTestingCourse } from "../../src/data/courses/advance-software-testing";
-import { automationTestingCourse } from "../../src/data/courses/automation-testing-course";
-import { advanceManualAutomationTestingCourse } from "../../src/data/courses/advance-manual-automation-testing";
-import { pythonCourse } from "../../src/data/courses/python-course";
-import { javaCourse } from "../../src/data/courses/java-course";
-import { machineLearningCourse } from "../../src/data/courses/machine-learning-course";
-import { generativeAiCourse } from "../../src/data/courses/generative-ai-course";
-import { dataScienceCourse } from "../../src/data/courses/data-science-course";
-import { aiCourse } from "../../src/data/courses/ai-course";
-import { machineLearningUsingPythonCourse } from "../../src/data/courses/machine-learning-using-python";
-import { dataVisualizationInRProgrammingCourse } from "../../src/data/courses/data-visualization-in-r-programming";
-import { promptEngineeringCourse } from "../../src/data/courses/prompt-engineering-course";
-import { dataAnalyticsCourse } from "../../src/data/courses/data-analytics";
-import { dataAnalyticsPythonCourse } from "../../src/data/courses/data-analytics-python";
-import { dataAnalyticsAndVisualizationCourse } from "../../src/data/courses/data-analytics-and-visualization";
-import { dataAnalyticsWithTableauCourse } from "../../src/data/courses/data-analytics-with-tableau";
-import { powerBiCourse } from "../../src/data/courses/power-bi-course";
-import { mastersInDataEngineeringCourse } from "../../src/data/courses/masters-in-data-engineering";
-import { digitalMarketingCourse } from "../../src/data/courses/digital-marketing-course";
-import { aiInDigitalMarketingCourse } from "../../src/data/courses/ai-in-digital-marketing";
-import { aiBootcampCourse } from "../../src/data/courses/ai-bootcamp";
-import { manualTestingCourse } from "../../src/data/courses/manual-testing-course";
-import { sdetCourse } from "../../src/data/courses/sdet-course";
+import { apiTestingCourse } from "../../src/data/courses/software-testing/api-testing";
+import { dbmsCourse } from "../../src/data/courses/software-testing/dbms-course";
+import { etlTestingCourse } from "../../src/data/courses/software-testing/etl-testing";
+import { advanceSoftwareTestingCourse } from "../../src/data/courses/software-testing/advance-software-testing";
+import { automationTestingCourse } from "../../src/data/courses/software-testing/automation-testing-course";
+import { advanceManualAutomationTestingCourse } from "../../src/data/courses/software-testing/advance-manual-automation-testing";
+import { pythonCourse } from "../../src/data/courses/software-testing/python-course";
+import { javaCourse } from "../../src/data/courses/software-testing/java-course";
+import { machineLearningCourse } from "../../src/data/courses/ds-ml/machine-learning-course";
+import { generativeAiCourse } from "../../src/data/courses/ds-ml/generative-ai-course";
+import { dataScienceCourse } from "../../src/data/courses/ds-ml/data-science-course";
+import { aiCourse } from "../../src/data/courses/ds-ml/ai-course";
+import { machineLearningUsingPythonCourse } from "../../src/data/courses/ds-ml/machine-learning-using-python";
+import { dataVisualizationInRProgrammingCourse } from "../../src/data/courses/ds-ml/data-visualization-in-r-programming";
+import { promptEngineeringCourse } from "../../src/data/courses/ai/prompt-engineering-course";
+import { dataAnalyticsCourse } from "../../src/data/courses/bi/data-analytics";
+import { dataAnalyticsPythonCourse } from "../../src/data/courses/bi/data-analytics-python";
+import { dataAnalyticsAndVisualizationCourse } from "../../src/data/courses/bi/data-analytics-and-visualization";
+import { dataAnalyticsWithTableauCourse } from "../../src/data/courses/bi/data-analytics-with-tableau";
+import { powerBiCourse } from "../../src/data/courses/bi/power-bi-course";
+import { mastersInDataEngineeringCourse } from "../../src/data/courses/bi/masters-in-data-engineering";
+import { digitalMarketingCourse } from "../../src/data/courses/digital-marketing/digital-marketing-course";
+import { aiInDigitalMarketingCourse } from "../../src/data/courses/digital-marketing/ai-in-digital-marketing";
+import { aiBootcampCourse } from "../../src/data/courses/digital-marketing/ai-bootcamp";
+import { manualTestingCourse } from "../../src/data/courses/software-testing/manual-testing-course";
+import { sdetCourse } from "../../src/data/courses/software-testing/sdet-course";
 const COURSE_SCHEMA_FILES = [
   [apiTestingCourse, "api"],
   [dbmsCourse, "dbms"],

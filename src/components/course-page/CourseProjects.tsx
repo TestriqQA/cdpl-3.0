@@ -5,7 +5,7 @@ import CtaButtons from "./parts/CtaButtons";
 import ContentBlocks from "./parts/ContentBlocks";
 import { CARD, CourseSection, Dot, GRID_GAP, IconTile, SPACE, SectionHeader, SectionOutro } from "./parts/Section";
 import { ICONS, tileColour } from "./parts/icons";
-import type { CourseProjects as Projects } from "@/types/coursePage";
+import type { CourseProjects as Projects } from "@/types/course-page";
 import type { SectionProps } from "./types";
 
 export default function CourseProjects({ id, tone, data, courseName, sourceName }: SectionProps<Projects>) {

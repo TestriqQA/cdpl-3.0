@@ -1,4 +1,4 @@
-import { mockCategories, MockCourse } from "@/data/mockTestData";
+import { mockCategories, MockCourse } from "@/data/mock-tests";
 
 export async function getCourseBySlug(slug: string): Promise<MockCourse | null> {
     // Simulate network delay

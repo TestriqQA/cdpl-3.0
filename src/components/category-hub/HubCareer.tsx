@@ -5,7 +5,7 @@ import CtaButtons from "@/components/course-page/parts/CtaButtons";
 import { CARD, CourseSection, GRID_GAP, IconTile, SPACE, SectionHeader, SectionOutro } from "@/components/course-page/parts/Section";
 import { tileColour } from "@/components/course-page/parts/icons";
 import type { SectionProps } from "@/components/course-page/types";
-import type { HubCareer as Career } from "@/types/categoryHub";
+import type { HubCareer as Career } from "@/types/category-hub";
 
 /** Career paths for the category: role, demand, salary, skills and where it leads. */
 export default function HubCareer({ id, tone, data, sourceName }: SectionProps<Career>) {

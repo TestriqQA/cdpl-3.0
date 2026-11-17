@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 
-import { buildLocationsHierarchy } from "@/data/courseData/buildLocationsHierarchy";
+import { buildLocationsHierarchy } from "@/lib/locations-hierarchy";
 import { generateLocationsPageAllSchemas } from "@/lib/schema-generators";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import JsonLd from "@/components/JsonLd";
 
 // Types
-import type { CourseData } from "@/types/courseData";
+import type { CourseData } from "@/types/course-data";
 
 // Your data (currently a Record<string, CourseData>)
-import { courseData } from "@/types/courseData";
+import { courseData } from "@/types/course-data";
 
 // Sections imported directly — next/dynamic(ssr:true) only added client Suspense
 // boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 import LocationsHeroSection from "@/components/sections/LocationsHeroSection";
 import HierarchicalLocationsSection from "@/components/sections/LocationsHierarchicalLocationsSection";
 import LocationsBenefitsSection from "@/components/sections/LocationsBenefitsSection";
-import LocationsCTASection from "@/components/sections/LocationsCTASection";
+import LocationsCtaSection from "@/components/sections/LocationsCtaSection";
 import LocationsServicesSection from "@/components/sections/LocationsServicesSection";
 
 /* --------------------------------- Metadata --------------------------------- */
@@ -103,7 +103,7 @@ export default function LocationsWeServePage() {
         <HierarchicalLocationsSection data={countriesData} />
         <LocationsServicesSection />
         <LocationsBenefitsSection />
-        <LocationsCTASection />
+        <LocationsCtaSection />
       </div>
     </>
   );

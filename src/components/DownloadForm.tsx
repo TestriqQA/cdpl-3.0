@@ -6,7 +6,7 @@ import { X, User, Mail, TrendingUp, CheckCircle2, Download } from 'lucide-react'
 import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from './ui/CustomFlag';
 
-import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
+import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/form-validation';
 
 // --- Types ---
 export interface DownloadFormValues {

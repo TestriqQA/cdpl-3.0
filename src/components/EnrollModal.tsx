@@ -7,7 +7,7 @@ import { X, User, Mail, CheckCircle2, Loader2, GraduationCap } from 'lucide-reac
 import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from './ui/CustomFlag';
 
-import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
+import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/form-validation';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { useRef } from 'react';
 

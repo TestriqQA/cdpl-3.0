@@ -2,7 +2,7 @@
 // boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 import MockTestHero from "@/components/mock-test/MockTestHero";
 import MockTestListing, { type MockCategorySummary } from "@/components/mock-test/MockTestListing";
-import { mockCategories } from "@/data/mockTestData";
+import { mockCategories } from "@/data/mock-tests";
 import { generateMockTestPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
@@ -63,7 +63,7 @@ export default function MockTestLandingPage() {
   });
 
   // The listing only needs names, slugs and question counts. Passing this
-  // summary (instead of the listing importing mockTestData itself) keeps the
+  // summary (instead of the listing importing data/mock-tests itself) keeps the
   // whole question bank out of the client bundle.
   const categories: MockCategorySummary[] = mockCategories.map((c) => ({
     id: c.id,

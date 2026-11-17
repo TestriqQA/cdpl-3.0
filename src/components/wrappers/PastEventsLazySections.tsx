@@ -31,8 +31,8 @@ const EventsPastEventsAllEventsSection = dynamic(
     }
 );
 
-const EventsPastEventsCTASection = dynamic(
-    () => import("@/components/sections/EventsPastEventsCTASection"),
+const EventsPastEventsCtaSection = dynamic(
+    () => import("@/components/sections/EventsPastEventsCtaSection"),
     {
         ssr: false,
     }
@@ -135,7 +135,7 @@ export default function PastEventsLazySections({
 
             {/* CTA - lower priority */}
             <div ref={ctaRef}>
-                {shouldLoadCTA && <EventsPastEventsCTASection />}
+                {shouldLoadCTA && <EventsPastEventsCtaSection />}
             </div>
         </>
     );

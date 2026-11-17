@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generatePlacementsPageAllSchemas, generateBreadcrumbSchema } from "@/lib/schema-generators";
-import { PLACEMENTS } from "@/lib/placementShared";
+import { PLACEMENTS } from "@/lib/placement-shared";
 import JsonLd from "@/components/JsonLd";
 import { getHiringPartners } from "@/lib/hiring-partners";
 
@@ -15,9 +15,9 @@ import PlacementsOffersTickerSection from "@/components/sections/PlacementsOffer
 import PlacementsFiltersGridSection from "@/components/sections/PlacementsFiltersGridSection";
 import PlacementsCompanyWallSection from "@/components/sections/PlacementsCompanyWallSection";
 import PlacementsSuccessStoriesCarousel from "@/components/sections/PlacementsSuccessStoriesCarousel";
-import PlacementsMentorCTASection from "@/components/sections/PlacementsMentorCTASection";
-import PlacementsFAQSection from "@/components/sections/PlacementsFAQSection";
-// import PlacementsNewsletterCTASection from "@/components/sections/PlacementsNewsletterCTASection";
+import PlacementsMentorCtaSection from "@/components/sections/PlacementsMentorCtaSection";
+import PlacementsFaqSection from "@/components/sections/PlacementsFaqSection";
+// import PlacementsNewsletterCtaSection from "@/components/sections/PlacementsNewsletterCtaSection";
 
 // ============================================================================
 // SEO METADATA - Enhanced for Placements Page
@@ -138,7 +138,7 @@ export default async function PlacementsPage() {
                     data-scroll-target="placements-mentor"
                 >
                     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <PlacementsMentorCTASection />
+                        <PlacementsMentorCtaSection />
                     </div>
                 </section>
 
@@ -146,7 +146,7 @@ export default async function PlacementsPage() {
                     className="w-full scroll-mt-[96px] md:scroll-mt-[104px] lg:scroll-mt-[112px]"
                     data-scroll-target="placements-faq"
                 >
-                    <PlacementsFAQSection />
+                    <PlacementsFaqSection />
                 </section>
 
                 <section
@@ -154,7 +154,7 @@ export default async function PlacementsPage() {
                     data-scroll-target="placements-newsletter"
                 >
                     {/* <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                        <PlacementsNewsletterCTASection />
+                        <PlacementsNewsletterCtaSection />
                     </div> */}
                 </section>
 

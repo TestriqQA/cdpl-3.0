@@ -15,7 +15,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import { getAllReviews } from "@/data/reviews/reviewsData";
+import { getAllReviews } from "@/data/reviews";
 import SafeAvatar from "@/components/sections/SafeAvatar";
 import { useSiteStats } from "@/components/stats/SiteStatsProvider";
 import { REVIEW_PROFILES } from "@/lib/seo-config";

@@ -1,5 +1,5 @@
 import CoursePage, { courseMetadata } from "@/components/course-page/CoursePage";
-import { machineLearningUsingPythonCourse } from "@/data/courses/machine-learning-using-python";
+import { machineLearningUsingPythonCourse } from "@/data/courses/ds-ml/machine-learning-using-python";
 
 export const metadata = courseMetadata(machineLearningUsingPythonCourse);
 

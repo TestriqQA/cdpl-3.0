@@ -6,9 +6,9 @@
 
 import { Fragment, type ReactNode } from "react";
 import { SiteStat } from "@/components/stats/SiteStatsProvider";
-import { escapeStars, unescapeStars } from "@/lib/richText";
+import { escapeStars, unescapeStars } from "@/lib/rich-text";
 
-export { stripMarkup } from "@/lib/richText";
+export { stripMarkup } from "@/lib/rich-text";
 
 const STAT_KEYS = ["rating", "ratingValue", "reviews", "studentsPlaced"] as const;
 type StatKey = (typeof STAT_KEYS)[number];

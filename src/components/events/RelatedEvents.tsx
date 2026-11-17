@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Calendar, MapPin, ArrowRight } from "lucide-react";
-import type { PastEvent } from "@/data/eventsData";
+import type { PastEvent } from "@/data/events";
 import NextImage from "next/image";
 
 interface RelatedEventsProps {

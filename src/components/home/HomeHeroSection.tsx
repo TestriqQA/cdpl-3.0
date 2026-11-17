@@ -25,7 +25,7 @@ import PhoneInput from '@/components/ui/PhoneNumberInput';
 
 import styles from '../ui/phone-input.module.css';
 import CustomFlag from '../ui/CustomFlag';
-import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/formValidation';
+import { validatePhone, validateFullName as validateFullNameLib } from '@/lib/form-validation';
 import { SiteStat } from "@/components/stats/SiteStatsProvider";
 
 // Import BrochureDownloadModal

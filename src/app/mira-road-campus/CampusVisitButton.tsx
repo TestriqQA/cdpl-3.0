@@ -6,7 +6,7 @@ import { CalendarCheck } from "lucide-react";
 
 // Same enquiry modal as the header's "Free Demo": posts to /api/contact and
 // then goes to the standard thank-you page.
-const EnquireModal = dynamic(() => import("@/components/Layout/EnquireModal"), { ssr: false });
+const EnquireModal = dynamic(() => import("@/components/layout/EnquireModal"), { ssr: false });
 
 export default function CampusVisitButton({
   source,

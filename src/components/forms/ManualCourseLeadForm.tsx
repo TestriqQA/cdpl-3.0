@@ -10,7 +10,7 @@ import { User, Mail, CheckCircle2, TrendingUp } from "lucide-react";
 import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '../ui/CustomFlag';
 
-import { validateFullName as validateFullNameLib, validatePhone } from '@/lib/formValidation';
+import { validateFullName as validateFullNameLib, validatePhone } from '@/lib/form-validation';
 
 export default function LeadForm({
   className = '',

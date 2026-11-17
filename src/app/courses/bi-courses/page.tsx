@@ -2,7 +2,7 @@ import CategoryHubPage, { hubMetadata } from "@/components/category-hub/Category
 import JsonLd from "@/components/JsonLd";
 import { generateBusinessIntelligenceCategoryPageSchema } from "@/lib/schema-generators";
 import { biHub } from "@/data/hubs/bi";
-import { SITE_STATS } from "@/lib/siteStats";
+import { SITE_STATS } from "@/lib/site-stats";
 
 export const metadata = hubMetadata(biHub);
 

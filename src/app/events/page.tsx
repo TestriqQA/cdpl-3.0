@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import type { ComponentProps } from "react";
 import { getEvents } from "@/lib/events";
-import { PAST_EVENTS_FAQS } from "@/data/pastEventsData";
+import { PAST_EVENTS_FAQS } from "@/data/faqs/events";
 import { generateMetadata } from "@/lib/metadata-generator";
 import { generateEventsPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";

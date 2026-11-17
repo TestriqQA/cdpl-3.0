@@ -1,4 +1,4 @@
-import { SITE_STATS, STAT_TEXT } from "@/lib/siteStats";
+import { SITE_STATS, STAT_TEXT } from "@/lib/site-stats";
 /**
  * ============================================================================
  * CENTRALIZED SEO CONFIGURATION FOR CDPL

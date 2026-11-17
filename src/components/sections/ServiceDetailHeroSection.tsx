@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Home, ChevronRight, Sparkles, CheckCircle2, Clock } from 'lucide-react';
 import type { ServiceClient } from '@/types/service';
 import RequestButton from '@/app/services/[slug]/RequestButton';
-import { getServiceIcon } from './serviceDetailShared';
+import { getServiceIcon } from './service-detail-shared';
 
 const DEFAULT_KEYWORDS = [
   'industry-relevant projects',

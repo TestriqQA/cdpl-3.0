@@ -5,7 +5,7 @@ import ContentBlocks from "@/components/course-page/parts/ContentBlocks";
 import CtaButtons from "@/components/course-page/parts/CtaButtons";
 import { CARD, CourseSection, SPACE, SectionHeader, SectionOutro } from "@/components/course-page/parts/Section";
 import type { SectionProps } from "@/components/course-page/types";
-import type { HubLearningPath } from "@/types/categoryHub";
+import type { HubLearningPath } from "@/types/category-hub";
 
 /**
  * The order to take a category's courses in. Each stage names its topics and

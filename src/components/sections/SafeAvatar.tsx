@@ -2,7 +2,7 @@
 "use client";
 import Image from "next/image";
 // NOTE: keeping only the constants you actually use right now.
-import { /* avatarFor, */ AVATAR_FALLBACK } from "@/data/reviews/reviewsData";
+import { /* avatarFor, */ AVATAR_FALLBACK } from "@/data/reviews";
 
 export default function SafeAvatar({
   name,

@@ -84,7 +84,7 @@ const CorporateRegistrationModal = () => {
   // Dynamic import or direct usage if we turn this into a client component with imports
   // Validation function wrapper
   const validateForm = async () => {
-    const { validateFullName, validateEmail, validatePhone, validateCompany, validateMessage } = await import('@/lib/formValidation');
+    const { validateFullName, validateEmail, validatePhone, validateCompany, validateMessage } = await import('@/lib/form-validation');
 
     const newErrors: Partial<Record<keyof FormData, string>> = {};
 

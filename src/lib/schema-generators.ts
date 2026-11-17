@@ -24,11 +24,11 @@ import {
   getWebsiteId,
   SEO_DEFAULTS,
 } from "./seo-config";
-import { courseCategories } from "@/data/headerData";
-import { CAMPUS_CITY } from "@/lib/cityTiers";
-import { CONTACT_FAQS } from "@/data/contactFaqs";
-import { PLACEMENTS_FAQS } from "@/data/placementsFaqs";
-import { CAREERS_FAQS } from "@/data/careersFaqs";
+import { courseCategories } from "@/data/courses/catalog";
+import { CAMPUS_CITY } from "@/lib/city-tiers";
+import { CONTACT_FAQS } from "@/data/faqs/contact";
+import { PLACEMENTS_FAQS } from "@/data/faqs/placements";
+import { CAREERS_FAQS } from "@/data/faqs/careers";
 
 // Type definitions for schema.org structured data
 type WithContext<T> = T & { "@context": string };
@@ -1382,7 +1382,7 @@ export function generateAllCoursesPageSchema(): WithContext<
     { name: "Courses", url: "/courses" },
   ]);
 
-  // 5. FAQPage Schema (Matches exactly with frontend FAQSection.tsx)
+  // 5. FAQPage Schema (Matches exactly with frontend FaqSection.tsx)
   const faqSchema = generateFAQSchema([
     {
       question: "What makes your courses different from other platforms?",

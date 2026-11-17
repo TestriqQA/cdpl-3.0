@@ -1,4 +1,4 @@
-import { getEventBySlug } from "@/data/eventsData";
+import { getEventBySlug } from "@/data/events";
 
 const event = getEventBySlug("test");
 console.log(event);

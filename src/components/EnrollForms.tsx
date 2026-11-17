@@ -41,7 +41,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ variants, onSubmit, classNam
         e.preventDefault();
 
         // Dynamic import validation to be consistent
-        const { validateFullName, validateEmail, validatePhone } = await import('@/lib/formValidation');
+        const { validateFullName, validateEmail, validatePhone } = await import('@/lib/form-validation');
 
         const nameError = validateFullName(form.name);
         const emailError = validateEmail(form.email);

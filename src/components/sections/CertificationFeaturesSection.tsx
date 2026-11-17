@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import { Globe, ShieldCheck, Zap } from "lucide-react";
-import { FAQSection } from "@/components/ui/FAQSection";
-import { VALIDATION_FAQS, VALIDATION_STEPS } from "@/data/certificateValidationFaqs";
+import { FaqSection } from "@/components/ui/FaqSection";
+import { VALIDATION_FAQS, VALIDATION_STEPS } from "@/data/faqs/certificate-validation";
 
 const FEATURES: { name: string; description: string; Icon: LucideIcon; tile: string }[] = [
     { name: "Instant Verification", description: "Real-time validation against our secure registry. Zero wait time.", Icon: Zap, tile: "bg-orange-100 text-orange-600" },
@@ -74,7 +74,7 @@ export default function CertificationFeaturesSection() {
                 </div>
             </section>
 
-            <FAQSection
+            <FaqSection
                 id="cert-faq"
                 title={<>Frequently Asked <span className="text-brand">Questions</span></>}
                 subtitle="Everything you need to know about verifying a CDPL, AAA or ACTD certificate."

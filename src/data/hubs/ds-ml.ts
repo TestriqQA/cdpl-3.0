@@ -10,7 +10,7 @@
 // the canonical /courses/... paths instead of the old flat URLs, which only
 // reached the pages through a 301.
 
-import type { CategoryHubContent } from "@/types/categoryHub";
+import type { CategoryHubContent } from "@/types/category-hub";
 import type { CourseCardIcon } from "@/components/courses/CourseCard";
 import { COURSES, type CourseSlug } from "@/data/courses/registry";
 

@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity'
 
 // BLG-133: Sanity-managed services (corporate training, STTP, faculty
 // development, internships, custom training, government training).
-// Replaces the hard-coded `trainingServices` array in src/data/servicesData.ts
+// Replaces the hard-coded `trainingServices` array in src/data/services.ts
 // so business-development can publish or retire offerings without an
 // engineering change.
 //

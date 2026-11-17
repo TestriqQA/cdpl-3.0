@@ -6,7 +6,7 @@ import { ContactMethodsSection } from '@/components/sections/ContactMethodSectio
 // boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 import { ContactOfficeMapSection } from '@/components/sections/ContactOfficeMapSection';
 import { ContactBookCallSection } from '@/components/sections/ContactBookCall';
-import { ContactFAQSection } from '@/components/sections/ContactFAQSection';
+import { ContactFaqSection } from '@/components/sections/ContactFaqSection';
 import ContactReviewSection from '@/components/sections/ContactReviewSection';
 
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
@@ -59,7 +59,7 @@ export default function ContactPage() {
         <ContactOfficeMapSection />
         <ContactReviewSection />
         <ContactBookCallSection />
-        <ContactFAQSection />
+        <ContactFaqSection />
       </div>
     </>
   );

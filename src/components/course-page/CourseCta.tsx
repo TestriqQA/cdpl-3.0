@@ -2,7 +2,7 @@ import { Heading, Rich } from "@/components/ui/Rich";
 import CtaButtons from "./parts/CtaButtons";
 import { ICONS } from "./parts/icons";
 import { GRID_GAP, SPACE, TONE_BG, type Tone } from "./parts/Section";
-import type { CourseCta as Cta } from "@/types/coursePage";
+import type { CourseCta as Cta } from "@/types/course-page";
 
 /**
  * Closing band in two tones: an orange top with the ask, and a black base

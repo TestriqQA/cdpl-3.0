@@ -2,7 +2,7 @@
 // Courses join COURSES as they move onto src/components/course-page; the
 // other course lists (header, footer, sitemap…) are pointed here later.
 
-import { courseCategories } from "@/data/headerData";
+import { courseCategories } from "@/data/courses/catalog";
 
 export const COURSE_CATEGORIES = {
   "software-testing": {

@@ -118,8 +118,8 @@ export interface SanityService {
 }
 
 // Live-jobs doc type, projected for /jobs/live-jobs + /jobs/live-jobs/[jobId].
-// Mirrors the static `Job` shape (src/lib/jobsData.ts); mapped back to it in
-// src/lib/liveJobs.ts so page output stays identical to the pre-migration build.
+// Mirrors the static `Job` shape (src/data/jobs.ts); mapped back to it in
+// src/lib/live-jobs.ts so page output stays identical to the pre-migration build.
 export interface SanityLiveJob {
     _id: string;
     slug?: string;

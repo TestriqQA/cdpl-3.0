@@ -1,6 +1,6 @@
 import { CheckCircle2, Target, Award } from 'lucide-react';
 import type { ServiceClient } from '@/types/service';
-import { ServiceSectionHeader } from './serviceDetailShared';
+import { ServiceSectionHeader } from './service-detail-shared';
 
 /**
  * Key Features and Benefits as two matching cards. Colours are literal class

@@ -1,5 +1,5 @@
 import CoursePage, { courseMetadata } from "@/components/course-page/CoursePage";
-import { dataAnalyticsWithTableauCourse } from "@/data/courses/data-analytics-with-tableau";
+import { dataAnalyticsWithTableauCourse } from "@/data/courses/bi/data-analytics-with-tableau";
 
 export const metadata = courseMetadata(dataAnalyticsWithTableauCourse);
 

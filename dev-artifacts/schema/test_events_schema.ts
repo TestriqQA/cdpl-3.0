@@ -1,8 +1,8 @@
 // Writes the events page JSON-LD next to this script, for checking.
 // Run from the repo root: npx tsx dev-artifacts/schema/test_events_schema.ts
 import { generateEventsPageAllSchemas } from '../../src/lib/schema-generators';
-import { pastEvents } from '../../src/data/eventsData';
-import { PAST_EVENTS_FAQS } from '../../src/data/pastEventsData';
+import { pastEvents } from '../../src/data/events';
+import { PAST_EVENTS_FAQS } from '../../src/data/faqs/events';
 import fs from 'fs';
 import path from 'path';
 

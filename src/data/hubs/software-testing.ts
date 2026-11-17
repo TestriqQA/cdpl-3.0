@@ -6,7 +6,7 @@
 // searchers to /software-testing-course-in-mumbai, so the two pages don't
 // compete for "… in mumbai" searches.
 
-import type { CategoryHubContent } from "@/types/categoryHub";
+import type { CategoryHubContent } from "@/types/category-hub";
 import type { CourseCardIcon } from "@/components/courses/CourseCard";
 
 const ST = "/courses/software-testing-course";

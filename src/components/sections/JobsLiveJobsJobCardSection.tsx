@@ -17,7 +17,7 @@ import {
   Share2,
   Tag,
 } from "lucide-react";
-import type { Job } from "@/lib/jobsData";
+import type { Job } from "@/data/jobs";
 
 const formatDate = (iso?: string) =>
   iso
