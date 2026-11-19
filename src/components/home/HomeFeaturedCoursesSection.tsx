@@ -309,7 +309,7 @@ const COURSES: Course[] = [
     link: '/courses/bi-courses/data-analytics-and-visualization',
     icon: 'FileSpreadsheet',
     features: ['Excel Data Analytics', 'Data Visualization Excel', 'Excel Analytics Mastery'],
-    syllabusLink: 'https://www.cinutedigital.com/downloads/advanced-excel-for-data-analytics-&-visualization.pdf',
+    syllabusLink: 'https://www.cinutedigital.com/downloads/advanced-excel-for-Data-analytics-&-visualization.pdf',
   },
   {
     id: 20,

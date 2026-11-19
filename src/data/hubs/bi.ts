@@ -52,7 +52,7 @@ const RAW_COURSES = [
         titleAttribute: 'Advanced Excel for Data Analytics & Visualization Overview',
         icon: 'BarChart3',
         features: ['Excel Data Analytics', 'Data Visualization Excel', 'Excel Analytics Mastery'],
-        syllabusLink: 'https://www.cinutedigital.com/downloads/advanced-excel-for-data-analytics-&-visualization.pdf',
+        syllabusLink: 'https://www.cinutedigital.com/downloads/advanced-excel-for-Data-analytics-&-visualization.pdf',
     },
     {
         id: 20,

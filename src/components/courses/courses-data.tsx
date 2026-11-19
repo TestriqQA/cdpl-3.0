@@ -390,7 +390,7 @@ export const coursesData: Category[] = [
                 icon: 'BarChart3',
                 features: ['Excel Data Analytics', 'Data Visualization Excel', 'Excel Analytics Mastery'],
                 skills: ['Excel', 'Data Analytics', 'Data Visualization'],
-                syllabusLink: 'https://www.cinutedigital.com/downloads/advanced-excel-for-data-analytics-&-visualization.pdf',
+                syllabusLink: 'https://www.cinutedigital.com/downloads/advanced-excel-for-Data-analytics-&-visualization.pdf',
                 price: "$199"
             },
             {
