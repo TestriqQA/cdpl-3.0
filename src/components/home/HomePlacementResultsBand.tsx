@@ -1,7 +1,8 @@
-// Server Component: no client JS.
+// Server Component; only the numbers are a client island (CountUp).
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import CountUp from '@/components/ui/CountUp';
 
 /**
  * HomePlacementResultsBand - placement numbers + "View All Success Stories".
@@ -21,17 +22,14 @@ const STATS = [
 
 export default function HomePlacementResultsBand() {
   return (
-    <section aria-label="Placement results" className="bg-white pb-10 pt-2 lg:pb-16">
+    <section aria-label="Placement results" className="pb-10 pt-2 lg:pb-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#c96400] via-[#e67a00] to-brand p-6 text-white shadow-2xl sm:p-8 lg:p-10">
-          <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-amber-300 opacity-30 blur-3xl" />
-          <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 left-1/3 h-64 w-64 rounded-full bg-white opacity-10 blur-3xl" />
-
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#dc7000] via-[#e67a00] to-brand p-6 text-white shadow-2xl sm:p-8 lg:p-10">
           <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="grid flex-1 grid-cols-2 gap-x-6 gap-y-6 md:grid-cols-4">
               {STATS.map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-3xl font-extrabold tracking-tight md:text-4xl">{stat.number}</p>
+                  <p className="text-3xl font-extrabold tracking-tight tabular-nums md:text-4xl"><CountUp value={stat.number} /></p>
                   <p className="mt-1 text-sm font-medium text-orange-50 md:text-base">{stat.label}</p>
                 </div>
               ))}

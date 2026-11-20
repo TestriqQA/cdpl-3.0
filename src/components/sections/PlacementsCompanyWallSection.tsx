@@ -227,11 +227,14 @@ type Props = {
    * of the curated local list. Entries without a `logoUrl` are skipped.
    */
   sanityPartners?: SanityHiringPartner[];
+  /** Replaces the default heading, so a page can match its own heading style. */
+  heading?: React.ReactNode;
 };
 
 export default function PlacementsCompanyWallSection({
   contained = false,
   sanityPartners,
+  heading,
 }: Props) {
   const partners = useMemo<Partner[]>(() => {
     // Prefer the Sanity-managed list when it has usable entries.
@@ -279,9 +282,11 @@ export default function PlacementsCompanyWallSection({
   return (
     <section className="w-full py-10 sm:py-12" aria-label="CDPL hiring partners">
       <Wrapper>
-        <h2 className="text-center text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl">
-          Hiring <span className="text-brand">Partners</span>
-        </h2>
+        {heading ?? (
+          <h2 className="text-center text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl">
+            Hiring <span className="text-brand">Partners</span>
+          </h2>
+        )}
 
         <div className="mt-8 space-y-4">
           {/* Row 1: right → left */}

@@ -150,6 +150,33 @@ a[role="button"] {
   /* teal-700 */
 }
 
+/* Page scrollbar: thin and on-brand. Orange thumb on a visible light-grey
+   rail (so the bar never disappears into the page), brand orange on hover.
+   Only the root (page) scrollbar is styled, so inner scroll areas keep their
+   own look. Firefox gets the standard thin bar;
+   Chrome/Edge/Safari use the webkit rules (Chrome 121+ would let
+   scrollbar-width override them, hence the @supports guard). */
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #fb923c #e2e8f0;
+  }
+}
+html::-webkit-scrollbar {
+  width: 10px;
+}
+html::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+html::-webkit-scrollbar-thumb {
+  background: #fb923c;
+  border: 2px solid #e2e8f0;
+  border-radius: 9999px;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: #ff8c00;
+}
+
 /* Thin horizontal scrollbar for overflowing pill rows (sticky course nav). */
 /* Standard props only where ::-webkit-scrollbar is unsupported (Firefox):
    Chrome 121+ lets scrollbar-width override the slimmer webkit styles. */
@@ -308,3 +335,32 @@ main > section:not(:first-child),
   75%  { transform: translateY(6px)   rotate(2deg); }
   100% { transform: translateY(0)     rotate(-2deg); }
 }
+
+/* FAQ accordion (components/ui/FaqSection): soft open and close.
+   The height eases where ::details-content is supported (Chromium 131+);
+   other browsers open instantly as before. The answer text fades in
+   everywhere. interpolate-size sits on .faq-item only, so height:auto
+   transitions elsewhere on the site are unaffected. */
+.faq-item {
+  interpolate-size: allow-keywords;
+}
+.faq-item::details-content {
+  block-size: 0;
+  overflow-y: clip;
+  transition: block-size 300ms ease, content-visibility 300ms allow-discrete;
+}
+.faq-item[open]::details-content {
+  block-size: auto;
+}
+@keyframes cdpl-faq-answer-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+.faq-item[open] .faq-answer {
+  animation: cdpl-faq-answer-in 300ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-item::details-content { transition: none; }
+  .faq-item[open] .faq-answer { animation: none; }
+}
+

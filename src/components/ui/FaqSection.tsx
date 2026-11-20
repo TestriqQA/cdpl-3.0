@@ -97,7 +97,7 @@ export function FaqSection({ id, title, subtitle, eyebrow = "FAQs", items, categ
               const showCategory = filter === "All" && !!item.category;
               return (
                 // Same `name` makes the accordion exclusive: opening one closes the others.
-                <details key={item.question} name={id} open={i === 0} className="group">
+                <details key={item.question} name={id} open={i === 0} className="faq-item group">
                   <summary className="flex cursor-pointer list-none items-start gap-3 px-4 py-3.5 transition hover:bg-slate-50 sm:px-6 sm:py-5 [&::-webkit-details-marker]:hidden">
                     <div className="min-w-0 flex-1">
                       {showCategory && (
@@ -107,12 +107,12 @@ export function FaqSection({ id, title, subtitle, eyebrow = "FAQs", items, categ
                     </div>
                     <span
                       aria-hidden="true"
-                      className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border border-slate-300 text-slate-600 transition group-open:rotate-45 group-open:border-brand group-open:bg-brand group-open:text-white ${showCategory ? "mt-3" : "mt-0.5"}`}
+                      className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border border-slate-300 text-slate-600 transition duration-300 ease-out group-open:rotate-45 group-open:border-brand group-open:bg-brand group-open:text-white ${showCategory ? "mt-3" : "mt-0.5"}`}
                     >
                       <Plus className="h-4 w-4" />
                     </span>
                   </summary>
-                  <p className="px-4 pb-4 text-[15px] leading-7 text-slate-600 sm:px-6 sm:pb-5 sm:text-base">
+                  <p className="faq-answer px-4 pb-4 text-[15px] leading-7 text-slate-600 sm:px-6 sm:pb-5 sm:text-base">
                     <Rich text={item.answer} />
                   </p>
                 </details>
@@ -122,7 +122,7 @@ export function FaqSection({ id, title, subtitle, eyebrow = "FAQs", items, categ
 
           <div className="border-t border-slate-200 bg-brand/5 px-4 py-5 text-center sm:px-6 sm:py-6">
             <p className="font-semibold text-slate-900">Still have questions?</p>
-            <p className="mt-0.5 text-sm text-slate-600">Our advisors can help with courses, careers, and financing.</p>
+            <p className="mt-0.5 text-sm text-slate-600">Please contact our team for further assistance.</p>
             <ul className="mt-4 flex flex-wrap justify-center gap-2">
               {CONTACT_LINKS.map(({ label, href, Icon, tile, external }) => (
                 <li key={label}>

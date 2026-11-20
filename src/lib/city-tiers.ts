@@ -66,6 +66,35 @@ export const TIER_1_CITIES = [
 
 export type Tier1City = (typeof TIER_1_CITIES)[number];
 
+/**
+ * City pages that may be indexed on their own, without promoting their whole
+ * city to Tier 1.
+ *
+ * Mira Road is the campus city, so its pages are the ones worth ranking. It is
+ * listed slug-by-slug rather than added to TIER_1_CITIES because Tier 1 is a
+ * statement about measured city-level search demand, which Mira Road does not
+ * have - its pages earn the index on the strength of the campus being real,
+ * not on query volume. Per-slug entries also keep each page a separate
+ * decision, so one is only opened when its content is ready for it.
+ *
+ * All five delivered course families are listed. They were checked against one
+ * another first: 8-26% pairwise overlap on 5-word shingles, 56-81% unique copy
+ * each, and the ~16% they share is CTA and course-card chrome - so they do not
+ * cannibalise each other. Each one does still overlap heavily with its /mumbai
+ * twin (the data-science page is 83% contained in it), which is the conflict to
+ * watch if Mumbai rankings move.
+ *
+ * An excluded family is still excluded: listing such a slug here has no
+ * effect, because a course CDPL does not deliver must never rank.
+ */
+export const INDEXABLE_SLUG_OVERRIDES: readonly string[] = [
+    'data-science-course-in-mira-road',
+    'software-testing-course-in-mira-road',
+    'artificial-intelligence-course-in-mira-road',
+    'business-intelligence-course-in-mira-road',
+    'digital-marketing-course-in-mira-road',
+];
+
 /** Course-family prefixes used by the city slugs, e.g. `data-science-course-in-pune`. */
 const SLUG_SUFFIX_RE = /-courses?-in-(.+)$/;
 const SLUG_FAMILY_RE = /^(.+?)-courses?-in-/;
@@ -119,12 +148,17 @@ export function getFamilyFromSlug(slug: string): string | undefined {
 
 /** Is this city page allowed in Google's index? */
 export function isTier1Slug(slug: string): boolean {
-    const city = getCityFromSlug(slug);
-    if (!city) return false;
-    if (!(TIER_1_CITIES as readonly string[]).includes(city)) return false;
+    const normalised = slug.toLowerCase();
 
-    const family = getFamilyFromSlug(slug);
+    const city = getCityFromSlug(normalised);
+    if (!city) return false;
+
+    // Checked before the override so an explicitly listed slug can never
+    // resurrect a retired course family.
+    const family = getFamilyFromSlug(normalised);
     if (family && (EXCLUDED_FAMILIES as readonly string[]).includes(family)) return false;
 
-    return true;
+    if (INDEXABLE_SLUG_OVERRIDES.includes(normalised)) return true;
+
+    return (TIER_1_CITIES as readonly string[]).includes(city);
 }
