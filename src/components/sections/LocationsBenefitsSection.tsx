@@ -1,111 +1,41 @@
 // src/components/sections/LocationsBenefitsSection.tsx
-"use client";
+import type { LucideIcon } from "lucide-react";
+import { Briefcase, Globe2, Layers, Smartphone } from "lucide-react";
 
-import type { ComponentType } from "react";
-import {
-  Globe2,
-  Briefcase,
-  Layers,
-  Smartphone,
-} from "lucide-react";
+const BENEFITS: { Icon: LucideIcon; title: string; desc: string; tile: string }[] = [
+  { Icon: Globe2, title: "Nationwide Reach", desc: "Mira Road campus plus live-online batches anywhere in India.", tile: "bg-brand" },
+  { Icon: Briefcase, title: "92% Placement", desc: "Job assistance in local tech hubs.", tile: "bg-emerald-600" },
+  { Icon: Layers, title: "Flexible Modes", desc: "Online, offline, hybrid learning options.", tile: "bg-sky-600" },
+  { Icon: Smartphone, title: "Mobile-First", desc: "Access materials anytime, anywhere.", tile: "bg-violet-600" },
+];
 
-type IconType = ComponentType<{ className?: string }>;
-
-type Benefit = { icon: IconType; title: string; desc: string };
-
-export default function LocationsBenefitsSection({
-  sectionClassName = "",
-  containerClassName = "",
-}: {
-  /** Extra classes for the full-width outer section */
-  sectionClassName?: string;
-  /** Extra classes appended to the constrained container */
-  containerClassName?: string;
-}) {
-  const benefits: Benefit[] = [
-    { icon: Globe2, title: "Nationwide Reach", desc: "Courses in 50+ cities across 5 states." },
-    { icon: Briefcase, title: "92% Placement", desc: "Job assistance in local tech hubs." },
-    { icon: Layers, title: "Flexible Modes", desc: "Online, offline, hybrid learning options." },
-    { icon: Smartphone, title: "Mobile-First", desc: "Access materials anytime, anywhere." },
-  ];
-
-  // Clean, soft, modern palettes per card (in order)
-  const palettes = [
-    // Indigo → Purple
-    "bg-gradient-to-br from-indigo-50 to-purple-50 ring-indigo-100",
-    // Emerald → Teal
-    "bg-gradient-to-br from-emerald-50 to-teal-50 ring-emerald-100",
-    // Sky → Cyan
-    "bg-gradient-to-br from-sky-50 to-cyan-50 ring-sky-100",
-    // Amber → Rose
-    "bg-gradient-to-br from-amber-50 to-rose-50 ring-amber-100",
-  ] as const;
-
-  // Matching icon accent chips (subtle, airy)
-  const chipRings = [
-    "ring-indigo-200",
-    "ring-emerald-200",
-    "ring-sky-200",
-    "ring-amber-200",
-  ] as const;
-
-  const titleText = [
-    "text-indigo-900",
-    "text-emerald-900",
-    "text-sky-900",
-    "text-amber-900",
-  ] as const;
-
-  const descText = [
-    "text-indigo-700/90",
-    "text-emerald-700/90",
-    "text-sky-700/90",
-    "text-amber-700/90",
-  ] as const;
-
+/** Why learners pick us, as four cards. Server component. */
+export default function LocationsBenefitsSection() {
   return (
-    <section className={`w-full ${sectionClassName}`}>
-      {/* Constrained container as requested */}
-      <div className={`mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 ${containerClassName}`}>
-        <div className="grid gap-6 text-center md:grid-cols-4">
-          <h2 className="col-span-full text-3xl font-bold text-gray-900">
-            Why Choose Our Locations?
+    <section aria-labelledby="locations-benefits-heading" className="bg-slate-50 py-12 lg:py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-10 max-w-3xl text-center lg:mb-12">
+          <span className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-brand">
+            Why CDPL
+          </span>
+          <h2 id="locations-benefits-heading" className="mt-4 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
+            Why choose our <span className="text-brand">locations</span>?
           </h2>
+        </div>
 
-          {benefits.map((b, i) => {
-            const Palette = palettes[i % palettes.length];
-            const ChipRing = chipRings[i % chipRings.length];
-            const TitleClr = titleText[i % titleText.length];
-            const DescClr = descText[i % descText.length];
-            const Icon = b.icon;
-
-            return (
-              <div
-                key={b.title}
-                className={[
-                  "group rounded-2xl p-6 shadow-sm transition-all",
-                  "hover:shadow-lg hover:-translate-y-0.5",
-                  "ring-1", // pairs with palette ring-*-100
-                  Palette,
-                ].join(" ")}
-              >
-                <div
-                  className={[
-                    "mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl",
-                    "bg-white/70 backdrop-blur",
-                    "ring-1", ChipRing,
-                    "shadow-sm",
-                  ].join(" ")}
-                  aria-hidden="true"
-                >
-                  <Icon className="h-7 w-7 text-gray-800/90" />
-                </div>
-
-                <h3 className={`mb-2 font-semibold ${TitleClr}`}>{b.title}</h3>
-                <p className={`mx-auto max-w-[22ch] ${DescClr}`}>{b.desc}</p>
-              </div>
-            );
-          })}
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {BENEFITS.map(({ Icon, title, desc, tile }) => (
+            <div
+              key={title}
+              className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <span className={`mx-auto grid h-12 w-12 place-items-center rounded-xl text-white ${tile}`} aria-hidden="true">
+                <Icon className="h-6 w-6" />
+              </span>
+              <h3 className="mt-4 font-bold text-slate-900">{title}</h3>
+              <p className="mx-auto mt-2 max-w-[24ch] text-sm leading-6 text-slate-600">{desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

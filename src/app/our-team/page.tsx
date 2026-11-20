@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { teamData, trainers, teamLeaders } from "@/app/our-team/data";
+import { industryMentors, teamData, trainers, teamLeaders } from "@/app/our-team/data";
 import TeamCultureSection from "@/components/sections/TeamCultureSection";
 import TeamDirectory from "@/components/sections/TeamDirectorySection";
 import TeamHeroSection from "@/components/sections/TeamHeroSection";
@@ -72,7 +72,19 @@ export default function Page() {
         <TeamHeroSection />
         <TeamLeadershipSpotlight data={teamData} />
         <TeamTrainersSection trainers={trainers} />
-        <TeamDirectory data={teamData} />
+        <TeamDirectory
+          data={industryMentors}
+          sectionId="industry-mentors"
+          heading={<>Meet Our <span className="text-brand">Industry Mentors</span> at Cinute Digital</>}
+          listName="Cinute Digital Industry Mentors"
+        />
+        <TeamDirectory
+          data={teamData}
+          heading={<>Our <span className="text-brand">Team</span></>}
+          intro="The HR and IT administration team who keep Cinute Digital running for our learners and mentors."
+          listName="Cinute Digital Team"
+          staff
+        />
         <TeamCultureSection />
 
       </div>

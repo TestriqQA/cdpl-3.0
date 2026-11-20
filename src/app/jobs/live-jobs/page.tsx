@@ -1,7 +1,7 @@
 // SERVER COMPONENT — Live Jobs (CDPL)
 import type { Metadata } from "next";
-import type { Job } from "@/lib/jobsData";
-import { getLiveJobs } from "@/lib/liveJobs";
+import type { Job } from "@/data/jobs";
+import { getLiveJobs } from "@/lib/live-jobs";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateLiveJobsPageAllSchemas, generateBreadcrumbSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
@@ -16,7 +16,7 @@ import { JobsLiveJobsListingSection } from "@/components/sections/JobsLiveJobsLi
 import JobsLiveJobsWhyWePostJobsSection from "@/components/sections/LiveJobsLiveJobsWhyWePostJobsSection";
 import JobsLiveJobsTestimonialSection from "@/components/sections/JobsLiveJobsTestimonialSection";
 import JobsLiveJobsReviewSection from "@/components/sections/JobsLiveJobsReviewSection";
-import { JobsLiveJobsSubscribeCTASection } from "@/components/sections/JobsLiveJobsSubscribeCTASection";
+import { JobsLiveJobsSubscribeCtaSection } from "@/components/sections/JobsLiveJobsSubscribeCtaSection";
 
 // BLG-035: per-job detail view moved to /jobs/live-jobs/[jobId]. This route
 // is now strictly the listing — no more searchParams branching.
@@ -45,7 +45,7 @@ const DEFAULT_BANNER = "/og-images/jobs-live-jobs-og.webp";
 
 // ISR: keep the listing fresh from Sanity (revalidate every 60s); the
 // /api/revalidate webhook refreshes it instantly on publish. Sanity jobs are
-// merged with the static JOBS seed — see src/lib/liveJobs.ts.
+// merged with the static JOBS seed — see src/lib/live-jobs.ts.
 export const revalidate = 60;
 
 export default async function Page() {
@@ -77,18 +77,11 @@ export default async function Page() {
   // field (the fabricated validThrough, the guessed postcodes) across two URLs.
 
   return (
-    <div className="bg-white text-slate-900 relative">
+    <div className="bg-white text-slate-900">
       {schemas.map((schema: any, index: number) => (
         <JsonLd key={`jobs-schema-${index}`} id={`jobs-schema-${index}`} schema={schema} />
       ))}
       <JsonLd id="live-jobs-breadcrumb" schema={breadcrumbSchema} />
-
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(to bottom, #f8fafc, #ffffff 30%)" }}
-        />
-      </div>
 
       <JobsLiveJobsJobsHeroSection />
 
@@ -100,7 +93,7 @@ export default async function Page() {
       <JobsLiveJobsWhyWePostJobsSection />
       <JobsLiveJobsTestimonialSection />
       <JobsLiveJobsReviewSection />
-      <JobsLiveJobsSubscribeCTASection />
+      <JobsLiveJobsSubscribeCtaSection />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { PastEvent } from "@/data/eventsData";
+import { PastEvent } from "@/data/events";
 import { Image as ImageIcon, ZoomIn } from "lucide-react";
 
 interface EventGalleryProps {

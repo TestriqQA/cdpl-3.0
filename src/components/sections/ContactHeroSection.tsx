@@ -9,7 +9,7 @@ const ContactHeroForm = dynamic(() => import('@/components/forms/ContactHeroForm
   ssr: false,
   // The heading moved inside the form (it changes between the form's two
   // steps), so the placeholder now paints it too. Without this the panel
-  // rendered headless until the chunk arrived — a visible jump on a client-only
+  // rendered headless until the chunk arrived - a visible jump on a client-only
   // component this far up the page.
   loading: () => (
     <div className="min-h-[400px] w-full">
@@ -45,18 +45,6 @@ export function ContactHeroSection() {
             willChange: "transform",
           }}
         />
-        {/* subtle grid overlay ABOVE white, BELOW content */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 z-0 opacity-[0.06]"
-          style={{
-            backgroundImage:
-              "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)",
-            backgroundSize: "36px 36px",
-            maskImage: "radial-gradient(80% 60% at 50% 0%, black 40%, transparent 100%)",
-            WebkitMaskImage: "radial-gradient(80% 60% at 50% 0%, black 40%, transparent 100%)",
-          }}
-        />
 
 
         {/* CONTENT on top */}
@@ -83,11 +71,8 @@ export function ContactHeroSection() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-10 items-start">
             {/* Left column: Main content + Form on mobile */}
             <div className="md:col-span-6 lg:col-span-7 flex flex-col justify-start md:pt-1">
-              <span className="md:inline-flex text-center w-fit items-center gap-2 rounded-full border border-sky-200/70 bg-white/70 px-3 py-1 text-[11px] font-medium text-sky-700 shadow-sm backdrop-blur">
-                🎓 Industry-recognized • ⚡ Fast Response <span className="opacity-70">under 24 hrs</span>
-              </span>
 
-              <h1 className="mt-4 text-4xl md:text-5xl font-extrabold leading-tight text-slate-700">
+              <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-slate-700">
                 Contact <span className="text-brand">CDPL (Cinute Digital)</span> - Start Your Tech Career
               </h1>
 
@@ -218,7 +203,7 @@ export function ContactHeroSection() {
             <div className="hidden md:block md:col-span-6 lg:col-span-5 relative">
               {/* gradient outer skin + 1px border */}
               <div className="rounded-3xl p-[1px] bg-gradient-to-br from-sky-100/70 via-indigo-100/60 to-orange-100/70 shadow-2xl">
-                {/* inner glass panel — constrained width */}
+                {/* inner glass panel - constrained width */}
                 <div className="rounded-[calc(1.5rem-1px)] backdrop-blur p-6 sm:p-8 w-full md:max-w-md lg:max-w-sm xl:max-w-md">
                   {/* Heading and sub-heading now live inside ContactHeroForm:
                       the form is two-step and both lines change on step 2. */}

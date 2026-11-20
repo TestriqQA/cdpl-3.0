@@ -10,7 +10,7 @@ import {
   validateFullName as validateFullNameLib,
   validateEmail as validateEmailLib,
   validatePhone as validatePhoneLib
-} from '@/lib/formValidation';
+} from '@/lib/form-validation';
 import { CheckCircle2, User, Mail, Download } from 'lucide-react';
 
 interface BrochureDownloadFormProps {

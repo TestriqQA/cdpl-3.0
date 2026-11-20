@@ -62,7 +62,7 @@ export default function EventsPastEventsAllEventsSection({
     setIsLoadingMore(true);
     try {
       // Lazy load the full data chunk (separate from main bundle)
-      const { pastEvents } = await import("@/data/eventsData");
+      const { pastEvents } = await import("@/data/events");
 
       // Prune/Map it to match AllEvent shape (Client-side pruning)
       // We must match the transformation logic from page.tsx approx

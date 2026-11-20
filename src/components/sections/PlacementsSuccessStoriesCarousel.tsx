@@ -8,7 +8,7 @@ const STORIES: Story[] = [
   { name: "Dakshali Merya", role: "Tech Mahindra · QA", text: "Hands-on QA practice + mock interviews made offer-day feel easy.", src: "/placements/Dakshali Merya.jpg" },
   { name: "Sheetal Singh", role: "Accenture · QA", text: "Structured QA sprints and feedback loops boosted my interview confidence.", src: "/placements/Sheetal Singh.jpg" },
   { name: "Shrikanth Suri", role: "eClerx · QA", text: "Bug-hunting drills and real projects helped me crack eClerx.", src: "/placements/Shrikanth Suri.jpg" },
-  { name: "Kartik Bomble", role: "JM Financial · QA", text: "Test design + scenario writing clicked for me-sealed the JM offer.", src: "/placements/Kartik Bomble.jpg" },
+  { name: "Kartik Bomble", role: "JM Financial · QA", text: "Test design + scenario writing clicked for me and sealed the JM offer.", src: "/placements/Kartik Bomble.jpg" },
   { name: "Bhagyesh Mahadik", role: "Tech Mahindra · QA", text: "From basics to job-ready quickly with focused QA mentoring.", src: "/placements/Bhagyesh Mahadik.jpg" },
   { name: "Latesh Kamble", role: "Testriq · QA", text: "Automation primers and reviews turned interviews into conversations.", src: "/placements/Latesh Kamble.jpg" },
   { name: "Tejal More", role: "i-XL · QA", text: "Portfolio-ready test cases and clarity on SDLC gave me the edge.", src: "/placements/Tejal More.jpg" },
@@ -35,16 +35,6 @@ const STORIES: Story[] = [
   { name: "Shrey Gupta", role: "Rendered Ideas · QA", text: "Portfolio reviews and mocks helped me convert quickly.", src: "/placements/Shrey Gupta.jpg" },
 ];
 
-/** Softer, eye-friendly skins (reduced alpha + wider spacing) */
-const CARD_SKINS: { tint: string; overlay: string }[] = [
-  { tint: "rgba(255,140,0,0.08)", overlay: "repeating-linear-gradient(45deg, rgba(255,140,0,.06) 0 1px, transparent 1px 16px)" }, // brand orange
-  { tint: "rgba(14,165,233,0.08)", overlay: "repeating-linear-gradient(-45deg, rgba(14,165,233,.06) 0 1px, transparent 1px 18px)" }, // sky
-  { tint: "rgba(157,123,255,0.08)", overlay: "repeating-linear-gradient(90deg, rgba(157,123,255,.06) 0 1px, transparent 1px 20px)" }, // violet
-  { tint: "rgba(16,185,129,0.08)", overlay: "repeating-linear-gradient(30deg, rgba(16,185,129,.06) 0 1px, transparent 1px 18px)" }, // emerald
-  { tint: "rgba(236,72,153,0.08)", overlay: "repeating-linear-gradient(135deg, rgba(236,72,153,.06) 0 1px, transparent 1px 20px)" }, // rose
-  { tint: "rgba(245,158,11,0.08)", overlay: "repeating-linear-gradient(60deg, rgba(245,158,11,.06) 0 1px, transparent 1px 18px)" }, // amber
-];
-
 type Props = { contained?: boolean };
 
 /** Allow custom CSS var --cdplDur without using `any` */
@@ -62,7 +52,7 @@ export default function PlacementsSuccessStoriesCarousel({ contained = false }: 
     "flex gap-5 w-max [animation:cdpl-marquee_var(--cdplDur)_linear_infinite] hover:[animation-play-state:paused] focus-within:[animation-play-state:paused]";
 
   const cardClasses =
-    "relative shrink-0 w-[260px] sm:w-[300px] lg:w-[340px] rounded-2xl border border-slate-200 bg-white shadow-[0_1px_0_rgba(0,0,0,0.03)] transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-md overflow-hidden";
+    "relative shrink-0 w-[260px] sm:w-[300px] lg:w-[340px] rounded-2xl border border-orange-100 bg-white shadow-sm transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-md overflow-hidden";
 
   const Wrapper = ({ children }: { children: ReactNode }) =>
     contained ? <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{children}</div> : <>{children}</>;
@@ -70,9 +60,11 @@ export default function PlacementsSuccessStoriesCarousel({ contained = false }: 
   return (
     <section aria-label="CDPL Success Stories" className="w-full py-10 sm:py-12">
       <Wrapper>
-        <div className="mb-5 sm:mb-6">
-          <h3 className="text-lg font-semibold text-slate-900">Success Stories</h3>
-          <p className="mt-1 text-sm text-slate-600 sm:text-base">
+        <div className="mb-8 text-center">
+          <h2 className="text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl">
+            Success <span className="text-brand">Stories</span>
+          </h2>
+          <p className="mt-3 text-base text-slate-600">
             Real outcomes from CDPL learners across QA, Data, Full-Stack and Cloud/DevOps.
           </p>
         </div>
@@ -85,25 +77,15 @@ export default function PlacementsSuccessStoriesCarousel({ contained = false }: 
           {/* Marquee track — SLOWER via CSS var */}
           <div>
             <div className={trackClasses} style={trackStyle}>
-              {SLIDES.map((s, i) => {
-                const skin = CARD_SKINS[i % CARD_SKINS.length];
-                return (
+              {SLIDES.map((s, i) => (
                   <article key={`${s.name}-${i}`} className={cardClasses}>
-                    {/* Base tint (softened) */}
-                    <span aria-hidden className="absolute inset-0" style={{ backgroundColor: skin.tint }} />
-                    {/* Subtle pattern overlay (very low opacity) */}
-                    <span
-                      aria-hidden
-                      className="absolute inset-0 opacity-20"
-                      style={{ backgroundImage: skin.overlay }}
-                    />
-                    {/* Soft inner ring for polish */}
-                    <span aria-hidden className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/5" />
+                    <span aria-hidden className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#ff8c00] via-[#ffb558] to-[#ffd19e]" />
+                    <Quote aria-hidden className="pointer-events-none absolute -bottom-4 -right-2 h-24 w-24 rotate-180 text-orange-50" />
 
                     {/* Content */}
                     <div className="relative p-5">
                       <div className="flex items-center gap-3">
-                        <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-2 ring-white shadow">
+                        <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-2 ring-orange-200">
                           <Image
                             src={s.src}
                             alt={`${s.name} — CDPL success story`}
@@ -115,24 +97,16 @@ export default function PlacementsSuccessStoriesCarousel({ contained = false }: 
                         </div>
                         <div className="min-w-0">
                           <div className="truncate text-sm font-semibold text-slate-900 sm:text-base">{s.name}</div>
-                          <div className="truncate text-xs text-slate-600 sm:text-sm">{s.role}</div>
+                          <div className="truncate text-xs font-medium text-brand sm:text-sm">{s.role}</div>
                         </div>
-                        <div
-                          className="ml-auto grid h-8 w-8 place-items-center rounded-full"
-                          style={{
-                            background:
-                              "linear-gradient(135deg, rgba(255,140,0,0.18), rgba(126,231,255,0.18), rgba(157,123,255,0.18))",
-                          }}
-                          aria-hidden
-                        >
-                          <Quote className="h-4 w-4 text-[#9d7bff]" />
-                        </div>
+                        <span aria-hidden className="ml-auto grid h-8 w-8 shrink-0 place-items-center rounded-full bg-orange-50">
+                          <Quote className="h-4 w-4 text-brand" />
+                        </span>
                       </div>
-                      <p className="mt-3 leading-relaxed text-slate-800 text-sm sm:text-base">{s.text}</p>
+                      <p className="mt-3 leading-relaxed text-slate-700 text-sm sm:text-base">{s.text}</p>
                     </div>
                   </article>
-                );
-              })}
+              ))}
             </div>
           </div>
         </div>

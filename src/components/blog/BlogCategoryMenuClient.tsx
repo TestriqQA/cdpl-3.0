@@ -146,7 +146,7 @@ const BlogCategoryMenuClient = ({ allPosts, allCategories }: BlogCategoryMenuCli
 
     return (
         <div
-            className={`sticky top-[72px] lg:top-[80px] z-40 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 shadow-md transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"
+            className={`sticky top-[72px] lg:top-[72px] z-40 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 shadow-md transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

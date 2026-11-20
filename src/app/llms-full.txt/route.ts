@@ -2,36 +2,38 @@ import { groq } from 'next-sanity'
 import { toPlainText } from '@portabletext/toolkit'
 
 import { client } from '@/sanity/client'
-import { courseCategories, type Course } from '@/data/headerData'
+import { courseCategories, type Course } from '@/data/courses/catalog'
 import { getServices } from '@/lib/services'
 import { getEvents } from '@/lib/events'
-import { PAST_EVENTS_FAQS } from '@/data/pastEventsData'
+import { PAST_EVENTS_FAQS } from '@/data/faqs/events'
 
-import { MANUAL_TESTING_FAQS } from '@/data/manualTestingData'
-import { API_TESTING_FAQS } from '@/data/apiTestingData'
-import { DBMS_FAQS } from '@/data/dbmsData'
-import { ETL_TESTING_FAQS } from '@/data/etlTestingData'
-import { ADVANCED_TESTING_FAQS } from '@/data/advancedTestingData'
-import { AUTOMATION_TESTING_FAQS } from '@/data/automationTestingData'
-import { ADVANCE_MANUAL_AUTOMATION_FAQS } from '@/data/advanceManualAutomationData'
-import { PYTHON_FAQS } from '@/data/pythonData'
-import { JAVA_FAQS } from '@/data/javaData'
-import { MACHINE_LEARNING_FAQS } from '@/data/machineLearningData'
-import { GENERATIVE_AI_FAQS } from '@/data/generativeAiData'
-import { DATA_SCIENCE_FAQS } from '@/data/dataScienceData'
-import { AI_FAQS } from '@/data/aiData'
-import { ML_PYTHON_FAQS } from '@/data/mlPythonData'
-import { R_DATA_VIS_FAQS } from '@/data/rDataVisData'
-import { DATA_ANALYTICS_FAQS } from '@/data/dataAnalyticsData'
-import { DATA_ANALYTICS_PYTHON_FAQS } from '@/data/dataAnalyticsPythonData'
-import { DATA_ANALYTICS_VIS_FAQS } from '@/data/dataAnalyticsVisData'
-import { DATA_ANALYTICS_TABLEAU_FAQS } from '@/data/dataAnalyticsTableauData'
-import { POWER_BI_FAQS } from '@/data/powerBiData'
-import { DATA_ENGINEERING_MASTERS_FAQS } from '@/data/dataEngineeringMastersData'
-import { PROMPT_ENGINEERING_FAQS } from '@/data/promptEngineeringData'
-import { DIGITAL_MARKETING_FAQS } from '@/data/digitalMarketingData'
-import { AI_IN_DIGITAL_MARKETING_FAQS } from '@/data/aiInDigitalMarketingData'
-import { AI_BOOTCAMP_FAQS } from '@/data/aiBootcampData'
+import { MANUAL_TESTING_FAQS } from '@/data/courses/software-testing/faqs/manual-testing-course'
+import { API_TESTING_FAQS } from '@/data/courses/software-testing/faqs/api-testing'
+import { DBMS_FAQS } from '@/data/courses/software-testing/faqs/dbms-course'
+import { ETL_TESTING_FAQS } from '@/data/courses/software-testing/faqs/etl-testing'
+import { ADVANCED_TESTING_FAQS } from '@/data/courses/software-testing/faqs/advance-software-testing'
+import { AUTOMATION_TESTING_FAQS } from '@/data/courses/software-testing/faqs/automation-testing-course'
+import { ADVANCE_MANUAL_AUTOMATION_FAQS } from '@/data/courses/software-testing/faqs/advance-manual-automation-testing'
+import { PYTHON_FAQS } from '@/data/courses/software-testing/faqs/python-course'
+import { JAVA_FAQS } from '@/data/courses/software-testing/faqs/java-course'
+import { MACHINE_LEARNING_FAQS } from '@/data/courses/ds-ml/faqs/machine-learning-course'
+import { GENERATIVE_AI_FAQS } from '@/data/courses/ds-ml/faqs/generative-ai-course'
+import { DATA_SCIENCE_FAQS } from '@/data/courses/ds-ml/faqs/data-science-course'
+import { AI_FAQS } from '@/data/courses/ds-ml/faqs/ai-course'
+import { ML_PYTHON_FAQS } from '@/data/courses/ds-ml/faqs/machine-learning-using-python'
+import { R_DATA_VIS_FAQS } from '@/data/courses/ds-ml/faqs/data-visualization-in-r-programming'
+import { DATA_ANALYTICS_FAQS } from '@/data/courses/bi/faqs/data-analytics'
+import { DATA_ANALYTICS_PYTHON_FAQS } from '@/data/courses/bi/faqs/data-analytics-python'
+import { DATA_ANALYTICS_VIS_FAQS } from '@/data/courses/bi/faqs/data-analytics-and-visualization'
+import { DATA_ANALYTICS_TABLEAU_FAQS } from '@/data/courses/bi/faqs/data-analytics-with-tableau'
+import { POWER_BI_FAQS } from '@/data/courses/bi/faqs/power-bi-course'
+import { DATA_ENGINEERING_MASTERS_FAQS } from '@/data/courses/bi/faqs/masters-in-data-engineering'
+import { PROMPT_ENGINEERING_FAQS } from '@/data/courses/ai/faqs/prompt-engineering-course'
+import { DIGITAL_MARKETING_FAQS } from '@/data/courses/digital-marketing/faqs/digital-marketing-course'
+import { AI_IN_DIGITAL_MARKETING_FAQS } from '@/data/courses/digital-marketing/faqs/ai-in-digital-marketing'
+import { AI_BOOTCAMP_FAQS } from '@/data/courses/digital-marketing/faqs/ai-bootcamp'
+import { getSiteStats } from '@/lib/live-stats'
+import type { SiteStats } from '@/lib/site-stats'
 
 /**
  * BLG-122 — /llms-full.txt
@@ -46,7 +48,7 @@ import { AI_BOOTCAMP_FAQS } from '@/data/aiBootcampData'
  * BLG-122 enhancement (May 2026) — adds **per-course FAQs** (25 leaf
  * courses) on top of the curated frame and blog bodies, so AI engines
  * ingest the concrete Q&A pairs that students actually ask. The FAQs
- * live in src/data/*Data.ts files (each course exports its own
+ * live in src/data/courses/<category>/faqs/*.ts files (each course exports its own
  * `*_FAQS` constant); the curated frame already covers course names,
  * URLs and one-line descriptions. When the BLG-133 course migration to
  * Sanity ships, this registry can switch to a single GROQ fetch.
@@ -58,7 +60,7 @@ import { AI_BOOTCAMP_FAQS } from '@/data/aiBootcampData'
 // The curated frame is kept in sync with `public/llms.txt`. The static file
 // is the canonical short index; this constant lets the route serve the same
 // content without filesystem reads inside the serverless function.
-const FRAME = `# Cinute Digital Private Limited (CDPL)
+const frame = (s: SiteStats) => `# Cinute Digital Private Limited (CDPL)
 
 > Industry-ready IT training and certification institute based in Mira Road, Mumbai, India. Hands-on, mentor-led courses in Software Testing, Data Science, Machine Learning, Business Intelligence, Artificial Intelligence and Digital Marketing, with placement assistance.
 
@@ -72,7 +74,7 @@ Cinute Digital Private Limited (CDPL) is an EdTech institute that bridges the ga
 - **Email**: contact@cinutedigital.com
 - **Founded**: 2018
 - **Founder**: Sandeep Maske
-- **Rating**: 4.9 / 5 (425 verified reviews)
+- **Rating**: ${s.text.rating} (${s.reviewCount} verified reviews)
 
 ## Core Course Categories
 
@@ -141,11 +143,11 @@ CDPL publishes localized course pages for learners across many Indian cities (fo
 - **[Events & Workshops](https://www.cinutedigital.com/events)**: Webinars, seminars and industrial visits.
 - **[Placements](https://www.cinutedigital.com/jobs/placements)**: Student placement outcomes.
 - **[Live Jobs](https://www.cinutedigital.com/jobs/live-jobs)**: Curated job listings for learners.
-- **[Careers at CDPL](https://www.cinutedigital.com/jobs/careers)**: Open roles at Cinute Digital.
 - **[Reviews](https://www.cinutedigital.com/reviews)**: Student reviews and testimonials.
 - **[Mentors](https://www.cinutedigital.com/mentors)**: CDPL's training mentors.
 - **[Locations We Serve](https://www.cinutedigital.com/locations-we-serve)**: Cities and regions covered.
 - **[About Us](https://www.cinutedigital.com/about-us)**: Company background.
+- **[Careers at CDPL](https://www.cinutedigital.com/jobs/careers)**: Open roles at Cinute Digital.
 - **[Contact Us](https://www.cinutedigital.com/contact-us)**: Get in touch with CDPL.
 
 ## AI / LLM Endpoints
@@ -192,7 +194,7 @@ type PostFull = {
 // BLG-122 enhancement — per-course FAQs registry.
 //
 // Keyed by course slug (path-relative, no leading slash) so the renderer
-// can walk `courseCategories` from headerData and look each course's FAQs
+// can walk `courseCategories` from data/courses/catalog and look each course's FAQs
 // up by slug. Every FAQ collection across the 25 *Data.ts files conforms
 // to `{ question, answer, category? }` (some carry extra UI fields like
 // `accent` / `emoji` that we ignore in the text output).
@@ -464,7 +466,7 @@ export async function GET() {
     // Course FAQs (Q&A) → Events FAQ (Q&A) → Blog Posts (long-form).
     // Structural-content-first, then conversational Q&A, then the
     // heavyweight blog bodies an AI engine treats as deepest context.
-    const body = `${FRAME}${servicesSection}${eventsSection}${courseFaqsSection}${eventsFaqSection}\n${blogSection}\n`
+    const body = `${frame(await getSiteStats())}${servicesSection}${eventsSection}${courseFaqsSection}${eventsFaqSection}\n${blogSection}\n`
 
     return new Response(body, {
         headers: {

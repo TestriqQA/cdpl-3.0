@@ -3,10 +3,11 @@ import JobsCareersHeroSection from "@/components/sections/JobsCareersHeroSection
 // boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 import JobsCareersOpenRolesSection from "@/components/sections/JobsCareersOpenRolesSection";
 import JobsCareersProcessSection from "@/components/sections/JobsCareersProcessSection";
+import JobsCareersExpectationsSection from "@/components/sections/JobsCareersExpectationsSection";
 import JobsCareersBenefitsSection from "@/components/sections/JobsCareersBenefitsSection";
 import JobsCareersCultureSection from "@/components/sections/JobsCareersCultureSection";
-import JobsCareersFAQSection from "@/components/sections/JobsCareersFAQSection";
-import JobsCareersCTASection from "@/components/sections/JobsCareersCTASection";
+import JobsCareersFaqSection from "@/components/sections/JobsCareersFaqSection";
+import JobsCareersCtaSection from "@/components/sections/JobsCareersCtaSection";
 import type { Metadata } from "next";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateCareersPageAllSchemas, generateJobPostingSchema, generateBreadcrumbSchema } from "@/lib/schema-generators";
@@ -79,10 +80,10 @@ export default async function Page() {
         revalidate: 60,
     });
 
-    // 1. Breadcrumb Schema
+    // 1. Breadcrumb Schema — matches the visible trail (Careers sits under About).
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: "/" },
-        { name: "Jobs", url: "/jobs" },
+        { name: "About", url: "/about-us" },
         { name: "Careers", url: "/jobs/careers" },
     ]);
 
@@ -172,11 +173,12 @@ export default async function Page() {
                 {/* Sections now manage their own inner container (max-w-7xl px-4 py-12 sm:px-6 lg:px-8) */}
                 <JobsCareersHeroSection />
                 <JobsCareersOpenRolesSection jobs={jobs} />
+                <JobsCareersExpectationsSection />
                 <JobsCareersProcessSection />
                 <JobsCareersBenefitsSection />
                 <JobsCareersCultureSection />
-                <JobsCareersFAQSection />
-                <JobsCareersCTASection />
+                <JobsCareersFaqSection />
+                <JobsCareersCtaSection />
             </div>
         </>
     );

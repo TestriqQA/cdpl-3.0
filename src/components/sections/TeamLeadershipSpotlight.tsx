@@ -2,10 +2,10 @@
 import {
     Sparkles,
     ShieldCheck,
-    Users2,
     GraduationCap,
     Linkedin,
     MapPin,
+    CircleCheck,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,7 +13,6 @@ import Image from "next/image";
 // ⬇️ NEW: import the TeamLeaders type and the dataset
 import type { TeamLeaders as TeamLeaderType } from "@/app/our-team/types";
 import { teamLeaders } from "@/app/our-team/data";
-import { ReactNode } from "react";
 
 type TeamMember = {
     id: string;
@@ -79,45 +78,10 @@ export default function LeadershipSpotlight({ }: Props) {
                 </p>
             </div>
 
-            {/* Stats Grid */}
-            <div className="mb-16 grid gap-4 sm:grid-cols-3">
-                <StatCard
-                    icon={<Users2 className="text-blue-800 w-10 h-10" />}
-                    value={
-                        <span className="bg-gradient-to-r from-sky-600 to-indigo-600 bg-clip-text text-transparent">
-                            5k+
-                        </span>
-                    }
-                    label="Learners mentored"
-                    description="Live cohorts & 1:1 guidance"
-                />
-
-                <StatCard
-                    icon={<ShieldCheck className="text-emerald-800 w-10 h-10" />}
-                    value={
-                        <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                            50+
-                        </span>
-                    }
-                    label="Hiring partner touchpoints"
-                    description="Referrals & interview prep"
-                />
-
-                <StatCard
-                    icon={<GraduationCap className="text-lime-800 w-10 h-10" />}
-                    value={
-                        <span className="text-lime-600">
-                            94%
-                        </span>
-                    }
-                    label="Capstone success rate"
-                    description="Portfolio-first outcomes"
-                />
-            </div>
             {/* Leader Cards - Full Width (from teamLeaders) */}
-            <div className="space-y-16">
+            <div className="space-y-6">
                 {leaders.map((leader, index) => (
-                    <LeaderCard key={leader.id + "-" + index} leader={leader} index={index} />
+                    <LeaderCard key={leader.id + "-" + index} leader={leader} />
                 ))}
             </div>
 
@@ -126,172 +90,103 @@ export default function LeadershipSpotlight({ }: Props) {
     );
 }
 
-// Stat Card Component
-function StatCard({
-    icon,
-    value,
-    label,
-    description,
-}: {
-    icon: React.ReactNode;
-    value: ReactNode;
-    label: string;
-    description: string;
-}) {
+// Compact leader card: photo beside details, two-column achievements.
+function LeaderCard({ leader }: { leader: TeamLeaderType }) {
     return (
-        <div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 p-6 shadow-sm transition-all duration-300 hover:shadow-lg">
-            <div className="flex items-start gap-4">
-                <div>
-                    {icon}
-                </div>
-                <div className="flex-1">
-                    <p className="text-3xl font-bold text-slate-900">{value}</p>
-                    <p className="mt-1 font-semibold text-slate-800">{label}</p>
-                </div>
-            </div>
-            <p className="mt-4 text-sm text-slate-600">{description}</p>
-
-            {/* Decorative element */}
-            <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-orange-500 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-20" />
-        </div>
-    );
-}
-
-// Leader Card Component - Full Width with Futuristic Design
-function LeaderCard({ leader, index }: { leader: TeamLeaderType; index: number }) {
-    const isEven = index % 2 === 0;
-
-    return (
-        <div className="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-gradient-to-br from-white via-slate-50/50 to-white shadow-lg backdrop-blur-sm transition-all duration-500 hover:border-orange-300/50 hover:shadow-2xl">
-            {/* Decorative gradient overlay */}
+        <article
+            aria-label={`${leader.name}, ${leader.title}`}
+            className="group relative isolate overflow-hidden rounded-3xl border border-orange-200 bg-gradient-to-br from-orange-50/70 via-white to-white p-5 shadow-md transition-all duration-500 hover:border-orange-300 hover:shadow-lg sm:p-6 lg:p-8"
+        >
+            {/* Hover glow (as on the original leader cards) */}
             <div
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,140,0,0.05),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 aria-hidden="true"
+                className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(255,140,0,0.05),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
             />
-
-            <div
-                className={`relative flex flex-col gap-5 p-5 lg:flex-row lg:items-center lg:gap-24 lg:p-12 ${isEven ? "" : "lg:flex-row-reverse"}`}
-            >
-                {/* Avatar Section with Futuristic Frame */}
-                <div className="relative mx-auto shrink-0 lg:mx-0">
-                    <div className="relative h-55 w-55 lg:h-90 lg:w-90 overflow-hidden rounded-full transition-all duration-500 group-hover:border-orange-300">
+            <div className="flex flex-col gap-6 md:flex-row md:items-start lg:gap-10">
+                {/* Photo (circle cut-outs shown as is; avatarMask crops rectangular photos), LinkedIn below */}
+                <div className="relative mx-auto flex shrink-0 flex-col items-center gap-3 md:mx-0">
+                    <div
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -top-2 left-1/2 -z-10 h-48 w-48 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,140,0,1),transparent)] opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-15 lg:top-4"
+                    />
+                    <div className={`relative h-44 w-44 lg:h-56 lg:w-56 ${leader.avatarMask ? "overflow-hidden rounded-full shadow-md" : ""}`}>
                         {leader.avatar ? (
                             <Image
                                 src={leader.avatar}
                                 alt={`${leader.name} - ${leader.title}`}
                                 title={`${leader.name} - ${leader.title}`}
                                 fill
-                                className="object-cover transition-transform duration-500 hover:scale-105"
-                                loading="lazy"
-                                sizes="(max-width: 1024px) 256px, 360px"
+                                className={leader.avatarMask ? "object-cover" : "object-contain drop-shadow-md"}
+                                sizes="(max-width: 1024px) 176px, 224px"
                             />
                         ) : (
-                            <div className="flex h-full w-full items-center justify-center text-7xl font-bold text-brand">
+                            <div className="flex h-full w-full items-center justify-center text-6xl font-bold text-brand">
                                 {leader.name.charAt(0)}
                             </div>
                         )}
                     </div>
-
-                    {/* Floating gradient blob */}
-                    <div
-                        className={`absolute -z-10 top-1/2 -translate-y-1/2 h-48 w-48 rounded-full bg-[radial-gradient(circle,rgba(255,140,0,1),transparent)] opacity-0 blur-3xl transition-all duration-700 group-hover:opacity-30 ${isEven ? "-left-[30%]" : "-right-[30%]"}`}
-                        aria-hidden="true"
-                    />
+                    {leader.linkedin && (
+                        <Link
+                            href={leader.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Connect with ${leader.name} on LinkedIn`}
+                            className="inline-flex items-center gap-1.5 rounded-lg border border-orange-300 bg-white px-3 py-1.5 text-sm font-semibold text-brand transition hover:bg-orange-50"
+                        >
+                            <Linkedin className="h-4 w-4" aria-hidden="true" />
+                            LinkedIn
+                        </Link>
+                    )}
                 </div>
 
-                {/* Content Section */}
-                <div className="flex-1 space-y-6">
-                    {/* Header */}
-                    <div className="space-y-3">
-                        <div className="flex mt-3 items-start justify-between gap-4">
-                            <h3 className="text-3xl font-bold leading-tight text-slate-900 lg:text-4xl">
-                                {leader.name}
-                            </h3>
-                        </div>
+                {/* Details */}
+                <div className="min-w-0 flex-1 text-center md:text-left">
+                    <h3 className="text-2xl font-bold leading-tight text-slate-900 lg:text-3xl">{leader.name}</h3>
+                    <p className="mt-1 font-semibold text-brand">{leader.title}</p>
 
-                        <div className="space-y-2">
-                            <p className="text-lg font-semibold text-brand lg:text-xl">
-                                {leader.title}
-                            </p>
-
-                            <div className="flex mt-5 flex-row items-center gap-3 text-gray-600">
-                                <p className="bg-gray-100 px-3 py-1 rounded-full text-xs border border-[#ff8c00]">
-                                    {leader.experience}
-                                </p>
-                                <p className="text-sm">{leader.specialization}</p>
-
-                                {leader.location && (
-                                    <p className="flex items-center gap-2 text-sm text-slate-600">
-                                        <MapPin className="h-4 w-4 text-brand" />
-                                        {leader.location}
-                                    </p>
-                                )}
-                            </div>
-
-
-                        </div>
+                    <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-slate-600 md:justify-start">
+                        <span className="rounded-full border border-orange-300 bg-white px-2.5 py-0.5 text-xs font-medium text-slate-700">
+                            {leader.experience}
+                        </span>
+                        <span>{leader.specialization}</span>
+                        {leader.location && (
+                            <span className="inline-flex items-center gap-1">
+                                <MapPin className="h-4 w-4 text-brand" aria-hidden="true" />
+                                {leader.location}
+                            </span>
+                        )}
                     </div>
 
-                    {/* Bio */}
-                    {leader.bio && (
-                        <p className="text-base leading-relaxed text-slate-600 lg:text-lg">
-                            {leader.bio}
-                        </p>
-                    )}
-
-                    {/* Expertise Pills */}
-                    {leader.expertise && leader.expertise.length > 0 && (
-                        <div className="flex flex-wrap gap-2">
-                            {leader.expertise.map((skill, idx) => (
-                                <span
-                                    key={idx}
-                                    className="inline-flex items-center rounded-full border border-slate-200 bg-white/80 px-4 py-1.5 text-sm font-medium text-slate-700 backdrop-blur-sm transition-all hover:border-orange-300 hover:bg-orange-50"
-                                >
-                                    {skill}
-                                </span>
-                            ))}
-                        </div>
-                    )}
+                    {leader.bio && <p className="mt-4 leading-relaxed text-slate-600">{leader.bio}</p>}
 
                     {leader.achievements.length > 0 && (
-                        <div className="mb-6">
-                            <h4 className="text-lg font-semibold text-gray-900 mb-3">
-                                Key Achievements
-                            </h4>
-                            <div className="space-y-2">
-                                {leader.achievements.map((achievement, achIndex) => (
-                                    <div key={achIndex} className="flex items-center gap-3">
-                                        <div className="w-2 h-2 bg-brand rounded-full"></div>
-                                        <span className="text-gray-700">{achievement}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                        <ul className="mt-4 grid gap-x-6 gap-y-2 text-left text-sm text-slate-700 sm:grid-cols-2">
+                            {leader.achievements.map((achievement, i) => (
+                                <li key={i} className="flex items-start gap-2">
+                                    <CircleCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
+                                    <span>{achievement}</span>
+                                </li>
+                            ))}
+                        </ul>
                     )}
 
-                    {/* Action buttons */}
-                    <div className="flex flex-wrap gap-3 pt-2">
-                        {leader.linkedin && (
-                            <Link
-                                href={leader.linkedin}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={`Connect with ${leader.name} on LinkedIn`}
-                                className="flex items-center group rounded-xl border-2 p-2 border-slate-400 bg-white transition-all hover:border-orange-300 hover:bg-orange-50"
+                    <div className="mt-5 flex flex-wrap items-center justify-center gap-2 md:justify-start">
+                        {leader.expertise?.map((skill, i) => (
+                            <span
+                                key={i}
+                                className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700"
                             >
-                                <Linkedin className="mr-2 h-4 w-4 text-brand" />
-                                <p className="font-semibold text-brand ">Connect on LinkedIn</p>
-                            </Link>
-                        )}
+                                {skill}
+                            </span>
+                        ))}
                     </div>
                 </div>
             </div>
-
-            {/* Animated scan line effect */}
+            {/* Scan line along the top edge on hover */}
             <div
-                className="absolute left-0 top-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-transparent via-orange-500 to-transparent opacity-0 transition-all duration-1000 group-hover:scale-x-100 group-hover:opacity-100"
                 aria-hidden="true"
+                className="absolute left-0 top-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-transparent via-orange-400 to-transparent opacity-0 transition-all duration-1000 group-hover:scale-x-100 group-hover:opacity-60"
             />
-        </div>
+        </article>
     );
 }

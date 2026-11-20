@@ -55,7 +55,7 @@ const COMPANY_LOGOS: Record<string, string> = {
   "jm financial": "jm_financial.png",
   "testriq": "testriq.png",
   "i-xl technologies": "i-xl_technologies.png",
-  "aryan technologies": "aryan_technologies.png",
+  "aryan technologies": "aryan_technologies_logo.png",
   "maxwell energy systems": "maxwell.png",
   "idfy": "idfy.png",
   "vistaar": "vistaar.png",
@@ -279,19 +279,11 @@ export default function PlacementsCompanyWallSection({
   return (
     <section className="w-full py-10 sm:py-12" aria-label="CDPL hiring partners">
       <Wrapper>
-        <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-slate-900">Hiring Partners</h3>
-          <div
-            aria-hidden
-            className="hidden sm:block h-[3px] w-40 rounded-full"
-            style={{
-              background:
-                "linear-gradient(90deg,#ff8c00 0%,#ffb558 50%,#ffd19e 100%)",
-            }}
-          />
-        </div>
+        <h2 className="text-center text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl">
+          Hiring <span className="text-brand">Partners</span>
+        </h2>
 
-        <div className="mt-5 space-y-4">
+        <div className="mt-8 space-y-4">
           {/* Row 1: right → left */}
           <TickerRow items={rows[0]} direction="ltr" speedSec={40} />
           {/* Row 2: left → right */}

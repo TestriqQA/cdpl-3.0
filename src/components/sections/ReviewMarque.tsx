@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { SiteStat } from '@/components/stats/SiteStatsProvider';
 import Image from 'next/image';
 import { Star } from 'lucide-react';
 
@@ -21,7 +22,7 @@ const GOOGLE_LOGO = '/slider_logos/google-logo.svg';
 function MarqueeRow({
   items,
   direction = 'left',
-  speed = 150
+  speed = 60
 }: {
   items: Review[];
   direction?: 'left' | 'right';
@@ -29,14 +30,16 @@ function MarqueeRow({
 }) {
   return (
     <div className="relative flex overflow-hidden group pointer-events-auto">
+      {/* 4 copies, shifted by -50%: each half (2 copies) is wider than the row, and pr-6 makes
+          the halves identical (gap after the last card too), so the loop has no jump. */}
       <div
-        className="flex gap-6 py-4 w-max group-hover:[animation-play-state:paused_!important]"
+        className="flex gap-6 pr-6 py-4 w-max group-hover:[animation-play-state:paused_!important] motion-reduce:[animation:none_!important]"
         style={{
           animation: `marquee-${direction} ${speed}s linear infinite`,
           willChange: 'transform'
         }}
       >
-        {[...items, ...items].map((review, idx) => (
+        {[...items, ...items, ...items, ...items].map((review, idx) => (
           <ReviewCard key={`${review.name}-${idx}`} review={review} />
         ))}
       </div>
@@ -101,13 +104,10 @@ interface ReviewsMarqueeProps {
   initialRating?: string;
 }
 
-export default function ReviewsMarquee({ initialReviews, initialTotal, initialRating }: ReviewsMarqueeProps) {
+// initialTotal/initialRating are kept for callers; totals come from the site-wide live stats.
+export default function ReviewsMarquee({ initialReviews }: ReviewsMarqueeProps) {
   const [reviews, setReviews] = useState<Review[]>(initialReviews || []);
   const [loading, setLoading] = useState(!initialReviews);
-  const [stats, setStats] = useState({
-    total: initialTotal || '0',
-    rating: initialRating || '0.0'
-  });
 
   useEffect(() => {
     // If we have initial data, don't fetch
@@ -121,12 +121,6 @@ export default function ReviewsMarquee({ initialReviews, initialTotal, initialRa
         if (!res.ok) throw new Error('Failed to fetch');
         const data = await res.json();
         setReviews(data.reviews || []);
-        if (data.totalReviewCount) {
-          setStats({
-            total: data.totalReviewCount.toString(),
-            rating: typeof data.averageRating === 'number' ? data.averageRating.toFixed(1) : data.averageRating
-          });
-        }
       } catch (err) {
         console.error('Failed to load reviews', err);
       } finally {
@@ -177,25 +171,25 @@ export default function ReviewsMarquee({ initialReviews, initialTotal, initialRa
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
             </span>
             <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">
-              {stats.total}+ Verified Reviews
+              <SiteStat k="reviews" /> Verified Reviews
             </span>
           </div>
         </div>
 
         {/* Marquees */}
         <div className="space-y-8 mask-linear-gradient">
-          <MarqueeRow items={safeRow1} direction="left" speed={150} />
-          <MarqueeRow items={safeRow2} direction="right" speed={150} />
+          <MarqueeRow items={safeRow1} direction="left" />
+          <MarqueeRow items={safeRow2} direction="right" />
         </div>
 
         {/* CSS for Marquee */}
         <style jsx>{`
             @keyframes marquee-left {
                 0% { transform: translateX(0); }
-                100% { transform: translateX(calc(-100% / 10)); }
+                100% { transform: translateX(-50%); }
             }
             @keyframes marquee-right {
-                0% { transform: translateX(calc(-100% / 10)); }
+                0% { transform: translateX(-50%); }
                 100% { transform: translateX(0); }
             }
             @keyframes fade-in-up {
@@ -206,8 +200,14 @@ export default function ReviewsMarquee({ initialReviews, initialTotal, initialRa
                 animation: fade-in-up 0.6s ease-out forwards;
             }
             .mask-linear-gradient {
-                mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-                -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+                mask-image: linear-gradient(to right, transparent 12px, black 44px, black calc(100% - 44px), transparent calc(100% - 12px));
+                -webkit-mask-image: linear-gradient(to right, transparent 12px, black 44px, black calc(100% - 44px), transparent calc(100% - 12px));
+            }
+            @media (min-width: 640px) {
+                .mask-linear-gradient {
+                    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+                    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+                }
             }
            `}</style>
       </div>

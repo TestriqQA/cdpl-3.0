@@ -15,6 +15,7 @@
  * passing the exact same props — this is a transparent drop-in, so the
  * react-hook-form value/onChange wiring on all forms is unchanged.
  */
+import React, { forwardRef } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-phone-number-input/style.css';
 
@@ -38,9 +39,30 @@ function PhoneInputSkeleton() {
 // ssr:false — the phone widget is interactive-only and below the primary
 // content on every form, so server-rendering it buys nothing and would keep
 // the heavy lib on the critical path. The skeleton reserves its space.
-const PhoneInput = dynamic(() => import('react-phone-number-input'), {
-    ssr: false,
-    loading: () => <PhoneInputSkeleton />,
-}) as unknown as PhoneInputComponent;
+//
+// The searchable CountrySelect is loaded in the same chunk and set as the
+// default `countrySelectComponent`; a call site can still pass its own.
+const PhoneInput = dynamic(
+    async () => {
+        const [{ default: LibPhoneInput }, { default: CountrySelect }] = await Promise.all([
+            import('react-phone-number-input'),
+            import('./CountrySelect'),
+        ]);
+        // forwardRef so a call site's `ref` still reaches the library's input.
+        // Loosely typed inside; call sites keep the library's exact prop types
+        // through the PhoneInputComponent cast below.
+        const Lib = LibPhoneInput as unknown as React.ComponentType<Record<string, unknown>>;
+        const WithCountrySelect = forwardRef<unknown, Record<string, unknown>>(
+            function PhoneInputWithCountrySelect(props, ref) {
+                return <Lib ref={ref} countrySelectComponent={CountrySelect} {...props} />;
+            },
+        );
+        return WithCountrySelect;
+    },
+    {
+        ssr: false,
+        loading: () => <PhoneInputSkeleton />,
+    },
+) as unknown as PhoneInputComponent;
 
 export default PhoneInput;

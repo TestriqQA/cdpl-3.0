@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import { ContactHeroSection } from '@/components/sections/ContactHeroSection';
 import { ContactMethodsSection } from '@/components/sections/ContactMethodSection';
 
-// Sections imported directly — next/dynamic(ssr:true) only added client Suspense
+// Sections imported directly - next/dynamic(ssr:true) only added client Suspense
 // boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 import { ContactOfficeMapSection } from '@/components/sections/ContactOfficeMapSection';
 import { ContactBookCallSection } from '@/components/sections/ContactBookCall';
-import { ContactFAQSection } from '@/components/sections/ContactFAQSection';
+import { ContactFaqSection } from '@/components/sections/ContactFaqSection';
 import ContactReviewSection from '@/components/sections/ContactReviewSection';
 
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
@@ -59,7 +59,7 @@ export default function ContactPage() {
         <ContactOfficeMapSection />
         <ContactReviewSection />
         <ContactBookCallSection />
-        <ContactFAQSection />
+        <ContactFaqSection />
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import {
@@ -48,6 +49,21 @@ const CATEGORY_STYLES: Record<
 };
 const FALLBACK = { badgeBg: "bg-slate-700", btnBg: "bg-slate-700", text: "text-slate-700" };
 
+// Endless loop: clones of the edge cards sit at each end. When the track rests
+// on a clone, the next step first jumps (no transition) to its real twin.
+
+const GAP_PX = 24;
+const CLONES = 3; // max cards per view
+const SWIPE_PX = 40;
+
+// Must match the --pv media queries below.
+const readPerView = () =>
+  window.matchMedia("(min-width: 1024px)").matches ? 3
+    : window.matchMedia("(min-width: 768px)").matches ? 2
+      : 1;
+const readReducedMotion = () =>
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 export default function EventsPastEventsFeaturedEventsSliderSection({
   events,
   autoplayMs = 4500,
@@ -58,123 +74,106 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
   cardHClass?: string;
 }) {
   const trackRef = useRef<HTMLDivElement | null>(null);
-  const { ref: inViewRef, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: false, // Resume when back in view
-  });
-
-  // Removed JS-based perView state to fix CLS
+  const { ref: inViewRef, inView } = useInView({ threshold: 0.1 });
 
   const base = useMemo<FeaturedEvent[]>(() => events ?? [], [events]);
-  const looped = useMemo(() => (base.length ? [...base, ...base, ...base] : []), [base]);
+  const n = base.length;
 
-  const middleStart = base.length;
-  const [index, setIndex] = useState(middleStart);
-  const [paused, setPaused] = useState(false);
-
-  const GAP_PX = 24;
-
-  /* -------------------------------------------------------------------------- */
-  /* PERFORMANCE OPTIMIZATION: Prevent Forced Reflows                            */
-  /* -------------------------------------------------------------------------- */
-  // We cache the slide width to avoid querying the DOM (offsetWidth) 
-  // on every single tick or index change, which causes synchronous layout thrashing.
-  const slideWidthRef = useRef<number>(0);
-
-  const updateDimensions = () => {
-    const el = trackRef.current;
-    if (!el) return;
-    const slide = el.querySelector<HTMLElement>("[data-slide]");
-    if (slide) {
-      slideWidthRef.current = slide.offsetWidth + GAP_PX;
-    } else {
-      slideWidthRef.current = el.clientWidth;
-    }
-  };
-
-  // Update on mount and resize
+  const [perView, setPerView] = useState(readPerView);
+  const [reducedMotion, setReducedMotion] = useState(readReducedMotion);
   useEffect(() => {
-    // Initial measure with a small delay to ensure DOM is ready
-    const timer = setTimeout(updateDimensions, 100);
-
-    const handleResize = () => {
-      // Debounce slightly if needed, but simple rAF or direct call is usually fine for resize
-      requestAnimationFrame(updateDimensions);
+    const queries = [
+      "(min-width: 768px)",
+      "(min-width: 1024px)",
+      "(prefers-reduced-motion: reduce)",
+    ].map((q) => window.matchMedia(q));
+    const update = () => {
+      setPerView(readPerView());
+      setReducedMotion(readReducedMotion());
     };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearTimeout(timer);
-    };
+    queries.forEach((q) => q.addEventListener("change", update));
+    return () => queries.forEach((q) => q.removeEventListener("change", update));
   }, []);
 
-  const scrollToIndex = (i: number, behavior: ScrollBehavior = "smooth") => {
-    const el = trackRef.current;
-    if (!el || !base.length) return;
+  const canLoop = n > perView;
+  const head = canLoop ? Math.min(CLONES, n) : 0;
 
-    // Safety check: if width is 0 (first run), calculate it once
-    if (slideWidthRef.current === 0) updateDimensions();
+  const slides = useMemo(() => {
+    const real = base.map((event, i) => ({ event, real: i, clone: false, key: `${event.id}-${i}` }));
+    if (!canLoop) return real;
+    return [
+      ...real.slice(-head).map((s) => ({ ...s, clone: true, key: `head-${s.key}` })),
+      ...real,
+      ...real.slice(0, head).map((s) => ({ ...s, clone: true, key: `tail-${s.key}` })),
+    ];
+  }, [base, canLoop, head]);
 
-    const w = slideWidthRef.current;
-    el.scrollTo({ left: i * w, behavior });
+  // Index into `slides`; real cards are head .. head + n - 1.
+  const [pos, setPos] = useState(head);
+  const [animated, setAnimated] = useState(false);
+  const posRef = useRef(pos);
+  useEffect(() => {
+    posRef.current = pos;
+  }, [pos]);
+
+  // Clone count changes across breakpoints.
+  const [anchoredHead, setAnchoredHead] = useState(head);
+  if (anchoredHead !== head) {
+    setAnchoredHead(head);
+    setPos(head);
+    setAnimated(false);
+  }
+
+  const [paused, setPaused] = useState(false);
+
+  const place = (p: number, animate: boolean) => {
+    posRef.current = p;
+    setAnimated(animate);
+    setPos(p);
+  };
+
+  const step = (target: (from: number) => number) => {
+    if (!canLoop) return;
+    let from = posRef.current;
+    if (from >= head + n) from -= n;
+    else if (from < head) from += n;
+    if (from !== posRef.current) {
+      // Commit the jump before the animated step starts.
+      flushSync(() => place(from, false));
+      void trackRef.current?.offsetWidth;
+    }
+    place(target(from), true);
+  };
+  const next = () => step((p) => p + 1);
+  const prev = () => step((p) => p - 1);
+  const goTo = (i: number) => step(() => head + i);
+
+  const activeDot = n ? (((pos - head) % n) + n) % n : 0;
+
+  // Tabbing into an off-screen card.
+  const reveal = (i: number) => {
+    const offset = (i - activeDot + n) % n;
+    if (offset >= perView) goTo(i);
   };
 
   useEffect(() => {
-    if (!base.length || !inView) return; // Wait for inView
-
-    // Measure before initial scroll
-    updateDimensions();
-
-    const id = requestAnimationFrame(() => {
-      setIndex(middleStart);
-      scrollToIndex(middleStart, "auto");
-    });
-    return () => cancelAnimationFrame(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [base.length, inView]);
-
-  useEffect(() => {
-    if (!base.length || paused || !inView) return; // Check inView
-    const id = setInterval(() => next(), autoplayMs);
+    if (!canLoop || paused || !inView || reducedMotion) return;
+    const id = setInterval(next, autoplayMs);
     return () => clearInterval(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [paused, autoplayMs, base.length, index, inView]);
+  }, [canLoop, head, n, paused, inView, reducedMotion, autoplayMs]);
 
-  useEffect(() => {
-    if (!base.length) return;
-    const block = base.length;
-    const start = middleStart;
-    const end = start + block - 1;
+  // Touch only; mouse users have the arrows.
+  const swipeStart = useRef<{ x: number; y: number } | null>(null);
+  const swiped = useRef(false);
 
-    if (index < start - block) {
-      const ni = index + block;
-      setIndex(ni);
-      scrollToIndex(ni, "auto");
-    } else if (index > end + block) {
-      const ni = index - block;
-      setIndex(ni);
-      scrollToIndex(ni, "auto");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index, base.length]);
+  if (!n) return null;
 
-  const next = () => {
-    if (!base.length) return;
-    const ni = index + 1;
-    setIndex(ni);
-    scrollToIndex(ni, "smooth");
+  const trackStyle: StyleWithVars = {
+    "--gap": `${GAP_PX}px`,
+    gap: "var(--gap)",
+    transform: `translateX(calc(${-pos} * (100% + var(--gap)) / var(--pv)))`,
   };
-  const prev = () => {
-    if (!base.length) return;
-    const ni = index - 1;
-    setIndex(ni);
-    scrollToIndex(ni, "smooth");
-  };
-
-  if (!base.length) return null;
-
-  const activeDot = ((index - middleStart) % base.length + base.length) % base.length;
 
   return (
     <div
@@ -185,143 +184,160 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
-      <div className="relative overflow-hidden">
+      {/* clip, not hidden: focus can't scroll a clip box out of line */}
+      <div
+        className="overflow-clip touch-pan-y"
+        style={{ paddingInline: "12px" }}
+        aria-roledescription="carousel"
+        onPointerDown={(e) => {
+          swiped.current = false;
+          swipeStart.current = e.pointerType === "mouse" ? null : { x: e.clientX, y: e.clientY };
+        }}
+        onPointerUp={(e) => {
+          const s = swipeStart.current;
+          swipeStart.current = null;
+          if (!s) return;
+          const dx = e.clientX - s.x;
+          if (Math.abs(dx) < SWIPE_PX || Math.abs(dx) < Math.abs(e.clientY - s.y)) return;
+          swiped.current = true;
+          if (dx < 0) next();
+          else prev();
+        }}
+        onPointerCancel={() => {
+          swipeStart.current = null;
+        }}
+        onClickCapture={(e) => {
+          if (!swiped.current) return;
+          swiped.current = false;
+          e.preventDefault();
+          e.stopPropagation();
+        }}
+      >
+        <style jsx>{`
+          .slider-container {
+            --pv: 1;
+          }
+          @media (min-width: 768px) {
+            .slider-container {
+              --pv: 2;
+            }
+          }
+          @media (min-width: 1024px) {
+            .slider-container {
+              --pv: 3;
+            }
+          }
+        `}</style>
         <div
           ref={trackRef}
-          className="no-scrollbar overflow-x-auto"
-          style={{ scrollBehavior: "smooth", paddingInline: "12px" } as React.CSSProperties}
-          aria-roledescription="carousel"
+          className={`flex slider-container ${animated ? "transition-transform duration-500 ease-out motion-reduce:transition-none" : ""}`}
+          style={trackStyle}
         >
-          {(() => {
-            const styleVars: StyleWithVars = {
-              "--gap": `${GAP_PX}px`,
-              gap: "var(--gap)",
-            };
+          {slides.map(({ event, real, clone, key }) => {
+            const cs = CATEGORY_STYLES[event.category] ?? FALLBACK;
+
             return (
-              <>
-                <style jsx>{`
-                  .slider-container {
-                    --pv: 1;
-                  }
-                  @media (min-width: 768px) {
-                    .slider-container {
-                      --pv: 2;
-                    }
-                  }
-                  @media (min-width: 1024px) {
-                    .slider-container {
-                      --pv: 3;
-                    }
-                  }
-                `}</style>
-                <div className="flex slider-container" style={styleVars}>
-                  {looped.map((event, i) => {
-                    const cs = CATEGORY_STYLES[event.category] ?? FALLBACK;
-
-                    return (
-                      <div
-                        key={`${event.id}-${i}`}
-                        data-slide
-                        className="box-border shrink-0 grow-0"
-                        style={{
-                          flex: "0 0 calc((100% - (var(--gap) * (var(--pv) - 1))) / var(--pv))",
-                        }}
-                      >
-                        <article
-                          className={`relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 ${cardHClass} flex flex-col`}
-                        >
-                          {/* === FEATURED INDICATORS === */}
-                          {event.featured && (
-                            <>
-                              <span className="sr-only">Featured</span>
-                              <div className="absolute inset-x-0 top-0 h-[3px] bg-brand shadow-[0_0_6px_rgba(194,65,12,0.5)] z-10" />
-                              <div className="absolute right-3 top-3 z-10">
-                                <span className="inline-flex items-center gap-1 rounded-full bg-brand px-3 py-1 text-[11px] font-black uppercase tracking-wide text-white shadow-md ring-1 ring-white/60">
-                                  <Crown className="h-3.5 w-3.5" />
-                                  Featured
-                                </span>
-                              </div>
-                            </>
-                          )}
-
-                          {/* Header */}
-                          <div className="relative h-48 bg-gradient-to-br from-purple-100 to-blue-100 pt-10 md:pt-0">
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              {event.heroImageUrl ? (
-                                <Image
-                                  src={event.heroImageUrl}
-                                  alt={event.title}
-                                  width={500}
-                                  height={500}
-                                  sizes="(max-width: 640px) 384px, (max-width: 1024px) 45vw, 30vw"
-                                  quality={60}
-                                  className="w-full h-full object-cover"
-                                  loading="lazy"
-                                />
-                              ) : (
-                                <Calendar className="h-16 w-16 text-purple-300" />
-                              )}
-                            </div>
-                            <div className="absolute left-3 top-3 z-10">
-                              <span className={`${cs.badgeBg} text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md`}>
-                                {event.category}
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* Body */}
-                          <div className="p-6 flex flex-col h-[calc(100%-12rem)] min-h-0">
-                            <h3 className="text-xl font-bold text-gray-900 mb-1 line-clamp-2">
-                              {event.title}
-                            </h3>
-
-                            {event.subtitle && (
-                              <p className={`${cs.text} text-sm font-semibold mb-3 line-clamp-1`}>
-                                {event.subtitle}
-                              </p>
-                            )}
-
-                            <div className="space-y-2 mb-4 text-sm text-gray-600">
-                              <div className="flex items-center gap-2">
-                                <Calendar className="w-4 h-4 text-purple-600" />
-                                <span className="line-clamp-1">{event.date}</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <MapPin className="w-4 h-4" />
-                                <span className="line-clamp-1">{event.location}</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <Users className="w-4 h-4 text-blue-600" />
-                                <span className="line-clamp-1">
-                                  {event.attendees} participants • {event.organization}
-                                </span>
-                              </div>
-                            </div>
-
-                            <div className="mt-auto shrink-0">
-                              <Link href={`/events/${event.slug}`} aria-label={`View details about ${event.title}`}>
-                                <button
-                                  className={`w-full text-white px-4 py-2.5 rounded-xl font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 text-sm cursor-pointer ${cs.btnBg}`}
-                                >
-                                  View Details
-                                  <ArrowRight className="w-4 h-4" />
-                                </button>
-                              </Link>
-                            </div>
-                          </div>
-                        </article>
+              <div
+                key={key}
+                aria-hidden={clone || undefined}
+                inert={clone}
+                onFocus={clone ? undefined : () => reveal(real)}
+                className="box-border shrink-0 grow-0"
+                style={{
+                  flex: "0 0 calc((100% - (var(--gap) * (var(--pv) - 1))) / var(--pv))",
+                }}
+              >
+                <article
+                  className={`relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 ${cardHClass} flex flex-col`}
+                >
+                  {/* === FEATURED INDICATORS === */}
+                  {event.featured && (
+                    <>
+                      <span className="sr-only">Featured</span>
+                      <div className="absolute inset-x-0 top-0 h-[3px] bg-brand shadow-[0_0_6px_rgba(194,65,12,0.5)] z-10" />
+                      <div className="absolute right-3 top-3 z-10">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-brand px-3 py-1 text-[11px] font-black uppercase tracking-wide text-white shadow-md ring-1 ring-white/60">
+                          <Crown className="h-3.5 w-3.5" />
+                          Featured
+                        </span>
                       </div>
-                    );
-                  })}
-                </div>
-              </>
+                    </>
+                  )}
+
+                  {/* Header */}
+                  <div className="relative h-48 bg-gradient-to-br from-purple-100 to-blue-100 pt-10 md:pt-0">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      {event.heroImageUrl ? (
+                        <Image
+                          src={event.heroImageUrl}
+                          alt={event.title}
+                          width={500}
+                          height={500}
+                          sizes="(max-width: 640px) 384px, (max-width: 1024px) 45vw, 30vw"
+                          quality={60}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <Calendar className="h-16 w-16 text-purple-300" />
+                      )}
+                    </div>
+                    <div className="absolute left-3 top-3 z-10">
+                      <span className={`${cs.badgeBg} text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md`}>
+                        {event.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Body */}
+                  <div className="p-6 flex flex-col h-[calc(100%-12rem)] min-h-0">
+                    <h3 className="text-xl font-bold text-gray-900 mb-1 line-clamp-2">
+                      {event.title}
+                    </h3>
+
+                    {event.subtitle && (
+                      <p className={`${cs.text} text-sm font-semibold mb-3 line-clamp-1`}>
+                        {event.subtitle}
+                      </p>
+                    )}
+
+                    <div className="space-y-2 mb-4 text-sm text-gray-600">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-purple-600" />
+                        <span className="line-clamp-1">{event.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4" />
+                        <span className="line-clamp-1">{event.location}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Users className="w-4 h-4 text-blue-600" />
+                        <span className="line-clamp-1">
+                          {event.attendees} participants • {event.organization}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="mt-auto shrink-0">
+                      <Link href={`/events/${event.slug}`} aria-label={`View details about ${event.title}`}>
+                        <button
+                          className={`w-full text-white px-4 py-2.5 rounded-xl font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 text-sm cursor-pointer ${cs.btnBg}`}
+                        >
+                          View Details
+                          <ArrowRight className="w-4 h-4" />
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              </div>
             );
-          })()}
+          })}
         </div>
       </div>
 
       {/* Desktop/tablet arrows — half-outside, don't cover cards */}
-      {base.length > 1 && (
+      {canLoop && (
         <div className="pointer-events-none hidden md:block">
           <button
             onClick={prev}
@@ -341,7 +357,7 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
       )}
 
       {/* Mobile arrows (below slider so they don't cover cards) */}
-      {base.length > 1 && (
+      {canLoop && (
         <div className="mt-4 flex items-center justify-center gap-3 md:hidden">
           <button
             onClick={prev}
@@ -361,16 +377,12 @@ export default function EventsPastEventsFeaturedEventsSliderSection({
       )}
 
       {/* Dots */}
-      {base.length > 1 && (
+      {canLoop && (
         <div className="mt-4 flex items-center justify-center gap-5">
           {base.map((_, i) => (
             <button
               key={i}
-              onClick={() => {
-                const target = middleStart + i;
-                setIndex(target);
-                scrollToIndex(target, "smooth");
-              }}
+              onClick={() => goTo(i)}
               aria-label={`Go to slide ${i + 1}`}
               className={[
                 "relative h-2.5 rounded-full transition-all after:absolute after:-inset-4 after:content-['']",

@@ -135,24 +135,30 @@ const CategoryArticleList: React.FC<CategoryArticleListProps> = ({ categoryName,
 
                         {/* Meta Information */}
                         <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500 pt-4 border-t border-gray-100">
-                          <div className="flex items-center gap-1.5">
-                            {author?.avatar ? (
-                              <Image src={author.avatar} alt={author.name} width={24} height={24} className="rounded-full" />
-                            ) : (
-                              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center text-white font-semibold text-[10px]">
-                                {author?.name.charAt(0)}
-                              </div>
-                            )}
-                            <span className="font-medium">{author?.name}</span>
-                          </div>
-                          <div className="flex items-center gap-1.5">
-                            <Calendar className="w-3.5 h-3.5 text-purple-600" />
-                            <span>{formattedDate}</span>
-                          </div>
-                          <div className="flex items-center gap-1.5">
-                            <Clock className="w-3.5 h-3.5 text-purple-600" />
-                            <span>{post.readTime}</span>
-                          </div>
+                          {author?.name && (
+                            <div className="flex items-center gap-1.5">
+                              {author.avatar ? (
+                                <Image src={author.avatar} alt={author.name} width={24} height={24} className="rounded-full" />
+                              ) : (
+                                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center text-white font-semibold text-[10px]">
+                                  {author.name.charAt(0)}
+                                </div>
+                              )}
+                              <span className="font-medium">{author.name}</span>
+                            </div>
+                          )}
+                          {post.publishDate && (
+                            <div className="flex items-center gap-1.5">
+                              <Calendar className="w-3.5 h-3.5 text-purple-600" />
+                              <span>{formattedDate}</span>
+                            </div>
+                          )}
+                          {post.readTime && (
+                            <div className="flex items-center gap-1.5">
+                              <Clock className="w-3.5 h-3.5 text-purple-600" />
+                              <span>{post.readTime}</span>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>

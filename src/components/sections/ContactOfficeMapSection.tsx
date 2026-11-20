@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Script from "next/script";
+import { Mail, Navigation, Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { BUSINESS_INFO } from "@/lib/seo-config";
 
 type Office = {
@@ -52,7 +54,7 @@ export function ContactOfficeMapSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-12">
         <div className="mx-auto max-w-5xl text-center">
           <h2 className="text-4xl font-bold tracking-tight text-slate-900">
-            Visit <span className="text-brand">Cinute Digital</span> — Ed-Tech Campuses in India
+            Visit <span className="text-brand">Cinute Digital</span> - Ed-Tech Campuses in India
           </h2>
           <p className="mt-6 text-lg text-slate-600">
             Explore our modern training centers for <strong>Software Testing courses</strong>,{" "}
@@ -61,7 +63,7 @@ export function ContactOfficeMapSection() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Info */}
           <div className="relative">
             <div
@@ -100,22 +102,28 @@ export function ContactOfficeMapSection() {
                   <Link
                     href={active.phone}
                     title={`Call ${active.label} Office`}
-                    className="rounded-xl border border-purple-200 bg-purple-50 p-3 text-sm shadow-sm hover:shadow-md transition"
+                    className="flex items-center gap-3 rounded-xl border border-purple-200 bg-purple-50 p-3 text-sm shadow-sm hover:shadow-md transition"
                     aria-label={`Call ${active.label} office`}
                   >
-                    <div className="font-medium text-base text-slate-900">Admissions Helpline</div>
-                    <div className="mt-1 text-[14px] text-slate-700">{active.phoneDisplay}</div>
+                    <span aria-hidden="true" className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-purple-600 text-white"><Phone className="h-5 w-5" /></span>
+                    <div className="min-w-0">
+                      <div className="font-medium text-base text-slate-900">Admissions Helpline</div>
+                      <div className="mt-1 text-[14px] text-slate-700">{active.phoneDisplay}</div>
+                    </div>
                   </Link>
 
                   <Link
                     href={active.email}
                     title={`Email ${active.label} Office`}
-                    className="rounded-xl border border-indigo-200 bg-indigo-50 p-3 text-sm shadow-sm hover:shadow-md transition"
+                    className="flex items-center gap-3 rounded-xl border border-indigo-200 bg-indigo-50 p-3 text-sm shadow-sm hover:shadow-md transition"
                     aria-label={`Email ${active.label} office`}
                   >
-                    <div className="font-medium text-base text-slate-900">Email</div>
-                    <div className="mt-1 text-[14px] text-slate-700">
-                      {active.email.replace("mailto:", "")}
+                    <span aria-hidden="true" className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-indigo-600 text-white"><Mail className="h-5 w-5" /></span>
+                    <div className="min-w-0">
+                      <div className="font-medium text-base text-slate-900">Email</div>
+                      <div className="mt-1 break-words text-[14px] text-slate-700">
+                        {active.email.replace("mailto:", "")}
+                      </div>
                     </div>
                   </Link>
 
@@ -125,11 +133,14 @@ export function ContactOfficeMapSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       title="Chat with CDPL on WhatsApp"
-                      className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm shadow-sm hover:shadow-md transition"
+                      className="flex items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm shadow-sm hover:shadow-md transition"
                       aria-label={`WhatsApp ${active.label} office`}
                     >
-                      <div className="font-medium text-base text-emerald-800">WhatsApp</div>
-                      <div className="mt-1 text-emerald-700">Instant Responses</div>
+                      <span aria-hidden="true" className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-[#25D366] text-white"><FaWhatsapp className="h-6 w-6" /></span>
+                      <div className="min-w-0">
+                        <div className="font-medium text-base text-emerald-800">WhatsApp</div>
+                        <div className="mt-1 text-emerald-700">Instant Responses</div>
+                      </div>
                     </Link>
                   )}
 
@@ -138,46 +149,32 @@ export function ContactOfficeMapSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     title={`Get Directions to ${active.label} Office`}
-                    className="rounded-xl border border-sky-200 bg-sky-50 p-3 text-sm shadow-sm hover:shadow-md transition"
+                    className="flex items-center gap-3 rounded-xl border border-sky-200 bg-sky-50 p-3 text-sm shadow-sm hover:shadow-md transition"
                     aria-label={`Get directions to ${active.label}`}
                   >
-                    <div className="font-medium text-base text-sky-800">Get Directions</div>
-                    <div className="mt-1 text-sky-700">Open in Google Maps</div>
+                    <span aria-hidden="true" className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sky-600 text-white"><Navigation className="h-5 w-5" /></span>
+                    <div className="min-w-0">
+                      <div className="font-medium text-base text-sky-800">Get Directions</div>
+                      <div className="mt-1 text-sky-700">Open in Google Maps</div>
+                    </div>
                   </Link>
-                </div>
-
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {[
-                    { title: "Software Testing Training", bgColor: "bg-blue-50", textColor: "text-blue-500" },
-                    { title: "Data Science & AI Courses", bgColor: "bg-red-50", textColor: "text-red-500" },
-                    { title: "Full-Stack Developer Program", bgColor: "bg-green-50", textColor: "text-green-500" },
-                    { title: "Placement Assistance", bgColor: "bg-purple-50", textColor: "text-purple-500" },
-                    { title: "Corporate Upskilling", bgColor: "bg-indigo-50", textColor: "text-indigo-600" },
-                  ].map((chip) => (
-                    <span
-                      key={chip.title}
-                      className={`rounded-full border border-slate-200 ${chip.bgColor} px-3 py-1 text-xs font-medium ${chip.textColor}`}
-                    >
-                      {chip.title}
-                    </span>
-                  ))}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Map */}
-          <div className="relative">
-            <div className="relative rounded-3xl border border-slate-100 bg-white shadow-xl overflow-hidden">
+          {/* Map: fixed height on small screens, matches the info card from lg */}
+          <div className="relative flex flex-col">
+            <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-xl lg:min-h-[400px] lg:flex-1">
               <div className="absolute inset-x-0 top-0 z-10 p-3">
                 <div className="mx-auto w-fit rounded-full border border-slate-200 bg-white/90 px-3 py-1 text-[11px] text-slate-600 shadow-sm backdrop-blur">
                   {active.label} • Live Location
                 </div>
               </div>
               <iframe
-                className="w-full h-[570px]"
+                className="block h-80 w-full sm:h-96 lg:absolute lg:inset-0 lg:h-full"
                 src={active.mapSrc}
-                title={`${active.label} — Cinute Digital`}
+                title={`${active.label} - Cinute Digital`}
                 loading="lazy"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen

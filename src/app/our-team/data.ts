@@ -75,27 +75,6 @@ export const teamLeaders: TeamLeaders[] = [
 
     },
     {
-        id: "4",
-        name: "Shoeb Shaikh",
-        title: "Head - Learning and Development",
-        role: "Software Testing and Data Science Expert",
-        experience: "14+ years",
-        specialization: "Software Testing and Data Science Expert",
-        expertise: ["Software Testing", "Data Science Expert"],
-        bio: "Shoeb Shaikh is a seasoned Software Testing and Data Science Expert and a Mentor with over 14 years of experience in the field. Specialist in designing and managing processes, and leading high-performing teams to deliver impactful results.",
-        achievements: [
-            "Designed & Delivered 50+ QA and Data Science training programs",
-            "Trained professionals in QA and Data Science",
-            "ISTQB Certified Test Manager (Selenium, Pytest, API, DBMS)",
-            "Led L&D initiatives in academic and corporate environments"
-        ],
-        location: "Mumbai, India",
-        avatar: "/Team_Leaders_image/ShoebShaikh.webp",
-        linkedin: "https://www.linkedin.com/in/ishaikhshoeb/",
-        email: "mailto:hello@cinutedigital.com",
-        highlights: ["10+ years in EdTech", "Mentored career transitions", "ISO-aligned delivery"],
-
-    }, {
         id: "5",
         name: "Ashish Shetty",
         title: "Business Intelligence & Data Analytics Specialist | L&D Expert",
@@ -103,9 +82,8 @@ export const teamLeaders: TeamLeaders[] = [
         experience: "11+ years",
         specialization: "QA Strategy & Leadership",
         expertise: ["Business Intelligence", "learning and development professional"],
-        bio: "Ashish Shetty is a seasoned Business Intelligence and learning and development professional with over 11 years of experience empowering students and professionals to unlock career success through data-driven skills. Specializing in Power BI, Tableau, and Prompt Engineering, Ashish is known for delivering practical, high-impact workshops and training programs across academic and corporate sectors.",
+        bio: "Business Intelligence and L&D professional with 11+ years helping students and professionals build data-driven careers, specializing in Power BI, Tableau and Prompt Engineering.",
         achievements: [
-            "Trained students & professionals in BI, ML, and Analytics",
             "Delivered 50+ workshops and national-level programs",
             "Keynote speaker at leading conferences and UGC events",
             "Designed industry-certified training and faculty development courses",
@@ -113,6 +91,7 @@ export const teamLeaders: TeamLeaders[] = [
         ],
         location: "Mumbai, India",
         avatar: "/Team_Leaders_image/AshishShetty.png",
+        avatarMask: true,
         linkedin: "https://www.linkedin.com/in/profashishshetty/",
         email: "mailto:hello@cinutedigital.com",
         highlights: ["10+ years in EdTech", "Mentored career transitions", "ISO-aligned delivery"],
@@ -120,7 +99,7 @@ export const teamLeaders: TeamLeaders[] = [
     },
 ]
 
-export const teamData: TeamMember[] = [
+export const industryMentors: TeamMember[] = [
 
     {
         id: "1",
@@ -188,6 +167,10 @@ export const teamData: TeamMember[] = [
         avatar: "/Team/prakash-mishra.png",
         linkedin: "https://www.linkedin.com/in/prakashmmishra/",
     },
+];
+
+// HR and administration: the "Our Team" section.
+export const teamData: TeamMember[] = [
     {
         id: "7",
         name: "Pravin Kodag",
@@ -214,36 +197,6 @@ export const teamData: TeamMember[] = [
 ];
 
 export const trainers: Trainer[] = [
-    {
-        id: 1,
-        name: "Teshoo Rai",
-        role: "Quality Analysis Engineer",
-        avatar: "/Trainers_image/TeshooRai.png",
-        bio: "A highly skilled Quality Analysis Engineer and Corporate Trainer, specialising in Software Development Life Cycle (SDLC) and Software Test Life Cycle (STLC).",
-        yearsExp: 5,
-        rating: 4.9,
-        specialties: ["Corporate Trainer", "Software Development Life Cycle (SDLC)", "Software Test Life Cycle (STLC)", "Java Automation", "Selenium"],
-        certifications: ["ISTQB CTFL", "Certified Scrum Master"],
-        languages: ["English", "Hindi"],
-        successStories: 120,
-        slug: "aarav-mehta",
-        linkedin: "http://linkedin.com/in/teshoo-rai-b56179237"
-    },
-    {
-        id: 2,
-        name: "Pooja Bombatkar",
-        role: "Senior QA Mentor",
-        avatar: "/Trainers_image/PoojaBombatkar.png",
-        bio: "An ISTQB certified tester with more than 8-years of comprehensive experience of working in the field of software testing.",
-        yearsExp: 8,
-        rating: 4.9,
-        specialties: ["Manual Testing", "Automation Testing", "API Testing", "Functional Testing", "System Testing"],
-        certifications: ["ISTQB CTFL", "Certified Scrum Master"],
-        languages: ["English", "Hindi"],
-        successStories: 120,
-        slug: "aarav-mehta",
-        linkedin: "https://www.linkedin.com/in/pooja-shinde-475076122",
-    },
     {
         id: 3,
         name: "Vaibhav Kakade",

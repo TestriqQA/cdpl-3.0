@@ -1,5 +1,5 @@
 /**
- * One-time seed — import the static JOBS array (src/lib/jobsData.ts) into Sanity
+ * One-time seed — import the static JOBS array (src/data/jobs.ts) into Sanity
  * as `liveJob` documents.
  *
  * SEO-SAFE: each doc's `slug.current` === the old `id` (so every existing
@@ -29,7 +29,7 @@
 // Staging build trigger (no-op change #2) — safe to delete.
 import { config as loadEnv } from 'dotenv';
 import { createClient } from '@sanity/client';
-import { JOBS } from '../src/lib/jobsData';
+import { JOBS } from '../src/data/jobs';
 
 // Load Sanity env from .env.local / .env (Next.js convention) so this script
 // runs directly with `npx tsx scripts/seed-live-jobs.ts`.

@@ -4,8 +4,8 @@
 // every live job (Sanity-first via getLiveJobs(), static `JOBS` fallback).
 import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
-import type { Job } from "@/lib/jobsData";
-import { getLiveJobs, getLiveJobBySlug, lookupLiveJob, buildLiveJobPostingSchema } from "@/lib/liveJobs";
+import type { Job } from "@/data/jobs";
+import { getLiveJobs, getLiveJobBySlug, lookupLiveJob, buildLiveJobPostingSchema } from "@/lib/live-jobs";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateBreadcrumbSchema } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
@@ -19,7 +19,7 @@ import { JobsLiveJobsListingSection } from "@/components/sections/JobsLiveJobsLi
 import JobsLiveJobsWhyWePostJobsSection from "@/components/sections/LiveJobsLiveJobsWhyWePostJobsSection";
 import JobsLiveJobsTestimonialSection from "@/components/sections/JobsLiveJobsTestimonialSection";
 import JobsLiveJobsReviewSection from "@/components/sections/JobsLiveJobsReviewSection";
-import { JobsLiveJobsSubscribeCTASection } from "@/components/sections/JobsLiveJobsSubscribeCTASection";
+import { JobsLiveJobsSubscribeCtaSection } from "@/components/sections/JobsLiveJobsSubscribeCtaSection";
 
 const DEFAULT_BANNER = "/og-images/jobs-live-jobs-og.webp";
 
@@ -40,7 +40,7 @@ type Props = {
 
 // ISR: re-fetch from Sanity every 60s (the /api/revalidate webhook triggers
 // instant revalidation on publish). getLiveJobs()/getLiveJobBySlug() merge
-// Sanity with the static JOBS seed — see src/lib/liveJobs.ts.
+// Sanity with the static JOBS seed — see src/lib/live-jobs.ts.
 export const revalidate = 60;
 
 // SSG: every job gets its own canonical URL. Params come from Sanity (with a
@@ -84,7 +84,7 @@ export default async function Page({ params }: Props) {
         //
         // ⚠️  Only when Sanity itself said so. Browsers cache permanent
         // redirects, so one issued during an outage would outlive it — see
-        // `authoritative` in src/lib/liveJobs.ts. When the answer came from
+        // `authoritative` in src/lib/live-jobs.ts. When the answer came from
         // the fallback snapshot instead, fall through to not-found.tsx, which
         // is a 404 and so is never cached as a redirect.
         if (authoritative) permanentRedirect("/jobs/live-jobs");
@@ -96,7 +96,7 @@ export default async function Page({ params }: Props) {
         bannerImage: job.bannerImage ?? DEFAULT_BANNER,
     };
 
-    // JobPosting JSON-LD via the shared builder in src/lib/liveJobs.ts — the
+    // JobPosting JSON-LD via the shared builder in src/lib/live-jobs.ts — the
     // same logic the listing route uses, so schema fixes apply to both.
     const jobPostingSchema = buildLiveJobPostingSchema(job);
 
@@ -141,13 +141,13 @@ export default async function Page({ params }: Props) {
             />
 
             {/* Single-job listing — same component as the index, filtered to one. */}
-            <JobsLiveJobsListingSection jobs={[jobWithBanner]} />
+            <JobsLiveJobsListingSection jobs={[jobWithBanner]} mode="detail" />
 
             {/* Below-the-fold sections kept for consistent UX with the listing. */}
             <JobsLiveJobsWhyWePostJobsSection />
             <JobsLiveJobsTestimonialSection />
             <JobsLiveJobsReviewSection />
-            <JobsLiveJobsSubscribeCTASection />
+            <JobsLiveJobsSubscribeCtaSection />
         </div>
     );
 }

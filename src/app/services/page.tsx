@@ -38,7 +38,7 @@ import ServicesGridSection from "@/components/sections/ServicesGridSection";
 // Sections imported directly — next/dynamic(ssr:true) only added client Suspense
 // boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
 import ServicesWhyChooseUsSection from "@/components/sections/ServicesWhyChooseUsSection";
-import ServicesCTASection from "@/components/sections/ServicesCTASection";
+import ServicesCtaSection from "@/components/sections/ServicesCtaSection";
 
 // ============================================================================
 // SERVICES PAGE COMPONENT
@@ -54,6 +54,7 @@ export default async function TrainingServicesPage() {
       slug: s.slug,
       title: s.title,
       shortDescription: s.shortDescription,
+      image: s.ogImage || "/og-images/services-og.webp",
     }))
   );
 
@@ -68,7 +69,7 @@ export default async function TrainingServicesPage() {
         <ServicesHeroSection />
         <ServicesGridSection services={services} />
         <ServicesWhyChooseUsSection />
-        <ServicesCTASection />
+        <ServicesCtaSection />
       </div>
     </>
   );

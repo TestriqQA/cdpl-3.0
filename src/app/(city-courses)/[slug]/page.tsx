@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { courseData, type CourseData } from "@/types/courseData";
+import { courseData, type CourseData } from "@/types/course-data";
 import { generateMetadata as generateSEOMetadata } from "@/lib/metadata-generator";
 import {
   generateCourseSchema,
@@ -9,8 +9,8 @@ import {
   generateCityCoursePageSchema,
 } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
-import { isTier1Slug, getCityFromSlug, isExcludedFamilySlug } from "@/lib/cityTiers";
-import { getCityLocalContent, getCourseCityFaqs } from "@/data/cityLocalContent";
+import { isTier1Slug, getCityFromSlug, isExcludedFamilySlug } from "@/lib/city-tiers";
+import { getCityLocalContent, getCourseCityFaqs } from "@/data/cities/local-content";
 // BLG-200: use permanentRedirect (308) instead of redirect (307 default).
 // The plural ↔ singular fallback below was emitting 307s, which Google
 // does not honour for SEO weight transfer; 308 triggers consolidation.
@@ -24,8 +24,8 @@ import CurriculumSection from "@/components/city-courses/CurriculumSection";
 import ProjectsSection from "@/components/city-courses/ProjectsSection";
 import WhyChooseSection from "@/components/city-courses/WhyChooseSection";
 import CareerPathSection from "@/components/city-courses/CareerPathSection";
-import FAQSection from "@/components/city-courses/FAQSection";
-import CTASection from "@/components/city-courses/CTASection";
+import FaqSection from "@/components/city-courses/FaqSection";
+import CtaSection from "@/components/city-courses/CtaSection";
 
 // Helper: interpolate {location_name} with actual location
 function interpolateLocation(text: string, location: string): string {
@@ -33,6 +33,7 @@ function interpolateLocation(text: string, location: string): string {
 }
 
 import NotFoundPage from "@/components/NotFoundPage";
+import { SITE_STATS } from "@/lib/site-stats";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -46,7 +47,7 @@ interface PageProps {
 // `CourseData` has carried localJobMarketInsight / localizedFaqs since April
 // 2026 and the components already render them — but across all 765 records
 // they were filled in zero times, which is why every city page reads as the
-// same template with the name swapped. See src/data/cityLocalContent.ts.
+// same template with the name swapped. See src/data/cities/local-content.ts.
 function getByInternalSlug(slug: string): CourseData | undefined {
   const key = slug.toLowerCase();
   const base = Object.values(courseData).find(
@@ -138,7 +139,7 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 
   const allKeywords = [...baseKeywords, ...additionalKeywords];
 
-  // Only Tier 1 cities are indexable — see src/lib/cityTiers.ts. The other ~735
+  // Only Tier 1 cities are indexable — see src/lib/city-tiers.ts. The other ~735
   // city pages are near-identical location swaps of the same template and were
   // splitting each other's ranking signals (96 URLs competed for "data science
   // course in mumbai" alone, at 1,212 impressions and zero clicks). They stay
@@ -238,8 +239,8 @@ export default async function CoursePage({ params, searchParams }: PageProps): P
     prerequisites: ["Basic computer knowledge"],
     duration: parseDuration(data.courseDetails.duration),
     price: parsePrice(data.courseDetails.price),
-    rating: 4.8,
-    reviewCount: (data.localizedTestimonials?.length || 0) > 0 ? data.localizedTestimonials?.length : 425,
+    rating: SITE_STATS.rating,
+    reviewCount: (data.localizedTestimonials?.length || 0) > 0 ? data.localizedTestimonials?.length : SITE_STATS.reviewCount,
     reviews: data.localizedTestimonials?.map(t => ({
       author: t.author,
       rating: t.rating,
@@ -265,8 +266,8 @@ export default async function CoursePage({ params, searchParams }: PageProps): P
         <ProjectsSection data={data} />
         <WhyChooseSection data={data} />
         <CareerPathSection data={data} />
-        <FAQSection data={data} />
-        <CTASection data={{
+        <FaqSection data={data} />
+        <CtaSection data={{
           ...data,
           ctaContent: {
             ...data.ctaContent,

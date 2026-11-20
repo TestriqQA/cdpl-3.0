@@ -180,22 +180,6 @@ export function ContactMethodsSection() {
             );
           })}
         </div>
-
-        <div className="mt-10 grid gap-4 sm:grid-cols-3">
-          {[
-            { title: "Software Testing Courses", note: "Manual • Automation • QA", bgColor: "bg-blue-50", textColor: "text-blue-700", borderColor: "ring-blue-500" },
-            { title: "Data Science & AI Programs", note: "Python • ML • Power BI", bgColor: "bg-green-50", textColor: "text-green-700", borderColor: "ring-green-500" },
-            { title: "Full-Stack Development", note: "React • Node.js • SQL", bgColor: "bg-purple-50", textColor: "text-purple-700", borderColor: "ring-purple-500" },
-          ].map((pill) => (
-            <div
-              key={pill.title}
-              className={`rounded-2xl ring-2 ${pill.borderColor} ${pill.bgColor} p-4 text-center shadow-sm`}
-            >
-              <div className={`text-md font-semibold ${pill.textColor}`}>{pill.title}</div>
-              <div className="mt-1 text-sm text-slate-600">{pill.note}</div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

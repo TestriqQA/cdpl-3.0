@@ -15,7 +15,7 @@ const CityCourseLeadForm = dynamic(
     }
 );
 
-import type { CourseData } from "@/types/courseData";
+import type { CourseData } from "@/types/course-data";
 import Link from "next/link";
 
 interface HeroSectionProps {

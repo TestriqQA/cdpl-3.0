@@ -16,7 +16,7 @@ import ServiceDetailAudienceSection from '@/components/sections/ServiceDetailAud
 import ServiceDetailOutcomesSection from '@/components/sections/ServiceDetailOutcomesSection';
 import ServiceDetailMethodologySection from '@/components/sections/ServiceDetailMethodologySection';
 import ServiceDetailPastEventsSection from '@/components/sections/ServiceDetailPastEventsSection';
-import ServiceDetailCTASection from '@/components/sections/ServiceDetailCTASection';
+import ServiceDetailCtaSection from '@/components/sections/ServiceDetailCtaSection';
 
 // ============================================================================
 // STATIC SITE GENERATION — Pre-build all service pages at deploy time
@@ -31,6 +31,9 @@ export async function generateStaticParams() {
 
 // Revalidate daily so content stays fresh without full rebuilds
 export const revalidate = 86400;
+
+/** Share image for a service without its own `ogImage`. */
+const DEFAULT_SERVICE_OG_IMAGE = '/og-images/services-og.webp';
 
 // ============================================================================
 // ENHANCED METADATA GENERATION FOR SEO
@@ -80,7 +83,9 @@ export async function generateMetadata(
     description: finalDescription,
     keywords,
     url: `/services/${slug}`,
-    image: `/og-images/og-service-${slug}.webp`,
+    // Was `/og-images/og-service-${slug}.webp`, a file that exists for no
+    // service, so every share preview had a broken image.
+    image: service.ogImage || DEFAULT_SERVICE_OG_IMAGE,
     type: 'article'
   });
 }
@@ -115,6 +120,7 @@ export default async function ServiceDetailPage(
     methodology: service.methodology,
     deliveryFormats: service.deliveryFormats,
     whoShouldAttend: service.whoShouldAttend,
+    image: service.ogImage || DEFAULT_SERVICE_OG_IMAGE,
   });
 
   return (
@@ -133,7 +139,7 @@ export default async function ServiceDetailPage(
         <ServiceDetailOutcomesSection service={serviceForClient} />
         <ServiceDetailMethodologySection service={serviceForClient} />
         {events?.length > 0 && <ServiceDetailPastEventsSection events={events} />}
-        <ServiceDetailCTASection service={serviceForClient} />
+        <ServiceDetailCtaSection service={serviceForClient} />
       </div>
     </>
   );

@@ -9,7 +9,7 @@ import {
     validateFullName as validateFullNameLib,
     validateEmail as validateEmailLib,
     validatePhone as validatePhoneLib
-} from '@/lib/formValidation';
+} from '@/lib/form-validation';
 
 // Update interface
 export interface CityCourseLeadFormProps {

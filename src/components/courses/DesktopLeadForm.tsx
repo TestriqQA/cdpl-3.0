@@ -7,7 +7,7 @@ import PhoneInput from '@/components/ui/PhoneNumberInput';
 import CustomFlag from '../ui/CustomFlag';
 
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
-import { validatePhone } from '@/lib/formValidation';
+import { validatePhone } from '@/lib/form-validation';
 
 export default function DesktopLeadForm() {
     // Form state

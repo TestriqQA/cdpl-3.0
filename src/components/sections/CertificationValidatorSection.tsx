@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { CheckCircle2, AlertCircle, Link as LinkIcon, Copy } from "lucide-react";
+import { CheckCircle2, AlertCircle, Link as LinkIcon, Copy, ArrowLeft, ArrowRight, Search, ShieldCheck, X } from "lucide-react";
 import dynamic from "next/dynamic";
 import { AAAVerificationChoiceModal } from "../ui/AAAVerificationChoiceModal";
 import { client } from "@/sanity/client";
@@ -216,9 +216,19 @@ function CertificationValidatorContent() {
   };
 
 
+  const status = result?.status?.toLowerCase();
+  const STATUS_BADGE =
+    status === "valid" || status === "verified"
+      ? { label: "Verified", cls: "bg-emerald-50 text-emerald-700 ring-emerald-200", Icon: CheckCircle2 }
+      : status === "revoked"
+        ? { label: "Revoked", cls: "bg-red-50 text-red-700 ring-red-200", Icon: AlertCircle }
+        : status === "expired"
+          ? { label: "Expired", cls: "bg-amber-50 text-amber-700 ring-amber-200", Icon: AlertCircle }
+          : null;
+
   return (
-    <section id="validator-section" className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 pt-2 pb-10 sm:px-6 lg:px-8">
+    <section id="validator-section" aria-label="Validate a certificate" className="scroll-mt-24">
+      <div className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8 lg:pb-16">
 
         {/* AAA Choice Modal */}
         <AAAVerificationChoiceModal
@@ -232,16 +242,17 @@ function CertificationValidatorContent() {
         {/* Lightbox Overlay */}
         {isLightboxOpen && result && createPortal(
           <div
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
             onClick={() => setIsLightboxOpen(false)}
           >
             <div className="relative max-h-full max-w-5xl rounded-lg bg-white p-1">
               <button
                 type="button"
+                aria-label="Close preview"
                 className="absolute -right-3 -top-3 rounded-full bg-white p-1 shadow-md hover:bg-slate-100"
                 onClick={() => setIsLightboxOpen(false)}
               >
-                <svg className="h-5 w-5 text-gray-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
+                <X className="h-5 w-5 text-slate-700" aria-hidden="true" />
               </button>
               <div
                 className="overflow-auto"
@@ -254,291 +265,206 @@ function CertificationValidatorContent() {
           document.body
         )}
 
-        {/* ===== Result Section (Separate Block) ===== */}
+        {/* ===== Result ===== */}
         {result && (
-          <div className="relative mb-8 overflow-hidden rounded-3xl border border-orange-100 bg-white p-6 shadow-sm">
-            {/* success blend */}
-            <span
-              aria-hidden
-              className="absolute inset-0 opacity-90 [mask-image:radial-gradient(140%_120%_at_0%_0%,#000_40%,transparent_70%)]"
-              style={{
-                backgroundImage:
-                  "radial-gradient(80% 60% at 100% 0%, rgba(16,185,129,.12), transparent 55%), repeating-linear-gradient(90deg, rgba(255,140,0,.10) 0 1px, transparent 1px 5px)",
-              }}
-            />
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/5"
-            />
-
-            <div className="relative z-10 grid gap-8 sm:grid-cols-5">
-              {/* Info Column (Left - sm:col-span-3) */}
+          <div className="mb-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-xl sm:p-8" aria-live="polite">
+            <div className="grid gap-8 sm:grid-cols-5">
+              {/* Info */}
               <div className="order-2 sm:order-1 sm:col-span-3">
-                <div className="mb-6">
-                  <button
-                    type="button"
-                    onClick={resetValidator}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition shadow-sm"
-                  >
-                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                    Check Another Certificate
-                  </button>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <h3 className="relative z-10 text-lg font-extrabold text-slate-900">
-                    Course Completion Certificate
-                  </h3>
-                  {result.status?.toLowerCase() === "verified" || result.status?.toLowerCase() === "valid" ? (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700 ring-1 ring-emerald-200">
-                      <CheckCircle2 className="h-3.5 w-3.5" />
-                      Verified
+                <div className="flex flex-wrap items-center gap-2">
+                  <h2 className="text-xl font-bold text-slate-900">Course Completion Certificate</h2>
+                  {STATUS_BADGE && (
+                    <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ${STATUS_BADGE.cls}`}>
+                      <STATUS_BADGE.Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                      {STATUS_BADGE.label}
                     </span>
-                  ) : null}
+                  )}
                 </div>
 
-                <dl className="mt-4 grid grid-cols-1 gap-4 text-sm text-slate-900 sm:grid-cols-2">
+                <dl className="mt-5 grid grid-cols-1 gap-4 text-sm text-slate-900 sm:grid-cols-2">
                   <div>
                     <dt className="font-semibold text-slate-500">Certificate ID</dt>
                     <dd className="break-all font-mono font-medium">{result.id}</dd>
                   </div>
-
                   <div>
                     <dt className="font-semibold text-slate-500">Holder</dt>
                     <dd className="font-medium">{result.holder}</dd>
                   </div>
-                  <div className="flex flex-col gap-1 min-w-0">
+                  <div className="flex min-w-0 flex-col gap-1 sm:col-span-2">
                     <dt className="font-semibold text-slate-500">Shareable link</dt>
-                    <div className="flex items-center gap-2">
+                    <dd className="flex items-center gap-2">
                       <Link
                         href={relativeShareUrl}
-                        className="truncate inline-flex items-center gap-1 text-indigo-600 hover:underline underline-offset-4 font-medium"
+                        className="inline-flex min-w-0 items-center gap-1 font-medium text-slate-800 underline-offset-4 transition-colors hover:text-brand hover:underline"
                       >
-                        <LinkIcon className="h-3.5 w-3.5 flex-shrink-0" />
+                        <LinkIcon className="h-3.5 w-3.5 flex-shrink-0 text-brand" aria-hidden="true" />
                         <span className="truncate">{absoluteShareUrl}</span>
                       </Link>
                       <button
                         type="button"
                         onClick={copyShare}
-                        className="shrink-0 rounded-full border border-slate-200 bg-white px-2 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 flex items-center gap-1"
+                        className="flex shrink-0 cursor-pointer items-center gap-1 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-700 hover:border-brand hover:text-brand"
                         aria-label="Copy shareable link"
-                        title="Copy"
                       >
-                        <Copy className="h-3 w-3" />
+                        <Copy className="h-3 w-3" aria-hidden="true" />
                         {copied ? "Copied" : "Copy"}
                       </button>
-                    </div>
+                    </dd>
                   </div>
                 </dl>
 
-                <p className="mt-6 text-xs text-slate-400">
+                <button
+                  type="button"
+                  onClick={resetValidator}
+                  className="mt-6 inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:border-brand hover:text-brand"
+                >
+                  <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                  Check another certificate
+                </button>
+
+                <p className="mt-6 text-xs text-slate-500">
                   This verification is provided by CDPL (Cinute Digital Private Limited). If you suspect misuse,{" "}
-                  <Link href="/contact-us" className="underline underline-offset-2 hover:text-slate-600">
+                  <Link href="/contact-us" className="underline underline-offset-2 hover:text-brand">
                     contact CDPL support
                   </Link>
                   .
                 </p>
-
-                <div className="mt-6">
-                  <button
-                    type="button"
-                    onClick={resetValidator}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition shadow-sm"
-                  >
-                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                    Check Another Certificate
-                  </button>
-                </div>
               </div>
 
-              {/* Image Column (Right - sm:col-span-2) */}
+              {/* Image */}
               <div className="order-1 sm:order-2 sm:col-span-2">
-                <div className="overflow-hidden rounded-xl shadow-sm border border-slate-100">
-                  <CertificationPreviewSection
-                    cert={result}
-                    onClick={() => setIsLightboxOpen(true)}
-                  />
+                <div className="overflow-hidden rounded-xl border border-slate-100 shadow-sm">
+                  <CertificationPreviewSection cert={result} onClick={() => setIsLightboxOpen(true)} />
                 </div>
-                <p className="mt-2 text-center text-xs text-slate-400 flex items-center justify-center gap-1">
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-orange-400 animate-pulse" />
-                  Click image to enlarge
-                </p>
+                <p className="mt-2 text-center text-xs text-slate-500">Click the image to enlarge</p>
               </div>
             </div>
           </div>
         )}
 
-        {/* ===== Form Container ===== */}
-        <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm min-h-[290px]">
-          {/* blend layers */}
-          <span
-            aria-hidden
-            className="absolute inset-0"
-            style={{ backgroundColor: "rgba(255,140,0,0.05)" }}
-          />
-          <span
-            aria-hidden
-            className="absolute inset-0 rounded-3xl opacity-90 [mask-image:radial-gradient(140%_120%_at_0%_0%,#000_40%,transparent_70%)]"
-            style={{
-              backgroundImage:
-                "conic-gradient(from 0deg at 100% 0%, rgba(14,165,233,.12), transparent 40%), radial-gradient(80% 60% at 100% 0%, rgba(157,123,255,.12), transparent 55%)",
-            }}
-          />
-          <span
-            aria-hidden
-            className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-black/5"
-          />
-
-          <div className="relative z-10 flex flex-col gap-6">
-
-            {/* Error Message */}
-            {error && (
-              <div className="relative overflow-hidden rounded-xl border border-red-200 bg-white px-4 py-3 text-sm text-red-700">
-                <span
-                  aria-hidden
-                  className="absolute inset-0 rounded-xl opacity-90 [mask-image:radial-gradient(120%_100%_at_0%_0%,#000_35%,transparent_70%)]"
-                  style={{
-                    backgroundImage:
-                      "radial-gradient(80% 60% at 100% 0%, rgba(248,113,113,.12), transparent 55%), repeating-linear-gradient(45deg, rgba(248,113,113,.10) 0 2px, transparent 2px 6px)",
-                  }}
-                />
-                <div className="relative flex items-start gap-2">
-                  <AlertCircle className="mt-0.5 h-4 w-4" />
-                  <span>{error}</span>
-                </div>
-              </div>
-            )}
-
-            {/* ===== Form ===== */}
-            <form onSubmit={onSubmit} className="relative z-10 grid gap-3 sm:grid-cols-[1fr_auto]">
-              <label htmlFor="certId" className="sr-only">
-                Certificate ID
-              </label>
-
-              <div className="relative">
-                {/* input icon */}
-                <svg
-                  aria-hidden
-                  className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path d="M21 21l-4.35-4.35M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="currentColor" strokeWidth="1.6" />
-                </svg>
-
-                <input
-                  id="certId"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Try: CDPLXYXDVE or CD402 (AAA)"
-                  style={{ color: "black", opacity: 1, colorScheme: "light" }}
-                  className="w-full rounded-xl border border-slate-200 bg-white pl-9 pr-10 py-2.5 text-sm font-medium !text-black opacity-100 outline-none ring-0 placeholder:text-slate-400 focus:border-orange-300"
-                  aria-describedby="certHelp"
-                />
-
-                {/* clear button (appears when typing) */}
-                {query ? (
-                  <button
-                    type="button"
-                    onClick={() => setQuery("")}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs text-slate-600 hover:bg-slate-100"
-                    aria-label="Clear"
-                  >
-                    Clear
-                  </button>
-                ) : null}
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:opacity-90 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {loading ? (
-                  <>
-                    <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    <span>Verifying...</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Validate</span>
-                    <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                  </>
-                )}
-              </button>
-
-              {/* helper + quick examples */}
-              <p id="certHelp" className="col-span-full text-xs text-slate-600">
-                Enter the exact Certificate ID (e.g. CDPLXYXDVE).
+        {/* ===== Form ===== */}
+        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl sm:p-8">
+          <div className="flex items-start gap-4">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-orange-100 text-brand">
+              <ShieldCheck className="h-6 w-6" aria-hidden="true" />
+            </span>
+            <div>
+              <h2 className="text-xl font-bold text-slate-900">Enter a certificate ID</h2>
+              <p id="certHelp" className="mt-1 text-sm text-slate-600">
+                Use the exact ID printed on the certificate (e.g. CDPLXYXDVE).
               </p>
-              <div className="col-span-full flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  onClick={() => setQuery("CDPLXYXDVE")}
-                  className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-700 hover:bg-slate-50"
-                  aria-label="Use example CDPLXYXDVE"
-                >
-                  CDPL
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setQuery("CD402")}
-                  className="flex items-center gap-1 rounded-full border border-orange-200 bg-orange-50 pl-2 pr-3 py-1 text-xs font-semibold text-brand hover:bg-orange-100"
-                  aria-label="Use example CD402"
-                >
-                  <Image
-                    src="/certifications_images/logos/logo_aaa.png"
-                    alt="AAA Logo"
-                    width={16}
-                    height={16}
-                    className="h-3 w-4 object-contain"
-                  />
-                  AAA
-                </button>
-              </div>
-            </form>
+            </div>
           </div>
-        </div>
 
-        <p className="sr-only">Validate CDPL AAA and ACTD certificates using their unique IDs.</p>
+          {error && (
+            <div role="alert" className="mt-5 flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+              <span>{error}</span>
+            </div>
+          )}
+
+          <form onSubmit={onSubmit} className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto]">
+            <label htmlFor="certId" className="sr-only">
+              Certificate ID
+            </label>
+            <div className="relative">
+              <Search aria-hidden="true" className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <input
+                id="certId"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Try: CDPLXYXDVE or CD402 (AAA)"
+                className="w-full rounded-xl border border-slate-300 bg-white py-3 pl-10 pr-16 text-base font-medium text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-orange-200 [color-scheme:light]"
+                aria-describedby="certHelp"
+                autoComplete="off"
+                spellCheck={false}
+              />
+              {query ? (
+                <button
+                  type="button"
+                  onClick={() => setQuery("")}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer rounded-md px-2 py-1 text-xs font-medium text-slate-600 hover:bg-slate-100"
+                  aria-label="Clear"
+                >
+                  Clear
+                </button>
+              ) : null}
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+            >
+              {loading ? (
+                <>
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" aria-hidden="true" />
+                  Verifying...
+                </>
+              ) : (
+                <>
+                  Validate
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </>
+              )}
+            </button>
+
+            <div className="col-span-full flex flex-wrap items-center gap-2 pt-1">
+              <span className="text-xs font-medium text-slate-500">Try an example:</span>
+              <button
+                type="button"
+                onClick={() => setQuery("CDPLXYXDVE")}
+                className="cursor-pointer rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700 hover:border-brand hover:text-brand"
+                aria-label="Use example CDPLXYXDVE"
+              >
+                CDPL
+              </button>
+              <button
+                type="button"
+                onClick={() => setQuery("CD402")}
+                className="flex cursor-pointer items-center gap-1 rounded-full border border-slate-200 bg-white py-1 pl-2 pr-3 text-xs font-semibold text-slate-700 hover:border-brand hover:text-brand"
+                aria-label="Use example CD402"
+              >
+                <Image
+                  src="/certifications_images/logos/logo_aaa.png"
+                  alt=""
+                  width={16}
+                  height={16}
+                  className="h-3 w-4 object-contain"
+                />
+                AAA
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   );
 }
 
 // ============================================================================
-// OUTER COMPONENT - Wraps with Suspense
+// SKELETON - same shape as the form card, so nothing shifts on hydration
 // ============================================================================
 function ValidatorSkeleton() {
   return (
-    <section id="validator-section" className="bg-white">
-      <div className="mx-auto max-w-7xl px-4 pt-2 pb-8 sm:px-6 lg:px-8">
-        {/* Form Container Skeleton */}
-        <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm min-h-[290px]">
-          <div className="relative z-10 flex flex-col gap-6 animate-pulse">
-
-            {/* Form Grid (matches form element) */}
-            <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
-
-              {/* Input Skeleton */}
-              <div className="relative">
-                <div className="h-[42px] w-full rounded-xl bg-slate-100" />
+    <section id="validator-section" aria-label="Validate a certificate" className="scroll-mt-24">
+      <div className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8 lg:pb-16">
+        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-xl sm:p-8">
+          <div className="animate-pulse">
+            <div className="flex items-start gap-4">
+              <div className="h-12 w-12 rounded-xl bg-slate-100" />
+              <div className="min-w-0 flex-1 space-y-2">
+                <div className="h-6 w-56 rounded bg-slate-100" />
+                <div className="h-5 w-80 max-w-full rounded bg-slate-100" />
               </div>
-
-              {/* Button Skeleton */}
-              <div className="h-[42px] w-32 rounded-xl bg-slate-100" />
-
-              {/* Helper Text Skeleton - Max width constraint to simulate text wrap logic if needed, but fixed height is safer if we truncate. Real text is 'text-xs'. */}
-              <div className="col-span-full h-8 w-3/4 rounded bg-slate-100" />
-
-              {/* Badges Skeleton */}
-              <div className="col-span-full flex gap-2">
-                <div className="h-7 w-20 rounded-full bg-slate-100" />
-                <div className="h-7 w-20 rounded-full bg-slate-100" />
+            </div>
+            <div className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto]">
+              <div className="h-[50px] rounded-xl bg-slate-100" />
+              <div className="h-[50px] w-36 rounded-xl bg-slate-100" />
+              <div className="col-span-full flex gap-2 pt-1">
+                <div className="h-6 w-24 rounded bg-slate-100" />
+                <div className="h-6 w-16 rounded-full bg-slate-100" />
+                <div className="h-6 w-16 rounded-full bg-slate-100" />
               </div>
             </div>
           </div>

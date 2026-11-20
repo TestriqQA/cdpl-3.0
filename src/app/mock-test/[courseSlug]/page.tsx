@@ -3,7 +3,7 @@
 import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
 import { getCourseBySlug, getRelatedCourses } from "@/lib/mock-db";
-import { MockCourse } from "@/data/mockTestData";
+import { MockCourse } from "@/data/mock-tests";
 import TestInterface from "@/components/mock-test/TestInterface";
 import ResultView from "@/components/mock-test/ResultView";
 import { RegistrationData } from "@/components/mock-test/RegistrationModal";

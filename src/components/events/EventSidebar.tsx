@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { PastEvent } from "@/data/eventsData";
+import { PastEvent } from "@/data/events";
 import { Calendar, MapPin, Tag, Share2 } from "lucide-react";
 import { useState } from "react";
 import WorkshopRequestModal from "../WorkshopRequestModal";

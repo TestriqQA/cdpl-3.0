@@ -65,23 +65,24 @@ export default function JobsCareersBenefitsSection() {
                 <div className="mx-4 sm:mx-6 lg:mx-8 h-[2px] rounded-full bg-gradient-to-r from-[#ff8c00]/30 via-[#ffb558]/30 to-[#ffd19e]/30" />
             </div>
 
-            <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
-                <header className="mb-8 sm:mb-10 lg:mb-12">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-3 py-1 text-xs font-medium text-neutral-600 shadow-sm">
-                        <Sparkles className="h-3.5 w-3.5" />
-                        Life at <span style={{ color: BRAND_COLOR }}>Cinute Digital (CDPL)</span>
-                    </div>
-                    <h2 id="benefits-title" className="mt-3 text-2xl sm:text-4xl lg:text-[2.75rem] font-bold leading-tight tracking-tight">
+            <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+                <header className="mb-10">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-brand">Life at Cinute Digital</p>
+                    <h2 id="benefits-title" className="mt-2 text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl">
                         Why <span style={{ color: BRAND_COLOR }}>CDPL</span> is different
                     </h2>
-                    <p className="mt-3 max-w-2xl text-[0.95rem] leading-relaxed text-neutral-600">
+                    <p className="mt-3 max-w-2xl text-base text-slate-600">
                         A culture crafted for builders who care about quality, learner impact, and shipping with discipline.
                     </p>
                 </header>
 
                 <div className="relative mb-8 overflow-hidden rounded-xl border border-neutral-200 bg-white">
-                    <div className="flex min-w-max gap-8 whitespace-nowrap py-3 text-sm font-medium text-neutral-700 [animation:marquee_24s_linear_infinite] will-change-transform">
+                    {/* Global cdpl-marquee (a styled-jsx scoped keyframe never matched, so this never moved).
+                        4 copies with no outer gap (each copy's px-4 spaces the seam) so the -50% loop is seamless. */}
+                    <div className="flex w-max whitespace-nowrap py-3 text-sm font-medium text-neutral-700 [animation:cdpl-marquee_60s_linear_infinite] motion-reduce:[animation:none] will-change-transform">
                         <TickerItems />
+                        <TickerItems ariaHidden />
+                        <TickerItems ariaHidden />
                         <TickerItems ariaHidden />
                     </div>
                 </div>
@@ -156,7 +157,7 @@ export default function JobsCareersBenefitsSection() {
                                     </div>
 
                                     <div className="min-w-0">
-                                        <h3 className="text-base sm:text-lg font-semibold tracking-tight" itemProp="name" id={b.seoId} style={{ color: accent }}>
+                                        <h3 className="text-lg font-bold tracking-tight" itemProp="name" id={b.seoId} style={{ color: accent }}>
                                             {b.title}
                                         </h3>
                                         <span aria-hidden className="mt-1 block h-[2px] w-8 rounded-full" style={{ background: `linear-gradient(90deg, ${accent} 0%, ${accentTint} 100%)` }} />
@@ -201,7 +202,6 @@ export default function JobsCareersBenefitsSection() {
 
 
             <style jsx>{`
-        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         .shimmer-line { animation: shimmer 2.4s linear infinite; }
         @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(400%); } }
         @media (max-width: 360px) { :global(#benefits-title) { font-size: 1.6rem; line-height: 1.25; } }

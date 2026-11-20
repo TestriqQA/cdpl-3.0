@@ -13,49 +13,49 @@ import { CheckCircle2, Award, Users, Briefcase, Clock, Globe, HeadphonesIcon, Tr
 // Define a color palette for the cards
 const colorPalette = [
   {
-    bg: 'bg-gradient-to-br from-orange-500 to-brand',
+    bg: 'bg-brand',
     text: 'text-brand',
     ring: 'ring-orange-500',
     hoverBorder: 'hover:border-orange-300',
   },
   {
-    bg: 'bg-gradient-to-br from-blue-500 to-blue-600',
+    bg: 'bg-blue-600',
     text: 'text-blue-600',
     ring: 'ring-blue-500',
     hoverBorder: 'hover:border-blue-300',
   },
   {
-    bg: 'bg-gradient-to-br from-green-500 to-green-600',
+    bg: 'bg-green-600',
     text: 'text-green-600',
     ring: 'ring-green-500',
     hoverBorder: 'hover:border-green-300',
   },
   {
-    bg: 'bg-gradient-to-br from-purple-500 to-purple-600',
+    bg: 'bg-purple-600',
     text: 'text-purple-600',
     ring: 'ring-purple-500',
     hoverBorder: 'hover:border-purple-300',
   },
   {
-    bg: 'bg-gradient-to-br from-red-500 to-red-600',
+    bg: 'bg-red-600',
     text: 'text-red-600',
     ring: 'ring-red-500',
     hoverBorder: 'hover:border-red-300',
   },
   {
-    bg: 'bg-gradient-to-br from-yellow-500 to-yellow-600',
+    bg: 'bg-yellow-500',
     text: 'text-yellow-600',
     ring: 'ring-yellow-500',
     hoverBorder: 'hover:border-yellow-300',
   },
   {
-    bg: 'bg-gradient-to-br from-pink-500 to-pink-600',
+    bg: 'bg-pink-600',
     text: 'text-pink-600',
     ring: 'ring-pink-500',
     hoverBorder: 'hover:border-pink-300',
   },
   {
-    bg: 'bg-gradient-to-br from-cyan-500 to-cyan-600',
+    bg: 'bg-cyan-600',
     text: 'text-cyan-600',
     ring: 'ring-cyan-500',
     hoverBorder: 'hover:border-cyan-300',
@@ -77,7 +77,7 @@ export default function HomeWhyChooseSection() {
     {
       icon: Briefcase,
       title: 'Job Assistance',
-      description: 'Interview opportunities with our our hiring partner network and dedicated placement support.',
+      description: 'Interview opportunities with our hiring partner network and dedicated placement support.',
     },
     {
       icon: Clock,
@@ -107,23 +107,23 @@ export default function HomeWhyChooseSection() {
   ];
 
   return (
-    <section className=" py-6 lg:py-10 bg-gray-50" aria-labelledby="why-choose-cdpl-heading">
+    <section className="py-12 lg:py-16 bg-gray-50" aria-labelledby="why-choose-cdpl-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header - Enhanced for SEO and Impact */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1 bg-orange-100 text-brand rounded-full text-sm font-semibold tracking-wider mb-3">
+        {/* Section Header */}
+        <div className="mx-auto mb-10 max-w-3xl text-center lg:mb-12">
+          <span className="inline-block rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-brand">
             Your Career Advantage
           </span>
-          <h2 id="why-choose-cdpl-heading" className="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+          <h2 id="why-choose-cdpl-heading" className="mt-4 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
             Why <span className="text-brand">Choose CDPL</span> for Your Future?
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto font-light">
+          <p className="mt-4 text-lg text-gray-600">
             We are committed to transforming your career with a unique blend of expert-led training, personalized support, and placement assistance.
           </p>
         </div>
 
-        {/* Benefits Grid - Improved Responsiveness and Visuals */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Benefits Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {benefits.map((benefit, index) => {
             const color = colorPalette[index % colorPalette.length];
             return (
@@ -133,39 +133,28 @@ export default function HomeWhyChooseSection() {
               >
                 {/* Card */}
                 <div className={`
-                  bg-white rounded-3xl p-6 shadow-xl 
-                  border-2 border-transparent ${color.hoverBorder} 
-                  transition-all duration-500 ease-in-out 
-                  hover:shadow-2xl hover:-translate-y-2 h-full
+                  bg-white rounded-2xl p-6 shadow-sm
+                  border border-slate-200 ${color.hoverBorder}
+                  transition-all duration-300
+                  hover:shadow-xl hover:-translate-y-1 h-full
                   flex flex-col
                 `}>
-                  {/* Icon Container */}
-                  <div className={`
-                    w-16 h-16 ${color.bg} rounded-xl 
-                    flex items-center justify-center mb-4 
-                    shadow-lg transition-transform duration-500
-                    group-hover:rotate-6
-                  `}>
-                    <benefit.icon className="w-8 h-8 text-white" strokeWidth={2.5} />
+                  {/* Icon and heading side by side */}
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className={`
+                      w-11 h-11 ${color.bg} rounded-xl shrink-0
+                      flex items-center justify-center
+                      shadow-md
+                    `}>
+                      <benefit.icon className="w-5 h-5 text-white" strokeWidth={2.5} />
+                    </div>
+                    <h3 className="text-lg font-bold leading-snug text-gray-900">
+                      {benefit.title}
+                    </h3>
                   </div>
-
-                  {/* Content */}
-                  <h3 className={`text-xl font-bold text-gray-900 mb-2 ${color.text}`}>
-                    {benefit.title}
-                  </h3>
                   <p className="text-base text-gray-600 leading-relaxed flex-grow">
                     {benefit.description}
                   </p>
-
-                  {/* Visual Accent on Hover */}
-                  <div className={`
-                    mt-4 text-sm font-semibold 
-                    opacity-0 group-hover:opacity-100 
-                    transition-opacity duration-300
-                    ${color.text}
-                  `}>
-
-                  </div>
                 </div>
               </div>
             );

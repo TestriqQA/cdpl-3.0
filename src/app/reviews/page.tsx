@@ -7,7 +7,7 @@ import {
   generateReviewsPageAllSchemas
 } from "@/lib/schema-generators";
 import { STATISTICS } from "@/lib/seo-config";
-import { getAllReviews } from "src/data/reviews/reviewsData";
+import { getAllReviews } from "src/data/reviews";
 import JsonLd from "@/components/JsonLd";
 
 // Revalidate content periodically (change to 0 if you fetch SSR)
@@ -24,16 +24,17 @@ export const revalidate = 120;
 // them directly removes the boundaries and the shift. Same reasoning as
 // BLG-010 for Header/Footer/SpecialOfferBanner in app/layout.tsx.
 import ReviewsHeroSection from "@/components/sections/ReviewsHeroSection";
-import JobsLiveJobsTestimonialSection from "@/components/sections/JobsLiveJobsTestimonialSection";
+import ReviewsVideoSection from "@/components/sections/ReviewsVideoSection";
 import ReviewsFeedbackSection from "@/components/sections/ReviewsFeedbackSection";
-import JobsLiveJobsReviewSection from "@/components/sections/JobsLiveJobsReviewSection";
-import ReviewsCTAJoinSection from "@/components/sections/ReviewsCTAJoinSection";
+import ReviewsGoogleSection from "@/components/sections/ReviewsGoogleSection";
+import ReviewsCtaJoinSection from "@/components/sections/ReviewsCtaJoinSection";
+import { SITE_STATS, STAT_TEXT } from "@/lib/site-stats";
 
 // ---------- SEO Metadata ----------
 export const metadata: Metadata = generateStaticPageMetadata({
   title: "Student Reviews & Testimonials | CDPL",
   description:
-    "Read authentic student reviews and success stories for CDPL's Software Testing, Data Science and AI/ML courses — rated 4.9/5 across 425 reviews.",
+    `Read authentic student reviews and success stories for CDPL's Software Testing, Data Science and AI/ML courses — rated ${STAT_TEXT.rating} across ${SITE_STATS.reviewCount} reviews.`,
   keywords: [
     "CDPL reviews",
     "student testimonials",
@@ -76,12 +77,11 @@ export default function Page() {
         <JsonLd key={`reviews-schema-${index}`} id={`reviews-schema-${index}`} schema={schema} />
       ))}
 
-      {/* Sections (unchanged) */}
       <ReviewsHeroSection />
-      <JobsLiveJobsTestimonialSection />
+      <ReviewsVideoSection />
       <ReviewsFeedbackSection />
-      <JobsLiveJobsReviewSection />
-      <ReviewsCTAJoinSection />
+      <ReviewsGoogleSection />
+      <ReviewsCtaJoinSection />
     </div>
   );
 }

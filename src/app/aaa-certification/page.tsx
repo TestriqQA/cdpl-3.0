@@ -8,10 +8,12 @@ import JsonLd from "@/components/JsonLd";
 
 // Sections imported directly — next/dynamic(ssr:true) only added client Suspense
 // boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
-import AAACerticationHeroSection from "@/components/sections/AAACerticationHeroSection";
+import AAACertificationHeroSection from "@/components/sections/AAACertificationHeroSection";
 import AAACertificationWhySection from "@/components/sections/AAACertificationWhySection";
 import AAACertificationCurriculumSection from "@/components/sections/AAACertificationCurriculumSection";
 import AAACertificationOutcomesCtaSection from "@/components/sections/AAACertificationOutcomesCtaSection";
+import { SITE_STATS } from "@/lib/site-stats";
+import { AAA_FAQS } from "@/data/faqs/aaa-certification";
 
 /* ---------- SEO ---------- */
 export const metadata: Metadata = generateStaticPageMetadata({
@@ -60,29 +62,13 @@ export default function AAACertificationCoursePage() {
     ],
     prerequisites: ["Basic programming knowledge", "Testing fundamentals"],
     duration: "P12W",
-    rating: 4.8,
-    reviewCount: 150,
+    rating: SITE_STATS.rating,
+    reviewCount: SITE_STATS.reviewCount,
   };
 
   const consolidatedSchemas = generateAaaCertificationPageAllSchemas({
-    faqs: [
-      {
-        question: "What is AAA Certification?",
-        answer: "AAA (Advanced Automation Architecture) Certification is an industry-recognized credential that validates your expertise in designing and implementing advanced test automation frameworks, CI/CD integration, and cloud-based testing strategies.",
-      },
-      {
-        question: "How long does the AAA course take?",
-        answer: "The AAA Certification course is a 12-week program with approximately 20 hours of learning per week, including live sessions, hands-on labs, and project work.",
-      },
-      {
-        question: "Is the AAA certificate recognized by employers?",
-        answer: "Yes, the AAA Certification from CDPL is recognized by leading tech companies and demonstrates your advanced skills in test automation architecture.",
-      },
-      {
-        question: "What are the prerequisites for AAA certification?",
-        answer: "Basic programming knowledge and understanding of software testing fundamentals are required. Prior experience with test automation tools is helpful but not mandatory.",
-      },
-    ],
+    // Same list the page shows, so the FAQPage schema matches the visible FAQ.
+    faqs: AAA_FAQS,
     howToSteps: [
       { name: "Enrollment", text: "Sign up for the AAA Certification course on the CDPL platform." },
       { name: "Learning & Labs", text: "Complete the 12-week curriculum including live sessions and hands-on labs." },
@@ -106,7 +92,7 @@ export default function AAACertificationCoursePage() {
         <JsonLd key={`aaa-schema-${index}`} id={`aaa-schema-${index}`} schema={schema} />
       ))}
 
-      <AAACerticationHeroSection />
+      <AAACertificationHeroSection />
       <AAACertificationWhySection />
       <AAACertificationCurriculumSection />
       <AAACertificationOutcomesCtaSection />

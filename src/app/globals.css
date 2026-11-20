@@ -150,6 +150,26 @@ a[role="button"] {
   /* teal-700 */
 }
 
+/* Thin horizontal scrollbar for overflowing pill rows (sticky course nav). */
+/* Standard props only where ::-webkit-scrollbar is unsupported (Firefox):
+   Chrome 121+ lets scrollbar-width override the slimmer webkit styles. */
+@supports not selector(::-webkit-scrollbar) {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #c7d2fe transparent;
+  }
+}
+.scrollbar-thin::-webkit-scrollbar {
+  height: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #c7d2fe;
+  border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 /* Performance optimization */
 .contains-strict {
   contain: strict;
@@ -260,10 +280,11 @@ main > section:not(:first-child),
   100% { top: 100%; opacity: 0; }
 }
 
-/* TeamCultureSection — credibility marquee */
+/* Seamless marquee: the track holds an even number of identical copies (each half wider than
+   its box) and moves by exactly half. Same name and value as the Placements sections' local copies. */
 @keyframes cdpl-marquee {
   from { transform: translateX(0); }
-  to { transform: translateX(-240px); }
+  to { transform: translateX(-50%); }
 }
 /* TeamCultureSection — BeamBg glows */
 @keyframes cdpl-beam-pulse {

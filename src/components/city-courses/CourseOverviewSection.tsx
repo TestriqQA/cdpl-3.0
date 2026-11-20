@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import type { CourseData } from "@/types/courseData";
+import type { CourseData } from "@/types/course-data";
 import {
   BookOpen,
   CheckCircle,
@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import { DownloadFormButton } from "@/components/DownloadForm";
 import Link from "next/link";
+import { useSiteStats } from "@/components/stats/SiteStatsProvider";
+import { SITE_STATS } from "@/lib/site-stats";
 
 interface CourseOverviewSectionProps {
   data: CourseData;
@@ -79,91 +81,6 @@ const pickVariant = (i: number): Variant => {
   return VARIANTS[i % VARIANTS.length];
 };
 
-const pad = (n: number) => n.toString().padStart(2, "0");
-
-// Self-ticking countdown leaf. Owns its OWN 1s interval so only this small
-// component re-renders each second, instead of the parent re-reconciling the
-// entire card grid. Markup preserved byte-for-byte from the original inline
-// timer block (responsive sizing + mt-0.5 labels differ from the shared
-// OfferCountdown, so this stays local). Falls back to a 48h window.
-const OfferCountdown: React.FC<{ offerEndsAt?: string | Date | null }> = ({
-  offerEndsAt,
-}) => {
-  const deadlineRef = React.useRef<number>(
-    offerEndsAt
-      ? new Date(offerEndsAt).getTime()
-      : Date.now() + 48 * 3600 * 1000
-  );
-  const [now, setNow] = React.useState<number>(() => Date.now());
-
-  React.useEffect(() => {
-    const id = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  const diff = Math.max(0, deadlineRef.current - now);
-  const totalSeconds = Math.floor(diff / 1000);
-  const hours = pad(Math.floor(totalSeconds / 3600));
-  const minutes = pad(Math.floor((totalSeconds % 3600) / 60));
-  const seconds = pad(totalSeconds % 60);
-  const isOver = diff <= 0;
-
-  return (
-    <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-      <p className="text-xs font-semibold text-slate-600 mb-2">
-        Limited-time offer ends in
-      </p>
-
-      <div
-        className="grid grid-cols-3 gap-2 sm:gap-3 text-center"
-        role="timer"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        <div className="rounded-lg bg-white shadow-sm p-2 sm:p-3">
-          <div
-            className="text-lg sm:text-xl font-bold text-slate-900 tabular-nums"
-            suppressHydrationWarning
-          >
-            {hours}
-          </div>
-          <div className="text-[9px] sm:text-[10px] text-slate-500 tracking-wide uppercase mt-0.5">
-            Hours
-          </div>
-        </div>
-        <div className="rounded-lg bg-white shadow-sm p-2 sm:p-3">
-          <div
-            className="text-lg sm:text-xl font-bold text-slate-900 tabular-nums"
-            suppressHydrationWarning
-          >
-            {minutes}
-          </div>
-          <div className="text-[9px] sm:text-[10px] text-slate-500 tracking-wide uppercase mt-0.5">
-            Minutes
-          </div>
-        </div>
-        <div className="rounded-lg bg-white shadow-sm p-2 sm:p-3">
-          <div
-            className="text-lg sm:text-xl font-bold text-slate-900 tabular-nums"
-            suppressHydrationWarning
-          >
-            {seconds}
-          </div>
-          <div className="text-[9px] sm:text-[10px] text-slate-500 tracking-wide uppercase mt-0.5">
-            Seconds
-          </div>
-        </div>
-      </div>
-
-      {isOver && (
-        <p className="mt-2 text-xs text-red-600 font-semibold">
-          Offer has ended.
-        </p>
-      )}
-    </div>
-  );
-};
-
 const ModuleCard: React.FC<{
   category: {
     id: number;
@@ -183,6 +100,7 @@ const ModuleCard: React.FC<{
   location?: string;
   courseName?: string;
 }> = ({ category, variant, location, courseName }) => {
+  const siteStats = useSiteStats();
   return (
     <>
       <article
@@ -205,11 +123,11 @@ const ModuleCard: React.FC<{
               </div>
               <div
                 className="flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-lg"
-                aria-label={`Rating ${category.rating.toFixed(1)} out of 5`}
+                aria-label={`Rating ${siteStats.text.ratingValue} out of 5`}
               >
                 <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
                 <span className="text-sm font-semibold text-gray-800">
-                  {category.rating.toFixed(1)}
+                  {siteStats.text.ratingValue}
                 </span>
               </div>
             </div>
@@ -264,7 +182,6 @@ const ModuleCard: React.FC<{
             ))}
           </ul>
 
-          <OfferCountdown offerEndsAt={category.offerEndsAt} />
 
           <div className="pt-4 space-y-3 mt-auto">
             <Link
@@ -370,7 +287,7 @@ const CourseOverviewSection: React.FC<CourseOverviewSectionProps> = ({ data }) =
               title: mod.name,
               description: mod.description,
               icon: iconMap[mod.icon] || <BookOpen className="w-10 h-10" />,
-              rating: typeof mod.rating === "number" ? mod.rating : 4.8,
+              rating: typeof mod.rating === "number" ? mod.rating : SITE_STATS.rating,
               duration: mod.duration ?? "6–8 weeks",
               level: mod.level ?? "Beginner",
               studentsEnrolled:
