@@ -10,8 +10,10 @@ import ReviewsMarquee from '@/components/sections/ReviewMarque';
  * reviews look the same everywhere.
  */
 export default function HomeReviewsSection() {
+  // No background of its own: the page's light grey matches the marquee band and the
+  // Why Choose section below, so no white strip shows between them.
   return (
-    <section className="bg-white py-12 lg:py-16" aria-labelledby="home-reviews-heading">
+    <section className="py-12 lg:py-16" aria-labelledby="home-reviews-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-block rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-brand">
