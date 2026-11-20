@@ -25,7 +25,7 @@ import {
   SEO_DEFAULTS,
 } from "./seo-config";
 import { courseCategories } from "@/data/courses/catalog";
-import { CAMPUS_CITY } from "@/lib/city-tiers";
+import { CAMPUS_CITY, getCityFromSlug } from "@/lib/city-tiers";
 import { CONTACT_FAQS } from "@/data/faqs/contact";
 import { PLACEMENTS_FAQS } from "@/data/faqs/placements";
 import { CAREERS_FAQS } from "@/data/faqs/careers";
@@ -4845,8 +4845,13 @@ export function generateCityCoursePageSchema(
   // local street address, or emit `LocalBusiness` schema". The HQ address and
   // `areaServed` were accurate, but a LocalBusiness entity per city still
   // asserts a local presence that only Mira Road has.
+  // Gate on the slug token, not the `city` display name: `city` arrives as
+  // "Mira Road" (from `courseData[].location`), which never equals the
+  // hyphenated CAMPUS_CITY, so comparing it dropped the entity from the
+  // campus page too and left LocalBusiness on no city page at all.
+  const citySlugToken = getCityFromSlug(courseInput.slug);
   const cityLocalBusinessSchema =
-    city && city.toLowerCase() === CAMPUS_CITY
+    citySlugToken === CAMPUS_CITY
       ? generateCityLocalBusinessSchema(city, courseInput.url)
       : undefined;
 
