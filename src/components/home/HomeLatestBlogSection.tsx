@@ -108,7 +108,7 @@ export default function HomeLatestBlogSection({ posts = [] }: HomeLatestBlogSect
   }
 
   return (
-    <section className="py-12 lg:py-16 bg-white" aria-labelledby="home-blog-heading">
+    <section className="py-12 lg:py-16" aria-labelledby="home-blog-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto mb-10 max-w-3xl text-center lg:mb-12">

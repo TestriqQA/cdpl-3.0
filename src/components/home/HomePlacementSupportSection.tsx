@@ -44,7 +44,7 @@ const PROCESS = [
 
 export default function HomePlacementSupportSection() {
   return (
-    <section className="bg-white py-12 lg:py-16" aria-labelledby="placement-support-heading">
+    <section className="py-12 lg:py-16" aria-labelledby="placement-support-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto mb-10 max-w-3xl text-center lg:mb-12">

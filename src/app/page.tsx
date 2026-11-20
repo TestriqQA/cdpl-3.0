@@ -118,7 +118,7 @@ export default async function HomePage(): Promise<React.ReactElement> {
           which this wrapper div blocks, so without the class none of the home
           page's off-screen sections were being deferred. The hero is the first
           child and is therefore excluded — it carries the LCP heading. */}
-      <div className="relative bg-white defer-offscreen-sections">
+      <div className="relative defer-offscreen-sections">
         {/* ========================================
             PAGE CONTENT
             ======================================== */}
@@ -132,7 +132,22 @@ export default async function HomePage(): Promise<React.ReactElement> {
           data-scroll-target="placements-partners"
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <PlacementsCompanyWallSection sanityPartners={hiringPartners} />
+            <PlacementsCompanyWallSection
+              sanityPartners={hiringPartners}
+              heading={
+                <div className="mx-auto max-w-3xl text-center">
+                  <span className="inline-block rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-brand">
+                    Our Network
+                  </span>
+                  <h2 className="mt-4 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
+                    Hiring <span className="text-brand">Partners</span>
+                  </h2>
+                  <p className="mt-4 text-lg text-gray-600">
+                    Companies that hire from our training programs.
+                  </p>
+                </div>
+              }
+            />
           </div>
         </section>
         <HomePlacementResultsBand />
