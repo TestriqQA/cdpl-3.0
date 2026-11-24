@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ArrowRight, Flame, Bug, Brain, Database, Megaphone, PieChart } from 'lucide-react';
 import Link from 'next/link';
 import CourseCard, { type CourseCardIcon } from '@/components/courses/CourseCard';
+import { cardPrice } from '@/data/courses/price-mock';
 
 // --- Mock Data Structure (Updated to match new categories) ---
 interface Course {
@@ -507,8 +508,9 @@ export default function HomeFeaturedCoursesSection() {
           {cards.map(({ course, visible, index }) => (
             <CourseCard
               key={course.id}
-              course={course}
+              course={{ ...course, ...cardPrice(course.link) }}
               index={index}
+              variant="home"
               hidden={!visible}
               subgrid
               className={index >= MOBILE_CARD_LIMIT ? "max-sm:hidden" : ""}

@@ -4,6 +4,7 @@ import { useState, useMemo, useRef, useEffect } from "react";
 import CategoryCard from "@/components/courses/CategoryCard";
 import CourseCard, { type CourseCardData } from "@/components/courses/CourseCard";
 import { coursesData } from "@/components/courses/courses-data";
+import { cardPrice } from "@/data/courses/price-mock";
 import { textToBg } from "@/components/courses/course";
 import { Hash } from "lucide-react";
 
@@ -61,6 +62,8 @@ function toCard(course: UICourse): CourseCardData {
     features: course.features ?? course.skills ?? [],
     syllabusLink: course.syllabusLink,
     icon: typeof course.icon === "string" ? course.icon : undefined,
+    // Mock prices for now — becomes a `prices` prop from the Sanity fetch.
+    ...cardPrice(course.href || course.link),
   };
 }
 

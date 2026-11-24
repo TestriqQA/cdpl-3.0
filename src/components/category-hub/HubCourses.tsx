@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import CourseCard from "@/components/courses/CourseCard";
+import { cardPrice } from "@/data/courses/price-mock";
 import ContentBlocks from "@/components/course-page/parts/ContentBlocks";
 import CtaButtons from "@/components/course-page/parts/CtaButtons";
 import { CourseSection, GRID_GAP, SPACE, SectionHeader, SectionOutro } from "@/components/course-page/parts/Section";
@@ -17,7 +18,7 @@ export default function HubCourses({ id, tone, data, sourceName }: SectionProps<
         {data.items.map((c, i) => (
           <CourseCard
             key={c.link}
-            course={c}
+            course={{ ...c, ...cardPrice(c.link) }}
             index={i}
             subgrid
             source={`${sourceName} - Courses Section - ${c.title} - Download Syllabus`}
