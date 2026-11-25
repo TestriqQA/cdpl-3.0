@@ -50,6 +50,32 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(url, 301);
   }
 
+  // --- 3. Job-link canonicalisation (C4-40, formerly BLG-035) ---
+  // `?jobId=` is the old way job links were shared, and they keep arriving -
+  // WhatsApp shares outlive the drives they advertise. Two forms:
+  //   /jobs/live-jobs?jobId=<id>         -> /jobs/live-jobs/<id>
+  //   /jobs/live-jobs/<id>?jobId=<any>   -> /jobs/live-jobs/<id>
+  // The parameter carries nothing the path does not, so it is dropped. That
+  // was the bug: as a next.config.ts redirect this passed the query string
+  // through, landing on /jobs/live-jobs/<id>?jobId=<id> - a duplicate of the
+  // clean URL. Search Console recorded it as a separate page (8,414
+  // impressions beside the clean URL's 22,821). Every OTHER parameter is
+  // kept, so utm_* attribution survives the hop.
+  //
+  // An expired job then 308s on to /jobs/live-jobs from its own page - that
+  // is the page's decision (it needs Sanity to know), not this rule's.
+  if (
+    (url.pathname === '/jobs/live-jobs' || url.pathname.startsWith('/jobs/live-jobs/')) &&
+    url.searchParams.has('jobId')
+  ) {
+    const jobId = url.searchParams.get('jobId') ?? '';
+    url.searchParams.delete('jobId');
+    if (url.pathname === '/jobs/live-jobs' && jobId) {
+      url.pathname = `/jobs/live-jobs/${encodeURIComponent(jobId)}`;
+    }
+    return NextResponse.redirect(url, 301);
+  }
+
   return NextResponse.next();
 }
 

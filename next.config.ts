@@ -72,15 +72,11 @@ const nextConfig: NextConfig = {
   // convert these back to `permanent: true` without a real reason.
   async redirects() {
     return [
-      // BLG-035: legacy ?jobId= URLs redirect to the new clean /[jobId] path.
-      {
-        source: '/jobs/live-jobs',
-        has: [
-          { type: 'query', key: 'jobId', value: '(?<jobId>.+)' },
-        ],
-        destination: '/jobs/live-jobs/:jobId',
-        statusCode: 301,
-      },
+      // BLG-035's ?jobId= redirect moved to src/proxy.ts (C4-40). Defined here,
+      // Next.js carried the query string through to the destination, so the
+      // "clean" target was /jobs/live-jobs/<id>?jobId=<id> - the very duplicate
+      // the rule existed to remove. A rule here would also run before the proxy
+      // and shadow it, so do not re-add one.
       {
         source: '/software-testing-course',
         destination: '/courses/software-testing-course',
