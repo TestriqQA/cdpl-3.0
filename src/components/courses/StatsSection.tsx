@@ -126,18 +126,6 @@ export default async function StatsSection() {
                                 <div className={`mt-1 text-sm font-semibold ${accent.subText}`}>{s.label}</div>
                                 <p className="mt-1 text-xs sm:text-sm text-slate-700">{s.desc}</p>
 
-                                {/* rating microdata on last card */}
-                                {typeof s.rating === "number" && (
-                                    <div
-                                        className="sr-only"
-                                        itemProp="aggregateRating"
-
-                                    >
-                                        <span itemProp="ratingValue">{s.rating.toFixed(1)}</span>
-                                        <meta itemProp="bestRating" content="5" />
-                                        <meta itemProp="ratingCount" content={String(SITE_STATS.reviewCount)} />
-                                    </div>
-                                )}
                             </div>
                         );
                     })}

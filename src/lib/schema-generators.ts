@@ -334,25 +334,6 @@ export function generateItemListSchema(
             },
           }),
 
-          // Fix: Review objects require author and itemReviewed
-          ...(itemType === "Review" && {
-            author: {
-              "@type": "Person",
-              name: item.author || "CDPL Student",
-            },
-            itemReviewed: {
-              "@type": "EducationalOrganization",
-              "@id": getOrganizationId(),
-              name: SITE_CONFIG.name,
-              url: SITE_CONFIG.url,
-              image: getImageUrl(SITE_CONFIG.logo),
-            },
-            reviewRating: {
-              "@type": "Rating",
-              ratingValue: item.rating || 5,
-              bestRating: 5,
-            },
-          }),
         };
       } else {
         listItem.name = item.name;
@@ -815,75 +796,6 @@ interface ReviewItem {
   datePublished?: string;
 }
 
-interface ReviewSchemaInput {
-  ratingValue: number;
-  reviewCount: number;
-  bestRating?: number;
-  reviews?: ReviewItem[];
-  // BLG-060: itemType and itemId are REQUIRED. They previously defaulted to
-  // EducationalOrganization / the Organization @id, so any caller that omitted
-  // them silently re-attached the AggregateRating to the Organization —
-  // undoing the deliberate self-serving-review removal in
-  // generateOrganizationSchema.
-  itemType: string; // e.g., 'Service', 'Product', 'Course'
-  itemId: string; // must be a distinct @id, never the Organization @id
-  itemName?: string;
-}
-
-/**
- * Generate Review/AggregateRating schema.
- * Re-aligned to associate ratings with specific items (Service, Course, etc.)
- * rather than Organization to comply with Google's self-serving review policy.
- */
-export function generateReviewSchema(
-  reviewData: ReviewSchemaInput,
-): WithContext<Record<string, unknown>> {
-  const { itemType, itemId } = reviewData;
-  const itemName = reviewData.itemName || SITE_CONFIG.name;
-
-  return {
-    "@context": "https://schema.org",
-    "@type": itemType,
-    "@id": itemId,
-    name: itemName,
-    description: `Professional training and services provided by ${SITE_CONFIG.name}`,
-    image: getImageUrl(SITE_CONFIG.logo),
-    ...((itemType === "Service" ||
-      itemType === "Course" ||
-      itemType === "LocalBusiness" ||
-      itemType === "EducationalOrganization") && {
-      provider: {
-        "@type": "Organization",
-        "@id": getOrganizationId(),
-        name: SITE_CONFIG.name,
-      },
-    }),
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: String(reviewData.ratingValue || STATISTICS.rating),
-      reviewCount: String(STATISTICS.reviewCount),
-      bestRating: String(reviewData.bestRating || 5),
-    },
-    ...(reviewData.reviews &&
-      reviewData.reviews.length > 0 && {
-        review: reviewData.reviews.map((review) => ({
-          "@type": "Review",
-          author: {
-            "@type": "Person",
-            name: review.author,
-          },
-          reviewRating: {
-            "@type": "Rating",
-            ratingValue: review.rating,
-            bestRating: 5,
-          },
-          reviewBody: review.text,
-          ...(review.datePublished && { datePublished: review.datePublished }),
-        })),
-      }),
-  };
-}
-
 interface VideoSchemaInput {
   name: string;
   description: string;
@@ -1277,19 +1189,6 @@ export function generateHomePageSchema(
   // 7. Site Navigation Schema
   const siteNavSchemas = generateSiteNavigationSchema();
 
-  // 8. Consolidated AggregateRating.
-  // BLG-076: previously emitted as a second LocalBusiness object sharing the
-  // /#localbusiness @id with generateLocalBusinessSchema — two top-level
-  // objects with the same @id but different properties. Now scoped to the
-  // dedicated #training-services Service entity (same one used site-wide).
-  const aggregateRatingSchema = generateReviewSchema({
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-    itemType: "Service",
-    itemName: "CDPL Professional Training Services",
-    itemId: `${SITE_CONFIG.url}/#training-services`,
-  });
-
   // NOTE: Organization and WebSite schemas are handled by Root Layout
 
   // Filter out undefined schemas
@@ -1300,7 +1199,6 @@ export function generateHomePageSchema(
     videoSchema,
     webPageSchema,
     howToSchema,
-    aggregateRatingSchema,
     siteNavSchemas,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2156,21 +2054,6 @@ export function generateContactPageAllSchemas(): WithContext<
     "Top Training Courses at CDPL - Cinute Digital",
   );
 
-  // AggregateRating for the organization on the contact page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": `${SITE_CONFIG.url}/contact-us#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-    },
-  };
-
   // HowTo — how to contact or enroll
   const howToSchema = generateHowToSchema({
     name: "How to Get in Touch with CDPL for Course Enrollment",
@@ -2198,7 +2081,6 @@ export function generateContactPageAllSchemas(): WithContext<
     contactPageSchema,
     faqSchema,
     itemListSchema,
-    aggregateRatingSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -2312,21 +2194,6 @@ export function generateAboutPageAllSchemas(
     "Flagship Training Programs at CDPL - Cinute Digital",
   );
 
-  // AggregateRating scoped to the About page entity
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": `${SITE_CONFIG.url}/about-us#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-    },
-  };
-
   const howToSchema = generateHowToSchema({
     name: "How to Enroll in a CDPL Training Program",
     description:
@@ -2354,7 +2221,6 @@ export function generateAboutPageAllSchemas(
     aboutPageSchema,
     faqSchema,
     itemListSchema,
-    aggregateRatingSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -2450,21 +2316,6 @@ export function generateServicesPageAllSchemas(
     "CDPL Corporate Training & Consulting Services",
   );
 
-  // AggregateRating scoped to the services page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": `${SITE_CONFIG.url}/services#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-    },
-  };
-
   const howToSchema = generateHowToSchema({
     name: "How to Engage CDPL for Corporate Training Services",
     description:
@@ -2515,7 +2366,6 @@ export function generateServicesPageAllSchemas(
     collectionPageSchema,
     faqSchema,
     itemListSchema,
-    aggregateRatingSchema,
     howToSchema,
     siteNavigationSchema,
     offerCatalogSchema,
@@ -2670,21 +2520,6 @@ export function generateServiceDetailPageAllSchemas(service: {
     "CDPL Corporate Training & Consulting Services",
   );
 
-  // AggregateRating scoped to this service detail page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": `${SITE_CONFIG.url}/services/${service.slug}#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-    },
-  };
-
   // HowTo — dynamically generated from methodology steps
   const howToSteps = service.methodology.slice(0, 5).map((step, i) => ({
     name: `Step ${i + 1}`,
@@ -2719,7 +2554,6 @@ export function generateServiceDetailPageAllSchemas(service: {
     serviceSchema,
     faqSchema,
     itemListSchema,
-    aggregateRatingSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -2807,15 +2641,6 @@ export function generateEventsPageAllSchemas(
     "CDPL Upcoming and Past Events",
   );
 
-  // AggregateRating scoped to the events page (using valid Service entity)
-  const aggregateRatingSchema = generateReviewSchema({
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-    itemType: "Service",
-    itemName: "CDPL Events & Training",
-    itemId: getFullUrl("/events#service"),
-  });
-
   // HowTo — "How to Register for CDPL Events"
   const howToSchema = generateHowToSchema({
     name: "How to Register for CDPL Events and Workshops",
@@ -2844,7 +2669,6 @@ export function generateEventsPageAllSchemas(
     collectionPageSchema,
     faqSchema,
     itemListSchema,
-    aggregateRatingSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -2914,29 +2738,6 @@ export function generateEventDetailPageAllSchemas(
     },
     false,
   );
-
-  // Add AggregateRating directly inside the Event schema to avoid missing fields errors
-  eventSchema.aggregateRating = {
-    "@type": "AggregateRating",
-    ratingValue: String(STATISTICS.rating),
-    reviewCount: String(STATISTICS.reviewCount),
-    bestRating: "5",
-  };
-
-  // Add Review directly inside the Event schema
-  eventSchema.review = {
-    "@type": "Review",
-    author: {
-      "@type": "Person",
-      name: "CDPL Participant",
-    },
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue: STATISTICS.rating,
-      bestRating: 5,
-    },
-    reviewBody: `Great experience at ${event.title}, very insightful!`,
-  };
 
   // Dynamic FAQPage based on event properties
   const faqs: { question: string; answer: string }[] = [];
@@ -3094,21 +2895,6 @@ export function generateOurTeamPageAllSchemas(
     },
   ]);
 
-  // AggregateRating scoped to the Team page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": `${SITE_CONFIG.url}/our-team#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-    },
-  };
-
   // HowTo — "How to Connect with Our Mentors"
   const howToSchema = generateHowToSchema({
     name: "How to Connect with CDPL Mentors for Career Guidance",
@@ -3136,7 +2922,6 @@ export function generateOurTeamPageAllSchemas(
     webPageSchema,
     faqSchema,
     itemListSchema,
-    aggregateRatingSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -3199,21 +2984,6 @@ export function generateMentorsPageAllSchemas(
     },
   ]);
 
-  // AggregateRating scoped to the Mentors page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": `${SITE_CONFIG.url}/mentors#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-    },
-  };
-
   // HowTo — "How to Connect with a Mentor"
   const howToSchema = generateHowToSchema({
     name: "How to Book a Mentorship Session with CDPL Experts",
@@ -3241,7 +3011,6 @@ export function generateMentorsPageAllSchemas(
     webPageSchema,
     faqSchema,
     itemListSchema,
-    aggregateRatingSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -3300,21 +3069,6 @@ export function generateLiveJobsPageAllSchemas(
     },
   ]);
 
-  // AggregateRating scoped to the Live Jobs page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": `${SITE_CONFIG.url}/jobs/live-jobs#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-    },
-  };
-
   // HowTo — "How to Apply for Job Alerts"
   const howToSchema = generateHowToSchema({
     name: "How to Apply for Verified Jobs via CDPL Placement Alerts",
@@ -3342,7 +3096,6 @@ export function generateLiveJobsPageAllSchemas(
     webPageSchema,
     faqSchema,
     itemListSchema,
-    aggregateRatingSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -3382,21 +3135,6 @@ export function generatePlacementsPageAllSchemas(
     PLACEMENTS_FAQS.map(({ question, answer }) => ({ question, answer })),
   );
 
-  // AggregateRating scoped to the Placements page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": `${SITE_CONFIG.url}/jobs/placements#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-    },
-  };
-
   // HowTo — "how to secure a placement via CDPL"
   const howToSchema = generateHowToSchema({
     name: "How to Secure a High-Package Tech Job via CDPL Placement Cell",
@@ -3424,7 +3162,6 @@ export function generatePlacementsPageAllSchemas(
     webPageSchema,
     faqSchema,
     itemListSchema,
-    aggregateRatingSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -3466,21 +3203,6 @@ export function generateCareersPageAllSchemas(
     CAREERS_FAQS.map(({ question, answer }) => ({ question, answer })),
   );
 
-  // AggregateRating scoped to the Careers page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": `${SITE_CONFIG.url}/jobs/careers#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-    },
-  };
-
   // HowTo — "how to apply to CDPL"
   const howToSchema = generateHowToSchema({
     name: "How to Join the CDPL Core Team",
@@ -3507,7 +3229,6 @@ export function generateCareersPageAllSchemas(
     webPageSchema,
     faqSchema,
     itemListSchema,
-    aggregateRatingSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -3568,21 +3289,6 @@ export function generateJobOpeningsPageAllSchemas(
     },
   ]);
 
-  // AggregateRating scoped to the Job Openings page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": `${SITE_CONFIG.url}/jobs/job-openings#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-    },
-  };
-
   // HowTo — "how to apply for partner jobs"
   const howToSchema = generateHowToSchema({
     name: "How to Apply for Tech Jobs via the CDPL Partner Portal",
@@ -3610,7 +3316,6 @@ export function generateJobOpeningsPageAllSchemas(
     webPageSchema,
     faqSchema,
     itemListSchema,
-    aggregateRatingSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -3625,7 +3330,7 @@ export function generateJobOpeningsPageAllSchemas(
 
 /**
  * Generate a complete 8-point schema set for the Affiliate Program page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
  */
 export function generateAffiliateProgram8PointSchema(data: {
   faqs: { question: string; answer: string }[];
@@ -3657,15 +3362,6 @@ export function generateAffiliateProgram8PointSchema(data: {
     "CDPL Affiliate Program Benefits",
   );
 
-  // 4. Service / Program Schema with Review Support
-  const affiliateServiceSchema = generateReviewSchema({
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-    itemType: "Service",
-    itemName: "CDPL Affiliate Program",
-    itemId: getFullUrl("/cdpl-affiliate-program#service"),
-  });
-
   // 5. HowTo Schema (How to join)
   const howToSchema = generateHowToSchema({
     name: "How to Join CDPL Affiliate Program",
@@ -3680,7 +3376,6 @@ export function generateAffiliateProgram8PointSchema(data: {
     webPageSchema,
     faqSchema,
     itemListSchema,
-    affiliateServiceSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -3695,7 +3390,7 @@ export function generateAffiliateProgram8PointSchema(data: {
 
 /**
  * Generate a complete 8-point schema set for the ISTQB Registration page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
  */
 export function generateIstqbRegistrationPageAllSchemas(data: {
   faqs: { question: string; answer: string }[];
@@ -3727,16 +3422,6 @@ export function generateIstqbRegistrationPageAllSchemas(data: {
     "Available ISTQB Certification Levels",
   );
 
-  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
-  // Service entity so the rating never lands on the Organization @id.
-  const reviewAggregateSchema = generateReviewSchema({
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-    itemType: "Service",
-    itemName: "CDPL Professional Training Services",
-    itemId: `${SITE_CONFIG.url}/#training-services`,
-  });
-
   // 7. HowTo Schema (How to Register)
   const howToSchema = generateHowToSchema({
     name: "How to register for ISTQB Certification",
@@ -3752,7 +3437,6 @@ export function generateIstqbRegistrationPageAllSchemas(data: {
     webPageSchema,
     faqSchema,
     itemListSchema,
-    reviewAggregateSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -3806,7 +3490,7 @@ export function generateQuizSchema(input: {
 
 /**
  * Generate a complete 8-point schema set for the Mock Test landing page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
  */
 export function generateMockTestPageAllSchemas(data: {
   faqs: { question: string; answer: string }[];
@@ -3838,16 +3522,6 @@ export function generateMockTestPageAllSchemas(data: {
     "Available Mock Test Domains",
   );
 
-  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
-  // Service entity so the rating never lands on the Organization @id.
-  const reviewAggregateSchema = generateReviewSchema({
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-    itemType: "Service",
-    itemName: "CDPL Professional Training Services",
-    itemId: `${SITE_CONFIG.url}/#training-services`,
-  });
-
   // 7. HowTo Schema (How to start a test)
   const howToSchema = generateHowToSchema({
     name: "How to begin your mock assessment",
@@ -3872,7 +3546,6 @@ export function generateMockTestPageAllSchemas(data: {
     webPageSchema,
     faqSchema,
     itemListSchema,
-    reviewAggregateSchema,
     howToSchema,
     siteNavigationSchema,
     quizSchema,
@@ -3888,7 +3561,7 @@ export function generateMockTestPageAllSchemas(data: {
 
 /**
  * Generate a complete 8-point schema set for the AAA Certification page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
  */
 export function generateAaaCertificationPageAllSchemas(data: {
   faqs: { question: string; answer: string }[];
@@ -3954,7 +3627,7 @@ export function generateAaaCertificationPageAllSchemas(data: {
 
 /**
  * Generate a complete 8-point schema set for the ACTD Certification page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
  */
 export function generateActdCertificationPageAllSchemas(data: {
   faqs: { question: string; answer: string }[];
@@ -4020,7 +3693,7 @@ export function generateActdCertificationPageAllSchemas(data: {
 
 /**
  * Generate a complete 8-point schema set for the Certificate Validation page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
  */
 export function generateCertificateValidationPageAllSchemas(data: {
   faqs: { question: string; answer: string }[];
@@ -4081,7 +3754,7 @@ export function generateCertificateValidationPageAllSchemas(data: {
 
 /**
  * Generate a complete 8-point schema set for the CMS Page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
  */
 export function generateCmsPageAllSchemas(data: {
   faqs: { question: string; answer: string }[];
@@ -4113,16 +3786,6 @@ export function generateCmsPageAllSchemas(data: {
     "Cinute Digital CMS Administrative Features",
   );
 
-  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
-  // Service entity so the rating never lands on the Organization @id.
-  const reviewAggregateSchema = generateReviewSchema({
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-    itemType: "Service",
-    itemName: "CDPL Professional Training Services",
-    itemId: `${SITE_CONFIG.url}/#training-services`,
-  });
-
   // 7. HowTo Schema (Content Management Process)
   const howToSchema = generateHowToSchema({
     name: "How to manage course content via CMS",
@@ -4138,7 +3801,6 @@ export function generateCmsPageAllSchemas(data: {
     webPageSchema,
     faqSchema,
     itemListSchema,
-    reviewAggregateSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -4153,7 +3815,7 @@ export function generateCmsPageAllSchemas(data: {
 
 /**
  * Generate a complete 8-point schema set for the Privacy Policy page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
  * Consolidates legal information to ensure 100% compliance and accuracy.
  */
 export function generatePrivacyPolicyPageAllSchemas(): WithContext<
@@ -4212,16 +3874,6 @@ export function generatePrivacyPolicyPageAllSchemas(): WithContext<
     "Cinute Digital Data Protection Rights & Categories",
   );
 
-  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
-  // Service entity so the rating never lands on the Organization @id.
-  const reviewAggregateSchema = generateReviewSchema({
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-    itemType: "Service",
-    itemName: "CDPL Professional Training Services",
-    itemId: `${SITE_CONFIG.url}/#training-services`,
-  });
-
   // 7. HowTo Schema (How to exercise privacy rights)
   const howToSchema = generateHowToSchema({
     name: "How to exercise your privacy and data rights",
@@ -4254,7 +3906,6 @@ export function generatePrivacyPolicyPageAllSchemas(): WithContext<
     webPageSchema,
     faqSchema,
     itemListSchema,
-    reviewAggregateSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -4269,7 +3920,7 @@ export function generatePrivacyPolicyPageAllSchemas(): WithContext<
 
 /**
  * Generate a complete 8-point schema set for the Cookies Policy page.
- * Includes: Organization (TESTRIQ QA Lab), WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ * Includes: Organization (TESTRIQ QA Lab), WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
  * Consolidates legal information to ensure 100% compliance and accuracy.
  */
 export function generateCookiesPolicyPageAllSchemas(): WithContext<
@@ -4325,16 +3976,6 @@ export function generateCookiesPolicyPageAllSchemas(): WithContext<
     "Cinute Digital Cookie Categories",
   );
 
-  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
-  // Service entity so the rating never lands on the Organization @id.
-  const reviewAggregateSchema = generateReviewSchema({
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-    itemType: "Service",
-    itemName: "CDPL Professional Training Services",
-    itemId: `${SITE_CONFIG.url}/#training-services`,
-  });
-
   // 7. HowTo Schema (How to manage/delete cookies)
   const howToSchema = generateHowToSchema({
     name: "How to manage and delete cookies in your browser",
@@ -4367,7 +4008,6 @@ export function generateCookiesPolicyPageAllSchemas(): WithContext<
     webPageSchema,
     faqSchema,
     itemListSchema,
-    reviewAggregateSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -4382,7 +4022,7 @@ export function generateCookiesPolicyPageAllSchemas(): WithContext<
 
 /**
  * Generate a complete 8-point schema set for the Terms of Service page.
- * Includes: Organization, WebSite, WebPage, FAQPage (Placement), ItemList, Review/AggregateRating, HowTo (Enrollment/Job Assist), and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage (Placement), ItemList, HowTo (Enrollment/Job Assist), and SiteNavigation.
  * Ensures 100% legal accuracy for Job Assistance policies.
  */
 export function generateTermsOfServicePageAllSchemas(): WithContext<
@@ -4446,16 +4086,6 @@ export function generateTermsOfServicePageAllSchemas(): WithContext<
     "CDPL Policy & Assistance Framework",
   );
 
-  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
-  // Service entity so the rating never lands on the Organization @id.
-  const reviewAggregateSchema = generateReviewSchema({
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-    itemType: "Service",
-    itemName: "CDPL Professional Training Services",
-    itemId: `${SITE_CONFIG.url}/#training-services`,
-  });
-
   // 7. HowTo Schema (Enrollment to Career Placement)
   const howToSchema = generateHowToSchema({
     name: "The CDPL Enrollment and Job Assistance Journey",
@@ -4492,7 +4122,6 @@ export function generateTermsOfServicePageAllSchemas(): WithContext<
     webPageSchema,
     faqSchema,
     itemListSchema,
-    reviewAggregateSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -4507,7 +4136,7 @@ export function generateTermsOfServicePageAllSchemas(): WithContext<
 
 /**
  * Generate a complete 8-point schema set for the Cancellation & Refund Policy page.
- * Includes: Organization, WebSite, WebPage, FAQPage (Refunds), ItemList, Review/AggregateRating, HowTo (Refund Request), and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage (Refunds), ItemList, HowTo (Refund Request), and SiteNavigation.
  * Ensures 100% legal accuracy for Refund and Batch Change policies.
  */
 export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<
@@ -4570,16 +4199,6 @@ export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<
     "CDPL Cancellation & Refund Tiers",
   );
 
-  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
-  // Service entity so the rating never lands on the Organization @id.
-  const reviewAggregateSchema = generateReviewSchema({
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-    itemType: "Service",
-    itemName: "CDPL Professional Training Services",
-    itemId: `${SITE_CONFIG.url}/#training-services`,
-  });
-
   // 7. HowTo Schema (How to Request a Refund)
   const howToSchema = generateHowToSchema({
     name: "How to Request a Refund or Batch Change",
@@ -4612,7 +4231,6 @@ export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<
     webPageSchema,
     faqSchema,
     itemListSchema,
-    reviewAggregateSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -4627,7 +4245,7 @@ export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<
 
 /**
  * Generate a complete 8-point schema set for the Reviews & Testimonials page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Review/AggregateRating, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
  */
 export function generateReviewsPageAllSchemas(
   reviews: { author: string; rating: number; text: string; role?: string }[],
@@ -4668,27 +4286,10 @@ export function generateReviewsPageAllSchemas(
       name: `Success Story: ${r.author} (${r.role || "Student"})`,
       description: r.text.substring(0, 150) + "...",
       url: "/reviews",
-      type: "Review",
-      author: r.author,
-      rating: r.rating,
+      type: "Thing",
     })),
     "Top Student Success Stories and Testimonials",
   );
-
-  // 6. Review / Aggregate Rating Schema — BLG-060: scoped to a dedicated
-  // Service entity so the rating never lands on the Organization @id.
-  const reviewAggregateSchema = generateReviewSchema({
-    ratingValue: STATISTICS.rating,
-    reviewCount: STATISTICS.reviewCount,
-    itemType: "Service",
-    itemName: "CDPL Professional Training Services",
-    itemId: `${SITE_CONFIG.url}/#training-services`,
-    reviews: reviews.slice(0, 10).map((r) => ({
-      author: r.author,
-      rating: r.rating,
-      text: r.text,
-    })),
-  });
 
   // 7. HowTo Schema (How to share your experience)
   const howToSchema = generateHowToSchema({
@@ -4718,7 +4319,6 @@ export function generateReviewsPageAllSchemas(
     webPageSchema,
     faqSchema,
     itemListSchema,
-    reviewAggregateSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(
@@ -4934,21 +4534,6 @@ export function generateLocationsPageAllSchemas(
     },
   ]);
 
-  // AggregateRating scoped to the Locations page
-  const aggregateRatingSchema: WithContext<Record<string, unknown>> = {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": `${SITE_CONFIG.url}/locations-we-serve#org-rating`,
-    name: SITE_CONFIG.name,
-    url: SITE_CONFIG.url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: STATISTICS.rating,
-      reviewCount: STATISTICS.reviewCount,
-      bestRating: STATISTICS.maxRating,
-    },
-  };
-
   // HowTo — "how to find a CDPL center"
   const howToSchema = generateHowToSchema({
     name: "How to Locate a CDPL Training Center Near You",
@@ -4976,7 +4561,6 @@ export function generateLocationsPageAllSchemas(
     webPageSchema,
     faqSchema,
     itemListSchema,
-    aggregateRatingSchema,
     howToSchema,
     siteNavigationSchema,
   ].filter(

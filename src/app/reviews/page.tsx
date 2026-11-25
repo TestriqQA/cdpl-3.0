@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import {
-  generateReviewSchema,
   generateBreadcrumbSchema,
   generateWebPageSchema,
   generateReviewsPageAllSchemas

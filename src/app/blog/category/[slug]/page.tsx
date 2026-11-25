@@ -9,14 +9,12 @@ import {
     generateCollectionPageSchema,
     generateItemListSchema,
     generateBreadcrumbSchema,
-    generateReviewSchema,
     generateWebPageSchema
 } from "@/lib/schema-generators";
 import { 
     getWebsiteId, 
     getOrganizationId, 
     getFullUrl,
-    STATISTICS 
 } from "@/lib/seo-config";
 import JsonLd from "@/components/JsonLd";
 import { client } from '@/sanity/client';
@@ -269,15 +267,6 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         about: { '@id': getOrganizationId() }
     });
 
-    // Consolidated AggregateRating (using valid Service entity)
-    const aggregateRatingSchema = generateReviewSchema({
-        itemType: 'Service',
-        itemName: `CDPL ${category.name} Training & Resources`,
-        itemId: getFullUrl(`/blog/category/${category.slug}#service`),
-        ratingValue: STATISTICS.rating,
-        reviewCount: STATISTICS.reviewCount,
-    });
-
     // Breadcrumb Schema
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: 'Home', url: '/' },
@@ -293,7 +282,6 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
             <JsonLd id="category-webpage" schema={webPageSchema} />
             <JsonLd id="category-collection" schema={collectionPageSchema} />
             {itemListSchema && <JsonLd id="category-itemlist" schema={itemListSchema} />}
-            <JsonLd id="category-rating" schema={aggregateRatingSchema} />
 
             {/* Semantic HTML structure with proper structure */}
             <div className="category-page">

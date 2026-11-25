@@ -7,14 +7,11 @@ import {
     generateBreadcrumbSchema,
     generateBlogSchema,
     generateFAQSchema,
-    generateReviewSchema,
     generateWebPageSchema,
 } from "@/lib/schema-generators";
 import {
     getWebsiteId,
     getOrganizationId,
-    getFullUrl,
-    STATISTICS
 } from "@/lib/seo-config";
 import JsonLd from "@/components/JsonLd";
 import { sanityFetch } from '@/sanity/lib/fetch';
@@ -86,15 +83,6 @@ export default async function BlogPage() {
         url: '/blog',
     });
 
-    // Consolidated AggregateRating (using valid Service entity)
-    const aggregateRatingSchema = generateReviewSchema({
-        itemType: 'Service',
-        itemName: 'CDPL Tech Blog & Knowledge Hub',
-        itemId: getFullUrl('/blog#service'),
-        ratingValue: STATISTICS.rating,
-        reviewCount: STATISTICS.reviewCount,
-    });
-
     // FAQ Schema
     const faqSchema = generateFAQSchema([
         {
@@ -126,7 +114,6 @@ export default async function BlogPage() {
             <JsonLd id="blog-breadcrumb" schema={breadcrumbSchema} />
             <JsonLd id="blog-webpage" schema={webPageSchema} />
             <JsonLd id="blog-main" schema={blogSchema} />
-            <JsonLd id="blog-rating" schema={aggregateRatingSchema} />
             <JsonLd id="blog-faq" schema={faqSchema} />
 
             {/* Semantic HTML with proper structure */}
