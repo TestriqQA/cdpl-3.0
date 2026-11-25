@@ -31,21 +31,6 @@ export const dataAnalyticsAndVisualizationCourse: CourseContent = {
     description:
       "Master Advanced Excel for Data Analytics & Visualization. 20-Hour comprehensive course with interactive dashboards, Power Query, and Power Pivot. job assistance.",
     duration: "P1M",
-    howTo: {
-      name: "How to Enroll in CDPL Advanced Excel for Data Analytics & Visualization Course",
-      description: "A step-by-step guide to enrolling in our 20-hour Excel Data Analytics & Visualization training program.",
-      steps: [
-        {
-          name: "Review Curriculum",
-          text: "Explore Power Query, Power Pivot, Pivot Tables, Excel Charts, and interactive dashboard modules.",
-        },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master Excel data analytics and visualization to become a Data Analyst, BI Analyst, or Financial Analyst.",
-        },
-      ],
-    },
   },
 
   hero: {

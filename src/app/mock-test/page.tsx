@@ -34,24 +34,6 @@ export default function MockTestLandingPage() {
           "Many of our basic assessments are free to access, providing instant results for students and professionals.",
       },
     ],
-    howToSteps: [
-      {
-        name: "Domain Selection",
-        text: "Choose your technical domain from Software Testing, Cloud, Security, or Development.",
-      },
-      {
-        name: "Registration",
-        text: "Provide your basic details to access the premium assessment portal.",
-      },
-      {
-        name: "Assessment",
-        text: "Complete the industry-standard simulation test in a timed environment.",
-      },
-      {
-        name: "Results",
-        text: "Receive instant certification and real-time score analysis upon completion.",
-      },
-    ],
     categories: [
       "Software Testing",
       "Database Management",

@@ -8,7 +8,7 @@ const breadcrumbs = [
   { label: "AAA Certification", href: "/aaa-certification" },
 ];
 
-// Facts from the page's own FAQ and HowTo (duration, weekly hours, assessment).
+// Facts from the page's own FAQ (duration, weekly hours, assessment).
 const HIGHLIGHTS = [
   "12-week program, about 20 hours a week",
   "Live sessions, hands-on labs and mentor guidance",

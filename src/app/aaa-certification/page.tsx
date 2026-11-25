@@ -69,13 +69,6 @@ export default function AAACertificationCoursePage() {
   const consolidatedSchemas = generateAaaCertificationPageAllSchemas({
     // Same list the page shows, so the FAQPage schema matches the visible FAQ.
     faqs: AAA_FAQS,
-    howToSteps: [
-      { name: "Enrollment", text: "Sign up for the AAA Certification course on the CDPL platform." },
-      { name: "Learning & Labs", text: "Complete the 12-week curriculum including live sessions and hands-on labs." },
-      { name: "Capstone Project", text: "Develop and submit an end-to-end automation architecture project for review." },
-      { name: "Proctored Exam", text: "Successfully pass the official AAA-aligned proctored assessment." },
-      { name: "Certification", text: "Receive your verifiable digital certificate with a unique ID." }
-    ],
     curriculum: [
       "Module 1 - Foundations & Blueprint",
       "Module 2 - Practical Labs",

@@ -33,18 +33,6 @@ export const pythonCourse: CourseContent = {
     description:
       "Comprehensive Python course in Mumbai with Django, Data Science, ML, Automation. placement. Live projects, global certificate.",
     duration: "P2M2W",
-    howTo: {
-      name: "How to Enroll in CDPL Python Master Course",
-      description: "A step-by-step guide to enrolling in our specialized Python framework and Automation master program.",
-      steps: [
-        { name: "Review Curriculum", text: "Evaluate the comprehensive Python, Django, Data Science, and Machine Learning modules." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master modern full-stack backend development and automated scripting methodologies with strong placement support!",
-        },
-      ],
-    },
   },
 
   hero: {

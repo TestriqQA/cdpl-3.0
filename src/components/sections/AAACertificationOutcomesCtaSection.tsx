@@ -4,7 +4,7 @@ import { FaqSection } from "@/components/ui/FaqSection";
 import { AAA_FAQS } from "@/data/faqs/aaa-certification";
 import AAAValidateCertificateButton from "@/components/sections/AAAValidateCertificateButton";
 
-// Same five steps as the page's HowTo schema, so it is visible too.
+// The five steps from enrolment to certificate, shown as page content.
 const STEPS = [
   { name: "Enroll", desc: "Sign up for the AAA Certification course." },
   { name: "Learn & lab", desc: "12 weeks of live sessions and hands-on labs." },

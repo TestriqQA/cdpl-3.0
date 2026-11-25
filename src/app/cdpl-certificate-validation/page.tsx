@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { generateStaticPageMetadata } from "@/lib/metadata-generator";
 import { generateCertificateValidationPageAllSchemas } from "@/lib/schema-generators";
 import JsonLd from "@/components/JsonLd";
-import { VALIDATION_FAQS, VALIDATION_STEPS } from "@/data/faqs/certificate-validation";
+import { VALIDATION_FAQS } from "@/data/faqs/certificate-validation";
 
 // Sections imported directly — next/dynamic(ssr:true) only added client Suspense
 // boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).
@@ -41,9 +41,8 @@ export const metadata: Metadata = generateStaticPageMetadata({
 /* ---------- Page (server component) ---------- */
 export default function CertificateValidationPage() {
   const consolidatedSchemas = generateCertificateValidationPageAllSchemas({
-    // Same data the page shows, so the FAQPage / HowTo schema match the visible content.
+    // Same data the page shows, so the FAQPage schema matches the visible content.
     faqs: VALIDATION_FAQS,
-    howToSteps: VALIDATION_STEPS,
     features: [
       "Instant Verification",
       "Tamper-Proof Security",

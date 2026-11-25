@@ -30,24 +30,6 @@ export const promptEngineeringCourse: CourseContent = {
     description:
       "20-Hour Hero Program in Prompt Engineering with Gen AI. Hands-on projects, job assistance, AAA global certificates.",
     duration: "P1M",
-    howTo: {
-      name: "How to Enroll in CDPL Prompt Engineering Course",
-      description: "A step-by-step guide to enrolling in our 20-hour Prompt Engineering with Generative AI program.",
-      steps: [
-        {
-          name: "Review Curriculum",
-          text: "Explore the prompt patterns, guardrails, structured outputs, and evaluation modules.",
-        },
-        {
-          name: "Contact Admissions",
-          text: "Reach out to our admissions team for counseling and upcoming batch details.",
-        },
-        {
-          name: "Start Learning",
-          text: "Master prompt engineering, RAG, and AI workflows to land roles as a Prompt Engineer or Applied AI Specialist.",
-        },
-      ],
-    },
   },
 
   hero: {

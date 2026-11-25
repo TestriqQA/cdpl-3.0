@@ -33,15 +33,6 @@ export const dbmsCourse: CourseContent = {
     description:
       "Master MySQL, SQL queries, database design, and optimization. Build real projects. Get certified and placed in top companies.",
     duration: "PT20H",
-    howTo: {
-      name: "How to Enroll in CDPL MySQL DBMS Course",
-      description: "A step-by-step guide to enrolling in our specialized Database Management program.",
-      steps: [
-        { name: "Review Curriculum", text: "Analyze the MySQL operations, database design, and query optimization structure." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        { name: "Start Learning", text: "Master relational data processing, build backend architectures, and get certified!" },
-      ],
-    },
   },
 
   hero: {

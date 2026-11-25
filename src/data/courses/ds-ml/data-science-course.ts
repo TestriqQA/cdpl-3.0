@@ -34,18 +34,6 @@ export const dataScienceCourse: CourseContent = {
     description:
       "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with job placement.",
     duration: "P4M",
-    howTo: {
-      name: "How to Enroll in CDPL Advanced Data Science Masterclass",
-      description: "A step-by-step guide to enrolling in our 200 hours intensive Data Science training program.",
-      steps: [
-        { name: "Review Curriculum", text: "Evaluate the comprehensive python, machine learning, and MLOps modules." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master modern large language models, prompt engineering, and deep learning for advanced tech roles!",
-        },
-      ],
-    },
   },
 
   hero: {

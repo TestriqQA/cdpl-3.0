@@ -32,19 +32,6 @@ export const generativeAiCourse: CourseContent = {
     description:
       "55-Hour Hero Program in Deep Learning, NLP, and Generative AI with Python. Hands-on projects, job assistance, global certificates from AAA.",
     duration: "P1M2W",
-    howTo: {
-      name: "How to Enroll in CDPL Generative AI Hero Program",
-      description:
-        "A step-by-step guide to enrolling in our advanced Deep Learning, NLP, and Generative AI training program.",
-      steps: [
-        { name: "Review Curriculum", text: "Evaluate the advanced PyTorch, Hugging Face Transformers, and MLOps modules." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master modern large language models, prompt engineering, and deep learning for advanced tech roles!",
-        },
-      ],
-    },
   },
 
   hero: {

@@ -32,18 +32,6 @@ export const dataAnalyticsCourse: CourseContent = {
     description:
       "Master the data analyst full course in Mumbai with 110 hours of intensive training. Advanced data analytics, Python, SQL & Power BI with job placement.",
     duration: "P3M",
-    howTo: {
-      name: "How to Enroll in CDPL Advanced Data Analytics Program",
-      description: "A step-by-step guide to enrolling in our 110-hour intensive Data Analytics training program.",
-      steps: [
-        { name: "Review Curriculum", text: "Evaluate the comprehensive Python, SQL, Power BI, and Tableau modules." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master data analytics, business intelligence, and dashboarding to secure top data analyst roles.",
-        },
-      ],
-    },
   },
 
   hero: {

@@ -39,21 +39,6 @@ export const powerBiCourse: CourseContent = {
     description:
       "Enroll in the comprehensive Power BI course. Master DAX, Data Modeling, and Visualization in 20 hours. Get job assistance and global certification.",
     duration: "P1M",
-    howTo: {
-      name: "How to Enroll in CDPL Power BI Course",
-      description: "A step-by-step guide to enrolling in our 20-hour Power BI Master Program.",
-      steps: [
-        {
-          name: "Review Curriculum",
-          text: "Explore Power BI Desktop, DAX, Power Query, data modeling, and dashboard design modules.",
-        },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master Power BI to secure roles as a Power BI Developer, BI Analyst, or Data Visualization Specialist.",
-        },
-      ],
-    },
   },
 
   hero: {

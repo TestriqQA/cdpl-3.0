@@ -34,15 +34,6 @@ export const automationTestingCourse: CourseContent = {
     name: "Advanced Automation Testing Course (SDET)",
     description: "Master Cypress, Playwright, AI Testing, CI/CD. Become a future-ready SDET with elite projects and FAANG placement.",
     duration: "PT30H",
-    howTo: {
-      name: "How to Enroll in CDPL Automation Testing SDET Course",
-      description: "A step-by-step guide to enrolling in our specialized Automation AI program.",
-      steps: [
-        { name: "Review Curriculum", text: "Evaluate Playwright, Cypress, Selenium, and AI automation test execution pipelines." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        { name: "Start Learning", text: "Master modern full-stack automated operations testing and obtain placement!" },
-      ],
-    },
   },
 
   hero: {

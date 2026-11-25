@@ -1,6 +1,6 @@
-// Shown on /cdpl-certificate-validation and sent as its FAQPage / HowTo schema,
-// so the visible page and the structured data always match. (Both used to be
-// schema-only: the page showed no FAQ and no steps.)
+// Shown on /cdpl-certificate-validation. The FAQs are also sent as its FAQPage
+// schema, so the visible page and the structured data always match. (Both
+// used to be schema-only: the page showed no FAQ and no steps.)
 export type ValidationFaq = { question: string; answer: string };
 export type ValidationStep = { name: string; text: string };
 

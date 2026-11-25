@@ -31,24 +31,6 @@ export const aiBootcampCourse: CourseContent = {
     description:
       "Master Digital Marketing with AI in this 30-hour bootcamp. Learn SEO, SEM, Social Media, and Performance Marketing with Job Assistance.",
     duration: "P1M",
-    howTo: {
-      name: "How to Enroll in CDPL AI-Powered Digital Marketing Bootcamp",
-      description: "A step-by-step guide to enrolling in our 30-hour AI Digital Marketing Bootcamp.",
-      steps: [
-        {
-          name: "Review Curriculum",
-          text: "Explore AI marketing tools, SEO, SEM, Social Media, Performance Marketing, and automation modules.",
-        },
-        {
-          name: "Contact Admissions",
-          text: "Reach out to our admissions team to select your preferred classroom or online batch.",
-        },
-        {
-          name: "Start Learning",
-          text: "Complete the 30-hour intensive bootcamp and get certified with job assistance.",
-        },
-      ],
-    },
     program: {
       programType: "Bootcamp",
       timeToComplete: "P1M",

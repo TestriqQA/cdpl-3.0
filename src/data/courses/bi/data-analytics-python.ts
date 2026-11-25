@@ -39,21 +39,6 @@ export const dataAnalyticsPythonCourse: CourseContent = {
     description:
       "20-hour python data analysis course with hands-on projects, global certification, and job assistance. Learn how to become a data analyst in Mumbai/Thane.",
     duration: "P1M",
-    howTo: {
-      name: "How to Enroll in CDPL Data Analytics with Python Course",
-      description: "A step-by-step guide to enrolling in our 20-hour Data Analytics with Python training program.",
-      steps: [
-        {
-          name: "Review Curriculum",
-          text: "Explore Python, Pandas, NumPy, Matplotlib, Seaborn, and Plotly modules for data analytics.",
-        },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master Python data analysis to secure Data Analyst, BI Analyst, or Data Scientist roles.",
-        },
-      ],
-    },
   },
 
   hero: {

@@ -34,18 +34,6 @@ export const aiCourse: CourseContent = {
     name: "Comprehensive Data Science & AI Master Program",
     description: "255-Hour Master Program in Comprehensive Data Science and AI. Hands-on projects, job assistance, global certificates.",
     duration: "P5M",
-    howTo: {
-      name: "How to Enroll in CDPL AI Master Program",
-      description: "A step-by-step guide to enrolling in our 255 hours intensive AI and ML training program.",
-      steps: [
-        { name: "Review Curriculum", text: "Evaluate the comprehensive python, machine learning, and comprehensive AI modules." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master modern large language models, prompt engineering, and deep learning for advanced tech roles!",
-        },
-      ],
-    },
   },
 
   hero: {

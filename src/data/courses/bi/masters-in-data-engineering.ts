@@ -40,21 +40,6 @@ export const mastersInDataEngineeringCourse: CourseContent = {
     description:
       "155-hour intensive master program in Mumbai covering SQL for data analytics, BI tools, and Big Data engineering with Spark and Hadoop. placement.",
     duration: "P3M",
-    howTo: {
-      name: "How to Enroll in CDPL Masters in Data Engineering Program",
-      description: "A step-by-step guide to enrolling in our 155-hour intensive Masters in Data Engineering program.",
-      steps: [
-        {
-          name: "Review Curriculum",
-          text: "Explore SQL, Python, Power BI, Tableau, Spark, Hadoop, and Cloud Engineering modules.",
-        },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master BI and Big Data Engineering to secure roles as a Data Engineer, BI Analyst, or Data Scientist.",
-        },
-      ],
-    },
     program: { programType: "Master's Program", timeToComplete: "P3M", occupationalCategory: "Data Engineer" },
   },
 

@@ -32,21 +32,6 @@ export const machineLearningCourse: CourseContent = {
     description:
       "95-Hour Hero Program in Machine Learning and Data Science with Python. Hands-on projects, job assistance, global certificates.",
     duration: "P2M1W",
-    howTo: {
-      name: "How to Enroll in CDPL Machine Learning Hero Program",
-      description: "A step-by-step guide to enrolling in our specialized Machine Learning and Data Science program.",
-      steps: [
-        {
-          name: "Review Curriculum",
-          text: "Evaluate the comprehensive Python, Pandas, scikit-learn, and Deep Learning modules.",
-        },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master modern Data Science frameworks and Automated AI scripting methodologies with strong placement support!",
-        },
-      ],
-    },
   },
 
   hero: {

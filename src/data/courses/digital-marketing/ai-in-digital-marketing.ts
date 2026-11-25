@@ -36,18 +36,6 @@ export const aiInDigitalMarketingCourse: CourseContent = {
     name: "Master Digital Marketing & AI for Business Owners",
     description: "A 3-month cohort program to master digital marketing and AI strategies tailored for business owners.",
     duration: "P3M",
-    howTo: {
-      name: "How to Enroll in CDPL AI in Digital Marketing Course",
-      description: "A step-by-step guide to enrolling in our 3-month AI-driven Digital Marketing cohort for business owners.",
-      steps: [
-        {
-          name: "Review Curriculum",
-          text: "Explore AI tools (ChatGPT, Midjourney), local SEO, social media, content, automation, and B2B lead generation modules.",
-        },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and upcoming cohort details." },
-        { name: "Start Learning", text: "Apply AI-driven marketing strategies directly to your business and 10X your growth." },
-      ],
-    },
   },
 
   hero: {

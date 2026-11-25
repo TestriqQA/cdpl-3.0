@@ -21,15 +21,6 @@ export const apiTestingCourse: CourseContent = {
     name: "API Testing Course with POSTMAN & RestAPIs",
     description: "Master API testing in 15 hours with live projects, global certification, and placement support.",
     duration: "PT15H",
-    howTo: {
-      name: "How to Enroll in CDPL API Testing Course",
-      description: "A step-by-step guide to enrolling in our specialized API Testing program.",
-      steps: [
-        { name: "Review Syllabus", text: "Analyze the Postman, JSON structure, and automation framework curriculum." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        { name: "Start Learning", text: "Master network requests, perform backend validations, and get certified!" },
-      ],
-    },
   },
 
   hero: {

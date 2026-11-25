@@ -54,30 +54,6 @@ export default async function AffiliateProgramPage() {
   // Same list the visible FAQ renders, so the FAQPage schema always matches it.
   const affiliateFaqs = AFFILIATE_FAQS.map(({ question, answer }) => ({ question, answer }));
 
-  const affiliateHowToSteps = [
-    {
-      name: "Sign Up",
-      text: "Complete the affiliate application form with your details and promotional channels",
-      url: "/cdpl-affiliate-program#apply",
-    },
-    {
-      name: "Get Approved",
-      text: "Our team reviews your application and approves qualified partners within 2-3 business days",
-    },
-    {
-      name: "Promote CDPL",
-      text: "Use your unique affiliate links to promote CDPL courses, events, and services on your platforms",
-    },
-    {
-      name: "Earn Commissions",
-      text: "Earn 15-25% recurring commissions on every successful referral with transparent tracking",
-    },
-    {
-      name: "Get Paid",
-      text: "Receive fast payouts monthly via bank transfer or preferred payment method",
-    },
-  ];
-
   const affiliateBenefits = [
     "Recurring Commissions (15-25%)",
     "Transparent Real-time Tracking",
@@ -89,7 +65,6 @@ export default async function AffiliateProgramPage() {
 
   const consolidatedSchemas = generateAffiliateProgram8PointSchema({
     faqs: affiliateFaqs,
-    howToSteps: affiliateHowToSteps,
     benefits: affiliateBenefits
   });
 

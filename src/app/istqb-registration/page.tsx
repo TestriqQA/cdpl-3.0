@@ -33,24 +33,6 @@ export default function IstqbRegistrationPage() {
           "CDPL offers Foundation Level, Advanced Level, and Agile Foundation Extension certifications to support your career growth at every stage.",
       },
     ],
-    howToSteps: [
-      {
-        name: "Registration",
-        text: "Fill out the simple registration form with your basic details.",
-      },
-      {
-        name: "Consultation",
-        text: "Book a free 3:30 PM consultation to get expert guidance on your certification path.",
-      },
-      {
-        name: "Exam Selection",
-        text: "Choose your certification level and preferred exam date.",
-      },
-      {
-        name: "Preparation",
-        text: "Access industry-aligned training materials and start your certification journey.",
-      },
-    ],
     levels: [
       "ISTQB Foundation Level",
       "ISTQB Advanced Level",

@@ -32,19 +32,6 @@ export const javaCourse: CourseContent = {
     description:
       "Comprehensive Java course in Mumbai with Core Java, Spring Boot, Microservices, AWS. placement. Live projects, global certificate.",
     duration: "P2M2W",
-    howTo: {
-      name: "How to Enroll in CDPL Java Master Course",
-      // The old schema text trailed off into ~25 repeated adverbs ("safely safely natively…"); trimmed to the sentence.
-      description: "A step-by-step guide to enrolling in our robust Java Development master program.",
-      steps: [
-        { name: "Review Curriculum", text: "Evaluate the comprehensive Core Java, Spring Boot, Microservices, and Automation modules." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master modern full-stack backend development and automated scripting methodologies with strong placement support!",
-        },
-      ],
-    },
   },
 
   hero: {

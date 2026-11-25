@@ -40,15 +40,6 @@ export const advanceSoftwareTestingCourse: CourseContent = {
     description:
       "Master Selenium, Appium, API, Cypress, and Performance Testing. Become a full-stack SDET with real projects and ISTQB certification.",
     duration: "PT25H",
-    howTo: {
-      name: "How to Enroll in CDPL Advanced Software Testing Course",
-      description: "A step-by-step guide to enrolling in our specialized SDET Automation program.",
-      steps: [
-        { name: "Review Curriculum", text: "Analyze the Selenium, Cypress, Appium, and performance testing architecture." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        { name: "Start Learning", text: "Master modern full-stack web automation architectures and get certified!" },
-      ],
-    },
   },
 
   hero: {

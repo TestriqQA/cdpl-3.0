@@ -1156,35 +1156,6 @@ export function generateHomePageSchema(
     about: { "@id": getOrganizationId() },
   });
 
-  // 6. HowTo Schema (Placement Process)
-  const howToSchema = generateHowToSchema({
-    name: "Our 5-Step Placement Process",
-    description:
-      "A structured 5-step process designed to make you industry-ready and land your dream job.",
-    steps: [
-      {
-        name: "Skill Building",
-        text: "Gain highly sought-after industry skills with live projects.",
-      },
-      {
-        name: "Resume Preparation",
-        text: "Get resume polishing with expert reviews tailored for HRs.",
-      },
-      {
-        name: "Mock Interviews",
-        text: "Practice rigorously with technical and HR mock interview rounds.",
-      },
-      {
-        name: "Job Referrals",
-        text: "Gain direct referrals to our hiring partner network.",
-      },
-      {
-        name: "Placement",
-        text: "Receive the final offer letter and embark on your tech career.",
-      },
-    ],
-  });
-
   // 7. Site Navigation Schema
   // 7. Site Navigation Schema
   const siteNavSchemas = generateSiteNavigationSchema();
@@ -1198,7 +1169,6 @@ export function generateHomePageSchema(
     faqSchema,
     videoSchema,
     webPageSchema,
-    howToSchema,
     siteNavSchemas,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1319,31 +1289,6 @@ export function generateAllCoursesPageSchema(): WithContext<
     },
   ]);
 
-  // Explicit HowTo Schema (Requested)
-  const howToSchema = generateHowToSchema({
-    name: "How to Enroll in CDPL Courses",
-    description:
-      "A simple step-by-step guide to enrolling in our certification programs.",
-    steps: [
-      {
-        name: "Browse Courses",
-        text: "Explore our comprehensive list of Software Testing, Data Science, and AI/ML courses.",
-      },
-      {
-        name: "Select a Program",
-        text: "Choose the training program that aligns with your career goals.",
-      },
-      {
-        name: "Contact Admissions",
-        text: "Reach out to our admissions team for counseling and batch details.",
-      },
-      {
-        name: "Start Learning",
-        text: "Attend live classes, complete hands-on projects, and get certified!",
-      },
-    ],
-  });
-
   // 6. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -1354,7 +1299,6 @@ export function generateAllCoursesPageSchema(): WithContext<
     itemListSchema,
     breadcrumbSchema,
     faqSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1414,31 +1358,6 @@ export function generateSoftwareTestingCategoryPageSchema(
   // 6. FAQPage Schema
   const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
 
-  // 7. HowTo Schema (Dummy Enrollment)
-  const howToSchema = generateHowToSchema({
-    name: "How to Enroll in CDPL Software Testing Course",
-    description:
-      "A simple step-by-step guide to enrolling in our certification programs.",
-    steps: [
-      {
-        name: "Browse Courses",
-        text: "Explore our comprehensive list of Software Testing modules.",
-      },
-      {
-        name: "Select a Program",
-        text: "Choose between Manual, Automation, API, or the Full Master program.",
-      },
-      {
-        name: "Contact Admissions",
-        text: "Reach out to our admissions team for counseling and batch details.",
-      },
-      {
-        name: "Start Learning",
-        text: "Attend live classes, complete hands-on projects, and get certified!",
-      },
-    ],
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -1448,7 +1367,6 @@ export function generateSoftwareTestingCategoryPageSchema(
     itemListSchema,
     breadcrumbSchema,
     faqSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1505,31 +1423,6 @@ export function generateDataScienceMachineLearningCategoryPageSchema(
   // 6. FAQPage Schema
   const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
 
-  // 7. HowTo Schema (Dummy Enrollment)
-  const howToSchema = generateHowToSchema({
-    name: "How to Enroll in CDPL Data Science & ML Courses",
-    description:
-      "A simple step-by-step guide to enrolling in our Data Science certification programs.",
-    steps: [
-      {
-        name: "Browse Courses",
-        text: "Explore our comprehensive list of Data Science & ML modules.",
-      },
-      {
-        name: "Select a Program",
-        text: "Choose between standard ML, Deep Learning, AI, or the Full Master program.",
-      },
-      {
-        name: "Contact Admissions",
-        text: "Reach out to our admissions team for counseling and batch details.",
-      },
-      {
-        name: "Start Learning",
-        text: "Attend live classes, complete hands-on projects, and get certified!",
-      },
-    ],
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -1539,7 +1432,6 @@ export function generateDataScienceMachineLearningCategoryPageSchema(
     itemListSchema,
     breadcrumbSchema,
     faqSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1596,31 +1488,6 @@ export function generateBusinessIntelligenceCategoryPageSchema(
   // 6. FAQPage Schema
   const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
 
-  // 7. HowTo Schema (Dummy Enrollment)
-  const howToSchema = generateHowToSchema({
-    name: "How to Enroll in CDPL Business Intelligence Courses",
-    description:
-      "A step-by-step guide to enrolling in our Data Visualization and BI programs.",
-    steps: [
-      {
-        name: "Browse Courses",
-        text: "Explore our comprehensive list of BI modules like Tableau and Power BI.",
-      },
-      {
-        name: "Select a Program",
-        text: "Choose between standard data analytics or the high-impact Master program.",
-      },
-      {
-        name: "Contact Admissions",
-        text: "Reach out to our admissions team for counseling and batch details.",
-      },
-      {
-        name: "Start Learning",
-        text: "Attend live classes, complete hands-on projects, and get certified!",
-      },
-    ],
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -1630,7 +1497,6 @@ export function generateBusinessIntelligenceCategoryPageSchema(
     itemListSchema,
     breadcrumbSchema,
     faqSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1689,31 +1555,6 @@ export function generateArtificialIntelligenceCategoryPageSchema(
   // 6. FAQPage Schema
   const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
 
-  // 7. HowTo Schema (Dummy Enrollment)
-  const howToSchema = generateHowToSchema({
-    name: "How to Enroll in CDPL Artificial Intelligence Courses",
-    description:
-      "A step-by-step guide to enrolling in our AI and Prompt Engineering programs.",
-    steps: [
-      {
-        name: "Browse Courses",
-        text: "Explore our comprehensive list of AI modules like Stable Diffusion and LLMs.",
-      },
-      {
-        name: "Select a Program",
-        text: "Choose between basic prompt engineering or the full-stack AI model training program.",
-      },
-      {
-        name: "Contact Admissions",
-        text: "Reach out to our admissions team for counseling and batch details.",
-      },
-      {
-        name: "Start Learning",
-        text: "Attend live classes, build AI applications, and get certified!",
-      },
-    ],
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -1723,7 +1564,6 @@ export function generateArtificialIntelligenceCategoryPageSchema(
     itemListSchema,
     breadcrumbSchema,
     faqSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1782,31 +1622,6 @@ export function generateDigitalMarketingCategoryPageSchema(
   // 6. FAQPage Schema
   const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
 
-  // 7. HowTo Schema (Dummy Enrollment)
-  const howToSchema = generateHowToSchema({
-    name: "How to Enroll in CDPL Digital Marketing Courses",
-    description:
-      "A step-by-step guide to enrolling in our SEO and PPC programs.",
-    steps: [
-      {
-        name: "Browse Courses",
-        text: "Explore our comprehensive list of marketing modules like SEO and SMM.",
-      },
-      {
-        name: "Select a Program",
-        text: "Choose between standard SEO optimization or the 360 Full Stack Marketing.",
-      },
-      {
-        name: "Contact Admissions",
-        text: "Reach out to our admissions team for counseling and batch details.",
-      },
-      {
-        name: "Start Learning",
-        text: "Attend live classes, launch campaigns, and get certified!",
-      },
-    ],
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -1816,7 +1631,6 @@ export function generateDigitalMarketingCategoryPageSchema(
     itemListSchema,
     breadcrumbSchema,
     faqSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -1842,7 +1656,6 @@ export function generateCoursePageSchema(input: {
   image?: string;
   duration?: string;
   instructor?: string;
-  howTo: { name: string; description: string; steps: { name: string; text: string }[] };
   learningOutcomes?: string[];
   prerequisites?: string[];
   program?: { programType: string; timeToComplete?: string; occupationalCategory?: string };
@@ -1893,7 +1706,6 @@ export function generateCoursePageSchema(input: {
     itemListSchema,
     generateBreadcrumbSchema(input.breadcrumbs),
     input.faqs.length > 0 ? generateFAQSchema(input.faqs) : undefined,
-    generateHowToSchema(input.howTo),
     generateSiteNavigationSchema(),
   ].filter((schema): schema is WithContext<Record<string, unknown>> => schema !== undefined);
 }
@@ -2054,34 +1866,12 @@ export function generateContactPageAllSchemas(): WithContext<
     "Top Training Courses at CDPL - Cinute Digital",
   );
 
-  // HowTo — how to contact or enroll
-  const howToSchema = generateHowToSchema({
-    name: "How to Get in Touch with CDPL for Course Enrollment",
-    description:
-      "A simple guide to contacting CDPL (Cinute Digital) and enrolling in a training program.",
-    steps: [
-      {
-        name: "Choose Your Course",
-        text: "Browse the CDPL course catalog and select the training program that fits your career goals.",
-      },
-      {
-        name: "Contact Us",
-        text: "Reach out via phone (+91 98208 53250), email (info@cinutedigital.com), or fill out the inquiry form on our Contact page.",
-      },
-      {
-        name: "Book a Counseling Session",
-        text: "Schedule a free 1:1 career counseling call with our experts to get personalized guidance and batch details.",
-      },
-    ],
-  });
-
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
     contactPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2194,26 +1984,6 @@ export function generateAboutPageAllSchemas(
     "Flagship Training Programs at CDPL - Cinute Digital",
   );
 
-  const howToSchema = generateHowToSchema({
-    name: "How to Enroll in a CDPL Training Program",
-    description:
-      "A simple guide to getting started with CDPL (Cinute Digital) and joining a career-transforming training program.",
-    steps: [
-      {
-        name: "Explore Programs",
-        text: "Visit the CDPL courses page and explore training programs in Software Testing, Data Science, AI, Business Intelligence, and Digital Marketing.",
-      },
-      {
-        name: "Talk to an Advisor",
-        text: "Book a free 1:1 career counseling session with our expert advisors to find the right program for your goals.",
-      },
-      {
-        name: "Enroll & Start Learning",
-        text: "Complete enrollment, join live online or classroom sessions, work on real projects, and get comprehensive placement support.",
-      },
-    ],
-  });
-
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
@@ -2221,7 +1991,6 @@ export function generateAboutPageAllSchemas(
     aboutPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2316,26 +2085,6 @@ export function generateServicesPageAllSchemas(
     "CDPL Corporate Training & Consulting Services",
   );
 
-  const howToSchema = generateHowToSchema({
-    name: "How to Engage CDPL for Corporate Training Services",
-    description:
-      "A step-by-step guide to getting started with CDPL corporate training and consulting for your organization.",
-    steps: [
-      {
-        name: "Identify Your Need",
-        text: "Browse the CDPL services catalog and identify which training or consulting service fits your organization — from workshops and STTP to corporate learning paths.",
-      },
-      {
-        name: "Request a Consultation",
-        text: "Contact CDPL via phone, email, or the inquiry form to schedule a free consultation with our training experts.",
-      },
-      {
-        name: "Get a Custom Proposal",
-        text: "Our team will conduct a needs assessment and deliver a tailored training proposal aligned to your goals and technology stack.",
-      },
-    ],
-  });
-
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   // OfferCatalog — the catalog of corporate training & consulting services
@@ -2366,7 +2115,6 @@ export function generateServicesPageAllSchemas(
     collectionPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
     offerCatalogSchema,
   ].filter(
@@ -2520,33 +2268,6 @@ export function generateServiceDetailPageAllSchemas(service: {
     "CDPL Corporate Training & Consulting Services",
   );
 
-  // HowTo — dynamically generated from methodology steps
-  const howToSteps = service.methodology.slice(0, 5).map((step, i) => ({
-    name: `Step ${i + 1}`,
-    text: step,
-  }));
-  const howToSchema = generateHowToSchema({
-    name: `How the ${service.title} Program Works at CDPL`,
-    description: `A step-by-step overview of CDPL's ${service.title} program methodology and delivery process.`,
-    steps:
-      howToSteps.length > 0
-        ? howToSteps
-        : [
-            {
-              name: "Consultation",
-              text: "Contact CDPL to discuss your training needs and goals.",
-            },
-            {
-              name: "Custom Plan",
-              text: "Receive a tailored training proposal aligned to your organization.",
-            },
-            {
-              name: "Delivery",
-              text: "Attend expert-led sessions with hands-on labs and real projects.",
-            },
-          ],
-  });
-
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
@@ -2554,7 +2275,6 @@ export function generateServiceDetailPageAllSchemas(service: {
     serviceSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2641,27 +2361,6 @@ export function generateEventsPageAllSchemas(
     "CDPL Upcoming and Past Events",
   );
 
-  // HowTo — "How to Register for CDPL Events"
-  const howToSchema = generateHowToSchema({
-    name: "How to Register for CDPL Events and Workshops",
-    description:
-      "Simple steps to find and register for our upcoming training events and technical webinars.",
-    steps: [
-      {
-        name: "Browse Events",
-        text: "Visit the CDPL Events page to explore upcoming webinars, workshops, and corporate sessions.",
-      },
-      {
-        name: "Select Event",
-        text: "Click on an event to view the schedule, speaker details, and agenda.",
-      },
-      {
-        name: "Submit Registration",
-        text: "Fill out the registration form embedded on the event page or call us to reserve a corporate batch.",
-      },
-    ],
-  });
-
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
@@ -2669,7 +2368,6 @@ export function generateEventsPageAllSchemas(
     collectionPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2795,26 +2493,6 @@ export function generateEventDetailPageAllSchemas(
     `CDPL Events Directory`,
   );
 
-  // HowTo — "How to participate in CDPL events"
-  const howToSchema = generateHowToSchema({
-    name: `How to participate in events like ${event.title} at CDPL`,
-    description: `A quick guide on how to register and attend upcoming CDPL webinars, workshops, and training events.`,
-    steps: [
-      {
-        name: "Register",
-        text: "Sign up through our website or corporate partnership portal.",
-      },
-      {
-        name: "Attend",
-        text: "Join online via Zoom/Meet or visit the listed venue.",
-      },
-      {
-        name: "Get Certified",
-        text: "Receive your participation certificate after the session.",
-      },
-    ],
-  });
-
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
@@ -2822,7 +2500,6 @@ export function generateEventDetailPageAllSchemas(
     eventSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2895,34 +2572,12 @@ export function generateOurTeamPageAllSchemas(
     },
   ]);
 
-  // HowTo — "How to Connect with Our Mentors"
-  const howToSchema = generateHowToSchema({
-    name: "How to Connect with CDPL Mentors for Career Guidance",
-    description:
-      "Simple steps to get expert advice and mentoring from our industry professionals.",
-    steps: [
-      {
-        name: "Browse Team Profiles",
-        text: "Visit our Team page to identify mentors specializing in your area of interest like QA or Data Science.",
-      },
-      {
-        name: "Enroll in a Program",
-        text: "Sign up for any of our professional training programs to unlock access to dedicated mentorship sessions.",
-      },
-      {
-        name: "Schedule a Session",
-        text: "Use our student portal to book a 1-on-1 session or attend a live Q&A workshop with our experts.",
-      },
-    ],
-  });
-
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -2984,34 +2639,12 @@ export function generateMentorsPageAllSchemas(
     },
   ]);
 
-  // HowTo — "How to Connect with a Mentor"
-  const howToSchema = generateHowToSchema({
-    name: "How to Book a Mentorship Session with CDPL Experts",
-    description:
-      "Simple steps to start your mentorship journey with industry leaders.",
-    steps: [
-      {
-        name: "Join a CDPL Program",
-        text: "Enroll in one of our industry-led training programs in QA, Data Science, or Automation.",
-      },
-      {
-        name: "Identify Your Mentor",
-        text: "Browse our Mentor Directory to find a professional aligned with your career goals and domain.",
-      },
-      {
-        name: "Schedule via Portal",
-        text: "Use the CDPL Student Learning Management System (LMS) to book a dedicated 1-on-1 slot with your chosen mentor.",
-      },
-    ],
-  });
-
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3069,34 +2702,12 @@ export function generateLiveJobsPageAllSchemas(
     },
   ]);
 
-  // HowTo — "How to Apply for Job Alerts"
-  const howToSchema = generateHowToSchema({
-    name: "How to Apply for Verified Jobs via CDPL Placement Alerts",
-    description:
-      "Quick steps to stay updated and apply for the latest tech openings.",
-    steps: [
-      {
-        name: "Visit Live Jobs Portal",
-        text: "Regularly check our Live Jobs page at /jobs/live-jobs for real-time updates on walk-ins and direct openings.",
-      },
-      {
-        name: "Check Eligibility",
-        text: "Review job highlights, experience requirements, and location to ensure a good match for your profile.",
-      },
-      {
-        name: "Apply via Link or Email",
-        text: "Follow the specific application instructions (Apply Link or HR Email) provided in the job card to submit your candidacy.",
-      },
-    ],
-  });
-
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3135,34 +2746,12 @@ export function generatePlacementsPageAllSchemas(
     PLACEMENTS_FAQS.map(({ question, answer }) => ({ question, answer })),
   );
 
-  // HowTo — "how to secure a placement via CDPL"
-  const howToSchema = generateHowToSchema({
-    name: "How to Secure a High-Package Tech Job via CDPL Placement Cell",
-    description:
-      "Our proven 3-step process to transition from a learner to a placed professional.",
-    steps: [
-      {
-        name: "Complete Course & Certification",
-        text: "Finish your technical training and clear the CDPL Internal Assessment to become placement-eligible.",
-      },
-      {
-        name: "Portfolio & Interview Prep",
-        text: "Work with mentors to build a professional GitHub portfolio and undergo mock interview drills.",
-      },
-      {
-        name: "Direct Referrals",
-        text: "Get direct interview invites from our hiring partner network and pursue your next role.",
-      },
-    ],
-  });
-
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3203,33 +2792,12 @@ export function generateCareersPageAllSchemas(
     CAREERS_FAQS.map(({ question, answer }) => ({ question, answer })),
   );
 
-  // HowTo — "how to apply to CDPL"
-  const howToSchema = generateHowToSchema({
-    name: "How to Join the CDPL Core Team",
-    description: "Follow these steps to start your career journey with CDPL.",
-    steps: [
-      {
-        name: "Browse Open Roles",
-        text: "Visit our Careers page at /jobs/careers to see the latest openings across engineering, data, and growth.",
-      },
-      {
-        name: "Submit Your Application",
-        text: "Select a role that matches your expertise and submit your updated CV along with a brief cover letter highlighting your impact.",
-      },
-      {
-        name: "Complete Evaluation",
-        text: "Participate in our domain-specific assessment and team interviews to demonstrate your skills and cultural fit.",
-      },
-    ],
-  });
-
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3289,34 +2857,12 @@ export function generateJobOpeningsPageAllSchemas(
     },
   ]);
 
-  // HowTo — "how to apply for partner jobs"
-  const howToSchema = generateHowToSchema({
-    name: "How to Apply for Tech Jobs via the CDPL Partner Portal",
-    description:
-      "Follow these steps to efficiently apply for global tech roles.",
-    steps: [
-      {
-        name: "Browse & Filter",
-        text: "Use the CDPL Job Browser at /jobs/job-openings to filter roles by skills, experience, and location.",
-      },
-      {
-        name: "Review Details",
-        text: "Click on a job to read the full description, required skills, and salary range provided by our hiring partners.",
-      },
-      {
-        name: "Direct Application",
-        text: "Fill in your details, upload your resume, and submit your application directly to the recruiter via the integrated portal.",
-      },
-    ],
-  });
-
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3330,11 +2876,10 @@ export function generateJobOpeningsPageAllSchemas(
 
 /**
  * Generate a complete 8-point schema set for the Affiliate Program page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, and SiteNavigation.
  */
 export function generateAffiliateProgram8PointSchema(data: {
   faqs: { question: string; answer: string }[];
-  howToSteps: { name: string; text: string; url?: string }[];
   benefits: string[];
 }): WithContext<Record<string, unknown>>[] {
   // NOTE: Organization and WebSite schemas are handled by Root Layout
@@ -3362,13 +2907,6 @@ export function generateAffiliateProgram8PointSchema(data: {
     "CDPL Affiliate Program Benefits",
   );
 
-  // 5. HowTo Schema (How to join)
-  const howToSchema = generateHowToSchema({
-    name: "How to Join CDPL Affiliate Program",
-    description: "Step-by-step guide to becoming a CDPL affiliate partner.",
-    steps: data.howToSteps,
-  });
-
   // 6. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -3376,7 +2914,6 @@ export function generateAffiliateProgram8PointSchema(data: {
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3390,11 +2927,10 @@ export function generateAffiliateProgram8PointSchema(data: {
 
 /**
  * Generate a complete 8-point schema set for the ISTQB Registration page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, and SiteNavigation.
  */
 export function generateIstqbRegistrationPageAllSchemas(data: {
   faqs: { question: string; answer: string }[];
-  howToSteps: { name: string; text: string; url?: string }[];
   levels: string[];
 }): WithContext<Record<string, unknown>>[] {
   // NOTE: Organization and WebSite schemas are handled by Root Layout
@@ -3422,14 +2958,6 @@ export function generateIstqbRegistrationPageAllSchemas(data: {
     "Available ISTQB Certification Levels",
   );
 
-  // 7. HowTo Schema (How to Register)
-  const howToSchema = generateHowToSchema({
-    name: "How to register for ISTQB Certification",
-    description:
-      "Step-by-step process to book your ISTQB exam and start preparation.",
-    steps: data.howToSteps,
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -3437,7 +2965,6 @@ export function generateIstqbRegistrationPageAllSchemas(data: {
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3490,11 +3017,10 @@ export function generateQuizSchema(input: {
 
 /**
  * Generate a complete 8-point schema set for the Mock Test landing page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, and SiteNavigation.
  */
 export function generateMockTestPageAllSchemas(data: {
   faqs: { question: string; answer: string }[];
-  howToSteps: { name: string; text: string; url?: string }[];
   categories: string[];
 }): WithContext<Record<string, unknown>>[] {
   // NOTE: Organization and WebSite schemas are handled by Root Layout
@@ -3522,14 +3048,6 @@ export function generateMockTestPageAllSchemas(data: {
     "Available Mock Test Domains",
   );
 
-  // 7. HowTo Schema (How to start a test)
-  const howToSchema = generateHowToSchema({
-    name: "How to begin your mock assessment",
-    description:
-      "Follow these simple steps to start your technical evaluation and get instant results.",
-    steps: data.howToSteps,
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -3546,7 +3064,6 @@ export function generateMockTestPageAllSchemas(data: {
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
     quizSchema,
   ].filter(
@@ -3561,11 +3078,10 @@ export function generateMockTestPageAllSchemas(data: {
 
 /**
  * Generate a complete 8-point schema set for the AAA Certification page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, and SiteNavigation.
  */
 export function generateAaaCertificationPageAllSchemas(data: {
   faqs: { question: string; answer: string }[];
-  howToSteps: { name: string; text: string; url?: string }[];
   curriculum: string[];
   courseData: CourseSchemaInput;
 }): WithContext<Record<string, unknown>>[] {
@@ -3597,14 +3113,6 @@ export function generateAaaCertificationPageAllSchemas(data: {
     "AAA Certification Curriculum Modules",
   );
 
-  // 7. HowTo Schema (Certification Journey)
-  const howToSchema = generateHowToSchema({
-    name: "How to achieve AAA Certification",
-    description:
-      "Step-by-step roadmap from enrollment to proctored assessment and professional certification.",
-    steps: data.howToSteps,
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -3613,7 +3121,6 @@ export function generateAaaCertificationPageAllSchemas(data: {
     courseSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3627,11 +3134,10 @@ export function generateAaaCertificationPageAllSchemas(data: {
 
 /**
  * Generate a complete 8-point schema set for the ACTD Certification page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, and SiteNavigation.
  */
 export function generateActdCertificationPageAllSchemas(data: {
   faqs: { question: string; answer: string }[];
-  howToSteps: { name: string; text: string; url?: string }[];
   tracks: string[];
   courseData: CourseSchemaInput;
 }): WithContext<Record<string, unknown>>[] {
@@ -3663,14 +3169,6 @@ export function generateActdCertificationPageAllSchemas(data: {
     "ACTD Certification Training Tracks",
   );
 
-  // 7. HowTo Schema (Certification Roadmap)
-  const howToSchema = generateHowToSchema({
-    name: "How to achieve ACTD Certification",
-    description:
-      "Your comprehensive roadmap from track selection to portfolio building and professional certification.",
-    steps: data.howToSteps,
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -3679,7 +3177,6 @@ export function generateActdCertificationPageAllSchemas(data: {
     courseSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3693,11 +3190,10 @@ export function generateActdCertificationPageAllSchemas(data: {
 
 /**
  * Generate a complete 8-point schema set for the Certificate Validation page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, and SiteNavigation.
  */
 export function generateCertificateValidationPageAllSchemas(data: {
   faqs: { question: string; answer: string }[];
-  howToSteps: { name: string; text: string; url?: string }[];
   features: string[];
 }): WithContext<Record<string, unknown>>[] {
   // NOTE: Organization and WebSite schemas are handled by Root Layout
@@ -3725,14 +3221,6 @@ export function generateCertificateValidationPageAllSchemas(data: {
     "CDPL Certificate Validation Key Features",
   );
 
-  // 7. HowTo Schema (Validation Process)
-  const howToSchema = generateHowToSchema({
-    name: "How to verify a CDPL Certificate",
-    description:
-      "Follow these simple steps to instantly verify the authenticity of any CDPL, AAA, or ACTD certification.",
-    steps: data.howToSteps,
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -3740,7 +3228,6 @@ export function generateCertificateValidationPageAllSchemas(data: {
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3754,11 +3241,10 @@ export function generateCertificateValidationPageAllSchemas(data: {
 
 /**
  * Generate a complete 8-point schema set for the CMS Page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, and SiteNavigation.
  */
 export function generateCmsPageAllSchemas(data: {
   faqs: { question: string; answer: string }[];
-  howToSteps: { name: string; text: string; url?: string }[];
   features: string[];
 }): WithContext<Record<string, unknown>>[] {
   // NOTE: Organization and WebSite schemas are handled by Root Layout
@@ -3786,14 +3272,6 @@ export function generateCmsPageAllSchemas(data: {
     "Cinute Digital CMS Administrative Features",
   );
 
-  // 7. HowTo Schema (Content Management Process)
-  const howToSchema = generateHowToSchema({
-    name: "How to manage course content via CMS",
-    description:
-      "Follow these steps to efficiently update and publish course content using our customized Sanity Studio.",
-    steps: data.howToSteps,
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -3801,7 +3279,6 @@ export function generateCmsPageAllSchemas(data: {
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3815,7 +3292,7 @@ export function generateCmsPageAllSchemas(data: {
 
 /**
  * Generate a complete 8-point schema set for the Privacy Policy page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, and SiteNavigation.
  * Consolidates legal information to ensure 100% compliance and accuracy.
  */
 export function generatePrivacyPolicyPageAllSchemas(): WithContext<
@@ -3874,31 +3351,6 @@ export function generatePrivacyPolicyPageAllSchemas(): WithContext<
     "Cinute Digital Data Protection Rights & Categories",
   );
 
-  // 7. HowTo Schema (How to exercise privacy rights)
-  const howToSchema = generateHowToSchema({
-    name: "How to exercise your privacy and data rights",
-    description:
-      "Follow these legal steps to request access, correction, or deletion of your personal data.",
-    steps: [
-      {
-        name: "Submission",
-        text: "Submit a verifiable request via email to contact@cinutedigital.com or through our contact page.",
-      },
-      {
-        name: "Verification",
-        text: "We will verify your identity to ensure the security of your personal information.",
-      },
-      {
-        name: "Processing",
-        text: "Your request will be processed within the legally mandated timeframes (45 days for CCPA, 30 days for GDPR).",
-      },
-      {
-        name: "Confirmation",
-        text: "You will receive a formal confirmation once your request has been fulfilled.",
-      },
-    ],
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -3906,7 +3358,6 @@ export function generatePrivacyPolicyPageAllSchemas(): WithContext<
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -3920,7 +3371,7 @@ export function generatePrivacyPolicyPageAllSchemas(): WithContext<
 
 /**
  * Generate a complete 8-point schema set for the Cookies Policy page.
- * Includes: Organization (TESTRIQ QA Lab), WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
+ * Includes: Organization (TESTRIQ QA Lab), WebSite, WebPage, FAQPage, ItemList, and SiteNavigation.
  * Consolidates legal information to ensure 100% compliance and accuracy.
  */
 export function generateCookiesPolicyPageAllSchemas(): WithContext<
@@ -3976,31 +3427,6 @@ export function generateCookiesPolicyPageAllSchemas(): WithContext<
     "Cinute Digital Cookie Categories",
   );
 
-  // 7. HowTo Schema (How to manage/delete cookies)
-  const howToSchema = generateHowToSchema({
-    name: "How to manage and delete cookies in your browser",
-    description:
-      "Follow these steps to clear or disable cookies for Cinute Digital in your web browser.",
-    steps: [
-      {
-        name: "Settings",
-        text: "Open your web browser's settings or preferences menu.",
-      },
-      {
-        name: "Privacy & Security",
-        text: "Locate the Privacy, Security, or Content settings section.",
-      },
-      {
-        name: "Manage Cookies",
-        text: "Find the 'Cookies and other site data' option.",
-      },
-      {
-        name: "Clear/Disable",
-        text: "Select the option to clear all cookies or disable them for specific sites.",
-      },
-    ],
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -4008,7 +3434,6 @@ export function generateCookiesPolicyPageAllSchemas(): WithContext<
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -4022,7 +3447,7 @@ export function generateCookiesPolicyPageAllSchemas(): WithContext<
 
 /**
  * Generate a complete 8-point schema set for the Terms of Service page.
- * Includes: Organization, WebSite, WebPage, FAQPage (Placement), ItemList, HowTo (Enrollment/Job Assist), and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage (Placement), ItemList, and SiteNavigation.
  * Ensures 100% legal accuracy for Job Assistance policies.
  */
 export function generateTermsOfServicePageAllSchemas(): WithContext<
@@ -4086,35 +3511,6 @@ export function generateTermsOfServicePageAllSchemas(): WithContext<
     "CDPL Policy & Assistance Framework",
   );
 
-  // 7. HowTo Schema (Enrollment to Career Placement)
-  const howToSchema = generateHowToSchema({
-    name: "The CDPL Enrollment and Job Assistance Journey",
-    description:
-      "Our structured path from registration to professional job placement support.",
-    steps: [
-      {
-        name: "Registration",
-        text: "Provide accurate personal information and enroll in your selected masterclass.",
-      },
-      {
-        name: "Mastery",
-        text: "Complete the training program with at least 90% attendance and achieve graduation status.",
-      },
-      {
-        name: "Certification",
-        text: "Successfully complete your final assessment and receive your industry-recognized certification.",
-      },
-      {
-        name: "Preparation",
-        text: "Work with experts to build a standout resume and optimize your professional online presence.",
-      },
-      {
-        name: "Support",
-        text: "Access personalized mock interviews, career coaching, and placement assistance calls.",
-      },
-    ],
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -4122,7 +3518,6 @@ export function generateTermsOfServicePageAllSchemas(): WithContext<
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -4136,7 +3531,7 @@ export function generateTermsOfServicePageAllSchemas(): WithContext<
 
 /**
  * Generate a complete 8-point schema set for the Cancellation & Refund Policy page.
- * Includes: Organization, WebSite, WebPage, FAQPage (Refunds), ItemList, HowTo (Refund Request), and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage (Refunds), ItemList, and SiteNavigation.
  * Ensures 100% legal accuracy for Refund and Batch Change policies.
  */
 export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<
@@ -4199,31 +3594,6 @@ export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<
     "CDPL Cancellation & Refund Tiers",
   );
 
-  // 7. HowTo Schema (How to Request a Refund)
-  const howToSchema = generateHowToSchema({
-    name: "How to Request a Refund or Batch Change",
-    description:
-      "The official process for notifying CDPL about cancellation or batch transition requests.",
-    steps: [
-      {
-        name: "Initiate Request",
-        text: "Contact us via email or phone with your enrollment details before the relevant deadline (batch start or demo completion).",
-      },
-      {
-        name: "Documentation",
-        text: "Provide your course name, batch ID, and payment receipt for verification.",
-      },
-      {
-        name: "Verification",
-        text: "Wait for our team to verify your attendance status and eligibility based on the 1/2 demo or 50% completion rules.",
-      },
-      {
-        name: "Processing",
-        text: "Your refund will be processed via the original payment method within 15 business days.",
-      },
-    ],
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -4231,7 +3601,6 @@ export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -4245,7 +3614,7 @@ export function generateCancellationRefundPolicyPageAllSchemas(): WithContext<
 
 /**
  * Generate a complete 8-point schema set for the Reviews & Testimonials page.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, and SiteNavigation.
  */
 export function generateReviewsPageAllSchemas(
   reviews: { author: string; rating: number; text: string; role?: string }[],
@@ -4291,27 +3660,6 @@ export function generateReviewsPageAllSchemas(
     "Top Student Success Stories and Testimonials",
   );
 
-  // 7. HowTo Schema (How to share your experience)
-  const howToSchema = generateHowToSchema({
-    name: "How to Share Your CDPL Success Story",
-    description:
-      "Follow these simple steps to inspire others with your learning journey.",
-    steps: [
-      {
-        name: "Complete Your Course",
-        text: "Successfully finish your training modules and capstone projects.",
-      },
-      {
-        name: "Submit Feedback",
-        text: "Fill out the graduation survey sent to your registered email.",
-      },
-      {
-        name: "Get Featured",
-        text: "Selected testimonials are featured on our website to help future students.",
-      },
-    ],
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -4319,7 +3667,6 @@ export function generateReviewsPageAllSchemas(
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -4380,7 +3727,7 @@ export function generateCityLocalBusinessSchema(
 
 /**
  * Generate a complete 8-point schema set for city-specific course pages.
- * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Course (AggregateRating), HowTo, and SiteNavigation.
+ * Includes: Organization, WebSite, WebPage, FAQPage, ItemList, Course (AggregateRating), and SiteNavigation.
  */
 export function generateCityCoursePageSchema(
   courseInput: CourseSchemaInput,
@@ -4414,26 +3761,6 @@ export function generateCityCoursePageSchema(
   // 6. Course Schema (contains Aggregate Rating)
   const courseSchema = generateCourseSchema(courseInput);
 
-  // 7. HowTo Schema (Enrollment Steps)
-  const howToSchema = generateHowToSchema({
-    name: `How to Enroll for ${courseInput.name} in ${city}`,
-    description: `Follow these simple steps to start your ${courseInput.name} training in ${city}.`,
-    steps: [
-      {
-        name: "Inquire Now",
-        text: "Fill out the lead form on this page or call our counselor for course details and batch timings.",
-      },
-      {
-        name: "Free Counseling",
-        text: "Speak with our expert career mentors to understand the curriculum and placement support.",
-      },
-      {
-        name: "Enroll & Start",
-        text: "Secure your seat, access the learning portal, and begin your journey towards a high-paying tech career.",
-      },
-    ],
-  });
-
   // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
@@ -4460,7 +3787,6 @@ export function generateCityCoursePageSchema(
     faqSchema,
     itemListSchema,
     courseSchema,
-    howToSchema,
     siteNavigationSchema,
     cityLocalBusinessSchema,
   ].filter(
@@ -4534,34 +3860,12 @@ export function generateLocationsPageAllSchemas(
     },
   ]);
 
-  // HowTo — "how to find a CDPL center"
-  const howToSchema = generateHowToSchema({
-    name: "How to Locate a CDPL Training Center Near You",
-    description:
-      "Find our nearest training hub or join our live-online classrooms.",
-    steps: [
-      {
-        name: "Visit Locations Page",
-        text: "Go to /locations-we-serve to see the complete list of countries and cities we serve.",
-      },
-      {
-        name: "Select Your Region",
-        text: "Browse through the hierarchical list of India or UAE to find your specific state and city centers.",
-      },
-      {
-        name: "Connect with a Counselor",
-        text: 'Once you find your nearest center, click "Inquire Now" to speak with a local career counselor for batch details.',
-      },
-    ],
-  });
-
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
     webPageSchema,
     faqSchema,
     itemListSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>
@@ -4704,49 +4008,6 @@ export function generateCollectionPageSchema(input: {
     },
     ...(input.hasPart && { hasPart: input.hasPart }),
     inLanguage: "en-IN",
-  };
-}
-
-// ============================================================================
-// HOW TO SCHEMA
-// ============================================================================
-
-interface HowToStepInput {
-  name: string;
-  text: string;
-  url?: string;
-  image?: string;
-}
-
-interface HowToSchemaInput {
-  name: string;
-  description: string;
-  totalTime?: string; // ISO 8601 duration
-  steps: HowToStepInput[];
-  image?: string;
-}
-
-/**
- * Generate HowTo schema
- */
-export function generateHowToSchema(
-  howto: HowToSchemaInput,
-): WithContext<Record<string, unknown>> {
-  return {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: howto.name,
-    description: howto.description,
-    ...(howto.totalTime && { totalTime: howto.totalTime }),
-    ...(howto.image && { image: getImageUrl(howto.image) }),
-    step: howto.steps.map((step, index) => ({
-      "@type": "HowToStep",
-      position: index + 1,
-      name: step.name,
-      text: step.text,
-      ...(step.url && { url: getFullUrl(step.url) }),
-      ...(step.image && { image: getImageUrl(step.image) }),
-    })),
   };
 }
 

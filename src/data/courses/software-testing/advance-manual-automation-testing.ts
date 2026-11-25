@@ -47,18 +47,6 @@ export const advanceManualAutomationTestingCourse: CourseContent = {
     name: "Advanced Manual & Automation Testing Master Program",
     description: "Master ISTQB Manual Testing + Selenium, Cypress, API, Mobile. Get dual certified and placed in top QA roles.",
     duration: "P4M",
-    howTo: {
-      name: "How to Enroll in CDPL Advance Manual & Automation Testing Program",
-      description: "A step-by-step guide to enrolling in our specialized Selenium and API Automation Master Program.",
-      steps: [
-        { name: "Review Curriculum", text: "Evaluate the dual ISTQB Manual + Selenium/Cypress automation syllabus." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master modern full-stack manual and automated QA methodologies for strong placement support!",
-        },
-      ],
-    },
   },
 
   hero: {

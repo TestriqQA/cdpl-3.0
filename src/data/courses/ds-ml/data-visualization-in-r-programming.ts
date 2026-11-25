@@ -35,18 +35,6 @@ export const dataVisualizationInRProgrammingCourse: CourseContent = {
     description:
       "Master Machine Learning algorithms and advanced Data Visualization using R Programming. 20-hour Master Program with job assistance.",
     duration: "P1M",
-    howTo: {
-      name: "How to Enroll in CDPL Data Visualization in R Program",
-      description: "A step-by-step guide to enrolling in our 20 hours intensive Data Visualization in R training program.",
-      steps: [
-        { name: "Review Curriculum", text: "Evaluate the R programming, ggplot2 data visualization, statistics, SQL integration, and machine learning modules." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master R and RStudio, build publication-ready ggplot2 visualizations, and implement core machine learning algorithms in R!",
-        },
-      ],
-    },
   },
 
   hero: {

@@ -42,16 +42,6 @@ export const manualTestingCourse: CourseContent = {
     description:
       "Comprehensive 12-week Manual Testing and QA training program covering SDLC, STLC, test case design, Jira, Agile, API testing, and ISTQB preparation. Includes hands-on projects and placement assistance.",
     duration: "P12W",
-    howTo: {
-      name: "How to Enroll in CDPL Manual Testing Course",
-      description: "A step-by-step guide to enrolling in our specialized QA Manual Testing program.",
-      steps: [
-        { name: "Browse Courses", text: "Select the Manual Testing specialized module." },
-        { name: "Review Syllabus", text: "Check the ISTQB aligned syllabus, Jira, and Agile methodologies." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        { name: "Start Learning", text: "Attend live classes, perform bug hunting, and get certified!" },
-      ],
-    },
   },
 
   hero: {

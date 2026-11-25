@@ -10,8 +10,8 @@ const FEATURES: { name: string; description: string; Icon: LucideIcon; tile: str
 ];
 
 /**
- * How validation works (the page's HowTo steps), why verify with CDPL, and
- * the FAQ. The steps and FAQ read the same data as the page's schema, so
+ * How validation works (the validation steps), why verify with CDPL, and
+ * the FAQ. The FAQ reads the same data as the page's FAQPage schema, so
  * what Google is told is also on the page. Server component; only the FAQ
  * accordion is client-side.
  */

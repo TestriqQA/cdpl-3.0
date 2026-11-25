@@ -33,21 +33,6 @@ export const digitalMarketingCourse: CourseContent = {
     description:
       "A comprehensive 80-hour digital marketing mastery program in Mumbai covering SEO, SEM, SMM, Content Marketing, and AI Tools with placement assistance.",
     duration: "P3M",
-    howTo: {
-      name: "How to Enroll in CDPL Digital Marketing Course",
-      description: "A step-by-step guide to enrolling in our 80-hour AI-Driven Digital Marketing Master Program.",
-      steps: [
-        {
-          name: "Review Curriculum",
-          text: "Explore SEO, SEM, Google Ads, Social Media Marketing, Content Marketing, and AI automation modules.",
-        },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and upcoming batch details." },
-        {
-          name: "Start Learning",
-          text: "Master AI-driven digital marketing to secure roles as an SEO Specialist, PPC Analyst, or Digital Marketing Manager.",
-        },
-      ],
-    },
   },
 
   hero: {

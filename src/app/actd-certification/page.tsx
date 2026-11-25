@@ -69,13 +69,6 @@ export default function ACTDCertificationTrainingPage() {
   const consolidatedSchemas = generateActdCertificationPageAllSchemas({
     // Same list the page shows, so the FAQPage schema matches the visible FAQ.
     faqs: ACTD_FAQS,
-    howToSteps: [
-      { name: "Track Selection", text: "Choose your specialization in Agile, Cloud, or Test-Driven Development." },
-      { name: "Hands-on Labs", text: "Complete the 10-week intensive curriculum with practical scenario tasks." },
-      { name: "Portfolio Building", text: "Develop a comprehensive project portfolio reviewed by industry mentors." },
-      { name: "Milestone Assessment", text: "Pass the readiness metrics and assessment patterns." },
-      { name: "Certification", text: "Successfully complete the proctored exam to earn your ACTD certification." }
-    ],
     tracks: [
       "Core Concepts",
       "Practical Skills",

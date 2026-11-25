@@ -32,21 +32,6 @@ export const dataAnalyticsWithTableauCourse: CourseContent = {
     description:
       "20-Hour Master Program in Data Analytics with Tableau. Hands-on projects, interactive dashboards, job assistance, global certificates.",
     duration: "P1M",
-    howTo: {
-      name: "How to Enroll in CDPL Data Analytics with Tableau Course",
-      description: "A step-by-step guide to enrolling in our 20-hour Data Analytics with Tableau training program.",
-      steps: [
-        {
-          name: "Review Curriculum",
-          text: "Explore BI concepts, Tableau setup, data integration, visualization techniques, and dashboard design modules.",
-        },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master Tableau to secure roles as a Tableau Developer, BI Analyst, or Data Visualization Specialist.",
-        },
-      ],
-    },
   },
 
   hero: {

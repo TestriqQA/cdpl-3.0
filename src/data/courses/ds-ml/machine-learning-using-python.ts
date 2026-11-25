@@ -31,18 +31,6 @@ export const machineLearningUsingPythonCourse: CourseContent = {
     description:
       "45-Hour Master Program in Machine Learning Algorithms using Python. Hands-on projects, job assistance, global certificates.",
     duration: "P1M2W",
-    howTo: {
-      name: "How to Enroll in CDPL Machine Learning with Python Course",
-      description: "A step-by-step guide to enrolling in our 45 hours intensive Machine Learning with Python training program.",
-      steps: [
-        { name: "Review Curriculum", text: "Evaluate the comprehensive python, machine learning, and AI algorithms modules." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        {
-          name: "Start Learning",
-          text: "Master data preprocessing, regression, classification, model evaluation, and unsupervised learning in Python, then build a capstone project!",
-        },
-      ],
-    },
   },
 
   hero: {

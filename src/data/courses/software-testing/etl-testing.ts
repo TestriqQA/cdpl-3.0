@@ -40,15 +40,6 @@ export const etlTestingCourse: CourseContent = {
     name: "ETL Testing Course",
     description: "Master ETL testing with SQL, data validation, and real projects. Get certified and placed in top data companies.",
     duration: "PT18H",
-    howTo: {
-      name: "How to Enroll in CDPL ETL Testing Course",
-      description: "A step-by-step guide to enrolling in our specialized Data Validation program.",
-      steps: [
-        { name: "Review Curriculum", text: "Analyze the ETL vs ELT operations, data pipelining, and query optimization structure." },
-        { name: "Contact Admissions", text: "Reach out to our admissions team for counseling and batch details." },
-        { name: "Start Learning", text: "Master data reconciliation, build extraction architectures, and get certified!" },
-      ],
-    },
   },
 
   hero: {

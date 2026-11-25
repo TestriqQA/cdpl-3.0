@@ -164,7 +164,6 @@ export type CourseSchemaContent = {
   /** ISO 8601, e.g. PT15H. */
   duration?: string;
   instructor?: string;
-  howTo: { name: string; description: string; steps: { name: string; text: string }[] };
   /** Course.teaches. */
   learningOutcomes?: string[];
   /** Course.coursePrerequisites. */

@@ -90,19 +90,6 @@ export const sdetCourse: CourseContent = {
       "Run suites automatically in a CI pipeline",
     ],
     prerequisites: ["No prior programming experience required"],
-    howTo: {
-      name: "How to Enroll in CDPL SDET Training",
-      description: "A step-by-step guide to starting the SDET track at CDPL.",
-      steps: [
-        {
-          name: "Browse Courses",
-          text: "Explore the software testing courses that make up the SDET track — programming, testing fundamentals, UI automation, API testing, SQL and CI.",
-        },
-        { name: "Review Syllabus", text: "See what each of the six SDET layers covers and how they build on one another." },
-        { name: "Contact Admissions", text: "Talk to a CDPL counsellor about the current fee, the next batch date, and the right track for you." },
-        { name: "Start Learning", text: "Begin with programming and testing fundamentals, then move on to automation, API testing and CI." },
-      ],
-    },
   },
 
   hero: {
