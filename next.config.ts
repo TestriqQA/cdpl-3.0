@@ -505,6 +505,49 @@ const nextConfig: NextConfig = {
         destination: '/our-team',
         statusCode: 301,
       },
+
+      // C4-41 (Cycle 4, Nov 2026): 388 of 1,938 sessions — 20.0% of all
+      // traffic — landed on URLs that return 404. Three legacy path families
+      // account for it. Every source below has NO route under src/app, so
+      // nothing but a redirect can serve it. All verified live 25 Nov 2026.
+      {
+        // 136 legacy post URLs, 319 sessions — 16.5% of all traffic. Posts
+        // live at /blog/[slug] and there has never been a /blog/post route.
+        // All 136 had a live equivalent at the same slug, one segment
+        // shorter, so this is a pure prefix strip.
+        source: '/blog/post/:slug',
+        destination: '/blog/:slug',
+        statusCode: 301,
+      },
+      {
+        // The bare prefix is worse than a 404: it matches /blog/[slug] with
+        // slug="post" and returns HTTP 200 carrying "Post Not Found", so
+        // Google indexes an empty page. C4-01 fixes the soft 404 itself;
+        // this sends the prefix somewhere useful either way.
+        source: '/blog/post',
+        destination: '/blog',
+        statusCode: 301,
+      },
+      {
+        // Singular /event/ never existed — the route is /events/[slug] — yet
+        // the broken form outdrew the working one, 63 sessions to 23. Both
+        // slugs named in the audit resolve at /events/<same slug> with real
+        // content (287-295 KB, proper titles); they are simply missing from
+        // the /events index, which is C4-07's job, not this one's.
+        source: '/event/:slug',
+        destination: '/events/:slug',
+        statusCode: 301,
+      },
+      {
+        // Venue pages have no route and no equivalent. The two with traffic
+        // are `cinute-digital-pvt-ltd` (13 sessions) and `vidyavardhinis-
+        // college-of-engineering-and-technology` (10) — both venues rather
+        // than events, and no /events/ slug matches either, so there is
+        // nothing to map them onto. The index is the nearest live page.
+        source: '/event-venue/:slug',
+        destination: '/events',
+        statusCode: 301,
+      },
     ];
   },
 
