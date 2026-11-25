@@ -4,6 +4,7 @@
 import dynamic from 'next/dynamic';
 import { Phone, Mail, CalendarDays, Home, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { BUSINESS_INFO } from "@/lib/seo-config";
 
 const ContactHeroForm = dynamic(() => import('@/components/forms/ContactHeroForm').then(mod => mod.ContactHeroForm), {
   ssr: false,
@@ -130,7 +131,7 @@ export function ContactHeroSection() {
                 >
                   {/* Call Now */}
                   <Link
-                    href="tel:+918488988984"
+                    href={`tel:${BUSINESS_INFO.phone}`}
                     title="Call CDPL Admissions"
                     aria-label="Call Now"
                     className="group inline-flex w-full items-center gap-4 lg:gap-3 xl:gap-4 rounded-2xl border border-slate-200 bg-white/90 px-4 py-3 shadow-sm transition hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 overflow-hidden"
@@ -141,14 +142,14 @@ export function ContactHeroSection() {
                     <span className="flex min-w-0 flex-1 flex-col">
                       <span className="text-base font-semibold text-slate-900">Call Now</span>
                       <span className="text-[12px] text-slate-600 group-hover:text-slate-700 truncate whitespace-nowrap">
-                        +91 84-889-889-84
+                        {BUSINESS_INFO.phoneDisplay}
                       </span>
                     </span>
                   </Link>
 
                   {/* Email Us */}
                   <Link
-                    href="mailto:contact@cinutedigital.com"
+                    href={`mailto:${BUSINESS_INFO.email}`}
                     title="Send Email to CDPL"
                     aria-label="Email Us"
                     className="group inline-flex w-full items-center gap-4 lg:gap-3 xl:gap-4 rounded-2xl border border-slate-200 bg-white/90 px-4 py-3 shadow-sm transition hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 overflow-hidden"
@@ -159,7 +160,7 @@ export function ContactHeroSection() {
                     <span className="flex min-w-0 flex-1 flex-col">
                       <span className="text-base font-semibold text-slate-900">Email Us</span>
                       <span className="text-[12px] text-slate-600 group-hover:text-slate-700 truncate whitespace-nowrap">
-                        contact@cinutedigital.com
+                        {BUSINESS_INFO.email}
                       </span>
                     </span>
                   </Link>

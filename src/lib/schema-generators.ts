@@ -129,11 +129,11 @@ export function generateOrganizationSchema(): WithContext<
         email: BUSINESS_INFO.email,
         areaServed: "IN",
         availableLanguage: ["English", "Hindi"],
-        contactOption: "TollFree",
       },
       {
         "@type": "ContactPoint",
-        telephone: BUSINESS_INFO.phone,
+        // The number /contact-us publishes as the Admissions Helpline.
+        telephone: BUSINESS_INFO.admissionsPhone,
         contactType: "admissions",
         email: BUSINESS_INFO.admissionsEmail,
         areaServed: "IN",
@@ -3330,7 +3330,7 @@ export function generatePrivacyPolicyPageAllSchemas(): WithContext<
     {
       question: "How can I contact the Data Controller?",
       answer:
-        "You can contact Cinute Digital Private Limited at contact@cinutedigital.com or +91 788-83-83-788 for any privacy-related inquiries.",
+        `You can contact Cinute Digital Private Limited at ${BUSINESS_INFO.email} or ${BUSINESS_INFO.admissionsPhoneDisplay} for any privacy-related inquiries.`,
     },
   ]);
 

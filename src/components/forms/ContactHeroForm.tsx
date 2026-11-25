@@ -454,7 +454,7 @@ export function ContactHeroForm({ idPrefix = "", onSuccess }: ContactHeroFormPro
                                 the visitor types.
 
                                 The submitted value is unaffected: with defaultCountry set,
-                                onChange still yields E.164 ("+919820853250"), so
+                                onChange still yields E.164 ("+919876543210"), so
                                 validatePhone and the `phone` the API requires are
                                 unchanged. The country is still shown and switchable via
                                 the flag selector. */}

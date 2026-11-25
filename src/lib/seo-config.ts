@@ -59,7 +59,20 @@ export const SITE_CONFIG = {
 
 export const BUSINESS_INFO = {
   // Contact Details
+  //
+  // C4-12 (Cycle 4, Nov 2026): CDPL publishes two numbers and both are
+  // correct; both also take WhatsApp. They are defined once here so the
+  // visible /contact-us page and the JSON-LD cannot drift apart again.
+  //  - phone: the primary NAP number - Organization / LocalBusiness
+  //    `telephone`, the head-office line on /contact-us.
+  //  - admissionsPhone: the admissions helpline and the WhatsApp chat.
+  // The display strings keep the grouping the pages already show. Never add
+  // a third number; +91 98208 53250 was an incorrect one and was removed.
   phone: '+918488988984',
+  phoneDisplay: '+91 84-889-889-84',
+  admissionsPhone: '+917888383788',
+  admissionsPhoneDisplay: '+91 788-83-83-788',
+  whatsappUrl: 'https://wa.me/917888383788',
   email: 'contact@cinutedigital.com',
   supportEmail: 'contact@cinutedigital.com',
   admissionsEmail: 'contact@cinutedigital.com',
