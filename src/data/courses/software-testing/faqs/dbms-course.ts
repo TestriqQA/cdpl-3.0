@@ -19,7 +19,7 @@ export const DBMS_FAQS: QA[] = [
     },
     {
         question: "Is placement guaranteed?",
-        answer: "We offer job assistance: resume building, mock interviews, referrals, and interview prep.",
+        answer: "No — a job offer depends on your interviews, so we can’t guarantee one. What every learner does get is 100% placement support: resume building, mock interviews, referrals, and interview prep.",
         category: "Career",
     },
 ];

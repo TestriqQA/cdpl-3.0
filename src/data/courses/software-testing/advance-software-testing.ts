@@ -84,7 +84,7 @@ export const advanceSoftwareTestingCourse: CourseContent = {
       { value: "4-8 LPA", label: "Fresher Average Salary", note: "Typical starting package after SDET training" },
       { value: "95 Hours", label: "Total Training Duration", note: "Comprehensive selenium online course with projects" },
       { value: "75%", label: "Job Satisfaction", note: "Satisfaction level reported for Automation Testers" },
-      { value: "100%", label: "Placement Assistance", note: "Dedicated support until you get hired" },
+      { value: "100%", label: "Placement Assistance", note: "Resume, mock interviews & referrals" },
     ],
     outro:
       "Build strength in **Manual Testing**, **API Testing (Postman)**, **DBMS (MySQL)**, and **Selenium Java** with our comprehensive curriculum designed for **freshers and manual testers**.",

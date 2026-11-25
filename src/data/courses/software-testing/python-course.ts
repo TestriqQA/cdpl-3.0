@@ -82,7 +82,7 @@ export const pythonCourse: CourseContent = {
   },
 
   why: {
-    heading: "Your Gateway to the [[Top 1% Python Developer]]",
+    heading: "Your Gateway to [[Professional Python Development]]",
     intro:
       "An **80-hour**, mentor-led, **project-driven** Python program that blends **AI & Data Science**, **Web APIs**, and **Automation** to make you job-ready.",
     points: [

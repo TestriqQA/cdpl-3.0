@@ -67,9 +67,9 @@ export const javaCourse: CourseContent = {
   },
 
   stats: {
-    heading: "Why [[Java]] is the [[#1]] Enterprise Language",
+    heading: "Why [[Java]] Is One of the Most-Used Enterprise Languages",
     intro:
-      "Java remains the #1 enterprise language for building secure, cloud-native, high-performance applications at scale. With Spring Boot, Microservices, Kubernetes, and the JVM, teams ship resilient software faster-backed by a vast talent pool and Fortune 500 adoption.",
+      "Java remains one of the most widely used enterprise languages for building secure, cloud-native, high-performance applications at scale. With Spring Boot, Microservices, Kubernetes, and the JVM, teams ship resilient software faster-backed by a vast talent pool and Fortune 500 adoption.",
     items: [
       { value: "25%", label: "Market Growth (2020–2030)", note: "Steady expansion of Java opportunities" },
       { value: "101,000+", label: "Job Vacancies in India", note: "Open roles aligned to Java skills" },

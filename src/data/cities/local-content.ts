@@ -225,8 +225,7 @@ export const COURSE_CITY_FAQS: Record<string, { question: string; answer: string
             question: 'Does CDPL provide placement assistance after the Data Science Course in Mumbai?',
             answer:
                 'Yes. CDPL offers 100% placement support — resume building, mock interviews, and direct job referrals — ' +
-                'with Mumbai learners going on to roles like Data Scientist (₹8L+) and Data Analyst (₹5L+) ' +
-                'at companies across BFSI, e-commerce, and consulting.',
+                'for roles such as Data Scientist and Data Analyst at companies across BFSI, e-commerce, and consulting.',
         },
         {
             question: 'Do I need a coding or IT background to join the Data Science course in Mumbai?',

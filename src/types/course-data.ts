@@ -205,7 +205,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -747,7 +747,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -1278,7 +1278,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -1809,7 +1809,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -2340,7 +2340,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -2871,7 +2871,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -3402,7 +3402,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -3930,7 +3930,7 @@ export const courseData: Record<string, CourseData> = {
       "certifications": ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       "stats": [
         { "number": STAT_TEXT.rating, "label": "Learner Rating", "description": `From ${STAT_TEXT.reviews} verified reviews` },
-        { "number": "Yes", "label": "Placement Support", "description": "Dedicated career assistance" },
+        { "number": "100%", "label": "Placement Support", "description": "Resume, mock interviews & referrals" },
         { "number": "12", "label": "Weeks Duration", "description": "Intensive learning program" },
         { "number": "24/7", "label": "Mentor Support", "description": "Dedicated mentorship available" }
       ],
@@ -4550,7 +4550,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -5082,7 +5082,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -5613,7 +5613,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -6137,7 +6137,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -6661,7 +6661,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -7186,7 +7186,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -7710,7 +7710,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -8234,7 +8234,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -8759,7 +8759,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -9283,7 +9283,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -9807,7 +9807,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -10332,7 +10332,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -10856,7 +10856,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -11380,7 +11380,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -11904,7 +11904,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -12428,7 +12428,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -12952,7 +12952,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -13476,7 +13476,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -14000,7 +14000,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -14524,7 +14524,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -15048,7 +15048,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -15572,7 +15572,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -16105,9 +16105,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -16813,9 +16813,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -17521,9 +17521,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -18229,9 +18229,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -18937,9 +18937,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -19645,9 +19645,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -20353,9 +20353,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -21061,9 +21061,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -21769,9 +21769,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -22477,9 +22477,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -23185,9 +23185,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -23893,9 +23893,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -24601,9 +24601,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -25309,9 +25309,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -26017,9 +26017,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -26725,9 +26725,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -27433,9 +27433,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -28141,9 +28141,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -28849,9 +28849,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -29557,9 +29557,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -30265,9 +30265,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -30973,9 +30973,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -31681,9 +31681,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -32389,9 +32389,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -33097,9 +33097,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -33805,9 +33805,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -34513,9 +34513,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -35221,9 +35221,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -35929,9 +35929,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -36635,7 +36635,7 @@ export const courseData: Record<string, CourseData> = {
       ],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -37327,7 +37327,7 @@ export const courseData: Record<string, CourseData> = {
       ],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -38019,7 +38019,7 @@ export const courseData: Record<string, CourseData> = {
       ],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -38711,7 +38711,7 @@ export const courseData: Record<string, CourseData> = {
       ],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -39403,7 +39403,7 @@ export const courseData: Record<string, CourseData> = {
       ],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -40095,7 +40095,7 @@ export const courseData: Record<string, CourseData> = {
       ],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -40792,9 +40792,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -41500,9 +41500,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -42208,9 +42208,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -42916,9 +42916,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully completed the course"
         },
         {
-          "number": "95%",
-          "label": "Job Placement",
-          "description": "Within 3 months of completion"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "12",
@@ -43662,9 +43662,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully completed the course"
         },
         {
-          "number": "95%",
-          "label": "Job Placement",
-          "description": "Within 3 months of completion"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "12",
@@ -44408,9 +44408,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully completed the course"
         },
         {
-          "number": "95%",
-          "label": "Job Placement",
-          "description": "Within 3 months of completion"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "12",
@@ -45154,9 +45154,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully completed the course"
         },
         {
-          "number": "95%",
-          "label": "Job Placement",
-          "description": "Within 3 months of completion"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "12",
@@ -45900,9 +45900,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully completed the course"
         },
         {
-          "number": "95%",
-          "label": "Job Placement",
-          "description": "Within 3 months of completion"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "12",
@@ -46646,9 +46646,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully completed the course"
         },
         {
-          "number": "95%",
-          "label": "Job Placement",
-          "description": "Within 3 months of completion"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "12",
@@ -47392,9 +47392,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully completed the course"
         },
         {
-          "number": "95%",
-          "label": "Job Placement",
-          "description": "Within 3 months of completion"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "12",
@@ -48138,9 +48138,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully completed the course"
         },
         {
-          "number": "95%",
-          "label": "Job Placement",
-          "description": "Within 3 months of completion"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "12",
@@ -48884,9 +48884,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully completed the course"
         },
         {
-          "number": "95%",
-          "label": "Job Placement",
-          "description": "Within 3 months of completion"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "12",
@@ -49630,9 +49630,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully completed the course"
         },
         {
-          "number": "95%",
-          "label": "Job Placement",
-          "description": "Within 3 months of completion"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "12",
@@ -50376,9 +50376,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully completed the course"
         },
         {
-          "number": "95%",
-          "label": "Job Placement",
-          "description": "Within 3 months of completion"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "12",
@@ -51125,9 +51125,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -51833,9 +51833,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -52541,9 +52541,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -53249,9 +53249,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -53957,9 +53957,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -54665,9 +54665,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -55373,9 +55373,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Successfully completed the course"
         },
         {
-          number: "95%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         },
         {
           number: "12",
@@ -56104,7 +56104,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -57109,7 +57109,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -58114,7 +58114,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -59119,7 +59119,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -60124,7 +60124,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -61129,7 +61129,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -62134,7 +62134,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -63139,7 +63139,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -64144,7 +64144,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -65149,7 +65149,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -66154,7 +66154,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -67159,7 +67159,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -68164,7 +68164,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -69169,7 +69169,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -70174,7 +70174,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -71179,7 +71179,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -72184,7 +72184,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -73189,7 +73189,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -74194,7 +74194,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -75199,7 +75199,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -76204,7 +76204,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -77209,7 +77209,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -78214,7 +78214,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -79219,7 +79219,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -80224,7 +80224,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -81229,7 +81229,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -82234,7 +82234,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -83239,7 +83239,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -84244,7 +84244,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -85249,7 +85249,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -86254,7 +86254,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -87259,7 +87259,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -88264,7 +88264,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -89269,7 +89269,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -90274,7 +90274,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -91279,7 +91279,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -92284,7 +92284,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -93289,7 +93289,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -94294,7 +94294,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -95299,7 +95299,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -96304,7 +96304,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -97309,7 +97309,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -98314,7 +98314,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -99319,7 +99319,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -100324,7 +100324,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -101329,7 +101329,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -102334,7 +102334,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -103339,7 +103339,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -104344,7 +104344,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -105349,7 +105349,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -106354,7 +106354,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -107359,7 +107359,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -108364,7 +108364,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -109369,7 +109369,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -110374,7 +110374,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -111379,7 +111379,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -112384,7 +112384,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -113389,7 +113389,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -114394,7 +114394,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -115399,7 +115399,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -116404,7 +116404,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -117409,7 +117409,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -118414,7 +118414,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -119419,7 +119419,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -120424,7 +120424,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -121429,7 +121429,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -122434,7 +122434,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -123439,7 +123439,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -124444,7 +124444,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -125449,7 +125449,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -126454,7 +126454,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -127459,7 +127459,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -128464,7 +128464,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -129469,7 +129469,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -130474,7 +130474,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -131479,7 +131479,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -132484,7 +132484,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -133489,7 +133489,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -134494,7 +134494,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -135499,7 +135499,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -136504,7 +136504,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -137509,7 +137509,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -138514,7 +138514,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -139519,7 +139519,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -140524,7 +140524,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -141529,7 +141529,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -142534,7 +142534,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -143539,7 +143539,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -144544,7 +144544,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -145549,7 +145549,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -146554,7 +146554,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -147559,7 +147559,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -148564,7 +148564,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -149569,7 +149569,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -150574,7 +150574,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -151579,7 +151579,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -152584,7 +152584,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -153589,7 +153589,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -154594,7 +154594,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -155599,7 +155599,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -156604,7 +156604,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -157609,7 +157609,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -158614,7 +158614,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -159619,7 +159619,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -160624,7 +160624,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -161629,7 +161629,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -162634,7 +162634,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -163639,7 +163639,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -164644,7 +164644,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -165649,7 +165649,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -166654,7 +166654,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -167659,7 +167659,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -168664,7 +168664,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -169669,7 +169669,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -170674,7 +170674,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -171679,7 +171679,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -172684,7 +172684,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -173689,7 +173689,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -174694,7 +174694,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -175699,7 +175699,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -176704,7 +176704,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -177709,7 +177709,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -178714,7 +178714,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -179719,7 +179719,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -180724,7 +180724,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -181729,7 +181729,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -182734,7 +182734,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -183739,7 +183739,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -184744,7 +184744,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -185749,7 +185749,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -186754,7 +186754,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -187759,7 +187759,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -188764,7 +188764,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -189769,7 +189769,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -190774,7 +190774,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -191779,7 +191779,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -192784,7 +192784,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -193789,7 +193789,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -194794,7 +194794,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -195799,7 +195799,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -196804,7 +196804,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -197809,7 +197809,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -198814,7 +198814,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -199819,7 +199819,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -200824,7 +200824,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -201829,7 +201829,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -202834,7 +202834,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -203839,7 +203839,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -204844,7 +204844,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -205849,7 +205849,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -206854,7 +206854,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -207859,7 +207859,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -208864,7 +208864,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -209869,7 +209869,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -210874,7 +210874,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -211879,7 +211879,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -212884,7 +212884,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -213889,7 +213889,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -214894,7 +214894,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -215899,7 +215899,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -216904,7 +216904,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -217909,7 +217909,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -218914,7 +218914,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -219919,7 +219919,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -220924,7 +220924,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -221929,7 +221929,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -222934,7 +222934,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -223939,7 +223939,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -224944,7 +224944,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -225949,7 +225949,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -226954,7 +226954,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -227959,7 +227959,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -228964,7 +228964,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -229969,7 +229969,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -230974,7 +230974,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -231979,7 +231979,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -232984,7 +232984,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -233989,7 +233989,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -235000,9 +235000,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -235472,9 +235472,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -235947,9 +235947,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -236419,9 +236419,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -236891,9 +236891,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -237363,9 +237363,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -237835,9 +237835,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -238310,9 +238310,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -238782,9 +238782,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -239254,9 +239254,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -239726,9 +239726,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -240198,9 +240198,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -240670,9 +240670,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -241142,9 +241142,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -241614,9 +241614,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -242086,9 +242086,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -242558,9 +242558,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -243030,9 +243030,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -243502,9 +243502,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -243974,9 +243974,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -244446,9 +244446,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -244918,9 +244918,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -245390,9 +245390,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -245862,9 +245862,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -246334,9 +246334,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -246806,9 +246806,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -247278,9 +247278,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -247750,9 +247750,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -248222,9 +248222,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -248694,9 +248694,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -249166,9 +249166,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -249638,9 +249638,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -250110,9 +250110,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -250582,9 +250582,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -251054,9 +251054,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -251526,9 +251526,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -251998,9 +251998,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -252470,9 +252470,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -252942,9 +252942,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -253414,9 +253414,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -253886,9 +253886,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -254358,9 +254358,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -254830,9 +254830,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -255302,9 +255302,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -255774,9 +255774,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -256246,9 +256246,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -256718,9 +256718,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -257190,9 +257190,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -257662,9 +257662,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -258134,9 +258134,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -258606,9 +258606,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -259078,9 +259078,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -259550,9 +259550,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -260022,9 +260022,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -260494,9 +260494,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -260966,9 +260966,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -261438,9 +261438,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -261910,9 +261910,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -262382,9 +262382,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -262854,9 +262854,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -263326,9 +263326,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -263798,9 +263798,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -264270,9 +264270,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -264744,9 +264744,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -265216,9 +265216,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -265688,9 +265688,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -266160,9 +266160,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -266632,9 +266632,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -267104,9 +267104,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -267576,9 +267576,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -268048,9 +268048,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -268520,9 +268520,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -268992,9 +268992,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -269464,9 +269464,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -269936,9 +269936,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -270408,9 +270408,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -270880,9 +270880,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -271352,9 +271352,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -271824,9 +271824,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -272296,9 +272296,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -272768,9 +272768,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -273240,9 +273240,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -273712,9 +273712,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -274184,9 +274184,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -274656,9 +274656,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -275128,9 +275128,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -275600,9 +275600,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -276072,9 +276072,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -276544,9 +276544,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -277016,9 +277016,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -277488,9 +277488,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -277960,9 +277960,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -278432,9 +278432,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -278904,9 +278904,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -279376,9 +279376,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -279848,9 +279848,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -280320,9 +280320,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -280792,9 +280792,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -281264,9 +281264,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -281739,9 +281739,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -282214,9 +282214,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -282689,9 +282689,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -283164,9 +283164,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -283639,9 +283639,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -284114,9 +284114,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -284589,9 +284589,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -285064,9 +285064,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -285539,9 +285539,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -286014,9 +286014,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -286489,9 +286489,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -286964,9 +286964,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -287439,9 +287439,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -287914,9 +287914,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -288389,9 +288389,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -288864,9 +288864,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -289339,9 +289339,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -289814,9 +289814,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -290289,9 +290289,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -290764,9 +290764,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -291239,9 +291239,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -291714,9 +291714,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -292189,9 +292189,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -292664,9 +292664,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -293139,9 +293139,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -293614,9 +293614,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -294089,9 +294089,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -294564,9 +294564,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -295039,9 +295039,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -295514,9 +295514,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -295989,9 +295989,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -296464,9 +296464,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -296939,9 +296939,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -297414,9 +297414,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -297889,9 +297889,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -298364,9 +298364,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -298839,9 +298839,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -299314,9 +299314,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -299789,9 +299789,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -300264,9 +300264,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -300739,9 +300739,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -301214,9 +301214,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -301689,9 +301689,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -302164,9 +302164,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -302639,9 +302639,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -303114,9 +303114,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -303589,9 +303589,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -304064,9 +304064,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -304539,9 +304539,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -305014,9 +305014,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -305489,9 +305489,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -305964,9 +305964,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -306439,9 +306439,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -306914,9 +306914,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -307389,9 +307389,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -307864,9 +307864,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -308339,9 +308339,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -308814,9 +308814,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -309289,9 +309289,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -309764,9 +309764,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -310239,9 +310239,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -310714,9 +310714,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -311189,9 +311189,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -311664,9 +311664,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -312139,9 +312139,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -312614,9 +312614,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -313089,9 +313089,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -313564,9 +313564,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -314039,9 +314039,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -314514,9 +314514,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -314989,9 +314989,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -315464,9 +315464,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -315939,9 +315939,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -316414,9 +316414,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -316889,9 +316889,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -317364,9 +317364,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -317839,9 +317839,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -318314,9 +318314,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -318789,9 +318789,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -319264,9 +319264,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -319739,9 +319739,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -320214,9 +320214,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -320689,9 +320689,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -321164,9 +321164,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -321639,9 +321639,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -322114,9 +322114,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -322589,9 +322589,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -323064,9 +323064,9 @@ export const courseData: Record<string, CourseData> = {
           description: "Reported average salary for BI Analysts in India."
         },
         {
-          number: "92%",
-          label: "Job Placement",
-          description: "Within 3 months of completion"
+          number: "100%",
+          label: "Placement Support",
+          description: "Resume, mock interviews & referrals"
         }
       ],
       landmarks: [
@@ -323533,9 +323533,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -323854,9 +323854,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -324174,9 +324174,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -324494,9 +324494,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -324814,9 +324814,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -325134,9 +325134,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -325454,9 +325454,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -325774,9 +325774,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -326094,9 +326094,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -326414,9 +326414,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -326734,9 +326734,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -327054,9 +327054,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -327374,9 +327374,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -327694,9 +327694,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -328014,9 +328014,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -328334,9 +328334,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -328654,9 +328654,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -328974,9 +328974,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -329294,9 +329294,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -329614,9 +329614,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -329934,9 +329934,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -330254,9 +330254,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -330574,9 +330574,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -330894,9 +330894,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -331214,9 +331214,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -331534,9 +331534,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -331854,9 +331854,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -332174,9 +332174,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -332494,9 +332494,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -332814,9 +332814,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -333134,9 +333134,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -333454,9 +333454,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -333774,9 +333774,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -334094,9 +334094,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -334414,9 +334414,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -334734,9 +334734,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -335054,9 +335054,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -335374,9 +335374,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -335694,9 +335694,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -336014,9 +336014,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -336334,9 +336334,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -336654,9 +336654,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -336974,9 +336974,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -337294,9 +337294,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -337614,9 +337614,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -337934,9 +337934,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -338254,9 +338254,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -338574,9 +338574,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -338894,9 +338894,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -339214,9 +339214,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -339534,9 +339534,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -339854,9 +339854,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -340174,9 +340174,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -340494,9 +340494,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -340814,9 +340814,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -341134,9 +341134,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -341454,9 +341454,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -341774,9 +341774,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -342094,9 +342094,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -342414,9 +342414,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -342734,9 +342734,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -343054,9 +343054,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -343374,9 +343374,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -343694,9 +343694,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -344014,9 +344014,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -344334,9 +344334,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -344654,9 +344654,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -344974,9 +344974,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -345294,9 +345294,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -345614,9 +345614,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -345934,9 +345934,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -346254,9 +346254,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -346574,9 +346574,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -346894,9 +346894,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -347214,9 +347214,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -347534,9 +347534,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -347854,9 +347854,9 @@ export const courseData: Record<string, CourseData> = {
           "description": "Successfully trained in AI and ML"
         },
         {
-          "number": "95%",
-          "label": "Placement Rate",
-          "description": "Placed in top tech companies"
+          "number": "100%",
+          "label": "Placement Support",
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "16",
@@ -348770,7 +348770,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -349369,7 +349369,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -349968,7 +349968,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -350567,7 +350567,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -351166,7 +351166,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -351765,7 +351765,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -352364,7 +352364,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -352963,7 +352963,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -353357,7 +353357,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -353751,7 +353751,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -354145,7 +354145,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -354539,7 +354539,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -354933,7 +354933,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -355327,7 +355327,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -355721,7 +355721,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -356115,7 +356115,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -356509,7 +356509,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -356903,7 +356903,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -357297,7 +357297,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -357691,7 +357691,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -358085,7 +358085,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -358479,7 +358479,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -358873,7 +358873,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -359267,7 +359267,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -359661,7 +359661,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -360055,7 +360055,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -360449,7 +360449,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "400+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "90%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "10", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -360846,7 +360846,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -361445,7 +361445,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -362044,7 +362044,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -362643,7 +362643,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -363242,7 +363242,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -363841,7 +363841,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -364440,7 +364440,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -365039,7 +365039,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -365638,7 +365638,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -366237,7 +366237,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -366836,7 +366836,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -367435,7 +367435,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -368034,7 +368034,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -368633,7 +368633,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -369232,7 +369232,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -369831,7 +369831,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -370430,7 +370430,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -371029,7 +371029,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -371628,7 +371628,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -372227,7 +372227,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -372826,7 +372826,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -373425,7 +373425,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -374024,7 +374024,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -374623,7 +374623,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -375155,7 +375155,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -375754,7 +375754,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -376353,7 +376353,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -376952,7 +376952,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -377551,7 +377551,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -378150,7 +378150,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -378749,7 +378749,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -379348,7 +379348,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -379947,7 +379947,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -380546,7 +380546,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -381148,7 +381148,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -381747,7 +381747,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -382346,7 +382346,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -382945,7 +382945,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -383544,7 +383544,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -384143,7 +384143,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -384742,7 +384742,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -385341,7 +385341,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -385940,7 +385940,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -386539,7 +386539,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -387138,7 +387138,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -387737,7 +387737,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -388336,7 +388336,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -388935,7 +388935,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -389534,7 +389534,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -390133,7 +390133,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -390732,7 +390732,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -391331,7 +391331,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -391930,7 +391930,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -392529,7 +392529,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -393128,7 +393128,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -393727,7 +393727,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -394326,7 +394326,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -394925,7 +394925,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -395524,7 +395524,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -396126,7 +396126,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -396725,7 +396725,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -397324,7 +397324,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -397923,7 +397923,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -398522,7 +398522,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -399121,7 +399121,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -399720,7 +399720,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -400319,7 +400319,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -400918,7 +400918,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -401517,7 +401517,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -402116,7 +402116,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -402715,7 +402715,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -403314,7 +403314,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -403913,7 +403913,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -404512,7 +404512,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -405111,7 +405111,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Google Analytics Certified", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -405714,7 +405714,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -405990,7 +405990,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -406266,7 +406266,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -406542,7 +406542,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -406818,7 +406818,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -407094,7 +407094,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -407370,7 +407370,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -407646,7 +407646,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -407923,7 +407923,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -408199,7 +408199,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -408475,7 +408475,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -408751,7 +408751,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -409027,7 +409027,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -409303,7 +409303,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -409579,7 +409579,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -409855,7 +409855,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -410131,7 +410131,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -410407,7 +410407,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -410680,7 +410680,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -410951,7 +410951,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -411222,7 +411222,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -411493,7 +411493,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -411764,7 +411764,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -412035,7 +412035,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -412306,7 +412306,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -412577,7 +412577,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -412848,7 +412848,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -413119,7 +413119,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -413390,7 +413390,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -413662,7 +413662,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -413934,7 +413934,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -414206,7 +414206,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -414483,7 +414483,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -414759,7 +414759,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -415035,7 +415035,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -415311,7 +415311,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -415587,7 +415587,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -415863,7 +415863,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -416139,7 +416139,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -416415,7 +416415,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -416691,7 +416691,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -416967,7 +416967,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -417243,7 +417243,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -417519,7 +417519,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -417795,7 +417795,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -418071,7 +418071,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -418347,7 +418347,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -418623,7 +418623,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -418899,7 +418899,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -419175,7 +419175,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -419451,7 +419451,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -419727,7 +419727,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -420003,7 +420003,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -420279,7 +420279,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -420555,7 +420555,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -420831,7 +420831,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -421107,7 +421107,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -421383,7 +421383,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -421659,7 +421659,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -421935,7 +421935,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -422211,7 +422211,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -422487,7 +422487,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -422763,7 +422763,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -423039,7 +423039,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -423315,7 +423315,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -423591,7 +423591,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -423867,7 +423867,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -424143,7 +424143,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -424419,7 +424419,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -424698,7 +424698,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -424974,7 +424974,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -425250,7 +425250,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -425526,7 +425526,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -425802,7 +425802,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -426078,7 +426078,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -426354,7 +426354,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -426631,7 +426631,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -426907,7 +426907,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -427183,7 +427183,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -427459,7 +427459,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -427735,7 +427735,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -428011,7 +428011,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -428287,7 +428287,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -428563,7 +428563,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -428839,7 +428839,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -429115,7 +429115,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -429391,7 +429391,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -429667,7 +429667,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -429943,7 +429943,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -430219,7 +430219,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -430495,7 +430495,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -430771,7 +430771,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -431047,7 +431047,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -431323,7 +431323,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -431602,7 +431602,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -431878,7 +431878,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -432154,7 +432154,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -432430,7 +432430,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -432706,7 +432706,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -432982,7 +432982,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -433258,7 +433258,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -433534,7 +433534,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -433810,7 +433810,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -434086,7 +434086,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -434362,7 +434362,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -434638,7 +434638,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -434914,7 +434914,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -435190,7 +435190,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -435466,7 +435466,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["Oracle Java Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -435745,7 +435745,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -436277,7 +436277,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -436809,7 +436809,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -437341,7 +437341,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -437873,7 +437873,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -438405,7 +438405,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -438937,7 +438937,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -439469,7 +439469,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -440001,7 +440001,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -440533,7 +440533,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -441065,7 +441065,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -441597,7 +441597,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -442130,7 +442130,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -442662,7 +442662,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -443194,7 +443194,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -443726,7 +443726,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -444258,7 +444258,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -444790,7 +444790,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" },
       ],
@@ -445318,7 +445318,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -445583,7 +445583,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -445848,7 +445848,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -446113,7 +446113,7 @@ export const courseData: Record<string, CourseData> = {
       certifications: ["ISTQB Certification Ready", "Industry-Recognized", "Hands-on Projects"],
       stats: [
         { number: "5000+", label: "Students Trained", description: "Successfully completed the course" },
-        { number: "92%", label: "Job Placement", description: "Within 3 months of completion" },
+        { number: "100%", label: "Placement Support", description: "Resume, mock interviews & referrals" },
         { number: "12", label: "Weeks Duration", description: "Intensive learning program" },
         { number: "24/7", label: "Mentor Support", description: "Dedicated mentorship available" }
       ],
@@ -446403,7 +446403,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -447408,7 +447408,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
@@ -448413,7 +448413,7 @@ export const courseData: Record<string, CourseData> = {
         {
           "number": "100%",
           "label": "Placement Support",
-          "description": "Job assistance"
+          "description": "Resume, mock interviews & referrals"
         },
         {
           "number": "24/7",
