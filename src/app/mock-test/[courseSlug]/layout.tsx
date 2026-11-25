@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { mockCategories } from "@/data/mock-tests";
 
 /**
  * BLG-041: defense-in-depth noindex for /mock-test/[courseSlug].
@@ -20,10 +22,28 @@ export const metadata: Metadata = {
   },
 };
 
-export default function MockTestCourseLayout({
+/**
+ * C4-01: an unknown slug must 404 here, on the server.
+ *
+ * The page is a Client Component that looks the course up in useEffect, so it
+ * can only discover a bad slug after HTTP 200 has already been sent - every
+ * made-up /mock-test/<anything> was a crawlable 200. This checks the same
+ * data `getCourseBySlug` reads (minus its simulated network delay) before any
+ * of the page renders. No loading.tsx sits above this segment, so
+ * `notFound()` here produces a real 404 status.
+ */
+export default async function MockTestCourseLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ courseSlug: string }>;
 }) {
+  const { courseSlug } = await params;
+  const exists = mockCategories.some((category) =>
+    category.courses.some((course) => course.slug === courseSlug),
+  );
+  if (!exists) notFound();
+
   return children;
 }
