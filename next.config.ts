@@ -548,6 +548,87 @@ const nextConfig: NextConfig = {
         destination: '/events',
         statusCode: 301,
       },
+
+      // C4-39 (Cycle 4, Nov 2026): the original course pages. Each was a live,
+      // promoted URL with a payment link attached, and each 404s today, so
+      // every inbound link and bookmark to them is dead. All 13 sources were
+      // confirmed 404 and all 13 destinations 200 on production, 25 Nov 2026.
+      //
+      // Deliberately absent: /big-data-engineering. Its destination depends on
+      // whether Big Data Engineering is sold as its own course (open decision,
+      // 21-open-decisions.md). It stays 404 until that is answered rather than
+      // being sent somewhere that may be wrong.
+      //
+      // The old URLs were published with a trailing slash. Next.js strips it
+      // with its own 308 before these rules run, so /manual-software-testing/
+      // takes two hops (308, then this 301) - the same as the four legacy
+      // course URLs above that already work. Google follows both hops and
+      // consolidates signals across them.
+      {
+        source: '/manual-software-testing',
+        destination: '/courses/software-testing-course/manual-testing-course',
+        statusCode: 301,
+      },
+      {
+        source: '/advanced-software-testing',
+        destination: '/courses/software-testing-course/advance-software-testing',
+        statusCode: 301,
+      },
+      {
+        source: '/advanced-manual-and-automation-testing-master-program',
+        destination: '/courses/software-testing-course/advance-manual-automation-testing',
+        statusCode: 301,
+      },
+      {
+        source: '/database-management-system',
+        destination: '/courses/software-testing-course/dbms-course',
+        statusCode: 301,
+      },
+      {
+        source: '/python-programming',
+        destination: '/courses/software-testing-course/python-course',
+        statusCode: 301,
+      },
+      {
+        source: '/data-analysis-with-bi-big-data-engineering-master-program',
+        destination: '/courses/bi-courses/masters-in-data-engineering',
+        statusCode: 301,
+      },
+      {
+        source: '/advanced-business-analyst',
+        destination: '/courses/bi-courses/data-analytics',
+        statusCode: 301,
+      },
+      {
+        source: '/machine-learning-and-data-science-with-python',
+        destination: '/courses/ds-ml-courses/machine-learning-using-python',
+        statusCode: 301,
+      },
+      {
+        source: '/advanced-machine-learning-and-data-visualization',
+        destination: '/courses/ds-ml-courses/machine-learning-course',
+        statusCode: 301,
+      },
+      {
+        source: '/deep-learning-nlp-and-generativeai',
+        destination: '/courses/ds-ml-courses/generative-ai-course',
+        statusCode: 301,
+      },
+      {
+        source: '/advanced-data-science-and-machine-learning-masterclass',
+        destination: '/courses/ds-ml-courses/data-science-course',
+        statusCode: 301,
+      },
+      {
+        source: '/comprehensive-data-science-and-ai-master-program',
+        destination: '/courses/ds-ml-courses/ai-course',
+        statusCode: 301,
+      },
+      {
+        source: '/turbocharged-data-science-course',
+        destination: '/courses/ds-ml-courses/data-science-course',
+        statusCode: 301,
+      },
     ];
   },
 
