@@ -219,7 +219,7 @@ const BlogCategoryMenuClient = ({ allPosts, allCategories }: BlogCategoryMenuCli
                             </button>
                         ) : (
                             <div className="relative">
-                                <form
+                                <form data-analytics-ignore
                                     onSubmit={handleSearchSubmit}
                                     className="flex items-center bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 overflow-hidden animate-expand"
                                 >

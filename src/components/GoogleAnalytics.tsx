@@ -6,6 +6,7 @@ import { useEffect, useRef, Suspense } from "react";
 import { useDeferredLoad } from "@/hooks/useDeferredLoad";
 import { isThankYouPath } from "@/lib/thank-you";
 import AdsConversion from "@/components/AdsConversion";
+import AnalyticsEvents from "@/components/AnalyticsEvents";
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -107,6 +108,7 @@ const GoogleAnalytics = () => {
         <GoogleAnalyticsTracker />
       </Suspense>
       <AdsConversion />
+      <AnalyticsEvents />
     </>
   );
 };

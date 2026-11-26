@@ -41,7 +41,7 @@ export default function PlacementsNewsletterCtaSection({ contained = false }: Pr
                         </div>
 
                         {/* Form */}
-                        <form
+                        <form data-analytics-ignore
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 // handle submit here

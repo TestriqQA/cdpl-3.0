@@ -3,7 +3,8 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { GOOGLE_ADS_ID, conversionSendToFor } from "@/lib/google-ads";
-import { isThankYouPath } from "@/lib/thank-you";
+import { pageContextFromPath } from "@/lib/analytics";
+import { isThankYouPath, resolveThankYouIntent, THANK_YOU_INTENT_PARAM } from "@/lib/thank-you";
 
 type GtagWindow = Window & { gtag?: (...args: unknown[]) => void };
 
@@ -49,8 +50,13 @@ export default function AdsConversion() {
       if (typeof gtag === "function") {
         if (isLead) {
           gtag("event", "generate_lead", {
-            // The thank-you path identifies which form was completed.
+            // The thank-you path identifies which page the form was on; the
+            // course/city and ?for= intent say what was asked for (C4-21).
             page_path: pathname,
+            ...pageContextFromPath(pathname),
+            form_type: resolveThankYouIntent(
+              new URLSearchParams(window.location.search).get(THANK_YOU_INTENT_PARAM) ?? undefined,
+            ),
           });
         }
 

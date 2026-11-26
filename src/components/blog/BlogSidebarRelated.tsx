@@ -163,7 +163,7 @@ const BlogSidebarRelated = ({ relatedPosts, categories, latestPosts }: BlogSideb
             <p className="text-sm text-gray-700 mb-4 leading-relaxed">
               Get the latest articles and insights delivered directly to your inbox.
             </p>
-            <form onSubmit={handleSubmit} className="space-y-3" ref={formRef}>
+            <form data-analytics-ignore onSubmit={handleSubmit} className="space-y-3" ref={formRef}>
               <div>
                 <input
                   type="email"

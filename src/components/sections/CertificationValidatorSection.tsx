@@ -363,7 +363,7 @@ function CertificationValidatorContent() {
             </div>
           )}
 
-          <form onSubmit={onSubmit} className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto]">
+          <form data-analytics-ignore onSubmit={onSubmit} className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto]">
             <label htmlFor="certId" className="sr-only">
               Certificate ID
             </label>

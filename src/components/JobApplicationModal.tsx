@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
+import { trackEvent } from "@/lib/analytics";
 import { createPortal } from "react-dom";
 import { X, Upload, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 
@@ -167,6 +168,8 @@ export default function JobApplicationModal({
                 throw new Error(result.message || "Something went wrong");
             }
 
+            // C4-21: no thank-you page here, so the submit is reported directly.
+            trackEvent("form_submit", { form_type: "job_application" });
             setIsSuccess(true);
         } catch (err: any) {
             console.error(err);

@@ -4,6 +4,7 @@ import React, { useState, useRef } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { User, Mail, MapPin, Briefcase, Award, ArrowRight, Loader2 } from 'lucide-react';
 import { submitIstqbStep1 } from '@/app/istqb-registration/actions';
+import { trackEvent } from '@/lib/analytics';
 import PhoneInput from '@/components/ui/PhoneNumberInput';
 
 
@@ -138,6 +139,8 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
         try {
             const result = await submitIstqbStep1(submissionData);
             if (result.success) {
+                // C4-21: step 1 is the lead; step 2 is payment, not a form submit.
+                trackEvent('form_submit', { form_type: 'istqb_registration' });
                 onSuccess(data);
             } else {
                 alert('Something went wrong. Please try again.');

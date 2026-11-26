@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useRef, useState, useEffect } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 type Skill = { skill_name: string; years?: string | number | null; level?: string | null };
 
@@ -142,6 +143,8 @@ export default function JobOpeningsJobDetails({
                 await createCandidateAction({ email, mobile, mobile_country_code: dial, resume });
             }
 
+            // C4-21: no thank-you page here, so the submit is reported directly.
+            trackEvent("form_submit", { form_type: "job_application" });
             window.open(detail.job_referral_url, "_blank", "noopener,noreferrer");
             onClose();
         } catch (err: unknown) {

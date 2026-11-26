@@ -147,7 +147,7 @@ export default function ExamSelection({ userData, onSuccess, onBack }: ExamSelec
                         Already decided? Select your preferred exam date and proceed.
                     </p>
 
-                    <form onSubmit={handlePayment} className="flex-grow flex flex-col">
+                    <form data-analytics-ignore onSubmit={handlePayment} className="flex-grow flex flex-col">
                         <div className="space-y-4 mb-8 flex-grow">
                             <div className="bg-slate-50 border border-slate-100 rounded-xl p-4">
                                 <p className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Certification Level</p>
