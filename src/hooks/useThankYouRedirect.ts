@@ -3,7 +3,8 @@
 import { useCallback, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
-import { thankYouPathFor, type ThankYouIntent } from '@/lib/thank-you';
+import { trackEvent } from '@/lib/analytics';
+import { DEFAULT_THANK_YOU_INTENT, thankYouPathFor, type ThankYouIntent } from '@/lib/thank-you';
 
 /**
  * Sends a visitor to the thank-you page for whatever page they are currently
@@ -49,6 +50,16 @@ export function useThankYouRedirect(intent?: ThankYouIntent): () => void {
   }, [router, href]);
 
   return useCallback(() => {
+    // C4-21: this is the one call every lead form makes after a successful
+    // submit, so the submit events are raised here rather than in 16 forms.
+    // Sent before the push, so page_path is still the page the form was on.
+    const formType = intent ?? DEFAULT_THANK_YOU_INTENT;
+    trackEvent('form_submit', { form_type: formType });
+    if (formType === 'syllabus' || formType === 'brochure') {
+      trackEvent('syllabus_download', { form_type: formType });
+    } else if (formType === 'demo') {
+      trackEvent('demo_booking', { form_type: formType });
+    }
     router.push(href);
-  }, [router, href]);
+  }, [router, href, intent]);
 }

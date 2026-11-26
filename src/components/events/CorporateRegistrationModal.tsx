@@ -181,7 +181,7 @@ const CorporateRegistrationModal = () => {
               </div>
 
               {/* Form */}
-              <form onSubmit={handleSubmit} className="p-8 space-y-6">
+              <form data-analytics-ignore onSubmit={handleSubmit} className="p-8 space-y-6">
                 {/* Organization Details */}
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">

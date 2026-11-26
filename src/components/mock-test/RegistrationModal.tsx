@@ -154,7 +154,7 @@ const RegistrationModal = ({ isOpen, onClose, onRegister, courseName }: Registra
                         </p>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form data-analytics-ignore onSubmit={handleSubmit} className="space-y-6">
                         <div className="space-y-0">
                             <div className="relative mb-6">
                                 <div className="relative group">

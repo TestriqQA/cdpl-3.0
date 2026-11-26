@@ -115,7 +115,7 @@ const BlogSidebarCategory = ({ categoryName, categoryPosts, categories }: BlogSi
         <p className="text-sm text-gray-700 mb-4 leading-relaxed">
           Get the latest articles and insights delivered directly to your inbox.
         </p>
-        <form className="space-y-3">
+        <form data-analytics-ignore className="space-y-3">
           <input
             type="email"
             placeholder="Enter your email"

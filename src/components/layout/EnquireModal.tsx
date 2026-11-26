@@ -1,6 +1,7 @@
 'use client';
 
 import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
+import type { ThankYouIntent } from '@/lib/thank-you';
 import React, { useState, useRef, useEffect } from 'react';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { X, User, Mail, TrendingUp, CheckCircle2 } from 'lucide-react';
@@ -13,9 +14,16 @@ interface EnquireModalProps {
     isOpen: boolean;
     onClose: () => void;
     source?: string;
+    /**
+     * What the submit counts as. Defaults to `demo`: the modal's heading is
+     * "Book a Free Demo" and the header's "Free Demo" button opens it, so GA4
+     * should record a demo_booking (C4-21). Reusers that are not a demo, such
+     * as the campus-visit button, pass `enquiry`.
+     */
+    intent?: ThankYouIntent;
 }
 
-const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) => {
+const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source, intent = 'demo' }) => {
     // Form state
     const [formData, setFormData] = useState({
         fullName: '',
@@ -40,7 +48,7 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const goToThankYou = useThankYouRedirect();
+    const goToThankYou = useThankYouRedirect(intent);
     const [isVisible, setIsVisible] = useState(false);
 
     // Country state for PhoneInput to allow placeholder visibility
