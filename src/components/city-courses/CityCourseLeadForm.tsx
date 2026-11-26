@@ -4,6 +4,8 @@ import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import React, { useState, useRef } from "react";
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { TrendingUp, User, Mail, CheckCircle2 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+import { cityCourseWhatsappUrl } from "@/lib/seo-config";
 import PhoneInput from '@/components/ui/PhoneNumberInput';
 import {
     validateFullName as validateFullNameLib,
@@ -357,6 +359,19 @@ export default function CityCourseLeadForm({
                         </div>
                     </div>
                 </form>
+
+                {/* C4-08(b): WhatsApp as an alternative to the form. Deliberately
+                    OUTSIDE the <form>: clicking a link focuses it, and a focus
+                    inside the form would be reported as a form_start. */}
+                <a
+                    href={cityCourseWhatsappUrl(courseName, cityName)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 flex items-center justify-center gap-2 rounded-lg border border-[#25D366]/40 bg-[#25D366]/10 px-4 py-2.5 text-sm font-semibold text-[#128C7E] transition hover:bg-[#25D366]/20"
+                >
+                    <FaWhatsapp className="h-4 w-4" aria-hidden="true" />
+                    Prefer WhatsApp? Chat with us
+                </a>
             </div>
         </>
     );

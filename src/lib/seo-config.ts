@@ -419,6 +419,29 @@ export function getSocialMediaUrls(): string[] {
 }
 
 /**
+ * The WhatsApp chat link with an opening message already typed in, so the
+ * admissions team sees which course and city the chat came from (C4-08b).
+ * GA4's whatsapp_click strips the `?text=` before reporting the link.
+ */
+export function whatsappChatUrl(prefill?: string): string {
+  return prefill
+    ? `${BUSINESS_INFO.whatsappUrl}?text=${encodeURIComponent(prefill)}`
+    : BUSINESS_INFO.whatsappUrl;
+}
+
+/**
+ * WhatsApp link for a city course page, e.g. "Hi, I'd like to know more
+ * about the Data Science course in Mumbai." City pages store names both
+ * with and without the word ("Data Science", "Programming Courses"), so a
+ * trailing "Course(s)" is dropped before " course" is added.
+ */
+export function cityCourseWhatsappUrl(courseName?: string, city?: string): string {
+  const course = (courseName || '').replace(/\s+courses?$/i, '').trim();
+  const what = course ? `the ${course} course` : 'your courses';
+  return whatsappChatUrl(`Hi, I'd like to know more about ${what}${city ? ` in ${city}` : ''}.`);
+}
+
+/**
  * Format phone number for schema
  */
 export function getFormattedPhone(): string {

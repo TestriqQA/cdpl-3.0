@@ -3,7 +3,9 @@
 import React, { useState } from "react";
 import { ArrowRight, Phone, Mail, MapPin, Check, Zap } from "lucide-react";
 import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
 import EnrollModal from "@/components/EnrollModal";
+import { BUSINESS_INFO, cityCourseWhatsappUrl } from "@/lib/seo-config";
 import Image from "next/image";
 
 interface CTASectionProps {
@@ -121,7 +123,7 @@ const CtaSection: React.FC<CTASectionProps> = ({ data }) => {
 
             {/* Contact Info Cards */}
             <div
-              className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3"
+              className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2"
             >
               {/* Phone */}
               <div className="group rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:shadow-md">
@@ -137,6 +139,24 @@ const CtaSection: React.FC<CTASectionProps> = ({ data }) => {
                 >
                   {ctaContent.contactInfo.phone}
                 </Link>
+              </div>
+
+              {/* WhatsApp — C4-08(b): city pages had no WhatsApp link at all. */}
+              <div className="group rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:shadow-md">
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-[#25D366]">
+                  <FaWhatsapp className="h-5 w-5 text-white" aria-hidden="true" />
+                </div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                  WhatsApp
+                </p>
+                <a
+                  href={cityCourseWhatsappUrl(data.courseName, data.location)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 block text-sm font-semibold text-slate-900 transition group-hover:text-[#128C7E]"
+                >
+                  {BUSINESS_INFO.admissionsPhoneDisplay}
+                </a>
               </div>
 
               {/* Email */}
