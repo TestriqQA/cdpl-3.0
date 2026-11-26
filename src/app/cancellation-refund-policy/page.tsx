@@ -5,7 +5,7 @@ import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Cancellation/Refund Policy | Cinute Digital Private Limited",
-  description: "Read the Cancellation and Refund Policy for Cinute Digital (CDPL). Learn about full refunds before batch starts, 50% partial refunds during demo, and batch change flexibility.",
+  description: "CDPL cancellation and refund policy: full refund before the batch starts, 50% partial refund during the demo, and flexible batch changes.",
   alternates: { canonical: "/cancellation-refund-policy" },
   robots: { index: true, follow: true },
 };

@@ -200,7 +200,7 @@ export default function HeroSection() {
                             </div>
 
                             <h1 className="mt-3 md:mt-0 text-3xl md:text-5xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-6">
-                                Master In-Demand Tech Skills<br />
+                                Master In-Demand Tech Skills{" "}<br />
                                 <span className="relative inline-block mt-2">
                                     <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent animate-gradient">
                                         Launch Your Career

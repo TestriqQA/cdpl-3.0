@@ -86,7 +86,7 @@ export const automationTestingCourse: CourseContent = {
   },
 
   why: {
-    heading: "Why Master [[Automation]] in 2025?",
+    heading: "Why Master [[Automation]] in 2026?",
     intro:
       "Automation Testing and **SDET** skills accelerate delivery, improve reliability, and unlock higher salaries. Learn modern tooling, *AI-assisted testing*, and CI/CD to become **industry-ready**.",
     cards: [

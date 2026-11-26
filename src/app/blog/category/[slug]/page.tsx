@@ -79,7 +79,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         title: {
             absolute: `${category.name} Articles & Tutorials | CDPL Blog`,
         },
-        description: `${category.description || ''} Explore ${posts.length}+ in-depth articles, tutorials, and best practices on ${category.name.toLowerCase()}. Learn from CDPL industry experts and stay updated with the latest trends.`,
+        // C4-13: the editor's Sanity description is used exactly as written. A
+        // fixed sentence used to be appended to it, which pushed every category
+        // past the ~155-character snippet limit. The generated line is only a
+        // fallback for a category with no description.
+        description: category.description || `${posts.length} ${posts.length === 1 ? 'article' : 'articles'} on ${category.name} from CDPL trainers: tutorials, guides and best practices.`,
 
         // Keywords - Category-specific (array format required by Next.js Metadata API)
         keywords: [
@@ -123,7 +127,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         // Open Graph - Enhanced
         openGraph: {
             title: `${category.name} - Expert Articles, Tutorials & Best Practices | CDPL`,
-            description: `${category.description || ''} ${posts.length}+ articles to help you master ${category.name.toLowerCase()}.`,
+            description: category.description || `${posts.length} ${posts.length === 1 ? 'article' : 'articles'} on ${category.name} from CDPL trainers: tutorials, guides and best practices.`,
             url: `https://www.cinutedigital.com/blog/category/${category.slug}`,
             siteName: 'CDPL Tech Blog',
             images: [
@@ -143,7 +147,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         twitter: {
             card: 'summary_large_image',
             title: `${category.name} - Expert Articles & Tutorials | CDPL`,
-            description: `${category.description || ''} ${posts.length}+ articles available.`,
+            description: category.description || `${posts.length} ${posts.length === 1 ? 'article' : 'articles'} on ${category.name} from CDPL trainers: tutorials, guides and best practices.`,
             images: [latestPost?.featuredImage || '/og-images/blog-og.webp'],
             creator: '@cinutedigital',
             site: '@cinutedigital',

@@ -82,7 +82,7 @@ export const dbmsCourse: CourseContent = {
 
   why: {
     eyebrow: "Beginner-friendly • Industry-relevant",
-    heading: "Why Master [[MySQL]] in 2025?",
+    heading: "Why Master [[MySQL]] in 2026?",
     intro:
       "Build production-ready skills for **backend engineering**, **QA automation**, **data analysis**, and **DevOps** using a battle-tested, high-performance relational database.",
     cards: [

@@ -31,7 +31,7 @@ import { SITE_STATS, STAT_TEXT } from "@/lib/site-stats";
 
 // ---------- SEO Metadata ----------
 export const metadata: Metadata = generateStaticPageMetadata({
-  title: "Student Reviews & Testimonials | CDPL",
+  title: "Student Reviews & Testimonials",
   description:
     `Read authentic student reviews and success stories for CDPL's Software Testing, Data Science and AI/ML courses — rated ${STAT_TEXT.rating} across ${SITE_STATS.reviewCount} reviews.`,
   keywords: [
