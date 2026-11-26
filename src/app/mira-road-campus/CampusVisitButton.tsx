@@ -33,7 +33,7 @@ export default function CampusVisitButton({
         <CalendarCheck className="h-4 w-4" aria-hidden="true" />
         {label}
       </button>
-      {open && <EnquireModal isOpen={open} onClose={() => setOpen(false)} source={source} />}
+      {open && <EnquireModal isOpen={open} onClose={() => setOpen(false)} source={source} intent="enquiry" />}
     </>
   );
 }
