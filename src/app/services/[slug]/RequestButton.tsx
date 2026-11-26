@@ -46,6 +46,9 @@ export default function RequestButton({ serviceTitle, variant = "brand" }: Reque
           title={`Request Service: ${serviceTitle}`}
           subtitle="Get detailed curriculum and corporate batch info"
           serviceName={serviceTitle}
+          // C4-08(a): without this the page fell back to the generic workshop
+          // form and every service request arrived as a "Workshop Request".
+          variant="service"
         />
       )}
     </>

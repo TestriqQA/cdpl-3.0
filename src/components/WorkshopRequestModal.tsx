@@ -166,8 +166,12 @@ const WorkshopRequestModal = ({
                 if (variant === 'workshop') {
                     // payload includes workshopType, participants, preferredDate
                 } else if (variant === 'service') {
-                    // Ensure serviceName is there
+                    // C4-08(a): the programme IS the page's service. The generic
+                    // workshop dropdown is not shown here, so its default
+                    // ("Corporate Training") must not travel with the lead.
                     payload.serviceName = serviceName;
+                    payload.interest = serviceName;
+                    delete payload.workshopType;
                 }
 
                 const response = await fetch('/api/contact', {
@@ -362,6 +366,43 @@ const WorkshopRequestModal = ({
                                                     </div>
                                                 </div>
                                             </div>
+                                        )}
+
+                                        {/* C4-08(a): the B2B service request — programme fixed to
+                                            the page, plus role, participants and preferred dates. */}
+                                        {variant === 'service' && (
+                                            <>
+                                                {serviceName && (
+                                                    <div className="flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50/60 px-3 py-2 text-sm text-gray-700">
+                                                        <BookOpen className="h-4 w-4 flex-shrink-0 text-blue-600" />
+                                                        <span><span className="font-semibold uppercase tracking-wide text-xs text-gray-500">Programme</span> <span className="font-semibold text-gray-900">{serviceName}</span></span>
+                                                    </div>
+                                                )}
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                    <div>
+                                                        <label htmlFor="svc-jobTitle" className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Role / Designation</label>
+                                                        <div className="relative">
+                                                            <Briefcase className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+                                                            <input id="svc-jobTitle" type="text" maxLength={60} name="jobTitle" value={formData.jobTitle} onChange={handleInputChange} placeholder="e.g. HOD, L&D Manager" className="w-full pl-9 pr-3 py-2 border rounded-lg text-sm bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 border-gray-200 transition-all font-medium text-gray-900 placeholder:text-gray-400" disabled={isSubmitting} />
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <label htmlFor="svc-participants" className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Participants (Approx)</label>
+                                                        <div className="relative">
+                                                            <Users className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+                                                            <input id="svc-participants" type="number" name="participants" value={formData.participants} onChange={handleInputChange} placeholder="e.g. 40" className="w-full pl-9 pr-3 py-2 border rounded-lg text-sm bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 border-gray-200 transition-all font-medium text-gray-900 placeholder:text-gray-400" disabled={isSubmitting} />
+                                                        </div>
+                                                        {errors.participants && <p className="text-xs text-red-600 mt-1">{errors.participants}</p>}
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="svc-preferredDate" className="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wide">Preferred Dates</label>
+                                                    <div className="relative">
+                                                        <Calendar className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+                                                        <input id="svc-preferredDate" type="text" maxLength={80} name="preferredDate" value={formData.preferredDate} onChange={handleInputChange} placeholder="e.g. 2nd week of January, or after semester exams" className="w-full pl-9 pr-3 py-2 border rounded-lg text-sm bg-gray-50 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 border-gray-200 transition-all font-medium text-gray-900 placeholder:text-gray-400" disabled={isSubmitting} />
+                                                    </div>
+                                                </div>
+                                            </>
                                         )}
 
                                         {variant === 'consultation' && (

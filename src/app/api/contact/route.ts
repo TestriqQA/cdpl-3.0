@@ -294,6 +294,14 @@ export async function POST(request: Request) {
       const { company, serviceName } = body;
       subjectPrefix = `[SERVICE REQUEST] ${serviceName} - Inquiry by ${company || fullName}`;
       adminTemplate = 'admin-notification-service-request.html';
+      // C4-08(a): every row of this template is unconditional, and none of
+      // these was ever filled in, so the email showed blank cells.
+      adminData.serviceName = serviceName || 'Not specified';
+      adminData.company = company || 'N/A';
+      adminData.jobTitle = body.jobTitle || 'Not specified';
+      adminData.participants = participants || 'Not specified';
+      adminData.preferredDate = body.preferredDate || 'Not specified';
+      adminData.message = message || 'None';
     } else if (type === 'general_enquiry') {
       const { company } = body;
       subjectPrefix = `[GENERAL ENQUIRY] from ${company || fullName}`;
@@ -659,6 +667,20 @@ export async function POST(request: Request) {
     }).catch(err => console.error('TeleCRM background push error:', err));
 
     // 7. Append to Google Sheet (Awaited per user request/sync fix)
+    // C4-08(a): the sheet has fixed columns (A:K) and none for organisation,
+    // role, participants or dates, so for a service request they lead the
+    // message cell instead of being dropped.
+    const sheetMessage =
+      type === 'service_request'
+        ? [
+            `Org: ${company || 'N/A'}`,
+            body.jobTitle && `Role: ${body.jobTitle}`,
+            participants && `Participants: ${participants}`,
+            body.preferredDate && `Preferred dates: ${body.preferredDate}`,
+          ]
+            .filter(Boolean)
+            .join(' | ') + (message ? `\n${message}` : '')
+        : message || '';
     try {
       await appendRowToSheet({
         date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
@@ -669,7 +691,7 @@ export async function POST(request: Request) {
         type: requestType || 'General Enquiry',
 
         interest: interest || '',
-        message: message || '',
+        message: sheetMessage,
         goal: goal || '',
         timeline: timeline || '',
         currentStatus: currentStatus || '',
