@@ -198,7 +198,7 @@ const Footer = () => {
           {/* Digital Marketing (actually BI) */}
           <div className="space-y-4 flex flex-col lg:contents">
             <div className="space-y-4 lg:col-start-3 lg:row-start-1">
-              <p className="text-lg font-semibold text-brand">Business Development(BI)</p>
+              <p className="text-lg font-semibold text-brand">Business Intelligence (BI)</p>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/courses/bi-courses">
