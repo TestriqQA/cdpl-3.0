@@ -49,9 +49,9 @@ const Footer: React.FC = () => {
                 </p>
               </div>
 
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-600">
+              <p className="text-sm font-semibold uppercase tracking-wide text-slate-600">
                 Get In Touch
-              </h2>
+              </p>
 
               <div className="space-y-4 text-[15px] leading-relaxed">
 
@@ -244,7 +244,7 @@ const Footer: React.FC = () => {
                 {/* text-orange-700 (#c2410c) rather than text-brand (#ff8c00):
                     the brand orange is 2.33:1 on white and fails WCAG AA for
                     body text. This keeps the brand hue at 5.18:1. */}
-                <h3 className="text-xl font-semibold text-brand">Powered By</h3>
+                <p className="text-xl font-semibold text-brand">Powered By</p>
                 <Link href="https://www.testriq.com/" title="Powered by TestRiq QA Lab" className="text-gray-300 hover:text-blue-400 hover:translate-x-2 transition-all duration-300 ease-in-out text-sm">
                   {/* Real image is 1445x513 (2.82:1). It was declared 100x100
                       with width/height:auto, so the reserved 1:1 box collapsed

@@ -64,7 +64,7 @@ const Footer = () => {
           {/* Data Science, AI - ML & BI Courses */}
           <div className="space-y-4 flex flex-col lg:contents">
             <div className="space-y-4 lg:col-start-1 lg:row-start-1">
-              <h2 className="text-lg font-semibold text-brand">Data Science</h2>
+              <p className="text-lg font-semibold text-brand">Data Science</p>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/courses/ds-ml-courses">
@@ -105,7 +105,7 @@ const Footer = () => {
 
             {/* Artificial Intelligence */}
             <div className="space-y-4 lg:col-start-1 lg:row-start-2">
-              <h2 className="text-lg font-semibold text-brand">Artificial Intelligence(AI)</h2>
+              <p className="text-lg font-semibold text-brand">Artificial Intelligence(AI)</p>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/courses/artificial-intelligence-courses">
@@ -123,7 +123,7 @@ const Footer = () => {
           {/* Software Testing Courses */}
           <div className="space-y-4 flex flex-col lg:contents">
             <div className="space-y-4 lg:col-start-2 lg:row-start-1">
-              <h2 className="text-lg font-semibold text-brand">Software Testing Courses</h2>
+              <p className="text-lg font-semibold text-brand">Software Testing Courses</p>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/courses/software-testing-course">
@@ -172,7 +172,7 @@ const Footer = () => {
 
             {/* Digital Marketing */}
             <div className="space-y-4 lg:col-start-2 lg:row-start-2">
-              <h2 className="text-lg font-semibold text-brand">Digital Marketing</h2>
+              <p className="text-lg font-semibold text-brand">Digital Marketing</p>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/courses/digital-marketing-courses">
@@ -198,7 +198,7 @@ const Footer = () => {
           {/* Digital Marketing (actually BI) */}
           <div className="space-y-4 flex flex-col lg:contents">
             <div className="space-y-4 lg:col-start-3 lg:row-start-1">
-              <h2 className="text-lg font-semibold text-brand">Business Development(BI)</h2>
+              <p className="text-lg font-semibold text-brand">Business Development(BI)</p>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/courses/bi-courses">
@@ -235,7 +235,7 @@ const Footer = () => {
 
             {/* Blogs and Categories */}
             <div className="space-y-4 lg:col-start-3 lg:row-start-2">
-              <h2 className="text-lg font-semibold text-brand">Blogs</h2>
+              <p className="text-lg font-semibold text-brand">Blogs</p>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/blog">
@@ -269,7 +269,7 @@ const Footer = () => {
           {/* Services */}
           <div className="space-y-4 lg:contents">
             <div className="space-y-4 lg:col-start-4 lg:row-start-1">
-              <h2 className="text-lg font-semibold text-brand">Services</h2>
+              <p className="text-lg font-semibold text-brand">Services</p>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/services/campus-to-corporate">
@@ -321,7 +321,7 @@ const Footer = () => {
 
             {/* Certifications and Accreditation */}
             <div className="space-y-4 lg:col-start-4 lg:row-start-2">
-              <h2 className="text-lg font-semibold text-brand">Certifications and Accreditation</h2>
+              <p className="text-lg font-semibold text-brand">Certifications and Accreditation</p>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/aaa-certification">
@@ -343,7 +343,7 @@ const Footer = () => {
           {/* Events - Column 5 */}
           <div className="space-y-4 flex flex-col lg:contents">
             <div className="space-y-4 lg:col-start-5 lg:row-start-1">
-              <h2 className="text-lg font-semibold text-brand">Events</h2>
+              <p className="text-lg font-semibold text-brand">Events</p>
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/events/business-analytics-course-at-aldel-institute-of-management">
@@ -382,7 +382,7 @@ const Footer = () => {
 
             {/* Follow Us (desktop) - Column 5 Row 2 */}
             <div className="space-y-4 hidden lg:block lg:col-start-5 lg:row-start-2">
-              <h2 className="text-lg font-semibold text-brand">Follow Us On</h2>
+              <p className="text-lg font-semibold text-brand">Follow Us On</p>
               <ul className="space-y-2">
                 <li className='flex flex-wrap items-center gap-2.5 xl:gap-5'>
                   <Link href="https://www.facebook.com/cinutedigital" title="Facebook" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
@@ -410,7 +410,7 @@ const Footer = () => {
 
             {/* Follow Us (mobile) */}
             <div className="space-y-4 lg:hidden">
-              <h2 className="text-lg font-semibold text-brand">Follow Us On</h2>
+              <p className="text-lg font-semibold text-brand">Follow Us On</p>
               <ul className="space-y-2">
                 <li className='flex items-center gap-5'>
                   <Link href="https://www.facebook.com/cinutedigital" title="Facebook" className="text-gray-300 hover:text-brand transition-all duration-300 ease-in-out text-sm" aria-label="Facebook">
@@ -440,7 +440,7 @@ const Footer = () => {
 
         {/* Institute - Separate Horizontal Row Below Grid */}
         <div className="mt-8 pt-8 border-t border-gray-700/50">
-          <h2 className="text-lg font-semibold text-brand mb-4">Institute</h2>
+          <p className="text-lg font-semibold text-brand mb-4">Institute</p>
           <ul>
             <li className='flex flex-wrap'>
               <InstituteLink href="/" title="CDPL Home Page">Home</InstituteLink>

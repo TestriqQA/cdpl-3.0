@@ -24,12 +24,12 @@ const CityFooter = () => {
         <section className="bg-gray-800 text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="mb-8">
-                    <h2 className="text-2xl font-bold text-orange-400">City Wise</h2>
+                    <p className="text-2xl font-bold text-orange-400">City Wise</p>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
                     {/* Software Testing Location Wise */}
                     <div className="space-y-4">
-                        <h3 className="text-lg font-semibold text-orange-400">Software Testing City Wise</h3>
+                        <p className="text-lg font-semibold text-orange-400">Software Testing City Wise</p>
                         <ul>
                             <li className='flex flex-col space-y-2'>
                                 <FooterLink href="/software-testing-course-in-mumbai" title="Software Testing Course in Mumbai">
@@ -69,7 +69,7 @@ const CityFooter = () => {
 
                     {/* Data Science Location Wise */}
                     <div className="space-y-4">
-                        <h3 className="text-lg font-semibold text-orange-400">Data Science City Wise</h3>
+                        <p className="text-lg font-semibold text-orange-400">Data Science City Wise</p>
                         <ul>
                             <li className='flex flex-col space-y-2'>
                                 <FooterLink href="/data-science-course-in-mumbai" title="Data Science Course in Mumbai">
@@ -109,7 +109,7 @@ const CityFooter = () => {
 
                     {/* Business Intelligence Location Wise */}
                     <div className="space-y-4">
-                        <h3 className="text-lg font-semibold text-orange-400">Business Intelligence City Wise</h3>
+                        <p className="text-lg font-semibold text-orange-400">Business Intelligence City Wise</p>
                         <ul>
                             <li className='flex flex-col space-y-2'>
                                 <FooterLink href="/business-intelligence-course-in-mumbai" title="Business Intelligence Course in Mumbai">
@@ -149,7 +149,7 @@ const CityFooter = () => {
 
                     {/* Artificial Intelligence Location Wise */}
                     <div className="space-y-4">
-                        <h3 className="text-lg font-semibold text-orange-400">Artificial Intelligence City Wise</h3>
+                        <p className="text-lg font-semibold text-orange-400">Artificial Intelligence City Wise</p>
                         <ul>
                             <li className='flex flex-col space-y-2'>
                                 <FooterLink href="/artificial-intelligence-course-in-mumbai" title="Artificial Intelligence Course in Mumbai">
@@ -189,7 +189,7 @@ const CityFooter = () => {
 
                     {/* Digital Marketing Location Wise */}
                     <div className="space-y-4">
-                        <h3 className="text-lg font-semibold text-orange-400">Digital Marketing City Wise</h3>
+                        <p className="text-lg font-semibold text-orange-400">Digital Marketing City Wise</p>
                         <ul>
                             <li className='flex flex-col space-y-2'>
                                 <FooterLink href="/digital-marketing-courses-in-mumbai" title="Digital Marketing Course in Mumbai">

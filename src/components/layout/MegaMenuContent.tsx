@@ -34,7 +34,7 @@ export default function MegaMenuContent({ closeMega }: MegaMenuContentProps) {
         <div className="grid grid-cols-12 gap-4 p-4 lg:h-[25rem] lg:p-5">
             {/* Column 1: Categories */}
             <div className="col-span-12 sm:col-span-4 lg:col-span-4 flex min-h-0 flex-col border-r border-gray-200 pr-4">
-                <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Categories</h3>
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Categories</p>
                 <div className="min-h-0 flex-1 space-y-1 overflow-y-auto pr-2">
                     {courseCategories.map((category) => {
                         const href = category.slug ? `/${category.slug}` : undefined;
@@ -89,7 +89,7 @@ export default function MegaMenuContent({ closeMega }: MegaMenuContentProps) {
 
             {/* Column 2: Courses */}
             <div className="col-span-12 sm:col-span-4 lg:col-span-5 flex min-h-0 flex-col pr-0 sm:pr-4">
-                <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Courses</h3>
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Courses</p>
                 <div className="grid min-h-0 flex-1 grid-cols-1 content-start gap-0.5 overflow-y-auto pr-2">
                     {selectedCategoryData?.courses.map((course, index) => {
                         const isHovered = hoveredCourse === course.name;
@@ -139,9 +139,9 @@ export default function MegaMenuContent({ closeMega }: MegaMenuContentProps) {
 
             {/* Column 3: certifications (two logos side by side) + blurb */}
             <div className="col-span-12 sm:col-span-4 lg:col-span-3 flex min-h-0 flex-col bg-gradient-to-br from-orange-50 to-purple-50 rounded-xl p-4">
-                <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
                     {hoveredCourse || hoveredCategory ? "Certifications" : "Governing Bodies"}
-                </h3>
+                </p>
 
                 <div className="grid grid-cols-2 gap-3">
                     {[0, 1].map((i) => {
