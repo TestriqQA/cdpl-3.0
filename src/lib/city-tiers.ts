@@ -4,8 +4,9 @@
  *
  * WHY THIS EXISTS
  * ---------------
- * `src/types/course-data.ts` defines 765 city pages across 260 localities, six
- * course families each. 476 of them are Maharashtra, and after Mumbai, Pune and
+ * The city course data (then one file, now src/data/cities) defined 765 city
+ * pages across 260 localities, six course families each - 655 since the
+ * web-development family was removed. 476 of them are Maharashtra, and after Mumbai, Pune and
  * Nagpur every remaining Maharashtra entry is a Mumbai local-train station
  * (CSMT, Dadar, Byculla, Masjid, Grant Road, Charni Road, Matunga, Sion …).
  * A further 22 target UAE desert towns (Liwa Oasis, Ghayathi, Masafi) while no

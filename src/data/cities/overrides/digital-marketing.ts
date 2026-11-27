@@ -1,0 +1,1142 @@
+// What is different on one city's Digital Marketing page, keyed by city slug.
+// A field set here replaces the template's value for that page only; `undefined`
+// removes it. `use` picks a shared version from ../variants/digital-marketing.ts.
+// Cities with nothing different are not listed.
+
+import type { CityOverrides } from "../types";
+import { STAT_TEXT } from "@/lib/site-stats";
+
+export const digitalMarketingOverrides: CityOverrides = {
+  mumbai: {
+    metadata: {
+      title: "Comprehensive Digital Marketing Courses in Mumbai | Placement",
+      description: "Join the Comprehensive Digital Marketing Courses in Mumbai at Cinute Digital. Master SEO, PPC, Google Ads & Social Media. Job Placement for Freshers & Professionals.",
+      keywords: "digital marketing courses in mumbai, google ads course mumbai, seo course in mumbai, social marketing course mumbai, comprehensive marketing courses in india, digital marketing course fees in mumbai",
+    },
+    courseDetails: { price: "₹35,000", discountedPrice: "₹24,999" },
+    heroContent: {
+      title: "Digital Marketing Courses in Mumbai",
+      subtitle: "Master SEO, PPC, and Social Media Marketing",
+      description: "Looking for the **comprehensive digital marketing courses in Mumbai** with placement? Fast-track your career with Cinute Digital's comprehensive training. We specialize in **SEO, Google Ads, Content Marketing, and Social Media Marketing**, ensuring you gain practical, job-ready skills. Whether you are a student exploring **marketing courses in India** or a professional upskilling in **search engine optimization course in Mumbai**, our program is tailored for you. Join successful alumni who have launched careers in top agencies and firms. With **affordable fees** and dedicated **placement support**, we are the leading choice for **digital marketing course Mumbai** aspirants.",
+      certifications: ["Google Ads & Analytics Certified", "Meta Marketing Associate", "ISTQB & Industry-Recognized"],
+      stats: [
+        {
+          number: STAT_TEXT.studentsPlaced,
+          label: "Placements Achieved",
+          description: "Successfully placed in top agencies",
+        },
+        {
+          number: STAT_TEXT.rating,
+          label: "Student Rating",
+          description: `Based on ${STAT_TEXT.reviews} Google reviews`,
+        },
+        { number: "90+", label: "Real-World Projects", description: "Hands-on industry experience" },
+        { number: "24/7", label: "Mentor Support", description: "Job-outcome focused mentorship" },
+      ],
+      landmarks: ["Bandra-Worli Sea Link", "Gateway of India", "Marine Drive", "Thane Viviana Mall"],
+    },
+    courseOverviewContent: {
+      title: "Digital Marketing Syllabus & Modules",
+      description: "Our Mumbai-centric curriculum covers the entire digital landscape. From **SEO classes in Mumbai** to advanced **PPC course Mumbai** strategies, we prepare you for high-paying roles found in **digital marketing jobs in Mumbai**.",
+      subtitle: "Program Modules",
+    },
+    projectsContent: {
+      description: "Execute real campaigns. From running **Facebook Ads** for a **fitness trainer course in Mumbai** to optimizing a **teacher training course in Mumbai** website, you gain real experience.",
+    },
+  },
+  delhi: {
+    metadata: {
+      keywords: "digital marketing course delhi, seo training delhi, ppc course delhi, social media marketing course, digital marketing certification delhi, analytics course delhi",
+    },
+    heroContent: { landmarks: ["India Gate", "Red Fort", "Qutub Minar", "Lotus Temple"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course completely transformed my career. The practical approach and mentorship helped me land a job within 2 months of completion. Highly recommended!",
+        author: "Amit Kumar",
+        role: "Digital Marketer at DigitalCorp",
+        rating: 5,
+      },
+    },
+    ctaContent: {
+      contactInfo: { phone: "+91 84-889-889-84", email: "contact@cinutedigital.com", address: "Delhi, Delhi, India" },
+    },
+  },
+  bengaluru: {
+    metadata: {
+      keywords: "digital marketing course bengaluru, seo training bengaluru, ppc course bangalore, social media marketing course, digital marketing certification bengaluru, analytics course karnataka",
+    },
+    heroContent: { landmarks: ["Vidhana Soudha", "Cubbon Park", "Bangalore Palace", "ISKCON Temple"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course completely transformed my career. The practical approach and mentorship helped me land a job within 2 months of completion. Highly recommended!",
+        author: "Sneha Rao",
+        role: "Digital Marketer at TechTrend",
+        rating: 5,
+      },
+    },
+  },
+  chennai: {
+    heroContent: { landmarks: ["Marina Beach", "Kapaleeshwarar Temple", "Fort St. George", "San Thome Basilica"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course completely transformed my career. The practical approach and mentorship helped me land a job within 2 months of completion. Highly recommended!",
+        author: "Vikram Raj",
+        role: "Digital Marketer at MarketTrend",
+        rating: 5,
+      },
+    },
+    use: { "metadata.keywords": "v2", "courseDetails.language": "v2" },
+  },
+  hyderabad: {
+    metadata: {
+      keywords: "digital marketing course hyderabad, seo training hyderabad, ppc course hyderabad, social media marketing course, digital marketing certification hyderabad, analytics course telangana",
+    },
+    heroContent: { landmarks: ["Charminar", "Golconda Fort", "Hussain Sagar Lake", "Qutb Shahi Tombs"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course completely transformed my career. The practical approach and mentorship helped me land a job within 2 months of completion. Highly recommended!",
+        author: "Suresh Reddy",
+        role: "Digital Marketer at TechTrend",
+        rating: 5,
+      },
+    },
+    use: { "courseDetails.language": "v3" },
+  },
+  kolkata: {
+    metadata: {
+      keywords: "digital marketing course kolkata, seo training kolkata, ppc course kolkata, social media marketing course, digital marketing certification kolkata, analytics course west bengal",
+    },
+    courseDetails: { language: "English & Bengali" },
+    heroContent: { landmarks: ["Victoria Memorial", "Howrah Bridge", "Indian Museum", "Dakshineswar Kali Temple"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course completely transformed my career. The practical approach and mentorship helped me land a job within 2 months of completion. Highly recommended!",
+        author: "Ananya Bose",
+        role: "Digital Marketer at BrandBuzz",
+        rating: 5,
+      },
+    },
+  },
+  ahmedabad: {
+    heroContent: { landmarks: ["Sabarmati Ashram", "Kankaria Lake", "Adalaj Stepwell", "Sidi Saiyyed Mosque"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course completely transformed my career. The practical approach and mentorship helped me land a job within 2 months of completion. Highly recommended!",
+        author: "Ravi Patel",
+        role: "Digital Marketer at DigitalWave",
+        rating: 5,
+      },
+    },
+    use: { "metadata.keywords": "v3", "courseDetails.language": "v4" },
+  },
+  pune: {
+    heroContent: { landmarks: ["Shaniwar Wada", "Aga Khan Palace", "Sinhagad Fort", "Dagdusheth Halwai Ganpati Temple"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course completely transformed my career. The practical approach and mentorship helped me land a job within 2 months of completion. Highly recommended!",
+        author: "Sneha Deshmukh",
+        role: "Digital Marketer at TechTrend",
+        rating: 5,
+      },
+    },
+    use: { "courseDetails.language": "v6" },
+  },
+  jaipur: {
+    heroContent: { landmarks: ["Hawa Mahal", "Amber Fort", "City Palace", "Jantar Mantar"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course gave me the skills and confidence to start my digital marketing career. The hands-on projects were incredibly valuable!",
+        author: "Priya Sharma",
+        role: "Digital Marketer at GrowEasy",
+        rating: 4.8,
+      },
+    },
+    use: {
+      "metadata.keywords": "v5",
+      "courseDetails.duration": "v2",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  lucknow: {
+    heroContent: { landmarks: ["Bara Imambara", "Chota Imambara", "Rumi Darwaza", "Hazratganj"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "The practical projects and mentor support made this course exceptional. I landed a job in just 6 weeks!",
+        author: "Aman Singh",
+        role: "SEO Specialist at DigitalVibe",
+        rating: 4.7,
+      },
+    },
+    use: {
+      "metadata.keywords": "v6",
+      "courseDetails.duration": "v2",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  chandigarh: {
+    state: "Punjab",
+    heroContent: { landmarks: ["Rock Garden", "Sukhna Lake", "Rose Garden", "Capitol Complex"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "The course was a game-changer for me. The real-world projects and mentor guidance helped me secure a role in a top agency!",
+        author: "Gurpreet Kaur",
+        role: "PPC Analyst at MarketTrend",
+        rating: 4.9,
+      },
+    },
+    use: {
+      "metadata.keywords": "v4",
+      "courseDetails.duration": "v2",
+      "courseDetails.language": "v5",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  indore: {
+    heroContent: { landmarks: ["Rajwada Palace", "Lal Bagh Palace", "Kanch Mandir", "Sarafa Bazaar"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course transformed my career. The practical projects and mentor support helped me land a job in just 6 weeks!",
+        author: "Vikram Singh",
+        role: "Digital Marketer at MarketVibe",
+        rating: 4.8,
+      },
+    },
+    use: {
+      "metadata.keywords": "v7",
+      "courseDetails.duration": "v2",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  nagpur: {
+    heroContent: { landmarks: ["Deekshabhoomi", "Ramdaspeth", "Sitabuldi Fort", "Ambazari Lake"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "The hands-on projects and mentor guidance made this course exceptional. I secured a role in a digital agency within a month!",
+        author: "Snehal Deshmukh",
+        role: "SEO Specialist at DigitalTrend",
+        rating: 4.7,
+      },
+    },
+    use: {
+      "courseDetails.duration": "v2",
+      "courseDetails.language": "v6",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  bhopal: {
+    heroContent: { landmarks: ["Upper Lake", "Van Vihar National Park", "Bhimbetka Caves", "Taj-ul-Masajid"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course was a game-changer. The practical approach and real-world projects helped me secure a digital marketing role quickly!",
+        author: "Rahul Verma",
+        role: "PPC Analyst at GrowDigital",
+        rating: 4.9,
+      },
+    },
+    use: {
+      "metadata.keywords": "v7",
+      "courseDetails.duration": "v2",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  vadodara: {
+    heroContent: { landmarks: ["Laxmi Vilas Palace", "Sayaji Garden", "Vadodara Museum", "Kirti Stambh"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "The course provided practical skills and real-world projects that helped me transition into a digital marketing career seamlessly.",
+        author: "Neha Patel",
+        role: "Digital Marketer at BrandBoost",
+        rating: 4.8,
+      },
+    },
+    use: {
+      "metadata.keywords": "v3",
+      "courseDetails.duration": "v2",
+      "courseDetails.language": "v4",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  coimbatore: {
+    heroContent: { landmarks: ["Marudhamalai Temple", "Perur Pateeswarar Temple", "VOC Park", "Kovai Kutralam Falls"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course was a game-changer for my career. The hands-on projects and mentor support helped me secure a job in digital marketing!",
+        author: "Karthik Raj",
+        role: "Digital Marketer at TechTrend",
+        rating: 4.8,
+      },
+    },
+    use: {
+      "metadata.keywords": "v2",
+      "courseDetails.duration": "v2",
+      "courseDetails.language": "v2",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  kanpur: {
+    heroContent: { landmarks: ["Kanpur Sangrahalaya", "Jajmau", "Bithoor", "Phool Bagh"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "The practical projects and mentor guidance were invaluable. I landed a digital marketing role within weeks of completing the course!",
+        author: "Anjali Gupta",
+        role: "SEO Specialist at DigitalWave",
+        rating: 4.7,
+      },
+    },
+    use: {
+      "metadata.keywords": "v6",
+      "courseDetails.duration": "v2",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  patna: {
+    metadata: {
+      keywords: "digital marketing course patna, seo training patna, ppc course patna, social media marketing course, digital marketing certification patna, analytics course bihar",
+    },
+    heroContent: { landmarks: ["Gandhi Maidan", "Patna Museum", "Golghar", "Mahavir Mandir"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course gave me the skills and confidence to start my digital marketing career. The projects were incredibly practical!",
+        author: "Ravi Kumar",
+        role: "PPC Analyst at MarketGrow",
+        rating: 4.8,
+      },
+    },
+    use: {
+      "courseDetails.duration": "v2",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  ludhiana: {
+    heroContent: {
+      landmarks: ["Guru Nanak Dev Ji Stadium", "Punjab Agricultural University", "Nehru Rose Garden", "Rakh Bagh"],
+    },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course transformed my career. The practical projects and expert guidance helped me land a digital marketing role quickly!",
+        author: "Harpreet Kaur",
+        role: "Digital Marketer at GrowthVibe",
+        rating: 4.8,
+      },
+    },
+    use: {
+      "metadata.keywords": "v4",
+      "courseDetails.duration": "v2",
+      "courseDetails.language": "v5",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  visakhapatnam: {
+    heroContent: { landmarks: ["Kailasagiri", "Rushikonda Beach", "Simhachalam Temple", "Submarine Museum"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "The hands-on projects and expert mentorship made this course exceptional. I secured a digital marketing role within a month!",
+        author: "Suresh Reddy",
+        role: "SEO Specialist at DigitalTrend",
+        rating: 4.7,
+      },
+    },
+    use: {
+      "metadata.keywords": "v8",
+      "courseDetails.duration": "v2",
+      "courseDetails.language": "v3",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  madurai: {
+    heroContent: { landmarks: ["Meenakshi Amman Temple", "Thirumalai Nayakkar Mahal", "Vandiyur Lake", "Alagar Kovil"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course provided practical skills and real-world projects that helped me transition into a digital marketing career seamlessly.",
+        author: "Priya Senthil",
+        role: "Digital Marketer at BrandBoost",
+        rating: 4.8,
+      },
+    },
+    use: {
+      "metadata.keywords": "v2",
+      "courseDetails.duration": "v2",
+      "courseDetails.language": "v2",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  kochi: {
+    metadata: {
+      keywords: "digital marketing course kochi, seo training kochi, ppc course kochi, social media marketing course, digital marketing certification kochi, analytics course kerala",
+    },
+    courseDetails: { language: "English & Malayalam" },
+    heroContent: { landmarks: ["Fort Kochi", "Mattancherry Palace", "Marine Drive", "Chinese Fishing Nets"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "The hands-on projects and expert mentorship made this course exceptional. I secured a digital marketing role within a month!",
+        author: "Arun Nair",
+        role: "SEO Specialist at DigitalTrend",
+        rating: 4.7,
+      },
+    },
+    use: {
+      "courseDetails.duration": "v2",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  amritsar: {
+    heroContent: { landmarks: ["Golden Temple", "Jallianwala Bagh", "Wagah Border", "Durgiana Temple"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "The practical projects and expert guidance were invaluable. I landed a digital marketing role within weeks of completing the course!",
+        author: "Gurpreet Singh",
+        role: "SEO Specialist at DigitalWave",
+        rating: 4.7,
+      },
+    },
+    use: {
+      "metadata.keywords": "v4",
+      "courseDetails.duration": "v2",
+      "courseDetails.language": "v5",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  jodhpur: {
+    heroContent: { landmarks: ["Mehrangarh Fort", "Jaswant Thada", "Umaid Bhawan Palace", "Mandore Gardens"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course transformed my career. The hands-on projects and expert mentorship helped me secure a digital marketing role quickly!",
+        author: "Rahul Sharma",
+        role: "Digital Marketer at GrowthVibe",
+        rating: 4.8,
+      },
+    },
+    use: {
+      "metadata.keywords": "v5",
+      "courseDetails.duration": "v2",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  vijayawada: {
+    heroContent: { landmarks: ["Kanaka Durga Temple", "Prakasam Barrage", "Undavalli Caves", "Bhavani Island"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course gave me the skills and confidence to start my digital marketing career. The projects and mentorship were top-notch!",
+        author: "Ravi Kumar",
+        role: "Digital Marketer at BrandVibe",
+        rating: 4.8,
+      },
+    },
+    use: {
+      "metadata.keywords": "v8",
+      "courseDetails.duration": "v2",
+      "courseDetails.language": "v3",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  rajkot: {
+    heroContent: { landmarks: ["Watson Museum", "Aji Dam", "Jubilee Garden", "Swaminarayan Temple"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "The hands-on projects and expert mentorship made this course exceptional. I secured a digital marketing role within a month!",
+        author: "Nilesh Patel",
+        role: "SEO Specialist at DigitalTrend",
+        rating: 4.7,
+      },
+    },
+    use: {
+      "metadata.keywords": "v3",
+      "courseDetails.duration": "v2",
+      "courseDetails.language": "v4",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  mangalore: {
+    metadata: {
+      keywords: "digital marketing course mangalore, seo training mangalore, ppc course mangalore, social media marketing course, digital marketing certification mangalore, analytics course karnataka",
+    },
+    courseDetails: { language: "English & Kannada" },
+    heroContent: {
+      landmarks: ["Mangaladevi Temple", "Kadri Manjunath Temple", "Pilikula Nisargadhama", "Tannirbhavi Beach"],
+    },
+    whyChooseContent: {
+      testimonial: {
+        text: "This course gave me the skills and confidence to start my digital marketing career. The projects and mentorship were top-notch!",
+        author: "Ananya Rao",
+        role: "Digital Marketer at BrandVibe",
+        rating: 4.8,
+      },
+    },
+    use: {
+      "courseDetails.duration": "v2",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  dehradun: {
+    metadata: {
+      keywords: "digital marketing course dehradun, seo training dehradun, ppc course dehradun, social media marketing course, digital marketing certification dehradun, analytics course uttarakhand",
+    },
+    heroContent: { landmarks: ["Robber's Cave", "Sahastradhara", "Mindrolling Monastery", "Tapkeshwar Temple"] },
+    whyChooseContent: {
+      testimonial: {
+        text: "The hands-on projects and expert mentorship made this course exceptional. I secured a digital marketing role within a month!",
+        author: "Priya Negi",
+        role: "SEO Specialist at DigitalTrend",
+        rating: 4.7,
+      },
+    },
+    use: {
+      "courseDetails.duration": "v2",
+      "courseDetails.price": "v2",
+      "courseDetails.discountedPrice": "v2",
+      "heroContent.stats": "v2",
+      "courseOverviewContent.modules": "v2",
+      "curriculumContent.tracks": "v2",
+      "toolsFrameworkContent.stats": "v2",
+      "projectsContent.projects": "v2",
+      "careerPathContent.paths": "v2",
+      "faqsContent.faqs": "v2",
+      "ctaContent.subtitle": "v2",
+      "ctaContent.benefits": "v2",
+    },
+  },
+  bandra: {
+    heroContent: { landmarks: ["Bandra-Worli Sea Link", "Gateway of India", "Marine Drive", "Bombay Stock Exchange"] },
+  },
+  andheri: {
+    curriculumContent: {
+      tracks: [
+        {
+          id: "seo",
+          title: "SEO Fundamentals",
+          weeks: [
+            {
+              number: "01",
+              title: "SEO Basics & KeywordResearch",
+              description: "Search engines, SERPs, keyword tools (Ahrefs/SEMrush).",
+              deliverables: ["Keyword list", "mini audit"],
+            },
+            {
+              number: "02",
+              title: "On-Page Optimization",
+              description: "Meta tags, content optimization, site structure.",
+              deliverables: ["Optimized page", "checklist"],
+            },
+            {
+              number: "03",
+              title: "Technical SEO",
+              description: "Site speed, mobile-first, schema markup.",
+              deliverables: ["Audit report", "fixes implemented"],
+            },
+            {
+              number: "04",
+              title: "Off-Page & Local SEO",
+              description: "Backlinks, Google My Business, local rankings.",
+              deliverables: ["Link strategy", "GBP setup"],
+            },
+          ],
+        },
+        {
+          id: "social-media",
+          title: "Social Media Marketing",
+          weeks: [
+            {
+              number: "01",
+              title: "Platform Fundamentals",
+              description: "Facebook/Instagram/Twitter/LinkedIn setup & best practices.",
+              deliverables: ["Profile optimization", "content calendar"],
+            },
+            {
+              number: "02",
+              title: "Organic Content Strategy",
+              description: "Posting schedules, hashtags, engagement tactics.",
+              deliverables: ["10-post series", "engagement report"],
+            },
+            {
+              number: "03",
+              title: "Paid Social Ads",
+              description: "Ad manager, targeting, budgeting.",
+              deliverables: ["Campaign launch", "ad creatives"],
+            },
+            {
+              number: "04",
+              title: "Analytics & Optimization",
+              description: "Insights analysis, A/B testing.",
+              deliverables: ["Performance dashboard", "optimization plan"],
+            },
+          ],
+        },
+        {
+          id: "ppc",
+          title: "PPC Advertising (Google Ads)",
+          weeks: [
+            {
+              number: "01",
+              title: "Google Ads Setup",
+              description: "Account creation, campaign types.",
+              deliverables: ["Account ready", "keyword plan"],
+            },
+            {
+              number: "02",
+              title: "Search Campaigns",
+              description: "Ad groups, bidding strategies.",
+              deliverables: ["Live campaign", "ad copy set"],
+            },
+            {
+              number: "03",
+              title: "Display & Remarketing",
+              description: "Visual ads, audience lists.",
+              deliverables: ["Remarketing setup", "display ads"],
+            },
+            {
+              number: "04",
+              title: "Optimization & Reporting",
+              description: "Quality score, conversions, reports.",
+              deliverables: ["Monthly report", "optimization tweaks"],
+            },
+          ],
+        },
+        {
+          id: "content",
+          title: "Content Marketing",
+          weeks: [
+            {
+              number: "01",
+              title: "Content Strategy",
+              description: "Buyer personas, content pillars.",
+              deliverables: ["Persona sheets", "pillar content"],
+            },
+            {
+              number: "02",
+              title: "Blogging & SEO Content",
+              description: "Writing, optimization tools.",
+              deliverables: ["3 blog posts", "SEO checklist"],
+            },
+            {
+              number: "03",
+              title: "Visual & Video Content",
+              description: "Canva, YouTube basics.",
+              deliverables: ["Video script", "infographic"],
+            },
+            {
+              number: "04",
+              title: "Distribution & Promotion",
+              description: "Guest posting, syndication.",
+              deliverables: ["Promotion plan", "distribution report"],
+            },
+          ],
+        },
+        {
+          id: "email",
+          title: "Email Marketing",
+          weeks: [
+            {
+              number: "01",
+              title: "Email Basics & Tools",
+              description: "Mailchimp setup, list building.",
+              deliverables: ["Campaign ready", "list import"],
+            },
+            {
+              number: "02",
+              title: "Newsletter Design",
+              description: "Templates, personalization.",
+              deliverables: ["Newsletter series", "design assets"],
+            },
+            {
+              number: "03",
+              title: "Automation & Sequences",
+              description: "Drip campaigns, triggers.",
+              deliverables: ["Automated workflow", "test run"],
+            },
+            {
+              number: "04",
+              title: "Metrics & Compliance",
+              description: "Open rates, GDPR compliance.",
+              deliverables: ["Analytics report", "compliance checklist"],
+            },
+          ],
+        },
+        {
+          id: "analytics",
+          title: "Google Analytics & Digital Analytics",
+          weeks: [
+            {
+              number: "01",
+              title: "GA4 Setup",
+              description: "Installation, events tracking.",
+              deliverables: ["GA4 property", "tracking code"],
+            },
+            {
+              number: "02",
+              title: "Reports & Audiences",
+              description: "Real-time, acquisition reports.",
+              deliverables: ["Custom report", "segment creation"],
+            },
+            {
+              number: "03",
+              title: "Conversions & Ecommerce",
+              description: "Goal setup, funnel visualization.",
+              deliverables: ["Conversion tracking", "funnel analysis"],
+            },
+            {
+              number: "04",
+              title: "Advanced Insights",
+              description: "BigQuery integration, dashboards.",
+              deliverables: ["Data Studio dashboard", "insights summary"],
+            },
+          ],
+        },
+        {
+          id: "advanced",
+          title: "Advanced Digital Marketing",
+          weeks: [
+            {
+              number: "01",
+              title: "Omnichannel Strategies",
+              description: "Integration across channels.",
+              deliverables: ["Omnichannel plan", "mapping"],
+            },
+            {
+              number: "02",
+              title: "CRO & A/B Testing",
+              description: "Tools like Optimizely.",
+              deliverables: ["Test plan", "results analysis"],
+            },
+            {
+              number: "03",
+              title: "AI & Automation",
+              description: "Chatbots, predictive analytics.",
+              deliverables: ["AI tool setup", "automation script"],
+            },
+            {
+              number: "04",
+              title: "Growth Hacking",
+              description: "Viral loops, scaling tactics.",
+              deliverables: ["Growth playbook", "case study"],
+            },
+          ],
+        },
+        {
+          id: "master-program",
+          title: "Digital Marketing and Analytics - Master Program",
+          weeks: [
+            {
+              number: "01-02",
+              title: "Digital Marketing Fundamentals",
+              description: "Set marketing objectives; research market & competitors; map funnels and buyer journeys; define audience segments and buyer personas; craft value propositions; learn channel taxonomy (Paid/Owned/Earned/Shared), inorganic vs organic mix, and choose the right channels with real brand case studies.",
+              deliverables: ["Marketing plan outline", "Channel audit with buyer personas", "Fundamentals quiz"],
+            },
+            {
+              number: "03-04",
+              title: "SEO & Content Mastery",
+              description: "SEO basics (Google updates, ranking analysis), keyword research & mapping, title/meta optimization, content SEO and internal linking, off-page/link building, technical SEO intro, mistakes & penalties, plus persuasive copywriting for ads/LPs (value proposition, headlines, storytelling, layouts, A/B testing).",
+              deliverables: [
+                "SEO audit report (incl. keyword map)",
+                "10 content pieces with on-page SEO",
+                "Content & landing-page strategy doc",
+              ],
+            },
+            {
+              number: "05-06",
+              title: "Social Media & PPC Campaigns",
+              description: "Social media strategy (B2B vs B2C, algorithms, formats, metrics) across YouTube/LinkedIn/Instagram/Twitter; Google Ads (Search/Display/Discovery/YouTube/UAC: structure, match types, bidding, audiences, tracking); Meta Ads (objectives, CBO/ABO, placements, funnels, ROAS), plus LinkedIn & alternative networks (Amazon/Apple Search/Quora/Taboola/Outbrain).",
+              deliverables: [
+                "Live social campaign with content calendar",
+                "Google Ads account setup & first campaigns",
+                "Performance reports with optimization notes",
+              ],
+            },
+            {
+              number: "07-08",
+              title: "Email & Automation Funnels",
+              description: "Email marketing best practices (KPIs, tips, journeys), WhatsApp marketing dos & don’ts, and marketing automation stacks (rule/creative automation, omni-channel) with practical orchestration using tools like Zapier; build blended email + WhatsApp journeys with tracking.",
+              deliverables: [
+                "Email funnel with sequences & KPIs",
+                "Automation workflow (Zapier/omni-channel)",
+                "A/B test results & learnings",
+              ],
+            },
+            {
+              number: "09-10",
+              title: "Analytics & Data-Driven Decisions",
+              description: "Conversion tracking (events, GA4 migration, funnels, attribution), cookies/FLoC basics, web & app analytics (GA4/Mixpanel/Matomo), heatmaps & session recording (Clarity/Hotjar), dashboards in Looker/Data Studio (connectors, filters), and attribution models (last/first/linear/time-decay/position/U/V-shaped) with custom model design.",
+              deliverables: [
+                "Analytics dashboard (Looker/Data Studio)",
+                "ROI & attribution analysis (GA4)",
+                "Data insights report with recommendations",
+              ],
+            },
+            {
+              number: "11-12",
+              title: "Advanced Strategy & Capstone Project",
+              description: "CRO end-to-end (observe → ideate → test → deploy with heuristics, quant/qual data, hypothesis & prioritization, statistics); media planning & buying (mix, budgets, RTB/programmatic, brand safety, evaluation); capstone: build a full-funnel strategy and complete job-prep (resume/LinkedIn, mock interviews, negotiation).",
+              deliverables: [
+                "Capstone campaign (full-funnel plan)",
+                "Portfolio site with case studies",
+                "Interview prep kit & mock feedback",
+              ],
+            },
+          ],
+        },
+        {
+          id: "dm-ai-business-owners",
+          title: "Digital Marketing and AI (For Business Owners)",
+          weeks: [
+            {
+              number: "01-03",
+              title: "Fundamentals of Digital Marketing, SEO, and Social Media Marketing",
+              description: "Gain a comprehensive understanding of digital marketing fundamentals, including setting objectives, market research, buyer personas, and channel selection. Master SEO basics with AI integration for keyword research and optimization, and develop social media strategies using AI for content creation and automation across platforms like YouTube, LinkedIn, Instagram, and Twitter.",
+              deliverables: [
+                "Buyer Persona and Value Proposition Development",
+                "Keyword Mapping Audit of a Website",
+                "Content Calendar and AI-Generated Social Media Content",
+                "Social Media Progress Report",
+              ],
+            },
+            {
+              number: "04-06",
+              title: "Persuasive Copywriting and Paid Marketing on Google and Facebook",
+              description: "Learn to craft compelling copy for ads and landing pages, including A/B testing and brand guidelines. Explore Google Ads for search, display, video, and app campaigns with advanced bidding and optimization. Dive into Facebook Ads with audience targeting, bid strategies, placements, ROAS calculation, and automation tools like RevealBot and Madgicx.",
+              deliverables: [
+                "Value Proposition Build",
+                "Google Ads Account Structure for E-commerce Brand",
+                "Facebook Ads Account Setup with Campaigns, Audiences, Creatives, and Copies",
+              ],
+            },
+            {
+              number: "07-09",
+              title: "Marketing on LinkedIn & Other Platforms, Conversion Tracking, and CRO",
+              description: "Understand LinkedIn Ads, targeting, lead gen, and alternative networks like Quora, Apple Search, Amazon, and native ads. Implement conversion tracking with cookies, GA4 migration, user behavior analysis, and tools like Microsoft Clarity. Master CRO processes including hypothesis creation, testing, and deployment with best practices.",
+              deliverables: [
+                "LinkedIn Marketing Plan for an Edtech Company",
+                "GA4 Setup and Various Useful Reports",
+                "10 CRO Hypotheses Prioritized with ICE Framework and 3 Executed Tests",
+              ],
+            },
+            {
+              number: "10-13",
+              title: "Media Planning, Dashboards, Attribution, and Email/WhatsApp Automation",
+              description: "Learn media planning fundamentals, budget allocation, buying methods, and evaluation metrics. Build data visualization dashboards using Data Studio. Explore attribution models, custom designs for B2B/B2C, and algorithms. Implement email and WhatsApp marketing best practices, metrics, and automation with tools like Zapier.",
+              deliverables: [
+                "GA4 Reports for Business",
+                "Dashboard Built on Data Studio",
+                "Custom Attribution Model",
+                "Email and WhatsApp Marketing Campaign Automated with Zapier",
+              ],
+            },
+          ],
+        },
+        {
+          id: "dm-ai-bootcamp",
+          title: "Digital Marketing With AI Bootcamp",
+          weeks: [
+            {
+              number: "01",
+              title: "Introduction to Digital Marketing, Strategy Building, and Local Optimization",
+              description: "Cover the evolution of digital marketing, buyer personas, funnels, SWOT analysis, Google Business Profile optimization, and WhatsApp Business marketing setups.",
+              deliverables: [
+                "Buyer Persona Creation",
+                "GMB Account Optimization",
+                "WhatsApp Business Profile and Campaigns",
+              ],
+            },
+            {
+              number: "02",
+              title: "SEO Fundamentals and Tools",
+              description: "Dive into on-page and off-page SEO, technical aspects, Google Search Console, GA4 setup, and performance reporting.",
+              deliverables: ["On-Page Optimization Plan", "Off-Page Link Building Strategy", "GA4 Custom Dashboards"],
+            },
+            {
+              number: "03",
+              title: "Google Ads Mastery",
+              description: "Learn Google Ads account structure, keyword types, ad copies, bidding, Google Display Network, YouTube ads, and performance optimization.",
+              deliverables: ["Search Campaign Setup", "Display and YouTube Ad Creatives"],
+            },
+            {
+              number: "04",
+              title: "Meta Ads and Social Content",
+              description: "Explore Facebook and Instagram Ads in detail, including setup, optimization, A/B testing, social media content strategies, and Canva design for posts and ads.",
+              deliverables: [
+                "Meta Pixel Installation",
+                "Lead Generation Ads",
+                "Content Calendar",
+                "Canva-Designed Creatives",
+              ],
+            },
+            {
+              number: "05-06",
+              title: "Advanced Engagement, Automation, and Capstone",
+              description: "Cover influencer marketing, community building, email automation, YouTube optimization, affiliate basics, ORM, competitor analysis, A/B testing, analytics, and a capstone project to build and present a full multi-channel strategy.",
+              deliverables: [
+                "Influencer Outreach Plan",
+                "Email Campaign with Auto-Responders",
+                "YouTube Channel Optimization",
+                "Affiliate Promotion Strategy",
+                "ORM Monitoring Plan",
+                "Competitor Benchmark Report",
+                "A/B Test Results",
+                "Capstone Full Marketing Strategy Presentation",
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  "vasai-road": {
+    curriculumContent: {
+      tracks: [
+        {
+          id: "master-program",
+          title: "Digital Marketing and Analytics - Master Program",
+          weeks: [
+            {
+              number: "01-02",
+              title: "Digital Marketing Fundamentals",
+              description: "Overview of channels, buyer journey, strategy basics.",
+              deliverables: ["Marketing plan outline", "channel audit", "Fundamentals quiz"],
+            },
+            {
+              number: "03-04",
+              title: "SEO & Content Mastery",
+              description: "Full SEO implementation and content calendar creation.",
+              deliverables: ["SEO audit report", "10 content pieces", "Content strategy doc"],
+            },
+            {
+              number: "05-06",
+              title: "Social Media & PPC Campaigns",
+              description: "Launch organic and paid campaigns across platforms.",
+              deliverables: ["Social campaign", "Google Adssetup", "Performance reports"],
+            },
+            {
+              number: "07-08",
+              title: "Email & Automation Funnels",
+              description: "Build email sequences and marketing automation.",
+              deliverables: ["Email funnel", "Automation workflow", "A/B test results"],
+            },
+            {
+              number: "09-10",
+              title: "Analytics & Data-Driven Decisions",
+              description: "GA4 mastery, attribution modeling, dashboards.",
+              deliverables: ["Analytics dashboard", "ROI analysis", "Data insights report"],
+            },
+            {
+              number: "11-12",
+              title: "Advanced Strategy & Capstone Project",
+              description: "Full-funnel strategy, portfolio building, mock client pitches.",
+              deliverables: ["Capstone campaign", "Portfolio site", "Interview prep kit"],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  csmt: {
+    metadata: {
+      keywords: "digital marketing course chhatrapati shivaji maharaj terminus csmt, seo training chhatrapati shivaji maharaj terminus csmt, ppc course chhatrapati shivaji maharaj terminus csmt, social media marketing course, digital marketing certification chhatrapati shivaji maharaj terminus csmt, analytics course maharashtra",
+    },
+  },
+  "kalyan-junction": { location: "Kalyan Junction" },
+  "kings-circle": {
+    location: "King’s Circle",
+    specializations: [
+      "Digital Marketing and Analytics",
+      "Digital Marketing and AI (For Business Owners)",
+      "Digital Marketing With AI Bootcamp",
+    ],
+    metadata: {
+      keywords: "digital marketing course kings circle, seo training kings circle, ppc course kings circle, social media marketing course, digital marketing certification kings circle, analytics course maharashtra",
+    },
+  },
+  "seawoods-darave": {
+    location: "Seawoods–Darave",
+    metadata: {
+      keywords: "digital marketing course seawoods darave, seo training seawoods darave, ppc course seawoods darave, social media marketing course, digital marketing certification seawoods darave, analytics course maharashtra",
+    },
+  },
+};

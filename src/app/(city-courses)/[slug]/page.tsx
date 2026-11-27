@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
-import { courseData, type CourseData } from "@/types/course-data";
+import type { CourseData } from "@/types/course-data";
+import { courseData } from "@/data/cities";
 import { generateMetadata as generateSEOMetadata } from "@/lib/metadata-generator";
 import {
   generateCourseSchema,
@@ -42,8 +43,8 @@ interface PageProps {
 
 // Helper: fetch by the object's internal `slug`
 //
-// City-specific content is merged in here rather than written into
-// courseData.ts, so the 449k-line data file does not have to be edited for it.
+// City-wide content from local-content.ts is merged in here, on top of the page
+// built in src/data/cities (template + that city's overrides).
 // `CourseData` has carried localJobMarketInsight / localizedFaqs since April
 // 2026 and the components already render them — but across all 765 records
 // they were filled in zero times, which is why every city page reads as the
