@@ -9,7 +9,7 @@ import JsonLd from "@/components/JsonLd";
 import type { CourseData } from "@/types/course-data";
 
 // Your data (currently a Record<string, CourseData>)
-import { courseData } from "@/types/course-data";
+import { courseData } from "@/data/cities";
 
 // Sections imported directly — next/dynamic(ssr:true) only added client Suspense
 // boundaries that caused a hydration layout shift (see BLG-010 / commit 5ffc1db).

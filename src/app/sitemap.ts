@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { unstable_cache } from 'next/cache';
-import { courseData } from '@/types/course-data';
+import { courseData } from '@/data/cities';
 import { isTier1Slug } from '@/lib/city-tiers';
 import { pastEvents } from '@/data/events';
 import { getServices } from '@/lib/services';
