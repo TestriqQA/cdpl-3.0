@@ -12,8 +12,8 @@
  * ended up competing for "data science course in mumbai".
  *
  * The differentiation machinery was built and never used. This file supplies
- * the data, merged in at read time so the 449k-line `courseData.ts` does not
- * have to be edited for it.
+ * the data, merged in at read time by the city page on top of the page built
+ * from templates/ and overrides/ (see ./index.ts).
  *
  * WHAT MAY GO IN HERE
  * -------------------
