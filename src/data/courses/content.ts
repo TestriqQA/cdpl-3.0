@@ -1,5 +1,5 @@
-// Loads each course's content for the dynamic course routes
-// (src/app/courses/<family>/[course]/page.tsx).
+// Loads each course's content for the dynamic course route
+// (src/app/courses/[category]/[course]/page.tsx).
 //
 // Kept apart from registry.ts on purpose: the header, hubs and campus page read
 // the course list from the registry, and must not pull every course's full
@@ -71,33 +71,40 @@ const LOADERS = {
 
 const isCourseSlug = (slug: string): slug is CourseSlug => Object.hasOwn(COURSES, slug);
 
-/**
- * `generateStaticParams` for one family's [course] route.
- *
- * The URL is now built from the route folder plus the slug, while the canonical,
- * breadcrumbs and internal links still come from the registry `href`. This
- * throws at build time if the two would ever disagree, so a page can never be
- * served at one URL and declare another as canonical.
- */
-export function courseParams(category: CourseCategoryKey): { course: CourseSlug }[] {
-  const base = COURSE_CATEGORIES[category].href;
-  return (Object.keys(COURSES) as CourseSlug[])
-    .filter((slug) => COURSES[slug].category === category)
-    .map((slug) => {
-      const href: string = COURSES[slug].href;
-      if (href !== `${base}/${slug}`) {
-        throw new Error(`Course "${slug}" has href ${href}; its route serves ${base}/${slug}`);
-      }
-      return { course: slug };
-    });
+/** A category's segment in the URL: "bi-courses" for /courses/bi-courses. */
+function categorySegment(category: CourseCategoryKey): string {
+  const href: string = COURSE_CATEGORIES[category].href;
+  const match = /^\/courses\/([a-z0-9-]+)$/.exec(href);
+  if (!match) throw new Error(`Category "${category}" hub ${href} is not /courses/<segment>`);
+  return match[1];
 }
 
 /**
- * The content for `slug`, or undefined when it is not a course in `category`
- * (a real slug requested under the wrong family included).
+ * `generateStaticParams` for the [category]/[course] route: one entry per
+ * course in the registry.
+ *
+ * The URL is built from the two params, while the canonical, breadcrumbs and
+ * internal links still come from the registry `href`. This throws at build
+ * time if the two would ever disagree, so a page can never be served at one
+ * URL and declare another as canonical.
  */
-export async function loadCourse(category: CourseCategoryKey, slug: string): Promise<CourseContent | undefined> {
-  if (!isCourseSlug(slug) || COURSES[slug].category !== category) return undefined;
+export function courseParams(): { category: string; course: CourseSlug }[] {
+  return (Object.keys(COURSES) as CourseSlug[]).map((slug) => {
+    const category = categorySegment(COURSES[slug].category);
+    const href: string = COURSES[slug].href;
+    if (href !== `/courses/${category}/${slug}`) {
+      throw new Error(`Course "${slug}" has href ${href}; the route serves /courses/${category}/${slug}`);
+    }
+    return { category, course: slug };
+  });
+}
+
+/**
+ * The content for /courses/{category}/{slug}, or undefined when that is not a
+ * course page (a real slug under the wrong category included).
+ */
+export async function loadCourse(category: string, slug: string): Promise<CourseContent | undefined> {
+  if (!isCourseSlug(slug) || categorySegment(COURSES[slug].category) !== category) return undefined;
   const course = await LOADERS[slug]();
   if (course.slug !== slug) {
     throw new Error(`Course file for "${slug}" declares slug "${course.slug}"`);
