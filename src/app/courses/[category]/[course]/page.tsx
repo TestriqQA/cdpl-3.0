@@ -1,9 +1,6 @@
 // Every course page, built at deploy time from src/data/courses/registry.ts.
-//
-// The family hubs (/courses/bi-courses etc.) are static folders next to this
-// one. Next.js matches full route patterns, so /courses/bi-courses still hits
-// its hub page and /courses/bi-courses/power-bi-course lands here. Any
-// category/course pair that is not a registry course is a 404.
+// The category's hub is ../page.tsx. Any category/course pair that is not a
+// registry course is a 404.
 
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -14,6 +11,8 @@ type Props = { params: Promise<{ category: string; course: string }> };
 
 export const dynamicParams = false;
 
+// Both params, for every course. ../page.tsx's generateStaticParams is for the
+// hub route only: Next.js passes parent params down from a layout, not a page.
 export function generateStaticParams() {
   return courseParams();
 }

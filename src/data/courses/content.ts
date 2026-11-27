@@ -11,12 +11,7 @@
 // the typecheck if a registry course has no loader, or a loader has no course.
 
 import type { CourseContent } from "@/types/course-page";
-import {
-  COURSES,
-  COURSE_CATEGORIES,
-  type CourseCategoryKey,
-  type CourseSlug,
-} from "@/data/courses/registry";
+import { COURSES, categorySegment, type CourseSlug } from "@/data/courses/registry";
 
 const LOADERS = {
   // Software testing
@@ -71,17 +66,13 @@ const LOADERS = {
 
 const isCourseSlug = (slug: string): slug is CourseSlug => Object.hasOwn(COURSES, slug);
 
-/** A category's segment in the URL: "bi-courses" for /courses/bi-courses. */
-function categorySegment(category: CourseCategoryKey): string {
-  const href: string = COURSE_CATEGORIES[category].href;
-  const match = /^\/courses\/([a-z0-9-]+)$/.exec(href);
-  if (!match) throw new Error(`Category "${category}" hub ${href} is not /courses/<segment>`);
-  return match[1];
-}
-
 /**
- * `generateStaticParams` for the [category]/[course] route: one entry per
- * course in the registry.
+ * `generateStaticParams` for the [category]/[course] route: one
+ * { category, course } pair per course in the registry.
+ *
+ * It returns both params itself. Next.js only passes parent params down from a
+ * generateStaticParams in a layout; the one in [category]/page.tsx belongs to
+ * the hub route and never reaches this one.
  *
  * The URL is built from the two params, while the canonical, breadcrumbs and
  * internal links still come from the registry `href`. This throws at build
@@ -100,11 +91,11 @@ export function courseParams(): { category: string; course: CourseSlug }[] {
 }
 
 /**
- * The content for /courses/{category}/{slug}, or undefined when that is not a
+ * The content for /courses/{segment}/{slug}, or undefined when that is not a
  * course page (a real slug under the wrong category included).
  */
-export async function loadCourse(category: string, slug: string): Promise<CourseContent | undefined> {
-  if (!isCourseSlug(slug) || categorySegment(COURSES[slug].category) !== category) return undefined;
+export async function loadCourse(segment: string, slug: string): Promise<CourseContent | undefined> {
+  if (!isCourseSlug(slug) || categorySegment(COURSES[slug].category) !== segment) return undefined;
   const course = await LOADERS[slug]();
   if (course.slug !== slug) {
     throw new Error(`Course file for "${slug}" declares slug "${course.slug}"`);
