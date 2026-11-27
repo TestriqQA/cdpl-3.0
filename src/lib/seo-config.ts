@@ -98,10 +98,12 @@ export const BUSINESS_INFO = {
   maps: {
     place:
       'https://www.google.com/maps/place/Cinute+Digital+Pvt.+Ltd.+A+Premier+Software+Training+Institute+(CDPL)/@19.280306,72.857179,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b1af2b2c5fed:0x7104f80b9fec8b9d!8m2!3d19.280306!4d72.857179!16s%2Fg%2F11t5q_mt87',
-    // Named destination (not lat/lng) so the directions panel shows the
-    // business, not a coordinate string.
+    // Destination is the street address, not a lat/lng (which shows a raw
+    // coordinate string) and not the Google profile's name, "Cinute Digital
+    // Pvt. Ltd. A Premier Software Training Institute (CDPL)", which is
+    // keyword-stuffed and should not be repeated in our own links.
     directions:
-      'https://www.google.com/maps/dir/?api=1&destination=Cinute+Digital+Pvt.+Ltd.+A+Premier+Software+Training+Institute+%28CDPL%29',
+      'https://www.google.com/maps/dir/?api=1&destination=Shanti+Shopping+Centre%2C+Opposite+Mira+Road+Station+%28E%29%2C+Mira+Bhayandar%2C+Maharashtra+401107',
     embed:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235.37797206926018!2d72.85688135772946!3d19.28029815178905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b1af2b2c5fed%3A0x7104f80b9fec8b9d!2sCinute%20Digital%20Pvt.%20Ltd.%20A%20Premier%20Software%20Training%20Institute%20(CDPL)!5e0!3m2!1sen!2sin!4v1785152704558!5m2!1sen!2sin',
   },

@@ -403,16 +403,19 @@ export function generateWebsiteSchema(): WithContext<Record<string, unknown>> {
 /**
  * Generate LocalBusiness schema for location-based searches
  */
-export function generateLocalBusinessSchema(): WithContext<
-  Record<string, unknown>
-> {
+export function generateLocalBusinessSchema(
+  /** Real photos of the campus. Google wants the place itself here, not a logo; falls back to the default image until photos exist. */
+  photos: readonly string[] = [],
+): WithContext<Record<string, unknown>> {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": `${SITE_CONFIG.url}/#localbusiness`,
     name: SITE_CONFIG.name,
-    image: getImageUrl(SITE_CONFIG.defaultOgImage),
+    image: photos.length > 0 ? photos.map((p) => getImageUrl(p)) : getImageUrl(SITE_CONFIG.defaultOgImage),
     url: SITE_CONFIG.url,
+    // The Google Maps place (business profile) for the campus.
+    hasMap: BUSINESS_INFO.maps.place,
     telephone: BUSINESS_INFO.phone,
     priceRange: BUSINESS_INFO.priceRange,
     address: {
