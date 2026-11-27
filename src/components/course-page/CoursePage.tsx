@@ -19,6 +19,7 @@ import CourseAudience from "./CourseAudience";
 import CourseFaq from "./CourseFaq";
 import CourseCta from "./CourseCta";
 import type { Tone } from "./parts/Section";
+import { logosFromTools } from "./parts/toolLogos";
 
 /** Page metadata for a course, from its content file. */
 export function courseMetadata(course: CourseContent): Metadata {
@@ -46,7 +47,7 @@ export default function CoursePage({ course }: { course: CourseContent }) {
     course.curriculum && { id: "curriculum", label: "Curriculum", render: (p: Base) => <CourseCurriculum {...p} data={course.curriculum!} /> },
     course.tools && { id: "tools", label: "Tools", render: (p: Base) => <CourseTools {...p} data={course.tools!} /> },
     course.roadmap && { id: "roadmap", label: "Roadmap", render: (p: Base) => <CourseRoadmap {...p} data={course.roadmap!} /> },
-    course.projects && { id: "projects", label: "Projects", render: (p: Base) => <CourseProjects {...p} data={course.projects!} /> },
+    course.projects && { id: "projects", label: "Projects", render: (p: Base) => <CourseProjects {...p} data={course.projects!} toolLogos={logosFromTools(course.tools?.items)} /> },
     course.testimonials && { id: "testimonials", label: "Reviews", render: (p: Base) => <CourseTestimonials {...p} data={course.testimonials!} /> },
     course.career && { id: "career", label: "Career & Salary", render: (p: Base) => <CourseCareer {...p} data={course.career!} /> },
     course.audience && { id: "who-should-enroll", label: "Enroll", render: (p: Base) => <CourseAudience {...p} data={course.audience!} /> },
