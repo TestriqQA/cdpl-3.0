@@ -37,6 +37,8 @@ const SYLLABUS_LINKS: Record<string, string> = {
   'Data Analytics with BI and Big Data': 'https://www.cinutedigital.com/downloads/data-analytics-with-bi-and-big-data-engineering-master-program.pdf',
   'Deep Learning NLP and GenAI': 'https://www.cinutedigital.com/downloads/deep-learning-nlp-and-generativeai.pdf',
   'Master Program in Deep Learning, NLP & Generative AI': 'https://www.cinutedigital.com/downloads/deep-learning-nlp-and-generativeai.pdf',
+  // The course page's courseName since it stopped being called a master program.
+  'Deep Learning, NLP and Generative AI': 'https://www.cinutedigital.com/downloads/deep-learning-nlp-and-generativeai.pdf',
   'Machine Learning and Data Science with Python': 'https://www.cinutedigital.com/downloads/machine-learning-and-data-science-with-python-hero-program.pdf',
   'Digital Marketing and AI for Business': 'https://www.cinutedigital.com/downloads/digital-marketing-and-ai-for-business-owners-digital-marketing-and-ai-for-business-owners. Digital Marketing and AI (For Business Owners)',
   'Digital Marketing with AI Bootcamp': 'https://www.cinutedigital.com/downloads/digital-marketing-with-ai-bootcamp-digital-marketing-with-ai-bootcamp. Digital Marketing With AI Bootcamp',

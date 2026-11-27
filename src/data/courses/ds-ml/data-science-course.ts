@@ -13,7 +13,10 @@ export const dataScienceCourse: CourseContent = {
   sourceName: "Data Science Course Page",
 
   seo: {
-    title: "Data Science & Machine Learning Course Mumbai | CDPL",
+    // No "Mumbai" and no generic "Data Science & Machine Learning Course":
+    // /data-science-course-in-mumbai owns the local search and the hub owns
+    // the generic one. This page targets the 200-hour masterclass itself.
+    title: "Advanced Data Science & ML Masterclass (200 Hours) | CDPL",
     description:
       "Master advanced data science and machine learning with live mentor-led classes, real datasets, capstone projects and interview preparation at CDPL.",
     keywords: [
@@ -30,9 +33,9 @@ export const dataScienceCourse: CourseContent = {
   },
 
   schema: {
-    name: "Advanced Data Science and Machine Learning Masterclass: Full Course in Mumbai",
+    name: "Advanced Data Science and Machine Learning Masterclass",
     description:
-      "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with job placement.",
+      "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with placement support.",
     duration: "P4M",
     howTo: {
       name: "How to Enroll in CDPL Advanced Data Science Masterclass",
@@ -57,7 +60,8 @@ export const dataScienceCourse: CourseContent = {
       { icon: "briefcase", text: "Placement Support" },
       { icon: "star", text: "Mumbai’s Premium Training Institute" },
     ],
-    h1: "Advanced [[Data Science]] and [[Machine Learning]] Masterclass: Full Course in Mumbai",
+    h1: "Advanced [[Data Science]] and [[Machine Learning]] Masterclass (200 Hours)",
+    note: { text: "Not sure this is the right fit? Compare every", link: { label: "data science course", href: "/courses/ds-ml-courses" } },
     subtitle:
       "Master the **data science full course** in Mumbai with 200 hours of intensive training. From **advanced data science** to cutting-edge **machine learning**, we prepare you for high-paying roles with **Interviews** and 10+ real-time projects.",
     description:

@@ -13,14 +13,17 @@
 import type { CategoryHubContent } from "@/types/category-hub";
 import type { CourseCardIcon } from "@/components/courses/CourseCard";
 import { COURSES, type CourseSlug } from "@/data/courses/registry";
+import { BUSINESS_INFO } from "@/lib/seo-config";
 
 const href = (slug: CourseSlug) => COURSES[slug].href;
+
+const { streetAddress, addressLocality, addressRegion, postalCode } = BUSINESS_INFO.address;
+const CAMPUS_ADDRESS = `${streetAddress}, ${addressLocality}, ${addressRegion} ${postalCode}`;
 
 type RawCourse = {
   title: string;
   description: string;
   duration: string;
-  students: string;
   level: string;
   popular: boolean;
   link: string;
@@ -36,13 +39,12 @@ const RAW_COURSES: RawCourse[] = [
     description:
       "Master Machine Learning & Data Science with Python in our Hero Program! Hands-on projects, expert mentorship & job-ready skills. Enroll now & launch your tech career!",
     duration: "95 Hours",
-    students: "2,200+",
     level: "Beginner",
     popular: true,
     link: href("machine-learning-course"),
     titleAttribute: "Machine Learning and Data Science with Python - Hero Program Overview",
     icon: "TrendingUp",
-    features: ["Machine Learning Python", "Data Science Hero", "Python ML Program", "MLOps & Production-Ready ML Systems"],
+    features: ["Python", "Pandas & NumPy", "scikit-learn"],
     syllabusLink: "https://www.cinutedigital.com/downloads/machine-learning-and-data-science-with-python-hero-program.pdf",
   },
   {
@@ -50,13 +52,12 @@ const RAW_COURSES: RawCourse[] = [
     description:
       "Dive into Deep Learning, NLP & Generative AI! Master neural networks, text processing & AI creation with hands-on projects. Enroll now & lead the AI revolution!",
     duration: "55 Hours",
-    students: "2,217+",
-    level: "Beginner",
+    level: "Advanced",
     popular: true,
     link: href("generative-ai-course"),
     titleAttribute: "Deep Learning, NLP and Generative AI Course Overview",
     icon: "TrendingUp",
-    features: ["Deep Learning Basics", "NLP Mastery Course", "Clustering", "Generative AI Skills"],
+    features: ["Python", "TensorFlow & PyTorch", "NLTK & spaCy"],
     syllabusLink: "https://www.cinutedigital.com/downloads/deep-learning-nlp-and-generativeai.pdf",
   },
   {
@@ -64,13 +65,12 @@ const RAW_COURSES: RawCourse[] = [
     description:
       "Elevate your career with Advanced Data Science & Machine Learning Masterclass! Deep-dive into algorithms, big data & AI. Expert-led, project-based. Enroll today!",
     duration: "200 Hours",
-    students: "2,234+",
-    level: "Beginner",
+    level: "Beginner to Advanced",
     popular: false,
     link: href("data-science-course"),
     titleAttribute: "Advanced Data Science and Machine Learning Masterclass Overview",
     icon: "TrendingUp",
-    features: ["Advanced Data Science", "Machine Learning Masterclass", "AI Algorithms Pro", "Generative AI & LLM Engineering in Practice"],
+    features: ["Python & SQL", "Power BI & Tableau", "scikit-learn & TensorFlow"],
     syllabusLink: "https://www.cinutedigital.com/downloads/advanced-data-science-and-machine-learning-masterclass.pdf",
   },
   {
@@ -78,13 +78,12 @@ const RAW_COURSES: RawCourse[] = [
     description:
       "Unlock expertise in Comprehensive Data Science & AI Master Program! From ML to deep learning, big data & ethics. Hands-on, industry-aligned. Enroll now & shape the future!",
     duration: "255 Hours",
-    students: "2,251+",
-    level: "Beginner",
+    level: "Beginner to Advanced",
     popular: true,
     link: href("ai-course"),
     titleAttribute: "Comprehensive Data Science and AI Master Program Overview",
     icon: "TrendingUp",
-    features: ["Data Science Mastery", "AI Master Program", "Comprehensive ML AI"],
+    features: ["Python, R & SQL", "TensorFlow & PyTorch", "AWS SageMaker"],
     syllabusLink: "https://www.cinutedigital.com/downloads/comprehensive-data-science-and-ai-master-program.pdf",
   },
   {
@@ -92,13 +91,12 @@ const RAW_COURSES: RawCourse[] = [
     description:
       "Master Machine Learning Algorithms using Python Programming! Implement regression, classification, clustering & more with scikit-learn. Hands-on code, real projects. Enroll now!",
     duration: "45 Hours",
-    students: "2,285+",
-    level: "Beginner",
+    level: "Intermediate",
     popular: true,
     link: href("machine-learning-using-python"),
     titleAttribute: "Machine Learning Algorithms using Python Programming Overview",
     icon: "TrendingUp",
-    features: ["ML Algorithms Python", "Python ML Coding", "Scikit-Learn Mastery"],
+    features: ["Python & Pandas", "scikit-learn", "XGBoost"],
     syllabusLink: "https://www.cinutedigital.com/downloads/machine-learning-algorithms-using-python-programming.pdf",
   },
   {
@@ -106,13 +104,12 @@ const RAW_COURSES: RawCourse[] = [
     description:
       "Master Machine Learning & Data Visualization using R Programming! Explore ggplot2, tidyverse, ML models & interactive dashboards. Hands-on projects. Enroll now & excel in data!",
     duration: "20 Hours",
-    students: "2,302+",
-    level: "Beginner",
+    level: "Intermediate",
     popular: true,
     link: href("data-visualization-in-r-programming"),
     titleAttribute: "Machine Learning and Data Visualization using R Programming Overview",
     icon: "TrendingUp",
-    features: ["R ML Visualization", "Data Viz R", "R Programming ML"],
+    features: ["R & RStudio", "ggplot2", "caret"],
     syllabusLink: "https://www.cinutedigital.com/downloads/machine-learning-and-data-visualization-using-r-programming.pdf",
   },
   // Lives under the Software Testing hub; listed here as the prerequisite.
@@ -121,13 +118,12 @@ const RAW_COURSES: RawCourse[] = [
     description:
       "Master Python Programming from absolute basics all the way to advanced and professional-level concepts! Dive deep into Python syntax, data structures, object-oriented programming, functional programming, automation scripting, and real-world problem-solving through engaging, hands-on projects that reinforce every concept.",
     duration: "30 Hours",
-    students: "2,268+",
     level: "Beginner",
     popular: true,
     link: href("python-course"),
     titleAttribute: "Python Programming Course Overview",
     icon: "TrendingUp",
-    features: ["Python Basics Guide", "Advanced Python Coding", "Learn Python Fast", "Real-World Python Projects & Automation Mastery"],
+    features: ["Python", "Pandas & NumPy", "Jupyter & VS Code"],
     syllabusLink: "https://www.cinutedigital.com/downloads/python-programming.pdf",
   },
 ];
@@ -136,12 +132,25 @@ export const dsMlHub: CategoryHubContent = {
   category: "ds-ml",
   sourceName: "Data Science & Machine Learning Course Category Page",
 
+  // This hub owns the broad searches ("data science courses", "online data
+  // science courses", "... certification", "... with placement"); course pages
+  // own their skill and the city pages own the local searches.
   seo: {
-    // Final <title>: "Data Science & Machine Learning Courses | CDPL".
-    title: "Data Science & Machine Learning Courses",
+    // Final <title>: "Data Science Courses Online with Placement Support | CDPL"
+    // (57 chars). "Fees" joins the title, description and H1 only once the
+    // fee table is on the page (Cycle 4 R7) - a title promising fees on a page
+    // with none sends searchers straight back to Google.
+    title: "Data Science Courses Online with Placement Support",
     description:
-      "Master Data Science and Machine Learning with our comprehensive courses. Learn Python, R, SQL, and AI with hands-on projects and placement support.",
-    keywords: ["data science course", "machine learning training", "python for data science", "AI course", "data analytics"],
+      "Compare 7 live data science courses, 20 to 255 hours, online or at Mira Road, Mumbai. See syllabus, certification and placement support.",
+    keywords: [
+      "data science courses",
+      "online data science courses",
+      "data science certification courses",
+      "data science courses with placement",
+      "machine learning training",
+      "python for data science",
+    ],
     image: "/og-images/courses-ds-ml-courses-og.webp",
   },
 
@@ -153,13 +162,18 @@ export const dsMlHub: CategoryHubContent = {
       { icon: "star", text: "{rating} Student Rating" },
       { icon: "award", text: "Industry-Led Expert Mentors" },
     ],
-    h1: "[[Data Science & Machine Learning]] Courses at CDPL",
+    h1: "[[Data Science Courses]] with Placement Support and Certification, Online and in Mumbai",
+    // Answer block: a self-contained summary that search and AI answers can
+    // quote as-is. The fee sentence is added with the fee table (R7).
     subtitle:
-      "Industry-focused training in Data Science and Machine Learning with hands-on projects using Python, Pandas, NumPy, scikit-learn, TensorFlow, and PyTorch. Learn SQL, data visualization with Tableau and Power BI, model evaluation, model deployment, and MLOps practices. Build a portfolio of real data projects and get placement support for Data Scientist, ML Engineer, and Data Analyst roles.",
+      "CDPL's data science courses teach **Python**, **statistics**, **SQL**, **machine learning**, **deep learning** and **generative AI** through live, mentor-led classes, online or at our Mira Road, Mumbai centre. Courses run from 20 to 255 hours. Every course includes real projects, a QR-verified certificate and placement support for Data Analyst, Data Scientist and ML Engineer roles.",
     description:
       "CDPL’s Data Science program covers Data Wrangling (Pandas, NumPy), Exploratory Data Analysis, Statistical Modeling, Supervised & Unsupervised Learning, Deep Learning (TensorFlow/PyTorch), NLP, Time Series, Model Deployment, MLOps, and SQL for data querying. The curriculum is designed for beginners and working professionals aiming for Data Scientist, ML Engineer, and Data Analyst roles.",
+    // "Ready to talk" offer: the demo class. Upcoming demo dates join it once
+    // batch dates are confirmed (C4-09).
     ctas: [
-      { label: "Download Brochure", kind: "brochure", primary: true },
+      { label: "Book a Free Demo Class", kind: "demo", primary: true },
+      { label: "Download Brochure", kind: "brochure" },
       { label: "Watch CDPL", kind: "video", href: "https://www.youtube.com/watch?v=8kB2wESj1n8" },
     ],
     highlights: [
@@ -171,6 +185,17 @@ export const dsMlHub: CategoryHubContent = {
       "Job Support",
       "Flexible Batches",
       "Lifetime Access",
+    ],
+    // Key facts box. Fees, next batch and "fee last updated" join it with
+    // the fee table (R7) and confirmed batch dates (C4-09).
+    featuresTitle: "Data science courses: key facts",
+    features: [
+      { icon: "clock", title: "Duration", description: "20 to 255 hours of live classes, weekday or weekend batches" },
+      { icon: "globe2", title: "Mode", description: "Live online, or classroom at Mira Road, Mumbai" },
+      { icon: "graduationCap", title: "Eligibility", description: "Students, graduates and working professionals; no coding needed for beginner courses" },
+      { icon: "code", title: "Projects", description: "Real projects in every course; capstones in the 200 and 255-hour programs" },
+      { icon: "badgeCheck", title: "Certificate", description: "QR-verified CDPL certificate that employers can check online" },
+      { icon: "briefcase", title: "Placement support", description: "Resume and LinkedIn review, mock interviews, job referrals. No job guarantee" },
     ],
   },
 
@@ -249,7 +274,6 @@ export const dsMlHub: CategoryHubContent = {
       description: c.description,
       duration: c.duration,
       level: c.level,
-      students: c.students,
       popular: c.popular,
       link: c.link,
       linkTitle: c.titleAttribute,
@@ -258,7 +282,60 @@ export const dsMlHub: CategoryHubContent = {
       icon: c.icon,
     })),
     viewAll: { label: "View All Courses", href: "/courses", title: "Explore All Professional Courses" },
+    extras: [
+      {
+        kind: "list",
+        title: "Which data science course should you choose?",
+        items: [
+          "**New to coding:** start with Python Programming (30 hours), then the 95-hour Machine Learning and Data Science with Python Hero Program.",
+          "**Fresher or career changer who wants a job:** the 200-hour Advanced Data Science and Machine Learning Masterclass or the 255-hour Comprehensive Data Science and AI Master Program, both with capstone projects and placement support.",
+          "**Already know Python:** Machine Learning Algorithms using Python Programming (45 hours), then Deep Learning, NLP and Generative AI (55 hours).",
+          "**Working with R or statistics:** Machine Learning and Data Visualization using R Programming (20 hours).",
+        ],
+      },
+    ],
+    // Offers for visitors still comparing ("what does it cost?") and still
+    // unsure ("which one fits me?"), below the grid and the course guide. The
+    // WhatsApp offer becomes "fee sheet and EMI plans" once both are confirmed
+    // (R7, C4-38).
+    ctas: [
+      { label: "Ask for current fees on WhatsApp", kind: "whatsapp" },
+      {
+        label: "Free 10-minute course-fit call",
+        kind: "careerSession",
+        modalTitle: "Book a Free 10-Minute Course-Fit Call",
+      },
+    ],
   },
+
+  // Answer-first sections for the "online …" (8.1K) and "… certification"
+  // (1.0K) searches, straight after the courses.
+  afterCourses: [
+    {
+      id: "online",
+      data: {
+        heading: "Online Data Science Courses ([[Live]], Not Recorded)",
+        intro:
+          "Every CDPL data science course runs as a live online batch as well as in the classroom. Trainers teach live from our Mira Road classroom and each session is streamed to that batch's online learners, so you ask questions in real time and get the same projects, certificate and placement support as classroom students. Sessions are recorded for revision, and weekday and weekend batches suit students and working professionals.",
+        ctas: [{ label: "Book a Free Demo Class", kind: "demo" }],
+      },
+    },
+    {
+      id: "certification",
+      data: {
+        heading: "Data Science [[Certification]]",
+        intro:
+          "Every course ends with a QR-verified CDPL certificate. Each one carries a unique certificate number and QR code that employers can check on our certificate validation page, along with the course name and hours. It is issued once you complete all assessments and the mock interview process. It is a CDPL professional certificate, not a university degree.",
+        image: {
+          src: "/certifications_images/cdpl_certifications_validation/cdpl_certificate_validation.webp",
+          alt: "CDPL data science certificate sample",
+          width: 2000,
+          height: 1414,
+        },
+        ctas: [{ label: "Check a CDPL certificate", kind: "link", href: "/cdpl-certificate-validation" }],
+      },
+    },
+  ],
 
   // The old hub showed every course's full module list in tabs. That syllabus
   // lives on each course page; the hub shows the order to take them in.
@@ -336,16 +413,9 @@ export const dsMlHub: CategoryHubContent = {
     intro:
       "Join thousands of learners who advanced their careers through hands-on Data Science & Machine Learning training. See how alumni moved into data roles, shipped models to production, and boosted their earnings.",
     // The review count is not repeated here: the reviews marquee above already
-    // shows a "{reviews} Verified Reviews" badge.
-    extras: [
-      {
-        kind: "stats",
-        items: [
-          { value: "3,200+", label: "Graduates Trained" },
-          { value: "45%", label: "Avg. Salary Increase" },
-        ],
-      },
-    ],
+    // shows a "{reviews} Verified Reviews" badge. The "3,200+ Graduates
+    // Trained" and "45% Avg. Salary Increase" cards were removed: neither had
+    // a source or period. Real figures come back with Cycle 4's C4-03.
     outro:
       "**Start Your DS & ML Story** — join our next Data Science & ML cohort: hands-on projects, mentorship, and career support.",
     ctas: [{ label: "Enroll Now", kind: "enroll" }],
@@ -430,7 +500,6 @@ export const dsMlHub: CategoryHubContent = {
         skills: ["ML", "Python", "Statistics", "AI"],
         responsibilities: ["Build predictive models", "Analyze complex datasets", "Collaborate with stakeholders"],
         opportunities: ["Top Tech Companies", "Global Consulting Firms"],
-        hiringCompanies: ["Google", "Amazon", "Microsoft", "Deloitte"],
       },
       {
         role: "Data Analyst",
@@ -441,7 +510,6 @@ export const dsMlHub: CategoryHubContent = {
         skills: ["SQL", "Excel", "Visualization", "Business Intelligence"],
         responsibilities: ["Create dashboards", "Clean and transform data", "Generate business reports"],
         opportunities: ["E-commerce", "Finance", "Healthcare"],
-        hiringCompanies: ["Flipkart", "Myntra", "HDFC Bank", "Accenture"],
       },
       {
         role: "Machine Learning Engineer",
@@ -453,7 +521,6 @@ export const dsMlHub: CategoryHubContent = {
         skills: ["MLOps", "Cloud", "Deployment", "Software Engineering"],
         responsibilities: ["Deploy ML models", "Optimize model performance", "Build ML pipelines"],
         opportunities: ["Product Companies", "FinTech", "AI Startups"],
-        hiringCompanies: ["Uber", "Swiggy", "Zomato", "Cred"],
       },
     ],
     outro: "**Ready to Launch Your Data Science Career?** Get personalized career guidance and placement support.",
@@ -461,6 +528,20 @@ export const dsMlHub: CategoryHubContent = {
       { label: "Talk to Career Counselor", kind: "careerSession" },
       { label: "Download Career Guide", kind: "brochure" },
       { label: "View Job Openings", kind: "link", href: "/jobs/live-jobs" },
+    ],
+  },
+
+  // The address is the Google Business Profile form from BUSINESS_INFO, so it
+  // matches the footer and every JSON-LD block character for character.
+  where: {
+    heading: "Where We [[Teach]]",
+    intro: `Classroom batches run at our centre at ${CAMPUS_ADDRESS}. Live online batches are open across India: online learners join the same live sessions as the classroom batch, with the same mentors and projects.`,
+    ctas: [
+      {
+        label: "Data science course in Mumbai: batches and directions",
+        kind: "link",
+        href: "/data-science-course-in-mumbai",
+      },
     ],
   },
 
@@ -479,6 +560,11 @@ export const dsMlHub: CategoryHubContent = {
           "If you are new to programming, start with Python Programming (30 hours). Then learn the core algorithms in Machine Learning Algorithms using Python Programming (45 hours) or the 95-hour Machine Learning and Data Science with Python Hero Program. Once you are comfortable with Python and machine learning basics, move on to Deep Learning, NLP and Generative AI (55 hours), or take a master program that covers the whole path.",
       },
       {
+        question: "Which data science course is best for beginners?",
+        answer:
+          "The best course for a beginner teaches Python, statistics and machine learning with real projects and live help. At CDPL, beginners start with Python Programming (30 hours) or the 95-hour Machine Learning and Data Science with Python Hero Program, which assume no coding.",
+      },
+      {
         question: "What is the difference between the Hero Program, the Masterclass and the Master Program?",
         answer:
           "The 95-hour Machine Learning and Data Science with Python Hero Program covers supervised and unsupervised machine learning end to end, from data wrangling and EDA to model deployment. The 200-hour Advanced Data Science and Machine Learning Masterclass goes deeper, from EDA and ML algorithms through to model deployment, MLOps and end-to-end pipelines. The 255-hour Comprehensive Data Science and AI Master Program spans Python, machine learning, deep learning, NLP, generative AI and cloud deployment, with capstone projects.",
@@ -487,6 +573,16 @@ export const dsMlHub: CategoryHubContent = {
         question: "Do I need coding experience to learn data science and machine learning?",
         answer:
           "No. Python Programming and the Machine Learning and Data Science with Python Hero Program start from the basics, so beginners can begin there. Deep Learning, NLP and Generative AI expects Python and machine learning basics, and basic Python and math make the Comprehensive Data Science and AI Master Program easier to follow.",
+      },
+      {
+        question: "Can I learn data science without an IT background?",
+        answer:
+          "Yes. Our beginner courses start from basic Python and statistics, and they are open to commerce, science and arts graduates as well as IT students.",
+      },
+      {
+        question: "Can a 12th pass student become a data scientist?",
+        answer:
+          "Yes, but most data scientist jobs ask for a degree. A 12th pass student can start with Python and data analysis now and take a full program alongside or after graduation.",
       },
       {
         question: "Should I learn Python or R for data science?",
@@ -514,9 +610,19 @@ export const dsMlHub: CategoryHubContent = {
           "Yes. Placement support covers resume and LinkedIn profile building, portfolio guidance, interview preparation and mock interviews, and job openings for Data Scientist, ML Engineer and Data Analyst roles. Outcomes depend on practice, project quality and interview performance.",
       },
       {
+        question: "Do you guarantee a job after the course?",
+        answer:
+          "No. We provide placement support: resume and LinkedIn reviews, mock interviews and job referrals. Results depend on your projects and interviews.",
+      },
+      {
         question: "Are the classes online or in the classroom?",
         answer:
           "Both. Classes are live and mentor-led, online or in the classroom, with flexible weekday and weekend batches for students and working professionals, and lifetime access to course materials.",
+      },
+      {
+        question: "Is the online data science course the same as the classroom course?",
+        answer:
+          "Yes. Online learners join the same live sessions as the classroom batch, streamed from our Mira Road centre, with the same syllabus, mentors and projects. Sessions are recorded for revision.",
       },
     ],
   },
@@ -526,6 +632,7 @@ export const dsMlHub: CategoryHubContent = {
     intro: "Join students who have successfully launched their data science careers.",
     actions: [
       { label: "Enroll Now", kind: "enroll" },
+      { label: "Book a Free Demo Class", kind: "demo" },
       { label: "Download Brochure", kind: "brochure" },
     ],
     highlights: [
@@ -542,4 +649,6 @@ export const dsMlHub: CategoryHubContent = {
       { icon: "mapPin", text: "Mumbai, Maharashtra, India" },
     ],
   },
+
+  mobileContactBar: true,
 };

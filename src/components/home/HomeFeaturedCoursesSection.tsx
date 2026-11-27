@@ -465,7 +465,11 @@ export default function HomeFeaturedCoursesSection() {
             Explore Our <span className="text-brand">Industry-Ready</span> Courses
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            Software testing, data science, AI and digital marketing courses with hands-on projects and expert mentorship.
+            Software testing,{" "}
+            <Link href="/courses/ds-ml-courses" className="font-semibold text-brand underline-offset-2 hover:underline">
+              data science
+            </Link>
+            , AI and digital marketing courses with hands-on projects and expert mentorship.
           </p>
         </div>
 

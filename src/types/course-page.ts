@@ -16,6 +16,8 @@ export type CtaKind =
   | "enroll"
   | "syllabus"
   | "careerSession"
+  /** Opens the header's "Book a Free Demo" enquiry modal. */
+  | "demo"
   | "brochure"
   | "video"
   | "scroll"
@@ -32,6 +34,8 @@ export type CtaAction = {
   ariaLabel?: string;
   /** Rendered as the filled button; others are outlined. Defaults to the first action. */
   primary?: boolean;
+  /** careerSession only: the modal's heading, when the button offers something more specific than a career session. */
+  modalTitle?: string;
 };
 
 export type IconItem = { icon: IconName; title: string; description?: Text; points?: Text[] };

@@ -68,7 +68,7 @@ const Footer = () => {
               <ul>
                 <li className='flex flex-col space-y-2'>
                   <FooterLink href="/courses/ds-ml-courses">
-                    Data Science - Overview
+                    Data Science Courses
                   </FooterLink>
 
                   <FooterLink href="/courses/ds-ml-courses/ai-course">

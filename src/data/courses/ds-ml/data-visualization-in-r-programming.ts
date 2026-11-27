@@ -14,7 +14,7 @@ export const dataVisualizationInRProgrammingCourse: CourseContent = {
   seo: {
     title: "Machine Learning & Data Visualization with R | CDPL",
     description:
-      "20-hour master program in R programming — ML algorithms, ggplot2 visualization & statistical modeling with hands-on projects and placement assistance.",
+      "20-hour course in R programming — ML algorithms, ggplot2 visualization & statistical modeling with hands-on projects and placement assistance.",
     keywords: [
       "Machine Learning with R",
       "Data Visualization R",
@@ -33,7 +33,7 @@ export const dataVisualizationInRProgrammingCourse: CourseContent = {
   schema: {
     name: "Machine Learning and Data Visualization using R Programming",
     description:
-      "Master Machine Learning algorithms and advanced Data Visualization using R Programming. 20-hour Master Program with job assistance.",
+      "Master Machine Learning algorithms and advanced Data Visualization using R Programming. 20-hour course with job assistance.",
     duration: "P1M",
     howTo: {
       name: "How to Enroll in CDPL Data Visualization in R Program",
@@ -52,14 +52,15 @@ export const dataVisualizationInRProgrammingCourse: CourseContent = {
   hero: {
     breadcrumb: "Machine Learning and Data Visualization using R Programming",
     badges: [
-      { icon: "clock", text: "Duration: 20 Hours Master Program" },
+      { icon: "clock", text: "Duration: 20 Hours" },
       { icon: "star", text: "{rating} Average Rating" },
       { icon: "users", text: "{studentsPlaced} Students Placed" },
       { icon: "trophy", text: "5+ Years Industry Experience" },
     ],
     h1: "Master [[Machine Learning]] and [[Data Visualization using R]]",
+    note: { text: "Not sure this is the right fit? Compare every", link: { label: "data science course", href: "/courses/ds-ml-courses" } },
     subtitle:
-      "Transform raw data into powerful, insight-driven visualizations and deploy robust Machine Learning models. Learn from industry experts and master R libraries for data science, statistical analysis, and interactive dashboards in this intensive 20-hour Master Program.",
+      "Transform raw data into powerful, insight-driven visualizations and deploy robust Machine Learning models. Learn from industry experts and master R libraries for data science, statistical analysis, and interactive dashboards in this intensive 20-hour course.",
     description:
       "Learn R for data visualization, statistics, predictive modeling, dashboards, and real-world analytics projects tailored for business decision-making.",
     ctas: [
@@ -99,7 +100,7 @@ export const dataVisualizationInRProgrammingCourse: CourseContent = {
   },
 
   why: {
-    heading: "Why Choose Our [[R Programming Master Program]]?",
+    heading: "Why Choose Our [[R Programming Course]]?",
     intro: "Invest in your future with a program designed by industry leaders to ensure you are job-ready.",
     cards: [
       {
@@ -341,7 +342,7 @@ export const dataVisualizationInRProgrammingCourse: CourseContent = {
       {
         title: "You Enroll",
         icon: "graduationCap",
-        description: "Secure your spot in the Master Program and gain access to all learning resources and the community.",
+        description: "Secure your spot in the course and gain access to all learning resources and the community.",
       },
       {
         title: "Extensive Training in R Tools & Technologies",
@@ -690,7 +691,7 @@ export const dataVisualizationInRProgrammingCourse: CourseContent = {
   faq: {
     heading: "R Programming Course [[Frequently Asked Questions]]",
     intro:
-      "Find clear answers about our **Data Visualization in R Programming Master Program**, including syllabus, fees, certification, live online training, hands-on projects, and career opportunities in **data analytics** and **data science**.",
+      "Find clear answers about our **Data Visualization in R Programming course**, including syllabus, fees, certification, live online training, hands-on projects, and career opportunities in **data analytics** and **data science**.",
     items: R_DATA_VIS_FAQS,
     categories: ["Course Details", "Learning Format", "Prerequisites", "Certification", "Placement", "Curriculum"],
   },
@@ -699,7 +700,7 @@ export const dataVisualizationInRProgrammingCourse: CourseContent = {
     eyebrow: "Limited Time Offer • 20% OFF this month",
     heading: "Ready to Master [[R for Machine Learning]]?",
     intro:
-      "Enroll now in our intensive **20-hour R Programming for Machine Learning Master Program** and accelerate your **data science career**. Learn **R for data analysis, predictive modeling, and AI-powered machine learning projects** with hands-on training designed for **students, working professionals, and career switchers** aiming for high-demand roles like **Data Analyst**, **Machine Learning Engineer**, and **Data Scientist**.",
+      "Enroll now in our intensive **20-hour R Programming for Machine Learning course** and accelerate your **data science career**. Learn **R for data analysis, predictive modeling, and AI-powered machine learning projects** with hands-on training designed for **students, working professionals, and career switchers** aiming for high-demand roles like **Data Analyst**, **Machine Learning Engineer**, and **Data Scientist**.",
     actions: [
       { label: "Enroll Now", kind: "enroll" },
       { label: "Download Free Syllabus", kind: "syllabus" },
@@ -708,7 +709,7 @@ export const dataVisualizationInRProgrammingCourse: CourseContent = {
     highlights: [
       {
         icon: "timer",
-        title: "20-Hour Master Program",
+        title: "20-Hour Course",
         description: "Compact, high-impact R and machine learning training with live sessions.",
       },
       {

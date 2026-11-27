@@ -4,7 +4,7 @@ import { SITE_STATS } from "@/lib/site-stats";
 export const R_DATA_VIS_FAQS: QA[] = [
     {
         question: "What is the duration of the course?",
-        answer: "The Machine Learning and Data Visualization using R Programming Master Program is a 20-hour intensive training.",
+        answer: "The Machine Learning and Data Visualization using R Programming is a 20-hour intensive training.",
         category: "Course Details",
     },
     {

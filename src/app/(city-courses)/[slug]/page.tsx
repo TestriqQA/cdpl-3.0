@@ -71,11 +71,6 @@ function getByInternalSlug(slug: string): CourseData | undefined {
   return merged;
 }
 
-// Helper: Parse price string to number (e.g., "₹29,999" -> 29999)
-function parsePrice(priceStr: string): number {
-  return Number(priceStr.replace(/[^0-9]/g, "")) || 0;
-}
-
 // Helper: Convert duration string to ISO 8601 duration (approximate)
 // e.g., "12 weeks" -> "P12W"
 function parseDuration(durationStr: string): string {
@@ -238,7 +233,9 @@ export default async function CoursePage({ params, searchParams }: PageProps): P
     learningOutcomes: learningOutcomes,
     prerequisites: ["Basic computer knowledge"],
     duration: parseDuration(data.courseDetails.duration),
-    price: parsePrice(data.courseDetails.price),
+    // No price: no city page shows one, and Google requires structured data
+    // to describe visible content. courseDetails.price is also unconfirmed
+    // (Cycle 4 C4-26); real, visible prices return with R7, schema included.
     rating: SITE_STATS.rating,
     reviewCount: (data.localizedTestimonials?.length || 0) > 0 ? data.localizedTestimonials?.length : SITE_STATS.reviewCount,
     reviews: data.localizedTestimonials?.map(t => ({

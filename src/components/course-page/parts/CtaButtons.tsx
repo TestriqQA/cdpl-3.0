@@ -1,17 +1,18 @@
 import Link from "next/link";
-import { ArrowRight, ArrowDown, CloudDownload, Download, Mail, Phone, Play } from "lucide-react";
+import { ArrowRight, ArrowDown, CalendarCheck, CloudDownload, Download, Mail, Phone, Play } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import EnrollButton from "@/components/course-islands/EnrollButton";
 import SyllabusButton from "@/components/course-islands/SyllabusButton";
 import CareerSessionButton from "@/components/course-islands/CareerSessionButton";
+import DemoButton from "@/components/course-islands/DemoButton";
 import BrochureButton from "@/components/course-islands/BrochureButton";
 import VideoButton from "@/components/course-islands/VideoButton";
 import ScrollToButton from "./ScrollToButton";
 import type { CtaAction } from "@/types/course-page";
 
-const PHONE = "tel:+917888383788";
+export const PHONE = "tel:+917888383788";
 const EMAIL = "mailto:contact@cinutedigital.com";
-const WHATSAPP = "https://wa.me/917888383788";
+export const WHATSAPP = "https://wa.me/917888383788";
 
 // Orange is kept for the hero and the closing band; buttons inside the body
 // sections are dark/neutral so the page isn't orange from top to bottom.
@@ -34,7 +35,7 @@ const BASE =
   "group inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition focus:outline-none focus-visible:ring-4 focus-visible:ring-orange-200 sm:text-base";
 
 // Kinds whose icon sits before the label (contact actions, play).
-const LEADING_ICON: CtaAction["kind"][] = ["tel", "mailto", "whatsapp", "video"];
+const LEADING_ICON: CtaAction["kind"][] = ["tel", "mailto", "whatsapp", "video", "demo"];
 
 function ActionIcon({ kind }: { kind: CtaAction["kind"] }) {
   const cls = "h-5 w-5 shrink-0";
@@ -53,6 +54,8 @@ function ActionIcon({ kind }: { kind: CtaAction["kind"] }) {
       return <Mail className={cls} aria-hidden="true" />;
     case "whatsapp":
       return <FaWhatsapp className={cls} aria-hidden="true" />;
+    case "demo":
+      return <CalendarCheck className={cls} aria-hidden="true" />;
     default:
       return <ArrowRight className={`${cls} transition-transform group-hover:translate-x-1`} aria-hidden="true" />;
   }
@@ -112,9 +115,22 @@ export default function CtaButtons({
             );
           case "careerSession":
             return (
-              <CareerSessionButton key={i} className={cls} source={leadSource} courseName={courseName} ariaLabel={a.ariaLabel}>
+              <CareerSessionButton
+                key={i}
+                className={cls}
+                source={leadSource}
+                courseName={courseName}
+                ariaLabel={a.ariaLabel}
+                title={a.modalTitle}
+              >
                 {content}
               </CareerSessionButton>
+            );
+          case "demo":
+            return (
+              <DemoButton key={i} className={cls} source={leadSource} ariaLabel={a.ariaLabel}>
+                {content}
+              </DemoButton>
             );
           case "brochure":
             return (
