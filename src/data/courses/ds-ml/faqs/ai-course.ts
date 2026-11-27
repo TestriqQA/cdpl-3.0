@@ -1,45 +1,47 @@
 import { type QA } from "@/types/faq";
 import { SITE_STATS, STAT_TEXT } from "@/lib/site-stats";
 
+// The program is a CDPL certificate course, not a university master's or PG
+// degree: questions say "Master Program", never "masters" / "post graduate".
 export const AI_FAQS: QA[] = [
     {
-        question: "What is the comprehensive masters in ai and ml program in Mumbai?",
-        answer: `Our ai master program mumbai offers 255 hours of hands-on training, portfolio projects, and placement support. It's rated ${STAT_TEXT.rating} by our learners. Perfect for masters in ai in india.`,
+        question: "What is the Comprehensive Data Science and AI Master Program?",
+        answer: `CDPL's AI and ML master program offers 255 hours of hands-on training, portfolio projects, and placement support, live online or at our Mira Road, Mumbai centre. It's rated ${STAT_TEXT.rating} by our learners. It is a professional certificate program, not a university master's degree.`,
         category: "General",
     },
     {
-        question: "Is prior experience required for this ms in artificial intelligence in india?",
-        answer: "Basic programming and statistics help, but the program includes a structured ramp-up covering Python, data wrangling, and ML fundamentals so motivated beginners can succeed in masters in ai and ml.",
+        question: "Is prior experience required for this AI and ML master program?",
+        answer: "Basic programming and statistics help, but the program includes a structured ramp-up covering Python, data wrangling, and ML fundamentals so motivated beginners can succeed.",
         category: "General",
     },
     {
-        question: "What is the total duration of this post graduate program in ai and ml?",
-        answer: "Approximately 255 hours of guided learning with 80% hands-on labs, capstone projects, and weekly mentor check-ins. Spread over 5 months for data science master program mumbai.",
+        question: "What is the total duration of the Data Science and AI Master Program?",
+        answer: "Approximately 255 hours of guided learning with 80% hands-on labs, capstone projects, and weekly mentor check-ins, spread over 5 months.",
         category: "Schedule",
     },
     {
-        question: "Do you provide job assistance after masters in data science and artificial intelligence in india?",
-        answer: "Yes. You'll get resume review with ATS keywords, mock interviews, LinkedIn optimization, and curated referrals through our network for masters in artificial intelligence india roles.",
+        question: "Do you provide job assistance after the Data Science and AI Master Program?",
+        answer: "Yes. You'll get resume review with ATS keywords, mock interviews, LinkedIn optimization, and curated referrals through our network for data science and AI roles.",
         category: "Career",
     },
     {
-        question: "What projects and tools are covered in this ai master program mumbai?",
-        answer: "Projects in NLP, computer vision, forecasting, and MLOps. Tools include Python, scikit-learn, PyTorch/TensorFlow, SQL, Spark, Airflow, and AWS for deployment in post graduate program in ai and machine learning.",
+        question: "What projects and tools are covered in this AI master program?",
+        answer: "Projects in NLP, computer vision, forecasting, and MLOps. Tools include Python, scikit-learn, PyTorch/TensorFlow, SQL, Spark, Airflow, and AWS for deployment.",
         category: "Curriculum",
     },
     {
-        question: "Is there a certificate for masters in ai and ml in india?",
-        answer: "Yes. You'll receive a globally verifiable certificate with QR validation. Guidance is provided to showcase your portfolio on GitHub and LinkedIn.",
+        question: "Is there a certificate for the AI and ML master program?",
+        answer: "Yes. You'll receive a globally verifiable CDPL certificate with QR validation. Guidance is provided to showcase your portfolio on GitHub and LinkedIn.",
         category: "Certification",
     },
     {
-        question: "What's the difference between this program and other masters in ai in india options?",
-        answer: "Our ai master program mumbai focuses on industry-ready skills with 80% hands-on training, real projects, and dedicated placement support—not just theory like traditional ms in artificial intelligence in india programs.",
+        question: "How is this program different from a university master's in AI?",
+        answer: "A university master's is an academic degree. CDPL's AI and ML master program is a professional certificate course focused on industry-ready skills, with 80% hands-on training, real projects, and dedicated placement support.",
         category: "General",
     },
     {
-        question: "Can I join this data science master program mumbai while working?",
-        answer: "Yes. We offer flexible weekend batches and live online options for working professionals pursuing masters in data science and artificial intelligence in india.",
+        question: "Can I join the Data Science and AI Master Program while working?",
+        answer: "Yes. We offer flexible weekend batches and live online options for working professionals.",
         category: "Schedule",
     },
 ];

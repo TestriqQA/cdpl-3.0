@@ -2,6 +2,7 @@
 
 import { useThankYouRedirect } from '@/hooks/useThankYouRedirect';
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useFormErrorReset } from '@/hooks/useFormErrorReset';
 import { X, User, Mail, TrendingUp, CheckCircle2 } from 'lucide-react';
 import PhoneInput from '@/components/ui/PhoneNumberInput';
@@ -13,9 +14,20 @@ interface EnquireModalProps {
     isOpen: boolean;
     onClose: () => void;
     source?: string;
+    /** Heading lines; default to the header's "Book a Free Demo" copy. */
+    title?: string;
+    subtitle?: string;
+    description?: string;
 }
 
-const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) => {
+const EnquireModal: React.FC<EnquireModalProps> = ({
+    isOpen,
+    onClose,
+    source,
+    title = 'Book a Free Demo',
+    subtitle = 'Schedule a session with our experts',
+    description = 'Fill the form below to schedule your free demo.',
+}) => {
     // Form state
     const [formData, setFormData] = useState({
         fullName: '',
@@ -155,17 +167,21 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
 
     if (!isVisible) return null;
 
-    return (
+    // Portalled to <body> and stacked above the sticky header (z-[100]), so
+    // the backdrop covers and blurs the navbar wherever the modal is opened
+    // from: the header itself, or a page section whose own stacking context
+    // (`isolate`, `overflow-hidden`) would otherwise trap it below the header.
+    return createPortal(
         <>
             {/* Backdrop */}
             <div
                 onClick={onClose}
-                className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] flex items-center justify-center p-4 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
+                className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-[110] flex items-center justify-center p-4 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
             />
 
             {/* Modal */}
             <div
-                className={`fixed z-[70] w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 transform ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 translate-y-4'}`}
+                className={`fixed z-[120] w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 transform ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 translate-y-4'}`}
                 ref={formRef}
             >
                 {/* Close Button */}
@@ -182,14 +198,14 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
                     <div className="mb-6">
                         <div className="flex items-center justify-between mb-2">
                             <h3 className="text-xl font-bold text-slate-900">
-                                Book a Free Demo
+                                {title}
                             </h3>
                         </div>
                         <p className="text-sm font-semibold text-brand">
-                            Schedule a session with our experts
+                            {subtitle}
                         </p>
                         <p className="text-xs text-slate-600 mt-1">
-                            Fill the form below to schedule your free demo.
+                            {description}
                         </p>
                     </div>
 
@@ -408,7 +424,8 @@ const EnquireModal: React.FC<EnquireModalProps> = ({ isOpen, onClose, source }) 
                     opacity: 1 !important;
                 }
             `}</style>
-        </>
+        </>,
+        document.body
     );
 };
 

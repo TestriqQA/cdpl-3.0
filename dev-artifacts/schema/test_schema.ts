@@ -2,6 +2,7 @@
 // Run from the repo root: npx tsx dev-artifacts/schema/test_schema.ts
 import { generateAllCoursesPageSchema, generateHomePageSchema, generateSoftwareTestingCategoryPageSchema, generateDataScienceMachineLearningCategoryPageSchema, generateBusinessIntelligenceCategoryPageSchema, generateArtificialIntelligenceCategoryPageSchema, generateDigitalMarketingCategoryPageSchema, generateContactPageAllSchemas, generateAboutPageAllSchemas } from '../../src/lib/schema-generators';
 import { softwareTestingHub } from "../../src/data/hubs/software-testing";
+import { dsMlHub } from "../../src/data/hubs/ds-ml";
 import fs from 'fs';
 import path from 'path';
 
@@ -20,12 +21,18 @@ const stSchemas = generateSoftwareTestingCategoryPageSchema(
   [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Software Testing Course", url: '/courses/software-testing-course' }]
 );
 
+// The hub's course cards; the live page also swaps in each course page's own
+// schema description (src/app/courses/ds-ml-courses/page.tsx).
 const dsSchemas = generateDataScienceMachineLearningCategoryPageSchema(
   {
-    name: "Data Science & Machine Learning Master Course",
-    description: "Master Data Science and Machine Learning with our comprehensive courses.",
-    url: '/courses/ds-ml-courses',
-    slug: "ds-ml-courses",
+    description: dsMlHub.seo.description,
+    courses: dsMlHub.courses.items.map((card) => ({
+      name: card.title,
+      description: card.description,
+      url: card.link,
+      level: card.level,
+      hours: parseInt(card.duration, 10),
+    })),
   },
   [{ question: "Dummy Q?", answer: "Dummy A" }],
   [{ name: "Home", url: "/" }, { name: "Courses", url: "/courses" }, { name: "Data Science & ML Courses", url: "/courses/ds-ml-courses" }]

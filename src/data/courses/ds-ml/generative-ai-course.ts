@@ -8,11 +8,13 @@ import { GENERATIVE_AI_FAQS } from "@/data/courses/ds-ml/faqs/generative-ai-cour
 // prefix), which a cleanup pass removed.
 export const generativeAiCourse: CourseContent = {
   slug: "generative-ai-course",
-  courseName: "Master Program in Deep Learning, NLP & Generative AI",
+  // A 55-hour course, not a master program: only the 200-hour Masterclass and
+  // the 255-hour Comprehensive DS & AI Master Program carry that name.
+  courseName: "Deep Learning, NLP and Generative AI",
   sourceName: "Generative AI Course Page",
 
   seo: {
-    title: "Deep Learning, NLP & Gen AI Course Mumbai | CDPL",
+    title: "Deep Learning, NLP & Generative AI Course | CDPL",
     description:
       "55-Hour Hero Program in Deep Learning, NLP, and Generative AI with Python. Hands-on projects, job assistance, global certificates from AAA.",
     keywords: [
@@ -28,7 +30,7 @@ export const generativeAiCourse: CourseContent = {
   },
 
   schema: {
-    name: "Master Program in Deep Learning, NLP & Generative AI",
+    name: "Deep Learning, NLP and Generative AI Course",
     description:
       "55-Hour Hero Program in Deep Learning, NLP, and Generative AI with Python. Hands-on projects, job assistance, global certificates from AAA.",
     duration: "P1M2W",
@@ -56,7 +58,8 @@ export const generativeAiCourse: CourseContent = {
       { icon: "briefcase", text: "Placement Support" },
       { icon: "star", text: "Mumbai’s Premium Training Institute" },
     ],
-    h1: "Master Program in [[Deep Learning]], [[NLP]] & [[Generative AI]]",
+    h1: "[[Deep Learning]], [[NLP]] and [[Generative AI]] Course",
+    note: { text: "Not sure this is the right fit? Compare every", link: { label: "data science course", href: "/courses/ds-ml-courses" } },
     subtitle:
       "Become industry-ready with **Neural Networks**, **CNNs**, **RNNs/LSTMs**, **Transformers**, **Prompt Engineering**, **fine-tuning LLMs**, embeddings and **vector databases**. Build portfolio projects and earn a **QR-verified certificate**.",
     description:
@@ -74,21 +77,25 @@ export const generativeAiCourse: CourseContent = {
     ],
   },
 
+  // Stats and curriculum below are taken from this course's own syllabus,
+  // public/downloads/deep-learning-nlp-and-generativeai.pdf (pages 3, 6, 15-17).
+  // They previously held the Advanced Data Analytics course's content (110
+  // hours; MySQL, Excel, Power BI, Tableau), copied in by mistake.
   stats: {
-    heading: "Why [[Advanced Data Analytics]]?",
+    heading: "Why Learn [[Deep Learning, NLP & Generative AI]]?",
     intro:
-      "Data analytics drives **profitability, forecasting, and decisions** in 2025. Join our mentor-led **Advanced Data Analytics** program to build **Python, SQL, BI, and ML** skills with **real projects** and placement support.",
+      "An advanced course in **deep learning**, **natural language processing** and **generative AI** using **Python**, for learners who already know programming and machine learning basics. You learn to design, train and deploy models through **hands-on projects**.",
     items: [
-      { value: "110 Hours", label: "Program Duration", note: "4 Months • Hybrid" },
+      { value: "55 Hours", label: "Course Duration", note: "Live online + classroom" },
       { value: "80:20", label: "Practical : Theory", note: "Industry-Rich Experience" },
       { value: "14+ Years", label: "Team Expertise", note: "Mentor-led • Industry Aligned" },
-      { value: "100%", label: "Job Assistance", note: "Resume • Mock Interviews • Referrals" },
-      { value: "101,000+", label: "Data Analyst Jobs (India)", note: "Open Roles Across Sectors" },
-      { value: "25% CAGR", label: "Market Growth (2020–2030)", note: "Data/Analytics Industry" },
+      { value: "100%", label: "Placement Support", note: "Resume • Mock Interviews • Referrals" },
+      { value: "1,01,000+", label: "Job Vacancies (India)", note: "AI, ML & data roles" },
+      { value: "25%", label: "Market Growth (2020–2030)", note: "AI industry" },
     ],
-    footnote: "*Outcomes vary by prior experience, pace, and project depth.",
+    footnote: "*Figures are indicative and vary by location, skills, and industry.",
     outro:
-      "Master **dashboards & reporting** (Power BI/Tableau), **SQL for analytics**, **feature engineering**, and **ML for business** with **career support**.",
+      "Build **neural networks**, **NLP pipelines**, **generative AI** and **image processing** applications in Python, with **real-time projects** and **career support**.",
   },
 
   why: {
@@ -158,89 +165,47 @@ export const generativeAiCourse: CourseContent = {
   },
 
   curriculum: {
-    heading: "5-Core [[Curriculum Modules]]",
+    heading: "4-Core [[Curriculum Modules]]",
     intro:
-      "A 110+ hour, industry-aligned path across SQL/MySQL, Excel, Power BI, Tableau, and Python libraries—culminating in real projects and job-ready skills.",
+      "A 55-hour path through deep learning, natural language processing, generative AI and image processing in Python, with real-time projects.",
     modules: [
       {
-        title: "DBMS using MySQL",
+        title: "Deep Learning",
         topics: [
-          "Intro to DBMS & MySQL",
-          "schema design (ER → relational, normalization)",
-          "SQL essentials (SELECT/WHERE, GROUP BY/HAVING, ORDER/LIMIT)",
-          "joins (INNER/LEFT/SELF/CROSS, USING/NATURAL)",
-          "subqueries & UNION",
-          "window functions (ROW_NUMBER/RANK/DENSE_RANK with OVER)",
-          "DML/DDL/TCL/DCL",
-          "admin (users/privileges)",
-          "backup & recovery",
-          "EXPLAIN & indexing",
-          "views",
-          "stored procedures",
-          "UDFs/triggers",
-          "CTEs/temp tables",
+          "Deep learning introduction",
+          "Deep learning concepts",
+          "Deep learning concepts for generative AI",
         ],
-        projects: ["Real-world capstone DB design"],
       },
       {
-        title: "Advance Excel for Analytics & Visualization",
+        title: "Natural Language Processing (NLP)",
         topics: [
-          "Data handling (types, smart entry, duplicates/nulls)",
-          "core formulas (SUM/AVERAGE/COUNTIF(S), TEXT, DATE/TIME)",
-          "logicals (IF/AND/OR, nested IF)",
-          "sorting/filtering & conditional formatting",
-          "charts (bar/line/pie/scatter/bubble/combo)",
-          "PivotTables & PivotCharts (groups, slicers, timelines)",
-          "Data Analysis ToolPak (descriptive stats)",
-          "advanced lookups (VLOOKUP/HLOOKUP/XLOOKUP, INDEX/MATCH)",
-          "forecasting & trendlines",
-          "Power Query (import/transform/clean)",
-          "interactive dashboards & reporting",
+          "NLP fundamentals",
+          "Basic text processing with NLTK",
+          "spaCy overview",
+          "TensorFlow",
         ],
-        projects: ["Domain projects"],
       },
       {
-        title: "Data Analytics & Visualization with Power BI",
+        title: "Generative AI",
         topics: [
-          "BI concepts & Power BI ecosystem (Desktop/Service/Mobile)",
-          "data ingestion (CSV/Excel/folder/XML/DB)",
-          "Power Query Editor (clean/shape, split/merge, extract/replace, pivot/unpivot, append/merge)",
-          "data modeling (facts/dimensions, star vs snowflake, relationships/cardinality)",
-          "visuals (bar/line/pie, maps, matrix/cards)",
-          "DAX basics (columns, measures, operators/functions)",
-          "advanced visuals (KPIs, ribbon/scatter, waterfall/funnel, forecasting)",
-          "interactivity (drill-down/through, tooltips, filters/slicers)",
-          "dashboards & publishing to Service",
+          "Generative learning",
+          "Generative learning technical concepts",
+          "Prompt engineering",
+          "Large image models (LIM)",
+          "Video and speech tools",
+          "Large language models (LLM)",
         ],
-        projects: ["Hands-on projects"],
+        projects: ["AI-generated script for a streaming platform (Python, TensorFlow, NLP)"],
       },
       {
-        title: "Data Analytics & Visualization with Tableau",
+        title: "Image Processing",
         topics: [
-          "BI + Tableau setup",
-          "data integration (relationships, joins, unions)",
-          "data types & the data pane (dimensions/measures; discrete vs continuous)",
-          "core charts (bar/line/scatter) and Marks card (color/shape/size, labels/tooltips)",
-          "advanced visuals (treemap/heatmap, Gantt/bullet, dual-axis & combined charts)",
-          "geospatial (maps, density)",
-          "organize/filter (groups, sorts, context filters)",
-          "analysis (calculated fields, table calcs: running totals/%, clustering, forecasting)",
-          "dynamic analysis (sets, parameters)",
-          "dashboards & stories",
+          "Fundamentals of image processing",
+          "Object and character detection",
+          "Libraries used for OCR",
         ],
-        projects: ["3 applied projects"],
-      },
-      {
-        title: "Advanced Data Analytics with Python Libraries",
-        topics: [
-          "Python fundamentals (syntax, control flow, functions/modules, Jupyter setup)",
-          "ML basics (supervised vs unsupervised; quick classification demo & metrics)",
-          "pandas (IO, clean, filter/sort, groupby/merge/concat, pivots, EDA, stats, correlations)",
-          "Matplotlib (figures/axes, hist/box/heatmap/3D, annotations, simple animation & widgets)",
-          "Seaborn (distributions, pair/joint, categorical: box/violin/swarm; clustermap/FacetGrid, EDA integration)",
-          "NumPy (arrays, reshape/broadcast, random, advanced indexing, linear algebra)",
-        ],
-        projects: ["Guided hands-on mini-projects"],
+        projects: ["Medical image analysis for diagnostics (Python, PyTorch, deep learning)"],
       },
     ],
     moduleNote: "*Module order may vary slightly based on cohort needs and instructor discretion.",
@@ -248,9 +213,9 @@ export const generativeAiCourse: CourseContent = {
       {
         label: "Download Detailed Syllabus (PDF)",
         kind: "syllabus",
-        ariaLabel: "Download the detailed Advanced Data Analytics syllabus",
+        ariaLabel: "Download the detailed Deep Learning, NLP and Generative AI syllabus",
       },
-      { label: "Apply Now", kind: "enroll", ariaLabel: "Apply for the Advanced Data Analytics program" },
+      { label: "Apply Now", kind: "enroll", ariaLabel: "Apply for the Deep Learning, NLP and Generative AI course" },
     ],
   },
 

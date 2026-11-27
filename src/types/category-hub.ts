@@ -51,6 +51,11 @@ export type HubCareerPath = {
 
 export type HubCareer = SectionBase & { paths: HubCareerPath[] };
 
+/** A plain h2 section (rendered by HubText), optionally with one image. */
+export type HubTextSection = SectionBase & {
+  image?: { src: string; alt: string; width: number; height: number };
+};
+
 export type CategoryHubContent = {
   /** Key into COURSE_CATEGORIES in src/data/courses/registry.ts. */
   category: CourseCategoryKey;
@@ -60,10 +65,16 @@ export type CategoryHubContent = {
   hero: CourseHero;
   why?: CourseWhy;
   courses: HubCourses;
+  /** Short answer sections right after the course grid, in order. */
+  afterCourses?: { id: string; data: HubTextSection }[];
   path?: HubLearningPath;
   testimonials?: CourseTestimonials;
   projects?: CourseProjects;
   career?: HubCareer;
+  /** "Where we teach": the campus and online delivery, linking to the city page. */
+  where?: HubTextSection;
   faq: CourseFaq;
   cta: CourseCta;
+  /** Phone-width WhatsApp + call bar that stays at the bottom of the screen. */
+  mobileContactBar?: boolean;
 };
