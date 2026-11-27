@@ -4,8 +4,8 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { CalendarCheck } from "lucide-react";
 
-// Same enquiry modal as the header's "Free Demo": posts to /api/contact and
-// then goes to the standard thank-you page.
+// The site's standard enquiry form (the header's "Free Demo" modal), labelled
+// for a campus visit. Posts to /api/contact, then the standard thank-you page.
 const EnquireModal = dynamic(() => import("@/components/layout/EnquireModal"), { ssr: false });
 
 export default function CampusVisitButton({
@@ -33,7 +33,16 @@ export default function CampusVisitButton({
         <CalendarCheck className="h-4 w-4" aria-hidden="true" />
         {label}
       </button>
-      {open && <EnquireModal isOpen={open} onClose={() => setOpen(false)} source={source} />}
+      {open && (
+        <EnquireModal
+          isOpen={open}
+          onClose={() => setOpen(false)}
+          source={source}
+          title="Book a Campus Visit"
+          subtitle="Mira Road East, opposite the station"
+          description="Leave your details and a counsellor will call you to fix a time to visit."
+        />
+      )}
     </>
   );
 }

@@ -67,6 +67,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     OUR_TEAM:           '2026-03-10T00:00:00.000Z',
     REVIEWS:            '2026-04-01T00:00:00.000Z',
     LOCATIONS:          '2026-02-15T00:00:00.000Z',
+    MIRA_ROAD_CAMPUS:   '2026-11-27T00:00:00.000Z',
     // Course pages — last major curriculum update
     COURSES_INDEX:      '2026-03-20T00:00:00.000Z',
     COURSES_SOFTWARE:   '2026-03-20T00:00:00.000Z',
@@ -162,6 +163,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: DATES.LOCATIONS,
       changeFrequency: 'monthly',
       priority: 0.7,
+    },
+    {
+      // CDPL's only physical campus (C4-06).
+      url: `${siteUrl}/mira-road-campus`,
+      lastModified: DATES.MIRA_ROAD_CAMPUS,
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
 
     // Services Pages
