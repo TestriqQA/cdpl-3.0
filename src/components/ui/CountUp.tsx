@@ -18,20 +18,27 @@ export default function CountUp({ value, className }: { value: string; className
 
   useEffect(() => {
     const el = ref.current;
-    const match = /^(\d+(?:\.\d+)?)(.*)$/.exec(value);
+    // Digits may carry Indian-style grouping ("1,01,000+"), which is kept.
+    const match = /^(\d[\d,]*(?:\.\d+)?)(.*)$/.exec(value);
     if (!el || !match) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const target = Number(match[1]);
+    const digits = match[1].replace(/,/g, '');
+    const target = Number(digits);
     const suffix = match[2];
-    const decimals = match[1].split('.')[1]?.length ?? 0;
+    const decimals = digits.split('.')[1]?.length ?? 0;
+    const grouped = match[1].includes(',');
+    const format = (n: number) =>
+      grouped
+        ? n.toLocaleString('en-IN', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
+        : n.toFixed(decimals);
     let frame = 0;
 
     const run = () => {
       const start = performance.now();
       const tick = (now: number) => {
         const t = Math.min((now - start) / DURATION_MS, 1);
-        el.textContent = (target * easeOutCubic(t)).toFixed(decimals) + suffix;
+        el.textContent = format(target * easeOutCubic(t)) + suffix;
         if (t < 1) frame = requestAnimationFrame(tick);
         else el.textContent = value;
       };
