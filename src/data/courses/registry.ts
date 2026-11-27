@@ -1,6 +1,10 @@
 // Course registry for the shared course template.
 // Courses join COURSES as they move onto src/components/course-page; the
 // other course lists (header, footer, sitemap…) are pointed here later.
+//
+// COURSES also decides which course pages exist: each family's
+// src/app/courses/<family>/[course] route builds one page per entry, loading
+// its content through src/data/courses/content.ts. Add a course in both places.
 
 import { courseCategories } from "@/data/courses/catalog";
 
