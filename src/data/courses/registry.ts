@@ -1,6 +1,10 @@
 // Course registry for the shared course template.
 // Courses join COURSES as they move onto src/components/course-page; the
 // other course lists (header, footer, sitemap…) are pointed here later.
+//
+// COURSES also decides which course pages exist: the
+// src/app/courses/[category]/[course] route builds one page per entry, loading
+// its content through src/data/courses/content.ts. Add a course in both places.
 
 import { courseCategories } from "@/data/courses/catalog";
 
@@ -33,6 +37,19 @@ export const COURSE_CATEGORIES = {
 } as const;
 
 export type CourseCategoryKey = keyof typeof COURSE_CATEGORIES;
+
+/** A category's segment in the URL: "bi-courses" for /courses/bi-courses. */
+export function categorySegment(category: CourseCategoryKey): string {
+  const href: string = COURSE_CATEGORIES[category].href;
+  const match = /^\/courses\/([a-z0-9-]+)$/.exec(href);
+  if (!match) throw new Error(`Category "${category}" hub ${href} is not /courses/<segment>`);
+  return match[1];
+}
+
+/** The category whose hub is /courses/{segment}, or undefined. */
+export function categoryForSegment(segment: string): CourseCategoryKey | undefined {
+  return (Object.keys(COURSE_CATEGORIES) as CourseCategoryKey[]).find((c) => categorySegment(c) === segment);
+}
 
 const ST = "/courses/software-testing-course";
 const DSML = "/courses/ds-ml-courses";
