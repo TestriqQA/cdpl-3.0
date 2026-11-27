@@ -58,6 +58,7 @@ export const dataVisualizationInRProgrammingCourse: CourseContent = {
       { icon: "trophy", text: "5+ Years Industry Experience" },
     ],
     h1: "Master [[Machine Learning]] and [[Data Visualization using R]]",
+    note: { text: "Not sure this is the right fit? Compare every", link: { label: "data science course", href: "/courses/ds-ml-courses" } },
     subtitle:
       "Transform raw data into powerful, insight-driven visualizations and deploy robust Machine Learning models. Learn from industry experts and master R libraries for data science, statistical analysis, and interactive dashboards in this intensive 20-hour course.",
     description:

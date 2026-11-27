@@ -60,6 +60,7 @@ export const machineLearningCourse: CourseContent = {
     ],
     // A 95-hour Hero Program, not a master program.
     h1: "[[Machine Learning]] and [[Data Science]] with [[Python]]: 95-Hour Hero Program",
+    note: { text: "Not sure this is the right fit? Compare every", link: { label: "data science course", href: "/courses/ds-ml-courses" } },
     subtitle:
       "Become industry-ready with **Python**, **NumPy**, **Pandas**, **Data Visualization**, **scikit-learn**, model building, API integration, and cloud deployments. Build portfolio projects and earn a **QR-verified certificate**.",
     description:

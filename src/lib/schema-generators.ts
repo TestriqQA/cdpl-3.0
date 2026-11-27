@@ -1562,86 +1562,79 @@ export function generateSoftwareTestingCategoryPageSchema(
 // DATA SCIENCE & ML CATEGORY PAGE SCHEMA CONSOLIDATION
 // ============================================================================
 
+/** One course on the data science hub, as the hub's own course card states it. */
+export type HubCourseSchemaItem = {
+  name: string;
+  description: string;
+  url: string;
+  level: string;
+  hours: number;
+};
+
+/**
+ * The hub describes the courses it actually lists: one ItemList of Course
+ * entries built from the hub's own cards.
+ *
+ * It replaces three things: an aggregate "Data Science & Machine Learning
+ * Master Course" (no such course; a made-up 4-month workload and "Industry
+ * Experts" instructor), a placeholder enrolment HowTo (Google retired HowTo
+ * rich results), and an ItemList that never rendered because it looked the
+ * category up as "ds-ml-courses" while the catalog stores
+ * "courses/ds-ml-courses".
+ *
+ * No `offers` yet: every price in markup must also be visible on the page,
+ * and the fee table arrives with Cycle 4 R7.
+ */
 export function generateDataScienceMachineLearningCategoryPageSchema(
-  courseInput: Parameters<typeof generateCourseSchema>[0],
+  page: { description: string; courses: HubCourseSchemaItem[] },
   faqs: { question: string; answer: string }[],
   breadcrumbs: { name: string; url: string }[],
 ): WithContext<Record<string, unknown>>[] {
   // NOTE: Organization and WebSite schemas are handled by Root Layout
 
-  // 2. WebPage Schema
   const webPageSchema = generateWebPageSchema({
     name: "Data Science Courses Online with Placement Support | CDPL",
-    description:
-      courseInput.description ||
-      "Master Data Science and Machine Learning with our comprehensive courses.",
+    description: page.description,
     url: "/courses/ds-ml-courses",
     isPartOf: { "@id": getWebsiteId() },
     about: { "@id": getOrganizationId() },
   });
 
-  // 3. Master Course Schema (contains Aggregate Rating)
-  const courseSchema = generateCourseSchema(courseInput);
-
-  // 4. ItemList Schema for Sub-Courses
-  const dsCourses: any[] = [];
-  const dsCategory = courseCategories.find((c) => c.slug === "ds-ml-courses");
-  if (dsCategory && dsCategory.courses) {
-    dsCategory.courses.forEach((c) => {
-      dsCourses.push({
-        name: c.name,
-        url: `/${c.slug}`,
-        description: c.description,
-        type: "Course",
-      });
-    });
-  }
   const itemListSchema = generateItemListSchema(
-    dsCourses,
-    "Data Science & ML Courses Directory",
+    page.courses.map((c) => ({
+      name: c.name,
+      url: c.url,
+      itemSchema: {
+        "@type": "Course",
+        name: c.name,
+        description: c.description,
+        url: getFullUrl(c.url),
+        provider: { "@id": getOrganizationId() },
+        educationalLevel: c.level,
+        hasCourseInstance: {
+          "@type": "CourseInstance",
+          courseMode: ["online", "onsite"],
+          courseWorkload: `PT${c.hours}H`,
+          location: "Mira Road, Mumbai",
+        },
+      },
+    })),
+    "Data Science Courses at CDPL",
   );
 
-  // 5. Breadcrumb Schema
   const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
 
-  // 6. FAQPage Schema
+  // Kept for AEO even though Google shows FAQ rich results only for
+  // government and health sites.
   const faqSchema = faqs.length > 0 ? generateFAQSchema(faqs) : undefined;
 
-  // 7. HowTo Schema (Dummy Enrollment)
-  const howToSchema = generateHowToSchema({
-    name: "How to Enroll in CDPL Data Science & ML Courses",
-    description:
-      "A simple step-by-step guide to enrolling in our Data Science certification programs.",
-    steps: [
-      {
-        name: "Browse Courses",
-        text: "Explore our comprehensive list of Data Science & ML modules.",
-      },
-      {
-        name: "Select a Program",
-        text: "Choose between standard ML, Deep Learning, AI, or the Full Master program.",
-      },
-      {
-        name: "Contact Admissions",
-        text: "Reach out to our admissions team for counseling and batch details.",
-      },
-      {
-        name: "Start Learning",
-        text: "Attend live classes, complete hands-on projects, and get certified!",
-      },
-    ],
-  });
-
-  // 8. Site Navigation Schema
   const siteNavigationSchema = generateSiteNavigationSchema();
 
   return [
     webPageSchema,
-    courseSchema,
     itemListSchema,
     breadcrumbSchema,
     faqSchema,
-    howToSchema,
     siteNavigationSchema,
   ].filter(
     (schema): schema is WithContext<Record<string, unknown>> =>

@@ -35,7 +35,7 @@ export const dataScienceCourse: CourseContent = {
   schema: {
     name: "Advanced Data Science and Machine Learning Masterclass",
     description:
-      "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with job placement.",
+      "Master the data science full course in Mumbai with 200 hours of intensive training. Advanced data science, machine learning & AI with placement support.",
     duration: "P4M",
     howTo: {
       name: "How to Enroll in CDPL Advanced Data Science Masterclass",
@@ -61,6 +61,7 @@ export const dataScienceCourse: CourseContent = {
       { icon: "star", text: "Mumbai’s Premium Training Institute" },
     ],
     h1: "Advanced [[Data Science]] and [[Machine Learning]] Masterclass (200 Hours)",
+    note: { text: "Not sure this is the right fit? Compare every", link: { label: "data science course", href: "/courses/ds-ml-courses" } },
     subtitle:
       "Master the **data science full course** in Mumbai with 200 hours of intensive training. From **advanced data science** to cutting-edge **machine learning**, we prepare you for high-paying roles with **Interviews** and 10+ real-time projects.",
     description:

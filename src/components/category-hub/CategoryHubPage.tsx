@@ -14,6 +14,7 @@ import HubCourses from "./HubCourses";
 import HubPath from "./HubPath";
 import HubCareer from "./HubCareer";
 import HubText from "./HubText";
+import HubMobileContactBar from "./HubMobileContactBar";
 
 /** Page metadata for a hub (" | CDPL" is appended by generateStaticPageMetadata). */
 export function hubMetadata(hub: CategoryHubContent): Metadata {
@@ -35,6 +36,7 @@ export default function CategoryHubPage({ hub }: { hub: CategoryHubContent }) {
   const sections = ([
     hub.why && { id: "why", render: (p: Base) => <CourseWhy {...p} data={hub.why!} /> },
     { id: "courses", render: (p: Base) => <HubCourses {...p} data={hub.courses} /> },
+    ...(hub.afterCourses ?? []).map(({ id, data }) => ({ id, render: (p: Base) => <HubText {...p} data={data} /> })),
     hub.path && { id: "curriculum", render: (p: Base) => <HubPath {...p} data={hub.path!} /> },
     hub.testimonials && { id: "testimonials", render: (p: Base) => <CourseTestimonials {...p} data={hub.testimonials!} /> },
     hub.projects && { id: "projects", render: (p: Base) => <CourseProjects {...p} data={hub.projects!} /> },
@@ -43,8 +45,10 @@ export default function CategoryHubPage({ hub }: { hub: CategoryHubContent }) {
     { id: "faqs", render: (p: Base) => <CourseFaq id={p.id} tone={p.tone} data={hub.faq} /> },
   ] as (Section | undefined)[]).filter((s): s is Section => Boolean(s));
 
+  // One wrapper so the mobile contact bar (sticky, last child) stays on screen
+  // for the whole hub and stops above the footer.
   return (
-    <>
+    <div>
       <CourseHero
         hero={hub.hero}
         sourceName={sourceName}
@@ -60,7 +64,9 @@ export default function CategoryHubPage({ hub }: { hub: CategoryHubContent }) {
       ))}
 
       <CourseCta id="contact" tone={toneAt(sections.length)} data={hub.cta} sourceName={sourceName} />
-    </>
+
+      {hub.mobileContactBar && <HubMobileContactBar />}
+    </div>
   );
 }
 

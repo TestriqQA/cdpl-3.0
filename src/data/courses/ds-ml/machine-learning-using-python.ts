@@ -56,6 +56,7 @@ export const machineLearningUsingPythonCourse: CourseContent = {
       { icon: "trophy", text: "5+ Years Industry Experience" },
     ],
     h1: "Master [[Machine Learning Algorithms]] with [[Python]]",
+    note: { text: "Not sure this is the right fit? Compare every", link: { label: "data science course", href: "/courses/ds-ml-courses" } },
     subtitle:
       "Transform raw data into powerful, predictive intelligence. Learn from industry experts and build production-ready ML models that solve real-world business problems using Python.",
     description:

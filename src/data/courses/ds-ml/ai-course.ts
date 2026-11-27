@@ -57,6 +57,7 @@ export const aiCourse: CourseContent = {
       { icon: "star", text: "Mumbai’s Premium Training Institute" },
     ],
     h1: "Comprehensive [[Data Science]] and [[AI]] Master Program (255 Hours)",
+    note: { text: "Not sure this is the right fit? Compare every", link: { label: "data science course", href: "/courses/ds-ml-courses" } },
     subtitle:
       "CDPL's 255-hour **Data Science & AI Master Program** makes you industry-ready with **Python**, **Statistics**, **Machine Learning**, **Deep Learning**, **NLP**, **Time Series**, **Big Data (Spark)**, and **MLOps**. Build portfolio projects and earn a **QR-verified CDPL certificate**. It is a professional certificate program, not a university master's degree.",
     description:

@@ -59,6 +59,7 @@ export const generativeAiCourse: CourseContent = {
       { icon: "star", text: "Mumbai’s Premium Training Institute" },
     ],
     h1: "[[Deep Learning]], [[NLP]] and [[Generative AI]] Course",
+    note: { text: "Not sure this is the right fit? Compare every", link: { label: "data science course", href: "/courses/ds-ml-courses" } },
     subtitle:
       "Become industry-ready with **Neural Networks**, **CNNs**, **RNNs/LSTMs**, **Transformers**, **Prompt Engineering**, **fine-tuning LLMs**, embeddings and **vector databases**. Build portfolio projects and earn a **QR-verified certificate**.",
     description:

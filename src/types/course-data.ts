@@ -56061,8 +56061,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Ahmedabad",
@@ -57066,8 +57066,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Bengaluru",
@@ -58071,8 +58071,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Chennai",
@@ -59076,8 +59076,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Delhi",
@@ -59085,7 +59085,7 @@ export const courseData: Record<string, CourseData> = {
       }
     ],
     "metadata": {
-      "title": "Comprehensive Data Science Course in Delhi with Placement | CDPL",
+      "title": "Data Science Course in Delhi: Live Online Classes | CDPL",
       "description": "Professional Data Science course in Delhi. Learn Data Analytics, ML & AI from experts. Placement assistance. Comprehensive institute for data analyst course in Delhi.",
       "keywords": "data analytics courses in delhi, data science course in delhi, data scientist jobs in delhi, comprehensive institute for data analyst course in delhi, data science training in delhi, data analyst course in delhi with placement"
     },
@@ -60081,8 +60081,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Hyderabad",
@@ -61086,8 +61086,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kolkata",
@@ -62091,8 +62091,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Mumbai",
@@ -63095,8 +63095,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "CSMT",
@@ -64100,8 +64100,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Pune",
@@ -65105,8 +65105,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Agra",
@@ -66110,8 +66110,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Ajmer",
@@ -67115,8 +67115,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Akola",
@@ -68120,8 +68120,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Aligarh",
@@ -69125,8 +69125,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Amravati",
@@ -70130,8 +70130,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Amritsar",
@@ -71135,8 +71135,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Anand",
@@ -72140,8 +72140,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Asansol",
@@ -73145,8 +73145,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Aurangabad",
@@ -74150,8 +74150,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Bareilly",
@@ -75155,8 +75155,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Belagavi",
@@ -76160,8 +76160,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Bhavnagar",
@@ -77165,8 +77165,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Bhopal",
@@ -78170,8 +78170,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Bhubaneswar",
@@ -79175,8 +79175,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Bikaner",
@@ -80180,8 +80180,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Bilaspur",
@@ -81185,8 +81185,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Coimbatore",
@@ -82190,8 +82190,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Cuttack",
@@ -83195,8 +83195,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Dehradun",
@@ -84200,8 +84200,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Dhanbad",
@@ -85205,8 +85205,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Durgapur",
@@ -86210,8 +86210,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Faridabad",
@@ -87215,8 +87215,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Ghaziabad",
@@ -88220,8 +88220,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Gorakhpur",
@@ -89225,8 +89225,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Guntur",
@@ -90230,8 +90230,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Gurgaon",
@@ -91235,8 +91235,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Guwahati",
@@ -92240,8 +92240,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Gwalior",
@@ -93245,8 +93245,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Hubballi\u2013Dharwad",
@@ -94250,8 +94250,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Indore",
@@ -95255,8 +95255,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Jabalpur",
@@ -96260,8 +96260,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Jaipur",
@@ -97265,8 +97265,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Jalandhar",
@@ -98270,8 +98270,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Jammu",
@@ -99275,8 +99275,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Jamnagar",
@@ -100280,8 +100280,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Jamshedpur",
@@ -101285,8 +101285,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Jodhpur",
@@ -102290,8 +102290,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kanpur",
@@ -103295,8 +103295,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kochi",
@@ -104300,8 +104300,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kolhapur",
@@ -105305,8 +105305,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kollam",
@@ -106310,8 +106310,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kota",
@@ -107315,8 +107315,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kozhikode",
@@ -108320,8 +108320,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kurnool",
@@ -109325,8 +109325,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Lucknow",
@@ -110330,8 +110330,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Ludhiana",
@@ -111335,8 +111335,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Madurai",
@@ -112340,8 +112340,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Mangaluru",
@@ -113345,8 +113345,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Meerut",
@@ -114350,8 +114350,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Mysuru",
@@ -115355,8 +115355,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Nagpur",
@@ -116360,8 +116360,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Nashik",
@@ -117365,8 +117365,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Nellore",
@@ -118370,8 +118370,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Noida",
@@ -119375,8 +119375,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Patna",
@@ -120380,8 +120380,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Puducherry",
@@ -121385,8 +121385,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Prayagraj",
@@ -122390,8 +122390,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Raipur",
@@ -123395,8 +123395,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Rajkot",
@@ -124400,8 +124400,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Ranchi",
@@ -125405,8 +125405,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Rourkela",
@@ -126410,8 +126410,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Salem",
@@ -127415,8 +127415,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Siliguri",
@@ -128420,8 +128420,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Solapur",
@@ -129425,8 +129425,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Srinagar",
@@ -130430,8 +130430,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Surat",
@@ -131435,8 +131435,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Thiruvananthapuram",
@@ -132440,8 +132440,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Thrissur",
@@ -133445,8 +133445,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Tiruchirappalli",
@@ -134450,8 +134450,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Tirunelveli",
@@ -135455,8 +135455,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Tirupati",
@@ -136460,8 +136460,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Ujjain",
@@ -137465,8 +137465,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Vadodara",
@@ -138470,8 +138470,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Varanasi",
@@ -139475,8 +139475,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Vijayawada",
@@ -140480,8 +140480,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Visakhapatnam",
@@ -141485,8 +141485,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Warangal",
@@ -142490,8 +142490,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Churchgate",
@@ -143495,8 +143495,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Marine Lines",
@@ -144500,8 +144500,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Charni Road",
@@ -145505,8 +145505,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Grant Road",
@@ -146510,8 +146510,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Mahalaxmi",
@@ -147515,8 +147515,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Lower Parel",
@@ -148520,8 +148520,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Elphinstone Road (Prabhadevi)",
@@ -149525,8 +149525,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Dadar",
@@ -150530,8 +150530,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Matunga Road",
@@ -151535,8 +151535,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Mahim Junction",
@@ -152540,8 +152540,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Bandra",
@@ -153545,8 +153545,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Khar Road",
@@ -154550,8 +154550,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Santacruz",
@@ -155555,8 +155555,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Vile Parle",
@@ -156560,8 +156560,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Andheri",
@@ -157565,8 +157565,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Jogeshwari",
@@ -158570,8 +158570,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Ram Mandir",
@@ -159575,8 +159575,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Goregaon",
@@ -160580,8 +160580,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Malad",
@@ -161585,8 +161585,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kandivali",
@@ -162590,8 +162590,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Borivali",
@@ -163595,8 +163595,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Dahisar",
@@ -164600,8 +164600,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Mira Road",
@@ -165605,8 +165605,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Bhayandar",
@@ -166610,8 +166610,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Naigaon",
@@ -167615,8 +167615,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Vasai Road",
@@ -168620,8 +168620,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Nala Sopara",
@@ -169625,8 +169625,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Virar",
@@ -170630,8 +170630,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Vaitarna",
@@ -171635,8 +171635,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Saphale",
@@ -172640,8 +172640,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kelve Road",
@@ -173645,8 +173645,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Palghar",
@@ -174650,8 +174650,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Boisar",
@@ -175655,8 +175655,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Vangaon",
@@ -176660,8 +176660,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Dahanu Road",
@@ -177665,8 +177665,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "CSMT (Chhatrapati Shivaji Maharaj Terminus)",
@@ -178670,8 +178670,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Masjid",
@@ -179675,8 +179675,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Sandhurst Road",
@@ -180680,8 +180680,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Byculla",
@@ -181685,8 +181685,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Chinchpokli",
@@ -182690,8 +182690,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Currey Road",
@@ -183695,8 +183695,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Parel",
@@ -184700,8 +184700,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Matunga",
@@ -185705,8 +185705,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Sion",
@@ -186710,8 +186710,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kurla",
@@ -187715,8 +187715,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Vidyavihar",
@@ -188720,8 +188720,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Ghatkopar",
@@ -189725,8 +189725,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Vikhroli",
@@ -190730,8 +190730,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kanjurmarg",
@@ -191735,8 +191735,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Bhandup",
@@ -192740,8 +192740,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Nahur",
@@ -193745,8 +193745,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Mulund",
@@ -194750,8 +194750,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Thane",
@@ -195755,8 +195755,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kalwa",
@@ -196760,8 +196760,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Mumbra",
@@ -197765,8 +197765,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Diva",
@@ -198770,8 +198770,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kopar",
@@ -199775,8 +199775,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Dombivli",
@@ -200780,8 +200780,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Thakurli",
@@ -201785,8 +201785,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kalyan",
@@ -202790,8 +202790,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Vithalwadi",
@@ -203795,8 +203795,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Ulhasnagar",
@@ -204800,8 +204800,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Ambernath",
@@ -205805,8 +205805,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Badlapur",
@@ -206810,8 +206810,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Vangani",
@@ -207815,8 +207815,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Shelu",
@@ -208820,8 +208820,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Neral",
@@ -209825,8 +209825,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Bhivpuri Road",
@@ -210830,8 +210830,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Karjat",
@@ -211835,8 +211835,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Palasdari",
@@ -212840,8 +212840,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Khopoli",
@@ -213845,8 +213845,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Dockyard Road",
@@ -214850,8 +214850,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Reay Road",
@@ -215855,8 +215855,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Cotton Green",
@@ -216860,8 +216860,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Sewri",
@@ -217865,8 +217865,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Wadala Road",
@@ -218870,8 +218870,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Guru Tegh Bahadur Nagar",
@@ -219875,8 +219875,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Chunabhatti",
@@ -220880,8 +220880,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Tilak Nagar",
@@ -221885,8 +221885,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Chembur",
@@ -222890,8 +222890,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Govandi",
@@ -223895,8 +223895,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Mankhur",
@@ -224900,8 +224900,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Vashi",
@@ -225905,8 +225905,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Sanpada",
@@ -226910,8 +226910,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Juinagar",
@@ -227915,8 +227915,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Nerul",
@@ -228920,8 +228920,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Seawoods\u2013Darave",
@@ -229925,8 +229925,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Belapur CBD",
@@ -230930,8 +230930,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Kharghar",
@@ -231935,8 +231935,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Mansarovar",
@@ -232940,8 +232940,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Khandeshwar",
@@ -233945,8 +233945,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Panvel",
@@ -446359,8 +446359,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Prabhadevi",
@@ -447364,8 +447364,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Chandigarh",
@@ -448369,8 +448369,8 @@ export const courseData: Record<string, CourseData> = {
         "href": "/"
       },
       {
-        "label": "Data Science",
-        "href": "/data-science-courses"
+        "label": "Data Science Courses",
+        "href": "/courses/ds-ml-courses"
       },
       {
         "label": "Mumbai Central",

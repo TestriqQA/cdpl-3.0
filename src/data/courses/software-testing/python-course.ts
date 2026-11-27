@@ -32,7 +32,7 @@ export const pythonCourse: CourseContent = {
     name: "Python Programming Master Course",
     description:
       "Comprehensive Python course in Mumbai with Django, Data Science, ML, Automation. placement. Live projects, global certificate.",
-    duration: "P2M2W",
+    duration: "PT30H",
     howTo: {
       name: "How to Enroll in CDPL Python Master Course",
       description: "A step-by-step guide to enrolling in our specialized Python framework and Automation master program.",
@@ -55,6 +55,7 @@ export const pythonCourse: CourseContent = {
       { icon: "cpu", text: "Project-Based" },
     ],
     h1: "Master Program in [[Python Programming]]",
+    note: { text: "Learning Python for data science? Start here, then pick a", link: { label: "data science course", href: "/courses/ds-ml-courses" } },
     subtitle:
       "Learn modern **Python** with **data structures**, **OOP**, **API & file automation**, **testing**, **data analysis**, and **deployment**. Build **portfolio-ready projects**, earn a **QR-verified certificate**, and get **placement support** with interview prep.",
     description:
@@ -96,9 +97,9 @@ export const pythonCourse: CourseContent = {
   why: {
     heading: "Your Gateway to the [[Top 1% Python Developer]]",
     intro:
-      "An **80-hour**, mentor-led, **project-driven** Python program that blends **AI & Data Science**, **Web APIs**, and **Automation** to make you job-ready.",
+      "A **30-hour**, mentor-led, **project-driven** Python program that blends **AI & Data Science**, **Web APIs**, and **Automation** to make you job-ready.",
     points: [
-      { icon: "clock", text: "80 Hours · Live + Labs" },
+      { icon: "clock", text: "30 Hours · Live + Labs" },
       { icon: "package", text: "40+ Projects · Portfolio Ready" },
       { icon: "calendar", text: "6 hrs / week · Flexible Cohort" },
       { icon: "graduationCap", text: "No Coding Exp. · Beginner Friendly" },
@@ -234,7 +235,7 @@ export const pythonCourse: CourseContent = {
       "Follow these **4 proven steps** to move from learner to **job-ready Python professional** with a portfolio recruiters trust.",
     steps: [
       {
-        title: "Complete the 80-Hour Python Master Program",
+        title: "Complete the 30-Hour Python Course",
         badge: "Job-Ready Foundations",
         description:
           "Master Python syntax, OOP, data structures, web (Django), data analysis, ML basics, automation, APIs, and deployments.",
@@ -261,7 +262,7 @@ export const pythonCourse: CourseContent = {
       {
         kind: "stats",
         items: [
-          { value: "~ 10 Weeks", label: "Program Duration", note: "80 hours guided learning" },
+          { value: "30 Hours", label: "Program Duration", note: "Live, mentor-led sessions" },
           { value: "3+", label: "Portfolio Projects", note: "Deployed & documented" },
           { value: "₹6–15 LPA", label: "Target CTC", note: "Role & location vary" },
         ],
@@ -418,7 +419,7 @@ export const pythonCourse: CourseContent = {
     eyebrow: "Live Online + Classroom • 40+ Projects • Job Assistance",
     heading: "Start Your [[Python Journey]] Today",
     intro:
-      "Enroll now in the **80-hour, mentor-led** program with **placement assistance**, portfolio projects, and a **QR-verified certificate**.",
+      "Enroll now in the **30-hour, mentor-led** program with **placement assistance**, portfolio projects, and a **QR-verified certificate**.",
     actions: [
       { label: "Call Admissions: +91 788-83-83-788", kind: "tel", ariaLabel: "Call CDPL admissions" },
       { label: "Email Us", kind: "mailto", ariaLabel: "Email CDPL" },

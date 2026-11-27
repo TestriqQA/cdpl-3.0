@@ -169,8 +169,11 @@ export const dsMlHub: CategoryHubContent = {
       "CDPL's data science courses teach **Python**, **statistics**, **SQL**, **machine learning**, **deep learning** and **generative AI** through live, mentor-led classes, online or at our Mira Road, Mumbai centre. Courses run from 20 to 255 hours. Every course includes real projects, a QR-verified certificate and placement support for Data Analyst, Data Scientist and ML Engineer roles.",
     description:
       "CDPL’s Data Science program covers Data Wrangling (Pandas, NumPy), Exploratory Data Analysis, Statistical Modeling, Supervised & Unsupervised Learning, Deep Learning (TensorFlow/PyTorch), NLP, Time Series, Model Deployment, MLOps, and SQL for data querying. The curriculum is designed for beginners and working professionals aiming for Data Scientist, ML Engineer, and Data Analyst roles.",
+    // "Ready to talk" offer: the demo class. Upcoming demo dates join it once
+    // batch dates are confirmed (C4-09).
     ctas: [
-      { label: "Download Brochure", kind: "brochure", primary: true },
+      { label: "Book a Free Demo Class", kind: "demo", primary: true },
+      { label: "Download Brochure", kind: "brochure" },
       { label: "Watch CDPL", kind: "video", href: "https://www.youtube.com/watch?v=8kB2wESj1n8" },
     ],
     highlights: [
@@ -182,6 +185,17 @@ export const dsMlHub: CategoryHubContent = {
       "Job Support",
       "Flexible Batches",
       "Lifetime Access",
+    ],
+    // Key facts box. Fees, next batch and "fee last updated" join it with
+    // the fee table (R7) and confirmed batch dates (C4-09).
+    featuresTitle: "Data science courses: key facts",
+    features: [
+      { icon: "clock", title: "Duration", description: "20 to 255 hours of live classes, weekday or weekend batches" },
+      { icon: "globe2", title: "Mode", description: "Live online, or classroom at Mira Road, Mumbai" },
+      { icon: "graduationCap", title: "Eligibility", description: "Students, graduates and working professionals; no coding needed for beginner courses" },
+      { icon: "code", title: "Projects", description: "Real projects in every course; capstones in the 200 and 255-hour programs" },
+      { icon: "badgeCheck", title: "Certificate", description: "QR-verified CDPL certificate that employers can check online" },
+      { icon: "briefcase", title: "Placement support", description: "Resume and LinkedIn review, mock interviews, job referrals. No job guarantee" },
     ],
   },
 
@@ -280,7 +294,48 @@ export const dsMlHub: CategoryHubContent = {
         ],
       },
     ],
+    // Offers for visitors still comparing ("what does it cost?") and still
+    // unsure ("which one fits me?"), below the grid and the course guide. The
+    // WhatsApp offer becomes "fee sheet and EMI plans" once both are confirmed
+    // (R7, C4-38).
+    ctas: [
+      { label: "Ask for current fees on WhatsApp", kind: "whatsapp" },
+      {
+        label: "Free 10-minute course-fit call",
+        kind: "careerSession",
+        modalTitle: "Book a Free 10-Minute Course-Fit Call",
+      },
+    ],
   },
+
+  // Answer-first sections for the "online …" (8.1K) and "… certification"
+  // (1.0K) searches, straight after the courses.
+  afterCourses: [
+    {
+      id: "online",
+      data: {
+        heading: "Online Data Science Courses ([[Live]], Not Recorded)",
+        intro:
+          "Every CDPL data science course runs as a live online batch as well as in the classroom. Trainers teach live from our Mira Road classroom and each session is streamed to that batch's online learners, so you ask questions in real time and get the same projects, certificate and placement support as classroom students. Sessions are recorded for revision, and weekday and weekend batches suit students and working professionals.",
+        ctas: [{ label: "Book a Free Demo Class", kind: "demo" }],
+      },
+    },
+    {
+      id: "certification",
+      data: {
+        heading: "Data Science [[Certification]]",
+        intro:
+          "Every course ends with a QR-verified CDPL certificate. Each one carries a unique certificate number and QR code that employers can check on our certificate validation page, along with the course name and hours. It is issued once you complete all assessments and the mock interview process. It is a CDPL professional certificate, not a university degree.",
+        image: {
+          src: "/certifications_images/cdpl_certifications_validation/cdpl_certificate_validation.webp",
+          alt: "CDPL data science certificate sample",
+          width: 2000,
+          height: 1414,
+        },
+        ctas: [{ label: "Check a CDPL certificate", kind: "link", href: "/cdpl-certificate-validation" }],
+      },
+    },
+  ],
 
   // The old hub showed every course's full module list in tabs. That syllabus
   // lives on each course page; the hub shows the order to take them in.
@@ -577,6 +632,7 @@ export const dsMlHub: CategoryHubContent = {
     intro: "Join students who have successfully launched their data science careers.",
     actions: [
       { label: "Enroll Now", kind: "enroll" },
+      { label: "Book a Free Demo Class", kind: "demo" },
       { label: "Download Brochure", kind: "brochure" },
     ],
     highlights: [
@@ -593,4 +649,6 @@ export const dsMlHub: CategoryHubContent = {
       { icon: "mapPin", text: "Mumbai, Maharashtra, India" },
     ],
   },
+
+  mobileContactBar: true,
 };
