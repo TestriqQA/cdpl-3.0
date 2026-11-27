@@ -58080,7 +58080,7 @@ export const courseData: Record<string, CourseData> = {
       }
     ],
     "metadata": {
-      "title": "Comprehensive Data Science Course in Chennai, India | Professional Chennai Data Science Training",
+      "title": "Data Science Course in Chennai: Live Online Classes | CDPL",
       "description": "Master Data Science with our industry-leading certification course in Chennai, India. Get hands-on training in Python, Machine Learning, and AI. job placement support.",
       "keywords": "Data Science course chennai, Chennai Data Science Training, Python, Machine Learning, AI, Data Analyst, Data Scientist, certification, online training, placement, Chennai, India"
     },
@@ -60090,7 +60090,7 @@ export const courseData: Record<string, CourseData> = {
       }
     ],
     "metadata": {
-      "title": "Comprehensive Data Science Course in Hyderabad, India | Professional Hyderabad Data Science Training",
+      "title": "Data Science Course in Hyderabad: Live Online Classes | CDPL",
       "description": "Master Data Science with our industry-leading certification course in Hyderabad, India. Get hands-on training in Python, Machine Learning, and AI. job placement support.",
       "keywords": "Data Science course hyderabad, Hyderabad Data Science Training, Python, Machine Learning, AI, Data Analyst, Data Scientist, certification, online training, placement, Hyderabad, India"
     },
@@ -61095,7 +61095,7 @@ export const courseData: Record<string, CourseData> = {
       }
     ],
     "metadata": {
-      "title": "Comprehensive Data Science Course in Kolkata, India | Professional Kolkata Data Science Training",
+      "title": "Data Science Course in Kolkata: Live Online Classes | CDPL",
       "description": "Master Data Science with our industry-leading certification course in Kolkata, India. Get hands-on training in Python, Machine Learning, and AI. job placement support.",
       "keywords": "Data Science course kolkata, Kolkata Data Science Training, Python, Machine Learning, AI, Data Analyst, Data Scientist, certification, online training, placement, Kolkata, India"
     },
@@ -62116,8 +62116,7 @@ export const courseData: Record<string, CourseData> = {
       "subtitle": "Job-Oriented Data Scientist Training in Mumbai & Thane",
       "description": "Enroll in the comprehensive Data Science course in Mumbai with placement. Master Machine Learning, AI, and Data Analytics without prior IT experience. Hands-on projects, expert mentors from top data science colleges in Mumbai, and interview opportunities.",
       "certifications": [
-        "Certified Data Scientist",
-        "IBM/Microsoft Aligned Curriculum",
+        "QR-Verified CDPL Certificate",
         "Machine Learning Expert"
       ],
       "stats": [
@@ -62893,7 +62892,7 @@ export const courseData: Record<string, CourseData> = {
       }
     },
     "whyChooseContent": {
-      "title": "Why Choose Our Data Science Course?",
+      "title": "Why Choose Our Data Science Institute in Mira Road, Mumbai?",
       "subtitle": "Get trained by industry experts with real-world experience.",
       "reasons": [
         {
@@ -64110,7 +64109,7 @@ export const courseData: Record<string, CourseData> = {
       }
     ],
     "metadata": {
-      "title": "Comprehensive Data Science Course in Pune with Placement | Feed Your Career",
+      "title": "Data Science Course in Pune with Placement Support | CDPL",
       "description": "Enroll in the Comprehensive Data Science Course in Pune. Comprehensive training in Python, AI, and Cloud Computing. placement support for freshers and professionals.",
       "keywords": "data science course in pune, comprehensive data science course in pune with placement, data science course fees in pune, cloud courses in pune, data science jobs in pune, fresher data scientist jobs in pune, data science training in pune"
     },
@@ -164610,7 +164609,7 @@ export const courseData: Record<string, CourseData> = {
       }
     ],
     "metadata": {
-      "title": "Comprehensive Data Science Course near Mira Road Station, Mumbai | Professional Data Science Course near Mira Road",
+      "title": "Data Science Course near Mira Road Station | CDPL",
       "description": "Master Data Science with our industry-leading certification course near Mira Road Station, Mumbai. Get hands-on training in Python, Machine Learning, and AI. job placement support.",
       "keywords": "Data Science course mira-road, Data Science Course near Mira Road, Python, Machine Learning, AI, Data Analyst, Data Scientist, certification, online training, placement, Mira Road, Maharashtra"
     },

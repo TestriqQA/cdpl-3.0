@@ -1571,7 +1571,7 @@ export function generateDataScienceMachineLearningCategoryPageSchema(
 
   // 2. WebPage Schema
   const webPageSchema = generateWebPageSchema({
-    name: "Data Science & Machine Learning Courses | CDPL",
+    name: "Data Science Courses Online with Placement Support | CDPL",
     description:
       courseInput.description ||
       "Master Data Science and Machine Learning with our comprehensive courses.",

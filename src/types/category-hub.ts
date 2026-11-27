@@ -64,6 +64,8 @@ export type CategoryHubContent = {
   testimonials?: CourseTestimonials;
   projects?: CourseProjects;
   career?: HubCareer;
+  /** "Where we teach": the campus and online delivery, linking to the city page. */
+  where?: SectionBase;
   faq: CourseFaq;
   cta: CourseCta;
 };

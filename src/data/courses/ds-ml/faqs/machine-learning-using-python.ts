@@ -4,7 +4,7 @@ import { SITE_STATS } from "@/lib/site-stats";
 export const ML_PYTHON_FAQS: QA[] = [
     {
         question: "What is the duration of the course?",
-        answer: "The Master Program in Machine Learning Algorithms using Python Programming is a comprehensive 45-hour course. The training is structured across 7 modules with a mix of lectures, hands-on projects, and assessments.",
+        answer: "Machine Learning Algorithms using Python Programming is a comprehensive 45-hour course. The training is structured across 7 modules with a mix of lectures, hands-on projects, and assessments.",
         category: "Course Details",
     },
     {

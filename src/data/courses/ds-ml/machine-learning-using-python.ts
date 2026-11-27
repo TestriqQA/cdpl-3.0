@@ -12,9 +12,11 @@ export const machineLearningUsingPythonCourse: CourseContent = {
   sourceName: "Machine Learning Algorithms with Python Course Page",
 
   seo: {
-    title: "Machine Learning with Python Course in Mumbai | CDPL",
+    // No "Mumbai" (the city page owns it) and no "master program": this is a
+    // 45-hour course.
+    title: "Machine Learning Algorithms with Python Course | CDPL",
     description:
-      "45-hour master program in ML algorithms using Python — scikit-learn, pandas, real datasets & hands-on projects with placement assistance in Mumbai.",
+      "45-hour course in ML algorithms using Python — scikit-learn, pandas, real datasets & hands-on projects with placement assistance in Mumbai.",
     keywords: [
       "machine learning with python course mumbai",
       "python for data science training",
@@ -27,9 +29,9 @@ export const machineLearningUsingPythonCourse: CourseContent = {
   },
 
   schema: {
-    name: "Master Program in Machine Learning Algorithms using Python",
+    name: "Machine Learning Algorithms using Python",
     description:
-      "45-Hour Master Program in Machine Learning Algorithms using Python. Hands-on projects, job assistance, global certificates.",
+      "45-Hour Course in Machine Learning Algorithms using Python. Hands-on projects, job assistance, global certificates.",
     duration: "P1M2W",
     howTo: {
       name: "How to Enroll in CDPL Machine Learning with Python Course",
@@ -648,7 +650,7 @@ export const machineLearningUsingPythonCourse: CourseContent = {
     eyebrow: "Limited Time Offer: Get 20% Off on Early Enrollment!",
     heading: "Ready to [[Transform Your Career]]?",
     intro:
-      "Join hundreds of successful graduates who have landed high-paying ML engineering roles. Start your journey today with our comprehensive 45-hour master program.",
+      "Join hundreds of successful graduates who have landed high-paying ML engineering roles. Start your journey today with our comprehensive 45-hour course.",
     actions: [
       { label: "Enroll Now & Get Started", kind: "enroll" },
       { label: "Schedule Free Demo", kind: "careerSession" },

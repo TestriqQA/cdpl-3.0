@@ -13,6 +13,7 @@ import type { CategoryHubContent } from "@/types/category-hub";
 import HubCourses from "./HubCourses";
 import HubPath from "./HubPath";
 import HubCareer from "./HubCareer";
+import HubText from "./HubText";
 
 /** Page metadata for a hub (" | CDPL" is appended by generateStaticPageMetadata). */
 export function hubMetadata(hub: CategoryHubContent): Metadata {
@@ -38,6 +39,7 @@ export default function CategoryHubPage({ hub }: { hub: CategoryHubContent }) {
     hub.testimonials && { id: "testimonials", render: (p: Base) => <CourseTestimonials {...p} data={hub.testimonials!} /> },
     hub.projects && { id: "projects", render: (p: Base) => <CourseProjects {...p} data={hub.projects!} /> },
     hub.career && { id: "career", render: (p: Base) => <HubCareer {...p} data={hub.career!} /> },
+    hub.where && { id: "where-we-teach", render: (p: Base) => <HubText {...p} data={hub.where!} /> },
     { id: "faqs", render: (p: Base) => <CourseFaq id={p.id} tone={p.tone} data={hub.faq} /> },
   ] as (Section | undefined)[]).filter((s): s is Section => Boolean(s));
 

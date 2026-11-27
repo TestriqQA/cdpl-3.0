@@ -12,20 +12,19 @@ export const aiCourse: CourseContent = {
   sourceName: "Comprehensive Data Science & AI",
 
   seo: {
-    title: "Data Science & AI Master Program in Mumbai | CDPL",
+    // A CDPL certificate program, not a university master's or PG degree, so
+    // the copy says "Master Program" and never "masters" / "post graduate".
+    title: "Data Science & AI Master Program (255 Hours) | CDPL",
     description:
       "255-hour Data Science & AI master program in Mumbai — Python, ML, deep learning, NLP, generative AI & cloud-deployed projects with placement assistance.",
     keywords: [
-      "masters in ai and ml",
-      "ms in artificial intelligence in india",
-      "ai master program mumbai",
-      "masters in ai in india",
-      "masters in data science and artificial intelligence in india",
-      "data science master program mumbai",
-      "post graduate program in ai and ml",
-      "post graduate program in ai and machine learning",
-      "masters in artificial intelligence india",
-      "masters in ai and ml in india",
+      "data science and ai master program",
+      "ai and ml master program",
+      "ai master program in india",
+      "data science master program",
+      "data science and artificial intelligence program",
+      "ai and machine learning course",
+      "comprehensive data science course",
     ],
     image: "/og-images/courses-ds-ml-courses-ai-course-og.webp",
   },
@@ -57,20 +56,20 @@ export const aiCourse: CourseContent = {
       { icon: "briefcase", text: "Placement Support" },
       { icon: "star", text: "Mumbai’s Premium Training Institute" },
     ],
-    h1: "[[Masters in AI and ML]] – Data Science Master Program Mumbai with Placement",
+    h1: "Comprehensive [[Data Science]] and [[AI]] Master Program (255 Hours)",
     subtitle:
-      "Pursuing a **masters in ai and ml** in India? Our **ai master program mumbai** makes you industry-ready with **Python**, **Statistics**, **Machine Learning**, **Deep Learning**, **NLP**, **Time Series**, **Big Data (Spark)**, and **MLOps**. Build portfolio projects and earn a **QR-verified certificate**. Ideal for those seeking **ms in artificial intelligence in india**.",
+      "CDPL's 255-hour **Data Science & AI Master Program** makes you industry-ready with **Python**, **Statistics**, **Machine Learning**, **Deep Learning**, **NLP**, **Time Series**, **Big Data (Spark)**, and **MLOps**. Build portfolio projects and earn a **QR-verified CDPL certificate**. It is a professional certificate program, not a university master's degree.",
     description:
-      "This **post graduate program in ai and machine learning** covers Pandas/NumPy, EDA & visualization, model evaluation, feature engineering, pipelines, basic Transformers, cloud deployments, and CI/CD best practices. Perfect for **masters in data science and artificial intelligence in india**.",
+      "The program covers Pandas/NumPy, EDA & visualization, model evaluation, feature engineering, pipelines, basic Transformers, cloud deployments, and CI/CD best practices, taught live online or at our Mira Road, Mumbai centre.",
     ctas: [
       { label: "Enroll Now", kind: "enroll", ariaLabel: "Enroll now in Comprehensive Data Science & AI master program" },
       { label: "Download Syllabus", kind: "syllabus" },
       { label: "View Curriculum", kind: "scroll", href: "curriculum" },
     ],
     highlights: [
-      "80% practical labs with mentor feedback for **masters in ai in india**",
+      "80% practical labs with mentor feedback",
       "ML & DL projects with reproducible pipelines",
-      "Model evaluation, tracking for **data science master program mumbai**",
+      "Model evaluation and experiment tracking",
       "CI/CD & basic MLOps: containers and deployment",
     ],
   },
@@ -94,9 +93,9 @@ export const aiCourse: CourseContent = {
   },
 
   why: {
-    heading: "[[Masters in AI and ML]] – Comprehensive Program Overview",
+    heading: "[[AI and ML Master Program]] – Comprehensive Program Overview",
     intro:
-      "Go end-to-end from **data processing** to **advanced AI deployment**. Build a **job-ready portfolio** in **Python**, **scikit-learn**, **TensorFlow**, **NLP/GenAI**, and **MLOps**—guided by industry experts. This **post graduate program in ai and ml** prepares you for top roles in **masters in artificial intelligence india**.",
+      "Go end-to-end from **data processing** to **advanced AI deployment**. Build a **job-ready portfolio** in **Python**, **scikit-learn**, **TensorFlow**, **NLP/GenAI**, and **MLOps**—guided by industry experts. The **Data Science & AI Master Program** prepares you for Data Scientist, ML Engineer and Applied AI roles.",
     cards: [
       {
         icon: "layers",
@@ -456,9 +455,9 @@ export const aiCourse: CourseContent = {
   },
 
   career: {
-    heading: "Top Companies Hiring [[DS & AI Professionals]] After Masters in AI and ML",
+    heading: "Top Companies Hiring [[DS & AI Professionals]]",
     intro:
-      "High-growth careers across Data Science, Machine Learning Engineering, MLOps, and Applied AI in product & services companies. Our **ai master program mumbai** prepares you for **masters in artificial intelligence india** roles.",
+      "High-growth careers across Data Science, Machine Learning Engineering, MLOps, and Applied AI in product & services companies. Our **AI master program** prepares you for these roles.",
     rolesTitle: "Roles You Can Target",
     roles: ["Data Scientist", "ML Engineer", "Data Analyst", "Applied AI Engineer", "MLOps Engineer"],
     companiesTitle: "Top Hiring Companies",
@@ -467,9 +466,9 @@ export const aiCourse: CourseContent = {
   },
 
   audience: {
-    heading: "Who Is This [[Course For]] – Masters in AI and ML in India",
+    heading: "Who Is This [[Course For]] – AI and ML Master Program",
     intro:
-      "Whether you're a **beginner**, **analyst**, or an experienced **professional**, this **post graduate program in ai and ml** helps you build a recruiter-ready portfolio in **Data Science** & **AI**. Perfect for those seeking **ms in artificial intelligence in india**.",
+      "Whether you're a **beginner**, **analyst**, or an experienced **professional**, this **AI and ML master program** helps you build a recruiter-ready portfolio in **Data Science** & **AI**.",
     items: [
       {
         icon: "graduationCap",
@@ -512,9 +511,9 @@ export const aiCourse: CourseContent = {
   },
 
   cta: {
-    heading: "Ready to Master [[Data Science & AI]] – Masters in AI and ML in India?",
+    heading: "Ready to Master [[Data Science & AI]]?",
     intro:
-      "Enroll in our **ai master program mumbai** for **global certification**, **job assistance**, and a **portfolio-first** curriculum in Python, ML, Deep Learning, NLP/GenAI, and MLOps. Start your **masters in ai and ml** journey today.",
+      "Enroll in our **Data Science & AI Master Program** for **global certification**, **job assistance**, and a **portfolio-first** curriculum in Python, ML, Deep Learning, NLP/GenAI, and MLOps. Start your journey today.",
     actions: [
       { label: "Apply Now", kind: "enroll", ariaLabel: "Apply Now" },
       { label: "Download Syllabus", kind: "syllabus", ariaLabel: "Download the Data Science & AI syllabus" },
