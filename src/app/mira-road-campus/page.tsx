@@ -44,13 +44,10 @@ import {
  * Content from the "Mira Road campus page content brief" (Nov 2026); copy and
  * the facts confirmed on 27 Nov 2026 live in ./campus-content.ts.
  *
- * STILL NOINDEX. The brief's minimum to index is real photos + a visit CTA that
- * keeps its promise + the FAQ, shipped together (C4-06). The CTA (the standard
- * enquiry form, titled "Book a Campus Visit") and the FAQ are done; the
- * photo slots in CAMPUS_PHOTOS are placeholders. When real photos are in:
- *   1. set each slot's `src` (they also become the LocalBusiness `image`),
- *   2. delete the `robots` line below,
- *   3. add /mira-road-campus to src/app/sitemap.ts.
+ * Indexed and in the sitemap since 27 Nov 2026 (C4-06), ahead of the brief's
+ * "real photos first" rule, by decision: the photo slots in CAMPUS_PHOTOS are
+ * still placeholders. Replace them with real campus photos as soon as they
+ * exist (set each slot's `src`; they also become the LocalBusiness `image`).
  * Parking is left out until it is confirmed.
  */
 export const metadata: Metadata = {
@@ -58,8 +55,6 @@ export const metadata: Metadata = {
   description:
     "CDPL's campus is opposite Mira Road Station (E), at Shanti Shopping Centre. Classroom batches in Software Testing, Data Science, AI and Digital Marketing. Visit or call to book a seat.",
   alternates: { canonical: "/mira-road-campus" },
-  // Until real photos replace the placeholders, see the file header.
-  robots: { index: false, follow: true },
 };
 
 const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
